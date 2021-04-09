@@ -1,0 +1,14 @@
+name: SiegeMC
+version: 0.0.1
+main: net.siegemc.siege.core.Core
+api-version: 1.16
+description: The main Siege plugin
+prefix: SiegeCore
+depend: [ Vault, ProtocolLib, Votifier, MythicMobs, NBTAPI, Kotlin ]
+load: STARTUP
+authors: [ Wrys, DeltaRays, Ghqst, Bagelll ]
+
+commands:
+  party:
+    description: Create a party with friends
+    aliases: [ p ]

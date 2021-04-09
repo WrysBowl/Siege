@@ -1,0 +1,1 @@
+C:\Users\legob\IdeaProjects\SiegeCore\core\build\classes\java\main\net\siegerpg\siege\core\Core.class;C:\Users\legob\IdeaProjects\SiegeCore\core\build\classes\kotlin\main\net\siegerpg\siege\core\database\DatabaseManager.class
