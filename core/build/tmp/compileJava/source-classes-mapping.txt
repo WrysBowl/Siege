@@ -1,2 +1,0 @@
-net/siegerpg/siege/core/Core.java
- net.siegerpg.siege.core.Core
