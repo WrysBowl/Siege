@@ -1,8 +1,8 @@
-name: SiegeMC
+name: SiegeCore
 version: 0.0.1
 main: net.siegerpg.siege.core.Core
 api-version: 1.16
-description: The main Siege plugin
+description: Siege's core plugin
 prefix: SiegeCore
 depend: [ Vault, ProtocolLib, Votifier, MythicMobs, NBTAPI, Kotlin ]
 load: STARTUP

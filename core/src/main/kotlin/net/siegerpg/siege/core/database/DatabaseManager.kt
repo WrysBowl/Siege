@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.database
 
-import io.lumine.xikage.mythicmobs.utils.storage.sql.hikari.HikariConfig
-import io.lumine.xikage.mythicmobs.utils.storage.sql.hikari.HikariDataSource
+import com.zaxxer.hikari.HikariConfig
+import com.zaxxer.hikari.HikariDataSource
 import net.siegerpg.siege.core.Core
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File

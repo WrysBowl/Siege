@@ -25,8 +25,11 @@ java {
 
 
 repositories {
-    maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
+//    maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
     mavenCentral()
+    flatDir {
+        dirs = setOf(file("lib"))
+    }
 
     maven { url = uri("https://nexus.mcdevs.us/repository/mcdevs/") }
     maven { url = uri("https://repo.aikar.co/content/groups/aikar/") }
@@ -40,9 +43,10 @@ repositories {
 
 dependencies {
     implementation("us.mcdevs.library.kotlin:Kotlin:1.4.0")
-    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+    compileOnly(fileTree("libs"))
     testImplementation("junit:junit:4.12")
     compileOnly("org.projectlombok:lombok:1.18.16")
+    implementation("net.kyori:adventure-platform-bukkit:4.0.0-SNAPSHOT")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.5.0")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
     compileOnly("com.vexsoftware:nuvotifier-universal:2.6.0") // NuVotifier API
