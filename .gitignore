@@ -2,9 +2,9 @@
 .idea/
 
 # Builds and Gradle
-build/
-core/build/
-.gradle/
+/build/
+/core/build/
+/.gradle/
 
 *.iml
 *.ipr
