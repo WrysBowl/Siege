@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.party.Party;
 import net.siegerpg.siege.core.party.PartyManager;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public final class Core extends JavaPlugin {
         manager.getCommandCompletions().registerCompletion("partyMembers", c -> {
             Party party = partyManager.getParty(c.getPlayer().getUniqueId());
             List<UUID> members = party.getMembersRaw();
-            List<String> names = new ArrayList<String>();
+            List<String> names = new ArrayList<>();
             for (UUID member : members) {
                 names.add(Bukkit.getPlayer(member).getName());
             }
@@ -46,7 +47,7 @@ public final class Core extends JavaPlugin {
         manager.getCommandCompletions().registerCompletion("partyMembersExcludingSelf", c -> {
             Party party = partyManager.getParty(c.getPlayer().getUniqueId());
             List<UUID> members = party.getMembersRaw();
-            List<String> names = new ArrayList<String>();
+            List<String> names = new ArrayList<>();
             for (UUID member : members) {
                 if (member != c.getPlayer().getUniqueId()) names.add(Bukkit.getPlayer(member).getName());
             }
@@ -56,7 +57,7 @@ public final class Core extends JavaPlugin {
         manager.getCommandCompletions().registerCompletion("nonPartyMembers", c -> {
             Party party = partyManager.getParty(c.getPlayer().getUniqueId());
             List<UUID> members = party.getMembersRaw();
-            List<String> names = new ArrayList<String>();
+            List<String> names = new ArrayList<>();
             for (UUID member : members) {
                 names.add(Bukkit.getPlayer(member).getName());
             }
@@ -67,17 +68,11 @@ public final class Core extends JavaPlugin {
         });
 
         manager.getCommandCompletions().registerCompletion("openToInvite", c -> {
-            Party party = partyManager.getParty(c.getPlayer().getUniqueId());
-            List<UUID> members = party.getMembersRaw();
-            List<String> names = new ArrayList<String>();
-            for (UUID member : members) {
-                names.add(Bukkit.getPlayer(member).getName());
-            }
-            List<OfflinePlayer> notInParty = Bukkit.getOnlinePlayers().stream().filter(p -> partyManager.getParty(p.getUniqueId()) == null).collect(Collectors.toList());
-            List<String> allPlayerNames = notInParty.stream().map(OfflinePlayer::getName)
-                    .collect(Collectors.toList());
+            List<Player> notInParty = Bukkit.getOnlinePlayers().stream()
+                    .filter(p -> partyManager.getParty(p.getUniqueId()) == null).collect(Collectors.toList());
 
-            return allPlayerNames;
+            return notInParty.stream().map(Player::getName)
+                    .collect(Collectors.toList());
         });
 
     }
