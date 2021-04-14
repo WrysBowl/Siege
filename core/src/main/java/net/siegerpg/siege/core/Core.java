@@ -82,4 +82,9 @@ public final class Core extends JavaPlugin {
         // Plugin shutdown logic
         partyManager.saveAll();
     }
+
+    public static Core plugin() {
+        return Core.getPlugin(Core.class); // Method to get the plugin from other classes, so you can use Core.plugin() in other classes to get the plugin
+    }
+
 }
