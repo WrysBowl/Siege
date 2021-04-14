@@ -1,8 +1,9 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegemc.core.olditems.droptable.BlockDrops;
 import net.siegemc.core.utils.Levels;
+import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.DirtClump;
+import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Seed;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
