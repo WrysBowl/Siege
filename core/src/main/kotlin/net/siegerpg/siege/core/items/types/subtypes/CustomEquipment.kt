@@ -19,7 +19,7 @@ interface CustomEquipment : CustomItem {
 
     override fun updateMeta(hideRarity: Boolean) {
         val meta = item.itemMeta
-        
+
         meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name"))
 
         val newLore =
