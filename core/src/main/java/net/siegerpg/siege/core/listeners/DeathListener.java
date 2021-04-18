@@ -2,8 +2,11 @@ package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.MythicMob;
-import net.siegemc.core.olditems.droptable.MobDrops;
-import net.siegemc.core.utils.Levels;
+import net.siegerpg.siege.core.dropTable.dropTable;
+import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.enums.StatTypes;
+import net.siegerpg.siege.core.utils.Levels;
+import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -15,25 +18,27 @@ import org.bukkit.inventory.ItemStack;
 public class DeathListener implements Listener {
     @EventHandler
     public void mobDeath(EntityDeathEvent e) {
+
+        MythicMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType();
+        dropTable.mobDrops mobDrop = dropTable.mobDrops.matchCaseMobDrops(mm.toString());
+
+        e.setDroppedExp(0);
+        e.getDrops().clear();
+        if (mobDrop == null) {
+            return;
+        }
+
         Entity mob = e.getEntity();
         Location loc = mob.getLocation();
         Player player = e.getEntity().getKiller();
 
-        MythicMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType();
+        if (mobDrop.getExp() > 0) { Levels.addExp(player, mobDrop.getExp()); } //Give exp reward
 
-        if (MobDrops.checkAllDrops(mm) == null) {
-            return;
-        }
+        ItemStack goldCoins = Utils.getGoldCoin();
+        goldCoins.setAmount(mobDrop.getGold());
+        e.getEntity().getWorld().dropItemNaturally(loc, goldCoins); //Give gold reward
 
-        e.getDrops().clear();
-
-        MobDrops dropTable = new MobDrops();
-        dropTable.giveMobDrops(mm, player);
-        int expReward = dropTable.getExpReward();
-
-        if (expReward > 0) { Levels.addExp(player, expReward); } //Give exp reward
-
-        for (ItemStack drop : dropTable.getItemRewards()) { //Loop through all drops
+        for (ItemStack drop : mobDrop.getRewards(CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK))) { //Loop through all drops
             e.getEntity().getWorld().dropItemNaturally(loc, drop);
         }
     }
