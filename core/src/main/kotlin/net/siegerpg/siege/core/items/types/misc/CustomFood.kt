@@ -9,6 +9,7 @@ import org.bukkit.Material
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import java.util.Arrays.asList
 
 abstract class CustomFood(
     override val name: String,
@@ -41,21 +42,26 @@ abstract class CustomFood(
 
         val meta = item.itemMeta
 
-        meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name"))
+        /*
+        DisplayName and Lore has been changed to use strings instead of components. Will be fixed in the future
+         */
+
+        meta.displayName =
+            Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name").toString()
 
         val newLore =
-            mutableListOf(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$rarity</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "${rarity.color}$rarity <gray>$quality%"))
+            mutableListOf(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$rarity</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "${rarity.color}$rarity <gray>$quality%").toString())
         val realHealth = health * getRarityMultiplier(quality)
-        if (realHealth > 0) newLore.add(Utils.parse(" "))
-        if (realHealth > 0) newLore.add(Utils.parse("<red>+$realHealth Health"))
-        newLore.add(Utils.parse(" "))
+        if (realHealth > 0) newLore.add(Utils.parse(" ").toString())
+        if (realHealth > 0) newLore.add(Utils.parse("<red>+$realHealth Health").toString())
+        newLore.add(Utils.parse(" ").toString())
         description.forEach {
-            newLore.add(Utils.parse("<dark_gray>$it"))
+            newLore.add(Utils.parse("<dark_gray>$it").toString())
         }
-        newLore.add(Utils.parse(" "))
-        newLore.add(Utils.parse("<gray>Level: $levelRequirement"))
-        if (hideRarity) newLore.add(Utils.parse("<red>This is not the real item"))
-        meta.lore(newLore)
+        newLore.add(Utils.parse(" ").toString())
+        newLore.add(Utils.parse("<gray>Level: $levelRequirement").toString())
+        if (hideRarity) newLore.add(Utils.parse("<red>This is not the real item").toString())
+        meta.lore = newLore
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta

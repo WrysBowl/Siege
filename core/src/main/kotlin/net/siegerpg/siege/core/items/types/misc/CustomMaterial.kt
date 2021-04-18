@@ -52,13 +52,17 @@ abstract class CustomMaterial(
 
         val meta = item.itemMeta
 
-        meta.displayName(Utils.parse("<gray>$name <yellow>${"✪".repeat(tier)}"))
+        /*
+        DisplayName and Lore has been changed to use strings instead of components. Will be fixed in the future
+         */
 
-        val newLore = mutableListOf(Utils.parse(" "))
+        meta.displayName = Utils.parse("<gray>$name <yellow>${"✪".repeat(tier)}").toString()
+
+        val newLore = mutableListOf(Utils.parse(" ").toString())
         description.forEach {
-            newLore.add(Utils.parse("<dark_gray>$it"))
+            newLore.add(Utils.parse("<dark_gray>$it").toString())
         }
-        meta.lore(newLore)
+        meta.lore = newLore
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
