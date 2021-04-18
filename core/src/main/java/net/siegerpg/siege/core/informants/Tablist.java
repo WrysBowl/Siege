@@ -10,21 +10,21 @@ public class Tablist {
     public void tablistUpdate() {
         for (Player p : Bukkit.getOnlinePlayers()) {
 
-            Component header = Utils.parse("\n" +
-                    "<gold><b>SiegeRPG</b>\n" +
-                    "<gold><i>play.SiegeRPG.net</i>" +
-                    "<white>\n" +
+            String header = Utils.tacc("\n" +
+                    "&6&lSiegeRPG\n" +
+                    "&6&oplay.SiegeRPG.net" +
+                    "&f\n" +
                     "");
 
-            Component footer = Utils.parse("\n" +
-                    "<gold>Discord: <gray>/discord\n" +
-                    "<gold>Website: <gray>/website\n" +
-                    "<gray>There are <gold><underlined>"+Bukkit.getOnlinePlayers().size()+"<gray> players online!\n" +
+            String footer = Utils.tacc("\n" +
+                    "&6Discord: &7/discord\n" +
+                    "&6Website: &7/website\n" +
+                    "&7There are &6&o"+Bukkit.getOnlinePlayers().size()+"&7 players online!\n" +
                     "");
-            Component tabName = Utils.parse(VaultHook.perms.getPrimaryGroup(p) + " " + "<gray>" + p.getName());
-            p.playerListName(tabName);
-            p.sendPlayerListHeader(header);
-            p.sendPlayerListFooter(footer);
+            String tabName = Utils.tacc(VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName());
+            p.setPlayerListName(tabName);
+            p.setPlayerListHeader(header);
+            p.setPlayerListFooter(footer);
         }
     }
 }
