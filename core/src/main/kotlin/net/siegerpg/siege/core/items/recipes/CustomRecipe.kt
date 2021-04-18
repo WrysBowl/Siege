@@ -4,7 +4,7 @@ import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword
 import org.bukkit.entity.Player
 
-class CustomRecipe(var items: MutableList<CustomItem?>, var shaped: Boolean = true, var createItem: (Player, Boolean) -> CustomItem) {
+open class CustomRecipe(var items: MutableList<CustomItem?>, var shaped: Boolean = true, var createItem: (Player, Boolean) -> CustomItem) {
 
     fun matches(matrix: List<CustomItem?>): Boolean {
         return if (shaped) {

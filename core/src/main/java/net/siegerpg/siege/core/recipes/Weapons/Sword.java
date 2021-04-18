@@ -1,7 +1,8 @@
 package net.siegerpg.siege.core.recipes.Weapons;
 
+import net.siegerpg.siege.core.items.recipes.*;
 
-public class Sword extends Recipes {
+public class Sword extends CustomRecipe {
 
 //public class Swords extends Recipes {
 //

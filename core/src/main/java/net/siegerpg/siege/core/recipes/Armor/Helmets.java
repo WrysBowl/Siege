@@ -1,4 +1,6 @@
 package net.siegerpg.siege.core.recipes.Armor;
 
-public class Helmets extends Recipes {
+import net.siegerpg.siege.core.items.recipes.*;
+
+public class Helmets extends CustomRecipe {
 }

@@ -1,4 +1,6 @@
 package net.siegerpg.siege.core.recipes.Weapons;
 
-public class Wands extends Recipes {
+import net.siegerpg.siege.core.items.recipes.*;
+
+public class Wands extends CustomRecipe {
 }

@@ -1,4 +1,6 @@
 package net.siegerpg.siege.core.recipes.Weapons;
 
-public class Axes extends Recipes {
+import net.siegerpg.siege.core.items.recipes.*;
+
+public class Axes extends CustomRecipe {
 }

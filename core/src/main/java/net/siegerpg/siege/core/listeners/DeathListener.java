@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.MythicMob;
-import net.siegerpg.siege.core.dropTable.dropTable;
+import net.siegerpg.siege.core.dropTable.mobDrops;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
@@ -20,7 +20,7 @@ public class DeathListener implements Listener {
     public void mobDeath(EntityDeathEvent e) {
 
         MythicMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType();
-        dropTable.mobDrops mobDrop = dropTable.mobDrops.matchCaseMobDrops(mm.toString());
+        mobDrops mobDrop = mobDrops.matchCaseMobDrops(mm.toString());
 
         e.setDroppedExp(0);
         e.getDrops().clear();

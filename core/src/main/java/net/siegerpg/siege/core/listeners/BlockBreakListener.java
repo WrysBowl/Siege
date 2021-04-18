@@ -1,10 +1,9 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.dropTable.dropTable;
+import net.siegerpg.siege.core.dropTable.blockDrops;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
-import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
@@ -18,9 +17,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-
-
 public class BlockBreakListener implements Listener {
 
     @EventHandler
@@ -29,7 +25,7 @@ public class BlockBreakListener implements Listener {
         if (player.getGameMode() == GameMode.CREATIVE) { return; }
 
         Material block = e.getBlock().getType();
-        dropTable.blockDrops blockDrop = dropTable.blockDrops.matchCaseBlockDrops(block.toString());
+        blockDrops blockDrop = blockDrops.matchCaseBlockDrops(block.toString());
 
         e.setDropItems(false);
         if (blockDrop == null) {
