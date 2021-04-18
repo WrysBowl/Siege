@@ -34,6 +34,20 @@ public class Utils {
         return new NamespacedKey(Core.INSTANCE, str);
     }
 
+    public static boolean randTest(Number num) {
+        double randNumber = Math.random() *100;
+        if (randNumber <= (double) num) { return true; }
+        return false;
+    }
+
+    public static ItemStack getGoldCoin() {
+        ItemStack gold = new ItemStack(Material.SUNFLOWER);
+        ItemMeta meta = gold.getItemMeta();
+        meta.setDisplayName("Gold Coin");
+        gold.setItemMeta(meta);
+        return gold;
+    }
+
     @SuppressWarnings("unused")
     public static ItemStack createItem(final Material material, final String name, final boolean glowing, Integer amount, final String... lore) {
         final ItemStack item = new ItemStack(material, 1);

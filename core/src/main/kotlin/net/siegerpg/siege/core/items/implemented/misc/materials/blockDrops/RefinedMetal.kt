@@ -13,6 +13,13 @@ class RefinedMetal() : CustomMaterial(
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
+        recipe {
+            shaped = false
+            s1(MetalScrap())
+            item { player, b ->
+                RefinedMetal()
+            }
+        }
     }
 ) {
 

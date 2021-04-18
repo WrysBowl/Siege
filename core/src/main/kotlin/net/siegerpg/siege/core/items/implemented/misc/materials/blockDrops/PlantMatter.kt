@@ -6,10 +6,10 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Wood() : CustomMaterial(
-    name = "Wood",
-    customModelData = 320005,
-    description = listOf("Foundational material to any structure"),
+class PlantMatter() : CustomMaterial(
+    name = "Plant Matter",
+    customModelData = 320001,
+    description = listOf("Parts of a plant"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {

@@ -2,8 +2,8 @@ package net.siegerpg.siege.core.informants;
 
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegemc.core.utils.Utils;
+import net.siegerpg.siege.core.utils.Levels;
+import net.siegerpg.siege.core.utils.*;
 import net.siegemc.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

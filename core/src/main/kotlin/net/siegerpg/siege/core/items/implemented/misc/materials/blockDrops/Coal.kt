@@ -6,10 +6,10 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class DirtClump() : CustomMaterial(
-    name = "Dirt Clump",
-    customModelData = 320001,
-    description = listOf("A muddy clump of earth"),
+class Coal() : CustomMaterial(
+    name = "Coal",
+    customModelData = 320003,
+    description = listOf("Burned to gain energy resource"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {

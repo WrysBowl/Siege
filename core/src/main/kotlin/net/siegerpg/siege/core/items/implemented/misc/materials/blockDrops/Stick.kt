@@ -6,10 +6,10 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class MossyDirt() : CustomMaterial(
-    name = "Mossy Dirt",
-    customModelData = 320003,
-    description = listOf("Technically a grass block"),
+class Stick() : CustomMaterial(
+    name = "Stick",
+    customModelData = 320005,
+    description = listOf("Foundational material to any structure"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
