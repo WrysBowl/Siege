@@ -3,7 +3,7 @@ package net.siegemc.core.utils;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
-import net.siegemc.core.Core;
+import net.siegerpg.siege.core.Core;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 

@@ -1,7 +1,6 @@
 package net.siegerpg.siege.core.listeners;
 
-import net.siegemc.core.utils.NBT;
-import net.siegemc.core.utils.Utils;
+import net.siegerpg.siege.core.utils.Utils;
 import net.siegemc.core.utils.VaultHook;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -52,8 +51,8 @@ public class StatGemListener implements Listener {
         */
         if (!gem.hasItemMeta()) return;
         if (!tool.hasItemMeta()) return;
-        if (gem.getLore() == null) return;
-        if (tool.getLore() == null) return;
+        if (gem.getItemMeta().getLore() == null) return;
+        if (tool.getItemMeta().getLore() == null) return;
         Integer weaponCheck = NBT.getInt((PersistentDataHolder) tool, "weapon");
         Integer armorCheck = NBT.getInt((PersistentDataHolder) tool, "armor");
         if ((weaponCheck + armorCheck) == 0) return; //If it isn't an armor piece, return it
@@ -61,7 +60,7 @@ public class StatGemListener implements Listener {
         String[] stats = {"Strength", "Regeneration", "Luck", "Wisdom", "Health", "Toughness"};
         String statName = null;
         for (String stat : stats) { //Search for the stat in the item's lore
-            if (gem.getLore().contains(stat)) {
+            if (gem.getItemMeta().getLore().contains(stat)) {
                 statName = stat;
                 break;
             }
@@ -82,9 +81,9 @@ public class StatGemListener implements Listener {
         NBT.addDouble((PersistentDataHolder) tool, statName + "Gem", gemStatVal); //stores gem value in item nbt
         NBT.addInt((PersistentDataHolder) tool, "GemsAdded", 1); //adds the registered stat of the gem to the tool
 
-        List<String> loreLines = tool.getLore();
+        List<String> loreLines = tool.getItemMeta().getLore();
         loreLines.add(ChatColor.DARK_PURPLE + statName + " Gem " + ChatColor.LIGHT_PURPLE + "+ " + gemStatVal);
-        tool.setLore(loreLines); //add the gem display to the last line of the item lore
+        tool.getItemMeta().setLore(loreLines); //add the gem display to the last line of the item lore
 
         player.setItemOnCursor(null);
         player.sendMessage(ChatColor.RED + "You can not apply this gem to this item.");

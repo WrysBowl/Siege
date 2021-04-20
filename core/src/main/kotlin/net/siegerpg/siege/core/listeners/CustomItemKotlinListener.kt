@@ -9,7 +9,6 @@ import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomWand
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
-import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Color
 import org.bukkit.Location
 import org.bukkit.Particle
@@ -125,6 +124,7 @@ class CustomItemKotlinListener : Listener {
             }
         }
     }
+
 
     private fun drawParticles(aL: Location, bL: Location, r: Int, g: Int, b: Int) {
         Thread(Runnable {
