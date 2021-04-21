@@ -1,8 +1,6 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegemc.core.utils.InvisibleArmorStand;
-import net.siegemc.core.utils.NBT;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -22,7 +20,7 @@ import java.util.stream.Collectors;
 
 public class DamageIndicatorListener implements Listener {
     private static final HashMap<Entity, ArmorStand> indicators = new HashMap<>();
-    
+    /*
     @EventHandler(priority = EventPriority.HIGH)
     public void onDamage(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Player) && !(event.getDamager() instanceof Arrow) || event.isCancelled()) return;
@@ -31,7 +29,7 @@ public class DamageIndicatorListener implements Listener {
     
         showIndicator(victim, damage, false);
     }
-    
+
     public static void clearIndicators() {
         for (World world : Bukkit.getWorlds()) {
             List<Entity> armorStands = world.getEntities().stream().filter((Entity e) -> e instanceof ArmorStand).collect(Collectors.toList());
@@ -65,5 +63,5 @@ public class DamageIndicatorListener implements Listener {
             }
         }.runTaskLaterAsynchronously(Core.plugin(), 20);
     }
-    
+    */
 }

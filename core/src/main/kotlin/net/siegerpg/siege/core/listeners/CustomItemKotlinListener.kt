@@ -86,6 +86,7 @@ class CustomItemKotlinListener : Listener {
         }
     }
 
+    /*
     @EventHandler
     @Suppress("unused")
     fun onInteract(event: PlayerInteractEvent) {
@@ -97,7 +98,7 @@ class CustomItemKotlinListener : Listener {
 
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
-                val entity = player.getTargetEntity(it.range)
+                val entity = player.hubgetTargetEntity(it.range)
                 val loc = if (entity == null || entity.isDead) {
                     val block = player.getTargetBlock(it.range) ?: return
                     block.location
@@ -124,6 +125,7 @@ class CustomItemKotlinListener : Listener {
             }
         }
     }
+    */
 
 
     private fun drawParticles(aL: Location, bL: Location, r: Int, g: Int, b: Int) {

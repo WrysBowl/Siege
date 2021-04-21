@@ -92,6 +92,7 @@ public class CustomCraftingEvents implements Listener {
         }
     }
 
+    /*
     @EventHandler
     public void onCraftingInventoryClick(InventoryClickEvent e) {
         if (e.getInventory() != inv) return; //stops if inventory is not crafting table
@@ -136,6 +137,7 @@ public class CustomCraftingEvents implements Listener {
             }
         }, 1);
     }
+    */
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent e) {

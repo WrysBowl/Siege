@@ -15,6 +15,7 @@ import java.util.List;
 
 public class StatGemListener implements Listener {
 
+    /*
     @EventHandler
     public void onGemMerge(InventoryClickEvent e) {
         ItemStack gem = e.getCursor();
@@ -42,13 +43,13 @@ public class StatGemListener implements Listener {
 
     //add stats of the gem to clicked item
     public void addStatGem(ItemStack gem, ItemStack tool, Player player) {
-        /*
-        statGem = new ItemStack(Material.LEGACY_SKULL_ITEM, 1 , (short) SkullType.PLAYER.ordinal());
-        SkullMeta meta = (SkullMeta) statGem.getItemMeta();
-        meta.setOwner();
-        meta.setDisplayName(ChatColor.GREEN + "Strength");
-        statGem.setItemMeta(meta);
-        */
+
+        //statGem = new ItemStack(Material.LEGACY_SKULL_ITEM, 1 , (short) SkullType.PLAYER.ordinal());
+        //SkullMeta meta = (SkullMeta) statGem.getItemMeta();
+        //meta.setOwner();
+        //meta.setDisplayName(ChatColor.GREEN + "Strength");
+        //statGem.setItemMeta(meta);
+
         if (!gem.hasItemMeta()) return;
         if (!tool.hasItemMeta()) return;
         if (gem.getItemMeta().getLore() == null) return;
@@ -88,4 +89,5 @@ public class StatGemListener implements Listener {
         player.setItemOnCursor(null);
         player.sendMessage(ChatColor.RED + "You can not apply this gem to this item.");
     }
+    */
 }

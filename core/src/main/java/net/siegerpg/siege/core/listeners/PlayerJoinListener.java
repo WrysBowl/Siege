@@ -1,10 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegemc.core.dungeons.Dungeon;
-import net.siegemc.core.dungeons.DungeonType;
 import net.siegerpg.siege.core.informants.*;
-import net.siegemc.core.utils.DbManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PlayerJoinListener implements Listener {
+    /*
     @EventHandler
     public void connectEvent(AsyncPlayerPreLoginEvent e) {
         new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
@@ -48,9 +46,11 @@ public class PlayerJoinListener implements Listener {
             }
         }.runTaskAsynchronously(Core.plugin());
     }
+    */
 
     @EventHandler
     public void joinEvent(PlayerJoinEvent event) {
+        /*
         Player player = event.getPlayer();
         for (DungeonType dungeonType : DungeonType.dungeonTypes) {
             for (Dungeon dungeon : dungeonType.dungeons) {
@@ -59,6 +59,7 @@ public class PlayerJoinListener implements Listener {
                 }
             }
         }
+        */
         new Tablist().tablistUpdate();
 
         Scoreboard s = new Scoreboard();

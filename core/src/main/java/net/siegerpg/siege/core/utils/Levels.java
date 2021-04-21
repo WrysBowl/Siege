@@ -14,7 +14,7 @@ public class Levels {
         return Math.pow(level+3, 3);
     }
     
-    public static void levelCalculate(OfflinePlayer player) {
+    public static void levelCalculate(OfflinePlayer player) throws SQLException {
         short level = getLevel(player);
         int exp = getExp(player);
         while (calculateRequiredExperience(level) <= exp) { //Loops until required exp is greater than current exp
@@ -38,8 +38,10 @@ public class Levels {
         return Math.pow((Levels.getLevel(player) + 3), 3);
     }
 
-    public static Short getLevel(OfflinePlayer player) {
-        Connection connection = DatabaseManager.getConnection();
+    public static short getLevel(OfflinePlayer player) {
+        return (short) player.getPlayer().getLevel();
+        /*
+        Connection connection = DatabaseManager.INSTANCE.getConnection();
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT level FROM userData WHERE uuid=?");
             statement.setString(1, player.getUniqueId().toString());
@@ -53,11 +55,19 @@ public class Levels {
             e.printStackTrace();
             return 0;
         }
+
+        */
     }
 
     public static void setLevel(OfflinePlayer player, short level) {
+        /*
         new Thread(() -> {
-            Connection connection = DbManager.getConnection();
+            Connection connection = null;
+            try {
+                connection = DatabaseManager.INSTANCE.getConnection();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
             try {
                 PreparedStatement statement = connection.prepareStatement("UPDATE userData SET level=? WHERE uuid=?");
                 statement.setShort(1, level);
@@ -69,12 +79,18 @@ public class Levels {
                 e.printStackTrace();
             }
         }).start();
-        
+        */
     }
 
     public static void addLevel(OfflinePlayer player, short level) {
+        /*
         new Thread(() -> {
-            Connection connection = DbManager.getConnection();
+            Connection connection = null;
+            try {
+                connection = DatabaseManager.INSTANCE.getConnection();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
             try {
                 PreparedStatement statement = connection.prepareStatement("UPDATE userData SET level=level+? WHERE uuid=?");
                 statement.setShort(1, level);
@@ -87,11 +103,13 @@ public class Levels {
                 e.printStackTrace();
             }
         }).start();
-        
+        */
     }
 
     public static Integer getExp(OfflinePlayer player) {
-        Connection connection = DbManager.getConnection();
+        return Math.round(player.getPlayer().getExp());
+        /*
+        Connection connection = DatabaseManager.INSTANCE.getConnection();
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT experience FROM userData WHERE uuid=?");
             statement.setString(1, player.getUniqueId().toString());
@@ -104,11 +122,18 @@ public class Levels {
             e.printStackTrace();
             return 0;
         }
+        */
     }
 
     public static void setExp(OfflinePlayer player, int exp) {
+        /*
         new Thread(() -> {
-            Connection connection = DbManager.getConnection();
+            Connection connection = null;
+            try {
+                connection = DatabaseManager.INSTANCE.getConnection();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
             try {
                 PreparedStatement statement = connection.prepareStatement("UPDATE userData SET experience=? WHERE uuid=?");
                 statement.setInt(1, exp);
@@ -119,7 +144,7 @@ public class Levels {
                 e.printStackTrace();
             }
         }).start();
-        
+        */
     }
     
     public static void addExp(OfflinePlayer player, int exp) {
@@ -127,6 +152,7 @@ public class Levels {
     }
     
     public static void addExp(OfflinePlayer player, int exp, String message) {
+        /*
         new Thread(() -> {
             Connection connection = DbManager.getConnection();
             try {
@@ -141,6 +167,7 @@ public class Levels {
                 e.printStackTrace();
             }
         }).start();
+         */
     }
     
     public static void sendExpMessage(OfflinePlayer player, int exp, String reason) {

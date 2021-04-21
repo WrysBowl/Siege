@@ -11,7 +11,7 @@ public class ChatListener implements Listener {
     public void playerChat(AsyncPlayerChatEvent e) {
         String player = e.getPlayer().getDisplayName();
         String level = "&8[&d"+ Levels.getLevel(e.getPlayer())+"&8]";
-        String prefix = VaultHook.perms.getPrimaryGroup(e.getPlayer());
+        String prefix = net.siegemc.core.utils.VaultHook.perms.getPrimaryGroup(e.getPlayer());
         String message = e.getMessage().replaceAll("&k", "");
         String check = Utils.strip(message);
         if (check.equalsIgnoreCase("") || check.equalsIgnoreCase(" ")) {
