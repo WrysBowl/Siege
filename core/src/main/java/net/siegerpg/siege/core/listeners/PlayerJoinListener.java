@@ -4,11 +4,14 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.*;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.Connection;
@@ -49,20 +52,23 @@ public class PlayerJoinListener implements Listener {
     }
     */
 
+    /*
+    @EventHandler
+    public void loginEvent(PlayerLoginEvent event) {
+        Player p = event.getPlayer();
+        if(!p.hasPlayedBefore()) {
+
+        }
+    }
+
+     */
+
     @EventHandler
     public void joinEvent(PlayerJoinEvent event) {
-        /*
-        Player player = event.getPlayer();
-        for (DungeonType dungeonType : DungeonType.dungeonTypes) {
-            for (Dungeon dungeon : dungeonType.dungeons) {
-                if (dungeon.listPlayers().contains(player) && player.getLocation().distanceSquared(dungeon.location) > dungeonType.dungeonDistance * dungeonType.dungeonDistance) {
-                    player.teleport(dungeon.location.clone().add(dungeonType.spawnLocation));
-                }
-            }
-        }
-        */
 
-        event.setJoinMessage(Utils.tacc("&7[&a+&7] " + event.getPlayer()));
+        Player player = event.getPlayer();
+
+        event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player));
 
         new Tablist().tablistUpdate();
 
@@ -70,9 +76,18 @@ public class PlayerJoinListener implements Listener {
         for (Player p : Bukkit.getOnlinePlayers()) {
             s.updateScoreboard(p);
         }
+
+        /*
+        for (DungeonType dungeonType : DungeonType.dungeonTypes) {
+            for (Dungeon dungeon : dungeonType.dungeons) {
+                if (dungeon.listPlayers().contains(player) && player.getLocation().distanceSquared(dungeon.location) > dungeonType.dungeonDistance * dungeonType.dungeonDistance) {
+                    player.teleport(dungeon.location.clone().add(dungeonType.spawnLocation));
+                    return;
+                }
+            }
+        }
+        */
+
+        player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
     }
 }
-
-
-
-

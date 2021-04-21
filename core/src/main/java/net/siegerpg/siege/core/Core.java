@@ -87,6 +87,8 @@ public final class Core extends JavaPlugin {
         plugin().getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
         plugin().getServer().getPluginManager().registerEvents(new StatGemListener(), this);
         plugin().getServer().getPluginManager().registerEvents(new WorldProtectionListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
     }
 
     @Override
