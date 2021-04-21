@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.*;
+import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -60,6 +61,9 @@ public class PlayerJoinListener implements Listener {
             }
         }
         */
+
+        event.setJoinMessage(Utils.tacc("&7[&a+&7] " + event.getPlayer()));
+
         new Tablist().tablistUpdate();
 
         Scoreboard s = new Scoreboard();
