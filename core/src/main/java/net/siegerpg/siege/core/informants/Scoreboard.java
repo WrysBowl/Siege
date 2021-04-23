@@ -26,7 +26,6 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&7╠ Gold &e" + (int) VaultHook.econ.getBalance(p))).setScore(11);
         o.getScore("  ").setScore(10);
 
-
         CustomItemUtils r = CustomItemUtils.INSTANCE;
         o.getScore(Utils.tacc("&dStats")).setScore(9);
 

@@ -3,14 +3,17 @@ package net.siegerpg.siege.core.utils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.siegerpg.siege.core.Core;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.Arrays;
 
@@ -85,6 +88,9 @@ public class Utils {
         return (int) (rand1*rand2);
     }
 
-
+    //prevent players from removing all slots in the gui
+    public static void setImmuneGUI(Player player) {
+        player.setMetadata("invOpened", new FixedMetadataValue(Core.plugin(), true));
+    }
 
 }

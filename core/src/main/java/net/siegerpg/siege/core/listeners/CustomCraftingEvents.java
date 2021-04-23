@@ -1,6 +1,8 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.items.CustomItem;
+import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,26 +12,25 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class CustomCraftingEvents implements Listener {
 
     private Inventory inv;
-    private List<ItemStack> craftingSlots = new ArrayList<>();
+    private List<CustomItem> craftingSlots = new ArrayList<>();
     private List<Integer> numCraftingSlots = new ArrayList<>();
     private boolean resultSlotSet = false;
     ItemStack filler = Utils.createItem(Material.GRAY_STAINED_GLASS_PANE, ChatColor.GREEN + "", false, 1);
-    ItemStack craftingSlot = new ItemStack(Material.AIR);
+    ItemStack air = new ItemStack(Material.AIR);
 
-    public void createNewGUI() {
+    private Inventory getCraftingGUI() {
         inv = Bukkit.createInventory(null, 45, "Crafting Table");
         for (int i=0; i<inv.getSize(); i++) { //Set all slots to filler variable
             inv.setItem(i, filler);
@@ -37,29 +38,30 @@ public class CustomCraftingEvents implements Listener {
 
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
-                inv.setItem(y+x, craftingSlot);
-                craftingSlots.add(inv.getItem(y+x));
+                inv.setItem(y+x, air);
+                craftingSlots.add((CustomItem) inv.getItem(y+x));
                 numCraftingSlots.add(y+x);
             }
         }
         numCraftingSlots.add(24);
-        setResult(new ItemStack(Material.AIR));
+        setResult((CustomItem) new ItemStack(Material.AIR));
+        return inv;
     }
 
-    public void setMatrix(List<ItemStack> matrix) {
+    public void setMatrix(List<CustomItem> matrix) {
         int i = 0;
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
-                inv.setItem(y+x, matrix.get(i++));
+                inv.setItem(y+x, (ItemStack) matrix.get(i++));
             }
         }
     }
 
-    public List<ItemStack> getMatrix() {
-        List<ItemStack> matrix = new ArrayList<>();;
+    public List<CustomItem> getMatrix() {
+        List<CustomItem> matrix = new ArrayList<>();;
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
-                matrix.add(inv.getItem(y+x));
+                matrix.add((CustomItem) inv.getItem(y+x));
             }
         }
         return matrix;
@@ -68,49 +70,45 @@ public class CustomCraftingEvents implements Listener {
     public void clearMatrix() {
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
-                inv.setItem(y+x, craftingSlot);
+                inv.setItem(y+x, air);
             }
         }
     }
 
-    public void setResult(ItemStack item) {
-        inv.setItem(24, item);
+    public void setResult(CustomItem item) {
+        inv.setItem(24, (ItemStack) item);
     }
 
-    public ItemStack getResult() {
-        return inv.getItem(24);
+    public CustomItem getResult() {
+        return (CustomItem) inv.getItem(24);
     }
 
     @EventHandler
-    public void onCraftingTableClick(PlayerInteractEvent e) {
+    public void onCraftingTableOpen(PlayerInteractEvent e) {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (e.getClickedBlock().getType() == Material.CRAFTING_TABLE) {
                 e.setCancelled(true);
-                createNewGUI();
-                e.getPlayer().openInventory(craftingGrid(e.getPlayer()));
+                e.getPlayer().openInventory(getCraftingGUI());
             }
         }
     }
 
-    /*
     @EventHandler
-    public void onCraftingInventoryClick(InventoryClickEvent e) {
+    public void onCraftingTableClick(InventoryClickEvent e) {
         if (e.getInventory() != inv) return; //stops if inventory is not crafting table
-        if (e.getClickedInventory() instanceof PlayerInventory) return;
-        else if (!numCraftingSlots.contains(e.getSlot())) { //stops if slot is not a crafting/result slot
+        if (e.getRawSlot() > e.getInventory().getSize()) return; //if clicked slot is in the bottom inventory
+        if (!numCraftingSlots.contains(e.getSlot())) { //stops if slot is not a crafting/result slot
             e.setCancelled(true);
             return;
         }
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-            List<ItemStack> matrix = new ArrayList();
-            ItemStack result = new ItemStack(Material.AIR);
+            List<CustomItem> matrix = getMatrix();
+            CustomItem result = (CustomItem) new ItemStack(Material.AIR);
             Player player = (Player) e.getWhoClicked();
 
             //if (e.getCursor().getType().isAir()) {return;}
 
-            for (ItemStack i : getMatrix()) {
-                matrix.add(i);
-            }
+            /*
             for (CustomShapedRecipe recipe : Core.plugin().getShapedRecipes()) {
                 if (recipe.doesFit(matrix)) {
                     result = recipe.getResult();
@@ -120,6 +118,12 @@ public class CustomCraftingEvents implements Listener {
                 if (recipe.doesFit(matrix)) {
                     result = recipe.getResult();
                 }
+            }
+
+             */
+            //Need further information on how to get the result of a recipe, and what getRecipe does
+            if (CustomRecipe.Companion.getRecipe(matrix) != null) {
+                result = (CustomItem) CustomRecipe.Companion.getRecipe(matrix);
             }
 
             if (e.getSlot()==24 && resultSlotSet) {
@@ -137,17 +141,4 @@ public class CustomCraftingEvents implements Listener {
             }
         }, 1);
     }
-    */
-
-    @EventHandler
-    public void onInventoryClose(InventoryCloseEvent e) {
-        if (e.getInventory() != inv) return;
-
-    }
-
-    public Inventory craftingGrid(Player player) {
-        player.setMetadata("invOpened", new FixedMetadataValue(Core.plugin(), true));
-        return inv;
-    }
-
 }
