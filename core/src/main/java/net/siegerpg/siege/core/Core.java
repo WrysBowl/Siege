@@ -3,6 +3,7 @@ package net.siegerpg.siege.core;
 import co.aikar.commands.PaperCommandManager;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.siegerpg.siege.core.commands.PartyCommand;
+import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.party.Party;
 import net.siegerpg.siege.core.party.PartyManager;
 import org.bukkit.Bukkit;
@@ -75,6 +76,19 @@ public final class Core extends JavaPlugin {
                     .collect(Collectors.toList());
         });
 
+        plugin().getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new ChatListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
+        plugin().getServer().getPluginManager().registerEvents(new DamageIndicatorListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new DeathListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new ItemPickupListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new StatGemListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new WorldProtectionListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
     }
 
     @Override
@@ -82,4 +96,9 @@ public final class Core extends JavaPlugin {
         // Plugin shutdown logic
         partyManager.saveAll();
     }
+
+    public static Core plugin() {
+        return Core.getPlugin(Core.class); // Method to get the plugin from other classes, so you can use Core.plugin() in other classes to get the plugin
+    }
+
 }
