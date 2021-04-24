@@ -105,7 +105,6 @@ public class CustomCraftingEvents implements Listener {
             List<CustomItem> matrix = getMatrix();
             CustomItem result = (CustomItem) new ItemStack(Material.AIR);
             Player player = (Player) e.getWhoClicked();
-
             //if (e.getCursor().getType().isAir()) {return;}
 
             /*
