@@ -15,9 +15,6 @@ plugins {
     id("com.github.johnrengelman.shadow") version "5.2.0"
 }
 
-group "net.siegemc"
-version "0.0.1"
-
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
