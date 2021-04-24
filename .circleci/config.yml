@@ -1,0 +1,78 @@
+# Java Gradle CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+orbs:
+  discord: teka23/discord@0.0.1
+version: 2.1
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+    working_directory: ~/repo
+
+    environment:
+      # Customize the JVM maximum heap limit
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle.kts" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: gradle dependencies
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle.kts" }}
+
+      # run tests!
+      - run: gradle build
+
+      - discord/status:
+          failure_message: ''
+          success_message: ''
+          only_for_branches: master
+          webhook: ${DISCORD_WEBHOOK}
+      - store_artifacts:
+          path: ~/repo/core/build/libs/SiegeCore.jar
+      - when:
+          condition:
+              equal: [ master, << pipeline.git.branch >> ]
+          steps:
+            - run: sudo apt-get update
+            - run: sudo apt-get install lftp
+            - run: echo '[cas.humbleservers.com]:2022,[51.222.10.2]:2022 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuV/OqeTbjGnpqSj8Fg7V4RnfKQ+n+D/5GmCEXJYWapaqYHhqGHu8dOdPvw8fv4nflbzF8BzmyYH7N6KJt0J4zIIIr/c4NsOpESLVIM7dyxlwK424LQGMiJoO4In3LsI5CaV4XaUdvVeApcCO5fYmKxUdiapPvG1xz/nfGFP5oR+weVYM9MBLwwJs8o4iYUI1wFhSyvDDJlSYxbou6DnrbIbM4OfTPjJTjeeSCsMxETeMqeuDXUB1HspFHOu9JdEQwKxGgI6wYFPwa2Q3XB6WJHIdhowD1lmhPBKTee01fTKsI0dmNEXnnBm7SXShKy6Ka7X7fImNXd3yvdTbVTDpn' >> ~/.ssh/known_hosts
+            - run: lftp sftp://${SSH_USER}:${SSH_PASSWORD}@${SSH_HOSTNAME}:${SSH_PORT} -e "cd plugins; put ~/repo/core/build/libs/SiegeCore.jar; bye"
+            #- run: sshpass -p ${SSH_PASSWORD} sftp -oPort=${SSH_PORT} ~/repo/build/libs/SiegeMC.jar ${SSH_USER}@${SSH_HOSTNAME}:/
+            #- run: sshpass -p ${SSH_PASSWORD} sftp -oPort=${SSH_PORT} ${SSH_USER}@${SSH_HOSTNAME}
+            #- run: cd plugins
+            #- run: put ~/repo/build/libs/SiegeMC.jar
+            #- run: exit
+          
+          
+#workflows:
+#  version: 2
+#  build-and-deploy:
+#    jobs:
+#      - build
+#      - deploy:
+#          requires:
+#            - build
+#          filters:
+#            branches:
+#              only: master
