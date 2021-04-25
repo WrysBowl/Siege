@@ -1,0 +1,62 @@
+package net.siegerpg.siege.core.items.implemented.weapons.melee
+
+import net.siegerpg.siege.core.items.CustomItemUtils
+import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*
+import net.siegerpg.siege.core.items.recipes.recipes
+import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
+import net.siegerpg.siege.core.utils.Utils
+import org.bukkit.Material
+import org.bukkit.inventory.ItemStack
+
+class FemurBone() : CustomMeleeWeapon(
+    name = "Femur Bone",
+    customModelData = 130003,
+    description = listOf("A large animal's femur"),
+    levelRequirement = 11,
+    material = Material.WOODEN_AXE,
+    baseStats = CustomItemUtils.statMap(strength = 25.0),
+    recipeList = recipes {
+        recipe {
+            shaped = true
+            s1(Bone(0)) //tier 3
+            s4(Bone(0)) //tier 3
+            s7(Bone(0)) //tier 3
+            item { player, b ->
+                Shovel(Utils.randRarity())
+            }
+        }
+        recipe {
+            shaped = true
+            s2(Bone(0)) //tier 3
+            s5(Bone(0)) //tier 3
+            s8(Bone(0)) //tier 3
+            item { player, b ->
+                Shovel(Utils.randRarity())
+            }
+        }
+        recipe {
+            shaped = true
+            s3(Bone(0)) //tier 3
+            s6(Bone(0)) //tier 3
+            s9(Bone(0)) //tier 3
+            item { player, b ->
+                Shovel(Utils.randRarity())
+            }
+        }
+    },
+    attackSpeed = 0.9
+) {
+
+    constructor(quality: Int): this() {
+        this.quality = quality
+        this.rarity = Rarity.getFromInt(quality)
+    }
+
+    constructor(item: ItemStack): this() {
+        this.item = item
+        deserialize()
+    }
+
+}
