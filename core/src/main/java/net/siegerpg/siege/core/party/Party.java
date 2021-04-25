@@ -35,7 +35,7 @@ public class Party {
      * @param partyID The uuid of the party, used to retrieve the party from the config.
      */
     public Party(UUID partyID) {
-        FileConfiguration config = PartyConfig.getConfiguration();
+        FileConfiguration config = Core.plugin().partyConfig.getConfiguration();
         String leader = config.getString("party." + partyID.toString() + ".leader");
         List<String> members = config.getStringList("party." + partyID.toString() + ".members");
         if (leader == null) {
@@ -180,7 +180,7 @@ public class Party {
         Core.partyManager.getParties().remove(leader);
         this.members.clear();
         this.invited.clear();
-        PartyConfig.getConfiguration().set("party." + partyID.toString(), null);
+        Core.plugin().partyConfig.getConfiguration().set("party." + partyID.toString(), null);
     }
 
     /**
@@ -214,12 +214,13 @@ public class Party {
      */
     public void save(boolean save) {
         List<String> membersString = new ArrayList<>();
-        FileConfiguration config = PartyConfig.getConfiguration();
+        FileConfiguration config = Core.plugin().partyConfig.getConfiguration();
         members.forEach((UUID u) -> membersString.add(u.toString()));
         config.set("party." + partyID.toString() + ".id", getPartyID().toString());
         config.set("party." + partyID.toString() + ".leader", leader.toString());
         config.set("party." + partyID.toString() + ".members", membersString);
-        if (save) PartyConfig.save();
+        if (save)
+            try {Core.plugin().partyConfig.save(); } catch(Exception ignored){}
     }
 
     /**

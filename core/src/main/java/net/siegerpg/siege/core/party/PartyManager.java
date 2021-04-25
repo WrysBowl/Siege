@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.party;
 
 import lombok.Getter;
+import net.siegerpg.siege.core.Core;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public class PartyManager {
     }
 
     public PartyManager() {
-        ConfigurationSection parties = PartyConfig.getConfiguration().getConfigurationSection("party");
+        ConfigurationSection parties = Core.plugin().partyConfig.getConfiguration().getConfigurationSection("party");
         if (parties != null) for (String party : parties.getKeys(false)) {
             Party newParty = new Party(UUID.fromString(party));
             getParties().put(newParty.getLeader().getUniqueId(), newParty);
