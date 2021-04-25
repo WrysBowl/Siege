@@ -3,7 +3,7 @@
 
 # Builds and Gradle
 /build/
-/core/build/
+/**/build/
 /.gradle/
 
 *.iml

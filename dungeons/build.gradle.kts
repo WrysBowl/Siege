@@ -31,7 +31,7 @@ repositories {
 dependencies {
     compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
     compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
-    TODO("Add FAWE as a dependency")
+    // TODO Add FAWE as a dependency
 }
 
 
