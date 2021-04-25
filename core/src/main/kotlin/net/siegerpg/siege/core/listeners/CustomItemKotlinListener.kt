@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import org.bukkit.Color
 import org.bukkit.Location
 import org.bukkit.Particle
+import org.bukkit.attribute.Attribute
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
@@ -55,8 +56,15 @@ class CustomItemKotlinListener : Listener {
         }
     }
 
-    fun getCustomDamage(attacker: Entity, victim: Entity, damage: Double): Double {
-        val victim = victim as LivingEntity
+    fun getCustomDamage(e: EntityDamageByEntityEvent): Double {
+        val victim = e.entity as LivingEntity
+        val attacker =
+            if (e.damager is Player) e.damager as Player
+            else e.damager
+        val damage = e.damage
+        val maxDamage =
+            if (attacker is Player) attacker.inventory.itemInMainHand.itemMeta.attributeModifiers.get(Attribute.GENERIC_ATTACK_DAMAGE) as Double
+            else damage
         val vicHealthStat =
             if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH)
             else victim.health
@@ -64,7 +72,7 @@ class CustomItemKotlinListener : Listener {
             if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
             else 0.0
         val attStrengthStat =
-            if (attacker is Player && damage == 0.0) CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
+            if (attacker is Player) (damage/maxDamage) * CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) //if player spam clicks it won't deal max damage
             else damage
         val reducedDamage = attStrengthStat * (1 - (vicToughness/1000)) //custom attack damage with toughness considered
         return reducedDamage/(vicHealthStat/victim.health) //scaled down to damage player by vanilla damage

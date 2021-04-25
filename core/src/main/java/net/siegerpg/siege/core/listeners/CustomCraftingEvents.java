@@ -118,8 +118,8 @@ public class CustomCraftingEvents implements Listener {
                     result = recipe.getResult();
                 }
             }
-
              */
+
             //Need further information on how to get the result of a recipe, and what getRecipe does
             if (CustomRecipe.Companion.getRecipe(matrix) != null) {
                 result = (CustomItem) CustomRecipe.Companion.getRecipe(matrix);
