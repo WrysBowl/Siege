@@ -22,7 +22,7 @@ public final class Core extends JavaPlugin {
 
     public static Core INSTANCE;
 
-    public static PartyManager partyManager = new PartyManager();
+    public static PartyManager partyManager;
 
     public BukkitAudiences audiences;
 
@@ -31,7 +31,7 @@ public final class Core extends JavaPlugin {
         // Plugin startup logic
         INSTANCE = this;
         audiences = BukkitAudiences.create(this);
-
+        partyManager = new PartyManager();
 
         PaperCommandManager manager = new PaperCommandManager(this);
         manager.registerCommand(new PartyCommand());
