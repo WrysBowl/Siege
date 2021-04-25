@@ -25,7 +25,7 @@ public final class Core extends JavaPlugin {
 
     public static PartyManager partyManager;
 
-    public PartyConfig partyConfig = new PartyConfig(this);
+    public PartyConfig partyConfig = new PartyConfig();
 
     public BukkitAudiences audiences;
 

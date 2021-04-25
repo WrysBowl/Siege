@@ -33,7 +33,7 @@ public class Scoreboard {
                 + r.getHealth(p)
                 + "/&2"
                 + r.getPlayerStat(p, StatTypes.HEALTH)
-                + "❤")).setScore(9); //display current health over max health
+                + "\u2764")).setScore(9); //display current health over max health
 
         o.getScore(Utils.tacc("&7╠ &cStrength" + r.getPlayerStat(p, StatTypes.STRENGTH))).setScore(8);
         o.getScore(Utils.tacc("&7╠ &3Toughness" + r.getPlayerStat(p, StatTypes.TOUGHNESS))).setScore(7);
