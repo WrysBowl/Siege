@@ -83,9 +83,9 @@ public class Utils {
     @SuppressWarnings("unused")
     public static int randRarity() {
         //((random number between 1 and 100)*(1/random number between 1 and 5))
-        double rand1 = ((Math.random() * 10) + 1);
-        double rand2 = (((Math.random() * 10) + 1));
-        return (int) (rand1*rand2);
+        double rand1 = ((Math.random() * 100) + 1);
+        double rand2 = (((Math.random() * 100) + 1));
+        return (int) ((-1 * Math.sqrt(rand1*rand2)) + 100);
     }
 
     //prevent players from removing all slots in the gui
