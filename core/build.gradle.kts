@@ -22,11 +22,9 @@ java {
 
 
 repositories {
-//    maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
+    maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
     mavenCentral()
-    flatDir {
-        dirs = setOf(file("lib"))
-    }
+
 
     maven { url = uri("https://nexus.mcdevs.us/repository/mcdevs/") }
     maven { url = uri("https://repo.aikar.co/content/groups/aikar/") }
@@ -40,10 +38,9 @@ repositories {
 
 dependencies {
     compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
-    compileOnly(fileTree("libs"))
     testImplementation("junit:junit:4.12")
     compileOnly("org.projectlombok:lombok:1.18.16")
-    implementation("net.kyori:adventure-platform-bukkit:4.0.0-SNAPSHOT")
+    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.5.0")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
     compileOnly("com.vexsoftware:nuvotifier-universal:2.6.0"){
@@ -51,7 +48,6 @@ dependencies {
         exclude("org.checkerframework")
     } // NuVotifier API
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") // Vault API
-    compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.2.1-SNAPSHOT")
     implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
     implementation("com.github.stefvanschie.inventoryframework:IF:0.9.0")
     implementation("de.tr7zw:item-nbt-api-plugin:2.7.1")
