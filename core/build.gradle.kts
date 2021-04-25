@@ -39,14 +39,17 @@ repositories {
 }
 
 dependencies {
-    implementation("us.mcdevs.library.kotlin:Kotlin:1.4.0")
+    compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
     compileOnly(fileTree("libs"))
     testImplementation("junit:junit:4.12")
     compileOnly("org.projectlombok:lombok:1.18.16")
     implementation("net.kyori:adventure-platform-bukkit:4.0.0-SNAPSHOT")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.5.0")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
-    compileOnly("com.vexsoftware:nuvotifier-universal:2.6.0") // NuVotifier API
+    compileOnly("com.vexsoftware:nuvotifier-universal:2.6.0"){
+        exclude("com.google.code.gson")
+        exclude("org.checkerframework")
+    } // NuVotifier API
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") // Vault API
     compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.2.1-SNAPSHOT")
     implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
@@ -66,17 +69,12 @@ tasks {
         doFirst {
             exclude("fonts/*.csv")
         }
-        dependencies {
-            include(dependency("com.zaxxer:HikariCP:4.0.3"))
-            exclude(dependency("com.google.code.gson:.*"))
-            exclude(dependency("org.checkerframework:.*"))
-            include(dependency("org.jetbrains.kotlin:kotlin-stdlib:1.4.0"))
-            include(dependency("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT"))
-
-        }
         archiveFileName.set("SiegeCore.jar")
     }
     build {
+        dependsOn(shadowJar)
+    }
+    jar {
         dependsOn(shadowJar)
     }
     withType<KotlinCompile> {
