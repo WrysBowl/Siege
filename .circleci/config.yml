@@ -7,10 +7,8 @@ orbs:
 version: 2.1
 jobs:
   build:
-    filters:
-      branches:
-        only:
-          - master
+    branches:
+      only: master
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:11.0.3-jdk-stretch
