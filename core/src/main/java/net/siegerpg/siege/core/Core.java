@@ -12,13 +12,13 @@ public final class Core extends JavaPlugin {
 
     public static PartyManager partyManager;
 
-    public PartyConfig partyConfig = new PartyConfig();
+//    public PartyConfig partyConfig = new PartyConfig();
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         INSTANCE = this;
-        partyManager = new PartyManager();
+        //partyManager = new PartyManager();
 
 //        PaperCommandManager manager = new PaperCommandManager(this);
 //        manager.registerCommand(new PartyCommand());

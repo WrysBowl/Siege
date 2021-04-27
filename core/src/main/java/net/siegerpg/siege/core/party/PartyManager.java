@@ -17,11 +17,11 @@ public class PartyManager {
     }
 
     public PartyManager() {
-        ConfigurationSection parties = Core.plugin().partyConfig.getConfiguration().getConfigurationSection("party");
-        if (parties != null) for (String party : parties.getKeys(false)) {
-            Party newParty = new Party(UUID.fromString(party));
-            getParties().put(newParty.getLeader().getUniqueId(), newParty);
-        }
+//        ConfigurationSection parties = Core.plugin().partyConfig.getConfiguration().getConfigurationSection("party");
+//        if (parties != null) for (String party : parties.getKeys(false)) {
+//            Party newParty = new Party(UUID.fromString(party));
+//            getParties().put(newParty.getLeader().getUniqueId(), newParty);
+//        } TODO: Uncomment when parties
     }
 
     public void saveAll() {
