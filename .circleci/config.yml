@@ -7,8 +7,6 @@ orbs:
 version: 2.1
 jobs:
   build:
-    branches:
-      only: master
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:11.0.3-jdk-stretch
@@ -52,6 +50,8 @@ jobs:
           webhook: ${DISCORD_WEBHOOK}
       - store_artifacts:
           path: ~/repo/core/build/libs/SiegeCore.jar
+      - store_artifacts:
+          path: ~/repo/dungeons/build/libs/SiegeDungeons.jar
       - when:
           condition:
               equal: [ master, << pipeline.git.branch >> ]
