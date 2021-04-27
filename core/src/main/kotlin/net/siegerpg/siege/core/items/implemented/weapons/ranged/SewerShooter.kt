@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.items.implemented.weapons.melee
 
-import com.sk89q.worldedit.world.item.ItemTypes.CROSSBOW
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.*

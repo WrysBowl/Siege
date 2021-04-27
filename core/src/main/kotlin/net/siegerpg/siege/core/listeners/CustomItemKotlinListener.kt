@@ -1,30 +1,22 @@
 package net.siegerpg.siege.core.listeners
 
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
-
 import net.siegerpg.siege.core.items.types.misc.CustomFood
-import net.siegerpg.siege.core.items.types.misc.CustomWand
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import org.bukkit.Color
 import org.bukkit.Location
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
-import org.bukkit.entity.ArmorStand
-import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityRegainHealthEvent
-import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
-import org.bukkit.scheduler.BukkitRunnable
 
 class CustomItemKotlinListener : Listener {
 
@@ -63,7 +55,7 @@ class CustomItemKotlinListener : Listener {
             else e.damager
         val damage = e.damage
         val maxDamage =
-            if (attacker is Player) attacker.inventory.itemInMainHand.itemMeta.attributeModifiers.get(Attribute.GENERIC_ATTACK_DAMAGE) as Double
+            if (attacker is Player) attacker.inventory.itemInMainHand.itemMeta.attributeModifiers?.get(Attribute.GENERIC_ATTACK_DAMAGE) as Double
             else damage
         val vicHealthStat =
             if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH)

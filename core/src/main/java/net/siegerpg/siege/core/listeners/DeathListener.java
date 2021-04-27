@@ -19,8 +19,8 @@ public class DeathListener implements Listener {
     @EventHandler
     public void mobDeath(EntityDeathEvent e) {
 
-        MythicMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType();
-        mobDrops mobDrop = mobDrops.matchCaseMobDrops(mm.toString());
+        String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
+        mobDrops mobDrop = mobDrops.matchCaseMobDrops(mm);
 
         e.setDroppedExp(0);
         e.getDrops().clear();
@@ -28,18 +28,17 @@ public class DeathListener implements Listener {
             return;
         }
 
-        Entity mob = e.getEntity();
-        Location loc = mob.getLocation();
         Player player = e.getEntity().getKiller();
-
-        if (mobDrop.getExp() > 0) { Levels.addExp(player, mobDrop.getExp()); } //Give exp reward
+        Double luck = null;
+        if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK);}
+        if (mobDrop.getExp() > 0 && player != null) { Levels.addExp(player, mobDrop.getExp()); } //Give exp reward
 
         ItemStack goldCoins = Utils.getGoldCoin();
-        goldCoins.setAmount(mobDrop.getGold());
-        e.getEntity().getWorld().dropItemNaturally(loc, goldCoins); //Give gold reward
+        goldCoins.setAmount(mobDrop.getGold(true));
+        e.getDrops().add(goldCoins); //Give gold reward
 
-        for (ItemStack drop : mobDrop.getRewards(CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK))) { //Loop through all drops
-            e.getEntity().getWorld().dropItemNaturally(loc, drop);
+        for (ItemStack drop : mobDrop.getRewards(luck)) { //Loop through all drops
+            e.getDrops().add(drop);
         }
     }
 }
