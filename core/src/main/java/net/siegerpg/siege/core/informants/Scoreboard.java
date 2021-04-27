@@ -1,12 +1,11 @@
 package net.siegerpg.siege.core.informants;
 
+import net.siegemc.core.utils.VaultHook;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.*;
-import net.siegemc.core.utils.VaultHook;
+import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;

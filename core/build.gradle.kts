@@ -1,26 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath("com.github.jengelman.gradle.plugins:shadow:5.2.0")
-    }
-}
-
-plugins {
-    java
-    kotlin("jvm") version "1.4.21"
-    id("com.github.johnrengelman.shadow") version "5.2.0"
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
-
-
 repositories {
     maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
     mavenCentral()
@@ -37,10 +16,10 @@ repositories {
 }
 
 dependencies {
-    compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
+//    compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
     testImplementation("junit:junit:4.12")
     compileOnly("org.projectlombok:lombok:1.18.16")
-    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+//    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.5.0")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
     compileOnly("com.vexsoftware:nuvotifier-universal:2.6.0"){
@@ -50,7 +29,7 @@ dependencies {
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") // Vault API
     implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
     implementation("com.github.stefvanschie.inventoryframework:IF:0.9.0")
-    implementation("de.tr7zw:item-nbt-api-plugin:2.7.1")
+    compileOnly("de.tr7zw:item-nbt-api-plugin:2.7.1")
     implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
     implementation("com.zaxxer:HikariCP:4.0.3")
     annotationProcessor("org.projectlombok:lombok:1.18.16")
@@ -65,6 +44,7 @@ tasks {
         doFirst {
             exclude("fonts/*.csv")
         }
+        exclude("kotlin/*")
         archiveFileName.set("SiegeCore.jar")
     }
     build {

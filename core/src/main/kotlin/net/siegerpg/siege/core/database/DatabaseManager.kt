@@ -5,22 +5,22 @@ import com.zaxxer.hikari.HikariDataSource
 import net.siegerpg.siege.core.Core
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
-import java.sql.SQLException
 import java.sql.Connection
+import java.sql.SQLException
 
 object DatabaseManager {
 
-    var url: String = ""
-    var user: String = ""
-    var password: String = ""
+    private var url: String = ""
+    private var user: String = ""
+    private var password: String = ""
 
     private val config = HikariConfig()
     private val ds: HikariDataSource
 
     init {
-        val configFile = File(Core.INSTANCE.getDataFolder().getAbsolutePath(), "privKeys.yml")
+        val configFile = File(Core.INSTANCE.dataFolder.absolutePath, "privKeys.yml")
         if (!configFile.exists()) {
-            Core.INSTANCE.getLogger().severe("privKeys.yml not found")
+            Core.INSTANCE.logger.severe("privKeys.yml not found")
         }
         val configuration: YamlConfiguration = YamlConfiguration.loadConfiguration(configFile)
         url = String.format(
@@ -30,9 +30,9 @@ object DatabaseManager {
         )
         configuration.getString("db.username")?.let { user = it }
         configuration.getString("db.password")?.let { password = it }
-        config.setJdbcUrl(url)
-        config.setUsername(user)
-        config.setPassword(password)
+        config.jdbcUrl = url
+        config.username = user
+        config.password = password
         config.addDataSourceProperty("cachePrepStmts", "true")
         config.addDataSourceProperty("prepStmtCacheSize", "250")
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048")

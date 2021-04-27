@@ -1,17 +1,6 @@
 package net.siegerpg.siege.core.listeners;
 
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegemc.core.utils.VaultHook;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.persistence.PersistentDataHolder;
-
-import java.util.List;
 
 public class StatGemListener implements Listener {
 

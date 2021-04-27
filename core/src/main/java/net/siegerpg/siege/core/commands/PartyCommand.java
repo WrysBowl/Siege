@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.commands;
+/*package net.siegerpg.siege.core.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
@@ -50,3 +50,6 @@ public class PartyCommand extends BaseCommand {
     }
 
 }
+
+TODO: actually do this crap later
+*/

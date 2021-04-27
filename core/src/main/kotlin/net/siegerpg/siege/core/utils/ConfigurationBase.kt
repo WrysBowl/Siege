@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.utils
 
-import lombok.Getter
 import org.bukkit.configuration.InvalidConfigurationException
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration

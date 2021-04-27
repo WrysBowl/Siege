@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.informants.Scoreboard;
-import net.siegerpg.siege.core.utils.*;
+import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;

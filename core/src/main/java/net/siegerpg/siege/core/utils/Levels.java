@@ -1,12 +1,8 @@
 package net.siegerpg.siege.core.utils;
 
-import net.siegerpg.siege.core.database.DatabaseManager;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Levels {

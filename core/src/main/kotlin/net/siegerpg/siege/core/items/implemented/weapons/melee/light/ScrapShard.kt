@@ -3,7 +3,6 @@ package net.siegerpg.siege.core.items.implemented.weapons.melee
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.MetalScrap
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Stick
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Utils

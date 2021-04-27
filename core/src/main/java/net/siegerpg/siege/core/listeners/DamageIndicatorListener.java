@@ -1,22 +1,10 @@
 package net.siegerpg.siege.core.listeners;
 
-import net.siegerpg.siege.core.Core;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class DamageIndicatorListener implements Listener {
     private static final HashMap<Entity, ArmorStand> indicators = new HashMap<>();
