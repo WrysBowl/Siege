@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.informants;
 
+import net.kyori.adventure.text.Component;
 import net.siegemc.core.utils.VaultHook;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
@@ -9,21 +10,21 @@ public class Tablist {
     public void tablistUpdate() {
         for (Player p : Bukkit.getOnlinePlayers()) {
 
-            String header = Utils.tacc("\n" +
-                    "&6&lSiegeRPG\n" +
-                    "&6&oplay.SiegeRPG.net" +
-                    "&f\n" +
+            Component header = Utils.parse("\n" +
+                    "<gold><b>SiegeRPG\n" +
+                    "<gold><b>play.SiegeRPG.net" +
+                    "<white>\n" +
                     "");
 
-            String footer = Utils.tacc("\n" +
-                    "&6Discord: &7/discord\n" +
-                    "&6Website: &7/website\n" +
-                    "&7There are &6&o"+Bukkit.getOnlinePlayers().size()+"&7 players online!\n" +
+            Component footer = Utils.parse("\n" +
+                    "<gold>Discord: <gray>/discord\n" +
+                    "<gold>Website: <gray>/website\n" +
+                    "<gray>There are <gold><i>"+Bukkit.getOnlinePlayers().size()+"<gray> players online!\n" +
                     "");
-            String tabName = Utils.tacc(VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName());
-            p.setPlayerListName(tabName);
-            p.setPlayerListHeader(header);
-            p.setPlayerListFooter(footer);
+            Component tabName = Utils.parse(VaultHook.perms.getPrimaryGroup(p) + " <gray>" + p.getName());
+            p.playerListName(tabName);
+            p.sendPlayerListHeader(header);
+            p.sendPlayerListFooter(footer);
         }
     }
 }
