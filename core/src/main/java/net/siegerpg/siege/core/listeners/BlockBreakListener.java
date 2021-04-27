@@ -20,9 +20,9 @@ import org.bukkit.inventory.ItemStack;
 public class BlockBreakListener implements Listener {
 
     @EventHandler
-    public void breakEvent(BlockBreakEvent e) {Player player = e.getPlayer();
-
-        if (player.getGameMode() == GameMode.CREATIVE) { return; }
+    public void breakEvent(BlockBreakEvent e) {
+        Player player = e.getPlayer();
+        if (player.getGameMode() != GameMode.SURVIVAL) { return; }
 
         Material block = e.getBlock().getType();
         blockDrops blockDrop = blockDrops.matchCaseBlockDrops(block.toString());
