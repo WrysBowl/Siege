@@ -33,6 +33,7 @@ abstract class CustomMeleeWeapon(
     }
 
     override fun updateMeta(hideRarity: Boolean) {
+        super.updateMeta(hideRarity)
         val meta = item.itemMeta
         meta.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED)
         meta.addAttributeModifier(

@@ -19,10 +19,6 @@ interface CustomEquipment : CustomItem {
     override fun updateMeta(hideRarity: Boolean) {
         val meta = item.itemMeta
 
-        /*
-        DisplayName and Lore has been changed to use strings instead of components. Will be fixed in the future
-         */
-
         meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name"))
 
         val newLore =

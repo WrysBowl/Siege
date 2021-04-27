@@ -3,6 +3,7 @@ package net.siegerpg.siege.core;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
+import org.bukkit.Color;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
@@ -12,12 +13,15 @@ public final class Core extends JavaPlugin {
 
     public static PartyManager partyManager;
 
+    public static Color defaultLeatherColor;
+
 //    public PartyConfig partyConfig = new PartyConfig();
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         INSTANCE = this;
+        defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
         //partyManager = new PartyManager();
 
 //        PaperCommandManager manager = new PaperCommandManager(this);
