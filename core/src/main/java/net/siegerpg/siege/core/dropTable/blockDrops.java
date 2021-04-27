@@ -12,18 +12,18 @@ import java.util.ArrayList;
 public enum blockDrops {
     spruce_log(Material.SPRUCE_LOG, new Object[][]{
             {new Stick(0).getItem(), 10}
-    }, 0, 0, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     grass_block(Material.GRASS_BLOCK, new Object[][]{
             {new Seed(0).getItem(), 10},
             {new PlantMatter(0).getItem(), 10}
-    }, 0, 0, 20);
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20);
     private final Material block;
     private final Object[][] rewards;
-    private final Integer numGold;
-    private final Integer numExp;
+    private final Integer[] numGold;
+    private final Integer[] numExp;
     private final Integer regenTime;
 
-    blockDrops(Material block, Object[][] rewards, Integer numGold, Integer numExp, Integer regenTime) {
+    blockDrops(Material block, Object[][] rewards, Integer[] numGold, Integer[] numExp, Integer regenTime) {
         this.block = block;
         this.rewards = rewards;
         this.numGold = numGold;
@@ -63,7 +63,19 @@ public enum blockDrops {
     }
 
     public Material getBlock() { return block; }
-    public Integer getGold() { return numGold; }
-    public Integer getExp() { return numExp; }
+    public Integer getGold(boolean rand) {
+        if (rand) {
+            Double randomGold = (Math.random() * numGold[1]) + numGold[0];
+            return (int) Math.round(randomGold);
+        }
+        return numGold[1];
+    }
+    public Integer getExp(boolean rand) {
+        if (rand) {
+            Double randomExp = (Math.random() * numExp[1]) + numExp[0];
+            return (int) Math.round(randomExp);
+        }
+        return numExp[1];
+    }
     public Integer getRegenTime() { return regenTime; }
 }

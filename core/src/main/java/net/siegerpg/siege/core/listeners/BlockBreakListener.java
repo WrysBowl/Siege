@@ -36,9 +36,9 @@ public class BlockBreakListener implements Listener {
         BlockData blockData = e.getBlock().getBlockData();
         Location loc = e.getBlock().getLocation();
         ItemStack goldCoins = Utils.getGoldCoin();
-        goldCoins.setAmount(blockDrop.getGold());
+        goldCoins.setAmount(blockDrop.getGold(true));
 
-        if (blockDrop.getExp() > 0) { Levels.addExp(player, blockDrop.getExp()); } //Give exp reward
+        if (blockDrop.getExp(true) > 0) { Levels.addExp(player, blockDrop.getExp(true)); } //Give exp reward
 
         e.getBlock().getWorld().dropItemNaturally(loc, goldCoins); //Give gold reward
 
