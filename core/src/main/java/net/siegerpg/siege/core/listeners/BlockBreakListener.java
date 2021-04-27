@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.dropTable.blockDrops;
+import net.siegerpg.siege.core.drops.BlockDrops;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
@@ -25,7 +25,7 @@ public class BlockBreakListener implements Listener {
         if (player.getGameMode() != GameMode.SURVIVAL) { return; }
 
         Material block = e.getBlock().getType();
-        blockDrops blockDrop = blockDrops.matchCaseBlockDrops(block.toString());
+        BlockDrops blockDrop = BlockDrops.matchCaseBlockDrops(block.toString());
 
         e.setDropItems(false);
         if (blockDrop == null) {

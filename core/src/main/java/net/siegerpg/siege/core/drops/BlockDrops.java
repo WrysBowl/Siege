@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.dropTable;
+package net.siegerpg.siege.core.drops;
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*;
 import net.siegerpg.siege.core.utils.Utils;
@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public enum blockDrops {
+public enum BlockDrops {
     //WOOD
     SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
             {new Stick(0).getItem(), 100}
@@ -73,7 +73,7 @@ public enum blockDrops {
     private final Integer[] numExp;
     private final Integer regenTime;
 
-    blockDrops(Material block, Object[][] rewards, Integer[] numGold, Integer[] numExp, Integer regenTime) {
+    BlockDrops(Material block, Object[][] rewards, Integer[] numGold, Integer[] numExp, Integer regenTime) {
         this.block = block;
         this.rewards = rewards;
         this.numGold = numGold;
@@ -82,7 +82,7 @@ public enum blockDrops {
     }
 
     public static boolean containsBlockDrops(String str) {
-        for (blockDrops blocks : blockDrops.values()) {
+        for (BlockDrops blocks : BlockDrops.values()) {
             if (blocks.name().equals(str)) {
                 return true;
             }
@@ -90,8 +90,8 @@ public enum blockDrops {
         return false;
     }
 
-    public static blockDrops matchCaseBlockDrops(String str) {
-        for (blockDrops blocks : blockDrops.values()) {
+    public static BlockDrops matchCaseBlockDrops(String str) {
+        for (BlockDrops blocks : BlockDrops.values()) {
             if (blocks.name().equalsIgnoreCase(str)) {
                 return blocks;
             }
@@ -101,12 +101,12 @@ public enum blockDrops {
 
     public ArrayList<ItemStack> getRewards(Double luckChance) {
         ArrayList<ItemStack> itemList = new ArrayList<>();
-        for(int i = 0;i<rewards.length;i++) {
-            if (Utils.randTest((Number) rewards[i][1])) {
-                if ((Math.random()*100) <= luckChance) {
-                    itemList.add((ItemStack) rewards[i][0]);
+        for (Object[] reward : rewards) {
+            if (Utils.randTest((Number) reward[1])) {
+                if ((Math.random() * 100) <= luckChance) {
+                    itemList.add((ItemStack) reward[0]);
                 }
-                itemList.add((ItemStack) rewards[i][0]);
+                itemList.add((ItemStack) reward[0]);
             }
         }
         return itemList;
@@ -115,14 +115,14 @@ public enum blockDrops {
     public Material getBlock() { return block; }
     public Integer getGold(boolean rand) {
         if (rand) {
-            Double randomGold = (Math.random() * numGold[1]) + numGold[0];
+            double randomGold = (Math.random() * numGold[1]) + numGold[0];
             return (int) Math.round(randomGold);
         }
         return numGold[1];
     }
     public Integer getExp(boolean rand) {
         if (rand) {
-            Double randomExp = (Math.random() * numExp[1]) + numExp[0];
+            double randomExp = (Math.random() * numExp[1]) + numExp[0];
             return (int) Math.round(randomExp);
         }
         return numExp[1];

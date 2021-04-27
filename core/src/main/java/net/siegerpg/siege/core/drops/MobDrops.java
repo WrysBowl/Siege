@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.dropTable;
+package net.siegerpg.siege.core.drops;
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.*;
@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public enum mobDrops {
+public enum MobDrops {
 
     /**
     ExampleMob(new Object[][]{
@@ -67,14 +67,14 @@ public enum mobDrops {
     private final Integer[] numGold;
     private final Integer[] numExp;
 
-    mobDrops(Object[][] rewards, Integer[] numGold, Integer[] numExp) {
+    MobDrops(Object[][] rewards, Integer[] numGold, Integer[] numExp) {
         this.rewards = rewards;
         this.numGold = numGold;
         this.numExp = numExp;
     }
 
-    public static mobDrops matchCaseMobDrops(String str) {
-        for (mobDrops mobs : mobDrops.values()) {
+    public static MobDrops matchCaseMobDrops(String str) {
+        for (MobDrops mobs : MobDrops.values()) {
             if (mobs.name().equalsIgnoreCase(str)) {
                 return mobs;
             }
@@ -84,12 +84,12 @@ public enum mobDrops {
 
     public ArrayList<ItemStack> getRewards(Double luckChance) {
         ArrayList<ItemStack> itemList = new ArrayList<>();
-        for(int i = 0;i<rewards.length;i++) {
-            if (Utils.randTest((Number) rewards[i][1])) {
-                if ((Math.random()*100) <= luckChance) {
-                    itemList.add((ItemStack) rewards[i][0]);
+        for (Object[] reward : rewards) {
+            if (Utils.randTest((Number) reward[1])) {
+                if ((Math.random() * 100) <= luckChance) {
+                    itemList.add((ItemStack) reward[0]);
                 }
-                itemList.add((ItemStack) rewards[i][0]);
+                itemList.add((ItemStack) reward[0]);
             }
         }
         return itemList;
@@ -97,14 +97,14 @@ public enum mobDrops {
 
     public Integer getGold(boolean rand) {
         if (rand) {
-            Double randomGold = (Math.random() * numGold[1]) + numGold[0];
+            double randomGold = (Math.random() * numGold[1]) + numGold[0];
             return (int) Math.round(randomGold);
         }
         return numGold[1];
     }
     public Integer getExp(boolean rand) {
         if (rand) {
-            Double randomExp = (Math.random() * numExp[1]) + numExp[0];
+            double randomExp = (Math.random() * numExp[1]) + numExp[0];
             return (int) Math.round(randomExp);
         }
         return numExp[1];
