@@ -22,6 +22,7 @@ public final class Core extends JavaPlugin {
         // Plugin startup logic
         INSTANCE = this;
         defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
+        (new net.siegemc.core.utils.VaultHook()).createHooks();
         //partyManager = new PartyManager();
 
 //        PaperCommandManager manager = new PaperCommandManager(this);
