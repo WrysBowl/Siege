@@ -22,46 +22,46 @@ public enum mobDrops {
             {new Pebble(0).getItem(), 10},
     }, new Integer[]{0, 2}, new Integer[]{1, 3}),
     Blob(new Object[][]{
-            {new Slime(0).getItem(), 10},
+            {new Slime(0).getItem(), 50},
     }, new Integer[]{3, 6}, new Integer[]{4, 6}),
     ScorchingBlob(new Object[][]{
-            {new Magma(0).getItem(), 10},
+            {new Magma(0).getItem(), 50},
     }, new Integer[]{2, 5}, new Integer[]{5, 8}),
     ForestSpider(new Object[][]{
-            {new Vine(0).getItem(), 10},
-            {new Stick(0).getItem(), 10}
+            {new Vine(0).getItem(), 50},
+            {new Stick(0).getItem(), 30}
     }, new Integer[]{4, 7}, new Integer[]{7, 10}),
     BloodSucker(new Object[][]{
-            {new Vine(0).getItem(), 10},
-            {new Stick(0).getItem(), 10}
+            {new Vine(0).getItem(), 60},
+            {new Stick(0).getItem(), 20}
     }, new Integer[]{4, 7}, new Integer[]{6, 9}),
     AngryBull(new Object[][]{
-            {new Leather(0).getItem(), 10},
-            {new Drumstick(0).getItem(), 10}
+            {new Leather(0).getItem(), 100},
+            {new Drumstick(0).getItem(), 100}
     }, new Integer[]{8, 12}, new Integer[]{11, 15}),
     Bandit(new Object[][]{
-            {new Shank(0).getItem(), 10},
-            {new Dagger(0).getItem(), 10},
-            {new MetalScrap(0).getItem(), 10},
-            {new Leather(0).getItem(), 10},
-            {new SplinteredBone(Utils.randRarity()).getItem(), 10}
+            {new Shank(Utils.randRarity()).getItem(), 5},
+            {new Dagger(Utils.randRarity()).getItem(), 2},
+            {new MetalScrap(0).getItem(), 1},
+            {new Leather(0).getItem(), 8},
+            {new SplinteredBone(Utils.randRarity()).getItem(), 0.5}
     }, new Integer[]{21, 25}, new Integer[]{19, 24}),
     BanditArcher(new Object[][]{
-            {new Crossbow(Utils.randRarity()).getItem(), 10},
-            {new RecurveBow(Utils.randRarity()).getItem(), 10},
-            {new Bone(0).getItem(), 10},
-            {new Leather(0).getItem(), 10}
+            {new Crossbow(Utils.randRarity()).getItem(), 0.5},
+            {new RecurveBow(Utils.randRarity()).getItem(), 0.25},
+            {new Bone(0).getItem(), 3},
+            {new Leather(0).getItem(), 8}
     }, new Integer[]{15, 19}, new Integer[]{27, 32}),
     //NEUTRAL AREA 1
     GiantHornet(new Object[][]{
-            {new Magma(0).getItem(), 10},
-            {new Seed(0).getItem(), 10},
+            {new Magma(0).getItem(), 30},
+            {new Seed(0).getItem(), 100},
     }, new Integer[]{1, 4}, new Integer[]{3, 5}),
     WildFox(new Object[][]{
-            {new Dagger(Utils.randRarity()).getItem(), 10},
-            {new Bone(0).getItem(), 10},
-            {new WoodenSword(Utils.randRarity()).getItem(), 10},
-            {new Drumstick(0).getItem(), 10}
+            {new Dagger(Utils.randRarity()).getItem(), 1},
+            {new Bone(0).getItem(), 2},
+            {new WoodenSword(Utils.randRarity()).getItem(), 5},
+            {new Drumstick(0).getItem(), 15}
     }, new Integer[]{2, 5}, new Integer[]{3, 6});
     private final Object[][] rewards;
     private final Integer[] numGold;

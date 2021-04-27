@@ -1,8 +1,6 @@
 package net.siegerpg.siege.core.dropTable;
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.PlantMatter;
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Seed;
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Stick;
+import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -10,13 +8,65 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 
 public enum blockDrops {
-    spruce_log(Material.SPRUCE_LOG, new Object[][]{
+    //WOOD
+    SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
             {new Stick(0).getItem(), 10}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
-    grass_block(Material.GRASS_BLOCK, new Object[][]{
-            {new Seed(0).getItem(), 10},
-            {new PlantMatter(0).getItem(), 10}
+    SPRUCE_WOOD(Material.SPRUCE_WOOD, new Object[][]{
+            {new Stick(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+
+    //DIRT TERRAIN
+    GRASS_BLOCK(Material.GRASS_BLOCK, new Object[][]{
+            {new PlantMatter(0).getItem(), 10},
+            {new Seed(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    GREEN_TERRACOTTA(Material.GREEN_TERRACOTTA, new Object[][]{
+            {new PlantMatter(0).getItem(), 10},
+            {new Seed(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    GREEN_CONCRETE(Material.GREEN_CONCRETE, new Object[][]{
+            {new PlantMatter(0).getItem(), 10},
+            {new Seed(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    LIME_TERRACOTTA(Material.LIME_TERRACOTTA, new Object[][]{
+            {new PlantMatter(0).getItem(), 10},
+            {new Seed(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    DIRT(Material.DIRT, new Object[][]{
+            {new Pebble(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    COARSE_DIRT(Material.COARSE_DIRT, new Object[][]{
+            {new Pebble(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+
+    //STONE TERRAIN
+    STONE(Material.STONE, new Object[][]{
+            {new Pebble(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    LIGHT_GRAY_CONCRETE(Material.LIGHT_GRAY_CONCRETE, new Object[][]{
+            {new Pebble(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    ANDESITE(Material.ANDESITE, new Object[][]{
+            {new Pebble(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+
+    //ORES
+    COAL_ORE(Material.COAL_ORE, new Object[][]{
+            {new Coal(0).getItem(), 10}
+    }, new Integer[]{20, 30}, new Integer[]{30, 40}, 100),
+    IRON_ORE(Material.IRON_ORE, new Object[][]{
+            {new MetalScrap(0).getItem(), 10}
+    }, new Integer[]{30, 40}, new Integer[]{40, 50}, 200),
+
+    //DECOR TERRAIN
+    VINE(Material.VINE, new Object[][]{
+            {new Vine(0).getItem(), 10}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    CHAIN(Material.CHAIN, new Object[][]{
+            {new Chain(0).getItem(), 10}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20);
+
     private final Material block;
     private final Object[][] rewards;
     private final Integer[] numGold;
