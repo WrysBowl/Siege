@@ -5,6 +5,7 @@ import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.siegerpg.siege.core.commands.PartyCommand;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.party.Party;
+import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -22,7 +23,9 @@ public final class Core extends JavaPlugin {
 
     public static Core INSTANCE;
 
-    public static PartyManager partyManager = new PartyManager();
+    public static PartyManager partyManager;
+
+    public PartyConfig partyConfig = new PartyConfig();
 
     public BukkitAudiences audiences;
 
@@ -31,7 +34,7 @@ public final class Core extends JavaPlugin {
         // Plugin startup logic
         INSTANCE = this;
         audiences = BukkitAudiences.create(this);
-
+        partyManager = new PartyManager();
 
         PaperCommandManager manager = new PaperCommandManager(this);
         manager.registerCommand(new PartyCommand());
@@ -94,11 +97,12 @@ public final class Core extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        INSTANCE = null;
         partyManager.saveAll();
     }
 
     public static Core plugin() {
-        return Core.getPlugin(Core.class); // Method to get the plugin from other classes, so you can use Core.plugin() in other classes to get the plugin
+        return INSTANCE; // Method to get the plugin from other classes, so you can use Core.plugin() in other classes to get the plugin
     }
 
 }

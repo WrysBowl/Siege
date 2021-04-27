@@ -23,29 +23,29 @@ interface CustomEquipment : CustomItem {
         DisplayName and Lore has been changed to use strings instead of components. Will be fixed in the future
          */
 
-        meta.displayName = Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name").toString()
+        meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name"))
 
         val newLore =
-            mutableListOf(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$rarity</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "${rarity.color}$rarity <gray>$quality%").toString())
+            mutableListOf(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$rarity</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "${rarity.color}$rarity <gray>$quality%"))
         statGem?.let {
-            newLore.add(Utils.parse(" ").toString())
-            newLore.add(Utils.parse("<color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem").toString())
+            newLore.add(Utils.parse(" "))
+            newLore.add(Utils.parse("<color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem"))
         }
         if (baseStats.size != 0) {
-            newLore.add(Utils.parse(" ").toString())
+            newLore.add(Utils.parse(" "))
             val realStats = CustomItemUtils.getStats(this, addGem = false, addRarity = true)
             baseStats.keys.forEach {
-                newLore.add(Utils.parse("<green>+${realStats[it]} <gray>${it.stylizedName}").toString())
+                newLore.add(Utils.parse("<green>+${realStats[it]} <gray>${it.stylizedName}"))
             }
         }
-        newLore.add(Utils.parse(" ").toString())
+        newLore.add(Utils.parse(" "))
         description.forEach {
-            newLore.add(Utils.parse("<dark_gray>$it").toString())
+            newLore.add(Utils.parse("<dark_gray>$it"))
         }
-        newLore.add(Utils.parse(" ").toString())
-        newLore.add(Utils.parse("<gray>Level: $levelRequirement").toString())
-        if (hideRarity) newLore.add(Utils.parse("<red>This is not the real item").toString())
-        meta.lore = newLore
+        newLore.add(Utils.parse(" "))
+        newLore.add(Utils.parse("<gray>Level: $levelRequirement"))
+        if (hideRarity) newLore.add(Utils.parse("<red>This is not the real item"))
+        meta.lore(newLore)
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
