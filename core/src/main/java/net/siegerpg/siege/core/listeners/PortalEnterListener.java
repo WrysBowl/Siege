@@ -3,10 +3,8 @@ package net.siegerpg.siege.core.listeners;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.World;
+import org.bukkit.*;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,6 +13,7 @@ import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 
@@ -25,17 +24,29 @@ public class PortalEnterListener implements Listener {
         World world = e.getPlayer().getWorld();
         World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
         Player player = e.getPlayer();
-        
+
         if (world == siegeHub) {
-            player.openInventory(getGUIWorldTransit());
+            moveToward(player, siegeHub.getSpawnLocation(), 2.0);
+            Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+                player.openInventory(getGUIWorldTransit());
+            }, 10); //Need to recheck to make sure regen time is properly made as a delay
         }
+    }
+
+    public void moveToward(Entity entity, Location to, double speed){
+        Location loc = entity.getLocation();
+        double x = loc.getX() - to.getX();
+        double y = loc.getY() - to.getY();
+        double z = loc.getZ() - to.getZ();
+        Vector velocity = new Vector(x, y, z).normalize().multiply(-speed);
+        entity.setVelocity(velocity);
     }
 
     @EventHandler
     public void guiClick(InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player)) {return;}
         if (e.getInventory() == getGUIWorldTransit()) {
-            Short level = Levels.getLevel((OfflinePlayer) e.getWhoClicked());
+            short level = Levels.getLevel((OfflinePlayer) e.getWhoClicked());
             Player player = (Player) e.getWhoClicked();
             World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
 
@@ -43,11 +54,13 @@ public class PortalEnterListener implements Listener {
                 player.closeInventory();
                 player.sendTitle("Teleporting to", Utils.tacc("&2Hilly Woods"),10, 20, 10);
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                    player.teleport(hillyWoods.getSpawnLocation());
+                    if (hillyWoods != null) {
+                        player.teleport(hillyWoods.getSpawnLocation());
+                    }
                 }, 20L);
             } else if (e.getSlot() == 17 && level >= 25) {
                 player.sendMessage(Utils.tacc("&cThis isn't open to anyone yet!"));
-            }
+            } else { player.sendMessage(Utils.tacc("&cError loading your profile")); }
         }
     }
 
@@ -63,11 +76,11 @@ public class PortalEnterListener implements Listener {
         //Creating Hilly Woods
         ItemStack hillyWoods = new ItemStack (Material.OAK_SAPLING);
         ItemMeta survivalMeta = hillyWoods.getItemMeta();
-        survivalMeta.setDisplayName(Utils.tacc("&2Hilly Woods"));
-        survivalMeta.setLore(new ArrayList<>(){
+        survivalMeta.displayName(Utils.parse("<reset><dark_green>Hilly Woods<reset>"));
+        survivalMeta.lore(new ArrayList<>(){
             {
-                add(Utils.tacc("&7Click to travel"));
-                add(Utils.tacc("&5Level 1"));
+                add(Utils.parse("<reset><gray>Click to travel<reset>"));
+                add(Utils.parse("<reset><dark_purple>Level 1<reset>"));
             }
         });
         hillyWoods.setItemMeta(survivalMeta);
@@ -75,19 +88,19 @@ public class PortalEnterListener implements Listener {
         //Creating Sakura
         ItemStack sakura = new ItemStack (Material.OAK_SAPLING);
         ItemMeta sakuraMeta = sakura.getItemMeta();
-        sakuraMeta.setDisplayName(Utils.tacc("&dSakura"));
-        sakuraMeta.setLore(new ArrayList<>(){
+        sakuraMeta.displayName(Utils.parse("<reset><light_purple>Sakura<reset>"));
+        sakuraMeta.lore(new ArrayList<>(){
             {
-                add(Utils.tacc("&7Click to travel"));
-                add(Utils.tacc("&5Level 25"));
-                add(Utils.tacc("&cStaff Only!"));
+                add(Utils.parse("<reset><gray>Click to travel<reset>"));
+                add(Utils.parse("<reset><dark_purple>Level 25<reset>"));
+                add(Utils.parse("<reset><red>Staff Only!<reset>"));
             }
         });
         sakura.setItemMeta(sakuraMeta);
 
         //This is where you decide what slot the item goes into
         gui.setItem(10, hillyWoods);
-        gui.setItem(17, sakura);
+        gui.setItem(16, sakura);
 
         return gui;
     }

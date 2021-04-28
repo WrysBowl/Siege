@@ -13,7 +13,7 @@ public class ChatListener implements Listener {
     public void playerChat(AsyncPlayerChatEvent e) {
         Player player = e.getPlayer();
         String level = "&8[&d"+ Levels.getLevel(player)+"&8]";
-        String prefix = net.siegemc.core.utils.VaultHook.perms.getPrimaryGroup(player);
+        String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
         String message = e.getMessage().replaceAll("&k", "");
         String check = Utils.strip(message);
         if (check.equalsIgnoreCase("") || check.equalsIgnoreCase(" ")) {

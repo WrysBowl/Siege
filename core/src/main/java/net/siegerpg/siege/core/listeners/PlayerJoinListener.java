@@ -4,12 +4,15 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
+import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class PlayerJoinListener implements Listener {
     /*
@@ -60,13 +63,28 @@ public class PlayerJoinListener implements Listener {
 
         Player player = event.getPlayer();
 
-        event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player));
+        event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player.getName()));
 
         new Tablist().tablistUpdate();
 
         Scoreboard s = new Scoreboard();
         for (Player p : Bukkit.getOnlinePlayers()) {
             s.updateScoreboard(p);
+        }
+
+        /**
+         * Checks for if this is the first time a player joins
+         * Set player's level to 1
+         * Gives player a sword
+         * Gives player a stone axe, stone shovel, stone pickaxe
+         */
+        if (!player.hasPlayedBefore()) {
+            if (Levels.getLevel(player) == 0) {
+                Levels.setLevel(player, (short) 1);
+                player.getInventory().addItem(new ItemStack(Material.STONE_PICKAXE));
+                player.getInventory().addItem(new ItemStack(Material.STONE_SHOVEL));
+                player.getInventory().addItem(new ItemStack(Material.WOODEN_AXE));
+            }
         }
 
         /*
@@ -79,7 +97,6 @@ public class PlayerJoinListener implements Listener {
             }
         }
         */
-        player.getInventory().addItem(new Shank(100).updateMeta(false));
 
         player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
     }

@@ -70,6 +70,7 @@ public final class Core extends JavaPlugin {
 //        });
         // TODO: uncomment this when working on party command
 
+
         plugin().getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         plugin().getServer().getPluginManager().registerEvents(new ChatListener(), this);
         plugin().getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);

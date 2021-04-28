@@ -22,7 +22,7 @@ public class ItemPickupListener implements Listener{
         if (!Utils.strip(eGetItem.getItemMeta().getDisplayName()).equals("Gold Coin")) return;
         e.setCancelled(true);
         int goldAmount = e.getItem().getItemStack().getAmount();
-        net.siegemc.core.utils.VaultHook.econ.depositPlayer((OfflinePlayer) e.getEntity(), goldAmount);
+        net.siegerpg.siege.core.utils.VaultHook.econ.depositPlayer((OfflinePlayer) e.getEntity(), goldAmount);
         e.getItem().remove();
         ((Player) e.getEntity()).getPlayer().playSound(
                 ((Player) e.getEntity()).getPlayer().getLocation(),
