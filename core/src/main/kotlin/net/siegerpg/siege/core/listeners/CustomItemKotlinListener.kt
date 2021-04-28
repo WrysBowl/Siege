@@ -5,7 +5,9 @@ import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
+import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
+import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Location
 import org.bukkit.Particle
@@ -16,6 +18,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityRegainHealthEvent
+import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 
 class CustomItemKotlinListener : Listener {
@@ -24,7 +27,38 @@ class CustomItemKotlinListener : Listener {
 
     @EventHandler
     @Suppress("unused")
+    fun onHit(e: ProjectileHitEvent) {
+
+    }
+
+    @EventHandler
+    @Suppress("unused")
     fun onHit(e: EntityDamageByEntityEvent) {
+
+        val victim = e.entity as LivingEntity
+        val attacker =
+            if (e.damager is Player) e.damager as Player
+            else e.damager
+        val damage = e.damage
+        val maxDamage =
+            if (attacker is Player)
+                attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
+            else damage
+        val vicHealthStat =
+            if (victim is Player && CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH) != 0.0)
+                CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH)
+            else victim.health
+        val vicToughness =
+            if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
+            else 0.0
+        val attStrengthStat =
+            if (attacker is Player && CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) != 0.0)
+                    (damage/maxDamage) * CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) //if player spam clicks it won't deal max damage
+            else damage
+        val reducedDamage = attStrengthStat * (1 - (vicToughness/1000)) //custom attack damage with toughness considered
+        e.damage = reducedDamage/(vicHealthStat/victim.health) //scaled down to damage player by vanilla damage
+
+        /*
         if (e.damager is Player) {
             val item = (e.damager as Player).inventory.itemInMainHand
             val customItem: CustomItem? = CustomItemUtils.getCustomItem(item)
@@ -34,7 +68,8 @@ class CustomItemKotlinListener : Listener {
                     it.onHit(e)
                 }
             }
-        } else if (e.entity is Player) {
+        }
+        if (e.entity is Player) {
             val armor = (e.entity as Player).inventory.armorContents
             if (armor.isNullOrEmpty()) return
             armor.forEach { item ->
@@ -46,28 +81,7 @@ class CustomItemKotlinListener : Listener {
                 }
             }
         }
-    }
-
-    fun getCustomDamage(e: EntityDamageByEntityEvent): Double {
-        val victim = e.entity as LivingEntity
-        val attacker =
-            if (e.damager is Player) e.damager as Player
-            else e.damager
-        val damage = e.damage
-        val maxDamage =
-            if (attacker is Player) attacker.inventory.itemInMainHand.itemMeta.attributeModifiers?.get(Attribute.GENERIC_ATTACK_DAMAGE) as Double
-            else damage
-        val vicHealthStat =
-            if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH)
-            else victim.health
-        val vicToughness =
-            if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
-            else 0.0
-        val attStrengthStat =
-            if (attacker is Player) (damage/maxDamage) * CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) //if player spam clicks it won't deal max damage
-            else damage
-        val reducedDamage = attStrengthStat * (1 - (vicToughness/1000)) //custom attack damage with toughness considered
-        return reducedDamage/(vicHealthStat/victim.health) //scaled down to damage player by vanilla damage
+        */
     }
 
     @EventHandler

@@ -33,6 +33,7 @@ public class PortalEnterListener implements Listener {
 
     @EventHandler
     public void guiClick(InventoryClickEvent e) {
+        if (!(e.getWhoClicked() instanceof Player)) {return;}
         if (e.getInventory() == getGUIWorldTransit()) {
             Short level = Levels.getLevel((OfflinePlayer) e.getWhoClicked());
             Player player = (Player) e.getWhoClicked();
@@ -55,7 +56,7 @@ public class PortalEnterListener implements Listener {
 
         //Fill in the GUI
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
-        for (Integer i = 0; i <= gui.getSize(); i++) {
+        for (Integer i = 0; i < gui.getSize(); i++) {
             gui.setItem(i, filler);
         }
 

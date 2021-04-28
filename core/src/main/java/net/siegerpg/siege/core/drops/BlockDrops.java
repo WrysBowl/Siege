@@ -10,61 +10,61 @@ import java.util.ArrayList;
 public enum BlockDrops {
     //WOOD
     SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
-            {new Stick(0).getItem(), 100}
+            {new Stick(0).getItem(), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     SPRUCE_WOOD(Material.SPRUCE_WOOD, new Object[][]{
-            {new Stick(0).getItem(), 100}
+            {new Stick(0).getItem(), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //DIRT TERRAIN
     GRASS_BLOCK(Material.GRASS_BLOCK, new Object[][]{
-            {new PlantMatter(0).getItem(), 20},
-            {new Seed(0).getItem(), 20}
+            {new PlantMatter(0).getItem(), 20.0},
+            {new Seed(0).getItem(), 20.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     GREEN_TERRACOTTA(Material.GREEN_TERRACOTTA, new Object[][]{
-            {new PlantMatter(0).getItem(), 25},
-            {new Seed(0).getItem(), 35}
+            {new PlantMatter(0).getItem(), 25.0},
+            {new Seed(0).getItem(), 35.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     GREEN_CONCRETE(Material.GREEN_CONCRETE, new Object[][]{
-            {new PlantMatter(0).getItem(), 35},
-            {new Seed(0).getItem(), 25}
+            {new PlantMatter(0).getItem(), 35.0},
+            {new Seed(0).getItem(), 25.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     LIME_TERRACOTTA(Material.LIME_TERRACOTTA, new Object[][]{
-            {new PlantMatter(0).getItem(), 40},
-            {new Seed(0).getItem(), 40}
+            {new PlantMatter(0).getItem(), 40.0},
+            {new Seed(0).getItem(), 40.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     DIRT(Material.DIRT, new Object[][]{
-            {new Pebble(0).getItem(), 20}
+            {new Pebble(0).getItem(), 20.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     COARSE_DIRT(Material.COARSE_DIRT, new Object[][]{
-            {new Pebble(0).getItem(), 30}
+            {new Pebble(0).getItem(), 30.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //STONE TERRAIN
     STONE(Material.STONE, new Object[][]{
-            {new Pebble(0).getItem(), 100}
+            {new Pebble(0).getItem(), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     LIGHT_GRAY_CONCRETE(Material.LIGHT_GRAY_CONCRETE, new Object[][]{
-            {new Pebble(0).getItem(), 30}
+            {new Pebble(0).getItem(), 30.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     ANDESITE(Material.ANDESITE, new Object[][]{
-            {new Pebble(0).getItem(), 40}
+            {new Pebble(0).getItem(), 40.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //ORES
     COAL_ORE(Material.COAL_ORE, new Object[][]{
-            {new Coal(0).getItem(), 100}
+            {new Coal(0).getItem(), 100.0}
     }, new Integer[]{20, 30}, new Integer[]{30, 40}, 100),
     IRON_ORE(Material.IRON_ORE, new Object[][]{
-            {new MetalScrap(0).getItem(), 100}
+            {new MetalScrap(0).getItem(), 100.0}
     }, new Integer[]{30, 40}, new Integer[]{40, 50}, 200),
 
     //DECOR TERRAIN
     VINE(Material.VINE, new Object[][]{
-            {new Vine(0).getItem(), 100}
+            {new Vine(0).getItem(), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     CHAIN(Material.CHAIN, new Object[][]{
-            {new Chain(0).getItem(), 100}
+            {new Chain(0).getItem(), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20);
 
     private final Material block;
@@ -102,7 +102,7 @@ public enum BlockDrops {
     public ArrayList<ItemStack> getRewards(Double luckChance) {
         ArrayList<ItemStack> itemList = new ArrayList<>();
         for (Object[] reward : rewards) {
-            if (Utils.randTest((Number) reward[1])) {
+            if (Utils.randTest((Double) reward[1])) {
                 if ((Math.random() * 100) <= luckChance) {
                     itemList.add((ItemStack) reward[0]);
                 }
