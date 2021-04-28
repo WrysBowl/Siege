@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,21 +25,24 @@ public class DeathListener implements Listener {
 
         e.setDroppedExp(0);
         e.getDrops().clear();
-        if (mobDrop == null) {
-            return;
-        }
+        if (mobDrop == null) { return; }
 
         Player player = e.getEntity().getKiller();
-        Double luck = null;
+        Double luck = 0.0;
+        ItemStack goldCoins = Utils.getGoldCoin();
+        goldCoins.setAmount(mobDrop.getGold(true));
         if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK);}
         if (mobDrop.getExp(true) > 0 && player != null) { Levels.addExp(player, mobDrop.getExp(true)); } //Give exp reward
 
-        ItemStack goldCoins = Utils.getGoldCoin();
-        goldCoins.setAmount(mobDrop.getGold(true));
-        e.getDrops().add(goldCoins); //Give gold reward
 
+        if (goldCoins.getAmount() > 0) { e.getDrops().add(goldCoins); } //Give gold reward
+        
         for (ItemStack drop : mobDrop.getRewards(luck)) { //Loop through all drops
             e.getDrops().add(drop);
+        }
+
+        for (int i = 0; i<e.getDrops().size(); i++) {
+            e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), e.getDrops().get(i));
         }
     }
 }

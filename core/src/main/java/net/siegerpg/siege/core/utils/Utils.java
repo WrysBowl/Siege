@@ -35,9 +35,9 @@ public class Utils {
         return new NamespacedKey(Core.INSTANCE, str);
     }
 
-    public static boolean randTest(Number num) {
+    public static boolean randTest(Double num) {
         double randNumber = Math.random() *100;
-        if (randNumber <= (double) num) { return true; }
+        if (randNumber <= num) { return true; }
         return false;
     }
 

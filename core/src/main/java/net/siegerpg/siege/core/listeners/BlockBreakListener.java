@@ -40,7 +40,7 @@ public class BlockBreakListener implements Listener {
 
         if (blockDrop.getExp(true) > 0) { Levels.addExp(player, blockDrop.getExp(true)); } //Give exp reward
 
-        e.getBlock().getWorld().dropItemNaturally(loc, goldCoins); //Give gold reward
+        if (goldCoins.getAmount() > 0) { e.getBlock().getWorld().dropItemNaturally(loc, goldCoins); } //Give gold reward
 
         for (ItemStack drop : blockDrop.getRewards(CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK))) { //Loop through all drops
             e.getBlock().getWorld().dropItemNaturally(loc, drop);
