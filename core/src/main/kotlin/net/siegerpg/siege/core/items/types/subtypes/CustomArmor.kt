@@ -8,6 +8,7 @@ import org.bukkit.attribute.Attribute
 import org.bukkit.attribute.AttributeModifier
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 import org.bukkit.inventory.meta.LeatherArmorMeta
 
@@ -20,7 +21,7 @@ interface CustomArmor: CustomEquipment {
         e.damage = e.damage * (1 - (toughness/1000))
     }
 
-    override fun updateMeta(hideRarity: Boolean) {
+    override fun updateMeta(hideRarity: Boolean): ItemStack {
         super.updateMeta(hideRarity)
         val meta = item.itemMeta
         try {
@@ -30,6 +31,8 @@ interface CustomArmor: CustomEquipment {
         } catch(e: Error) {
 
         }
+
+        return item
 
     }
 

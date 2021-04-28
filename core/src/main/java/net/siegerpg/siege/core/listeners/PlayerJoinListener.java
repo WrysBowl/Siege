@@ -80,9 +80,7 @@ public class PlayerJoinListener implements Listener {
             }
         }
         */
-        CustomItem shank = new Shank(100);
-        shank.updateMeta(false);
-        player.getInventory().addItem(shank.getItem());
+        player.getInventory().addItem(new Shank(100).updateMeta(false));
 
         player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
     }

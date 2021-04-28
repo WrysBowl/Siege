@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.inventory.ItemFlag
+import org.bukkit.inventory.ItemStack
 
 interface CustomEquipment : CustomItem {
 
@@ -16,7 +17,7 @@ interface CustomEquipment : CustomItem {
         println("serializing")
     }
 
-    override fun updateMeta(hideRarity: Boolean) {
+    override fun updateMeta(hideRarity: Boolean): ItemStack {
         val meta = item.itemMeta
 
         meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name"))
@@ -45,6 +46,7 @@ interface CustomEquipment : CustomItem {
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
+        return item
     }
 
     override fun serialize() {
