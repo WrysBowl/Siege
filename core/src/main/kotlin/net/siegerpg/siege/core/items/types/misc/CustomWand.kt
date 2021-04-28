@@ -16,7 +16,7 @@ abstract class CustomWand(
     override val levelRequirement: Int? = null,
     override val description: List<String>,
     override val material: Material,
-    override var quality: Int = -1,
+    final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.WAND,
     override val recipeList: CustomRecipeList? = null,
@@ -32,7 +32,7 @@ abstract class CustomWand(
     override var rarity: Rarity = Rarity.COMMON
 
     init {
-        rarity = Rarity.getFromInt(quality)
+        this.rarity = Rarity.getFromInt(this.quality)
     }
 
     override fun serialize() {

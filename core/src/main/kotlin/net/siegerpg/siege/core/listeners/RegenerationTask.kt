@@ -1,10 +1,9 @@
-package net.siegemc.core.listeners
+package net.siegerpg.siege.core.listeners
 
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import org.bukkit.Bukkit
-import org.bukkit.attribute.Attribute
 
 class RegenerationTask : Runnable {
 

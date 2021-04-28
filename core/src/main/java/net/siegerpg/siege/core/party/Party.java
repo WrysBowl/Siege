@@ -13,8 +13,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
+@SuppressWarnings("ALL")
 public class Party {
-    @Getter private UUID partyID = UUID.randomUUID();
+    @Getter private final UUID partyID = UUID.randomUUID();
     @Getter private final List<UUID> invited = new ArrayList<>();
     private HashSet<UUID> members = new HashSet<>();
     private UUID leader = null;

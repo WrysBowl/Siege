@@ -25,6 +25,7 @@ class TestSword() : CustomMeleeWeapon(
         this.rarity = Rarity.getFromInt(quality)
     }
 
+    @Suppress("unused")
     constructor(item: ItemStack): this() {
         this.item = item
         deserialize()

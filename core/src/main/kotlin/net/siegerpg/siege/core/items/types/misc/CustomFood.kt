@@ -16,7 +16,7 @@ abstract class CustomFood(
     override val levelRequirement: Int? = null,
     override val description: List<String>,
     override val material: Material,
-    override var quality: Int = -1,
+    final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.FOOD,
     override val recipeList: CustomRecipeList? = null,
@@ -26,7 +26,7 @@ abstract class CustomFood(
     override var rarity: Rarity = Rarity.COMMON
 
     init {
-        rarity = Rarity.getFromInt(quality)
+        this.rarity = Rarity.getFromInt(this.quality)
     }
 
     open fun onEat(e: PlayerItemConsumeEvent) {
@@ -37,7 +37,7 @@ abstract class CustomFood(
         e.player.health = health
     }
 
-    override fun updateMeta(hideRarity: Boolean) {
+    override fun updateMeta(hideRarity: Boolean): ItemStack {
 
         val meta = item.itemMeta
 
@@ -63,6 +63,7 @@ abstract class CustomFood(
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
+        return item
     }
 
     private fun getRarityMultiplier(quality: Int): Double = quality / 100 + 0.5

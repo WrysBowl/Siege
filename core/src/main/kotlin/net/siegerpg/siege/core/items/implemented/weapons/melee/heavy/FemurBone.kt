@@ -1,8 +1,9 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.Bone
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shovel
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Utils

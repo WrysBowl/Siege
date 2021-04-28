@@ -17,7 +17,7 @@ abstract class CustomMaterial(
     override val levelRequirement: Int? = null,
     override val description: List<String>,
     override val material: Material,
-    override var quality: Int = -1,
+    final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.MATERIAL,
     override val recipeList: CustomRecipeList? = null
@@ -32,7 +32,7 @@ abstract class CustomMaterial(
         }
 
     init {
-        rarity = Rarity.getFromInt(quality)
+        this.rarity = Rarity.getFromInt(this.quality)
     }
 
     override fun serialize() {
@@ -48,7 +48,7 @@ abstract class CustomMaterial(
         }
     }
 
-    override fun updateMeta(hideRarity: Boolean) {
+    override fun updateMeta(hideRarity: Boolean): ItemStack {
 
         val meta = item.itemMeta
 
@@ -66,6 +66,7 @@ abstract class CustomMaterial(
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
+        return item
     }
 
 }

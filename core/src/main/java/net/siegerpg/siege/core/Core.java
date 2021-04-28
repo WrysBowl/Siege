@@ -1,9 +1,9 @@
 package net.siegerpg.siege.core;
 
-import net.siegemc.core.listeners.RegenerationTask;
+import net.siegerpg.siege.core.listeners.RegenerationTask;
 import net.siegerpg.siege.core.listeners.*;
-import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
+import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Color;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,7 +23,7 @@ public final class Core extends JavaPlugin {
         // Plugin startup logic
         INSTANCE = this;
         defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
-        (new net.siegemc.core.utils.VaultHook()).createHooks();
+        (new VaultHook()).createHooks();
         //partyManager = new PartyManager();
 
 //        PaperCommandManager manager = new PaperCommandManager(this);

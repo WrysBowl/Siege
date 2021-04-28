@@ -17,7 +17,7 @@ abstract class CustomLeggings(
     override val levelRequirement: Int? = null,
     override val description: List<String>,
     override val material: Material,
-    override var quality: Int = -1,
+    final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val baseStats: HashMap<StatTypes, Double>,
     override val type: ItemTypes = ItemTypes.LEGGINGS,
@@ -29,7 +29,7 @@ abstract class CustomLeggings(
     override var rarity: Rarity = Rarity.COMMON
 
     init {
-        rarity = Rarity.getFromInt(quality)
+        this.rarity = Rarity.getFromInt(this.quality)
     }
 
 

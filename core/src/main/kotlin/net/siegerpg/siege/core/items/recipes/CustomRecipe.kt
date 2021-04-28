@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package net.siegerpg.siege.core.items.recipes
 
 import net.siegerpg.siege.core.items.CustomItem

@@ -1,15 +1,11 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
 import net.siegerpg.siege.core.items.CustomItemUtils
-import net.siegerpg.siege.core.items.StatGem
 import net.siegerpg.siege.core.items.enums.StatTypes
 import org.bukkit.Color
-import org.bukkit.attribute.Attribute
-import org.bukkit.attribute.AttributeModifier
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemStack
-import org.bukkit.inventory.meta.ItemMeta
 import org.bukkit.inventory.meta.LeatherArmorMeta
 
 interface CustomArmor: CustomEquipment {

@@ -1,4 +1,4 @@
-package net.siegemc.core.utils;
+package net.siegerpg.siege.core.utils;
 
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;

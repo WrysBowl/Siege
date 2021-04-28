@@ -1,13 +1,8 @@
 package net.siegerpg.siege.core.listeners
 
-import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
-import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
-import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
-import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
-import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Location
 import org.bukkit.Particle

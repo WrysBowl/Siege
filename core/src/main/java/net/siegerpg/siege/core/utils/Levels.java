@@ -56,6 +56,7 @@ public class Levels {
     }
 
     public static void setLevel(OfflinePlayer player, short level) {
+        // TODO: Reimplement
         /*
         new Thread(() -> {
             Connection connection = null;
@@ -79,6 +80,7 @@ public class Levels {
     }
 
     public static void addLevel(OfflinePlayer player, short level) {
+        // TODO: Reimplement
         /*
         new Thread(() -> {
             Connection connection = null;
@@ -122,6 +124,7 @@ public class Levels {
     }
 
     public static void setExp(OfflinePlayer player, int exp) {
+        // TODO: Reimplement
         /*
         new Thread(() -> {
             Connection connection = null;
@@ -148,6 +151,7 @@ public class Levels {
     }
     
     public static void addExp(OfflinePlayer player, int exp, String message) {
+        // TODO: Reimplement
         /*
         new Thread(() -> {
             Connection connection = DbManager.getConnection();

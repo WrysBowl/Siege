@@ -2,7 +2,12 @@ package net.siegerpg.siege.core.drops;
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.*;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Dagger;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.SplinteredBone;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.WoodenSword;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.RecurveBow;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.inventory.ItemStack;
 

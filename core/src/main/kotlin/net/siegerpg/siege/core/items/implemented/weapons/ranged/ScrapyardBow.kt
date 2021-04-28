@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.ranged
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
