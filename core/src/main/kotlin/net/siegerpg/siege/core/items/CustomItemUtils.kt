@@ -112,12 +112,9 @@ object CustomItemUtils {
         return output
     }
 
-    fun getHealth(player: Player): Double {
+    fun getCustomHealth(player: Player): Double {
         val healthStat: Double = getPlayerStat(player, StatTypes.HEALTH)
         return (player.health/player.maxHealth) * healthStat
-    }
-    fun getCurrentHealth(player: Player) : Double {
-        return (getHealth(player) / getPlayerStat(player, StatTypes.HEALTH)) * player.maxHealth
     }
 
     fun getStats(item: CustomEquipment, addGem: Boolean, addRarity: Boolean): HashMap<StatTypes, Double> {

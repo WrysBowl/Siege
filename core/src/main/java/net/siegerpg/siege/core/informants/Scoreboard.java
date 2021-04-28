@@ -29,7 +29,7 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&dStats")).setScore(9);
 
         o.getScore(Utils.tacc("&7\u2560 &a"
-                + r.getHealth(p)
+                + r.getCustomHealth(p)
                 + "/&2"
                 + r.getPlayerStat(p, StatTypes.HEALTH)
                 + "\u2764")).setScore(8); //display current health over max health

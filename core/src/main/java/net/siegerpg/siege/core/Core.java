@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core;
 
+import net.siegemc.core.listeners.RegenerationTask;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
@@ -82,13 +83,16 @@ public final class Core extends JavaPlugin {
         plugin().getServer().getPluginManager().registerEvents(new WorldProtectionListener(), this);
         plugin().getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         plugin().getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
+
+        plugin().getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
+        new RegenerationTask().startRegenTask();
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         INSTANCE = null;
-        partyManager.saveAll();
+//        partyManager.saveAll();
     }
 
     public static Core plugin() {
