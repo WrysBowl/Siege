@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.mobs.MythicMob;
 import net.siegerpg.siege.core.drops.MobDrops;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
@@ -15,6 +16,8 @@ import org.bukkit.inventory.ItemStack;
 public class DeathListener implements Listener {
     @EventHandler
     public void mobDeath(EntityDeathEvent e) {
+
+        if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) { return; }
 
         String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
         MobDrops mobDrop = MobDrops.matchCaseMobDrops(mm);

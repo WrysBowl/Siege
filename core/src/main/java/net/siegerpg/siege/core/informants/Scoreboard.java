@@ -18,27 +18,27 @@ public class Scoreboard {
         double levelPercent = (Levels.getExp(p)/ Levels.getExpCeiling(p)); //for score #13
         o.getScore(" ").setScore(15);
 
-        o.getScore(Utils.tacc("&7╠ &lWorld &r&7") + p.getWorld().toString()).setScore(14);
+        o.getScore(Utils.tacc("&6&lWorld &r&7") + p.getWorld().getName()).setScore(14);
 
         o.getScore(Utils.tacc("&6Profile " + VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName())).setScore(13);
-        o.getScore(Utils.tacc("&7╠ Level &5" + Levels.getLevel(p) + "&7(&d" + levelPercent + "%" + "&7)")).setScore(12);
-        o.getScore(Utils.tacc("&7╠ Gold &e" + (int) VaultHook.econ.getBalance(p))).setScore(11);
+        o.getScore(Utils.tacc("&7\u2560 Level &5" + Levels.getLevel(p) + "&7(&d" + levelPercent + "%" + "&7)")).setScore(12);
+        o.getScore(Utils.tacc("&7\u2560 Gold &e" + (int) VaultHook.econ.getBalance(p))).setScore(11);
         o.getScore("  ").setScore(10);
 
         CustomItemUtils r = CustomItemUtils.INSTANCE;
         o.getScore(Utils.tacc("&dStats")).setScore(9);
 
-        o.getScore(Utils.tacc("&7╠ &a"
+        o.getScore(Utils.tacc("&7\u2560 &a"
                 + r.getHealth(p)
                 + "/&2"
                 + r.getPlayerStat(p, StatTypes.HEALTH)
-                + "\u2764")).setScore(9); //display current health over max health
+                + "\u2764")).setScore(8); //display current health over max health
 
-        o.getScore(Utils.tacc("&7╠ &cStrength" + r.getPlayerStat(p, StatTypes.STRENGTH))).setScore(8);
-        o.getScore(Utils.tacc("&7╠ &3Toughness" + r.getPlayerStat(p, StatTypes.TOUGHNESS))).setScore(7);
+        o.getScore(Utils.tacc("&7\u2560 &cStrength " + r.getPlayerStat(p, StatTypes.STRENGTH))).setScore(7);
+        o.getScore(Utils.tacc("&7\u2560 &3Toughness " + r.getPlayerStat(p, StatTypes.TOUGHNESS))).setScore(6);
 
-        o.getScore(Utils.tacc("   ")).setScore(6);
-        o.getScore(Utils.tacc("&2SiegeRPG.net")).setScore(5);
+        o.getScore(Utils.tacc("   ")).setScore(5);
+        o.getScore(Utils.tacc("&aSiegeRPG.net")).setScore(4);
 
         p.setScoreboard(b);
 
