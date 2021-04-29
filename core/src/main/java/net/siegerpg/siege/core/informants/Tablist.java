@@ -7,24 +7,22 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class Tablist {
-    public void tablistUpdate() {
-        for (Player p : Bukkit.getOnlinePlayers()) {
+    public static void tablistUpdate(Player p) {
 
-            Component header = Utils.parse("\n" +
-                    "<gold><b>SiegeRPG</b>\n" +
-                    "<gold><i>play.SiegeRPG.net</i>" +
-                    "<white>\n" +
-                    "");
+        Component header = Utils.parse("\n" +
+                "<gold><b>SiegeRPG</b>\n" +
+                "<gold><i>play.SiegeRPG.net</i>" +
+                "<white>\n" +
+                "");
 
-            Component footer = Utils.parse("\n" +
-                    "<gold>Discord: <gray>/discord\n" +
-                    "<gold>Website: <gray>/website\n" +
-                    "<gray>There are <gold><underlined>"+Bukkit.getOnlinePlayers().size()+"<reset><gray> players online!\n" +
-                    "");
-            String tabName = Utils.tacc(VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName());
-            p.setPlayerListName(tabName);
-            p.sendPlayerListHeader(header);
-            p.sendPlayerListFooter(footer);
-        }
+        Component footer = Utils.parse("\n" +
+                "<gold>Discord: <gray>/discord\n" +
+                "<gold>Website: <gray>/website\n" +
+                "<gray>There are <gold><underlined>"+Bukkit.getOnlinePlayers().size()+"<reset><gray> players online!\n" +
+                "");
+        String tabName = Utils.tacc(VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName());
+        p.setPlayerListName(tabName);
+        p.sendPlayerListHeader(header);
+        p.sendPlayerListFooter(footer);
     }
 }

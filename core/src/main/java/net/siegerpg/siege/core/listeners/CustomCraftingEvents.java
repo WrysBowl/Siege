@@ -1,7 +1,10 @@
 package net.siegerpg.siege.core.listeners;
 
+import kotlin.Suppress;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
+import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.CustomItemUtilsKt;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
@@ -42,8 +45,7 @@ public class CustomCraftingEvents implements Listener {
                 numCraftingSlots.add(y+x);
             }
         }
-        numCraftingSlots.add(24);
-        setResult(new ItemStack(Material.AIR));
+        setResult(new ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE));
         return inv;
     }
 
@@ -51,7 +53,10 @@ public class CustomCraftingEvents implements Listener {
         int i = 0;
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
-                inv.setItem(y+x, (ItemStack) matrix.get(i++));
+                if (matrix.get(i) != null) {
+                    inv.setItem(y + x, matrix.get(i).getItem());
+                }
+                i++;
             }
         }
     }
@@ -60,7 +65,13 @@ public class CustomCraftingEvents implements Listener {
         List<CustomItem> matrix = new ArrayList<>();;
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
-                matrix.add((CustomItem) inv.getItem(y+x));
+                ItemStack cell = inv.getItem(y+x);
+                if (cell != null) {
+                    CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(cell);
+                    if (item != null) {
+                        matrix.add(item);
+                    } else { matrix.add(null); }
+                } else { matrix.add(null); }
             }
         }
         return matrix;
@@ -92,10 +103,7 @@ public class CustomCraftingEvents implements Listener {
         }
     }
 
-    /**
-     * Prevent item loss by giving the player items in the crafting table
-     *
-     */
+
     @EventHandler
     public void onCraftingTableClose(InventoryCloseEvent e) {
 

@@ -18,19 +18,11 @@ public class PlayerQuitListener implements Listener {
         e.setQuitMessage(Utils.tacc("&7[&c-&7] " + e.getPlayer().getName()));
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-            new Tablist().tablistUpdate();
 
-            Scoreboard s = new Scoreboard();
             for (Player p : Bukkit.getOnlinePlayers()) {
-                s.updateScoreboard(p);
+                Scoreboard.updateScoreboard(p);
+                Tablist.tablistUpdate(p);
             }
         }, 20L);
-
-        new Tablist().tablistUpdate();
-
-        Scoreboard s = new Scoreboard();
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            s.updateScoreboard(p);
-        }
     }
 }

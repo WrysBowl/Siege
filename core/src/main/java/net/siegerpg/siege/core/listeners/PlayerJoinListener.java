@@ -66,10 +66,9 @@ public class PlayerJoinListener implements Listener {
 
         event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player.getName()));
 
-        new Tablist().tablistUpdate();
-
         for (Player p : Bukkit.getOnlinePlayers()) {
             Scoreboard.updateScoreboard(p);
+            Tablist.tablistUpdate(p);
         }
 
         /**
