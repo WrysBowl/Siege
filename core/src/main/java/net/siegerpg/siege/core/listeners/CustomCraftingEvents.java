@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -22,7 +23,7 @@ import java.util.List;
 public class CustomCraftingEvents implements Listener {
 
     private Inventory inv;
-    private List<CustomItem> craftingSlots = new ArrayList<>();
+    private List<ItemStack> craftingSlots = new ArrayList<>();
     private List<Integer> numCraftingSlots = new ArrayList<>();
     private boolean resultSlotSet = false;
     ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
@@ -37,12 +38,12 @@ public class CustomCraftingEvents implements Listener {
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
                 inv.setItem(y+x, air);
-                craftingSlots.add((CustomItem) inv.getItem(y+x));
+                craftingSlots.add(inv.getItem(y+x));
                 numCraftingSlots.add(y+x);
             }
         }
         numCraftingSlots.add(24);
-        setResult((CustomItem) new ItemStack(Material.AIR));
+        setResult(new ItemStack(Material.AIR));
         return inv;
     }
 
@@ -73,12 +74,12 @@ public class CustomCraftingEvents implements Listener {
         }
     }
 
-    public void setResult(CustomItem item) {
-        inv.setItem(24, (ItemStack) item);
+    public void setResult(ItemStack item) {
+        inv.setItem(24, item);
     }
 
-    public CustomItem getResult() {
-        return (CustomItem) inv.getItem(24);
+    public ItemStack getResult() {
+        return inv.getItem(24);
     }
 
     @EventHandler
@@ -91,17 +92,33 @@ public class CustomCraftingEvents implements Listener {
         }
     }
 
+    /**
+     * Prevent item loss by giving the player items in the crafting table
+     *
+     */
+    @EventHandler
+    public void onCraftingTableClose(InventoryCloseEvent e) {
+
+    }
+
+    /**
+     * Step 1. Player puts in items into the crafting table
+     * Step 2. System searches for a valid recipe
+     * Step 3. If system finds valid recipe, result slot is set to display resulting fake item of the recipe
+     * Step 4. If player clicks the resulting item, the system will remove the crafting ingredients from the crafting table
+     * Step 5. The system will convert the clicked item to the actual resulting item
+     */
     @EventHandler
     public void onCraftingTableClick(InventoryClickEvent e) {
         if (e.getInventory() != inv) return; //stops if inventory is not crafting table
-        if (e.getRawSlot() > e.getInventory().getSize()) return; //if clicked slot is in the bottom inventory
+        if (e.getRawSlot() > e.getInventory().getSize()-1) return; //if clicked slot is in the bottom inventory
         if (!numCraftingSlots.contains(e.getSlot())) { //stops if slot is not a crafting/result slot
             e.setCancelled(true);
             return;
         }
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
             List<CustomItem> matrix = getMatrix();
-            CustomItem result = (CustomItem) new ItemStack(Material.AIR);
+            ItemStack result = new ItemStack(Material.AIR);
             Player player = (Player) e.getWhoClicked();
             //if (e.getCursor().getType().isAir()) {return;}
 
@@ -120,7 +137,7 @@ public class CustomCraftingEvents implements Listener {
 
             //Need further information on how to get the result of a recipe, and what getRecipe does
             if (CustomRecipe.Companion.getRecipe(matrix) != null) {
-                result = CustomRecipe.Companion.getRecipe(matrix).getCreateItem().invoke(player, true);
+                result = CustomRecipe.Companion.getRecipe(matrix).getCreateItem().invoke(player, true).getItem();
             }
 
             if (e.getSlot()==24 && resultSlotSet) {

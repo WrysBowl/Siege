@@ -25,6 +25,7 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&7\u2560 Gold &e" + (int) VaultHook.econ.getBalance(p))).setScore(11);
         o.getScore("  ").setScore(10);
 
+        /*
         CustomItemUtils r = CustomItemUtils.INSTANCE;
         o.getScore(Utils.tacc("&dStats")).setScore(9);
 
@@ -37,8 +38,9 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&7\u2560 &cStrength " + r.getPlayerStat(p, StatTypes.STRENGTH))).setScore(7);
         o.getScore(Utils.tacc("&7\u2560 &3Toughness " + r.getPlayerStat(p, StatTypes.TOUGHNESS))).setScore(6);
 
-        o.getScore(Utils.tacc("   ")).setScore(5);
+        o.getScore(Utils.tacc("   ")).setScore(5);*/
         o.getScore(Utils.tacc("&aSiegeRPG.net")).setScore(4);
+
 
         p.setScoreboard(b);
 

@@ -14,3 +14,5 @@ commands:
     aliases: [ p ]
   hub:
     description: Teleports the player to SiegeHub
+  discords:
+    description: Sends a discord link to the sender

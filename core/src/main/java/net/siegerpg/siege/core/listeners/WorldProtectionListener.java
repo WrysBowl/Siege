@@ -29,10 +29,6 @@ public class WorldProtectionListener implements Listener {
     public void openDeniedBlocks(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL) || e.getPlayer().getGameMode().equals(GameMode.ADVENTURE)) {
-                if (e.getClickedBlock().getType() == Material.CRAFTING_TABLE) {
-                    e.setCancelled(false);
-                    return;
-                }
                 e.setCancelled(true);
             }
         }

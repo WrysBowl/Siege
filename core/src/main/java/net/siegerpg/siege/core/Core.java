@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core;
 
+import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.Hub;
 import net.siegerpg.siege.core.listeners.RegenerationTask;
 import net.siegerpg.siege.core.listeners.*;
@@ -27,6 +28,7 @@ public final class Core extends JavaPlugin {
         (new VaultHook()).createHooks();
 
         this.getCommand("hub").setExecutor(new Hub());
+        this.getCommand("discords").setExecutor(new Discord());
 
         //partyManager = new PartyManager();
 
