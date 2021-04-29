@@ -93,32 +93,44 @@ object CustomItemUtils {
 
         inventory.helmet?.let { helmet ->
             getCustomItem(helmet)?.let {
-                if (it is CustomHelmet && it.baseStats.containsKey(statType)) {
-                    output += it.baseStats[statType]!!
+                if (it is CustomHelmet) {
+                    val itemStats = getStats(it, addGem = true, addRarity = true)
+                    itemStats[statType]?.let { stat ->
+                        output += stat
+                    }
                 }
             }
         }
 
         inventory.chestplate?.let { chestplate ->
             getCustomItem(chestplate)?.let {
-                if (it is CustomChestplate && it.baseStats.containsKey(statType)) {
-                    output += it.baseStats[statType]!!
+                if (it is CustomChestplate) {
+                    val itemStats = getStats(it, addGem = true, addRarity = true)
+                    itemStats[statType]?.let { stat ->
+                        output += stat
+                    }
                 }
             }
         }
 
         inventory.leggings?.let { leggings ->
             getCustomItem(leggings)?.let {
-                if (it is CustomLeggings && it.baseStats.containsKey(statType)) {
-                    output += it.baseStats[statType]!!
+                if (it is CustomLeggings) {
+                    val itemStats = getStats(it, addGem = true, addRarity = true)
+                    itemStats[statType]?.let { stat ->
+                        output += stat
+                    }
                 }
             }
         }
 
         inventory.boots?.let { boots ->
             getCustomItem(boots)?.let {
-                if (it is CustomBoots && it.baseStats.containsKey(statType)) {
-                    output += it.baseStats[statType]!!
+                if (it is CustomBoots) {
+                    val itemStats = getStats(it, addGem = true, addRarity = true)
+                    itemStats[statType]?.let { stat ->
+                        output += stat
+                    }
                 }
             }
         }
