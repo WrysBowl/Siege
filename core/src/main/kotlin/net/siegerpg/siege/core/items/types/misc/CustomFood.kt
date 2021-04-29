@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.types.misc
 
+import net.kyori.adventure.text.format.TextDecoration
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -43,7 +44,8 @@ abstract class CustomFood(
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        meta.displayName(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>$name</rainbow>" else "<r>${shownRarity.color}$name"))
+        meta.displayName(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>$name</rainbow>" else "<r>${shownRarity.color}$name").decoration(
+            TextDecoration.ITALIC, false))
 
         val newLore =
             mutableListOf(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>${shownRarity.id}</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%"))

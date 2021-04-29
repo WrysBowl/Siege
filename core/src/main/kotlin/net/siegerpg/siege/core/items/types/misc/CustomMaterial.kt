@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.types.misc
 
+import net.kyori.adventure.text.format.TextDecoration
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -52,7 +53,7 @@ abstract class CustomMaterial(
 
         val meta = item.itemMeta
 
-        meta.displayName(Utils.parse("<r><gray>$name <yellow>${"✪".repeat(tier)}"))
+        meta.displayName(Utils.parse("<r><gray>$name <yellow>${"✪".repeat(tier)}").decoration(TextDecoration.ITALIC, false))
 
         val newLore = mutableListOf(Utils.parse(" "))
         description.forEach {
