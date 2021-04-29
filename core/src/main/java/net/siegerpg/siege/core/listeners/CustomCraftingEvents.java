@@ -25,7 +25,7 @@ public class CustomCraftingEvents implements Listener {
     private List<CustomItem> craftingSlots = new ArrayList<>();
     private List<Integer> numCraftingSlots = new ArrayList<>();
     private boolean resultSlotSet = false;
-    ItemStack filler = Utils.createItem(Material.GRAY_STAINED_GLASS_PANE, ChatColor.GREEN + "", false, 1);
+    ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
     ItemStack air = new ItemStack(Material.AIR);
 
     private Inventory getCraftingGUI() {
