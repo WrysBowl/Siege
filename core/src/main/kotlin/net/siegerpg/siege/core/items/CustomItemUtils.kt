@@ -83,8 +83,11 @@ object CustomItemUtils {
 
         getCustomItem(mainHand)?.let {
             //player.chat("You are holding a custom item")
-            if (it is CustomWeapon && it.baseStats.containsKey(statType)) {
-                output += it.baseStats[statType]!!
+            if (it is CustomWeapon) {
+                val itemStats = getStats(it, addGem = true, addRarity = true)
+                itemStats[statType]?.let { stat ->
+                    output += stat
+                }
             }
         }
 

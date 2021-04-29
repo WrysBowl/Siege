@@ -120,7 +120,7 @@ public class CustomCraftingEvents implements Listener {
 
             //Need further information on how to get the result of a recipe, and what getRecipe does
             if (CustomRecipe.Companion.getRecipe(matrix) != null) {
-                result = (CustomItem) CustomRecipe.Companion.getRecipe(matrix);
+                result = CustomRecipe.Companion.getRecipe(matrix).getCreateItem().invoke(player, true);
             }
 
             if (e.getSlot()==24 && resultSlotSet) {

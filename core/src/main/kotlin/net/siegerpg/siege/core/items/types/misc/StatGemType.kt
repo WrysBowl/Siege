@@ -59,10 +59,10 @@ abstract class StatGemType(
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        meta.displayName(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>$name</rainbow>" else "<r>${shownRarity.color}$name"))
+        meta.displayName(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name"))
 
         val newLore =
-            mutableListOf(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>${shownRarity.id}</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%"))
+            mutableListOf(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%"))
         newLore.add(Utils.lore(" "))
         newLore.add(Utils.lore("<r><color:#FF3CFF>+${statAmount} <light_purple>${statType.stylizedName} Gem"))
         newLore.add(Utils.lore(" "))

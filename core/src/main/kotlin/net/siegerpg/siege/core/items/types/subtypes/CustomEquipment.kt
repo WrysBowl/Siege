@@ -23,10 +23,10 @@ interface CustomEquipment : CustomItem {
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        meta.displayName(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>$name</rainbow>" else "<r>${shownRarity.color}$name"))
+        meta.displayName(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name"))
 
         val newLore =
-            mutableListOf(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>${shownRarity.id}</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%"))
+            mutableListOf(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%"))
         statGem?.let {
             newLore.add(Utils.lore(" "))
             newLore.add(Utils.lore("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem"))
@@ -35,7 +35,7 @@ interface CustomEquipment : CustomItem {
             newLore.add(Utils.lore(" "))
             val realStats = CustomItemUtils.getStats(this, addGem = false, addRarity = true)
             baseStats.keys.forEach {
-                newLore.add(Utils.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}"))
+                newLore.add(Utils.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")) // TODO: Make special items work with rarity multiplier
             }
         }
         newLore.add(Utils.lore(" "))

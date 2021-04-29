@@ -89,7 +89,7 @@ public class PlayerJoinListener implements Listener {
         }
 
         if (player.getName().equals("Sumowu")) {
-            player.getInventory().addItem(new Shank(100).getUpdatedItem(false));
+            player.getInventory().addItem(new Shank(150).getUpdatedItem(false));
         }
 
         /*
