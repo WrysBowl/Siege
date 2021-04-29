@@ -45,7 +45,8 @@ public class PortalEnterListener implements Listener {
     @EventHandler
     public void guiClick(InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player)) {return;}
-        if (e.getInventory() == getGUIWorldTransit()) {
+        if (e.getView().getTitle().equals("World Transit")) {
+            e.setCancelled(true);
             short level = Levels.getLevel((OfflinePlayer) e.getWhoClicked());
             Player player = (Player) e.getWhoClicked();
             World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
@@ -60,7 +61,7 @@ public class PortalEnterListener implements Listener {
                 }, 20L);
             } else if (e.getSlot() == 17 && level >= 25) {
                 player.sendMessage(Utils.tacc("&cThis isn't open to anyone yet!"));
-            } else { player.sendMessage(Utils.tacc("&cError loading your profile")); }
+            } else if (level == 0) { player.sendMessage(Utils.tacc("&cError loading your profile")); }
         }
     }
 

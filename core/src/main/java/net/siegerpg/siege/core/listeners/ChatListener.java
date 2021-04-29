@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,6 +22,6 @@ public class ChatListener implements Listener {
             e.setCancelled(true);
             return;
         }
-        e.setFormat(Utils.tacc(level + " " + prefix + " " + player.getName() + " »&f " + message));
+        e.setFormat(Utils.tacc(level + " " + prefix + " &7" + player.getName() + " &f" + message));
     }
 }

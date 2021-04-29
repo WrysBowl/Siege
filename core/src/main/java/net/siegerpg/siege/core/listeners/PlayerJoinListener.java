@@ -78,13 +78,14 @@ public class PlayerJoinListener implements Listener {
          * Gives player a sword
          * Gives player a stone axe, stone shovel, stone pickaxe
          */
-        if (!player.hasPlayedBefore()) {
-            if (Levels.getLevel(player) == 0) {
-                Levels.setLevel(player, (short) 1);
-                player.getInventory().addItem(new ItemStack(Material.STONE_PICKAXE));
-                player.getInventory().addItem(new ItemStack(Material.STONE_SHOVEL));
-                player.getInventory().addItem(new ItemStack(Material.WOODEN_AXE));
-            }
+
+        if (Levels.getLevel(player) < 1) {
+            Levels.setLevel(player, (short) 1);
+        }
+        if (!(player.hasPlayedBefore())) {
+            player.getInventory().addItem(new ItemStack(Material.STONE_PICKAXE));
+            player.getInventory().addItem(new ItemStack(Material.STONE_SHOVEL));
+            player.getInventory().addItem(new ItemStack(Material.WOODEN_AXE));
         }
 
         /*

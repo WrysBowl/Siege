@@ -22,7 +22,10 @@ public class BlockBreakListener implements Listener {
     @EventHandler
     public void breakEvent(BlockBreakEvent e) {
         Player player = e.getPlayer();
-        if (player.getGameMode() != GameMode.SURVIVAL) { return; }
+        if (player.getGameMode() != GameMode.SURVIVAL) {
+            e.setCancelled(false);
+            return;
+        }
 
         Material block = e.getBlock().getType();
         BlockDrops blockDrop = BlockDrops.matchCaseBlockDrops(block.toString());
