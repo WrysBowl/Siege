@@ -12,3 +12,5 @@ commands:
   party:
     description: Create a party with friends
     aliases: [ p ]
+  hub:
+    description: Teleports the player to SiegeHub

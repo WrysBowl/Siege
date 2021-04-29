@@ -50,41 +50,10 @@ public class Utils {
     }
 
     @SuppressWarnings("unused")
-    public static ItemStack createItem(final Material material, final String name, final boolean glowing, Integer amount, final String... lore) {
-        final ItemStack item = new ItemStack(material, 1);
-        final ItemMeta meta = item.getItemMeta();
-
-        // Set the name of the item
-        meta.setDisplayName(name);
-
-        // Set glowing state of the item
-        if (glowing) {
-            meta.addEnchant(Enchantment.MENDING, 1, true); //Enchant with lure and will remove glowing effect
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        }
-
-        // Set the lore of the item
-        meta.setLore(Arrays.asList(lore));
-
-        item.setItemMeta(meta);
-
-        item.setAmount(amount);
-
-        return item;
-    }
-
-
-    @SuppressWarnings("unused")
     public static int randRarity() {
         //((random number between 1 and 100)*(1/random number between 1 and 5))
         double rand1 = ((Math.random() * 100) + 1);
         double rand2 = (((Math.random() * 100) + 1));
         return (int) ((-1 * Math.sqrt(rand1*rand2)) + 100);
     }
-
-    //prevent players from removing all slots in the gui
-    public static void setImmuneGUI(Player player) {
-        player.setMetadata("invOpened", new FixedMetadataValue(Core.plugin(), true));
-    }
-
 }

@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core;
 
+import net.siegerpg.siege.core.commands.Hub;
 import net.siegerpg.siege.core.listeners.RegenerationTask;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.party.PartyManager;
@@ -24,6 +25,9 @@ public final class Core extends JavaPlugin {
         INSTANCE = this;
         defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
         (new VaultHook()).createHooks();
+
+        this.getCommand("hub").setExecutor(new Hub());
+
         //partyManager = new PartyManager();
 
 //        PaperCommandManager manager = new PaperCommandManager(this);
@@ -69,6 +73,7 @@ public final class Core extends JavaPlugin {
 //                    .collect(Collectors.toList());
 //        });
         // TODO: uncomment this when working on party command
+
 
         plugin().getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         plugin().getServer().getPluginManager().registerEvents(new ChatListener(), this);

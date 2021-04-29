@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.informants;
 
 import net.kyori.adventure.text.Component;
-import net.siegemc.core.utils.VaultHook;
+import net.siegerpg.siege.core.utils.VaultHook;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
