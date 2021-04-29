@@ -41,14 +41,12 @@ abstract class CustomFood(
 
         val meta = item.itemMeta
 
-        /*
-        DisplayName and Lore has been changed to use strings instead of components. Will be fixed in the future
-         */
+        val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<r><rainbow>$name</rainbow>" else "<r>${rarity.color}$name"))
+        meta.displayName(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>$name</rainbow>" else "<r>${shownRarity.color}$name"))
 
         val newLore =
-            mutableListOf(Utils.parse(if (rarity == Rarity.SPECIAL) "<r><rainbow>${rarity.id}</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${rarity.color}${rarity.id} <gray>$quality%"))
+            mutableListOf(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>${shownRarity.id}</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%"))
         val realHealth = health * getRarityMultiplier(quality)
         if (realHealth > 0) newLore.add(Utils.parse(" "))
         if (realHealth > 0) newLore.add(Utils.parse("<r><red>+$realHealth Health"))

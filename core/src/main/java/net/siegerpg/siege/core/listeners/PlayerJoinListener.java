@@ -88,6 +88,10 @@ public class PlayerJoinListener implements Listener {
             player.getInventory().addItem(new ItemStack(Material.WOODEN_AXE));
         }
 
+        if (player.getName().equals("Sumowu")) {
+            player.getInventory().addItem(new Shank(100).getUpdatedItem(true));
+        }
+
         /*
         for (DungeonType dungeonType : DungeonType.dungeonTypes) {
             for (Dungeon dungeon : dungeonType.dungeons) {

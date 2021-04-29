@@ -52,10 +52,6 @@ abstract class CustomMaterial(
 
         val meta = item.itemMeta
 
-        /*
-        DisplayName and Lore has been changed to use strings instead of components. Will be fixed in the future
-         */
-
         meta.displayName(Utils.parse("<r><gray>$name <yellow>${"✪".repeat(tier)}"))
 
         val newLore = mutableListOf(Utils.parse(" "))
