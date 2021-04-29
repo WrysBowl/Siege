@@ -28,6 +28,7 @@ interface CustomItem {
 
     fun serialize() {
         item = item.setNbtTags(
+            "itemClass" to this::class.qualifiedName,
             "itemName" to name,
             "CustomModelData" to customModelData,
             "itemLevelRequirement" to levelRequirement,

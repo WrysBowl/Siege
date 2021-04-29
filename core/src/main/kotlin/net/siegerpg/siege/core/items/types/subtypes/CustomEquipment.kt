@@ -61,8 +61,13 @@ interface CustomEquipment : CustomItem {
 
     override fun deserialize() {
         super.deserialize()
-        item.getNbtTag<String>("equipmentStatGem")?.let {
-            statGem = StatGem.fromString(it)
+        try {
+            item.getNbtTag<String>("equipmentStatGem")?.let {
+                statGem = StatGem.fromString(it)
+            }
+        } catch(e: Exception) {
+
         }
+
     }
 }

@@ -1,8 +1,14 @@
 package net.siegerpg.siege.core.listeners
 
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import net.siegerpg.siege.core.informants.Scoreboard
+import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
+import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Location
 import org.bukkit.Particle
@@ -15,6 +21,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityRegainHealthEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
+import org.bukkit.event.player.PlayerItemHeldEvent
 
 class CustomItemKotlinListener : Listener {
 
@@ -23,6 +30,30 @@ class CustomItemKotlinListener : Listener {
     @EventHandler
     @Suppress("unused")
     fun onHit(e: ProjectileHitEvent) {
+
+    }
+
+    @EventHandler
+    @Suppress("unused")
+    fun onItemSwitch(e: PlayerItemHeldEvent) {
+        //e.player.chat("switched item from ${e.previousSlot} to ${e.newSlot}")
+        //CustomItemUtils.getPlayerStat(e.player, StatTypes.STRENGTH)
+//        e.player.sendMessage("item in new slot: ${e.player.inventory.getItem(e.newSlot)?.type}")
+//        e.player.sendMessage("item in main hand: ${e.player.inventory.itemInMainHand.type}")
+//        e.player.sendMessage("item in previous slot: ${e.player.inventory.getItem(e.previousSlot)?.type}")
+        e.player.sendMessage("strength stat: ${CustomItemUtils.getPlayerStat(e.player, StatTypes.STRENGTH, e.player.inventory.getItem(e.newSlot))}")
+//        GlobalScope.launch {
+//            delay(10)
+//            e.player.sendMessage("item now in main hand: ${e.player.inventory.itemInMainHand.type}")
+//            e.player.sendMessage("strength stat: ${CustomItemUtils.getPlayerStat(e.player, StatTypes.STRENGTH)}")
+//        }
+//        Thread.sleep(50)
+//        Scoreboard.updateScoreboard(e.player)
+
+//        val customItem = e.player.inventory.getItem(e.newSlot)?.let { CustomItemUtils.getCustomItem(it) }
+//        customItem?.let {
+//            Scoreboard.updateScoreboard(e.player)
+//        }
 
     }
 

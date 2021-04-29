@@ -32,6 +32,10 @@ dependencies {
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.7.1")
     implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
     implementation("com.zaxxer:HikariCP:4.0.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7") {
+        exclude("kotlin-stdlib-common")
+        exclude("kotlin-stdlib")
+    }
     annotationProcessor("org.projectlombok:lombok:1.18.16")
     //compile(fileTree(include(["*.jar"]), dir("libs")))
 }

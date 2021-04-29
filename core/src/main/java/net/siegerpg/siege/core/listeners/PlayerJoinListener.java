@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.listeners;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
+import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
@@ -67,9 +68,8 @@ public class PlayerJoinListener implements Listener {
 
         new Tablist().tablistUpdate();
 
-        Scoreboard s = new Scoreboard();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            s.updateScoreboard(p);
+            Scoreboard.updateScoreboard(p);
         }
 
         /**
@@ -89,7 +89,7 @@ public class PlayerJoinListener implements Listener {
         }
 
         if (player.getName().equals("Sumowu")) {
-            player.getInventory().addItem(new Shank(100).getUpdatedItem(true));
+            player.getInventory().addItem(new Shank(100).getUpdatedItem(false));
         }
 
         /*
