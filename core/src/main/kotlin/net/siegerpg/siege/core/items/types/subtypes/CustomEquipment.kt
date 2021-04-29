@@ -20,28 +20,28 @@ interface CustomEquipment : CustomItem {
     override fun updateMeta(hideRarity: Boolean): ItemStack {
         val meta = item.itemMeta
 
-        meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name"))
+        meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<r><rainbow>$name</rainbow>" else "<r>${rarity.color}$name"))
 
         val newLore =
-            mutableListOf(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$rarity</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "${rarity.color}$rarity <gray>$quality%"))
+            mutableListOf(Utils.parse(if (rarity == Rarity.SPECIAL) "<r><rainbow>${rarity.id}</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${rarity.color}${rarity.id} <gray>$quality%"))
         statGem?.let {
             newLore.add(Utils.parse(" "))
-            newLore.add(Utils.parse("<color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem"))
+            newLore.add(Utils.parse("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem"))
         }
         if (baseStats.size != 0) {
             newLore.add(Utils.parse(" "))
             val realStats = CustomItemUtils.getStats(this, addGem = false, addRarity = true)
             baseStats.keys.forEach {
-                newLore.add(Utils.parse("<green>+${realStats[it]} <gray>${it.stylizedName}"))
+                newLore.add(Utils.parse("<r><green>+${realStats[it]} <gray>${it.stylizedName}"))
             }
         }
         newLore.add(Utils.parse(" "))
         description.forEach {
-            newLore.add(Utils.parse("<dark_gray>$it"))
+            newLore.add(Utils.parse("<r><dark_gray>$it"))
         }
         newLore.add(Utils.parse(" "))
-        newLore.add(Utils.parse("<gray>Level: $levelRequirement"))
-        if (hideRarity) newLore.add(Utils.parse("<red>This is not the real item"))
+        newLore.add(Utils.parse("<r><gray>Level: $levelRequirement"))
+        if (hideRarity) newLore.add(Utils.parse("<r><red>This is not the real item"))
         meta.lore(newLore)
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
