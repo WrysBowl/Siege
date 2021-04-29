@@ -44,8 +44,7 @@ abstract class CustomFood(
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        meta.displayName(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>$name</rainbow>" else "<r>${shownRarity.color}$name").decoration(
-            TextDecoration.ITALIC, false))
+        meta.displayName(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>$name</rainbow>" else "<r>${shownRarity.color}$name"))
 
         val newLore =
             mutableListOf(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow>${shownRarity.id}</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%"))

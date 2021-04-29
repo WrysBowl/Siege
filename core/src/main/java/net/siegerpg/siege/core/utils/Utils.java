@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.utils;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.siegerpg.siege.core.Core;
 import org.bukkit.ChatColor;
@@ -28,6 +29,10 @@ public class Utils {
 
     static public Component parse(String str) {
         return MiniMessage.get().parse(str);
+    }
+
+    static public Component lore(String str) {
+        return MiniMessage.get().parse(str).decoration(TextDecoration.ITALIC, false);
     }
 
     @SuppressWarnings("unused")
