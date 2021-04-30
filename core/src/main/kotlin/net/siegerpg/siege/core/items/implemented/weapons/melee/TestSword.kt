@@ -2,8 +2,13 @@ package net.siegerpg.siege.core.items.implemented.weapons.melee
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shovel
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
+import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
@@ -15,7 +20,14 @@ class TestSword() : CustomMeleeWeapon(
     material = Material.DIAMOND_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 10.0),
     recipeList = recipes {
-
+        recipe {
+            shaped = true
+            s1(PlantMatter(0))
+            s4(PlantMatter(0))
+            item { player, b ->
+                TestSword(Utils.randRarity())
+            }
+        }
     },
     attackSpeed = 1.7
 ) {

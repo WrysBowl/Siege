@@ -3,7 +3,10 @@ package net.siegerpg.siege.core.listeners;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
+import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -116,12 +119,15 @@ public class CustomCraftingEvents implements Listener {
         if (e.getRawSlot() > e.getInventory().getSize()-1) return; //if clicked slot is in the bottom inventory
         if (!numCraftingSlots.contains(e.getSlot())) { //stops if slot is not a crafting/result slot
             e.setCancelled(true);
-            return;
+            if (e.getSlot() != 24) {
+                return;
+            }
         }
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
             List<CustomItem> matrix = getMatrix();
             ItemStack result = new ItemStack(Material.AIR);
             Player player = (Player) e.getWhoClicked();
+
             //if (e.getCursor().getType().isAir()) {return;}
 
             /*
@@ -138,8 +144,9 @@ public class CustomCraftingEvents implements Listener {
              */
 
             //Need further information on how to get the result of a recipe, and what getRecipe does
-            if (CustomRecipe.Companion.getRecipe(matrix) != null) {
-                result = CustomRecipe.Companion.getRecipe(matrix).getCreateItem().invoke(player, true).getItem();
+            CustomRecipe.Companion.getRecipe(matrix);
+            if (CustomRecipe.Companion.getRecipe(matrix) != null) { //TEMP FIX (SEE DEV CHAT)
+                result = CustomRecipe.Companion.getRecipe(matrix).getCreateItem().invoke(player, true).getUpdatedItem(false);
             }
 
             if (e.getSlot()==24 && resultSlotSet) {
@@ -149,7 +156,7 @@ public class CustomCraftingEvents implements Listener {
 
             //Known bug: Grabbing the result slot will not make the items in the crafting table go away
             //Possible solutions: Save a variable to the field to check if the result slot is a proper recipe result then clear the matrix
-            if(result != null) {
+            if(!result.getType().equals(Material.AIR)) {
                 setMatrix(matrix);
                 setResult(result);
                 player.updateInventory();

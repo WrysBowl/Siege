@@ -35,7 +35,8 @@ public class Levels {
     }
 
     public static short getLevel(OfflinePlayer player) {
-        return (short) player.getPlayer().getLevel();
+        return (short) player.getPlayer().getLevel(); //TEMP Remove when fixed
+
         /*
         Connection connection = DatabaseManager.INSTANCE.getConnection();
         try {

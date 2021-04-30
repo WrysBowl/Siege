@@ -11,62 +11,62 @@ import java.util.ArrayList;
 public enum BlockDrops {
     //WOOD
     SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
-            {new Stick(0).getItem(), 100.0},
-            {new LivingTwig(Utils.randRarity()).getItem(), 1.0}
+            {new Stick(0).getUpdatedItem(false), 100.0},
+            {new LivingTwig(Utils.randRarity()).getUpdatedItem(false), 1.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     SPRUCE_WOOD(Material.SPRUCE_WOOD, new Object[][]{
-            {new Stick(0).getItem(), 100.0}
+            {new Stick(0).getUpdatedItem(false), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //DIRT TERRAIN
     GRASS_BLOCK(Material.GRASS_BLOCK, new Object[][]{
-            {new PlantMatter(0).getItem(), 20.0},
-            {new Seed(0).getItem(), 20.0}
+            {new PlantMatter(0).getUpdatedItem(false), 20.0},
+            {new Seed(0).getUpdatedItem(false), 20.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     GREEN_TERRACOTTA(Material.GREEN_TERRACOTTA, new Object[][]{
-            {new PlantMatter(0).getItem(), 25.0},
-            {new Seed(0).getItem(), 35.0}
+            {new PlantMatter(0).getUpdatedItem(false), 25.0},
+            {new Seed(0).getUpdatedItem(false), 35.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     GREEN_CONCRETE(Material.GREEN_CONCRETE, new Object[][]{
-            {new PlantMatter(0).getItem(), 35.0},
-            {new Seed(0).getItem(), 25.0}
+            {new PlantMatter(0).getUpdatedItem(false), 35.0},
+            {new Seed(0).getUpdatedItem(false), 25.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     LIME_TERRACOTTA(Material.LIME_TERRACOTTA, new Object[][]{
-            {new PlantMatter(0).getItem(), 40.0},
-            {new Seed(0).getItem(), 40.0}
+            {new PlantMatter(0).getUpdatedItem(false), 40.0},
+            {new Seed(0).getUpdatedItem(false), 40.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     DIRT(Material.DIRT, new Object[][]{
-            {new Pebble(0).getItem(), 20.0}
+            {new Pebble(0).getUpdatedItem(false), 20.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     COARSE_DIRT(Material.COARSE_DIRT, new Object[][]{
-            {new Pebble(0).getItem(), 30.0}
+            {new Pebble(0).getUpdatedItem(false), 30.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //STONE TERRAIN
     STONE(Material.STONE, new Object[][]{
-            {new Pebble(0).getItem(), 100.0}
+            {new Pebble(0).getUpdatedItem(false), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     LIGHT_GRAY_CONCRETE(Material.LIGHT_GRAY_CONCRETE, new Object[][]{
-            {new Pebble(0).getItem(), 30.0}
+            {new Pebble(0).getUpdatedItem(false), 30.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     ANDESITE(Material.ANDESITE, new Object[][]{
-            {new Pebble(0).getItem(), 40.0}
+            {new Pebble(0).getUpdatedItem(false), 40.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //ORES
     COAL_ORE(Material.COAL_ORE, new Object[][]{
-            {new Coal(0).getItem(), 100.0}
+            {new Coal(0).getUpdatedItem(false), 100.0}
     }, new Integer[]{20, 30}, new Integer[]{30, 40}, 100),
     IRON_ORE(Material.IRON_ORE, new Object[][]{
-            {new MetalScrap(0).getItem(), 100.0}
+            {new MetalScrap(0).getUpdatedItem(false), 100.0}
     }, new Integer[]{30, 40}, new Integer[]{40, 50}, 200),
 
     //DECOR TERRAIN
     VINE(Material.VINE, new Object[][]{
-            {new Vine(0).getItem(), 100.0}
+            {new Vine(0).getUpdatedItem(false), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     CHAIN(Material.CHAIN, new Object[][]{
-            {new Chain(0).getItem(), 100.0}
+            {new Chain(0).getUpdatedItem(false), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20);
 
     private final Material block;

@@ -18,56 +18,56 @@ public enum MobDrops {
 
     /**
     ExampleMob(new Object[][]{
-        {new ExampleItem(qualityInt).getItem(), chanceInt},
-        {new Pebble(0).getItem(), 10}
+        {new ExampleItem(qualityInt).getUpdatedItem(false), chanceInt},
+        {new Pebble(0).getUpdatedItem(false), 10}
      }, new Integer[]{minGold, maxGold}, new Integer[]{minExp, maxExp}),
      **/
 
     //HOSTILE AREA 1
     RockRat(new Object[][]{
-            {new Pebble(0).getItem(), 10.0},
+            {new Pebble(0).getUpdatedItem(false), 10.0},
     }, new Integer[]{0, 2}, new Integer[]{1, 3}),
     Blob(new Object[][]{
-            {new Slime(0).getItem(), 50.0},
+            {new Slime(0).getUpdatedItem(false), 50.0},
     }, new Integer[]{3, 6}, new Integer[]{4, 6}),
     ScorchingBlob(new Object[][]{
-            {new Magma(0).getItem(), 50.0},
+            {new Magma(0).getUpdatedItem(false), 50.0},
     }, new Integer[]{2, 5}, new Integer[]{5, 8}),
     ForestSpider(new Object[][]{
-            {new Vine(0).getItem(), 50.0},
-            {new Stick(0).getItem(), 30.0}
+            {new Vine(0).getUpdatedItem(false), 50.0},
+            {new Stick(0).getUpdatedItem(false), 30.0}
     }, new Integer[]{4, 7}, new Integer[]{7, 10}),
     BloodSucker(new Object[][]{
-            {new Vine(0).getItem(), 60.0},
-            {new Stick(0).getItem(), 20.0}
+            {new Vine(0).getUpdatedItem(false), 60.0},
+            {new Stick(0).getUpdatedItem(false), 20.0}
     }, new Integer[]{4, 7}, new Integer[]{6, 9}),
     AngryBull(new Object[][]{
-            {new Leather(0).getItem(), 100.0},
-            {new Drumstick(0).getItem(), 100.0}
+            {new Leather(0).getUpdatedItem(false), 100.0},
+            {new Drumstick(0).getUpdatedItem(false), 100.0}
     }, new Integer[]{8, 12}, new Integer[]{11, 15}),
     Bandit(new Object[][]{
-            {new Shank(Utils.randRarity()).getItem(), 5.0},
-            {new Dagger(Utils.randRarity()).getItem(), 2.0},
-            {new MetalScrap(0).getItem(), 1.0},
-            {new Leather(0).getItem(), 8.0},
-            {new SplinteredBone(Utils.randRarity()).getItem(), 0.5}
+            {new Shank(Utils.randRarity()).getUpdatedItem(false), 5.0},
+            {new Dagger(Utils.randRarity()).getUpdatedItem(false), 2.0},
+            {new MetalScrap(0).getUpdatedItem(false), 1.0},
+            {new Leather(0).getUpdatedItem(false), 8.0},
+            {new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5}
     }, new Integer[]{21, 25}, new Integer[]{19, 24}),
     BanditArcher(new Object[][]{
-            {new Crossbow(Utils.randRarity()).getItem(), 0.5},
-            {new RecurveBow(Utils.randRarity()).getItem(), 0.25},
-            {new Bone(0).getItem(), 3.0},
-            {new Leather(0).getItem(), 8.0}
+            {new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5},
+            {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
+            {new Bone(0).getUpdatedItem(false), 3.0},
+            {new Leather(0).getUpdatedItem(false), 8.0}
     }, new Integer[]{15, 19}, new Integer[]{27, 32}),
     //NEUTRAL AREA 1
     GiantHornet(new Object[][]{
-            {new Magma(0).getItem(), 30.0},
-            {new Seed(0).getItem(), 100.0},
+            {new Magma(0).getUpdatedItem(false), 30.0},
+            {new Seed(0).getUpdatedItem(false), 100.0},
     }, new Integer[]{1, 4}, new Integer[]{3, 5}),
     WildFox(new Object[][]{
-            {new Dagger(Utils.randRarity()).getItem(), 1.0},
-            {new Bone(0).getItem(), 2.0},
-            {new WoodenSword(Utils.randRarity()).getItem(), 5.0},
-            {new Drumstick(0).getItem(), 15.0}
+            {new Dagger(Utils.randRarity()).getUpdatedItem(false), 1.0},
+            {new Bone(0).getUpdatedItem(false), 2.0},
+            {new WoodenSword(Utils.randRarity()).getUpdatedItem(false), 5.0},
+            {new Drumstick(0).getUpdatedItem(false), 15.0}
     }, new Integer[]{2, 5}, new Integer[]{3, 6});
     private final Object[][] rewards;
     private final Integer[] numGold;
