@@ -38,10 +38,10 @@ class CustomItemKotlinListener : Listener {
     fun onItemSwitch(e: PlayerItemHeldEvent) {
         //e.player.chat("switched item from ${e.previousSlot} to ${e.newSlot}")
         //CustomItemUtils.getPlayerStat(e.player, StatTypes.STRENGTH)
-        e.player.sendMessage("item in new slot: ${e.player.inventory.getItem(e.newSlot)?.type}")
-        e.player.sendMessage("item in main hand: ${e.player.inventory.itemInMainHand.type}")
-        e.player.sendMessage("item in previous slot: ${e.player.inventory.getItem(e.previousSlot)?.type}")
-        e.player.sendMessage("strength stat: ${CustomItemUtils.getPlayerStat(e.player, StatTypes.STRENGTH, e.player.inventory.getItem(e.newSlot))}")
+        //e.player.sendMessage("item in new slot: ${e.player.inventory.getItem(e.newSlot)?.type}")
+        //e.player.sendMessage("item in main hand: ${e.player.inventory.itemInMainHand.type}")
+        //e.player.sendMessage("item in previous slot: ${e.player.inventory.getItem(e.previousSlot)?.type}")
+        //e.player.sendMessage("strength stat: ${CustomItemUtils.getPlayerStat(e.player, StatTypes.STRENGTH, e.player.inventory.getItem(e.newSlot))}")
         // TODO: Permanent fadein action bar
 //        GlobalScope.launch {
 //            delay(10)
