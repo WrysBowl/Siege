@@ -68,9 +68,7 @@ public class CustomCraftingEvents implements Listener {
                 ItemStack cell = inv.getItem(y+x);
                 if (cell != null) {
                     CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(cell);
-                    if (item != null) {
-                        matrix.add(item);
-                    } else { matrix.add(null); }
+                    matrix.add(item);
                 } else { matrix.add(null); }
             }
         }

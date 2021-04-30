@@ -40,6 +40,7 @@ class SewerShooter() : CustomBow(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

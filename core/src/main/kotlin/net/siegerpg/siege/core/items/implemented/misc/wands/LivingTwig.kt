@@ -1,22 +1,27 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
+package net.siegerpg.siege.core.items.implemented.misc.wands
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
-import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
+import net.siegerpg.siege.core.items.types.misc.CustomWand
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class DoubleBladedAxe() : CustomMeleeWeapon(
-    name = "Double Bladed Axe",
-    customModelData = 130005,
-    description = listOf("You're really only going to use one side"),
-    levelRequirement = 19,
-    material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 40.0),
+class LivingTwig() : CustomWand(
+    name = "Living Twig",
+    customModelData = 140001,
+    description = listOf("A faint amount of energy still exists in this twig"),
+    levelRequirement = 4,
+    material = Material.WOODEN_HOE,
+    baseStats = CustomItemUtils.statMap(strength = 4.0, luck = 4.0),
     recipeList = recipes {
+
     },
-    attackSpeed = 0.7
+    range = 15,
+    red = 204,
+    green = 255,
+    blue = 102,
+    damageRadius = 1.5
 ) {
 
     constructor(quality: Int): this() {

@@ -1,47 +1,55 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
+package net.siegerpg.siege.core.items.implemented.misc.wands
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Pebble
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*
 import net.siegerpg.siege.core.items.recipes.recipes
-import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
+import net.siegerpg.siege.core.items.types.misc.CustomWand
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class StoneAxe() : CustomMeleeWeapon(
-    name = "Stone Axe",
-    customModelData = 130004,
-    description = listOf("Commonly used for chopping trees"),
+class RockWand() : CustomWand(
+    name = "Rock Wand",
+    customModelData = 140005,
+    description = listOf("Nature made rocks to be weaponized"),
     levelRequirement = 15,
-    material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 32.0),
+    material = Material.WOODEN_HOE,
+    baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 6.0),
     recipeList = recipes {
         recipe {
             shaped = true
             s1(Pebble(0)) //tier 3
-            s2(Pebble(0)) //tier 3
-            s4(Pebble(0)) //tier 3
-            s5(Stick(0)) //tier 3
-            s8(Stick(0)) //tier 3
+            s4(Stick(0)) //tier 3
+            s7(Stick(0)) //tier 3
             item { player, b ->
-                StoneAxe(Utils.randRarity())
+                RockWand(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
             s2(Pebble(0)) //tier 3
+            s5(Stick(0)) //tier 3
+            s8(Stick(0)) //tier 3
+            item { player, b ->
+                RockWand(Utils.randRarity())
+            }
+        }
+        recipe {
+            shaped = true
             s3(Pebble(0)) //tier 3
-            s5(Pebble(0)) //tier 3
             s6(Stick(0)) //tier 3
             s9(Stick(0)) //tier 3
             item { player, b ->
-                StoneAxe(Utils.randRarity())
+                RockWand(Utils.randRarity())
             }
         }
     },
-    attackSpeed = 0.8
+    range = 16,
+    red = 140,
+    green = 140,
+    blue = 140,
+    damageRadius = 2.0
 ) {
 
     constructor(quality: Int): this() {
