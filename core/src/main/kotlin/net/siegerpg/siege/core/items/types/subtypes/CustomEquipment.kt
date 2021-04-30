@@ -47,6 +47,7 @@ interface CustomEquipment : CustomItem {
         meta.lore("<r><gray>Level: $levelRequirement")
         if (hideRarity) meta.lore("<r><red>This is not the real item")
 
+        meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
         return item
