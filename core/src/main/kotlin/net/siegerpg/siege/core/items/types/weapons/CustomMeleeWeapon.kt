@@ -44,4 +44,10 @@ abstract class CustomMeleeWeapon(
         return item
     }
 
+    override fun equals(other: Any?): Boolean {
+        other?.let { return false }
+        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        return true
+    }
+
 }

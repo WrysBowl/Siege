@@ -27,4 +27,12 @@ class Coal() : CustomMaterial(
         deserialize()
     }
 
+    companion object {
+        fun tier(tier: Int): Coal {
+            val newItem = Coal(0)
+            newItem.tier = tier
+            return newItem
+        }
+    }
+
 }

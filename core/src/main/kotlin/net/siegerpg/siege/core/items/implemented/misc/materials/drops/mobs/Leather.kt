@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs
 
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
@@ -25,6 +26,14 @@ class Leather() : CustomMaterial(
     constructor(item: ItemStack): this() {
         this.item = item
         deserialize()
+    }
+
+    companion object {
+        fun tier(tier: Int): Leather {
+            val newItem = Leather(0)
+            newItem.tier = tier
+            return newItem
+        }
     }
 
 }

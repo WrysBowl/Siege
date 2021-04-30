@@ -65,4 +65,10 @@ abstract class CustomFood(
 
     private fun getRarityMultiplier(quality: Int): Double = quality / 100 + 0.5
 
+    override fun equals(other: Any?): Boolean {
+        other?.let { return false }
+        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        return true
+    }
+
 }

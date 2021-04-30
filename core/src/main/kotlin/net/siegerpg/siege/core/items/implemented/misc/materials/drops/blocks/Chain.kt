@@ -27,4 +27,12 @@ class Chain() : CustomMaterial(
         deserialize()
     }
 
+    companion object {
+        fun tier(tier: Int): Chain {
+            val newItem = Chain(0)
+            newItem.tier = tier
+            return newItem
+        }
+    }
+
 }

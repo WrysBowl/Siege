@@ -22,10 +22,12 @@ class TestSword() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(PlantMatter(0))
-            s4(PlantMatter(0))
+            s1(PlantMatter.tier(1))
+            s4(PlantMatter.tier(1))
             item { player, b ->
-                TestSword(Utils.randRarity())
+                val newItem = TestSword(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

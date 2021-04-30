@@ -27,4 +27,12 @@ class Seed() : CustomMaterial(
         deserialize()
     }
 
+    companion object {
+        fun tier(tier: Int): Seed {
+            val newItem = Seed(0)
+            newItem.tier = tier
+            return newItem
+        }
+    }
+
 }

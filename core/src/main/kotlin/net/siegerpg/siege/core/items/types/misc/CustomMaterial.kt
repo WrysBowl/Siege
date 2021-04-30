@@ -65,4 +65,13 @@ abstract class CustomMaterial(
         return item
     }
 
+    override fun equals(other: Any?): Boolean {
+        other?.let { return false }
+        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        val castedOther = other as CustomMaterial
+        if (this.tier != castedOther.tier) return false
+        return true
+    }
+
+
 }
