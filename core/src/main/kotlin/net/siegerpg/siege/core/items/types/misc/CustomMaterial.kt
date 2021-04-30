@@ -8,6 +8,8 @@ import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.utils.name
+import net.siegerpg.siege.core.utils.lore
 import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -53,13 +55,12 @@ abstract class CustomMaterial(
 
         val meta = item.itemMeta
 
-        meta.displayName(Utils.lore("<r><gray>$name <yellow>${"✪".repeat(tier)}"))
+        meta.name("<r><gray>$name <yellow>${"✪".repeat(tier)}")
 
-        val newLore = mutableListOf(Utils.lore(" "))
+        meta.lore(" ")
         description.forEach {
-            newLore.add(Utils.lore("<r><dark_gray>$it"))
+           meta.lore("<r><dark_gray>$it")
         }
-        meta.lore(newLore)
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta

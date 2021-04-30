@@ -5,6 +5,8 @@ import net.siegerpg.siege.core.items.*
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.utils.name
+import net.siegerpg.siege.core.utils.lore
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
@@ -23,29 +25,27 @@ interface CustomEquipment : CustomItem {
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        meta.displayName(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name"))
+        meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
 
-        val newLore =
-            mutableListOf(Utils.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%"))
+        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%")
         statGem?.let {
-            newLore.add(Utils.lore(" "))
-            newLore.add(Utils.lore("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem"))
+            meta.lore(" ")
+            meta.lore("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem")
         }
         if (baseStats.size != 0) {
-            newLore.add(Utils.lore(" "))
+            meta.lore(" ")
             val realStats = CustomItemUtils.getStats(this, addGem = false, addRarity = true)
             baseStats.keys.forEach {
-                newLore.add(Utils.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")) // TODO: Make special items work with rarity multiplier
+                meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}") // TODO: Make special items work with rarity multiplier
             }
         }
-        newLore.add(Utils.lore(" "))
+        meta.lore(" ")
         description.forEach {
-            newLore.add(Utils.lore("<r><dark_gray>$it"))
+            meta.lore("<r><dark_gray>$it")
         }
-        newLore.add(Utils.lore(" "))
-        newLore.add(Utils.lore("<r><gray>Level: $levelRequirement"))
-        if (hideRarity) newLore.add(Utils.lore("<r><red>This is not the real item"))
-        meta.lore(newLore)
+        meta.lore(" ")
+        meta.lore("<r><gray>Level: $levelRequirement")
+        if (hideRarity) meta.lore("<r><red>This is not the real item")
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta

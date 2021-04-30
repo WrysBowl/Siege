@@ -6,6 +6,8 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.utils.name
+import net.siegerpg.siege.core.utils.lore
 import org.bukkit.Material
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
@@ -44,21 +46,19 @@ abstract class CustomFood(
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        meta.displayName(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name"))
+        meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
 
-        val newLore =
-            mutableListOf(Utils.parse(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%"))
+        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%")
         val realHealth = health * getRarityMultiplier(quality)
-        if (realHealth > 0) newLore.add(Utils.parse(" "))
-        if (realHealth > 0) newLore.add(Utils.parse("<r><red>+$realHealth Health"))
-        newLore.add(Utils.parse(" "))
+        if (realHealth > 0) meta.lore(" ")
+        if (realHealth > 0) meta.lore("<r><red>+$realHealth Health")
+        meta.lore(" ")
         description.forEach {
-            newLore.add(Utils.parse("<r><dark_gray>$it"))
+            meta.lore("<r><dark_gray>$it")
         }
-        newLore.add(Utils.parse(" "))
-        newLore.add(Utils.parse("<r><gray>Level: $levelRequirement"))
-        if (hideRarity) newLore.add(Utils.parse("<r><red>This is not the real item"))
-        meta.lore(newLore)
+        meta.lore(" ")
+        meta.lore("<r><gray>Level: $levelRequirement")
+        if (hideRarity) meta.lore("<r><red>This is not the real item")
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
