@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
+import net.siegerpg.siege.core.events.ArmorEquipEvent
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
@@ -25,6 +26,12 @@ class CustomItemKotlinListener : Listener {
     @Suppress("unused")
     fun onHit(e: ProjectileHitEvent) {
 
+    }
+
+    @EventHandler()
+    @Suppress("unused")
+    fun onArmorEquip(e: ArmorEquipEvent) {
+        // TODO: Permanent fadein action bar
     }
 
     @EventHandler
