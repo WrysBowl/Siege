@@ -9,13 +9,13 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class IronHelmet() : CustomHelmet(
-    name = "Iron Helmet",
+class IronLeggings() : CustomHelmet(
+    name = "Iron Leggings",
     customModelData = 1,
-    description = listOf("Thick skull"),
-    levelRequirement = 29,
-    material = Material.IRON_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 80.0),
+    description = listOf("Iron jenkins"),
+    levelRequirement = 35,
+    material = Material.IRON_LEGGINGS,
+    baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 100.0, regeneration = 30.0),
     recipeList = recipes {
         recipe {
             shaped = true
@@ -24,19 +24,10 @@ class IronHelmet() : CustomHelmet(
             s3(RefinedMetal(0)) //tier 2
             s4(RefinedMetal(0)) //tier 2
             s6(RefinedMetal(0)) //tier 2
-            item { player, b ->
-                IronHelmet(Utils.randRarity())
-            }
-        }
-        recipe {
-            shaped = true
-            s4(RefinedMetal(0)) //tier 2
-            s5(RefinedMetal(0)) //tier 2
-            s6(RefinedMetal(0)) //tier 2
             s7(RefinedMetal(0)) //tier 2
             s9(RefinedMetal(0)) //tier 2
             item { player, b ->
-                IronHelmet(Utils.randRarity())
+                IronLeggings(Utils.randRarity())
             }
         }
     },

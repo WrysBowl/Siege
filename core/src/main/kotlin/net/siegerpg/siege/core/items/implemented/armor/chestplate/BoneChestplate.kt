@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.items.implemented.armor.helmet
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.Bone
+import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.*
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.utils.Utils
@@ -10,34 +10,26 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class BoneHelmet() : CustomHelmet(
-    name = "Bone Helmet",
+class BoneChestplate() : CustomHelmet(
+    name = "Bone Chestplate",
     customModelData = 1,
-    description = listOf("A second skull"),
-    levelRequirement = 23,
-    material = Material.LEATHER_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 50.0),
+    description = listOf("Spare ribs"),
+    levelRequirement = 24,
+    material = Material.LEATHER_CHESTPLATE,
+    baseStats = CustomItemUtils.statMap(health = 60.0, toughness = 120.0),
     recipeList = recipes {
         recipe {
             shaped = true
             s1(Bone(0)) //tier 2
-            s2(Bone(0)) //tier 2
             s3(Bone(0)) //tier 2
-            s4(Bone(0)) //tier 2
-            s6(Bone(0)) //tier 2
-            item { player, b ->
-                BoneHelmet(Utils.randRarity())
-            }
-        }
-        recipe {
-            shaped = true
             s4(Bone(0)) //tier 2
             s5(Bone(0)) //tier 2
             s6(Bone(0)) //tier 2
             s7(Bone(0)) //tier 2
+            s8(Bone(0)) //tier 2
             s9(Bone(0)) //tier 2
             item { player, b ->
-                BoneHelmet(Utils.randRarity())
+                BoneChestplate(Utils.randRarity())
             }
         }
     },

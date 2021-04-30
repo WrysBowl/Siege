@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.items.types.subtypes
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import org.bukkit.Color
+import org.bukkit.attribute.Attribute
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemStack
@@ -24,6 +25,13 @@ interface CustomArmor: CustomEquipment {
             val leatherMeta = meta as LeatherArmorMeta
             leatherMeta.setColor(leatherColor)
             item.itemMeta = leatherMeta
+        } catch(e: Error) {
+
+        }
+
+        try {
+            meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
+            item.itemMeta = meta
         } catch(e: Error) {
 
         }
