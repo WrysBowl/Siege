@@ -1,18 +1,18 @@
-package net.siegerpg.siege.core.items.implemented.armor
+package net.siegerpg.siege.core.items.implemented.armor.leggings
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
-import net.siegerpg.siege.core.items.types.armor.CustomChestplate
+import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class TestChestplate() : CustomChestplate(
-    name = "Test Chestplate",
+class TestLeggings() : CustomLeggings(
+    name = "Test Leggings",
     customModelData = 1,
-    description = listOf("A chestplate for testing"),
+    description = listOf("Leggings for testing"),
     levelRequirement = 0,
-    material = Material.DIAMOND_CHESTPLATE,
+    material = Material.DIAMOND_LEGGINGS,
     recipeList = recipes {
 
     },

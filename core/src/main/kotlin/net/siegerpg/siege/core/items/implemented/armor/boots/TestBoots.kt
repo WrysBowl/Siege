@@ -1,18 +1,18 @@
-package net.siegerpg.siege.core.items.implemented.armor
+package net.siegerpg.siege.core.items.implemented.armor.boots
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
-import net.siegerpg.siege.core.items.types.armor.CustomLeggings
+import net.siegerpg.siege.core.items.types.armor.CustomBoots
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class TestLeggings() : CustomLeggings(
-    name = "Test Leggings",
+class TestBoots() : CustomBoots(
+    name = "Test Boots",
     customModelData = 1,
-    description = listOf("Leggings for testing"),
+    description = listOf("Boots for testing"),
     levelRequirement = 0,
-    material = Material.DIAMOND_LEGGINGS,
+    material = Material.DIAMOND_BOOTS,
     recipeList = recipes {
 
     },
