@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.drops;
 
+import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Dagger;
