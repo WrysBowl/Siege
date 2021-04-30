@@ -3,6 +3,7 @@ package net.siegerpg.siege.core;
 import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.Hub;
 import net.siegerpg.siege.core.listeners.*;
+import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
 import net.siegerpg.siege.core.party.PartyManager;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Color;
@@ -89,6 +90,7 @@ public final class Core extends JavaPlugin {
         plugin().getServer().getPluginManager().registerEvents(new WorldProtectionListener(), this);
         plugin().getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         plugin().getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
+        plugin().getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
 
         plugin().getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         new RegenerationTask().startRegenTask();

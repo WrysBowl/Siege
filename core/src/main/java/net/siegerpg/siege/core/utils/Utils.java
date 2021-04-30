@@ -4,9 +4,13 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.items.CustomItem;
+import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -54,4 +58,25 @@ public class Utils {
         double rand2 = (((Math.random() * 100) + 1));
         return (int) ((-1 * Math.sqrt(rand1*rand2)) + 100);
     }
+
+    public static ItemStack setLoreCost(ItemStack item) {
+        ItemMeta itemMeta = item.getItemMeta();
+        Integer itemCost = CustomItemUtils.INSTANCE.getCustomItem(item).getQuality() * CustomItemUtils.INSTANCE.getCustomItem(item).getLevelRequirement();
+        itemMeta.lore().add(Utils.parse(itemCost.toString()));
+        item.setItemMeta(itemMeta);
+        return item;
+    }
+
+    public static Integer getCost(ItemStack item) {
+        String cost = item.getLore().get(item.getLore().size());
+        return Integer.valueOf(cost);
+    }
+
+    public static ItemStack removeLastLore(ItemStack item) {
+        ItemMeta itemMeta = item.getItemMeta();
+        itemMeta.lore().remove(itemMeta.getLore().size()-1);
+        item.setItemMeta(itemMeta);
+        return item;
+    }
+
 }
