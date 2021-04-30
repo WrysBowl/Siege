@@ -32,8 +32,7 @@ object FloodSelection {
                         val newLoc = Location(loc.world, loc.x + i, loc.y + i2, loc.z + i3)
                         alreadySelected.addAll(
                             floodSelect(newLoc, data, corners, alreadySelected)
-                        )
-                    }
+                        )                    }
         else {
 
             for ((i, i2, i3) in cornerlessPositions) {
