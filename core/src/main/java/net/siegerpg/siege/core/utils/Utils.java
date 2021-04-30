@@ -35,7 +35,7 @@ public class Utils {
 
     @SuppressWarnings("unused")
     static public NamespacedKey namespacedKey(String str) {
-        return new NamespacedKey(Core.INSTANCE, str);
+        return new NamespacedKey(Core.plugin(), str);
     }
 
     public static boolean randTest(Double num) {

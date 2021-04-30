@@ -134,7 +134,7 @@ public class Party {
                     disband();
                 }
             }
-        }.runTaskLaterAsynchronously(Core.INSTANCE, 1200);
+        }.runTaskLaterAsynchronously(Core.plugin(), 1200);
     }
 
     /**

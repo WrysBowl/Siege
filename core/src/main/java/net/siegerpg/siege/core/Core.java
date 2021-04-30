@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 @SuppressWarnings("unused")
 public final class Core extends JavaPlugin {
 
-    public static Core INSTANCE;
+    private static Core INSTANCE;
 
     public static PartyManager partyManager;
 
@@ -82,22 +82,22 @@ public final class Core extends JavaPlugin {
         // TODO: uncomment this when working on party command
 
 
-        plugin().getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
-        plugin().getServer().getPluginManager().registerEvents(new DamageIndicatorListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new DeathListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new ItemPickupListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new StatGemListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new WorldProtectionListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
-        plugin().getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
+        getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
+        getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
+        getServer().getPluginManager().registerEvents(new DamageIndicatorListener(), this);
+        getServer().getPluginManager().registerEvents(new DeathListener(), this);
+        getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
+        getServer().getPluginManager().registerEvents(new ItemPickupListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
+        getServer().getPluginManager().registerEvents(new StatGemListener(), this);
+        getServer().getPluginManager().registerEvents(new WorldProtectionListener(), this);
+        getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
+        getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
+        getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
 
-        plugin().getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
+        getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         new RegenerationTask().startRegenTask();
     }
 
@@ -108,8 +108,14 @@ public final class Core extends JavaPlugin {
 //        partyManager.saveAll();
     }
 
+    /**
+     * Method to get the plugin from other classes
+     * You can use Core.plugin() in other classes to get the plugin instance
+     *
+     * @return The main plugin
+     */
     public static Core plugin() {
-        return INSTANCE; // Method to get the plugin from other classes, so you can use Core.plugin() in other classes to get the plugin
+        return INSTANCE;
     }
 
 }

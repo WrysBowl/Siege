@@ -18,9 +18,9 @@ object DatabaseManager {
     private val ds: HikariDataSource
 
     init {
-        val configFile = File(Core.INSTANCE.dataFolder.absolutePath, "privKeys.yml")
+        val configFile = File(Core.plugin().dataFolder.absolutePath, "privKeys.yml")
         if (!configFile.exists()) {
-            Core.INSTANCE.logger.severe("privKeys.yml not found")
+            Core.plugin().logger.severe("privKeys.yml not found")
         }
         val configuration: YamlConfiguration = YamlConfiguration.loadConfiguration(configFile)
         url = String.format(
