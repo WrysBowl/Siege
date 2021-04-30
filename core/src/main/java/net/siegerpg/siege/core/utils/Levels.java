@@ -10,7 +10,7 @@ public class Levels {
         return Math.pow(level+3, 3);
     }
     
-    public static void levelCalculate(OfflinePlayer player) throws SQLException {
+    public static void levelCalculate(OfflinePlayer player) {
         short level = getLevel(player);
         int exp = getExp(player);
         while (calculateRequiredExperience(level) <= exp) { //Loops until required exp is greater than current exp

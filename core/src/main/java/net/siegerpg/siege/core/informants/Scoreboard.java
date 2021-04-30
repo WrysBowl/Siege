@@ -1,8 +1,6 @@
 package net.siegerpg.siege.core.informants;
 
 import net.siegerpg.siege.core.utils.VaultHook;
-import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;

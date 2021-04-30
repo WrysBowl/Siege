@@ -1,14 +1,10 @@
 package net.siegerpg.siege.core.listeners;
 
-import kotlin.Suppress;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.CustomItemUtilsKt;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
-import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -62,15 +58,13 @@ public class CustomCraftingEvents implements Listener {
     }
 
     public List<CustomItem> getMatrix() {
-        List<CustomItem> matrix = new ArrayList<>();;
+        List<CustomItem> matrix = new ArrayList<>();
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
                 ItemStack cell = inv.getItem(y+x);
                 if (cell != null) {
                     CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(cell);
-                    if (item != null) {
-                        matrix.add(item);
-                    } else { matrix.add(null); }
+                    matrix.add(item);
                 } else { matrix.add(null); }
             }
         }

@@ -1,6 +1,6 @@
 package net.siegerpg.siege.core.drops;
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

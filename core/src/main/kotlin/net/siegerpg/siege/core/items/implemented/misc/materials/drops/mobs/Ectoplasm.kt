@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops
+package net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
@@ -19,6 +19,7 @@ class Ectoplasm() : CustomMaterial(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

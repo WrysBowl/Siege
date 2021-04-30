@@ -3,7 +3,6 @@ package net.siegerpg.siege.core.listeners;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
-import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
@@ -70,13 +69,6 @@ public class PlayerJoinListener implements Listener {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);
         }
-
-        /**
-         * Checks for if this is the first time a player joins
-         * Set player's level to 1
-         * Gives player a sword
-         * Gives player a stone axe, stone shovel, stone pickaxe
-         */
 
         if (Levels.getLevel(player) < 1) {
             Levels.setLevel(player, (short) 1);

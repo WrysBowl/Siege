@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops
+package net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
@@ -26,6 +26,7 @@ class RefinedMetal() : CustomMaterial(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

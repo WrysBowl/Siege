@@ -7,14 +7,8 @@ import net.siegerpg.siege.core.Core;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.metadata.FixedMetadataValue;
-
-import java.util.Arrays;
 
 public class Utils {
     @SuppressWarnings("unused")
@@ -42,8 +36,7 @@ public class Utils {
 
     public static boolean randTest(Double num) {
         double randNumber = Math.random() *100;
-        if (randNumber <= num) { return true; }
-        return false;
+        return randNumber <= num;
     }
 
     public static ItemStack getGoldCoin() {

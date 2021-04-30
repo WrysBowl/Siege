@@ -28,6 +28,6 @@ public class ItemPickupListener implements Listener{
                 ((Player) e.getEntity()).getPlayer().getLocation(),
                 Sound.ENTITY_EXPERIENCE_ORB_PICKUP
                 , 1.0f, 1.0f);
-        new Scoreboard().updateScoreboard((Player) e.getEntity());
+        Scoreboard.updateScoreboard((Player) e.getEntity());
     }
 }

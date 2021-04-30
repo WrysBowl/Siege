@@ -1,12 +1,10 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
-import net.kyori.adventure.text.format.TextDecoration
 import net.siegerpg.siege.core.items.*
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.utils.Utils
-import net.siegerpg.siege.core.utils.name
 import net.siegerpg.siege.core.utils.lore
+import net.siegerpg.siege.core.utils.name
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 

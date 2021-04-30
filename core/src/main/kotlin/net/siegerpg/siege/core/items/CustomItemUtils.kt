@@ -17,7 +17,6 @@ import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
-import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import java.lang.reflect.Constructor
@@ -79,7 +78,7 @@ object CustomItemUtils {
     fun getPlayerStat(player: Player, statType: StatTypes, itemInMainHand: ItemStack? = null): Double {
         var output = 0.0
         val inventory = player.inventory
-        val mainHand = if (itemInMainHand == null) inventory.itemInMainHand else itemInMainHand
+        val mainHand = itemInMainHand ?: inventory.itemInMainHand
 
         getCustomItem(mainHand)?.let {
             //player.chat("You are holding a custom item")

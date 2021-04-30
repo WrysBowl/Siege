@@ -1,13 +1,11 @@
 package net.siegerpg.siege.core.items.types.misc
 
-import net.kyori.adventure.text.format.TextDecoration
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
-import net.siegerpg.siege.core.utils.Utils
-import net.siegerpg.siege.core.utils.name
 import net.siegerpg.siege.core.utils.lore
+import net.siegerpg.siege.core.utils.name
 import org.bukkit.Material
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag

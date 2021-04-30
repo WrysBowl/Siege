@@ -27,9 +27,7 @@ public class PortalEnterListener implements Listener {
 
         if (world == siegeHub) {
             moveToward(player, siegeHub.getSpawnLocation(), 2.0);
-            Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                player.openInventory(getGUIWorldTransit());
-            }, 10); //Need to recheck to make sure regen time is properly made as a delay
+            Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> player.openInventory(getGUIWorldTransit()), 10); //Need to recheck to make sure regen time is properly made as a delay
         }
     }
 
@@ -70,7 +68,7 @@ public class PortalEnterListener implements Listener {
 
         //Fill in the GUI
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
-        for (Integer i = 0; i < gui.getSize(); i++) {
+        for (int i = 0; i < gui.getSize(); i++) {
             gui.setItem(i, filler);
         }
 
