@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.drops;
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
+import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*;
+import net.siegerpg.siege.core.items.implemented.misc.wands.LivingTwig;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -10,7 +11,8 @@ import java.util.ArrayList;
 public enum BlockDrops {
     //WOOD
     SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
-            {new Stick(0).getItem(), 100.0}
+            {new Stick(0).getItem(), 100.0},
+            {new LivingTwig(Utils.randRarity()).getItem(), 1.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     SPRUCE_WOOD(Material.SPRUCE_WOOD, new Object[][]{
             {new Stick(0).getItem(), 100.0}

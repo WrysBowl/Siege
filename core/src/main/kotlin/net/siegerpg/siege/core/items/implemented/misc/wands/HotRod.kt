@@ -2,26 +2,29 @@ package net.siegerpg.siege.core.items.implemented.misc.wands
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.*
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomWand
+import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class TestWand() : CustomWand(
-    name = "Test Wand",
-    customModelData = 1,
-    description = listOf("A wand for testing"),
-    levelRequirement = 0,
+class HotRod() : CustomWand(
+    name = "Hot Rod",
+    customModelData = 140009,
+    description = listOf("A super heated rod of iron which can be directed to attackers!"),
+    levelRequirement = 33,
     material = Material.WOODEN_HOE,
-    baseStats = CustomItemUtils.statMap(strength = 30.0),
+    baseStats = CustomItemUtils.statMap(strength = 32.0, luck = 6.0),
     recipeList = recipes {
 
     },
-    range = 15,
-    red = 100,
-    green = 100,
-    blue = 100,
-    damageRadius = 3.5
+    range = 16,
+    red = 204,
+    green = 51,
+    blue = 0,
+    damageRadius = 3.0
 ) {
 
     constructor(quality: Int): this() {

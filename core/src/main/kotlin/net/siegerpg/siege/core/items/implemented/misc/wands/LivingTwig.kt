@@ -7,21 +7,21 @@ import net.siegerpg.siege.core.items.types.misc.CustomWand
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class TestWand() : CustomWand(
-    name = "Test Wand",
-    customModelData = 1,
-    description = listOf("A wand for testing"),
-    levelRequirement = 0,
+class LivingTwig() : CustomWand(
+    name = "Living Twig",
+    customModelData = 140001,
+    description = listOf("A faint amount of energy still exists in this twig"),
+    levelRequirement = 4,
     material = Material.WOODEN_HOE,
-    baseStats = CustomItemUtils.statMap(strength = 30.0),
+    baseStats = CustomItemUtils.statMap(strength = 4.0, luck = 4.0),
     recipeList = recipes {
 
     },
     range = 15,
-    red = 100,
-    green = 100,
-    blue = 100,
-    damageRadius = 3.5
+    red = 204,
+    green = 255,
+    blue = 102,
+    damageRadius = 1.5
 ) {
 
     constructor(quality: Int): this() {
