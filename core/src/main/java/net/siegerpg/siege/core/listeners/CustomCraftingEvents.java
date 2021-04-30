@@ -15,19 +15,23 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 public class CustomCraftingEvents implements Listener {
 
     private Inventory inv;
     private List<ItemStack> craftingSlots = new ArrayList<>();
     private List<Integer> numCraftingSlots = new ArrayList<>();
-    private boolean resultSlotSet = false;
     ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
     ItemStack air = new ItemStack(Material.AIR);
 
@@ -124,43 +128,69 @@ public class CustomCraftingEvents implements Listener {
             }
         }
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+            //if (e.getCursor().getType().isAir()) { return; }
+
             List<CustomItem> matrix = getMatrix();
             ItemStack result = new ItemStack(Material.AIR);
             Player player = (Player) e.getWhoClicked();
 
-            //if (e.getCursor().getType().isAir()) {return;}
-
-            /*
-            for (CustomShapedRecipe recipe : Core.plugin().getShapedRecipes()) {
-                if (recipe.doesFit(matrix)) {
-                    result = recipe.getResult();
-                }
-            }
-            for (CustomShapelessRecipe recipe : Core.plugin().getShapelessRecipes()) {
-                if (recipe.doesFit(matrix)) {
-                    result = recipe.getResult();
-                }
-            }
-             */
-
             //Need further information on how to get the result of a recipe, and what getRecipe does
-            CustomRecipe.Companion.getRecipe(matrix);
             if (CustomRecipe.Companion.getRecipe(matrix) != null) { //TEMP FIX (SEE DEV CHAT)
                 result = CustomRecipe.Companion.getRecipe(matrix).getCreateItem().invoke(player, true).getUpdatedItem(false);
             }
 
-            if (e.getSlot()==24 && resultSlotSet) {
-                clearMatrix();
+            if (e.getSlot()==24) { //if player clicks on the result slot
+                if (!Objects.requireNonNull(e.getCurrentItem()).getType().equals(Material.LIGHT_GRAY_STAINED_GLASS_PANE)) {
+                    //Loop through the matrix and subtract the recipe matrix of the same index from the iteration
+                    List<CustomItem> recipe = CustomRecipe.Companion.getRecipe(matrix).getItems();
+                    for (int i = 0; i < matrix.size()-1; i++) {
+                        if (matrix.get(i) != null) { // if cell is not air
+                            Integer amtRecipeIndex = recipe.get(i).getItem().getAmount();
+                            Integer amtMatrixIndex = matrix.get(i).getItem().getAmount();
+                            int diff = amtMatrixIndex-amtRecipeIndex;
+                            if (diff > 0) {
+                                ItemStack itemIndex = matrix.get(i).getUpdatedItem(false);
+                                itemIndex.setAmount(diff);
+                                matrix.set(i, CustomItemUtils.INSTANCE.getCustomItem(itemIndex));
+                            }
+                            matrix.set(i, recipe.get(i));
+                        }
+
+                    }
+                    setMatrix(matrix);
+                }
                 return;
             }
 
-            //Known bug: Grabbing the result slot will not make the items in the crafting table go away
-            //Possible solutions: Save a variable to the field to check if the result slot is a proper recipe result then clear the matrix
             if(!result.getType().equals(Material.AIR)) {
                 setMatrix(matrix);
                 setResult(result);
                 player.updateInventory();
-                resultSlotSet = true;
+            }
+        }, 1);
+    }
+    @EventHandler
+    public void onDragClick(InventoryDragEvent e) {
+        if (e.getInventory() != inv) return; //stops if inventory is not crafting table
+        List<Integer> slots = new ArrayList<>(e.getRawSlots());
+        if (!numCraftingSlots.containsAll(slots)) return; //if all integers in slots are not contained in numcraftingslots
+        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+            //if (e.getCursor().getType().isAir()) { return; }
+
+            List<CustomItem> matrix = getMatrix();
+            ItemStack result = new ItemStack(Material.AIR);
+            Player player = (Player) e.getWhoClicked();
+
+            //Need further information on how to get the result of a recipe, and what getRecipe does
+            if (CustomRecipe.Companion.getRecipe(matrix) != null) { //TEMP FIX (SEE DEV CHAT)
+                result = CustomRecipe.Companion.getRecipe(matrix).getCreateItem().invoke(player, true).getUpdatedItem(false);
+            }
+
+
+            if(!result.getType().equals(Material.AIR)) {
+                setMatrix(matrix);
+                setResult(result);
+                player.updateInventory();
             }
         }, 1);
     }
