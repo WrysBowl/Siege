@@ -12,8 +12,8 @@ import java.util.*
  * @param file The file the configuration will be saved to
  */
 open class ConfigurationBase(file: File) {
-     private var configFile: File = file
-     private lateinit var configuration: FileConfiguration
+     protected var configFile: File = file
+     lateinit var configuration: FileConfiguration
 
     init {
         this.createConfig()
