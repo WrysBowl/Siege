@@ -16,10 +16,10 @@ repositories {
 }
 
 dependencies {
-//    compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
+    compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
     testImplementation("junit:junit:4.12")
     compileOnly("org.projectlombok:lombok:1.18.16")
-//    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.5.0")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
     compileOnly("com.vexsoftware:nuvotifier-universal:2.6.0"){
