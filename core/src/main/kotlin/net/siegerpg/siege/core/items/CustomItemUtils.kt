@@ -17,6 +17,7 @@ import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
+import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import java.lang.reflect.Constructor
@@ -150,15 +151,15 @@ object CustomItemUtils {
             if (item.baseStats.containsKey(it)) {
                 totalAmount += item.baseStats[it]!!
             }
+            if (addRarity) {
+                totalAmount *= getRarityMultiplier(item.quality)
+            }
             if (addGem) {
                 item.statGem?.let { gem ->
                     if (gem.type == it) {
                         totalAmount += gem.amount
                     }
                 }
-            }
-            if (addRarity) {
-                totalAmount *= getRarityMultiplier(item.quality)
             }
 
             map[it] = totalAmount

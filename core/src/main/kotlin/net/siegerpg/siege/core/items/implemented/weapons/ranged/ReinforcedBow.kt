@@ -20,14 +20,16 @@ class ReinforcedBow() : CustomBow(
     recipeList = recipes {
         recipe {
             shaped = true
-            s2(Stick.tier(4)) //tier 4
-            s3(Vine.tier(3)) //tier 3
-            s4(Stick.tier(4)) //tier 4
-            s6(Vine.tier(3)) //tier 3
-            s8(Stick.tier(4)) //tier 4
-            s9(Vine.tier(3)) //tier 3
+            s2(Stick.tier(4))
+            s3(Vine.tier(3))
+            s4(Stick.tier(4))
+            s6(Vine.tier(3))
+            s8(Stick.tier(4))
+            s9(Vine.tier(3))
             item { player, b ->
-                ReinforcedBow(Utils.randRarity())
+                val newItem = ReinforcedBow(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

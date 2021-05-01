@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.items.implemented.misc.wands
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneBoots
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.recipes.recipes
@@ -26,7 +27,9 @@ class EarthernStaff() : CustomWand(
             s6(Coal.tier(4))
             s8(Seed.tier(4))
             item { player, b ->
-                EarthernStaff(Utils.randRarity())
+                val newItem = EarthernStaff(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

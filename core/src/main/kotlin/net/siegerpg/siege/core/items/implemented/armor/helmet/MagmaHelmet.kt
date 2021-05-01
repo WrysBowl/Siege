@@ -21,24 +21,28 @@ class MagmaHelmet() : CustomHelmet(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Magma(0)) //tier 2
-            s2(Magma(0)) //tier 2
-            s3(Magma(0)) //tier 2
-            s4(Magma(0)) //tier 2
-            s6(Magma(0)) //tier 2
+            s1(Magma.tier(2))
+            s2(Magma.tier(2))
+            s3(Magma.tier(2))
+            s4(Magma.tier(2))
+            s6(Magma.tier(2))
             item { player, b ->
-                MagmaHelmet(Utils.randRarity())
+                val newItem = MagmaHelmet(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s4(Magma(0)) //tier 2
-            s5(Magma(0)) //tier 2
-            s6(Magma(0)) //tier 2
-            s7(Magma(0)) //tier 2
-            s9(Magma(0)) //tier 2
+            s4(Magma.tier(2))
+            s5(Magma.tier(2))
+            s6(Magma.tier(2))
+            s7(Magma.tier(2))
+            s9(Magma.tier(2))
             item { player, b ->
-                MagmaHelmet(Utils.randRarity())
+                val newItem = MagmaHelmet(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

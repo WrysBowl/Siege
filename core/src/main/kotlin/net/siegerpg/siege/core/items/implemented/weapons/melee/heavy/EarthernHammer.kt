@@ -26,7 +26,9 @@ class EarthernHammer() : CustomMeleeWeapon(
             s5(Stick.tier(3))
             s8(Stick.tier(3))
             item { player, b ->
-                EarthernHammer(Utils.randRarity())
+                val newItem = EarthernHammer(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -37,7 +39,9 @@ class EarthernHammer() : CustomMeleeWeapon(
             s6(Stick.tier(3))
             s9(Stick.tier(3))
             item { player, b ->
-                EarthernHammer(Utils.randRarity())
+                val newItem = EarthernHammer(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

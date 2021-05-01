@@ -1,7 +1,9 @@
 package net.siegerpg.siege.core;
 
+import com.zaxxer.hikari.HikariDataSource;
 import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.Hub;
+import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
 import net.siegerpg.siege.core.party.PartyConfig;
@@ -19,7 +21,6 @@ public final class Core extends JavaPlugin {
     private static Core INSTANCE;
 
     public static PartyManager partyManager;
-
 
     public static Color defaultLeatherColor;
 
@@ -100,7 +101,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
-        new SmokyBlacksmith().resetItems();
+        SmokyBlacksmith.resetItems();
 
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         new RegenerationTask().startRegenTask();

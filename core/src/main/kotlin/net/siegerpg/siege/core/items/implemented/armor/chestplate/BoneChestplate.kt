@@ -21,16 +21,18 @@ class BoneChestplate() : CustomHelmet(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Bone(0)) //tier 2
-            s3(Bone(0)) //tier 2
-            s4(Bone(0)) //tier 2
-            s5(Bone(0)) //tier 2
-            s6(Bone(0)) //tier 2
-            s7(Bone(0)) //tier 2
-            s8(Bone(0)) //tier 2
-            s9(Bone(0)) //tier 2
+            s1(Bone.tier(2))
+            s3(Bone.tier(2))
+            s4(Bone.tier(2))
+            s5(Bone.tier(2))
+            s6(Bone.tier(2))
+            s7(Bone.tier(2))
+            s8(Bone.tier(2))
+            s9(Bone.tier(2))
             item { player, b ->
-                BoneChestplate(Utils.randRarity())
+                val newItem = BoneChestplate(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

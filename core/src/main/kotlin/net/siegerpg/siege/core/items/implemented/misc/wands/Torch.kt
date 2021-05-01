@@ -24,7 +24,9 @@ class Torch() : CustomWand(
             s4(Stick.tier(3))
             s7(Stick.tier(3))
             item { player, b ->
-                Torch(Utils.randRarity())
+                val newItem = Torch(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -33,7 +35,9 @@ class Torch() : CustomWand(
             s5(Stick.tier(3))
             s8(Stick.tier(3))
             item { player, b ->
-                Torch(Utils.randRarity())
+                val newItem = Torch(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -42,7 +46,9 @@ class Torch() : CustomWand(
             s6(Stick.tier(3))
             s9(Stick.tier(3))
             item { player, b ->
-                Torch(Utils.randRarity())
+                val newItem = Torch(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

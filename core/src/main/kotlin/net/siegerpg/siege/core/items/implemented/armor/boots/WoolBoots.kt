@@ -22,22 +22,26 @@ class WoolBoots() : CustomHelmet(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Wool.tier(2)) //tier 2
-            s3(Wool.tier(2)) //tier 2
-            s4(Wool.tier(2)) //tier 2
-            s6(Wool.tier(2)) //tier 2
+            s1(Wool.tier(2))
+            s3(Wool.tier(2))
+            s4(Wool.tier(2))
+            s6(Wool.tier(2))
             item { player, b ->
-                WoolBoots(Utils.randRarity())
+                val newItem = WoolBoots(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s4(Wool.tier(2)) //tier 2
-            s6(Wool.tier(2)) //tier 2
-            s7(Wool.tier(2)) //tier 2
-            s9(Wool.tier(2)) //tier 2
+            s4(Wool.tier(2))
+            s6(Wool.tier(2))
+            s7(Wool.tier(2))
+            s9(Wool.tier(2))
             item { player, b ->
-                WoolBoots(Utils.randRarity())
+                val newItem = WoolBoots(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

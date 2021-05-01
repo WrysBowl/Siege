@@ -53,13 +53,16 @@ abstract class CustomMaterial(
 
         val meta = item.itemMeta
 
-        meta.name("<r><gray>$name <yellow>${"✪".repeat(tier)}")
+        meta.name("<r><gray>$name <yellow>${"✫".repeat(tier)}")
+
+        if (meta.hasLore()) meta.lore(mutableListOf())
 
         meta.lore(" ")
         description.forEach {
            meta.lore("<r><dark_gray>$it")
         }
 
+        meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
         return item

@@ -4,8 +4,11 @@ import net.siegerpg.siege.core.events.ArmorEquipEvent
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
+import net.siegerpg.siege.core.utils.Levels
+import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Color
 import org.bukkit.Location
+import org.bukkit.OfflinePlayer
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
 import org.bukkit.entity.LivingEntity
@@ -65,6 +68,27 @@ class CustomItemKotlinListener : Listener {
     @EventHandler
     @Suppress("unused")
     fun onHit(e: EntityDamageByEntityEvent) {
+
+        if (e.damager is Player) {
+            e.isCancelled = true
+            val item = CustomItemUtils.getCustomItem((e.damager as Player).inventory.itemInMainHand)
+            if (item == null) {
+                e.damage = 1.0
+                return
+            }
+
+            val levelReq = item.levelRequirement
+            if (levelReq == null) {
+                e.damage = 1.0
+                return
+            }
+
+            if (levelReq > Levels.getLevel(e.damager as OfflinePlayer)) {
+                e.damager.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
+                return
+            }
+            e.isCancelled = false
+        }
 
         val victim = e.entity as LivingEntity
         val attacker =
