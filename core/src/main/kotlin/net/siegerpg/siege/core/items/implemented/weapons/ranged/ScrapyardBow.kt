@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 class ScrapyardBow() : CustomBow(
     name = "Scrapyard Bow",
     customModelData = 0,
-    description = listOf("Instructions unclear . . . made an arrow flinger"),
+    description = listOf("Instructions unclear . . .", "made an arrow flinger"),
     levelRequirement = 2,
     material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 5.0),

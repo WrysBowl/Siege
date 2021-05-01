@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack
 class PebbleShooter() : CustomBow(
     name = "Pebble Shooter",
     customModelData = 0,
-    description = listOf("Now comes with pebble shooting support!"),
+    description = listOf("Now comes with pebble", "shooting support!"),
     levelRequirement = 10,
     material = Material.BOW, //This needs to be changed to a crossbow
     baseStats = CustomItemUtils.statMap(strength = 12.0, luck = 5.0),

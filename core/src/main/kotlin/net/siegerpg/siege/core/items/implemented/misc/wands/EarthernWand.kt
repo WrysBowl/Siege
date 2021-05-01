@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack
 class EarthernWand() : CustomWand(
     name = "Earthern Wand",
     customModelData = 140008,
-    description = listOf("Life forces from earthern materials glow around this object"),
+    description = listOf("Life forces from earthern materials", "glow around this object"),
     levelRequirement = 28,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 28.0, luck = 10.0),

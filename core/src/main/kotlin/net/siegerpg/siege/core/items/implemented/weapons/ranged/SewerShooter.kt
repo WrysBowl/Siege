@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack
 class SewerShooter() : CustomBow(
     name = "Sewer Shooter",
     customModelData = 0,
-    description = listOf("A bow made of mob flesh, that's a first"),
+    description = listOf("A bow made of mob flesh,", "that's a first"),
     levelRequirement = 22,
     material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 18.0, luck = 9.0),

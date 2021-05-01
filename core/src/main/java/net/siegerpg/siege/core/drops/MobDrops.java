@@ -25,47 +25,47 @@ public enum MobDrops {
 
     //HOSTILE AREA 1
     RockRat(new Object[][]{
-            {new Pebble(0).getUpdatedItem(false), 10.0},
+            {Pebble.Companion.tier(1).getUpdatedItem(false), 10.0},
     }, new Integer[]{0, 2}, new Integer[]{1, 3}),
     Blob(new Object[][]{
-            {new Slime(0).getUpdatedItem(false), 50.0},
+            {Slime.Companion.tier(1).getUpdatedItem(false), 50.0},
     }, new Integer[]{3, 6}, new Integer[]{4, 6}),
     ScorchingBlob(new Object[][]{
-            {new Magma(0).getUpdatedItem(false), 50.0},
+            {Magma.Companion.tier(1).getUpdatedItem(false), 50.0},
     }, new Integer[]{2, 5}, new Integer[]{5, 8}),
     ForestSpider(new Object[][]{
-            {new Vine(0).getUpdatedItem(false), 50.0},
-            {new Stick(0).getUpdatedItem(false), 30.0}
+            {Vine.Companion.tier(1).getUpdatedItem(false), 50.0},
+            {Stick.Companion.tier(1).getUpdatedItem(false), 30.0}
     }, new Integer[]{4, 7}, new Integer[]{7, 10}),
     BloodSucker(new Object[][]{
-            {new Vine(0).getUpdatedItem(false), 60.0},
-            {new Stick(0).getUpdatedItem(false), 20.0}
+            {Vine.Companion.tier(1).getUpdatedItem(false), 60.0},
+            {Stick.Companion.tier(1).getUpdatedItem(false), 20.0}
     }, new Integer[]{4, 7}, new Integer[]{6, 9}),
     AngryBull(new Object[][]{
-            {new Leather(0).getUpdatedItem(false), 100.0},
+            {Leather.Companion.tier(1).getUpdatedItem(false), 100.0},
             {new Drumstick(0).getUpdatedItem(false), 100.0}
     }, new Integer[]{8, 12}, new Integer[]{11, 15}),
     Bandit(new Object[][]{
             {new Shank(Utils.randRarity()).getUpdatedItem(false), 5.0},
             {new Dagger(Utils.randRarity()).getUpdatedItem(false), 2.0},
-            {new MetalScrap(0).getUpdatedItem(false), 1.0},
-            {new Leather(0).getUpdatedItem(false), 8.0},
+            {MetalScrap.Companion.tier(1).getUpdatedItem(false), 1.0},
+            {Leather.Companion.tier(1).getUpdatedItem(false), 8.0},
             {new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5}
     }, new Integer[]{21, 25}, new Integer[]{19, 24}),
     BanditArcher(new Object[][]{
             {new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5},
             {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
-            {new Bone(0).getUpdatedItem(false), 3.0},
-            {new Leather(0).getUpdatedItem(false), 8.0}
+            {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
+            {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}
     }, new Integer[]{15, 19}, new Integer[]{27, 32}),
     //NEUTRAL AREA 1
     GiantHornet(new Object[][]{
-            {new Magma(0).getUpdatedItem(false), 30.0},
-            {new Seed(0).getUpdatedItem(false), 100.0},
+            {Magma.Companion.tier(1).getUpdatedItem(false), 30.0},
+            {Seed.Companion.tier(1).getUpdatedItem(false), 100.0},
     }, new Integer[]{1, 4}, new Integer[]{3, 5}),
     WildFox(new Object[][]{
             {new Dagger(Utils.randRarity()).getUpdatedItem(false), 1.0},
-            {new Bone(0).getUpdatedItem(false), 2.0},
+            {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
             {new WoodenSword(Utils.randRarity()).getUpdatedItem(false), 5.0},
             {new Drumstick(0).getUpdatedItem(false), 15.0}
     }, new Integer[]{2, 5}, new Integer[]{3, 6});

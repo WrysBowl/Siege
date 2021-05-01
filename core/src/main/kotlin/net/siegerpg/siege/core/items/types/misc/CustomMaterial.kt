@@ -53,7 +53,7 @@ abstract class CustomMaterial(
 
         val meta = item.itemMeta
 
-        meta.name("<r><gray>$name <yellow>${"✫".repeat(tier)}")
+        meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
 
         if (meta.hasLore()) meta.lore(mutableListOf())
 

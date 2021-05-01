@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 class HotRod() : CustomWand(
     name = "Hot Rod",
     customModelData = 140009,
-    description = listOf("A super heated rod of iron which can be directed to attackers!"),
+    description = listOf("A super heated rod of iron which", "can be directed to attackers!"),
     levelRequirement = 33,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 32.0, luck = 6.0),

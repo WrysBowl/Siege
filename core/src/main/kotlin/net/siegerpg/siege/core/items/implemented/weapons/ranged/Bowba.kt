@@ -29,7 +29,7 @@ import org.bukkit.inventory.ItemStack
 class Bowba() : CustomBow(
     name = "Bowba",
     customModelData = 0,
-    description = listOf("You put bowba in your drink. Bowba will get ruined"),
+    description = listOf("You put bowba in your drink", "Bowba will get ruined"),
     levelRequirement = 38,
     material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 35.0, luck = 19.0),

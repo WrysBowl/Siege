@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 class SplinteredBone() : CustomMeleeWeapon(
     name = "Splintered Bone",
     customModelData = 110009,
-    description = listOf("The shard of a human femur bone"),
+    description = listOf("The shard of a", "human femur bone"),
     levelRequirement = 20,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 38.0),

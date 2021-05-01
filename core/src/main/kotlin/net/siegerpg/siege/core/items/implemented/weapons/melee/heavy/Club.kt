@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 class Club() : CustomMeleeWeapon(
     name = "Club",
     customModelData = 130001,
-    description = listOf("A primative weapon composed of one big stick"),
+    description = listOf("A primative weapon composed", "of one big stick"),
     levelRequirement = 3,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 14.0),

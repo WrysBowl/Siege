@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack
 class EarthernStaff() : CustomWand(
     name = "Earthern Staff",
     customModelData = 140010,
-    description = listOf("More powerful than it's puny wand counterpart"),
+    description = listOf("More powerful than it's", "puny wand counterpart"),
     levelRequirement = 37,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 35.0, luck = 12.0),
