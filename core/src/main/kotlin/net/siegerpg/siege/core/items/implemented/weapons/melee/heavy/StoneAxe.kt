@@ -26,7 +26,9 @@ class StoneAxe() : CustomMeleeWeapon(
             s5(Stick.tier(3))
             s8(Stick.tier(3))
             item { player, b ->
-                StoneAxe(Utils.randRarity())
+                val newItem = StoneAxe(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -37,7 +39,9 @@ class StoneAxe() : CustomMeleeWeapon(
             s6(Stick.tier(3))
             s9(Stick.tier(3))
             item { player, b ->
-                StoneAxe(Utils.randRarity())
+                val newItem = StoneAxe(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

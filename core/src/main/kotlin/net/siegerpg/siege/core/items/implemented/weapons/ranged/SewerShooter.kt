@@ -22,16 +22,18 @@ class SewerShooter() : CustomBow(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Slime.tier(3)) //tier 3
-            s2(Stick.tier(3)) //tier 3
-            s3(Vine.tier(3)) //tier 3
-            s4(Stick.tier(3)) //tier 3
-            s6(Vine.tier(3)) //tier 3
-            s7(Magma.tier(3)) //tier 3
-            s8(Stick.tier(3)) //tier 3
-            s9(Vine.tier(3)) //tier 3
+            s1(Slime.tier(3))
+            s2(Stick.tier(3))
+            s3(Vine.tier(3))
+            s4(Stick.tier(3))
+            s6(Vine.tier(3))
+            s7(Magma.tier(3))
+            s8(Stick.tier(3))
+            s9(Vine.tier(3))
             item { player, b ->
-                SewerShooter(Utils.randRarity())
+                val newItem = SewerShooter(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

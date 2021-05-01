@@ -22,22 +22,26 @@ class SlimyBoots() : CustomHelmet(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Slime.tier(2)) //tier 2
-            s3(Slime.tier(2)) //tier 2
-            s4(Slime.tier(2)) //tier 2
-            s6(Slime.tier(2)) //tier 2
+            s1(Slime.tier(2))
+            s3(Slime.tier(2))
+            s4(Slime.tier(2))
+            s6(Slime.tier(2))
             item { player, b ->
-                SlimyBoots(Utils.randRarity())
+                val newItem = SlimyBoots(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s4(Slime.tier(2)) //tier 2
-            s6(Slime.tier(2)) //tier 2
-            s7(Slime.tier(2)) //tier 2
-            s9(Slime.tier(2)) //tier 2
+            s4(Slime.tier(2))
+            s6(Slime.tier(2))
+            s7(Slime.tier(2))
+            s9(Slime.tier(2))
             item { player, b ->
-                SlimyBoots(Utils.randRarity())
+                val newItem = SlimyBoots(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

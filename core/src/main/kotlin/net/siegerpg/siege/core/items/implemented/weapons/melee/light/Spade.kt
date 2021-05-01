@@ -20,50 +20,62 @@ class Spade() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Pebble.tier(2)) //tier 2
-            s4(Stick.tier(3)) //tier 3
+            s1(Pebble.tier(2))
+            s4(Stick.tier(3))
             item { player, b ->
-                Spade(Utils.randRarity())
+                val newItem = Spade(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s2(Pebble.tier(2)) //tier 2
-            s5(Stick.tier(3)) //tier 3
+            s2(Pebble.tier(2))
+            s5(Stick.tier(3))
             item { player, b ->
-                Spade(Utils.randRarity())
+                val newItem = Spade(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s3(Pebble.tier(2)) //tier 2
-            s6(Stick.tier(3)) //tier 3
+            s3(Pebble.tier(2))
+            s6(Stick.tier(3))
             item { player, b ->
-                Spade(Utils.randRarity())
+                val newItem = Spade(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s4(Pebble.tier(2)) //tier 2
-            s7(Stick.tier(3)) //tier 3
+            s4(Pebble.tier(2))
+            s7(Stick.tier(3))
             item { player, b ->
-                Spade(Utils.randRarity())
+                val newItem = Spade(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s5(Pebble.tier(2)) //tier 2
-            s8(Stick.tier(3)) //tier 3
+            s5(Pebble.tier(2))
+            s8(Stick.tier(3))
             item { player, b ->
-                Spade(Utils.randRarity())
+                val newItem = Spade(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s6(Pebble.tier(2)) //tier 2
-            s9(Stick.tier(3)) //tier 3
+            s6(Pebble.tier(2))
+            s9(Stick.tier(3))
             item { player, b ->
-                Spade(Utils.randRarity())
+                val newItem = Spade(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

@@ -19,50 +19,62 @@ class SplinteredBone() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Bone.tier(3)) //tier 3
-            s4(Bone.tier(3)) //tier 3
+            s1(Bone.tier(3))
+            s4(Bone.tier(3))
             item { player, b ->
-                SplinteredBone(Utils.randRarity())
+                val newItem = SplinteredBone(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s2(Bone.tier(3)) //tier 3
-            s5(Bone.tier(3)) //tier 3
+            s2(Bone.tier(3))
+            s5(Bone.tier(3))
             item { player, b ->
-                SplinteredBone(Utils.randRarity())
+                val newItem = SplinteredBone(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s3(Bone.tier(3)) //tier 3
-            s6(Bone.tier(3)) //tier 3
+            s3(Bone.tier(3))
+            s6(Bone.tier(3))
             item { player, b ->
-                SplinteredBone(Utils.randRarity())
+                val newItem = SplinteredBone(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s4(Bone.tier(3)) //tier 3
-            s7(Bone.tier(3)) //tier 3
+            s4(Bone.tier(3))
+            s7(Bone.tier(3))
             item { player, b ->
-                SplinteredBone(Utils.randRarity())
+                val newItem = SplinteredBone(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s5(Bone.tier(3)) //tier 3
-            s8(Bone.tier(3)) //tier 3
+            s5(Bone.tier(3))
+            s8(Bone.tier(3))
             item { player, b ->
-                SplinteredBone(Utils.randRarity())
+                val newItem = SplinteredBone(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s6(Bone.tier(3)) //tier 3
-            s9(Bone.tier(3)) //tier 3
+            s6(Bone.tier(3))
+            s9(Bone.tier(3))
             item { player, b ->
-                SplinteredBone(Utils.randRarity())
+                val newItem = SplinteredBone(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

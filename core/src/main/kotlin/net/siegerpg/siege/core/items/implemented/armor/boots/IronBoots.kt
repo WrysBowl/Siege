@@ -20,22 +20,26 @@ class IronBoots() : CustomHelmet(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(RefinedMetal.tier(2)) //tier 2
-            s3(RefinedMetal.tier(2)) //tier 2
-            s4(RefinedMetal.tier(2)) //tier 2
-            s6(RefinedMetal.tier(2)) //tier 2
+            s1(RefinedMetal.tier(2))
+            s3(RefinedMetal.tier(2))
+            s4(RefinedMetal.tier(2))
+            s6(RefinedMetal.tier(2))
             item { player, b ->
-                IronBoots(Utils.randRarity())
+                val newItem = IronBoots(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s4(RefinedMetal.tier(2)) //tier 2
-            s6(RefinedMetal.tier(2)) //tier 2
-            s7(RefinedMetal.tier(2)) //tier 2
-            s9(RefinedMetal.tier(2)) //tier 2
+            s4(RefinedMetal.tier(2))
+            s6(RefinedMetal.tier(2))
+            s7(RefinedMetal.tier(2))
+            s9(RefinedMetal.tier(2))
             item { player, b ->
-                IronBoots(Utils.randRarity())
+                val newItem = IronBoots(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

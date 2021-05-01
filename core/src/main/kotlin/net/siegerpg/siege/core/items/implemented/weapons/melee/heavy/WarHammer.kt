@@ -29,7 +29,9 @@ class WarHammer() : CustomMeleeWeapon(
             s6(Pebble.tier(3))
             s7(Stick.tier(3))
             item { player, b ->
-                GreatSword(Utils.randRarity())
+                val newItem = WarHammer(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

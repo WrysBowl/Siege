@@ -24,7 +24,9 @@ class GlowingTwig() : CustomWand(
             s4(PlantMatter.tier(3))
             s7(PlantMatter.tier(3))
             item { player, b ->
-                GlowingTwig(Utils.randRarity())
+                val newItem = GlowingTwig(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -33,7 +35,9 @@ class GlowingTwig() : CustomWand(
             s5(PlantMatter.tier(3))
             s8(PlantMatter.tier(3))
             item { player, b ->
-                GlowingTwig(Utils.randRarity())
+                val newItem = GlowingTwig(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -42,7 +46,9 @@ class GlowingTwig() : CustomWand(
             s6(PlantMatter.tier(3))
             s9(PlantMatter.tier(3))
             item { player, b ->
-                GlowingTwig(Utils.randRarity())
+                val newItem = GlowingTwig(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

@@ -21,15 +21,17 @@ class BoneLeggings() : CustomHelmet(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Bone(0)) //tier 2
-            s2(Bone(0)) //tier 2
-            s3(Bone(0)) //tier 2
-            s4(Bone(0)) //tier 2
-            s6(Bone(0)) //tier 2
-            s7(Bone(0)) //tier 2
-            s9(Bone(0)) //tier 2
+            s1(Bone.tier(2))
+            s2(Bone.tier(2))
+            s3(Bone.tier(2))
+            s4(Bone.tier(2))
+            s6(Bone.tier(2))
+            s7(Bone.tier(2))
+            s9(Bone.tier(2))
             item { player, b ->
-                BoneLeggings(Utils.randRarity())
+                val newItem = BoneLeggings(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

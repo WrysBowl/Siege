@@ -20,42 +20,50 @@ class StickyStick() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Stick.tier(2)) //tier 2
-            s4(Stick.tier(2)) //tier 2
-            s2(Slime.tier(2)) //tier 2
-            s5(Slime.tier(2)) //tier 2
+            s1(Stick.tier(2))
+            s4(Stick.tier(2))
+            s2(Slime.tier(2))
+            s5(Slime.tier(2))
             item { player, b ->
-                StickyStick(Utils.randRarity())
+                val newItem = StickyStick(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s2(Stick.tier(2)) //tier 2
-            s5(Stick.tier(2)) //tier 2
-            s3(Slime.tier(2)) //tier 2
-            s6(Slime.tier(2)) //tier 2
+            s2(Stick.tier(2))
+            s5(Stick.tier(2))
+            s3(Slime.tier(2))
+            s6(Slime.tier(2))
             item { player, b ->
-                StickyStick(Utils.randRarity())
+                val newItem = StickyStick(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s4(Stick.tier(2)) //tier 2
-            s7(Stick.tier(2)) //tier 2
-            s5(Slime.tier(2)) //tier 2
-            s8(Slime.tier(2)) //tier 2
+            s4(Stick.tier(2))
+            s7(Stick.tier(2))
+            s5(Slime.tier(2))
+            s8(Slime.tier(2))
             item { player, b ->
-                StickyStick(Utils.randRarity())
+                val newItem = StickyStick(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s5(Stick.tier(2)) //tier 2
-            s8(Stick.tier(2)) //tier 2
-            s6(Slime.tier(2)) //tier 2
-            s9(Slime.tier(2)) //tier 2
+            s5(Stick.tier(2))
+            s8(Stick.tier(2))
+            s6(Slime.tier(2))
+            s9(Slime.tier(2))
             item { player, b ->
-                StickyStick(Utils.randRarity())
+                val newItem = StickyStick(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

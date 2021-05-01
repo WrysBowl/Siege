@@ -24,7 +24,9 @@ class FemurBone() : CustomMeleeWeapon(
             s4(Bone.tier(3))
             s7(Bone.tier(3))
             item { player, b ->
-                Shovel(Utils.randRarity())
+                val newItem = FemurBone(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -33,7 +35,9 @@ class FemurBone() : CustomMeleeWeapon(
             s5(Bone.tier(3))
             s8(Bone.tier(3))
             item { player, b ->
-                Shovel(Utils.randRarity())
+                val newItem = FemurBone(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -42,7 +46,9 @@ class FemurBone() : CustomMeleeWeapon(
             s6(Bone.tier(3))
             s9(Bone.tier(3))
             item { player, b ->
-                Shovel(Utils.randRarity())
+                val newItem = FemurBone(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

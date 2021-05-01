@@ -19,6 +19,7 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.utils.Utils
@@ -35,14 +36,16 @@ class Bowba() : CustomBow(
     recipeList = recipes {
         recipe {
             shaped = true
-            s2(RefinedMetal.tier(4)) //tier 4
-            s3(Vine.tier(3)) //tier 3
-            s4(Bone.tier(4)) //tier 4
-            s6(Vine.tier(3)) //tier 3
-            s8(RefinedMetal.tier(4)) //tier 4
-            s9(Vine.tier(3)) //tier 3
+            s2(RefinedMetal.tier(4))
+            s3(Vine.tier(3))
+            s4(Bone.tier(4))
+            s6(Vine.tier(3))
+            s8(RefinedMetal.tier(4))
+            s9(Vine.tier(3))
             item { player, b ->
-                Bowba(Utils.randRarity())
+                val newItem = Bowba(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

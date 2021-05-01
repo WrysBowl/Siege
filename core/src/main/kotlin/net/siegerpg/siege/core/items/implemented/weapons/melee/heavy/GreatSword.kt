@@ -24,7 +24,9 @@ class GreatSword() : CustomMeleeWeapon(
             s4(MetalScrap.tier(3))
             s7(Stick.tier(3))
             item { player, b ->
-                GreatSword(Utils.randRarity())
+                val newItem = GreatSword(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -33,7 +35,9 @@ class GreatSword() : CustomMeleeWeapon(
             s5(MetalScrap.tier(3))
             s8(Stick.tier(3))
             item { player, b ->
-                GreatSword(Utils.randRarity())
+                val newItem = GreatSword(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -42,7 +46,9 @@ class GreatSword() : CustomMeleeWeapon(
             s6(MetalScrap.tier(3))
             s9(Stick.tier(3))
             item { player, b ->
-                GreatSword(Utils.randRarity())
+                val newItem = GreatSword(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },

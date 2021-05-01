@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
+import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Utils
@@ -25,7 +26,9 @@ class Clobber() : CustomMeleeWeapon(
             s5(RefinedMetal.tier(3))
             s8(RefinedMetal.tier(3))
             item { player, b ->
-                Clobber(Utils.randRarity())
+                val newItem = Clobber(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
@@ -36,7 +39,9 @@ class Clobber() : CustomMeleeWeapon(
             s6(RefinedMetal.tier(3))
             s9(RefinedMetal.tier(3))
             item { player, b ->
-                Clobber(Utils.randRarity())
+                val newItem = Clobber(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },
