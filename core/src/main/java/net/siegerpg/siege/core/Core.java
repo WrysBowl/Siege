@@ -4,15 +4,14 @@ import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.Hub;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
-import net.siegerpg.siege.core.listeners.armorequip.ArmorListener;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
 import net.siegerpg.siege.core.portals.PortalConfig;
 import net.siegerpg.siege.core.utils.VaultHook;
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
+import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.List;
 
 @SuppressWarnings("unused")
 public final class Core extends JavaPlugin {
@@ -27,6 +26,7 @@ public final class Core extends JavaPlugin {
     public PartyConfig partyConfig = new PartyConfig(this);
 
     public PortalConfig portalConfig = new PortalConfig(this);
+    public static Location spawnLocation;
 
     @Override
     public void onEnable() {
@@ -35,6 +35,7 @@ public final class Core extends JavaPlugin {
         defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
         (new VaultHook()).createHooks();
 
+        spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discords").setExecutor(new Discord());
 
@@ -103,7 +104,7 @@ public final class Core extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         new RegenerationTask().startRegenTask();
-        
+
     }
 
     @Override

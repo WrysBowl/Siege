@@ -13,12 +13,16 @@ repositories {
     maven { url = uri("https://repo.dmulloy2.net/nexus/repository/public/") }
     maven { url = uri("https://dl.bintray.com/ichbinjoe/public/") }
     maven { url = uri("https://maven.enginehub.org/repo/") }
+
 }
 
 dependencies {
+    compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
     compileOnly(project(":core"))
     compileOnly("com.intellectualsites.fawe:FAWE-Bukkit:1.16-637") { isTransitive = false }
     compileOnly("com.intellectualsites.fawe:FAWE-Core:1.16-637")
+    compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
+
 }
 
 tasks {
