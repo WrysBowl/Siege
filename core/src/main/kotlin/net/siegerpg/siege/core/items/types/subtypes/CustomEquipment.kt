@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.items.types.subtypes
 import net.siegerpg.siege.core.items.*
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
+import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.inventory.ItemFlag
@@ -15,7 +16,7 @@ interface CustomEquipment : CustomItem {
 
     fun addStatGem(newStatGem: StatGem) {
         this.statGem = newStatGem
-        println("serializing")
+        this.serialize()
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {

@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items
+package net.siegerpg.siege.core.items.statgems
 
 import net.siegerpg.siege.core.items.enums.StatTypes
 
