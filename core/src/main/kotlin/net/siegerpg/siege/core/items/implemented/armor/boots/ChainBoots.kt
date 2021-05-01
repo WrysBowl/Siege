@@ -22,20 +22,20 @@ class ChainBoots() : CustomHelmet(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Chain(0)) //tier 2
-            s3(Chain(0)) //tier 2
-            s4(Chain(0)) //tier 2
-            s6(Chain(0)) //tier 2
+            s1(Chain.tier(2)) //tier 2
+            s3(Chain.tier(2)) //tier 2
+            s4(Chain.tier(2)) //tier 2
+            s6(Chain.tier(2)) //tier 2
             item { player, b ->
                 ChainBoots(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s4(Chain(0)) //tier 2
-            s6(Chain(0)) //tier 2
-            s7(Chain(0)) //tier 2
-            s9(Chain(0)) //tier 2
+            s4(Chain.tier(2)) //tier 2
+            s6(Chain.tier(2)) //tier 2
+            s7(Chain.tier(2)) //tier 2
+            s9(Chain.tier(2)) //tier 2
             item { player, b ->
                 ChainBoots(Utils.randRarity())
             }

@@ -22,20 +22,20 @@ class MagmaBoots() : CustomHelmet(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Magma(0)) //tier 2
-            s3(Magma(0)) //tier 2
-            s4(Magma(0)) //tier 2
-            s6(Magma(0)) //tier 2
+            s1(Magma.tier(2)) //tier 2
+            s3(Magma.tier(2)) //tier 2
+            s4(Magma.tier(2)) //tier 2
+            s6(Magma.tier(2)) //tier 2
             item { player, b ->
                 MagmaBoots(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s4(Magma(0)) //tier 2
-            s6(Magma(0)) //tier 2
-            s7(Magma(0)) //tier 2
-            s9(Magma(0)) //tier 2
+            s4(Magma.tier(2)) //tier 2
+            s6(Magma.tier(2)) //tier 2
+            s7(Magma.tier(2)) //tier 2
+            s9(Magma.tier(2)) //tier 2
             item { player, b ->
                 MagmaBoots(Utils.randRarity())
             }

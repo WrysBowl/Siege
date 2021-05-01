@@ -3,7 +3,7 @@
 package net.siegerpg.siege.core.items.types.armor
 
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.items.StatGem
+import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
