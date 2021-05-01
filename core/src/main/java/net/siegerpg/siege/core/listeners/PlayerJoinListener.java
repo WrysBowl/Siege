@@ -3,7 +3,10 @@ package net.siegerpg.siege.core.listeners;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
+import net.siegerpg.siege.core.items.enums.StatTypes;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
+import net.siegerpg.siege.core.items.statgems.StatGem;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
@@ -80,7 +83,14 @@ public class PlayerJoinListener implements Listener {
         }
 
         if (player.getName().equals("Sumowu")) {
-            player.getInventory().addItem(new Shank(150).getUpdatedItem(false));
+            Shank shank = new Shank(100);
+            //shank.setStatGem(new StatGem(StatTypes.STRENGTH, 10.0));
+            shank.updateMeta(false);
+            player.getInventory().addItem(shank.getItem());
+            StrengthGem gem = new StrengthGem(100);
+            gem.setStatAmount(10.0);
+            gem.updateMeta(false);
+            player.getInventory().addItem(gem.getItem());
         }
 
         /*

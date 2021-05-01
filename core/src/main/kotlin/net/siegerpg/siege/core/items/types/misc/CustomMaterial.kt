@@ -55,11 +55,14 @@ abstract class CustomMaterial(
 
         meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
 
+        if (meta.hasLore()) meta.lore(mutableListOf())
+
         meta.lore(" ")
         description.forEach {
            meta.lore("<r><dark_gray>$it")
         }
 
+        meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
         return item
