@@ -28,11 +28,14 @@ class CustomItemKotlinListener : Listener {
 
     }
 
+
+    /*
     @EventHandler()
     @Suppress("unused")
     fun onArmorEquip(e: ArmorEquipEvent) {
         // TODO: Permanent fadein action bar
-    }
+    }*/
+
 
     @EventHandler
     @Suppress("unused")

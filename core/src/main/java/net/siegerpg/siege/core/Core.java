@@ -4,12 +4,15 @@ import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.Hub;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
+import net.siegerpg.siege.core.listeners.armorequip.ArmorListener;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
 import net.siegerpg.siege.core.portals.PortalConfig;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Color;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.List;
 
 @SuppressWarnings("unused")
 public final class Core extends JavaPlugin {

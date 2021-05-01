@@ -26,6 +26,8 @@ import java.util.List;
 
 public class SmokyBlacksmith implements Listener {
 
+
+
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
         if (e.getRightClicked().getName().equals("&6Smoky")) {

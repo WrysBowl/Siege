@@ -20,27 +20,27 @@ class Shovel() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Pebble(0)) //tier 2
-            s4(Stick(0)) //tier 3
-            s7(Stick(0)) //tier 3
+            s1(Pebble.tier(2)) //tier 2
+            s4(Stick.tier(3)) //tier 3
+            s7(Stick.tier(3)) //tier 3
             item { player, b ->
                 Shovel(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(Pebble(0)) //tier 2
-            s5(Stick(0)) //tier 3
-            s8(Stick(0)) //tier 3
+            s2(Pebble.tier(2)) //tier 2
+            s5(Stick.tier(3)) //tier 3
+            s8(Stick.tier(3)) //tier 3
             item { player, b ->
                 Shovel(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s3(Pebble(0)) //tier 2
-            s6(Stick(0)) //tier 3
-            s9(Stick(0)) //tier 3
+            s3(Pebble.tier(2)) //tier 2
+            s6(Stick.tier(3)) //tier 3
+            s9(Stick.tier(3)) //tier 3
             item { player, b ->
                 Shovel(Utils.randRarity())
             }

@@ -135,9 +135,10 @@ public class CustomCraftingEvents implements Listener {
             Player player = (Player) e.getWhoClicked();
 
             //Need further information on how to get the result of a recipe, and what getRecipe does
-            if (CustomRecipe.Companion.getRecipe(matrix) != null) { //TEMP FIX (SEE DEV CHAT)
+            if (CustomRecipe.Companion.getRecipe(matrix) != null) {
                 result = CustomRecipe.Companion.getRecipe(matrix).getCreateItem().invoke(player, true).getUpdatedItem(false);
             }
+            Bukkit.getLogger().info(result.toString());
 
             if (e.getSlot()==24) { //if player clicks on the result slot
                 if (!Objects.requireNonNull(e.getCurrentItem()).getType().equals(Material.LIGHT_GRAY_STAINED_GLASS_PANE)) {

@@ -34,7 +34,6 @@ public class BlockBreakListener implements Listener {
         e.setCancelled(true);
         if (blockDrop == null) {return;}
 
-        e.getPlayer().getInventory().addItem(e.getBlock().getDrops().toArray(new ItemStack[0]));
         BlockData blockData = e.getBlock().getBlockData();
         Location loc = e.getBlock().getLocation();
         ItemStack goldCoins = Utils.getGoldCoin();
