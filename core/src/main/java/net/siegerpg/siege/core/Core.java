@@ -4,6 +4,8 @@ import com.zaxxer.hikari.HikariDataSource;
 import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.Hub;
 import net.siegerpg.siege.core.database.DatabaseManager;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
+import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
 import net.siegerpg.siege.core.party.PartyConfig;
@@ -105,6 +107,11 @@ public final class Core extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         new RegenerationTask().startRegenTask();
+
+//        CustomRecipe recipe = new CustomRecipe();
+//        recipe.s1(Pebble.Companion.tier(1));
+//        CustomRecipe.Companion.registerRecipe(recipe);
+//        Bukkit.getLogger().info(String.valueOf(CustomRecipe.Companion.getRecipes().size()));
 
     }
 

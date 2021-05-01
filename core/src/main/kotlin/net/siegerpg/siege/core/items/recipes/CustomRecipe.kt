@@ -62,7 +62,6 @@ open class CustomRecipe(var items: MutableList<CustomItem?>, var shaped: Boolean
     }
 
     companion object {
-        // This string is the qualified class name of the custom item, so that it can be easily initialized.
         var recipes: MutableList<CustomRecipe> = mutableListOf()
 
         fun registerRecipe(recipe: CustomRecipe) {
@@ -70,6 +69,14 @@ open class CustomRecipe(var items: MutableList<CustomItem?>, var shaped: Boolean
         }
 
         fun getRecipe(matrix: List<CustomItem?>): CustomRecipe? {
+            matrix.forEach {
+                if (it == null) {
+                    Bukkit.getLogger().info("null")
+                } else {
+                    Bukkit.getLogger().info(it::class.qualifiedName)
+                }
+
+            }
             return recipes.firstOrNull {
                 it.matches(matrix)
             }

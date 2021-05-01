@@ -22,8 +22,7 @@ class TestSword() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(PlantMatter.tier(1))
-            s4(PlantMatter.tier(1))
+            s1(Pebble.tier(1))
             item { player, b ->
                 val newItem = TestSword(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
