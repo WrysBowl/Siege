@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
+import net.siegerpg.siege.core.listeners.NPC.MeraTransit;
 import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
@@ -103,6 +104,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
+        getServer().getPluginManager().registerEvents(new MeraTransit(), this);
         SmokyBlacksmith.resetItems();
 
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);

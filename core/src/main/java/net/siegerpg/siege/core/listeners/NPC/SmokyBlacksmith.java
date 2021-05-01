@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.NPC;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
@@ -89,7 +90,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked() instanceof Villager && e.getRightClicked().getName().equals(Utils.tacc("&6Smoky"))) {
+        if (e.getRightClicked() instanceof Player && e.getRightClicked().getName().equals(Utils.tacc("&6Smoky"))) {
             Inventory shop = getShopMenu(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }

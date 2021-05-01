@@ -46,6 +46,11 @@ public class Utils {
         return randNumber <= num;
     }
 
+    public static double round (double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
+    }
+
     public static ItemStack getGoldCoin() {
         ItemStack gold = new ItemStack(Material.SUNFLOWER);
         ItemMeta meta = gold.getItemMeta();
