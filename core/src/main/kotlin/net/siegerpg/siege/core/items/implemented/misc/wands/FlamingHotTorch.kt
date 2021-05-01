@@ -20,27 +20,27 @@ class FlamingHotTorch() : CustomWand(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Magma(0)) //tier 4
-            s4(Seed(0)) //tier 4
-            s7(Stick(0)) //tier 3
+            s1(Magma.tier(4))
+            s4(Seed.tier(4))
+            s7(Stick.tier(3))
             item { player, b ->
                 FlamingHotTorch(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(Magma(0)) //tier 4
-            s5(Seed(0)) //tier 4
-            s8(Stick(0)) //tier 3
+            s2(Magma.tier(4))
+            s5(Seed.tier(4))
+            s8(Stick.tier(3))
             item { player, b ->
                 FlamingHotTorch(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s3(Magma(0)) //tier 4
-            s6(Seed(0)) //tier 4
-            s9(Stick(0)) //tier 3
+            s3(Magma.tier(4))
+            s6(Seed.tier(4))
+            s9(Stick.tier(3))
             item { player, b ->
                 FlamingHotTorch(Utils.randRarity())
             }

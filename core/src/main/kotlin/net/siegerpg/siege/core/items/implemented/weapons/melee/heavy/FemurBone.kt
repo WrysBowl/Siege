@@ -20,27 +20,27 @@ class FemurBone() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Bone(0)) //tier 3
-            s4(Bone(0)) //tier 3
-            s7(Bone(0)) //tier 3
+            s1(Bone.tier(3))
+            s4(Bone.tier(3))
+            s7(Bone.tier(3))
             item { player, b ->
                 Shovel(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(Bone(0)) //tier 3
-            s5(Bone(0)) //tier 3
-            s8(Bone(0)) //tier 3
+            s2(Bone.tier(3))
+            s5(Bone.tier(3))
+            s8(Bone.tier(3))
             item { player, b ->
                 Shovel(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s3(Bone(0)) //tier 3
-            s6(Bone(0)) //tier 3
-            s9(Bone(0)) //tier 3
+            s3(Bone.tier(3))
+            s6(Bone.tier(3))
+            s9(Bone.tier(3))
             item { player, b ->
                 Shovel(Utils.randRarity())
             }

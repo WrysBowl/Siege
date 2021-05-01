@@ -20,27 +20,27 @@ class GlowingTwig() : CustomWand(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(PlantMatter(0)) //tier 3
-            s4(PlantMatter(0)) //tier 3
-            s7(PlantMatter(0)) //tier 3
+            s1(PlantMatter.tier(3))
+            s4(PlantMatter.tier(3))
+            s7(PlantMatter.tier(3))
             item { player, b ->
                 GlowingTwig(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(PlantMatter(0)) //tier 3
-            s5(PlantMatter(0)) //tier 3
-            s8(PlantMatter(0)) //tier 3
+            s2(PlantMatter.tier(3))
+            s5(PlantMatter.tier(3))
+            s8(PlantMatter.tier(3))
             item { player, b ->
                 GlowingTwig(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s3(PlantMatter(0)) //tier 3
-            s6(PlantMatter(0)) //tier 3
-            s9(PlantMatter(0)) //tier 3
+            s3(PlantMatter.tier(3))
+            s6(PlantMatter.tier(3))
+            s9(PlantMatter.tier(3))
             item { player, b ->
                 GlowingTwig(Utils.randRarity())
             }

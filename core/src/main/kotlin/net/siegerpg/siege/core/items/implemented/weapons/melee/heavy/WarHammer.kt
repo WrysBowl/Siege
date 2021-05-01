@@ -21,13 +21,13 @@ class WarHammer() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Pebble(0)) //tier 3
-            s2(MetalScrap(0)) //tier 3
-            s3(Pebble(0)) //tier 3
-            s4(Pebble(0)) //tier 3
-            s5(Stick(0)) //tier 3
-            s6(Pebble(0)) //tier 3
-            s7(Stick(0)) //tier 3
+            s1(Pebble.tier(3))
+            s2(MetalScrap.tier(3))
+            s3(Pebble.tier(3))
+            s4(Pebble.tier(3))
+            s5(Stick.tier(3))
+            s6(Pebble.tier(3))
+            s7(Stick.tier(3))
             item { player, b ->
                 GreatSword(Utils.randRarity())
             }

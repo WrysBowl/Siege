@@ -20,11 +20,11 @@ class EarthernWand() : CustomWand(
     recipeList = recipes {
         recipe {
             shaped = true
-            s2(PlantMatter(0)) //tier 3
-            s4(Coal(0)) //tier 3
-            s5(Seed(0)) //tier 3
-            s6(Coal(0)) //tier 3
-            s8(Seed(0)) //tier 3
+            s2(PlantMatter.tier(3))
+            s4(Coal.tier(3))
+            s5(Seed.tier(3))
+            s6(Coal.tier(3))
+            s8(Seed.tier(3))
             item { player, b ->
                 EarthernWand(Utils.randRarity())
             }

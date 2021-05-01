@@ -19,48 +19,48 @@ class Club() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Stick(0)) //tier 2
-            s4(Stick(0)) //tier 2
+            s1(Stick.tier(2))
+            s4(Stick.tier(2))
             item { player, b ->
                 Club(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(Stick(0)) //tier 2
-            s5(Stick(0)) //tier 2
+            s2(Stick.tier(2))
+            s5(Stick.tier(2))
             item { player, b ->
                 Club(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s3(Stick(0)) //tier 2
-            s6(Stick(0)) //tier 2
+            s3(Stick.tier(2))
+            s6(Stick.tier(2))
             item { player, b ->
                 Club(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s4(Stick(0)) //tier 2
-            s7(Stick(0)) //tier 2
+            s4(Stick.tier(2))
+            s7(Stick.tier(2))
             item { player, b ->
                 Club(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s5(Stick(0)) //tier 2
-            s8(Stick(0)) //tier 2
+            s5(Stick.tier(2))
+            s8(Stick.tier(2))
             item { player, b ->
                 Club(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s6(Stick(0)) //tier 2
-            s9(Stick(0)) //tier 2
+            s6(Stick.tier(2))
+            s9(Stick.tier(2))
             item { player, b ->
                 Club(Utils.randRarity())
             }

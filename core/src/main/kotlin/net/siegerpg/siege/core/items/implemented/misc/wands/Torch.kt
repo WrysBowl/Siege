@@ -20,27 +20,27 @@ class Torch() : CustomWand(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Magma(0)) //tier 3
-            s4(Stick(0)) //tier 3
-            s7(Stick(0)) //tier 3
+            s1(Magma.tier(3))
+            s4(Stick.tier(3))
+            s7(Stick.tier(3))
             item { player, b ->
                 Torch(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(Magma(0)) //tier 3
-            s5(Stick(0)) //tier 3
-            s8(Stick(0)) //tier 3
+            s2(Magma.tier(3))
+            s5(Stick.tier(3))
+            s8(Stick.tier(3))
             item { player, b ->
                 Torch(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s3(Magma(0)) //tier 3
-            s6(Stick(0)) //tier 3
-            s9(Stick(0)) //tier 3
+            s3(Magma.tier(3))
+            s6(Stick.tier(3))
+            s9(Stick.tier(3))
             item { player, b ->
                 Torch(Utils.randRarity())
             }

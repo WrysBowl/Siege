@@ -20,22 +20,22 @@ class StoneAxe() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Pebble(0)) //tier 3
-            s2(Pebble(0)) //tier 3
-            s4(Pebble(0)) //tier 3
-            s5(Stick(0)) //tier 3
-            s8(Stick(0)) //tier 3
+            s1(Pebble.tier(3))
+            s2(Pebble.tier(3))
+            s4(Pebble.tier(3))
+            s5(Stick.tier(3))
+            s8(Stick.tier(3))
             item { player, b ->
                 StoneAxe(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(Pebble(0)) //tier 3
-            s3(Pebble(0)) //tier 3
-            s5(Pebble(0)) //tier 3
-            s6(Stick(0)) //tier 3
-            s9(Stick(0)) //tier 3
+            s2(Pebble.tier(3))
+            s3(Pebble.tier(3))
+            s5(Pebble.tier(3))
+            s6(Stick.tier(3))
+            s9(Stick.tier(3))
             item { player, b ->
                 StoneAxe(Utils.randRarity())
             }

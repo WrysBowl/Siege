@@ -19,22 +19,22 @@ class Clobber() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(RefinedMetal(0)) //tier 3
-            s2(RefinedMetal(0)) //tier 3
-            s4(RefinedMetal(0)) //tier 3
-            s5(RefinedMetal(0)) //tier 3
-            s8(RefinedMetal(0)) //tier 3
+            s1(RefinedMetal.tier(3))
+            s2(RefinedMetal.tier(3))
+            s4(RefinedMetal.tier(3))
+            s5(RefinedMetal.tier(3))
+            s8(RefinedMetal.tier(3))
             item { player, b ->
                 Clobber(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(RefinedMetal(0)) //tier 3
-            s3(RefinedMetal(0)) //tier 3
-            s5(RefinedMetal(0)) //tier 3
-            s6(RefinedMetal(0)) //tier 3
-            s9(RefinedMetal(0)) //tier 3
+            s2(RefinedMetal.tier(3))
+            s3(RefinedMetal.tier(3))
+            s5(RefinedMetal.tier(3))
+            s6(RefinedMetal.tier(3))
+            s9(RefinedMetal.tier(3))
             item { player, b ->
                 Clobber(Utils.randRarity())
             }

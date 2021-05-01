@@ -20,27 +20,27 @@ class GreatSword() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(MetalScrap(0)) //tier 3
-            s4(MetalScrap(0)) //tier 3
-            s7(Stick(0)) //tier 3
+            s1(MetalScrap.tier(3))
+            s4(MetalScrap.tier(3))
+            s7(Stick.tier(3))
             item { player, b ->
                 GreatSword(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(MetalScrap(0)) //tier 3
-            s5(MetalScrap(0)) //tier 3
-            s8(Stick(0)) //tier 3
+            s2(MetalScrap.tier(3))
+            s5(MetalScrap.tier(3))
+            s8(Stick.tier(3))
             item { player, b ->
                 GreatSword(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s3(MetalScrap(0)) //tier 3
-            s6(MetalScrap(0)) //tier 3
-            s9(Stick(0)) //tier 3
+            s3(MetalScrap.tier(3))
+            s6(MetalScrap.tier(3))
+            s9(Stick.tier(3))
             item { player, b ->
                 GreatSword(Utils.randRarity())
             }
