@@ -1,7 +1,9 @@
 package net.siegerpg.siege.core;
 
+import com.zaxxer.hikari.HikariDataSource;
 import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.Hub;
+import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
 import net.siegerpg.siege.core.listeners.armorequip.ArmorListener;
@@ -20,7 +22,6 @@ public final class Core extends JavaPlugin {
     private static Core INSTANCE;
 
     public static PartyManager partyManager;
-
 
     public static Color defaultLeatherColor;
 
