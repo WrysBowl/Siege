@@ -4,7 +4,6 @@ repositories {
     maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
     mavenCentral()
 
-
     maven { url = uri("https://nexus.mcdevs.us/repository/mcdevs/") }
     maven { url = uri("https://repo.aikar.co/content/groups/aikar/") }
     maven { url = uri("https://repo.codemc.org/repository/maven-public/") }
