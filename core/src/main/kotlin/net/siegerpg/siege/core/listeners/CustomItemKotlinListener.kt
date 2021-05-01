@@ -68,14 +68,12 @@ class CustomItemKotlinListener : Listener {
 
         if (e.damager is Player) {
             val item = CustomItemUtils.getCustomItem((e.damager as Player).inventory.itemInMainHand)
-            Bukkit.getLogger().info(item.toString())
             if (item == null) {
                 e.damage = 1.0
                 return
             }
 
             val levelReq = item.levelRequirement
-            Bukkit.getLogger().info(levelReq.toString())
             if (levelReq == null) {
                 e.damage = 1.0
                 return
