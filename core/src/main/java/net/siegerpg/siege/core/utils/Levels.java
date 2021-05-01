@@ -39,8 +39,7 @@ public class Levels {
     }
 
     public static short getLevel(OfflinePlayer player) {
-        try {
-            Connection connection = DatabaseManager.INSTANCE.getConnection();
+        try (Connection connection = DatabaseManager.INSTANCE.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT level FROM userData WHERE uuid=?");
             statement.setString(1, player.getUniqueId().toString());
             ResultSet query = statement.executeQuery();
@@ -53,8 +52,8 @@ public class Levels {
     }
 
     public static void setLevel(OfflinePlayer player, short level) {
-        try {
-            Connection connection = DatabaseManager.INSTANCE.getConnection();
+        try (Connection connection = DatabaseManager.INSTANCE.getConnection()) {
+
             PreparedStatement statement = connection.prepareStatement("UPDATE userData SET level=? WHERE uuid=?");
             statement.setShort(1, level);
             statement.setString(2, player.getUniqueId().toString());
@@ -66,8 +65,7 @@ public class Levels {
     }
 
     public static void addLevel(OfflinePlayer player, short level) {
-        try {
-            Connection connection = DatabaseManager.INSTANCE.getConnection();
+        try (Connection connection = DatabaseManager.INSTANCE.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("UPDATE userData SET level=level+? WHERE uuid=?");
             statement.setShort(1, level);
             statement.setString(2, player.getUniqueId().toString());
@@ -80,8 +78,7 @@ public class Levels {
     }
 
     public static Integer getExp(OfflinePlayer player) {
-        try {
-            Connection connection = DatabaseManager.INSTANCE.getConnection();
+        try (Connection connection = DatabaseManager.INSTANCE.getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement("SELECT experience FROM userData WHERE uuid=?");
             statement.setString(1, player.getUniqueId().toString());
@@ -97,8 +94,7 @@ public class Levels {
     }
 
     public static void setExp(OfflinePlayer player, int exp) {
-        try {
-            Connection connection = DatabaseManager.INSTANCE.getConnection();
+        try (Connection connection = DatabaseManager.INSTANCE.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("UPDATE userData SET experience=? WHERE uuid=?");
             statement.setInt(1, exp);
             statement.setString(2, player.getUniqueId().toString());
@@ -113,8 +109,7 @@ public class Levels {
     }
 
     public static void addExp(OfflinePlayer player, int exp, String message) {
-        try {
-            Connection connection = DatabaseManager.INSTANCE.getConnection();
+        try (Connection connection = DatabaseManager.INSTANCE.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("UPDATE userData SET experience=experience+? WHERE uuid=?");
             statement.setInt(1, exp);
             statement.setString(2, player.getUniqueId().toString());
