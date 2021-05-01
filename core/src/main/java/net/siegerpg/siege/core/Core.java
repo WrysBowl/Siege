@@ -99,9 +99,11 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
+        new SmokyBlacksmith().resetItems();
 
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         new RegenerationTask().startRegenTask();
+        
     }
 
     @Override

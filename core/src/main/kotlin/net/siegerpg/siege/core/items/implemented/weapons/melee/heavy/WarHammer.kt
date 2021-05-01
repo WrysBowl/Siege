@@ -29,7 +29,7 @@ class WarHammer() : CustomMeleeWeapon(
             s6(Pebble(0)) //tier 3
             s7(Stick(0)) //tier 3
             item { player, b ->
-                Longsword(Utils.randRarity())
+                GreatSword(Utils.randRarity())
             }
         }
     },
