@@ -35,12 +35,12 @@ class Bowba() : CustomBow(
     recipeList = recipes {
         recipe {
             shaped = true
-            s2(RefinedMetal(0)) //tier 4
-            s3(Vine(0)) //tier 3
-            s4(Bone(0)) //tier 4
-            s6(Vine(0)) //tier 3
-            s8(RefinedMetal(0)) //tier 4
-            s9(Vine(0)) //tier 3
+            s2(RefinedMetal.tier(4)) //tier 4
+            s3(Vine.tier(3)) //tier 3
+            s4(Bone.tier(4)) //tier 4
+            s6(Vine.tier(3)) //tier 3
+            s8(RefinedMetal.tier(4)) //tier 4
+            s9(Vine.tier(3)) //tier 3
             item { player, b ->
                 Bowba(Utils.randRarity())
             }

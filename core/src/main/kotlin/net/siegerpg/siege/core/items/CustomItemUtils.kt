@@ -26,7 +26,7 @@ import java.util.*
 object CustomItemUtils {
 
     fun getCustomItem(item: ItemStack?): CustomItem? {
-        item?.let { return null }
+        if (item == null) { return null }
         if (!item!!.hasItemMeta()) return null
         //Bukkit.getLogger().info("Item has meta")
         val nbtItem = NBTItem(item)

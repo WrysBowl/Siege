@@ -14,6 +14,9 @@ import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Utils {
     @SuppressWarnings("unused")
     static public String tacc(String str) {
@@ -59,23 +62,34 @@ public class Utils {
         return (int) ((-1 * Math.sqrt(rand1*rand2)) + 100);
     }
 
-    public static ItemStack setLoreCost(ItemStack item) {
-        ItemMeta itemMeta = item.getItemMeta();
-        Integer itemCost = CustomItemUtils.INSTANCE.getCustomItem(item).getQuality() * CustomItemUtils.INSTANCE.getCustomItem(item).getLevelRequirement();
-        itemMeta.lore().add(Utils.parse(itemCost.toString()));
-        item.setItemMeta(itemMeta);
-        return item;
+    public static ItemStack setLoreCost(CustomItem item) {
+        ItemStack updatedItem = item.getUpdatedItem(false);
+        int itemCost = item.getQuality() * item.getLevelRequirement();
+
+        List<String> lore = new ArrayList<>(updatedItem.getLore().size()+1);
+        lore.addAll(updatedItem.getLore());
+        lore.add(Utils.tacc("&eCost " + itemCost));
+
+        ItemMeta meta = updatedItem.getItemMeta();
+        meta.setLore(lore);
+        updatedItem.setItemMeta(meta);
+        return updatedItem;
     }
 
     public static Integer getCost(ItemStack item) {
-        String cost = item.getLore().get(item.getLore().size());
+        String cost = item.getLore().get(item.getLore().size()-1);
+        cost = cost.replace(Utils.tacc("&eCost "), "");
         return Integer.valueOf(cost);
     }
 
     public static ItemStack removeLastLore(ItemStack item) {
-        ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.lore().remove(itemMeta.getLore().size()-1);
-        item.setItemMeta(itemMeta);
+        List<String> lore = new ArrayList<>(item.getLore().size()-1);
+        lore.addAll(item.getLore());
+        lore.remove(item.getLore().size()-1);
+
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(lore);
+        item.setItemMeta(meta);
         return item;
     }
 
