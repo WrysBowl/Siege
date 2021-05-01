@@ -20,40 +20,40 @@ class StickyStick() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Stick(0)) //tier 2
-            s4(Stick(0)) //tier 2
-            s2(Slime(0)) //tier 2
-            s5(Slime(0)) //tier 2
+            s1(Stick.tier(2)) //tier 2
+            s4(Stick.tier(2)) //tier 2
+            s2(Slime.tier(2)) //tier 2
+            s5(Slime.tier(2)) //tier 2
             item { player, b ->
                 StickyStick(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(Stick(0)) //tier 2
-            s5(Stick(0)) //tier 2
-            s3(Slime(0)) //tier 2
-            s6(Slime(0)) //tier 2
+            s2(Stick.tier(2)) //tier 2
+            s5(Stick.tier(2)) //tier 2
+            s3(Slime.tier(2)) //tier 2
+            s6(Slime.tier(2)) //tier 2
             item { player, b ->
                 StickyStick(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s4(Stick(0)) //tier 2
-            s7(Stick(0)) //tier 2
-            s5(Slime(0)) //tier 2
-            s8(Slime(0)) //tier 2
+            s4(Stick.tier(2)) //tier 2
+            s7(Stick.tier(2)) //tier 2
+            s5(Slime.tier(2)) //tier 2
+            s8(Slime.tier(2)) //tier 2
             item { player, b ->
                 StickyStick(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s5(Stick(0)) //tier 2
-            s8(Stick(0)) //tier 2
-            s6(Slime(0)) //tier 2
-            s9(Slime(0)) //tier 2
+            s5(Stick.tier(2)) //tier 2
+            s8(Stick.tier(2)) //tier 2
+            s6(Slime.tier(2)) //tier 2
+            s9(Slime.tier(2)) //tier 2
             item { player, b ->
                 StickyStick(Utils.randRarity())
             }

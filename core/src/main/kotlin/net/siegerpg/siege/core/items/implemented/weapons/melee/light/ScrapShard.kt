@@ -19,48 +19,48 @@ class ScrapShard() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(MetalScrap(0)) //tier 3
-            s4(MetalScrap(0)) //tier 3
+            s1(MetalScrap.tier(3)) //tier 3
+            s4(MetalScrap.tier(3)) //tier 3
             item { player, b ->
                 ScrapShard(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s2(MetalScrap(0)) //tier 3
-            s5(MetalScrap(0)) //tier 3
+            s2(MetalScrap.tier(3)) //tier 3
+            s5(MetalScrap.tier(3)) //tier 3
             item { player, b ->
                 ScrapShard(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s3(MetalScrap(0)) //tier 3
-            s6(MetalScrap(0)) //tier 3
+            s3(MetalScrap.tier(3)) //tier 3
+            s6(MetalScrap.tier(3)) //tier 3
             item { player, b ->
                 ScrapShard(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s4(MetalScrap(0)) //tier 3
-            s7(MetalScrap(0)) //tier 3
+            s4(MetalScrap.tier(3)) //tier 3
+            s7(MetalScrap.tier(3)) //tier 3
             item { player, b ->
                 ScrapShard(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s5(MetalScrap(0)) //tier 3
-            s8(MetalScrap(0)) //tier 3
+            s5(MetalScrap.tier(3)) //tier 3
+            s8(MetalScrap.tier(3)) //tier 3
             item { player, b ->
                 ScrapShard(Utils.randRarity())
             }
         }
         recipe {
             shaped = true
-            s6(MetalScrap(0)) //tier 3
-            s9(MetalScrap(0)) //tier 3
+            s6(MetalScrap.tier(3)) //tier 3
+            s9(MetalScrap.tier(3)) //tier 3
             item { player, b ->
                 ScrapShard(Utils.randRarity())
             }

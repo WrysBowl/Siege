@@ -21,12 +21,12 @@ class PebbleShooter() : CustomBow(
     recipeList = recipes {
         recipe {
             shaped = true
-            s2(Pebble(0)) //tier 3
-            s4(Stick(0)) //tier 3
-            s6(Stick(0)) //tier 3
-            s7(Vine(0)) //tier 3
-            s8(Vine(0)) //tier 3
-            s9(Vine(0)) //tier 3
+            s2(Pebble.tier(3)) //tier 3
+            s4(Stick.tier(3)) //tier 3
+            s6(Stick.tier(3)) //tier 3
+            s7(Vine.tier(3)) //tier 3
+            s8(Vine.tier(3)) //tier 3
+            s9(Vine.tier(3)) //tier 3
             item { player, b ->
                 PebbleShooter(Utils.randRarity())
             }

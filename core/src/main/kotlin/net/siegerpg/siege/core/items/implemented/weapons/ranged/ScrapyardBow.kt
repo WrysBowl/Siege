@@ -20,12 +20,12 @@ class ScrapyardBow() : CustomBow(
     recipeList = recipes {
         recipe {
             shaped = true
-            s2(Stick(0)) //tier 2
-            s3(Vine(0)) //tier 2
-            s4(Stick(0)) //tier 2
-            s6(Vine(0)) //tier 2
-            s8(Stick(0)) //tier 2
-            s9(Vine(0)) //tier 2
+            s2(Stick.tier(2)) //tier 2
+            s3(Vine.tier(2)) //tier 2
+            s4(Stick.tier(2)) //tier 2
+            s6(Vine.tier(2)) //tier 2
+            s8(Stick.tier(2)) //tier 2
+            s9(Vine.tier(2)) //tier 2
             item { player, b ->
                 ScrapyardBow(Utils.randRarity())
             }

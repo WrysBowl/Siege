@@ -20,12 +20,12 @@ class IronBow() : CustomBow(
     recipeList = recipes {
         recipe {
             shaped = true
-            s2(RefinedMetal(0)) //tier 3
-            s3(Vine(0)) //tier 3
-            s4(RefinedMetal(0)) //tier 3
-            s6(Vine(0)) //tier 3
-            s8(RefinedMetal(0)) //tier 3
-            s9(Vine(0)) //tier 3
+            s2(RefinedMetal.tier(3)) //tier 3
+            s3(Vine.tier(3)) //tier 3
+            s4(RefinedMetal.tier(3)) //tier 3
+            s6(Vine.tier(3)) //tier 3
+            s8(RefinedMetal.tier(3)) //tier 3
+            s9(Vine.tier(3)) //tier 3
             item { player, b ->
                 IronBow(Utils.randRarity())
             }
