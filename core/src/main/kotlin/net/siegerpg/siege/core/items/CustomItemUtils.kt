@@ -17,6 +17,7 @@ import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
+import net.siegerpg.siege.core.utils.Levels
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -87,7 +88,12 @@ object CustomItemUtils {
             if (it is CustomWeapon) {
                 val itemStats = getStats(it, addGem = true, addRarity = true)
                 itemStats[statType]?.let { stat ->
-                    output += stat
+                    if (it.levelRequirement == null) {
+                        output += stat
+                    } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                        output += stat
+                    }
+
                 }
             }
         }
@@ -97,7 +103,11 @@ object CustomItemUtils {
                 if (it is CustomHelmet) {
                     val itemStats = getStats(it, addGem = true, addRarity = true)
                     itemStats[statType]?.let { stat ->
-                        output += stat
+                        if (it.levelRequirement == null) {
+                            output += stat
+                        } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                            output += stat
+                        }
                     }
                 }
             }
@@ -108,7 +118,11 @@ object CustomItemUtils {
                 if (it is CustomChestplate) {
                     val itemStats = getStats(it, addGem = true, addRarity = true)
                     itemStats[statType]?.let { stat ->
-                        output += stat
+                        if (it.levelRequirement == null) {
+                            output += stat
+                        } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                            output += stat
+                        }
                     }
                 }
             }
@@ -119,7 +133,11 @@ object CustomItemUtils {
                 if (it is CustomLeggings) {
                     val itemStats = getStats(it, addGem = true, addRarity = true)
                     itemStats[statType]?.let { stat ->
-                        output += stat
+                        if (it.levelRequirement == null) {
+                            output += stat
+                        } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                            output += stat
+                        }
                     }
                 }
             }
@@ -130,7 +148,11 @@ object CustomItemUtils {
                 if (it is CustomBoots) {
                     val itemStats = getStats(it, addGem = true, addRarity = true)
                     itemStats[statType]?.let { stat ->
-                        output += stat
+                        if (it.levelRequirement == null) {
+                            output += stat
+                        } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                            output += stat
+                        }
                     }
                 }
             }
