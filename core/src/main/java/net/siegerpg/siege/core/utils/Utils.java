@@ -69,7 +69,7 @@ public class Utils {
 
     public static ItemStack setLoreCost(CustomItem item) {
         ItemStack updatedItem = item.getUpdatedItem(false);
-        int itemCost = item.getQuality() * item.getLevelRequirement();
+        int itemCost = item.getQuality() * item.getLevelRequirement() * 2;
 
         List<String> lore = new ArrayList<>(updatedItem.getLore().size()+1);
         lore.addAll(updatedItem.getLore());
