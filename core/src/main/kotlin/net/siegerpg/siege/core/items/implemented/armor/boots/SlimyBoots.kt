@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack
 class SlimyBoots() : CustomHelmet(
     name = "Slimy Boots",
     customModelData = 1,
-    description = listOf("Contrary to popular belief, slime boots don't make you jump high"),
+    description = listOf("Contrary to popular belief,", "slime boots don't make you jump high"),
     levelRequirement = 3,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(health = 5.0, regeneration = 2.0),

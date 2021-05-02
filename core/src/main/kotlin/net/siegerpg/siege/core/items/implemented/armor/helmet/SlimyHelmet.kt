@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack
 class SlimyHelmet() : CustomHelmet(
     name = "Slimy Helmet",
     customModelData = 1,
-    description = listOf("So this is what it feels like to be a slime"),
+    description = listOf("So this is what it feels", "like to be a slime"),
     levelRequirement = 3,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(health = 4.0, regeneration = 1.0),

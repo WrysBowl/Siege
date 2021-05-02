@@ -37,7 +37,7 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&7\u2560 &3Toughness " + r.getPlayerStat(p, StatTypes.TOUGHNESS))).setScore(6);
 
         o.getScore(Utils.tacc("   ")).setScore(5);*/
-        o.getScore(Utils.tacc("&aSiegeRPG.net")).setScore(4);
+        o.getScore(Utils.tacc("&7play.SiegeRPG.net")).setScore(4);
 
 
         p.setScoreboard(b);

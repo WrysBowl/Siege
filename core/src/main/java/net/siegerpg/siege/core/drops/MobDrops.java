@@ -58,6 +58,25 @@ public enum MobDrops {
             {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
             {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}
     }, new Integer[]{15, 19}, new Integer[]{27, 32}),
+    Troll(new Object[][]{
+            {new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5},
+            {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
+            {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
+            {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}
+    }, new Integer[]{15, 19}, new Integer[]{27, 32}),
+    Orc(new Object[][]{
+            {new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5},
+            {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
+            {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
+            {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}
+    }, new Integer[]{15, 19}, new Integer[]{27, 32}),
+    Ogre(new Object[][]{
+            {new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5},
+            {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
+            {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
+            {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}
+    }, new Integer[]{15, 19}, new Integer[]{27, 32}),
+
     //NEUTRAL AREA 1
     GiantHornet(new Object[][]{
             {Magma.Companion.tier(1).getUpdatedItem(false), 30.0},
@@ -90,7 +109,12 @@ public enum MobDrops {
     }, new Integer[]{1, 3}, new Integer[]{3, 5}),
     Sushi(new Object[][]{
             {new Drumstick(0).getUpdatedItem(false), 20.0},
-    }, new Integer[]{0, 2}, new Integer[]{0, 2})
+    }, new Integer[]{0, 2}, new Integer[]{0, 2}),
+
+    //Minibosses
+    Davy_Jones(new Object[][]{
+            {new Drumstick(0).getUpdatedItem(false), 20.0},
+    }, new Integer[]{1000, 1200}, new Integer[]{1800, 2000})
     ;
     private final Object[][] rewards;
     private final Integer[] numGold;
