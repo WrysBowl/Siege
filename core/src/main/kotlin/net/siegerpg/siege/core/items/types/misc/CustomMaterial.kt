@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -69,10 +70,14 @@ abstract class CustomMaterial(
     }
 
     override fun equals(other: Any?): Boolean {
-        other?.let { return false }
+        if (other == null) return false
+        Bukkit.getLogger().info("Other is not null")
         if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        Bukkit.getLogger().info("Qualified names match")
         val castedOther = other as CustomMaterial
+
         if (this.tier != castedOther.tier) return false
+        Bukkit.getLogger().info("Tiers match")
         return true
     }
 

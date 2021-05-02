@@ -25,6 +25,7 @@ dependencies {
         exclude("com.google.code.gson")
         exclude("org.checkerframework")
     } // NuVotifier API
+    implementation("org.reflections:reflections:0.9.12")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") // Vault API
     implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
     implementation("com.github.stefvanschie.inventoryframework:IF:0.9.0")
