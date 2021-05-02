@@ -1,22 +1,28 @@
 package net.siegerpg.siege.core.listeners
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.events.ArmorEquipEvent
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
+import net.siegerpg.siege.core.items.types.misc.CustomWand
 import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.*
 import org.bukkit.attribute.Attribute
+import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityRegainHealthEvent
 import org.bukkit.event.entity.ProjectileHitEvent
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
+import org.bukkit.scheduler.BukkitRunnable
 
 class CustomItemKotlinListener : Listener {
 
@@ -151,7 +157,7 @@ class CustomItemKotlinListener : Listener {
         }
     }
 
-    /*
+
     @EventHandler
     @Suppress("unused")
     fun onInteract(event: PlayerInteractEvent) {
@@ -163,7 +169,7 @@ class CustomItemKotlinListener : Listener {
 
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
-                val entity = player.hubgetTargetEntity(it.range)
+                val entity = player.getTargetEntity(it.range)
                 val loc = if (entity == null || entity.isDead) {
                     val block = player.getTargetBlock(it.range) ?: return
                     block.location
@@ -173,14 +179,9 @@ class CustomItemKotlinListener : Listener {
                 if (cooldown.contains(player)) return
                 cooldown.add(player)
                 drawParticles(player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
+                Bukkit.getLogger().info("1")
                 for (e in loc.getNearbyLivingEntities(it.damageRadius)) {
-                    if (e is Player || e is ArmorStand) continue
-                    DamageIndicatorListener.showIndicator(
-                        e,
-                        it.baseStats[StatTypes.STRENGTH]!!, false
-                    )
                     e.damage(it.baseStats[StatTypes.STRENGTH]!!)
-                    NBT.addString(e, "attacker", NBT.serializePlayer(player))
                 }
                 object : BukkitRunnable() {
                     override fun run() {
@@ -190,7 +191,7 @@ class CustomItemKotlinListener : Listener {
             }
         }
     }
-    */
+
 
 
     private fun drawParticles(aL: Location, bL: Location, r: Int, g: Int, b: Int) {
