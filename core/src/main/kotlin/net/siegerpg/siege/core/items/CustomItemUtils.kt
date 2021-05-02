@@ -90,7 +90,7 @@ object CustomItemUtils {
                 itemStats[statType]?.let { stat ->
                     if (it.levelRequirement == null) {
                         output += stat
-                    } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                    } else if (it.levelRequirement!! <= player.level) {
                         output += stat
                     }
 
@@ -105,29 +105,33 @@ object CustomItemUtils {
                     itemStats[statType]?.let { stat ->
                         if (it.levelRequirement == null) {
                             output += stat
-                        } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                        } else if (it.levelRequirement!! <= player.level) {
                             output += stat
                         }
                     }
                 }
             }
         }
-
+        //Bukkit.getLogger().info("Helmet: " + output)
         inventory.chestplate?.let { chestplate ->
+            Bukkit.getLogger().info("Chestplate 1")
             getCustomItem(chestplate)?.let {
+                Bukkit.getLogger().info("Chestplate 2")
                 if (it is CustomChestplate) {
+                    Bukkit.getLogger().info("Chestplate 3")
                     val itemStats = getStats(it, addGem = true, addRarity = true)
                     itemStats[statType]?.let { stat ->
+                        Bukkit.getLogger().info("Chestplate 4")
                         if (it.levelRequirement == null) {
                             output += stat
-                        } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                        } else if (it.levelRequirement!! <= player.level) {
                             output += stat
                         }
                     }
                 }
             }
         }
-
+        //Bukkit.getLogger().info("Chestplate: " + output)
         inventory.leggings?.let { leggings ->
             getCustomItem(leggings)?.let {
                 if (it is CustomLeggings) {
@@ -135,14 +139,14 @@ object CustomItemUtils {
                     itemStats[statType]?.let { stat ->
                         if (it.levelRequirement == null) {
                             output += stat
-                        } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                        } else if (it.levelRequirement!! <= player.level) {
                             output += stat
                         }
                     }
                 }
             }
         }
-
+        //Bukkit.getLogger().info("Leggings: " + output)
         inventory.boots?.let { boots ->
             getCustomItem(boots)?.let {
                 if (it is CustomBoots) {
@@ -150,20 +154,20 @@ object CustomItemUtils {
                     itemStats[statType]?.let { stat ->
                         if (it.levelRequirement == null) {
                             output += stat
-                        } else if (it.levelRequirement!! <= Levels.getLevel(player)) {
+                        } else if (it.levelRequirement!! <= player.level) {
                             output += stat
                         }
                     }
                 }
             }
         }
-
+        //Bukkit.getLogger().info("Boots: " + output)
         return output
     }
 
     fun getCustomHealth(player: Player): Double {
         val healthStat: Double = getPlayerStat(player, StatTypes.HEALTH)
-        return (player.health/player.maxHealth) * healthStat
+        return (player.health/player.maxHealth) * (healthStat + player.maxHealth)
     }
 
     fun getStats(item: CustomEquipment, addGem: Boolean, addRarity: Boolean): HashMap<StatTypes, Double> {

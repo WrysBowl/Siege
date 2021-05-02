@@ -12,17 +12,13 @@ class RegenerationTask : Runnable {
         Bukkit.getServer().scheduler.scheduleSyncRepeatingTask(Core.plugin(), {
 
             for (player in Bukkit.getOnlinePlayers()) {
-                var regenStat = CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION)
-                var healthStat = CustomItemUtils.getPlayerStat(player, StatTypes.HEALTH)
-                var currentCustomHealth = CustomItemUtils.getCustomHealth(player)
-                if (regenStat == 0.0) regenStat = 1.0
-                if (healthStat == 0.0)  healthStat = player.maxHealth
-                if (currentCustomHealth == 0.0) currentCustomHealth = player.health
-                //Bukkit.getLogger().info(player.name + " RegenStat: " + regenStat.toString() + " HealthStat: " + healthStat + " currentCustomHealth: " + currentCustomHealth)
-                val addHealth = ((regenStat + currentCustomHealth)/healthStat) * player.maxHealth
-                if (addHealth <= healthStat)
-                    player.health = addHealth
-                else player.health = healthStat
+                val regenStat = CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION) + 1.0
+                val healthStat = CustomItemUtils.getPlayerStat(player, StatTypes.HEALTH) + player.maxHealth
+                val currentCustomHealth = CustomItemUtils.getCustomHealth(player)
+                val addedHealth = ((regenStat + currentCustomHealth)/healthStat) * player.maxHealth
+                if (addedHealth <= player.maxHealth)
+                    player.health = addedHealth
+                else player.health = player.maxHealth
             }
         }, 100, 100)
     }

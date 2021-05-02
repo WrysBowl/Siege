@@ -85,7 +85,7 @@ class CustomItemKotlinListener : Listener {
                 return
             }
 
-            if (levelReq > Levels.getLevel(e.damager as OfflinePlayer)) {
+            if (levelReq > (e.damager as Player).level) {
                 e.damager.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
                 return
