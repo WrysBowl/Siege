@@ -181,13 +181,13 @@ class CustomItemKotlinListener : Listener {
                 drawParticles(player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
                 for (e in loc.getNearbyLivingEntities(it.damageRadius)) {
                     if (e is Player) continue
-                    e.damage(it.baseStats[StatTypes.STRENGTH]!!, e)
+                    e.damage(it.baseStats[StatTypes.STRENGTH]!!, player)
                 }
                 object : BukkitRunnable() {
                     override fun run() {
                         cooldown.remove(player)
                     }
-                }.runTaskLaterAsynchronously(Core.plugin(), 2)
+                }.runTaskLaterAsynchronously(Core.plugin(), 30)
             }
         }
     }
