@@ -110,10 +110,12 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         new RegenerationTask().startRegenTask();
 
+        CustomRecipe.Companion.registerAllRecipes();
+
 //        CustomRecipe recipe = new CustomRecipe();
 //        recipe.s1(Pebble.Companion.tier(1));
 //        CustomRecipe.Companion.registerRecipe(recipe);
-//        Bukkit.getLogger().info(String.valueOf(CustomRecipe.Companion.getRecipes().size()));
+        Bukkit.getLogger().info(String.valueOf(CustomRecipe.Companion.getRecipes().size()));
 
     }
 
