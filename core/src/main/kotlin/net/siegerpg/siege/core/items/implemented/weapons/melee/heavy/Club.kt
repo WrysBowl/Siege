@@ -79,7 +79,7 @@ class Club() : CustomMeleeWeapon(
             }
         }
     },
-    attackSpeed = 0.000009
+    attackSpeed = 0.9
 ) {
 
     constructor(quality: Int): this() {
