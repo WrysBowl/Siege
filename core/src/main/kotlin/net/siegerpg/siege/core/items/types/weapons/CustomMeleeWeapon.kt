@@ -9,7 +9,10 @@ import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import org.bukkit.Material
 import org.bukkit.attribute.Attribute
 import org.bukkit.attribute.AttributeModifier
+import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
+import java.util.*
+import kotlin.collections.HashMap
 
 abstract class CustomMeleeWeapon(
     override val name: String,
@@ -36,10 +39,8 @@ abstract class CustomMeleeWeapon(
         super.updateMeta(hideRarity)
         val meta = item.itemMeta
         meta.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED)
-        meta.addAttributeModifier(
-            Attribute.GENERIC_ATTACK_SPEED,
-            AttributeModifier("Attack Speed", attackSpeed, AttributeModifier.Operation.ADD_NUMBER)
-        )
+        val modifier =  AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", attackSpeed - 1.5, AttributeModifier.Operation.ADD_SCALAR)
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier)
         item.itemMeta = meta
         return item
     }
