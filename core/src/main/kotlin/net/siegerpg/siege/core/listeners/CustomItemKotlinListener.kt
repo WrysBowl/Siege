@@ -179,7 +179,6 @@ class CustomItemKotlinListener : Listener {
                 if (cooldown.contains(player)) return
                 cooldown.add(player)
                 drawParticles(player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
-                Bukkit.getLogger().info("1")
                 for (e in loc.getNearbyLivingEntities(it.damageRadius)) {
                     e.damage(it.baseStats[StatTypes.STRENGTH]!!)
                 }
