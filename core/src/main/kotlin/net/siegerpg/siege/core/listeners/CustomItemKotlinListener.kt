@@ -102,14 +102,14 @@ class CustomItemKotlinListener : Listener {
                 attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
             else damage
         val vicHealthStat =
-            if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH) + victim.maxHealth
+            if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH) + victim.maxHealth + (victim.level*2)
             else victim.maxHealth
         val vicToughness =
             if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
             else 0.0
         val attStrengthStat =
             if (attacker is Player && CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) != 0.0)
-                    (damage/maxDamage) * CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) //if player spam clicks it won't deal max damage
+                    (damage/maxDamage) * (CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) + attacker.level) //if player spam clicks it won't deal max damage
             else damage
         val reducedDamage = attStrengthStat * (1 - (vicToughness/1000)) //custom attack damage with toughness considered
         e.damage = (reducedDamage * victim.maxHealth)/vicHealthStat //scaled down to damage player by vanilla damage

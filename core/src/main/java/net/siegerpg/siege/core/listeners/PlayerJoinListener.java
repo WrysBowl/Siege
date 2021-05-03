@@ -77,9 +77,7 @@ public class PlayerJoinListener implements Listener {
             Levels.setLevel(player, (short) 1);
         }
         if (!(player.hasPlayedBefore())) {
-            player.getInventory().addItem(new ItemStack(Material.STONE_PICKAXE));
-            player.getInventory().addItem(new ItemStack(Material.STONE_SHOVEL));
-            player.getInventory().addItem(new ItemStack(Material.WOODEN_AXE));
+
         }
 
         if (player.getName().equals("Sumowu")) {

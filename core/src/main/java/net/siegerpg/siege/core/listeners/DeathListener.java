@@ -20,11 +20,13 @@ public class DeathListener implements Listener {
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) { return; }
 
         String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
-        MobDrops mobDrop = MobDrops.matchCaseMobDrops(mm);
+        MobDrops mobDrop = new MobDrops();
+        mobDrop.setMobTable(mm);
 
         e.setDroppedExp(0);
         e.getDrops().clear();
-        if (mobDrop == null) { return; }
+
+        if (!mobDrop.isMob_exists()) {return;}
 
         Player player = e.getEntity().getKiller();
         Double luck = 0.0;
