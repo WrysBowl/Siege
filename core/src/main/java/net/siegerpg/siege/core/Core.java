@@ -1,10 +1,7 @@
 package net.siegerpg.siege.core;
 
-import com.zaxxer.hikari.HikariDataSource;
 import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.Hub;
-import net.siegerpg.siege.core.database.DatabaseManager;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.ClemontBlacksmith;
@@ -110,7 +107,7 @@ public final class Core extends JavaPlugin {
         SmokyBlacksmith.resetItems();
 
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
-        getServer().getPluginManager().registerEvents(new VanillaCraftingEvents(), this);
+        getServer().getPluginManager().registerEvents(new VanillaCraftingListener(), this);
         new RegenerationTask().startRegenTask();
 
         CustomRecipe.Companion.registerAllRecipes();
