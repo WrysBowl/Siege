@@ -99,16 +99,16 @@ public class SmokyBlacksmith implements Listener, Runnable {
     @EventHandler
     public void guiClick(InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player)) {return;}
-        if (e.getWhoClicked().getMetadata("Shop").size() > 0 &&
-                Objects.equals(e.getWhoClicked().getMetadata("Shop").get(0).value(), e.getInventory())) {
+        if (e.getWhoClicked().getMetadata("SmokyShop").size() > 0 &&
+                Objects.equals(e.getWhoClicked().getMetadata("SmokyShop").get(0).value(), e.getInventory())) {
             clickShopMenu(e);
             e.setCancelled(true);
-        } else if (e.getWhoClicked().getMetadata("ShopWeapons").size() > 0 &&
-                Objects.equals(e.getWhoClicked().getMetadata("ShopWeapons").get(0).value(), e.getInventory())) {
+        } else if (e.getWhoClicked().getMetadata("SmokyShopWeapons").size() > 0 &&
+                Objects.equals(e.getWhoClicked().getMetadata("SmokyShopWeapons").get(0).value(), e.getInventory())) {
             clickShopWeapons(e);
             e.setCancelled(true);
-        } else if (e.getWhoClicked().getMetadata("ShopArmor").size() > 0 &&
-                Objects.equals(e.getWhoClicked().getMetadata("ShopArmor").get(0).value(), e.getInventory())) {
+        } else if (e.getWhoClicked().getMetadata("SmokyShopArmor").size() > 0 &&
+                Objects.equals(e.getWhoClicked().getMetadata("SmokyShopArmor").get(0).value(), e.getInventory())) {
             clickShopArmor(e);
             e.setCancelled(true);
         }
@@ -165,7 +165,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
     }
 
     private Inventory getShopMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Shop");
+        Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
         //Fill in the GUI
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
@@ -202,12 +202,12 @@ public class SmokyBlacksmith implements Listener, Runnable {
         gui.setItem(11, weapons);
         gui.setItem(15, armor);
 
-        player.setMetadata("Shop", new FixedMetadataValue(Core.plugin(), gui));
+        player.setMetadata("SmokyShop", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
     }
 
     private Inventory getWeaponsMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Shop");
+        Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
         //Fill in the GUI
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
@@ -224,12 +224,12 @@ public class SmokyBlacksmith implements Listener, Runnable {
         gui.setItem(16, weaponItems.get(6));
 
 
-        player.setMetadata("ShopWeapons", new FixedMetadataValue(Core.plugin(), gui));
+        player.setMetadata("SmokyShopWeapons", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
     }
 
     private Inventory getArmorMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "ShopArmor");
+        Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
         //Fill in the GUI
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
@@ -246,7 +246,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
         gui.setItem(16, armorItems.get(6));
 
 
-        player.setMetadata("ShopArmor", new FixedMetadataValue(Core.plugin(), gui));
+        player.setMetadata("SmokyShopArmor", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
     }
 }
