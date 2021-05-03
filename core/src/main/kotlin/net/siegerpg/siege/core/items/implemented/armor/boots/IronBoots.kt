@@ -5,12 +5,13 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.recipes.recipes
+import net.siegerpg.siege.core.items.types.armor.CustomBoots
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class IronBoots() : CustomHelmet(
+class IronBoots() : CustomBoots(
     name = "Iron Boots",
     customModelData = 1,
     description = listOf("Iron clad boots"),

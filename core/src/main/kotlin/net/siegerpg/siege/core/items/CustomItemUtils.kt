@@ -114,14 +114,10 @@ object CustomItemUtils {
         }
         //Bukkit.getLogger().info("Helmet: " + output)
         inventory.chestplate?.let { chestplate ->
-            Bukkit.getLogger().info("Chestplate 1")
             getCustomItem(chestplate)?.let {
-                Bukkit.getLogger().info("Chestplate 2")
                 if (it is CustomChestplate) {
-                    Bukkit.getLogger().info("Chestplate 3")
                     val itemStats = getStats(it, addGem = true, addRarity = true)
                     itemStats[statType]?.let { stat ->
-                        Bukkit.getLogger().info("Chestplate 4")
                         if (it.levelRequirement == null) {
                             output += stat
                         } else if (it.levelRequirement!! <= player.level) {

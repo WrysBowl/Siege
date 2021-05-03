@@ -6,11 +6,12 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
+import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class IronLeggings() : CustomHelmet(
+class IronLeggings() : CustomLeggings(
     name = "Iron Leggings",
     customModelData = 1,
     description = listOf("Iron jenkins"),
