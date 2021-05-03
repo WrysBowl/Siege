@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack
 class LivingTwig() : CustomWand(
     name = "Living Twig",
     customModelData = 140001,
-    description = listOf("A faint amount of energy still exists in this twig"),
+    description = listOf("A faint amount of energy", "still exists in this twig"),
     levelRequirement = 4,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 4.0, luck = 4.0),

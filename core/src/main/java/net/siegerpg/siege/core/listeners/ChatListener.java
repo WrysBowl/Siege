@@ -21,6 +21,6 @@ public class ChatListener implements Listener {
             e.setCancelled(true);
             return;
         }
-        e.setFormat(Utils.tacc(level + " " + prefix + " &7" + player.getName() + " &f" + message));
+        e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f%2$s"));
     }
 }
