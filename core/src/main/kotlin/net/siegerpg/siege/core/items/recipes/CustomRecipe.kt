@@ -64,7 +64,9 @@ open class CustomRecipe(var items: MutableList<CustomItem?>, var shaped: Boolean
     }
 
     companion object {
-        var recipes: MutableList<CustomRecipe> = mutableListOf()
+        val recipes: MutableList<CustomRecipe> = mutableListOf()
+
+        val classList = hashMapOf<String, Class<out CustomItem>>()
 
         fun registerRecipe(recipe: CustomRecipe) {
             recipes.add(recipe)
@@ -102,7 +104,9 @@ open class CustomRecipe(var items: MutableList<CustomItem?>, var shaped: Boolean
                         val item = clazz.newInstance()
                         if (item is CustomItem) {
                             item.registerRecipes()
+                            classList.put(it.canonicalName, clazz as Class<out CustomItem>)
                         }
+
                     } catch (e: Exception) {
                         Bukkit.getLogger().info("Failed to register recipes for ${it.canonicalName}")
                     }

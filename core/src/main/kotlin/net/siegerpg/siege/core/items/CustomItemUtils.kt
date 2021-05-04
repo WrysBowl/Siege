@@ -11,6 +11,7 @@ package net.siegerpg.siege.core.items
 
 import de.tr7zw.nbtapi.NBTItem
 import net.siegerpg.siege.core.items.enums.StatTypes
+import net.siegerpg.siege.core.items.recipes.CustomRecipe
 import net.siegerpg.siege.core.items.types.armor.CustomBoots
 import net.siegerpg.siege.core.items.types.armor.CustomChestplate
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
@@ -36,7 +37,11 @@ object CustomItemUtils {
             try {
                 val className = nbtItem.getString("itemClass")
                 //Bukkit.getLogger().info("class name is $className")
-                val clazz = Class.forName(className)
+                val clazz: Class<*> = if (CustomRecipe.classList.containsKey(className)) {
+                    CustomRecipe.classList[className] as Class<out CustomItem>
+                } else {
+                    Class.forName(className)
+                }
                 //Bukkit.getLogger().info("Got the class")
                 val constructor: Constructor<out Any> = clazz.getConstructor(ItemStack::class.java)
                 //Bukkit.getLogger().info("Got the constructor")
