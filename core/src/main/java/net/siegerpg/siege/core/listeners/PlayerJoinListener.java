@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.informants.Tablist;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.items.statgems.StatGem;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
@@ -77,9 +78,7 @@ public class PlayerJoinListener implements Listener {
             Levels.setLevel(player, (short) 1);
         }
         if (!(player.hasPlayedBefore())) {
-            player.getInventory().addItem(new ItemStack(Material.STONE_PICKAXE));
-            player.getInventory().addItem(new ItemStack(Material.STONE_SHOVEL));
-            player.getInventory().addItem(new ItemStack(Material.WOODEN_AXE));
+            player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(true));
         }
 
         if (player.getName().equals("Sumowu")) {

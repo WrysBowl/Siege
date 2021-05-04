@@ -82,6 +82,9 @@ public class ClemontBlacksmith implements Listener {
     private Inventory getShopMenu(Player player) {
         Inventory gui = Bukkit.createInventory(null, 27, "Clemont's Shop");
 
+        ItemStack arrows = new ItemStack(Material.ARROW);
+        arrows.setAmount(16);
+
         ArrayList<ItemStack> toolItems = new ArrayList<>(){
             {
                 add(setCost(new ItemStack(Material.WOODEN_SHOVEL), 1200));
@@ -89,6 +92,8 @@ public class ClemontBlacksmith implements Listener {
                 add(setCost(new ItemStack(Material.WOODEN_PICKAXE), 3000));
                 add(setCost(new ItemStack(Material.STONE_AXE), 3750));
                 add(setCost(new ItemStack(Material.STONE_PICKAXE), 4500));
+                add(setCost(new ItemStack(Material.STONE_SHOVEL), 3000));
+                add(setCost(arrows, 100));
             }
         };
 
@@ -98,7 +103,7 @@ public class ClemontBlacksmith implements Listener {
             gui.setItem(i, filler);
         }
 
-        for (int i=11; i<+17; i++) { //Sets crafting grid slots
+        for (int i=10; i<18; i++) { //Sets crafting grid slots
             gui.clear(i);
         }
 
