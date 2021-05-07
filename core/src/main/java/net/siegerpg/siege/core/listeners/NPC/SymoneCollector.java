@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
-import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.misc.wands.*;
@@ -22,209 +21,194 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class SymoneCollector implements Listener {
 
-    /**
-     * Loop through the lore parameter in the setOriginLore function and add the lore to the item
-     */
 
-    public static ArrayList<ItemStack> lightMeleeList = new ArrayList<>(){
+    ArrayList<ItemStack> lightMeleeList = new ArrayList<>(){
         {
-            add(setOriginLore(new Twig(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A x2"),
-                    Utils.parse("<gold>Given when you first"),
-                    Utils.parse("<gold>join the server")));
-            add(setOriginLore(new StickyStick(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Slime \u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A x2")));
-            add(setOriginLore(new Spade(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Pebble \u272A\u272A x1")));
-            add(setOriginLore(new Shovel(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Pebble \u272A\u272A x1")));
-            add(setOriginLore(new Shank(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>Bandit drop")));
-            add(setOriginLore(new Dagger(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>Bandit drop")));
-            add(setOriginLore(new WoodenSword(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>Wild Fox drop")));
-            add(setOriginLore(new ScrapShard(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2")));
-            add(setOriginLore(new SplinteredBone(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Bone \u272A\u272A\u272A x2"),
-                    Utils.parse("<yellow>Bandit drop")));
-            add(setOriginLore(new RefinedDagger(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Refined Metal \u272A\u272A\u272A x1")));
+            add(Utils.setOriginLore(new Twig(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Stick \u272A x2"),
+                    Utils.lore("<gold>Given when you first"),
+                    Utils.lore("<gold>join the server")));
+            add(Utils.setOriginLore(new StickyStick(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Slime \u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A x2")));
+            add(Utils.setOriginLore(new Spade(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A x1")));
+            add(Utils.setOriginLore(new Shovel(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A x1")));
+            add(Utils.setOriginLore(new Shank(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>Bandit drop")));
+            add(Utils.setOriginLore(new Dagger(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>Bandit drop")));
+            add(Utils.setOriginLore(new WoodenSword(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>Wild Fox drop")));
+            add(Utils.setOriginLore(new ScrapShard(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2")));
+            add(Utils.setOriginLore(new SplinteredBone(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x2"),
+                    Utils.lore("<yellow>Bandit drop")));
+            add(Utils.setOriginLore(new RefinedDagger(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x1")));
         }
     };
 
-    public static ArrayList<ItemStack> heavyMeleeList = new ArrayList<>(){
+    ArrayList<ItemStack> heavyMeleeList = new ArrayList<>(){
         {
-            add(setOriginLore(new Club(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A x3")));
-            add(setOriginLore(new GiantClub(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>Orc drop")));
-            add(setOriginLore(new FemurBone(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Bone \u272A\u272A\u272A x3")));
-            add(setOriginLore(new StoneAxe(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x3"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-            add(setOriginLore(new DoubleBladedAxe(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>Orc drop")));
-            add(setOriginLore(new GreatSword(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x1")));
-            add(setOriginLore(new WarHammer(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Metal Scrap \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x4"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-            add(setOriginLore(new IronAxe(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>Orc drop")));
-            add(setOriginLore(new Clobber(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Refined Metal \u272A\u272A\u272A x5")));
-            add(setOriginLore(new EarthernHammer(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x3")));
+            add(Utils.setOriginLore(new Club(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A x3")));
+            add(Utils.setOriginLore(new GiantClub(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>Orc drop")));
+            add(Utils.setOriginLore(new FemurBone(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x3")));
+            add(Utils.setOriginLore(new StoneAxe(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x3"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
+            add(Utils.setOriginLore(new DoubleBladedAxe(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>Orc drop")));
+            add(Utils.setOriginLore(new GreatSword(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1")));
+            add(Utils.setOriginLore(new WarHammer(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x4"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
+            add(Utils.setOriginLore(new IronAxe(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>Orc drop")));
+            add(Utils.setOriginLore(new Clobber(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x5")));
+            add(Utils.setOriginLore(new EarthernHammer(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3")));
         }
     };
 
-    public static ArrayList<ItemStack> armorList = new ArrayList<>(){
+    ArrayList<ItemStack> armorList = new ArrayList<>(){
         {
-            add(setOriginLore(new SlimyChestplate(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Slime \u272A\u272A x8")));
-            add(setOriginLore(new MagmaChestplate(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Magma \u272A\u272A x8")));
-            add(setOriginLore(new WoolChestplate(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Wool \u272A\u272A x8")));
-            add(setOriginLore(new BoneChestplate(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Bone \u272A\u272A x8")));
-            add(setOriginLore(new ChainChestplate(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Chain \u272A\u272A x8")));
-            add(setOriginLore(new IronChestplate(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Refined Metal \u272A\u272A x8")));
+            add(Utils.setOriginLore(new SlimyChestplate(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Slime \u272A\u272A x8")));
+            add(Utils.setOriginLore(new MagmaChestplate(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Magma \u272A\u272A x8")));
+            add(Utils.setOriginLore(new WoolChestplate(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Wool \u272A\u272A x8")));
+            add(Utils.setOriginLore(new BoneChestplate(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Bone \u272A\u272A x8")));
+            add(Utils.setOriginLore(new ChainChestplate(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Chain \u272A\u272A x8")));
+            add(Utils.setOriginLore(new IronChestplate(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x8")));
         }
     };
 
-    public static ArrayList<ItemStack> wandsList = new ArrayList<>(){
+    ArrayList<ItemStack> wandsList = new ArrayList<>(){
         {
-            add(setOriginLore(new LivingTwig(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Spruce Log drop")));
-            add(setOriginLore(new GlisteningTwig(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Seed \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A x1")));
-            add(setOriginLore(new GlowingTwig(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A\u272A x3")));
-            add(setOriginLore(new SlimeSpoofer(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Prince Slimy drop")));
-            add(setOriginLore(new RockWand(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-            add(setOriginLore(new Torch(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Magma \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-            add(setOriginLore(new FlamingHotTorch(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Magma \u272A\u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Seed \u272A\u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x1")));
-            add(setOriginLore(new EarthernWand(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Coal \u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Seed \u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
-            add(setOriginLore(new HotRod(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>UNOBTAINABLE")));
-            add(setOriginLore(new EarthernStaff(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Coal \u272A\u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Seed \u272A\u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
+            add(Utils.setOriginLore(new LivingTwig(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Spruce Log drop")));
+            add(Utils.setOriginLore(new GlisteningTwig(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Plant Matter \u272A\u272A x1")));
+            add(Utils.setOriginLore(new GlowingTwig(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x3")));
+            add(Utils.setOriginLore(new SlimeSpoofer(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Prince Slimy drop")));
+            add(Utils.setOriginLore(new RockWand(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
+            add(Utils.setOriginLore(new Torch(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
+            add(Utils.setOriginLore(new FlamingHotTorch(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1")));
+            add(Utils.setOriginLore(new EarthernWand(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
+            add(Utils.setOriginLore(new HotRod(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>UNOBTAINABLE")));
+            add(Utils.setOriginLore(new EarthernStaff(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
         }
     };
 
-    public static ArrayList<ItemStack> rangedList = new ArrayList<>(){
+    ArrayList<ItemStack> rangedList = new ArrayList<>(){
         {
-            add(setOriginLore(new ScrapyardBow(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A x3"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A x3")));
-            add(setOriginLore(new WoodenBow(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x3"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(setOriginLore(new PebbleShooter(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(setOriginLore(new ReinforcedBow(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A\u272A x3"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(setOriginLore(new SewerShooter(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Slime \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Magma \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x3"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(setOriginLore(new Crossbow(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>Bandit Archer drop")));
-            add(setOriginLore(new RecurveBow(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>Bandit Archer drop")));
-            add(setOriginLore(new IronBow(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3"),
-                    Utils.parse("<dark_aqua>Refined Metal \u272A\u272A\u272A x3")));
-            add(setOriginLore(new Trident(50).getUpdatedItem(true),
-                    Utils.parse("<yellow>Undead Pirate drop")));
-            add(setOriginLore(new Bowba(50).getUpdatedItem(true),
-                    Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Bone \u272A\u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(Utils.setOriginLore(new ScrapyardBow(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A x3"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A x3")));
+            add(Utils.setOriginLore(new WoodenBow(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(Utils.setOriginLore(new PebbleShooter(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(Utils.setOriginLore(new ReinforcedBow(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A\u272A x3"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(Utils.setOriginLore(new SewerShooter(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(Utils.setOriginLore(new Crossbow(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>Bandit Archer drop")));
+            add(Utils.setOriginLore(new RecurveBow(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>Bandit Archer drop")));
+            add(Utils.setOriginLore(new IronBow(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3"),
+                    Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x3")));
+            add(Utils.setOriginLore(new Trident(50).getUpdatedItem(true),
+                    Utils.lore("<yellow>Undead Pirate drop")));
+            add(Utils.setOriginLore(new Bowba(50).getUpdatedItem(true),
+                    Utils.lore("<dark_aqua>Crafting"),
+                    Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
         }
     };
-
-    private static ItemStack setOriginLore(ItemStack item, Component... lore) {
-        List<Component> newLore = item.lore();
-        if (newLore == null) {return item;}
-        newLore.add(Utils.parse(" "));
-        newLore.add(Utils.parse("<aqua><italic>Origin"));
-        newLore.addAll(Arrays.asList(lore));
-        item.lore(newLore);
-        return item;
-    }
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
@@ -338,7 +322,7 @@ public class SymoneCollector implements Listener {
         Inventory gui = Bukkit.createInventory(null, 27, "Light Melee Weapons");
 
         //Fill in the GUI
-        for (int i = 0; i < gui.getSize(); i++) {
+        for (int i = 0; i < lightMeleeList.size(); i++) {
             gui.setItem(i, lightMeleeList.get(i));
         }
 
@@ -349,7 +333,7 @@ public class SymoneCollector implements Listener {
         Inventory gui = Bukkit.createInventory(null, 27, "Heavy Melee Weapons");
 
         //Fill in the GUI
-        for (int i = 0; i < gui.getSize(); i++) {
+        for (int i = 0; i < heavyMeleeList.size(); i++) {
             gui.setItem(i, heavyMeleeList.get(i));
         }
 
@@ -360,7 +344,7 @@ public class SymoneCollector implements Listener {
         Inventory gui = Bukkit.createInventory(null, 27, "Armor Weapons");
 
         //Fill in the GUI
-        for (int i = 0; i < gui.getSize(); i++) {
+        for (int i = 0; i < armorList.size(); i++) {
             gui.setItem(i, armorList.get(i));
         }
 
@@ -371,7 +355,7 @@ public class SymoneCollector implements Listener {
         Inventory gui = Bukkit.createInventory(null, 27, "Wand Weapons");
 
         //Fill in the GUI
-        for (int i = 0; i < gui.getSize(); i++) {
+        for (int i = 0; i < wandsList.size(); i++) {
             gui.setItem(i, wandsList.get(i));
         }
 
@@ -382,7 +366,7 @@ public class SymoneCollector implements Listener {
         Inventory gui = Bukkit.createInventory(null, 27, "Ranged Weapons");
 
         //Fill in the GUI
-        for (int i = 0; i < gui.getSize(); i++) {
+        for (int i = 0; i < rangedList.size(); i++) {
             gui.setItem(i, rangedList.get(i));
         }
 

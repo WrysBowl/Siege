@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.ClemontBlacksmith;
 import net.siegerpg.siege.core.listeners.NPC.MeraTransit;
 import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
+import net.siegerpg.siege.core.listeners.NPC.SymoneCollector;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
 import net.siegerpg.siege.core.portals.PortalConfig;
@@ -105,6 +106,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);
         getServer().getPluginManager().registerEvents(new ClemontBlacksmith(), this);
+        getServer().getPluginManager().registerEvents(new SymoneCollector(), this);
         SmokyBlacksmith.resetItems();
 
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);

@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Utils {
@@ -98,4 +99,13 @@ public class Utils {
         return item;
     }
 
+    public static ItemStack setOriginLore(ItemStack item, Component... lore) {
+        List<Component> newLore = item.lore();
+        if (newLore == null) {return item;}
+        newLore.add(lore(" "));
+        newLore.add(lore("<aqua><italic>Origin"));
+        newLore.addAll(Arrays.asList(lore));
+        item.lore(newLore);
+        return item;
+    }
 }

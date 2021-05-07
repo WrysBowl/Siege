@@ -16,3 +16,5 @@ commands:
     description: Teleports the player to SiegeHub
   discords:
     description: Sends a discord link to the sender
+  getItem:
+    description: Gets a custom item for the developer
