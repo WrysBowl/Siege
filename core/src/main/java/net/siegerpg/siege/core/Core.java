@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core;
 
 import net.siegerpg.siege.core.commands.Discord;
+import net.siegerpg.siege.core.commands.GetItem;
 import net.siegerpg.siege.core.commands.Hub;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
@@ -40,6 +41,7 @@ public final class Core extends JavaPlugin {
         spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discords").setExecutor(new Discord());
+        this.getCommand("getItem").setExecutor(new GetItem());
 
         //partyManager = new PartyManager();
 
@@ -90,7 +92,6 @@ public final class Core extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        //getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
         getServer().getPluginManager().registerEvents(new DamageIndicatorListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
