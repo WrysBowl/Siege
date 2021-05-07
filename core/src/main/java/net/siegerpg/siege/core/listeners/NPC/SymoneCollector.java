@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners.NPC;
 
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.misc.wands.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
@@ -109,24 +110,24 @@ public class SymoneCollector implements Listener {
 
     public static ArrayList<ItemStack> armorList = new ArrayList<>(){
         {
-            add(setOriginLore(new Club(50).getUpdatedItem(true),
+            add(setOriginLore(new SlimyChestplate(50).getUpdatedItem(true),
                     Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A x3"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A x3")));
-            add(setOriginLore(new GiantClub(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Slime \u272A\u272A x8")));
+            add(setOriginLore(new MagmaChestplate(50).getUpdatedItem(true),
                     Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x3"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(setOriginLore(new FemurBone(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Magma \u272A\u272A x8")));
+            add(setOriginLore(new WoolChestplate(50).getUpdatedItem(true),
                     Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(setOriginLore(new StoneAxe(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Wool \u272A\u272A x8")));
+            add(setOriginLore(new BoneChestplate(50).getUpdatedItem(true),
                     Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2"),
-                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+                    Utils.parse("<dark_aqua>Bone \u272A\u272A x8")));
+            add(setOriginLore(new ChainChestplate(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Chain \u272A\u272A x8")));
+            add(setOriginLore(new IronChestplate(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Refined Metal \u272A\u272A x8")));
         }
     };
 
