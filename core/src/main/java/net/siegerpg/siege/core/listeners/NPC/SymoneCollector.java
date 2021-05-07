@@ -4,10 +4,7 @@ import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.ReinforcedBow;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.ScrapyardBow;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.WoodenBow;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -164,8 +161,28 @@ public class SymoneCollector implements Listener {
                     Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
             add(setOriginLore(new ReinforcedBow(50).getUpdatedItem(true),
                     Utils.parse("<dark_aqua>Crafting"),
-                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
-                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A\u272A x3"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(setOriginLore(new SewerShooter(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Slime \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Magma \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x3"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(setOriginLore(new Crossbow(50).getUpdatedItem(true),
+                    Utils.parse("<yellow>Bandit Archer drop")));
+            add(setOriginLore(new RecurveBow(50).getUpdatedItem(true),
+                    Utils.parse("<yellow>Bandit Archer drop")));
+            add(setOriginLore(new IronBow(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3"),
+                    Utils.parse("<dark_aqua>Refined Metal \u272A\u272A\u272A x3")));
+            add(setOriginLore(new Trident(50).getUpdatedItem(true),
+                    Utils.parse("<yellow>Undead Pirate drop")));
+            add(setOriginLore(new Bowba(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Bone \u272A\u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x2"),
                     Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
         }
     };
