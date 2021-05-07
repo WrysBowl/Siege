@@ -4,6 +4,10 @@ import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ReinforcedBow;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ScrapyardBow;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.WoodenBow;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -32,6 +36,8 @@ public class SymoneCollector implements Listener {
     public static ArrayList<ItemStack> lightMeleeList = new ArrayList<>(){
         {
             add(setOriginLore(new Twig(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Stick \u272A x2"),
                     Utils.parse("<gold>Given when you first"),
                     Utils.parse("<gold>join the server")));
             add(setOriginLore(new StickyStick(50).getUpdatedItem(true),
@@ -68,31 +74,61 @@ public class SymoneCollector implements Listener {
 
     public static ArrayList<ItemStack> heavyMeleeList = new ArrayList<>(){
         {
-            add(new Club(50).getUpdatedItem(true));
-            add(new GiantClub(50).getUpdatedItem(true));
-            add(new FemurBone(50).getUpdatedItem(true));
-            add(new StoneAxe(50).getUpdatedItem(true));
-            add(new DoubleBladedAxe(50).getUpdatedItem(true));
-            add(new GreatSword(50).getUpdatedItem(true));
-            add(new WarHammer(50).getUpdatedItem(true));
-            add(new IronAxe(50).getUpdatedItem(true));
-            add(new Clobber(50).getUpdatedItem(true));
-            add(new EarthernHammer(50).getUpdatedItem(true));
+            add(setOriginLore(new Club(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A x3")));
+            add(setOriginLore(new GiantClub(50).getUpdatedItem(true),
+                    Utils.parse("<yellow>Orc drop")));
+            add(setOriginLore(new FemurBone(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Bone \u272A\u272A\u272A x3")));
+            add(setOriginLore(new StoneAxe(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x3"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2")));
+            add(setOriginLore(new DoubleBladedAxe(50).getUpdatedItem(true),
+                    Utils.parse("<yellow>Orc drop")));
+            add(setOriginLore(new GreatSword(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x1")));
+            add(setOriginLore(new WarHammer(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Metal Scrap \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x4"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2")));
+            add(setOriginLore(new IronAxe(50).getUpdatedItem(true),
+                    Utils.parse("<yellow>Orc drop")));
+            add(setOriginLore(new Clobber(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Refined Metal \u272A\u272A\u272A x5")));
+            add(setOriginLore(new EarthernHammer(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x3")));
         }
     };
 
     public static ArrayList<ItemStack> armorList = new ArrayList<>(){
         {
-            add(new Twig(50).getUpdatedItem(true));
-            add(new StickyStick(50).getUpdatedItem(true));
-            add(new Spade(50).getUpdatedItem(true));
-            add(new Shovel(50).getUpdatedItem(true));
-            add(new Shank(50).getUpdatedItem(true));
-            add(new Dagger(50).getUpdatedItem(true));
-            add(new WoodenSword(50).getUpdatedItem(true));
-            add(new ScrapShard(50).getUpdatedItem(true));
-            add(new SplinteredBone(50).getUpdatedItem(true));
-            add(new RefinedDagger(50).getUpdatedItem(true));
+            add(setOriginLore(new Club(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A x3"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A x3")));
+            add(setOriginLore(new GiantClub(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x3"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(setOriginLore(new FemurBone(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(setOriginLore(new StoneAxe(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
         }
     };
 
@@ -113,16 +149,24 @@ public class SymoneCollector implements Listener {
 
     public static ArrayList<ItemStack> rangedList = new ArrayList<>(){
         {
-            add(new Twig(50).getUpdatedItem(true));
-            add(new StickyStick(50).getUpdatedItem(true));
-            add(new Spade(50).getUpdatedItem(true));
-            add(new Shovel(50).getUpdatedItem(true));
-            add(new Shank(50).getUpdatedItem(true));
-            add(new Dagger(50).getUpdatedItem(true));
-            add(new WoodenSword(50).getUpdatedItem(true));
-            add(new ScrapShard(50).getUpdatedItem(true));
-            add(new SplinteredBone(50).getUpdatedItem(true));
-            add(new RefinedDagger(50).getUpdatedItem(true));
+            add(setOriginLore(new ScrapyardBow(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A x3"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A x3")));
+            add(setOriginLore(new WoodenBow(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x3"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(setOriginLore(new PebbleShooter(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+            add(setOriginLore(new ReinforcedBow(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Vine \u272A\u272A\u272A x3")));
         }
     };
 
@@ -150,33 +194,28 @@ public class SymoneCollector implements Listener {
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneMenu").get(0).value(), e.getInventory())) {
             clickMenu(e);
             e.setCancelled(true);
-        }/* else if (e.getWhoClicked().getMetadata("SymoneLightMelee").size() > 0 &&
+        } else if (e.getWhoClicked().getMetadata("SymoneLightMelee").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneLightMelee").get(0).value(), e.getInventory())) {
-            clickLightMelee(e);
             e.setCancelled(true);
         } else if (e.getWhoClicked().getMetadata("SymoneHeavyMelee").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneHeavyMelee").get(0).value(), e.getInventory())) {
-            clickHeavyMelee(e);
             e.setCancelled(true);
         } else if (e.getWhoClicked().getMetadata("SymoneArmor").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneArmor").get(0).value(), e.getInventory())) {
-            clickArmor(e);
             e.setCancelled(true);
         } else if (e.getWhoClicked().getMetadata("SymoneWand").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneWand").get(0).value(), e.getInventory())) {
-            clickWand(e);
             e.setCancelled(true);
         } else if (e.getWhoClicked().getMetadata("SymoneRanged").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneRanged").get(0).value(), e.getInventory())) {
-            clickRanged(e);
             e.setCancelled(true);
-        }*/
+        }
     }
 
     private void clickMenu(InventoryClickEvent e) {
         int slot = e.getSlot();
         Player player = (Player) e.getWhoClicked();
-        /*
+
         if (slot == 11) {
             player.openInventory(getLightMelee(player));
         } else if (slot == 12) {
@@ -187,7 +226,7 @@ public class SymoneCollector implements Listener {
             player.openInventory(getWand(player));
         } else if (slot == 15) {
             player.openInventory(getRanged(player));
-        }*/
+        }
     }
 
     private Inventory getMenu(Player player) {
@@ -244,6 +283,64 @@ public class SymoneCollector implements Listener {
         gui.setItem(15, ranged);
 
         player.setMetadata("SymoneMenu", new FixedMetadataValue(Core.plugin(), gui));
+        return gui;
+    }
+
+
+
+    private Inventory getLightMelee(Player player) {
+        Inventory gui = Bukkit.createInventory(null, 27, "Light Melee Weapons");
+
+        //Fill in the GUI
+        for (int i = 0; i < gui.getSize(); i++) {
+            gui.setItem(i, lightMeleeList.get(i));
+        }
+
+        player.setMetadata("SymoneLightMelee", new FixedMetadataValue(Core.plugin(), gui));
+        return gui;
+    }
+    private Inventory getHeavyMelee(Player player) {
+        Inventory gui = Bukkit.createInventory(null, 27, "Heavy Melee Weapons");
+
+        //Fill in the GUI
+        for (int i = 0; i < gui.getSize(); i++) {
+            gui.setItem(i, heavyMeleeList.get(i));
+        }
+
+        player.setMetadata("SymoneHeavyMelee", new FixedMetadataValue(Core.plugin(), gui));
+        return gui;
+    }
+    private Inventory getArmor(Player player) {
+        Inventory gui = Bukkit.createInventory(null, 27, "Armor Weapons");
+
+        //Fill in the GUI
+        for (int i = 0; i < gui.getSize(); i++) {
+            gui.setItem(i, armorList.get(i));
+        }
+
+        player.setMetadata("SymoneArmor", new FixedMetadataValue(Core.plugin(), gui));
+        return gui;
+    }
+    private Inventory getWand(Player player) {
+        Inventory gui = Bukkit.createInventory(null, 27, "Wand Weapons");
+
+        //Fill in the GUI
+        for (int i = 0; i < gui.getSize(); i++) {
+            gui.setItem(i, wandsList.get(i));
+        }
+
+        player.setMetadata("SymoneWand", new FixedMetadataValue(Core.plugin(), gui));
+        return gui;
+    }
+    private Inventory getRanged(Player player) {
+        Inventory gui = Bukkit.createInventory(null, 27, "Ranged Weapons");
+
+        //Fill in the GUI
+        for (int i = 0; i < gui.getSize(); i++) {
+            gui.setItem(i, rangedList.get(i));
+        }
+
+        player.setMetadata("SymoneRanged", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
     }
 }
