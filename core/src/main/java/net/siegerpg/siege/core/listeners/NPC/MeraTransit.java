@@ -7,9 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
-import org.bukkit.entity.NPC;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -35,7 +33,7 @@ public class MeraTransit implements Listener {
         if (!(e.getWhoClicked() instanceof Player)) {return;}
         if (e.getView().getTitle().equals("World Transit")) {
             e.setCancelled(true);
-            short level = Levels.getLevel((OfflinePlayer) e.getWhoClicked());
+            short level = Levels.INSTANCE.getExpLevel((OfflinePlayer) e.getWhoClicked()).getFirst();
             Player player = (Player) e.getWhoClicked();
             World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
             World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");

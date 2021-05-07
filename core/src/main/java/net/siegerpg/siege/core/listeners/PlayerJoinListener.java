@@ -3,20 +3,16 @@ package net.siegerpg.siege.core.listeners;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
-import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
-import net.siegerpg.siege.core.items.statgems.StatGem;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class PlayerJoinListener implements Listener {
     /*
@@ -74,8 +70,8 @@ public class PlayerJoinListener implements Listener {
             Tablist.tablistUpdate(p);
         }
 
-        if (Levels.getLevel(player) < 1) {
-            Levels.setLevel(player, (short) 1);
+        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
+            Levels.INSTANCE.setLevel(player, (short) 1);
         }
         if (!(player.hasPlayedBefore())) {
             player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(true));

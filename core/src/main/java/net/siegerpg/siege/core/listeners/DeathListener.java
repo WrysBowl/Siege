@@ -6,19 +6,12 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.Date;
-import java.util.Objects;
 
 public class DeathListener implements Listener {
     @EventHandler
@@ -40,7 +33,8 @@ public class DeathListener implements Listener {
         ItemStack goldCoins = Utils.getGoldCoin();
         goldCoins.setAmount(mobDrop.getGold(true));
         if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK);}
-        if (mobDrop.getExp(true) > 0 && player != null) { Levels.addExp(player, mobDrop.getExp(true)); } //Give exp reward
+        if (mobDrop.getExp(true) > 0 && player != null) {
+            Levels.INSTANCE.addExp(player, mobDrop.getExp(true)); } //Give exp reward
 
         if (goldCoins.getAmount() > 0) { e.getDrops().add(goldCoins); } //Give gold reward
         
