@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners.NPC;
 
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.items.implemented.misc.wands.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
@@ -131,16 +132,43 @@ public class SymoneCollector implements Listener {
 
     public static ArrayList<ItemStack> wandsList = new ArrayList<>(){
         {
-            add(new Twig(50).getUpdatedItem(true));
-            add(new StickyStick(50).getUpdatedItem(true));
-            add(new Spade(50).getUpdatedItem(true));
-            add(new Shovel(50).getUpdatedItem(true));
-            add(new Shank(50).getUpdatedItem(true));
-            add(new Dagger(50).getUpdatedItem(true));
-            add(new WoodenSword(50).getUpdatedItem(true));
-            add(new ScrapShard(50).getUpdatedItem(true));
-            add(new SplinteredBone(50).getUpdatedItem(true));
-            add(new RefinedDagger(50).getUpdatedItem(true));
+            add(setOriginLore(new LivingTwig(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Spruce Log drop")));
+            add(setOriginLore(new GlisteningTwig(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Seed \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A x1")));
+            add(setOriginLore(new GlowingTwig(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A\u272A x3")));
+            add(setOriginLore(new SlimeSpoofer(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Prince Slimy drop")));
+            add(setOriginLore(new RockWand(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2")));
+            add(setOriginLore(new Torch(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Magma \u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x2")));
+            add(setOriginLore(new FlamingHotTorch(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Magma \u272A\u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Seed \u272A\u272A\u272A\u272A x1"),
+                    Utils.parse("<dark_aqua>Stick \u272A\u272A\u272A x1")));
+            add(setOriginLore(new EarthernWand(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Coal \u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Seed \u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
+            add(setOriginLore(new HotRod(50).getUpdatedItem(true),
+                    Utils.parse("<yellow>UNOBTAINABLE")));
+            add(setOriginLore(new EarthernStaff(50).getUpdatedItem(true),
+                    Utils.parse("<dark_aqua>Crafting"),
+                    Utils.parse("<dark_aqua>Coal \u272A\u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Seed \u272A\u272A\u272A\u272A x2"),
+                    Utils.parse("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
         }
     };
 
