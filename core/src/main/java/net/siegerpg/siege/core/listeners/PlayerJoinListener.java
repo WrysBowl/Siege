@@ -70,9 +70,14 @@ public class PlayerJoinListener implements Listener {
             Tablist.tablistUpdate(p);
         }
 
-        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
-            Levels.INSTANCE.setLevel(player, (short) 1);
-        }
+        Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), new Runnable() {
+            @Override
+            public void run() {
+                if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
+                    Levels.INSTANCE.setLevel(player, (short) 1);
+                }
+            }
+        });
         if (!(player.hasPlayedBefore())) {
             player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(true));
         }

@@ -1,9 +1,10 @@
 package net.siegerpg.siege.core.informants;
 
 import kotlin.Pair;
+import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.VaultHook;
 import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -11,19 +12,22 @@ import org.bukkit.scoreboard.Objective;
 
 public class Scoreboard {
     public static void updateScoreboard(Player p) {
-        org.bukkit.scoreboard.Scoreboard b = Bukkit.getScoreboardManager().getNewScoreboard();
-        Objective o = b.registerNewObjective("Title", "", Utils.tacc("&6SiegeRPG &7(" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getMaxPlayers() + ")"));
-        o.setDisplaySlot(DisplaySlot.SIDEBAR);
-        Pair<Short, Integer> levelExp = Levels.INSTANCE.getExpLevel(p);
-        double levelPercent = Utils.round((levelExp.getSecond()/ Levels.INSTANCE.calculateRequiredExperience(levelExp.getFirst())), 1); //for score #13
-        o.getScore(" ").setScore(15);
+        Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), new Runnable() {
+            @Override
+            public void run() {
+                org.bukkit.scoreboard.Scoreboard b = Bukkit.getScoreboardManager().getNewScoreboard();
+                Objective o = b.registerNewObjective("Title", "", Utils.tacc("&6SiegeRPG &7(" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getMaxPlayers() + ")"));
+                o.setDisplaySlot(DisplaySlot.SIDEBAR);
+                Pair<Short, Integer> levelExp = Levels.INSTANCE.getExpLevel(p);
+                double levelPercent = Utils.round((levelExp.getSecond() / Levels.INSTANCE.calculateRequiredExperience(levelExp.getFirst())), 1); //for score #13
+                o.getScore(" ").setScore(15);
 
-        o.getScore(Utils.tacc("&6&lWorld &r&7") + p.getWorld().getName()).setScore(14);
+                o.getScore(Utils.tacc("&6&lWorld &r&7") + p.getWorld().getName()).setScore(14);
 
-        o.getScore(Utils.tacc("&6Profile " + VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName())).setScore(13);
-        o.getScore(Utils.tacc("&7\u2560 Level &5" + levelExp.getFirst() + "&d(" + levelPercent + "%)")).setScore(12);
-        o.getScore(Utils.tacc("&7\u2560 Gold &e" + (int) VaultHook.econ.getBalance(p))).setScore(11);
-        o.getScore("  ").setScore(10);
+                o.getScore(Utils.tacc("&6Profile " + VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName())).setScore(13);
+                o.getScore(Utils.tacc("&7\u2560 Level &5" + levelExp.getFirst() + "&d(" + levelPercent + "%)")).setScore(12);
+                o.getScore(Utils.tacc("&7\u2560 Gold &e" + (int) VaultHook.econ.getBalance(p))).setScore(11);
+                o.getScore("  ").setScore(10);
 
         /*
         CustomItemUtils r = CustomItemUtils.INSTANCE;
@@ -39,10 +43,10 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&7\u2560 &3Toughness " + r.getPlayerStat(p, StatTypes.TOUGHNESS))).setScore(6);
 
         o.getScore(Utils.tacc("   ")).setScore(5);*/
-        o.getScore(Utils.tacc("&7play.SiegeRPG.net")).setScore(4);
+                o.getScore(Utils.tacc("&7play.SiegeRPG.net")).setScore(4);
 
 
-        p.setScoreboard(b);
+                p.setScoreboard(b);
 
         /*if (Core.getParty(p.getUniqueId()) == null) { // if player is not in dungeon or party
             o.getScore(Utils.tacc("&7╠ &4Strength " + Stats.getStrength(p))).setScore(10);
@@ -61,6 +65,9 @@ public class Scoreboard {
                 o.getScore(Utils.tacc("&7╠ &6" + +Stats.getStrength(p))).setScore(10);
             }
         }*/
+            }
+        });
+
 
     }
 }
