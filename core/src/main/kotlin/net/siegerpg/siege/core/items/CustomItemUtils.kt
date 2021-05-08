@@ -162,11 +162,6 @@ object CustomItemUtils {
                 }
             }
         }
-        if (statType == StatTypes.HEALTH) {
-            output += player.level * 2
-        } else if (statType == StatTypes.STRENGTH) {
-            output += player.level
-        }
         //Bukkit.getLogger().info("Boots: " + output)
         return output
     }
