@@ -2,17 +2,22 @@ package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.utils.Players;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
 
 public class StatChangeListener implements Listener, Runnable {
@@ -33,6 +38,13 @@ public class StatChangeListener implements Listener, Runnable {
 
     @EventHandler
     public void onEquip(ArmorEquipEvent e){
+        @Nullable CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
+        if (item == null) {return;}
+        if (item.getLevelRequirement() == null) {return;}
+        if (item.getLevelRequirement() > e.getPlayer().getLevel()) {
+            e.getPlayer().sendTitle("", ChatColor.RED + "Too weak to use this armor's stats", 1, 40, 1);
+            return;
+        }
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
             playerHealth.put(
                     e.getPlayer(),
@@ -63,10 +75,10 @@ public class StatChangeListener implements Listener, Runnable {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 Double health = playerHealth.get(p);
-                int toughness = Math.toIntExact(Math.round(playerToughness.get(p)));
+                Double toughness = playerToughness.get(p);
                 p.sendActionBar(Utils.parse("<red>"
                         + CustomItemUtils.INSTANCE.getCustomHealth(p) + "<dark_red>/" + health + " \u2764"
-                        + "       <dark_aqua>" + toughness + " \u1F6E1"));
+                        + "          <dark_aqua>" + toughness + " \uD83D\uDEE1       "));
             }
         }, 0, 40);
     }

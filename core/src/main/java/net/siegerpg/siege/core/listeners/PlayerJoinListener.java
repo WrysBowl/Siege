@@ -67,6 +67,10 @@ public class PlayerJoinListener implements Listener {
 
         event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player.getName()));
 
+        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 2) {
+            Levels.INSTANCE.setExpLevel(player, new Pair(1, 0));
+        }
+
         for (Player p : Bukkit.getOnlinePlayers()) {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);
@@ -82,9 +86,6 @@ public class PlayerJoinListener implements Listener {
         });
         if (!(player.hasPlayedBefore())) {
             player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(true));
-        }
-        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 2) {
-            Levels.INSTANCE.setExpLevel(player, new Pair(1, 0));
         }
 
         if (player.getName().equals("Sumowu")) {
