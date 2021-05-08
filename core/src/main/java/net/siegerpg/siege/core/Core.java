@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.commands.GetItem;
 import net.siegerpg.siege.core.commands.Hub;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
+import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
 import net.siegerpg.siege.core.listeners.NPC.ClemontBlacksmith;
 import net.siegerpg.siege.core.listeners.NPC.MeraTransit;
 import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
@@ -107,6 +108,8 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);
         getServer().getPluginManager().registerEvents(new ClemontBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new SymoneCollector(), this);
+        getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
+        getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
         SmokyBlacksmith.resetItems();
 
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
