@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.HashMap;
 
@@ -20,11 +21,22 @@ public class StatChangeListener implements Listener, Runnable {
     public static HashMap<Player, Double> playerToughness = new HashMap<>();
 
     @EventHandler
+    public void onJoin(PlayerJoinEvent e) {
+        playerHealth.put(
+                e.getPlayer(),
+                CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + 20);
+
+        playerToughness.put(
+                e.getPlayer(),
+                CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.TOUGHNESS));
+    }
+
+    @EventHandler
     public void onEquip(ArmorEquipEvent e){
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
             playerHealth.put(
                     e.getPlayer(),
-                    CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH));
+                    CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + 20);
 
             playerToughness.put(
                     e.getPlayer(),
@@ -38,7 +50,7 @@ public class StatChangeListener implements Listener, Runnable {
             Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
                 playerHealth.put(
                         e.getPlayer(),
-                        CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH));
+                        CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + 20);
 
                 playerToughness.put(
                         e.getPlayer(),
@@ -51,10 +63,10 @@ public class StatChangeListener implements Listener, Runnable {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 Double health = playerHealth.get(p);
-                Double toughness = playerToughness.get(p);
+                int toughness = Math.toIntExact(Math.round(playerToughness.get(p)));
                 p.sendActionBar(Utils.parse("<red>"
-                        + CustomItemUtils.INSTANCE.getCustomHealth(p) + "<dark_red>/<red>" + health
-                        + "       <blue>" + toughness));
+                        + CustomItemUtils.INSTANCE.getCustomHealth(p) + "<dark_red>/" + health + " \u2764"
+                        + "       <dark_aqua>" + toughness + " \u1F6E1"));
             }
         }, 0, 40);
     }
