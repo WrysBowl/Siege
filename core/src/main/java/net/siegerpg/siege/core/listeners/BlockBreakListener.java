@@ -41,7 +41,11 @@ public class BlockBreakListener implements Listener {
 
         e.getBlock().setType(Material.BEDROCK);
 
-        if (blockDrop.getExp(true) > 0) { Levels.INSTANCE.addExp(player, blockDrop.getExp(true)); } //Give exp reward
+        if (blockDrop.getExp(true) > 0) {
+            int exp = blockDrop.getExp(true);
+            Levels.INSTANCE.addExp(player, exp);
+            player.sendActionBar(Utils.parse("<purple>+ " + exp + " <purple>EXP"));
+        } //Give exp reward
 
         if (goldCoins.getAmount() > 0) { e.getBlock().getWorld().dropItemNaturally(loc, goldCoins); } //Give gold reward
 

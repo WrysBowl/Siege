@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners;
 
+import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
@@ -9,6 +10,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -80,6 +82,9 @@ public class PlayerJoinListener implements Listener {
         });
         if (!(player.hasPlayedBefore())) {
             player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(true));
+        }
+        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 2) {
+            Levels.INSTANCE.setExpLevel(player, new Pair(1, 0));
         }
 
         if (player.getName().equals("Sumowu")) {

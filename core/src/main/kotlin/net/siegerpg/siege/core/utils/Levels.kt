@@ -79,7 +79,7 @@ object Levels {
                 if (player.isOnline) {
                     val p = (player as Player);
                     p.level = levelExp.first.toInt();
-                    p.exp = levelExp.second / calculateRequiredExperience(levelExp.first).toFloat()
+                    p.exp = levelExp.second / calculateRequiredExperience(levelExp.first).toFloat() //the player's level + 1 is input to the calculateRequiredExperience to find exp req to get to the next level
                 }
             }
         }

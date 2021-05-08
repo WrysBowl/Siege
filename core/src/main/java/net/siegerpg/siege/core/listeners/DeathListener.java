@@ -34,7 +34,10 @@ public class DeathListener implements Listener {
         goldCoins.setAmount(mobDrop.getGold(true));
         if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK);}
         if (mobDrop.getExp(true) > 0 && player != null) {
-            Levels.INSTANCE.addExp(player, mobDrop.getExp(true)); } //Give exp reward
+            int exp = mobDrop.getExp(true);
+            Levels.INSTANCE.addExp(player, exp);
+            player.sendActionBar(Utils.parse("<purple>+ " + exp + " <purple>EXP"));
+        } //Give exp reward
 
         if (goldCoins.getAmount() > 0) { e.getDrops().add(goldCoins); } //Give gold reward
         
