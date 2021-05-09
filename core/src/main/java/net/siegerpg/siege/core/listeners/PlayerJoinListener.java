@@ -67,9 +67,12 @@ public class PlayerJoinListener implements Listener {
 
         event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player.getName()));
 
+        Bukkit.getLogger().info(Levels.INSTANCE.getExpLevel(player).getFirst().toString()); //prints 0
         if (Levels.INSTANCE.getExpLevel(player).getFirst() < 2) {
             Levels.INSTANCE.setLevel(player, (short) 1);
             Levels.INSTANCE.setExp(player, 0);
+            Bukkit.getLogger().info(Levels.INSTANCE.getExpLevel(player).getFirst().toString()); //prints 0
+            Bukkit.getLogger().info(Levels.INSTANCE.getExpLevel(player).getSecond().toString()); //prints 0
         }
 
         for (Player p : Bukkit.getOnlinePlayers()) {

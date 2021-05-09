@@ -82,7 +82,6 @@ object Levels {
                     p.level = levelExp.first.toInt();
                     val nextLvl = (levelExp.first + 1).toShort()
                     p.exp = levelExp.second / calculateRequiredExperience(nextLvl).toFloat()
-                    Scoreboard.updateScoreboard(player)
                 }
             }
         }
