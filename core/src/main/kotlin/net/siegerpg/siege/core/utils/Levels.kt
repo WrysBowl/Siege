@@ -5,8 +5,10 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import net.siegerpg.siege.core.database.DatabaseManager
 import net.siegerpg.siege.core.informants.Scoreboard
+import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
+import java.sql.ResultSet
 import kotlin.math.pow
 
 object Levels {
@@ -17,11 +19,11 @@ object Levels {
     fun getExpLevel(player: OfflinePlayer): Pair<Short, Int> {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
-            val stmt = connection.prepareStatement("SELECT level,experience FROM userData WHERE uuid=?")
+            val stmt = connection.prepareStatement("SELECT level,experience FROM userData WHERE uuid=?", ResultSet.TYPE_SCROLL_SENSITIVE)
             stmt.setString(1, player.uniqueId.toString())
             val query = stmt.executeQuery();
+            if (!query.isBeforeFirst()) return Pair(0,0)
             query.next()
-            if (query.fetchSize < 1) return Pair(0, 0)
             return Pair(query.getShort("level"), query.getInt("experience"))
         }
     }
@@ -34,7 +36,10 @@ object Levels {
                 stmt.setShort(1, level)
                 stmt.setString(2, player.uniqueId.toString())
                 stmt.executeUpdate()
-                if (player.isOnline) (player as Player).level = level.toInt();
+                if (player.isOnline) {
+                        (player as Player).level = level.toInt()
+                    Scoreboard.updateScoreboard(player)
+                }
             }
         }
     }
@@ -50,6 +55,7 @@ object Levels {
                 if (player.isOnline) {
                     val p = player as Player
                     p.giveExpLevels(level.toInt())
+                    Scoreboard.updateScoreboard(player)
                 }
             }
         }
@@ -61,8 +67,8 @@ object Levels {
     fun calculateExpLevel(level: Short, experience: Int): Pair<Short, Int> {
         var exp = experience;
         var lvl = level;
-        while (calculateRequiredExperience(level) <= experience) {
-            exp -= calculateRequiredExperience(level)
+        while (calculateRequiredExperience(lvl) <= exp) {
+            exp -= calculateRequiredExperience(lvl)
             lvl = (lvl + 1).toShort()
         }
         return Pair(lvl, exp)
@@ -80,8 +86,8 @@ object Levels {
                 if (player.isOnline) {
                     val p = (player as Player);
                     p.level = levelExp.first.toInt();
-                    val nextLvl = (levelExp.first + 1).toShort()
-                    p.exp = levelExp.second / calculateRequiredExperience(nextLvl).toFloat()
+                    p.exp = levelExp.second / calculateRequiredExperience(levelExp.first).toFloat()
+                    Scoreboard.updateScoreboard(player)
                 }
             }
         }

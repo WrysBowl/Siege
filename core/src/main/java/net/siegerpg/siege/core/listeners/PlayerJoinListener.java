@@ -67,11 +67,6 @@ public class PlayerJoinListener implements Listener {
 
         event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player.getName()));
 
-        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 2) {
-            Levels.INSTANCE.setLevel(player, (short) 1);
-            Levels.INSTANCE.setExp(player, 0);
-        }
-
         for (Player p : Bukkit.getOnlinePlayers()) {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);
@@ -112,14 +107,5 @@ public class PlayerJoinListener implements Listener {
         */
 
         player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
-
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Core.plugin(), new Runnable() {
-            @Override
-            public void run() {
-                Bukkit.getLogger().info(Levels.INSTANCE.getExpLevel(player).getFirst().toString());
-                Bukkit.getLogger().info(Levels.INSTANCE.getExpLevel(player).getSecond().toString()); //prints 0
-            }
-
-        }, 100);
     }
 }
