@@ -13,7 +13,10 @@ import org.bukkit.inventory.ItemStack
 
 
 class NoBowMechanics : Listener {
-    var storedItem = HashMap<Player?, ItemStack?>()
+    companion object {
+        var storedItem = HashMap<Player?, ItemStack?>()
+    }
+
 
     @EventHandler
     fun playerItemHeldEvent(e: PlayerItemHeldEvent) {
@@ -39,17 +42,5 @@ class NoBowMechanics : Listener {
             player.updateInventory()
             storedItem.remove(player)
         }
-    }
-
-    @EventHandler
-    fun playerInteractEvent(e: PlayerInteractEvent) {
-        val p = e.player
-        if (!(e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK)) return
-        if (storedItem.containsKey(p)) return
-        if (p.itemInHand.type != Material.BOW) return
-        val slot = p.inventory.size - 1
-        val item = p.inventory.getItem(slot)
-        storedItem[p] = item
-        p.inventory.setItem(slot, ItemStack(Material.ARROW, 1))
     }
 }

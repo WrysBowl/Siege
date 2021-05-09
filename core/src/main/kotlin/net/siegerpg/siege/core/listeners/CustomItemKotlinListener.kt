@@ -167,7 +167,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         ) return
         val player = event.player
         val item = player.inventory.itemInMainHand
-
+        if (NoBowMechanics.storedItem.containsKey(player)) return
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
                 val entity = player.getTargetEntity(it.range)
@@ -192,13 +192,12 @@ class CustomItemKotlinListener : Listener, Runnable {
                     }
                 }.runTaskLaterAsynchronously(Core.plugin(), 30)
             }
-            /*
+
             if (it is CustomBow) {
                 val slot = player.inventory.size - 1
-                val item = player.inventory.getItem(slot)
-                NoBowMechanics.[player] = item
+                NoBowMechanics.storedItem[player] = player.inventory.getItem(slot)
                 player.inventory.setItem(slot, ItemStack(Material.ARROW, 1))
-            }*/
+            }
         }
     }
 
