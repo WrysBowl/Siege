@@ -1,12 +1,17 @@
 package net.siegerpg.siege.core;
 
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.commands.Discord;
+import net.siegerpg.siege.core.commands.GetItem;
 import net.siegerpg.siege.core.commands.Hub;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
+import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
 import net.siegerpg.siege.core.listeners.NPC.ClemontBlacksmith;
 import net.siegerpg.siege.core.listeners.NPC.MeraTransit;
 import net.siegerpg.siege.core.listeners.NPC.SmokyBlacksmith;
+import net.siegerpg.siege.core.listeners.NPC.SymoneCollector;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
 import net.siegerpg.siege.core.portals.PortalConfig;
@@ -30,6 +35,8 @@ public final class Core extends JavaPlugin {
     public PortalConfig portalConfig = new PortalConfig(this);
     public static Location spawnLocation;
 
+    public static ProtocolManager protocolManager;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -38,8 +45,10 @@ public final class Core extends JavaPlugin {
         (new VaultHook()).createHooks();
 
         spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
+        protocolManager = ProtocolLibrary.getProtocolManager();
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discords").setExecutor(new Discord());
+        this.getCommand("getItem").setExecutor(new GetItem());
 
         //partyManager = new PartyManager();
 
@@ -90,7 +99,6 @@ public final class Core extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        //getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
         getServer().getPluginManager().registerEvents(new DamageIndicatorListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
@@ -104,7 +112,11 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);
         getServer().getPluginManager().registerEvents(new ClemontBlacksmith(), this);
+        getServer().getPluginManager().registerEvents(new SymoneCollector(), this);
+        getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
+        getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
         SmokyBlacksmith.resetItems();
+        StatChangeListener.statBarDisplayTask();
 
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         getServer().getPluginManager().registerEvents(new VanillaCraftingListener(), this);

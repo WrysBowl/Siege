@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.armor.helmet
+package net.siegerpg.siege.core.items.implemented.armor.leggings
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity

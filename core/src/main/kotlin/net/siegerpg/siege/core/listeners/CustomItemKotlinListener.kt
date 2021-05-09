@@ -1,16 +1,16 @@
 package net.siegerpg.siege.core.listeners
 
+import com.comphenix.protocol.PacketType
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.events.ArmorEquipEvent
+import net.siegerpg.siege.core.Core.protocolManager
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomWand
-import net.siegerpg.siege.core.utils.Levels
+import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.*
 import org.bukkit.attribute.Attribute
-import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -22,9 +22,12 @@ import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
+import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
+import java.lang.reflect.InvocationTargetException
 
-class CustomItemKotlinListener : Listener {
+
+class CustomItemKotlinListener : Listener, Runnable {
 
     var cooldown: MutableList<Player> = mutableListOf()
 
@@ -156,7 +159,6 @@ class CustomItemKotlinListener : Listener {
         }
     }
 
-
     @EventHandler
     @Suppress("unused")
     fun onInteract(event: PlayerInteractEvent) {
@@ -165,7 +167,7 @@ class CustomItemKotlinListener : Listener {
         ) return
         val player = event.player
         val item = player.inventory.itemInMainHand
-
+        if (NoBowMechanics.storedItem.containsKey(player)) return
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
                 val entity = player.getTargetEntity(it.range)
@@ -178,15 +180,23 @@ class CustomItemKotlinListener : Listener {
                 if (cooldown.contains(player)) return
                 cooldown.add(player)
                 drawParticles(player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
+                var dmg = it.baseStats[StatTypes.STRENGTH]!!
+                if (player.level >= CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
                 for (e in loc.getNearbyLivingEntities(it.damageRadius)) {
                     if (e is Player) continue
-                    e.damage(it.baseStats[StatTypes.STRENGTH]!!, player)
+                    e.damage(dmg, player)
                 }
                 object : BukkitRunnable() {
                     override fun run() {
                         cooldown.remove(player)
                     }
                 }.runTaskLaterAsynchronously(Core.plugin(), 30)
+            }
+
+            if (it is CustomBow) {
+                val slot = player.inventory.size - 1
+                NoBowMechanics.storedItem[player] = player.inventory.getItem(slot)
+                player.inventory.setItem(slot, ItemStack(Material.ARROW, 1))
             }
         }
     }
@@ -223,5 +233,8 @@ class CustomItemKotlinListener : Listener {
                 p1.add(vector)
             }
         }).start()
+    }
+
+    override fun run() {
     }
 }
