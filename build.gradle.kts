@@ -8,6 +8,7 @@ repositories {
     mavenCentral()
     maven { url = uri("https://nexus.mcdevs.us/repository/mcdevs/") }
     maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
+    maven { url = uri("https://repo.dmulloy2.net/repository/public/") }
 
 }
 
@@ -28,6 +29,7 @@ subprojects {
     dependencies {
         compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
         compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+        compileOnly("com.comphenix.protocol:ProtocolLib:4.6.0")
     }
 
 

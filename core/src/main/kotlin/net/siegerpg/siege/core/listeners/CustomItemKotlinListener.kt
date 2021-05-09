@@ -1,16 +1,16 @@
 package net.siegerpg.siege.core.listeners
 
+import com.comphenix.protocol.PacketType
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.events.ArmorEquipEvent
+import net.siegerpg.siege.core.Core.protocolManager
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomWand
-import net.siegerpg.siege.core.utils.Levels
+import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.*
 import org.bukkit.attribute.Attribute
-import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -22,9 +22,12 @@ import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
+import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
+import java.lang.reflect.InvocationTargetException
 
-class CustomItemKotlinListener : Listener {
+
+class CustomItemKotlinListener : Listener, Runnable {
 
     var cooldown: MutableList<Player> = mutableListOf()
 
@@ -156,7 +159,6 @@ class CustomItemKotlinListener : Listener {
         }
     }
 
-
     @EventHandler
     @Suppress("unused")
     fun onInteract(event: PlayerInteractEvent) {
@@ -187,6 +189,19 @@ class CustomItemKotlinListener : Listener {
                         cooldown.remove(player)
                     }
                 }.runTaskLaterAsynchronously(Core.plugin(), 30)
+            }
+            if (it is CustomBow) {
+                val packet = protocolManager.createPacket(PacketType.Play.Server.SET_SLOT)
+                packet.integers.write(0,0)
+                packet.integers.write(1,9)
+                packet.itemModifier.write(0, ItemStack(Material.ARROW))
+                try {
+                    protocolManager.sendServerPacket(player, packet)
+                } catch (e: InvocationTargetException) {
+                    throw RuntimeException(
+                        "Cannot send packet $packet", e
+                    )
+                }
             }
         }
     }
@@ -223,5 +238,8 @@ class CustomItemKotlinListener : Listener {
                 p1.add(vector)
             }
         }).start()
+    }
+
+    override fun run() {
     }
 }

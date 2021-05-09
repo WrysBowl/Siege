@@ -1,5 +1,7 @@
 package net.siegerpg.siege.core;
 
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.GetItem;
 import net.siegerpg.siege.core.commands.Hub;
@@ -33,6 +35,8 @@ public final class Core extends JavaPlugin {
     public PortalConfig portalConfig = new PortalConfig(this);
     public static Location spawnLocation;
 
+    public static ProtocolManager protocolManager;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -41,6 +45,7 @@ public final class Core extends JavaPlugin {
         (new VaultHook()).createHooks();
 
         spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
+        protocolManager = ProtocolLibrary.getProtocolManager();
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discords").setExecutor(new Discord());
         this.getCommand("getItem").setExecutor(new GetItem());
