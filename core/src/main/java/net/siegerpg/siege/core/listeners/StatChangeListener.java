@@ -29,7 +29,7 @@ public class StatChangeListener implements Listener, Runnable {
     public void onJoin(PlayerJoinEvent e) {
         playerHealth.put(
                 e.getPlayer(),
-                CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + 20);
+                CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + e.getPlayer().getMaxHealth());
 
         playerToughness.put(
                 e.getPlayer(),
@@ -42,13 +42,13 @@ public class StatChangeListener implements Listener, Runnable {
         if (item == null) {return;}
         if (item.getLevelRequirement() == null) {return;}
         if (item.getLevelRequirement() > e.getPlayer().getLevel()) {
-            e.getPlayer().sendTitle("", ChatColor.RED + "Too weak to use this armor's stats", 1, 40, 1);
+            e.getPlayer().sendTitle("", ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
             return;
         }
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
             playerHealth.put(
                     e.getPlayer(),
-                    CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + 20);
+                    CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + e.getPlayer().getMaxHealth());
 
             playerToughness.put(
                     e.getPlayer(),
@@ -62,7 +62,7 @@ public class StatChangeListener implements Listener, Runnable {
             Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
                 playerHealth.put(
                         e.getPlayer(),
-                        CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + 20);
+                        CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + e.getPlayer().getMaxHealth());
 
                 playerToughness.put(
                         e.getPlayer(),
@@ -74,10 +74,10 @@ public class StatChangeListener implements Listener, Runnable {
     public static void statBarDisplayTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                Double health = playerHealth.get(p);
+                double health = Utils.round(playerHealth.get(p), 3);
                 Double toughness = playerToughness.get(p);
                 p.sendActionBar(Utils.parse("<red>"
-                        + CustomItemUtils.INSTANCE.getCustomHealth(p) + "<dark_red>/" + health + " \u2764"
+                        + Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 3) + "<dark_red>/" + health + " \u2764"
                         + "          <dark_aqua>" + toughness + " \uD83D\uDEE1       "));
             }
         }, 0, 40);

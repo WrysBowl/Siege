@@ -17,8 +17,9 @@ public class Scoreboard {
         o.setDisplaySlot(DisplaySlot.SIDEBAR);
         Pair<Short, Integer> levelExp = Levels.INSTANCE.getExpLevel(p);
         float exp = levelExp.getSecond().floatValue();
-        int reqExp = Levels.INSTANCE.calculateRequiredExperience(levelExp.getFirst());
-        double levelPercent = Utils.round((double) (exp / reqExp), 3);
+        float reqExp = Levels.INSTANCE.calculateRequiredExperience(levelExp.getFirst());
+        double division = exp/reqExp;
+        double levelPercent = Utils.round(division, 3);
         o.getScore(" ").setScore(15);
 
         o.getScore(Utils.tacc("&6&lWorld &r&7") + p.getWorld().getName()).setScore(14);

@@ -64,12 +64,18 @@ object Levels {
     /**
      * Returns the new user level based on a level and exp
      */
-    fun calculateExpLevel(level: Short, experience: Int): Pair<Short, Int> {
+    fun calculateExpLevel(level: Short, experience: Int, player: Player): Pair<Short, Int> {
         var exp = experience;
         var lvl = level;
         while (calculateRequiredExperience(lvl) <= exp) {
             exp -= calculateRequiredExperience(lvl)
             lvl = (lvl + 1).toShort()
+            if (player.isOnline) {
+                player.sendTitle(
+                    Utils.tacc("&5Level Up!"),
+                    Utils.tacc("&c+1 ATK     +2 HP"),
+                1, 40, 1)
+            }
         }
         return Pair(lvl, exp)
     }
@@ -96,7 +102,7 @@ object Levels {
     fun setExp(player: OfflinePlayer, exp: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             val level = getExpLevel(player).first
-            val new = calculateExpLevel(level, exp)
+            val new = calculateExpLevel(level, exp, player as Player)
             setExpLevel(player, new)
         }
     }
@@ -104,7 +110,7 @@ object Levels {
     fun addExp(player: OfflinePlayer, exp: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             val levelExp = getExpLevel(player)
-            val new = calculateExpLevel(levelExp.first, levelExp.second + exp)
+            val new = calculateExpLevel(levelExp.first, levelExp.second + exp, player as Player)
             setExpLevel(player, new)
         }
     }

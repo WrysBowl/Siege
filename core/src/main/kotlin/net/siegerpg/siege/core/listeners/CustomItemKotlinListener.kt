@@ -180,9 +180,11 @@ class CustomItemKotlinListener : Listener, Runnable {
                 if (cooldown.contains(player)) return
                 cooldown.add(player)
                 drawParticles(player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
+                var dmg = it.baseStats[StatTypes.STRENGTH]!!
+                if (player.level >= CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
                 for (e in loc.getNearbyLivingEntities(it.damageRadius)) {
                     if (e is Player) continue
-                    e.damage(it.baseStats[StatTypes.STRENGTH]!!, player)
+                    e.damage(dmg, player)
                 }
                 object : BukkitRunnable() {
                     override fun run() {
@@ -190,19 +192,13 @@ class CustomItemKotlinListener : Listener, Runnable {
                     }
                 }.runTaskLaterAsynchronously(Core.plugin(), 30)
             }
+            /*
             if (it is CustomBow) {
-                val packet = protocolManager.createPacket(PacketType.Play.Server.SET_SLOT)
-                packet.integers.write(0,0)
-                packet.integers.write(1,9)
-                packet.itemModifier.write(0, ItemStack(Material.ARROW))
-                try {
-                    protocolManager.sendServerPacket(player, packet)
-                } catch (e: InvocationTargetException) {
-                    throw RuntimeException(
-                        "Cannot send packet $packet", e
-                    )
-                }
-            }
+                val slot = player.inventory.size - 1
+                val item = player.inventory.getItem(slot)
+                NoBowMechanics.[player] = item
+                player.inventory.setItem(slot, ItemStack(Material.ARROW, 1))
+            }*/
         }
     }
 
