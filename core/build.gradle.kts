@@ -15,10 +15,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
     testImplementation("junit:junit:4.12")
     compileOnly("org.projectlombok:lombok:1.18.16")
-    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.5.0")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
     compileOnly("com.vexsoftware:nuvotifier-universal:2.6.0"){
@@ -32,10 +30,7 @@ dependencies {
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.7.1")
     implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
     implementation("com.zaxxer:HikariCP:4.0.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7") {
-        exclude("kotlin-stdlib-common")
-        exclude("kotlin-stdlib")
-    }
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
     annotationProcessor("org.projectlombok:lombok:1.18.16")
     //compile(fileTree(include(["*.jar"]), dir("libs")))
 }
@@ -48,7 +43,6 @@ tasks {
         doFirst {
             exclude("fonts/*.csv")
         }
-        exclude("kotlin/*")
         archiveFileName.set("SiegeCore.jar")
     }
     build {
