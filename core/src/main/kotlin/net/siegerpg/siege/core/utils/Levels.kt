@@ -4,6 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import net.siegerpg.siege.core.database.DatabaseManager
+import net.siegerpg.siege.core.informants.Scoreboard
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import kotlin.math.pow
@@ -79,7 +80,9 @@ object Levels {
                 if (player.isOnline) {
                     val p = (player as Player);
                     p.level = levelExp.first.toInt();
-                    p.exp = levelExp.second / calculateRequiredExperience(levelExp.first).toFloat() //the player's level + 1 is input to the calculateRequiredExperience to find exp req to get to the next level
+                    val nextLvl = (levelExp.first + 1).toShort()
+                    p.exp = levelExp.second / calculateRequiredExperience(nextLvl).toFloat()
+                    Scoreboard.updateScoreboard(player)
                 }
             }
         }

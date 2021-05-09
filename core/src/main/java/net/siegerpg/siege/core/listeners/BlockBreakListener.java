@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.drops.BlockDrops;
+import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
@@ -44,7 +45,7 @@ public class BlockBreakListener implements Listener {
         if (blockDrop.getExp(true) > 0) {
             int exp = blockDrop.getExp(true);
             Levels.INSTANCE.addExp(player, exp);
-            player.sendActionBar(Utils.parse("<purple>+ " + exp + " <purple>EXP"));
+            player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
         } //Give exp reward
 
         if (goldCoins.getAmount() > 0) { e.getBlock().getWorld().dropItemNaturally(loc, goldCoins); } //Give gold reward

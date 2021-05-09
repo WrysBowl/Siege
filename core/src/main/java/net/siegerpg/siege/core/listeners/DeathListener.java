@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import net.siegerpg.siege.core.drops.MobDrops;
+import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
@@ -12,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scoreboard.Score;
 
 public class DeathListener implements Listener {
     @EventHandler
@@ -36,7 +38,7 @@ public class DeathListener implements Listener {
         if (mobDrop.getExp(true) > 0 && player != null) {
             int exp = mobDrop.getExp(true);
             Levels.INSTANCE.addExp(player, exp);
-            player.sendActionBar(Utils.parse("<purple>+ " + exp + " <purple>EXP"));
+            player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
         } //Give exp reward
 
         if (goldCoins.getAmount() > 0) { e.getDrops().add(goldCoins); } //Give gold reward
