@@ -16,11 +16,9 @@ public class Scoreboard {
         Objective o = b.registerNewObjective("Title", "", Utils.tacc("&6SiegeRPG &7(" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getMaxPlayers() + ")"));
         o.setDisplaySlot(DisplaySlot.SIDEBAR);
         Pair<Short, Integer> levelExp = Levels.INSTANCE.getExpLevel(p);
-        int exp = levelExp.getSecond();
+        float exp = levelExp.getSecond().floatValue();
         int reqExp = Levels.INSTANCE.calculateRequiredExperience(levelExp.getFirst());
-        Double levelPercent = Utils.round((double) (exp / reqExp), 1);
-        int test = exp/reqExp;
-        Bukkit.getLogger().info(String.valueOf(test));
+        double levelPercent = Utils.round((double) (exp / reqExp), 3);
         o.getScore(" ").setScore(15);
 
         o.getScore(Utils.tacc("&6&lWorld &r&7") + p.getWorld().getName()).setScore(14);
