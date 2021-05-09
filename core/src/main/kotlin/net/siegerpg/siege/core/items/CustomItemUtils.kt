@@ -19,6 +19,7 @@ import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.utils.Levels
+import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -189,7 +190,7 @@ object CustomItemUtils {
                 }
             }
 
-            map[it] = totalAmount
+            map[it] = Utils.round(totalAmount, 2)
         }
         return map
     }
