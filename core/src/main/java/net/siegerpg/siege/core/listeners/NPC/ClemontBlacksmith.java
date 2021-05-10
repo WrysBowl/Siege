@@ -69,7 +69,7 @@ public class ClemontBlacksmith implements Listener {
                     player.getInventory().addItem(Utils.removeLastLore(e.getCurrentItem()));
                     VaultHook.econ.withdrawPlayer(player, cost);
                     Scoreboard.updateScoreboard((Player) e.getWhoClicked());
-                    player.sendMessage(Utils.tacc("&cYou have purchased an item"));
+                    player.sendMessage(Utils.tacc("&eYou have purchased an item"));
                 } else {
                     player.sendMessage(Utils.tacc("&cYour inventory is full!"));
                 }
