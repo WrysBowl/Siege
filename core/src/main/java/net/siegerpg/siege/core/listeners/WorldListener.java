@@ -47,12 +47,4 @@ public class WorldListener implements Listener {
             e.setCancelled(true);
         }
     }
-
-    @EventHandler
-    public void onHungerDeplete(FoodLevelChangeEvent e) {
-
-        e.setCancelled(true);
-        e.setFoodLevel(20);
-
-    }
 }

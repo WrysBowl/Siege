@@ -18,6 +18,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityRegainHealthEvent
+import org.bukkit.event.entity.FoodLevelChangeEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
@@ -149,6 +150,26 @@ class CustomItemKotlinListener : Listener, Runnable {
         CustomItemUtils.getCustomItem(e.item)?.let {
             if (it is CustomFood) it.onEat(e)
         }
+    }
+
+    @EventHandler
+    @Suppress("unused")
+    fun onFoodHold(e: PlayerItemHeldEvent) {
+        Bukkit.getServer().scheduler.scheduleSyncDelayedTask(Core.plugin(), {
+            if (CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand) != null) {
+                val food = CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand)
+                if (food is CustomFood) {
+                    e.player.foodLevel = 19
+                }
+            }
+        }, 1)
+    }
+
+    @EventHandler
+    @Suppress("unused")
+    fun cancelFood(e: FoodLevelChangeEvent) {
+        e.isCancelled = true
+        e.foodLevel = 20
     }
 
     @EventHandler

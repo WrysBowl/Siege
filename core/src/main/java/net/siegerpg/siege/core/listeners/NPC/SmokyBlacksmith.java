@@ -52,7 +52,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
                 weaponItems.add(shopWeapons.get((int) (Math.random() * 14)));
                 armorItems.add(shopArmor.get((int) (Math.random() * 11)));
             }
-            Bukkit.broadcastMessage(Utils.tacc("&aShop has reset!"));
+            Bukkit.broadcastMessage(Utils.tacc("&aSmoky's shop has reset with new items!"));
         }, 0, 36000);
     }
 
