@@ -5,6 +5,7 @@ import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.commands.Discord;
 import net.siegerpg.siege.core.commands.GetItem;
 import net.siegerpg.siege.core.commands.Hub;
+import net.siegerpg.siege.core.commands.Spawn;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
@@ -49,6 +50,7 @@ public final class Core extends JavaPlugin {
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discords").setExecutor(new Discord());
         this.getCommand("getItem").setExecutor(new GetItem());
+        this.getCommand("spawn").setExecutor(new Spawn());
 
         //partyManager = new PartyManager();
 

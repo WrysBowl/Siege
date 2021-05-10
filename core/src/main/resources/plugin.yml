@@ -18,3 +18,5 @@ commands:
     description: Sends a discord link to the sender
   getItem:
     description: Gets a custom item for the developer
+  spawn:
+    description: Teleports players to the world's spawn

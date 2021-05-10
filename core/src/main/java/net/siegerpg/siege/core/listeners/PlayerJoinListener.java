@@ -81,8 +81,12 @@ public class PlayerJoinListener implements Listener {
                 }
             }
         });
+        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
+            Levels.INSTANCE.setLevel(player, (short) 1);
+        }
         if (!(player.hasPlayedBefore())) {
-            player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(true));
+            player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
+            VaultHook.econ.depositPlayer(player, 100.0);
         }
 
         if (player.getName().equals("Sumowu")) {
