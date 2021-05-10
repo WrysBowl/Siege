@@ -15,7 +15,7 @@ import java.util.function.Consumer
 // The yaml syntax for the dungeons
 //
 // NAME: # The dungeon type's name
-//  spawnOffset:
+//  spawn:
 //      x: 1
 //      y: 2
 //      z: 3
@@ -26,6 +26,7 @@ import java.util.function.Consumer
 //      x: 1
 //      y: 2
 //      z: 3
+//      name: mythicmobs name
 //  dungeons: # List of dungeons of that type
 //      1:
 //          # Dungeon stuff (see Dungeon.java)
