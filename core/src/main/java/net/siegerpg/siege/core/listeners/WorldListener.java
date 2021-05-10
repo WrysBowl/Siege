@@ -3,15 +3,18 @@ package net.siegerpg.siege.core.listeners;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.data.type.Door;
+import org.bukkit.entity.Bee;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityEnterBlockEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.util.Objects;
 
-public class WorldProtectionListener implements Listener {
+public class WorldListener implements Listener {
     
     @EventHandler
     public void onTrample(PlayerInteractEvent event) {
@@ -36,5 +39,20 @@ public class WorldProtectionListener implements Listener {
                 e.setCancelled(true);
             }
         }
+    }
+
+    @EventHandler
+    public void onEntityEnter(EntityEnterBlockEvent e) {
+        if (e.getEntity() instanceof Bee) {
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onHungerDeplete(FoodLevelChangeEvent e) {
+
+        e.setCancelled(true);
+        e.setFoodLevel(20);
+
     }
 }

@@ -72,7 +72,7 @@ object Levels {
                 player.sendTitle(
                     Utils.tacc("&5Level Up!"),
                     Utils.tacc("&c+1 ATK     +2 HP"),
-                1, 40, 1)
+                1, 80, 1)
             }
         }
         return Pair(lvl, exp)

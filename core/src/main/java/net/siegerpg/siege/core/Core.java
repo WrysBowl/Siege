@@ -106,7 +106,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
         getServer().getPluginManager().registerEvents(new StatGemListener(), this);
-        getServer().getPluginManager().registerEvents(new WorldProtectionListener(), this);
+        getServer().getPluginManager().registerEvents(new WorldListener(), this);
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);

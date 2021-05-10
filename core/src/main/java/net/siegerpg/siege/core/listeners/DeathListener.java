@@ -60,7 +60,7 @@ public class DeathListener implements Listener {
     public void onEntityDeath(PlayerDeathEvent e) {
         e.deathMessage(null);
         Player player = e.getEntity().getPlayer();
-        double bal = VaultHook.econ.getBalance(player);
+        double bal = Math.round(VaultHook.econ.getBalance(player));
         double newBal = Math.round(bal * 0.95);
         VaultHook.econ.withdrawPlayer(player, bal);
         VaultHook.econ.depositPlayer(player, newBal);
