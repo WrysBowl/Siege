@@ -51,7 +51,9 @@ public class DeathListener implements Listener {
         for (int i = 0; i<e.getDrops().size(); i++) {
             e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), e.getDrops().get(i));
         }
-        Scoreboard.updateScoreboard(player);
+        if (player != null) {
+            Scoreboard.updateScoreboard(player);
+        }
     }
 
     @EventHandler

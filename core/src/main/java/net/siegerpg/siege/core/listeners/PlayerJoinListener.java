@@ -9,6 +9,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -105,7 +106,8 @@ public class PlayerJoinListener implements Listener {
             }
         }
         */
-
+        //NEED NEW CODE THIS ONE DOESN'T ALLOW MORE THAN 16 CHARACTERS
+        //Utils.changeName(Utils.tacc(VaultHook.perms.getPrimaryGroup(player)) + Utils.tacc("&7 ") + player.getName(), player);
         player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
     }
 }
