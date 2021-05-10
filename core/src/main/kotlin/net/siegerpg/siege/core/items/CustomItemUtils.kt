@@ -18,9 +18,7 @@ import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
-import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
-import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import java.lang.reflect.Constructor
@@ -169,7 +167,7 @@ object CustomItemUtils {
 
     fun getCustomHealth(player: Player): Double {
         val healthStat: Double = getPlayerStat(player, StatTypes.HEALTH)
-        return (player.health/player.maxHealth) * (healthStat + player.maxHealth)
+        return (player.health/player.maxHealth) * (healthStat + player.maxHealth + player.level * 2)
     }
 
     fun getStats(item: CustomEquipment, addGem: Boolean, addRarity: Boolean): HashMap<StatTypes, Double> {

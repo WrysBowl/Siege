@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -22,7 +23,7 @@ public class MeraTransit implements Listener {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains(Utils.tacc("&6Mera"))) {
+        if (e.getRightClicked().getName().contains("Mera") && e.getRightClicked() instanceof Villager) {
             Inventory shop = getGUIWorldTransit();
             e.getPlayer().openInventory(shop);
         }

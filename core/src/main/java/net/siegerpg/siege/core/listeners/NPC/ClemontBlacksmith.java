@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -41,7 +42,7 @@ public class ClemontBlacksmith implements Listener {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains(Utils.tacc("&6Clemont"))) {
+        if (e.getRightClicked().getName().contains("Clemont") && e.getRightClicked() instanceof Villager) {
             Inventory shop = getShopMenu(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }
@@ -93,7 +94,7 @@ public class ClemontBlacksmith implements Listener {
                 add(setCost(new ItemStack(Material.STONE_AXE), 3750));
                 add(setCost(new ItemStack(Material.STONE_PICKAXE), 4500));
                 add(setCost(new ItemStack(Material.STONE_SHOVEL), 3000));
-                add(setCost(arrows, 100));
+                add(setCost(arrows, 40));
             }
         };
 

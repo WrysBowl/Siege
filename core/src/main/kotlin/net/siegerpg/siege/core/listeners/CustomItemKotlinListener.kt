@@ -167,7 +167,6 @@ class CustomItemKotlinListener : Listener, Runnable {
         ) return
         val player = event.player
         val item = player.inventory.itemInMainHand
-        if (NoBowMechanics.storedItem.containsKey(player)) return
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
                 val entity = player.getTargetEntity(it.range)
@@ -181,7 +180,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 cooldown.add(player)
                 drawParticles(player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
                 var dmg = it.baseStats[StatTypes.STRENGTH]!!
-                if (player.level >= CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
+                if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
                 for (e in loc.getNearbyLivingEntities(it.damageRadius)) {
                     if (e is Player) continue
                     e.damage(dmg, player)
@@ -191,12 +190,6 @@ class CustomItemKotlinListener : Listener, Runnable {
                         cooldown.remove(player)
                     }
                 }.runTaskLaterAsynchronously(Core.plugin(), 30)
-            }
-
-            if (it is CustomBow) {
-                val slot = player.inventory.size - 1
-                NoBowMechanics.storedItem[player] = player.inventory.getItem(slot)
-                player.inventory.setItem(slot, ItemStack(Material.ARROW, 1))
             }
         }
     }

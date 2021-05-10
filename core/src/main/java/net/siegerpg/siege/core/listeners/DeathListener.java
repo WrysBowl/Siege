@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -50,10 +51,19 @@ public class DeathListener implements Listener {
         for (int i = 0; i<e.getDrops().size(); i++) {
             e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), e.getDrops().get(i));
         }
+        Scoreboard.updateScoreboard(player);
     }
 
     @EventHandler
     public void onEntityDeath(PlayerDeathEvent e) {
         e.deathMessage(null);
+        Player player = e.getEntity().getPlayer();
+        double bal = VaultHook.econ.getBalance(player);
+        double newBal = Math.round(bal * 0.95);
+        VaultHook.econ.withdrawPlayer(player, bal);
+        VaultHook.econ.depositPlayer(player, newBal);
+        assert player != null;
+        player.sendTitle(Utils.tacc("&cYou Died"), Utils.tacc("&6" + (bal-newBal) + " has been taken"), 1, 60, 1);
+        Scoreboard.updateScoreboard(player);
     }
 }

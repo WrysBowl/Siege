@@ -29,7 +29,7 @@ public class StatChangeListener implements Listener, Runnable {
     public void onJoin(PlayerJoinEvent e) {
         playerHealth.put(
                 e.getPlayer(),
-                CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + e.getPlayer().getMaxHealth());
+                CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + e.getPlayer().getMaxHealth() + e.getPlayer().getLevel()*2);
 
         playerToughness.put(
                 e.getPlayer(),
@@ -48,7 +48,7 @@ public class StatChangeListener implements Listener, Runnable {
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
             playerHealth.put(
                     e.getPlayer(),
-                    CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + e.getPlayer().getMaxHealth());
+                    CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + e.getPlayer().getMaxHealth() + e.getPlayer().getLevel()*2);
 
             playerToughness.put(
                     e.getPlayer(),
@@ -62,7 +62,7 @@ public class StatChangeListener implements Listener, Runnable {
             Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
                 playerHealth.put(
                         e.getPlayer(),
-                        CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + e.getPlayer().getMaxHealth());
+                        CustomItemUtils.INSTANCE.getPlayerStat(e.getPlayer(), StatTypes.HEALTH) + e.getPlayer().getMaxHealth() + e.getPlayer().getLevel()*2);
 
                 playerToughness.put(
                         e.getPlayer(),

@@ -38,7 +38,6 @@ object Levels {
                 stmt.executeUpdate()
                 if (player.isOnline) {
                         (player as Player).level = level.toInt()
-                    Scoreboard.updateScoreboard(player)
                 }
             }
         }
@@ -55,7 +54,6 @@ object Levels {
                 if (player.isOnline) {
                     val p = player as Player
                     p.giveExpLevels(level.toInt())
-                    Scoreboard.updateScoreboard(player)
                 }
             }
         }
@@ -93,7 +91,6 @@ object Levels {
                     val p = (player as Player);
                     p.level = levelExp.first.toInt();
                     p.exp = levelExp.second / calculateRequiredExperience(levelExp.first).toFloat()
-                    Scoreboard.updateScoreboard(player)
                 }
             }
         }
