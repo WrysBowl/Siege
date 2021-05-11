@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.drops;
 
+import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
@@ -10,10 +11,15 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Fox;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class MobDrops {
 
@@ -37,7 +43,8 @@ public class MobDrops {
     HASHMAP EXAMPLE
     */
 
-    public void setMobTable(String mobName) {
+    public void setMobTable(ActiveMob mob) {
+        String mobName = mob.getType().getInternalName();
         switch (mobName) {
             case "RockRat":
                 rewards = new Object[][]{
@@ -149,6 +156,11 @@ public class MobDrops {
                         {new WoodenSword(Utils.randRarity()).getUpdatedItem(false), 5.0},
                         {new Drumstick(0).getUpdatedItem(false), 15.0}};
                 numGold = new Integer[]{5, 7};
+                Fox wildFox = (Fox) mob.getEntity().getBukkitEntity();
+                Material foxItem = Objects.requireNonNull(wildFox.getEquipment()).getItemInMainHand().getType();
+                if (foxItem.equals(Material.SUNFLOWER)) {
+                    numGold = new Integer[]{50, 60};
+                }
                 numExp = new Integer[]{8, 10};
                 break;
             case "FeatheredMeat":
