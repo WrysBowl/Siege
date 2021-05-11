@@ -14,7 +14,7 @@ class Shovel() : CustomMeleeWeapon(
     name = "Shovel",
     customModelData = 110004,
     description = listOf("A true grave digger"),
-    levelRequirement = 7,
+    levelRequirement = 13,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 17.0),
     recipeList = recipes {

@@ -14,7 +14,7 @@ class Spade() : CustomMeleeWeapon(
     name = "Spade",
     customModelData = 110003,
     description = listOf("Not a shovel"),
-    levelRequirement = 5,
+    levelRequirement = 9,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 13.0),
     recipeList = recipes {

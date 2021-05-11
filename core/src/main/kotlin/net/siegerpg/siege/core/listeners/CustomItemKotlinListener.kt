@@ -210,7 +210,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                     override fun run() {
                         cooldown.remove(player)
                     }
-                }.runTaskLaterAsynchronously(Core.plugin(), 30)
+                }.runTaskLaterAsynchronously(Core.plugin(), 15)
             }
         }
     }
