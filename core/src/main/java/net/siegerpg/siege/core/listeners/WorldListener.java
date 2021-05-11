@@ -37,7 +37,7 @@ public class WorldListener implements Listener {
             if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL) || e.getPlayer().getGameMode().equals(GameMode.ADVENTURE)) {
                 BlockData block = Objects.requireNonNull(e.getClickedBlock()).getBlockData();
                 if (block instanceof Door) { return; }
-                else if (block instanceof EnderChest) { return; }
+                else if (e.getClickedBlock().getType().equals(Material.ENDER_CHEST)) { return; }
                 e.setCancelled(true);
             }
         }

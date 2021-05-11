@@ -84,7 +84,7 @@ public class ClemontBlacksmith implements Listener {
         Inventory gui = Bukkit.createInventory(null, 27, "Clemont's Shop");
 
         ItemStack arrows = new ItemStack(Material.ARROW);
-        arrows.setAmount(16);
+        arrows.setAmount(64);
 
         ArrayList<ItemStack> toolItems = new ArrayList<>(){
             {
@@ -94,7 +94,7 @@ public class ClemontBlacksmith implements Listener {
                 add(setCost(new ItemStack(Material.STONE_AXE), 3750));
                 add(setCost(new ItemStack(Material.STONE_PICKAXE), 4500));
                 add(setCost(new ItemStack(Material.STONE_SHOVEL), 3000));
-                add(setCost(arrows, 40));
+                add(setCost(arrows, 150));
             }
         };
 

@@ -74,11 +74,15 @@ public class StatChangeListener implements Listener, Runnable {
     public static void statBarDisplayTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                double health = Utils.round(playerHealth.get(p), 3);
-                double toughness = Utils.round(playerToughness.get(p), 3);
-                p.sendActionBar(Utils.parse("<red>"
-                        + Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 3) + "<dark_red>/" + health + " \u2764"
-                        + "          <dark_aqua>" + Utils.round(toughness, 3) + " \uD83D\uDEE1       "));
+                if (playerHealth.get(p) == null) {
+                    p.sendActionBar(Utils.parse("<red>REJOIN or RE-EQUIP your armor"));
+                } else {
+                    double health = Utils.round(playerHealth.get(p), 3);
+                    double toughness = Utils.round(playerToughness.get(p), 3);
+                    p.sendActionBar(Utils.parse("<red>"
+                            + Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 3) + "<dark_red>/" + health + " \u2764"
+                            + "          <dark_aqua>" + Utils.round(toughness, 3) + " \uD83D\uDEE1       "));
+                }
             }
         }, 0, 40);
     }

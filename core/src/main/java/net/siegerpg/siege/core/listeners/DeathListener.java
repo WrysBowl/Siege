@@ -61,13 +61,14 @@ public class DeathListener implements Listener {
     public void onEntityDeath(PlayerDeathEvent e) {
         e.deathMessage(null);
         Player player = e.getEntity().getPlayer();
-        double bal = Math.round(VaultHook.econ.getBalance(player));
-        double newBal = Math.round(bal * 0.95);
-        VaultHook.econ.withdrawPlayer(player, bal);
-        VaultHook.econ.depositPlayer(player, newBal);
-        assert player != null;
-        player.sendTitle(Utils.tacc("&cYou Died"), Utils.tacc("&6" + (bal-newBal) + " has been taken"), 1, 60, 1);
-        player.teleport(player.getWorld().getSpawnLocation());
-        Scoreboard.updateScoreboard(player);
+        if (player != null) {
+            player.teleport(player.getWorld().getSpawnLocation());
+            double bal = Math.round(VaultHook.econ.getBalance(player));
+            double newBal = Math.round(bal * 0.95);
+            VaultHook.econ.withdrawPlayer(player, bal);
+            VaultHook.econ.depositPlayer(player, newBal);
+            player.sendTitle(Utils.tacc("&cYou Died"), Utils.tacc("&6" + (bal - newBal) + " has been taken"), 1, 60, 1);
+            Scoreboard.updateScoreboard(player);
+        }
     }
 }

@@ -77,7 +77,6 @@ public class PlayerJoinListener implements Listener {
             }
         });
 
-        Bukkit.getLogger().info(Levels.INSTANCE.getExpLevel(player).getFirst().toString());
         if (!(player.hasPlayedBefore())) {
             player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
             VaultHook.econ.depositPlayer(player, 100.0);

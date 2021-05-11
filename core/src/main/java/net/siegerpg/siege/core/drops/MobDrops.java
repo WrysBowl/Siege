@@ -126,28 +126,33 @@ public class MobDrops {
                         {new Shank(Utils.randRarity()).getUpdatedItem(false), 8.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
                 numGold = new Integer[]{2, 6};
+                LivingEntity wildGob = (LivingEntity) mob.getEntity().getBukkitEntity();
+                Material gobItem = Objects.requireNonNull(wildGob.getEquipment()).getItemInMainHand().getType();
+                if (gobItem.equals(Material.SUNFLOWER)) {
+                    numGold = new Integer[]{50, 60};
+                }
                 numExp = new Integer[]{3, 5};
                 break;
             case "InfectedDigger":
                 rewards = new Object[][]{
                         {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 6.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
-                numGold = new Integer[]{8, 13};
-                numExp = new Integer[]{12, 16};
+                numGold = new Integer[]{8, 12};
+                numExp = new Integer[]{10, 14};
                 break;
             case "ZombifiedDigger":
                 rewards = new Object[][]{
                         {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 15.0}};
-                numGold = new Integer[]{11, 15};
-                numExp = new Integer[]{10, 15};
+                numGold = new Integer[]{4, 9};
+                numExp = new Integer[]{8, 12};
                 break;
             //NEUTRAL
             case "GiantHornet":
                 rewards = new Object[][]{
                         {Magma.Companion.tier(1).getUpdatedItem(false), 30.0},
                         {Seed.Companion.tier(1).getUpdatedItem(false), 100.0}};
-                numGold = new Integer[]{11, 14};
-                numExp = new Integer[]{13, 15};
+                numGold = new Integer[]{8, 11};
+                numExp = new Integer[]{5, 9};
                 break;
             case "WildFox":
                 rewards = new Object[][]{
@@ -167,34 +172,34 @@ public class MobDrops {
                 rewards = new Object[][]{
                         {Feather.Companion.tier(1).getUpdatedItem(false), 1.0},
                         {new Drumstick(0).getUpdatedItem(false), 35.0}};
-                numGold = new Integer[]{5, 8};
-                numExp = new Integer[]{4, 7};
+                numGold = new Integer[]{2, 4};
+                numExp = new Integer[]{3, 6};
                 break;
             case "Porky":
                 rewards = new Object[][]{{new Drumstick(0).getUpdatedItem(false), 100.0}};
-                numGold = new Integer[]{15, 18};
-                numExp = new Integer[]{15, 17};
+                numGold = new Integer[]{5, 8};
+                numExp = new Integer[]{6, 9};
                 break;
             case "Wooly":
                 rewards = new Object[][]{
                         {new Drumstick(0).getUpdatedItem(false), 30.0},
                         {Wool.Companion.tier(1).getUpdatedItem(false), 60.0}};
-                numGold = new Integer[]{18, 20};
-                numExp = new Integer[]{16, 18};
+                numGold = new Integer[]{8, 14};
+                numExp = new Integer[]{8, 12};
                 break;
             case "MooMoo":
                 rewards = new Object[][]{
                         {new Drumstick(0).getUpdatedItem(false), 100.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 60.0}};
-                numGold = new Integer[]{18, 22};
-                numExp = new Integer[]{16, 20};
+                numGold = new Integer[]{12, 14};
+                numExp = new Integer[]{10, 15};
                 break;
             case "Pigeon":
                 rewards = new Object[][]{
                         {new Drumstick(0).getUpdatedItem(false), 25.0},
                         {Feather.Companion.tier(1).getUpdatedItem(false), 60.0}};
-                numGold = new Integer[]{4, 7};
-                numExp = new Integer[]{10, 15};
+                numGold = new Integer[]{1, 2};
+                numExp = new Integer[]{2, 3};
                 break;
             case "Sushi":
                 rewards = new Object[][]{{new Drumstick(0).getUpdatedItem(false), 20.0}};
