@@ -75,10 +75,10 @@ public class StatChangeListener implements Listener, Runnable {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 double health = Utils.round(playerHealth.get(p), 3);
-                Double toughness = playerToughness.get(p);
+                double toughness = Utils.round(playerToughness.get(p), 3);
                 p.sendActionBar(Utils.parse("<red>"
                         + Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 3) + "<dark_red>/" + health + " \u2764"
-                        + "          <dark_aqua>" + toughness + " \uD83D\uDEE1       "));
+                        + "          <dark_aqua>" + Utils.round(toughness, 3) + " \uD83D\uDEE1       "));
             }
         }, 0, 40);
     }

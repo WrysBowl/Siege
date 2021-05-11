@@ -2,6 +2,8 @@ package net.siegerpg.siege.core.listeners;
 
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.block.EnderChest;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.Bee;
 import org.bukkit.event.EventHandler;
@@ -33,9 +35,9 @@ public class WorldListener implements Listener {
     public void openDeniedBlocks(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL) || e.getPlayer().getGameMode().equals(GameMode.ADVENTURE)) {
-                if (Objects.requireNonNull(e.getClickedBlock()).getBlockData() instanceof Door) {
-                    return;
-                }
+                BlockData block = Objects.requireNonNull(e.getClickedBlock()).getBlockData();
+                if (block instanceof Door) { return; }
+                else if (block instanceof EnderChest) { return; }
                 e.setCancelled(true);
             }
         }

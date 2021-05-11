@@ -3,6 +3,8 @@ package net.siegerpg.siege.core.drops;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
+import net.siegerpg.siege.core.items.implemented.misc.wands.GlowingTwig;
+import net.siegerpg.siege.core.items.implemented.misc.wands.RockWand;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
@@ -38,40 +40,42 @@ public class MobDrops {
     public void setMobTable(String mobName) {
         switch (mobName) {
             case "RockRat":
-                rewards = new Object[][]{{Pebble.Companion.tier(1).getUpdatedItem(false), 10.0}};
+                rewards = new Object[][]{
+                        {Pebble.Companion.tier(1).getUpdatedItem(false), 10.0},
+                        {new RockWand(Utils.randRarity()).getUpdatedItem(false), 0.5}};
                 numGold = new Integer[]{2, 6};
-                numExp = new Integer[]{3, 6};
+                numExp = new Integer[]{2, 4};
                 break;
             case "Blob":
                 rewards = new Object[][]{{Slime.Companion.tier(1).getUpdatedItem(false), 50.0}};
-                numGold = new Integer[]{13, 16};
-                numExp = new Integer[]{14, 16};
+                numGold = new Integer[]{7, 13};
+                numExp = new Integer[]{8, 12};
                 break;
             case "ScorchingBlob":
                 rewards = new Object[][]{{Magma.Companion.tier(1).getUpdatedItem(false), 50.0}};
-                numGold = new Integer[]{12, 15};
-                numExp = new Integer[]{15, 18};
+                numGold = new Integer[]{6, 12};
+                numExp = new Integer[]{8, 12};
                 break;
             case "ForestSpider":
                 rewards = new Object[][]{
                         {Vine.Companion.tier(1).getUpdatedItem(false), 50.0},
                         {Stick.Companion.tier(1).getUpdatedItem(false), 30.0}};
-                numGold = new Integer[]{14, 17};
-                numExp = new Integer[]{17, 20};
+                numGold = new Integer[]{12, 16};
+                numExp = new Integer[]{10, 12};
                 break;
             case "BloodSucker":
                 rewards = new Object[][]{
                         {Vine.Companion.tier(1).getUpdatedItem(false), 60.0},
                         {Stick.Companion.tier(1).getUpdatedItem(false), 20.0}};
-                numGold = new Integer[]{14, 17};
-                numExp = new Integer[]{16, 19};
+                numGold = new Integer[]{10, 14};
+                numExp = new Integer[]{13, 15};
                 break;
             case "AngryBull":
                 rewards = new Object[][]{
                         {Leather.Companion.tier(1).getUpdatedItem(false), 100.0},
                         {new Drumstick(0).getUpdatedItem(false), 100.0}};
                 numGold = new Integer[]{10, 20};
-                numExp = new Integer[]{15, 20};
+                numExp = new Integer[]{12, 18};
                 break;
             case "Bandit":
                 rewards = new Object[][]{
@@ -80,8 +84,8 @@ public class MobDrops {
                         {MetalScrap.Companion.tier(1).getUpdatedItem(false), 1.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0},
                         {new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5}};
-                numGold = new Integer[]{40, 50};
-                numExp = new Integer[]{30, 40};
+                numGold = new Integer[]{13, 18};
+                numExp = new Integer[]{15, 20};
                 break;
             case "BanditArcher":
                 rewards = new Object[][]{
@@ -89,8 +93,8 @@ public class MobDrops {
                         {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
-                numGold = new Integer[]{30, 40};
-                numExp = new Integer[]{40, 50};
+                numGold = new Integer[]{15, 20};
+                numExp = new Integer[]{15, 20};
                 break;
             case "Orc":
                 rewards = new Object[][]{
@@ -98,8 +102,8 @@ public class MobDrops {
                         {new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.25},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
-                numGold = new Integer[]{50, 60};
-                numExp = new Integer[]{40, 60};
+                numGold = new Integer[]{16, 20};
+                numExp = new Integer[]{12, 18};
                 break;
             case "Ogre":
                 rewards = new Object[][]{
@@ -110,6 +114,26 @@ public class MobDrops {
                 numGold = new Integer[]{200, 300};
                 numExp = new Integer[]{250, 300};
                 break;
+            case "Goblin":
+                rewards = new Object[][]{
+                        {new Shank(Utils.randRarity()).getUpdatedItem(false), 8.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                numGold = new Integer[]{2, 6};
+                numExp = new Integer[]{3, 5};
+                break;
+            case "InfectedDigger":
+                rewards = new Object[][]{
+                        {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 6.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                numGold = new Integer[]{8, 13};
+                numExp = new Integer[]{12, 16};
+                break;
+            case "ZombifiedDigger":
+                rewards = new Object[][]{
+                        {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 15.0}};
+                numGold = new Integer[]{11, 15};
+                numExp = new Integer[]{10, 15};
+                break;
             //NEUTRAL
             case "GiantHornet":
                 rewards = new Object[][]{
@@ -118,7 +142,7 @@ public class MobDrops {
                 numGold = new Integer[]{11, 14};
                 numExp = new Integer[]{13, 15};
                 break;
-            case "WildFix":
+            case "WildFox":
                 rewards = new Object[][]{
                         {new Dagger(Utils.randRarity()).getUpdatedItem(false), 1.0},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
@@ -167,7 +191,10 @@ public class MobDrops {
                 break;
             //MINIBOSSES
             case "Davy_Jones":
-                rewards = new Object[][]{{new Drumstick(0).getUpdatedItem(false), 20.0}};
+                rewards = new Object[][]{
+                        {new IronAxe(0).getUpdatedItem(false), 100.0},
+                        {new Trident(0).getUpdatedItem(false), 100.0},
+                };
                 numGold = new Integer[]{1000, 1200};
                 numExp = new Integer[]{1800, 2000};
             default:

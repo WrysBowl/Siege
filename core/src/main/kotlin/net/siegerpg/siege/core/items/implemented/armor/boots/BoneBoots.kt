@@ -20,7 +20,7 @@ class BoneBoots() : CustomBoots(
     description = listOf("Clunky footpads"),
     levelRequirement = 23,
     material = Material.LEATHER_BOOTS,
-    baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 30.0, regeneration = 15.0),
+    baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 30.0),
     recipeList = recipes {
         recipe {
             shaped = true

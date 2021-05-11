@@ -66,6 +66,7 @@ public class DeathListener implements Listener {
         VaultHook.econ.depositPlayer(player, newBal);
         assert player != null;
         player.sendTitle(Utils.tacc("&cYou Died"), Utils.tacc("&6" + (bal-newBal) + " has been taken"), 1, 60, 1);
+        player.teleport(player.getWorld().getSpawnLocation());
         Scoreboard.updateScoreboard(player);
     }
 }
