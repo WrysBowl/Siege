@@ -48,13 +48,15 @@ public class SmokyBlacksmith implements Listener, Runnable {
             setShopArmor();
             weaponItems.clear();
             armorItems.clear();
+            ArrayList<Integer> usedWeapons = new ArrayList<>();
+            ArrayList<Integer> usedArmor = new ArrayList<>();
             for (int i = 0; i<7; i++) {
-                int wepIndex = (int) (Math.random() * 14);
-                int armIndex = (int) (Math.random() * 11);
-                weaponItems.add(shopWeapons.get(wepIndex));
-                armorItems.add(shopArmor.get(armIndex));
-                weaponItems.remove(wepIndex);
-                armorItems.remove(armIndex);
+                //int wepIndex = (int) (Math.random() * 14);
+                //int armIndex = (int) (Math.random() * 11);
+                weaponItems.add(shopWeapons.get((int) (Math.random() * 14)));
+                armorItems.add(shopArmor.get((int) (Math.random() * 19)));
+                //shopWeapons.remove(wepIndex);
+                //shopArmor.remove(armIndex);
             }
             Bukkit.broadcastMessage(Utils.tacc("&aSmoky's shop has reset with new items!"));
         }, 0, 36000);

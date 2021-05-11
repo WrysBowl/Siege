@@ -11,8 +11,8 @@ class DungeonConfig(private var plugin: DungeonPlugin) : ConfigurationBase(File(
     @Throws(IOException::class, InvalidConfigurationException::class)
     override fun createConfig() {
         super.createConfig()
-        println(DungeonPlugin.plugin().name)
-        deserializeDungeonTypes()
+        //println(DungeonPlugin.plugin().name)
+        //deserializeDungeonTypes()
     }
 
     /**
@@ -55,7 +55,7 @@ class DungeonConfig(private var plugin: DungeonPlugin) : ConfigurationBase(File(
             )
         }
     }
-
+/*
     fun deserializeDungeonTypes() {
         configuration.getKeys(false).forEach { key ->
             DungeonType.dungeonTypes.add(
@@ -66,5 +66,5 @@ class DungeonConfig(private var plugin: DungeonPlugin) : ConfigurationBase(File(
                 )
             )
         }
-    }
+    }*/
 }
