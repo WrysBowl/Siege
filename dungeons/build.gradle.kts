@@ -5,7 +5,6 @@ repositories {
     maven { url = uri("https://mvn.intellectualsites.com/content/repositories/releases/") } // FAWE
     maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
     mavenCentral()
-    maven { url = uri("https://nexus.mcdevs.us/repository/mcdevs/") }
     maven { url = uri("https://repo.aikar.co/content/groups/aikar/") }
     maven { url = uri("https://repo.codemc.org/repository/maven-public/") }
     maven { url = uri("https://mvn.lumine.io/repository/maven-public/") }
@@ -17,7 +16,6 @@ repositories {
 }
 
 dependencies {
-    compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
     compileOnly(project(":core"))
     compileOnly("com.intellectualsites.fawe:FAWE-Bukkit:1.16-637") { isTransitive = false }
     compileOnly("com.intellectualsites.fawe:FAWE-Core:1.16-637")
