@@ -156,7 +156,7 @@ public class MobDrops {
                         {new WoodenSword(Utils.randRarity()).getUpdatedItem(false), 5.0},
                         {new Drumstick(0).getUpdatedItem(false), 15.0}};
                 numGold = new Integer[]{5, 7};
-                Fox wildFox = (Fox) mob.getEntity().getBukkitEntity();
+                LivingEntity wildFox = (LivingEntity) mob.getEntity().getBukkitEntity();
                 Material foxItem = Objects.requireNonNull(wildFox.getEquipment()).getItemInMainHand().getType();
                 if (foxItem.equals(Material.SUNFLOWER)) {
                     numGold = new Integer[]{50, 60};
