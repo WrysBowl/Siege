@@ -6,11 +6,13 @@ import org.bukkit.block.EnderChest;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.Bee;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityEnterBlockEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -46,6 +48,13 @@ public class WorldListener implements Listener {
     @EventHandler
     public void onEntityEnter(EntityEnterBlockEvent e) {
         if (e.getEntity() instanceof Bee) {
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void denyEggSpawning(EntitySpawnEvent e) {
+        if (e.getEntity().getType().equals(EntityType.EGG)) {
             e.setCancelled(true);
         }
     }
