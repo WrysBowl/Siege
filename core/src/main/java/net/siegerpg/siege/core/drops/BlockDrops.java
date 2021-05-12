@@ -61,10 +61,10 @@ public enum BlockDrops {
     //ORES
     COAL_ORE(Material.COAL_ORE, new Object[][]{
             {Coal.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{0, 0}, new Integer[]{2, 5}, 300),
+    }, new Integer[]{0, 0}, new Integer[]{2, 5}, 100),
     IRON_ORE(Material.IRON_ORE, new Object[][]{
             {MetalScrap.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{5, 10}, new Integer[]{0, 0}, 600),
+    }, new Integer[]{5, 10}, new Integer[]{0, 0}, 300),
 
     //DECOR TERRAIN
     VINE(Material.VINE, new Object[][]{
