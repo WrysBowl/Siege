@@ -112,15 +112,6 @@ public class MobDrops {
                 numGold = new Integer[]{16, 20};
                 numExp = new Integer[]{12, 18};
                 break;
-            case "Ogre":
-                rewards = new Object[][]{
-                        {new IronAxe(Utils.randRarity()).getUpdatedItem(false), 50.0},
-                        {new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 100.0},
-                        {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
-                numGold = new Integer[]{200, 300};
-                numExp = new Integer[]{250, 300};
-                break;
             case "Goblin":
                 rewards = new Object[][]{
                         {new Shank(Utils.randRarity()).getUpdatedItem(false), 8.0},
@@ -212,8 +203,27 @@ public class MobDrops {
                         {new IronAxe(0).getUpdatedItem(false), 100.0},
                         {new Trident(0).getUpdatedItem(false), 100.0},
                 };
-                numGold = new Integer[]{1000, 1200};
-                numExp = new Integer[]{1800, 2000};
+                numGold = new Integer[]{300, 350};
+                numExp = new Integer[]{400, 500};
+                break;
+            case "Ogre":
+                rewards = new Object[][]{
+                        {new IronAxe(Utils.randRarity()).getUpdatedItem(false), 50.0},
+                        {new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 100.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                numGold = new Integer[]{200, 300};
+                numExp = new Integer[]{250, 300};
+                break;
+            case "RockSpirit":
+                rewards = new Object[][]{
+                        {new RockWand(0).getUpdatedItem(false), 60.0},
+                        {new PebbleShooter(0).getUpdatedItem(false), 50.0},
+                        {new StoneAxe(0).getUpdatedItem(false), 15.0},
+                        {Seed.Companion.tier(3).getUpdatedItem(false), 30.0}};
+                numGold = new Integer[]{200, 220};
+                numExp = new Integer[]{240, 250};
+                break;
             default:
                 mob_exists = false;
         }
