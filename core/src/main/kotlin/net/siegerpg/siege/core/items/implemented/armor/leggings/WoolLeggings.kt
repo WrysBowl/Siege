@@ -16,9 +16,9 @@ class WoolLeggings() : CustomLeggings(
     name = "Wool Leggings",
     customModelData = 1,
     description = listOf("Dressed for the winter"),
-    levelRequirement = 4,
+    levelRequirement = 9,
     material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 14.0, regeneration = 5.0),
+    baseStats = CustomItemUtils.statMap(health = 14.0, toughness = 40.0, regeneration = 10.0),
     recipeList = recipes {
         recipe {
             shaped = true
