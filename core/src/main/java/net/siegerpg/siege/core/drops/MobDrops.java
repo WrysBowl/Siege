@@ -200,8 +200,8 @@ public class MobDrops {
             //MINIBOSSES
             case "Davy_Jones":
                 rewards = new Object[][]{
-                        {new IronAxe(0).getUpdatedItem(false), 100.0},
-                        {new Trident(0).getUpdatedItem(false), 100.0},
+                        {new IronAxe(Utils.randRarity()).getUpdatedItem(false), 100.0},
+                        {new Trident(Utils.randRarity()).getUpdatedItem(false), 100.0},
                 };
                 numGold = new Integer[]{300, 350};
                 numExp = new Integer[]{400, 500};
@@ -217,9 +217,9 @@ public class MobDrops {
                 break;
             case "RockSpirit":
                 rewards = new Object[][]{
-                        {new RockWand(0).getUpdatedItem(false), 60.0},
-                        {new PebbleShooter(0).getUpdatedItem(false), 50.0},
-                        {new StoneAxe(0).getUpdatedItem(false), 15.0},
+                        {new RockWand(Utils.randRarity()).getUpdatedItem(false), 60.0},
+                        {new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 50.0},
+                        {new StoneAxe(Utils.randRarity()).getUpdatedItem(false), 15.0},
                         {Seed.Companion.tier(3).getUpdatedItem(false), 30.0}};
                 numGold = new Integer[]{200, 220};
                 numExp = new Integer[]{240, 250};
