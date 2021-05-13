@@ -757,7 +757,381 @@ public class SymoneCollector implements Listener {
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private void clickArmor(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        ArrayList<ItemStack> reqIngredients = new ArrayList<>();
+        ItemStack result = null;
+        ItemStack ing1 = null;
+        switch (e.getSlot()) {
+            case 0: //Slimy Helmet
+                //Initialize Ingredients
+                ing1 = Slime.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(5);
 
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new SlimyHelmet(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 1: //Straw Hat
+                //Initialize Ingredients
+                ing1 = Seed.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(5);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new StrawHelmet(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 2: //Wool Helmet
+                //Initialize Ingredients
+                ing1 = Wool.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(5);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new WoolHelmet(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 3: //Magma Helmet
+                //Initialize Ingredients
+                ing1 = Magma.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(5);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new MagmaHelmet(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 4: //Hardened Leather Helmet
+                //Initialize Ingredients
+                ing1 = Leather.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(5);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new LeatherHelmet(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 5: //Bone Helmet
+                //Initialize Ingredients
+                ing1 = Bone.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(5);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new BoneHelmet(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 6: //Chain Helmet
+                //Initialize Ingredients
+                ing1 = Chain.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(5);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new ChainHelmet(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 7: //Iron Helmet
+                //Initialize Ingredients
+                ing1 = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(5);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new IronHelmet(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 9: //Slimy Chestplate
+                //Initialize Ingredients
+                ing1 = Slime.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(8);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new SlimyChestplate(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 10: //Straw Chestplate
+                //Initialize Ingredients
+                ing1 = Seed.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(8);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new StrawChestplate(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 11: //Wool Chestplate
+                //Initialize Ingredients
+                ing1 = Wool.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(8);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new WoolChestplate(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 12: //Magma Chestplate
+                //Initialize Ingredients
+                ing1 = Magma.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(8);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new MagmaChestplate(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 13: //Hardened Leather Chestplate
+                //Initialize Ingredients
+                ing1 = Leather.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(8);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new LeatherChestplate(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 14: //Bone Chestplate
+                //Initialize Ingredients
+                ing1 = Bone.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(8);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new BoneChestplate(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 15: //Chain Chestplate
+                //Initialize Ingredients
+                ing1 = Chain.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(8);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new ChainChestplate(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 16: //Iron Chestplate
+                //Initialize Ingredients
+                ing1 = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(8);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new IronChestplate(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 18: //Slimy Leggings
+                //Initialize Ingredients
+                ing1 = Slime.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(7);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 19: //Straw Leggings
+                //Initialize Ingredients
+                ing1 = Seed.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(7);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new StrawLeggings(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 20: //Wool Leggings
+                //Initialize Ingredients
+                ing1 = Wool.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(7);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new WoolLeggings(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 21: //Magma Leggings
+                //Initialize Ingredients
+                ing1 = Magma.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(7);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new MagmaLeggings(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 22: //Hardened Leather Leggings
+                //Initialize Ingredients
+                ing1 = Leather.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(7);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new LeatherLeggings(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 23: //Bone Leggings
+                //Initialize Ingredients
+                ing1 = Bone.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(7);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new BoneLeggings(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 24: //Chain Leggings
+                //Initialize Ingredients
+                ing1 = Chain.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(7);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new ChainLeggings(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 25: //Iron Leggings
+                //Initialize Ingredients
+                ing1 = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(7);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new IronLeggings(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 27: //Slimy Boots
+                //Initialize Ingredients
+                ing1 = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(4);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new SlimyBoots(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 28: //Straw Boots
+                //Initialize Ingredients
+                ing1 = Seed.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(4);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new StrawBoots(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 29: //Wool Boots
+                //Initialize Ingredients
+                ing1 = Wool.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(4);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new WoolBoots(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 30: //Magma Boots
+                //Initialize Ingredients
+                ing1 = Magma.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(4);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new MagmaBoots(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 31: //Hardened Leather Boots
+                //Initialize Ingredients
+                ing1 = Leather.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(4);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new LeatherBoots(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 32: //Bone Boots
+                //Initialize Ingredients
+                ing1 = Bone.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(4);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new Bone(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 33: //Chain Boots
+                //Initialize Ingredients
+                ing1 = Chain.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(4);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new ChainBoots(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 34: //Iron Boots
+                //Initialize Ingredients
+                ing1 = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
+                ing1.setAmount(4);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(ing1);
+                //Set result of recipe
+                result = new IronBoots(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            default:
+                return;
+        }
+        for (ItemStack item : reqIngredients) {
+            if (!player.getInventory().containsAtLeast(item, item.getAmount())) {
+                player.sendMessage(Utils.parse("<red>You do not have the required materials to craft this item."));
+                return;
+            }
+        }
+        for (ItemStack item : reqIngredients) {
+            player.getInventory().removeItem(item);
+        }
+        player.updateInventory();
+        if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            player.getInventory().addItem(result);
+            return;
+        }
+        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private void clickWand(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
