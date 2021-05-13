@@ -13,7 +13,6 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -27,9 +26,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class SymoneCollector implements Listener {
@@ -111,7 +108,7 @@ public class SymoneCollector implements Listener {
         }
     };
 
-    ArrayList<ItemStack> armorList = new ArrayList<>(34){
+    ArrayList<ItemStack> armorList = new ArrayList<>(){
         {
             add(Utils.setOriginLore(new SlimyHelmet(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
@@ -216,6 +213,222 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x4")));
             add(new ItemStack(Material.AIR));
+        }
+    };
+
+    ArrayList<ItemStack> mobDropsList = new ArrayList<>(){
+        {
+            add(Utils.setOriginLore(Slime.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Slime \u272A x8")));
+            add(Utils.setOriginLore(Slime.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Slime \u272A\u272A x8")));
+            add(Utils.setOriginLore(Slime.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Slime.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A\u272A x8")));
+            add(new ItemStack(Material.AIR));
+            add(Utils.setOriginLore(Magma.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Magma \u272A x8")));
+            add(Utils.setOriginLore(Magma.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Magma \u272A\u272A x8")));
+            add(Utils.setOriginLore(Magma.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Magma.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A\u272A x8")));
+
+            add(Utils.setOriginLore(Ectoplasm.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Ectoplasm \u272A x8")));
+            add(Utils.setOriginLore(Ectoplasm.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A x8")));
+            add(Utils.setOriginLore(Ectoplasm.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Ectoplasm.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A\u272A x8")));
+            add(new ItemStack(Material.AIR));
+            add(Utils.setOriginLore(Bone.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Bone \u272A x8")));
+            add(Utils.setOriginLore(Bone.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Bone \u272A\u272A x8")));
+            add(Utils.setOriginLore(Bone.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Bone.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A\u272A x8")));
+
+            add(Utils.setOriginLore(Wool.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Wool \u272A x8")));
+            add(Utils.setOriginLore(Wool.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Wool \u272A\u272A x8")));
+            add(Utils.setOriginLore(Wool.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Wool \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Wool.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Wool \u272A\u272A\u272A\u272A x8")));
+            add(new ItemStack(Material.AIR));
+            add(Utils.setOriginLore(Leather.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Leather \u272A x8")));
+            add(Utils.setOriginLore(Leather.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Leather \u272A\u272A x8")));
+            add(Utils.setOriginLore(Leather.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Leather \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Leather.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Leather \u272A\u272A\u272A\u272A x8")));
+
+            add(Utils.setOriginLore(Feather.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Feather \u272A x8")));
+            add(Utils.setOriginLore(Feather.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Feather \u272A\u272A x8")));
+            add(Utils.setOriginLore(Feather.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Feather.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Feather \u272A\u272A\u272A\u272A x8")));
+        }
+    };
+
+    ArrayList<ItemStack> blockDropsList = new ArrayList<>(){
+        {
+            add(Utils.setOriginLore(PlantMatter.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Plant Matter \u272A x8")));
+            add(Utils.setOriginLore(PlantMatter.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Plant Matter \u272A\u272A x8")));
+            add(Utils.setOriginLore(PlantMatter.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(PlantMatter.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x8")));
+            add(new ItemStack(Material.AIR));
+            add(Utils.setOriginLore(Seed.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Seed \u272A x8")));
+            add(Utils.setOriginLore(Seed.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Seed \u272A\u272A x8")));
+            add(Utils.setOriginLore(Seed.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Seed.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x8")));
+
+            add(Utils.setOriginLore(Coal.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Coal \u272A x8")));
+            add(Utils.setOriginLore(Coal.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Coal \u272A\u272A x8")));
+            add(Utils.setOriginLore(Coal.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Coal.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A\u272A x8")));
+            add(new ItemStack(Material.AIR));
+            add(Utils.setOriginLore(Vine.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Vine \u272A x8")));
+            add(Utils.setOriginLore(Vine.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A x8")));
+            add(Utils.setOriginLore(Vine.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Vine.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A\u272A x8")));
+
+            add(Utils.setOriginLore(Stick.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Stick \u272A x8")));
+            add(Utils.setOriginLore(Stick.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A x8")));
+            add(Utils.setOriginLore(Stick.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Stick.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A\u272A x8")));
+            add(new ItemStack(Material.AIR));
+            add(Utils.setOriginLore(Pebble.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Pebble \u272A x8")));
+            add(Utils.setOriginLore(Pebble.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A x8")));
+            add(Utils.setOriginLore(Pebble.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Pebble.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A\u272A x8")));
+
+            add(Utils.setOriginLore(Chain.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Chain \u272A x8")));
+            add(Utils.setOriginLore(Chain.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Chain \u272A\u272A x8")));
+            add(Utils.setOriginLore(Chain.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Chain \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(Chain.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Chain \u272A\u272A\u272A\u272A x8")));
+            add(new ItemStack(Material.AIR));
+            add(Utils.setOriginLore(MetalScrap.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Metal Scrap \u272A x8")));
+            add(Utils.setOriginLore(MetalScrap.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A x8")));
+            add(Utils.setOriginLore(MetalScrap.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(MetalScrap.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A\u272A x8")));
+
+            add(Utils.setOriginLore(RefinedMetal.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Refined Metal \u272A x8")));
+            add(Utils.setOriginLore(RefinedMetal.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x8")));
+            add(Utils.setOriginLore(RefinedMetal.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x8")));
+            add(Utils.setOriginLore(RefinedMetal.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x8")));
         }
     };
 
@@ -331,6 +544,14 @@ public class SymoneCollector implements Listener {
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneArmor").get(0).value(), e.getInventory())) {
             clickArmor(e);
             e.setCancelled(true);
+        } else if (e.getWhoClicked().getMetadata("SymoneMobDrops").size() > 0 &&
+                Objects.equals(e.getWhoClicked().getMetadata("SymoneMobDrops").get(0).value(), e.getInventory())) {
+            clickMobDrops(e);
+            e.setCancelled(true);
+        } else if (e.getWhoClicked().getMetadata("SymoneBlockDrops").size() > 0 &&
+                Objects.equals(e.getWhoClicked().getMetadata("SymoneBlockDrops").get(0).value(), e.getInventory())) {
+            clickBlockDrops(e);
+            e.setCancelled(true);
         } else if (e.getWhoClicked().getMetadata("SymoneWand").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneWand").get(0).value(), e.getInventory())) {
             clickWand(e);
@@ -356,6 +577,10 @@ public class SymoneCollector implements Listener {
             player.openInventory(getWand(player));
         } else if (slot == 15) {
             player.openInventory(getRanged(player));
+        } else if (slot == 21) {
+            player.openInventory(mobDropsList(player));
+        } else if (slot == 23) {
+            player.openInventory(blockDropsList(player));
         }
     }
     private void clickLightMelee(InventoryClickEvent e) {
@@ -538,54 +763,89 @@ public class SymoneCollector implements Listener {
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private void clickArmor(InventoryClickEvent e) {
-        int slot = e.getSlot();
-        Player player = (Player) e.getWhoClicked();
 
-        if (slot == 11) {
-            player.openInventory(getLightMelee(player));
-        } else if (slot == 12) {
-            player.openInventory(getHeavyMelee(player));
-        } else if (slot == 13) {
-            player.openInventory(getArmor(player));
-        } else if (slot == 14) {
-            player.openInventory(getWand(player));
-        } else if (slot == 15) {
-            player.openInventory(getRanged(player));
-        }
     }
     private void clickWand(InventoryClickEvent e) {
-        int slot = e.getSlot();
-        Player player = (Player) e.getWhoClicked();
 
-        if (slot == 11) {
-            player.openInventory(getLightMelee(player));
-        } else if (slot == 12) {
-            player.openInventory(getHeavyMelee(player));
-        } else if (slot == 13) {
-            player.openInventory(getArmor(player));
-        } else if (slot == 14) {
-            player.openInventory(getWand(player));
-        } else if (slot == 15) {
-            player.openInventory(getRanged(player));
-        }
     }
     private void clickRanged(InventoryClickEvent e) {
-        int slot = e.getSlot();
-        Player player = (Player) e.getWhoClicked();
 
-        if (slot == 11) {
-            player.openInventory(getLightMelee(player));
-        } else if (slot == 12) {
-            player.openInventory(getHeavyMelee(player));
-        } else if (slot == 13) {
-            player.openInventory(getArmor(player));
-        } else if (slot == 14) {
-            player.openInventory(getWand(player));
-        } else if (slot == 15) {
-            player.openInventory(getRanged(player));
-        }
     }
+    private void clickMobDrops(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        ArrayList<ItemStack> reqIngredients = new ArrayList<>();
+        ItemStack result = null;
+        switch (e.getSlot()) {
+            case 0: //Slime 2
+                ItemStack slime1 = Slime.Companion.tier(1).getUpdatedItem(false);
+                slime1.setAmount(8);
+                reqIngredients.add(slime1);
+                result = Slime.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 1: //Slime 3
+                ItemStack slime2 = Slime.Companion.tier(2).getUpdatedItem(false);
+                slime2.setAmount(8);
+                reqIngredients.add(slime2);
+                result = Slime.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 2: //Slime 4
+                ItemStack slime3 = Slime.Companion.tier(3).getUpdatedItem(false);
+                slime3.setAmount(8);
+                reqIngredients.add(slime3);
+                result = Slime.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 3: //Slime 5
+                ItemStack slime4 = Slime.Companion.tier(4).getUpdatedItem(false);
+                slime4.setAmount(8);
+                reqIngredients.add(slime4);
+                result = Slime.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 5: //Magma 2
+                ItemStack magma1 = Magma.Companion.tier(1).getUpdatedItem(false);
+                magma1.setAmount(8);
+                reqIngredients.add(magma1);
+                result = Magma.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 6: //Magma 3
+                ItemStack magma2 = Magma.Companion.tier(2).getUpdatedItem(false);
+                magma2.setAmount(8);
+                reqIngredients.add(magma2);
+                result = Magma.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 7: //Magma 4
+                ItemStack magma3 = Magma.Companion.tier(3).getUpdatedItem(false);
+                magma3.setAmount(8);
+                reqIngredients.add(magma3);
+                result = Magma.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 8: //Magma 5
+                ItemStack magma4 = Magma.Companion.tier(4).getUpdatedItem(false);
+                magma4.setAmount(8);
+                reqIngredients.add(magma4);
+                result = Magma.Companion.tier(5).getUpdatedItem(false);
+                break;
+            default:
+                return;
+        }
+        for (ItemStack item : reqIngredients) {
+            if (!player.getInventory().containsAtLeast(item, item.getAmount())) {
+                player.sendMessage(Utils.parse("<red>You do not have the required materials to craft this item."));
+                return;
+            }
+        }
+        for (ItemStack item : reqIngredients) {
+            player.getInventory().removeItem(item);
+        }
+        player.updateInventory();
+        if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            player.getInventory().addItem(result);
+            return;
+        }
+        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
+    }
+    private void clickBlockDrops(InventoryClickEvent e) {
 
+    }
     private Inventory getMenu(Player player) {
         Inventory gui = Bukkit.createInventory(null, 27, "Symone's Collection");
 
@@ -668,7 +928,7 @@ public class SymoneCollector implements Listener {
         return gui;
     }
     private Inventory getArmor(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 54, "Armor Weapons");
+        Inventory gui = Bukkit.createInventory(null, 54, "Armor");
 
         //Fill in the GUI
         for (int i = 0; i < armorList.size(); i++) {
@@ -676,6 +936,22 @@ public class SymoneCollector implements Listener {
         }
 
         player.setMetadata("SymoneArmor", new FixedMetadataValue(Core.plugin(), gui));
+        return gui;
+    }
+    private Inventory mobDropsList(Player player) {
+        Inventory gui = Bukkit.createInventory(null, 54, "Mob Drops");
+        for (int i = 0; i < mobDropsList.size(); i++) {
+            gui.setItem(i, mobDropsList.get(i));
+        }
+        player.setMetadata("SymoneMobDrops", new FixedMetadataValue(Core.plugin(), gui));
+        return gui;
+    }
+    private Inventory blockDropsList(Player player) {
+        Inventory gui = Bukkit.createInventory(null, 54, "Block Drops");
+        for (int i = 0; i < blockDropsList.size(); i++) {
+            gui.setItem(i, blockDropsList.get(i));
+        }
+        player.setMetadata("SymoneBlockDrops", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
     }
     private Inventory getWand(Player player) {
