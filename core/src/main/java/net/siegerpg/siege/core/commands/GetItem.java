@@ -20,7 +20,7 @@ public class GetItem implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (VaultHook.perms.getPrimaryGroup(player).contains("developer")) {
+            if (player.hasPermission("SiegeCore.getItem")) {
                 if (args.length == 2) {
                     CustomItem item = CustomItem.class.newInstance();
                     if (Class.forName(args[0]).isInstance(item)) {

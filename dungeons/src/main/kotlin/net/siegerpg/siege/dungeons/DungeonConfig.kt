@@ -56,7 +56,7 @@ class DungeonConfig(private var plugin: DungeonPlugin) : ConfigurationBase(File(
             )
         }
     }
-/*
+
     fun deserializeDungeonTypes() {
         configuration.getKeys(false).forEach { key ->
             DungeonType.dungeonTypes.add(
@@ -67,5 +67,5 @@ class DungeonConfig(private var plugin: DungeonPlugin) : ConfigurationBase(File(
                 )
             )
         }
-    }*/
+    }
 }

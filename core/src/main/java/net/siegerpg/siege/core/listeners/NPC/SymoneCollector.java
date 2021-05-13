@@ -70,7 +70,6 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x1")));
         }
     };
-
     ArrayList<ItemStack> heavyMeleeList = new ArrayList<>(){
         {
             add(Utils.setOriginLore(new Club(50).getUpdatedItem(true),
@@ -107,7 +106,6 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3")));
         }
     };
-
     ArrayList<ItemStack> armorList = new ArrayList<>(){
         {
             add(Utils.setOriginLore(new SlimyHelmet(50).getUpdatedItem(true),
@@ -215,7 +213,6 @@ public class SymoneCollector implements Listener {
             add(new ItemStack(Material.AIR));
         }
     };
-
     ArrayList<ItemStack> mobDropsList = new ArrayList<>(){
         {
             add(Utils.setOriginLore(Slime.Companion.tier(2).getUpdatedItem(false),
@@ -310,7 +307,6 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Feather \u272A\u272A\u272A\u272A x8")));
         }
     };
-
     ArrayList<ItemStack> blockDropsList = new ArrayList<>(){
         {
             add(Utils.setOriginLore(PlantMatter.Companion.tier(2).getUpdatedItem(false),
@@ -431,7 +427,6 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x8")));
         }
     };
-
     ArrayList<ItemStack> wandsList = new ArrayList<>(){
         {
             add(Utils.setOriginLore(new LivingTwig(50).getUpdatedItem(true),
@@ -473,7 +468,6 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
         }
     };
-
     ArrayList<ItemStack> rangedList = new ArrayList<>(){
         {
             add(Utils.setOriginLore(new ScrapyardBow(50).getUpdatedItem(true),

@@ -79,8 +79,9 @@ public class StatChangeListener implements Listener, Runnable {
                 } else {
                     double health = Utils.round(playerHealth.get(p), 3);
                     double toughness = Utils.round(playerToughness.get(p), 3);
+                    double customHealth = Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 3);
                     p.sendActionBar(Utils.parse("<red>"
-                            + Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 3) + "<dark_red>/" + health + " \u2764"
+                            + customHealth + "<dark_red>/" + health + " \u2764"
                             + "          <dark_aqua>" + Utils.round(toughness, 3) + " \uD83D\uDEE1       "));
                 }
             }
