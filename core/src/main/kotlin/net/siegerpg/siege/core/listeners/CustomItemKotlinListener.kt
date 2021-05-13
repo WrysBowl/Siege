@@ -152,6 +152,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         }
     }
 
+    /*
     @EventHandler
     @Suppress("unused")
     fun onFoodHold(e: PlayerItemHeldEvent) {
@@ -170,7 +171,7 @@ class CustomItemKotlinListener : Listener, Runnable {
     fun cancelFood(e: FoodLevelChangeEvent) {
         e.isCancelled = true
         e.foodLevel = 20
-    }
+    }*/
 
     @EventHandler
     @Suppress("unused")
@@ -210,7 +211,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                     override fun run() {
                         cooldown.remove(player)
                     }
-                }.runTaskLaterAsynchronously(Core.plugin(), 30)
+                }.runTaskLaterAsynchronously(Core.plugin(), 15)
             }
         }
     }

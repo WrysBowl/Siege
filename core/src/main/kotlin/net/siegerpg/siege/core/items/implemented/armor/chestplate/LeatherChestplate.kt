@@ -12,31 +12,31 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class ChainChestplate() : CustomChestplate(
-    name = "Chain Chestplate",
+class LeatherChestplate() : CustomChestplate(
+    name = "Hardened Leather Chestplate",
     customModelData = 1,
-    description = listOf("Cut resistant"),
-    levelRequirement = 30,
-    material = Material.CHAINMAIL_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 80.0, toughness = 100.0),
+    description = listOf("Skin tight. Literally."),
+    levelRequirement = 18,
+    material = Material.LEATHER_CHESTPLATE,
+    baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 95.0),
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Chain.tier(2))
-            s3(Chain.tier(2))
-            s4(Chain.tier(2))
-            s5(Chain.tier(2))
-            s6(Chain.tier(2))
-            s7(Chain.tier(2))
-            s8(Chain.tier(2))
-            s9(Chain.tier(2))
+            s1(Leather.tier(2))
+            s3(Leather.tier(2))
+            s4(Leather.tier(2))
+            s5(Leather.tier(2))
+            s6(Leather.tier(2))
+            s7(Leather.tier(2))
+            s8(Leather.tier(2))
+            s9(Leather.tier(2))
             item { player, b ->
-                val newItem = ChainChestplate(if (b) 50 else Utils.randRarity())
+                val newItem = LeatherChestplate(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
-    },
+    }
 ) {
 
     constructor(quality: Int): this() {

@@ -11,7 +11,7 @@ class Shank() : CustomMeleeWeapon(
     name = "Shank",
     customModelData = 110005,
     description = listOf("An essential tool...in prison"),
-    levelRequirement = 10,
+    levelRequirement = 18,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 18.0),
     recipeList = recipes {

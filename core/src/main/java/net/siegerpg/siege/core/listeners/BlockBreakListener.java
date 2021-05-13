@@ -40,10 +40,17 @@ public class BlockBreakListener implements Listener {
         ItemStack goldCoins = Utils.getGoldCoin();
         goldCoins.setAmount(blockDrop.getGold(true));
 
+        if ((Math.random() * 100) <= CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand())) {
+            goldCoins.setAmount(goldCoins.getAmount() * 2);
+        }
+
         e.getBlock().setType(Material.BEDROCK);
 
         if (blockDrop.getExp(true) > 0) {
             int exp = blockDrop.getExp(true);
+            if ((Math.random() * 100) <= CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand())) {
+                exp *= 2;
+            }
             Levels.INSTANCE.addExp(player, exp);
             player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
         } //Give exp reward

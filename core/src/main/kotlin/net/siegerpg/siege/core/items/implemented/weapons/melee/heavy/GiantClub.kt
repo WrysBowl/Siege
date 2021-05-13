@@ -13,10 +13,10 @@ class GiantClub() : CustomMeleeWeapon(
     description = listOf("Kneecap smasher"),
     levelRequirement = 7,
     material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 22.0),
+    baseStats = CustomItemUtils.statMap(strength = 18.0),
     recipeList = recipes {
     },
-    attackSpeed = 0.8
+    attackSpeed = 0.7
 ) {
 
     constructor(quality: Int): this() {

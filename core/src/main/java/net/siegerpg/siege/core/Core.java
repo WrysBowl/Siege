@@ -111,6 +111,8 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new WorldListener(), this);
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
+        getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
+
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);
         getServer().getPluginManager().registerEvents(new ClemontBlacksmith(), this);

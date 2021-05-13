@@ -48,9 +48,25 @@ public class SmokyBlacksmith implements Listener, Runnable {
             setShopArmor();
             weaponItems.clear();
             armorItems.clear();
-            for (int i = 0; i<7; i++) {
-                weaponItems.add(shopWeapons.get((int) (Math.random() * 14)));
-                armorItems.add(shopArmor.get((int) (Math.random() * 11)));
+            ArrayList<Integer> usedWeapons = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
+            ArrayList<Integer> usedArmor = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
+            for (int i = 0; i<7; i++) { //this loops 7 times
+                int wepIndex = (int) (Math.random() * 14); //initializes a variable that is a random number from 0 - 14
+                int armIndex = (int) (Math.random() * 19); //initializes a variable that is a random number from 0 - 19
+
+
+                while (usedWeapons.contains(wepIndex)) { //if the generated integer is already contained in the used weapons list
+                    wepIndex = (int) (Math.random() * 14); //we want to make a new number, then compare to the statement AGAIN
+                }
+                usedWeapons.add(wepIndex); //We have found a number that isn't contained in the list! Now we add it to the list
+                while (usedArmor.contains(armIndex)) {
+                    armIndex = (int) (Math.random() * 19);
+                }
+                usedArmor.add(armIndex);
+
+
+                weaponItems.add(shopWeapons.get(wepIndex));
+                armorItems.add(shopArmor.get(wepIndex));
             }
             Bukkit.broadcastMessage(Utils.tacc("&aSmoky's shop has reset with new items!"));
         }, 0, 36000);
@@ -89,6 +105,14 @@ public class SmokyBlacksmith implements Listener, Runnable {
         shopArmor.add(9, Utils.setLoreCost(new WoolChestplate(Utils.randRarity())));
         shopArmor.add(10, Utils.setLoreCost(new WoolLeggings(Utils.randRarity())));
         shopArmor.add(11, Utils.setLoreCost(new WoolBoots(Utils.randRarity())));
+        shopArmor.add(12, Utils.setLoreCost(new BoneHelmet(Utils.randRarity())));
+        shopArmor.add(13, Utils.setLoreCost(new BoneChestplate(Utils.randRarity())));
+        shopArmor.add(14, Utils.setLoreCost(new BoneLeggings(Utils.randRarity())));
+        shopArmor.add(15, Utils.setLoreCost(new BoneBoots(Utils.randRarity())));
+        shopArmor.add(16, Utils.setLoreCost(new ChainHelmet(Utils.randRarity())));
+        shopArmor.add(17, Utils.setLoreCost(new ChainChestplate(Utils.randRarity())));
+        shopArmor.add(18, Utils.setLoreCost(new ChainLeggings(Utils.randRarity())));
+        shopArmor.add(19, Utils.setLoreCost(new ChainBoots(Utils.randRarity())));
     }
 
     @EventHandler

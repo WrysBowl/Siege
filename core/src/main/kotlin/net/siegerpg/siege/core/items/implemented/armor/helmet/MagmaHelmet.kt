@@ -15,9 +15,9 @@ class MagmaHelmet() : CustomHelmet(
     name = "Magma Helmet",
     customModelData = 1,
     description = listOf("Quite the hot head"),
-    levelRequirement = 8,
+    levelRequirement = 12,
     material = Material.LEATHER_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 8.0, toughness = 30.0, regeneration = 5.0),
+    baseStats = CustomItemUtils.statMap(health = 15.0, toughness = 30.0),
     recipeList = recipes {
         recipe {
             shaped = true

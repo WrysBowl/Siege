@@ -16,9 +16,9 @@ class WoolChestplate() : CustomChestplate(
     name = "Wool Chestplate",
     customModelData = 1,
     description = listOf("A cotton jacket"),
-    levelRequirement = 4,
+    levelRequirement = 9,
     material = Material.LEATHER_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 16.0, regeneration = 5.0),
+    baseStats = CustomItemUtils.statMap(health = 16.0, toughness = 75.0),
     recipeList = recipes {
         recipe {
             shaped = true

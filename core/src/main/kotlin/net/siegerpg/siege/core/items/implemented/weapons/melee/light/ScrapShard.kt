@@ -13,7 +13,7 @@ class ScrapShard() : CustomMeleeWeapon(
     name = "Scrap Shard",
     customModelData = 110008,
     description = listOf("Scrap metal put together", "to create a sharp shank"),
-    levelRequirement = 18,
+    levelRequirement = 29,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 34.0),
     recipeList = recipes {

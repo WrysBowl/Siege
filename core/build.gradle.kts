@@ -19,10 +19,12 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.16")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.5.0")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
+    /*
     compileOnly("com.vexsoftware:nuvotifier-universal:2.6.0"){
         exclude("com.google.code.gson")
         exclude("org.checkerframework")
     } // NuVotifier API
+     */
     implementation("org.reflections:reflections:0.9.12")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") // Vault API
     implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
@@ -30,7 +32,6 @@ dependencies {
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.7.1")
     implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
     implementation("com.zaxxer:HikariCP:4.0.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
     annotationProcessor("org.projectlombok:lombok:1.18.16")
     //compile(fileTree(include(["*.jar"]), dir("libs")))
 }

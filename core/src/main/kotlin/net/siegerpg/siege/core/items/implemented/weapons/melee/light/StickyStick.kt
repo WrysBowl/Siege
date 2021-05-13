@@ -14,7 +14,7 @@ class StickyStick() : CustomMeleeWeapon(
     name = "Sticky Stick",
     customModelData = 110002,
     description = listOf("Globs of slime on a stick"),
-    levelRequirement = 3,
+    levelRequirement = 5,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 8.0),
     recipeList = recipes {

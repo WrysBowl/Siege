@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.drops.MobDrops;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
@@ -22,7 +23,7 @@ public class DeathListener implements Listener {
 
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) { return; }
 
-        String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
+        ActiveMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity());
         MobDrops mobDrop = new MobDrops();
         mobDrop.setMobTable(mm);
 
@@ -35,9 +36,16 @@ public class DeathListener implements Listener {
         Double luck = 0.0;
         ItemStack goldCoins = Utils.getGoldCoin();
         goldCoins.setAmount(mobDrop.getGold(true));
-        if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK);}
+
+        if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());}
+        if ((Math.random() * 100) <= luck) {
+            goldCoins.setAmount(goldCoins.getAmount() * 2);
+        }
         if (mobDrop.getExp(true) > 0 && player != null) {
             int exp = mobDrop.getExp(true);
+            if ((Math.random() * 100) <= luck) {
+                exp *= 2;
+            }
             Levels.INSTANCE.addExp(player, exp);
             player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
         } //Give exp reward
@@ -60,12 +68,14 @@ public class DeathListener implements Listener {
     public void onEntityDeath(PlayerDeathEvent e) {
         e.deathMessage(null);
         Player player = e.getEntity().getPlayer();
-        double bal = Math.round(VaultHook.econ.getBalance(player));
-        double newBal = Math.round(bal * 0.95);
-        VaultHook.econ.withdrawPlayer(player, bal);
-        VaultHook.econ.depositPlayer(player, newBal);
-        assert player != null;
-        player.sendTitle(Utils.tacc("&cYou Died"), Utils.tacc("&6" + (bal-newBal) + " has been taken"), 1, 60, 1);
-        Scoreboard.updateScoreboard(player);
+        if (player != null) {
+            player.teleport(player.getWorld().getSpawnLocation());
+            double bal = Math.round(VaultHook.econ.getBalance(player));
+            double newBal = Math.round(bal * 0.95);
+            VaultHook.econ.withdrawPlayer(player, bal);
+            VaultHook.econ.depositPlayer(player, newBal);
+            player.sendTitle(Utils.tacc("&cYou Died"), Utils.tacc("&6" + (bal - newBal) + " has been taken"), 1, 60, 1);
+            Scoreboard.updateScoreboard(player);
+        }
     }
 }
