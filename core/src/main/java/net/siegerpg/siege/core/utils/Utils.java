@@ -105,11 +105,12 @@ public class Utils {
         return item;
     }
 
-    public static ItemStack setOriginLore(ItemStack item, Component... lore) {
+    public static ItemStack addLore(ItemStack item, Component... lore) {
         List<Component> newLore = item.lore();
-        if (newLore == null) {return item;}
+        if (newLore == null) {
+            newLore = new ArrayList<>(lore.length);
+        }
         newLore.add(lore(" "));
-        newLore.add(lore("<aqua><italic>Origin"));
         newLore.addAll(Arrays.asList(lore));
         item.lore(newLore);
         return item;

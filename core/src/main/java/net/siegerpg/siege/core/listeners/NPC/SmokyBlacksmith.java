@@ -109,10 +109,6 @@ public class SmokyBlacksmith implements Listener, Runnable {
         shopArmor.add(13, Utils.setLoreCost(new BoneChestplate(Utils.randRarity())));
         shopArmor.add(14, Utils.setLoreCost(new BoneLeggings(Utils.randRarity())));
         shopArmor.add(15, Utils.setLoreCost(new BoneBoots(Utils.randRarity())));
-        shopArmor.add(16, Utils.setLoreCost(new ChainHelmet(Utils.randRarity())));
-        shopArmor.add(17, Utils.setLoreCost(new ChainChestplate(Utils.randRarity())));
-        shopArmor.add(18, Utils.setLoreCost(new ChainLeggings(Utils.randRarity())));
-        shopArmor.add(19, Utils.setLoreCost(new ChainBoots(Utils.randRarity())));
     }
 
     @EventHandler

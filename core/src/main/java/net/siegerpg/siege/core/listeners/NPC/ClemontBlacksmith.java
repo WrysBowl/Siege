@@ -2,6 +2,8 @@ package net.siegerpg.siege.core.listeners.NPC;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
@@ -77,14 +79,78 @@ public class ClemontBlacksmith implements Listener {
                 player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
             }
         }
+        if (slot > 18 && e.getCurrentItem() != null) {
+            ArrayList<ItemStack> reqIngredients = new ArrayList<>();
+            ItemStack result = null;
+            switch (e.getSlot()) {
+                case 19: //Iron Shovel
+                    //Initialize Ingredients
+                    ItemStack ironShovel1 = Stick.Companion.tier(3).getUpdatedItem(false);
+                    ironShovel1.setAmount(2);
+                    ItemStack ironShovel2 = MetalScrap.Companion.tier(3).getUpdatedItem(false);
+                    ironShovel2.setAmount(1);
+
+                    //Add ingredients to required ingredients
+                    reqIngredients.add(ironShovel1);
+                    reqIngredients.add(ironShovel2);
+                    //Set result of recipe
+                    result = new ItemStack(Material.IRON_SHOVEL);
+                    break;
+                case 20: //Iron Axe
+                    //Initialize Ingredients
+                    ItemStack ironAxe1 = Stick.Companion.tier(3).getUpdatedItem(false);
+                    ironAxe1.setAmount(2);
+                    ItemStack ironAxe2 = MetalScrap.Companion.tier(3).getUpdatedItem(false);
+                    ironAxe2.setAmount(3);
+
+                    //Add ingredients to required ingredients
+                    reqIngredients.add(ironAxe1);
+                    reqIngredients.add(ironAxe2);
+                    //Set result of recipe
+                    result = new ItemStack(Material.IRON_AXE);
+                    break;
+                case 21: //Iron pickaxe
+                    //Initialize Ingredients
+                    ItemStack ironPickaxe1 = Stick.Companion.tier(3).getUpdatedItem(false);
+                    ironPickaxe1.setAmount(2);
+                    ItemStack ironPickaxe2 = MetalScrap.Companion.tier(3).getUpdatedItem(false);
+                    ironPickaxe2.setAmount(3);
+
+                    //Add ingredients to required ingredients
+                    reqIngredients.add(ironPickaxe1);
+                    reqIngredients.add(ironPickaxe2);
+                    //Set result of recipe
+                    result = new ItemStack(Material.IRON_PICKAXE);
+                    break;
+                default:
+                    return;
+            }
+            for (ItemStack item : reqIngredients) {
+                if (!player.getInventory().containsAtLeast(item, item.getAmount())) {
+                    player.sendMessage(Utils.parse("<red>You do not have the required materials to craft this item."));
+                    return;
+                }
+            }
+            int cost = Utils.getCost(e.getCurrentItem());
+            if (VaultHook.econ.getBalance(player) < cost) { player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!")); }
+            for (ItemStack item : reqIngredients) { player.getInventory().removeItem(item); }
+            player.updateInventory();
+            if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+                player.closeInventory();
+                player.getInventory().addItem(Utils.removeLastLore(e.getCurrentItem()));
+                VaultHook.econ.withdrawPlayer(player, cost);
+                Scoreboard.updateScoreboard((Player) e.getWhoClicked());
+                player.sendMessage(Utils.tacc("&eYou have purchased an item"));
+                player.getInventory().addItem(result);
+                return;
+            }
+            player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
+        }
     }
 
 
     private Inventory getShopMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Clemont's Shop");
-
-        ItemStack arrows = new ItemStack(Material.ARROW);
-        arrows.setAmount(64);
+        Inventory gui = Bukkit.createInventory(null, 36, "Clemont's Shop");
 
         ArrayList<ItemStack> toolItems = new ArrayList<>(){
             {
@@ -94,7 +160,23 @@ public class ClemontBlacksmith implements Listener {
                 add(setCost(new ItemStack(Material.STONE_AXE), 3750));
                 add(setCost(new ItemStack(Material.STONE_PICKAXE), 4500));
                 add(setCost(new ItemStack(Material.STONE_SHOVEL), 3000));
-                add(setCost(arrows, 150));
+                add(setCost(new ItemStack(Material.ARROW, 64), 150));
+                add(Utils.addLore(new ItemStack(Material.IRON_SHOVEL),
+                        Utils.lore("<yellow>6000"),
+                        Utils.lore("<dark_aqua>Click to Craft"),
+                        Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                        Utils.lore("<dark_aqua>MetalScrap \u272A\u272A\u272A x1")));
+                add(Utils.addLore(new ItemStack(Material.IRON_AXE),
+                        Utils.lore("<yellow>12000"),
+                        Utils.lore("<dark_aqua>Click to Craft"),
+                        Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                        Utils.lore("<dark_aqua>MetalScrap \u272A\u272A\u272A x3")));
+                add(Utils.addLore(new ItemStack(Material.IRON_PICKAXE),
+                        Utils.lore("<yellow>12000"),
+                        Utils.lore("<dark_aqua>Click to Craft"),
+                        Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+                        Utils.lore("<dark_aqua>MetalScrap \u272A\u272A\u272A x3")));
+
             }
         };
 
@@ -104,8 +186,9 @@ public class ClemontBlacksmith implements Listener {
             gui.setItem(i, filler);
         }
 
-        for (int i=10; i<18; i++) { //Sets crafting grid slots
+        for (int i=10; i<17; i++) { //Sets crafting grid slots
             gui.clear(i);
+            gui.clear(i+9);
         }
 
         for (ItemStack item : toolItems) {
