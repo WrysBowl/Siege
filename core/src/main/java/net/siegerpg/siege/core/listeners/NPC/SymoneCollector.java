@@ -824,6 +824,126 @@ public class SymoneCollector implements Listener {
                 reqIngredients.add(magma4);
                 result = Magma.Companion.tier(5).getUpdatedItem(false);
                 break;
+            case 9: //Ectoplasm 1
+                ItemStack ectoplasm1 = Ectoplasm.Companion.tier(1).getUpdatedItem(false);
+                ectoplasm1.setAmount(8);
+                reqIngredients.add(ectoplasm1);
+                result = Ectoplasm.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 10: //Ectoplasm 3
+                ItemStack ectoplasm2 = Ectoplasm.Companion.tier(2).getUpdatedItem(false);
+                ectoplasm2.setAmount(8);
+                reqIngredients.add(ectoplasm2);
+                result = Ectoplasm.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 11: //Ectoplasm 4
+                ItemStack ectoplasm3 = Ectoplasm.Companion.tier(3).getUpdatedItem(false);
+                ectoplasm3.setAmount(8);
+                reqIngredients.add(ectoplasm3);
+                result = Ectoplasm.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 12: //Ectoplasm 5
+                ItemStack ectoplasm4 = Ectoplasm.Companion.tier(4).getUpdatedItem(false);
+                ectoplasm4.setAmount(8);
+                reqIngredients.add(ectoplasm4);
+                result = Ectoplasm.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 14: //Bone 1
+                ItemStack bone1 = Bone.Companion.tier(1).getUpdatedItem(false);
+                bone1.setAmount(8);
+                reqIngredients.add(bone1);
+                result = Bone.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 15: //Bone 3
+                ItemStack bone2 = Bone.Companion.tier(2).getUpdatedItem(false);
+                bone2.setAmount(8);
+                reqIngredients.add(bone2);
+                result = Bone.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 16: //Bone 4
+                ItemStack bone3 = Bone.Companion.tier(3).getUpdatedItem(false);
+                bone3.setAmount(8);
+                reqIngredients.add(bone3);
+                result = Bone.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 17: //Bone 5
+                ItemStack bone4 = Bone.Companion.tier(4).getUpdatedItem(false);
+                bone4.setAmount(8);
+                reqIngredients.add(bone4);
+                result = Bone.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 18: //Wool 1
+                ItemStack wool1 = Wool.Companion.tier(1).getUpdatedItem(false);
+                wool1.setAmount(8);
+                reqIngredients.add(wool1);
+                result = Wool.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 19: //Wool 3
+                ItemStack wool2 = Wool.Companion.tier(2).getUpdatedItem(false);
+                wool2.setAmount(8);
+                reqIngredients.add(wool2);
+                result = Wool.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 20: //Wool 4
+                ItemStack wool3 = Wool.Companion.tier(3).getUpdatedItem(false);
+                wool3.setAmount(8);
+                reqIngredients.add(wool3);
+                result = Wool.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 21: //Wool 5
+                ItemStack wool4 = Wool.Companion.tier(4).getUpdatedItem(false);
+                wool4.setAmount(8);
+                reqIngredients.add(wool4);
+                result = Wool.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 23: //Leather 1
+                ItemStack leather1 = Leather.Companion.tier(1).getUpdatedItem(false);
+                leather1.setAmount(8);
+                reqIngredients.add(leather1);
+                result = Leather.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 24: //Leather 3
+                ItemStack leather2 = Leather.Companion.tier(2).getUpdatedItem(false);
+                leather2.setAmount(8);
+                reqIngredients.add(leather2);
+                result = Leather.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 25: //Leather 4
+                ItemStack leather3 = Leather.Companion.tier(3).getUpdatedItem(false);
+                leather3.setAmount(8);
+                reqIngredients.add(leather3);
+                result = Leather.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 26: //Leather 5
+                ItemStack leather4 = Leather.Companion.tier(4).getUpdatedItem(false);
+                leather4.setAmount(8);
+                reqIngredients.add(leather4);
+                result = Leather.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 27: //Feather 1
+                ItemStack feather1 = Feather.Companion.tier(1).getUpdatedItem(false);
+                feather1.setAmount(8);
+                reqIngredients.add(feather1);
+                result = Feather.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 28: //Feather 3
+                ItemStack feather2 = Feather.Companion.tier(2).getUpdatedItem(false);
+                feather2.setAmount(8);
+                reqIngredients.add(feather2);
+                result = Feather.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 29: //Feather 4
+                ItemStack feather3 = Feather.Companion.tier(3).getUpdatedItem(false);
+                feather3.setAmount(8);
+                reqIngredients.add(feather3);
+                result = Feather.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 30: //Feather 5
+                ItemStack feather4 = Feather.Companion.tier(4).getUpdatedItem(false);
+                feather4.setAmount(8);
+                reqIngredients.add(feather4);
+                result = Feather.Companion.tier(5).getUpdatedItem(false);
+                break;
             default:
                 return;
         }
@@ -844,7 +964,244 @@ public class SymoneCollector implements Listener {
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private void clickBlockDrops(InventoryClickEvent e) {
-
+        Player player = (Player) e.getWhoClicked();
+        ArrayList<ItemStack> reqIngredients = new ArrayList<>();
+        ItemStack result = null;
+        switch (e.getSlot()) {
+            case 0: //Plant Matter 2
+                ItemStack PlantMatter1 = PlantMatter.Companion.tier(1).getUpdatedItem(false);
+                PlantMatter1.setAmount(8);
+                reqIngredients.add(PlantMatter1);
+                result = PlantMatter.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 1: //Plant Matter 3
+                ItemStack PlantMatter2 = PlantMatter.Companion.tier(2).getUpdatedItem(false);
+                PlantMatter2.setAmount(8);
+                reqIngredients.add(PlantMatter2);
+                result = PlantMatter.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 2: //Plant Matter 4
+                ItemStack PlantMatter3 = PlantMatter.Companion.tier(3).getUpdatedItem(false);
+                PlantMatter3.setAmount(8);
+                reqIngredients.add(PlantMatter3);
+                result = PlantMatter.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 3: //Plant Matter 5
+                ItemStack PlantMatter4 = PlantMatter.Companion.tier(4).getUpdatedItem(false);
+                PlantMatter4.setAmount(8);
+                reqIngredients.add(PlantMatter4);
+                result = PlantMatter.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 5: //Seed 2
+                ItemStack Seed1 = Seed.Companion.tier(1).getUpdatedItem(false);
+                Seed1.setAmount(8);
+                reqIngredients.add(Seed1);
+                result = Seed.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 6: //Seed 3
+                ItemStack Seed2 = Seed.Companion.tier(2).getUpdatedItem(false);
+                Seed2.setAmount(8);
+                reqIngredients.add(Seed2);
+                result = Seed.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 7: //Seed 4
+                ItemStack Seed3 = Seed.Companion.tier(3).getUpdatedItem(false);
+                Seed3.setAmount(8);
+                reqIngredients.add(Seed3);
+                result = Seed.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 8: //Seed 5
+                ItemStack Seed4 = Seed.Companion.tier(4).getUpdatedItem(false);
+                Seed4.setAmount(8);
+                reqIngredients.add(Seed4);
+                result = Seed.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 9: //Coal 2
+                ItemStack Coal1 = Coal.Companion.tier(1).getUpdatedItem(false);
+                Coal1.setAmount(8);
+                reqIngredients.add(Coal1);
+                result = Coal.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 10: //Coal 3
+                ItemStack Coal2 = Coal.Companion.tier(2).getUpdatedItem(false);
+                Coal2.setAmount(8);
+                reqIngredients.add(Coal2);
+                result = Coal.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 11: //Coal 4
+                ItemStack Coal3 = Coal.Companion.tier(3).getUpdatedItem(false);
+                Coal3.setAmount(8);
+                reqIngredients.add(Coal3);
+                result = Coal.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 12: //Coal 5
+                ItemStack Coal4 = Coal.Companion.tier(4).getUpdatedItem(false);
+                Coal4.setAmount(8);
+                reqIngredients.add(Coal4);
+                result = Coal.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 14: //Vine 2
+                ItemStack Vine1 = Vine.Companion.tier(1).getUpdatedItem(false);
+                Vine1.setAmount(8);
+                reqIngredients.add(Vine1);
+                result = Vine.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 15: //Vine 3
+                ItemStack Vine2 = Vine.Companion.tier(2).getUpdatedItem(false);
+                Vine2.setAmount(8);
+                reqIngredients.add(Vine2);
+                result = Vine.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 16: //Vine 4
+                ItemStack Vine3 = Vine.Companion.tier(3).getUpdatedItem(false);
+                Vine3.setAmount(8);
+                reqIngredients.add(Vine3);
+                result = Vine.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 17: //Vine 5
+                ItemStack Vine4 = Vine.Companion.tier(4).getUpdatedItem(false);
+                Vine4.setAmount(8);
+                reqIngredients.add(Vine4);
+                result = Vine.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 18: //Stick 2
+                ItemStack Stick1 = Stick.Companion.tier(1).getUpdatedItem(false);
+                Stick1.setAmount(8);
+                reqIngredients.add(Stick1);
+                result = Stick.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 19: //Stick 3
+                ItemStack Stick2 = Stick.Companion.tier(2).getUpdatedItem(false);
+                Stick2.setAmount(8);
+                reqIngredients.add(Stick2);
+                result = Stick.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 20: //Stick 4
+                ItemStack Stick3 = Stick.Companion.tier(3).getUpdatedItem(false);
+                Stick3.setAmount(8);
+                reqIngredients.add(Stick3);
+                result = Stick.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 21: //Stick 5
+                ItemStack Stick4 = Stick.Companion.tier(4).getUpdatedItem(false);
+                Stick4.setAmount(8);
+                reqIngredients.add(Stick4);
+                result = Stick.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 23: //Pebble 2
+                ItemStack Pebble1 = Pebble.Companion.tier(1).getUpdatedItem(false);
+                Pebble1.setAmount(8);
+                reqIngredients.add(Pebble1);
+                result = Pebble.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 24: //Pebble 3
+                ItemStack Pebble2 = Pebble.Companion.tier(2).getUpdatedItem(false);
+                Pebble2.setAmount(8);
+                reqIngredients.add(Pebble2);
+                result = Pebble.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 25: //Pebble 4
+                ItemStack Pebble3 = Pebble.Companion.tier(3).getUpdatedItem(false);
+                Pebble3.setAmount(8);
+                reqIngredients.add(Pebble3);
+                result = Pebble.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 26: //Pebble 5
+                ItemStack Pebble4 = Pebble.Companion.tier(4).getUpdatedItem(false);
+                Pebble4.setAmount(8);
+                reqIngredients.add(Pebble4);
+                result = Pebble.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 27: //Chain 2
+                ItemStack Chain1 = Chain.Companion.tier(1).getUpdatedItem(false);
+                Chain1.setAmount(8);
+                reqIngredients.add(Chain1);
+                result = Chain.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 28: //Chain 3
+                ItemStack Chain2 = Chain.Companion.tier(2).getUpdatedItem(false);
+                Chain2.setAmount(8);
+                reqIngredients.add(Chain2);
+                result = Chain.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 29: //Chain 4
+                ItemStack Chain3 = Chain.Companion.tier(3).getUpdatedItem(false);
+                Chain3.setAmount(8);
+                reqIngredients.add(Chain3);
+                result = Chain.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 30: //Chain 5
+                ItemStack Chain4 = Chain.Companion.tier(4).getUpdatedItem(false);
+                Chain4.setAmount(8);
+                reqIngredients.add(Chain4);
+                result = Chain.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 32: //Metal Scrap 2
+                ItemStack MetalScrap1 = MetalScrap.Companion.tier(1).getUpdatedItem(false);
+                MetalScrap1.setAmount(8);
+                reqIngredients.add(MetalScrap1);
+                result = MetalScrap.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 33: //Metal Scrap 3
+                ItemStack MetalScrap2 = MetalScrap.Companion.tier(2).getUpdatedItem(false);
+                MetalScrap2.setAmount(8);
+                reqIngredients.add(MetalScrap2);
+                result = MetalScrap.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 34: //Metal Scrap 4
+                ItemStack MetalScrap3 = MetalScrap.Companion.tier(3).getUpdatedItem(false);
+                MetalScrap3.setAmount(8);
+                reqIngredients.add(MetalScrap3);
+                result = MetalScrap.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 35: //Metal Scrap 5
+                ItemStack MetalScrap4 = MetalScrap.Companion.tier(4).getUpdatedItem(false);
+                MetalScrap4.setAmount(8);
+                reqIngredients.add(MetalScrap4);
+                result = MetalScrap.Companion.tier(5).getUpdatedItem(false);
+                break;
+            case 36: //Metal Scrap 2
+                ItemStack RefinedMetal1 = RefinedMetal.Companion.tier(1).getUpdatedItem(false);
+                RefinedMetal1.setAmount(8);
+                reqIngredients.add(RefinedMetal1);
+                result = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 37: //Metal Scrap 3
+                ItemStack RefinedMetal2 = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
+                RefinedMetal2.setAmount(8);
+                reqIngredients.add(RefinedMetal2);
+                result = RefinedMetal.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 38: //Metal Scrap 4
+                ItemStack RefinedMetal3 = RefinedMetal.Companion.tier(3).getUpdatedItem(false);
+                RefinedMetal3.setAmount(8);
+                reqIngredients.add(RefinedMetal3);
+                result = RefinedMetal.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 39: //Metal Scrap 5
+                ItemStack RefinedMetal4 = RefinedMetal.Companion.tier(4).getUpdatedItem(false);
+                RefinedMetal4.setAmount(8);
+                reqIngredients.add(RefinedMetal4);
+                result = RefinedMetal.Companion.tier(5).getUpdatedItem(false);
+                break;
+            default:
+                return;
+        }
+        for (ItemStack item : reqIngredients) {
+            if (!player.getInventory().containsAtLeast(item, item.getAmount())) {
+                player.sendMessage(Utils.parse("<red>You do not have the required materials to craft this item."));
+                return;
+            }
+        }
+        for (ItemStack item : reqIngredients) {
+            player.getInventory().removeItem(item);
+        }
+        player.updateInventory();
+        if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            player.getInventory().addItem(result);
+            return;
+        }
+        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private Inventory getMenu(Player player) {
         Inventory gui = Bukkit.createInventory(null, 27, "Symone's Collection");
@@ -920,7 +1277,7 @@ public class SymoneCollector implements Listener {
 
 
     private Inventory getLightMelee(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Light Melee Weapons");
+        Inventory gui = Bukkit.createInventory(null, 18, "Light Melee Weapons");
 
         //Fill in the GUI
         for (int i = 0; i < lightMeleeList.size(); i++) {
@@ -931,7 +1288,7 @@ public class SymoneCollector implements Listener {
         return gui;
     }
     private Inventory getHeavyMelee(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Heavy Melee Weapons");
+        Inventory gui = Bukkit.createInventory(null, 18, "Heavy Melee Weapons");
 
         //Fill in the GUI
         for (int i = 0; i < heavyMeleeList.size(); i++) {
@@ -942,7 +1299,7 @@ public class SymoneCollector implements Listener {
         return gui;
     }
     private Inventory getArmor(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 54, "Armor");
+        Inventory gui = Bukkit.createInventory(null, 36, "Armor");
 
         //Fill in the GUI
         for (int i = 0; i < armorList.size(); i++) {
@@ -953,7 +1310,7 @@ public class SymoneCollector implements Listener {
         return gui;
     }
     private Inventory mobDropsList(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 54, "Mob Drops");
+        Inventory gui = Bukkit.createInventory(null, 36, "Mob Drops");
         for (int i = 0; i < mobDropsList.size(); i++) {
             gui.setItem(i, mobDropsList.get(i));
         }
@@ -961,7 +1318,7 @@ public class SymoneCollector implements Listener {
         return gui;
     }
     private Inventory blockDropsList(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 54, "Block Drops");
+        Inventory gui = Bukkit.createInventory(null, 45, "Block Drops");
         for (int i = 0; i < blockDropsList.size(); i++) {
             gui.setItem(i, blockDropsList.get(i));
         }
@@ -969,7 +1326,7 @@ public class SymoneCollector implements Listener {
         return gui;
     }
     private Inventory getWand(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Wand Weapons");
+        Inventory gui = Bukkit.createInventory(null, 18, "Wand Weapons");
 
         //Fill in the GUI
         for (int i = 0; i < wandsList.size(); i++) {
@@ -980,7 +1337,7 @@ public class SymoneCollector implements Listener {
         return gui;
     }
     private Inventory getRanged(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Ranged Weapons");
+        Inventory gui = Bukkit.createInventory(null, 18, "Ranged Weapons");
 
         //Fill in the GUI
         for (int i = 0; i < rangedList.size(); i++) {
