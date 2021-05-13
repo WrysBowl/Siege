@@ -783,7 +783,7 @@ public class SymoneCollector implements Listener {
                 result = new GlisteningTwig(Utils.randRarity()).getUpdatedItem(false);
                 break;
 
-            case 2: //Glowing twig
+            case 2: //Glowing Twig
 
                 ItemStack GlowingTwig1 = PlantMatter.Companion.tier(3).getUpdatedItem(false);
                 GlowingTwig1.setAmount(3);
