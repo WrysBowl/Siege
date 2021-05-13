@@ -11,7 +11,7 @@ class DungeonConfig(private var plugin: DungeonPlugin) : ConfigurationBase(File(
     @Throws(IOException::class, InvalidConfigurationException::class)
     override fun createConfig() {
         super.createConfig()
-        println(DungeonPlugin.plugin().name)
+        println(plugin.description.name)
         deserializeDungeonTypes()
     }
 
@@ -62,7 +62,7 @@ class DungeonConfig(private var plugin: DungeonPlugin) : ConfigurationBase(File(
                 DungeonType.deserialize(
                     configuration.getConfigurationSection(
                         key
-                    )!!, key, DungeonPlugin.plugin()
+                    )!!, key, plugin
                 )
             )
         }
