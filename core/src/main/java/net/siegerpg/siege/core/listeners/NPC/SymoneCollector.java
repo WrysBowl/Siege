@@ -436,6 +436,10 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
+        for (ItemStack item : reqIngredients) {
+            player.getInventory().removeItem(item);
+        }
+        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
             return;
@@ -523,6 +527,10 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
+        for (ItemStack item : reqIngredients) {
+            player.getInventory().removeItem(item);
+        }
+        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
             return;
