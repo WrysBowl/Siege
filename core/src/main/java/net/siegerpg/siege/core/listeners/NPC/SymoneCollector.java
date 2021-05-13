@@ -893,15 +893,15 @@ public class SymoneCollector implements Listener {
         ranged.setItemMeta(rangedMeta);
 
         //Creating Mob Drop
-        ItemStack mobDrop = new ItemStack (Material.BOW);
+        ItemStack mobDrop = new ItemStack (Material.SLIME_BALL);
         ItemMeta mobDropMeta = mobDrop.getItemMeta();
-        mobDropMeta.displayName(Utils.lore("<green>Ranged Weapons"));
+        mobDropMeta.displayName(Utils.lore("<light_purple>Mob Drops"));
         mobDrop.setItemMeta(mobDropMeta);
 
         //Creating Block Drop
-        ItemStack blockDrop = new ItemStack (Material.BOW);
+        ItemStack blockDrop = new ItemStack (Material.STONE);
         ItemMeta blockDropMeta = blockDrop.getItemMeta();
-        blockDropMeta.displayName(Utils.lore("<green>Ranged Weapons"));
+        blockDropMeta.displayName(Utils.lore("<yellow>Block Drops"));
         blockDrop.setItemMeta(blockDropMeta);
 
         //This is where you decide what slot the item goes into
