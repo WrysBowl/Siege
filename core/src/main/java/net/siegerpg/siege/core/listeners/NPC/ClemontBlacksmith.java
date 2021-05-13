@@ -82,6 +82,7 @@ public class ClemontBlacksmith implements Listener {
         if (slot > 18 && e.getCurrentItem() != null) {
             ArrayList<ItemStack> reqIngredients = new ArrayList<>();
             ItemStack result = null;
+            int cost = 0;
             switch (e.getSlot()) {
                 case 19: //Iron Shovel
                     //Initialize Ingredients
@@ -95,6 +96,7 @@ public class ClemontBlacksmith implements Listener {
                     reqIngredients.add(ironShovel2);
                     //Set result of recipe
                     result = new ItemStack(Material.IRON_SHOVEL);
+                    cost = 6000;
                     break;
                 case 20: //Iron Axe
                     //Initialize Ingredients
@@ -108,6 +110,7 @@ public class ClemontBlacksmith implements Listener {
                     reqIngredients.add(ironAxe2);
                     //Set result of recipe
                     result = new ItemStack(Material.IRON_AXE);
+                    cost = 12000;
                     break;
                 case 21: //Iron pickaxe
                     //Initialize Ingredients
@@ -121,6 +124,7 @@ public class ClemontBlacksmith implements Listener {
                     reqIngredients.add(ironPickaxe2);
                     //Set result of recipe
                     result = new ItemStack(Material.IRON_PICKAXE);
+                    cost = 12000;
                     break;
                 default:
                     return;
@@ -131,13 +135,10 @@ public class ClemontBlacksmith implements Listener {
                     return;
                 }
             }
-            int cost = Utils.getCost(e.getCurrentItem());
             if (VaultHook.econ.getBalance(player) < cost) { player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!")); }
             for (ItemStack item : reqIngredients) { player.getInventory().removeItem(item); }
-            player.updateInventory();
             if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
                 player.closeInventory();
-                player.getInventory().addItem(Utils.removeLastLore(e.getCurrentItem()));
                 VaultHook.econ.withdrawPlayer(player, cost);
                 Scoreboard.updateScoreboard((Player) e.getWhoClicked());
                 player.sendMessage(Utils.tacc("&eYou have purchased an item"));

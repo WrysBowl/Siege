@@ -413,6 +413,9 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A\u272A x8")));
 
+            add(Utils.addLore(RefinedMetal.Companion.tier(1).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Metal Scrap \u272A x9")));
             add(Utils.addLore(RefinedMetal.Companion.tier(2).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A x8")));
@@ -1758,25 +1761,31 @@ public class SymoneCollector implements Listener {
                 reqIngredients.add(MetalScrap4);
                 result = MetalScrap.Companion.tier(5).getUpdatedItem(false);
                 break;
-            case 36: //Metal Scrap 2
+            case 36: //Refined Metal 1
+                ItemStack RefinedMetal0 = MetalScrap.Companion.tier(1).getUpdatedItem(false);
+                RefinedMetal0.setAmount(9);
+                reqIngredients.add(RefinedMetal0);
+                result = RefinedMetal.Companion.tier(1).getUpdatedItem(false);
+                break;
+            case 37: //Refined Metal 2
                 ItemStack RefinedMetal1 = RefinedMetal.Companion.tier(1).getUpdatedItem(false);
                 RefinedMetal1.setAmount(8);
                 reqIngredients.add(RefinedMetal1);
                 result = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
                 break;
-            case 37: //Metal Scrap 3
+            case 38: //Refined Metal 3
                 ItemStack RefinedMetal2 = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
                 RefinedMetal2.setAmount(8);
                 reqIngredients.add(RefinedMetal2);
                 result = RefinedMetal.Companion.tier(3).getUpdatedItem(false);
                 break;
-            case 38: //Metal Scrap 4
+            case 39: //Refined Metal 4
                 ItemStack RefinedMetal3 = RefinedMetal.Companion.tier(3).getUpdatedItem(false);
                 RefinedMetal3.setAmount(8);
                 reqIngredients.add(RefinedMetal3);
                 result = RefinedMetal.Companion.tier(4).getUpdatedItem(false);
                 break;
-            case 39: //Metal Scrap 5
+            case 40: //Refined Metal 5
                 ItemStack RefinedMetal4 = RefinedMetal.Companion.tier(4).getUpdatedItem(false);
                 RefinedMetal4.setAmount(8);
                 reqIngredients.add(RefinedMetal4);
