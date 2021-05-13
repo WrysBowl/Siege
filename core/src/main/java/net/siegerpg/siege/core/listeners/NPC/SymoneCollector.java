@@ -887,7 +887,113 @@ public class SymoneCollector implements Listener {
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private void clickRanged(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        ArrayList<ItemStack> reqIngredients = new ArrayList<>();
+        ItemStack result = null;
+        switch (e.getSlot()) {
+            case 0: //Scrap yard bow
+                //Initialize Ingredients
+                ItemStack scrapyawrdbow1 = Stick.Companion.tier(2).getUpdatedItem(false);
+                scrapyawrdbow1.setAmount(3);
+                ItemStack scrapyawrdbow2 = Stick.Companion.tier(2).getUpdatedItem(false);
+                scrapyawrdbow2.setAmount(3);
 
+                //Add ingredients to required ingredients
+                reqIngredients.add(scrapyawrdbow1);
+                reqIngredients.add(scrapyawrdbow2);
+                //Set result of recipe
+                result = new ScrapyardBow(Utils.randRarity()).getUpdatedItem(false);
+                break;
+            case 1: //Wooden Bow
+                ItemStack woodenBow1 = Stick.Companion.tier(3).getUpdatedItem(false);
+                woodenBow1.setAmount(3);
+                ItemStack woodenBow2 = Vine.Companion.tier(3).getUpdatedItem(false);
+                woodenBow2.setAmount(3);
+
+                reqIngredients.add(woodenBow1);
+                reqIngredients.add(woodenBow2);
+                result = new WoodenBow(Utils.randRarity()).getUpdatedItem(false);
+                break;
+            case 2: //Pebble Shooter
+                ItemStack pebble1 = Stick.Companion.tier(3).getUpdatedItem(false);
+                pebble1.setAmount(1);
+                ItemStack pebble2 = Pebble.Companion.tier(3).getUpdatedItem(false);
+                pebble2.setAmount(2);
+                ItemStack pebble3 = Vine.Companion.tier(3).getUpdatedItem(false);
+                pebble2.setAmount(3);
+
+                reqIngredients.add(pebble1);
+                reqIngredients.add(pebble2);
+                reqIngredients.add(pebble3);
+                result = new PebbleShooter(Utils.randRarity()).getUpdatedItem(false);
+                break;
+            case 3: //Reinforced Bow
+                ItemStack reinforcedBow1 = Vine.Companion.tier(3).getUpdatedItem(false);
+                reinforcedBow1.setAmount(3);
+                ItemStack reinforcedBow2 = Stick.Companion.tier(4).getUpdatedItem(false);
+                reinforcedBow2.setAmount(3);
+
+                reqIngredients.add(reinforcedBow1);
+                reqIngredients.add(reinforcedBow2);
+                result = new ReinforcedBow(Utils.randRarity()).getUpdatedItem(false);
+                break;
+            case 4: //Sewer Shooter
+                ItemStack sewerShooter1 = Slime.Companion.tier(3).getUpdatedItem(false);
+                sewerShooter1.setAmount(1);
+                ItemStack sewerShooter2 = Magma.Companion.tier(3).getUpdatedItem(false);
+                sewerShooter2.setAmount(1);
+                ItemStack sewerShooter3 = Stick.Companion.tier(3).getUpdatedItem(false);
+                sewerShooter3.setAmount(3);
+                ItemStack sewerShooter4 = Vine.Companion.tier(3).getUpdatedItem(false);
+                sewerShooter4.setAmount(3);
+
+                reqIngredients.add(sewerShooter1);
+                reqIngredients.add(sewerShooter2);
+                reqIngredients.add(sewerShooter3);
+                reqIngredients.add(sewerShooter4);
+                result = new SewerShooter(Utils.randRarity()).getUpdatedItem(false);
+                break;
+            case 7: //Iron Bow
+                ItemStack ironBow1 = Vine.Companion.tier(3).getUpdatedItem(false);
+                ironBow1.setAmount(3);
+                ItemStack ironBow2 = RefinedMetal.Companion.tier(3).getUpdatedItem(false);
+                ironBow2.setAmount(3);
+
+                reqIngredients.add(ironBow1);
+                reqIngredients.add(ironBow2);
+                result = new Clobber(Utils.randRarity()).getUpdatedItem(false);
+                break;
+            case 9: //Bowba
+                ItemStack bowba1 = Vine.Companion.tier(3).getUpdatedItem(false);
+                bowba1.setAmount(3);
+                ItemStack bowba2 = Bone.Companion.tier(4).getUpdatedItem(false);
+                bowba2.setAmount(1);
+                ItemStack bowba3 = RefinedMetal.Companion.tier(4).getUpdatedItem(false);
+                bowba3.setAmount(2);
+
+                reqIngredients.add(bowba1);
+                reqIngredients.add(bowba2);
+                reqIngredients.add(bowba3);
+                result = new Bowba(Utils.randRarity()).getUpdatedItem(false);
+                break;
+            default:
+                return;
+        }
+        for (ItemStack item : reqIngredients) {
+            if (!player.getInventory().containsAtLeast(item, item.getAmount())) {
+                player.sendMessage(Utils.parse("<red>You do not have the required materials to craft this item."));
+                return;
+            }
+        }
+        for (ItemStack item : reqIngredients) {
+            player.getInventory().removeItem(item);
+        }
+        player.updateInventory();
+        if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            player.getInventory().addItem(result);
+            return;
+        }
+        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private void clickMobDrops(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
@@ -1321,6 +1427,9 @@ public class SymoneCollector implements Listener {
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
+
+
+
     private Inventory getMenu(Player player) {
         Inventory gui = Bukkit.createInventory(null, 27, "Symone's Collection");
 
@@ -1391,8 +1500,6 @@ public class SymoneCollector implements Listener {
         player.setMetadata("SymoneMenu", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
     }
-
-
 
     private Inventory getLightMelee(Player player) {
         Inventory gui = Bukkit.createInventory(null, 18, "Light Melee Weapons");
