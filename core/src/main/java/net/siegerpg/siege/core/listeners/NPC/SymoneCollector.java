@@ -760,7 +760,131 @@ public class SymoneCollector implements Listener {
 
     }
     private void clickWand(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        ArrayList<ItemStack> reqIngredients = new ArrayList<>();
+        ItemStack result = null;
+        switch (e.getSlot()) {
+            case 1: //Glistening twig
 
+                //Initialize Ingredients
+                ItemStack GlisteningTwig1 = Seed.Companion.tier(3).getUpdatedItem(false);
+                GlisteningTwig1.setAmount(1);
+                ItemStack GlisteningTwig2 = Stick.Companion.tier(2).getUpdatedItem(false);
+                GlisteningTwig2.setAmount(1);
+                ItemStack GlisteningTwig3 = PlantMatter.Companion.tier(2).getUpdatedItem(false);
+                GlisteningTwig3.setAmount(1);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(GlisteningTwig1);
+                reqIngredients.add(GlisteningTwig2);
+                reqIngredients.add(GlisteningTwig3);
+                //Set result of recipe
+
+                result = new GlisteningTwig(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 2: //Glowing twig
+
+                ItemStack GlowingTwig1 = PlantMatter.Companion.tier(3).getUpdatedItem(false);
+                GlowingTwig1.setAmount(3);
+
+                reqIngredients.add(GlowingTwig1);
+
+                result = new GlowingTwig(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 4: //Rock wand
+
+                ItemStack RockWand1 = Pebble.Companion.tier(3).getUpdatedItem(false);
+                RockWand1.setAmount(1);
+                ItemStack RockWand2 = Stick.Companion.tier(3).getUpdatedItem(false);
+                RockWand2.setAmount(2);
+
+                reqIngredients.add(RockWand1);
+                reqIngredients.add(RockWand2);
+
+                result = new RockWand(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 5: //Torch
+
+                ItemStack Torch1 = Magma.Companion.tier(3).getUpdatedItem(false);
+                Torch1.setAmount(1);
+                ItemStack Torch2 = Stick.Companion.tier(3).getUpdatedItem(false);
+                Torch2.setAmount(2);
+
+                reqIngredients.add(Torch1);
+                reqIngredients.add(Torch2);
+
+                result = new Torch(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 6: //Flaming Hot Torch
+
+                ItemStack FlamingHotTorch1 = Magma.Companion.tier(4).getUpdatedItem(false);
+                FlamingHotTorch1.setAmount(1);
+                ItemStack FlamingHotTorch2 = Seed.Companion.tier(4).getUpdatedItem(false);
+                FlamingHotTorch2.setAmount(1);
+                ItemStack FlamingHotTorch3 = Stick.Companion.tier(3).getUpdatedItem(false);
+                FlamingHotTorch3.setAmount(1);
+
+                reqIngredients.add(FlamingHotTorch1);
+                reqIngredients.add(FlamingHotTorch2);
+                reqIngredients.add(FlamingHotTorch3);
+
+                result = new FlamingHotTorch(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 8: //Earthen Wand
+
+                ItemStack EarthernWand1 = PlantMatter.Companion.tier(3).getUpdatedItem(false);
+                EarthernWand1.setAmount(1);
+                ItemStack EarthernWand2 = Seed.Companion.tier(3).getUpdatedItem(false);
+                EarthernWand2.setAmount(2);
+                ItemStack EarthernWand3 = Coal.Companion.tier(3).getUpdatedItem(false);
+                EarthernWand3.setAmount(2);
+
+                reqIngredients.add(EarthernWand1);
+                reqIngredients.add(EarthernWand2);
+                reqIngredients.add(EarthernWand3);
+
+                result = new EarthernWand(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            case 10: //Earthern Staff
+
+                ItemStack EarthernStaff1 = PlantMatter.Companion.tier(3).getUpdatedItem(false);
+                EarthernStaff1.setAmount(1);
+                ItemStack EarthernStaff2 = Seed.Companion.tier(4).getUpdatedItem(false);
+                EarthernStaff2.setAmount(2);
+                ItemStack EarthernStaff3 = Coal.Companion.tier(4).getUpdatedItem(false);
+                EarthernStaff3.setAmount(2);
+
+                reqIngredients.add(EarthernStaff1);
+                reqIngredients.add(EarthernStaff2);
+                reqIngredients.add(EarthernStaff3);
+
+                result = new EarthernStaff(Utils.randRarity()).getUpdatedItem(false);
+                break;
+
+            default:
+                return;
+        }
+        for (ItemStack item : reqIngredients) {
+            if (!player.getInventory().containsAtLeast(item, item.getAmount())) {
+                player.sendMessage(Utils.parse("<red>You do not have the required materials to craft this item."));
+                return;
+            }
+        }
+        for (ItemStack item : reqIngredients) {
+            player.getInventory().removeItem(item);
+        }
+        player.updateInventory();
+        if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            player.getInventory().addItem(result);
+            return;
+        }
+        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private void clickRanged(InventoryClickEvent e) {
 
