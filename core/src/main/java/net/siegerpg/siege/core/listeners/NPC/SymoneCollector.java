@@ -230,7 +230,7 @@ public class SymoneCollector implements Listener {
             add(Utils.setOriginLore(Slime.Companion.tier(5).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A\u272A x8")));
-            add(new ItemStack(Material.AIR));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
             add(Utils.setOriginLore(Magma.Companion.tier(2).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Magma \u272A x8")));
@@ -256,7 +256,7 @@ public class SymoneCollector implements Listener {
             add(Utils.setOriginLore(Ectoplasm.Companion.tier(5).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A\u272A x8")));
-            add(new ItemStack(Material.AIR));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
             add(Utils.setOriginLore(Bone.Companion.tier(2).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Bone \u272A x8")));
@@ -282,7 +282,7 @@ public class SymoneCollector implements Listener {
             add(Utils.setOriginLore(Wool.Companion.tier(5).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wool \u272A\u272A\u272A\u272A x8")));
-            add(new ItemStack(Material.AIR));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
             add(Utils.setOriginLore(Leather.Companion.tier(2).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Leather \u272A x8")));
@@ -325,7 +325,7 @@ public class SymoneCollector implements Listener {
             add(Utils.setOriginLore(PlantMatter.Companion.tier(5).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x8")));
-            add(new ItemStack(Material.AIR));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
             add(Utils.setOriginLore(Seed.Companion.tier(2).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Seed \u272A x8")));
@@ -351,7 +351,7 @@ public class SymoneCollector implements Listener {
             add(Utils.setOriginLore(Coal.Companion.tier(5).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A\u272A x8")));
-            add(new ItemStack(Material.AIR));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
             add(Utils.setOriginLore(Vine.Companion.tier(2).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Vine \u272A x8")));
@@ -377,7 +377,7 @@ public class SymoneCollector implements Listener {
             add(Utils.setOriginLore(Stick.Companion.tier(5).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A\u272A x8")));
-            add(new ItemStack(Material.AIR));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
             add(Utils.setOriginLore(Pebble.Companion.tier(2).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Pebble \u272A x8")));
@@ -403,7 +403,7 @@ public class SymoneCollector implements Listener {
             add(Utils.setOriginLore(Chain.Companion.tier(5).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Chain \u272A\u272A\u272A\u272A x8")));
-            add(new ItemStack(Material.AIR));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
             add(Utils.setOriginLore(MetalScrap.Companion.tier(2).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Metal Scrap \u272A x8")));
@@ -892,12 +892,26 @@ public class SymoneCollector implements Listener {
         rangedMeta.displayName(Utils.lore("<green>Ranged Weapons"));
         ranged.setItemMeta(rangedMeta);
 
+        //Creating Mob Drop
+        ItemStack mobDrop = new ItemStack (Material.BOW);
+        ItemMeta mobDropMeta = mobDrop.getItemMeta();
+        mobDropMeta.displayName(Utils.lore("<green>Ranged Weapons"));
+        mobDrop.setItemMeta(mobDropMeta);
+
+        //Creating Block Drop
+        ItemStack blockDrop = new ItemStack (Material.BOW);
+        ItemMeta blockDropMeta = blockDrop.getItemMeta();
+        blockDropMeta.displayName(Utils.lore("<green>Ranged Weapons"));
+        blockDrop.setItemMeta(blockDropMeta);
+
         //This is where you decide what slot the item goes into
         gui.setItem(11, lightMelee);
         gui.setItem(12, heavyMelee);
         gui.setItem(13, armor);
         gui.setItem(14, wand);
         gui.setItem(15, ranged);
+        gui.setItem(21, mobDrop);
+        gui.setItem(23, blockDrop);
 
         player.setMetadata("SymoneMenu", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
