@@ -17,9 +17,9 @@ class MagmaBoots() : CustomBoots(
     name = "Magma Boots",
     customModelData = 1,
     description = listOf("Some lit boots"),
-    levelRequirement = 8,
+    levelRequirement = 12,
     material = Material.LEATHER_BOOTS,
-    baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 20.0),
+    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 15.0),
     recipeList = recipes {
         recipe {
             shaped = true

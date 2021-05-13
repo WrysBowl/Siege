@@ -16,9 +16,9 @@ class MagmaLeggings() : CustomLeggings(
     name = "Magma Leggings",
     customModelData = 1,
     description = listOf("Burning fashion. Quite literally"),
-    levelRequirement = 9,
+    levelRequirement = 13,
     material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 14.0, toughness = 40.0, regeneration = 5.0),
+    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 40.0, regeneration = 15.0),
     recipeList = recipes {
         recipe {
             shaped = true
