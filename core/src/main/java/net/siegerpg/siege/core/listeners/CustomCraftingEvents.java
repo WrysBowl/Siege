@@ -99,7 +99,9 @@ public class CustomCraftingEvents implements Listener {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (e.getClickedBlock().getType() == Material.CRAFTING_TABLE) {
                 e.setCancelled(true);
-                e.getPlayer().openInventory(getCraftingGUI());
+                e.getPlayer().sendMessage(Utils.parse("<red>The crafting system has been disabled for now."));
+                e.getPlayer().sendMessage(Utils.parse("<red>Please click on Symone to craft your items!"));
+                //e.getPlayer().openInventory(getCraftingGUI());
             }
         }
     }
