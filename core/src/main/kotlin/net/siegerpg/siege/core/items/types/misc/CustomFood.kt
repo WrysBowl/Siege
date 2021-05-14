@@ -33,7 +33,6 @@ abstract class CustomFood(
     }
 
     open fun onEat(e: PlayerItemConsumeEvent) {
-        e.player.inventory.itemInMainHand.amount = item.amount - 1
         e.player.foodLevel = 20
         val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth
         val currentCustomHealth = CustomItemUtils.getCustomHealth(e.player)

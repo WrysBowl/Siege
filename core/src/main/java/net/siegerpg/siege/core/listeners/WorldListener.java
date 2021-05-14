@@ -60,7 +60,8 @@ public class WorldListener implements Listener {
 
     @EventHandler
     public void preventLeftClick(PlayerInteractEvent e) {
-        if (e.getAction().equals(Action.LEFT_CLICK_AIR) || e.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
+        if (e.getAction().equals(Action.LEFT_CLICK_AIR) || e.getAction().equals(Action.LEFT_CLICK_BLOCK) ||
+                e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getClickedBlock() == null) { return; }
             if (e.getClickedBlock() instanceof ItemFrame) {
                 e.setCancelled(true);
