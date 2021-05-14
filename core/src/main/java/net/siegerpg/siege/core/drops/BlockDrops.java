@@ -10,10 +10,6 @@ import java.util.ArrayList;
 
 public enum BlockDrops {
 
-    /**
-     * Waiting on Ghost to fix Class.tier(int) to use for the item objects
-     */
-
     //WOOD
     SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
             {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},

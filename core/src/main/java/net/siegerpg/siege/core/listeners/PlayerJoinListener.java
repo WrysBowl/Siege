@@ -66,17 +66,11 @@ public class PlayerJoinListener implements Listener {
             public void run() {
                 if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
                     Levels.INSTANCE.setLevel(player, (short) 1);
+                    VaultHook.econ.depositPlayer(player, 200.0);
+                    player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
                 }
             }
         });
-
-        if (!(player.hasPlayedBefore())) {
-            player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
-            VaultHook.econ.depositPlayer(player, 100.0);
-            Levels.INSTANCE.setLevel(player, (short) 1);
-        } else if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
-            Levels.INSTANCE.setLevel(player, (short) 1);
-        }
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             Scoreboard.updateScoreboard(p);
@@ -105,8 +99,6 @@ public class PlayerJoinListener implements Listener {
             }
         }
         */
-        //NEED NEW CODE THIS ONE DOESN'T ALLOW MORE THAN 16 CHARACTERS
-        //Utils.changeName(Utils.tacc(VaultHook.perms.getPrimaryGroup(player)) + Utils.tacc("&7 ") + player.getName(), player);
         player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
     }
 }

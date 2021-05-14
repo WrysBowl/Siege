@@ -29,20 +29,6 @@ public class MobDrops {
     public boolean mob_exists = true;
 
 
-
-    /*
-    HashMap<String, Object[][]> dropTable = new HashMap<>(){
-        {
-            put("RockRat", new Object[][]{ new Object[][]{
-                            {Pebble.Companion.tier(1).getUpdatedItem(false), 10.0},
-                    },
-                    { new Integer[]{2, 6}, new Integer[]{3, 6} }
-            });
-        }
-    };
-    HASHMAP EXAMPLE
-    */
-
     public void setMobTable(ActiveMob mob) {
         String mobName = mob.getType().getInternalName();
         switch (mobName) {

@@ -2,10 +2,12 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
 import org.bukkit.*;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerPortalEvent;
+import org.bukkit.util.Vector;
 
 public class PortalEnterListener implements Listener {
 
@@ -22,7 +24,7 @@ public class PortalEnterListener implements Listener {
         }
     }
 
-    /*
+
     public void moveToward(Entity entity, Location to, double speed){
         Location loc = entity.getLocation();
         double x = loc.getX() - to.getX();
@@ -30,5 +32,5 @@ public class PortalEnterListener implements Listener {
         double z = loc.getZ() - to.getZ();
         Vector velocity = new Vector(x, y, z).normalize().multiply(-speed);
         entity.setVelocity(velocity);
-    }*/
+    }
 }
