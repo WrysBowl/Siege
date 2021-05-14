@@ -155,15 +155,15 @@ public class ClemontBlacksmith implements Listener {
 
         ArrayList<ItemStack> toolItems = new ArrayList<>(){
             {
-                add(setCost(new ItemStack(Material.WOODEN_SHOVEL), 1200));
-                add(setCost(new ItemStack(Material.WOODEN_AXE), 1800));
-                add(setCost(new ItemStack(Material.WOODEN_PICKAXE), 3000));
-                add(setCost(new ItemStack(Material.STONE_AXE), 3750));
-                add(setCost(new ItemStack(Material.STONE_PICKAXE), 4500));
+                add(setCost(new ItemStack(Material.WOODEN_SHOVEL), 1000));
+                add(setCost(new ItemStack(Material.WOODEN_AXE), 1500));
+                add(setCost(new ItemStack(Material.WOODEN_PICKAXE), 1500));
+                add(setCost(new ItemStack(Material.STONE_AXE), 4000));
+                add(setCost(new ItemStack(Material.STONE_PICKAXE), 4000));
                 add(setCost(new ItemStack(Material.STONE_SHOVEL), 3000));
                 add(setCost(new ItemStack(Material.ARROW, 64), 150));
                 add(Utils.addLore(new ItemStack(Material.IRON_SHOVEL),
-                        Utils.lore("<yellow>6000"),
+                        Utils.lore("<yellow>8000"),
                         Utils.lore("<dark_aqua>Click to Craft"),
                         Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
                         Utils.lore("<dark_aqua>MetalScrap \u272A\u272A\u272A x1")));
