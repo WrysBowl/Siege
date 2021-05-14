@@ -166,7 +166,7 @@ object CustomItemUtils {
     }
 
     fun getCustomHealth(player: Player): Double {
-        val healthStat: Double = getPlayerStat(player, StatTypes.HEALTH)
+        val healthStat = getPlayerStat(player, StatTypes.HEALTH)
         return (player.health/player.maxHealth) * (healthStat + player.maxHealth + player.level * 2)
     }
 
