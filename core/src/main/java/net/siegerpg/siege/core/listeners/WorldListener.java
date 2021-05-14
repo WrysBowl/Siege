@@ -7,13 +7,12 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.Bee;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.ItemFrame;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityEnterBlockEvent;
-import org.bukkit.event.entity.EntitySpawnEvent;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.util.Objects;
@@ -55,6 +54,23 @@ public class WorldListener implements Listener {
     @EventHandler
     public void denyEggSpawning(EntitySpawnEvent e) {
         if (e.getEntity().getType().equals(EntityType.EGG)) {
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void preventLeftClick(PlayerInteractEvent e) {
+        if (e.getAction().equals(Action.LEFT_CLICK_AIR) || e.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
+            if (e.getClickedBlock() == null) { return; }
+            if (e.getClickedBlock() instanceof ItemFrame) {
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void preventDamage(EntityDamageEvent e) {
+        if (e.getEntity() instanceof ItemFrame) {
             e.setCancelled(true);
         }
     }

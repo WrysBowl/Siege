@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.drops.MobDrops;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
@@ -9,6 +10,7 @@ import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +19,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Score;
 
-public class DeathListener implements Listener {
+public class DeathListener implements Listener, Runnable {
     @EventHandler
     public void mobDeath(EntityDeathEvent e) {
 
@@ -69,13 +71,20 @@ public class DeathListener implements Listener {
         e.deathMessage(null);
         Player player = e.getEntity().getPlayer();
         if (player != null) {
-            player.teleport(player.getWorld().getSpawnLocation());
-            double bal = Math.round(VaultHook.econ.getBalance(player));
-            double newBal = Math.round(bal * 0.95);
-            VaultHook.econ.withdrawPlayer(player, bal);
-            VaultHook.econ.depositPlayer(player, newBal);
-            player.sendTitle(Utils.tacc("&cYou Died"), Utils.tacc("&6" + (bal - newBal) + " has been taken"), 1, 60, 1);
-            Scoreboard.updateScoreboard(player);
+            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
+                player.teleport(player.getWorld().getSpawnLocation());
+                double bal = Math.round(VaultHook.econ.getBalance(player));
+                double newBal = Math.round(bal * 0.95);
+                VaultHook.econ.withdrawPlayer(player, bal);
+                VaultHook.econ.depositPlayer(player, newBal);
+                player.sendTitle(Utils.tacc("&cYou Died"), Utils.tacc("&6" + (bal - newBal) + " has been taken"), 1, 60, 1);
+                Scoreboard.updateScoreboard(player);
+            }, 2);
         }
+    }
+
+    @Override
+    public void run() {
+
     }
 }

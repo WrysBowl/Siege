@@ -1,8 +1,10 @@
 package net.siegerpg.siege.core.items.types.misc
 
 import net.siegerpg.siege.core.items.CustomItem
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
@@ -33,9 +35,12 @@ abstract class CustomFood(
     open fun onEat(e: PlayerItemConsumeEvent) {
         e.player.inventory.itemInMainHand.amount = item.amount - 1
         e.player.foodLevel = 20
-        var health: Double = e.player.health + this.health
-        if (health > e.player.maxHealth) health = e.player.maxHealth
-        e.player.health = health
+        val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth
+        val currentCustomHealth = CustomItemUtils.getCustomHealth(e.player)
+        val addedHealth = ((this.health + currentCustomHealth)/healthStat) * e.player.maxHealth
+        if (addedHealth <= e.player.maxHealth)
+            e.player.health = addedHealth
+        else e.player.health = e.player.maxHealth
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
