@@ -18,7 +18,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoinListener implements Listener {
-    /*
+    
     @EventHandler
     public void connectEvent(AsyncPlayerPreLoginEvent e) {
         new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
@@ -48,7 +48,7 @@ public class PlayerJoinListener implements Listener {
             }
         }.runTaskAsynchronously(Core.plugin());
     }
-    */
+    
 
     /*
     @EventHandler
