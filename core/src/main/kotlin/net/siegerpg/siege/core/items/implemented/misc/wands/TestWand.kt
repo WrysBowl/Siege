@@ -12,7 +12,7 @@ class TestWand() : CustomWand(
     customModelData = 1,
     description = listOf("A wand for testing"),
     levelRequirement = 0,
-    material = Material.STICK,
+    material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 30.0),
     recipeList = recipes {
 
@@ -27,6 +27,7 @@ class TestWand() : CustomWand(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

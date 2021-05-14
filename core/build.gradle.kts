@@ -4,7 +4,6 @@ repositories {
     maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
     mavenCentral()
 
-
     maven { url = uri("https://nexus.mcdevs.us/repository/mcdevs/") }
     maven { url = uri("https://repo.aikar.co/content/groups/aikar/") }
     maven { url = uri("https://repo.codemc.org/repository/maven-public/") }
@@ -16,16 +15,17 @@ repositories {
 }
 
 dependencies {
-//    compileOnly("us.mcdevs.library.kotlin:Kotlin:1.4.0")
     testImplementation("junit:junit:4.12")
     compileOnly("org.projectlombok:lombok:1.18.16")
-//    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.5.0")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
+    /*
     compileOnly("com.vexsoftware:nuvotifier-universal:2.6.0"){
         exclude("com.google.code.gson")
         exclude("org.checkerframework")
     } // NuVotifier API
+     */
+    implementation("org.reflections:reflections:0.9.12")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") // Vault API
     implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
     implementation("com.github.stefvanschie.inventoryframework:IF:0.9.0")
@@ -44,7 +44,6 @@ tasks {
         doFirst {
             exclude("fonts/*.csv")
         }
-        exclude("kotlin/*")
         archiveFileName.set("SiegeCore.jar")
     }
     build {

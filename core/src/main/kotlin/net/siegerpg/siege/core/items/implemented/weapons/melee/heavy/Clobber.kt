@@ -1,8 +1,9 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.RefinedMetal
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
+import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Utils
@@ -19,24 +20,28 @@ class Clobber() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(RefinedMetal(0)) //tier 3
-            s2(RefinedMetal(0)) //tier 3
-            s4(RefinedMetal(0)) //tier 3
-            s5(RefinedMetal(0)) //tier 3
-            s8(RefinedMetal(0)) //tier 3
+            s1(RefinedMetal.tier(3))
+            s2(RefinedMetal.tier(3))
+            s4(RefinedMetal.tier(3))
+            s5(RefinedMetal.tier(3))
+            s8(RefinedMetal.tier(3))
             item { player, b ->
-                Clobber(Utils.randRarity())
+                val newItem = Clobber(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s2(RefinedMetal(0)) //tier 3
-            s3(RefinedMetal(0)) //tier 3
-            s5(RefinedMetal(0)) //tier 3
-            s6(RefinedMetal(0)) //tier 3
-            s9(RefinedMetal(0)) //tier 3
+            s2(RefinedMetal.tier(3))
+            s3(RefinedMetal.tier(3))
+            s5(RefinedMetal.tier(3))
+            s6(RefinedMetal.tier(3))
+            s9(RefinedMetal.tier(3))
             item { player, b ->
-                Clobber(Utils.randRarity())
+                val newItem = Clobber(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },
@@ -46,6 +51,7 @@ class Clobber() : CustomMeleeWeapon(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

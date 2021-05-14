@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.ranged
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -21,6 +21,7 @@ class Crossbow() : CustomBow(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

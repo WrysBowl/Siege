@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.melee.light
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -11,7 +11,7 @@ class WoodenSword() : CustomMeleeWeapon(
     name = "Wooden Sword",
     customModelData = 110007,
     description = listOf("A classic weapon in recruits"),
-    levelRequirement = 15,
+    levelRequirement = 25,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 28.0),
     recipeList = recipes {
@@ -23,6 +23,7 @@ class WoodenSword() : CustomMeleeWeapon(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

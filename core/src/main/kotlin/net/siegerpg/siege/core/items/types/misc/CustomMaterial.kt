@@ -6,7 +6,9 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.utils.lore
+import net.siegerpg.siege.core.utils.name
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -17,7 +19,7 @@ abstract class CustomMaterial(
     override val levelRequirement: Int? = null,
     override val description: List<String>,
     override val material: Material,
-    override var quality: Int = -1,
+    final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.MATERIAL,
     override val recipeList: CustomRecipeList? = null
@@ -32,7 +34,7 @@ abstract class CustomMaterial(
         }
 
     init {
-        rarity = Rarity.getFromInt(quality)
+        this.rarity = Rarity.getFromInt(this.quality)
     }
 
     override fun serialize() {
@@ -48,24 +50,36 @@ abstract class CustomMaterial(
         }
     }
 
-    override fun updateMeta(hideRarity: Boolean) {
+    override fun updateMeta(hideRarity: Boolean): ItemStack {
 
         val meta = item.itemMeta
 
-        /*
-        DisplayName and Lore has been changed to use strings instead of components. Will be fixed in the future
-         */
+        meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
 
-        meta.displayName(Utils.parse("<gray>$name <yellow>${"✪".repeat(tier)}"))
+        if (meta.hasLore()) meta.lore(mutableListOf())
 
-        val newLore = mutableListOf(Utils.parse(" "))
+        meta.lore(" ")
         description.forEach {
-            newLore.add(Utils.parse("<dark_gray>$it"))
+           meta.lore("<r><dark_gray>$it")
         }
-        meta.lore(newLore)
 
+        meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
+        return item
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (other == null) return false
+        Bukkit.getLogger().info("Other is not null")
+        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        Bukkit.getLogger().info("Qualified names match")
+        val castedOther = other as CustomMaterial
+
+        if (this.tier != castedOther.tier) return false
+        Bukkit.getLogger().info("Tiers match")
+        return true
+    }
+
 
 }

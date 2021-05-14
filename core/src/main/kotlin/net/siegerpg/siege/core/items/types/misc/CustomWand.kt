@@ -1,6 +1,6 @@
 package net.siegerpg.siege.core.items.types.misc
 
-import net.siegerpg.siege.core.items.StatGem
+import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -16,7 +16,7 @@ abstract class CustomWand(
     override val levelRequirement: Int? = null,
     override val description: List<String>,
     override val material: Material,
-    override var quality: Int = -1,
+    final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.WAND,
     override val recipeList: CustomRecipeList? = null,
@@ -32,7 +32,7 @@ abstract class CustomWand(
     override var rarity: Rarity = Rarity.COMMON
 
     init {
-        rarity = Rarity.getFromInt(quality)
+        this.rarity = Rarity.getFromInt(this.quality)
     }
 
     override fun serialize() {
@@ -44,6 +44,12 @@ abstract class CustomWand(
             "wandBlue" to blue,
             "wandDamageRadius" to damageRadius
         )
+    }
+
+    override fun equals(other: Any?): Boolean {
+        other?.let { return false }
+        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        return true
     }
 
 

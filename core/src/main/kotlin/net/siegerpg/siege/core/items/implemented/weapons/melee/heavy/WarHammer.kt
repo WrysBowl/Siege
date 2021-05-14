@@ -1,10 +1,10 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.MetalScrap
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Pebble
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Utils
@@ -21,15 +21,17 @@ class WarHammer() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Pebble(0)) //tier 3
-            s2(MetalScrap(0)) //tier 3
-            s3(Pebble(0)) //tier 3
-            s4(Pebble(0)) //tier 3
-            s5(Stick(0)) //tier 3
-            s6(Pebble(0)) //tier 3
-            s7(Stick(0)) //tier 3
+            s1(Pebble.tier(3))
+            s2(MetalScrap.tier(3))
+            s3(Pebble.tier(3))
+            s4(Pebble.tier(3))
+            s5(Stick.tier(3))
+            s6(Pebble.tier(3))
+            s7(Stick.tier(3))
             item { player, b ->
-                Longsword(Utils.randRarity())
+                val newItem = WarHammer(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },
@@ -39,6 +41,7 @@ class WarHammer() : CustomMeleeWeapon(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

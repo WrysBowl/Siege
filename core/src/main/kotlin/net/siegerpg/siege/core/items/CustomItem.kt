@@ -19,10 +19,16 @@ interface CustomItem {
     var rarity: Rarity
     var item: ItemStack
 
-    fun updateMeta(hideRarity: Boolean)
+    fun updateMeta(hideRarity: Boolean): ItemStack
+
+    fun getUpdatedItem(hideRarity: Boolean): ItemStack {
+        return updateMeta(hideRarity)
+
+    }
 
     fun serialize() {
         item = item.setNbtTags(
+            "itemClass" to this::class.qualifiedName,
             "itemName" to name,
             "CustomModelData" to customModelData,
             "itemLevelRequirement" to levelRequirement,
@@ -48,4 +54,5 @@ interface CustomItem {
         }
 
     }
+
 }

@@ -1,10 +1,17 @@
 package net.siegerpg.siege.core.listeners;
 
+import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
+import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -59,13 +66,41 @@ public class PlayerJoinListener implements Listener {
 
         Player player = event.getPlayer();
 
-        event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player));
+        event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player.getName()));
 
-        new Tablist().tablistUpdate();
+        Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), new Runnable() {
+            @Override
+            public void run() {
+                if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
+                    Levels.INSTANCE.setLevel(player, (short) 1);
+                }
+            }
+        });
 
-        Scoreboard s = new Scoreboard();
+        if (!(player.hasPlayedBefore())) {
+            player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
+            VaultHook.econ.depositPlayer(player, 100.0);
+            Levels.INSTANCE.setLevel(player, (short) 1);
+        }  else if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
+                Levels.INSTANCE.setLevel(player, (short) 1);
+        }
+
         for (Player p : Bukkit.getOnlinePlayers()) {
-            s.updateScoreboard(p);
+            Scoreboard.updateScoreboard(p);
+            Tablist.tablistUpdate(p);
+        }
+
+
+
+        if (player.getName().equals("Sumowu")) {
+            Shank shank = new Shank(100);
+            //shank.setStatGem(new StatGem(StatTypes.STRENGTH, 10.0));
+            shank.updateMeta(false);
+            player.getInventory().addItem(shank.getItem());
+            StrengthGem gem = new StrengthGem(100);
+            gem.setStatAmount(10.0);
+            gem.updateMeta(false);
+            player.getInventory().addItem(gem.getItem());
         }
 
         /*
@@ -78,7 +113,8 @@ public class PlayerJoinListener implements Listener {
             }
         }
         */
-
+        //NEED NEW CODE THIS ONE DOESN'T ALLOW MORE THAN 16 CHARACTERS
+        //Utils.changeName(Utils.tacc(VaultHook.perms.getPrimaryGroup(player)) + Utils.tacc("&7 ") + player.getName(), player);
         player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
     }
 }

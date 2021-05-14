@@ -1,9 +1,9 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Pebble
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Utils
@@ -20,24 +20,28 @@ class StoneAxe() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Pebble(0)) //tier 3
-            s2(Pebble(0)) //tier 3
-            s4(Pebble(0)) //tier 3
-            s5(Stick(0)) //tier 3
-            s8(Stick(0)) //tier 3
+            s1(Pebble.tier(3))
+            s2(Pebble.tier(3))
+            s4(Pebble.tier(3))
+            s5(Stick.tier(3))
+            s8(Stick.tier(3))
             item { player, b ->
-                StoneAxe(Utils.randRarity())
+                val newItem = StoneAxe(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s2(Pebble(0)) //tier 3
-            s3(Pebble(0)) //tier 3
-            s5(Pebble(0)) //tier 3
-            s6(Stick(0)) //tier 3
-            s9(Stick(0)) //tier 3
+            s2(Pebble.tier(3))
+            s3(Pebble.tier(3))
+            s5(Pebble.tier(3))
+            s6(Stick.tier(3))
+            s9(Stick.tier(3))
             item { player, b ->
-                StoneAxe(Utils.randRarity())
+                val newItem = StoneAxe(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },
@@ -47,6 +51,7 @@ class StoneAxe() : CustomMeleeWeapon(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

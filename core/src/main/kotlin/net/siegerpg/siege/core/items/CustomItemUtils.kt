@@ -11,12 +11,14 @@ package net.siegerpg.siege.core.items
 
 import de.tr7zw.nbtapi.NBTItem
 import net.siegerpg.siege.core.items.enums.StatTypes
+import net.siegerpg.siege.core.items.recipes.CustomRecipe
 import net.siegerpg.siege.core.items.types.armor.CustomBoots
 import net.siegerpg.siege.core.items.types.armor.CustomChestplate
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
+import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import java.lang.reflect.Constructor
@@ -25,18 +27,30 @@ import java.util.*
 
 object CustomItemUtils {
 
-    fun getCustomItem(item: ItemStack): CustomItem? {
-        if (!item.hasItemMeta()) return null
+    fun getCustomItem(item: ItemStack?): CustomItem? {
+        if (item == null) { return null }
+        if (!item!!.hasItemMeta()) return null
+        //Bukkit.getLogger().info("Item has meta")
         val nbtItem = NBTItem(item)
         return if (nbtItem.hasKey("itemClass")) {
             try {
                 val className = nbtItem.getString("itemClass")
-                val clazz = Class.forName(className)
+                //Bukkit.getLogger().info("class name is $className")
+                val clazz: Class<*> = if (CustomRecipe.classList.containsKey(className)) {
+                    CustomRecipe.classList[className] as Class<out CustomItem>
+                } else {
+                    Class.forName(className)
+                }
+                //Bukkit.getLogger().info("Got the class")
                 val constructor: Constructor<out Any> = clazz.getConstructor(ItemStack::class.java)
+                //Bukkit.getLogger().info("Got the constructor")
                 val newClass = constructor.newInstance(item)
+                //Bukkit.getLogger().info("Got the instance")
                 newClass as? CustomItem
 
             } catch(e: Exception) {
+                e.printStackTrace()
+                //Bukkit.getLogger().info("Failed")
                 null
             }
         } else {
@@ -67,57 +81,93 @@ object CustomItemUtils {
         return map
     }
 
-    fun getPlayerStat(player: Player, statType: StatTypes): Double {
+    @JvmOverloads
+    fun getPlayerStat(player: Player, statType: StatTypes, itemInMainHand: ItemStack? = null): Double {
         var output = 0.0
         val inventory = player.inventory
+        val mainHand = itemInMainHand ?: inventory.itemInMainHand
 
-        getCustomItem(inventory.itemInMainHand)?.let {
-            if (it is CustomWeapon && it.baseStats.containsKey(statType)) {
-                output += it.baseStats[statType]!!
+        getCustomItem(mainHand)?.let {
+            //player.chat("You are holding a custom item")
+            if (it is CustomWeapon) {
+                val itemStats = getStats(it, addGem = true, addRarity = true)
+                itemStats[statType]?.let { stat ->
+                    if (it.levelRequirement == null) {
+                        output += stat
+                    } else if (it.levelRequirement!! <= player.level) {
+                        output += stat
+                    }
+
+                }
             }
         }
 
         inventory.helmet?.let { helmet ->
             getCustomItem(helmet)?.let {
-                if (it is CustomHelmet && it.baseStats.containsKey(statType)) {
-                    output += it.baseStats[statType]!!
+                if (it is CustomHelmet) {
+                    val itemStats = getStats(it, addGem = true, addRarity = true)
+                    itemStats[statType]?.let { stat ->
+                        if (it.levelRequirement == null) {
+                            output += stat
+                        } else if (it.levelRequirement!! <= player.level) {
+                            output += stat
+                        }
+                    }
                 }
             }
         }
-
+        //Bukkit.getLogger().info("Helmet: " + output)
         inventory.chestplate?.let { chestplate ->
             getCustomItem(chestplate)?.let {
-                if (it is CustomChestplate && it.baseStats.containsKey(statType)) {
-                    output += it.baseStats[statType]!!
+                if (it is CustomChestplate) {
+                    val itemStats = getStats(it, addGem = true, addRarity = true)
+                    itemStats[statType]?.let { stat ->
+                        if (it.levelRequirement == null) {
+                            output += stat
+                        } else if (it.levelRequirement!! <= player.level) {
+                            output += stat
+                        }
+                    }
                 }
             }
         }
-
+        //Bukkit.getLogger().info("Chestplate: " + output)
         inventory.leggings?.let { leggings ->
             getCustomItem(leggings)?.let {
-                if (it is CustomLeggings && it.baseStats.containsKey(statType)) {
-                    output += it.baseStats[statType]!!
+                if (it is CustomLeggings) {
+                    val itemStats = getStats(it, addGem = true, addRarity = true)
+                    itemStats[statType]?.let { stat ->
+                        if (it.levelRequirement == null) {
+                            output += stat
+                        } else if (it.levelRequirement!! <= player.level) {
+                            output += stat
+                        }
+                    }
                 }
             }
         }
-
+        //Bukkit.getLogger().info("Leggings: " + output)
         inventory.boots?.let { boots ->
             getCustomItem(boots)?.let {
-                if (it is CustomBoots && it.baseStats.containsKey(statType)) {
-                    output += it.baseStats[statType]!!
+                if (it is CustomBoots) {
+                    val itemStats = getStats(it, addGem = true, addRarity = true)
+                    itemStats[statType]?.let { stat ->
+                        if (it.levelRequirement == null) {
+                            output += stat
+                        } else if (it.levelRequirement!! <= player.level) {
+                            output += stat
+                        }
+                    }
                 }
             }
         }
-
+        //Bukkit.getLogger().info("Boots: " + output)
         return output
     }
 
-    fun getHealth(player: Player): Double {
+    fun getCustomHealth(player: Player): Double {
         val healthStat: Double = getPlayerStat(player, StatTypes.HEALTH)
-        return (player.health/player.maxHealth) * healthStat
-    }
-    fun getCurrentHealth(player: Player) : Double {
-        return (getHealth(player) / getPlayerStat(player, StatTypes.HEALTH)) * player.maxHealth
+        return (player.health/player.maxHealth) * (healthStat + player.maxHealth + player.level * 2)
     }
 
     fun getStats(item: CustomEquipment, addGem: Boolean, addRarity: Boolean): HashMap<StatTypes, Double> {
@@ -127,6 +177,9 @@ object CustomItemUtils {
             if (item.baseStats.containsKey(it)) {
                 totalAmount += item.baseStats[it]!!
             }
+            if (addRarity) {
+                totalAmount *= getRarityMultiplier(item.quality)
+            }
             if (addGem) {
                 item.statGem?.let { gem ->
                     if (gem.type == it) {
@@ -134,17 +187,14 @@ object CustomItemUtils {
                     }
                 }
             }
-            if (addRarity) {
-                totalAmount *= getRarityMultiplier(item.quality)
-            }
 
-            map[it] = totalAmount
+            map[it] = Utils.round(totalAmount, 2)
         }
         return map
     }
 
     @JvmStatic
-    fun getRarityMultiplier(quality: Int): Double = quality / 100 + 0.5
+    fun getRarityMultiplier(quality: Int): Double = quality / 100.0 + 0.5
 
     fun serializeToItem(nbtItem: NBTItem, hashmap: HashMap<String, Any>) {
         hashmap.forEach {

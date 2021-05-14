@@ -1,91 +1,242 @@
 package net.siegerpg.siege.core.drops;
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*;
-import net.siegerpg.siege.core.items.implemented.misc.materials.mobDrops.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.*;
+import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
+import net.siegerpg.siege.core.items.implemented.misc.wands.GlowingTwig;
+import net.siegerpg.siege.core.items.implemented.misc.wands.RockWand;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Fox;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
-public enum MobDrops {
+public class MobDrops {
 
-    /**
-    ExampleMob(new Object[][]{
-        {new ExampleItem(qualityInt).getItem(), chanceInt},
-        {new Pebble(0).getItem(), 10}
-     }, new Integer[]{minGold, maxGold}, new Integer[]{minExp, maxExp}),
-     **/
+    private Object[][] rewards;
+    private Integer[] numGold;
+    private Integer[] numExp;
+    public boolean mob_exists = true;
 
-    //HOSTILE AREA 1
-    RockRat(new Object[][]{
-            {new Pebble(0).getItem(), 10},
-    }, new Integer[]{0, 2}, new Integer[]{1, 3}),
-    Blob(new Object[][]{
-            {new Slime(0).getItem(), 50},
-    }, new Integer[]{3, 6}, new Integer[]{4, 6}),
-    ScorchingBlob(new Object[][]{
-            {new Magma(0).getItem(), 50},
-    }, new Integer[]{2, 5}, new Integer[]{5, 8}),
-    ForestSpider(new Object[][]{
-            {new Vine(0).getItem(), 50},
-            {new Stick(0).getItem(), 30}
-    }, new Integer[]{4, 7}, new Integer[]{7, 10}),
-    BloodSucker(new Object[][]{
-            {new Vine(0).getItem(), 60},
-            {new Stick(0).getItem(), 20}
-    }, new Integer[]{4, 7}, new Integer[]{6, 9}),
-    AngryBull(new Object[][]{
-            {new Leather(0).getItem(), 100},
-            {new Drumstick(0).getItem(), 100}
-    }, new Integer[]{8, 12}, new Integer[]{11, 15}),
-    Bandit(new Object[][]{
-            {new Shank(Utils.randRarity()).getItem(), 5},
-            {new Dagger(Utils.randRarity()).getItem(), 2},
-            {new MetalScrap(0).getItem(), 1},
-            {new Leather(0).getItem(), 8},
-            {new SplinteredBone(Utils.randRarity()).getItem(), 0.5}
-    }, new Integer[]{21, 25}, new Integer[]{19, 24}),
-    BanditArcher(new Object[][]{
-            {new Crossbow(Utils.randRarity()).getItem(), 0.5},
-            {new RecurveBow(Utils.randRarity()).getItem(), 0.25},
-            {new Bone(0).getItem(), 3},
-            {new Leather(0).getItem(), 8}
-    }, new Integer[]{15, 19}, new Integer[]{27, 32}),
-    //NEUTRAL AREA 1
-    GiantHornet(new Object[][]{
-            {new Magma(0).getItem(), 30},
-            {new Seed(0).getItem(), 100},
-    }, new Integer[]{1, 4}, new Integer[]{3, 5}),
-    WildFox(new Object[][]{
-            {new Dagger(Utils.randRarity()).getItem(), 1},
-            {new Bone(0).getItem(), 2},
-            {new WoodenSword(Utils.randRarity()).getItem(), 5},
-            {new Drumstick(0).getItem(), 15}
-    }, new Integer[]{2, 5}, new Integer[]{3, 6});
-    private final Object[][] rewards;
-    private final Integer[] numGold;
-    private final Integer[] numExp;
 
-    MobDrops(Object[][] rewards, Integer[] numGold, Integer[] numExp) {
-        this.rewards = rewards;
-        this.numGold = numGold;
-        this.numExp = numExp;
+
+    /*
+    HashMap<String, Object[][]> dropTable = new HashMap<>(){
+        {
+            put("RockRat", new Object[][]{ new Object[][]{
+                            {Pebble.Companion.tier(1).getUpdatedItem(false), 10.0},
+                    },
+                    { new Integer[]{2, 6}, new Integer[]{3, 6} }
+            });
+        }
+    };
+    HASHMAP EXAMPLE
+    */
+
+    public void setMobTable(ActiveMob mob) {
+        String mobName = mob.getType().getInternalName();
+        switch (mobName) {
+            case "RockRat":
+                rewards = new Object[][]{
+                        {Pebble.Companion.tier(1).getUpdatedItem(false), 10.0},
+                        {new RockWand(Utils.randRarity()).getUpdatedItem(false), 0.5}};
+                numGold = new Integer[]{2, 6};
+                numExp = new Integer[]{2, 4};
+                break;
+            case "Blob":
+                rewards = new Object[][]{{Slime.Companion.tier(1).getUpdatedItem(false), 50.0}};
+                numGold = new Integer[]{7, 13};
+                numExp = new Integer[]{8, 12};
+                break;
+            case "ScorchingBlob":
+                rewards = new Object[][]{{Magma.Companion.tier(1).getUpdatedItem(false), 50.0}};
+                numGold = new Integer[]{6, 12};
+                numExp = new Integer[]{8, 12};
+                break;
+            case "ForestSpider":
+                rewards = new Object[][]{
+                        {Vine.Companion.tier(1).getUpdatedItem(false), 50.0},
+                        {Stick.Companion.tier(1).getUpdatedItem(false), 30.0}};
+                numGold = new Integer[]{12, 16};
+                numExp = new Integer[]{10, 12};
+                break;
+            case "BloodSucker":
+                rewards = new Object[][]{
+                        {Vine.Companion.tier(1).getUpdatedItem(false), 60.0},
+                        {Stick.Companion.tier(1).getUpdatedItem(false), 20.0}};
+                numGold = new Integer[]{10, 14};
+                numExp = new Integer[]{13, 15};
+                break;
+            case "AngryBull":
+                rewards = new Object[][]{
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 100.0},
+                        {new Drumstick(0).getUpdatedItem(false), 100.0}};
+                numGold = new Integer[]{10, 20};
+                numExp = new Integer[]{12, 18};
+                break;
+            case "Bandit":
+                rewards = new Object[][]{
+                        {new Shank(Utils.randRarity()).getUpdatedItem(false), 5.0},
+                        {new Dagger(Utils.randRarity()).getUpdatedItem(false), 2.0},
+                        {MetalScrap.Companion.tier(1).getUpdatedItem(false), 1.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0},
+                        {new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5}};
+                numGold = new Integer[]{13, 18};
+                numExp = new Integer[]{15, 20};
+                break;
+            case "BanditArcher":
+                rewards = new Object[][]{
+                        {new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5},
+                        {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                numGold = new Integer[]{15, 20};
+                numExp = new Integer[]{15, 20};
+                break;
+            case "Orc":
+                rewards = new Object[][]{
+                        {new GiantClub(Utils.randRarity()).getUpdatedItem(false), 0.5},
+                        {new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.25},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                numGold = new Integer[]{16, 20};
+                numExp = new Integer[]{12, 18};
+                break;
+            case "Goblin":
+                rewards = new Object[][]{
+                        {new Shank(Utils.randRarity()).getUpdatedItem(false), 8.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                numGold = new Integer[]{2, 6};
+                LivingEntity wildGob = (LivingEntity) mob.getEntity().getBukkitEntity();
+                Material gobItem = Objects.requireNonNull(wildGob.getEquipment()).getItemInMainHand().getType();
+                if (gobItem.equals(Material.SUNFLOWER)) {
+                    numGold = new Integer[]{50, 60};
+                }
+                numExp = new Integer[]{3, 5};
+                break;
+            case "InfectedDigger":
+                rewards = new Object[][]{
+                        {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 6.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                numGold = new Integer[]{8, 12};
+                numExp = new Integer[]{10, 14};
+                break;
+            case "ZombifiedDigger":
+                rewards = new Object[][]{
+                        {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 15.0}};
+                numGold = new Integer[]{4, 9};
+                numExp = new Integer[]{8, 12};
+                break;
+            //NEUTRAL
+            case "GiantHornet":
+                rewards = new Object[][]{
+                        {Magma.Companion.tier(1).getUpdatedItem(false), 30.0},
+                        {Seed.Companion.tier(1).getUpdatedItem(false), 100.0}};
+                numGold = new Integer[]{8, 11};
+                numExp = new Integer[]{5, 9};
+                break;
+            case "WildFox":
+                rewards = new Object[][]{
+                        {new Dagger(Utils.randRarity()).getUpdatedItem(false), 1.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
+                        {new WoodenSword(Utils.randRarity()).getUpdatedItem(false), 5.0},
+                        {new Drumstick(0).getUpdatedItem(false), 15.0}};
+                numGold = new Integer[]{5, 7};
+                LivingEntity wildFox = (LivingEntity) mob.getEntity().getBukkitEntity();
+                Material foxItem = Objects.requireNonNull(wildFox.getEquipment()).getItemInMainHand().getType();
+                if (foxItem.equals(Material.SUNFLOWER)) {
+                    numGold = new Integer[]{50, 60};
+                }
+                numExp = new Integer[]{8, 10};
+                break;
+            case "FeatheredMeat":
+                rewards = new Object[][]{
+                        {Feather.Companion.tier(1).getUpdatedItem(false), 1.0},
+                        {new Drumstick(0).getUpdatedItem(false), 35.0}};
+                numGold = new Integer[]{2, 4};
+                numExp = new Integer[]{3, 6};
+                break;
+            case "Porky":
+                rewards = new Object[][]{{new Drumstick(0).getUpdatedItem(false), 100.0}};
+                numGold = new Integer[]{5, 8};
+                numExp = new Integer[]{6, 9};
+                break;
+            case "Wooly":
+                rewards = new Object[][]{
+                        {new Drumstick(0).getUpdatedItem(false), 30.0},
+                        {Wool.Companion.tier(1).getUpdatedItem(false), 60.0}};
+                numGold = new Integer[]{8, 14};
+                numExp = new Integer[]{8, 12};
+                break;
+            case "MooMoo":
+                rewards = new Object[][]{
+                        {new Drumstick(0).getUpdatedItem(false), 100.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 60.0}};
+                numGold = new Integer[]{12, 14};
+                numExp = new Integer[]{10, 15};
+                break;
+            case "Pigeon":
+                rewards = new Object[][]{
+                        {new Drumstick(0).getUpdatedItem(false), 25.0},
+                        {Feather.Companion.tier(1).getUpdatedItem(false), 60.0}};
+                numGold = new Integer[]{1, 2};
+                numExp = new Integer[]{2, 3};
+                break;
+            case "Sushi":
+                rewards = new Object[][]{{new Drumstick(0).getUpdatedItem(false), 20.0}};
+                numGold = new Integer[]{0, 2};
+                numExp = new Integer[]{0, 2};
+                break;
+            //MINIBOSSES
+            case "Davy_Jones":
+                rewards = new Object[][]{
+                        {new IronAxe(Utils.randRarity()).getUpdatedItem(false), 100.0},
+                        {new Trident(Utils.randRarity()).getUpdatedItem(false), 100.0},
+                };
+                numGold = new Integer[]{300, 350};
+                numExp = new Integer[]{400, 500};
+                break;
+            case "Ogre":
+                rewards = new Object[][]{
+                        {new IronAxe(Utils.randRarity()).getUpdatedItem(false), 50.0},
+                        {new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 100.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                numGold = new Integer[]{200, 300};
+                numExp = new Integer[]{250, 300};
+                break;
+            case "RockSpirit":
+                rewards = new Object[][]{
+                        {new RockWand(Utils.randRarity()).getUpdatedItem(false), 60.0},
+                        {new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 50.0},
+                        {new StoneAxe(Utils.randRarity()).getUpdatedItem(false), 15.0},
+                        {Seed.Companion.tier(3).getUpdatedItem(false), 30.0}};
+                numGold = new Integer[]{200, 220};
+                numExp = new Integer[]{240, 250};
+                break;
+            default:
+                mob_exists = false;
+        }
     }
 
-    public static MobDrops matchCaseMobDrops(String str) {
-        for (MobDrops mobs : MobDrops.values()) {
-            if (mobs.name().equalsIgnoreCase(str)) {
-                return mobs;
-            }
-        }
-        return null;
+    public boolean isMob_exists() {
+        return mob_exists;
     }
 
     public ArrayList<ItemStack> getRewards(Double luckChance) {
         ArrayList<ItemStack> itemList = new ArrayList<>();
         for (Object[] reward : rewards) {
-            if (Utils.randTest((Number) reward[1])) {
+            if (Utils.randTest((Double) reward[1])) {
                 if ((Math.random() * 100) <= luckChance) {
                     itemList.add((ItemStack) reward[0]);
                 }

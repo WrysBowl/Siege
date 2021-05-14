@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.drops;
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.*;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
+import net.siegerpg.siege.core.items.implemented.misc.wands.LivingTwig;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -8,63 +9,69 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 
 public enum BlockDrops {
+
+    /**
+     * Waiting on Ghost to fix Class.tier(int) to use for the item objects
+     */
+
     //WOOD
     SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
-            {new Stick(0).getItem(), 100}
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+            {new LivingTwig(Utils.randRarity()).getUpdatedItem(false), 1.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     SPRUCE_WOOD(Material.SPRUCE_WOOD, new Object[][]{
-            {new Stick(0).getItem(), 100}
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //DIRT TERRAIN
     GRASS_BLOCK(Material.GRASS_BLOCK, new Object[][]{
-            {new PlantMatter(0).getItem(), 20},
-            {new Seed(0).getItem(), 20}
+            {PlantMatter.Companion.tier(1).getUpdatedItem(false), 20.0},
+            {Seed.Companion.tier(1).getUpdatedItem(false), 20.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     GREEN_TERRACOTTA(Material.GREEN_TERRACOTTA, new Object[][]{
-            {new PlantMatter(0).getItem(), 25},
-            {new Seed(0).getItem(), 35}
+            {PlantMatter.Companion.tier(1).getUpdatedItem(false), 25.0},
+            {Seed.Companion.tier(1).getUpdatedItem(false), 35.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     GREEN_CONCRETE(Material.GREEN_CONCRETE, new Object[][]{
-            {new PlantMatter(0).getItem(), 35},
-            {new Seed(0).getItem(), 25}
+            {PlantMatter.Companion.tier(1).getUpdatedItem(false), 35.0},
+            {Seed.Companion.tier(1).getUpdatedItem(false), 25.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     LIME_TERRACOTTA(Material.LIME_TERRACOTTA, new Object[][]{
-            {new PlantMatter(0).getItem(), 40},
-            {new Seed(0).getItem(), 40}
+            {PlantMatter.Companion.tier(1).getUpdatedItem(false), 40.0},
+            {Seed.Companion.tier(1).getUpdatedItem(false), 40.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     DIRT(Material.DIRT, new Object[][]{
-            {new Pebble(0).getItem(), 20}
+            {Pebble.Companion.tier(1).getUpdatedItem(false), 20.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     COARSE_DIRT(Material.COARSE_DIRT, new Object[][]{
-            {new Pebble(0).getItem(), 30}
+            {Pebble.Companion.tier(1).getUpdatedItem(false), 30.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //STONE TERRAIN
     STONE(Material.STONE, new Object[][]{
-            {new Pebble(0).getItem(), 100}
+            {Pebble.Companion.tier(1).getUpdatedItem(false), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     LIGHT_GRAY_CONCRETE(Material.LIGHT_GRAY_CONCRETE, new Object[][]{
-            {new Pebble(0).getItem(), 30}
+            {Pebble.Companion.tier(1).getUpdatedItem(false), 30.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     ANDESITE(Material.ANDESITE, new Object[][]{
-            {new Pebble(0).getItem(), 40}
+            {Pebble.Companion.tier(1).getUpdatedItem(false), 40.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //ORES
     COAL_ORE(Material.COAL_ORE, new Object[][]{
-            {new Coal(0).getItem(), 100}
-    }, new Integer[]{20, 30}, new Integer[]{30, 40}, 100),
+            {Coal.Companion.tier(1).getUpdatedItem(false), 100.0}
+    }, new Integer[]{0, 0}, new Integer[]{1, 4}, 100),
     IRON_ORE(Material.IRON_ORE, new Object[][]{
-            {new MetalScrap(0).getItem(), 100}
-    }, new Integer[]{30, 40}, new Integer[]{40, 50}, 200),
+            {MetalScrap.Companion.tier(1).getUpdatedItem(false), 100.0}
+    }, new Integer[]{4, 8}, new Integer[]{0, 0}, 200),
 
     //DECOR TERRAIN
     VINE(Material.VINE, new Object[][]{
-            {new Vine(0).getItem(), 100}
+            {Vine.Companion.tier(1).getUpdatedItem(false), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     CHAIN(Material.CHAIN, new Object[][]{
-            {new Chain(0).getItem(), 100}
+            {Chain.Companion.tier(1).getUpdatedItem(false), 100.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20);
 
     private final Material block;
@@ -102,7 +109,7 @@ public enum BlockDrops {
     public ArrayList<ItemStack> getRewards(Double luckChance) {
         ArrayList<ItemStack> itemList = new ArrayList<>();
         for (Object[] reward : rewards) {
-            if (Utils.randTest((Number) reward[1])) {
+            if (Utils.randTest((Double) reward[1])) {
                 if ((Math.random() * 100) <= luckChance) {
                     itemList.add((ItemStack) reward[0]);
                 }

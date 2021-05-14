@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.items.types.armor
 
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.items.StatGem
+import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -17,7 +17,7 @@ abstract class CustomHelmet(
     override val levelRequirement: Int? = null,
     override val description: List<String>,
     override val material: Material,
-    override var quality: Int = -1,
+    final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val baseStats: HashMap<StatTypes, Double>,
     override val type: ItemTypes = ItemTypes.HELMET,
@@ -29,7 +29,13 @@ abstract class CustomHelmet(
     override var rarity: Rarity = Rarity.COMMON
 
     init {
-        rarity = Rarity.getFromInt(quality)
+        this.rarity = Rarity.getFromInt(this.quality)
+    }
+
+    override fun equals(other: Any?): Boolean {
+        other?.let { return false }
+        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        return true
     }
 
 

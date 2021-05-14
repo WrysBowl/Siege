@@ -2,30 +2,37 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
+import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 public class CustomCraftingEvents implements Listener {
 
     private Inventory inv;
-    private List<CustomItem> craftingSlots = new ArrayList<>();
+    private List<ItemStack> craftingSlots = new ArrayList<>();
     private List<Integer> numCraftingSlots = new ArrayList<>();
-    private boolean resultSlotSet = false;
-    ItemStack filler = Utils.createItem(Material.GRAY_STAINED_GLASS_PANE, ChatColor.GREEN + "", false, 1);
+    ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
     ItemStack air = new ItemStack(Material.AIR);
 
     private Inventory getCraftingGUI() {
@@ -37,12 +44,11 @@ public class CustomCraftingEvents implements Listener {
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
                 inv.setItem(y+x, air);
-                craftingSlots.add((CustomItem) inv.getItem(y+x));
+                craftingSlots.add(inv.getItem(y+x));
                 numCraftingSlots.add(y+x);
             }
         }
-        numCraftingSlots.add(24);
-        setResult((CustomItem) new ItemStack(Material.AIR));
+        setResult(new ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE));
         return inv;
     }
 
@@ -50,16 +56,23 @@ public class CustomCraftingEvents implements Listener {
         int i = 0;
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
-                inv.setItem(y+x, (ItemStack) matrix.get(i++));
+                if (matrix.get(i) != null) {
+                    inv.setItem(y + x, matrix.get(i).getItem());
+                }
+                i++;
             }
         }
     }
 
     public List<CustomItem> getMatrix() {
-        List<CustomItem> matrix = new ArrayList<>();;
+        List<CustomItem> matrix = new ArrayList<>();
         for (int y=10; y<29; y+=9) { //Sets crafting grid slots
             for (int x=0; x<3; x++) {
-                matrix.add((CustomItem) inv.getItem(y+x));
+                ItemStack cell = inv.getItem(y+x);
+                if (cell != null) {
+                    CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(cell);
+                    matrix.add(item);
+                } else { matrix.add(null); }
             }
         }
         return matrix;
@@ -73,12 +86,12 @@ public class CustomCraftingEvents implements Listener {
         }
     }
 
-    public void setResult(CustomItem item) {
-        inv.setItem(24, (ItemStack) item);
+    public void setResult(ItemStack item) {
+        inv.setItem(24, item);
     }
 
-    public CustomItem getResult() {
-        return (CustomItem) inv.getItem(24);
+    public ItemStack getResult() {
+        return inv.getItem(24);
     }
 
     @EventHandler
@@ -86,55 +99,104 @@ public class CustomCraftingEvents implements Listener {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (e.getClickedBlock().getType() == Material.CRAFTING_TABLE) {
                 e.setCancelled(true);
-                e.getPlayer().openInventory(getCraftingGUI());
+                e.getPlayer().sendMessage(Utils.parse("<red>The crafting system has been disabled for now."));
+                e.getPlayer().sendMessage(Utils.parse("<red>Please click on Symone to craft your items!"));
+                //e.getPlayer().openInventory(getCraftingGUI());
             }
         }
     }
 
+
+    @EventHandler
+    public void onCraftingTableClose(InventoryCloseEvent e) {
+
+    }
+
+    /**
+     * Step 1. Player puts in items into the crafting table
+     * Step 2. System searches for a valid recipe
+     * Step 3. If system finds valid recipe, result slot is set to display resulting fake item of the recipe
+     * Step 4. If player clicks the resulting item, the system will remove the crafting ingredients from the crafting table
+     * Step 5. The system will convert the clicked item to the actual resulting item
+     */
     @EventHandler
     public void onCraftingTableClick(InventoryClickEvent e) {
         if (e.getInventory() != inv) return; //stops if inventory is not crafting table
-        if (e.getRawSlot() > e.getInventory().getSize()) return; //if clicked slot is in the bottom inventory
+        if (e.getRawSlot() > e.getInventory().getSize()-1) return; //if clicked slot is in the bottom inventory
         if (!numCraftingSlots.contains(e.getSlot())) { //stops if slot is not a crafting/result slot
             e.setCancelled(true);
-            return;
+            if (e.getSlot() != 24) {
+                return;
+            }
         }
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+            //if (e.getCursor().getType().isAir()) { return; }
+
             List<CustomItem> matrix = getMatrix();
-            CustomItem result = (CustomItem) new ItemStack(Material.AIR);
+            ItemStack result = new ItemStack(Material.AIR);
             Player player = (Player) e.getWhoClicked();
-            //if (e.getCursor().getType().isAir()) {return;}
 
-            /*
-            for (CustomShapedRecipe recipe : Core.plugin().getShapedRecipes()) {
-                if (recipe.doesFit(matrix)) {
-                    result = recipe.getResult();
+            CustomRecipe matchedRecipe = CustomRecipe.Companion.getRecipe(matrix);
+
+            if (matchedRecipe != null) {
+                Bukkit.getLogger().info("Not null");
+                CustomItem item = matchedRecipe.getCreateItem().invoke(player, true);
+                result = item.getUpdatedItem(true);
+            }
+
+
+            if (e.getSlot()==24) { //if player clicks on the result slot
+                if (!Objects.requireNonNull(e.getCurrentItem()).getType().equals(Material.LIGHT_GRAY_STAINED_GLASS_PANE)) {
+                    //Loop through the matrix and subtract the recipe matrix of the same index from the iteration
+                    List<CustomItem> recipe = CustomRecipe.Companion.getRecipe(matrix).getItems();
+                    for (int i = 0; i < matrix.size()-1; i++) {
+                        if (matrix.get(i) != null) { // if cell is not air
+                            Integer amtRecipeIndex = recipe.get(i).getItem().getAmount();
+                            Integer amtMatrixIndex = matrix.get(i).getItem().getAmount();
+                            int diff = amtMatrixIndex-amtRecipeIndex;
+                            if (diff > 0) {
+                                ItemStack itemIndex = matrix.get(i).getUpdatedItem(false);
+                                itemIndex.setAmount(diff);
+                                matrix.set(i, CustomItemUtils.INSTANCE.getCustomItem(itemIndex));
+                            }
+                            matrix.set(i, recipe.get(i));
+                        }
+
+                    }
+                    setMatrix(matrix);
                 }
-            }
-            for (CustomShapelessRecipe recipe : Core.plugin().getShapelessRecipes()) {
-                if (recipe.doesFit(matrix)) {
-                    result = recipe.getResult();
-                }
-            }
-             */
-
-            //Need further information on how to get the result of a recipe, and what getRecipe does
-            if (CustomRecipe.Companion.getRecipe(matrix) != null) {
-                result = (CustomItem) CustomRecipe.Companion.getRecipe(matrix);
-            }
-
-            if (e.getSlot()==24 && resultSlotSet) {
-                clearMatrix();
                 return;
             }
 
-            //Known bug: Grabbing the result slot will not make the items in the crafting table go away
-            //Possible solutions: Save a variable to the field to check if the result slot is a proper recipe result then clear the matrix
-            if(result != null) {
+            if(!result.getType().equals(Material.AIR)) {
                 setMatrix(matrix);
                 setResult(result);
                 player.updateInventory();
-                resultSlotSet = true;
+            }
+        }, 1);
+    }
+    @EventHandler
+    public void onDragClick(InventoryDragEvent e) {
+        if (e.getInventory() != inv) return; //stops if inventory is not crafting table
+        List<Integer> slots = new ArrayList<>(e.getRawSlots());
+        if (!numCraftingSlots.containsAll(slots)) return; //if all integers in slots are not contained in numcraftingslots
+        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+            //if (e.getCursor().getType().isAir()) { return; }
+
+            List<CustomItem> matrix = getMatrix();
+            ItemStack result = new ItemStack(Material.AIR);
+            Player player = (Player) e.getWhoClicked();
+
+            //Need further information on how to get the result of a recipe, and what getRecipe does
+            if (CustomRecipe.Companion.getRecipe(matrix) != null) { //TEMP FIX (SEE DEV CHAT)
+                result = CustomRecipe.Companion.getRecipe(matrix).getCreateItem().invoke(player, true).getUpdatedItem(false);
+            }
+
+
+            if(!result.getType().equals(Material.AIR)) {
+                setMatrix(matrix);
+                setResult(result);
+                player.updateInventory();
             }
         }, 1);
     }

@@ -22,6 +22,14 @@ class HealthGem() : StatGemType(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
+    }
+
+    constructor(quality: Int, statAmount: Double): this() {
+        this.statAmount = statAmount
+        this.quality = quality
+        this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

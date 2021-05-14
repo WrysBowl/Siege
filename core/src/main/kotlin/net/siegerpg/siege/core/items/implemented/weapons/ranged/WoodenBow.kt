@@ -1,9 +1,9 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.ranged
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Stick
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Vine
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.utils.Utils
@@ -20,14 +20,16 @@ class WoodenBow() : CustomBow(
     recipeList = recipes {
         recipe {
             shaped = true
-            s2(Stick(0)) //tier 3
-            s3(Vine(0)) //tier 3
-            s4(Stick(0)) //tier 3
-            s6(Vine(0)) //tier 3
-            s8(Stick(0)) //tier 3
-            s9(Vine(0)) //tier 3
+            s2(Stick.tier(3))
+            s3(Vine.tier(3))
+            s4(Stick.tier(3))
+            s6(Vine.tier(3))
+            s8(Stick.tier(3))
+            s9(Vine.tier(3))
             item { player, b ->
-                WoodenBow(Utils.randRarity())
+                val newItem = WoodenBow(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },
@@ -36,6 +38,7 @@ class WoodenBow() : CustomBow(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

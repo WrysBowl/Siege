@@ -1,9 +1,9 @@
-﻿name: SiegeDungeons
+name: SiegeDungeons
 version: 0.0.1
-main: net.siegerpg.siege.dungeons.Dungeons
+main: net.siegerpg.siege.dungeons.DungeonPlugin
 api-version: 1.16
 description: Siege's dungeons plugin
 prefix: SiegeDungeons
-depend: [ FastAsyncWorldedit, Kotlin ]
+depend: [ FastAsyncWorldEdit, Kotlin, SiegeCore ]
 load: STARTUP
-authors: [ Wrys, DeltaRays, Ghqst, Bagelll ]
+authors: [ DeltaRays ]

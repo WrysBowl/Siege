@@ -7,7 +7,8 @@ import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.utils.lore
+import net.siegerpg.siege.core.utils.name
 import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -18,7 +19,7 @@ abstract class StatGemType(
     override val levelRequirement: Int? = null,
     override val description: List<String>,
     override val material: Material,
-    override var quality: Int = -1,
+    final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.STATGEM,
     override val recipeList: CustomRecipeList? = null,
@@ -34,7 +35,7 @@ abstract class StatGemType(
         }
 
     init {
-        rarity = Rarity.getFromInt(quality)
+        this.rarity = Rarity.getFromInt(this.quality)
     }
 
     override fun serialize() {
@@ -51,30 +52,38 @@ abstract class StatGemType(
         }
     }
 
-    override fun updateMeta(hideRarity: Boolean) {
+    override fun updateMeta(hideRarity: Boolean): ItemStack {
 
         val meta = item.itemMeta
 
-        /*
-        DisplayName and Lore has been changed to use strings instead of components. Will be fixed in the future
-         */
+        val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name"))
+        meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
 
-        val newLore = mutableListOf(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$rarity</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "${rarity.color}$rarity <gray>$quality%"))
-        newLore.add(Utils.parse(" "))
-        newLore.add(Utils.parse("<color:#FF3CFF>+${statAmount} <light_purple>${statType.stylizedName} Gem"))
-        newLore.add(Utils.parse(" "))
+        if (meta.hasLore()) meta.lore(mutableListOf())
+
+        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%")
+        meta.lore(" ")
+        meta.lore("<r><color:#FF3CFF>+${statAmount} <light_purple>${statType.stylizedName} Gem")
+        meta.lore(" ")
         description.forEach {
-            newLore.add(Utils.parse("<dark_gray>$it"))
+            meta.lore("<r><dark_gray>$it")
         }
-        newLore.add(Utils.parse(" "))
-        newLore.add(Utils.parse("<gray>Level: $levelRequirement"))
-        if (hideRarity) newLore.add(Utils.parse("<red>This is not the real item"))
-        meta.lore(newLore)
+        meta.lore(" ")
+        meta.lore("<r><gray>Level: $levelRequirement")
+        if (hideRarity) meta.lore("<r><red>This is not the real item")
 
+        meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
+        return item
+    }
+
+
+    override fun equals(other: Any?): Boolean {
+        other?.let { return false }
+        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        return true
     }
 
 }

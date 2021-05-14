@@ -4,7 +4,6 @@ import lombok.Getter;
 import net.siegerpg.siege.core.Core;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -13,8 +12,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
+@SuppressWarnings("ALL")
 public class Party {
-    @Getter private UUID partyID = UUID.randomUUID();
+    @Getter private final UUID partyID = UUID.randomUUID();
     @Getter private final List<UUID> invited = new ArrayList<>();
     private HashSet<UUID> members = new HashSet<>();
     private UUID leader = null;
@@ -134,7 +134,7 @@ public class Party {
                     disband();
                 }
             }
-        }.runTaskLaterAsynchronously(Core.INSTANCE, 1200);
+        }.runTaskLaterAsynchronously(Core.plugin(), 1200);
     }
 
     /**

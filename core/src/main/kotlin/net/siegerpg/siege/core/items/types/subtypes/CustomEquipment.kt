@@ -3,8 +3,12 @@ package net.siegerpg.siege.core.items.types.subtypes
 import net.siegerpg.siege.core.items.*
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
+import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.utils.lore
+import net.siegerpg.siege.core.utils.name
 import org.bukkit.inventory.ItemFlag
+import org.bukkit.inventory.ItemStack
 
 interface CustomEquipment : CustomItem {
 
@@ -13,38 +17,42 @@ interface CustomEquipment : CustomItem {
 
     fun addStatGem(newStatGem: StatGem) {
         this.statGem = newStatGem
-        println("serializing")
+        this.serialize()
     }
 
-    override fun updateMeta(hideRarity: Boolean) {
+    override fun updateMeta(hideRarity: Boolean): ItemStack {
         val meta = item.itemMeta
 
-        meta.displayName(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$name</rainbow>" else "${rarity.color}$name"))
+        val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        val newLore =
-            mutableListOf(Utils.parse(if (rarity == Rarity.SPECIAL) "<rainbow>$rarity</rainbow> <gray>${if (hideRarity) 50 else quality}%" else "${rarity.color}$rarity <gray>$quality%"))
+        meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
+
+        if (meta.hasLore()) meta.lore(mutableListOf())
+
+        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%")
         statGem?.let {
-            newLore.add(Utils.parse(" "))
-            newLore.add(Utils.parse("<color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem"))
+            meta.lore(" ")
+            meta.lore("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem")
         }
         if (baseStats.size != 0) {
-            newLore.add(Utils.parse(" "))
+            meta.lore(" ")
             val realStats = CustomItemUtils.getStats(this, addGem = false, addRarity = true)
             baseStats.keys.forEach {
-                newLore.add(Utils.parse("<green>+${realStats[it]} <gray>${it.stylizedName}"))
+                meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}") // TODO: Make special items work with rarity multiplier
             }
         }
-        newLore.add(Utils.parse(" "))
+        meta.lore(" ")
         description.forEach {
-            newLore.add(Utils.parse("<dark_gray>$it"))
+            meta.lore("<r><dark_gray>$it")
         }
-        newLore.add(Utils.parse(" "))
-        newLore.add(Utils.parse("<gray>Level: $levelRequirement"))
-        if (hideRarity) newLore.add(Utils.parse("<red>This is not the real item"))
-        meta.lore(newLore)
+        meta.lore(" ")
+        meta.lore("<r><gray>Level: $levelRequirement")
+        if (hideRarity) meta.lore("<r><red>This is not the real item")
 
+        meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
+        return item
     }
 
     override fun serialize() {
@@ -56,8 +64,13 @@ interface CustomEquipment : CustomItem {
 
     override fun deserialize() {
         super.deserialize()
-        item.getNbtTag<String>("equipmentStatGem")?.let {
-            statGem = StatGem.fromString(it)
+        try {
+            item.getNbtTag<String>("equipmentStatGem")?.let {
+                statGem = StatGem.fromString(it)
+            }
+        } catch(e: Exception) {
+
         }
+
     }
 }

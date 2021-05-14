@@ -1,9 +1,9 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.PlantMatter
-import net.siegerpg.siege.core.items.implemented.misc.materials.blockDrops.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Utils
@@ -20,24 +20,28 @@ class EarthernHammer() : CustomMeleeWeapon(
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(PlantMatter(0)) //tier 4
-            s2(Stick(0)) //tier 3
-            s4(PlantMatter(0)) //tier 4
-            s5(Stick(0)) //tier 3
-            s8(Stick(0)) //tier 3
+            s1(PlantMatter.tier(4))
+            s2(Stick.tier(3))
+            s4(PlantMatter.tier(4))
+            s5(Stick.tier(3))
+            s8(Stick.tier(3))
             item { player, b ->
-                EarthernHammer(Utils.randRarity())
+                val newItem = EarthernHammer(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
         recipe {
             shaped = true
-            s2(PlantMatter(0)) //tier 4
-            s3(Stick(0)) //tier 3
-            s5(PlantMatter(0)) //tier 4
-            s6(Stick(0)) //tier 3
-            s9(Stick(0)) //tier 3
+            s2(PlantMatter.tier(4))
+            s3(Stick.tier(3))
+            s5(PlantMatter.tier(4))
+            s6(Stick.tier(3))
+            s9(Stick.tier(3))
             item { player, b ->
-                EarthernHammer(Utils.randRarity())
+                val newItem = EarthernHammer(if (b) 50 else Utils.randRarity())
+                newItem.updateMeta(b)
+                newItem
             }
         }
     },
@@ -47,6 +51,7 @@ class EarthernHammer() : CustomMeleeWeapon(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

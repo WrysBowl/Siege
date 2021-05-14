@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.melee.light
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -11,7 +11,7 @@ class Dagger() : CustomMeleeWeapon(
     name = "Dagger",
     customModelData = 110006,
     description = listOf("The prison shank's big brother"),
-    levelRequirement = 12,
+    levelRequirement = 20,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 23.0),
     recipeList = recipes {
@@ -23,6 +23,7 @@ class Dagger() : CustomMeleeWeapon(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

@@ -1,7 +1,9 @@
+@file:Suppress("LeakingThis", "LeakingThis")
+
 package net.siegerpg.siege.core.items.types.armor
 
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.items.StatGem
+import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -9,8 +11,6 @@ import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import org.bukkit.Color
 import org.bukkit.Material
-import org.bukkit.Server
-import org.bukkit.inventory.ItemFactory
 import org.bukkit.inventory.ItemStack
 
 abstract class CustomBoots(
@@ -31,7 +31,13 @@ abstract class CustomBoots(
     override var rarity: Rarity = Rarity.COMMON
 
     init {
-        rarity = Rarity.getFromInt(quality)
+        this.rarity = Rarity.getFromInt(this.quality)
+    }
+
+    override fun equals(other: Any?): Boolean {
+        other?.let { return false }
+        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        return true
     }
 
 

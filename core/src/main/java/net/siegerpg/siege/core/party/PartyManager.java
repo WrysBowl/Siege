@@ -1,8 +1,6 @@
 package net.siegerpg.siege.core.party;
 
 import lombok.Getter;
-import net.siegerpg.siege.core.Core;
-import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.HashMap;
 import java.util.UUID;

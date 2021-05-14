@@ -12,3 +12,13 @@ commands:
   party:
     description: Create a party with friends
     aliases: [ p ]
+  hub:
+    description: Teleports the player to SiegeHub
+  discords:
+    description: Sends a discord link to the sender
+  getItem:
+    description: Gets a custom item for the developer
+  spawn:
+    description: Teleports players to the world's spawn
+  invsee:
+    description: Opens the inventory of the target player to the command sender

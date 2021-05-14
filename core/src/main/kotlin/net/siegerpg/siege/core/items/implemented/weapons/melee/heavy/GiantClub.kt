@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -13,15 +13,16 @@ class GiantClub() : CustomMeleeWeapon(
     description = listOf("Kneecap smasher"),
     levelRequirement = 7,
     material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 22.0),
+    baseStats = CustomItemUtils.statMap(strength = 18.0),
     recipeList = recipes {
     },
-    attackSpeed = 0.8
+    attackSpeed = 0.7
 ) {
 
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {

@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee
+package net.siegerpg.siege.core.items.implemented.weapons.melee.light
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -11,7 +11,7 @@ class Shank() : CustomMeleeWeapon(
     name = "Shank",
     customModelData = 110005,
     description = listOf("An essential tool...in prison"),
-    levelRequirement = 10,
+    levelRequirement = 18,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 18.0),
     recipeList = recipes {
@@ -23,11 +23,12 @@ class Shank() : CustomMeleeWeapon(
     constructor(quality: Int): this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
+        this.serialize()
     }
 
     constructor(item: ItemStack): this() {
         this.item = item
-        deserialize()
+        this.deserialize()
     }
 
 }
