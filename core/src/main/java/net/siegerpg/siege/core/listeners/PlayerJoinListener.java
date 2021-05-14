@@ -81,7 +81,10 @@ public class PlayerJoinListener implements Listener {
             player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
             VaultHook.econ.depositPlayer(player, 100.0);
             Levels.INSTANCE.setLevel(player, (short) 1);
+        }  else if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
+                Levels.INSTANCE.setLevel(player, (short) 1);
         }
+
         for (Player p : Bukkit.getOnlinePlayers()) {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);

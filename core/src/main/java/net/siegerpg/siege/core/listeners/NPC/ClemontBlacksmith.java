@@ -96,7 +96,7 @@ public class ClemontBlacksmith implements Listener {
                     reqIngredients.add(ironShovel2);
                     //Set result of recipe
                     result = new ItemStack(Material.IRON_SHOVEL);
-                    cost = 6000;
+                    cost = 5000;
                     break;
                 case 20: //Iron Axe
                     //Initialize Ingredients
@@ -110,7 +110,7 @@ public class ClemontBlacksmith implements Listener {
                     reqIngredients.add(ironAxe2);
                     //Set result of recipe
                     result = new ItemStack(Material.IRON_AXE);
-                    cost = 12000;
+                    cost = 8000;
                     break;
                 case 21: //Iron pickaxe
                     //Initialize Ingredients
@@ -124,7 +124,7 @@ public class ClemontBlacksmith implements Listener {
                     reqIngredients.add(ironPickaxe2);
                     //Set result of recipe
                     result = new ItemStack(Material.IRON_PICKAXE);
-                    cost = 12000;
+                    cost = 8000;
                     break;
                 default:
                     return;
@@ -155,25 +155,25 @@ public class ClemontBlacksmith implements Listener {
 
         ArrayList<ItemStack> toolItems = new ArrayList<>(){
             {
-                add(setCost(new ItemStack(Material.WOODEN_SHOVEL), 1000));
-                add(setCost(new ItemStack(Material.WOODEN_AXE), 1500));
-                add(setCost(new ItemStack(Material.WOODEN_PICKAXE), 1500));
-                add(setCost(new ItemStack(Material.STONE_AXE), 4000));
-                add(setCost(new ItemStack(Material.STONE_PICKAXE), 4000));
-                add(setCost(new ItemStack(Material.STONE_SHOVEL), 3000));
+                add(setCost(new ItemStack(Material.WOODEN_SHOVEL), 100));
+                add(setCost(new ItemStack(Material.WOODEN_AXE), 150));
+                add(setCost(new ItemStack(Material.WOODEN_PICKAXE), 150));
+                add(setCost(new ItemStack(Material.STONE_AXE), 3000));
+                add(setCost(new ItemStack(Material.STONE_PICKAXE), 3000));
+                add(setCost(new ItemStack(Material.STONE_SHOVEL), 2000));
                 add(setCost(new ItemStack(Material.ARROW, 64), 150));
                 add(Utils.addLore(new ItemStack(Material.IRON_SHOVEL),
-                        Utils.lore("<yellow>8000"),
+                        Utils.lore("<yellow>5000"),
                         Utils.lore("<dark_aqua>Click to Craft"),
                         Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
                         Utils.lore("<dark_aqua>MetalScrap \u272A\u272A\u272A x1")));
                 add(Utils.addLore(new ItemStack(Material.IRON_AXE),
-                        Utils.lore("<yellow>12000"),
+                        Utils.lore("<yellow>8000"),
                         Utils.lore("<dark_aqua>Click to Craft"),
                         Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
                         Utils.lore("<dark_aqua>MetalScrap \u272A\u272A\u272A x3")));
                 add(Utils.addLore(new ItemStack(Material.IRON_PICKAXE),
-                        Utils.lore("<yellow>12000"),
+                        Utils.lore("<yellow>8000"),
                         Utils.lore("<dark_aqua>Click to Craft"),
                         Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
                         Utils.lore("<dark_aqua>MetalScrap \u272A\u272A\u272A x3")));
