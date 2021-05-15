@@ -33,7 +33,7 @@ public class WorldListener implements Listener {
     @EventHandler
     public void openDeniedBlocks(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL) || e.getPlayer().getGameMode().equals(GameMode.ADVENTURE)) {
+            if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
                 BlockData block = Objects.requireNonNull(e.getClickedBlock()).getBlockData();
                 if (block instanceof Door) { return; }
                 else if (e.getClickedBlock().getType().equals(Material.ENDER_CHEST)) { return; }
@@ -62,6 +62,7 @@ public class WorldListener implements Listener {
                 e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getClickedBlock() == null) { return; }
             if (e.getClickedBlock() instanceof ItemFrame) {
+                if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) { return; }
                 e.setCancelled(true);
             }
         }
@@ -69,6 +70,10 @@ public class WorldListener implements Listener {
 
     @EventHandler
     public void preventDamage(EntityDamageEvent e) {
+        if(e instanceof EntityDamageByEntityEvent) {
+            Player player = (Player) ((EntityDamageByEntityEvent) e).getDamager();
+            if (player.getGameMode().equals(GameMode.CREATIVE)) { return; }
+        }
         if (e.getEntity() instanceof ItemFrame) {
             e.setCancelled(true);
         }
@@ -76,8 +81,29 @@ public class WorldListener implements Listener {
 
     @EventHandler
     public void spawnProt(EntityDamageByEntityEvent e) {
+        Player player = (Player) e.getDamager();
+        if (player.getGameMode().equals(GameMode.CREATIVE)) { return; }
         if (e.getEntity().getLocation().distance(e.getEntity().getWorld().getSpawnLocation()) < 3) {
             e.setCancelled(true);
         }
     }
+
+    @EventHandler
+    public void preventTame(EntityTameEvent e) {
+        Player player = (Player) e.getOwner();
+        if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+            e.setCancelled(true);
+        }
+    }
+    @EventHandler
+    public void preventBreed(EntityBreedEvent e) {
+        Player player = (Player) e.getBreeder();
+        if (player != null) {
+            if (player.getGameMode().equals(GameMode.CREATIVE)) {
+                return;
+            }
+        }
+        e.setCancelled(true);
+    }
+
 }
