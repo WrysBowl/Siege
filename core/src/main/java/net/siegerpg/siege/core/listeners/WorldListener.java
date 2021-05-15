@@ -5,9 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.block.EnderChest;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Door;
-import org.bukkit.entity.Bee;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.ItemFrame;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -72,6 +70,13 @@ public class WorldListener implements Listener {
     @EventHandler
     public void preventDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof ItemFrame) {
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void spawnProt(EntityDamageByEntityEvent e) {
+        if (e.getEntity().getLocation().distance(e.getEntity().getWorld().getSpawnLocation()) < 3) {
             e.setCancelled(true);
         }
     }
