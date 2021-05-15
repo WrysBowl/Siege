@@ -71,8 +71,10 @@ public class WorldListener implements Listener {
     @EventHandler
     public void preventDamage(EntityDamageEvent e) {
         if(e instanceof EntityDamageByEntityEvent) {
-            Player player = (Player) ((EntityDamageByEntityEvent) e).getDamager();
-            if (player.getGameMode().equals(GameMode.CREATIVE)) { return; }
+            if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
+                Player player = (Player) ((EntityDamageByEntityEvent) e).getDamager();
+                if (player.getGameMode().equals(GameMode.CREATIVE)) { return; }
+            }
         }
         if (e.getEntity() instanceof ItemFrame) {
             e.setCancelled(true);
@@ -81,8 +83,12 @@ public class WorldListener implements Listener {
 
     @EventHandler
     public void spawnProt(EntityDamageByEntityEvent e) {
-        Player player = (Player) e.getDamager();
-        if (player.getGameMode().equals(GameMode.CREATIVE)) { return; }
+        if (e.getDamager() instanceof Player) {
+            Player player = (Player) e.getDamager();
+            if (player.getGameMode().equals(GameMode.CREATIVE)) {
+                return;
+            }
+        }
         if (e.getEntity().getLocation().distance(e.getEntity().getWorld().getSpawnLocation()) < 3) {
             e.setCancelled(true);
         }

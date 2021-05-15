@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
+import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -56,7 +57,7 @@ public class StatChangeListener implements Listener, Runnable {
             return;
         }
         if (item.getLevelRequirement() == null) {return;}
-        if (item.getLevelRequirement() > e.getPlayer().getLevel()) {
+        if (item.getLevelRequirement() > Levels.INSTANCE.getExpLevel(e.getPlayer()).getFirst()) {
             e.getPlayer().sendTitle("", ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
             return;
         }
