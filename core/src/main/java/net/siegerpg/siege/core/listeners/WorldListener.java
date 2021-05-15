@@ -51,7 +51,7 @@ public class WorldListener implements Listener {
 
     @EventHandler
     public void denyEggSpawning(EntitySpawnEvent e) {
-        if (e.getEntity().getType().equals(EntityType.EGG)) {
+        if (e.getEntity() instanceof Egg) {
             e.setCancelled(true);
         }
     }

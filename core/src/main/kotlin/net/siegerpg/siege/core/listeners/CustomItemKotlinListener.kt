@@ -152,10 +152,11 @@ class CustomItemKotlinListener : Listener, Runnable {
         }
     }
 
-    /*
+
     @EventHandler
     @Suppress("unused")
     fun onFoodHold(e: PlayerItemHeldEvent) {
+        if (e.player.foodLevel != 20) return
         Bukkit.getServer().scheduler.scheduleSyncDelayedTask(Core.plugin(), {
             if (CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand) != null) {
                 val food = CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand)
@@ -165,13 +166,6 @@ class CustomItemKotlinListener : Listener, Runnable {
             }
         }, 1)
     }
-
-    @EventHandler
-    @Suppress("unused")
-    fun cancelFood(e: FoodLevelChangeEvent) {
-        e.isCancelled = true
-        e.foodLevel = 20
-    }*/
 
     @EventHandler
     @Suppress("unused")
