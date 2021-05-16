@@ -71,6 +71,7 @@ public class DeathListener implements Listener, Runnable {
         e.deathMessage(null);
         Player player = e.getEntity().getPlayer();
         if (player != null) {
+            if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
             Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
                 double bal = Math.round(VaultHook.econ.getBalance(player));
                 double newBal = Math.round(bal * 0.95);
