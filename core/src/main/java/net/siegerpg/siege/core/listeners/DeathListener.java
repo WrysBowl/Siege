@@ -77,7 +77,7 @@ public class DeathListener implements Listener, Runnable {
                 double newBal = Math.round(bal * 0.95);
                 VaultHook.econ.withdrawPlayer(player, bal);
                 VaultHook.econ.depositPlayer(player, newBal);
-                player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&7" + (bal - newBal) + " has been taken"), 1, 60, 1);
+                player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&7" + (bal - newBal) + " has been lost"), 1, 60, 1);
                 Scoreboard.updateScoreboard(player);
             }, 2);
         }
