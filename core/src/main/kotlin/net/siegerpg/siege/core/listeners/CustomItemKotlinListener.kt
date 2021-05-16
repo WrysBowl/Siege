@@ -188,12 +188,23 @@ class CustomItemKotlinListener : Listener, Runnable {
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
                 val entity = player.getTargetEntity(it.range)
+                //MAKE THIS EFFICIENT
                 val loc = if (entity == null || entity.isDead) {
                     val block = player.getTargetBlock(it.range) ?: return
                     block.location
                 } else {
-                    entity.location.add(0.0, entity.height, 0.0)
+                    val block = player.getTargetBlock(it.range) ?: return
+                    block.location
                 }
+                /*
+                val loc = if (entity == null || entity.isDead) {
+                    val block = player.getTargetBlock(it.range) ?: return
+                    block.location
+                    } else {
+                        entity.location.add(0.0, entity.height, 0.0)
+                    }*/
+
+
                 if (cooldown.contains(player)) return
                 cooldown.add(player)
                 drawParticles(player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)

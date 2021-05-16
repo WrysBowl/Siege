@@ -41,13 +41,13 @@ public class MobDrops {
                 break;
             case "Blob":
                 rewards = new Object[][]{{Slime.Companion.tier(1).getUpdatedItem(false), 50.0}};
-                numGold = new Integer[]{7, 13};
-                numExp = new Integer[]{8, 12};
+                numGold = new Integer[]{6, 11};
+                numExp = new Integer[]{7, 10};
                 break;
             case "ScorchingBlob":
                 rewards = new Object[][]{{Magma.Companion.tier(1).getUpdatedItem(false), 50.0}};
-                numGold = new Integer[]{6, 12};
-                numExp = new Integer[]{8, 12};
+                numGold = new Integer[]{5, 10};
+                numExp = new Integer[]{8, 11};
                 break;
             case "ForestSpider":
                 rewards = new Object[][]{
@@ -67,8 +67,8 @@ public class MobDrops {
                 rewards = new Object[][]{
                         {Leather.Companion.tier(1).getUpdatedItem(false), 100.0},
                         {new Drumstick(0).getUpdatedItem(false), 100.0}};
-                numGold = new Integer[]{10, 20};
-                numExp = new Integer[]{12, 18};
+                numGold = new Integer[]{15, 20};
+                numExp = new Integer[]{14, 18};
                 break;
             case "Bandit":
                 rewards = new Object[][]{
@@ -173,8 +173,8 @@ public class MobDrops {
                 break;
             case "Pigeon":
                 rewards = new Object[][]{
-                        {new Drumstick(0).getUpdatedItem(false), 25.0},
-                        {Feather.Companion.tier(1).getUpdatedItem(false), 60.0}};
+                        {new Drumstick(0).getUpdatedItem(false), 50.0},
+                        {Feather.Companion.tier(1).getUpdatedItem(false), 40.0}};
                 numGold = new Integer[]{1, 2};
                 numExp = new Integer[]{2, 3};
                 break;
@@ -207,8 +207,8 @@ public class MobDrops {
                         {new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 50.0},
                         {new StoneAxe(Utils.randRarity()).getUpdatedItem(false), 15.0},
                         {Seed.Companion.tier(3).getUpdatedItem(false), 30.0}};
-                numGold = new Integer[]{1000, 1200};
-                numExp = new Integer[]{500, 750};
+                numGold = new Integer[]{350, 300};
+                numExp = new Integer[]{300, 200};
                 break;
             default:
                 mob_exists = false;
