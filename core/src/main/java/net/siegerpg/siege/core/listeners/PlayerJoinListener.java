@@ -61,13 +61,19 @@ public class PlayerJoinListener implements Listener {
 
         event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player.getName()));
 
+        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
+            player.getInventory().clear();
+            player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
+            VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
+            VaultHook.econ.depositPlayer(player, 200.0);
+        }
+
         Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), new Runnable() {
             @Override
             public void run() {
                 if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
                     Levels.INSTANCE.setLevel(player, (short) 1);
-                    VaultHook.econ.depositPlayer(player, 200.0);
-                    player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
+                    Scoreboard.updateScoreboard(player);
                 }
             }
         });
