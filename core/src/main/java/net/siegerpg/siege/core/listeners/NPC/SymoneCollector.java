@@ -1031,7 +1031,7 @@ public class SymoneCollector implements Listener {
 
             case 27: //Slimy Boots
                 //Initialize Ingredients
-                ing1 = RefinedMetal.Companion.tier(2).getUpdatedItem(false);
+                ing1 = Slime.Companion.tier(2).getUpdatedItem(false);
                 ing1.setAmount(4);
 
                 //Add ingredients to required ingredients
