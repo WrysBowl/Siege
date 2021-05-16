@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
+import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
@@ -16,6 +17,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.Connection;
@@ -64,6 +66,9 @@ public class PlayerJoinListener implements Listener {
         if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
             player.getInventory().clear();
             player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
+            ItemStack food = new Drumstick(0).getUpdatedItem(false);
+            food.setAmount(10);
+            player.getInventory().addItem(food);
             VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
             VaultHook.econ.depositPlayer(player, 200.0);
         }
@@ -73,7 +78,6 @@ public class PlayerJoinListener implements Listener {
             public void run() {
                 if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
                     Levels.INSTANCE.setLevel(player, (short) 1);
-                    Scoreboard.updateScoreboard(player);
                 }
             }
         });
