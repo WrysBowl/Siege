@@ -148,9 +148,14 @@ class CustomItemKotlinListener : Listener, Runnable {
     @EventHandler
     @Suppress("unused")
     fun onConsume(e: PlayerItemConsumeEvent) {
+        val food = CustomItemUtils.getCustomItem(e.item)
+        if (food != null) {
+            if (food is CustomFood) food.onEat(e)
+        }
+        /*
         CustomItemUtils.getCustomItem(e.item)?.let {
             if (it is CustomFood) it.onEat(e)
-        }
+        }*/
     }
 
 
@@ -158,16 +163,12 @@ class CustomItemKotlinListener : Listener, Runnable {
     @Suppress("unused")
     fun onFoodHold(e: PlayerItemHeldEvent) {
         if (e.player.foodLevel != 20) return
-        Bukkit.getServer().scheduler.scheduleSyncDelayedTask(Core.plugin(), {
-            fun run() {
-                if (CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand) != null) {
-                    val food = CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand)
-                    if (food is CustomFood) {
-                        e.player.foodLevel = 19
-                    }
-                }
+        val food = CustomItemUtils.getCustomItem(e.player.inventory.getItem(e.newSlot))
+        if (food != null) {
+            if (food is CustomFood) {
+                e.player.foodLevel = 19
             }
-        }, 1)
+        }
     }
 
     @EventHandler

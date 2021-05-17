@@ -44,7 +44,7 @@ abstract class CustomFood(
             e.player.health = addedHealth
         else e.player.health = e.player.maxHealth
         if (potion != null) {
-            val realPotionDuration = ((potion.duration * getRarityMultiplier(quality))/20).toInt()
+            val realPotionDuration = (potion.duration * getRarityMultiplier(quality)).toInt()
             val realPotion = PotionEffect(potion.type, realPotionDuration, potion.amplifier)
             e.player.addPotionEffect(realPotion)
         }
@@ -66,7 +66,8 @@ abstract class CustomFood(
         if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
         if (potion != null) {
             val realPotionDuration = ((potion.duration * getRarityMultiplier(quality))/20).toInt()
-            meta.lore("<r><yellow>+ ${potion.type.name} " + "<r><yellow>${potion.amplifier} " + "<r><gold>0:$realPotionDuration")
+            val realPotionAmplifier = potion.amplifier - 1
+            meta.lore("<r><yellow>+ ${potion.type.name} " + "<r><yellow>$realPotionAmplifier " + "<r><gold>0:$realPotionDuration")
         }
         meta.lore(" ")
         description.forEach {
