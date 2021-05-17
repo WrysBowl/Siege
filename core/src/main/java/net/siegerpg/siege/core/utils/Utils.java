@@ -69,8 +69,8 @@ public class Utils {
     @SuppressWarnings("unused")
     public static int randRarity() {
         //((random number between 1 and 100)*(1/random number between 1 and 5))
-        double rand1 = ((Math.random() * 100) + 1);
-        double rand2 = (((Math.random() * 100) + 1));
+        double rand1 = ((Math.random() * 70) + 1);
+        double rand2 = (((Math.random() * 70) + 1));
         return (int) ((-1 * Math.sqrt(rand1*rand2)) + 101);
     }
 

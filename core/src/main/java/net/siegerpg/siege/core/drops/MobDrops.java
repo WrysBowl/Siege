@@ -77,8 +77,8 @@ public class MobDrops {
                         {MetalScrap.Companion.tier(1).getUpdatedItem(false), 1.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0},
                         {new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5}};
-                numGold = new Integer[]{13, 18};
-                numExp = new Integer[]{15, 20};
+                numGold = new Integer[]{19, 24};
+                numExp = new Integer[]{21, 25};
                 break;
             case "BanditArcher":
                 rewards = new Object[][]{
@@ -86,8 +86,8 @@ public class MobDrops {
                         {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
-                numGold = new Integer[]{15, 20};
-                numExp = new Integer[]{15, 20};
+                numGold = new Integer[]{19, 24};
+                numExp = new Integer[]{25, 30};
                 break;
             case "Orc":
                 rewards = new Object[][]{
@@ -106,9 +106,9 @@ public class MobDrops {
                 LivingEntity wildGob = (LivingEntity) mob.getEntity().getBukkitEntity();
                 Material gobItem = Objects.requireNonNull(wildGob.getEquipment()).getItemInMainHand().getType();
                 if (gobItem.equals(Material.SUNFLOWER)) {
-                    numGold = new Integer[]{50, 60};
+                    numGold = new Integer[]{49, 50};
                 }
-                numExp = new Integer[]{3, 5};
+                numExp = new Integer[]{7, 12};
                 break;
             case "InfectedDigger":
                 rewards = new Object[][]{

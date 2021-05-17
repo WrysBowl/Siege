@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.Material
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -36,19 +37,17 @@ abstract class CustomFood(
         this.rarity = Rarity.getFromInt(this.quality)
     }
 
-    open fun onEat(e: PlayerItemConsumeEvent) {
+    open fun onEat(e: PlayerInteractEvent) {
         val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth + (e.player.level*2)
         val currentCustomHealth = CustomItemUtils.getCustomHealth(e.player)
         val addedHealth = (((health * getRarityMultiplier(quality)) + currentCustomHealth)/healthStat) * e.player.maxHealth
         if (addedHealth <= e.player.maxHealth)
             e.player.health = addedHealth
         else e.player.health = e.player.maxHealth
-        if (potion?.size!! > 0) {
-            potion.forEach {
-                val realPotionDuration = (it.duration * getRarityMultiplier(quality)).toInt()
-                val realPotion = PotionEffect(it.type, realPotionDuration, it.amplifier)
-                e.player.addPotionEffect(realPotion)
-            }
+        potion?.forEach {
+            val realPotionDuration = (it.duration * getRarityMultiplier(quality)).toInt()
+            val realPotion = PotionEffect(it.type, realPotionDuration, it.amplifier)
+            e.player.addPotionEffect(realPotion)
         }
     }
 
@@ -66,12 +65,10 @@ abstract class CustomFood(
         val realHealth = health * getRarityMultiplier(quality)
         if (realHealth > 0 || potion != null) meta.lore(" ")
         if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
-        if (potion?.size!! > 0) {
-            potion.forEach {
-                val realPotionDuration = ((it.duration * getRarityMultiplier(quality))/20).toInt()
-                val realPotionAmplifier = it.amplifier - 1
-                meta.lore("<r><yellow>+ ${it.type.name} " + "<r><yellow>$realPotionAmplifier " + "<r><gold>0:$realPotionDuration")
-            }
+        potion?.forEach {
+            val realPotionDuration = ((it.duration * getRarityMultiplier(quality))/20).toInt()
+            val realPotionAmplifier = it.amplifier
+            meta.lore("<r><yellow>+ ${it.type.name} " + "<r><yellow>$realPotionAmplifier " + "<r><gold>$realPotionDuration sec")
         }
         meta.lore(" ")
         description.forEach {

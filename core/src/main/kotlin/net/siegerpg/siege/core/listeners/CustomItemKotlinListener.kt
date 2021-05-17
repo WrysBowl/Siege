@@ -1,13 +1,12 @@
 package net.siegerpg.siege.core.listeners
 
 import com.comphenix.protocol.PacketType
-import net.siegerpg.siege.core.Core
+import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.Core.protocolManager
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomWand
-import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.*
@@ -19,7 +18,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityRegainHealthEvent
-import org.bukkit.event.entity.FoodLevelChangeEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
@@ -31,7 +29,8 @@ import java.lang.reflect.InvocationTargetException
 
 class CustomItemKotlinListener : Listener, Runnable {
 
-    var cooldown: MutableList<Player> = mutableListOf()
+    var cooldownWand: MutableList<Player> = mutableListOf()
+    var cooldownFood: MutableList<Player> = mutableListOf()
 
     @EventHandler
     @Suppress("unused")
@@ -147,15 +146,32 @@ class CustomItemKotlinListener : Listener, Runnable {
 
     @EventHandler
     @Suppress("unused")
-    fun onConsume(e: PlayerItemConsumeEvent) {
-        val food = CustomItemUtils.getCustomItem(e.item)
-        if (food != null) {
-            if (food is CustomFood) food.onEat(e)
-        }
-        /*
+    fun denyConsume(e: PlayerItemConsumeEvent) {
+        e.isCancelled = true
+    }
+
+    @EventHandler
+    @Suppress("unused")
+    fun onConsume(e: PlayerInteractEvent) {
+        if (e.action != Action.RIGHT_CLICK_AIR) return
         CustomItemUtils.getCustomItem(e.item)?.let {
-            if (it is CustomFood) it.onEat(e)
-        }*/
+            if (it is CustomFood) {
+                val player = e.player
+                if (cooldownFood.contains(player)) { return }
+                cooldownFood.add(player)
+
+                it.onEat(e)
+                val amount = e.item?.amount!! - 1
+                e.item!!.amount = amount
+
+
+                object : BukkitRunnable() {
+                    override fun run() {
+                        cooldownFood.remove(player)
+                    }
+                }.runTaskLaterAsynchronously(plugin(), 30)
+            }
+        }
     }
 
 
@@ -187,8 +203,12 @@ class CustomItemKotlinListener : Listener, Runnable {
         ) return
         val player = event.player
         val item = player.inventory.itemInMainHand
+
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
+
+                player.sendActionBar((Utils.parse("<red>Wands still buggy :(")))
+                /*
                 val entity = player.getTargetEntity(it.range)
                 //MAKE THIS EFFICIENT
                 val loc = if (player.getTargetBlock(it.range) == null) {
@@ -219,7 +239,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                     override fun run() {
                         cooldown.remove(player)
                     }
-                }.runTaskLaterAsynchronously(Core.plugin(), 10)
+                }.runTaskLaterAsynchronously(plugin(), 10)*/
             }
         }
     }
@@ -234,7 +254,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         val p2 = bL.toVector()
         val vector = p2.clone().subtract(p1).normalize().multiply(0.2)
         var length = 0.0
-        while (length < distance) {
+        Bukkit.getServer().scheduler.scheduleSyncRepeatingTask(plugin(), {
             i++
             val loc = p1.toLocation(aL.world)
             aL.world.spawnParticle(
@@ -248,16 +268,12 @@ class CustomItemKotlinListener : Listener, Runnable {
                 Particle.DustOptions(Color.fromRGB(r, g, b), 1.0F)
             )
             length += 0.2
-            try {
-                if (i % 10 == 0) Thread.sleep(100)
-            } catch (ignored: InterruptedException) {
-            }
             for (e in loc.getNearbyLivingEntities(radius)) {
                 if (e is Player) continue
                 e.damage(dmg, player)
             }
             p1.add(vector)
-        }
+        }, 10, 0)
     }
 
     override fun run() {
