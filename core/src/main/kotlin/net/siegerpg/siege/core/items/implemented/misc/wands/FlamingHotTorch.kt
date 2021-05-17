@@ -52,7 +52,7 @@ class FlamingHotTorch() : CustomWand(
             }
         }
     },
-    range = 16,
+    range = 19,
     red = 255,
     green = 0,
     blue = 0,

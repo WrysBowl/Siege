@@ -52,7 +52,7 @@ class RockWand() : CustomWand(
             }
         }
     },
-    range = 16,
+    range = 19,
     red = 140,
     green = 140,
     blue = 140,
