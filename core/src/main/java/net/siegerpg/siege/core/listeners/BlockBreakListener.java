@@ -48,7 +48,6 @@ public class BlockBreakListener implements Listener {
         e.setCancelled(true);
         if (blockDrop == null) {return;}
 
-        BlockData blockData = e.getBlock().getBlockData();
         Location loc = e.getBlock().getLocation();
         ItemStack goldCoins = Utils.getGoldCoin();
         goldCoins.setAmount(blockDrop.getGold(true));
@@ -56,11 +55,6 @@ public class BlockBreakListener implements Listener {
         if ((Math.random() * 100) <= CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand())) {
             goldCoins.setAmount(goldCoins.getAmount() * 2);
         }
-
-        if (!illegalItems.contains(blockType)) {
-            blockType = Material.BEDROCK;
-        }
-        e.getBlock().setType(blockType);
 
         if (blockDrop.getExp(true) > 0) {
             int exp = blockDrop.getExp(true);
@@ -82,12 +76,6 @@ public class BlockBreakListener implements Listener {
             }
 
         }
-
-        //Will need to create a method of adding the blocks to a config file to prevent block loss in server crashes
-        if (!blockType.equals(Material.BEDROCK)) return;
-        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-            loc.getBlock().setBlockData(blockData);
-        }, blockDrop.getRegenTime()); //Need to recheck to make sure regen time is properly made as a delay
     }
 
 }

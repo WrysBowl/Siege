@@ -1,8 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
-import com.comphenix.protocol.PacketType
 import net.siegerpg.siege.core.Core.plugin
-import net.siegerpg.siege.core.Core.protocolManager
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
@@ -22,9 +20,7 @@ import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
-import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
-import java.lang.reflect.InvocationTargetException
 
 
 class CustomItemKotlinListener : Listener, Runnable {
@@ -163,6 +159,8 @@ class CustomItemKotlinListener : Listener, Runnable {
                 it.onEat(e)
                 val amount = e.item?.amount!! - 1
                 e.item!!.amount = amount
+
+                player.foodLevel = player.foodLevel + 5
 
 
                 object : BukkitRunnable() {
