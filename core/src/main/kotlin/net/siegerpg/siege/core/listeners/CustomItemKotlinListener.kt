@@ -207,13 +207,9 @@ class CustomItemKotlinListener : Listener, Runnable {
 
                 if (cooldown.contains(player)) return
                 cooldown.add(player)
-                drawParticles(player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
                 var dmg = it.baseStats[StatTypes.STRENGTH]!!
                 if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
-                for (e in loc.getNearbyLivingEntities(it.damageRadius)) {
-                    if (e is Player) continue
-                    e.damage(dmg, player)
-                }
+                drawParticles(player, it.damageRadius, dmg, player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
                 object : BukkitRunnable() {
                     override fun run() {
                         cooldown.remove(player)
@@ -225,36 +221,38 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 
 
-    private fun drawParticles(aL: Location, bL: Location, r: Int, g: Int, b: Int) {
-        Thread(Runnable {
-            var i = 0
-            if (aL.world == null || bL.world == null || aL.world != bL.world) return@Runnable
-            val distance = aL.distance(bL)
-            val p1 = aL.toVector()
-            val p2 = bL.toVector()
-            val vector = p2.clone().subtract(p1).normalize().multiply(0.2)
-            var length = 0.0
-            while (length < distance) {
-                i++
-                val loc = p1.toLocation(aL.world)
-                aL.world.spawnParticle(
-                    Particle.REDSTONE,
-                    loc,
-                    0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    1.0,
-                    Particle.DustOptions(Color.fromRGB(r, g, b), 1.0F)
-                )
-                length += 0.2
-                try {
-                    if (i % 10 == 0) Thread.sleep(50)
-                } catch (ignored: InterruptedException) {
-                }
-                p1.add(vector)
+    private fun drawParticles(player: Player, radius: Double, dmg: Double, aL: Location, bL: Location, r: Int, g: Int, b: Int) {
+        var i = 0
+        if (aL.world == null || bL.world == null || aL.world != bL.world) return
+        val distance = aL.distance(bL)
+        val p1 = aL.toVector()
+        val p2 = bL.toVector()
+        val vector = p2.clone().subtract(p1).normalize().multiply(0.2)
+        var length = 0.0
+        while (length < distance) {
+            i++
+            val loc = p1.toLocation(aL.world)
+            aL.world.spawnParticle(
+                Particle.REDSTONE,
+                loc,
+                0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                Particle.DustOptions(Color.fromRGB(r, g, b), 1.0F)
+            )
+            length += 0.2
+            try {
+                if (i % 10 == 0) Thread.sleep(50)
+            } catch (ignored: InterruptedException) {
             }
-        }).start()
+            for (e in loc.getNearbyLivingEntities(radius)) {
+                if (e is Player) continue
+                e.damage(dmg, player)
+            }
+            p1.add(vector)
+        }
     }
 
     override fun run() {
