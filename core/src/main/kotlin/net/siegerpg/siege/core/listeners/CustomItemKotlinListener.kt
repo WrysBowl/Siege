@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomWand
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
+import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.*
 import org.bukkit.attribute.Attribute
@@ -89,7 +90,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 return
             }
 
-            if (levelReq > (e.damager as Player).level) {
+            if (levelReq > Levels.getExpLevel((e.damager as Player)).first) {
                 e.damager.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
                 return
@@ -214,7 +215,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                     override fun run() {
                         cooldown.remove(player)
                     }
-                }.runTaskLaterAsynchronously(Core.plugin(), 15)
+                }.runTaskLaterAsynchronously(Core.plugin(), 10)
             }
         }
     }
@@ -244,7 +245,7 @@ class CustomItemKotlinListener : Listener, Runnable {
             )
             length += 0.2
             try {
-                if (i % 10 == 0) Thread.sleep(50)
+                if (i % 10 == 0) Thread.sleep(100)
             } catch (ignored: InterruptedException) {
             }
             for (e in loc.getNearbyLivingEntities(radius)) {

@@ -52,8 +52,10 @@ public class WorldListener implements Listener {
     }
 
     @EventHandler
-    public void denyEggSpawning(EntitySpawnEvent e) {
+    public void denySpawning(EntitySpawnEvent e) {
         if (e.getEntity() instanceof Egg) {
+            e.setCancelled(true);
+        } else if (e.getEntity() instanceof ExperienceOrb) {
             e.setCancelled(true);
         }
     }

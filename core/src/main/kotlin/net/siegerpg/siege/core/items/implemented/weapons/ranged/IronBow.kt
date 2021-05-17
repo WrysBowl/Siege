@@ -16,7 +16,7 @@ class IronBow() : CustomBow(
     description = listOf("Heavy and durable"),
     levelRequirement = 34,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 28.0, luck = 15.0),
+    baseStats = CustomItemUtils.statMap(strength = 24.0, luck = 16.0),
     recipeList = recipes {
         recipe {
             shaped = true
