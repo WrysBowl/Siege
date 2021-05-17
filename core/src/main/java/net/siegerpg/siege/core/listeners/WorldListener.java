@@ -119,4 +119,7 @@ public class WorldListener implements Listener {
     public void preventExplosion(BlockExplodeEvent e) {
         e.setCancelled(true);
     }
+
+    @EventHandler
+    public void denySlimeSplit(SlimeSplitEvent e) { e.setCancelled(true); }
 }

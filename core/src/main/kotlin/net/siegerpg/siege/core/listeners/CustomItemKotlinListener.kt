@@ -190,7 +190,7 @@ class CustomItemKotlinListener : Listener, Runnable {
             if (it is CustomWand) {
                 val entity = player.getTargetEntity(it.range)
                 //MAKE THIS EFFICIENT
-                val loc = if (entity == null || entity.isDead) {
+                val loc = if (player.getTargetBlock(it.range) == null) {
                     val block = player.getTargetBlock(it.range) ?: return
                     block.location
                 } else {
@@ -206,7 +206,10 @@ class CustomItemKotlinListener : Listener, Runnable {
                     }*/
 
 
-                if (cooldown.contains(player)) return
+                if (cooldown.contains(player)) {
+                    player.sendActionBar(Utils.parse("<red>You are on cooldown"))
+                    return
+                }
                 cooldown.add(player)
                 var dmg = it.baseStats[StatTypes.STRENGTH]!!
                 if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
