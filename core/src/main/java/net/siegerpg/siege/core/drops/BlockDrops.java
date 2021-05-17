@@ -46,7 +46,7 @@ public enum BlockDrops {
 
     //NATURE
     BAMBOO(Material.BAMBOO, new Object[][]{
-            {new Sugar(100).getUpdatedItem(false), 5.0},
+            {new Sugar(100).getUpdatedItem(false), 1.0},
             {new Sugar(50).getUpdatedItem(false), 5.0},
             {new Sugar(0).getUpdatedItem(false), 20.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),

@@ -27,7 +27,7 @@ abstract class CustomFood(
     override val type: ItemTypes = ItemTypes.FOOD,
     override val recipeList: CustomRecipeList? = null,
     val health: Int = 0,
-    val potion: PotionEffect? = null
+    val potion: List<PotionEffect>? = null
 ) : CustomItem {
 
     override var rarity: Rarity = Rarity.COMMON
@@ -43,10 +43,12 @@ abstract class CustomFood(
         if (addedHealth <= e.player.maxHealth)
             e.player.health = addedHealth
         else e.player.health = e.player.maxHealth
-        if (potion != null) {
-            val realPotionDuration = (potion.duration * getRarityMultiplier(quality)).toInt()
-            val realPotion = PotionEffect(potion.type, realPotionDuration, potion.amplifier)
-            e.player.addPotionEffect(realPotion)
+        if (potion?.size!! > 0) {
+            potion.forEach {
+                val realPotionDuration = (it.duration * getRarityMultiplier(quality)).toInt()
+                val realPotion = PotionEffect(it.type, realPotionDuration, it.amplifier)
+                e.player.addPotionEffect(realPotion)
+            }
         }
     }
 
@@ -64,10 +66,12 @@ abstract class CustomFood(
         val realHealth = health * getRarityMultiplier(quality)
         if (realHealth > 0 || potion != null) meta.lore(" ")
         if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
-        if (potion != null) {
-            val realPotionDuration = ((potion.duration * getRarityMultiplier(quality))/20).toInt()
-            val realPotionAmplifier = potion.amplifier - 1
-            meta.lore("<r><yellow>+ ${potion.type.name} " + "<r><yellow>$realPotionAmplifier " + "<r><gold>0:$realPotionDuration")
+        if (potion?.size!! > 0) {
+            potion.forEach {
+                val realPotionDuration = ((it.duration * getRarityMultiplier(quality))/20).toInt()
+                val realPotionAmplifier = it.amplifier - 1
+                meta.lore("<r><yellow>+ ${it.type.name} " + "<r><yellow>$realPotionAmplifier " + "<r><gold>0:$realPotionDuration")
+            }
         }
         meta.lore(" ")
         description.forEach {

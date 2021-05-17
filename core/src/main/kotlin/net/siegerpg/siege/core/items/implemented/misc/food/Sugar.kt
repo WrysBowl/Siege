@@ -16,7 +16,7 @@ class Sugar() : CustomFood(
     material = Material.TROPICAL_FISH, //change this to cooked chicken later
     recipeList = recipes {
     },
-    potion = PotionEffect(PotionEffectType.SPEED, 200, 1)
+    potion = listOf(PotionEffect(PotionEffectType.SPEED, 200, 1))
 ) {
 
     constructor(quality: Int): this() {
