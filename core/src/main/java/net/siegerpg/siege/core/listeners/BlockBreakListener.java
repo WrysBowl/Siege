@@ -11,12 +11,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BlockBreakListener implements Listener {
 
@@ -28,8 +33,17 @@ public class BlockBreakListener implements Listener {
             return;
         }
 
-        Material block = e.getBlock().getType();
-        BlockDrops blockDrop = BlockDrops.matchCaseBlockDrops(block.toString());
+        Material blockType = e.getBlock().getType();
+        BlockDrops blockDrop = BlockDrops.matchCaseBlockDrops(blockType.toString());
+        ArrayList<Material> illegalItems = new ArrayList<>(){
+            {
+                add(Material.SUGAR_CANE);
+                add(Material.BAMBOO);
+            }
+        };
+        if (!illegalItems.contains(blockType)) {
+            blockType = Material.BEDROCK;
+        }
 
         e.setDropItems(false);
         e.setCancelled(true);
@@ -44,7 +58,7 @@ public class BlockBreakListener implements Listener {
             goldCoins.setAmount(goldCoins.getAmount() * 2);
         }
 
-        e.getBlock().setType(Material.BEDROCK);
+        e.getBlock().setType(blockType);
 
         if (blockDrop.getExp(true) > 0) {
             int exp = blockDrop.getExp(true);
@@ -68,7 +82,9 @@ public class BlockBreakListener implements Listener {
         }
 
         //Will need to create a method of adding the blocks to a config file to prevent block loss in server crashes
-        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> loc.getBlock().setBlockData(blockData), blockDrop.getRegenTime()); //Need to recheck to make sure regen time is properly made as a delay
+        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+            loc.getBlock().setBlockData(blockData);
+        }, blockDrop.getRegenTime()); //Need to recheck to make sure regen time is properly made as a delay
     }
 
 }

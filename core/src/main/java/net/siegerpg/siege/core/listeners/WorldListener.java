@@ -8,10 +8,7 @@ import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockExpEvent;
-import org.bukkit.event.block.BlockExplodeEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -122,4 +119,16 @@ public class WorldListener implements Listener {
 
     @EventHandler
     public void denySlimeSplit(SlimeSplitEvent e) { e.setCancelled(true); }
+
+    @EventHandler
+    public void denyLeavesDecay(LeavesDecayEvent e) { e.setCancelled(true); }
+
+    @EventHandler
+    public void denyBurn(BlockBurnEvent e) { e.setCancelled(true); }
+
+    @EventHandler
+    public void denyBlockExp(BlockExpEvent e) { e.setExpToDrop(0); }
+
+    @EventHandler
+    public void denyBlockFade(BlockFadeEvent e) { e.setCancelled(true); }
 }
