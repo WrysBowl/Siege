@@ -39,6 +39,8 @@ public class BlockBreakListener implements Listener {
             {
                 add(Material.SUGAR_CANE);
                 add(Material.BAMBOO);
+                add(Material.VINE);
+                add(Material.CHAIN);
             }
         };
         if (!illegalItems.contains(blockType)) {
