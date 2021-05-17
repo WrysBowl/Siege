@@ -6,12 +6,15 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
+import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.Material
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.potion.PotionEffect
+import org.bukkit.potion.PotionEffectType
 
 abstract class CustomFood(
     override val name: String,
@@ -23,7 +26,8 @@ abstract class CustomFood(
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.FOOD,
     override val recipeList: CustomRecipeList? = null,
-    val health: Int = 0
+    val health: Int = 0,
+    val potion: PotionEffect? = null
 ) : CustomItem {
 
     override var rarity: Rarity = Rarity.COMMON
@@ -39,6 +43,11 @@ abstract class CustomFood(
         if (addedHealth <= e.player.maxHealth)
             e.player.health = addedHealth
         else e.player.health = e.player.maxHealth
+        if (potion != null) {
+            val realPotionDuration = ((potion.duration * getRarityMultiplier(quality))/20).toInt()
+            val realPotion = PotionEffect(potion.type, realPotionDuration, potion.amplifier)
+            e.player.addPotionEffect(realPotion)
+        }
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
@@ -53,8 +62,12 @@ abstract class CustomFood(
 
         meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%")
         val realHealth = health * getRarityMultiplier(quality)
-        if (realHealth > 0) meta.lore(" ")
-        if (realHealth > 0) meta.lore("<r><red>+$realHealth Health")
+        if (realHealth > 0 || potion != null) meta.lore(" ")
+        if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
+        if (potion != null) {
+            val realPotionDuration = ((potion.duration * getRarityMultiplier(quality))/20).toInt()
+            meta.lore("<r><yellow>+ ${potion.type.name} " + "<r><yellow>${potion.amplifier} " + "<r><gold>0:$realPotionDuration")
+        }
         meta.lore(" ")
         description.forEach {
             meta.lore("<r><dark_gray>$it")

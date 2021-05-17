@@ -66,7 +66,7 @@ public class MobDrops {
             case "AngryBull":
                 rewards = new Object[][]{
                         {Leather.Companion.tier(1).getUpdatedItem(false), 100.0},
-                        {new Drumstick(0).getUpdatedItem(false), 100.0}};
+                        {new Drumstick(50).getUpdatedItem(false), 100.0}};
                 numGold = new Integer[]{15, 20};
                 numExp = new Integer[]{14, 18};
                 break;
@@ -136,7 +136,7 @@ public class MobDrops {
                         {new Dagger(Utils.randRarity()).getUpdatedItem(false), 1.0},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
                         {new WoodenSword(Utils.randRarity()).getUpdatedItem(false), 5.0},
-                        {new Drumstick(0).getUpdatedItem(false), 15.0}};
+                        {new Drumstick(0).getUpdatedItem(false), 35.0}};
                 numGold = new Integer[]{5, 7};
                 LivingEntity wildFox = (LivingEntity) mob.getEntity().getBukkitEntity();
                 Material foxItem = Objects.requireNonNull(wildFox.getEquipment()).getItemInMainHand().getType();
@@ -148,25 +148,25 @@ public class MobDrops {
             case "FeatheredMeat":
                 rewards = new Object[][]{
                         {Feather.Companion.tier(1).getUpdatedItem(false), 1.0},
-                        {new Drumstick(0).getUpdatedItem(false), 35.0}};
+                        {new Drumstick(0).getUpdatedItem(false), 100.0}};
                 numGold = new Integer[]{2, 4};
                 numExp = new Integer[]{3, 6};
                 break;
             case "Porky":
-                rewards = new Object[][]{{new Drumstick(0).getUpdatedItem(false), 100.0}};
+                rewards = new Object[][]{{new Drumstick(50).getUpdatedItem(false), 100.0}};
                 numGold = new Integer[]{5, 8};
                 numExp = new Integer[]{6, 9};
                 break;
             case "Wooly":
                 rewards = new Object[][]{
-                        {new Drumstick(0).getUpdatedItem(false), 30.0},
+                        {new Drumstick(50).getUpdatedItem(false), 60.0},
                         {Wool.Companion.tier(1).getUpdatedItem(false), 60.0}};
                 numGold = new Integer[]{8, 14};
                 numExp = new Integer[]{8, 12};
                 break;
             case "MooMoo":
                 rewards = new Object[][]{
-                        {new Drumstick(0).getUpdatedItem(false), 100.0},
+                        {new Drumstick(50).getUpdatedItem(false), 100.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 60.0}};
                 numGold = new Integer[]{12, 14};
                 numExp = new Integer[]{10, 15};

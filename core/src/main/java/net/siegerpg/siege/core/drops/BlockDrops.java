@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.drops;
 
+import net.siegerpg.siege.core.items.implemented.misc.food.Sugar;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.wands.LivingTwig;
 import net.siegerpg.siege.core.utils.Utils;
@@ -41,6 +42,16 @@ public enum BlockDrops {
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     COARSE_DIRT(Material.COARSE_DIRT, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 30.0}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+
+    //NATURE
+    BAMBOO(Material.BAMBOO, new Object[][]{
+            {new Sugar(0).getUpdatedItem(false), 40.0},
+            {new Sugar(50).getUpdatedItem(false), 5.0},
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    SUGAR_CANE(Material.SUGAR_CANE, new Object[][]{
+            {new Sugar(50).getUpdatedItem(false), 25.0},
+            {new Sugar(0).getUpdatedItem(false), 10.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //STONE TERRAIN
