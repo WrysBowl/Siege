@@ -13,7 +13,7 @@ class Trident() : CustomBow(
     description = listOf("Poesiden's fork"),
     levelRequirement = 34,
     material = Material.TRIDENT,
-    baseStats = CustomItemUtils.statMap(strength = 25.0, luck = 17.0),
+    baseStats = CustomItemUtils.statMap(strength = 27.0, luck = 23.0),
     recipeList = recipes {
     },
 ) {
