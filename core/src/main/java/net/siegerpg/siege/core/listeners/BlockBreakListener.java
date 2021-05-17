@@ -57,8 +57,14 @@ public class BlockBreakListener implements Listener {
 
         if (goldCoins.getAmount() > 0) { e.getBlock().getWorld().dropItemNaturally(loc, goldCoins); } //Give gold reward
 
-        for (ItemStack drop : blockDrop.getRewards(CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK))) { //Loop through all drops
-            e.getBlock().getWorld().dropItemNaturally(loc, drop);
+        //Loop through drops, check if player's inventory is full, add item to inventory
+        for (ItemStack drop : blockDrop.getRewards(CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK))) {
+            if (!(e.getPlayer().getInventory().firstEmpty() == -1)) {
+                e.getPlayer().getInventory().addItem(drop);
+            } else {
+                e.getBlock().getWorld().dropItemNaturally(loc, drop);
+            }
+
         }
 
         //Will need to create a method of adding the blocks to a config file to prevent block loss in server crashes

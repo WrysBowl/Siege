@@ -516,7 +516,7 @@ public class SymoneCollector implements Listener {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains("Symone") && e.getRightClicked() instanceof Villager) {
+        if (e.getRightClicked().getName().contains("Symone") && e.getRightClicked().getName().contains("6")) {
             e.getPlayer().openInventory(getMenu(e.getPlayer()));
         }
     }

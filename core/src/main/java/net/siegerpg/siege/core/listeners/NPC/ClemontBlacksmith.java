@@ -44,7 +44,7 @@ public class ClemontBlacksmith implements Listener {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains("Clemont") && e.getRightClicked() instanceof Villager) {
+        if (e.getRightClicked().getName().contains("Clemont") && e.getRightClicked().getName().contains("6")) {
             Inventory shop = getShopMenu(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }

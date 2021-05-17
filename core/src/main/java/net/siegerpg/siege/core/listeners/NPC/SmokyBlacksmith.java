@@ -113,7 +113,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains("Smoky") && e.getRightClicked() instanceof Villager) {
+        if (e.getRightClicked().getName().contains("Smoky") && e.getRightClicked().getName().contains("6")) {
             Inventory shop = getShopMenu(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }

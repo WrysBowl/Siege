@@ -189,8 +189,15 @@ public class MobDrops {
                         {new IronAxe(Utils.randRarity()).getUpdatedItem(false), 100.0},
                         {new Trident(Utils.randRarity()).getUpdatedItem(false), 100.0},
                 };
-                numGold = new Integer[]{3000, 3500};
-                numExp = new Integer[]{2000, 3000};
+                numGold = new Integer[]{500, 550};
+                numExp = new Integer[]{700, 800};
+                break;
+            case "Sea_Warrior":
+                rewards = new Object[][]{
+                    {new Trident(Utils.randRarity()).getUpdatedItem(false), 25.0}
+                };
+                numGold = new Integer[]{12, 15};
+                numExp = new Integer[]{13, 17};
                 break;
             case "Ogre":
                 rewards = new Object[][]{
@@ -198,8 +205,8 @@ public class MobDrops {
                         {new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 100.0},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
-                numGold = new Integer[]{1500, 2000};
-                numExp = new Integer[]{1500, 2000};
+                numGold = new Integer[]{650, 700};
+                numExp = new Integer[]{600, 700};
                 break;
             case "RockSpirit":
                 rewards = new Object[][]{
@@ -207,8 +214,8 @@ public class MobDrops {
                         {new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 50.0},
                         {new StoneAxe(Utils.randRarity()).getUpdatedItem(false), 15.0},
                         {Seed.Companion.tier(3).getUpdatedItem(false), 30.0}};
-                numGold = new Integer[]{350, 300};
-                numExp = new Integer[]{300, 200};
+                numGold = new Integer[]{180, 200};
+                numExp = new Integer[]{100, 150};
                 break;
             default:
                 mob_exists = false;

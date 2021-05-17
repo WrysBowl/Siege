@@ -23,7 +23,7 @@ public class MeraTransit implements Listener {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains("Mera") && e.getRightClicked() instanceof Villager) {
+        if (e.getRightClicked().getName().contains("Mera") && e.getRightClicked().getName().contains("6")) {
             Inventory shop = getGUIWorldTransit();
             e.getPlayer().openInventory(shop);
         }
