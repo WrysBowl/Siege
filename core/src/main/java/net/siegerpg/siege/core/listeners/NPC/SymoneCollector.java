@@ -430,6 +430,15 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x8")));
         }
     };
+    ArrayList<ItemStack> miscList = new ArrayList<>() {
+        {
+            add(Utils.addLore(new ItemStack(Material.ARROW, 64),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Pebble \u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A x2"),
+                    Utils.lore("<dark_aqua>Feather \u272A\u272A x2")));
+        }
+    };
     ArrayList<ItemStack> wandsList = new ArrayList<>(){
         {
             add(Utils.addLore(new LivingTwig(50).getUpdatedItem(true),
@@ -545,6 +554,10 @@ public class SymoneCollector implements Listener {
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneMobDrops").get(0).value(), e.getInventory())) {
             clickMobDrops(e);
             e.setCancelled(true);
+        } else if (e.getWhoClicked().getMetadata("SymoneMisc").size() > 0 &&
+                    Objects.equals(e.getWhoClicked().getMetadata("SymoneMisc").get(0).value(), e.getInventory())) {
+                clickMisc(e);
+                e.setCancelled(true);
         } else if (e.getWhoClicked().getMetadata("SymoneBlockDrops").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SymoneBlockDrops").get(0).value(), e.getInventory())) {
             clickBlockDrops(e);
@@ -576,6 +589,8 @@ public class SymoneCollector implements Listener {
             player.openInventory(getRanged(player));
         } else if (slot == 21) {
             player.openInventory(mobDropsList(player));
+        } else if (slot == 22) {
+            player.openInventory(miscList(player));
         } else if (slot == 23) {
             player.openInventory(blockDropsList(player));
         }
@@ -1810,6 +1825,48 @@ public class SymoneCollector implements Listener {
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
+    private void clickMisc(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        ArrayList<ItemStack> reqIngredients = new ArrayList<>();
+        ItemStack result = null;
+        switch (e.getSlot()) {
+            case 0: //Arrows
+
+                //Initialize Ingredients
+                ItemStack arrow1 = Pebble.Companion.tier(2).getUpdatedItem(false);
+                arrow1.setAmount(2);
+                ItemStack arrow2 = Stick.Companion.tier(2).getUpdatedItem(false);
+                arrow2.setAmount(2);
+                ItemStack arrow3 = Feather.Companion.tier(2).getUpdatedItem(false);
+                arrow3.setAmount(2);
+
+                //Add ingredients to required ingredients
+                reqIngredients.add(arrow1);
+                reqIngredients.add(arrow2);
+                reqIngredients.add(arrow3);
+                //Set result of recipe
+
+                result = new GlisteningTwig(Utils.randRarity()).getUpdatedItem(false);
+                break;
+            default:
+                return;
+        }
+        for (ItemStack item : reqIngredients) {
+            if (!player.getInventory().containsAtLeast(item, item.getAmount())) {
+                player.sendMessage(Utils.parse("<red>You do not have the required materials to craft this item."));
+                return;
+            }
+        }
+        for (ItemStack item : reqIngredients) {
+            player.getInventory().removeItem(item);
+        }
+        player.updateInventory();
+        if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            player.getInventory().addItem(result);
+            return;
+        }
+        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
+    }
 
 
 
@@ -1865,6 +1922,12 @@ public class SymoneCollector implements Listener {
         mobDropMeta.displayName(Utils.lore("<light_purple>Mob Drops"));
         mobDrop.setItemMeta(mobDropMeta);
 
+        //Creating misc
+        ItemStack misc = new ItemStack (Material.FEATHER);
+        ItemMeta miscMeta = misc.getItemMeta();
+        miscMeta.displayName(Utils.lore("<aqua>Miscellaneous"));
+        misc.setItemMeta(miscMeta);
+
         //Creating Block Drop
         ItemStack blockDrop = new ItemStack (Material.STONE);
         ItemMeta blockDropMeta = blockDrop.getItemMeta();
@@ -1878,6 +1941,7 @@ public class SymoneCollector implements Listener {
         gui.setItem(14, wand);
         gui.setItem(15, ranged);
         gui.setItem(21, mobDrop);
+        gui.setItem(22, misc);
         gui.setItem(23, blockDrop);
 
         player.setMetadata("SymoneMenu", new FixedMetadataValue(Core.plugin(), gui));
@@ -1931,6 +1995,14 @@ public class SymoneCollector implements Listener {
             gui.setItem(i, blockDropsList.get(i));
         }
         player.setMetadata("SymoneBlockDrops", new FixedMetadataValue(Core.plugin(), gui));
+        return gui;
+    }
+    private Inventory miscList(Player player) {
+        Inventory gui = Bukkit.createInventory(null, 9, "Miscellaneous");
+        for (int i = 0; i < miscList.size(); i++) {
+            gui.setItem(i, miscList.get(i));
+        }
+        player.setMetadata("SymoneMisc", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
     }
     private Inventory getWand(Player player) {
