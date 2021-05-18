@@ -3,6 +3,8 @@ package net.siegerpg.siege.core.listeners
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.types.misc.CustomWand
 import org.bukkit.*
+import org.bukkit.entity.Entity
+import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -20,6 +22,7 @@ class WandCast : BukkitRunnable {
     private var increment: Double = 0.0
     private var dmg: Double = 0.0
     private var counter: Double = 0.0
+    private var damageRadius: Double = 0.0
 
     constructor(plugin: JavaPlugin, customWand: CustomWand, player: Player, vector: Vector, playerLoc: Location, damage:Double, targetLoc: Location, length: Double) {
         this.plugin = plugin
@@ -30,6 +33,7 @@ class WandCast : BukkitRunnable {
         this.dmg = damage
         this.targetLoc = targetLoc
         this.increment = length
+        this.damageRadius = customWand.damageRadius
     }
 
     override fun run() {
@@ -40,24 +44,16 @@ class WandCast : BukkitRunnable {
         loc.add(x, y, z)
 
         drawParticle(loc, customWand!!.red, customWand!!.green, customWand!!.blue)
-
-        val x2 = sin(counter * 100) * 0.75
-        val y2 = 0.0
-        val z2 = cos(counter * 100) * 0.75
-        loc.add(x2, y2, z2)
-
-        drawParticle(loc, customWand!!.red, customWand!!.green, customWand!!.blue)
-
-        loc.world.playSound(loc, Sound.ENTITY_PLAYER_ATTACK_SWEEP, 1.0f, 1.0f)
-        for (e in loc.getNearbyLivingEntities(customWand!!.damageRadius)) {
-            if (e is Player) continue
-            e.damage(dmg, player)
-        }
+        loc.world.playSound(loc, Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.05f, 0.05f)
         if (loc.distance(targetLoc) < 1) {
             this.cancel()
         }
+        for (e in loc.getNearbyLivingEntities(damageRadius)) {
+            if (e is Player) continue
+            e.damage(dmg, player)
+        }
+
         loc.subtract(x, y, z)
-        loc.subtract(x2, y2, z2)
     }
 
     private fun drawParticle(loc: Location, r: Int, g: Int, b: Int) {

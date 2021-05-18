@@ -210,16 +210,15 @@ class CustomItemKotlinListener : Listener, Runnable {
                     override fun run() {
                         cooldownWand.remove(player)
                     }
-                }.runTaskLaterAsynchronously(plugin(), 10)
+                }.runTaskLaterAsynchronously(plugin(), 30)
 
 
                 var dmg = it.baseStats[StatTypes.STRENGTH]!!
                 if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
 
                 val loc = player.location.add(0.0, player.eyeHeight, 0.0) //player location
-                val distance = loc.distance(targetLoc)
                 val fromPlayerToTarget = targetLoc.toVector().subtract(loc.toVector())
-                WandCast(plugin(), it, player, fromPlayerToTarget, loc, dmg, targetLoc, 0.02).runTaskTimer(plugin(), 10, 0)
+                WandCast(plugin(), it, player, fromPlayerToTarget, loc, dmg, targetLoc, 0.06).runTaskTimer(plugin(), 1, 0)
             }
         }
     }
