@@ -147,10 +147,11 @@ class CustomItemKotlinListener : Listener, Runnable {
     @EventHandler
     @Suppress("unused")
     fun onConsume(e: PlayerItemConsumeEvent) {
-        Bukkit.getServer().scheduler.scheduleSyncDelayedTask(Core.plugin(), {
+        Bukkit.getServer().scheduler.scheduleSyncDelayedTask(plugin(), {
             CustomItemUtils.getCustomItem(e.item)?.let {
                 if (it is CustomFood) {
                     it.onEat(e)
+                    e.setItem(e.item)
                 }
             }
         }, 1)
