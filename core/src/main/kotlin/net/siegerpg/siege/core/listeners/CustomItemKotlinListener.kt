@@ -190,8 +190,6 @@ class CustomItemKotlinListener : Listener, Runnable {
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
 
-                player.sendActionBar((Utils.parse("<red>Wands still buggy :(")))
-
                 //MAKE THIS EFFICIENT
                 val targetLoc = if (player.getTargetBlock(it.range) == null) {
                     val block = player.getTargetBlock(it.range) ?: return

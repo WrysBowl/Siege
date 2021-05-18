@@ -67,7 +67,7 @@ abstract class CustomFood(
         if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
         potion?.forEach {
             val realPotionDuration = ((it.duration * getRarityMultiplier(quality))/20).toInt()
-            val realPotionAmplifier = it.amplifier
+            val realPotionAmplifier = it.amplifier + 1
             meta.lore("<r><yellow>+ ${it.type.name} " + "<r><yellow>$realPotionAmplifier " + "<r><gold>$realPotionDuration sec")
         }
         meta.lore(" ")

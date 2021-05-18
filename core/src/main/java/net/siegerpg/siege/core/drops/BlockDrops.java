@@ -46,9 +46,9 @@ public enum BlockDrops {
 
     //NATURE
     BAMBOO(Material.BAMBOO, new Object[][]{
-            {new Sugar(100).getUpdatedItem(false), 1.0},
-            {new Sugar(50).getUpdatedItem(false), 5.0},
-            {new Sugar(0).getUpdatedItem(false), 20.0}
+            {new Sugar(100).getUpdatedItem(false), 0.5},
+            {new Sugar(50).getUpdatedItem(false), 2.5},
+            {new Sugar(0).getUpdatedItem(false), 10.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     SUGAR_CANE(Material.SUGAR_CANE, new Object[][]{
             {new Sugar(0).getUpdatedItem(false), 1.0} //low drop rate because spammable
