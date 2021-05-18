@@ -125,7 +125,7 @@ public class MobDrops implements Listener {
                 break;
             case "Goblin":
                 rewards = new Object[][]{
-                        {new Shank(Utils.randRarity()).getUpdatedItem(false), 5.0},
+                        {new Twig(Utils.randRarity()).getUpdatedItem(false), 5.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 12.0}};
                 numGold = new Integer[]{2, 6};
                 LivingEntity wildGob = (LivingEntity) mob.getEntity().getBukkitEntity();

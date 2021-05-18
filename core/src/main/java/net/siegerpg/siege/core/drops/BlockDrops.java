@@ -14,11 +14,10 @@ public enum BlockDrops {
 
     //WOOD
     SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
-            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
-            {new LivingTwig(Utils.randRarity()).getUpdatedItem(false), 1.0}
+            {Stick.Companion.tier(1).getUpdatedItem(false), 60.0},
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     SPRUCE_WOOD(Material.SPRUCE_WOOD, new Object[][]{
-            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0}
+            {Stick.Companion.tier(1).getUpdatedItem(false), 60.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //DIRT TERRAIN
