@@ -48,6 +48,13 @@ public class BlockBreakListener implements Listener {
         e.setCancelled(true);
         if (blockDrop == null) {return;}
 
+        if (!illegalItems.contains(blockType)) {
+            blockType = Material.BEDROCK;
+        } else if (blockDrop.getRegenTime()>20) {
+            e.getBlock().setType(blockType);
+        }
+
+        BlockData blockData = e.getBlock().getBlockData();
         Location loc = e.getBlock().getLocation();
         ItemStack goldCoins = Utils.getGoldCoin();
         goldCoins.setAmount(blockDrop.getGold(true));
@@ -75,6 +82,12 @@ public class BlockBreakListener implements Listener {
                 e.getBlock().getWorld().dropItemNaturally(loc, drop);
             }
 
+        }
+        if (!blockType.equals(Material.BEDROCK)) return;
+        if (blockDrop.getRegenTime()>20) {
+            Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+                loc.getBlock().setBlockData(blockData);
+            }, blockDrop.getRegenTime());
         }
     }
 

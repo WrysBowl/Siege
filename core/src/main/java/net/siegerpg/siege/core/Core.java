@@ -3,6 +3,7 @@ package net.siegerpg.siege.core;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.commands.*;
+import net.siegerpg.siege.core.drops.MobDrops;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
@@ -110,6 +111,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
+        getServer().getPluginManager().registerEvents(new MobDrops(), this);
 
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);

@@ -91,5 +91,4 @@ abstract class CustomFood(
         if (this::class.qualifiedName != other!!::class.qualifiedName) return false
         return true
     }
-
 }

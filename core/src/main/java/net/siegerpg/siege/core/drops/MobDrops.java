@@ -1,7 +1,10 @@
 package net.siegerpg.siege.core.drops;
 
+import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import net.siegerpg.siege.core.items.implemented.misc.food.Beetroot;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.wands.GlowingTwig;
@@ -10,24 +13,46 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Fox;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Objects;
 
-public class MobDrops {
+public class MobDrops implements Listener {
 
     private Object[][] rewards;
     private Integer[] numGold;
     private Integer[] numExp;
     public boolean mob_exists = true;
 
+    @EventHandler
+    public void damageDrops(EntityDamageByEntityEvent e) {
+        if (e.getEntity() instanceof Player) {
+            ActiveMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getDamager());
+            if (mm != null) {
+                ItemStack reward = null;
+                double chance = 0.0;
+                if (mm.getType().getInternalName().equals("Goblin")) {
+                    reward = new GoldenCarrot(100).getUpdatedItem(false);
+                    chance = 5.0;
+                } else if (mm.getType().getInternalName().equals("WildFox")) {
+                    reward = new GoldenCarrot(50).getUpdatedItem(false);
+                    chance = 10.0;
+                }
+                if (reward != null) {
+                    if (Utils.randTest(chance)) {
+                        e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), reward);
+                    }
+                }
+            }
+        }
+    }
 
     public void setMobTable(ActiveMob mob) {
         String mobName = mob.getType().getInternalName();
@@ -100,8 +125,8 @@ public class MobDrops {
                 break;
             case "Goblin":
                 rewards = new Object[][]{
-                        {new Shank(Utils.randRarity()).getUpdatedItem(false), 8.0},
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                        {new Twig(Utils.randRarity()).getUpdatedItem(false), 5.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 12.0}};
                 numGold = new Integer[]{2, 6};
                 LivingEntity wildGob = (LivingEntity) mob.getEntity().getBukkitEntity();
                 Material gobItem = Objects.requireNonNull(wildGob.getEquipment()).getItemInMainHand().getType();
@@ -112,13 +137,17 @@ public class MobDrops {
                 break;
             case "InfectedDigger":
                 rewards = new Object[][]{
-                        {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 6.0},
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                        {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 12.0},
+                        {new Beetroot(0).getUpdatedItem(false), 40.0},
+                        {new Beetroot(50).getUpdatedItem(false), 10.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 15.0}};
                 numGold = new Integer[]{8, 12};
                 numExp = new Integer[]{10, 14};
                 break;
             case "ZombifiedDigger":
                 rewards = new Object[][]{
+                        {new Beetroot(0).getUpdatedItem(false), 20.0},
+                        {new Beetroot(50).getUpdatedItem(false), 5.0},
                         {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 15.0}};
                 numGold = new Integer[]{4, 9};
                 numExp = new Integer[]{8, 12};
@@ -141,7 +170,7 @@ public class MobDrops {
                 LivingEntity wildFox = (LivingEntity) mob.getEntity().getBukkitEntity();
                 Material foxItem = Objects.requireNonNull(wildFox.getEquipment()).getItemInMainHand().getType();
                 if (foxItem.equals(Material.SUNFLOWER)) {
-                    numGold = new Integer[]{50, 60};
+                    numGold = new Integer[]{49, 50};
                 }
                 numExp = new Integer[]{8, 10};
                 break;
