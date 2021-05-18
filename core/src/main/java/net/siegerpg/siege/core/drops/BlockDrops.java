@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.drops;
 
+import net.siegerpg.siege.core.items.implemented.misc.food.Apple;
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.wands.LivingTwig;
@@ -51,7 +52,27 @@ public enum BlockDrops {
             {new Sugar(0).getUpdatedItem(false), 20.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     SUGAR_CANE(Material.SUGAR_CANE, new Object[][]{
-            {new Sugar(0).getUpdatedItem(false), 1.0} //low drop rate because spammable
+            {new Sugar(0).getUpdatedItem(false), 1.0}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    DARK_OAK_LEAVES(Material.DARK_OAK_LEAVES, new Object[][]{
+            {new Apple(50).getUpdatedItem(false), 10.0},
+            {new Apple(0).getUpdatedItem(false), 40.0}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    BIRCH_LEAVES(Material.BIRCH_LEAVES, new Object[][]{
+            {new Apple(50).getUpdatedItem(false), 10.0},
+            {new Apple(0).getUpdatedItem(false), 40.0}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    JUNGLE_LEAVES(Material.JUNGLE_LEAVES, new Object[][]{
+            {new Apple(50).getUpdatedItem(false), 10.0},
+            {new Apple(0).getUpdatedItem(false), 40.0}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    OAK_LEAVES(Material.OAK_LEAVES, new Object[][]{
+            {new Apple(50).getUpdatedItem(false), 10.0},
+            {new Apple(0).getUpdatedItem(false), 40.0}
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    SPRUCE_LEAVES(Material.SPRUCE_LEAVES, new Object[][]{
+            {new Apple(50).getUpdatedItem(false), 10.0},
+            {new Apple(0).getUpdatedItem(false), 40.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //STONE TERRAIN
