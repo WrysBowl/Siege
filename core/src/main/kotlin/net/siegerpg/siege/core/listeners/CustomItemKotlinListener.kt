@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -21,6 +22,9 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
 import org.bukkit.scheduler.BukkitRunnable
+import org.bukkit.scheduler.BukkitTask
+import kotlin.math.cos
+import kotlin.math.sin
 
 
 class CustomItemKotlinListener : Listener, Runnable {
@@ -142,34 +146,14 @@ class CustomItemKotlinListener : Listener, Runnable {
 
     @EventHandler
     @Suppress("unused")
-    fun denyConsume(e: PlayerItemConsumeEvent) {
-        e.isCancelled = true
-    }
-
-    @EventHandler
-    @Suppress("unused")
-    fun onConsume(e: PlayerInteractEvent) {
-        if (e.action != Action.RIGHT_CLICK_AIR) return
-        CustomItemUtils.getCustomItem(e.item)?.let {
-            if (it is CustomFood) {
-                val player = e.player
-                if (cooldownFood.contains(player)) { return }
-                cooldownFood.add(player)
-
-                it.onEat(e)
-                val amount = e.item?.amount!! - 1
-                e.item!!.amount = amount
-
-                player.foodLevel = player.foodLevel + 5
-
-
-                object : BukkitRunnable() {
-                    override fun run() {
-                        cooldownFood.remove(player)
-                    }
-                }.runTaskLaterAsynchronously(plugin(), 30)
+    fun onConsume(e: PlayerItemConsumeEvent) {
+        Bukkit.getServer().scheduler.scheduleSyncDelayedTask(Core.plugin(), {
+            CustomItemUtils.getCustomItem(e.item)?.let {
+                if (it is CustomFood) {
+                    it.onEat(e)
+                }
             }
-        }
+        }, 1)
     }
 
 
@@ -206,74 +190,41 @@ class CustomItemKotlinListener : Listener, Runnable {
             if (it is CustomWand) {
 
                 player.sendActionBar((Utils.parse("<red>Wands still buggy :(")))
-                /*
-                val entity = player.getTargetEntity(it.range)
+
                 //MAKE THIS EFFICIENT
-                val loc = if (player.getTargetBlock(it.range) == null) {
+                val targetLoc = if (player.getTargetBlock(it.range) == null) {
                     val block = player.getTargetBlock(it.range) ?: return
                     block.location
                 } else {
                     val block = player.getTargetBlock(it.range) ?: return
                     block.location
                 }
-                /*
-                val loc = if (entity == null || entity.isDead) {
-                    val block = player.getTargetBlock(it.range) ?: return
-                    block.location
-                    } else {
-                        entity.location.add(0.0, entity.height, 0.0)
-                    }*/
 
 
-                if (cooldown.contains(player)) {
+                if (cooldownWand.contains(player)) {
                     player.sendActionBar(Utils.parse("<red>You are on cooldown"))
                     return
                 }
-                cooldown.add(player)
-                var dmg = it.baseStats[StatTypes.STRENGTH]!!
-                if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
-                drawParticles(player, it.damageRadius, dmg, player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
+                cooldownWand.add(player)
                 object : BukkitRunnable() {
                     override fun run() {
-                        cooldown.remove(player)
+                        cooldownWand.remove(player)
                     }
-                }.runTaskLaterAsynchronously(plugin(), 10)*/
+                }.runTaskLaterAsynchronously(plugin(), 10)
+
+
+                var dmg = it.baseStats[StatTypes.STRENGTH]!!
+                if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
+
+                val loc = player.location.add(0.0, player.eyeHeight, 0.0) //player location
+                val distance = loc.distance(targetLoc)
+                val fromPlayerToTarget = targetLoc.toVector().subtract(loc.toVector())
+                WandCast(plugin(), it, player, fromPlayerToTarget, loc, dmg, targetLoc, 0.02).runTaskTimer(plugin(), 10, 0)
             }
         }
     }
 
-
-
-    private fun drawParticles(player: Player, radius: Double, dmg: Double, aL: Location, bL: Location, r: Int, g: Int, b: Int) {
-        var i = 0
-        if (aL.world == null || bL.world == null || aL.world != bL.world) return
-        val distance = aL.distance(bL)
-        val p1 = aL.toVector()
-        val p2 = bL.toVector()
-        val vector = p2.clone().subtract(p1).normalize().multiply(0.2)
-        var length = 0.0
-        Bukkit.getServer().scheduler.scheduleSyncRepeatingTask(plugin(), {
-            i++
-            val loc = p1.toLocation(aL.world)
-            aL.world.spawnParticle(
-                Particle.REDSTONE,
-                loc,
-                0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                Particle.DustOptions(Color.fromRGB(r, g, b), 1.0F)
-            )
-            length += 0.2
-            for (e in loc.getNearbyLivingEntities(radius)) {
-                if (e is Player) continue
-                e.damage(dmg, player)
-            }
-            p1.add(vector)
-        }, 10, 0)
-    }
-
     override fun run() {
+        TODO("Not yet implemented")
     }
 }

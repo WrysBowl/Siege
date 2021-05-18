@@ -37,7 +37,7 @@ abstract class CustomFood(
         this.rarity = Rarity.getFromInt(this.quality)
     }
 
-    open fun onEat(e: PlayerInteractEvent) {
+    open fun onEat(e: PlayerItemConsumeEvent) {
         val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth + (e.player.level*2)
         val currentCustomHealth = CustomItemUtils.getCustomHealth(e.player)
         val addedHealth = (((health * getRarityMultiplier(quality)) + currentCustomHealth)/healthStat) * e.player.maxHealth
