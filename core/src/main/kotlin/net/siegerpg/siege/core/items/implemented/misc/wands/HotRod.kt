@@ -20,7 +20,7 @@ class HotRod() : CustomWand(
     recipeList = recipes {
 
     },
-    range = 16,
+    range = 19,
     red = 204,
     green = 51,
     blue = 0,

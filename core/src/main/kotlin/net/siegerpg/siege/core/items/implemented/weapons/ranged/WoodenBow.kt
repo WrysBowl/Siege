@@ -16,7 +16,7 @@ class WoodenBow() : CustomBow(
     description = listOf("Your standard issue ranged weapon"),
     levelRequirement = 6,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 8.0, luck = 3.0),
+    baseStats = CustomItemUtils.statMap(strength = 15.0, luck = 3.0),
     recipeList = recipes {
         recipe {
             shaped = true

@@ -52,7 +52,7 @@ class GlisteningTwig() : CustomWand(
             }
         }
     },
-    range = 15,
+    range = 18,
     red = 255,
     green = 255,
     blue = 153,

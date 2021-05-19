@@ -6,12 +6,16 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
+import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.Material
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.potion.PotionEffect
+import org.bukkit.potion.PotionEffectType
 
 abstract class CustomFood(
     override val name: String,
@@ -23,7 +27,8 @@ abstract class CustomFood(
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.FOOD,
     override val recipeList: CustomRecipeList? = null,
-    val health: Int = 0
+    val health: Int = 0,
+    val potion: List<PotionEffect>? = null
 ) : CustomItem {
 
     override var rarity: Rarity = Rarity.COMMON
@@ -33,14 +38,17 @@ abstract class CustomFood(
     }
 
     open fun onEat(e: PlayerItemConsumeEvent) {
-        e.player.inventory.itemInMainHand.amount = item.amount - 1
-        e.player.foodLevel = 20
-        val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth
+        val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth + (e.player.level*2)
         val currentCustomHealth = CustomItemUtils.getCustomHealth(e.player)
-        val addedHealth = ((this.health + currentCustomHealth)/healthStat) * e.player.maxHealth
+        val addedHealth = (((health * getRarityMultiplier(quality)) + currentCustomHealth)/healthStat) * e.player.maxHealth
         if (addedHealth <= e.player.maxHealth)
             e.player.health = addedHealth
         else e.player.health = e.player.maxHealth
+        potion?.forEach {
+            val realPotionDuration = (it.duration * getRarityMultiplier(quality)).toInt()
+            val realPotion = PotionEffect(it.type, realPotionDuration, it.amplifier)
+            e.player.addPotionEffect(realPotion)
+        }
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
@@ -55,8 +63,13 @@ abstract class CustomFood(
 
         meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%")
         val realHealth = health * getRarityMultiplier(quality)
-        if (realHealth > 0) meta.lore(" ")
-        if (realHealth > 0) meta.lore("<r><red>+$realHealth Health")
+        if (realHealth > 0 || potion != null) meta.lore(" ")
+        if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
+        potion?.forEach {
+            val realPotionDuration = ((it.duration * getRarityMultiplier(quality))/20).toInt()
+            val realPotionAmplifier = it.amplifier + 1
+            meta.lore("<r><yellow>+ ${it.type.name} " + "<r><yellow>$realPotionAmplifier " + "<r><gold>$realPotionDuration sec")
+        }
         meta.lore(" ")
         description.forEach {
             meta.lore("<r><dark_gray>$it")
@@ -78,5 +91,4 @@ abstract class CustomFood(
         if (this::class.qualifiedName != other!!::class.qualifiedName) return false
         return true
     }
-
 }

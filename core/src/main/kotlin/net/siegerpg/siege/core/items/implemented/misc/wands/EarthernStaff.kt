@@ -32,7 +32,7 @@ class EarthernStaff() : CustomWand(
             }
         }
     },
-    range = 14,
+    range = 17,
     red = 0,
     green = 204,
     blue = 0,

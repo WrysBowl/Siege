@@ -1,36 +1,44 @@
 package net.siegerpg.siege.core.listeners
 
-import com.comphenix.protocol.PacketType
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.Core.protocolManager
+import net.siegerpg.siege.core.Core.plugin
+import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomWand
+import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
+import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
+import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.*
 import org.bukkit.attribute.Attribute
+import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import org.bukkit.entity.Projectile
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityRegainHealthEvent
-import org.bukkit.event.entity.FoodLevelChangeEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
-import org.bukkit.inventory.ItemStack
+import org.bukkit.event.player.PlayerSwapHandItemsEvent
 import org.bukkit.scheduler.BukkitRunnable
-import java.lang.reflect.InvocationTargetException
+import org.bukkit.scheduler.BukkitTask
+import kotlin.math.cos
+import kotlin.math.sin
 
 
 class CustomItemKotlinListener : Listener, Runnable {
 
-    var cooldown: MutableList<Player> = mutableListOf()
+    var cooldownWand: MutableList<Player> = mutableListOf()
+    var cooldownFood: MutableList<Player> = mutableListOf()
 
     @EventHandler
     @Suppress("unused")
@@ -74,13 +82,40 @@ class CustomItemKotlinListener : Listener, Runnable {
 
     @EventHandler
     @Suppress("unused")
+    fun onWeaponSwap(e: PlayerSwapHandItemsEvent) {
+        CustomItemUtils.getCustomItem(e.offHandItem)?.let {
+            if (it is CustomWeapon) {
+                e.isCancelled = true
+            }
+        }
+    }
+
+
+    @EventHandler
+    @Suppress("unused")
     fun onHit(e: EntityDamageByEntityEvent) {
 
-        if (e.damager is Player) {
-            val item = CustomItemUtils.getCustomItem((e.damager as Player).inventory.itemInMainHand)
+        val victim = e.entity as LivingEntity
+        var attacker =
+            if (e.damager is Player) e.damager as Player
+            else e.damager
+        if (e.damager is Projectile) {
+            if ((e.damager as Projectile).shooter is Player) {
+                attacker = (e.damager as Projectile).shooter as Player
+            }
+        }
+
+        if (attacker is Player) {
+            val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
+
             if (item == null) {
                 e.damage = 1.0
                 return
+            } else if (item is CustomBow || item is CustomWand) {
+                if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
+                    e.damage = 1.0
+                    return
+                }
             }
 
             val levelReq = item.levelRequirement
@@ -89,17 +124,14 @@ class CustomItemKotlinListener : Listener, Runnable {
                 return
             }
 
-            if (levelReq > (e.damager as Player).level) {
+            if (levelReq > Levels.getExpLevel(attacker).first) {
                 e.damager.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
                 return
             }
         }
+        if (e.isCancelled) return
 
-        val victim = e.entity as LivingEntity
-        val attacker =
-            if (e.damager is Player) e.damager as Player
-            else e.damager
         val damage = e.damage
         val maxDamage =
             if (attacker is Player)
@@ -117,61 +149,33 @@ class CustomItemKotlinListener : Listener, Runnable {
             else damage
         val reducedDamage = attStrengthStat * (1 - (vicToughness/1000)) //custom attack damage with toughness considered
         e.damage = (reducedDamage * victim.maxHealth)/vicHealthStat //scaled down to damage player by vanilla damage
-
-        /*
-        if (e.damager is Player) {
-            val item = (e.damager as Player).inventory.itemInMainHand
-            val customItem: CustomItem? = CustomItemUtils.getCustomItem(item)
-
-            customItem?.let {
-                if (it is CustomMeleeWeapon) {
-                    it.onHit(e)
-                }
-            }
-        }
-        if (e.entity is Player) {
-            val armor = (e.entity as Player).inventory.armorContents
-            if (armor.isNullOrEmpty()) return
-            armor.forEach { item ->
-                val customItem: CustomItem? = CustomItemUtils.getCustomItem(item)
-                customItem?.let {
-                    if (it is CustomArmor) {
-                        it.onHit(e)
-                    }
-                }
-            }
-        }
-        */
     }
 
     @EventHandler
     @Suppress("unused")
     fun onConsume(e: PlayerItemConsumeEvent) {
-        CustomItemUtils.getCustomItem(e.item)?.let {
-            if (it is CustomFood) it.onEat(e)
-        }
-    }
-
-    /*
-    @EventHandler
-    @Suppress("unused")
-    fun onFoodHold(e: PlayerItemHeldEvent) {
-        Bukkit.getServer().scheduler.scheduleSyncDelayedTask(Core.plugin(), {
-            if (CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand) != null) {
-                val food = CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand)
-                if (food is CustomFood) {
-                    e.player.foodLevel = 19
+        Bukkit.getServer().scheduler.scheduleSyncDelayedTask(plugin(), {
+            CustomItemUtils.getCustomItem(e.item)?.let {
+                if (it is CustomFood) {
+                    it.onEat(e)
+                    e.setItem(e.item)
                 }
             }
         }, 1)
     }
 
+
     @EventHandler
     @Suppress("unused")
-    fun cancelFood(e: FoodLevelChangeEvent) {
-        e.isCancelled = true
-        e.foodLevel = 20
-    }*/
+    fun onFoodHold(e: PlayerItemHeldEvent) {
+        if (e.player.foodLevel != 20) return
+        val food = CustomItemUtils.getCustomItem(e.player.inventory.getItem(e.newSlot))
+        if (food != null) {
+            if (food is CustomFood) {
+                e.player.foodLevel = 19
+            }
+        }
+    }
 
     @EventHandler
     @Suppress("unused")
@@ -189,67 +193,43 @@ class CustomItemKotlinListener : Listener, Runnable {
         ) return
         val player = event.player
         val item = player.inventory.itemInMainHand
+
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
-                val entity = player.getTargetEntity(it.range)
-                val loc = if (entity == null || entity.isDead) {
+
+                //MAKE THIS EFFICIENT
+                val targetLoc = if (player.getTargetBlock(it.range) == null) {
                     val block = player.getTargetBlock(it.range) ?: return
                     block.location
                 } else {
-                    entity.location.add(0.0, entity.height, 0.0)
+                    val block = player.getTargetBlock(it.range) ?: return
+                    block.location
                 }
-                if (cooldown.contains(player)) return
-                cooldown.add(player)
-                drawParticles(player.location.add(0.0, player.eyeHeight, 0.0), loc, it.red, it.green, it.blue)
-                var dmg = it.baseStats[StatTypes.STRENGTH]!!
-                if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
-                for (e in loc.getNearbyLivingEntities(it.damageRadius)) {
-                    if (e is Player) continue
-                    e.damage(dmg, player)
+
+
+                if (cooldownWand.contains(player)) {
+                    player.sendActionBar(Utils.parse("<red>You are on cooldown"))
+                    return
                 }
+                cooldownWand.add(player)
                 object : BukkitRunnable() {
                     override fun run() {
-                        cooldown.remove(player)
+                        cooldownWand.remove(player)
                     }
-                }.runTaskLaterAsynchronously(Core.plugin(), 15)
+                }.runTaskLaterAsynchronously(plugin(), 30)
+
+
+                var dmg = it.baseStats[StatTypes.STRENGTH]!! + player.level
+                if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
+
+                val loc = player.location.add(0.0, player.eyeHeight, 0.0) //player location
+                val fromPlayerToTarget = targetLoc.toVector().subtract(loc.toVector())
+                WandCast(plugin(), it, player, fromPlayerToTarget, loc, dmg, targetLoc, 0.06).runTaskTimer(plugin(), 1, 0)
             }
         }
     }
 
-
-
-    private fun drawParticles(aL: Location, bL: Location, r: Int, g: Int, b: Int) {
-        Thread(Runnable {
-            var i = 0
-            if (aL.world == null || bL.world == null || aL.world != bL.world) return@Runnable
-            val distance = aL.distance(bL)
-            val p1 = aL.toVector()
-            val p2 = bL.toVector()
-            val vector = p2.clone().subtract(p1).normalize().multiply(0.2)
-            var length = 0.0
-            while (length < distance) {
-                i++
-                val loc = p1.toLocation(aL.world)
-                aL.world.spawnParticle(
-                    Particle.REDSTONE,
-                    loc,
-                    0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    1.0,
-                    Particle.DustOptions(Color.fromRGB(r, g, b), 1.0F)
-                )
-                length += 0.2
-                try {
-                    if (i % 10 == 0) Thread.sleep(50)
-                } catch (ignored: InterruptedException) {
-                }
-                p1.add(vector)
-            }
-        }).start()
-    }
-
     override fun run() {
+        TODO("Not yet implemented")
     }
 }

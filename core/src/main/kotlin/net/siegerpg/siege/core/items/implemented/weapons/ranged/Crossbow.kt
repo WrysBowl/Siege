@@ -12,8 +12,8 @@ class Crossbow() : CustomBow(
     customModelData = 0,
     description = listOf("The OG pistol"),
     levelRequirement = 26,
-    material = Material.BOW, //This needs to be changed to a crossbow
-    baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 11.0),
+    material = Material.CROSSBOW, //This needs to be changed to a crossbow
+    baseStats = CustomItemUtils.statMap(strength = 25.0, luck = 11.0),
     recipeList = recipes {
     },
 ) {

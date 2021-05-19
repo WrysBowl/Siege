@@ -1,21 +1,21 @@
-package net.siegerpg.siege.core.items.implemented.weapons.ranged
+package net.siegerpg.siege.core.items.implemented.misc.food
 
-import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
-import net.siegerpg.siege.core.items.types.weapons.CustomBow
+import net.siegerpg.siege.core.items.types.misc.CustomFood
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Trident() : CustomBow(
-    name = "Trident",
-    customModelData = 0,
-    description = listOf("Poesiden's fork"),
-    levelRequirement = 34,
-    material = Material.TRIDENT,
-    baseStats = CustomItemUtils.statMap(strength = 27.0, luck = 23.0),
+class Beef() : CustomFood(
+    name = "Beef",
+    customModelData = 1,
+    description = listOf("Tastes better than raw pork...   "),
+    levelRequirement = 0,
+    material = Material.BEEF,
     recipeList = recipes {
+
     },
+    health = 40
 ) {
 
     constructor(quality: Int): this() {

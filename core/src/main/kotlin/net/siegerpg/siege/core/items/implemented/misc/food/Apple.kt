@@ -8,16 +8,15 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class Drumstick() : CustomFood(
-    name = "Drumstick",
-    customModelData = 310008,
-    description = listOf("Siege fried chicken"),
+class Apple() : CustomFood(
+    name = "Apple",
+    customModelData = 310010,
+    description = listOf("Food to tame teachers"),
     levelRequirement = 0,
-    material = Material.COOKED_CHICKEN,
+    material = Material.APPLE, //change this to cooked chicken later
     recipeList = recipes {
-
     },
-    health = 20,
+    health = 10
 ) {
 
     constructor(quality: Int): this() {

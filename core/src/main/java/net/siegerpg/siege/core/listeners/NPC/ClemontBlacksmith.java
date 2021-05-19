@@ -44,7 +44,7 @@ public class ClemontBlacksmith implements Listener {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains("Clemont") && e.getRightClicked() instanceof Villager) {
+        if (e.getRightClicked().getName().contains("Clemont") && e.getRightClicked().getName().contains("6")) {
             Inventory shop = getShopMenu(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }
@@ -63,7 +63,7 @@ public class ClemontBlacksmith implements Listener {
     private void clickShop(InventoryClickEvent e) {
         int slot = e.getSlot();
         Player player = (Player) e.getWhoClicked();
-        if (slot > 10 && slot < 17 && e.getCurrentItem() != null) {
+        if (slot > 9 && slot < 17 && e.getCurrentItem() != null) {
             int cost = Utils.getCost(e.getCurrentItem());
             if (VaultHook.econ.getBalance(player) >= cost) {
                 if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {

@@ -52,7 +52,7 @@ class Torch() : CustomWand(
             }
         }
     },
-    range = 16,
+    range = 19,
     red = 255,
     green = 153,
     blue = 51,

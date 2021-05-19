@@ -23,7 +23,7 @@ public class MeraTransit implements Listener {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains("Mera") && e.getRightClicked() instanceof Villager) {
+        if (e.getRightClicked().getName().contains("Mera") && e.getRightClicked().getName().contains("6")) {
             Inventory shop = getGUIWorldTransit();
             e.getPlayer().openInventory(shop);
         }
@@ -36,29 +36,24 @@ public class MeraTransit implements Listener {
         }
         if (e.getView().getTitle().equals("World Transit")) {
             e.setCancelled(true);
-            Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), new Runnable() {
-                @Override
-                public void run() {
-                    short level = Levels.INSTANCE.getExpLevel((OfflinePlayer) e.getWhoClicked()).getFirst();
-                    Player player = (Player) e.getWhoClicked();
-                    World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
-                    World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
+            short level = Levels.INSTANCE.getExpLevel((OfflinePlayer) e.getWhoClicked()).getFirst();
+            Player player = (Player) e.getWhoClicked();
+            World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
+            World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
 
-                    if (e.getSlot() == 10 && level >= 1) {
-                        player.closeInventory();
-                        player.sendTitle("Teleporting to", Utils.tacc("&2Hilly Woods"), 10, 20, 10);
-                        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                            if (hillyWoods != null) {
-                                player.teleport(hillyWoods.getSpawnLocation());
-                            }
-                        }, 20L);
-                    } else if (e.getSlot() == 17 && level >= 25) {
-                        player.sendMessage(Utils.tacc("&cThis isn't open to anyone yet!"));
-                    } else if (level == 0) {
-                        player.sendMessage(Utils.tacc("&cError loading your profile"));
+            if (e.getSlot() == 10 && level >= 1) {
+                player.closeInventory();
+                player.sendTitle("Teleporting to", Utils.tacc("&2Hilly Woods"), 10, 20, 10);
+                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+                    if (hillyWoods != null) {
+                        player.teleport(hillyWoods.getSpawnLocation());
                     }
-                }
-            });
+                }, 20L);
+            } else if (e.getSlot() == 17 && level >= 25) {
+                player.sendMessage(Utils.tacc("&cThis isn't open to anyone yet!"));
+            } else if (level == 0) {
+                player.sendMessage(Utils.tacc("&cError loading your profile"));
+            }
 
         }
     }

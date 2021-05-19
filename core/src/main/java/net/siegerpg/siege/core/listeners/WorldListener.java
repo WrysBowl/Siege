@@ -5,13 +5,10 @@ import org.bukkit.Material;
 import org.bukkit.block.EnderChest;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Door;
-import org.bukkit.entity.Bee;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.ItemFrame;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -35,7 +32,7 @@ public class WorldListener implements Listener {
     @EventHandler
     public void openDeniedBlocks(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL) || e.getPlayer().getGameMode().equals(GameMode.ADVENTURE)) {
+            if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
                 BlockData block = Objects.requireNonNull(e.getClickedBlock()).getBlockData();
                 if (block instanceof Door) { return; }
                 else if (e.getClickedBlock().getType().equals(Material.ENDER_CHEST)) { return; }
@@ -52,17 +49,21 @@ public class WorldListener implements Listener {
     }
 
     @EventHandler
-    public void denyEggSpawning(EntitySpawnEvent e) {
-        if (e.getEntity().getType().equals(EntityType.EGG)) {
+    public void denySpawning(EntitySpawnEvent e) {
+        if (e.getEntity() instanceof Egg) {
+            e.setCancelled(true);
+        } else if (e.getEntity() instanceof ExperienceOrb) {
             e.setCancelled(true);
         }
     }
 
     @EventHandler
     public void preventLeftClick(PlayerInteractEvent e) {
-        if (e.getAction().equals(Action.LEFT_CLICK_AIR) || e.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
+        if (e.getAction().equals(Action.LEFT_CLICK_AIR) || e.getAction().equals(Action.LEFT_CLICK_BLOCK) ||
+                e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getClickedBlock() == null) { return; }
             if (e.getClickedBlock() instanceof ItemFrame) {
+                if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) { return; }
                 e.setCancelled(true);
             }
         }
@@ -70,8 +71,64 @@ public class WorldListener implements Listener {
 
     @EventHandler
     public void preventDamage(EntityDamageEvent e) {
+        if(e instanceof EntityDamageByEntityEvent) {
+            if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
+                Player player = (Player) ((EntityDamageByEntityEvent) e).getDamager();
+                if (player.getGameMode().equals(GameMode.CREATIVE)) { return; }
+            }
+        }
         if (e.getEntity() instanceof ItemFrame) {
             e.setCancelled(true);
         }
     }
+
+    @EventHandler
+    public void spawnProt(EntityDamageByEntityEvent e) {
+        if (e.getDamager() instanceof Player) {
+            Player player = (Player) e.getDamager();
+            if (player.getGameMode().equals(GameMode.CREATIVE)) {
+                return;
+            }
+        }
+        if (e.getEntity().getLocation().distance(e.getEntity().getWorld().getSpawnLocation()) < 3) {
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void preventTame(EntityTameEvent e) {
+        Player player = (Player) e.getOwner();
+        if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+            e.setCancelled(true);
+        }
+    }
+    @EventHandler
+    public void preventBreed(EntityBreedEvent e) {
+        Player player = (Player) e.getBreeder();
+        if (player != null) {
+            if (player.getGameMode().equals(GameMode.CREATIVE)) {
+                return;
+            }
+        }
+        e.setCancelled(true);
+    }
+    @EventHandler
+    public void preventExplosion(BlockExplodeEvent e) {
+        e.setCancelled(true);
+    }
+
+    @EventHandler
+    public void denySlimeSplit(SlimeSplitEvent e) { e.setCancelled(true); }
+
+    @EventHandler
+    public void denyLeavesDecay(LeavesDecayEvent e) { e.setCancelled(true); }
+
+    @EventHandler
+    public void denyBurn(BlockBurnEvent e) { e.setCancelled(true); }
+
+    @EventHandler
+    public void denyBlockExp(BlockExpEvent e) { e.setExpToDrop(0); }
+
+    @EventHandler
+    public void denyBlockFade(BlockFadeEvent e) { e.setCancelled(true); }
 }

@@ -16,7 +16,7 @@ class ScrapyardBow() : CustomBow(
     description = listOf("Instructions unclear . . .", "made an arrow flinger"),
     levelRequirement = 2,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 5.0),
+    baseStats = CustomItemUtils.statMap(strength = 10.0),
     recipeList = recipes {
         recipe {
             shaped = true

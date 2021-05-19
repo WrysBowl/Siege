@@ -16,8 +16,8 @@ public class Tablist {
                 "");
 
         Component footer = Utils.parse("\n" +
-                "<gold>Discord: <gray>/discord\n" +
-                "<gold>Website: <gray>/website\n" +
+                "<gold>Discord: <gray>/discords\n" +
+                //"<gold>Website: <gray>/website\n" +
                 "<gray>There are <gold><underlined>"+Bukkit.getOnlinePlayers().size()+"<reset><gray> players online!\n" +
                 "");
         String tabName = Utils.tacc(VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName());

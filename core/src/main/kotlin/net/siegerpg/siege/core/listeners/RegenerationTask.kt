@@ -13,7 +13,7 @@ class RegenerationTask : Runnable {
 
             for (player in Bukkit.getOnlinePlayers()) {
                 val regenStat = CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION) + 1.0
-                val healthStat = CustomItemUtils.getPlayerStat(player, StatTypes.HEALTH) + player.maxHealth
+                val healthStat = CustomItemUtils.getPlayerStat(player, StatTypes.HEALTH) + player.maxHealth + (player.level*2)
                 val currentCustomHealth = CustomItemUtils.getCustomHealth(player)
                 val addedHealth = ((regenStat + currentCustomHealth)/healthStat) * player.maxHealth
                 if (addedHealth <= player.maxHealth)

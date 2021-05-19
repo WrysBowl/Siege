@@ -69,9 +69,9 @@ public class Utils {
     @SuppressWarnings("unused")
     public static int randRarity() {
         //((random number between 1 and 100)*(1/random number between 1 and 5))
-        double rand1 = ((Math.random() * 100) + 1);
-        double rand2 = (((Math.random() * 100) + 1));
-        return (int) ((-1 * Math.sqrt(rand1*rand2)) + 101);
+        double rand1 = ((Math.random() * 70) + 1);
+        double rand2 = (((Math.random() * 70) + 1));
+        return (int) ((Math.sqrt(rand1*rand2)) + 29);
     }
 
     public static ItemStack setLoreCost(CustomItem item) {
@@ -115,72 +115,4 @@ public class Utils {
         item.lore(newLore);
         return item;
     }
-
-
-    @SuppressWarnings("unchecked")
-    public static void changeName(String name, Player player) {
-        try {
-            Method getHandle = player.getClass().getMethod("getHandle");
-            Object entityPlayer = getHandle.invoke(player);
-            /*
-             * These methods are no longer needed, as we can just access the
-             * profile using handle.getProfile. Also, because we can just use
-             * the method, which will not change, we don't have to do any
-             * field-name look-ups.
-             */
-            boolean gameProfileExists = false;
-            // Some 1.7 versions had the GameProfile class in a different package
-            try {
-                Class.forName("net.minecraft.util.com.mojang.authlib.GameProfile");
-                gameProfileExists = true;
-            } catch (ClassNotFoundException ignored) {
-
-            }
-            try {
-                Class.forName("com.mojang.authlib.GameProfile");
-                gameProfileExists = true;
-            } catch (ClassNotFoundException ignored) {
-
-            }
-            if (!gameProfileExists) {
-                /*
-                 * Only 1.6 and lower servers will run this code.
-                 *
-                 * In these versions, the name wasn't stored in a GameProfile object,
-                 * but as a String in the (final) name field of the EntityHuman class.
-                 * Final (non-static) fields can actually be modified by using
-                 * {@link java.lang.reflect.Field#setAccessible(boolean)}
-                 */
-                Field nameField = entityPlayer.getClass().getSuperclass().getDeclaredField("name");
-                nameField.setAccessible(true);
-                nameField.set(entityPlayer, name);
-            } else {
-                // Only 1.7+ servers will run this code
-                Object profile = entityPlayer.getClass().getMethod("getProfile").invoke(entityPlayer);
-                Field ff = profile.getClass().getDeclaredField("name");
-                ff.setAccessible(true);
-                ff.set(profile, name);
-            }
-            // In older versions, Bukkit.getOnlinePlayers() returned an Array instead of a Collection.
-            if (Bukkit.class.getMethod("getOnlinePlayers", new Class<?>[0]).getReturnType() == Collection.class) {
-                Collection<? extends Player> players = (Collection<? extends Player>) Bukkit.class.getMethod("getOnlinePlayers").invoke(null);
-                for (Player p : players) {
-                    p.hidePlayer(player);
-                    p.showPlayer(player);
-                }
-            } else {
-                Player[] players = ((Player[]) Bukkit.class.getMethod("getOnlinePlayers").invoke(null));
-                for (Player p : players) {
-                    p.hidePlayer(player);
-                    p.showPlayer(player);
-                }
-            }
-        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchFieldException e) {
-            /*
-             * Merged all the exceptions. Less lines
-             */
-            e.printStackTrace();
-        }
-    }
-
 }

@@ -19,7 +19,7 @@ class SlimeSpoofer() : CustomWand(
     baseStats = CustomItemUtils.statMap(strength = 12.0, luck = 8.0),
     recipeList = recipes {
     },
-    range = 12,
+    range = 15,
     red = 153,
     green = 255,
     blue = 51,
