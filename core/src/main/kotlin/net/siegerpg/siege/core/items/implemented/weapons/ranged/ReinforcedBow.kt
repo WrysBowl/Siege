@@ -20,11 +20,11 @@ class ReinforcedBow() : CustomBow(
     recipeList = recipes {
         recipe {
             shaped = true
-            s2(Stick.tier(4))
+            s2(Stick.tier(3))
             s3(Vine.tier(3))
-            s4(Stick.tier(4))
+            s4(Stick.tier(3))
             s6(Vine.tier(3))
-            s8(Stick.tier(4))
+            s8(Stick.tier(3))
             s9(Vine.tier(3))
             item { player, b ->
                 val newItem = ReinforcedBow(if (b) 50 else Utils.randRarity())

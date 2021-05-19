@@ -497,7 +497,7 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
             add(Utils.addLore(new ReinforcedBow(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
-                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A\u272A x3"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
                     Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
             add(Utils.addLore(new SewerShooter(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
@@ -1107,7 +1107,7 @@ public class SymoneCollector implements Listener {
                 //Add ingredients to required ingredients
                 reqIngredients.add(ing1);
                 //Set result of recipe
-                result = new Bone(Utils.randRarity()).getUpdatedItem(false);
+                result = new BoneBoots(Utils.randRarity()).getUpdatedItem(false);
                 break;
 
             case 33: //Chain Boots
@@ -1322,7 +1322,7 @@ public class SymoneCollector implements Listener {
             case 3: //Reinforced Bow
                 ItemStack reinforcedBow1 = Vine.Companion.tier(3).getUpdatedItem(false);
                 reinforcedBow1.setAmount(3);
-                ItemStack reinforcedBow2 = Stick.Companion.tier(4).getUpdatedItem(false);
+                ItemStack reinforcedBow2 = Stick.Companion.tier(3).getUpdatedItem(false);
                 reinforcedBow2.setAmount(3);
 
                 reqIngredients.add(reinforcedBow1);

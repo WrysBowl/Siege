@@ -35,24 +35,11 @@ public class BlockBreakListener implements Listener {
 
         Material blockType = e.getBlock().getType();
         BlockDrops blockDrop = BlockDrops.matchCaseBlockDrops(blockType.toString());
-        ArrayList<Material> illegalItems = new ArrayList<>(){
-            {
-                add(Material.SUGAR_CANE);
-                add(Material.BAMBOO);
-                add(Material.VINE);
-                add(Material.CHAIN);
-            }
-        };
 
         e.setDropItems(false);
         e.setCancelled(true);
         if (blockDrop == null) {return;}
 
-        if (!illegalItems.contains(blockType)) {
-            blockType = Material.BEDROCK;
-        } else if (blockDrop.getRegenTime()>20) {
-            e.getBlock().setType(blockType);
-        }
 
         BlockData blockData = e.getBlock().getBlockData();
         Location loc = e.getBlock().getLocation();
@@ -83,8 +70,8 @@ public class BlockBreakListener implements Listener {
             }
 
         }
-        if (!blockType.equals(Material.BEDROCK)) return;
         if (blockDrop.getRegenTime()>20) {
+            e.getBlock().setType(Material.BEDROCK);
             Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                 loc.getBlock().setBlockData(blockData);
             }, blockDrop.getRegenTime());

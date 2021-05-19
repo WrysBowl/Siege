@@ -90,8 +90,8 @@ public class MobDrops implements Listener {
                 break;
             case "AngryBull":
                 rewards = new Object[][]{
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 100.0},
-                        {new Beef(50).getUpdatedItem(false), 60.0}};
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 80.0},
+                        {new Beef(50).getUpdatedItem(false), 40.0}};
                 numGold = new Integer[]{15, 20};
                 numExp = new Integer[]{14, 18};
                 break;
@@ -99,8 +99,9 @@ public class MobDrops implements Listener {
                 rewards = new Object[][]{
                         {new Shank(Utils.randRarity()).getUpdatedItem(false), 5.0},
                         {new Dagger(Utils.randRarity()).getUpdatedItem(false), 2.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 10.0},
                         {MetalScrap.Companion.tier(1).getUpdatedItem(false), 1.0},
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 16.0},
                         {new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5}};
                 numGold = new Integer[]{28, 33};
                 numExp = new Integer[]{24, 27};
@@ -110,7 +111,7 @@ public class MobDrops implements Listener {
                         {new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5},
                         {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 16.0}};
                 numGold = new Integer[]{24, 27};
                 numExp = new Integer[]{28, 33};
                 break;
@@ -119,8 +120,8 @@ public class MobDrops implements Listener {
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 6.0},
                         {new GiantClub(Utils.randRarity()).getUpdatedItem(false), 0.5},
                         {new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.25},
-                        {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 30.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 15.0}};
                 numGold = new Integer[]{16, 20};
                 numExp = new Integer[]{12, 18};
                 break;
@@ -128,7 +129,7 @@ public class MobDrops implements Listener {
                 rewards = new Object[][]{
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 4.0},
                         {new Twig(Utils.randRarity()).getUpdatedItem(false), 5.0},
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 12.0}};
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
                 numGold = new Integer[]{2, 6};
                 LivingEntity wildGob = (LivingEntity) mob.getEntity().getBukkitEntity();
                 Material gobItem = Objects.requireNonNull(wildGob.getEquipment()).getItemInMainHand().getType();
@@ -139,7 +140,7 @@ public class MobDrops implements Listener {
                 break;
             case "InfectedDigger":
                 rewards = new Object[][]{
-                        {new Spade(Utils.randRarity()).getUpdatedItem(false), 8.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 80.0},
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 10.0},
                         {new Beetroot(0).getUpdatedItem(false), 40.0},
                         {new Beetroot(50).getUpdatedItem(false), 10.0},
@@ -152,7 +153,7 @@ public class MobDrops implements Listener {
                         {new Beetroot(0).getUpdatedItem(false), 20.0},
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 8.0},
                         {new Beetroot(50).getUpdatedItem(false), 5.0},
-                        {new GlowingTwig(Utils.randRarity()).getUpdatedItem(false), 15.0}};
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 40.0}};
                 numGold = new Integer[]{4, 9};
                 numExp = new Integer[]{8, 12};
                 break;
@@ -160,15 +161,13 @@ public class MobDrops implements Listener {
             case "GiantHornet":
                 rewards = new Object[][]{
                         {Magma.Companion.tier(1).getUpdatedItem(false), 30.0},
-                        {Seed.Companion.tier(1).getUpdatedItem(false), 80.0}};
+                        {Seed.Companion.tier(1).getUpdatedItem(false), 60.0}};
                 numGold = new Integer[]{8, 11};
                 numExp = new Integer[]{5, 9};
                 break;
             case "WildFox":
                 rewards = new Object[][]{
                         {new Dagger(Utils.randRarity()).getUpdatedItem(false), 1.0},
-                        {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
-                        {new WoodenSword(Utils.randRarity()).getUpdatedItem(false), 5.0},
                         {new Drumstick(0).getUpdatedItem(false), 35.0}};
                 numGold = new Integer[]{5, 7};
                 LivingEntity wildFox = (LivingEntity) mob.getEntity().getBukkitEntity();
@@ -186,7 +185,7 @@ public class MobDrops implements Listener {
                 numExp = new Integer[]{3, 6};
                 break;
             case "Porky":
-                rewards = new Object[][]{{new Porkchop(50).getUpdatedItem(false), 100.0}};
+                rewards = new Object[][]{{new Porkchop(50).getUpdatedItem(false), 60.0}};
                 numGold = new Integer[]{5, 8};
                 numExp = new Integer[]{6, 9};
                 break;
@@ -200,7 +199,7 @@ public class MobDrops implements Listener {
             case "MooMoo":
                 rewards = new Object[][]{
                         {new Beef(50).getUpdatedItem(false), 100.0},
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 60.0}};
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 80.0}};
                 numGold = new Integer[]{12, 14};
                 numExp = new Integer[]{10, 15};
                 break;

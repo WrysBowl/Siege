@@ -86,7 +86,7 @@ public class Dealer implements Listener {
             player.sendMessage(Utils.tacc("&cYour inventory is full!"));
             return; }
         player.updateInventory();
-        player.getInventory().addItem(item);
+        player.getInventory().addItem(Utils.removeLastLore(item));
         VaultHook.econ.withdrawPlayer(player, cost);
         Scoreboard.updateScoreboard(player);
         player.sendMessage(Utils.tacc("&eYou have purchased an item"));
