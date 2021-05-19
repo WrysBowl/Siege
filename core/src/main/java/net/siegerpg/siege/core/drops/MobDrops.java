@@ -102,8 +102,8 @@ public class MobDrops implements Listener {
                         {MetalScrap.Companion.tier(1).getUpdatedItem(false), 1.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0},
                         {new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5}};
-                numGold = new Integer[]{19, 24};
-                numExp = new Integer[]{21, 25};
+                numGold = new Integer[]{28, 33};
+                numExp = new Integer[]{24, 27};
                 break;
             case "BanditArcher":
                 rewards = new Object[][]{
@@ -111,8 +111,8 @@ public class MobDrops implements Listener {
                         {new RecurveBow(Utils.randRarity()).getUpdatedItem(false), 0.25},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 3.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
-                numGold = new Integer[]{19, 24};
-                numExp = new Integer[]{25, 30};
+                numGold = new Integer[]{24, 27};
+                numExp = new Integer[]{28, 33};
                 break;
             case "Orc":
                 rewards = new Object[][]{
