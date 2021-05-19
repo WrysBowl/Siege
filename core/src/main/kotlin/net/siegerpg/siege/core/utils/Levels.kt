@@ -4,11 +4,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import net.siegerpg.siege.core.database.DatabaseManager
-import net.siegerpg.siege.core.informants.Scoreboard
-import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import java.sql.ResultSet
+import java.util.*
 import kotlin.math.pow
 
 object Levels {
@@ -19,12 +18,44 @@ object Levels {
     fun getExpLevel(player: OfflinePlayer): Pair<Short, Int> {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
-            val stmt = connection.prepareStatement("SELECT level,experience FROM userData WHERE uuid=?", ResultSet.TYPE_SCROLL_SENSITIVE)
+            val stmt = connection.prepareStatement(
+                "SELECT level,experience FROM userData WHERE uuid=?",
+                ResultSet.TYPE_SCROLL_SENSITIVE
+            )
             stmt.setString(1, player.uniqueId.toString())
             val query = stmt.executeQuery();
-            if (!query.isBeforeFirst()) return Pair(0,0)
+            if (!query.isBeforeFirst) return Pair(0, 0)
             query.next()
             return Pair(query.getShort("level"), query.getInt("experience"))
+        }
+    }
+
+    /**
+     * Gets the exp and level of every player (sorted from highest level to lowest)
+     * @param limit: Instead of getting exp&level of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
+     */
+    fun getAllExpLevel(limit: Int): ArrayList<Triple<UUID, Short, Int>> {
+        val connection = DatabaseManager.getConnection()
+        val arrayList = arrayListOf<Triple<UUID, Short, Int>>()
+        val limitStr = if (limit <= 0) {
+            ""
+        } else {
+            "LIMIT $limit"
+        }
+        connection!!.use {
+            val stmt =
+                connection.prepareStatement("SELECT level,experience,uuid FROM userData ORDER BY level DESC $limitStr")
+            val query = stmt.executeQuery();
+            if (!query.isBeforeFirst) return arrayList
+            while (query.next()) {
+                val triple = Triple(
+                    UUID.fromString(query.getString("uuid")),
+                    query.getShort("level"),
+                    query.getInt("experience")
+                )
+                arrayList.add(triple)
+            }
+            return arrayList
         }
     }
 
@@ -37,7 +68,7 @@ object Levels {
                 stmt.setString(2, player.uniqueId.toString())
                 stmt.executeUpdate()
                 if (player.isOnline) {
-                        (player as Player).level = level.toInt()
+                    (player as Player).level = level.toInt()
                 }
             }
         }
@@ -72,7 +103,8 @@ object Levels {
                 player.sendTitle(
                     Utils.tacc("&5Level Up!"),
                     Utils.tacc("&c+1 ATK     +2 HP"),
-                1, 80, 1)
+                    1, 80, 1
+                )
             }
         }
         return Pair(lvl, exp)
