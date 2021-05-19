@@ -17,7 +17,7 @@ class Porkchop() : CustomFood(
     recipeList = recipes {
 
     },
-    health = 35,
+    health = 30,
 ) {
 
     constructor(quality: Int): this() {
