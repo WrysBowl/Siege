@@ -48,8 +48,8 @@ public class RichardBanker implements Listener {
         Player player = (Player) e.getWhoClicked();
         int slot = e.getSlot();
 
-        short bankLvl = Bank.INSTANCE.getBankLevel(player);
-        int bankAmt = Bank.INSTANCE.getBankAmount(player);
+        short bankLvl = PlayerBanking.bankLevels.get(player);
+        int bankAmt = PlayerBanking.bankAmounts.get(player);
         int upgradeCost = bankLvl*5000;
         short upgradedLvl = (short) (bankLvl+1);
         double pocketBal = VaultHook.econ.getBalance(player);
@@ -88,7 +88,7 @@ public class RichardBanker implements Listener {
             } else if (slot == 33) {
                 if (pocketBal >= 1000) {
                     VaultHook.econ.withdrawPlayer(player, 1000);
-                    bankAmt = bankAmt+10+0;
+                    bankAmt = bankAmt+100;
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
                 } else {
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
@@ -115,10 +115,10 @@ public class RichardBanker implements Listener {
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
             }
         }
-        player.openInventory(getMenu(player));
-        Scoreboard.updateScoreboard(player);
         PlayerBanking.bankAmounts.replace(player, bankAmt);
         PlayerBanking.bankLevels.replace(player, bankLvl);
+        player.openInventory(getMenu(player));
+        Scoreboard.updateScoreboard(player);
         Bank.INSTANCE.setBankAmount(player, bankAmt);
         Bank.INSTANCE.setBankLevel(player, bankLvl);
     }
