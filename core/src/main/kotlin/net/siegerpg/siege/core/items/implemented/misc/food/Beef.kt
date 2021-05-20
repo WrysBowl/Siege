@@ -5,6 +5,8 @@ import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
+import org.bukkit.potion.PotionEffect
+import org.bukkit.potion.PotionEffectType
 
 class Beef() : CustomFood(
     name = "Beef",
@@ -15,6 +17,9 @@ class Beef() : CustomFood(
     recipeList = recipes {
 
     },
+    potion = listOf(
+        PotionEffect(PotionEffectType.SATURATION, 200, 1)
+    ),
     health = 40
 ) {
 

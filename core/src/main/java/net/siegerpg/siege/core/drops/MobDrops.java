@@ -91,6 +91,7 @@ public class MobDrops implements Listener {
             case "AngryBull":
                 rewards = new Object[][]{
                         {Leather.Companion.tier(1).getUpdatedItem(false), 80.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
                         {new Beef(50).getUpdatedItem(false), 40.0}};
                 numGold = new Integer[]{15, 20};
                 numExp = new Integer[]{14, 18};
@@ -129,6 +130,7 @@ public class MobDrops implements Listener {
                 rewards = new Object[][]{
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 4.0},
                         {new Twig(Utils.randRarity()).getUpdatedItem(false), 5.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 8.0}};
                 numGold = new Integer[]{2, 6};
                 LivingEntity wildGob = (LivingEntity) mob.getEntity().getBukkitEntity();
@@ -144,6 +146,7 @@ public class MobDrops implements Listener {
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 10.0},
                         {new Beetroot(0).getUpdatedItem(false), 40.0},
                         {new Beetroot(50).getUpdatedItem(false), 10.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 15.0}};
                 numGold = new Integer[]{8, 12};
                 numExp = new Integer[]{10, 14};
@@ -168,6 +171,7 @@ public class MobDrops implements Listener {
             case "WildFox":
                 rewards = new Object[][]{
                         {new Dagger(Utils.randRarity()).getUpdatedItem(false), 1.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
                         {new Drumstick(0).getUpdatedItem(false), 35.0}};
                 numGold = new Integer[]{5, 7};
                 LivingEntity wildFox = (LivingEntity) mob.getEntity().getBukkitEntity();
@@ -199,6 +203,7 @@ public class MobDrops implements Listener {
             case "MooMoo":
                 rewards = new Object[][]{
                         {new Beef(50).getUpdatedItem(false), 100.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 2.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 80.0}};
                 numGold = new Integer[]{12, 14};
                 numExp = new Integer[]{10, 15};

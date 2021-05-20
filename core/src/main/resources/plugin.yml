@@ -22,3 +22,6 @@ commands:
     description: Teleports players to the world's spawn
   invsee:
     description: Opens the inventory of the target player to the command sender
+  leaderboard:
+    description: Sends player list of sorted top level players
+    aliases: [ ltop, lblevel, leveltop, lvltop, lblvl ]

@@ -11,6 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
 
@@ -131,4 +133,13 @@ public class WorldListener implements Listener {
 
     @EventHandler
     public void denyBlockFade(BlockFadeEvent e) { e.setCancelled(true); }
+
+    @EventHandler
+    public void removeSoupBowl(PlayerItemConsumeEvent e) {
+        if (e.getItem().getType().equals(Material.SUSPICIOUS_STEW) ||
+                e.getItem().getType().equals(Material.MUSHROOM_STEW) ||
+                e.getItem().getType().equals(Material.RABBIT_STEW)) {
+            e.setItem(new ItemStack(Material.AIR));
+        }
+    }
 }

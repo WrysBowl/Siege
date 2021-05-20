@@ -50,6 +50,7 @@ public final class Core extends JavaPlugin {
         this.getCommand("getItem").setExecutor(new GetItem());
         this.getCommand("spawn").setExecutor(new Spawn());
         this.getCommand("invsee").setExecutor(new Invsee());
+        this.getCommand("leaderboard").setExecutor(new Leaderboard());
 
         for (Player player : Bukkit.getOnlinePlayers()){
             PlayerBanking.bankLevels.put(player, Bank.INSTANCE.getBankLevel(player));
