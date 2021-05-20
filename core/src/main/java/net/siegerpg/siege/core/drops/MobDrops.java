@@ -58,7 +58,7 @@ public class MobDrops implements Listener {
             case "RockRat":
                 rewards = new Object[][]{
                         {Pebble.Companion.tier(1).getUpdatedItem(false), 10.0},
-                        {new RockWand(Utils.randRarity()).getUpdatedItem(false), 0.5}};
+                        {new RockWand(Utils.randRarity()).getUpdatedItem(false), 0.25}};
                 numGold = new Integer[]{2, 6};
                 numExp = new Integer[]{2, 4};
                 break;

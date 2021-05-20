@@ -123,15 +123,15 @@ class CustomItemKotlinListener : Listener, Runnable {
                 maxDamage = 6.0
                 actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) + attacker.level
             } else if (item is CustomWand) {
-                maxDamage = e.damage
+                maxDamage = damage
             }
             //If the item is an axe/sword and the damage cause is melee attack then set correct damage
             if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK){
                 actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) + attacker.level
             }
             if (damage > 1 && maxDamage < 2) {
-                maxDamage = e.damage
-                actualDamage = e.damage
+                maxDamage = damage
+                actualDamage = damage
             }
 
         }
@@ -143,7 +143,7 @@ class CustomItemKotlinListener : Listener, Runnable {
             if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
             else 0.0
         val attStrengthStat =
-            if (attacker is Player && CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) != 0.0)
+            if (attacker is Player && actualDamage > 0)
                 (damage/maxDamage) * actualDamage //if player spam clicks it won't deal max damage
             else damage
         val reducedDamage = attStrengthStat * (1 - (vicToughness/1000)) //custom attack damage with toughness considered
