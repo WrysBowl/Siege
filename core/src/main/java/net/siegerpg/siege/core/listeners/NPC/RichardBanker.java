@@ -88,7 +88,7 @@ public class RichardBanker implements Listener {
             } else if (slot == 33) {
                 if (pocketBal >= 1000) {
                     VaultHook.econ.withdrawPlayer(player, 1000);
-                    bankAmt = bankAmt+100;
+                    bankAmt = bankAmt+1000;
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
                 } else {
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
