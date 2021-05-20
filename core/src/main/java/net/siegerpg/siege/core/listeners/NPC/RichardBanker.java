@@ -125,7 +125,7 @@ public class RichardBanker implements Listener {
 
 
     private Inventory getMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 45, "Ben the Butcher");
+        Inventory gui = Bukkit.createInventory(null, 45, "Richard the Banker");
 
         //Fill in the GUI
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
