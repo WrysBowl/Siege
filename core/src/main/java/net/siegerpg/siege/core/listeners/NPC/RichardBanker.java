@@ -51,6 +51,7 @@ public class RichardBanker implements Listener {
         short bankLvl = PlayerBanking.bankLevels.get(player);
         int bankAmt = PlayerBanking.bankAmounts.get(player);
         int upgradeCost = bankLvl*5000;
+        int maxAmt = bankLvl*5000;
         short upgradedLvl = (short) (bankLvl+1);
         double pocketBal = VaultHook.econ.getBalance(player);
 
@@ -78,7 +79,7 @@ public class RichardBanker implements Listener {
             }
         } else if (slot > 31 && slot < 35) { //if slots are depositing to the bank
             if (slot == 32) {
-                if (pocketBal >= 100) {
+                if (pocketBal >= 100 && bankAmt+100 <= maxAmt) {
                     VaultHook.econ.withdrawPlayer(player, 100);
                     bankAmt = bankAmt+100;
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
@@ -86,7 +87,7 @@ public class RichardBanker implements Listener {
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
                 }
             } else if (slot == 33) {
-                if (pocketBal >= 1000) {
+                if (pocketBal >= 1000 && bankAmt+1000 <= maxAmt) {
                     VaultHook.econ.withdrawPlayer(player, 1000);
                     bankAmt = bankAmt+1000;
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
@@ -94,9 +95,11 @@ public class RichardBanker implements Listener {
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
                 }
             } else {
-                VaultHook.econ.withdrawPlayer(player, pocketBal);
-                PlayerBanking.bankAmounts.replace(player, bankAmt + (int) pocketBal);
-                bankAmt = bankAmt + (int) pocketBal;
+                int diff = (maxAmt-bankAmt);
+                if (pocketBal < diff) { diff = (int) pocketBal; }
+                VaultHook.econ.withdrawPlayer(player, diff);
+                PlayerBanking.bankAmounts.replace(player, bankAmt + diff);
+                bankAmt = bankAmt + diff;
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
             }
         } else if (slot == 31) { //if slot is upgrading
@@ -138,6 +141,7 @@ public class RichardBanker implements Listener {
         int upgradeCost = bankLvl*5000;
         short upgradedLvl = (short) (bankLvl+1);
         double pocketBal = VaultHook.econ.getBalance(player);
+    int maxAmt = bankLvl*5000;
 
         ItemStack bankAcc = new ItemStack(Material.GOLD_INGOT);
         ItemMeta bankAccMeta = bankAcc.getItemMeta();
@@ -220,13 +224,14 @@ public class RichardBanker implements Listener {
         });
         add1000.setItemMeta(add1000Meta);
 
+        int diff = maxAmt-bankAmt;
         ItemStack addAll = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
         ItemMeta addAllMeta = addAll.getItemMeta();
         addAllMeta.displayName(Utils.lore("<green><bold>Deposit"));
         addAllMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<green>+" + String.format("%,d", (int) pocketBal) + " <gray>Bank"));
-                add(Utils.lore("<red>-" + String.format("%,d", (int) pocketBal) + " <gray>Pocket"));
+                add(Utils.lore("<green>+" + String.format("%,d", diff) + " <gray>Bank"));
+                add(Utils.lore("<red>-" + String.format("%,d", diff) + " <gray>Pocket"));
             }
         });
         addAll.setItemMeta(addAllMeta);

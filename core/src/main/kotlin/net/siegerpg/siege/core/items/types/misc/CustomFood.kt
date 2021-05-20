@@ -62,7 +62,7 @@ abstract class CustomFood(
         if (meta.hasLore()) meta.lore(mutableListOf())
 
         meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%")
-        val realHealth = health * getRarityMultiplier(quality)
+        val realHealth = (health * getRarityMultiplier(quality)).toInt()
         if (realHealth > 0 || potion != null) meta.lore(" ")
         if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
         potion?.forEach {

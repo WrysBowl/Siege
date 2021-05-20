@@ -44,7 +44,7 @@ public class MobDrops implements Listener {
                     chance = 10.0;
                 }
                 if (reward != null) {
-                    if (Utils.randTest(chance)) {
+                    if (Utils.randTest(chance) && e.isCancelled()) {
                         e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), reward);
                     }
                 }
@@ -117,11 +117,11 @@ public class MobDrops implements Listener {
                 break;
             case "Orc":
                 rewards = new Object[][]{
-                        {new SusStew(Utils.randRarity()).getUpdatedItem(false), 6.0},
-                        {new GiantClub(Utils.randRarity()).getUpdatedItem(false), 0.5},
-                        {new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.25},
-                        {Bone.Companion.tier(1).getUpdatedItem(false), 30.0},
-                        {Leather.Companion.tier(1).getUpdatedItem(false), 15.0}};
+                        {new SusStew(Utils.randRarity()).getUpdatedItem(false), 35.0},
+                        {new GiantClub(Utils.randRarity()).getUpdatedItem(false), 7.0},
+                        {new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 2.0},
+                        {Bone.Companion.tier(1).getUpdatedItem(false), 40.0},
+                        {Leather.Companion.tier(1).getUpdatedItem(false), 25.0}};
                 numGold = new Integer[]{16, 20};
                 numExp = new Integer[]{12, 18};
                 break;
