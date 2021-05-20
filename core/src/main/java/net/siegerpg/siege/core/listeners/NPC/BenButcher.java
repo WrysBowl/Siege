@@ -75,7 +75,7 @@ public class BenButcher implements Listener {
 
     private void clickShop(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
-        ItemStack item = foodItems.get(e.getSlot());
+        ItemStack item = Utils.removeLastLore(foodItems.get(e.getSlot()));
         if (e.getCurrentItem() == null) {return;}
         int cost = Utils.getCost(e.getCurrentItem());
         if (VaultHook.econ.getBalance(player) < cost) {

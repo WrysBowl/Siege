@@ -75,6 +75,7 @@ public class DeathListener implements Listener, Runnable {
             Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
                 double bal = Math.round(VaultHook.econ.getBalance(player));
                 int newBal = (int) Math.round(bal * 0.95);
+                if (newBal < 0) newBal = 0;
                 VaultHook.econ.withdrawPlayer(player, bal);
                 VaultHook.econ.depositPlayer(player, newBal);
                 player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&7" + (bal - newBal) + " has been lost"), 1, 60, 1);

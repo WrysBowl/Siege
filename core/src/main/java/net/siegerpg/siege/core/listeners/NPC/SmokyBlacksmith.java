@@ -60,7 +60,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
                 }
                 usedWeapons.add(wepIndex); //We have found a number that isn't contained in the list! Now we add it to the list
                 while (usedArmor.contains(armIndex)) {
-                    armIndex = (int) (Math.random() * 19);
+                    armIndex = (int) (Math.random() * 15);
                 }
                 usedArmor.add(armIndex);
 

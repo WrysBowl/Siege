@@ -226,7 +226,7 @@ public class MobDrops implements Listener {
                 break;
             case "Sea_Warrior":
                 rewards = new Object[][]{
-                    {new Trident(Utils.randRarity()).getUpdatedItem(false), 25.0}
+                    {new Trident(Utils.randRarity()).getUpdatedItem(false), 5.0}
                 };
                 numGold = new Integer[]{12, 15};
                 numExp = new Integer[]{13, 17};

@@ -76,7 +76,7 @@ public class Dealer implements Listener {
 
     private void clickShop(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
-        ItemStack item = toolItems.get(e.getSlot());
+        ItemStack item = Utils.removeLastLore(toolItems.get(e.getSlot()));
         if (e.getCurrentItem() == null) {return;}
         int cost = Utils.getCost(e.getCurrentItem());
         if (VaultHook.econ.getBalance(player) < cost) {
@@ -86,7 +86,7 @@ public class Dealer implements Listener {
             player.sendMessage(Utils.tacc("&cYour inventory is full!"));
             return; }
         player.updateInventory();
-        player.getInventory().addItem(Utils.removeLastLore(item));
+        player.getInventory().addItem(item);
         VaultHook.econ.withdrawPlayer(player, cost);
         Scoreboard.updateScoreboard(player);
         player.sendMessage(Utils.tacc("&eYou have purchased an item"));

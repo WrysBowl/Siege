@@ -141,7 +141,11 @@ public class RichardBanker implements Listener {
         int upgradeCost = bankLvl*5000;
         short upgradedLvl = (short) (bankLvl+1);
         double pocketBal = VaultHook.econ.getBalance(player);
-    int maxAmt = bankLvl*5000;
+        int maxAmt = bankLvl*5000;
+        int diff = (maxAmt-bankAmt);
+        if (pocketBal < diff) {
+            diff = (int) pocketBal;
+        }
 
         ItemStack bankAcc = new ItemStack(Material.GOLD_INGOT);
         ItemMeta bankAccMeta = bankAcc.getItemMeta();
@@ -224,14 +228,14 @@ public class RichardBanker implements Listener {
         });
         add1000.setItemMeta(add1000Meta);
 
-        int diff = maxAmt-bankAmt;
         ItemStack addAll = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
         ItemMeta addAllMeta = addAll.getItemMeta();
         addAllMeta.displayName(Utils.lore("<green><bold>Deposit"));
+        int finalDiff = diff;
         addAllMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<green>+" + String.format("%,d", diff) + " <gray>Bank"));
-                add(Utils.lore("<red>-" + String.format("%,d", diff) + " <gray>Pocket"));
+                add(Utils.lore("<green>+" + String.format("%,d", finalDiff) + " <gray>Bank"));
+                add(Utils.lore("<red>-" + String.format("%,d", finalDiff) + " <gray>Pocket"));
             }
         });
         addAll.setItemMeta(addAllMeta);
