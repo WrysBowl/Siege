@@ -11,11 +11,13 @@ import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
 import net.siegerpg.siege.core.portals.PortalConfig;
+import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.utils.PlayerBanking;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
@@ -48,6 +50,11 @@ public final class Core extends JavaPlugin {
         this.getCommand("getItem").setExecutor(new GetItem());
         this.getCommand("spawn").setExecutor(new Spawn());
         this.getCommand("invsee").setExecutor(new Invsee());
+
+        for (Player player : Bukkit.getOnlinePlayers()){
+            PlayerBanking.bankLevels.put(player, Bank.INSTANCE.getBankLevel(player));
+            PlayerBanking.bankAmounts.put(player, Bank.INSTANCE.getBankAmount(player));
+        }
 
         //partyManager = new PartyManager();
 
