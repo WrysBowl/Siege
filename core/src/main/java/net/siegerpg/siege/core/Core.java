@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
 import net.siegerpg.siege.core.portals.PortalConfig;
+import net.siegerpg.siege.core.utils.PlayerBanking;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -109,6 +110,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
         getServer().getPluginManager().registerEvents(new MobDrops(), this);
+        getServer().getPluginManager().registerEvents(new PlayerBanking(), this);
 
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);
@@ -116,6 +118,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SymoneCollector(), this);
         getServer().getPluginManager().registerEvents(new Dealer(), this);
         getServer().getPluginManager().registerEvents(new BenButcher(), this);
+        getServer().getPluginManager().registerEvents(new RichardBanker(), this);
         getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
         getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
         SmokyBlacksmith.resetItems();

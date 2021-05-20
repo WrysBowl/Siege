@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
+import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
@@ -45,6 +46,7 @@ public class PlayerJoinListener implements Listener {
                         statement.setString(2, ip);
                         statement.executeUpdate();
                     }
+
                     // Add the user to the db if he doesn't exist
                     PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
                     userData.setString(1, e.getUniqueId().toString());
