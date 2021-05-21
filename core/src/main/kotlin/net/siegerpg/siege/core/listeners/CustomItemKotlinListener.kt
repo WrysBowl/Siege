@@ -129,7 +129,7 @@ class CustomItemKotlinListener : Listener, Runnable {
             if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK){
                 actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH) + attacker.level
             }
-            if (damage > 1 && maxDamage < 2) {
+            if (damage > 1.5 && maxDamage <= 1) {
                 maxDamage = damage
                 actualDamage = damage
             }

@@ -115,4 +115,21 @@ public class Utils {
         item.lore(newLore);
         return item;
     }
+
+    public static ItemStack setCost(ItemStack item, Integer cost) {
+
+        List<String> lore;
+        if (item.getLore() == null) {
+            lore = new ArrayList<>(1);
+        } else {
+            lore = new ArrayList<>(item.getLore().size() + 1);
+            lore.addAll(item.getLore());
+        }
+        lore.add(Utils.tacc("&eCost " + cost));
+
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        return item;
+    }
 }

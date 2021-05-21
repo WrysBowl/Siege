@@ -1,7 +1,11 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
+import kotlin.Triple;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
+import net.siegerpg.siege.core.items.implemented.misc.food.Beef;
+import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.food.Porkchop;
 import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
@@ -25,36 +29,33 @@ import java.util.Objects;
 
 public class Dealer implements Listener {
 
-    ArrayList<ItemStack> toolItems = new ArrayList<>(){
+    ArrayList<Triple<Integer, ItemStack, Integer>> toolItems = new ArrayList<>() {
         {
-            add(setCost(Seed.Companion.tier(1).getUpdatedItem(false), 15));
-            add(setCost(Vine.Companion.tier(1).getUpdatedItem(false), 10));
-            add(setCost(Stick.Companion.tier(1).getUpdatedItem(false), 10));
-            add(setCost(MetalScrap.Companion.tier(1).getUpdatedItem(false), 40));
-            add(setCost(Slime.Companion.tier(1).getUpdatedItem(false), 20));
-            add(setCost(Magma.Companion.tier(1).getUpdatedItem(false), 20));
-            add(setCost(Bone.Companion.tier(1).getUpdatedItem(false), 30));
-            add(setCost(Leather.Companion.tier(1).getUpdatedItem(false), 20));
-            add(setCost(new SusStew(50).getUpdatedItem(false), 300));
+            add(new Triple<>(0, Seed.Companion.tier(1).getUpdatedItem(false), 15));
+            add(new Triple<>(1, Vine.Companion.tier(1).getUpdatedItem(false), 10));
+            add(new Triple<>(2, Stick.Companion.tier(1).getUpdatedItem(false), 10));
+            add(new Triple<>(3, MetalScrap.Companion.tier(1).getUpdatedItem(false), 40));
+            add(new Triple<>(4, Slime.Companion.tier(1).getUpdatedItem(false), 20));
+            add(new Triple<>(5, Magma.Companion.tier(1).getUpdatedItem(false), 20));
+            add(new Triple<>(6, Bone.Companion.tier(1).getUpdatedItem(false), 30));
+            add(new Triple<>(7, Leather.Companion.tier(1).getUpdatedItem(false), 20));
+            add(new Triple<>(8, new SusStew(50).getUpdatedItem(false), 300));
         }
     };
 
-    private ItemStack setCost(ItemStack item, Integer cost) {
-
-        List<String> lore;
-        if (item.getLore() == null) {
-            lore = new ArrayList<>(1);
-        } else {
-            lore = new ArrayList<>(item.getLore().size() + 1);
-            lore.addAll(item.getLore());
+    ArrayList<ItemStack> toolItemsCost = new ArrayList<>(){
+        {
+            add(Utils.setCost(Seed.Companion.tier(1).getUpdatedItem(false), 15));
+            add(Utils.setCost(Vine.Companion.tier(1).getUpdatedItem(false), 10));
+            add(Utils.setCost(Stick.Companion.tier(1).getUpdatedItem(false), 10));
+            add(Utils.setCost(MetalScrap.Companion.tier(1).getUpdatedItem(false), 40));
+            add(Utils.setCost(Slime.Companion.tier(1).getUpdatedItem(false), 20));
+            add(Utils.setCost(Magma.Companion.tier(1).getUpdatedItem(false), 20));
+            add(Utils.setCost(Bone.Companion.tier(1).getUpdatedItem(false), 30));
+            add(Utils.setCost(Leather.Companion.tier(1).getUpdatedItem(false), 20));
+            add(Utils.setCost(new SusStew(50).getUpdatedItem(false), 300));
         }
-        lore.add(Utils.tacc("&eCost " + cost));
-
-        ItemMeta meta = item.getItemMeta();
-        meta.setLore(lore);
-        item.setItemMeta(meta);
-        return item;
-    }
+    };
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
@@ -76,32 +77,33 @@ public class Dealer implements Listener {
 
     private void clickShop(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
-        ItemStack item = Utils.removeLastLore(toolItems.get(e.getSlot()));
         if (e.getCurrentItem() == null) {return;}
-        int cost = Utils.getCost(e.getCurrentItem());
+        int cost = toolItems.get(e.getSlot()).component3();
+        ItemStack item = toolItems.get(e.getSlot()).component2();
         if (VaultHook.econ.getBalance(player) < cost) {
             player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
             return; }
         if (e.getView().getBottomInventory().firstEmpty() == -1) {
             player.sendMessage(Utils.tacc("&cYour inventory is full!"));
             return; }
-        player.updateInventory();
         player.getInventory().addItem(item);
         VaultHook.econ.withdrawPlayer(player, cost);
         Scoreboard.updateScoreboard(player);
         player.sendMessage(Utils.tacc("&eYou have purchased an item"));
     }
 
-
     private Inventory getShopMenu(Player player) {
         Inventory gui = Bukkit.createInventory(null, 9, "Sus Dealer");
 
         //Fill in the GUI
-        for (ItemStack item : toolItems) {
+        for (ItemStack item : toolItemsCost) {
             gui.addItem(item);
         }
 
         player.setMetadata("Dealer", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
     }
+
+
+
 }

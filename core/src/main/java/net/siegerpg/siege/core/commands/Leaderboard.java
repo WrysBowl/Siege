@@ -25,15 +25,13 @@ public class Leaderboard implements CommandExecutor {
         //create a new sorted list
         //loop through the list and display it in a readable way for the player
         ArrayList<Triple<UUID, Short, Integer>> topTen = Levels.INSTANCE.getAllExpLevel(10);
-        sender.sendMessage(Utils.lore("<light_purple>_____<dark_purple>Siege Level Leaderboard<light_purple>_____"));
+        sender.sendMessage(Utils.lore("<light_purple>_____Siege Level Leaderboard_____"));
         for (int i = 0; i < topTen.size(); i++) {
-            Player player = Bukkit.getPlayer(topTen.get(i).component1());
+            UUID uuid = topTen.get(i).component1();
             Short level = topTen.get(i).component2();
             Integer experience = topTen.get(i).component3();
-            String name = "NULL";
-            if (player != null) {
-                name = player.getName();
-            }
+            OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
+            String name = player.getName();
             sender.sendMessage(Utils.lore("<yellow>" + (i+1) + ". " + name + " <light_purple>" + level.toString() + " <white>" + experience.toString()));
         }
         sender.sendMessage(Utils.lore(" "));

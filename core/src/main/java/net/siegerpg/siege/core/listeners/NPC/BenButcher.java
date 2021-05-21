@@ -1,5 +1,7 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
+import kotlin.Pair;
+import kotlin.Triple;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
@@ -18,42 +20,37 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class BenButcher implements Listener {
 
-    ArrayList<ItemStack> foodItems = new ArrayList<>(){
+    ArrayList<Triple<Integer, ItemStack, Integer>> foodItems = new ArrayList<>() {
         {
-            add(setCost(new Drumstick(0).getUpdatedItem(false), 5));
-            add(setCost(new Drumstick(50).getUpdatedItem(false), 15));
-            add(setCost(new Drumstick(100).getUpdatedItem(false), 30));
-            add(setCost(new Porkchop(0).getUpdatedItem(false), 10));
-            add(setCost(new Porkchop(50).getUpdatedItem(false), 30));
-            add(setCost(new Porkchop(100).getUpdatedItem(false), 45));
-            add(setCost(new Beef(0).getUpdatedItem(false), 15));
-            add(setCost(new Beef(50).getUpdatedItem(false), 45));
-            add(setCost(new Beef(100).getUpdatedItem(false), 60));
+            add(new Triple<>(0, new Drumstick(0).getUpdatedItem(false), 5));
+            add(new Triple<>(1, new Drumstick(50).getUpdatedItem(false), 15));
+            add(new Triple<>(2, new Drumstick(100).getUpdatedItem(false), 30));
+            add(new Triple<>(3, new Porkchop(0).getUpdatedItem(false), 10));
+            add(new Triple<>(4, new Porkchop(50).getUpdatedItem(false), 30));
+            add(new Triple<>(5, new Porkchop(100).getUpdatedItem(false), 45));
+            add(new Triple<>(6, new Beef(0).getUpdatedItem(false), 15));
+            add(new Triple<>(7, new Beef(50).getUpdatedItem(false), 45));
+            add(new Triple<>(8, new Beef(100).getUpdatedItem(false), 60));
         }
     };
 
-    private ItemStack setCost(ItemStack item, Integer cost) {
-
-        List<String> lore;
-        if (item.getLore() == null) {
-            lore = new ArrayList<>(1);
-        } else {
-            lore = new ArrayList<>(item.getLore().size() + 1);
-            lore.addAll(item.getLore());
+    ArrayList<ItemStack> foodItemCost = new ArrayList<>(){
+        {
+            add(Utils.setCost(new Drumstick(0).getUpdatedItem(false), 5));
+            add(Utils.setCost(new Drumstick(50).getUpdatedItem(false), 15));
+            add(Utils.setCost(new Drumstick(100).getUpdatedItem(false), 30));
+            add(Utils.setCost(new Porkchop(0).getUpdatedItem(false), 10));
+            add(Utils.setCost(new Porkchop(50).getUpdatedItem(false), 30));
+            add(Utils.setCost(new Porkchop(100).getUpdatedItem(false), 45));
+            add(Utils.setCost(new Beef(0).getUpdatedItem(false), 15));
+            add(Utils.setCost(new Beef(50).getUpdatedItem(false), 45));
+            add(Utils.setCost(new Beef(100).getUpdatedItem(false), 60));
         }
-        lore.add(Utils.tacc("&eCost " + cost));
-
-        ItemMeta meta = item.getItemMeta();
-        meta.setLore(lore);
-        item.setItemMeta(meta);
-        return item;
-    }
+    };
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
@@ -75,16 +72,15 @@ public class BenButcher implements Listener {
 
     private void clickShop(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
-        ItemStack item = Utils.removeLastLore(foodItems.get(e.getSlot()));
         if (e.getCurrentItem() == null) {return;}
-        int cost = Utils.getCost(e.getCurrentItem());
+        int cost = foodItems.get(e.getSlot()).component3();
+        ItemStack item = foodItems.get(e.getSlot()).component2();
         if (VaultHook.econ.getBalance(player) < cost) {
             player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
             return; }
         if (e.getView().getBottomInventory().firstEmpty() == -1) {
             player.sendMessage(Utils.tacc("&cYour inventory is full!"));
             return; }
-        player.updateInventory();
         player.getInventory().addItem(item);
         VaultHook.econ.withdrawPlayer(player, cost);
         Scoreboard.updateScoreboard(player);
@@ -96,7 +92,7 @@ public class BenButcher implements Listener {
         Inventory gui = Bukkit.createInventory(null, 9, "Ben the Butcher");
 
         //Fill in the GUI
-        for (ItemStack item : foodItems) {
+        for (ItemStack item : foodItemCost) {
             gui.addItem(item);
         }
 

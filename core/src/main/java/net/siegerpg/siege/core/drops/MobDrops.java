@@ -44,8 +44,10 @@ public class MobDrops implements Listener {
                     chance = 10.0;
                 }
                 if (reward != null) {
-                    if (Utils.randTest(chance) && e.isCancelled()) {
-                        e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), reward);
+                    if (Utils.randTest(chance)) {
+                        if (e.getEntity().getLocation().distance(e.getEntity().getWorld().getSpawnLocation()) > 3) {
+                            e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), reward);
+                        }
                     }
                 }
             }

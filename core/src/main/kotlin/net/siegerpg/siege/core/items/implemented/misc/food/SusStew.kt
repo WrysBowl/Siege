@@ -17,6 +17,10 @@ class SusStew() : CustomFood(
     recipeList = recipes {
 
     },
+    potion = listOf(
+        PotionEffect(PotionEffectType.INCREASE_DAMAGE, 300, 1),
+        PotionEffect(PotionEffectType.CONFUSION, 300, 4)
+    ),
     health = 30,
 ) {
 
