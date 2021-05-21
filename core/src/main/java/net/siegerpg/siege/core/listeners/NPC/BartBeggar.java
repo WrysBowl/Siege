@@ -27,9 +27,6 @@ public class BartBeggar {
      * Initialize goldReward and expReward var to store player rewards
      *
      * onGuiClick ->
-     *  check if slot index is in list, if not continue, if so, don't do anything
-     *  compare slot to index of list and it's element (0-4)
-     *  remove slot index from list
      *
      *  if slot is a '0', then set all gui slots to
      *  red glass pane named "<bold>YOU LOST" after 2 seconds
