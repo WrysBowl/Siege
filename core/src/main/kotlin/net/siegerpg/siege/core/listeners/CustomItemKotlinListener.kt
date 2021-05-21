@@ -98,6 +98,11 @@ class CustomItemKotlinListener : Listener, Runnable {
         if (attacker is Player) {
             val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
 
+            if (item is CustomWeapon) {
+                e.damage = 1.0
+                return
+            }
+
             if (item == null) {
                 e.damage = 1.0
                 return

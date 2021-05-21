@@ -13,7 +13,7 @@ class Beetroot() : CustomFood(
     customModelData = 310011,
     description = listOf("The fruit can take a beating"),
     levelRequirement = 0,
-    material = Material.APPLE, //change this to cooked chicken later
+    material = Material.BEETROOT, //change this to cooked chicken later
     recipeList = recipes {
     },
     potion = listOf(
