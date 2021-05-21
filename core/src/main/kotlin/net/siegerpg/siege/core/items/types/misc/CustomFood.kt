@@ -1,21 +1,20 @@
 package net.siegerpg.siege.core.items.types.misc
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
-import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
+import org.bukkit.Bukkit
 import org.bukkit.Material
-import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 
 abstract class CustomFood(
     override val name: String,
@@ -48,6 +47,9 @@ abstract class CustomFood(
             val realPotionDuration = (it.duration * getRarityMultiplier(quality)).toInt()
             val realPotion = PotionEffect(it.type, realPotionDuration, it.amplifier)
             e.player.addPotionEffect(realPotion)
+        }
+        if (e.item.type == Material.SUSPICIOUS_STEW || e.item.type == Material.MUSHROOM_STEW || e.item.type == Material.RABBIT_STEW) {
+            e.player.setItemInHand(ItemStack(Material.AIR))
         }
     }
 

@@ -134,12 +134,4 @@ public class WorldListener implements Listener {
     @EventHandler
     public void denyBlockFade(BlockFadeEvent e) { e.setCancelled(true); }
 
-    @EventHandler
-    public void removeSoupBowl(PlayerItemConsumeEvent e) {
-        if (e.getItem().getType().equals(Material.SUSPICIOUS_STEW) ||
-                e.getItem().getType().equals(Material.MUSHROOM_STEW) ||
-                e.getItem().getType().equals(Material.RABBIT_STEW)) {
-            e.setItem(new ItemStack(Material.AIR));
-        }
-    }
 }

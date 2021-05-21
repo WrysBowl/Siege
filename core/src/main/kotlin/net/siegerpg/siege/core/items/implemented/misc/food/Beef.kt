@@ -17,10 +17,10 @@ class Beef() : CustomFood(
     recipeList = recipes {
 
     },
+    health = 40,
     potion = listOf(
         PotionEffect(PotionEffectType.SATURATION, 200, 1)
     ),
-    health = 40
 ) {
 
     constructor(quality: Int): this() {

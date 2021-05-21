@@ -29,6 +29,7 @@ subprojects {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
         compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
         compileOnly("com.comphenix.protocol:ProtocolLib:4.6.0")
+        compileOnly("com.github.stefvanschie.inventoryframework:IF:0.9.6")
     }
 
 
