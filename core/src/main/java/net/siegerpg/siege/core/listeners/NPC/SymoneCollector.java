@@ -445,7 +445,7 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Spruce Log drop")));
             add(Utils.addLore(new GlisteningTwig(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
-                    Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Seed \u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Plant Matter \u272A\u272A x1")));
             add(Utils.addLore(new GlowingTwig(50).getUpdatedItem(true),
@@ -1159,7 +1159,7 @@ public class SymoneCollector implements Listener {
             case 1: //Glistening twig
 
                 //Initialize Ingredients
-                ItemStack GlisteningTwig1 = Seed.Companion.tier(3).getUpdatedItem(false);
+                ItemStack GlisteningTwig1 = Seed.Companion.tier(2).getUpdatedItem(false);
                 GlisteningTwig1.setAmount(1);
                 ItemStack GlisteningTwig2 = Stick.Companion.tier(2).getUpdatedItem(false);
                 GlisteningTwig2.setAmount(1);
@@ -1308,9 +1308,9 @@ public class SymoneCollector implements Listener {
                 break;
             case 2: //Pebble Shooter
                 ItemStack pebble1 = Stick.Companion.tier(3).getUpdatedItem(false);
-                pebble1.setAmount(1);
+                pebble1.setAmount(2);
                 ItemStack pebble2 = Pebble.Companion.tier(3).getUpdatedItem(false);
-                pebble2.setAmount(2);
+                pebble2.setAmount(1);
                 ItemStack pebble3 = Vine.Companion.tier(3).getUpdatedItem(false);
                 pebble2.setAmount(3);
 
@@ -1846,7 +1846,7 @@ public class SymoneCollector implements Listener {
                 reqIngredients.add(arrow3);
                 //Set result of recipe
 
-                result = new GlisteningTwig(Utils.randRarity()).getUpdatedItem(false);
+                result = new ItemStack(Material.ARROW, 64);
                 break;
             default:
                 return;
