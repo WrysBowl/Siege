@@ -3,12 +3,16 @@ package net.siegerpg.siege.core.listeners.NPC;
 import kotlin.Triple;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
+import net.siegerpg.siege.core.items.implemented.misc.food.Beef;
+import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.food.Porkchop;
 import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
-import net.siegerpg.siege.core.items.implemented.misc.materials.blocks.*;
-import net.siegerpg.siege.core.items.implemented.misc.materials.mobs.*;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,9 +20,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Dealer implements Listener {

@@ -144,18 +144,18 @@ public class RichardBanker implements Listener {
         int maxAmt = bankLvl*5000;
         int diff = (maxAmt-bankAmt);
         if (pocketBal < diff) {
-            diff = pocketBal;
+            diff = (int) pocketBal;
         }
 
         ItemStack bankAcc = new ItemStack(Material.GOLD_INGOT);
         ItemMeta bankAccMeta = bankAcc.getItemMeta();
-        bankAccMeta.displayName(Utils.lore("<gray>Bank Account <gold>Lvl. <bold>" + bankLvl));
+        bankAccMeta.displayName(Utils.lore("<gray><bold>Bank Account <gold>Lvl. " + bankLvl));
         bankAccMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore(""));
                 add(Utils.lore("<gold>Profile <gray>" + player.getName()));
-                add(Utils.lore("  <gray>Bank <yellow>" + String.format("%,d", bankAmt) + "<gold>/" + String.format("%,d", upgradeCost)));
-                add(Utils.lore("  <gray>Pocket <yellow>" + pocketBal));
+                add(Utils.lore("  <gray>Bank <yellow>" + bankAmt));
+                add(Utils.lore("  <gray>Pocket <yellow>" + VaultHook.econ.getBalance(player)));
+                add(Utils.lore("<yellow>Max Bank Amount " + String.format("%,d", upgradeCost)));
                 add(Utils.lore(""));
             }
         });
@@ -200,7 +200,7 @@ public class RichardBanker implements Listener {
         bankUpgradeMeta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<gold>" + bankLvl + " <gray>\u2192 <gold>" + upgradedLvl));
-                add(Utils.lore("<gray>Cost <yellow>" + String.format("%,d", upgradeCost)));
+                add(Utils.lore("<gray>Cost <yellow>" + upgradeCost));
                 add(Utils.lore(""));
             }
         });

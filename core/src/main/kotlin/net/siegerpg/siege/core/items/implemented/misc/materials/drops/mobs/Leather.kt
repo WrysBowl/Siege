@@ -1,15 +1,16 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.blocks
+package net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs
 
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class PlantMatter() : CustomMaterial(
-    name = "Plant Matter",
-    customModelData = 320001,
-    description = listOf("Parts of a plant"),
+class Leather() : CustomMaterial(
+    name = "Leather",
+    customModelData = 310006,
+    description = listOf("Animal hide"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
@@ -27,12 +28,12 @@ class PlantMatter() : CustomMaterial(
         deserialize()
     }
 
-
     companion object {
-        fun tier(tier: Int): PlantMatter {
-            val newItem = PlantMatter(0)
+        fun tier(tier: Int): Leather {
+            val newItem = Leather(0)
             newItem.tier = tier
             return newItem
         }
     }
+
 }

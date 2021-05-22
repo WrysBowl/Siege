@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.mobs
+package net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
@@ -6,10 +6,10 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Slime() : CustomMaterial(
-    name = "Slime",
-    customModelData = 310001,
-    description = listOf("Not jello?"),
+class Vine() : CustomMaterial(
+    name = "Vine",
+    customModelData = 320004,
+    description = listOf("Woven around trees and abandoned lands"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
@@ -28,8 +28,8 @@ class Slime() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Slime {
-            val newItem = Slime(0)
+        fun tier(tier: Int): Vine {
+            val newItem = Vine(0)
             newItem.tier = tier
             return newItem
         }

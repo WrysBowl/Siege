@@ -2,13 +2,14 @@ package net.siegerpg.siege.core.listeners.NPC;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
-import net.siegerpg.siege.core.items.implemented.misc.materials.blocks.MetalScrap;
-import net.siegerpg.siege.core.items.implemented.misc.materials.blocks.Stick;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;

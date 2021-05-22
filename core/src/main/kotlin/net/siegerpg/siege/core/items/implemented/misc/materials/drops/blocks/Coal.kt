@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.blocks
+package net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
@@ -6,10 +6,10 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Pebble() : CustomMaterial(
-    name = "Pebble",
-    customModelData = 320006,
-    description = listOf("Tiny bits of rock"),
+class Coal() : CustomMaterial(
+    name = "Coal",
+    customModelData = 320003,
+    description = listOf("Burned to gain energy resource"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
@@ -28,8 +28,8 @@ class Pebble() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Pebble {
-            val newItem = Pebble(0)
+        fun tier(tier: Int): Coal {
+            val newItem = Coal(0)
             newItem.tier = tier
             return newItem
         }
