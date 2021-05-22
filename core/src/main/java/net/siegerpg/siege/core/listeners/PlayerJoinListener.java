@@ -4,6 +4,8 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
+import net.siegerpg.siege.core.items.CustomItem;
+import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
@@ -87,6 +89,13 @@ public class PlayerJoinListener implements Listener {
         for (Player p : Bukkit.getOnlinePlayers()) {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);
+        }
+
+        for (int i = 0; i< player.getInventory().getSize(); i++) {
+            CustomItem Cusitem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
+            if (Cusitem != null) {
+                player.getInventory().setItem(i, Cusitem.getUpdatedItem(false));
+            }
         }
 
 

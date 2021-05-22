@@ -57,6 +57,7 @@ public class BlockBreakListener implements Listener {
             }
             Levels.INSTANCE.addExp(player, exp);
             player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
+            Scoreboard.updateScoreboard(player);
         } //Give exp reward
 
         if (goldCoins.getAmount() > 0) { e.getBlock().getWorld().dropItemNaturally(loc, goldCoins); } //Give gold reward

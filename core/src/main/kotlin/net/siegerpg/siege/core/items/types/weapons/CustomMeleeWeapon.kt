@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.attribute.Attribute
 import org.bukkit.attribute.AttributeModifier
@@ -39,7 +40,7 @@ abstract class CustomMeleeWeapon(
         super.updateMeta(hideRarity)
         val meta = item.itemMeta
         meta.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED)
-        val modifier =  AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", attackSpeed - 1.5, AttributeModifier.Operation.ADD_SCALAR)
+        val modifier =  AttributeModifier( "generic.attackSpeed", (-4.0+attackSpeed), AttributeModifier.Operation.ADD_NUMBER)
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier)
         item.itemMeta = meta
         return item

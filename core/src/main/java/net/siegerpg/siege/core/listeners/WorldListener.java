@@ -120,6 +120,11 @@ public class WorldListener implements Listener {
     }
 
     @EventHandler
+    public void preventExplosion2(EntityExplodeEvent e) {
+        e.setCancelled(true);
+    }
+
+    @EventHandler
     public void denySlimeSplit(SlimeSplitEvent e) { e.setCancelled(true); }
 
     @EventHandler

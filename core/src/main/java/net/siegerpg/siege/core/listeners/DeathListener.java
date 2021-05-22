@@ -50,6 +50,7 @@ public class DeathListener implements Listener, Runnable {
             }
             Levels.INSTANCE.addExp(player, exp);
             player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
+            Scoreboard.updateScoreboard(player);
         } //Give exp reward
 
         if (goldCoins.getAmount() > 0) { e.getDrops().add(goldCoins); } //Give gold reward
@@ -60,9 +61,6 @@ public class DeathListener implements Listener, Runnable {
 
         for (int i = 0; i<e.getDrops().size(); i++) {
             e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), e.getDrops().get(i));
-        }
-        if (player != null) {
-            Scoreboard.updateScoreboard(player);
         }
     }
 

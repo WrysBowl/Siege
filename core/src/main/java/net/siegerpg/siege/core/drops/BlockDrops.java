@@ -24,31 +24,30 @@ public enum BlockDrops {
     GRASS_BLOCK(Material.GRASS_BLOCK, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 20.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 20.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     GREEN_TERRACOTTA(Material.GREEN_TERRACOTTA, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 25.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 35.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     GREEN_CONCRETE(Material.GREEN_CONCRETE, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 35.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 25.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     LIME_TERRACOTTA(Material.LIME_TERRACOTTA, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 40.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 40.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     DIRT(Material.DIRT, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 20.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     COARSE_DIRT(Material.COARSE_DIRT, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 30.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //NATURE
     BAMBOO(Material.BAMBOO, new Object[][]{
             {new Sugar(100).getUpdatedItem(false), 0.1},
             {new Sugar(50).getUpdatedItem(false), 1.0},
-            {new Sugar(0).getUpdatedItem(false), 3.0}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     SUGAR_CANE(Material.SUGAR_CANE, new Object[][]{
             {new Sugar(0).getUpdatedItem(false), 0.1}
@@ -56,23 +55,23 @@ public enum BlockDrops {
     DARK_OAK_LEAVES(Material.DARK_OAK_LEAVES, new Object[][]{
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 40.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     BIRCH_LEAVES(Material.BIRCH_LEAVES, new Object[][]{
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 40.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     JUNGLE_LEAVES(Material.JUNGLE_LEAVES, new Object[][]{
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 40.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     OAK_LEAVES(Material.OAK_LEAVES, new Object[][]{
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 40.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     SPRUCE_LEAVES(Material.SPRUCE_LEAVES, new Object[][]{
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 40.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //STONE TERRAIN
     STONE(Material.STONE, new Object[][]{
@@ -88,18 +87,18 @@ public enum BlockDrops {
     //ORES
     COAL_ORE(Material.COAL_ORE, new Object[][]{
             {Coal.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{6, 7}, new Integer[]{13, 14}, 100),
+    }, new Integer[]{4, 6}, new Integer[]{9, 12}, 100),
     IRON_ORE(Material.IRON_ORE, new Object[][]{
             {MetalScrap.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{17, 18}, new Integer[]{5, 6}, 200),
+    }, new Integer[]{9, 12}, new Integer[]{5, 6}, 200),
 
     //DECOR TERRAIN
     VINE(Material.VINE, new Object[][]{
             {Vine.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     CHAIN(Material.CHAIN, new Object[][]{
             {Chain.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20);
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20);
 
     private final Material block;
     private final Object[][] rewards;
