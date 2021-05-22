@@ -2,8 +2,7 @@ package net.siegerpg.siege.core.drops;
 
 import net.siegerpg.siege.core.items.implemented.misc.food.Apple;
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
-import net.siegerpg.siege.core.items.implemented.misc.wands.LivingTwig;
+import net.siegerpg.siege.core.items.implemented.misc.materials.blocks.*;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

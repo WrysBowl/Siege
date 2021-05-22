@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks
+package net.siegerpg.siege.core.items.implemented.misc.materials.mobs
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
@@ -6,20 +6,13 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class RefinedMetal() : CustomMaterial(
-    name = "Refined Metal",
-    customModelData = 320009,
-    description = listOf("Polished and shiny!"),
+class Magma() : CustomMaterial(
+    name = "Magma",
+    customModelData = 310002,
+    description = listOf("Melted slime"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
-        recipe {
-            shaped = false
-            s1(MetalScrap())
-            item { player, b ->
-                RefinedMetal()
-            }
-        }
     }
 ) {
 
@@ -35,11 +28,10 @@ class RefinedMetal() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): RefinedMetal {
-            val newItem = RefinedMetal(0)
+        fun tier(tier: Int): Magma {
+            val newItem = Magma(0)
             newItem.tier = tier
             return newItem
         }
     }
-
 }

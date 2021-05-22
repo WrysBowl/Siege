@@ -1,16 +1,15 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs
+package net.siegerpg.siege.core.items.implemented.misc.materials.blocks
 
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Wool() : CustomMaterial(
-    name = "Wool",
-    customModelData = 310005,
-    description = listOf("A ball of fluff to keep you warm"),
+class Chain() : CustomMaterial(
+    name = "Chain",
+    customModelData = 320007,
+    description = listOf("A strong metal rope"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
@@ -29,8 +28,8 @@ class Wool() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Wool {
-            val newItem = Wool(0)
+        fun tier(tier: Int): Chain {
+            val newItem = Chain(0)
             newItem.tier = tier
             return newItem
         }

@@ -2,8 +2,8 @@ package net.siegerpg.siege.core.items.implemented.weapons.ranged
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
+import net.siegerpg.siege.core.items.implemented.misc.materials.blocks.RefinedMetal
+import net.siegerpg.siege.core.items.implemented.misc.materials.blocks.Vine
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.utils.Utils

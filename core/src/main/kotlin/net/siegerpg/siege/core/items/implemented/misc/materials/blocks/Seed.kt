@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks
+package net.siegerpg.siege.core.items.implemented.misc.materials.blocks
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
@@ -6,10 +6,10 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class PlantMatter() : CustomMaterial(
-    name = "Plant Matter",
-    customModelData = 320001,
-    description = listOf("Parts of a plant"),
+class Seed() : CustomMaterial(
+    name = "Seed",
+    customModelData = 320002,
+    description = listOf("Great potential"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
@@ -27,12 +27,12 @@ class PlantMatter() : CustomMaterial(
         deserialize()
     }
 
-
     companion object {
-        fun tier(tier: Int): PlantMatter {
-            val newItem = PlantMatter(0)
+        fun tier(tier: Int): Seed {
+            val newItem = Seed(0)
             newItem.tier = tier
             return newItem
         }
     }
+
 }
