@@ -26,11 +26,11 @@ public class Level implements CommandExecutor {
         double division = experience/reqExp;
         String name = sender.getName();
         String levelPercent = " <reset><light_blue>(" + Utils.round(Utils.round(division, 3)*100,2) + "%)";
-        Integer totalexperience = ();
+        Integer total = 0;
 
         for (int i = 2; i < level; i++) {
 
-            Levels.INSTANCE.calculateRequiredExperience(level)
+            Levels.INSTANCE.calculateRequiredExperience(level);
 
         }
         String levelRaw = " <light_blue>" + String.format("%,d", experience);
