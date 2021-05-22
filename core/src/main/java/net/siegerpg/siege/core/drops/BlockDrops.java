@@ -98,7 +98,10 @@ public enum BlockDrops {
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     CHAIN(Material.CHAIN, new Object[][]{
             {Chain.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20);
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    WHEAT(Material.WHEAT, new Object[][]{
+            {Wheat.Companion.tier(1).getUpdatedItem(false), 100.0}
+    }, new Integer[]{0, 0}, new Integer[]{2, 2}, 200);
 
     private final Material block;
     private final Object[][] rewards;

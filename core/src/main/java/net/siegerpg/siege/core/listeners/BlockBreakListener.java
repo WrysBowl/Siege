@@ -73,6 +73,7 @@ public class BlockBreakListener implements Listener {
         }
         if (blockDrop.getRegenTime()>20) {
             e.getBlock().setType(Material.BEDROCK);
+            if (blockType.toString().equals("WHEAT")) e.getBlock().setType(Material.AIR);
             Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                 loc.getBlock().setBlockData(blockData);
             }, blockDrop.getRegenTime());

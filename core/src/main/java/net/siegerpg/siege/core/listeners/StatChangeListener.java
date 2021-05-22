@@ -5,8 +5,11 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
+import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
+import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.utils.Levels;
+import net.siegerpg.siege.core.utils.PlayerBanking;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -17,6 +20,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nullable;
@@ -37,6 +41,13 @@ public class StatChangeListener implements Listener, Runnable {
                     player,
                     CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.TOUGHNESS));
         }, 2);
+    }
+
+    @EventHandler
+    public void onEnable(PluginEnableEvent e) {
+        for (Player player : Bukkit.getOnlinePlayers()){
+            addHealthTough(player);
+        }
     }
 
     @EventHandler
@@ -66,8 +77,11 @@ public class StatChangeListener implements Listener, Runnable {
 
     @EventHandler
     public void toolSwitch(PlayerItemHeldEvent e) {
-        if (CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand()) != null) {
-            addHealthTough(e.getPlayer());
+        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
+        if (item != null) {
+            if (!(item instanceof CustomMaterial)) {
+                addHealthTough(e.getPlayer());
+            }
         }
     }
 

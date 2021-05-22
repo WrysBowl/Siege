@@ -70,15 +70,15 @@ public class DeathListener implements Listener, Runnable {
         Player player = e.getEntity().getPlayer();
         if (player != null) {
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
-            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
-                double bal = Math.round(VaultHook.econ.getBalance(player));
-                int newBal = (int) Math.round(bal * 0.95);
-                if (newBal < 0) newBal = 0;
-                VaultHook.econ.withdrawPlayer(player, bal);
-                VaultHook.econ.depositPlayer(player, newBal);
-                player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&7" + (bal - newBal) + " has been lost"), 1, 60, 1);
-                Scoreboard.updateScoreboard(player);
-            }, 2);
+            player.spigot().respawn();
+            player.teleport(player.getWorld().getSpawnLocation());
+            double bal = Math.round(VaultHook.econ.getBalance(player));
+            int newBal = (int) Math.round(bal * 0.95);
+            if (newBal < 0) newBal = 0;
+            VaultHook.econ.withdrawPlayer(player, bal);
+            VaultHook.econ.depositPlayer(player, newBal);
+            player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&7" + (bal - newBal) + " has been lost"), 1, 60, 1);
+            Scoreboard.updateScoreboard(player);
         }
     }
 

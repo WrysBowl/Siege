@@ -7,7 +7,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Wheat() : CustomMaterial(
-    name = "Chain",
+    name = "Wheat",
     customModelData = 320011,
     description = listOf("The most important part of bread"),
     levelRequirement = 0,
