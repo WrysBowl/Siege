@@ -18,23 +18,34 @@ public class Level implements CommandExecutor {
             return false;
         }
 
-        sender.sendMessage(Utils.lore(" "));
-        sender.sendMessage(Utils.lore("     <gold><bold>Your Level     "));
         short level = Levels.INSTANCE.getExpLevel((Player)sender).getFirst();
         float reqExp = Levels.INSTANCE.calculateRequiredExperience(level);
         Integer experience = Levels.INSTANCE.getExpLevel((Player)sender).getSecond();
         double division = experience/reqExp;
         String name = sender.getName();
-        String levelPercent = " <reset><light_blue>(" + Utils.round(Utils.round(division, 3)*100,2) + "%)";
-        Integer total = 0;
+        String levelPercent = String.valueOf(Utils.round(Utils.round(division, 3)*100,2));
 
+        int total = 0;
         for (int i = 2; i < level; i++) {
 
-            Levels.INSTANCE.calculateRequiredExperience(level);
+            total = total + Levels.INSTANCE.calculateRequiredExperience((short) i);
 
         }
-        String levelRaw = " <light_blue>" + String.format("%,d", experience);
-        sender.sendMessage(Utils.lore("<gold>" + ". <white>" + name + " <dark_blue><bold>" + level + levelPercent + levelRaw));
+        total = total + experience;
+        String totalFormat = String.format("%,d", total);
+        String expLeft = String.format("%,d", (int) (reqExp-experience));
+
+
+        sender.sendMessage(Utils.lore(" "));
+        sender.sendMessage(Utils.lore("<dark_purple><bold>Level Statistics"));
+        sender.sendMessage(Utils.lore(" "));
+        sender.sendMessage(Utils.lore("<gold>" + name));
+        sender.sendMessage(Utils.lore("<gray>Level         <reset><dark_purple>" + level));
+        sender.sendMessage(Utils.lore("<gray>Exp %         <reset><light_purple>" + levelPercent + "%"));
+        sender.sendMessage(Utils.lore("<gray>Exp            <reset><light_purple>" + experience));
+        sender.sendMessage(Utils.lore("<gray>Exp to Next  <reset><light_purple>" + expLeft));
+        sender.sendMessage(Utils.lore("<gray>Total Exp     <reset><light_purple>" + totalFormat));
+        sender.sendMessage(Utils.lore(" "));
 
         return true;
     }

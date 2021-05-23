@@ -58,10 +58,13 @@ public class Utils {
         return (double) Math.round(value * scale) / scale;
     }
 
-    public static ItemStack getGoldCoin() {
+    public static ItemStack getGoldCoin(Integer amount) {
         ItemStack gold = new ItemStack(Material.SUNFLOWER);
         ItemMeta meta = gold.getItemMeta();
         meta.setDisplayName("Gold Coin");
+        if (amount > 0) {
+            gold.setAmount(amount);
+        }
         gold.setItemMeta(meta);
         return gold;
     }

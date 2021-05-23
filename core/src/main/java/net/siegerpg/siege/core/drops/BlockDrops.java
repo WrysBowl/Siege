@@ -9,8 +9,10 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public enum BlockDrops {
+
 
     //WOOD
     SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
@@ -87,10 +89,10 @@ public enum BlockDrops {
     //ORES
     COAL_ORE(Material.COAL_ORE, new Object[][]{
             {Coal.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{4, 6}, new Integer[]{9, 12}, 100),
+    }, new Integer[]{4, 6}, new Integer[]{9, 12}, 180),
     IRON_ORE(Material.IRON_ORE, new Object[][]{
             {MetalScrap.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{9, 12}, new Integer[]{5, 6}, 200),
+    }, new Integer[]{9, 12}, new Integer[]{5, 6}, 300),
 
     //DECOR TERRAIN
     VINE(Material.VINE, new Object[][]{
@@ -101,7 +103,7 @@ public enum BlockDrops {
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     WHEAT(Material.WHEAT, new Object[][]{
             {Wheat.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200);
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 140);
 
     private final Material block;
     private final Object[][] rewards;

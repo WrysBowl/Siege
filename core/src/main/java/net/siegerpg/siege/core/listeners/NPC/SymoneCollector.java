@@ -113,7 +113,7 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Slime \u272A\u272A x5")));
             add(Utils.addLore(new StrawHelmet(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
-                    Utils.lore("<dark_aqua>Seed \u272A\u272A x5")));
+                    Utils.lore("<dark_aqua>Wheat \u272A\u272A x5")));
             add(Utils.addLore(new WoolHelmet(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wool \u272A\u272A x5")));
@@ -139,7 +139,7 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Slime \u272A\u272A x8")));
             add(Utils.addLore(new StrawChestplate(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
-                    Utils.lore("<dark_aqua>Seed \u272A\u272A x8")));
+                    Utils.lore("<dark_aqua>Wheat \u272A\u272A x8")));
             add(Utils.addLore(new WoolChestplate(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wool \u272A\u272A x8")));
@@ -165,7 +165,7 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Slime \u272A\u272A x7")));
             add(Utils.addLore(new StrawLeggings(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
-                    Utils.lore("<dark_aqua>Seed \u272A\u272A x7")));
+                    Utils.lore("<dark_aqua>Wheat \u272A\u272A x7")));
             add(Utils.addLore(new WoolLeggings(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wool \u272A\u272A x7")));
@@ -191,7 +191,7 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Slime \u272A\u272A x4")));
             add(Utils.addLore(new StrawBoots(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
-                    Utils.lore("<dark_aqua>Seed \u272A\u272A x4")));
+                    Utils.lore("<dark_aqua>Wheat \u272A\u272A x4")));
             add(Utils.addLore(new WoolBoots(50).getUpdatedItem(true),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wool \u272A\u272A x4")));
@@ -428,6 +428,22 @@ public class SymoneCollector implements Listener {
             add(Utils.addLore(RefinedMetal.Companion.tier(5).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x8")));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
+            add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
+            add(Utils.addLore(Wheat.Companion.tier(2).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Wheat \u272A x8")));
+            add(Utils.addLore(Wheat.Companion.tier(3).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Wheat \u272A\u272A x8")));
+            add(Utils.addLore(Wheat.Companion.tier(4).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Wheat \u272A\u272A\u272A x8")));
+            add(Utils.addLore(Wheat.Companion.tier(5).getUpdatedItem(false),
+                    Utils.lore("<dark_aqua>Click to Craft"),
+                    Utils.lore("<dark_aqua>Wheat \u272A\u272A\u272A\u272A x8")));
         }
     };
     ArrayList<ItemStack> miscList = new ArrayList<>() {
@@ -793,7 +809,7 @@ public class SymoneCollector implements Listener {
 
             case 1: //Straw Hat
                 //Initialize Ingredients
-                ing1 = Seed.Companion.tier(2).getUpdatedItem(false);
+                ing1 = Wheat.Companion.tier(2).getUpdatedItem(false);
                 ing1.setAmount(5);
 
                 //Add ingredients to required ingredients
@@ -881,7 +897,7 @@ public class SymoneCollector implements Listener {
 
             case 10: //Straw Chestplate
                 //Initialize Ingredients
-                ing1 = Seed.Companion.tier(2).getUpdatedItem(false);
+                ing1 = Wheat.Companion.tier(2).getUpdatedItem(false);
                 ing1.setAmount(8);
 
                 //Add ingredients to required ingredients
@@ -969,7 +985,7 @@ public class SymoneCollector implements Listener {
 
             case 19: //Straw Leggings
                 //Initialize Ingredients
-                ing1 = Seed.Companion.tier(2).getUpdatedItem(false);
+                ing1 = Wheat.Companion.tier(2).getUpdatedItem(false);
                 ing1.setAmount(7);
 
                 //Add ingredients to required ingredients
@@ -1057,7 +1073,7 @@ public class SymoneCollector implements Listener {
 
             case 28: //Straw Boots
                 //Initialize Ingredients
-                ing1 = Seed.Companion.tier(2).getUpdatedItem(false);
+                ing1 = Wheat.Companion.tier(2).getUpdatedItem(false);
                 ing1.setAmount(4);
 
                 //Add ingredients to required ingredients
@@ -1806,6 +1822,30 @@ public class SymoneCollector implements Listener {
                 reqIngredients.add(RefinedMetal4);
                 result = RefinedMetal.Companion.tier(5).getUpdatedItem(false);
                 break;
+            case 45: //Wheat 2
+                ItemStack Wheat1 = Wheat.Companion.tier(1).getUpdatedItem(false);
+                Wheat1.setAmount(8);
+                reqIngredients.add(Wheat1);
+                result = Wheat.Companion.tier(2).getUpdatedItem(false);
+                break;
+            case 46: //Wheat 3
+                ItemStack Wheat2 = Wheat.Companion.tier(2).getUpdatedItem(false);
+                Wheat2.setAmount(8);
+                reqIngredients.add(Wheat2);
+                result = Wheat.Companion.tier(3).getUpdatedItem(false);
+                break;
+            case 47: //Wheat 4
+                ItemStack Wheat3 = Wheat.Companion.tier(3).getUpdatedItem(false);
+                Wheat3.setAmount(8);
+                reqIngredients.add(Wheat3);
+                result = Wheat.Companion.tier(4).getUpdatedItem(false);
+                break;
+            case 48: //Wheat 5
+                ItemStack Wheat4 = Wheat.Companion.tier(4).getUpdatedItem(false);
+                Wheat4.setAmount(8);
+                reqIngredients.add(Wheat4);
+                result = Wheat.Companion.tier(5).getUpdatedItem(false);
+                break;
             default:
                 return;
         }
@@ -1990,7 +2030,7 @@ public class SymoneCollector implements Listener {
         return gui;
     }
     private Inventory blockDropsList(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 45, "Block Drops");
+        Inventory gui = Bukkit.createInventory(null, 54, "Block Drops");
         for (int i = 0; i < blockDropsList.size(); i++) {
             gui.setItem(i, blockDropsList.get(i));
         }

@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
@@ -53,8 +54,6 @@ public class WorldListener implements Listener {
     @EventHandler
     public void denySpawning(EntitySpawnEvent e) {
         if (e.getEntity() instanceof Egg) {
-            e.setCancelled(true);
-        } else if (e.getEntity() instanceof ExperienceOrb) {
             e.setCancelled(true);
         }
     }

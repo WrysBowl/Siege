@@ -12,7 +12,7 @@ import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
 import net.siegerpg.siege.core.portals.PortalConfig;
 import net.siegerpg.siege.core.utils.Bank;
-import net.siegerpg.siege.core.utils.PlayerBanking;
+import net.siegerpg.siege.core.cache.PlayerBanking;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -51,6 +51,7 @@ public final class Core extends JavaPlugin {
         this.getCommand("spawn").setExecutor(new Spawn());
         this.getCommand("invsee").setExecutor(new Invsee());
         this.getCommand("leaderboard").setExecutor(new Leaderboard());
+        this.getCommand("level").setExecutor(new Level());
 
         for (Player player : Bukkit.getOnlinePlayers()){
             PlayerBanking.bankLevels.put(player, Bank.INSTANCE.getBankLevel(player));
@@ -109,7 +110,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DamageIndicatorListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
-        getServer().getPluginManager().registerEvents(new ItemPickupListener(), this);
+        getServer().getPluginManager().registerEvents(new GoldExpListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
         getServer().getPluginManager().registerEvents(new StatGemListener(), this);

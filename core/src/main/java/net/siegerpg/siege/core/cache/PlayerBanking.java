@@ -1,5 +1,6 @@
-package net.siegerpg.siege.core.utils;
+package net.siegerpg.siege.core.cache;
 
+import net.siegerpg.siege.core.utils.Bank;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

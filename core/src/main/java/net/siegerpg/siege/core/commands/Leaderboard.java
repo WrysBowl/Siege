@@ -36,8 +36,7 @@ public class Leaderboard implements CommandExecutor {
             OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
             String name = player.getName();
             String levelPercent = " <reset><light_purple>(" + Utils.round(Utils.round(division, 3)*100,2) + "%)";
-            String levelRaw = " <light_purple>" + String.format("%,d", experience);
-            sender.sendMessage(Utils.lore("<gold>" + (i+1) + ". <white>" + name + " <dark_purple><bold>" + level + levelPercent + levelRaw));
+            sender.sendMessage(Utils.lore("<gold>" + (i+1) + ". <white>" + name + " <dark_purple><bold>" + level + levelPercent));
         }
         sender.sendMessage(Utils.lore(" "));
         return true;

@@ -37,6 +37,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
     public static ArrayList<ItemStack> shopWeapons = new ArrayList<>();
     public static ArrayList<ItemStack> armorItems = new ArrayList<>();
     public static ArrayList<ItemStack> shopArmor = new ArrayList<>();
+    private static int addVal = -10;
 
     @Override
     public void run() {
@@ -51,16 +52,16 @@ public class SmokyBlacksmith implements Listener, Runnable {
             ArrayList<Integer> usedWeapons = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
             ArrayList<Integer> usedArmor = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
             for (int i = 0; i<7; i++) { //this loops 7 times
-                int wepIndex = (int) (Math.random() * 14); //initializes a variable that is a random number from 0 - 14
-                int armIndex = (int) (Math.random() * 19); //initializes a variable that is a random number from 0 - 19
+                int wepIndex = (int) (Math.random() * 11); //initializes a variable that is a random number from 0 - 14
+                int armIndex = (int) (Math.random() * 11); //initializes a variable that is a random number from 0 - 19
 
 
                 while (usedWeapons.contains(wepIndex)) { //if the generated integer is already contained in the used weapons list
-                    wepIndex = (int) (Math.random() * 14); //we want to make a new number, then compare to the statement AGAIN
+                    wepIndex = (int) (Math.random() * 11); //we want to make a new number, then compare to the statement AGAIN
                 }
                 usedWeapons.add(wepIndex); //We have found a number that isn't contained in the list! Now we add it to the list
                 while (usedArmor.contains(armIndex)) {
-                    armIndex = (int) (Math.random() * 15);
+                    armIndex = (int) (Math.random() * 11);
                 }
                 usedArmor.add(armIndex);
 
@@ -74,41 +75,34 @@ public class SmokyBlacksmith implements Listener, Runnable {
 
     private static void setShopWeapons() {
         shopWeapons.clear();
-        shopWeapons.add(0, Utils.setLoreCost(new Twig(Utils.randRarity())));
-        shopWeapons.add(1, Utils.setLoreCost(new StickyStick(Utils.randRarity())));
-        shopWeapons.add(2, Utils.setLoreCost(new Spade(Utils.randRarity())));
-        shopWeapons.add(3, Utils.setLoreCost(new Shovel(Utils.randRarity())));
-        shopWeapons.add(4, Utils.setLoreCost(new Shank(Utils.randRarity())));
-        shopWeapons.add(5, Utils.setLoreCost(new ScrapyardBow(Utils.randRarity())));
-        shopWeapons.add(6, Utils.setLoreCost(new WoodenBow(Utils.randRarity())));
-        shopWeapons.add(7, Utils.setLoreCost(new PebbleShooter(Utils.randRarity())));
-        shopWeapons.add(8, Utils.setLoreCost(new Club(Utils.randRarity())));
-        shopWeapons.add(9, Utils.setLoreCost(new GiantClub(Utils.randRarity())));
-        shopWeapons.add(10, Utils.setLoreCost(new FemurBone(Utils.randRarity())));
-        shopWeapons.add(11, Utils.setLoreCost(new LivingTwig(Utils.randRarity())));
-        shopWeapons.add(12, Utils.setLoreCost(new GlisteningTwig(Utils.randRarity())));
-        shopWeapons.add(13, Utils.setLoreCost(new GlowingTwig(Utils.randRarity())));
-        shopWeapons.add(14, Utils.setLoreCost(new SlimeSpoofer(Utils.randRarity())));
+        shopWeapons.add(0, Utils.setLoreCost(new Twig(Utils.randRarity() + addVal)));
+        shopWeapons.add(1, Utils.setLoreCost(new StickyStick(Utils.randRarity() + addVal)));
+        shopWeapons.add(2, Utils.setLoreCost(new Spade(Utils.randRarity() + addVal)));
+        shopWeapons.add(3, Utils.setLoreCost(new ScrapyardBow(Utils.randRarity() + addVal)));
+        shopWeapons.add(4, Utils.setLoreCost(new WoodenBow(Utils.randRarity() + addVal)));
+        shopWeapons.add(5, Utils.setLoreCost(new PebbleShooter(Utils.randRarity() + addVal)));
+        shopWeapons.add(6, Utils.setLoreCost(new Club(Utils.randRarity() + addVal)));
+        shopWeapons.add(7, Utils.setLoreCost(new GiantClub(Utils.randRarity() + addVal)));
+        shopWeapons.add(8, Utils.setLoreCost(new FemurBone(Utils.randRarity() + addVal)));
+        shopWeapons.add(9, Utils.setLoreCost(new LivingTwig(Utils.randRarity() + addVal)));
+        shopWeapons.add(10, Utils.setLoreCost(new GlisteningTwig(Utils.randRarity() + addVal)));
+        shopWeapons.add(11, Utils.setLoreCost(new GlowingTwig(Utils.randRarity() + addVal)));
     }
 
     private static void setShopArmor() {
         shopArmor.clear();
-        shopArmor.add(0, Utils.setLoreCost(new SlimyHelmet(Utils.randRarity())));
-        shopArmor.add(1, Utils.setLoreCost(new SlimyChestplate(Utils.randRarity())));
-        shopArmor.add(2, Utils.setLoreCost(new SlimyLeggings(Utils.randRarity())));
-        shopArmor.add(3, Utils.setLoreCost(new SlimyBoots(Utils.randRarity())));
-        shopArmor.add(4, Utils.setLoreCost(new MagmaHelmet(Utils.randRarity())));
-        shopArmor.add(5, Utils.setLoreCost(new MagmaChestplate(Utils.randRarity())));
-        shopArmor.add(6, Utils.setLoreCost(new MagmaLeggings(Utils.randRarity())));
-        shopArmor.add(7, Utils.setLoreCost(new MagmaBoots(Utils.randRarity())));
-        shopArmor.add(8, Utils.setLoreCost(new WoolHelmet(Utils.randRarity())));
-        shopArmor.add(9, Utils.setLoreCost(new WoolChestplate(Utils.randRarity())));
-        shopArmor.add(10, Utils.setLoreCost(new WoolLeggings(Utils.randRarity())));
-        shopArmor.add(11, Utils.setLoreCost(new WoolBoots(Utils.randRarity())));
-        shopArmor.add(12, Utils.setLoreCost(new BoneHelmet(Utils.randRarity())));
-        shopArmor.add(13, Utils.setLoreCost(new BoneChestplate(Utils.randRarity())));
-        shopArmor.add(14, Utils.setLoreCost(new BoneLeggings(Utils.randRarity())));
-        shopArmor.add(15, Utils.setLoreCost(new BoneBoots(Utils.randRarity())));
+        shopArmor.add(0, Utils.setLoreCost(new SlimyHelmet(Utils.randRarity() + addVal)));
+        shopArmor.add(1, Utils.setLoreCost(new SlimyChestplate(Utils.randRarity() + addVal)));
+        shopArmor.add(2, Utils.setLoreCost(new SlimyLeggings(Utils.randRarity() + addVal)));
+        shopArmor.add(3, Utils.setLoreCost(new SlimyBoots(Utils.randRarity() + addVal)));
+        shopArmor.add(4, Utils.setLoreCost(new MagmaHelmet(Utils.randRarity() + addVal)));
+        shopArmor.add(5, Utils.setLoreCost(new MagmaChestplate(Utils.randRarity() + addVal)));
+        shopArmor.add(6, Utils.setLoreCost(new MagmaLeggings(Utils.randRarity() + addVal)));
+        shopArmor.add(7, Utils.setLoreCost(new MagmaBoots(Utils.randRarity() + addVal)));
+        shopArmor.add(8, Utils.setLoreCost(new WoolHelmet(Utils.randRarity() + addVal)));
+        shopArmor.add(9, Utils.setLoreCost(new WoolChestplate(Utils.randRarity() + addVal)));
+        shopArmor.add(10, Utils.setLoreCost(new WoolLeggings(Utils.randRarity() + addVal)));
+        shopArmor.add(11, Utils.setLoreCost(new WoolBoots(Utils.randRarity() + addVal)));
     }
 
     @EventHandler

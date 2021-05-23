@@ -1,12 +1,18 @@
 package net.siegerpg.siege.core.listeners;
 
+import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.drops.Drop;
+import kotlin.Triple;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.cache.PreviousBrokenBlock;
 import net.siegerpg.siege.core.drops.BlockDrops;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -14,16 +20,31 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BlockBreakListener implements Listener {
+
+    List<Material> keepAir = new ArrayList<>() {
+        {
+            add(Material.WHEAT);
+        }
+    };
+    List<Material> alwaysCancel = new ArrayList<>() {
+        {
+            add(Material.SAND);
+            add(Material.GRAVEL);
+            add(Material.GRASS_BLOCK);
+        }
+    };
 
     @EventHandler
     public void breakEvent(BlockBreakEvent e) {
@@ -34,50 +55,82 @@ public class BlockBreakListener implements Listener {
         }
 
         Material blockType = e.getBlock().getType();
-        BlockDrops blockDrop = BlockDrops.matchCaseBlockDrops(blockType.toString());
+        BlockDrops blockDrop = null;
+        for(Triple<Player, Material, BlockDrops> triple : PreviousBrokenBlock.previousBlock) {
+            if (!triple.component1().equals(player)) continue;
+            if (triple.component2().equals(blockType)) {
+                blockDrop = triple.component3();
+            } else {
+                blockDrop = BlockDrops.matchCaseBlockDrops(blockType.toString());
+                if (blockDrop != null) {
+                    PreviousBrokenBlock.previousBlock.remove(triple);
+                    PreviousBrokenBlock.previousBlock.add(new Triple<>(player, blockType, blockDrop));
+                    break;
+                }
+                return;
+            }
+            break;
+        }
 
-        e.setDropItems(false);
+
+        if (blockDrop == null) {
+            blockDrop = BlockDrops.matchCaseBlockDrops(blockType.toString());
+            if (blockDrop == null) {
+                return;
+            }
+            PreviousBrokenBlock.previousBlock.add(new Triple<>(player, blockType, blockDrop));
+        }
+
         e.setCancelled(true);
-        if (blockDrop == null) {return;}
+        e.setDropItems(false);
+        final BlockState blockState = e.getBlock().getState();
+        final Location loc = e.getBlock().getLocation();
+        final int blockDropRegen = blockDrop.getRegenTime();
+        final double luckVal = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
+        int goldCoinAmt = blockDrop.getGold(true);
+        int exp = blockDrop.getExp(true);
+        final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
 
+        if (keepAir.contains(blockType)) {
+            e.setCancelled(false);
+        } else if (alwaysCancel.contains(blockType)) {
+            e.setCancelled(true);
+        } else {
+            e.getBlock().setType(Material.BEDROCK);
+        }
 
-        BlockData blockData = e.getBlock().getBlockData();
-        Location loc = e.getBlock().getLocation();
-        ItemStack goldCoins = Utils.getGoldCoin();
-        goldCoins.setAmount(blockDrop.getGold(true));
-
-        if ((Math.random() * 100) <= CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand())) {
-            goldCoins.setAmount(goldCoins.getAmount() * 2);
+        if (goldCoinAmt > 0) {
+            if ((Math.random() * 100) <= luckVal) {
+                goldCoinAmt *= 2;
+            }
+            ItemStack goldCoin = Utils.getGoldCoin(goldCoinAmt);
+            loc.getWorld().dropItemNaturally(loc, goldCoin);
         }
 
         if (blockDrop.getExp(true) > 0) {
-            int exp = blockDrop.getExp(true);
-            if ((Math.random() * 100) <= CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand())) {
+            if ((Math.random() * 100) <= luckVal) {
                 exp *= 2;
             }
-            Levels.INSTANCE.addExp(player, exp);
-            player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
-            Scoreboard.updateScoreboard(player);
-        } //Give exp reward
+            ExperienceOrb orb = loc.getWorld().spawn(loc, ExperienceOrb.class);
+            orb.setCustomName(Utils.tacc("&5+" + exp + " &5EXP"));
+            orb.setExperience(exp);
+        }
 
-        if (goldCoins.getAmount() > 0) { e.getBlock().getWorld().dropItemNaturally(loc, goldCoins); } //Give gold reward
 
-        //Loop through drops, check if player's inventory is full, add item to inventory
-        for (ItemStack drop : blockDrop.getRewards(CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK))) {
-            if (!(e.getPlayer().getInventory().firstEmpty() == -1)) {
+        for (ItemStack drop : blockDrop.getRewards(luckVal)) {
+            if (!fullInv) {
                 e.getPlayer().getInventory().addItem(drop);
             } else {
                 e.getBlock().getWorld().dropItemNaturally(loc, drop);
             }
 
         }
-        if (blockDrop.getRegenTime()>20) {
-            e.getBlock().setType(Material.BEDROCK);
-            if (blockType.toString().equals("WHEAT")) e.getBlock().setType(Material.AIR);
-            Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                loc.getBlock().setBlockData(blockData);
-            }, blockDrop.getRegenTime());
-        }
+
+        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+            public void run() {
+                blockState.update(true, false);
+            }
+        }, blockDropRegen);
     }
 
 }

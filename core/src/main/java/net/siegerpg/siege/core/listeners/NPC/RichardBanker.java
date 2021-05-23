@@ -3,18 +3,16 @@ package net.siegerpg.siege.core.listeners.NPC;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.utils.Bank;
-import net.siegerpg.siege.core.utils.PlayerBanking;
+import net.siegerpg.siege.core.cache.PlayerBanking;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -144,17 +142,17 @@ public class RichardBanker implements Listener {
         int maxAmt = bankLvl*5000;
         int diff = (maxAmt-bankAmt);
         if (pocketBal < diff) {
-            diff = (int) pocketBal;
+            diff = pocketBal;
         }
 
         ItemStack bankAcc = new ItemStack(Material.GOLD_INGOT);
         ItemMeta bankAccMeta = bankAcc.getItemMeta();
-        bankAccMeta.displayName(Utils.lore("<gray><bold>Bank Account <gold>Lvl. " + bankLvl));
+        bankAccMeta.displayName(Utils.lore("<gray>Bank Account <gold><bold>Lvl. " + bankLvl));
         bankAccMeta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<gold>Profile <gray>" + player.getName()));
                 add(Utils.lore("  <gray>Bank <yellow>" + bankAmt));
-                add(Utils.lore("  <gray>Pocket <yellow>" + VaultHook.econ.getBalance(player)));
+                add(Utils.lore("  <gray>Pocket <yellow>" + String.format("%,d", pocketBal)));
                 add(Utils.lore("<yellow>Max Bank Amount " + String.format("%,d", upgradeCost)));
                 add(Utils.lore(""));
             }
@@ -178,7 +176,7 @@ public class RichardBanker implements Listener {
         sub1000Meta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<red>-1000 <gray>Bank"));
-                add(Utils.lore("<green>+1000 <gray>Pocket"));
+                add(Utils.lore("<green>+" + String.format("%,d", 1000) + " <gray>Pocket"));
             }
         });
         sub1000.setItemMeta(sub1000Meta);
@@ -200,7 +198,7 @@ public class RichardBanker implements Listener {
         bankUpgradeMeta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<gold>" + bankLvl + " <gray>\u2192 <gold>" + upgradedLvl));
-                add(Utils.lore("<gray>Cost <yellow>" + upgradeCost));
+                add(Utils.lore("<gray>Cost <yellow>" + String.format("%,d", upgradeCost)));
                 add(Utils.lore(""));
             }
         });
@@ -223,7 +221,7 @@ public class RichardBanker implements Listener {
         add1000Meta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<green>+1000 <gray>Bank"));
-                add(Utils.lore("<red>-1000 <gray>Pocket"));
+                add(Utils.lore("<red>-" + String.format("%,d", 1000) + " <gray>Pocket"));
             }
         });
         add1000.setItemMeta(add1000Meta);

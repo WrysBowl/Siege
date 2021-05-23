@@ -25,3 +25,5 @@ commands:
   leaderboard:
     description: Sends player list of sorted top level players
     aliases: [ ltop, lblevel, leveltop, lvltop, lblvl ]
+  level:
+    description: Sends player detailed exp

@@ -1,6 +1,8 @@
 package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicDropLoadEvent;
+import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobDeathEvent;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.drops.MobDrops;
@@ -11,6 +13,7 @@ import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,6 +23,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Score;
 
 public class DeathListener implements Listener, Runnable {
+
     @EventHandler
     public void mobDeath(EntityDeathEvent e) {
 
@@ -35,32 +39,33 @@ public class DeathListener implements Listener, Runnable {
         if (!mobDrop.isMob_exists()) {return;}
 
         Player player = e.getEntity().getKiller();
-        Double luck = 0.0;
-        ItemStack goldCoins = Utils.getGoldCoin();
-        goldCoins.setAmount(mobDrop.getGold(true));
+        double luck = 0.0;
+        int goldCoinAmt = mobDrop.getGold(true);
+        Location loc = e.getEntity().getLocation();
 
         if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());}
-        if ((Math.random() * 100) <= luck) {
-            goldCoins.setAmount(goldCoins.getAmount() * 2);
-        }
+
         if (mobDrop.getExp(true) > 0 && player != null) {
             int exp = mobDrop.getExp(true);
             if ((Math.random() * 100) <= luck) {
                 exp *= 2;
             }
-            Levels.INSTANCE.addExp(player, exp);
-            player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
-            Scoreboard.updateScoreboard(player);
+            ExperienceOrb orb = loc.getWorld().spawn(loc, ExperienceOrb.class);
+            orb.setCustomName(Utils.tacc("&5+" + exp + " &5EXP"));
+            orb.setExperience(exp);
         } //Give exp reward
 
-        if (goldCoins.getAmount() > 0) { e.getDrops().add(goldCoins); } //Give gold reward
-        
-        for (ItemStack drop : mobDrop.getRewards(luck)) { //Loop through all drops
-            e.getDrops().add(drop);
+        if (goldCoinAmt > 0) {
+            if ((Math.random() * 100) <= luck) {
+                goldCoinAmt *= 2;
+            }
+            ItemStack goldCoin = Utils.getGoldCoin(goldCoinAmt);
+            e.getDrops().add(goldCoin);
         }
+        e.getDrops().addAll(mobDrop.getRewards(luck));
 
-        for (int i = 0; i<e.getDrops().size(); i++) {
-            e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), e.getDrops().get(i));
+        for (ItemStack drop : e.getDrops()) { //Loop through all drops
+            e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), drop);
         }
     }
 
