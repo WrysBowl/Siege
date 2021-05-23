@@ -153,8 +153,8 @@ public class RichardBanker implements Listener {
                 add(Utils.lore("<gold>Profile <gray>" + player.getName()));
                 add(Utils.lore("  <gray>Bank <yellow>" + bankAmt));
                 add(Utils.lore("  <gray>Pocket <yellow>" + String.format("%,d", pocketBal)));
-                add(Utils.lore("<yellow>Max Bank Amount " + String.format("%,d", upgradeCost)));
                 add(Utils.lore(""));
+                add(Utils.lore("<gold>Max Bank <yellow>" + String.format("%,d", upgradeCost)));
             }
         });
         bankAcc.setItemMeta(bankAccMeta);

@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
-import org.bukkit.GameMode;
-import org.bukkit.Material;
+import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.*;
 import org.bukkit.block.EnderChest;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Door;
@@ -14,10 +14,11 @@ import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 
 import java.util.Objects;
 
-public class WorldListener implements Listener {
+public class WorldListener implements Listener, Runnable {
     
     @EventHandler
     public void onTrample(PlayerInteractEvent event) {
@@ -68,6 +69,19 @@ public class WorldListener implements Listener {
                 e.setCancelled(true);
             }
         }
+    }
+
+    public void onTimeChange(Plugin plugin, final World world) {
+        plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
+            public void run() {
+                long time = world.getTime();
+                if (time == 23000) {
+                    Bukkit.broadcastMessage(Utils.tacc("&eA new day to come out and play!"));
+                } else if (time == 13000) {
+                    Bukkit.broadcastMessage(Utils.tacc("&2When night comes out, monsters are about."));
+                }
+            }
+        }, 1, 1);
     }
 
     @EventHandler
@@ -138,4 +152,8 @@ public class WorldListener implements Listener {
     @EventHandler
     public void denyBlockFade(BlockFadeEvent e) { e.setCancelled(true); }
 
+    @Override
+    public void run() {
+
+    }
 }
