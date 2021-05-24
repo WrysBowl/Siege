@@ -83,14 +83,14 @@ public class DeathListener implements Listener, Runnable {
             int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
             double percBal = (Math.floor(bal / 10000.0) / 100);
-
+            if (percBal > 20) percBal = 20;
             int newBal = (int) Math.round(bal * (0.95 - percBal));
 
 
             if (newBal < 0) newBal = 0;
             VaultHook.econ.withdrawPlayer(player, bal);
             VaultHook.econ.depositPlayer(player, newBal);
-            player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&7" + (bal - newBal) + " has been lost"), 1, 60, 1);
+            player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c-" + (bal - newBal) + "gold &7has been lost"), 1, 60, 1);
             Scoreboard.updateScoreboard(player);
         }
     }
