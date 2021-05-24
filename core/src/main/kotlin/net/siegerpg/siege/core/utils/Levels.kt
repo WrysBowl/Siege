@@ -102,7 +102,7 @@ object Levels {
             if (player.isOnline) {
                 player.sendTitle(
                     Utils.tacc("&5Level Up!"),
-                    Utils.tacc("&c+1 ATK     +2 HP"),
+                    Utils.tacc("&c+2 HP"),
                     1, 80, 1
                 )
             }

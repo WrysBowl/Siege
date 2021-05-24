@@ -161,7 +161,6 @@ object CustomItemUtils {
                 }
             }
         }
-        //Bukkit.getLogger().info("Boots: " + output)
         return output
     }
 
