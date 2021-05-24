@@ -18,7 +18,7 @@ class LeatherChestplate() : CustomChestplate(
     description = listOf("Skin tight. Literally."),
     levelRequirement = 18,
     material = Material.LEATHER_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 95.0),
+    baseStats = CustomItemUtils.statMap(health = 25.0, toughness = 50.0),
     recipeList = recipes {
         recipe {
             shaped = true

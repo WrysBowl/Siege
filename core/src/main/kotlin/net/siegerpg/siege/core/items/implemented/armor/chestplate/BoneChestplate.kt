@@ -18,7 +18,7 @@ class BoneChestplate() : CustomChestplate(
     description = listOf("Spare ribs"),
     levelRequirement = 24,
     material = Material.LEATHER_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 60.0, toughness = 120.0),
+    baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 100.0),
     recipeList = recipes {
         recipe {
             shaped = true

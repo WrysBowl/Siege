@@ -18,7 +18,7 @@ class WoolLeggings() : CustomLeggings(
     description = listOf("Dressed for the winter"),
     levelRequirement = 9,
     material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 14.0, toughness = 40.0, regeneration = 10.0),
+    baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 15.0, regeneration = 10.0),
     recipeList = recipes {
         recipe {
             shaped = true

@@ -18,7 +18,7 @@ class MagmaChestplate() : CustomChestplate(
     description = listOf("This really warms my heart"),
     levelRequirement = 13,
     material = Material.LEATHER_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 75.0),
+    baseStats = CustomItemUtils.statMap(health = 25.0, toughness = 35.0),
     recipeList = recipes {
         recipe {
             shaped = true

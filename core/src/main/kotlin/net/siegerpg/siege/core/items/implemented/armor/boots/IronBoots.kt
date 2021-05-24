@@ -17,7 +17,7 @@ class IronBoots() : CustomBoots(
     description = listOf("Iron clad boots"),
     levelRequirement = 34,
     material = Material.IRON_BOOTS,
-    baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 60.0),
+    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 60.0),
     recipeList = recipes {
         recipe {
             shaped = true

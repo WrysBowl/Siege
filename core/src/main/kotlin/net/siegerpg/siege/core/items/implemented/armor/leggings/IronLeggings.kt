@@ -17,7 +17,7 @@ class IronLeggings() : CustomLeggings(
     description = listOf("Iron jenkins"),
     levelRequirement = 35,
     material = Material.IRON_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 100.0, regeneration = 30.0),
+    baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 100.0, regeneration = 10.0),
     recipeList = recipes {
         recipe {
             shaped = true

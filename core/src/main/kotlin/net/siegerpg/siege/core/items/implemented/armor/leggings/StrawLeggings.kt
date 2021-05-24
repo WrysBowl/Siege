@@ -18,7 +18,7 @@ class StrawLeggings() : CustomLeggings(
     description = listOf("The Last Straw"),
     levelRequirement = 4,
     material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 40.0, regeneration = 5.0),
+    baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 10.0, regeneration = 5.0),
     recipeList = recipes {
         recipe {
             shaped = true

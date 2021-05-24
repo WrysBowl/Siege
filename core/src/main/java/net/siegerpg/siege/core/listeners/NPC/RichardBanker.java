@@ -48,7 +48,7 @@ public class RichardBanker implements Listener {
 
         short bankLvl = PlayerBanking.bankLevels.get(player);
         int bankAmt = PlayerBanking.bankAmounts.get(player);
-        int upgradeCost = bankLvl*5000;
+        int upgradeCost = bankLvl*3000;
         int maxAmt = bankLvl*5000;
         short upgradedLvl = (short) (bankLvl+1);
         double pocketBal = VaultHook.econ.getBalance(player);
@@ -136,7 +136,7 @@ public class RichardBanker implements Listener {
 
         short bankLvl = PlayerBanking.bankLevels.get(player);
         int bankAmt = PlayerBanking.bankAmounts.get(player);
-        int upgradeCost = bankLvl*5000;
+        int upgradeCost = bankLvl*3000;
         short upgradedLvl = (short) (bankLvl+1);
         int pocketBal = (int) VaultHook.econ.getBalance(player);
         int maxAmt = bankLvl*5000;
@@ -154,7 +154,7 @@ public class RichardBanker implements Listener {
                 add(Utils.lore("  <gray>Bank <yellow>" + bankAmt));
                 add(Utils.lore("  <gray>Pocket <yellow>" + String.format("%,d", pocketBal)));
                 add(Utils.lore(""));
-                add(Utils.lore("<gold>Max Bank <yellow>" + String.format("%,d", upgradeCost)));
+                add(Utils.lore("<gold>Max Bank <yellow>" + String.format("%,d", maxAmt)));
             }
         });
         bankAcc.setItemMeta(bankAccMeta);

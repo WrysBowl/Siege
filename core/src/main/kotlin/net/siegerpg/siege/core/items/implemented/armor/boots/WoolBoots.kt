@@ -19,7 +19,7 @@ class WoolBoots() : CustomBoots(
     description = listOf("Moccasins?"),
     levelRequirement = 8,
     material = Material.LEATHER_BOOTS,
-    baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 20.0),
+    baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 10.0),
     recipeList = recipes {
         recipe {
             shaped = true

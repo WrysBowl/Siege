@@ -18,7 +18,7 @@ class IronChestplate() : CustomChestplate(
     description = listOf("Bullet proof"),
     levelRequirement = 35,
     material = Material.IRON_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 60.0, toughness = 150.0),
+    baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 150.0),
     recipeList = recipes {
         recipe {
             shaped = true

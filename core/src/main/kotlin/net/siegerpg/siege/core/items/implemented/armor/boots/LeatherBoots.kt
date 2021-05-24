@@ -19,7 +19,7 @@ class LeatherBoots() : CustomBoots(
     description = listOf("Bootleg spurs!"),
     levelRequirement = 17,
     material = Material.LEATHER_BOOTS,
-    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 30.0),
+    baseStats = CustomItemUtils.statMap(health = 15.0, toughness = 20.0),
     recipeList = recipes {
         recipe {
             shaped = true

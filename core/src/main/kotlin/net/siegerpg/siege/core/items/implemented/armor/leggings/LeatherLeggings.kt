@@ -18,7 +18,7 @@ class LeatherLeggings() : CustomLeggings(
     description = listOf("Leather but erect"),
     levelRequirement = 18,
     material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 70.0, regeneration = 10.0),
+    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 30.0, regeneration = 7.0),
     recipeList = recipes {
         recipe {
             shaped = true

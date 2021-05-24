@@ -16,7 +16,7 @@ class IronHelmet() : CustomHelmet(
     description = listOf("Thick skull"),
     levelRequirement = 29,
     material = Material.IRON_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 80.0),
+    baseStats = CustomItemUtils.statMap(health = 25.0, toughness = 80.0),
     recipeList = recipes {
         recipe {
             shaped = true

@@ -17,7 +17,7 @@ class WoolHelmet() : CustomHelmet(
     description = listOf("Keep your ears warm"),
     levelRequirement = 8,
     material = Material.LEATHER_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 8.0, toughness = 30.0),
+    baseStats = CustomItemUtils.statMap(health = 12.0, toughness = 10.0),
     recipeList = recipes {
         recipe {
             shaped = true

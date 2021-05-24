@@ -19,7 +19,7 @@ class ChainBoots() : CustomBoots(
     description = listOf("Not the best foot wear"),
     levelRequirement = 29,
     material = Material.CHAINMAIL_BOOTS,
-    baseStats = CustomItemUtils.statMap(health = 60.0, toughness = 30.0),
+    baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 15.0),
     recipeList = recipes {
         recipe {
             shaped = true

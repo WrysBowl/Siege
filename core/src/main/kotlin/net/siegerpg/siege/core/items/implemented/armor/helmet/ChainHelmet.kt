@@ -16,7 +16,7 @@ class ChainHelmet() : CustomHelmet(
     description = listOf("Dreadlocks"),
     levelRequirement = 29,
     material = Material.CHAINMAIL_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 60.0, toughness = 50.0),
+    baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 20.0),
     recipeList = recipes {
         recipe {
             shaped = true
