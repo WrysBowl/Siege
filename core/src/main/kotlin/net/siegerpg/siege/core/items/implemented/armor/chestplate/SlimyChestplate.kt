@@ -18,7 +18,7 @@ class SlimyChestplate() : CustomChestplate(
     description = listOf("Jelly belly"),
     levelRequirement = 4,
     material = Material.LEATHER_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 50.0),
+    baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 30.0),
     recipeList = recipes {
         recipe {
             shaped = true

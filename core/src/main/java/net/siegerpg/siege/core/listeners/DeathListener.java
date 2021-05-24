@@ -27,6 +27,7 @@ public class DeathListener implements Listener, Runnable {
     @EventHandler
     public void mobDeath(EntityDeathEvent e) {
 
+        if (e.getEntity().getKiller() == null) return;
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) { return; }
 
         ActiveMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity());
