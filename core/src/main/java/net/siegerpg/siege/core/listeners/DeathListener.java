@@ -73,15 +73,20 @@ public class DeathListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void onEntityDeath(PlayerDeathEvent e) {
+    public void removePlayerGold(PlayerDeathEvent e) {
         e.deathMessage(null);
         Player player = e.getEntity().getPlayer();
         if (player != null) {
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
             player.spigot().respawn();
             player.teleport(player.getWorld().getSpawnLocation());
-            double bal = Math.round(VaultHook.econ.getBalance(player));
-            int newBal = (int) Math.round(bal * 0.95);
+            int bal = (int) Math.round(VaultHook.econ.getBalance(player));
+
+            double percBal = (Math.floor(bal / 10000.0) / 100);
+
+            int newBal = (int) Math.round(bal * (0.95 - percBal));
+
+
             if (newBal < 0) newBal = 0;
             VaultHook.econ.withdrawPlayer(player, bal);
             VaultHook.econ.depositPlayer(player, newBal);
