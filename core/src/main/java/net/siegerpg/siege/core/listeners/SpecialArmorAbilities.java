@@ -2,14 +2,10 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.implemented.armor.boots.BoneBoots;
-import net.siegerpg.siege.core.items.implemented.armor.boots.SlimyBoots;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.SlimyChestplate;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings;
+import net.siegerpg.siege.core.items.implemented.armor.boots.*;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
@@ -43,6 +39,8 @@ public class SpecialArmorAbilities implements Listener {
             e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 99999, 1));
         } else if (isBoneSet(newArmorContents)) {
             e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 99999, 0));
+        } else if (isIronSet(newArmorContents)) {
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 99999, 1));
         }
     }
 
@@ -80,17 +78,34 @@ public class SpecialArmorAbilities implements Listener {
         return badCheckMethod == 4;
     }
 
+    private boolean isIronSet(ArrayList<ItemStack> armorPieces) {
+        int badCheckMethod = 0;
+        for (ItemStack armorPiece : armorPieces) {
+            CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(armorPiece);
+            if (item instanceof IronHelmet) {
+                badCheckMethod += 1;
+            } else if (item instanceof IronChestplate) {
+                badCheckMethod += 1;
+            } else if (item instanceof IronLeggings) {
+                badCheckMethod += 1;
+            } else if (item instanceof IronBoots) {
+                badCheckMethod += 1;
+            }
+        }
+        return badCheckMethod == 4;
+    }
+
     private boolean isStrawSet(ArrayList<ItemStack> armorPieces) {
         int badCheckMethod = 0;
         for (ItemStack armorPiece : armorPieces) {
             CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(armorPiece);
-            if (item instanceof BoneHelmet) {
+            if (item instanceof StrawHelmet) {
                 badCheckMethod += 1;
-            } else if (item instanceof BoneChestplate) {
+            } else if (item instanceof StrawChestplate) {
                 badCheckMethod += 1;
-            } else if (item instanceof BoneLeggings) {
+            } else if (item instanceof StrawLeggings) {
                 badCheckMethod += 1;
-            } else if (item instanceof BoneBoots) {
+            } else if (item instanceof StrawBoots) {
                 badCheckMethod += 1;
             }
         }
