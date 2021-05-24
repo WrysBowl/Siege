@@ -30,7 +30,6 @@ public class GoldExpListener implements Listener{
         if (!item.getType().equals(Material.SUNFLOWER)) return;
         if (!item.getItemMeta().getDisplayName().contains("Gold Coin")) return;
         Player player = ((Player) e.getEntity()).getPlayer();
-        e.setCancelled(true);
         int goldAmount = e.getItem().getItemStack().getAmount();
         net.siegerpg.siege.core.utils.VaultHook.econ.depositPlayer(player, goldAmount);
         e.getItem().remove();
