@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners;
 
+import com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent;
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
@@ -9,21 +10,25 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
+import org.bukkit.entity.ExperienceOrb;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.entity.ItemMergeEvent;
+import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class GoldExpListener implements Listener{
 
     @EventHandler
     public void goldPickUp(EntityPickupItemEvent e) {
-        ItemStack eGetItem = e.getItem().getItemStack();
+        ItemStack item = e.getItem().getItemStack();
         if (e.isCancelled()) return;
         if (!(e.getEntity() instanceof Player)) return;
-        if (!eGetItem.getType().equals(Material.SUNFLOWER)) return;
-        if (!Utils.strip(eGetItem.getItemMeta().getDisplayName()).equals("Gold Coin")) return;
+        if (!item.getType().equals(Material.SUNFLOWER)) return;
+        if (!item.getItemMeta().getDisplayName().contains("Gold Coin")) return;
         Player player = ((Player) e.getEntity()).getPlayer();
         e.setCancelled(true);
         int goldAmount = e.getItem().getItemStack().getAmount();
@@ -56,4 +61,29 @@ public class GoldExpListener implements Listener{
         }
         e.getExperienceOrb().setExperience(0);
     }
+
+    @EventHandler
+    public void goldMerge(ItemMergeEvent e) {
+        ItemStack item = e.getEntity().getItemStack();
+        Item source = e.getEntity();
+        Item target = e.getTarget();
+        int total = source.getItemStack().getAmount() + target.getItemStack().getAmount();
+        if (e.isCancelled()) return;
+        if (item.getType().equals(Material.SUNFLOWER) && item.getItemMeta().getDisplayName().contains("Gold Coin")) {
+            e.getTarget().setCustomName(Utils.tacc("&e+" + total + " Gold"));
+        } else {
+            e.getTarget().setCustomName(Utils.tacc( "&e" + total + "x &r" + item.getItemMeta().getDisplayName()));
+        }
+        e.getTarget().setCustomNameVisible(true);
+    }
+
+    @EventHandler
+    public void setDroppedItemName(ItemSpawnEvent e) {
+        if (e.getEntity() instanceof ExperienceOrb) return;
+        if (e.getEntity().getItemStack().getType().equals(Material.SUNFLOWER)) return;
+        ItemStack item = e.getEntity().getItemStack();
+        e.getEntity().setCustomName(Utils.tacc( "&e" + item.getAmount() + "x &r" + item.getItemMeta().getDisplayName()));
+        e.getEntity().setCustomNameVisible(true);
+    }
+
 }

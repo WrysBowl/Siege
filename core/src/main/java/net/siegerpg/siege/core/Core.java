@@ -132,7 +132,6 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
         SmokyBlacksmith.resetItems();
         StatChangeListener.statBarDisplayTask();
-        new WorldListener().onTimeChange(plugin(), Core.plugin().getServer().getWorld("Hilly_Woods"));
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         getServer().getPluginManager().registerEvents(new VanillaCraftingListener(), this);
         new RegenerationTask().startRegenTask();

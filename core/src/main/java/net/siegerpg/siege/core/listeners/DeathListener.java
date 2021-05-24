@@ -51,8 +51,9 @@ public class DeathListener implements Listener, Runnable {
                 exp *= 2;
             }
             ExperienceOrb orb = loc.getWorld().spawn(loc, ExperienceOrb.class);
-            orb.setCustomName(Utils.tacc("&5+" + exp + " &5EXP"));
+            orb.setCustomName(Utils.tacc("&5+" + exp + " EXP"));
             orb.setExperience(exp);
+            orb.setCustomNameVisible(true);
         } //Give exp reward
 
         if (goldCoinAmt > 0) {
@@ -60,12 +61,13 @@ public class DeathListener implements Listener, Runnable {
                 goldCoinAmt *= 2;
             }
             ItemStack goldCoin = Utils.getGoldCoin(goldCoinAmt);
-            e.getDrops().add(goldCoin);
+            Item gold = loc.getWorld().dropItemNaturally(loc, goldCoin);
+            gold.setCustomName(Utils.tacc("&e+" + goldCoinAmt + " Gold"));
+            gold.setCustomNameVisible(true);
         }
-        e.getDrops().addAll(mobDrop.getRewards(luck));
 
-        for (ItemStack drop : e.getDrops()) { //Loop through all drops
-            e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), drop);
+        for (ItemStack drop : mobDrop.getRewards(luck)) { //Loop through all drops
+            loc.getWorld().dropItemNaturally(loc, drop);
         }
     }
 

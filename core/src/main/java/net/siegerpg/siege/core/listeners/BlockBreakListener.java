@@ -21,6 +21,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.ExperienceOrb;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,13 +37,16 @@ public class BlockBreakListener implements Listener {
     List<Material> keepAir = new ArrayList<>() {
         {
             add(Material.WHEAT);
+            add(Material.VINE);
         }
     };
     List<Material> alwaysCancel = new ArrayList<>() {
         {
-            add(Material.SAND);
-            add(Material.GRAVEL);
+            add(Material.CHAIN);
             add(Material.GRASS_BLOCK);
+            add(Material.WHEAT);
+            add(Material.BAMBOO);
+            add(Material.SUGAR_CANE);
         }
     };
 
@@ -53,6 +57,9 @@ public class BlockBreakListener implements Listener {
             e.setCancelled(false);
             return;
         }
+
+        e.setCancelled(true);
+        e.setDropItems(false);
 
         Material blockType = e.getBlock().getType();
         BlockDrops blockDrop = null;
@@ -81,8 +88,6 @@ public class BlockBreakListener implements Listener {
             PreviousBrokenBlock.previousBlock.add(new Triple<>(player, blockType, blockDrop));
         }
 
-        e.setCancelled(true);
-        e.setDropItems(false);
         final BlockState blockState = e.getBlock().getState();
         final Location loc = e.getBlock().getLocation();
         final int blockDropRegen = blockDrop.getRegenTime();
@@ -104,7 +109,9 @@ public class BlockBreakListener implements Listener {
                 goldCoinAmt *= 2;
             }
             ItemStack goldCoin = Utils.getGoldCoin(goldCoinAmt);
-            loc.getWorld().dropItemNaturally(loc, goldCoin);
+            Item gold = loc.getWorld().dropItemNaturally(loc, goldCoin);
+            gold.setCustomName(Utils.tacc("&e+" + goldCoinAmt + " Gold"));
+            gold.setCustomNameVisible(true);
         }
 
         if (blockDrop.getExp(true) > 0) {
@@ -112,8 +119,9 @@ public class BlockBreakListener implements Listener {
                 exp *= 2;
             }
             ExperienceOrb orb = loc.getWorld().spawn(loc, ExperienceOrb.class);
-            orb.setCustomName(Utils.tacc("&5+" + exp + " &5EXP"));
+            orb.setCustomName(Utils.tacc("&5+" + exp + " EXP"));
             orb.setExperience(exp);
+            orb.setCustomNameVisible(true);
         }
 
 

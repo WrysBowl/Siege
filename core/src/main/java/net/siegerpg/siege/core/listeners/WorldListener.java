@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners;
 
+import com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.block.EnderChest;
@@ -60,6 +61,11 @@ public class WorldListener implements Listener, Runnable {
     }
 
     @EventHandler
+    public void expMerge(ExperienceOrbMergeEvent e) {
+        e.setCancelled(true);
+    }
+
+    @EventHandler
     public void preventLeftClick(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.LEFT_CLICK_AIR) || e.getAction().equals(Action.LEFT_CLICK_BLOCK) ||
                 e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
@@ -69,19 +75,6 @@ public class WorldListener implements Listener, Runnable {
                 e.setCancelled(true);
             }
         }
-    }
-
-    public void onTimeChange(Plugin plugin, final World world) {
-        plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
-            public void run() {
-                long time = world.getTime();
-                if (time == 23000) {
-                    Bukkit.broadcastMessage(Utils.tacc("&eA new day to come out and play!"));
-                } else if (time == 13000) {
-                    Bukkit.broadcastMessage(Utils.tacc("&2When night comes out, monsters are about."));
-                }
-            }
-        }, 1, 1);
     }
 
     @EventHandler

@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack
 class Wheat() : CustomMaterial(
     name = "Wheat",
     customModelData = 320011,
-    description = listOf("The most important part of bread"),
+    description = listOf("The most important", "part of bread"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
