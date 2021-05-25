@@ -181,7 +181,6 @@ class CustomItemKotlinListener : Listener, Runnable {
                 }.runTaskLater(plugin(), 50)
             }
         }
-
     }
 
 

@@ -135,7 +135,10 @@ public class ClemontBlacksmith implements Listener {
                     return;
                 }
             }
-            if (VaultHook.econ.getBalance(player) < cost) { player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!")); }
+            if (VaultHook.econ.getBalance(player) < cost) {
+                player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
+                return;
+            }
             for (ItemStack item : reqIngredients) { player.getInventory().removeItem(item); }
             if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
                 player.closeInventory();

@@ -1,7 +1,12 @@
 package net.siegerpg.siege.core.listeners;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,15 +30,24 @@ public class ChatListener implements Listener {
             return;
         }
         if (message.contains("[item]")) {
-
+            e.setCancelled(true);
             if (player.getInventory().getItemInMainHand().getType() != Material.AIR ) {
-
                 String name = player.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
-
                 List<String> lore = player.getInventory().getItemInMainHand().getItemMeta().getLore();
-
+                StringBuilder itemDisplay = new StringBuilder(name + "\n");
+                if (lore != null) {
+                    for (String line : lore) {
+                        itemDisplay.append(line).append("\n");
+                    }
+                }
+                itemDisplay.deleteCharAt(itemDisplay.length()-1);
+                Component miniMessage = MiniMessage.get().parse("<hover:show_text:<itemDisplay>><gold><bold>[ITEM]</bold>", "itemDisplay", itemDisplay.toString());
+                Component prefixes = Utils.lore(Utils.tacc(level + " " + prefix + " &7" + player.getName() + " &f"));
+                Component actualMessage = Utils.lore(e.getMessage()).replaceText("[item]", miniMessage);
+                Bukkit.getServer().sendMessage(prefixes.append(actualMessage));
+                return;
             }
-
+            player.sendMessage(Utils.lore("<red>You need an item to display!"));
         }
         e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f%2$s"));
     }
