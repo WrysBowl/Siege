@@ -78,7 +78,7 @@ class Dungeon {
         if (!currentPlayers.contains(player)) {
             currentPlayers.add(player)
             val dungeon = dungeonPlugin.dungeonConfig.getDungeon(type, index)
-            if (dungeon!!.contains("players")) dungeon.getStringList("players").add(player.uniqueId.toString())
+            if (dungeon.contains("players")) dungeon.getStringList("players").add(player.uniqueId.toString())
             else dungeon.set("players", listOf(player.uniqueId.toString()))
         }
         if (player.isOnline) (player as Player).teleport(location.clone().add(type.relSpawnLoc))

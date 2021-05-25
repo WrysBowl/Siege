@@ -164,7 +164,7 @@ class DungeonType {
      *
      * @return Dungeon The next available dungeon
      */
-    open fun nextAvailableDungeon(): Dungeon? {
+    fun nextAvailableDungeon(): Dungeon? {
         var available: Dungeon? = null
         val dungeonLength = dungeons.size
         for (dungeon in dungeons) {
