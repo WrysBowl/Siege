@@ -17,12 +17,22 @@ public class Level implements CommandExecutor {
         if (!(sender instanceof Player)) {
             return false;
         }
+        OfflinePlayer player = (Player) sender;
+        if (args.length > 0) {
+            OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+            if (Levels.INSTANCE.getExpLevel(argPlayer).getFirst() == null) {
+                ((Player)player).sendMessage(Utils.lore("<red>That player can not be found."));
+               return false;
+            } else {
+                player = argPlayer;
+            }
+        }
 
-        short level = Levels.INSTANCE.getExpLevel((Player)sender).getFirst();
+        short level = Levels.INSTANCE.getExpLevel(player).getFirst();
         float reqExp = Levels.INSTANCE.calculateRequiredExperience(level);
-        Integer experience = Levels.INSTANCE.getExpLevel((Player)sender).getSecond();
+        Integer experience = Levels.INSTANCE.getExpLevel(player).getSecond();
         double division = experience/reqExp;
-        String name = sender.getName();
+        String name = player.getName();
         String levelPercent = String.valueOf(Utils.round(Utils.round(division, 3)*100,2));
 
         int total = 0;
