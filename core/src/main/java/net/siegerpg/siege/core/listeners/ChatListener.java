@@ -30,6 +30,8 @@ public class ChatListener implements Listener {
             return;
         }
         if (message.contains("[item]")) {
+            player.sendMessage(Utils.lore("<red>This feature is not available yet!."));
+            /*
             e.setCancelled(true);
             if (player.getInventory().getItemInMainHand().getType() != Material.AIR ) {
                 String name = player.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
@@ -48,6 +50,7 @@ public class ChatListener implements Listener {
                 return;
             }
             player.sendMessage(Utils.lore("<red>You need an item to display!"));
+             */
         }
         e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f%2$s"));
     }
