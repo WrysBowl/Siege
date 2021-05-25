@@ -25,15 +25,17 @@ public class Spawn implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
+            int time = 60;
+            int seconds = time/20;
 
-            player.sendMessage(Utils.lore("<red>Teleporting in 3 seconds"));
+            player.sendMessage(Utils.lore("<red>Teleporting in " + seconds + " seconds"));
             new BukkitRunnable() {
                 @Override
                 public void run() {
                     player.teleport(player.getWorld().getSpawnLocation());
                     player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, (float) 0.5, (float) 0.8);
                 }
-            }.runTaskLater(Core.plugin(), 60);
+            }.runTaskLater(Core.plugin(), time);
 
 
             return true;
