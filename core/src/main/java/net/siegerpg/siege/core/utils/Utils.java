@@ -58,6 +58,13 @@ public class Utils {
         return (double) Math.round(value * scale) / scale;
     }
 
+    public static String convertTicksToTime(int ticks) {
+        double seconds = ticks/20.0;
+        double minutes = seconds/60;
+        double hours = minutes/60;
+
+    }
+
     public static ItemStack getGoldCoin(Integer amount) {
         ItemStack gold = new ItemStack(Material.SUNFLOWER);
         ItemMeta meta = gold.getItemMeta();
