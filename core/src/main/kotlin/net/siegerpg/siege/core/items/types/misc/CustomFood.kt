@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.items.types.misc
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
+import net.siegerpg.siege.core.items.enums.FoodPoints
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -11,6 +12,8 @@ import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.Bukkit
 import org.bukkit.Material
+import org.bukkit.Sound
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -49,6 +52,30 @@ abstract class CustomFood(
             e.player.addPotionEffect(realPotion)
         }
         if (e.item.type == Material.SUSPICIOUS_STEW || e.item.type == Material.MUSHROOM_STEW || e.item.type == Material.RABBIT_STEW) {
+            e.player.setItemInHand(ItemStack(Material.AIR))
+        }
+    }
+
+    open fun onEat(e: PlayerInteractEvent) {
+        val foodRegenVal: Int = FoodPoints.getHungerRegenValue(e.player.itemInHand.type)
+        var newFoodLevel = e.player.foodLevel+foodRegenVal
+        if (newFoodLevel > 20) newFoodLevel = 20
+        e.player.foodLevel = newFoodLevel
+        e.player.playSound(e.player.location, Sound.ENTITY_GENERIC_EAT, 0.8.toFloat(), 0.8.toFloat())
+        e.player.playSound(e.player.location, Sound.ENTITY_FOX_EAT, 0.4.toFloat(), 0.8.toFloat())
+        val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth + (e.player.level*2)
+        val currentCustomHealth = CustomItemUtils.getCustomHealth(e.player)
+        val addedHealth = (((health * getRarityMultiplier(quality)) + currentCustomHealth)/healthStat) * e.player.maxHealth
+        if (addedHealth <= e.player.maxHealth)
+            e.player.health = addedHealth
+        else e.player.health = e.player.maxHealth
+        potion?.forEach {
+            val realPotionDuration = (it.duration * getRarityMultiplier(quality)).toInt()
+            val realPotion = PotionEffect(it.type, realPotionDuration, it.amplifier)
+            e.player.addPotionEffect(realPotion)
+        }
+
+        if (e.player.itemInHand.type == Material.SUSPICIOUS_STEW || e.player.itemInHand.type == Material.MUSHROOM_STEW || e.player.itemInHand.type == Material.RABBIT_STEW) {
             e.player.setItemInHand(ItemStack(Material.AIR))
         }
     }

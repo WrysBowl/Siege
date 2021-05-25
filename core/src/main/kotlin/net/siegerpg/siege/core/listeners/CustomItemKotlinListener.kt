@@ -39,6 +39,7 @@ import kotlin.math.sin
 class CustomItemKotlinListener : Listener, Runnable {
 
     var cooldownWand: MutableList<Player> = mutableListOf()
+    var cooldownFood: MutableList<Player> = mutableListOf()
 
 
     /*
@@ -151,25 +152,48 @@ class CustomItemKotlinListener : Listener, Runnable {
     @EventHandler
     @Suppress("unused")
     fun onConsume(e: PlayerItemConsumeEvent) {
-        Bukkit.getServer().scheduler.scheduleSyncDelayedTask(plugin(), {
-            CustomItemUtils.getCustomItem(e.item)?.let {
-                if (it is CustomFood) {
-                    it.onEat(e)
-                    e.setItem(e.item)
-                }
+        CustomItemUtils.getCustomItem(e.item)?.let {
+            if (it is CustomFood) {
+                it.onEat(e)
             }
-        }, 1)
+        }
+    }
+
+    @EventHandler
+    fun onFoodClick(e: PlayerInteractEvent) {
+        if (e.action != Action.RIGHT_CLICK_AIR &&
+            e.action != Action.RIGHT_CLICK_BLOCK
+        ) return
+        CustomItemUtils.getCustomItem(e.player.itemInHand)?.let {
+            if (it is CustomFood) {
+                val player: Player = e.player
+                if (cooldownFood.contains(player)) {
+                    player.sendActionBar(Utils.parse("<red>You're too full!"))
+                    return
+                }
+                cooldownFood.add(player)
+                it.onEat(e)
+                e.player.itemInHand.amount = e.player.itemInHand.amount-1
+                object : BukkitRunnable() {
+                    override fun run() {
+                        cooldownFood.remove(player)
+                    }
+                }.runTaskLater(plugin(), 50)
+            }
+        }
+
     }
 
 
     @EventHandler
     @Suppress("unused")
     fun onFoodHold(e: PlayerItemHeldEvent) {
-        if (e.player.foodLevel != 20) return
+        if (e.player.foodLevel < 19) return
         val food = CustomItemUtils.getCustomItem(e.player.inventory.getItem(e.newSlot))
         if (food != null) {
             if (food is CustomFood) {
-                e.player.foodLevel = 19
+                if (e.player.foodLevel == 20) e.player.foodLevel = 19
+                else e.player.foodLevel = 20
             }
         }
     }
