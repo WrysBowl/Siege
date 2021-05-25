@@ -4,6 +4,6 @@ main: net.siegerpg.siege.dungeons.DungeonPlugin
 api-version: 1.16
 description: Siege's dungeons plugin
 prefix: SiegeDungeons
-depend: [ FastAsyncWorldEdit, Kotlin, SiegeCore ]
+depend: [ FastAsyncWorldEdit, SiegeCore, MythicMobs ]
 load: STARTUP
 authors: [ DeltaRays ]

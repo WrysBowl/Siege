@@ -110,6 +110,7 @@ class DungeonType {
         this.dungeonLevel = dungeonLevel
         this.dungeonDistance = dungeonDistance
         this.relBossLoc = relBossLoc
+        println(MythicMobs.inst().mobManager.mobNames.joinToString(", "))
         this.boss = MythicMobs.inst().mobManager.getMythicMob(bossName)
         this.relSpawnLoc = relSpawnLoc
         this.plugin = plugin
