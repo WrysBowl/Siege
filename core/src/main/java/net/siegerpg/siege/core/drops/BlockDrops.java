@@ -34,7 +34,7 @@ public enum BlockDrops {
     GRASS_BLOCK(Material.GRASS_BLOCK, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 50.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 50.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     GREEN_TERRACOTTA(Material.GREEN_TERRACOTTA, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 65.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 35.0}
@@ -49,10 +49,10 @@ public enum BlockDrops {
     }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
     DIRT(Material.DIRT, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 50.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     COARSE_DIRT(Material.COARSE_DIRT, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 50.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
 
     //NATURE
     BAMBOO(Material.BAMBOO, new Object[][]{

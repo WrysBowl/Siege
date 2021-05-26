@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack
 class Vine() : CustomMaterial(
     name = "Vine",
     customModelData = 320004,
-    description = listOf("Woven around trees and abandoned lands"),
+    description = listOf("Woven around trees", "and abandoned lands"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {

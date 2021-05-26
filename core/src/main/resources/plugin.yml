@@ -7,6 +7,7 @@ prefix: SiegeCore
 depend: [ Vault, ProtocolLib, Votifier, MythicMobs, NBTAPI, Kotlin ]
 load: STARTUP
 authors: [ Wrys, DeltaRays, Ghqst, Bagelll ]
+loadbefore: [ DiscordSRV-Build-1.22.0 ]
 
 commands:
   party:
@@ -14,7 +15,8 @@ commands:
     aliases: [ p ]
   hub:
     description: Teleports the player to SiegeHub
-  discords:
+  discord:
+    aliases: [ discord ]
     description: Sends a discord link to the sender
   getItem:
     description: Gets a custom item for the developer

@@ -16,7 +16,7 @@ public class Tablist {
                 "");
 
         Component footer = Utils.parse("\n" +
-                "<gold>Discord: <gray>/discords\n" +
+                "<gold>Discord: <gray>/discord\n" +
                 //"<gold>Website: <gray>/website\n" +
                 "<gray>There are <gold><underlined>"+Bukkit.getOnlinePlayers().size()+"<reset><gray> players online!\n" +
                 "");

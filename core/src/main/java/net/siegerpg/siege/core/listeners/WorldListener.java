@@ -54,7 +54,7 @@ public class WorldListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void denySpawning(EntitySpawnEvent e) {
+    public void denySpawning(ItemSpawnEvent e) {
         if (e.getEntity() instanceof Egg) {
             e.setCancelled(true);
         }

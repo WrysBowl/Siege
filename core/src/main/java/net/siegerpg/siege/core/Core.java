@@ -46,7 +46,7 @@ public final class Core extends JavaPlugin {
         spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
         protocolManager = ProtocolLibrary.getProtocolManager();
         this.getCommand("hub").setExecutor(new Hub());
-        this.getCommand("discords").setExecutor(new Discord());
+        this.getCommand("discord").setExecutor(new Discord());
         this.getCommand("getItem").setExecutor(new GetItem());
         this.getCommand("spawn").setExecutor(new Spawn());
         this.getCommand("invsee").setExecutor(new Invsee());
