@@ -1,6 +1,8 @@
 package net.siegerpg.siege.core.Webstore;
 
+import de.tr7zw.nbtapi.NBTItem;
 import net.kyori.adventure.text.Component;
+import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -18,12 +20,15 @@ public class WebstoreUtils {
         itemMeta.lore(new ArrayList<>(){
             {
                 add(Utils.lore("  <gray>Duration: <white>" + Utils.convertSecondsToTime(seconds)));
-                add(Utils.lore("  <yellow>Multiplier: " + multiplier + "x EXP"));
+                add(Utils.lore("  <yellow>Multiplier: |" + multiplier + "x| EXP"));
                 add(Utils.lore("<green><bold>CLICK TO REDEEM"));
             }
         });
         item.setItemMeta(itemMeta);
-        return item;
+        NBTItem nbtItem = new NBTItem(item);
+        nbtItem.setInteger("seconds", seconds);
+        nbtItem.setDouble("multiplier", multiplier);
+        return nbtItem.getItem();
     }
-    
+
 }

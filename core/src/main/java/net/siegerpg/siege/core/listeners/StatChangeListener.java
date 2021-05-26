@@ -26,7 +26,7 @@ public class StatChangeListener implements Listener, Runnable {
     public static HashMap<Player, Double> playerHealth = new HashMap<>();
     public static HashMap<Player, Double> playerToughness = new HashMap<>();
 
-    private void addHealthTough(Player player) {
+    public static void addHealthTough(Player player) {
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
             playerHealth.put(
                     player,

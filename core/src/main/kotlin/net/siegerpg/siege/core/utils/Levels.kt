@@ -3,6 +3,7 @@
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import net.siegerpg.siege.core.Webstore.WebstoreUtils
 import net.siegerpg.siege.core.database.DatabaseManager
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
@@ -138,8 +139,9 @@ object Levels {
 
     fun addExp(player: OfflinePlayer, exp: Int) {
         GlobalScope.launch(Dispatchers.IO) {
+            val newExp = (exp * WebstoreUtils.expMultiplier).toInt()
             val levelExp = getExpLevel(player)
-            val new = calculateExpLevel(levelExp.first, levelExp.second + exp, player as Player)
+            val new = calculateExpLevel(levelExp.first, levelExp.second + newExp, player as Player)
             setExpLevel(player, new)
         }
     }
