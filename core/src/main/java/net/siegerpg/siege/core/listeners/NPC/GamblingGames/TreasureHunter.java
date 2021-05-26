@@ -1,10 +1,12 @@
 package net.siegerpg.siege.core.listeners.NPC.GamblingGames;
 
+import com.github.stefvanschie.inventoryframework.font.util.Font;
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import com.github.stefvanschie.inventoryframework.pane.StaticPane;
+import com.github.stefvanschie.inventoryframework.pane.component.Label;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.utils.Levels;
@@ -94,7 +96,7 @@ public class TreasureHunter {
         this.game.show(player);
     }
     private void startGame() {
-        for(int i = 0; i<(game.getRows()*9)-1; i++) {
+        for(int i = 0; i<(game.getRows()*9); i++) {
             this.rewardTable.put(i, (int) (Math.random() * 5));
         }
 
@@ -121,12 +123,14 @@ public class TreasureHunter {
         Player player = (Player) e.getWhoClicked();
         if (this.dugValues.contains(slot)) return;
         this.dugValues.add(slot);
-        int y = (int) Math.floor(slot-1/9.0);
+        int y = (int) Math.floor(slot/9.0);
         int x = slot - (y*9);
+        Bukkit.getLogger().info("Y value: " + y);
+        Bukkit.getLogger().info("X value: " + x);
 
         if (getValue == 0) {
-            e.getInventory().setItem(slot, this.bomb);
-            //this.background.addItem(new GuiItem(this.bomb), x, y);
+            this.background.addItem(new GuiItem(this.bomb), x, y);
+            this.game.setTitle(Utils.tacc("&c&lEXPLODED"));
             player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f);
             new BukkitRunnable() {
                 @Override
@@ -135,24 +139,21 @@ public class TreasureHunter {
                 }
             }.runTaskLater(Core.plugin(), 80);
         } else if (getValue == 1) {
-            e.getInventory().setItem(slot, this.gold);
-            //this.background.addItem(new GuiItem(this.gold), x, y);
+            this.background.addItem(new GuiItem(this.gold), x, y);
             this.goldRewards += 100;
             this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else if (getValue == 2) {
-            e.getInventory().setItem(slot, this.exp);
-            //this.background.addItem(new GuiItem(this.exp), x, y);
+            this.background.addItem(new GuiItem(this.exp), x, y);
             this.expRewards += 100;
             this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else {
-            e.getInventory().setItem(slot, new ItemStack(Material.AIR));
-            //this.background.addItem(new GuiItem(new ItemStack(Material.AIR)), x, y);
+            this.background.addItem(new GuiItem(new ItemStack(Material.AIR)), x, y);
             player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
         }
-        //this.game.update();
-        player.updateInventory();
+        this.game.addPane(this.background);
+        this.game.update();
     }
     private void gameClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();

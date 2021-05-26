@@ -35,7 +35,13 @@ public class BartBeggar implements Listener {
         menu.setOnGlobalClick(event -> event.setCancelled(true));
 
         OutlinePane background = new OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST);
-        background.addItem(new GuiItem(new ItemStack(Material.GRAY_STAINED_GLASS_PANE)));
+
+        ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        ItemMeta fillerMeta = filler.getItemMeta();
+        fillerMeta.displayName(Utils.lore(""));
+        filler.setItemMeta(fillerMeta);
+        background.addItem(new GuiItem(filler));
+
         background.setRepeat(true);
 
         menu.addPane(background);
