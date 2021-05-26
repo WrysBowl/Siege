@@ -125,8 +125,6 @@ public class TreasureHunter {
         this.dugValues.add(slot);
         int y = (int) Math.floor(slot/9.0);
         int x = slot - (y*9);
-        Bukkit.getLogger().info("Y value: " + y);
-        Bukkit.getLogger().info("X value: " + x);
 
         if (getValue == 0) {
             this.background.addItem(new GuiItem(this.bomb), x, y);
