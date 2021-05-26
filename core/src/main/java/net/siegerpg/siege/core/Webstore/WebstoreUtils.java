@@ -11,17 +11,19 @@ import java.util.List;
 
 public class WebstoreUtils {
     public static double expMultiplier = 1.0;
-    public static ItemStack getExpBoosterItem(int amount, double multiplier, int ticks) {
+    public static ItemStack getExpBoosterItem(int amount, double multiplier, int seconds) {
         ItemStack item = new ItemStack(Material.PAPER, amount);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.displayName(Utils.lore("<light_purple>EXP Booster"));
         itemMeta.lore(new ArrayList<>(){
             {
-                add(Utils.lore("  <gray>Duration: "));
+                add(Utils.lore("  <gray>Duration: <white>" + Utils.convertSecondsToTime(seconds)));
                 add(Utils.lore("  <yellow>Multiplier: " + multiplier + "x EXP"));
+                add(Utils.lore("<green><bold>CLICK TO REDEEM"));
             }
         });
         item.setItemMeta(itemMeta);
         return item;
     }
+    
 }

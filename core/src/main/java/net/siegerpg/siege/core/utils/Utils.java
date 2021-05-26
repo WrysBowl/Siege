@@ -58,11 +58,25 @@ public class Utils {
         return (double) Math.round(value * scale) / scale;
     }
 
-    public static String convertTicksToTime(int ticks) {
-        double seconds = ticks/20.0;
-        double minutes = seconds/60;
+    public static String convertSecondsToTime(int seconds) {
+        double minutes = seconds/60.0;
         double hours = minutes/60;
+        String time = "";
 
+        if (hours >= 1) {
+            time += (int) Math.floor(hours)+"h ";
+        }
+        if (minutes >= 1) {
+            if ((minutes % 60) > 0.0) {
+                time += (int) Math.floor(minutes % 60) + "m ";
+            }
+        }
+        if (seconds >= 1) {
+            if ((seconds % 60) > 0.0) {
+                time += (int) Math.floor(seconds % 60)+"s";
+            }
+        }
+        return time;
     }
 
     public static ItemStack getGoldCoin(Integer amount) {
