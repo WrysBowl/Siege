@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
@@ -143,6 +144,7 @@ public class ClemontBlacksmith implements Listener {
             if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
                 player.closeInventory();
                 VaultHook.econ.withdrawPlayer(player, cost);
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
                 Scoreboard.updateScoreboard((Player) e.getWhoClicked());
                 player.sendMessage(Utils.tacc("&eYou have purchased an item"));
                 player.getInventory().addItem(result);

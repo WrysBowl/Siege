@@ -14,6 +14,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
@@ -695,6 +696,7 @@ public class SymoneCollector implements Listener {
         player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
@@ -786,6 +788,7 @@ public class SymoneCollector implements Listener {
         player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
@@ -1163,6 +1166,7 @@ public class SymoneCollector implements Listener {
         player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
@@ -1290,6 +1294,7 @@ public class SymoneCollector implements Listener {
         player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
@@ -1399,6 +1404,7 @@ public class SymoneCollector implements Listener {
         player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
@@ -1591,6 +1597,7 @@ public class SymoneCollector implements Listener {
         player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
@@ -1861,6 +1868,7 @@ public class SymoneCollector implements Listener {
         player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
@@ -1903,6 +1911,7 @@ public class SymoneCollector implements Listener {
         player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
             player.getInventory().addItem(result);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));

@@ -14,6 +14,7 @@ import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.NPC;
 import org.bukkit.entity.Player;
@@ -149,6 +150,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
                 if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
                     player.closeInventory();
                     player.getInventory().addItem(Utils.removeLastLore(e.getCurrentItem()));
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
                     VaultHook.econ.withdrawPlayer(player, cost);
                     Scoreboard.updateScoreboard((Player) e.getWhoClicked());
                     player.sendMessage(Utils.tacc("&eYou have purchased an item"));
@@ -169,6 +171,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
                 if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
                     player.closeInventory();
                     player.getInventory().addItem(Utils.removeLastLore(e.getCurrentItem()));
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
                     VaultHook.econ.withdrawPlayer(player, cost);
                     Scoreboard.updateScoreboard((Player) e.getWhoClicked());
                     player.sendMessage(Utils.tacc("&eYou have purchased an item"));

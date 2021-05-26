@@ -13,6 +13,7 @@ import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -88,6 +89,7 @@ public class Dealer implements Listener {
             return; }
         player.getInventory().addItem(item);
         VaultHook.econ.withdrawPlayer(player, cost);
+        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         Scoreboard.updateScoreboard(player);
         player.sendMessage(Utils.tacc("&eYou have purchased an item"));
     }
