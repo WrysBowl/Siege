@@ -212,7 +212,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
                 add(Utils.lore("<gray>Click for Armor"));
             }
         });
-        weaponsMeta.removeAttributeModifier(Attribute.GENERIC_ARMOR);
+        armorMeta.removeAttributeModifier(Attribute.GENERIC_ARMOR);
         armor.setItemMeta(armorMeta);
 
         //This is where you decide what slot the item goes into
