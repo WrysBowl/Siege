@@ -33,6 +33,8 @@ public class TreasureHunter {
     private final StaticPane background = new StaticPane(0, 0, 9, 6, Pane.Priority.LOWEST);
     private final ItemStack filler = new ItemStack(Material.YELLOW_STAINED_GLASS_PANE);
     private final ItemStack bomb = new ItemStack(Material.TNT);
+    private final ItemStack gold1000 = new ItemStack(Material.SUNFLOWER);
+    private final ItemStack gold500 = new ItemStack(Material.SUNFLOWER);
     private final ItemStack gold100 = new ItemStack(Material.SUNFLOWER);
     private final ItemStack gold75 = new ItemStack(Material.SUNFLOWER);
     private final ItemStack gold50 = new ItemStack(Material.SUNFLOWER);

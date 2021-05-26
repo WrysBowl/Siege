@@ -83,7 +83,7 @@ public class DeathListener implements Listener, Runnable {
             int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
             double percBal = (Math.floor(bal / 10000.0) / 100);
-            if (percBal > 20) percBal = 20;
+            if (percBal > 0.15) percBal = 0.15;
             int newBal = (int) Math.round(bal * (0.95 - percBal));
 
 
