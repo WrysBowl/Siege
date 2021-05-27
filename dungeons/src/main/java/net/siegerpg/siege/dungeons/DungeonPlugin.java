@@ -5,11 +5,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class DungeonPlugin extends JavaPlugin {
     private static DungeonPlugin INSTANCE;
 
-    public DungeonConfig dungeonConfig;
+    DungeonConfig dungeonConfig = new DungeonConfig(this);
+
     @Override
     public void onEnable() {
         INSTANCE = this;
-        dungeonConfig = new DungeonConfig();
+        getLogger().info("SiegeDungeons has enabled!");
     }
 
     @Override
@@ -17,6 +18,13 @@ public class DungeonPlugin extends JavaPlugin {
         INSTANCE = null;
     }
 
+
+    /**
+     * Method to get the plugin from other classes
+     * You can use Core.plugin() in other classes to get the plugin instance
+     *
+     * @return The main plugin
+     */
     public static DungeonPlugin plugin() {
         return INSTANCE;
     }
