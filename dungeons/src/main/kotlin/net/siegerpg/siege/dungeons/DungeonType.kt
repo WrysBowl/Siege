@@ -2,8 +2,6 @@
 
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormats
-import io.lumine.xikage.mythicmobs.MythicMobs
-import io.lumine.xikage.mythicmobs.mobs.MythicMob
 import org.bukkit.*
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.generator.ChunkGenerator
@@ -132,7 +130,6 @@ class DungeonType {
             })
             world = creator.createWorld() // Creates the world
         }
-        System.out.println("ERoergjrgjo");
         val dungeonCfg = DungeonPlugin.plugin().dungeonConfig.getDungeons(this)
         dungeonCfg.getKeys(false).forEach(Consumer { key: String? ->
             if (dungeonCfg.isConfigurationSection(
