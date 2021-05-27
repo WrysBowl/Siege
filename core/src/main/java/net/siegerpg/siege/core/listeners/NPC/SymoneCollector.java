@@ -1333,7 +1333,7 @@ public class SymoneCollector implements Listener {
                 ItemStack pebble2 = Pebble.Companion.tier(3).getUpdatedItem(false);
                 pebble2.setAmount(1);
                 ItemStack pebble3 = Vine.Companion.tier(3).getUpdatedItem(false);
-                pebble2.setAmount(3);
+                pebble3.setAmount(3);
 
                 reqIngredients.add(pebble1);
                 reqIngredients.add(pebble2);
