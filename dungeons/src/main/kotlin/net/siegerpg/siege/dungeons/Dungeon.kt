@@ -39,9 +39,8 @@ class Dungeon {
             section: ConfigurationSection,
             index: Int,
             type: DungeonType?,
-            plugin: DungeonPlugin
         ): Dungeon {
-            val dungeon = Dungeon(type!!, index, plugin)
+            val dungeon = Dungeon(type!!, index)
             section.getStringList("players").forEach(Consumer { uuid: String? ->
                 val player = Bukkit.getOfflinePlayer(UUID.fromString(uuid))
                 dungeon.currentPlayers.add(player)
@@ -51,7 +50,6 @@ class Dungeon {
     }
 
     var location: Location
-    var dungeonPlugin: DungeonPlugin
 
     /**
      * Creates a dungeon instance with a specific type and index
@@ -59,14 +57,13 @@ class Dungeon {
      * @param dungeonType
      * @param index
      */
-    constructor(dungeonType: DungeonType, index: Int, plugin: DungeonPlugin) {
+    constructor(dungeonType: DungeonType, index: Int) {
         this.index = index
         this.type = dungeonType
         location = Location(
             DungeonType.world, (type.dungeonDistance * index).toDouble(), 128.5,
             (750 * type.index).toDouble()
         )
-        this.dungeonPlugin = plugin
         type.dungeons.add(this)
     }
 
@@ -78,7 +75,7 @@ class Dungeon {
     fun addPlayer(player: OfflinePlayer) {
         if (!currentPlayers.contains(player)) {
             currentPlayers.add(player)
-            val dungeon = dungeonPlugin.dungeonConfig.getDungeon(type, index)
+            val dungeon = DungeonPlugin.plugin().dungeonConfig.getDungeon(type, index)
             if (dungeon.contains("players")) dungeon.getStringList("players").add(player.uniqueId.toString())
             else dungeon.set("players", listOf(player.uniqueId.toString()))
         }
@@ -93,7 +90,7 @@ class Dungeon {
     fun removePlayer(player: OfflinePlayer) {
         if (currentPlayers.contains(player)) {
             currentPlayers.remove(player)
-            var dungeon = dungeonPlugin.dungeonConfig.getDungeon(type, index)
+            var dungeon = DungeonPlugin.plugin().dungeonConfig.getDungeon(type, index)
             if (dungeon.contains("players"))
                 dungeon.getStringList("players").remove(player.uniqueId.toString())
         }
@@ -108,7 +105,7 @@ class Dungeon {
         for (currentPlayer in currentPlayers) {
             removePlayer(currentPlayer)
         }
-        dungeonPlugin.dungeonConfig.getDungeons(type).set(index.toString(), null)
+        DungeonPlugin.plugin().dungeonConfig.getDungeons(type).set(index.toString(), null)
     }
 
     /**

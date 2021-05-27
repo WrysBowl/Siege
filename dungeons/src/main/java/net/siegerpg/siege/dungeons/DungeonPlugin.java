@@ -11,6 +11,7 @@ public class DungeonPlugin extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         dungeonConfig = new DungeonConfig();
+        dungeonConfig.deserializeDungeonTypes();
         getLogger().info("SiegeDungeons has enabled!");
     }
 
