@@ -4,6 +4,7 @@ import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.drops.Drop;
 import kotlin.Triple;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.cache.PreviousBrokenBlock;
 import net.siegerpg.siege.core.drops.BlockDrops;
 import net.siegerpg.siege.core.informants.Scoreboard;
@@ -105,6 +106,7 @@ public class BlockBreakListener implements Listener {
         }
 
         if (goldCoinAmt > 0) {
+            goldCoinAmt = (int) (goldCoinAmt * WebstoreUtils.goldMultiplier);
             if ((Math.random() * 100) <= luckVal) {
                 goldCoinAmt *= 2;
             }
@@ -115,6 +117,7 @@ public class BlockBreakListener implements Listener {
         }
 
         if (blockDrop.getExp(true) > 0) {
+            exp = (int) (exp * WebstoreUtils.expMultiplier);
             if ((Math.random() * 100) <= luckVal) {
                 exp *= 2;
             }

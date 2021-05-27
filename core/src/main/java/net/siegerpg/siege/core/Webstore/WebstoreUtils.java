@@ -26,7 +26,8 @@ public class WebstoreUtils {
         itemMeta.lore(new ArrayList<>(){
             {
                 add(Utils.lore("  <gray>Duration: <white>" + Utils.convertSecondsToTime(seconds)));
-                add(Utils.lore("  <yellow>Multiplier: |" + multiplier + "x| EXP"));
+                add(Utils.lore("  <yellow>Multiplier: " + multiplier + "x EXP"));
+                add(Utils.lore(""));
                 add(Utils.lore("<green><bold>CLICK TO REDEEM"));
             }
         });

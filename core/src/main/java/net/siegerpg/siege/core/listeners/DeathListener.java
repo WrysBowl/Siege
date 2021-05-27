@@ -5,6 +5,7 @@ import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicDropLoadEvent;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobDeathEvent;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.drops.MobDrops;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
@@ -48,6 +49,7 @@ public class DeathListener implements Listener, Runnable {
 
         if (mobDrop.getExp(true) > 0 && player != null) {
             int exp = mobDrop.getExp(true);
+            exp = (int) (exp * WebstoreUtils.expMultiplier);
             if ((Math.random() * 100) <= luck) {
                 exp *= 2;
             }
@@ -58,6 +60,7 @@ public class DeathListener implements Listener, Runnable {
         } //Give exp reward
 
         if (goldCoinAmt > 0) {
+            goldCoinAmt = (int) (goldCoinAmt * WebstoreUtils.goldMultiplier);
             if ((Math.random() * 100) <= luck) {
                 goldCoinAmt *= 2;
             }
