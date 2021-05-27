@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,6 +26,7 @@ public class RedeemBoosters implements Listener {
         if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             Player player = e.getPlayer();
             ItemStack item = player.getInventory().getItemInMainHand();
+            if (item.getType() != Material.PAPER) return;
             if (item.getItemMeta().getDisplayName().contains("EXP Booster")) {
 
                 //Check if the exp multiplier is already above 1, if it is then prevent the next steps by returning
