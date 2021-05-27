@@ -5,11 +5,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class DungeonPlugin extends JavaPlugin {
     private static DungeonPlugin INSTANCE;
 
-    DungeonConfig dungeonConfig = new DungeonConfig(this);
+    DungeonConfig dungeonConfig = null;
 
     @Override
     public void onEnable() {
         INSTANCE = this;
+        dungeonConfig = new DungeonConfig();
+        dungeonConfig.deserializeDungeonTypes();
         getLogger().info("SiegeDungeons has enabled!");
     }
 

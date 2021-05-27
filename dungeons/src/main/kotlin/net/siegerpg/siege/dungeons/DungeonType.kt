@@ -2,8 +2,6 @@
 
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormats
-import io.lumine.xikage.mythicmobs.MythicMobs
-import io.lumine.xikage.mythicmobs.mobs.MythicMob
 import org.bukkit.*
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.generator.ChunkGenerator
@@ -42,13 +40,12 @@ class DungeonType {
     var boss: String
     lateinit var schematic: Clipboard
     var dungeonDistance: Short
-    var plugin: DungeonPlugin
     var dungeons = mutableListOf<Dungeon>()
 
     companion object {
         var dungeonTypes = mutableListOf<DungeonType>()
         var world = Bukkit.getWorld("dungeons")
-        fun deserialize(section: ConfigurationSection, name: String, plugin: DungeonPlugin): DungeonType {
+        fun deserialize(section: ConfigurationSection, name: String): DungeonType {
             var spawnOffset = section.getConfigurationSection("spawn") ?: section.createSection("spawn")
             var bossOffset = section.getConfigurationSection("boss") ?: section.createSection("boss")
             val relSpawnLoc =
@@ -62,8 +59,7 @@ class DungeonType {
                 section.getInt("level"),
                 section.getInt("distance").toShort(),
                 relSpawnLoc, relBossLoc,
-                bossName,
-                plugin,
+                bossName
             )
         }
 
@@ -97,7 +93,6 @@ class DungeonType {
         relSpawnLoc: Location,
         relBossLoc: Location,
         bossName: String,
-        plugin: DungeonPlugin,
     ) {
         this.name = name
         try {
@@ -105,14 +100,13 @@ class DungeonType {
                 ClipboardFormats.findByFile(schematicFile)
                     ?.let { SchematicPaster.loadSchematic(schematicFile.inputStream(), it) }!!
         } catch (exc: Exception) {
-            plugin.logger.severe("")
+            DungeonPlugin.plugin().logger.severe("")
         }
         this.dungeonLevel = dungeonLevel
         this.dungeonDistance = dungeonDistance
         this.relBossLoc = relBossLoc
         this.boss = bossName
         this.relSpawnLoc = relSpawnLoc
-        this.plugin = plugin
         this.index = dungeonTypes.size
         dungeonTypes.add(this)
         if (world == null) {
@@ -136,7 +130,7 @@ class DungeonType {
             })
             world = creator.createWorld() // Creates the world
         }
-        val dungeonCfg = plugin.dungeonConfig.getDungeons(this)
+        val dungeonCfg = DungeonPlugin.plugin().dungeonConfig.getDungeons(this)
         dungeonCfg.getKeys(false).forEach(Consumer { key: String? ->
             if (dungeonCfg.isConfigurationSection(
                     key!!
@@ -145,7 +139,7 @@ class DungeonType {
                 val section =
                     dungeonCfg.getConfigurationSection(key) ?: dungeonCfg.createSection(key)
                 val k = Integer.valueOf(key)
-                dungeons.add(k, Dungeon.deserialize(section, k, this, plugin))
+                dungeons.add(k, Dungeon.deserialize(section, k, this))
             }
         })
     }
@@ -174,7 +168,7 @@ class DungeonType {
             }
         }
         if (available == null) {
-            available = Dungeon(this, dungeonLength + 1, plugin)
+            available = Dungeon(this, dungeonLength + 1)
             available.reset()
             dungeons.add(available)
         }
