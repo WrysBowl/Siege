@@ -5,5 +5,5 @@ api-version: 1.16
 description: Siege's dungeons plugin
 prefix: SiegeDungeons
 depend: [ FastAsyncWorldEdit, SiegeCore, MythicMobs ]
-load: STARTUP
+load: POSTWORLD
 authors: [ DeltaRays ]

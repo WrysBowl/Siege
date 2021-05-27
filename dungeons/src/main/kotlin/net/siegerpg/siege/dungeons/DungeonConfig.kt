@@ -6,7 +6,7 @@ import org.bukkit.configuration.InvalidConfigurationException
 import java.io.File
 import java.io.IOException
 
-class DungeonConfig(var plugin: DungeonPlugin) : ConfigurationBase(File(plugin.dataFolder, "dungeons.yml")) {
+class DungeonConfig() : ConfigurationBase(File(DungeonPlugin.plugin().dataFolder, "dungeons.yml")) {
 
     @Throws(IOException::class, InvalidConfigurationException::class)
     override fun createConfig() {
@@ -62,7 +62,7 @@ class DungeonConfig(var plugin: DungeonPlugin) : ConfigurationBase(File(plugin.d
                 DungeonType.deserialize(
                     configuration.getConfigurationSection(
                         key
-                    )!!, key, plugin
+                    )!!, key, DungeonPlugin.plugin()
                 )
             )
         }
