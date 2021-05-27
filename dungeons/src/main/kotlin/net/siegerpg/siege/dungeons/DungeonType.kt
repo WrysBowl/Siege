@@ -39,7 +39,7 @@ class DungeonType {
     var dungeonLevel: Int
     var relSpawnLoc: Location
     var relBossLoc: Location
-    var boss: MythicMob
+    var boss: String
     lateinit var schematic: Clipboard
     var dungeonDistance: Short
     var plugin: DungeonPlugin
@@ -110,8 +110,7 @@ class DungeonType {
         this.dungeonLevel = dungeonLevel
         this.dungeonDistance = dungeonDistance
         this.relBossLoc = relBossLoc
-        println(MythicMobs.inst().mobManager.mobNames.joinToString(", "))
-        this.boss = MythicMobs.inst().mobManager.getMythicMob(bossName)
+        this.boss = bossName
         this.relSpawnLoc = relSpawnLoc
         this.plugin = plugin
         this.index = dungeonTypes.size

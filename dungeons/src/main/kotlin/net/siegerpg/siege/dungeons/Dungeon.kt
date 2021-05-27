@@ -1,5 +1,6 @@
 ﻿package net.siegerpg.siege.dungeons
 
+import io.lumine.xikage.mythicmobs.MythicMobs
 import io.lumine.xikage.mythicmobs.adapters.AbstractLocation
 import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitWorld
 import net.siegerpg.siege.core.Core
@@ -125,7 +126,7 @@ class Dungeon {
      */
     fun spawnBoss() {
         val bossLoc = location.clone().add(type.relBossLoc)
-        type.boss.spawn(AbstractLocation(BukkitWorld(DungeonType.world), bossLoc.x, bossLoc.y, bossLoc.z), 1.0)
+        MythicMobs.inst().apiHelper.spawnMythicMob(type.boss, bossLoc, type.dungeonLevel)
     }
 
 
