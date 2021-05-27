@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.informants;
 
 import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
@@ -31,6 +32,10 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&7\u2560 Level &5" + level + " &d(" + Utils.round(levelPercent*100,2) + "%)")).setScore(12);
         o.getScore(Utils.tacc("&7\u2560 Gold &e" + gold)).setScore(11);
         o.getScore("  ").setScore(10);
+        o.getScore(Utils.tacc("&6Global")).setScore(9);
+        o.getScore(Utils.tacc("&7\u2560 &7EXP &d" + WebstoreUtils.expMultiplier) + "x").setScore(8);
+        o.getScore(Utils.tacc("&7\u2560 &7Gold &e" + WebstoreUtils.goldMultiplier) + "x").setScore(7);
+        o.getScore("   ").setScore(6);
         o.getScore(Utils.tacc("&7play.SiegeRPG.net")).setScore(4);
         p.setScoreboard(b);
 

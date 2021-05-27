@@ -2,6 +2,8 @@ package net.siegerpg.siege.core;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
+import net.siegerpg.siege.core.Webstore.RedeemBoosters;
+import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.drops.MobDrops;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
@@ -52,6 +54,7 @@ public final class Core extends JavaPlugin {
         this.getCommand("invsee").setExecutor(new Invsee());
         this.getCommand("leaderboard").setExecutor(new Leaderboard());
         this.getCommand("level").setExecutor(new Level());
+        this.getCommand("buy").setExecutor(new WebstoreCommand());
 
         for (Player player : Bukkit.getOnlinePlayers()){
             PlayerBanking.bankLevels.put(player, Bank.INSTANCE.getBankLevel(player));
@@ -121,6 +124,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MobDrops(), this);
         getServer().getPluginManager().registerEvents(new PlayerBanking(), this);
 
+        getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);
         getServer().getPluginManager().registerEvents(new ClemontBlacksmith(), this);

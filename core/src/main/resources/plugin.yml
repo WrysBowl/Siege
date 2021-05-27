@@ -29,3 +29,5 @@ commands:
     aliases: [ ltop, lblevel, leveltop, lvltop, lblvl ]
   level:
     description: Sends player detailed exp
+  buy:
+    description: used for the console to give players their purchased items

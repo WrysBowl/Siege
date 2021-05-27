@@ -1,9 +1,12 @@
 package net.siegerpg.siege.core.Webstore;
 
+import de.tr7zw.nbtapi.NBTCompound;
+import de.tr7zw.nbtapi.NBTContainer;
 import de.tr7zw.nbtapi.NBTItem;
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -12,7 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WebstoreUtils {
+
     public static double expMultiplier = 1.0;
+    public static double goldMultiplier = 1.0;
+
     public static ItemStack getExpBoosterItem(int amount, double multiplier, int seconds) {
         ItemStack item = new ItemStack(Material.PAPER, amount);
         ItemMeta itemMeta = item.getItemMeta();
@@ -24,11 +30,11 @@ public class WebstoreUtils {
                 add(Utils.lore("<green><bold>CLICK TO REDEEM"));
             }
         });
+
         item.setItemMeta(itemMeta);
         NBTItem nbtItem = new NBTItem(item);
         nbtItem.setInteger("seconds", seconds);
         nbtItem.setDouble("multiplier", multiplier);
         return nbtItem.getItem();
     }
-
 }

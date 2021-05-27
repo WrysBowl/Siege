@@ -46,9 +46,9 @@ public class BartBeggar implements Listener {
 
         menu.addPane(background);
 
-        OutlinePane navigator = new OutlinePane(4, 1, 1, 1);
+        OutlinePane navigator = new OutlinePane(4, 0, 1, 2);
 
-        //Creating Armor Icon
+        //Creating Start Icon
         ItemStack startIcon = new ItemStack (Material.ENDER_EYE);
         ItemMeta startIconMeta = startIcon.getItemMeta();
         startIconMeta.displayName(Utils.lore("<gold><bold>TREASURE HUNTER"));
@@ -64,6 +64,19 @@ public class BartBeggar implements Listener {
         });
         startIcon.setItemMeta(startIconMeta);
 
+        //Creating JackPot Icon
+        ItemStack jackPotIcon = new ItemStack (Material.SUNFLOWER);
+        ItemMeta jackPotIconMeta = jackPotIcon.getItemMeta();
+        jackPotIconMeta.displayName(Utils.lore("<yellow><bold>WIN THE JACKPOTS"));
+        jackPotIconMeta.lore(new ArrayList<>(){
+            {
+                add(Utils.lore("<gray>1x <yellow>1,000 <gray>Gold"));
+                add(Utils.lore("<gray>2x <yellow>500 <gray>Gold"));
+            }
+        });
+        jackPotIcon.setItemMeta(jackPotIconMeta);
+
+        navigator.addItem(new GuiItem(jackPotIcon));
         navigator.addItem(new GuiItem(startIcon, this::clickStart));
 
         menu.addPane(navigator);
