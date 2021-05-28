@@ -20,17 +20,17 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
-public class BartBeggar implements Listener {
+public class Herbert implements Listener {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains("Bart") && e.getRightClicked().getName().contains("6")) {
+        if (e.getRightClicked().getName().contains("Herbert") && e.getRightClicked().getName().contains("6")) {
             getMenu().show(e.getPlayer());
         }
     }
     private ChestGui getMenu() {
         //Menu
-        ChestGui menu = new ChestGui(3, "Bart's Treasure Hunt");
+        ChestGui menu = new ChestGui(3, "Herbert's Scrapper");
 
         menu.setOnGlobalClick(event -> event.setCancelled(true));
 

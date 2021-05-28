@@ -166,7 +166,7 @@ public class ClemontBlacksmith implements Listener {
                 add(setCost(new ItemStack(Material.STONE_AXE), 3000));
                 add(setCost(new ItemStack(Material.STONE_PICKAXE), 3000));
                 add(setCost(new ItemStack(Material.STONE_SHOVEL), 2000));
-                add(setCost(new ItemStack(Material.ARROW, 64), 150));
+                add(setCost(new ItemStack(Material.ARROW, 64), 100));
                 add(Utils.addLore(new ItemStack(Material.IRON_SHOVEL),
                         Utils.lore("<yellow>5000"),
                         Utils.lore("<dark_aqua>Click to Craft"),

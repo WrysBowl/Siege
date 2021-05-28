@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.drops.MobDrops;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
+import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
@@ -53,10 +54,7 @@ public class DeathListener implements Listener, Runnable {
             if ((Math.random() * 100) <= luck) {
                 exp *= 2;
             }
-            ExperienceOrb orb = loc.getWorld().spawn(loc, ExperienceOrb.class);
-            orb.setCustomName(Utils.tacc("&5+" + exp + " EXP"));
-            orb.setExperience(exp);
-            orb.setCustomNameVisible(true);
+            GoldEXPSpawning.spawnEXP(exp, loc);
         } //Give exp reward
 
         if (goldCoinAmt > 0) {
@@ -64,10 +62,7 @@ public class DeathListener implements Listener, Runnable {
             if ((Math.random() * 100) <= luck) {
                 goldCoinAmt *= 2;
             }
-            ItemStack goldCoin = Utils.getGoldCoin(goldCoinAmt);
-            Item gold = loc.getWorld().dropItemNaturally(loc, goldCoin);
-            gold.setCustomName(Utils.tacc("&e+" + goldCoinAmt + " Gold"));
-            gold.setCustomNameVisible(true);
+            GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
         }
 
         for (ItemStack drop : mobDrop.getRewards(luck)) { //Loop through all drops

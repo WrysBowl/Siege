@@ -451,9 +451,9 @@ public class SymoneCollector implements Listener {
         {
             add(Utils.addLore(new ItemStack(Material.ARROW, 64),
                     Utils.lore("<dark_aqua>Click to Craft"),
-                    Utils.lore("<dark_aqua>Pebble \u272A\u272A x2"),
-                    Utils.lore("<dark_aqua>Stick \u272A\u272A x2"),
-                    Utils.lore("<dark_aqua>Feather \u272A\u272A x2")));
+                    Utils.lore("<dark_aqua>Pebble \u272A x4"),
+                    Utils.lore("<dark_aqua>Stick \u272A\u272A x1"),
+                    Utils.lore("<dark_aqua>Feather \u272A x4")));
         }
     };
     ArrayList<ItemStack> wandsList = new ArrayList<>(){
@@ -1881,12 +1881,12 @@ public class SymoneCollector implements Listener {
             case 0: //Arrows
 
                 //Initialize Ingredients
-                ItemStack arrow1 = Pebble.Companion.tier(2).getUpdatedItem(false);
-                arrow1.setAmount(2);
+                ItemStack arrow1 = Pebble.Companion.tier(1).getUpdatedItem(false);
+                arrow1.setAmount(4);
                 ItemStack arrow2 = Stick.Companion.tier(2).getUpdatedItem(false);
-                arrow2.setAmount(2);
-                ItemStack arrow3 = Feather.Companion.tier(2).getUpdatedItem(false);
-                arrow3.setAmount(2);
+                arrow2.setAmount(1);
+                ItemStack arrow3 = Feather.Companion.tier(1).getUpdatedItem(false);
+                arrow3.setAmount(4);
 
                 //Add ingredients to required ingredients
                 reqIngredients.add(arrow1);

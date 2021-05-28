@@ -17,42 +17,106 @@ public enum BlockDrops {
     //LOG
     SPRUCE_LOG(Material.SPRUCE_LOG, new Object[][]{
             {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
-    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 50),
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
     OAK_LOG(Material.OAK_LOG, new Object[][]{
             {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
-    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 50),
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    BIRCH_LOG(Material.BIRCH_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    JUNGLE_LOG(Material.JUNGLE_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    ACACIA_LOG(Material.ACACIA_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    DARK_OAK_LOG(Material.DARK_OAK_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
 
     //WOOD
     SPRUCE_WOOD(Material.SPRUCE_WOOD, new Object[][]{
             {Stick.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 50),
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
     OAK_WOOD(Material.OAK_WOOD, new Object[][]{
             {Stick.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 50),
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    BIRCH_WOOD(Material.BIRCH_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    JUNGLE_WOOD(Material.JUNGLE_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    ACACIA_WOOD(Material.ACACIA_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    DARK_OAK_WOOD(Material.DARK_OAK_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+
+    //STRIPPED LOG
+    STRIPPED_SPRUCE_LOG(Material.STRIPPED_SPRUCE_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0}
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_OAK_LOG(Material.STRIPPED_OAK_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0}
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_BIRCH_LOG(Material.STRIPPED_BIRCH_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_JUNGLE_LOG(Material.STRIPPED_JUNGLE_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_ACACIA_LOG(Material.STRIPPED_ACACIA_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_DARK_OAK_LOG(Material.STRIPPED_DARK_OAK_LOG, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+
+    //STRIPPED WOOD
+    STRIPPED_SPRUCE_WOOD(Material.STRIPPED_SPRUCE_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0}
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_OAK_WOOD(Material.STRIPPED_OAK_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0}
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_BIRCH_WOOD(Material.STRIPPED_BIRCH_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_JUNGLE_WOOD(Material.STRIPPED_JUNGLE_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_ACACIA_WOOD(Material.STRIPPED_ACACIA_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
+    STRIPPED_DARK_OAK_WOOD(Material.STRIPPED_DARK_OAK_WOOD, new Object[][]{
+            {Stick.Companion.tier(1).getUpdatedItem(false), 100.0},
+    }, new Integer[]{3, 3}, new Integer[]{3, 3}, 100),
 
     //DIRT TERRAIN
     GRASS_BLOCK(Material.GRASS_BLOCK, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 50.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 50.0}
-    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 100),
     GREEN_TERRACOTTA(Material.GREEN_TERRACOTTA, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 65.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 35.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 100),
     GREEN_CONCRETE(Material.GREEN_CONCRETE, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 50.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 50.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 100),
     LIME_TERRACOTTA(Material.LIME_TERRACOTTA, new Object[][]{
             {PlantMatter.Companion.tier(1).getUpdatedItem(false), 60.0},
             {Seed.Companion.tier(1).getUpdatedItem(false), 60.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 100),
     DIRT(Material.DIRT, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 50.0}
-    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 100),
     COARSE_DIRT(Material.COARSE_DIRT, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 50.0}
-    }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 100),
 
     //NATURE
     BAMBOO(Material.BAMBOO, new Object[][]{
@@ -66,46 +130,46 @@ public enum BlockDrops {
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 30.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
     BIRCH_LEAVES(Material.BIRCH_LEAVES, new Object[][]{
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 30.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
     JUNGLE_LEAVES(Material.JUNGLE_LEAVES, new Object[][]{
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 30.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
     OAK_LEAVES(Material.OAK_LEAVES, new Object[][]{
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 30.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
     SPRUCE_LEAVES(Material.SPRUCE_LEAVES, new Object[][]{
             {new Apple(50).getUpdatedItem(false), 10.0},
             {new Apple(0).getUpdatedItem(false), 30.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
-    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 20),
+    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
 
     //STONE TERRAIN
     STONE(Material.STONE, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 100),
     LIGHT_GRAY_CONCRETE(Material.LIGHT_GRAY_CONCRETE, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 100),
     ANDESITE(Material.ANDESITE, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 20),
+    }, new Integer[]{1, 1}, new Integer[]{0, 0}, 100),
 
     //ORES
     COAL_ORE(Material.COAL_ORE, new Object[][]{
             {Coal.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{4, 6}, new Integer[]{9, 12}, 180),
+    }, new Integer[]{4, 4}, new Integer[]{9, 9}, 200),
     IRON_ORE(Material.IRON_ORE, new Object[][]{
             {MetalScrap.Companion.tier(1).getUpdatedItem(false), 100.0}
-    }, new Integer[]{9, 12}, new Integer[]{5, 6}, 300),
+    }, new Integer[]{9, 9}, new Integer[]{4, 4}, 300),
 
     //DECOR TERRAIN
     VINE(Material.VINE, new Object[][]{

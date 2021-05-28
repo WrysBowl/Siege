@@ -123,7 +123,7 @@ public class TreasureHunter {
                 public void run() {
                     player.closeInventory();
                 }
-            }.runTaskLater(Core.plugin(), 80);
+            }.runTaskLater(Core.plugin(), 60);
         } else if (getValue == 1) {
             this.background.addItem(new GuiItem(this.gold100), x, y);
             this.goldRewards += 100;

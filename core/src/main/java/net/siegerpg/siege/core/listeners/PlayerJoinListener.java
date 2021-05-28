@@ -65,7 +65,7 @@ public class PlayerJoinListener implements Listener {
 
         Player player = event.getPlayer();
 
-        event.setJoinMessage(Utils.tacc("&7[&a+&7] " + player.getName()));
+        String joinMessage = Utils.tacc("&7[&a+&7] " + player.getName());
 
         if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
             player.getInventory().clear();
@@ -75,7 +75,9 @@ public class PlayerJoinListener implements Listener {
             player.getInventory().addItem(food);
             VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
             VaultHook.econ.depositPlayer(player, 200.0);
+            joinMessage = Utils.tacc("&a&lWELCOME&r &7[&a+&7] " + player.getName());
         }
+        event.setJoinMessage(joinMessage);
 
         Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), new Runnable() {
             @Override
