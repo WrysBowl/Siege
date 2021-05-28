@@ -127,27 +127,27 @@ public class TreasureHunter {
         } else if (getValue == 1) {
             this.background.addItem(new GuiItem(this.gold100), x, y);
             this.goldRewards += 100;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else if (getValue == 2) {
             this.background.addItem(new GuiItem(this.gold75), x, y);
             this.goldRewards += 75;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else if (getValue == 3) {
             this.background.addItem(new GuiItem(this.gold50), x, y);
             this.goldRewards += 50;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else if (getValue == 7) {
             this.background.addItem(new GuiItem(this.gold500), x, y);
             this.goldRewards += 500;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else if (getValue == 8) {
             this.background.addItem(new GuiItem(this.gold1000), x, y);
             this.goldRewards += 1000;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else {
             this.background.addItem(new GuiItem(new ItemStack(Material.AIR)), x, y);

@@ -19,9 +19,6 @@ public class Level implements CommandExecutor {
         }
         OfflinePlayer player = (Player) sender;
         if (args.length > 0) {
-            ((Player)player).sendMessage(Utils.lore("<red>This feature is not available yet!."));
-            return false;
-            /*
             OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
             if (Levels.INSTANCE.getExpLevel(argPlayer).getFirst() == null) {
                 ((Player)player).sendMessage(Utils.lore("<red>That player can not be found."));
@@ -29,7 +26,6 @@ public class Level implements CommandExecutor {
             } else {
                 player = argPlayer;
             }
-            */
         }
 
         short level = Levels.INSTANCE.getExpLevel(player).getFirst();
