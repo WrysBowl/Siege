@@ -690,11 +690,12 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
+
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -782,11 +783,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1160,11 +1161,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1288,11 +1289,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1398,11 +1399,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1591,11 +1592,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1862,11 +1863,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1905,11 +1906,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
