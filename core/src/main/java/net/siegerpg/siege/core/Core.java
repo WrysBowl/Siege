@@ -133,6 +133,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BenButcher(), this);
         getServer().getPluginManager().registerEvents(new RichardBanker(), this);
         getServer().getPluginManager().registerEvents(new BartBeggar(), this);
+        getServer().getPluginManager().registerEvents(new Herbert(), this);
         getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
         getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
         SmokyBlacksmith.resetItems();
