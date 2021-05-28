@@ -178,10 +178,10 @@ public class BlockBreakListener implements Listener {
             if (blockDrop == null) {
                 if (rewardableBlocks.contains(blockType)) {
                     e.setCancelled(false);
-                    if (Utils.randTest(10.0)) {
+                    if (Utils.randTest(20.0)) {
                         GoldEXPSpawning.spawnEXP(1, loc);
                     }
-                    if (Utils.randTest(10.0)) {
+                    if (Utils.randTest(20.0)) {
                         GoldEXPSpawning.spawnGold(1, loc);
                     }
                     //after 30 seconds, block respawns back
@@ -212,6 +212,9 @@ public class BlockBreakListener implements Listener {
             e.setCancelled(true);
         } else {
             e.getBlock().setType(Material.BEDROCK);
+        }
+        if (!dependables.contains(blockType) && upFacingDependable || downFacingDependable) {
+            return;
         }
 
         if (goldCoinAmt > 0) {
