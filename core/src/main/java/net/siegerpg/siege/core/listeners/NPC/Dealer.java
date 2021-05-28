@@ -91,7 +91,6 @@ public class Dealer implements Listener {
         VaultHook.econ.withdrawPlayer(player, cost);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         Scoreboard.updateScoreboard(player);
-        player.sendMessage(Utils.tacc("&eYou have purchased an item"));
     }
 
     private Inventory getShopMenu(Player player) {
