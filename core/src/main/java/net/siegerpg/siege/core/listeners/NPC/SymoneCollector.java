@@ -1264,7 +1264,7 @@ public class SymoneCollector implements Listener {
                 result = new EarthernWand(Utils.randRarity()).getUpdatedItem(false);
                 break;
 
-            case 10: //Earthern Staff
+            case 9: //Earthern Staff
 
                 ItemStack EarthernStaff1 = PlantMatter.Companion.tier(3).getUpdatedItem(false);
                 EarthernStaff1.setAmount(1);

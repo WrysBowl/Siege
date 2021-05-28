@@ -52,7 +52,7 @@ class GlowingTwig() : CustomWand(
             }
         }
     },
-    range = 18,
+    range = 12,
     red = 255,
     green = 255,
     blue = 153,

@@ -31,7 +31,7 @@ public class WebstoreCommand implements CommandExecutor {
                 ((Player)argPlayer).getWorld().dropItemNaturally(((Player) argPlayer).getLocation(), item);
             }
             Bukkit.getServer().sendMessage(Utils.parse(""));
-            Bukkit.getServer().sendMessage(Utils.parse("  <aqua>" + argPlayer.getName() + " has bought 5 1.2x EXP Boosters!"));
+            Bukkit.getServer().sendMessage(Utils.parse("  <aqua>" + argPlayer.getName() + " has bought <yellow>5 <green>1.2x <light_purple>EXP Boosters!"));
             Bukkit.getServer().sendMessage(Utils.parse("  <aqua>https://store.siegerpg.net/"));
             Bukkit.getServer().sendMessage(Utils.parse(""));
         }

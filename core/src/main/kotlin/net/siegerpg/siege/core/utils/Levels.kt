@@ -5,6 +5,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import net.siegerpg.siege.core.Webstore.WebstoreUtils
 import net.siegerpg.siege.core.database.DatabaseManager
+import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import java.sql.ResultSet
@@ -121,8 +122,13 @@ object Levels {
                 stmt.setString(3, player.uniqueId.toString())
                 stmt.executeUpdate()
                 if (player.isOnline) {
-                    val p = (player as Player);
-                    p.level = levelExp.first.toInt();
+                    if (levelExp.first % 10 == 0) {
+                        Bukkit.getServer().broadcastMessage("");
+                        Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + levelExp.first + "!"));
+                        Bukkit.getServer().broadcastMessage("");
+                    }
+                    val p = (player as Player)
+                    p.level = levelExp.first.toInt()
                     p.exp = levelExp.second / calculateRequiredExperience(levelExp.first).toFloat()
                 }
             }

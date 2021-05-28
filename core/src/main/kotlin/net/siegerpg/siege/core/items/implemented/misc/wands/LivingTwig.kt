@@ -17,7 +17,7 @@ class LivingTwig() : CustomWand(
     recipeList = recipes {
 
     },
-    range = 18,
+    range = 12,
     red = 204,
     green = 255,
     blue = 102,

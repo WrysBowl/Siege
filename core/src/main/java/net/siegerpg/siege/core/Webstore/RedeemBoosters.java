@@ -43,8 +43,10 @@ public class RedeemBoosters implements Listener {
 
                 //Send a message to the player saying their booster has been activated
                 player.sendMessage(Utils.lore("<green>Your EXP multiplier has been redeemed."));
-                Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle("", Utils.tacc("&d&l" + multi + "x EXP BOOST"), 10, 60, 10));
-                Scoreboard.updateScoreboard(player);
+                Bukkit.getOnlinePlayers().forEach(p -> {
+                        p.sendTitle("", Utils.tacc("&d&l" + multi + "x EXP BOOST"), 10, 60, 10);
+                        Scoreboard.updateScoreboard(p);
+                });
 
                 //Take away global booster from player's hand
                 player.getInventory().getItemInMainHand().setAmount(item.getAmount()-1);

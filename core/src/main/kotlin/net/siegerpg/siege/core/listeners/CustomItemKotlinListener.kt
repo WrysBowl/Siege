@@ -30,6 +30,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
 import org.bukkit.event.player.PlayerSwapHandItemsEvent
+import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.scheduler.BukkitTask
 import kotlin.math.cos
@@ -73,6 +74,21 @@ class CustomItemKotlinListener : Listener, Runnable {
 //            Scoreboard.updateScoreboard(e.player)
 //        }
 
+    }
+
+    @EventHandler
+    @Suppress("unused")
+    fun onItemSwap(e: PlayerSwapHandItemsEvent) {
+        e.isCancelled = true
+    }
+
+    @EventHandler
+    @Suppress("unused")
+    fun onBowUse(e: PlayerInteractEvent) {
+        if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
+            val player: Player = e.player
+            val offHandItem: ItemStack = player.inventory.itemInOffHand
+        }
     }
 
     @EventHandler
@@ -239,7 +255,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                     override fun run() {
                         cooldownWand.remove(player)
                     }
-                }.runTaskLater(plugin(), 30)
+                }.runTaskLater(plugin(), 40)
 
 
                 val loc = player.location.add(0.0, player.eyeHeight, 0.0) //player location
