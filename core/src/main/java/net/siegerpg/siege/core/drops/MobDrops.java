@@ -185,7 +185,7 @@ public class MobDrops implements Listener {
                 break;
             case "FeatheredMeat":
                 rewards = new Object[][]{
-                        {Feather.Companion.tier(1).getUpdatedItem(false), 1.0},
+                        {Feather.Companion.tier(1).getUpdatedItem(false), 30.0},
                         {new Drumstick(0).getUpdatedItem(false), 100.0}};
                 numGold = new Integer[]{2, 4};
                 numExp = new Integer[]{3, 6};
