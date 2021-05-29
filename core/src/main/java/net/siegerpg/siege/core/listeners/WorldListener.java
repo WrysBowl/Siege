@@ -55,7 +55,10 @@ public class WorldListener implements Listener, Runnable {
 
     @EventHandler
     public void denySpawning(ItemSpawnEvent e) {
-        if (e.getEntity() instanceof Egg) {
+        Material type = e.getEntity().getItemStack().getType();
+        if (type == Material.ARROW) {
+            e.setCancelled(true);
+        } else if (type == Material.EGG) {
             e.setCancelled(true);
         }
     }

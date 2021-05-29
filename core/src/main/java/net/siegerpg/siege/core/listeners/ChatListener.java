@@ -33,6 +33,7 @@ public class ChatListener implements Listener {
             e.setCancelled(true);
             if (player.getInventory().getItemInMainHand().getType() != Material.AIR ) {
                 String name = player.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
+                if (name.equals("")) name = player.getInventory().getItemInMainHand().getI18NDisplayName();
                 List<String> lore = player.getInventory().getItemInMainHand().getItemMeta().getLore();
                 StringBuilder itemDisplay = new StringBuilder(name + "\n");
                 if (lore != null) {

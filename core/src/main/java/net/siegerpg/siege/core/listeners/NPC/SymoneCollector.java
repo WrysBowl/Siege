@@ -447,15 +447,7 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Wheat \u272A\u272A\u272A\u272A x8")));
         }
     };
-    ArrayList<ItemStack> miscList = new ArrayList<>() {
-        {
-            add(Utils.addLore(new ItemStack(Material.ARROW, 64),
-                    Utils.lore("<dark_aqua>Click to Craft"),
-                    Utils.lore("<dark_aqua>Pebble \u272A x4"),
-                    Utils.lore("<dark_aqua>Stick \u272A\u272A x1"),
-                    Utils.lore("<dark_aqua>Feather \u272A x4")));
-        }
-    };
+    ArrayList<ItemStack> miscList = new ArrayList<>();
     ArrayList<ItemStack> wandsList = new ArrayList<>(){
         {
             add(Utils.addLore(new LivingTwig(50).getUpdatedItem(true),
@@ -1875,6 +1867,7 @@ public class SymoneCollector implements Listener {
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private void clickMisc(InventoryClickEvent e) {
+        /*
         Player player = (Player) e.getWhoClicked();
         ArrayList<ItemStack> reqIngredients = new ArrayList<>();
         ItemStack result = null;
@@ -1915,7 +1908,7 @@ public class SymoneCollector implements Listener {
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
-        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
+        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));*/
     }
 
 

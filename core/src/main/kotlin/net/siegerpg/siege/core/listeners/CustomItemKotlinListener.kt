@@ -15,24 +15,22 @@ import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.*
 import org.bukkit.attribute.Attribute
-import org.bukkit.entity.Entity
-import org.bukkit.entity.LivingEntity
-import org.bukkit.entity.Player
-import org.bukkit.entity.Projectile
+import org.bukkit.entity.*
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
-import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.event.entity.EntityDamageEvent
-import org.bukkit.event.entity.EntityRegainHealthEvent
-import org.bukkit.event.entity.ProjectileHitEvent
+import org.bukkit.event.entity.*
+import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
 import org.bukkit.event.player.PlayerSwapHandItemsEvent
+import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.scheduler.BukkitTask
+import org.jetbrains.annotations.Nullable
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -81,13 +79,33 @@ class CustomItemKotlinListener : Listener, Runnable {
     fun onItemSwap(e: PlayerSwapHandItemsEvent) {
         e.isCancelled = true
     }
+    @EventHandler
+    @Suppress("unused")
+    fun onItemSwapClick(e: InventoryClickEvent) {
+        if (e.slotType == InventoryType.SlotType.QUICKBAR && e.rawSlot == 45) {
+            if (CustomItemUtils.getCustomItem(e.cursor) is CustomWeapon) {
+                e.isCancelled = true
+            }
+        }
+    }
 
     @EventHandler
     @Suppress("unused")
     fun onBowUse(e: PlayerInteractEvent) {
-        if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
+        if (e.action == Action.RIGHT_CLICK_AIR) {
             val player: Player = e.player
-            val offHandItem: ItemStack = player.inventory.itemInOffHand
+            if (CustomItemUtils.getCustomItem(player.inventory.itemInMainHand) is CustomBow) {
+                val offHandItem: ItemStack = player.inventory.itemInOffHand
+                if (offHandItem.type != Material.AIR && offHandItem.type != Material.ARROW) player.world.dropItemNaturally(player.location, offHandItem)
+                player.inventory.setItemInOffHand(ItemStack(Material.ARROW))
+            }
+        }
+    }
+    @EventHandler
+    @Suppress("unused")
+    fun onBowUse(e: ProjectileHitEvent) {
+        if (e.entity is Arrow) {
+            e.entity.remove()
         }
     }
 
