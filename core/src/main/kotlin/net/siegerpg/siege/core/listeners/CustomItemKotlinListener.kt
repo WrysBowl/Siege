@@ -273,7 +273,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                     override fun run() {
                         cooldownWand.remove(player)
                     }
-                }.runTaskLater(plugin(), 40)
+                }.runTaskLater(plugin(), 30)
 
 
                 val loc = player.location.add(0.0, player.eyeHeight, 0.0) //player location

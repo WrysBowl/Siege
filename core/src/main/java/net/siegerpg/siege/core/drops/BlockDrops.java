@@ -161,37 +161,41 @@ public enum BlockDrops {
             {new Sugar(0).getUpdatedItem(false), 0.1}
     }, new Integer[]{0, 0}, new Integer[]{0, 0}, 20),
     DARK_OAK_LEAVES(Material.DARK_OAK_LEAVES, new Object[][]{
-            {new Apple(100).getUpdatedItem(false), 1.0},
-            {new Apple(50).getUpdatedItem(false), 10.0},
-            {new Apple(0).getUpdatedItem(false), 30.0},
+            {new Apple(100).getUpdatedItem(false), 0.1},
+            {new Apple(50).getUpdatedItem(false), 5.0},
+            {new Apple(0).getUpdatedItem(false), 10.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
     }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
     BIRCH_LEAVES(Material.BIRCH_LEAVES, new Object[][]{
-            {new Apple(100).getUpdatedItem(false), 1.0},
-            {new Apple(50).getUpdatedItem(false), 10.0},
-            {new Apple(0).getUpdatedItem(false), 30.0},
+            {new Apple(100).getUpdatedItem(false), 0.1},
+            {new Apple(50).getUpdatedItem(false), 5.0},
+            {new Apple(0).getUpdatedItem(false), 10.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
     }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
     JUNGLE_LEAVES(Material.JUNGLE_LEAVES, new Object[][]{
-            {new Apple(100).getUpdatedItem(false), 1.0},
-            {new Apple(50).getUpdatedItem(false), 10.0},
-            {new Apple(0).getUpdatedItem(false), 30.0},
+            {new Apple(100).getUpdatedItem(false), 0.1},
+            {new Apple(50).getUpdatedItem(false), 5.0},
+            {new Apple(0).getUpdatedItem(false), 10.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
     }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
     OAK_LEAVES(Material.OAK_LEAVES, new Object[][]{
-            {new Apple(100).getUpdatedItem(false), 1.0},
-            {new Apple(50).getUpdatedItem(false), 10.0},
-            {new Apple(0).getUpdatedItem(false), 30.0},
+            {new Apple(100).getUpdatedItem(false), 0.1},
+            {new Apple(50).getUpdatedItem(false), 5.0},
+            {new Apple(0).getUpdatedItem(false), 10.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
     }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
     SPRUCE_LEAVES(Material.SPRUCE_LEAVES, new Object[][]{
-            {new Apple(100).getUpdatedItem(false), 1.0},
-            {new Apple(50).getUpdatedItem(false), 10.0},
-            {new Apple(0).getUpdatedItem(false), 30.0},
+            {new Apple(100).getUpdatedItem(false), 0.1},
+            {new Apple(50).getUpdatedItem(false), 5.0},
+            {new Apple(0).getUpdatedItem(false), 10.0},
             {Stick.Companion.tier(1).getUpdatedItem(false), 25.0}
     }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
 
     //STONE TERRAIN
+    STONE_BUTTON(Material.STONE_BUTTON, new Object[][]{
+            {Pebble.Companion.tier(1).getUpdatedItem(false), 50.0},
+            {Pebble.Companion.tier(2).getUpdatedItem(false), 5.0},
+    }, new Integer[]{0, 0}, new Integer[]{1, 1}, 200),
     STONE(Material.STONE, new Object[][]{
             {Pebble.Companion.tier(1).getUpdatedItem(false), 100.0},
             {Pebble.Companion.tier(2).getUpdatedItem(false), 10.0},

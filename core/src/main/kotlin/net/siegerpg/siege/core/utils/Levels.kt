@@ -102,6 +102,11 @@ object Levels {
             exp -= calculateRequiredExperience(lvl)
             lvl = (lvl + 1).toShort()
             if (player.isOnline) {
+                if (lvl % 10 == 0) {
+                    Bukkit.getServer().broadcastMessage("");
+                    Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + lvl + "!"));
+                    Bukkit.getServer().broadcastMessage("");
+                }
                 player.sendTitle(
                     Utils.tacc("&5Level Up!"),
                     Utils.tacc("&c+2 HP"),
@@ -122,11 +127,6 @@ object Levels {
                 stmt.setString(3, player.uniqueId.toString())
                 stmt.executeUpdate()
                 if (player.isOnline) {
-                    if (levelExp.first % 10 == 0) {
-                        Bukkit.getServer().broadcastMessage("");
-                        Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + levelExp.first + "!"));
-                        Bukkit.getServer().broadcastMessage("");
-                    }
                     val p = (player as Player)
                     p.level = levelExp.first.toInt()
                     p.exp = levelExp.second / calculateRequiredExperience(levelExp.first).toFloat()

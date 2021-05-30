@@ -67,16 +67,16 @@ public class MobDrops implements Listener {
                 break;
             case "Blob":
                 rewards = new Object[][]{
-                        {Slime.Companion.tier(1).getUpdatedItem(false), 50.0},
-                        {Slime.Companion.tier(2).getUpdatedItem(false), 5.0},
+                        {Slime.Companion.tier(1).getUpdatedItem(false), 100.0},
+                        {Slime.Companion.tier(2).getUpdatedItem(false), 10.0},
                 };
                 numGold = new Integer[]{6, 11};
                 numExp = new Integer[]{7, 10};
                 break;
             case "ScorchingBlob":
                 rewards = new Object[][]{
-                        {Magma.Companion.tier(1).getUpdatedItem(false), 50.0},
-                        {Magma.Companion.tier(2).getUpdatedItem(false), 5.0},
+                        {Magma.Companion.tier(1).getUpdatedItem(false), 100},
+                        {Magma.Companion.tier(2).getUpdatedItem(false), 10.0},
                 };
                 numGold = new Integer[]{5, 10};
                 numExp = new Integer[]{8, 11};
@@ -87,7 +87,7 @@ public class MobDrops implements Listener {
                         {Vine.Companion.tier(2).getUpdatedItem(false), 5.0},
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0},
                         {Stick.Companion.tier(1).getUpdatedItem(false), 30.0}};
-                numGold = new Integer[]{12, 16};
+                numGold = new Integer[]{9, 12};
                 numExp = new Integer[]{10, 12};
                 break;
             case "BloodSucker":
@@ -96,7 +96,7 @@ public class MobDrops implements Listener {
                         {Vine.Companion.tier(2).getUpdatedItem(false), 6.0},
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0},
                         {Stick.Companion.tier(1).getUpdatedItem(false), 20.0}};
-                numGold = new Integer[]{10, 14};
+                numGold = new Integer[]{9, 12};
                 numExp = new Integer[]{13, 15};
                 break;
             case "AngryBull":
@@ -104,8 +104,8 @@ public class MobDrops implements Listener {
                         {Leather.Companion.tier(1).getUpdatedItem(false), 80.0},
                         {Leather.Companion.tier(2).getUpdatedItem(false), 8.0},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 5.0},
-                        {new Beef(50).getUpdatedItem(false), 40.0}};
-                numGold = new Integer[]{15, 20};
+                        {new Beef(50).getUpdatedItem(false), 25.0}};
+                numGold = new Integer[]{10, 13};
                 numExp = new Integer[]{14, 18};
                 break;
             case "Bandit":
@@ -117,8 +117,8 @@ public class MobDrops implements Listener {
                         {Leather.Companion.tier(1).getUpdatedItem(false), 25.0},
                         {Leather.Companion.tier(2).getUpdatedItem(false), 1.0},
                 };
-                numGold = new Integer[]{28, 33};
-                numExp = new Integer[]{24, 27};
+                numGold = new Integer[]{18, 22};
+                numExp = new Integer[]{28, 33};
                 break;
             case "BanditArcher":
                 rewards = new Object[][]{
@@ -127,8 +127,8 @@ public class MobDrops implements Listener {
                         {Bone.Companion.tier(1).getUpdatedItem(false), 10.0},
                         {Bone.Companion.tier(2).getUpdatedItem(false), 1.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 25.0}};
-                numGold = new Integer[]{24, 27};
-                numExp = new Integer[]{28, 33};
+                numGold = new Integer[]{20, 23};
+                numExp = new Integer[]{33, 38};
                 break;
             case "Orc":
                 rewards = new Object[][]{
@@ -138,7 +138,7 @@ public class MobDrops implements Listener {
                         {Bone.Companion.tier(1).getUpdatedItem(false), 60.0},
                         {Bone.Companion.tier(2).getUpdatedItem(false), 10.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 25.0}};
-                numGold = new Integer[]{16, 20};
+                numGold = new Integer[]{14, 17};
                 numExp = new Integer[]{12, 18};
                 break;
             case "Goblin":
@@ -165,8 +165,8 @@ public class MobDrops implements Listener {
                         {new Beetroot(50).getUpdatedItem(false), 10.0},
                         {Bone.Companion.tier(2).getUpdatedItem(false), 8.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 15.0}};
-                numGold = new Integer[]{8, 12};
-                numExp = new Integer[]{10, 14};
+                numGold = new Integer[]{6, 8};
+                numExp = new Integer[]{16, 20};
                 break;
             case "ZombifiedDigger":
                 rewards = new Object[][]{
@@ -177,7 +177,7 @@ public class MobDrops implements Listener {
                         {Bone.Companion.tier(2).getUpdatedItem(false), 4.0}
                 };
                 numGold = new Integer[]{4, 9};
-                numExp = new Integer[]{8, 12};
+                numExp = new Integer[]{14, 18};
                 break;
             //NEUTRAL
             case "GiantHornet":
@@ -187,7 +187,7 @@ public class MobDrops implements Listener {
                         {Seed.Companion.tier(1).getUpdatedItem(false), 60.0},
                         {Seed.Companion.tier(2).getUpdatedItem(false), 6.0},
                 };
-                numGold = new Integer[]{8, 11};
+                numGold = new Integer[]{3, 5};
                 numExp = new Integer[]{5, 9};
                 break;
             case "WildFox":
@@ -210,12 +210,12 @@ public class MobDrops implements Listener {
                         {Feather.Companion.tier(1).getUpdatedItem(false), 30.0},
                         {Feather.Companion.tier(2).getUpdatedItem(false), 3.0},
                         {new Drumstick(0).getUpdatedItem(false), 100.0}};
-                numGold = new Integer[]{2, 4};
-                numExp = new Integer[]{3, 6};
+                numGold = new Integer[]{0, 2};
+                numExp = new Integer[]{1, 3};
                 break;
             case "Porky":
                 rewards = new Object[][]{{new Porkchop(50).getUpdatedItem(false), 60.0}};
-                numGold = new Integer[]{5, 8};
+                numGold = new Integer[]{3, 5};
                 numExp = new Integer[]{6, 9};
                 break;
             case "Wooly":
@@ -225,7 +225,7 @@ public class MobDrops implements Listener {
                         {Wool.Companion.tier(2).getUpdatedItem(false), 6.0},
                         {Wool.Companion.tier(3).getUpdatedItem(false), 0.6}
                 };
-                numGold = new Integer[]{8, 14};
+                numGold = new Integer[]{5, 7};
                 numExp = new Integer[]{8, 12};
                 break;
             case "MooMoo":
@@ -233,7 +233,7 @@ public class MobDrops implements Listener {
                         {new Beef(50).getUpdatedItem(false), 100.0},
                         {Bone.Companion.tier(1).getUpdatedItem(false), 20.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 80.0}};
-                numGold = new Integer[]{12, 14};
+                numGold = new Integer[]{5, 8};
                 numExp = new Integer[]{10, 15};
                 break;
             case "Pigeon":
@@ -242,13 +242,13 @@ public class MobDrops implements Listener {
                         {Feather.Companion.tier(1).getUpdatedItem(false), 40.0},
                         {Feather.Companion.tier(2).getUpdatedItem(false), 4.0},
                 };
-                numGold = new Integer[]{1, 2};
+                numGold = new Integer[]{0, 0};
                 numExp = new Integer[]{2, 3};
                 break;
             case "Sushi":
                 rewards = new Object[][]{{new Drumstick(0).getUpdatedItem(false), 20.0}};
-                numGold = new Integer[]{0, 2};
-                numExp = new Integer[]{0, 2};
+                numGold = new Integer[]{0, 0};
+                numExp = new Integer[]{0, 1};
                 break;
             //MINIBOSSES
             case "Davy_Jones":

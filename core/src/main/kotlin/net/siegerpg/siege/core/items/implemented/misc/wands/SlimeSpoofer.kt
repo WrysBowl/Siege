@@ -23,7 +23,7 @@ class SlimeSpoofer() : CustomWand(
     red = 153,
     green = 255,
     blue = 51,
-    damageRadius = 2.0
+    damageRadius = 3.0
 ) {
 
     constructor(quality: Int): this() {

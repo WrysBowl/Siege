@@ -30,6 +30,7 @@ public class BlockBreakListener implements Listener {
         {
             add(Material.WHEAT);
             add(Material.VINE);
+            add(Material.STONE_BUTTON);
         }
     };
     List<Material> dependables = new ArrayList<>() {
@@ -90,6 +91,7 @@ public class BlockBreakListener implements Listener {
     List<Material> rewardableBlocks = new ArrayList<>() {
         {
             add(Material.GRASS);
+            add(Material.DEAD_BUSH);
             add(Material.LILY_OF_THE_VALLEY);
             add(Material.LILY_PAD);
             add(Material.BLUE_ORCHID);
