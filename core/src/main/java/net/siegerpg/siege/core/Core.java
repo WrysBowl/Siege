@@ -123,6 +123,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
         getServer().getPluginManager().registerEvents(new MobDrops(), this);
         getServer().getPluginManager().registerEvents(new PlayerBanking(), this);
+        getServer().getPluginManager().registerEvents(new TutorialListeners(), this);
 
         getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
@@ -134,6 +135,8 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new RichardBanker(), this);
         getServer().getPluginManager().registerEvents(new BartBeggar(), this);
         getServer().getPluginManager().registerEvents(new Herbert(), this);
+
+
         getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
         getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
         SmokyBlacksmith.resetItems();

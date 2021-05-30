@@ -18,31 +18,29 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
+import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class GoldExpListener implements Listener{
 
     @EventHandler
-    public void goldPickUp(EntityPickupItemEvent e) {
+    public void goldPickUp(PlayerAttemptPickupItemEvent e) {
         ItemStack item = e.getItem().getItemStack();
         if (e.isCancelled()) return;
-        if (!(e.getEntity() instanceof Player)) return;
         if (!item.getType().equals(Material.SUNFLOWER)) return;
         if (!item.getItemMeta().getDisplayName().contains("Gold Coin")) return;
-        Player player = ((Player) e.getEntity()).getPlayer();
+        Player player = e.getPlayer();
         e.setCancelled(true);
         int goldAmount = e.getItem().getItemStack().getAmount();
         net.siegerpg.siege.core.utils.VaultHook.econ.depositPlayer(player, goldAmount);
         e.getItem().remove();
-        if (player != null) {
-            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
-            player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
-            Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-                public void run() {
-                    Scoreboard.updateScoreboard(player);
-                }
-            }, 20);
-        }
+        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+        player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
+        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+            public void run() {
+                Scoreboard.updateScoreboard(player);
+            }
+        }, 20);
     }
 
     @EventHandler

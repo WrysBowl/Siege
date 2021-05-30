@@ -26,14 +26,14 @@ import java.util.List;
 
 public class BlockBreakListener implements Listener {
 
-    List<Material> keepAir = new ArrayList<>() {
+    public static List<Material> keepAir = new ArrayList<>() {
         {
             add(Material.WHEAT);
             add(Material.VINE);
             add(Material.STONE_BUTTON);
         }
     };
-    List<Material> dependables = new ArrayList<>() {
+    public static List<Material> dependables = new ArrayList<>() {
         {
             add(Material.OAK_SAPLING);
             add(Material.SPRUCE_SAPLING);
@@ -88,7 +88,7 @@ public class BlockBreakListener implements Listener {
             add(Material.NETHER_WART);
         }
     };
-    List<Material> rewardableBlocks = new ArrayList<>() {
+    public static List<Material> rewardableBlocks = new ArrayList<>() {
         {
             add(Material.GRASS);
             add(Material.DEAD_BUSH);
