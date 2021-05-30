@@ -70,8 +70,9 @@ public class BartBeggar implements Listener {
         jackPotIconMeta.displayName(Utils.lore("<yellow><bold>WIN THE JACKPOTS"));
         jackPotIconMeta.lore(new ArrayList<>(){
             {
-                add(Utils.lore("<gray>1x <yellow>1,000 <gray>Gold"));
-                add(Utils.lore("<gray>2x <yellow>500 <gray>Gold"));
+                add(Utils.lore("<gray>1x <yellow>2,000 <gray>Gold"));
+                add(Utils.lore("<gray>2x <yellow>1,000 <gray>Gold"));
+                add(Utils.lore("<gray>3x <yellow>500 <gray>Gold"));
             }
         });
         jackPotIcon.setItemMeta(jackPotIconMeta);
