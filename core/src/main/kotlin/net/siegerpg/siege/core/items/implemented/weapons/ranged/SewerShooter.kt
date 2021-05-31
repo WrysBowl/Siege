@@ -18,7 +18,7 @@ class SewerShooter() : CustomBow(
     description = listOf("A bow made of mob flesh,", "that's a first"),
     levelRequirement = 22,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 22.0, luck = 9.0),
+    baseStats = CustomItemUtils.statMap(strength = 25.0, luck = 9.0),
     recipeList = recipes {
         recipe {
             shaped = true

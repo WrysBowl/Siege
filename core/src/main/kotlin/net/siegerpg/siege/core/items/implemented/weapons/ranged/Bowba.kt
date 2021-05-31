@@ -32,7 +32,7 @@ class Bowba() : CustomBow(
     description = listOf("You put bowba in your drink", "Bowba will get ruined"),
     levelRequirement = 38,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 40.0, luck = 13.0),
+    baseStats = CustomItemUtils.statMap(strength = 60.0, luck = 13.0),
     recipeList = recipes {
         recipe {
             shaped = true
