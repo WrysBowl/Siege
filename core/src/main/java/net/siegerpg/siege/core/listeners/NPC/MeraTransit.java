@@ -43,6 +43,11 @@ public class MeraTransit implements Listener {
             int farmCost = 200;
             int villageCost = 300;
             int caveCost = 200;
+            if (player.hasPermission("Siegecore.freeMera")) {
+                 farmCost /= 2;
+                 villageCost /= 2;
+                 caveCost /= 2;
+            }
 
             if (hillyWoods == null) return;
             if (level < 5) {

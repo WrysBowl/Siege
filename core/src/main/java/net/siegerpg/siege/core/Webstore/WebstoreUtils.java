@@ -38,4 +38,23 @@ public class WebstoreUtils {
         nbtItem.setDouble("multiplier", multiplier);
         return nbtItem.getItem();
     }
+    public static ItemStack getGoldBoosterItem(int amount, double multiplier, int seconds) {
+        ItemStack item = new ItemStack(Material.PAPER, amount);
+        ItemMeta itemMeta = item.getItemMeta();
+        itemMeta.displayName(Utils.lore("<yellow>Gold Booster"));
+        itemMeta.lore(new ArrayList<>(){
+            {
+                add(Utils.lore("  <gray>Duration: <white>" + Utils.convertSecondsToTime(seconds)));
+                add(Utils.lore("  <yellow>Multiplier: " + multiplier + "x Gold"));
+                add(Utils.lore(""));
+                add(Utils.lore("<green><bold>CLICK TO REDEEM"));
+            }
+        });
+
+        item.setItemMeta(itemMeta);
+        NBTItem nbtItem = new NBTItem(item);
+        nbtItem.setInteger("seconds", seconds);
+        nbtItem.setDouble("multiplier", multiplier);
+        return nbtItem.getItem();
+    }
 }

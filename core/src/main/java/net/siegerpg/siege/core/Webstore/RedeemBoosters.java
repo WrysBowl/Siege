@@ -64,4 +64,48 @@ public class RedeemBoosters implements Listener {
             }
         }
     }
+
+    @EventHandler
+    public void onGoldBoosterRedeem(PlayerInteractEvent e) {
+        if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+            Player player = e.getPlayer();
+            ItemStack item = player.getInventory().getItemInMainHand();
+            if (item.getType() != Material.PAPER) return;
+            if (item.getItemMeta().getDisplayName().contains("Gold Booster")) {
+
+                //Check if the gold multiplier is already above 1, if it is then prevent the next steps by returning
+                if (WebstoreUtils.goldMultiplier > 1.0) {
+                    player.sendMessage(Utils.lore("<red>A global booster is already active!"));
+                    return;
+                }
+
+                //Getting the hidden 'NBT' value that contains the multiplier of the item and setting the gold multiplier to it
+                NBTItem nbt = new NBTItem(item);
+                double multi = nbt.getDouble("multiplier");
+                int sec = nbt.getInteger("seconds");
+                WebstoreUtils.goldMultiplier = multi;
+
+                //Send a message to the player saying their booster has been activated
+                player.sendMessage(Utils.lore("<green>Your Gold multiplier has been redeemed."));
+                Bukkit.getOnlinePlayers().forEach(p -> {
+                    p.sendTitle("", Utils.tacc("&e&l" + multi + "x Gold BOOST"), 10, 60, 10);
+                    Scoreboard.updateScoreboard(p);
+                });
+
+                //Take away global booster from player's hand
+                player.getInventory().getItemInMainHand().setAmount(item.getAmount()-1);
+
+                //After the duration of the described webstore booster's item is over, return gold multiplier back to 1.0
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        WebstoreUtils.goldMultiplier = 1.0;
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            Scoreboard.updateScoreboard(p);
+                        }
+                    }
+                }.runTaskLater(Core.plugin(), sec* 20L);
+            }
+        }
+    }
 }
