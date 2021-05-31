@@ -100,7 +100,7 @@ class DungeonType {
                 ClipboardFormats.findByFile(schematicFile)
                     ?.let { SchematicPaster.loadSchematic(schematicFile.inputStream(), it) }!!
         } catch (exc: Exception) {
-            DungeonPlugin.plugin().logger.severe(exc)
+            DungeonPlugin.plugin().logger.severe(exc.message)
         }
         this.dungeonLevel = dungeonLevel
         this.dungeonDistance = dungeonDistance
