@@ -52,11 +52,11 @@ class GlisteningTwig() : CustomWand(
             }
         }
     },
-    range = 18,
+    range = 12,
     red = 255,
     green = 255,
     blue = 153,
-    damageRadius = 1.5
+    damageRadius = 2.5
 ) {
 
     constructor(quality: Int): this() {

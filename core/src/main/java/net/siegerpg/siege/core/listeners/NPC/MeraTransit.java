@@ -1,12 +1,11 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.World;
+import net.siegerpg.siege.core.utils.VaultHook;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
@@ -36,25 +35,61 @@ public class MeraTransit implements Listener {
         }
         if (e.getView().getTitle().equals("World Transit")) {
             e.setCancelled(true);
-            short level = Levels.INSTANCE.getExpLevel((OfflinePlayer) e.getWhoClicked()).getFirst();
             Player player = (Player) e.getWhoClicked();
+            short level = Levels.INSTANCE.getExpLevel(player).getFirst();
             World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
-            World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
+            int slot = e.getSlot();
+            int bal = (int) VaultHook.econ.getBalance(player);
+            int farmCost = 200;
+            int villageCost = 300;
+            int caveCost = 200;
 
-            if (e.getSlot() == 10 && level >= 1) {
-                player.closeInventory();
-                player.sendTitle("Teleporting to", Utils.tacc("&2Hilly Woods"), 10, 20, 10);
-                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                    if (hillyWoods != null) {
-                        player.teleport(hillyWoods.getSpawnLocation());
-                    }
-                }, 20L);
-            } else if (e.getSlot() == 17 && level >= 25) {
-                player.sendMessage(Utils.tacc("&cThis isn't open to anyone yet!"));
-            } else if (level == 0) {
-                player.sendMessage(Utils.tacc("&cError loading your profile"));
+            if (hillyWoods == null) return;
+            if (level < 5) {
+                player.sendMessage(Utils.lore("<red>You are not experienced enough to use fast travel!"));
+                return;
             }
-
+            if (slot == 10) {
+                if (bal < farmCost) {
+                    player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
+                    return;
+                }
+                VaultHook.econ.withdrawPlayer(player, farmCost);
+                Scoreboard.updateScoreboard(player);
+                player.closeInventory();
+                player.sendTitle(Utils.tacc("&aTeleporting to"), Utils.tacc("&eThe Farm"), 10, 40, 10);
+                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+                    player.teleport(new Location(hillyWoods, 126, 58, -117, -95, 0));
+                }, 40L);
+                return;
+            }
+            if (slot == 13) {
+                if (bal < caveCost) {
+                    player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
+                    return;
+                }
+                VaultHook.econ.withdrawPlayer(player, caveCost);
+                Scoreboard.updateScoreboard(player);
+                player.closeInventory();
+                player.sendTitle(Utils.tacc("&aTeleporting to"), Utils.tacc("&7The Cave"), 10, 40, 10);
+                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+                    player.teleport(new Location(hillyWoods, -278, 80, 295, -150, 0));
+                }, 40L);
+                return;
+            }
+            if (slot == 16) {
+                if (bal < villageCost) {
+                    player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
+                    return;
+                }
+                VaultHook.econ.withdrawPlayer(player, villageCost);
+                Scoreboard.updateScoreboard(player);
+                player.closeInventory();
+                player.sendTitle(Utils.tacc("&aTeleporting to"), Utils.tacc("&aThe Village"), 10, 40, 10);
+                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+                    player.teleport(new Location(hillyWoods, 223, 92, 204, 177, 0));
+                }, 40L);
+            }
         }
     }
 
@@ -67,34 +102,49 @@ public class MeraTransit implements Listener {
             gui.setItem(i, filler);
         }
 
-        //Creating Hilly Woods
-        ItemStack hillyWoods = new ItemStack(Material.OAK_SAPLING);
-        ItemMeta survivalMeta = hillyWoods.getItemMeta();
-        survivalMeta.displayName(Utils.parse("<reset><dark_green>Hilly Woods<reset>"));
-        survivalMeta.lore(new ArrayList<>() {
+        //Creating Wheat Farm Icon
+        ItemStack farm = new ItemStack(Material.WHEAT);
+        ItemMeta farmMeta = farm.getItemMeta();
+        farmMeta.displayName(Utils.lore("<yellow>Farm"));
+        farmMeta.lore(new ArrayList<>() {
             {
-                add(Utils.parse("<reset><gray>Click to travel<reset>"));
-                add(Utils.parse("<reset><dark_purple>Level 1<reset>"));
+                add(Utils.lore("<gray>Click to travel"));
+                add(Utils.lore("<yellow>Cost 200"));
+                add(Utils.lore("<dark_purple>Level 5"));
             }
         });
-        hillyWoods.setItemMeta(survivalMeta);
+        farm.setItemMeta(farmMeta);
 
-        //Creating Sakura
-        ItemStack sakura = new ItemStack(Material.OAK_SAPLING);
-        ItemMeta sakuraMeta = sakura.getItemMeta();
-        sakuraMeta.displayName(Utils.parse("<reset><light_purple>Sakura<reset>"));
-        sakuraMeta.lore(new ArrayList<>() {
+        //Creating Forest Cave
+        ItemStack cave = new ItemStack(Material.COAL_ORE);
+        ItemMeta caveMeta = cave.getItemMeta();
+        caveMeta.displayName(Utils.lore("<gray>Cave"));
+        caveMeta.lore(new ArrayList<>() {
             {
-                add(Utils.parse("<reset><gray>Click to travel<reset>"));
-                add(Utils.parse("<reset><dark_purple>Level 25<reset>"));
-                add(Utils.parse("<reset><red>Staff Only!<reset>"));
+                add(Utils.lore("<gray>Click to travel"));
+                add(Utils.lore("<yellow>Cost 200"));
+                add(Utils.lore("<dark_purple>Level 5"));
             }
         });
-        sakura.setItemMeta(sakuraMeta);
+        cave.setItemMeta(caveMeta);
+
+        //Creating Forest Cave
+        ItemStack village = new ItemStack(Material.EMERALD);
+        ItemMeta villageMeta = village.getItemMeta();
+        villageMeta.displayName(Utils.lore("<green>Village"));
+        villageMeta.lore(new ArrayList<>() {
+            {
+                add(Utils.lore("<gray>Click to travel"));
+                add(Utils.lore("<yellow>Cost 300"));
+                add(Utils.lore("<dark_purple>Level 5"));
+            }
+        });
+        village.setItemMeta(villageMeta);
 
         //This is where you decide what slot the item goes into
-        gui.setItem(10, hillyWoods);
-        gui.setItem(16, sakura);
+        gui.setItem(10, farm);
+        gui.setItem(13, cave);
+        gui.setItem(16, village);
 
         return gui;
     }

@@ -35,37 +35,37 @@ public class SymoneCollector implements Listener {
 
     ArrayList<ItemStack> lightMeleeList = new ArrayList<>(){
         {
-            add(Utils.addLore(new Twig(50).getUpdatedItem(true),
+            add(Utils.addLore(new Twig(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Stick \u272A x2"),
                     Utils.lore("<gold>Given when you first"),
                     Utils.lore("<gold>join the server")));
-            add(Utils.addLore(new StickyStick(50).getUpdatedItem(true),
+            add(Utils.addLore(new StickyStick(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Slime \u272A\u272A x2"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A x2")));
-            add(Utils.addLore(new Spade(50).getUpdatedItem(true),
+            add(Utils.addLore(new Spade(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Pebble \u272A\u272A x1")));
-            add(Utils.addLore(new Shovel(50).getUpdatedItem(true),
+            add(Utils.addLore(new Shovel(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
                     Utils.lore("<dark_aqua>Pebble \u272A\u272A x1")));
-            add(Utils.addLore(new Shank(50).getUpdatedItem(true),
+            add(Utils.addLore(new Shank(50).getUpdatedItem(false),
                     Utils.lore("<yellow>Bandit drop")));
-            add(Utils.addLore(new Dagger(50).getUpdatedItem(true),
+            add(Utils.addLore(new Dagger(50).getUpdatedItem(false),
                     Utils.lore("<yellow>Bandit drop")));
-            add(Utils.addLore(new WoodenSword(50).getUpdatedItem(true),
+            add(Utils.addLore(new WoodenSword(50).getUpdatedItem(false),
                     Utils.lore("<yellow>Wild Fox drop")));
-            add(Utils.addLore(new ScrapShard(50).getUpdatedItem(true),
+            add(Utils.addLore(new ScrapShard(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2")));
-            add(Utils.addLore(new SplinteredBone(50).getUpdatedItem(true),
+            add(Utils.addLore(new SplinteredBone(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x2"),
                     Utils.lore("<yellow>Bandit drop")));
-            add(Utils.addLore(new RefinedDagger(50).getUpdatedItem(true),
+            add(Utils.addLore(new RefinedDagger(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x1")));
@@ -73,35 +73,35 @@ public class SymoneCollector implements Listener {
     };
     ArrayList<ItemStack> heavyMeleeList = new ArrayList<>(){
         {
-            add(Utils.addLore(new Club(50).getUpdatedItem(true),
+            add(Utils.addLore(new Club(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A x3")));
-            add(Utils.addLore(new GiantClub(50).getUpdatedItem(true),
+            add(Utils.addLore(new GiantClub(50).getUpdatedItem(false),
                     Utils.lore("<yellow>Orc drop")));
-            add(Utils.addLore(new FemurBone(50).getUpdatedItem(true),
+            add(Utils.addLore(new FemurBone(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x3")));
-            add(Utils.addLore(new StoneAxe(50).getUpdatedItem(true),
+            add(Utils.addLore(new StoneAxe(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x3"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-            add(Utils.addLore(new DoubleBladedAxe(50).getUpdatedItem(true),
+            add(Utils.addLore(new DoubleBladedAxe(50).getUpdatedItem(false),
                     Utils.lore("<yellow>Orc drop")));
-            add(Utils.addLore(new GreatSword(50).getUpdatedItem(true),
+            add(Utils.addLore(new GreatSword(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1")));
-            add(Utils.addLore(new WarHammer(50).getUpdatedItem(true),
+            add(Utils.addLore(new WarHammer(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x4"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-            add(Utils.addLore(new IronAxe(50).getUpdatedItem(true),
+            add(Utils.addLore(new IronAxe(50).getUpdatedItem(false),
                     Utils.lore("<yellow>Orc drop")));
-            add(Utils.addLore(new Clobber(50).getUpdatedItem(true),
+            add(Utils.addLore(new Clobber(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x5")));
-            add(Utils.addLore(new EarthernHammer(50).getUpdatedItem(true),
+            add(Utils.addLore(new EarthernHammer(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x2"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3")));
@@ -109,106 +109,106 @@ public class SymoneCollector implements Listener {
     };
     ArrayList<ItemStack> armorList = new ArrayList<>(){
         {
-            add(Utils.addLore(new SlimyHelmet(50).getUpdatedItem(true),
+            add(Utils.addLore(new SlimyHelmet(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Slime \u272A\u272A x5")));
-            add(Utils.addLore(new StrawHelmet(50).getUpdatedItem(true),
+            add(Utils.addLore(new StrawHelmet(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wheat \u272A\u272A x5")));
-            add(Utils.addLore(new WoolHelmet(50).getUpdatedItem(true),
+            add(Utils.addLore(new WoolHelmet(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wool \u272A\u272A x5")));
-            add(Utils.addLore(new MagmaHelmet(50).getUpdatedItem(true),
+            add(Utils.addLore(new MagmaHelmet(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Magma \u272A\u272A x5")));
-            add(Utils.addLore(new LeatherHelmet(50).getUpdatedItem(true),
+            add(Utils.addLore(new LeatherHelmet(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Leather \u272A\u272A x5")));
-            add(Utils.addLore(new BoneHelmet(50).getUpdatedItem(true),
+            add(Utils.addLore(new BoneHelmet(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Bone \u272A\u272A x5")));
-            add(Utils.addLore(new ChainHelmet(50).getUpdatedItem(true),
+            add(Utils.addLore(new ChainHelmet(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Chain \u272A\u272A x5")));
-            add(Utils.addLore(new IronHelmet(50).getUpdatedItem(true),
+            add(Utils.addLore(new IronHelmet(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x5")));
             add(new ItemStack(Material.AIR));
 
-            add(Utils.addLore(new SlimyChestplate(50).getUpdatedItem(true),
+            add(Utils.addLore(new SlimyChestplate(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Slime \u272A\u272A x8")));
-            add(Utils.addLore(new StrawChestplate(50).getUpdatedItem(true),
+            add(Utils.addLore(new StrawChestplate(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wheat \u272A\u272A x8")));
-            add(Utils.addLore(new WoolChestplate(50).getUpdatedItem(true),
+            add(Utils.addLore(new WoolChestplate(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wool \u272A\u272A x8")));
-            add(Utils.addLore(new MagmaChestplate(50).getUpdatedItem(true),
+            add(Utils.addLore(new MagmaChestplate(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Magma \u272A\u272A x8")));
-            add(Utils.addLore(new LeatherChestplate(50).getUpdatedItem(true),
+            add(Utils.addLore(new LeatherChestplate(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Leather \u272A\u272A x8")));
-            add(Utils.addLore(new BoneChestplate(50).getUpdatedItem(true),
+            add(Utils.addLore(new BoneChestplate(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Bone \u272A\u272A x8")));
-            add(Utils.addLore(new ChainChestplate(50).getUpdatedItem(true),
+            add(Utils.addLore(new ChainChestplate(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Chain \u272A\u272A x8")));
-            add(Utils.addLore(new IronChestplate(50).getUpdatedItem(true),
+            add(Utils.addLore(new IronChestplate(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x8")));
             add(new ItemStack(Material.AIR));
 
-            add(Utils.addLore(new SlimyLeggings(50).getUpdatedItem(true),
+            add(Utils.addLore(new SlimyLeggings(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Slime \u272A\u272A x7")));
-            add(Utils.addLore(new StrawLeggings(50).getUpdatedItem(true),
+            add(Utils.addLore(new StrawLeggings(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wheat \u272A\u272A x7")));
-            add(Utils.addLore(new WoolLeggings(50).getUpdatedItem(true),
+            add(Utils.addLore(new WoolLeggings(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wool \u272A\u272A x7")));
-            add(Utils.addLore(new MagmaLeggings(50).getUpdatedItem(true),
+            add(Utils.addLore(new MagmaLeggings(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Magma \u272A\u272A x7")));
-            add(Utils.addLore(new LeatherLeggings(50).getUpdatedItem(true),
+            add(Utils.addLore(new LeatherLeggings(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Leather \u272A\u272A x7")));
-            add(Utils.addLore(new BoneLeggings(50).getUpdatedItem(true),
+            add(Utils.addLore(new BoneLeggings(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Bone \u272A\u272A x7")));
-            add(Utils.addLore(new ChainLeggings(50).getUpdatedItem(true),
+            add(Utils.addLore(new ChainLeggings(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Chain \u272A\u272A x7")));
-            add(Utils.addLore(new IronLeggings(50).getUpdatedItem(true),
+            add(Utils.addLore(new IronLeggings(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x7")));
             add(new ItemStack(Material.AIR));
 
-            add(Utils.addLore(new SlimyBoots(50).getUpdatedItem(true),
+            add(Utils.addLore(new SlimyBoots(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Slime \u272A\u272A x4")));
-            add(Utils.addLore(new StrawBoots(50).getUpdatedItem(true),
+            add(Utils.addLore(new StrawBoots(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wheat \u272A\u272A x4")));
-            add(Utils.addLore(new WoolBoots(50).getUpdatedItem(true),
+            add(Utils.addLore(new WoolBoots(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Wool \u272A\u272A x4")));
-            add(Utils.addLore(new MagmaBoots(50).getUpdatedItem(true),
+            add(Utils.addLore(new MagmaBoots(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Magma \u272A\u272A x4")));
-            add(Utils.addLore(new LeatherBoots(50).getUpdatedItem(true),
+            add(Utils.addLore(new LeatherBoots(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Leather \u272A\u272A x4")));
-            add(Utils.addLore(new BoneBoots(50).getUpdatedItem(true),
+            add(Utils.addLore(new BoneBoots(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Bone \u272A\u272A x4")));
-            add(Utils.addLore(new ChainBoots(50).getUpdatedItem(true),
+            add(Utils.addLore(new ChainBoots(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Chain \u272A\u272A x4")));
-            add(Utils.addLore(new IronBoots(50).getUpdatedItem(true),
+            add(Utils.addLore(new IronBoots(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x4")));
             add(new ItemStack(Material.AIR));
@@ -447,50 +447,42 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Wheat \u272A\u272A\u272A\u272A x8")));
         }
     };
-    ArrayList<ItemStack> miscList = new ArrayList<>() {
-        {
-            add(Utils.addLore(new ItemStack(Material.ARROW, 64),
-                    Utils.lore("<dark_aqua>Click to Craft"),
-                    Utils.lore("<dark_aqua>Pebble \u272A\u272A x2"),
-                    Utils.lore("<dark_aqua>Stick \u272A\u272A x2"),
-                    Utils.lore("<dark_aqua>Feather \u272A\u272A x2")));
-        }
-    };
+    ArrayList<ItemStack> miscList = new ArrayList<>();
     ArrayList<ItemStack> wandsList = new ArrayList<>(){
         {
-            add(Utils.addLore(new LivingTwig(50).getUpdatedItem(true),
+            add(Utils.addLore(new LivingTwig(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Spruce Log drop")));
-            add(Utils.addLore(new GlisteningTwig(50).getUpdatedItem(true),
+            add(Utils.addLore(new GlisteningTwig(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Seed \u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Plant Matter \u272A\u272A x1")));
-            add(Utils.addLore(new GlowingTwig(50).getUpdatedItem(true),
+            add(Utils.addLore(new GlowingTwig(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x3")));
-            add(Utils.addLore(new SlimeSpoofer(50).getUpdatedItem(true),
+            add(Utils.addLore(new SlimeSpoofer(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Prince Slimy drop")));
-            add(Utils.addLore(new RockWand(50).getUpdatedItem(true),
+            add(Utils.addLore(new RockWand(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-            add(Utils.addLore(new Torch(50).getUpdatedItem(true),
+            add(Utils.addLore(new Torch(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-            add(Utils.addLore(new FlamingHotTorch(50).getUpdatedItem(true),
+            add(Utils.addLore(new FlamingHotTorch(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1")));
-            add(Utils.addLore(new EarthernWand(50).getUpdatedItem(true),
+            add(Utils.addLore(new EarthernWand(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A x2"),
                     Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x2"),
                     Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
-            add(Utils.addLore(new HotRod(50).getUpdatedItem(true),
+            add(Utils.addLore(new HotRod(50).getUpdatedItem(false),
                     Utils.lore("<yellow>UNOBTAINABLE")));
-            add(Utils.addLore(new EarthernStaff(50).getUpdatedItem(true),
+            add(Utils.addLore(new EarthernStaff(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A\u272A x2"),
                     Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x2"),
@@ -499,40 +491,40 @@ public class SymoneCollector implements Listener {
     };
     ArrayList<ItemStack> rangedList = new ArrayList<>(){
         {
-            add(Utils.addLore(new ScrapyardBow(50).getUpdatedItem(true),
+            add(Utils.addLore(new ScrapyardBow(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A x3"),
                     Utils.lore("<dark_aqua>Vine \u272A\u272A x3")));
-            add(Utils.addLore(new WoodenBow(50).getUpdatedItem(true),
+            add(Utils.addLore(new WoodenBow(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
                     Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(Utils.addLore(new PebbleShooter(50).getUpdatedItem(true),
+            add(Utils.addLore(new PebbleShooter(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
                     Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(Utils.addLore(new ReinforcedBow(50).getUpdatedItem(true),
+            add(Utils.addLore(new ReinforcedBow(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
                     Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(Utils.addLore(new SewerShooter(50).getUpdatedItem(true),
+            add(Utils.addLore(new SewerShooter(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
                     Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-            add(Utils.addLore(new Crossbow(50).getUpdatedItem(true),
+            add(Utils.addLore(new Crossbow(50).getUpdatedItem(false),
                     Utils.lore("<yellow>Bandit Archer drop")));
-            add(Utils.addLore(new RecurveBow(50).getUpdatedItem(true),
+            add(Utils.addLore(new RecurveBow(50).getUpdatedItem(false),
                     Utils.lore("<yellow>Bandit Archer drop")));
-            add(Utils.addLore(new IronBow(50).getUpdatedItem(true),
+            add(Utils.addLore(new IronBow(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x3")));
-            add(Utils.addLore(new Trident(50).getUpdatedItem(true),
+            add(Utils.addLore(new Trident(50).getUpdatedItem(false),
                     Utils.lore("<yellow>Undead Pirate drop")));
-            add(Utils.addLore(new Bowba(50).getUpdatedItem(true),
+            add(Utils.addLore(new Bowba(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x2"),
@@ -690,11 +682,12 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
+
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -782,11 +775,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1160,11 +1153,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1263,7 +1256,7 @@ public class SymoneCollector implements Listener {
                 result = new EarthernWand(Utils.randRarity()).getUpdatedItem(false);
                 break;
 
-            case 10: //Earthern Staff
+            case 9: //Earthern Staff
 
                 ItemStack EarthernStaff1 = PlantMatter.Companion.tier(3).getUpdatedItem(false);
                 EarthernStaff1.setAmount(1);
@@ -1288,11 +1281,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1333,7 +1326,7 @@ public class SymoneCollector implements Listener {
                 ItemStack pebble2 = Pebble.Companion.tier(3).getUpdatedItem(false);
                 pebble2.setAmount(1);
                 ItemStack pebble3 = Vine.Companion.tier(3).getUpdatedItem(false);
-                pebble2.setAmount(3);
+                pebble3.setAmount(3);
 
                 reqIngredients.add(pebble1);
                 reqIngredients.add(pebble2);
@@ -1398,11 +1391,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1591,11 +1584,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1862,11 +1855,11 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
@@ -1874,6 +1867,7 @@ public class SymoneCollector implements Listener {
         player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
     }
     private void clickMisc(InventoryClickEvent e) {
+        /*
         Player player = (Player) e.getWhoClicked();
         ArrayList<ItemStack> reqIngredients = new ArrayList<>();
         ItemStack result = null;
@@ -1881,12 +1875,12 @@ public class SymoneCollector implements Listener {
             case 0: //Arrows
 
                 //Initialize Ingredients
-                ItemStack arrow1 = Pebble.Companion.tier(2).getUpdatedItem(false);
-                arrow1.setAmount(2);
+                ItemStack arrow1 = Pebble.Companion.tier(1).getUpdatedItem(false);
+                arrow1.setAmount(4);
                 ItemStack arrow2 = Stick.Companion.tier(2).getUpdatedItem(false);
-                arrow2.setAmount(2);
-                ItemStack arrow3 = Feather.Companion.tier(2).getUpdatedItem(false);
-                arrow3.setAmount(2);
+                arrow2.setAmount(1);
+                ItemStack arrow3 = Feather.Companion.tier(1).getUpdatedItem(false);
+                arrow3.setAmount(4);
 
                 //Add ingredients to required ingredients
                 reqIngredients.add(arrow1);
@@ -1905,16 +1899,16 @@ public class SymoneCollector implements Listener {
                 return;
             }
         }
-        for (ItemStack item : reqIngredients) {
-            player.getInventory().removeItem(item);
-        }
-        player.updateInventory();
         if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+            for (ItemStack item : reqIngredients) {
+                player.getInventory().removeItem(item);
+            }
+            player.updateInventory();
             player.getInventory().addItem(result);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             return;
         }
-        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));
+        player.sendMessage(Utils.parse("<red>Your inventory is full! Please make room."));*/
     }
 
 

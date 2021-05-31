@@ -64,7 +64,7 @@ public class ClemontBlacksmith implements Listener {
     private void clickShop(InventoryClickEvent e) {
         int slot = e.getSlot();
         Player player = (Player) e.getWhoClicked();
-        if (slot > 9 && slot < 17 && e.getCurrentItem() != null) {
+        if (slot > 9 && slot < 16 && e.getCurrentItem() != null) {
             int cost = Utils.getCost(e.getCurrentItem());
             if (VaultHook.econ.getBalance(player) >= cost) {
                 if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
@@ -166,7 +166,7 @@ public class ClemontBlacksmith implements Listener {
                 add(setCost(new ItemStack(Material.STONE_AXE), 3000));
                 add(setCost(new ItemStack(Material.STONE_PICKAXE), 3000));
                 add(setCost(new ItemStack(Material.STONE_SHOVEL), 2000));
-                add(setCost(new ItemStack(Material.ARROW, 64), 150));
+                add(new ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE));
                 add(Utils.addLore(new ItemStack(Material.IRON_SHOVEL),
                         Utils.lore("<yellow>5000"),
                         Utils.lore("<dark_aqua>Click to Craft"),

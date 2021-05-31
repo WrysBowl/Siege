@@ -13,6 +13,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
+import kotlin.math.floor
 import kotlin.math.pow
 
 class StatGemListener : Listener {
@@ -35,13 +36,17 @@ class StatGemListener : Listener {
             player.sendMiniMessage("<red>That item already has a stat gem!")
             return
         }
-        if (!VaultHook.econ.has(player, itemOnCursor.statAmount.pow(3)))
-            return player.sendMiniMessage("<red>You don't have enough money! (\$${itemOnCursor.statAmount.pow(3)}")
-        VaultHook.econ.withdrawPlayer(player, itemOnCursor.statAmount.pow(3))
+        if (!VaultHook.econ.has(player, floor(itemOnCursor.statAmount.pow(3))))
+            return player.sendMiniMessage("<red>You don't have enough money! (\$${floor(itemOnCursor.statAmount.pow(3))}")
+        VaultHook.econ.withdrawPlayer(player, floor(itemOnCursor.statAmount.pow(3)))
         itemInteractedWith.addStatGem(StatGem(itemOnCursor.statType, itemOnCursor.statAmount))
         itemInteractedWith.updateMeta(false)
         e.currentItem = itemInteractedWith.item
         e.isCancelled = true
-        player.setItemOnCursor(null)
+        val newItem = e.cursor
+        if (newItem != null) {
+            newItem.amount = newItem.amount-1
+        }
+        player.setItemOnCursor(newItem)
     }
 }

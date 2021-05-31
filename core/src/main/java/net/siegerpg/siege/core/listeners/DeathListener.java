@@ -5,10 +5,12 @@ import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicDropLoadEvent;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobDeathEvent;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.drops.MobDrops;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
+import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
@@ -48,23 +50,19 @@ public class DeathListener implements Listener, Runnable {
 
         if (mobDrop.getExp(true) > 0 && player != null) {
             int exp = mobDrop.getExp(true);
+            exp = (int) (exp * WebstoreUtils.expMultiplier);
             if ((Math.random() * 100) <= luck) {
                 exp *= 2;
             }
-            ExperienceOrb orb = loc.getWorld().spawn(loc, ExperienceOrb.class);
-            orb.setCustomName(Utils.tacc("&5+" + exp + " EXP"));
-            orb.setExperience(exp);
-            orb.setCustomNameVisible(true);
+            GoldEXPSpawning.spawnEXP(exp, loc);
         } //Give exp reward
 
         if (goldCoinAmt > 0) {
+            goldCoinAmt = (int) (goldCoinAmt * WebstoreUtils.goldMultiplier);
             if ((Math.random() * 100) <= luck) {
                 goldCoinAmt *= 2;
             }
-            ItemStack goldCoin = Utils.getGoldCoin(goldCoinAmt);
-            Item gold = loc.getWorld().dropItemNaturally(loc, goldCoin);
-            gold.setCustomName(Utils.tacc("&e+" + goldCoinAmt + " Gold"));
-            gold.setCustomNameVisible(true);
+            GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
         }
 
         for (ItemStack drop : mobDrop.getRewards(luck)) { //Loop through all drops
@@ -90,7 +88,7 @@ public class DeathListener implements Listener, Runnable {
             if (newBal < 0) newBal = 0;
             VaultHook.econ.withdrawPlayer(player, bal);
             VaultHook.econ.depositPlayer(player, newBal);
-            player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c-" + (bal - newBal) + " gold &7has been lost"), 1, 60, 1);
+            player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + (bal - newBal) + " gold &7has been lost"), 1, 60, 1);
             Scoreboard.updateScoreboard(player);
         }
     }

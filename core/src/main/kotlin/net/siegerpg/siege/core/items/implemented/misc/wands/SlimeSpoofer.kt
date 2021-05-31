@@ -19,11 +19,11 @@ class SlimeSpoofer() : CustomWand(
     baseStats = CustomItemUtils.statMap(strength = 12.0, luck = 8.0),
     recipeList = recipes {
     },
-    range = 15,
+    range = 10,
     red = 153,
     green = 255,
     blue = 51,
-    damageRadius = 2.0
+    damageRadius = 3.0
 ) {
 
     constructor(quality: Int): this() {

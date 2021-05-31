@@ -28,11 +28,12 @@ public class TreasureHunter {
     public int expRewards = 0;
     public ArrayList<Integer> dugValues = new ArrayList<>();
 
-    private final ChestGui game = new ChestGui(6, "Bart's MineSweeper");
+    private final ChestGui game = new ChestGui(6, "Bart's Sandbox");
     private final HashMap<Integer, Integer> rewardTable = new HashMap<>();
     private final StaticPane background = new StaticPane(0, 0, 9, 6, Pane.Priority.LOWEST);
     private final ItemStack filler = new ItemStack(Material.YELLOW_STAINED_GLASS_PANE);
     private final ItemStack bomb = new ItemStack(Material.TNT);
+    private final ItemStack gold2000 = new ItemStack(Material.SUNFLOWER);
     private final ItemStack gold1000 = new ItemStack(Material.SUNFLOWER);
     private final ItemStack gold500 = new ItemStack(Material.SUNFLOWER);
     private final ItemStack gold100 = new ItemStack(Material.SUNFLOWER);
@@ -74,8 +75,12 @@ public class TreasureHunter {
         });
         this.bomb.setItemMeta(bombMeta);
 
+        ItemMeta gold2000Meta = this.gold2000.getItemMeta();
+        gold2000Meta.displayName(Utils.lore("<yellow>+2,000 Gold"));
+        this.gold2000.setItemMeta(gold2000Meta);
+
         ItemMeta gold1000Meta = this.gold1000.getItemMeta();
-        gold1000Meta.displayName(Utils.lore("<yellow>+1000 Gold"));
+        gold1000Meta.displayName(Utils.lore("<yellow>+1,000 Gold"));
         this.gold1000.setItemMeta(gold1000Meta);
 
         ItemMeta gold500Meta = this.gold500.getItemMeta();
@@ -103,7 +108,10 @@ public class TreasureHunter {
         }
         this.rewardTable.replace((int) (Math.random() * 54), 7);
         this.rewardTable.replace((int) (Math.random() * 54), 7);
+        this.rewardTable.replace((int) (Math.random() * 54), 7);
         this.rewardTable.replace((int) (Math.random() * 54), 8);
+        this.rewardTable.replace((int) (Math.random() * 54), 8);
+        this.rewardTable.replace((int) (Math.random() * 54), 9);
     }
     private void uncoverSlot(InventoryClickEvent e) {
         int slot = e.getSlot();
@@ -123,31 +131,36 @@ public class TreasureHunter {
                 public void run() {
                     player.closeInventory();
                 }
-            }.runTaskLater(Core.plugin(), 80);
+            }.runTaskLater(Core.plugin(), 20);
         } else if (getValue == 1) {
             this.background.addItem(new GuiItem(this.gold100), x, y);
             this.goldRewards += 100;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else if (getValue == 2) {
             this.background.addItem(new GuiItem(this.gold75), x, y);
             this.goldRewards += 75;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else if (getValue == 3) {
             this.background.addItem(new GuiItem(this.gold50), x, y);
             this.goldRewards += 50;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else if (getValue == 7) {
             this.background.addItem(new GuiItem(this.gold500), x, y);
             this.goldRewards += 500;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else if (getValue == 8) {
             this.background.addItem(new GuiItem(this.gold1000), x, y);
             this.goldRewards += 1000;
-            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold &d+" + this.expRewards + " EXP"));
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold"));
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+        } else if (getValue == 9) {
+            this.background.addItem(new GuiItem(this.gold2000), x, y);
+            this.goldRewards += 2000;
+            this.game.setTitle(Utils.tacc("&a&lREWARDS&r &e+" + this.goldRewards + " Gold"));
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         } else {
             this.background.addItem(new GuiItem(new ItemStack(Material.AIR)), x, y);
@@ -181,7 +194,7 @@ public class TreasureHunter {
                 }
             }
         }
-        player.sendTitle(Utils.tacc("&a&lYOU WIN"), Utils.tacc("&e+" + this.goldRewards + " Gold     &d+" + this.expRewards + " EXP"), 10, 80, 10);
+        player.sendTitle(Utils.tacc("&a&lYOU WIN"), Utils.tacc("&e+" + this.goldRewards + " Gold"), 10, 80, 10);
         Scoreboard.updateScoreboard(player);
     }
 }
