@@ -67,7 +67,7 @@ public class PlayerJoinListener implements Listener {
 
         String joinMessage = Utils.tacc("&7[&a+&7] " + player.getName());
 
-        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
+        if (!player.hasPlayedBefore()) {
             player.getInventory().clear();
             player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
             ItemStack food = new Drumstick(0).getUpdatedItem(false);
@@ -78,15 +78,6 @@ public class PlayerJoinListener implements Listener {
             joinMessage = Utils.tacc("&a&lWELCOME&r &7[&a+&7] " + player.getName());
         }
         event.setJoinMessage(joinMessage);
-
-        Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), new Runnable() {
-            @Override
-            public void run() {
-                if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
-                    Levels.INSTANCE.setLevel(player, (short) 1);
-                }
-            }
-        });
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             Scoreboard.updateScoreboard(p);
