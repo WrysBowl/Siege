@@ -92,6 +92,15 @@ public class PlayerJoinListener implements Listener {
             }
         }
 
+        if (player.getName().equals("Wrys")) {
+            try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
+                String uuid = event.getPlayer().getUniqueId().toString();
+                PreparedStatement skillsData = conn.prepareStatement("INSERT INTO skillsData (uuid) VALUES (?)");
+                skillsData.setString(1, uuid);
+                skillsData.executeUpdate();
+            } catch (SQLException ignored) {
+            }
+        }
 
         if (player.getName().equals("Sumowu")) {
             Shank shank = new Shank(100);
