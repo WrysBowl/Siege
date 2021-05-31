@@ -41,6 +41,8 @@ public class SpecialArmorAbilities implements Listener {
             e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 99999, 0));
         } else if (isIronSet(newArmorContents)) {
             e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 99999, 1));
+        } else if (isMagmaSet(newArmorContents)) {
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 99999, 1));
         }
     }
 
@@ -106,6 +108,23 @@ public class SpecialArmorAbilities implements Listener {
             } else if (item instanceof StrawLeggings) {
                 badCheckMethod += 1;
             } else if (item instanceof StrawBoots) {
+                badCheckMethod += 1;
+            }
+        }
+        return badCheckMethod == 4;
+    }
+
+    private boolean isMagmaSet(ArrayList<ItemStack> armorPieces) {
+        int badCheckMethod = 0;
+        for (ItemStack armorPiece : armorPieces) {
+            CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(armorPiece);
+            if (item instanceof MagmaHelmet) {
+                badCheckMethod += 1;
+            } else if (item instanceof MagmaChestplate) {
+                badCheckMethod += 1;
+            } else if (item instanceof MagmaLeggings) {
+                badCheckMethod += 1;
+            } else if (item instanceof MagmaBoots) {
                 badCheckMethod += 1;
             }
         }
