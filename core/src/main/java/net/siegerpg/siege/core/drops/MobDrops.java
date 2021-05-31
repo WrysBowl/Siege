@@ -75,11 +75,11 @@ public class MobDrops implements Listener {
                 break;
             case "ScorchingBlob":
                 rewards = new Object[][]{
-                        {Magma.Companion.tier(1).getUpdatedItem(false), 100},
+                        {Magma.Companion.tier(1).getUpdatedItem(false), 100.0},
                         {Magma.Companion.tier(2).getUpdatedItem(false), 10.0},
                 };
                 numGold = new Integer[]{5, 10};
-                numExp = new Integer[]{8, 11};
+                numExp = new Integer[]{10, 14};
                 break;
             case "ForestSpider":
                 rewards = new Object[][]{
@@ -88,7 +88,7 @@ public class MobDrops implements Listener {
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0},
                         {Stick.Companion.tier(1).getUpdatedItem(false), 30.0}};
                 numGold = new Integer[]{9, 12};
-                numExp = new Integer[]{10, 12};
+                numExp = new Integer[]{14, 18};
                 break;
             case "BloodSucker":
                 rewards = new Object[][]{
@@ -97,7 +97,7 @@ public class MobDrops implements Listener {
                         {new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0},
                         {Stick.Companion.tier(1).getUpdatedItem(false), 20.0}};
                 numGold = new Integer[]{9, 12};
-                numExp = new Integer[]{13, 15};
+                numExp = new Integer[]{14, 18};
                 break;
             case "AngryBull":
                 rewards = new Object[][]{
@@ -106,7 +106,7 @@ public class MobDrops implements Listener {
                         {Bone.Companion.tier(1).getUpdatedItem(false), 5.0},
                         {new Beef(50).getUpdatedItem(false), 25.0}};
                 numGold = new Integer[]{10, 13};
-                numExp = new Integer[]{14, 18};
+                numExp = new Integer[]{18, 23};
                 break;
             case "Bandit":
                 rewards = new Object[][]{
@@ -139,7 +139,7 @@ public class MobDrops implements Listener {
                         {Bone.Companion.tier(2).getUpdatedItem(false), 10.0},
                         {Leather.Companion.tier(1).getUpdatedItem(false), 25.0}};
                 numGold = new Integer[]{14, 17};
-                numExp = new Integer[]{12, 18};
+                numExp = new Integer[]{16, 20};
                 break;
             case "Goblin":
                 rewards = new Object[][]{
@@ -153,7 +153,7 @@ public class MobDrops implements Listener {
                 LivingEntity wildGob = (LivingEntity) mob.getEntity().getBukkitEntity();
                 Material gobItem = Objects.requireNonNull(wildGob.getEquipment()).getItemInMainHand().getType();
                 if (gobItem.equals(Material.SUNFLOWER)) {
-                    numGold = new Integer[]{49, 50};
+                    numGold = new Integer[]{55, 60};
                 }
                 numExp = new Integer[]{7, 12};
                 break;
@@ -177,7 +177,7 @@ public class MobDrops implements Listener {
                         {Bone.Companion.tier(2).getUpdatedItem(false), 4.0}
                 };
                 numGold = new Integer[]{4, 9};
-                numExp = new Integer[]{14, 18};
+                numExp = new Integer[]{16, 18};
                 break;
             //NEUTRAL
             case "GiantHornet":
@@ -201,9 +201,9 @@ public class MobDrops implements Listener {
                 LivingEntity wildFox = (LivingEntity) mob.getEntity().getBukkitEntity();
                 Material foxItem = Objects.requireNonNull(wildFox.getEquipment()).getItemInMainHand().getType();
                 if (foxItem.equals(Material.SUNFLOWER)) {
-                    numGold = new Integer[]{49, 50};
+                    numGold = new Integer[]{55, 65};
                 }
-                numExp = new Integer[]{8, 10};
+                numExp = new Integer[]{14, 18};
                 break;
             case "FeatheredMeat":
                 rewards = new Object[][]{
