@@ -36,15 +36,16 @@ public class PlayerJoinListener implements Listener {
             @Override
             public void run() {
                 String ip = e.getAddress().getHostAddress();
+                String uuid = e.getUniqueId().toString();
                 // Add user ips to the db (So that we can in the future find all alts of an user)
                 try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
                     PreparedStatement stat = conn.prepareStatement("SELECT ip FROM ipData WHERE uuid=? AND ip=?");
-                    stat.setString(1, e.getUniqueId().toString());
+                    stat.setString(1, uuid);
                     stat.setString(2, ip);
                     ResultSet set = stat.executeQuery();
                     if (!set.isBeforeFirst()) {
                         PreparedStatement statement = conn.prepareStatement("INSERT INTO ipData (uuid, ip) VALUES (?, ?)");
-                        statement.setString(1, e.getUniqueId().toString());
+                        statement.setString(1, uuid);
                         statement.setString(2, ip);
                         statement.executeUpdate();
                     }
