@@ -95,8 +95,6 @@ public class PlayerJoinListener implements Listener {
         }
 
         if (player.getName().equals("Wrys")) {
-            player.getInventory().addItem(new GrieferChestplate(50).getUpdatedItem(false));
-            player.getInventory().addItem(new BeePants(50).getUpdatedItem(false));
             try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
                 String uuid = event.getPlayer().getUniqueId().toString();
                 PreparedStatement skillsData = conn.prepareStatement("INSERT INTO skillsData (uuid) VALUES (?)");
