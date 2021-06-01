@@ -7,13 +7,19 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
+import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.EntityEffect;
+import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -44,6 +50,50 @@ public class SpecialArmorAbilities implements Listener {
         } else if (isMagmaSet(newArmorContents)) {
             e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 99999, 1));
         }
+    }
+
+    @EventHandler
+    public void onHit(EntityDamageByEntityEvent e) {
+        if (!(e.getDamager() instanceof Player)) return;
+        Player player = ((Player) e.getDamager()).getPlayer();
+        if (player == null) return;
+        if (isBeePants(player.getInventory().getLeggings())) {
+            ((LivingEntity)e.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20, 1));
+        }
+    }
+
+    @EventHandler
+    public void onDamaged(EntityDamageByEntityEvent e) {
+        if (!(e.getEntity() instanceof Player)) return;
+        Player player = ((Player) e.getEntity()).getPlayer();
+        if (player == null) return;
+        ItemStack item = player.getInventory().getChestplate();
+        CustomItem cusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+        if (cusItem == null) return;
+        if (cusItem.getLevelRequirement() == null) return;
+        if (cusItem.getLevelRequirement() > player.getLevel()) return;
+        if (Utils.randTest(10.0)) {
+            if (isGrieferChestplate(player.getInventory().getChestplate())) {
+                for (LivingEntity entity : player.getLocation().getNearbyLivingEntities(4.0)) {
+                    if (entity instanceof Player) {
+                        if (!e.getEntity().equals(entity)) continue;
+                    }
+                    entity.damage(50.0, player);
+                    entity.playEffect(EntityEffect.HURT_EXPLOSION);
+                    player.playSound(entity.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f);
+                }
+            }
+        }
+    }
+
+    private boolean isBeePants(ItemStack armorPiece) {
+        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(armorPiece);
+        return item instanceof BeePants;
+    }
+
+    private boolean isGrieferChestplate(ItemStack armorPiece) {
+        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(armorPiece);
+        return item instanceof GrieferChestplate;
     }
 
     private boolean isSlimeSet(ArrayList<ItemStack> armorPieces) {

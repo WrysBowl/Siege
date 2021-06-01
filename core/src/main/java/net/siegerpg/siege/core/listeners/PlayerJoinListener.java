@@ -6,6 +6,8 @@ import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.informants.Tablist;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.GrieferChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.BeePants;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
@@ -93,6 +95,8 @@ public class PlayerJoinListener implements Listener {
         }
 
         if (player.getName().equals("Wrys")) {
+            player.getInventory().addItem(new GrieferChestplate(50).getUpdatedItem(false));
+            player.getInventory().addItem(new BeePants(50).getUpdatedItem(false));
             try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
                 String uuid = event.getPlayer().getUniqueId().toString();
                 PreparedStatement skillsData = conn.prepareStatement("INSERT INTO skillsData (uuid) VALUES (?)");
