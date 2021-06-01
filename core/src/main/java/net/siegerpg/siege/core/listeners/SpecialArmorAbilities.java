@@ -58,7 +58,13 @@ public class SpecialArmorAbilities implements Listener {
         Player player = ((Player) e.getDamager()).getPlayer();
         if (player == null) return;
         if (isBeePants(player.getInventory().getLeggings())) {
-            ((LivingEntity)e.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20, 1));
+            ItemStack item = player.getInventory().getLeggings();
+            CustomItem cusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+            if (cusItem == null) return;
+            if (cusItem.getLevelRequirement() == null) return;
+            if (cusItem.getLevelRequirement() > player.getLevel()) return;
+            PotionEffect potion = new PotionEffect(PotionEffectType.POISON, 60, 1);
+            ((LivingEntity)e.getEntity()).addPotionEffect(potion);
         }
     }
 
@@ -67,13 +73,13 @@ public class SpecialArmorAbilities implements Listener {
         if (!(e.getEntity() instanceof Player)) return;
         Player player = ((Player) e.getEntity()).getPlayer();
         if (player == null) return;
-        ItemStack item = player.getInventory().getChestplate();
-        CustomItem cusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
-        if (cusItem == null) return;
-        if (cusItem.getLevelRequirement() == null) return;
-        if (cusItem.getLevelRequirement() > player.getLevel()) return;
-        if (Utils.randTest(10.0)) {
+        if (Utils.randTest(20.0)) {
             if (isGrieferChestplate(player.getInventory().getChestplate())) {
+                ItemStack item = player.getInventory().getChestplate();
+                CustomItem cusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+                if (cusItem == null) return;
+                if (cusItem.getLevelRequirement() == null) return;
+                if (cusItem.getLevelRequirement() > player.getLevel()) return;
                 for (LivingEntity entity : player.getLocation().getNearbyLivingEntities(4.0)) {
                     if (entity instanceof Player) {
                         if (!e.getEntity().equals(entity)) continue;
