@@ -2,6 +2,8 @@ package net.siegerpg.siege.core.drops;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.GrieferChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.BeePants;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
@@ -77,6 +79,7 @@ public class MobDrops implements Listener {
                 rewards = new Object[][]{
                         {Magma.Companion.tier(1).getUpdatedItem(false), 100.0},
                         {Magma.Companion.tier(2).getUpdatedItem(false), 10.0},
+                        {new GrieferChestplate(Utils.randRarity()).getUpdatedItem(false), 2.5}
                 };
                 numGold = new Integer[]{5, 10};
                 numExp = new Integer[]{10, 14};
@@ -186,6 +189,7 @@ public class MobDrops implements Listener {
                         {Magma.Companion.tier(2).getUpdatedItem(false), 3.0},
                         {Seed.Companion.tier(1).getUpdatedItem(false), 60.0},
                         {Seed.Companion.tier(2).getUpdatedItem(false), 6.0},
+                        {new BeePants(Utils.randRarity()).getUpdatedItem(false), 2.5}
                 };
                 numGold = new Integer[]{3, 5};
                 numExp = new Integer[]{5, 9};
