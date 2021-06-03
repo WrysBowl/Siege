@@ -8,6 +8,8 @@ import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import org.bukkit.Material
+import org.bukkit.attribute.Attribute
+import org.bukkit.attribute.AttributeModifier
 import org.bukkit.inventory.ItemStack
 
 abstract class CustomWand(
@@ -51,6 +53,4 @@ abstract class CustomWand(
         if (this::class.qualifiedName != other!!::class.qualifiedName) return false
         return true
     }
-
-
 }

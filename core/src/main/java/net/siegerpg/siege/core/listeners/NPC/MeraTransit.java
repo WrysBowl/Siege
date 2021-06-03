@@ -23,7 +23,7 @@ public class MeraTransit implements Listener {
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
         if (e.getRightClicked().getName().contains("Mera") && e.getRightClicked().getName().contains("6")) {
-            Inventory shop = getGUIWorldTransit();
+            Inventory shop = getGUIWorldTransit(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }
     }
@@ -43,7 +43,7 @@ public class MeraTransit implements Listener {
             int farmCost = 200;
             int villageCost = 300;
             int caveCost = 200;
-            if (player.hasPermission("Siegecore.freeMera")) {
+            if (player.hasPermission("siegecore.merafree")) {
                  farmCost /= 2;
                  villageCost /= 2;
                  caveCost /= 2;
@@ -98,7 +98,7 @@ public class MeraTransit implements Listener {
         }
     }
 
-    private Inventory getGUIWorldTransit() {
+    private Inventory getGUIWorldTransit(Player player) {
         Inventory gui = Bukkit.createInventory(null, 27, "World Transit");
 
         //Fill in the GUI
@@ -107,14 +107,24 @@ public class MeraTransit implements Listener {
             gui.setItem(i, filler);
         }
 
+        int farmCost = 200;
+        int villageCost = 300;
+        int caveCost = 200;
+        if (player.hasPermission("siegecore.merafree")) {
+            farmCost /= 2;
+            villageCost /= 2;
+            caveCost /= 2;
+        }
+
         //Creating Wheat Farm Icon
         ItemStack farm = new ItemStack(Material.WHEAT);
         ItemMeta farmMeta = farm.getItemMeta();
         farmMeta.displayName(Utils.lore("<yellow>Farm"));
+        int finalFarmCost = farmCost;
         farmMeta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<gray>Click to travel"));
-                add(Utils.lore("<yellow>Cost 200"));
+                add(Utils.lore("<yellow>Cost " + finalFarmCost));
                 add(Utils.lore("<dark_purple>Level 5"));
             }
         });
@@ -124,10 +134,11 @@ public class MeraTransit implements Listener {
         ItemStack cave = new ItemStack(Material.COAL_ORE);
         ItemMeta caveMeta = cave.getItemMeta();
         caveMeta.displayName(Utils.lore("<gray>Cave"));
+        int finalCaveCost = caveCost;
         caveMeta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<gray>Click to travel"));
-                add(Utils.lore("<yellow>Cost 200"));
+                add(Utils.lore("<yellow>Cost " + finalCaveCost));
                 add(Utils.lore("<dark_purple>Level 5"));
             }
         });
@@ -137,10 +148,11 @@ public class MeraTransit implements Listener {
         ItemStack village = new ItemStack(Material.EMERALD);
         ItemMeta villageMeta = village.getItemMeta();
         villageMeta.displayName(Utils.lore("<green>Village"));
+        int finalVillageCost = villageCost;
         villageMeta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<gray>Click to travel"));
-                add(Utils.lore("<yellow>Cost 300"));
+                add(Utils.lore("<yellow>Cost " + finalVillageCost));
                 add(Utils.lore("<dark_purple>Level 5"));
             }
         });

@@ -10,6 +10,7 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import java.sql.ResultSet
 import java.util.*
+import kotlin.math.floor
 import kotlin.math.pow
 
 object Levels {
@@ -103,9 +104,13 @@ object Levels {
             lvl = (lvl + 1).toShort()
             if (player.isOnline) {
                 if (lvl % 10 == 0) {
-                    Bukkit.getServer().broadcastMessage("");
-                    Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + lvl + "!"));
-                    Bukkit.getServer().broadcastMessage("");
+                    Bukkit.getServer().broadcastMessage("")
+                    Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + lvl + "!"))
+                    Bukkit.getServer().broadcastMessage("")
+                    val multiplier = floor(lvl/10.0)
+                    val console = Bukkit.getServer().consoleSender
+                    val cmd = "lp user ${player.name} permission set cosmicvaults.amount.${multiplier}"
+                    Bukkit.dispatchCommand(console, cmd)
                 }
                 player.sendTitle(
                     Utils.tacc("&5Level Up!"),

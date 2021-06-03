@@ -31,10 +31,10 @@ public class WebstoreCommand implements CommandExecutor {
             } else {
                 ((Player)argPlayer).getWorld().dropItemNaturally(((Player) argPlayer).getLocation(), item);
             }
-            Bukkit.getServer().sendMessage(Utils.parse(""));
-            Bukkit.getServer().sendMessage(Utils.parse("  <aqua>" + argPlayer.getName() + " has bought <yellow>5 <green>1.2x <light_purple>EXP Boosters!"));
-            Bukkit.getServer().sendMessage(Utils.parse("  <aqua>https://store.siegerpg.net/"));
-            Bukkit.getServer().sendMessage(Utils.parse(""));
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &dEXP Boosters!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
+            Bukkit.broadcastMessage(Utils.tacc(""));
             return true;
         }
         if (args[1].equals("5xBoosterGOLD1.2")) {
@@ -48,20 +48,20 @@ public class WebstoreCommand implements CommandExecutor {
             } else {
                 ((Player)argPlayer).getWorld().dropItemNaturally(((Player) argPlayer).getLocation(), item);
             }
-            Bukkit.getServer().sendMessage(Utils.parse(""));
-            Bukkit.getServer().sendMessage(Utils.parse("  <aqua>" + argPlayer.getName() + " has bought <yellow>5 <green>1.2x <yellow>Gold Boosters!"));
-            Bukkit.getServer().sendMessage(Utils.parse("  <aqua>https://store.siegerpg.net/"));
-            Bukkit.getServer().sendMessage(Utils.parse(""));
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &eGold Boosters!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
+            Bukkit.broadcastMessage(Utils.tacc(""));
             return true;
         }
         if (args[1].equals("WarriorRank")) {
             ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
             String cmd = "lp user " + argPlayer.getName() + " parent add Warrior";
             Bukkit.dispatchCommand(console, cmd);
-            Bukkit.getServer().sendMessage(Utils.parse(""));
-            Bukkit.getServer().sendMessage(Utils.parse("  <aqua>" + argPlayer.getName() + " has bought <dark_green>Warrior <yellow>rank!"));
-            Bukkit.getServer().sendMessage(Utils.parse("  <aqua>https://store.siegerpg.net/"));
-            Bukkit.getServer().sendMessage(Utils.parse(""));
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &2Warrior &erank!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
+            Bukkit.broadcastMessage(Utils.tacc(""));
             return true;
         }
 
