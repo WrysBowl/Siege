@@ -49,6 +49,7 @@ public final class Core extends JavaPlugin {
         protocolManager = ProtocolLibrary.getProtocolManager();
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discord").setExecutor(new Discord());
+        this.getCommand("webstore").setExecutor(new Webstore());
         this.getCommand("getItem").setExecutor(new GetItem());
         this.getCommand("spawn").setExecutor(new Spawn());
         this.getCommand("invsee").setExecutor(new Invsee());

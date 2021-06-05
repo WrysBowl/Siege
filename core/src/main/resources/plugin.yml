@@ -31,3 +31,5 @@ commands:
     description: Sends player detailed exp
   buy:
     description: used for the console to give players their purchased items
+  webstore:
+    description: Sends webstore link to the player
