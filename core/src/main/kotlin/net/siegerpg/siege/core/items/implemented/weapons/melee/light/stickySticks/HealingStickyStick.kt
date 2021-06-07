@@ -2,7 +2,9 @@ package net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickyStic
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime
@@ -12,22 +14,22 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class StrongStickyStick() : CustomMeleeWeapon(
-    name = "Strong Sticky Stick",
+class HealingStickyStick() : CustomMeleeWeapon(
+    name = "Healing Sticky Stick",
     customModelData = 110002,
     description = listOf("Globs of slime on a stick"),
     levelRequirement = 5,
     material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(strength = 5.0, regeneration = 4.0),
     recipeList = recipes {
         recipe {
             shaped = true
             s1(Stick.tier(2))
-            s4(Stick.tier(2))
-            s2(Slime.tier(2))
-            s5(Bone.tier(1))
+            s2(Stick.tier(2))
+            s3(Slime.tier(2))
+            s4(Wheat.tier(2))
             item { player, b ->
-                val newItem = StrongStickyStick(if (b) 50 else Utils.randRarity())
+                val newItem = HealingStickyStick(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }

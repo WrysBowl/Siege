@@ -1,8 +1,10 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks
+package net.siegerpg.siege.core.items.implemented.weapons.melee.light.spades
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime
@@ -12,28 +14,30 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class StrongStickyStick() : CustomMeleeWeapon(
-    name = "Strong Sticky Stick",
+class LuckySpade() : CustomMeleeWeapon(
+    name = "Lucky Spade",
     customModelData = 110002,
-    description = listOf("Globs of slime on a stick"),
-    levelRequirement = 5,
+    description = listOf("Not a shovel"),
+    levelRequirement = 9,
     material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(strength = 8.0, luck = 5.0),
     recipeList = recipes {
         recipe {
             shaped = true
             s1(Stick.tier(2))
+            s2(Stick.tier(2))
+            s3(Stick.tier(2))
             s4(Stick.tier(2))
-            s2(Slime.tier(2))
-            s5(Bone.tier(1))
+            s5(Pebble.tier(2))
+            s6(Feather.tier(2))
             item { player, b ->
-                val newItem = StrongStickyStick(if (b) 50 else Utils.randRarity())
+                val newItem = LuckySpade(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
     },
-    attackSpeed = 1.6
+    attackSpeed = 1.5
 ) {
 
     constructor(quality: Int): this() {
