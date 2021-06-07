@@ -16,9 +16,11 @@ import net.siegerpg.siege.core.items.types.armor.CustomBoots
 import net.siegerpg.siege.core.items.types.armor.CustomChestplate
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.armor.CustomLeggings
+import net.siegerpg.siege.core.items.types.misc.CustomWand
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.utils.Utils
+import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import java.lang.reflect.Constructor
@@ -89,8 +91,8 @@ object CustomItemUtils {
 
         getCustomItem(mainHand)?.let {
             //player.chat("You are holding a custom item")
-            if (it is CustomWeapon) {
-                val itemStats = getStats(it, addGem = true, addRarity = true)
+            if (it is CustomWeapon || it is CustomWand) {
+                val itemStats = getStats(it as CustomEquipment, addGem = true, addRarity = true)
                 itemStats[statType]?.let { stat ->
                     if (it.levelRequirement == null) {
                         output += stat
