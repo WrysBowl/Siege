@@ -251,7 +251,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         CustomItemUtils.getCustomItem(item)?.let {
             if (it is CustomWand) {
 
-                var dmg = CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH)
+                var dmg = it.baseStats[StatTypes.STRENGTH]!! + CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH, item)
                 if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg = 1.0
 
                 //MAKE THIS EFFICIENT
