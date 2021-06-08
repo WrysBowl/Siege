@@ -1,34 +1,31 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee.light.spades
+package net.siegerpg.siege.core.items.implemented.weapons.melee.light.splinteredBones
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.SplinteredBone
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Spade() : CustomMeleeWeapon(
-    name = "Spade",
-    customModelData = 110002,
-    description = listOf("Not a shovel"),
-    levelRequirement = 9,
+class LuckySplinteredBone() : CustomMeleeWeapon(
+    name = "Lucky Splintered Bone",
+    customModelData = 110009,
+    description = listOf("The shard of a", "human femur bone"),
+    levelRequirement = 34,
     material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 13.0),
+    baseStats = CustomItemUtils.statMap(strength = 32.0, luck = 6.0),
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Stick.tier(3))
-            s6(Pebble.tier(2))
+            s1(Bone.tier(3))
+            s3(Feather.tier(3))
+            s4(Feather.tier(3))
             item { player, b ->
-                val newItem = Spade(if (b) 50 else Utils.randRarity())
+                val newItem = LuckySplinteredBone(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
