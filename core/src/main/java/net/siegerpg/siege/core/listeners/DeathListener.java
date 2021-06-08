@@ -50,7 +50,7 @@ public class DeathListener implements Listener, Runnable {
 
         if (mobDrop.getExp(true) > 0 && player != null) {
             int exp = mobDrop.getExp(true);
-            exp = (int) (exp * WebstoreUtils.expMultiplier);
+            exp = (int) Math.floor(exp * WebstoreUtils.expMultiplier);
             if ((Math.random() * 100) <= luck) {
                 exp *= 2;
             }
@@ -58,7 +58,7 @@ public class DeathListener implements Listener, Runnable {
         } //Give exp reward
 
         if (goldCoinAmt > 0) {
-            goldCoinAmt = (int) (goldCoinAmt * WebstoreUtils.goldMultiplier);
+            goldCoinAmt = (int) Math.floor(goldCoinAmt * WebstoreUtils.goldMultiplier);
             if ((Math.random() * 100) <= luck) {
                 goldCoinAmt *= 2;
             }

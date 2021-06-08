@@ -3,7 +3,6 @@
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import net.siegerpg.siege.core.Webstore.WebstoreUtils
 import net.siegerpg.siege.core.database.DatabaseManager
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
@@ -107,10 +106,11 @@ object Levels {
                     Bukkit.getServer().broadcastMessage("")
                     Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + lvl + "!"))
                     Bukkit.getServer().broadcastMessage("")
-                    val multiplier = floor(lvl/10.0)
+                    /* ISSUE CAN NOT ASYNCHRONOUSLY SET PLAYER PERMISSION
+                    val multiplier = floor(lvl/10.0).toInt()
                     val console = Bukkit.getServer().consoleSender
                     val cmd = "lp user ${player.name} permission set cosmicvaults.amount.${multiplier}"
-                    Bukkit.dispatchCommand(console, cmd)
+                    Bukkit.dispatchCommand(console, cmd)*/
                 }
                 player.sendTitle(
                     Utils.tacc("&5Level Up!"),
@@ -150,9 +150,8 @@ object Levels {
 
     fun addExp(player: OfflinePlayer, exp: Int) {
         GlobalScope.launch(Dispatchers.IO) {
-            val newExp = (exp * WebstoreUtils.expMultiplier).toInt()
             val levelExp = getExpLevel(player)
-            val new = calculateExpLevel(levelExp.first, levelExp.second + newExp, player as Player)
+            val new = calculateExpLevel(levelExp.first, levelExp.second + exp, player as Player)
             setExpLevel(player, new)
         }
     }

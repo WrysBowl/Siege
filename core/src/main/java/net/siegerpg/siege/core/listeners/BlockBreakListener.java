@@ -220,12 +220,12 @@ public class BlockBreakListener implements Listener {
         }
 
         if (goldCoinAmt > 0) {
-            goldCoinAmt = (int) (goldCoinAmt * WebstoreUtils.goldMultiplier);
+            goldCoinAmt = (int) Math.floor(goldCoinAmt * WebstoreUtils.goldMultiplier);
             GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
         }
 
         if (blockDrop.getExp(true) > 0) {
-            exp = (int) (exp * WebstoreUtils.expMultiplier);
+            exp = (int) Math.floor(exp * WebstoreUtils.expMultiplier);
             GoldEXPSpawning.spawnEXP(exp, loc);
         }
 
