@@ -12,7 +12,6 @@ import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
 import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
-import net.siegerpg.siege.core.portals.PortalConfig;
 import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.cache.PlayerBanking;
 import net.siegerpg.siege.core.utils.VaultHook;
@@ -33,7 +32,6 @@ public final class Core extends JavaPlugin {
 
     public PartyConfig partyConfig = new PartyConfig(this);
 
-    public PortalConfig portalConfig = new PortalConfig(this);
     public static Location spawnLocation;
 
     public static ProtocolManager protocolManager;

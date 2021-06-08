@@ -7,3 +7,7 @@ prefix: SiegeDungeons
 depend: [ FastAsyncWorldEdit, SiegeCore, MythicMobs ]
 load: POSTWORLD
 authors: [ DeltaRays ]
+commands:
+  portal:
+    description: Create a portal
+    permission: op

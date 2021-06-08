@@ -1,13 +1,14 @@
-package net.siegerpg.siege.core.portals
+package net.siegerpg.siege.dungeons.portals
 
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.ConfigurationBase
+import net.siegerpg.siege.dungeons.DungeonPlugin
+import net.siegerpg.siege.dungeons.DungeonType
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.entity.Player
 import java.io.File
 
-open class PortalConfig(plugin: Core) : ConfigurationBase((File(plugin.dataFolder, "portal.yml"))) {
+open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.dataFolder, "portal.yml"))) {
 
     fun teleportToCorresponding(player: Player): Boolean {
         val coordinateSection = configuration.getConfigurationSection("coords") ?: configuration.createSection("coords")
@@ -20,14 +21,13 @@ open class PortalConfig(plugin: Core) : ConfigurationBase((File(plugin.dataFolde
                 .toString()
         ) ?: return false
         if (location.isSet("dungeon")) {
-            /*
             val dungeonTypeName = location.getString("dungeon")
             val dungeonType = DungeonType.dungeonTypes.find { d -> dungeonTypeName == d.name } ?: return false
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
-                    val endLocation = dungeon.location.clone().add(dungeonType.spawnLocation)
+                    val endLocation = dungeon.location.clone().add(dungeonType.relSpawnLoc)
                     player.teleport(endLocation)
-                    Party.parties.forEach { party ->
+                    /*getParties().forEach { party ->
                         if (party.leader == player)
                             party.members.forEach { member ->
                                 if (member.isOnline)
@@ -35,12 +35,14 @@ open class PortalConfig(plugin: Core) : ConfigurationBase((File(plugin.dataFolde
                             }
                         return true
                     }
+                     */
                     return true
                 }
             }
             val dungeon = dungeonType.nextAvailableDungeon()
-            val endLocation = dungeon.location.clone().add(dungeonType.spawnLocation)
+            val endLocation = dungeon.location.clone().add(dungeonType.relSpawnLoc)
             player.teleport(endLocation)
+            /*
             Party.parties.forEach { party ->
                 if (party.leader == player)
                     party.members.forEach { member ->
@@ -99,7 +101,7 @@ open class PortalConfig(plugin: Core) : ConfigurationBase((File(plugin.dataFolde
         linkingSection.set(index.toString(), locationSection)
         save()
     }
-    /*
+
     fun addCoordinate(blockLoc: Location, dungeonType: DungeonType) {
         val coordinateSection = configuration.getConfigurationSection("coords") ?: configuration.createSection("coords")
         val linkingSection =
@@ -121,5 +123,4 @@ open class PortalConfig(plugin: Core) : ConfigurationBase((File(plugin.dataFolde
         linkingSection.set(index.toString(), locationSection)
         save()
     }
-     */
 }

@@ -1,17 +1,26 @@
 package net.siegerpg.siege.dungeons;
 
+import net.siegerpg.siege.dungeons.portals.PortalCommand;
+import net.siegerpg.siege.dungeons.portals.PortalConfig;
+import net.siegerpg.siege.dungeons.portals.PortalTeleport;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class DungeonPlugin extends JavaPlugin {
     private static DungeonPlugin INSTANCE;
 
-    DungeonConfig dungeonConfig = null;
+    public DungeonConfig dungeonConfig = null;
+    public PortalConfig portalConfig = null;
 
     @Override
     public void onEnable() {
         INSTANCE = this;
+        portalConfig = new PortalConfig(this);
+
         dungeonConfig = new DungeonConfig();
         dungeonConfig.deserializeDungeonTypes();
+        Bukkit.getPluginManager().registerEvents(new PortalTeleport(), this);
+        Bukkit.getPluginCommand("portal").setExecutor(new PortalCommand());
         getLogger().info("SiegeDungeons has enabled!");
     }
 
