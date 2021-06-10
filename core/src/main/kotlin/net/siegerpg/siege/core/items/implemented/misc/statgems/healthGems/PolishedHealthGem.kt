@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.statgems
+package net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -7,17 +7,17 @@ import net.siegerpg.siege.core.items.types.misc.StatGemType
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class FlawedHealthGem() : StatGemType(
-    name = "Health Gem",
-    customModelData = 1,
-    description = listOf("Defects over time has made this gem weak"),
-    levelRequirement = 12,
+class PolishedHealthGem() : StatGemType(
+    name = "Polished Health Gem",
+    customModelData = 550001,
+    description = listOf("Energy primed for use!"),
+    levelRequirement = 36,
     material = Material.POPPED_CHORUS_FRUIT,
     recipeList = recipes {
 
     },
     statType = StatTypes.HEALTH,
-    statAmount = 10.0
+    statAmount = 14.0
 ) {
 
     constructor(quality: Int): this() {
