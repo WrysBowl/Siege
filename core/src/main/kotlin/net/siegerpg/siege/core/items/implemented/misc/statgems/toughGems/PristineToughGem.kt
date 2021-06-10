@@ -7,17 +7,17 @@ import net.siegerpg.siege.core.items.types.misc.StatGemType
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class HealthGem() : StatGemType(
-    name = "Health Gem",
-    customModelData = 1,
-    description = listOf("A powerful gem"),
-    levelRequirement = 0,
+class PristineToughGem() : StatGemType(
+    name = "Pristine Tough Gem",
+    customModelData = 560004,
+    description = listOf("Power radiates from the core of this gem"),
+    levelRequirement = 44,
     material = Material.POPPED_CHORUS_FRUIT,
     recipeList = recipes {
 
     },
-    statType = StatTypes.HEALTH,
-    statAmount = 10.0
+    statType = StatTypes.TOUGHNESS,
+    statAmount = 80.0
 ) {
 
     constructor(quality: Int): this() {

@@ -7,26 +7,20 @@ import net.siegerpg.siege.core.items.types.misc.StatGemType
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class FlawedHealthGem() : StatGemType(
-    name = "Health Gem",
-    customModelData = 1,
-    description = listOf("Defects over time has made this gem weak"),
-    levelRequirement = 12,
+class RawLuckGem() : StatGemType(
+    name = "Raw Luck Gem",
+    customModelData = 540003,
+    description = listOf("A raw gem with untapped power"),
+    levelRequirement = 28,
     material = Material.POPPED_CHORUS_FRUIT,
     recipeList = recipes {
 
     },
-    statType = StatTypes.HEALTH
+    statType = StatTypes.LUCK,
+    statAmount = 6.0
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
-
-    constructor(quality: Int, statAmount: Double): this() {
-        this.statAmount = statAmount
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
         this.serialize()

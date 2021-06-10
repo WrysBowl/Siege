@@ -23,16 +23,12 @@ abstract class StatGemType(
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.STATGEM,
     override val recipeList: CustomRecipeList? = null,
-    val statType: StatTypes
+    val statType: StatTypes,
+    val statAmount: Double = 0.0
 ) : CustomItem {
 
     override var rarity: Rarity = Rarity.COMMON
 
-    open var statAmount: Double = 0.0
-        set(value) {
-            field = value
-            this.serialize()
-        }
 
     init {
         this.rarity = Rarity.getFromInt(this.quality)
@@ -44,12 +40,6 @@ abstract class StatGemType(
             "statGemTypeStat" to statType,
             "statGemTypeAmount" to statAmount
         )
-    }
-    override fun deserialize() {
-        super.deserialize()
-        item.getNbtTag<Double>("statGemTypeAmount")?.let {
-            statAmount = it
-        }
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
@@ -84,6 +74,22 @@ abstract class StatGemType(
         other?.let { return false }
         if (this::class.qualifiedName != other!!::class.qualifiedName) return false
         return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + (customModelData ?: 0)
+        result = 31 * result + (levelRequirement ?: 0)
+        result = 31 * result + description.hashCode()
+        result = 31 * result + material.hashCode()
+        result = 31 * result + quality
+        result = 31 * result + item.hashCode()
+        result = 31 * result + type.hashCode()
+        result = 31 * result + (recipeList?.hashCode() ?: 0)
+        result = 31 * result + statType.hashCode()
+        result = 31 * result + statAmount.hashCode()
+        result = 31 * result + rarity.hashCode()
+        return result
     }
 
 }
