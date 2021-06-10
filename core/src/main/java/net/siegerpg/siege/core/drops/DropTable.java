@@ -10,7 +10,7 @@ interface DropTable {
     int goldMax = 0;
     int expMin = 0;
     int expMax = 0;
-    Reward[] rewards = null;
+    Reward[] rewards = new Reward[]{null};
 
     default ArrayList<ItemStack> getRewards(double luckChance) {
         ArrayList<ItemStack> itemList = new ArrayList<>();
