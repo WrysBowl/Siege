@@ -10,13 +10,13 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class LuckyEarthernHammer() : CustomMeleeWeapon(
-    name = "Lucky Earthern Hammer",
+class StrongEarthernHammer() : CustomMeleeWeapon(
+    name = "Strong Earthern Hammer",
     customModelData = 130010,
     description = listOf("Let's go clobbing!"),
     levelRequirement = 39,
     material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 65.0, luck = 6.0),
+    baseStats = CustomItemUtils.statMap(strength = 74.0),
     recipeList = recipes {
         recipe {
             shaped = true
@@ -24,12 +24,12 @@ class LuckyEarthernHammer() : CustomMeleeWeapon(
             s2(Stick.tier(3))
             s3(Stick.tier(3))
             s4(Stick.tier(3))
-            s5(Feather.tier(3))
-            s6(Feather.tier(3))
-            s7(Feather.tier(3))
-            s8(Feather.tier(3))
+            s5(Bone.tier(3))
+            s6(Bone.tier(3))
+            s7(Bone.tier(3))
+            s8(Bone.tier(3))
             item { player, b ->
-                val newItem = LuckyEarthernHammer(if (b) 50 else Utils.randRarity())
+                val newItem = StrongEarthernHammer(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
