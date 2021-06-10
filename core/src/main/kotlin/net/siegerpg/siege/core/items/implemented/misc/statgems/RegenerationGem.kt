@@ -16,17 +16,11 @@ class RegenerationGem() : StatGemType(
     recipeList = recipes {
 
     },
-    statType = StatTypes.REGENERATION
+    statType = StatTypes.REGENERATION,
+    statAmount = 10.0
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
-
-    constructor(quality: Int, statAmount: Double): this() {
-        this.statAmount = statAmount
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
         this.serialize()
