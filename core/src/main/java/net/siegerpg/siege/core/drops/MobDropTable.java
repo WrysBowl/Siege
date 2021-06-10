@@ -10,12 +10,16 @@ public class MobDropTable implements DropTable {
     int expMax = 0;
     Reward[] rewards;
 
-    MobDropTable(String mobName, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
+    public MobDropTable(String mobName, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
         this.mobName = mobName;
         this.goldMin = goldMin;
         this.goldMax = goldMax;
         this.expMin = expMin;
         this.expMax = expMax;
         this.rewards = rewards;
+    }
+
+    public String getMobName() {
+        return mobName;
     }
 }

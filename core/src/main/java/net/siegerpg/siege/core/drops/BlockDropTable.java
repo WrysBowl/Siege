@@ -11,7 +11,7 @@ public class BlockDropTable implements DropTable {
     int expMax = 0;
     Reward[] rewards;
 
-    BlockDropTable(int blockRegen, Material material, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
+    public BlockDropTable(int blockRegen, Material material, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
         this.blockRegen = blockRegen;
         this.material = material;
         this.goldMin = goldMin;
@@ -19,5 +19,12 @@ public class BlockDropTable implements DropTable {
         this.expMin = expMin;
         this.expMax = expMax;
         this.rewards = rewards;
+    }
+
+    public Integer getRegenTime() {
+        return blockRegen;
+    }
+    public Material getMaterial() {
+        return material;
     }
 }

@@ -1,5 +1,7 @@
-package net.siegerpg.siege.core.drops;
+package net.siegerpg.siege.core.drops.blocks;
 
+import net.siegerpg.siege.core.drops.BlockDropTable;
+import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
@@ -22,32 +24,5 @@ public class Stone extends BlockDropTable {
 
     Stone(int blockRegen, Material material, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
         super(blockRegen, material, goldMin, goldMax, expMin, expMax, rewards);
-    }
-
-    ArrayList<ItemStack> getRewards(double luckChance) {
-        ArrayList<ItemStack> itemList = new ArrayList<>();
-        for (Reward reward : rewards) {
-            if (Utils.randTest(reward.chance)) {
-                if ((Math.random() * 100) <= luckChance) {
-                    itemList.add(reward.item);
-                }
-                itemList.add(reward.item);
-            }
-        }
-        return itemList;
-    }
-    Integer getGold(boolean rand) {
-        if (rand) {
-            double randomGold = (Math.random() * goldMax) + goldMin;
-            return (int) Math.round(randomGold);
-        }
-        return goldMax;
-    }
-    Integer getExp(boolean rand) {
-        if (rand) {
-            double randomExp = (Math.random() * expMax) + expMin;
-            return (int) Math.round(randomExp);
-        }
-        return expMax;
     }
 }
