@@ -21,8 +21,8 @@ class ToughFemurBone() : CustomMeleeWeapon(
         recipe {
             shaped = true
             s1(Bone.tier(3))
-            s1(Bone.tier(3))
-            s1(Pebble.tier(3))
+            s2(Bone.tier(3))
+            s3(Pebble.tier(3))
             item { player, b ->
                 val newItem = ToughFemurBone(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)

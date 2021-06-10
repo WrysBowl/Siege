@@ -21,8 +21,8 @@ class HealthyFemurBone() : CustomMeleeWeapon(
         recipe {
             shaped = true
             s1(Bone.tier(3))
-            s1(Bone.tier(3))
-            s1(PlantMatter.tier(3))
+            s2(Bone.tier(3))
+            s3(PlantMatter.tier(3))
             item { player, b ->
                 val newItem = HealthyFemurBone(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)

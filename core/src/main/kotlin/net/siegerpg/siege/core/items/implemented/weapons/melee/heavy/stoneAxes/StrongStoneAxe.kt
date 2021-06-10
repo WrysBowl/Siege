@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.femurBones
+package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -10,27 +10,29 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class HealingFemurBone() : CustomMeleeWeapon(
-    name = "Healing Femur Bone",
-    customModelData = 130003,
-    description = listOf("A large animal's femur"),
-    levelRequirement = 11,
+class StrongStoneAxe() : CustomMeleeWeapon(
+    name = "Strong Stone Axe",
+    customModelData = 130004,
+    description = listOf("Commonly used for chopping trees"),
+    levelRequirement = 15,
     material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 22.0, regeneration = 4.0),
+    baseStats = CustomItemUtils.statMap(strength = 35.0),
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Bone.tier(3))
-            s2(Bone.tier(3))
-            s3(Wheat.tier(4))
+            s1(Pebble.tier(3))
+            s2(Stick.tier(3))
+            s4(Stick.tier(3))
+            s5(Bone.tier(3))
+            s8(Bone.tier(3))
             item { player, b ->
-                val newItem = HealingFemurBone(if (b) 50 else Utils.randRarity())
+                val newItem = StrongStoneAxe(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
     },
-    attackSpeed = 0.9
+    attackSpeed = 0.8
 ) {
 
     constructor(quality: Int): this() {
