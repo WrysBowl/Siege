@@ -4,7 +4,9 @@ import kotlin.Triple;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.cache.PreviousBrokenBlock;
+import net.siegerpg.siege.core.drops.BlockDropTable;
 import net.siegerpg.siege.core.drops.BlockDrops;
+import net.siegerpg.siege.core.drops.blocks.Stone;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.GoldEXPSpawning;
@@ -22,6 +24,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class BlockBreakListener implements Listener {
@@ -140,6 +143,29 @@ public class BlockBreakListener implements Listener {
             add(Material.POTTED_WHITE_TULIP);
         }
     };
+    public static HashMap<Material, BlockDropTable> blockDropTableHashMap = new HashMap<>(){
+        {
+            put(Material.STONE, new Stone());
+
+        }
+    };
+
+    @EventHandler
+    public void newBreakEvent(BlockBreakEvent e) {
+        Player player = e.getPlayer();
+        //Stop any block drops if player isn't in survival
+        if (player.getGameMode() != GameMode.SURVIVAL) {
+            e.setCancelled(false);
+            return;
+        }
+        e.setCancelled(true);
+        e.setDropItems(false);
+        Material blockType = e.getBlock().getType();
+        final BlockState blockState = e.getBlock().getState();
+        final Location loc = e.getBlock().getLocation();
+        BlockDrops blockDrop = null;
+
+    }
 
     @EventHandler
     public void breakEvent(BlockBreakEvent e) {

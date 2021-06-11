@@ -1,8 +1,9 @@
 package net.siegerpg.siege.core.drops;
 
 import org.bukkit.Material;
+import org.bukkit.event.Listener;
 
-public class BlockDropTable implements DropTable {
+public class BlockDropTable implements DropTable, Listener {
     int blockRegen;
     Material material;
     int goldMin;
