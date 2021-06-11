@@ -64,7 +64,7 @@ public class MobDrops implements Listener {
                         {Pebble.Companion.tier(1).getUpdatedItem(false), 100.0},
                         {Pebble.Companion.tier(2).getUpdatedItem(false), 5.0},
                         {new RockWand(Utils.randRarity()).getUpdatedItem(false), 0.01}};
-                numGold = new Integer[]{2, 6};
+                numGold = new Integer[]{3, 5};
                 numExp = new Integer[]{2, 4};
                 break;
             case "Blob":

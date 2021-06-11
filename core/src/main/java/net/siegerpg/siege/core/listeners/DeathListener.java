@@ -1,45 +1,114 @@
 package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicDropLoadEvent;
-import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobDeathEvent;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
-import net.siegerpg.siege.core.drops.MobDrops;
+import net.siegerpg.siege.core.drops.MobDropTable;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile.*;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.neutral.*;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.passive.*;
 import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
+import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.utils.GoldEXPSpawning;
-import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scoreboard.Score;
 
-public class DeathListener implements Listener, Runnable {
+import java.util.HashMap;
+
+public class DeathListener implements Listener {
+
+    public static HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>(){
+        {
+            /**
+             * HILLY WOODS MOBS
+             */
+            //BOSSES
+            put("Davy_Jones", new Davy_Jones());
+            put("Ogre", new Ogre());
+
+            //DUNGEON BOSSES
+            put("RockSpirit", new RockSpirit());
+
+            //HOSTILES
+            put("AngryBull", new AngryBull());
+            put("Bandit", new Bandit());
+            put("BanditArcher", new BanditArcher());
+            put("Blob", new Blob());
+            put("BloodSucker", new BloodSucker());
+            put("ForestSpider", new ForestSpider());
+            put("Goblin", new Goblin());
+            put("InfectedDigger", new InfectedDigger());
+            put("Orc", new Orc());
+            put("RockRat", new RockRat());
+            put("ScorchingBlob", new ScorchingBlob());
+            put("Sea_Warrior", new Sea_Warrior());
+            put("ZombifiedDigger", new ZombifiedDigger());
+
+            //NEUTRALS
+            put("GiantHornet", new GiantHornet());
+            put("WildFox", new WildFox());
+
+            //PASSIVES
+            put("FeatheredMeat", new FeatheredMeat());
+            put("MooMoo", new MooMoo());
+            put("Pigeon", new Pigeon());
+            put("Porky", new Porky());
+            put("Sushi", new Sushi());
+            put("Wooly", new Wooly());
+        }
+    };
+
+    @EventHandler
+    public void damageDrops(EntityDamageByEntityEvent e) {
+        if (!(e.getEntity() instanceof Player)) return;
+
+        ActiveMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getDamager());
+        if (mm == null) return;
+
+        ItemStack reward = null;
+        double chance = 0.0;
+        if (mm.getType().getInternalName().equals("Goblin")) {
+            reward = new GoldenCarrot(100).getUpdatedItem(false);
+            chance = 5.0;
+        } else if (mm.getType().getInternalName().equals("WildFox")) {
+            reward = new GoldenCarrot(50).getUpdatedItem(false);
+            chance = 10.0;
+        }
+        if (reward == null) return;
+
+        if (Utils.randTest(chance)) {
+            if (e.getEntity().getLocation().distance(e.getEntity().getWorld().getSpawnLocation()) > 3) {
+                e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), reward);
+            }
+        }
+    }
 
     @EventHandler
     public void mobDeath(EntityDeathEvent e) {
 
         if (e.getEntity().getKiller() == null) return;
-        if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) { return; }
+        if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
 
-        ActiveMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity());
-        MobDrops mobDrop = new MobDrops();
-        mobDrop.setMobTable(mm);
+        String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
+        MobDropTable mobDrop = mobDropTableHashMap.get(mm);
 
         e.setDroppedExp(0);
         e.getDrops().clear();
 
-        if (!mobDrop.isMob_exists()) {return;}
+        if (mobDrop == null) return;
 
         Player player = e.getEntity().getKiller();
         double luck = 0.0;
@@ -57,7 +126,7 @@ public class DeathListener implements Listener, Runnable {
             GoldEXPSpawning.spawnEXP(exp, loc);
         } //Give exp reward
 
-        if (goldCoinAmt > 0) {
+        if (goldCoinAmt > 0 && player != null) {
             goldCoinAmt = (int) Math.floor(goldCoinAmt * WebstoreUtils.goldMultiplier);
             if ((Math.random() * 100) <= luck) {
                 goldCoinAmt *= 2;
@@ -91,10 +160,5 @@ public class DeathListener implements Listener, Runnable {
             player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + (bal - newBal) + " gold &7has been lost"), 1, 60, 1);
             Scoreboard.updateScoreboard(player);
         }
-    }
-
-    @Override
-    public void run() {
-
     }
 }

@@ -191,7 +191,7 @@ public class BlockBreakListener implements Listener {
     };
 
     @EventHandler
-    public void newBreakEvent(BlockBreakEvent e) {
+    public void onBreak(BlockBreakEvent e) {
         Player player = e.getPlayer();
 
         //Stop any block drops if player isn't in survival
