@@ -149,10 +149,11 @@ public class BlockBreakListener implements Listener {
 
         }
     };
-
+/*
     @EventHandler
     public void newBreakEvent(BlockBreakEvent e) {
         Player player = e.getPlayer();
+
         //Stop any block drops if player isn't in survival
         if (player.getGameMode() != GameMode.SURVIVAL) {
             e.setCancelled(false);
@@ -163,9 +164,76 @@ public class BlockBreakListener implements Listener {
         Material blockType = e.getBlock().getType();
         final BlockState blockState = e.getBlock().getState();
         final Location loc = e.getBlock().getLocation();
-        BlockDrops blockDrop = null;
+        BlockDropTable blockDrop = blockDropTableHashMap.get(blockType);
 
-    }
+        //if block broken doesn't have a drop table
+        if (blockDrop == null) {
+            if (rewardableBlocks.contains(blockType)) {
+                e.setCancelled(false);
+                if (Utils.randTest(20.0)) {
+                    GoldEXPSpawning.spawnEXP(1, loc);
+                }
+                if (Utils.randTest(20.0)) {
+                    GoldEXPSpawning.spawnGold(1, loc);
+                }
+                //after 30 seconds, block respawns back
+                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+                    public void run() {
+                        blockState.update(true, false);
+                    }
+                }, 600);
+            }
+            return;
+        }
+        final int blockDropRegen = blockDrop.getBlockRegen();
+        final double luckVal = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
+        int goldCoinAmt = blockDrop.getGold(true);
+        int exp = blockDrop.getExp(true);
+        final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
+        final boolean upFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
+        final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
+
+
+        if (keepAir.contains(blockType)) {
+            e.setCancelled(false);
+        } else if (dependables.contains(blockType) || upFacingDependable || downFacingDependable) {
+            e.setCancelled(true);
+        } else {
+            e.getBlock().setType(Material.BEDROCK);
+        }
+        if (!dependables.contains(blockType) && upFacingDependable || downFacingDependable) {
+            return;
+        }
+
+        if (goldCoinAmt > 0) {
+            goldCoinAmt = (int) Math.floor(goldCoinAmt * WebstoreUtils.goldMultiplier);
+            GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
+        }
+
+        if (blockDrop.getExp(true) > 0) {
+            exp = (int) Math.floor(exp * WebstoreUtils.expMultiplier);
+            GoldEXPSpawning.spawnEXP(exp, loc);
+        }
+
+
+        //Adds blocks to player's inventory
+        for (ItemStack drop : blockDrop.getRewards(luckVal)) {
+            if (!fullInv) {
+                e.getPlayer().getInventory().addItem(drop);
+            } else {
+                e.getBlock().getWorld().dropItemNaturally(loc, drop);
+            }
+
+        }
+
+        //Sets block back from bedrock to original
+        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+            public void run() {
+                blockState.update(true, false);
+            }
+        }, blockDropRegen);
+    }*/
+
 
     @EventHandler
     public void breakEvent(BlockBreakEvent e) {

@@ -110,7 +110,6 @@ public class PlayerJoinListener implements Listener {
             shank.updateMeta(false);
             player.getInventory().addItem(shank.getItem());
             StrengthGem gem = new StrengthGem(100);
-            gem.setStatAmount(10.0);
             gem.updateMeta(false);
             player.getInventory().addItem(gem.getItem());
         }
