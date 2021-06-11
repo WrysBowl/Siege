@@ -3,8 +3,8 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.*;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class Blob extends MobDropTable {

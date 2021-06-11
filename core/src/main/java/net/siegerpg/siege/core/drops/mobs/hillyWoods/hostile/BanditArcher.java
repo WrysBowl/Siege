@@ -4,9 +4,8 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.DullLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.DullStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.FlawedLuckGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
 

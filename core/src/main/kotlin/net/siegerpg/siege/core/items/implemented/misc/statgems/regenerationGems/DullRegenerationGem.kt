@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.statgems
+package net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
