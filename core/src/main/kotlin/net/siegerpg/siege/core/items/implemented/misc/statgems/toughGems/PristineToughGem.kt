@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.statgems
+package net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -17,7 +17,7 @@ class PristineToughGem() : StatGemType(
 
     },
     statType = StatTypes.TOUGHNESS,
-    statAmount = 80.0
+    statAmount = 35.0
 ) {
 
     constructor(quality: Int): this() {

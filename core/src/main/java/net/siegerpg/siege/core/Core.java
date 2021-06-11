@@ -5,7 +5,6 @@ import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.Webstore.RedeemBoosters;
 import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.*;
-import net.siegerpg.siege.core.drops.MobDrops;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
@@ -120,7 +119,6 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         getServer().getPluginManager().registerEvents(new SpecialArmorAbilities(), this);
         getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
-        getServer().getPluginManager().registerEvents(new MobDrops(), this);
         getServer().getPluginManager().registerEvents(new PlayerBanking(), this);
         getServer().getPluginManager().registerEvents(new TutorialListeners(), this);
 

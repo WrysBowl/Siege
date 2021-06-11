@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType
 
 class GoldenCarrot() : CustomFood(
     name = "Golden Carrot",
-    customModelData = 310012,
+    customModelData = 330005,
     description = listOf("Mercy on your soul"),
     levelRequirement = 0,
     material = Material.GOLDEN_CARROT, //change this to cooked chicken later

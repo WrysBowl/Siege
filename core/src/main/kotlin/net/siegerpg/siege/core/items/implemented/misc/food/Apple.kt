@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType
 
 class Apple() : CustomFood(
     name = "Apple",
-    customModelData = 310010,
+    customModelData = 330003,
     description = listOf("Food to tame teachers"),
     levelRequirement = 0,
     material = Material.APPLE, //change this to cooked chicken later

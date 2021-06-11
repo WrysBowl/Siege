@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType
 
 class SusStew() : CustomFood(
     name = "Suspicious Stew",
-    customModelData = 310015,
+    customModelData = 330008,
     description = listOf("Looks just like my grandma's goulash!"),
     levelRequirement = 0,
     material = Material.SUSPICIOUS_STEW,

@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType
 
 class Beetroot() : CustomFood(
     name = "Beetroot",
-    customModelData = 310011,
+    customModelData = 330004,
     description = listOf("The fruit can take a beating"),
     levelRequirement = 0,
     material = Material.BEETROOT, //change this to cooked chicken later

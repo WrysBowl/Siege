@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType
 
 class Porkchop() : CustomFood(
     name = "Porkchop",
-    customModelData = 310013,
+    customModelData = 330006,
     description = listOf("Tastes better cooked..."),
     levelRequirement = 0,
     material = Material.PORKCHOP,

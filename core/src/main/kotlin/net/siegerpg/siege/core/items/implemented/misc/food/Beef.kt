@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType
 
 class Beef() : CustomFood(
     name = "Beef",
-    customModelData = 1,
+    customModelData = 330007,
     description = listOf("Tastes better than raw pork...   "),
     levelRequirement = 0,
     material = Material.BEEF,
