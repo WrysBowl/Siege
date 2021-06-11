@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.CrackedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.DullLuckGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.DullRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.wands.*;
@@ -20,7 +21,7 @@ public class ForestSpider extends MobDropTable {
                 new Reward(Vine.Companion.tier(2).getUpdatedItem(false), 10.0),
                 new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0),
                 new Reward(new CrackedHealthGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
-                new Reward(new DullLuckGem(Utils.randRarity()).getUpdatedItem(false), 0.5),
+                new Reward(new FlawedLuckGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
                 new Reward(new CrackedLuckGem(Utils.randRarity()).getUpdatedItem(false), 2.0)
         });
     }

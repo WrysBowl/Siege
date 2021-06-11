@@ -17,8 +17,8 @@ public class Bandit extends MobDropTable {
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 5.0),
                 new Reward(MetalScrap.Companion.tier(1).getUpdatedItem(false), 15.0),
                 new Reward(new Dagger(Utils.randRarity()).getUpdatedItem(false), 5.0),
-                new Reward(new FlawedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 4.0),
-                new Reward(new DullStrengthGem(Utils.randRarity()).getUpdatedItem(false), 2.0)
+                new Reward(new FlawedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
+                new Reward(new DullStrengthGem(Utils.randRarity()).getUpdatedItem(false), 1.0)
         });
     }
 }

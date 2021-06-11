@@ -106,11 +106,8 @@ object Levels {
                     Bukkit.getServer().broadcastMessage("")
                     Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + lvl + "!"))
                     Bukkit.getServer().broadcastMessage("")
-                    /* ISSUE CAN NOT ASYNCHRONOUSLY SET PLAYER PERMISSION
                     val multiplier = floor(lvl/10.0).toInt()
-                    val console = Bukkit.getServer().consoleSender
-                    val cmd = "lp user ${player.name} permission set cosmicvaults.amount.${multiplier}"
-                    Bukkit.dispatchCommand(console, cmd)*/
+                    VaultHook.perms.playerAdd(player, "cosmicvaults.amount.${multiplier}")
                 }
                 player.sendTitle(
                     Utils.tacc("&5Level Up!"),
