@@ -49,7 +49,7 @@ public class Utils {
     }
 
     public static boolean randTest(Double num) {
-        double randNumber = Math.random() *100;
+        double randNumber = Math.random() * 100;
         return randNumber <= num;
     }
 

@@ -6,6 +6,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BlockDropTable implements Listener {
     int blockRegen;
@@ -35,11 +37,12 @@ public class BlockDropTable implements Listener {
     public ArrayList<ItemStack> getRewards(double luckChance) {
         ArrayList<ItemStack> itemList = new ArrayList<>();
         for (Reward reward : rewards) {
-            if (Utils.randTest(reward.chance)) {
-                if ((Math.random() * 100) <= luckChance) {
+            if (!Utils.randTest(reward.chance)) continue;
+            for (double i=luckChance; i>=0;i-=100) {
+                itemList.add(reward.item);
+                if (i <= 100 && Utils.randTest(i)) {
                     itemList.add(reward.item);
                 }
-                itemList.add(reward.item);
             }
         }
         return itemList;

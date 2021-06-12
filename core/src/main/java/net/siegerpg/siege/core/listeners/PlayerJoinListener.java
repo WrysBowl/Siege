@@ -51,11 +51,6 @@ public class PlayerJoinListener implements Listener {
                         statement.setString(2, ip);
                         statement.executeUpdate();
                     }
-
-                    // Add the user to the db if he doesn't exist
-                    PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
-                    userData.setString(1, e.getUniqueId().toString());
-                    userData.executeUpdate();
                 } catch (SQLException ignored) {
                 }
             }
@@ -69,6 +64,16 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         String joinMessage = Utils.tacc("&7[&a+&7] " + player.getName());
+
+        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
+            Bukkit.getLogger().info("1");
+            try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
+                // Add the user to the db if he doesn't exist
+                PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
+                userData.setString(1, player.getUniqueId().toString());
+                userData.executeUpdate();
+            }catch (SQLException ignored) { }
+        }
 
         if (!player.hasPlayedBefore()) {
             player.getInventory().clear();
@@ -91,16 +96,6 @@ public class PlayerJoinListener implements Listener {
             CustomItem Cusitem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
             if (Cusitem != null) {
                 player.getInventory().setItem(i, Cusitem.getUpdatedItem(false));
-            }
-        }
-
-        if (player.getName().equals("Wrys")) {
-            try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
-                String uuid = event.getPlayer().getUniqueId().toString();
-                PreparedStatement skillsData = conn.prepareStatement("INSERT INTO skillsData (uuid) VALUES (?)");
-                skillsData.setString(1, uuid);
-                skillsData.executeUpdate();
-            } catch (SQLException ignored) {
             }
         }
 
