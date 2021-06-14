@@ -8,7 +8,6 @@ public class FishingEvent implements Listener {
 
     @EventHandler
     public void onFish(PlayerFishEvent e) {
-        Player player = e.getPlayer();
 
     }
 }
