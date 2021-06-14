@@ -55,7 +55,7 @@ class DungeonType {
             val bossName = bossOffset.getString("name")!!
             return DungeonType(
                 name,
-                File(section.getString("schemPath")!!),
+                File(DungeonPlugin.plugin().dataFolder, section.getString("schemPath")!!),
                 section.getInt("level"),
                 section.getInt("distance").toShort(),
                 relSpawnLoc, relBossLoc,
