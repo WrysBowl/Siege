@@ -40,9 +40,9 @@ public class MeraTransit implements Listener {
             World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
             int slot = e.getSlot();
             int bal = (int) VaultHook.econ.getBalance(player);
-            int farmCost = 200;
-            int villageCost = 300;
-            int caveCost = 200;
+            int farmCost = 100;
+            int villageCost = 200;
+            int caveCost = 100;
             if (player.hasPermission("siegecore.merafree")) {
                  farmCost /= 2;
                  villageCost /= 2;

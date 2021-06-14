@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners
 
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
+import net.siegerpg.siege.core.cache.LevelEXPStorage
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -141,7 +142,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 e.damage = 1.0
                 return
             }
-            if (levelReq > Levels.getExpLevel(attacker).first) {
+            if (levelReq > LevelEXPStorage.playerLevel[attacker]!!) {
                 e.damager.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
                 return
