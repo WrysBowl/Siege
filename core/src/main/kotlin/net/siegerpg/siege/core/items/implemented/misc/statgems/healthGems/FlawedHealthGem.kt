@@ -9,15 +9,15 @@ import org.bukkit.inventory.ItemStack
 
 class FlawedHealthGem() : StatGemType(
     name = "Flawed Health Gem",
-    customModelData = 520001,
+    customModelData = 530001,
     description = listOf("Defects over time has made this gem weak"),
-    levelRequirement = 12,
+    levelRequirement = 20,
     material = Material.POPPED_CHORUS_FRUIT,
     recipeList = recipes {
 
     },
     statType = StatTypes.HEALTH,
-    statAmount = 8.0
+    statAmount = 10.0
 ) {
 
     constructor(quality: Int): this() {

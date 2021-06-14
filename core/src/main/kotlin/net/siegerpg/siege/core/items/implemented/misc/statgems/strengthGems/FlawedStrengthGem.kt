@@ -9,15 +9,15 @@ import org.bukkit.inventory.ItemStack
 
 class FlawedStrengthGem() : StatGemType(
     name = "Flawed Strength Gem",
-    customModelData = 520002,
+    customModelData = 530002,
     description = listOf("Defects over time has made this gem weak"),
-    levelRequirement = 12,
+    levelRequirement = 20,
     material = Material.POPPED_CHORUS_FRUIT,
     recipeList = recipes {
 
     },
     statType = StatTypes.STRENGTH,
-    statAmount = 4.0
+    statAmount = 5.0
 ) {
 
     constructor(quality: Int): this() {

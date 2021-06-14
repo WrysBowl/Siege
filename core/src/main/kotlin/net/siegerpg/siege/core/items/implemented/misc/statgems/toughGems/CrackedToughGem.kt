@@ -9,15 +9,15 @@ import org.bukkit.inventory.ItemStack
 
 class CrackedToughGem() : StatGemType(
     name = "Cracked Tough Gem",
-    customModelData = 510004,
+    customModelData = 520004,
     description = listOf("Most of it's power has been leaked"),
-    levelRequirement = 4,
+    levelRequirement = 12,
     material = Material.POPPED_CHORUS_FRUIT,
     recipeList = recipes {
 
     },
     statType = StatTypes.TOUGHNESS,
-    statAmount = 10.0
+    statAmount = 15.0
 ) {
 
     constructor(quality: Int): this() {

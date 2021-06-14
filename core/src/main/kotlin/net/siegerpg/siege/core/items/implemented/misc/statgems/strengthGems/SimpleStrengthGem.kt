@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems
+package net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -7,17 +7,17 @@ import net.siegerpg.siege.core.items.types.misc.StatGemType
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class DullToughGem() : StatGemType(
-    name = "Dull Tough Gem",
-    customModelData = 530004,
-    description = listOf("Years of wear has smothered it's energy"),
-    levelRequirement = 20,
+class SimpleStrengthGem() : StatGemType(
+    name = "Simple Strength Gem",
+    customModelData = 540002,
+    description = listOf("A simple gem"),
+    levelRequirement = 28,
     material = Material.POPPED_CHORUS_FRUIT,
     recipeList = recipes {
 
     },
-    statType = StatTypes.TOUGHNESS,
-    statAmount = 20.0
+    statType = StatTypes.STRENGTH,
+    statAmount = 6.0
 ) {
 
     constructor(quality: Int): this() {

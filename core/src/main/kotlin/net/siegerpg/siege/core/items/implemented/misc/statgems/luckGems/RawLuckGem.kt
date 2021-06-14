@@ -9,15 +9,15 @@ import org.bukkit.inventory.ItemStack
 
 class RawLuckGem() : StatGemType(
     name = "Raw Luck Gem",
-    customModelData = 540003,
+    customModelData = 510003,
     description = listOf("A raw gem with untapped power"),
-    levelRequirement = 28,
+    levelRequirement = 4,
     material = Material.POPPED_CHORUS_FRUIT,
     recipeList = recipes {
 
     },
     statType = StatTypes.LUCK,
-    statAmount = 6.0
+    statAmount = 3.0
 ) {
 
     constructor(quality: Int): this() {

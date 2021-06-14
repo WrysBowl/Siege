@@ -3,17 +3,11 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.CrackedHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.DullHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.DullStrengthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.CrackedToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class Orc extends MobDropTable {
@@ -24,7 +18,7 @@ public class Orc extends MobDropTable {
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 6.0),
                 new Reward(new GiantClub(Utils.randRarity()).getUpdatedItem(false), 25.0),
                 new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 35.0),
-                new Reward(new DullStrengthGem(Utils.randRarity()).getUpdatedItem(false), 0.5),
+                new Reward(new SimpleStrengthGem(Utils.randRarity()).getUpdatedItem(false), 0.5),
                 new Reward(new CrackedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
                 new Reward(new CrackedToughGem(Utils.randRarity()).getUpdatedItem(false), 2.0)
         });

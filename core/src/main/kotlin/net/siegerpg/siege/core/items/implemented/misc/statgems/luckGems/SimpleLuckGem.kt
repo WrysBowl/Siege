@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems
+package net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -7,17 +7,17 @@ import net.siegerpg.siege.core.items.types.misc.StatGemType
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class DullRegenerationGem() : StatGemType(
-    name = "Dull Regeneration Gem",
-    customModelData = 530005,
-    description = listOf("Years of wear has smothered it's energy"),
-    levelRequirement = 20,
+class SimpleLuckGem() : StatGemType(
+    name = "Simple Luck Gem",
+    customModelData = 540003,
+    description = listOf("A simple gem"),
+    levelRequirement = 28,
     material = Material.POPPED_CHORUS_FRUIT,
     recipeList = recipes {
 
     },
-    statType = StatTypes.REGENERATION,
-    statAmount = 5.0
+    statType = StatTypes.LUCK,
+    statAmount = 6.0
 ) {
 
     constructor(quality: Int): this() {

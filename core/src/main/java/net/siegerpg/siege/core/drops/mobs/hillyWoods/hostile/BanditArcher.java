@@ -19,8 +19,8 @@ public class BanditArcher extends MobDropTable {
                 new Reward(MetalScrap.Companion.tier(1).getUpdatedItem(false), 7.5),
                 new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5),
                 new Reward(new FlawedLuckGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
-                new Reward(new DullLuckGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
-                new Reward(new DullStrengthGem(Utils.randRarity()).getUpdatedItem(false), 1.0)
+                new Reward(new SimpleLuckGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
+                new Reward(new SimpleStrengthGem(Utils.randRarity()).getUpdatedItem(false), 1.0)
         });
     }
 }
