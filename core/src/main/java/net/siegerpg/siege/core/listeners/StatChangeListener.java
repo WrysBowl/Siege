@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.cache.playerData;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
@@ -83,6 +84,8 @@ public class StatChangeListener implements Listener, Runnable {
     public static void statBarDisplayTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
+                if (playerData.hasActionBar.get(p)) continue;
+                playerData.hasActionBar.put(p, true);
                 if (playerHealth.get(p) == null) {
                     p.sendActionBar(Utils.parse("<red>REJOIN or RE-EQUIP your armor"));
                 } else {
@@ -95,6 +98,9 @@ public class StatChangeListener implements Listener, Runnable {
                 }
             }
         }, 0, 40);
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            playerData.hasActionBar.put(p, false);
+        }
     }
 
     @Override
