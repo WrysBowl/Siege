@@ -13,7 +13,7 @@ class Twig() : CustomMeleeWeapon(
     name = "Twig",
     customModelData = 110001,
     description = listOf("A twig found on the ground"),
-    levelRequirement = 1,
+    levelRequirement = 0,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 4.0),
     recipeList = recipes {

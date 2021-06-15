@@ -12,6 +12,8 @@ import net.siegerpg.siege.core.utils.name
 import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import kotlin.math.floor
+import kotlin.math.pow
 
 abstract class StatGemType(
     override val name: String,
@@ -60,6 +62,7 @@ abstract class StatGemType(
             meta.lore("<r><dark_gray>$it")
         }
         meta.lore(" ")
+        meta.lore("<yellow>$ ${floor(statAmount.pow(3))} <yellow>to Use")
         meta.lore("<r><gray>Level: $levelRequirement")
         if (hideRarity) meta.lore("<r><red>This is not the real item")
 
