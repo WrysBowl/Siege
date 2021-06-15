@@ -34,7 +34,9 @@ public class ChatListener implements Listener {
             e.setCancelled(true);
             if (player.getInventory().getItemInMainHand().getType() != Material.AIR ) {
                 ItemStack item = player.getInventory().getItemInMainHand();
-                Component miniMessage = Utils.lore("<bold>" + item.getItemMeta().displayName()).hoverEvent(item);
+                String name = item.getItemMeta().getDisplayName();
+                if (name.equals("")) name = player.getInventory().getItemInMainHand().getI18NDisplayName();
+                Component miniMessage = Utils.lore("<bold>" + name).hoverEvent(item);
                 Component prefixes = Utils.lore(Utils.tacc(level + " " + prefix + " &7" + player.getName() + " &f"));
                 Component actualMessage = Utils.lore(e.getMessage()).replaceText("[item]", miniMessage);
                 Bukkit.getServer().sendMessage(prefixes.append(actualMessage));
