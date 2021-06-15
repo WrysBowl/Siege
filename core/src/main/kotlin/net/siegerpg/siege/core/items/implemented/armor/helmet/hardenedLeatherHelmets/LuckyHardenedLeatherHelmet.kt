@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmet
+package net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -11,29 +11,28 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class HealingMagmaHelmet() : CustomHelmet(
-    name = "Healing Magma Helmet",
+class LuckyHardenedLeatherHelmet() : CustomHelmet(
+    name = "Lucky Hardened Leather Helmet",
     customModelData = 1,
-    description = listOf("Quite the hot head"),
-    levelRequirement = 12,
+    description = listOf("Cow Hat"),
+    levelRequirement = 17,
     material = Material.LEATHER_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 5.0, toughness = 10.0, regeneration = 4.0),
+    baseStats = CustomItemUtils.statMap(health = 10.0, luck = 6.0),
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Magma.tier(2))
-            s2(Magma.tier(2))
-            s4(Wheat.tier(2))
-            s6(Wheat.tier(2))
-            s6(Wheat.tier(2))
+            s1(Leather.tier(2))
+            s2(Leather.tier(2))
+            s3(Feather.tier(2))
+            s4(Feather.tier(2))
+            s6(Feather.tier(2))
             item { player, b ->
-                val newItem = HealingMagmaHelmet(if (b) 50 else Utils.randRarity())
+                val newItem = LuckyHardenedLeatherHelmet(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
-    },
-    leatherColor = Color.ORANGE
+    }
 ) {
 
     constructor(quality: Int): this() {

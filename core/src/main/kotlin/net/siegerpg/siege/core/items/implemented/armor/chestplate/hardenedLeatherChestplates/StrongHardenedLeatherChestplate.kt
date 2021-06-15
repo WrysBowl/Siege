@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.armor.chestplate.magmaChestplate
+package net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -12,32 +12,31 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class LuckyMagmaChestplate() : CustomChestplate(
-    name = "Lucky Magma Chestplate",
+class StrongHardenedLeatherChestplate() : CustomChestplate(
+    name = "Strong Hardened Leather Chestplate",
     customModelData = 1,
-    description = listOf("This really warms my heart"),
-    levelRequirement = 13,
+    description = listOf("Skin tight. Literally."),
+    levelRequirement = 18,
     material = Material.LEATHER_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 15.0, luck = 4.0),
+    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 30.0, strength = 5.0),
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Magma.tier(2))
-            s5(Magma.tier(2))
-            s6(Magma.tier(2))
-            s7(Feather.tier(2))
-            s8(Feather.tier(2))
-            s9(Feather.tier(2))
+            s1(Leather.tier(2))
+            s3(Leather.tier(2))
+            s4(Leather.tier(2))
+            s5(Leather.tier(2))
+            s6(Leather.tier(2))
+            s7(Bone.tier(2))
+            s8(Bone.tier(2))
+            s9(Bone.tier(2))
             item { player, b ->
-                val newItem = LuckyMagmaChestplate(if (b) 50 else Utils.randRarity())
+                val newItem = StrongHardenedLeatherChestplate(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
-    },
-    leatherColor = Color.ORANGE
+    }
 ) {
 
     constructor(quality: Int): this() {
