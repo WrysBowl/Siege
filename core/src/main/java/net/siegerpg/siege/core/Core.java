@@ -7,6 +7,9 @@ import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.cache.LevelEXPStorage;
 import net.siegerpg.siege.core.cache.playerData;
 import net.siegerpg.siege.core.commands.*;
+import net.siegerpg.siege.core.fishing.events.FishEvent;
+import net.siegerpg.siege.core.fishing.events.RightClickEvent;
+import net.siegerpg.siege.core.fishing.fish.FishCore;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
@@ -118,6 +121,8 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
         getServer().getPluginManager().registerEvents(new PlayerBanking(), this);
         getServer().getPluginManager().registerEvents(new TutorialListeners(), this);
+        getServer().getPluginManager().registerEvents(new FishEvent(), this);
+        getServer().getPluginManager().registerEvents(new RightClickEvent(), this);
         getServer().getPluginManager().registerEvents(new LevelEXPStorage(), this);
         getServer().getPluginManager().registerEvents(new playerData(), this);
 

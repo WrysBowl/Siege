@@ -1,12 +1,13 @@
-package net.siegerpg.siege.core.fishing.tasks;
+package net.siegerpg.siege.core.fishing;
 
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.cache.playerData;
 import net.siegerpg.siege.core.fishing.data.Cursor;
 import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.events.CustomFishEvent;
-import net.siegerpg.siege.core.fishing.fishes.Fish;
+import net.siegerpg.siege.core.fishing.fish.FishCore;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -47,7 +48,7 @@ public class FishingTask extends BukkitRunnable {
 	
 	@Override
 	public void run() {
-		Fish fish = e.getFishingData().getFish();
+		FishCore fish = e.getFishingData().getFish();
 		FishingData data = e.getFishingData();
 		Cursor cursor = data.getCursor();
 		//keeping up with score ;D
@@ -55,6 +56,7 @@ public class FishingTask extends BukkitRunnable {
         	e.win();
         	runningTasks.remove(e.getPlayer().getUniqueId());
         	this.cancel();
+			playerData.hasActionBar.put(e.getPlayer(), false);
         }
 
         if(Utils.randTest(fish.getLevel().chanceToChangeDirection))
@@ -68,6 +70,7 @@ public class FishingTask extends BukkitRunnable {
         	e.loose();
         	runningTasks.remove(e.getPlayer().getUniqueId());
         	this.cancel();
+			playerData.hasActionBar.put(e.getPlayer(), false);
         }
 		//label of the action bar
 		String label="";
@@ -144,8 +147,7 @@ public class FishingTask extends BukkitRunnable {
 			e.setSecondsElapsed(e.getSecondsElapsed()+1);
 		}
 		e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(label));
-		
-		
+		playerData.hasActionBar.put(e.getPlayer(), true);
 	}
 	
 	public CustomFishEvent getEvent() {

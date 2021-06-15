@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.fishing.events;
 
+import net.siegerpg.siege.core.fishing.FishingTask;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -7,7 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import tasks.FishingTask;
 
 public class RightClickEvent implements Listener {
 	

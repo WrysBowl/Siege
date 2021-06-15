@@ -4,8 +4,8 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.data.FishingData;
-import net.siegerpg.siege.core.fishing.fishes.Fish;
-import net.siegerpg.siege.core.fishing.tasks.FishingTask;
+import net.siegerpg.siege.core.fishing.fish.FishCore;
+import net.siegerpg.siege.core.fishing.FishingTask;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -58,7 +58,7 @@ public class CustomFishEvent {
         setBait(stand);
 		
 		
-		this.getFishingData().setFish(Fish.chooseRandomFish());
+		this.getFishingData().setFish(FishCore.chooseRandomFish());
 		
 	}
 	public void trigger() {

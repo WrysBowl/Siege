@@ -1,6 +1,6 @@
 package net.siegerpg.siege.core.fishing.data;
 
-import net.siegerpg.siege.core.fishing.fishes.Fish;
+import net.siegerpg.siege.core.fishing.fish.FishCore;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -10,7 +10,7 @@ public class FishingData {
 	public static HashMap<UUID, FishingData> list = new HashMap<>();
 	
 	private boolean fishing = false;
-	private Fish fish;
+	private FishCore fish;
 	private double processToAdvance=0;
 	private int loc=0;
 	private Cursor cursor;
@@ -36,13 +36,13 @@ public class FishingData {
 
 
 
-	public Fish getFish() {
+	public FishCore getFish() {
 		return fish;
 	}
 
 
 
-	public void setFish(Fish fish) {
+	public void setFish(FishCore fish) {
 		this.fish = fish;
 	}
 
