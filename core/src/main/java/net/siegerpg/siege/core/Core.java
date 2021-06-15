@@ -125,6 +125,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new RightClickEvent(), this);
         getServer().getPluginManager().registerEvents(new LevelEXPStorage(), this);
         getServer().getPluginManager().registerEvents(new playerData(), this);
+        getServer().getPluginManager().registerEvents(new EntityTeleportListener(), this);
 
         getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
