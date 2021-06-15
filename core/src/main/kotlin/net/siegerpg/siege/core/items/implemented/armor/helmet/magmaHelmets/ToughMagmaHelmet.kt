@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmet
+package net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmets
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -11,24 +11,23 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class LuckyMagmaHelmet() : CustomHelmet(
-    name = "Lucky Magma Helmet",
+class ToughMagmaHelmet() : CustomHelmet(
+    name = "Tough Magma Helmet",
     customModelData = 1,
     description = listOf("Quite the hot head"),
     levelRequirement = 12,
     material = Material.LEATHER_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 10.0, luck = 5.0),
+    baseStats = CustomItemUtils.statMap(health = 5.0, toughness = 30.0),
     recipeList = recipes {
         recipe {
             shaped = true
             s1(Magma.tier(2))
             s2(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Feather.tier(2))
-            s6(Feather.tier(2))
-            s6(Feather.tier(2))
+            s4(Pebble.tier(2))
+            s6(Pebble.tier(2))
+            s6(Pebble.tier(2))
             item { player, b ->
-                val newItem = LuckyMagmaHelmet(if (b) 50 else Utils.randRarity())
+                val newItem = ToughMagmaHelmet(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
