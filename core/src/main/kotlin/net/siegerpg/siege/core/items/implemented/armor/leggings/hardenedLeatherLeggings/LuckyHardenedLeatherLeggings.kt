@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings
+package net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -12,31 +12,30 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class HealingSlimyLeggings() : CustomLeggings(
-    name = "Healing Slimy Leggings",
+class LuckyHardenedLeatherLeggings() : CustomLeggings(
+    name = "Lucky Hardened Leather Leggings",
     customModelData = 1,
-    description = listOf("Waste high in sewage"),
-    levelRequirement = 4,
+    description = listOf("Leather but erect"),
+    levelRequirement = 18,
     material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 8.0, regeneration = 4.0),
+    baseStats = CustomItemUtils.statMap(health = 15.0, toughness = 20.0, luck = 5.0),
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Slime.tier(2))
-            s2(Slime.tier(2))
-            s3(Slime.tier(2))
-            s4(Wheat.tier(2))
-            s6(Wheat.tier(2))
-            s7(Wheat.tier(2))
-            s7(Wheat.tier(2))
+            s1(Leather.tier(2))
+            s2(Leather.tier(2))
+            s3(Leather.tier(2))
+            s4(Feather.tier(2))
+            s6(Feather.tier(2))
+            s7(Feather.tier(2))
+            s9(Feather.tier(2))
             item { player, b ->
-                val newItem = HealingSlimyLeggings(if (b) 50 else Utils.randRarity())
+                val newItem = LuckyHardenedLeatherLeggings(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
-    },
-    leatherColor = Color.LIME
+    }
 ) {
 
     constructor(quality: Int): this() {

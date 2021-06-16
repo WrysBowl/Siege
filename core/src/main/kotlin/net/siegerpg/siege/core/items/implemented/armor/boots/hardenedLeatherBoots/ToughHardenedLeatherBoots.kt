@@ -1,42 +1,40 @@
-package net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings
+package net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.wands.GlowingTwig
 import net.siegerpg.siege.core.items.recipes.recipes
+import net.siegerpg.siege.core.items.types.armor.CustomBoots
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
-import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class HealingSlimyLeggings() : CustomLeggings(
-    name = "Healing Slimy Leggings",
+class ToughHardenedLeatherBoots() : CustomBoots(
+    name = "Tough Hardened Leather Boots",
     customModelData = 1,
-    description = listOf("Waste high in sewage"),
-    levelRequirement = 4,
-    material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 8.0, regeneration = 4.0),
+    description = listOf("Bootleg spurs!"),
+    levelRequirement = 17,
+    material = Material.LEATHER_BOOTS,
+    baseStats = CustomItemUtils.statMap(health = 5.0, toughness = 40.0),
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Slime.tier(2))
-            s2(Slime.tier(2))
-            s3(Slime.tier(2))
-            s4(Wheat.tier(2))
-            s6(Wheat.tier(2))
-            s7(Wheat.tier(2))
-            s7(Wheat.tier(2))
+            s1(Leather.tier(2))
+            s3(Leather.tier(2))
+            s4(Pebble.tier(2))
+            s6(Pebble.tier(2))
+            s6(Pebble.tier(2))
             item { player, b ->
-                val newItem = HealingSlimyLeggings(if (b) 50 else Utils.randRarity())
+                val newItem = ToughHardenedLeatherBoots(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
-    },
-    leatherColor = Color.LIME
+    }
 ) {
 
     constructor(quality: Int): this() {
