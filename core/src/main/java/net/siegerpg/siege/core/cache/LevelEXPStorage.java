@@ -1,7 +1,5 @@
 package net.siegerpg.siege.core.cache;
 
-import net.siegerpg.siege.core.commands.Level;
-import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.utils.Levels;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

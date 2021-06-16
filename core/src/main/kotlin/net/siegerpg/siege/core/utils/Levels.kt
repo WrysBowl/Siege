@@ -110,8 +110,6 @@ object Levels {
                     val multiplier = floor(lvl/10.0).toInt()
                     VaultHook.perms.playerAdd(player, "cosmicvaults.amount.${multiplier}")
                 }
-                LevelEXPStorage.playerLevel[player] = lvl
-                LevelEXPStorage.playerExperience[player] = exp
                 player.sendTitle(
                     Utils.tacc("&5Level Up!"),
                     Utils.tacc("&c+2 HP"),
@@ -119,6 +117,8 @@ object Levels {
                 )
             }
         }
+        LevelEXPStorage.playerLevel[player] = lvl
+        LevelEXPStorage.playerExperience[player] = exp
         return Pair(lvl, exp)
     }
 

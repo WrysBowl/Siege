@@ -50,21 +50,18 @@ abstract class StatGemType(
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
-        meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
+        meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<light_purple>$name")
 
         if (meta.hasLore()) meta.lore(mutableListOf())
-
-        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%")
+        if (shownRarity == Rarity.SPECIAL) meta.lore("<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%")
         meta.lore(" ")
-        meta.lore("<r><color:#FF3CFF>+${statAmount} <light_purple>${statType.stylizedName} Gem")
+        meta.lore("<r><color:#FF3CFF>+${statAmount} <gray>${statType.stylizedName}")
         meta.lore(" ")
         description.forEach {
             meta.lore("<r><dark_gray>$it")
         }
         meta.lore(" ")
-        meta.lore("<yellow>$ ${floor(statAmount.pow(3))} <yellow>to Use")
         meta.lore("<r><gray>Level: $levelRequirement")
-        if (hideRarity) meta.lore("<r><red>This is not the real item")
 
         meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)

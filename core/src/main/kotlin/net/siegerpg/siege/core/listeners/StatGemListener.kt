@@ -36,9 +36,11 @@ class StatGemListener : Listener {
             player.sendMiniMessage("<red>That item already has a stat gem!")
             return
         }
+        /*
         if (!VaultHook.econ.has(player, floor(itemOnCursor.statAmount.pow(3))))
             return player.sendMiniMessage("<red>You don't have enough money! (\$${floor(itemOnCursor.statAmount.pow(3))}")
         VaultHook.econ.withdrawPlayer(player, floor(itemOnCursor.statAmount.pow(3)))
+         */
         itemInteractedWith.addStatGem(StatGem(itemOnCursor.statType, itemOnCursor.statAmount))
         itemInteractedWith.updateMeta(false)
         e.currentItem = itemInteractedWith.item
