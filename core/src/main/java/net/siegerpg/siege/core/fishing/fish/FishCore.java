@@ -1,7 +1,6 @@
 package net.siegerpg.siege.core.fishing.fish;
 
-import net.siegerpg.siege.core.fishing.fish.implemented.BlackDrumFish;
-import net.siegerpg.siege.core.fishing.fish.implemented.TunaFish;
+import net.siegerpg.siege.core.fishing.fish.implemented.*;
 
 import java.util.ArrayList;
 
@@ -11,7 +10,7 @@ public abstract class FishCore {
 	
 	private Fish level;
 	private String fishType;
-	
+
 	
 	public FishCore(Fish level, String fishType) {
 		this.level=level;
@@ -21,6 +20,16 @@ public abstract class FishCore {
 	public static void registerFish() {
 		fishTypes.add(new TunaFish());
 		fishTypes.add(new BlackDrumFish());
+		fishTypes.add(new Bearacuda());
+		fishTypes.add(new BigBlueTuna());
+		fishTypes.add(new Catastrophe());
+		fishTypes.add(new Codzilla());
+		fishTypes.add(new FlashyShark());
+		fishTypes.add(new MrKrabs());
+		fishTypes.add(new MrsPuff());
+		fishTypes.add(new PistolWhipper());
+		fishTypes.add(new RedSnacker());
+		fishTypes.add(new StingWhip());
 	}
 	
 	public static FishCore chooseRandomFish() {
