@@ -15,7 +15,7 @@ public class EntityTeleportListener implements Listener {
     public void onTeleport(EntityTeleportEvent e) {
         if (e.getEntity() instanceof Player) return;
         Location loc = e.getEntity().getLocation();
-        loc.getWorld().playEffect(loc, Effect.SMOKE, 0.1, 5);
+        loc.getWorld().playEffect(loc, Effect.SMOKE, 10, 5);
         for (Entity entity : loc.getNearbyLivingEntities(10)) {
             if (entity instanceof Player) {
                 ((Player)entity).playSound(entity.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
