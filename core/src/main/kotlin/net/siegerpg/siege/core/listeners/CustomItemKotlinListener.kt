@@ -1,18 +1,14 @@
 package net.siegerpg.siege.core.listeners
 
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.cache.LevelEXPStorage
-import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomWand
-import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
-import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.*
 import org.bukkit.attribute.Attribute
@@ -27,13 +23,8 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
 import org.bukkit.event.player.PlayerSwapHandItemsEvent
-import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
-import org.bukkit.scheduler.BukkitTask
-import org.jetbrains.annotations.Nullable
-import kotlin.math.cos
-import kotlin.math.sin
 
 
 class CustomItemKotlinListener : Listener, Runnable {
@@ -151,9 +142,6 @@ class CustomItemKotlinListener : Listener, Runnable {
                 e.damage = 1.0
                 return
             }
-
-
-
             if (item is CustomBow) {
                 if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
                     e.damage = 1.0
@@ -172,6 +160,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 maxDamage = damage
                 actualDamage = damage
             }
+            attacker.getWorld().spawnParticle(Particle.SWEEP_ATTACK, attacker.location, 1)
         }
 
         val vicHealthStat =

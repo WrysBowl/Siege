@@ -58,6 +58,7 @@ public final class Core extends JavaPlugin {
         this.getCommand("leaderboard").setExecutor(new Leaderboard());
         this.getCommand("level").setExecutor(new Level());
         this.getCommand("buy").setExecutor(new WebstoreCommand());
+        this.getCommand("tips").setExecutor(new ToggleTips());
 
         //partyManager = new PartyManager();
 

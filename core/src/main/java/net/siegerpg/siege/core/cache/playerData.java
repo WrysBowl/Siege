@@ -11,15 +11,18 @@ import java.util.HashMap;
 
 public class playerData implements Listener {
     public static HashMap<Player, Boolean> hasActionBar = new HashMap<>();
+    public static HashMap<Player, Boolean> broadcastTips = new HashMap<>();
 
     @EventHandler
     public void onEnable(PluginEnableEvent e) {
         for (Player player : Bukkit.getOnlinePlayers()){
             hasActionBar.put(player, false);
+            playerData.broadcastTips.put(player, true);
         }
     }
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         hasActionBar.put(e.getPlayer(), false);
+        playerData.broadcastTips.put(e.getPlayer(), true);
     }
 }

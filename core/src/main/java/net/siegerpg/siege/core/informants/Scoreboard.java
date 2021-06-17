@@ -20,7 +20,7 @@ public class Scoreboard {
         int level;
         if (LevelEXPStorage.playerLevel.get(p) != null) { level = LevelEXPStorage.playerLevel.get(p); }
         else { level = Levels.INSTANCE.getExpLevel(p).getFirst(); }
-        
+
         if (level < 1) { level = 1; }
         float exp;
         if (LevelEXPStorage.playerExperience.get(p) != null) { exp = LevelEXPStorage.playerExperience.get(p); }
