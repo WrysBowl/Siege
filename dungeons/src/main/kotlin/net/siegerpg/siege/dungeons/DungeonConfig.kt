@@ -54,6 +54,7 @@ class DungeonConfig() : ConfigurationBase(File(DungeonPlugin.plugin().dataFolder
         }
     }
 
+
     public fun deserializeDungeonTypes() {
         configuration.getKeys(false).forEach { key ->
             DungeonType.dungeonTypes.add(

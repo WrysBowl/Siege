@@ -85,11 +85,13 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             )
             // If it found it then gg
             if (actualLocation == endingLoc) {
+                coordinateSection.set(serializeLocation(blockLoc), null)
                 coordinateSection.set(serializeLocation(blockLoc), key.toLong())
                 return
             }
         }
         val index = linkingSection.getKeys(false).size
+        coordinateSection.set(serializeLocation(blockLoc), null)
         coordinateSection.set(serializeLocation(blockLoc), index)
         val locationSection = linkingSection.createSection(index.toString()).apply {
             set("world", endingLoc.world.name)
@@ -111,11 +113,13 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             val location = linkingSection.getConfigurationSection(key) ?: linkingSection.createSection(key)
             if (!location.isSet("dungeon")) continue
             if (dungeonType.name == location.getString("dungeon")) {
+                coordinateSection.set(serializeLocation(blockLoc), null)
                 coordinateSection.set(serializeLocation(blockLoc), key.toLong())
                 return
             }
         }
         val index = linkingSection.getKeys(false).size
+        coordinateSection.set(serializeLocation(blockLoc), null)
         coordinateSection.set(serializeLocation(blockLoc), index)
         val locationSection = linkingSection.createSection(index.toString()).apply {
             set("dungeon", dungeonType.name)

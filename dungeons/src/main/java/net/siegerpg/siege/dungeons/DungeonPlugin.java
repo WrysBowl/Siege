@@ -29,7 +29,6 @@ public class DungeonPlugin extends JavaPlugin {
         INSTANCE = null;
     }
 
-
     /**
      * Method to get the plugin from other classes
      * You can use Core.plugin() in other classes to get the plugin instance

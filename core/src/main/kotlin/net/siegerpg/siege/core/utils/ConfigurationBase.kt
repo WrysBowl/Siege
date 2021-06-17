@@ -28,7 +28,7 @@ open class ConfigurationBase(file: File) {
         configuration = YamlConfiguration()
         try {
             configFile.createNewFile()
-            configuration.load(configFile)
+            loadFile()
         } catch (e: Exception) {
             throw e
         }
@@ -46,6 +46,13 @@ open class ConfigurationBase(file: File) {
         } catch (e: IOException) {
             throw e
         }
+    }
+
+    /**
+     * Loads the configuration from the file. This will override the current values in memory
+     */
+    fun loadFile(){
+        configuration.load(configFile)
     }
 
     /**

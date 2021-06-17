@@ -31,9 +31,13 @@ class PortalCommand : CommandExecutor, TabCompleter {
                 return true
             }
             val data = Material.NETHER_PORTAL.createBlockData()
+            sender.sendMessage("Adding new locations to all portal blocks nearby...")
+            var done = 0
             FloodSelection.floodSelect(sender.getTargetBlock(null, 100).location, data).forEach { loc ->
                 DungeonPlugin.plugin().portalConfig.addCoordinate(loc, dungeonType)
+                done++
             }
+            sender.sendMessage("Done! $done blocks configured!")
             return true
         } else if (args.size >= 4) {
             val targetBlock = sender.getTargetBlock(null, 100)
