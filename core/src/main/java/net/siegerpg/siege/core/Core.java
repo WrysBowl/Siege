@@ -16,6 +16,7 @@ import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
 import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
+import net.siegerpg.siege.core.tasks.HelpfulTips;
 import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.cache.PlayerBanking;
 import net.siegerpg.siege.core.utils.VaultHook;
@@ -127,6 +128,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LevelEXPStorage(), this);
         getServer().getPluginManager().registerEvents(new playerData(), this);
         getServer().getPluginManager().registerEvents(new EntityTeleportListener(), this);
+        getServer().getPluginManager().registerEvents(new HelpfulTips(), this);
 
         getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);

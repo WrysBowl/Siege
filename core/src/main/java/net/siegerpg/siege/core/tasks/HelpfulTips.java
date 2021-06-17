@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.tasks;
 
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.cache.playerData;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -56,6 +57,7 @@ public class HelpfulTips implements Listener {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             int randNum = (int)(Math.random()*tips.size());
             for (Player p : Bukkit.getOnlinePlayers()) {
+                if (!playerData.broadcastTips.get(p)) continue;
                 p.sendMessage("\n&6&lTIP &r"+tips.get(randNum)+"&r\n&7To disable tips type /tips disable.\n");
             }
         }, 0, 6000);
