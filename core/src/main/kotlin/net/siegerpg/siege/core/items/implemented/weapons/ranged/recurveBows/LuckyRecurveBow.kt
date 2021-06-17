@@ -5,7 +5,6 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.IronBow
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.utils.Utils

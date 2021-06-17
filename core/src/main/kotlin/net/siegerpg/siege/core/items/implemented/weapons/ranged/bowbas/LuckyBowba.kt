@@ -6,7 +6,6 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Ref
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.utils.Utils

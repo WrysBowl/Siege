@@ -2,8 +2,9 @@ package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Utils

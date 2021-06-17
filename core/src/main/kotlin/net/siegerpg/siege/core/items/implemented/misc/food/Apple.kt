@@ -5,8 +5,6 @@ import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 
 class Apple() : CustomFood(
     name = "Apple",

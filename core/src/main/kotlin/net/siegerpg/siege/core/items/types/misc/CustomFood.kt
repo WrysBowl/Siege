@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.items.types.misc
 
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.FoodPoints
@@ -11,7 +10,6 @@ import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.listeners.StatChangeListener
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.event.player.PlayerInteractEvent
@@ -121,5 +119,21 @@ abstract class CustomFood(
         other?.let { return false }
         if (this::class.qualifiedName != other!!::class.qualifiedName) return false
         return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + (customModelData ?: 0)
+        result = 31 * result + (levelRequirement ?: 0)
+        result = 31 * result + description.hashCode()
+        result = 31 * result + material.hashCode()
+        result = 31 * result + quality
+        result = 31 * result + item.hashCode()
+        result = 31 * result + type.hashCode()
+        result = 31 * result + (recipeList?.hashCode() ?: 0)
+        result = 31 * result + health
+        result = 31 * result + (potion?.hashCode() ?: 0)
+        result = 31 * result + rarity.hashCode()
+        return result
     }
 }

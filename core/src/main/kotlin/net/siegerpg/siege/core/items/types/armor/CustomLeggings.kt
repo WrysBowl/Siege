@@ -1,11 +1,11 @@
 package net.siegerpg.siege.core.items.types.armor
 
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
+import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import org.bukkit.Color
 import org.bukkit.Material

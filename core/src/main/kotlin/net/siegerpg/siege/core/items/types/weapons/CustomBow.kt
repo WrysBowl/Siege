@@ -1,10 +1,10 @@
 package net.siegerpg.siege.core.items.types.weapons
 
-import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
+import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack

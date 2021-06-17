@@ -2,13 +2,10 @@ package net.siegerpg.siege.core.items.implemented.armor.boots.boneBoots
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
-import net.siegerpg.siege.core.items.implemented.misc.wands.GlowingTwig
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.Bowba
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.armor.CustomBoots
-import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Color
 import org.bukkit.Material

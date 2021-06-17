@@ -1,19 +1,24 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs
+package net.siegerpg.siege.core.items.implemented.misc.tools
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
-import net.siegerpg.siege.core.items.types.misc.CustomMaterial
+import net.siegerpg.siege.core.items.types.misc.CustomTool
 import org.bukkit.Material
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
-class Leather() : CustomMaterial(
-    name = "Leather",
-    customModelData = 310006,
-    description = listOf("Animal hide"),
+class ExampleTool() : CustomTool(
+    name = "Example Tool",
+    customModelData = 1,
+    description = listOf("An axe for testing"),
     levelRequirement = 0,
-    material = Material.FLINT,
+    material = Material.DIAMOND_AXE,
     recipeList = recipes {
-    }
+
+    },
+    enchantments = hashMapOf(
+        Enchantment.DIG_SPEED to 3
+    )
 ) {
 
     constructor(quality: Int): this() {
@@ -25,14 +30,6 @@ class Leather() : CustomMaterial(
     constructor(item: ItemStack): this() {
         this.item = item
         deserialize()
-    }
-
-    companion object {
-        fun tier(tier: Int): Leather {
-            val newItem = Leather(0)
-            newItem.tier = tier
-            return newItem
-        }
     }
 
 }

@@ -81,5 +81,20 @@ abstract class CustomMaterial(
         return true
     }
 
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + (customModelData ?: 0)
+        result = 31 * result + (levelRequirement ?: 0)
+        result = 31 * result + description.hashCode()
+        result = 31 * result + material.hashCode()
+        result = 31 * result + quality
+        result = 31 * result + item.hashCode()
+        result = 31 * result + type.hashCode()
+        result = 31 * result + (recipeList?.hashCode() ?: 0)
+        result = 31 * result + rarity.hashCode()
+        result = 31 * result + tier
+        return result
+    }
+
 
 }

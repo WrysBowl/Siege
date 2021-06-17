@@ -2,11 +2,10 @@ package net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplat
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Wool
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.armor.CustomChestplate
-import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Color
 import org.bukkit.Material

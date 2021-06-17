@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather

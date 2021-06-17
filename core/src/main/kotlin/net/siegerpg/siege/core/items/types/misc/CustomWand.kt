@@ -1,15 +1,13 @@
 package net.siegerpg.siege.core.items.types.misc
 
-import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
+import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import org.bukkit.Material
-import org.bukkit.attribute.Attribute
-import org.bukkit.attribute.AttributeModifier
 import org.bukkit.inventory.ItemStack
 
 abstract class CustomWand(
@@ -52,5 +50,26 @@ abstract class CustomWand(
         other?.let { return false }
         if (this::class.qualifiedName != other!!::class.qualifiedName) return false
         return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + (customModelData ?: 0)
+        result = 31 * result + (levelRequirement ?: 0)
+        result = 31 * result + description.hashCode()
+        result = 31 * result + material.hashCode()
+        result = 31 * result + quality
+        result = 31 * result + item.hashCode()
+        result = 31 * result + type.hashCode()
+        result = 31 * result + (recipeList?.hashCode() ?: 0)
+        result = 31 * result + baseStats.hashCode()
+        result = 31 * result + range
+        result = 31 * result + red
+        result = 31 * result + green
+        result = 31 * result + blue
+        result = 31 * result + damageRadius.hashCode()
+        result = 31 * result + (statGem?.hashCode() ?: 0)
+        result = 31 * result + rarity.hashCode()
+        return result
     }
 }
