@@ -2,6 +2,7 @@
 
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormats
+import com.sk89q.worldedit.extent.clipboard.io.ClipboardReader
 import org.bukkit.*
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.generator.ChunkGenerator
@@ -96,9 +97,9 @@ class DungeonType {
     ) {
         this.name = name
         try {
-            this.schematic =
-                ClipboardFormats.findByFile(schematicFile)
-                    ?.let { SchematicPaster.loadSchematic(schematicFile.inputStream(), it) }!!
+            val format = ClipboardFormats.findByFile(schematicFile)!!
+            val reader = format.getReader(schematicFile.inputStream())
+            this.schematic = reader.read()
         } catch (exc: Exception) {
             DungeonPlugin.plugin().logger.severe(exc.message)
         }
@@ -170,8 +171,8 @@ class DungeonType {
         if (available == null) {
             available = Dungeon(this, dungeonLength + 1)
             available.reset()
-            dungeons.add(available)
         }
+        println(available)
         return available
     }
 }

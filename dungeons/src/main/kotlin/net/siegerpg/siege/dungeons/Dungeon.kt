@@ -65,6 +65,7 @@ class Dungeon {
             (750 * type.index).toDouble()
         )
         type.dungeons.add(this)
+        DungeonPlugin.plugin().dungeonConfig.save()
     }
 
     /**
@@ -80,6 +81,8 @@ class Dungeon {
             else dungeon.set("players", listOf(player.uniqueId.toString()))
         }
         if (player.isOnline) (player as Player).teleport(location.clone().add(type.relSpawnLoc))
+        DungeonPlugin.plugin().dungeonConfig.save()
+
     }
 
     /**
@@ -95,6 +98,8 @@ class Dungeon {
                 dungeon.getStringList("players").remove(player.uniqueId.toString())
         }
         if (player.isOnline) (player as Player).teleport(Core.spawnLocation)
+        DungeonPlugin.plugin().dungeonConfig.save()
+
     }
 
     /**
@@ -106,6 +111,8 @@ class Dungeon {
             removePlayer(currentPlayer)
         }
         DungeonPlugin.plugin().dungeonConfig.getDungeons(type).set(index.toString(), null)
+        DungeonPlugin.plugin().dungeonConfig.save()
+
     }
 
     /**
@@ -116,6 +123,7 @@ class Dungeon {
         SchematicPaster.pasteSchematic(type.schematic, location, false)
         type.dungeons.add(this)
         spawnBoss()
+        DungeonPlugin.plugin().dungeonConfig.save()
     }
 
     /**
