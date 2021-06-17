@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
@@ -32,17 +33,10 @@ public class ChatListener implements Listener {
         if (message.contains("[item]")) {
             e.setCancelled(true);
             if (player.getInventory().getItemInMainHand().getType() != Material.AIR ) {
-                String name = player.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
+                ItemStack item = player.getInventory().getItemInMainHand();
+                String name = item.getItemMeta().getDisplayName();
                 if (name.equals("")) name = player.getInventory().getItemInMainHand().getI18NDisplayName();
-                List<String> lore = player.getInventory().getItemInMainHand().getItemMeta().getLore();
-                StringBuilder itemDisplay = new StringBuilder(name + "\n");
-                if (lore != null) {
-                    for (String line : lore) {
-                        itemDisplay.append(line).append("\n");
-                    }
-                }
-                itemDisplay.deleteCharAt(itemDisplay.length()-1);
-                Component miniMessage = MiniMessage.get().parse("<hover:show_text:<itemDisplay>><gold><bold>[ITEM]</bold>", "itemDisplay", itemDisplay.toString());
+                Component miniMessage = Utils.lore("<bold>" + name).hoverEvent(item);
                 Component prefixes = Utils.lore(Utils.tacc(level + " " + prefix + " &7" + player.getName() + " &f"));
                 Component actualMessage = Utils.lore(e.getMessage()).replaceText("[item]", miniMessage);
                 Bukkit.getServer().sendMessage(prefixes.append(actualMessage));

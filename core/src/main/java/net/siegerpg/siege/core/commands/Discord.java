@@ -14,7 +14,7 @@ public class Discord implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player player = (Player) sender;
         player.sendMessage(Utils.parse(""));
-        player.sendMessage(Utils.parse("  <aqua>Join our discord here!<reset>"));
+        player.sendMessage(Utils.parse("  <aqua><bold>Join our discord here!<reset>"));
         player.sendMessage(Utils.tacc("  https://discord.gg/krftCSF"));
         player.sendMessage(Utils.parse(""));
         return false;

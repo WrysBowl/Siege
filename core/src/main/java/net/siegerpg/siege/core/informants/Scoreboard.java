@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.informants;
 import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
+import net.siegerpg.siege.core.cache.LevelEXPStorage;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
@@ -16,11 +17,16 @@ public class Scoreboard {
         org.bukkit.scoreboard.Scoreboard b = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective o = b.registerNewObjective("Title", "", Utils.tacc("&6SiegeRPG &7(" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getMaxPlayers() + ")"));
         o.setDisplaySlot(DisplaySlot.SIDEBAR);
-        Pair<Short, Integer> levelExp = Levels.INSTANCE.getExpLevel(p);
-        int level = levelExp.getFirst();
+        int level;
+        if (LevelEXPStorage.playerLevel.get(p) != null) { level = LevelEXPStorage.playerLevel.get(p); }
+        else { level = Levels.INSTANCE.getExpLevel(p).getFirst(); }
+
         if (level < 1) { level = 1; }
-        float exp = levelExp.getSecond().floatValue();
-        float reqExp = Levels.INSTANCE.calculateRequiredExperience(levelExp.getFirst());
+        float exp;
+        if (LevelEXPStorage.playerExperience.get(p) != null) { exp = LevelEXPStorage.playerExperience.get(p); }
+        else { exp = Levels.INSTANCE.getExpLevel(p).getSecond(); }
+
+        float reqExp = Levels.INSTANCE.calculateRequiredExperience((short) level);
         double division = exp/reqExp;
         double levelPercent = Utils.round(division, 3);
         String gold = String.format("%,d", (int) VaultHook.econ.getBalance(p));

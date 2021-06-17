@@ -97,10 +97,10 @@ public class StatChangeListener implements Listener, Runnable {
                             + "          <dark_aqua>" + Utils.round(toughness, 1) + " \uD83D\uDEE1       "));
                 }
             }
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                playerData.hasActionBar.put(p, false);
+            }
         }, 0, 40);
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            playerData.hasActionBar.put(p, false);
-        }
     }
 
     @Override

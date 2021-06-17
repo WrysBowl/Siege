@@ -1,18 +1,14 @@
 package net.siegerpg.siege.core.listeners
 
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.cache.LevelEXPStorage
-import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomWand
-import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
-import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.*
 import org.bukkit.attribute.Attribute
@@ -27,13 +23,8 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
 import org.bukkit.event.player.PlayerSwapHandItemsEvent
-import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
-import org.bukkit.scheduler.BukkitTask
-import org.jetbrains.annotations.Nullable
-import kotlin.math.cos
-import kotlin.math.sin
 
 
 class CustomItemKotlinListener : Listener, Runnable {
@@ -112,24 +103,28 @@ class CustomItemKotlinListener : Listener, Runnable {
 
     @EventHandler
     @Suppress("unused")
-    fun onHit(e: EntityDamageByEntityEvent) {
+    fun onHit(e: EntityDamageEvent) {
 
         if (e.isCancelled) return
         val victim = e.entity as LivingEntity
-        var attacker =
-            if (e.damager is Player) e.damager as Player
-            else e.damager
-        if (e.damager is Projectile) {
-            if ((e.damager as Projectile).shooter is Player) {
-                attacker = (e.damager as Projectile).shooter as Player
-            }
-        }
         val damage = e.damage
         var actualDamage = e.damage
-        var maxDamage =
-            if (attacker is Player)
-                attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
-            else damage
+        var maxDamage = damage
+        var attacker: Entity? = null
+        if (e is EntityDamageByEntityEvent) {
+            attacker =
+                if (e.damager is Player) e.damager as Player
+                else e.damager
+            if (e.damager is Projectile) {
+                if ((e.damager as Projectile).shooter is Player) {
+                    attacker = (e.damager as Projectile).shooter as Player
+                }
+            }
+
+            if (attacker is Player) {
+                maxDamage = attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
+            }
+        }
 
         if (attacker is Player) {
             val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
@@ -143,13 +138,10 @@ class CustomItemKotlinListener : Listener, Runnable {
                 return
             }
             if (levelReq > LevelEXPStorage.playerLevel[attacker]!!) {
-                e.damager.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
+                attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
                 return
             }
-
-
-
             if (item is CustomBow) {
                 if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
                     e.damage = 1.0
@@ -168,6 +160,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 maxDamage = damage
                 actualDamage = damage
             }
+            victim.getWorld().spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
         }
 
         val vicHealthStat =

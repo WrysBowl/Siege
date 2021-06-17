@@ -7,12 +7,16 @@ import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.cache.LevelEXPStorage;
 import net.siegerpg.siege.core.cache.playerData;
 import net.siegerpg.siege.core.commands.*;
+import net.siegerpg.siege.core.fishing.events.FishEvent;
+import net.siegerpg.siege.core.fishing.events.RightClickEvent;
+import net.siegerpg.siege.core.fishing.fish.FishCore;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
 import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
+import net.siegerpg.siege.core.tasks.HelpfulTips;
 import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.cache.PlayerBanking;
 import net.siegerpg.siege.core.utils.VaultHook;
@@ -55,6 +59,7 @@ public final class Core extends JavaPlugin {
         this.getCommand("leaderboard").setExecutor(new Leaderboard());
         this.getCommand("level").setExecutor(new Level());
         this.getCommand("buy").setExecutor(new WebstoreCommand());
+        this.getCommand("tips").setExecutor(new ToggleTips());
 
         //partyManager = new PartyManager();
 
@@ -118,8 +123,12 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
         getServer().getPluginManager().registerEvents(new PlayerBanking(), this);
         getServer().getPluginManager().registerEvents(new TutorialListeners(), this);
+        getServer().getPluginManager().registerEvents(new FishEvent(), this);
+        getServer().getPluginManager().registerEvents(new RightClickEvent(), this);
         getServer().getPluginManager().registerEvents(new LevelEXPStorage(), this);
         getServer().getPluginManager().registerEvents(new playerData(), this);
+        getServer().getPluginManager().registerEvents(new EntityTeleportListener(), this);
+        getServer().getPluginManager().registerEvents(new HelpfulTips(), this);
 
         getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);

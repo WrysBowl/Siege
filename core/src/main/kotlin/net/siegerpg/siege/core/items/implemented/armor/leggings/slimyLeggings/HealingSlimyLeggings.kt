@@ -18,7 +18,7 @@ class HealingSlimyLeggings() : CustomLeggings(
     description = listOf("Waste high in sewage"),
     levelRequirement = 4,
     material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(toughness = 20.0, health = 8.0),
+    baseStats = CustomItemUtils.statMap(health = 8.0, regeneration = 4.0),
     recipeList = recipes {
         recipe {
             shaped = true
