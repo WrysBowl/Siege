@@ -9,7 +9,6 @@ import net.siegerpg.siege.core.cache.playerData;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
-import net.siegerpg.siege.core.fishing.fish.FishCore;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
@@ -17,13 +16,11 @@ import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.party.PartyConfig;
 import net.siegerpg.siege.core.party.PartyManager;
 import net.siegerpg.siege.core.tasks.HelpfulTips;
-import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.cache.PlayerBanking;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
@@ -149,7 +146,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         getServer().getPluginManager().registerEvents(new VanillaCraftingListener(), this);
         new RegenerationTask().startRegenTask();
-
+        new HelpfulTips().startTipsTask();
         CustomRecipe.Companion.registerAllRecipes();
 
 //        CustomRecipe recipe = new CustomRecipe();

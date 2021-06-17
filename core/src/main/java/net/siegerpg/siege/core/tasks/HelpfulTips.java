@@ -52,14 +52,13 @@ public class HelpfulTips implements Listener {
         }
     };
 
-    @EventHandler
-    public void onEnable(PluginEnableEvent e) {
+    public void startTipsTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             int randNum = (int)(Math.random()*tips.size());
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (!playerData.broadcastTips.get(p)) continue;
-                p.sendMessage("\n&6&lTIP &r"+tips.get(randNum)+"&r\n&7To disable tips type /tips disable.\n");
+                p.sendMessage(Utils.tacc("\n&6&lTIP &r"+tips.get(randNum)+"&r\n&7To disable tips type /tips disable.\n\n "));
             }
-        }, 0, 6000);
+        }, 6000, 6000);
     }
 }

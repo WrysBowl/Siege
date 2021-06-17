@@ -63,7 +63,7 @@ public class PlayerJoinListener implements Listener {
 
         Player player = event.getPlayer();
 
-        String joinMessage = Utils.tacc("&7[&a+&7] " + player.getName());
+        String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + player.getName());
 
         if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
             Bukkit.getLogger().info("1");
