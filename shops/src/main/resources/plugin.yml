@@ -1,0 +1,8 @@
+name: SiegeShops
+version: 0.0.1
+main: net.siegerpg.siege.shops.ShopsPlugin
+api-version: 1.16
+description: Siege's shops plugin
+depend: [ SiegeCore, NBTAPI ]
+load: POSTWORLD
+authors: [ Ghqst ]
