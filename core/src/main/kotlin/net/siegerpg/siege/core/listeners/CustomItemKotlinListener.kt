@@ -160,7 +160,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 maxDamage = damage
                 actualDamage = damage
             }
-            attacker.getWorld().spawnParticle(Particle.SWEEP_ATTACK, attacker.location, 1)
+            victim.getWorld().spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
         }
 
         val vicHealthStat =
