@@ -34,4 +34,8 @@ commands:
   webstore:
     description: Sends webstore link to the player
   tips:
-    description: Sends webstore link to the player
+    description: Toggle tips
+  getBooster:
+    description: Sends booster to player
+  updateScoreboard:
+    description: Updates the player's scoreboard

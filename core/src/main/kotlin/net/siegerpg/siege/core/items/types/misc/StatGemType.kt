@@ -58,6 +58,7 @@ abstract class StatGemType(
             meta.lore("<r><dark_gray>$it")
         }
         meta.lore(" ")
+        meta.lore("<yellow><bold>DRAG ONTO ITEM TO APPLY")
         meta.lore("<r><gray>Level: $levelRequirement")
 
         meta.isUnbreakable = true

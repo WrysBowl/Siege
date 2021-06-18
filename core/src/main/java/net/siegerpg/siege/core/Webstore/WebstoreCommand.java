@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.Webstore;
 
-import net.bytebuddy.build.Plugin;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -21,16 +20,8 @@ public class WebstoreCommand implements CommandExecutor {
         OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
 
         if (args[1].equals("5xBoosterEXP1.2")) {
-            ItemStack item = WebstoreUtils.getExpBoosterItem(5, 1.2, 3600);
-            final boolean fullInv = ((Player)argPlayer).getInventory().firstEmpty() == -1;
-            final boolean fullEnderChest = ((Player)argPlayer).getEnderChest().firstEmpty() == -1;
-            if (!fullInv) {
-                ((Player)argPlayer).getInventory().addItem(item);
-            } else if (!fullEnderChest) {
-                ((Player)argPlayer).getEnderChest().addItem(item);
-            } else {
-                ((Player)argPlayer).getWorld().dropItemNaturally(((Player) argPlayer).getLocation(), item);
-            }
+            ItemStack item = WebstoreUtils.getBooster(5, 1.2, 3600, "EXP");
+            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
             Bukkit.broadcastMessage(Utils.tacc(""));
             Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &dEXP Boosters!"));
             Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
@@ -38,16 +29,8 @@ public class WebstoreCommand implements CommandExecutor {
             return true;
         }
         if (args[1].equals("5xBoosterGOLD1.2")) {
-            ItemStack item = WebstoreUtils.getGoldBoosterItem(5, 1.2, 3600);
-            final boolean fullInv = ((Player)argPlayer).getInventory().firstEmpty() == -1;
-            final boolean fullEnderChest = ((Player)argPlayer).getEnderChest().firstEmpty() == -1;
-            if (!fullInv) {
-                ((Player)argPlayer).getInventory().addItem(item);
-            } else if (!fullEnderChest) {
-                ((Player)argPlayer).getEnderChest().addItem(item);
-            } else {
-                ((Player)argPlayer).getWorld().dropItemNaturally(((Player) argPlayer).getLocation(), item);
-            }
+            ItemStack item = WebstoreUtils.getBooster(5, 1.2, 3600, "GOLD");
+            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
             Bukkit.broadcastMessage(Utils.tacc(""));
             Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &eGold Boosters!"));
             Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));

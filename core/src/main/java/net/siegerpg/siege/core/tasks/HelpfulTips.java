@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.tasks;
 
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.cache.LevelEXPStorage;
 import net.siegerpg.siege.core.cache.playerData;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
@@ -52,7 +53,12 @@ public class HelpfulTips implements Listener {
         }
     };
 
-    public void startTipsTask() {
+    public void broadcastTasks() {
+        tipsTask();
+        webstoreDiscordTask();
+    }
+
+    public void tipsTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             int randNum = (int)(Math.random()*tips.size());
             for (Player p : Bukkit.getOnlinePlayers()) {
@@ -60,5 +66,19 @@ public class HelpfulTips implements Listener {
                 p.sendMessage(Utils.tacc("\n&6&lTIP &r"+tips.get(randNum)+"&r\n&7To disable tips type /tips disable.\n\n "));
             }
         }, 6000, 6000);
+    }
+    public void webstoreDiscordTask() {
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (LevelEXPStorage.playerLevel.get(p) > 5) continue;
+                p.sendMessage(Utils.lore(""));
+                p.sendMessage(Utils.lore("  <aqua><bold>Join our <light_purple>discord<aqua> here!<reset>"));
+                p.sendMessage(Utils.tacc("  https://discord.gg/krftCSF"));
+                p.sendMessage(Utils.lore(""));
+                p.sendMessage(Utils.lore("  <aqua><bold>Visit our <green>webstore<aqua> here!<reset>"));
+                p.sendMessage(Utils.tacc("  https://store.siegerpg.net/"));
+                p.sendMessage(Utils.lore(""));
+            }
+        }, 4000, 6000);
     }
 }

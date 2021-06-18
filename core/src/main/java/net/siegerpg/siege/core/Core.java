@@ -57,6 +57,8 @@ public final class Core extends JavaPlugin {
         this.getCommand("level").setExecutor(new Level());
         this.getCommand("buy").setExecutor(new WebstoreCommand());
         this.getCommand("tips").setExecutor(new ToggleTips());
+        this.getCommand("getBooster").setExecutor(new GetBooster());
+        this.getCommand("updateScoreboard").setExecutor(new UpdateScoreboard());
 
         //partyManager = new PartyManager();
 
@@ -146,7 +148,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         getServer().getPluginManager().registerEvents(new VanillaCraftingListener(), this);
         new RegenerationTask().startRegenTask();
-        new HelpfulTips().startTipsTask();
+        new HelpfulTips().broadcastTasks();
         CustomRecipe.Companion.registerAllRecipes();
 
 //        CustomRecipe recipe = new CustomRecipe();

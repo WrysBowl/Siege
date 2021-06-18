@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -56,5 +57,28 @@ public class WebstoreUtils {
         nbtItem.setInteger("seconds", seconds);
         nbtItem.setDouble("multiplier", multiplier);
         return nbtItem.getItem();
+    }
+    public static ItemStack getBooster(int amount, double multiplier, int seconds, String booster) {
+        ItemStack item;
+        if (booster.equals("EXP")) {
+            item = WebstoreUtils.getExpBoosterItem(amount, multiplier, seconds);
+        } else if (booster.equals("GOLD")) {
+            item = WebstoreUtils.getGoldBoosterItem(amount, multiplier, seconds);
+        } else {
+            Bukkit.getLogger().info(Utils.tacc("&cError checking booster value for either GOLD or EXP"));
+            return null;
+        }
+        return item;
+    }
+    public static void giveItemToPlayer(Player player, ItemStack item) {
+        final boolean fullInv = player.getInventory().firstEmpty() == -1;
+        final boolean fullEnderChest = player.getEnderChest().firstEmpty() == -1;
+        if (!fullInv) {
+            player.getInventory().addItem(item);
+        } else if (!fullEnderChest) {
+            player.getEnderChest().addItem(item);
+        } else {
+            player.getWorld().dropItemNaturally(player.getLocation(), item);
+        }
     }
 }
