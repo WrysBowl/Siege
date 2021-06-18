@@ -1,11 +1,11 @@
 package net.siegerpg.siege.core.fishing.fish.implemented;
 
 import net.siegerpg.siege.core.fishing.fish.FishCore;
-import net.siegerpg.siege.core.fishing.fish.Fish;
+import net.siegerpg.siege.core.fishing.fish.FishStats;
 
 public class PistolWhipper extends FishCore {
 
     public PistolWhipper(){
-        super(new Fish(new double[] {20, 30}, 8, 0.1, 8, 50, 4), "Pistol Whipper");
+        super(new FishStats(new double[] {20, 30}, 8, 0.1, 8, 50, 4), "Pistol Whipper");
     }
 }

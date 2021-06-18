@@ -1,60 +1,78 @@
 package net.siegerpg.siege.core.fishing.fish;
 
+import net.siegerpg.siege.core.fishing.baits.BaitCore;
 import net.siegerpg.siege.core.fishing.fish.implemented.*;
 
 import java.util.ArrayList;
 
 public abstract class FishCore {
 	
-	public static ArrayList<FishCore> fishTypes = new ArrayList<FishCore>();
+	public static ArrayList<FishCore> fishCoreTypes = new ArrayList<FishCore>();
 	
-	private Fish level;
+	private FishStats level;
 	private String fishType;
 
 	
-	public FishCore(Fish level, String fishType) {
+	public FishCore(FishStats level, String fishType) {
 		this.level=level;
 		this.fishType=fishType;
 	}
 
-	public static void registerFish() {
-		fishTypes.add(new TunaFish());
-		fishTypes.add(new BlackDrumFish());
-		fishTypes.add(new Bearacuda());
-		fishTypes.add(new BigBlueTuna());
-		fishTypes.add(new Catastrophe());
-		fishTypes.add(new Codzilla());
-		fishTypes.add(new FlashyShark());
-		fishTypes.add(new MrKrabs());
-		fishTypes.add(new MrsPuff());
-		fishTypes.add(new PistolWhipper());
-		fishTypes.add(new RedSnacker());
-		fishTypes.add(new StingWhip());
+	public static void registerAllFishes() {
+		fishCoreTypes.add(new Tuna());
+		fishCoreTypes.add(new BlackDrum());
+		fishCoreTypes.add(new Bearacuda());
+		fishCoreTypes.add(new BigBlueTuna());
+		fishCoreTypes.add(new Catastrophe());
+		fishCoreTypes.add(new Codzilla());
+		fishCoreTypes.add(new FlashyShark());
+		fishCoreTypes.add(new MrKrabs());
+		fishCoreTypes.add(new MrsPuff());
+		fishCoreTypes.add(new PistolWhipper());
+		fishCoreTypes.add(new RedSnacker());
+		fishCoreTypes.add(new StingWhip());
 	}
+
 	
-	public static FishCore chooseRandomFish() {
+	public static FishCore chooseRandomFish(BaitCore baitCore) {
 		double totalWeight = 0;
-		for(FishCore fish : FishCore.fishTypes) {
-		    totalWeight += fish.getLevel().chance;
+		for(FishCore fishCore : FishCore.fishCoreTypes) {
+		    totalWeight += fishCore.getLevel().chance ;
+		    if (baitCore.hasFish(fishCore.getFishName()))
+				totalWeight += baitCore.getStatFromFishName(fishCore.getFishName()).getChanceAdded();
+
 		}
 		int randomIndex = -1;
 		double random = Math.random() * totalWeight;
-		for (int i = 0; i < FishCore.fishTypes.size(); ++i)
+		for (int i = 0; i < FishCore.fishCoreTypes.size(); ++i)
 		{
-		    random -= FishCore.fishTypes.get(i).getLevel().chance;
+			FishCore fish = FishCore.fishCoreTypes.get(i);
+		    random -= fish.getLevel().chance;
+			if (baitCore.hasFish(fish.getFishName()))
+				totalWeight += baitCore.getStatFromFishName(fish.getFishName()).getChanceAdded();
 		    if (random <= 0.0d)
 		    {
 		        randomIndex = i;
 		        break;
 		    }
 		}
-		return FishCore.fishTypes.get(randomIndex);
+		return FishCore.fishCoreTypes.get(randomIndex);
+	}
+
+
+	public static FishCore getFish(String name) {
+		for(FishCore fish : fishCoreTypes) {
+			if(fish.getFishName()== name)
+			{
+				return fish;
+			}
+		}
+		return null;
 	}
 	
 	
-	
 
-	public Fish getLevel() {
+	public FishStats getLevel() {
 		return level;
 	}
 

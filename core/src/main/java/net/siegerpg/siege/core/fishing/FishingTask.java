@@ -27,7 +27,6 @@ public class FishingTask extends BukkitRunnable {
 	
 	private CustomFishEvent e;
 	private NamespacedKey keyProgress;
-	private NamespacedKey keyTime;
 	
 
 
@@ -39,7 +38,6 @@ public class FishingTask extends BukkitRunnable {
 		e.getFishingData().setScore((double)e.getFishingData().getFish().getLevel().winScore/3);
 		
 		keyProgress = new NamespacedKey(Core.plugin(), "ProgressBar-" + e.getPlayer().getName());
-		keyTime = new NamespacedKey(Core.plugin(), "TimeBar-" + e.getPlayer().getName());
 		runningTasks.put(e.getPlayer().getUniqueId(), this);
 	}
 	
@@ -48,21 +46,21 @@ public class FishingTask extends BukkitRunnable {
 	
 	@Override
 	public void run() {
-		FishCore fish = e.getFishingData().getFish();
+		FishCore fishCore = e.getFishingData().getFish();
 		FishingData data = e.getFishingData();
 		Cursor cursor = data.getCursor();
 		//keeping up with score ;D
-        if(data.getScore() >= fish.getLevel().winScore) {
+        if(data.getScore() >= fishCore.getLevel().winScore) {
         	e.win();
         	runningTasks.remove(e.getPlayer().getUniqueId());
         	this.cancel();
 			playerData.hasActionBar.put(e.getPlayer(), false);
         }
 
-        if(Utils.randTest(fish.getLevel().chanceToChangeDirection))
+        if(Utils.randTest(fishCore.getLevel().chanceToChangeDirection))
         	e.getFishingData().setDirection(!e.getFishingData().getDirection());
         
-        e.getBait().teleport(e.getBaitLocation());
+        e.getBaitModel().teleport(e.getBaitLocation());
         e.setBaitLocation(e.getHook().getLocation().subtract(0, 1.3, 0));
         
 
@@ -75,7 +73,7 @@ public class FishingTask extends BukkitRunnable {
 		//label of the action bar
 		String label="";
 		
-		data.setProcessToAdvance(data.getProcessToAdvance() + fish.getLevel().moveSpeed);
+		data.setProcessToAdvance(data.getProcessToAdvance() + fishCore.getLevel().moveSpeed);
 		
 		//BossBar for progress
 		if(Bukkit.getBossBar(keyProgress) == null ||  e.getProgressBar() == null)
@@ -85,20 +83,20 @@ public class FishingTask extends BukkitRunnable {
 					BarColor.GREEN,
 					BarStyle.SOLID,
 					BarFlag.CREATE_FOG);
-			bossbar.setProgress(data.getScore()/fish.getLevel().winScore);
+			bossbar.setProgress(data.getScore()/ fishCore.getLevel().winScore);
 			bossbar.setVisible(true);
 			bossbar.addPlayer(e.getPlayer());
 			e.setProgressBar(bossbar);
 		}
 		BossBar progressBar = e.getProgressBar();
-		progressBar.setProgress(data.getScore()/fish.getLevel().winScore);
+		progressBar.setProgress(data.getScore()/ fishCore.getLevel().winScore);
 		
 		
 		
 		
 		for(int i=0; i<e.getTotalLength(); i++) {
 			boolean skip = false;
-            for(int _i=Math.min(data.getLoc(), data.getLoc()+fish.getLevel().length-1); _i <= (data.getLoc()+fish.getLevel().length-1); _i++) {
+            for(int _i = Math.min(data.getLoc(), data.getLoc()+ fishCore.getLevel().length-1); _i <= (data.getLoc()+ fishCore.getLevel().length-1); _i++) {
                 if(i== _i) {
                 	
                     if(cursor.loc == i)
@@ -132,7 +130,7 @@ public class FishingTask extends BukkitRunnable {
 				label = label + ChatColor.RED + "-";
         }
 		if(data.getProcessToAdvance()>=1) {
-			if(data.getLoc() + fish.getLevel().length == e.getTotalLength() && data.getDirection()){ data.setDirection(!data.getDirection());}
+			if(data.getLoc() + fishCore.getLevel().length == e.getTotalLength() && data.getDirection()){ data.setDirection(!data.getDirection());}
 			if(data.getLoc()<=0 && !data.getDirection()) { data.setDirection(!data.getDirection());}
 			if(data.getDirection()) { data.setLoc(data.getLoc()+1); }
 			if(!data.getDirection()) {data.setLoc(data.getLoc()-1);}
@@ -167,17 +165,5 @@ public class FishingTask extends BukkitRunnable {
 	}
 
 
-
-
-	public NamespacedKey getKeyTime() {
-		return keyTime;
-	}
-
-
-
-
-	public void setKeyTime(NamespacedKey keyTime) {
-		this.keyTime = keyTime;
-	}
 
 }

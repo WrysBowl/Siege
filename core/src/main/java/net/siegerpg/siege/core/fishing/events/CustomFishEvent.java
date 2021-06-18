@@ -1,11 +1,13 @@
 package net.siegerpg.siege.core.fishing.events;
 
+import de.tr7zw.nbtapi.NBTItem;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.fishing.FishingTask;
+import net.siegerpg.siege.core.fishing.baits.BaitCore;
 import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
-import net.siegerpg.siege.core.fishing.FishingTask;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -36,7 +38,7 @@ public class CustomFishEvent {
 	private int totalLength = 40;
 	private BossBar progressBar;
 	private Location baitLocation;
-	private ArmorStand bait;
+	private ArmorStand baitModel;
 	
 	
 	public CustomFishEvent(PlayerFishEvent e) {
@@ -55,11 +57,23 @@ public class CustomFishEvent {
 		stand.setInvulnerable(true);
 		stand.setGravity(false);
 		stand.teleport(loc);
-        setBait(stand);
-		
-		
-		this.getFishingData().setFish(FishCore.chooseRandomFish());
-		
+        setBaitModel(stand);
+
+
+		if(e.getPlayer().getInventory().getItemInOffHand() != null)
+		{
+			ItemStack offHand = e.getPlayer().getInventory().getItemInOffHand();
+			NBTItem nbt = new NBTItem(offHand);
+
+			if(nbt.hasNBTData() && nbt.hasKey("baitType"))
+			{
+				String baitType = nbt.getString("baitType");
+				if(BaitCore.hasBait(baitType))
+					this.getFishingData().setBait(BaitCore.getBait(baitType));
+
+			}
+		}
+		this.getFishingData().setFish(FishCore.chooseRandomFish(this.getFishingData().getBait()));
 	}
 	public void trigger() {
 		player.sendMessage("custom event triggered");
@@ -83,7 +97,7 @@ ChatColor.YELLOW + "You won a " + data.getFish().getFishName()));
 	
 	
 	public void remove() {
-		bait.remove();
+		baitModel.remove();
 		progressBar.removeAll();
 		this.hook.remove();
 	}
@@ -137,11 +151,11 @@ ChatColor.YELLOW + "You won a " + data.getFish().getFishName()));
 	public void setProgressBar(BossBar progressBar) {
 		this.progressBar = progressBar;
 	}
-	public ArmorStand getBait() {
-		return bait;
+	public ArmorStand getBaitModel() {
+		return baitModel;
 	}
-	public void setBait(ArmorStand bait) {
-		this.bait = bait;
+	public void setBaitModel(ArmorStand baitModel) {
+		this.baitModel = baitModel;
 	}
 	public Location getBaitLocation() {
 		return baitLocation;
