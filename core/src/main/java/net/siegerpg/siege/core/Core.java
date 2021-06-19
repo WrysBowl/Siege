@@ -8,6 +8,10 @@ import net.siegerpg.siege.core.cache.LevelEXPStorage;
 import net.siegerpg.siege.core.cache.PlayerBanking;
 import net.siegerpg.siege.core.cache.playerData;
 import net.siegerpg.siege.core.commands.*;
+import net.siegerpg.siege.core.commands.admin.GetItem;
+import net.siegerpg.siege.core.commands.admin.Invsee;
+import net.siegerpg.siege.core.commands.admin.SpawnExp;
+import net.siegerpg.siege.core.commands.admin.SpawnGold;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
@@ -59,6 +63,9 @@ public final class Core extends JavaPlugin {
         this.getCommand("tips").setExecutor(new ToggleTips());
         this.getCommand("getBooster").setExecutor(new GetBooster());
         this.getCommand("updateScoreboard").setExecutor(new UpdateScoreboard());
+        this.getCommand("spawnExp").setExecutor(new SpawnExp());
+        this.getCommand("spawnGold").setExecutor(new SpawnGold());
+
 
         //partyManager = new PartyManager();
 

@@ -1,11 +1,9 @@
-package net.siegerpg.siege.core.commands;
+package net.siegerpg.siege.core.commands.admin;
 
 import com.google.gson.Gson;
 import lombok.SneakyThrows;
-import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

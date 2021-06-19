@@ -39,3 +39,7 @@ commands:
     description: Sends booster to player
   updateScoreboard:
     description: Updates the player's scoreboard
+  spawnExp:
+    description: Spawns experience on the target
+  spawnGold:
+    description: Spawns gold on the target
