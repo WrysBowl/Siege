@@ -79,6 +79,6 @@ public class HelpfulTips implements Listener {
                 p.sendMessage(Utils.tacc("  https://store.siegerpg.net/"));
                 p.sendMessage(Utils.lore(""));
             }
-        }, 4000, 6000);
+        }, 12000, 6000);
     }
 }

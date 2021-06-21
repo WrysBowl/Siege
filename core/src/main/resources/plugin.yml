@@ -43,3 +43,6 @@ commands:
     description: Spawns experience on the target
   spawnGold:
     description: Spawns gold on the target
+  pay:
+    aliases: [ pay ]
+    description: send payment to another player
