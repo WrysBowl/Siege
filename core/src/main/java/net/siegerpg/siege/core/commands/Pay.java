@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.commands;
 
 import net.siegerpg.siege.core.cache.LevelEXPStorage;
+import net.siegerpg.siege.core.informants.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
@@ -46,6 +47,8 @@ public class Pay implements CommandExecutor {
             player.sendMessage(Utils.lore("<red>You don't have enough money to pay this person " + gold + " gold."));
             return false;
         }
+        Scoreboard.updateScoreboard(player);
+        if (targetPlayer.isOnline()) Scoreboard.updateScoreboard((Player)targetPlayer);
         return true;
     }
 }
