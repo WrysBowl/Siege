@@ -9,8 +9,8 @@ public class MoreTunaBait extends BaitCore {
 	public MoreTunaBait() {
 		super(new BaitStats[]{new BaitStats("Tuna", 5)}, "MoreTuna");
 	}
-	
-	
-	
+
+
+
 
 }

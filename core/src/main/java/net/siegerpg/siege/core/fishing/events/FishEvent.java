@@ -20,8 +20,7 @@ public class FishEvent implements Listener {
 		if(FishingTask.runningTasks.containsKey(e.getPlayer().getUniqueId())) {
 			FishingTask task = FishingTask.runningTasks.get(e.getPlayer().getUniqueId());
 			CustomFishEvent ce = task.getEvent();
-			if(ce.getFishingData().isFishing())
-			{
+			if(ce.getFishingData().isFishing()) {
 				e.setCancelled(true);
 			}
 		}
