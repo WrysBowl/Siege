@@ -1,9 +1,13 @@
 package net.siegerpg.siege.core.items.types.misc
 
 import net.siegerpg.siege.core.items.CustomItem
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
+import net.siegerpg.siege.core.items.statgems.StatGem
+import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.Material
@@ -21,8 +25,10 @@ abstract class CustomTool(
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.MATERIAL,
     override val recipeList: CustomRecipeList? = null,
+    override val baseStats: HashMap<StatTypes, Double>,
+    override var statGem: StatGem? = null,
     val enchantments: MutableMap<Enchantment, Int>
-) : CustomItem {
+) : CustomEquipment {
 
     override var rarity: Rarity = Rarity.COMMON
 
@@ -38,6 +44,17 @@ abstract class CustomTool(
 
         if (meta.hasLore()) meta.lore(mutableListOf())
 
+        statGem?.let {
+            meta.lore(" ")
+            meta.lore("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem")
+        }
+        if (baseStats.size != 0) {
+            meta.lore(" ")
+            val realStats = CustomItemUtils.getStats(this, addGem = false, addRarity = true)
+            baseStats.keys.forEach {
+                meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+            }
+        }
         meta.lore(" ")
         description.forEach {
             meta.lore("<r><dark_gray>$it")
