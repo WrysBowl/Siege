@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.implemented.misc.tools
 
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomTool
@@ -13,6 +14,7 @@ class SteelShovel() : CustomTool(
     description = listOf("The better iron"),
     levelRequirement = 37,
     material = Material.IRON_SHOVEL,
+    baseStats = CustomItemUtils.statMap(strength = 10.0),
     recipeList = recipes {
 
     },
