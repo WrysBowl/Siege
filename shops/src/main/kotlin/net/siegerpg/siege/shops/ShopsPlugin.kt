@@ -27,16 +27,16 @@ class ShopsPlugin: JavaPlugin(), Listener {
 
         server.pluginManager.registerEvents(this, this)
 
-        shopRegistry["one"] = Shop("Test Shop", listOf(
-            WoodenSword(50),
-            WoodenSword(50),
-            WoodenSword(50),
-            WoodenSword(50),
-            WoodenSword(50),
-            WoodenSword(50),
-            WoodenSword(50),
-            WoodenSword(50),
-            WoodenSword(50)
+        shopRegistry["one"] = Shop("Test Shop", "siege.shops.whitelist.one", listOf(
+            ShopItem(WoodenSword(50), 10, -1, true),
+            ShopItem(WoodenSword(50), -1, 50, true),
+            ShopItem(WoodenSword(50), 0, 0, true),
+            ShopItem(WoodenSword(50), 0, 0, true),
+            ShopItem(WoodenSword(50), 0, 0, true),
+            ShopItem(WoodenSword(50), 0, 0, true),
+            ShopItem(WoodenSword(50), 0, 0, true),
+            ShopItem(WoodenSword(50), 0, 0, true),
+            ShopItem(WoodenSword(50), 0, 0, true)
         ))
 
         Bukkit.getLogger().info("Enabled!")

@@ -38,8 +38,12 @@ tasks {
     jar {
         dependsOn(shadowJar)
     }
+    withType<JavaCompile> {
+        options.compilerArgs.add("-parameters")
+    }
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "11"
+        kotlinOptions.javaParameters = true
     }
 
 }
