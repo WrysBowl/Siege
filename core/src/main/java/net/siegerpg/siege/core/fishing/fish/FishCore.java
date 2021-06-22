@@ -38,6 +38,8 @@ public abstract class FishCore {
 		double totalWeight = 0;
 		for(FishCore fishCore : FishCore.fishCoreTypes) {
 		    totalWeight += fishCore.getLevel().chance ;
+		    if(baitCore == null)
+		    	continue;
 		    if (baitCore.hasFish(fishCore.getFishName()))
 				totalWeight += baitCore.getStatFromFishName(fishCore.getFishName()).getChanceAdded();
 
@@ -48,7 +50,7 @@ public abstract class FishCore {
 		{
 			FishCore fish = FishCore.fishCoreTypes.get(i);
 		    random -= fish.getLevel().chance;
-			if (baitCore.hasFish(fish.getFishName()))
+			if (baitCore != null && baitCore.hasFish(fish.getFishName()))
 				totalWeight += baitCore.getStatFromFishName(fish.getFishName()).getChanceAdded();
 		    if (random <= 0.0d)
 		    {

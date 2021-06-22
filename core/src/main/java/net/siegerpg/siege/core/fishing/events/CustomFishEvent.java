@@ -60,17 +60,19 @@ public class CustomFishEvent {
         setBaitModel(stand);
 
 
-		if(e.getPlayer().getInventory().getItemInOffHand() != null)
+		if(e.getPlayer().getInventory().getItemInOffHand() != null && !e.getPlayer().getInventory().getItemInOffHand().getData().getItemType().equals(Material.AIR))
 		{
 			ItemStack offHand = e.getPlayer().getInventory().getItemInOffHand();
-			NBTItem nbt = new NBTItem(offHand);
+			if(!(offHand == null && offHand.getData().getItemType().equals(Material.AIR))) {
 
-			if(nbt.hasNBTData() && nbt.hasKey("baitType"))
-			{
-				String baitType = nbt.getString("baitType");
-				if(BaitCore.hasBait(baitType))
-					this.getFishingData().setBait(BaitCore.getBait(baitType));
+				NBTItem nbt = new NBTItem(offHand);
 
+				if (nbt.hasNBTData() && nbt.hasKey("baitType")) {
+					String baitType = nbt.getString("baitType");
+					if (BaitCore.hasBait(baitType))
+						this.getFishingData().setBait(BaitCore.getBait(baitType));
+
+				}
 			}
 		}
 		this.getFishingData().setFish(FishCore.chooseRandomFish(this.getFishingData().getBait()));
