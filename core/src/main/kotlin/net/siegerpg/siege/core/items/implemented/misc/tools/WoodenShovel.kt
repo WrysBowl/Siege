@@ -14,7 +14,7 @@ class WoodenShovel() : CustomTool(
     description = listOf("Your basic shovel"),
     levelRequirement = 0,
     material = Material.WOODEN_SHOVEL,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

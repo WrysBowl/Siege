@@ -14,7 +14,7 @@ class GlowingBoneAxe() : CustomTool(
     description = listOf("Special caveman tools"),
     levelRequirement = 12,
     material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(luck = 10.0),
     recipeList = recipes {
 
     },

@@ -14,11 +14,12 @@ class GlowingStoneAxe() : CustomTool(
     description = listOf("Lumberjack"),
     levelRequirement = 18,
     material = Material.STONE_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },
     enchantments = hashMapOf(
+        Enchantment.DIG_SPEED to 1
     )
 ) {
 

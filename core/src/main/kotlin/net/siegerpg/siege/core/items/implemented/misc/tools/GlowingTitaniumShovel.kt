@@ -14,7 +14,7 @@ class GlowingTitaniumShovel() : CustomTool(
     description = listOf("Enchanted titanium"),
     levelRequirement = 49,
     material = Material.IRON_SHOVEL,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(luck = 10.0),
     recipeList = recipes {
 
     },

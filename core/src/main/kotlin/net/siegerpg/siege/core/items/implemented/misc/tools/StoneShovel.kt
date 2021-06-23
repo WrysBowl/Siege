@@ -14,7 +14,7 @@ class StoneShovel() : CustomTool(
     description = listOf("Pebble annihilator"),
     levelRequirement = 15,
     material = Material.STONE_SHOVEL,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

@@ -14,7 +14,7 @@ class WoodenPickaxe() : CustomTool(
     description = listOf("Your basic pickaxe"),
     levelRequirement = 0,
     material = Material.WOODEN_PICKAXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

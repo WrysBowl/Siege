@@ -14,7 +14,7 @@ class GlowingWoodenAxe() : CustomTool(
     description = listOf("Your basic axe"),
     levelRequirement = 5,
     material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

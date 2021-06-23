@@ -14,7 +14,7 @@ class Handsaw() : CustomTool(
     description = listOf("Gives extra rewards, same speed as stone version"),
     levelRequirement = 32,
     material = Material.STONE_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(luck = 30.0),
     recipeList = recipes {
 
     },

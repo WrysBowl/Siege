@@ -14,7 +14,7 @@ class GlowingHammerAndChisel() : CustomTool(
     description = listOf("Breaks stones faster with higher luck"),
     levelRequirement = 33,
     material = Material.STONE_PICKAXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(luck = 30.0),
     recipeList = recipes {
 
     },

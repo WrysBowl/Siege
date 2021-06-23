@@ -14,7 +14,7 @@ class GlowingTrowel() : CustomTool(
     description = listOf("Digs dirt faster with higher luck"),
     levelRequirement = 34,
     material = Material.STONE_SHOVEL,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(luck = 30.0),
     recipeList = recipes {
 
     },

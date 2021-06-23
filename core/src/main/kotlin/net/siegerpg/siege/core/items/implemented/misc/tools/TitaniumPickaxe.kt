@@ -14,7 +14,7 @@ class TitaniumPickaxe() : CustomTool(
     description = listOf("Faster than steel"),
     levelRequirement = 45,
     material = Material.IRON_PICKAXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

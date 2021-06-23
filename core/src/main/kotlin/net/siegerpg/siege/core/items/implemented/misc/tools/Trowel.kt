@@ -14,7 +14,7 @@ class Trowel() : CustomTool(
     description = listOf("Gives extra rewards, same speed as stone version"),
     levelRequirement = 31,
     material = Material.STONE_SHOVEL,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(luck = 30.0),
     recipeList = recipes {
 
     },

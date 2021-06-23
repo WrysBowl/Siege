@@ -14,11 +14,12 @@ class GlowingStonePickaxe() : CustomTool(
     description = listOf("Use rock to break rock"),
     levelRequirement = 18,
     material = Material.STONE_PICKAXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },
     enchantments = hashMapOf(
+        Enchantment.DIG_SPEED to 1
     )
 ) {
 

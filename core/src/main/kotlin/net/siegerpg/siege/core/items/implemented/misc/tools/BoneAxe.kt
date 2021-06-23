@@ -14,12 +14,11 @@ class BoneAxe() : CustomTool(
     description = listOf("Caveman tools"),
     levelRequirement = 8,
     material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(luck = 10.0),
     recipeList = recipes {
 
     },
     enchantments = hashMapOf(
-        Enchantment.LUCK to 10
     )
 ) {
 

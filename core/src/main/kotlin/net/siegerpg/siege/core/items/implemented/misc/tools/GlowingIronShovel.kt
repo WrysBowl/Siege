@@ -14,7 +14,7 @@ class GlowingIronShovel() : CustomTool(
     description = listOf("Enchanted industrial tools"),
     levelRequirement = 27,
     material = Material.IRON_SHOVEL,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

@@ -14,7 +14,7 @@ class IronPickaxe() : CustomTool(
     description = listOf("Industrializing!"),
     levelRequirement = 23,
     material = Material.IRON_PICKAXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

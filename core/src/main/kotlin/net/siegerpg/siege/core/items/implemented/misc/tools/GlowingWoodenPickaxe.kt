@@ -14,7 +14,7 @@ class GlowingWoodenPickaxe() : CustomTool(
     description = listOf("Enchanted!"),
     levelRequirement = 5,
     material = Material.WOODEN_PICKAXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

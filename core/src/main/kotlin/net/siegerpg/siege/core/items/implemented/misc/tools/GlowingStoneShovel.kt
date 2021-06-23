@@ -19,6 +19,7 @@ class GlowingStoneShovel() : CustomTool(
 
     },
     enchantments = hashMapOf(
+        Enchantment.DIG_SPEED to 1
     )
 ) {
 

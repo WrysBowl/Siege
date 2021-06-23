@@ -14,7 +14,7 @@ class SteelAxe() : CustomTool(
     description = listOf("The better iron"),
     levelRequirement = 37,
     material = Material.IRON_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

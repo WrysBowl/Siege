@@ -14,7 +14,7 @@ class IronAxe() : CustomTool(
     description = listOf("Industrializing!"),
     levelRequirement = 23,
     material = Material.IRON_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

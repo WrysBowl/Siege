@@ -14,7 +14,7 @@ class GlowingWoodenShovel() : CustomTool(
     description = listOf("Enchanted!"),
     levelRequirement = 5,
     material = Material.WOODEN_SHOVEL,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },

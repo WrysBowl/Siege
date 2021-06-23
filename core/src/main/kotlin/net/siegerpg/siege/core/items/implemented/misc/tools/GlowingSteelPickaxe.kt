@@ -14,7 +14,7 @@ class GlowingSteelPickaxe() : CustomTool(
     description = listOf("Enchanted steel"),
     levelRequirement = 41,
     material = Material.IRON_PICKAXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(luck = 10.0),
     recipeList = recipes {
 
     },

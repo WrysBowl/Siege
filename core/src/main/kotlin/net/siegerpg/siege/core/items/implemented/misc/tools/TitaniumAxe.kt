@@ -14,7 +14,7 @@ class TitaniumAxe() : CustomTool(
     description = listOf("Faster than steel"),
     levelRequirement = 45,
     material = Material.IRON_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
     },
