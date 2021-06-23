@@ -35,7 +35,7 @@ public class BenButcher implements Listener {
             add(new Triple<>(5, new Porkchop(100).getUpdatedItem(false), 45));
             add(new Triple<>(6, new Beef(0).getUpdatedItem(false), 15));
             add(new Triple<>(7, new Beef(50).getUpdatedItem(false), 45));
-            add(new Triple<>(8, new Beef(100).getUpdatedItem(false), 60));
+            add(new Triple<>(8, new Beef(100).getUpdatedItem(false), 75));
         }
     };
 
@@ -49,7 +49,7 @@ public class BenButcher implements Listener {
             add(Utils.setCost(new Porkchop(100).getUpdatedItem(false), 45));
             add(Utils.setCost(new Beef(0).getUpdatedItem(false), 15));
             add(Utils.setCost(new Beef(50).getUpdatedItem(false), 45));
-            add(Utils.setCost(new Beef(100).getUpdatedItem(false), 60));
+            add(Utils.setCost(new Beef(100).getUpdatedItem(false), 75));
         }
     };
 
