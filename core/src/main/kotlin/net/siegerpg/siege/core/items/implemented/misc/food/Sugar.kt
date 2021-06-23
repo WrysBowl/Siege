@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType
 
 class Sugar() : CustomFood(
     name = "Sugar",
-    customModelData = 310009,
+    customModelData = 330002,
     description = listOf("Gas GAS GASSS!!!"),
     levelRequirement = 0,
     material = Material.TROPICAL_FISH, //change this to cooked chicken later

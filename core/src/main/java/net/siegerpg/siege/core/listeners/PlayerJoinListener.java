@@ -9,7 +9,6 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.GrieferChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BeePants;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.wands.BeginnerLivingTwig;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.BeginnerClub;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.BeginnerTwig;
@@ -111,9 +110,6 @@ public class PlayerJoinListener implements Listener {
             //shank.setStatGem(new StatGem(StatTypes.STRENGTH, 10.0));
             shank.updateMeta(false);
             player.getInventory().addItem(shank.getItem());
-            StrengthGem gem = new StrengthGem(100);
-            gem.updateMeta(false);
-            player.getInventory().addItem(gem.getItem());
         }
 
         /*
