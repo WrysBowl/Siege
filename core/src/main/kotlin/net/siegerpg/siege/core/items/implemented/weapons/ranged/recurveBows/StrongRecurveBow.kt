@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 
 class StrongRecurveBow() : CustomBow(
     name = "Strong Recurve Bow",
-    customModelData = 0,
+    customModelData = 120007,
     description = listOf("Slight curves at the ends", "give the bow a bit more power"),
     levelRequirement = 30,
     material = Material.CROSSBOW,

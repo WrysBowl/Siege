@@ -27,7 +27,7 @@ import org.bukkit.inventory.ItemStack
 
 class Bowba() : CustomBow(
     name = "Bowba",
-    customModelData = 0,
+    customModelData = 120010,
     description = listOf("You put bowba in your drink", "Bowba will get ruined"),
     levelRequirement = 38,
     material = Material.BOW,

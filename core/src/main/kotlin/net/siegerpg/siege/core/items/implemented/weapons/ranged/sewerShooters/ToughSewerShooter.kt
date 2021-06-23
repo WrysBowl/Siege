@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack
 
 class ToughSewerShooter() : CustomBow(
     name = "Tough Sewer Shooter",
-    customModelData = 0,
+    customModelData = 120005,
     description = listOf("A bow made of mob flesh,", "that's a first"),
     levelRequirement = 22,
     material = Material.BOW,

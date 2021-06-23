@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack
 
 class ToughBowba() : CustomBow(
     name = "Tough Bowba",
-    customModelData = 0,
+    customModelData = 120010,
     description = listOf("Bones fused with metal in the shape of a bow"),
     levelRequirement = 38,
     material = Material.BOW,

@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 
 class HealthyIronBow() : CustomBow(
     name = "Healthy Iron Bow",
-    customModelData = 0,
+    customModelData = 120008,
     description = listOf("Heavy and durable"),
     levelRequirement = 34,
     material = Material.CROSSBOW,

@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 
 class LuckyReinforcedBow() : CustomBow(
     name = "Lucky Reinforced Bow",
-    customModelData = 0,
+    customModelData = 120004,
     description = listOf("Stronger wood to give", "the bow a bit more wam"),
     levelRequirement = 18,
     material = Material.BOW,
