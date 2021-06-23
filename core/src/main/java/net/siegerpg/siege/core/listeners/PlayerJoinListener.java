@@ -63,7 +63,8 @@ public class PlayerJoinListener implements Listener {
 
         Player player = event.getPlayer();
 
-        String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + player.getName());
+        String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
+        String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
 
         if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
             Bukkit.getLogger().info("1");
@@ -83,7 +84,7 @@ public class PlayerJoinListener implements Listener {
             player.getInventory().addItem(food);
             VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
             VaultHook.econ.depositPlayer(player, 200.0);
-            joinMessage = Utils.tacc("&a&lWELCOME&r &7[&a+&7] " + player.getName());
+            joinMessage = Utils.tacc("&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
         }
         event.setJoinMessage(joinMessage);
 
