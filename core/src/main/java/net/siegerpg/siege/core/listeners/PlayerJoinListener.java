@@ -10,8 +10,12 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.GrieferChestpl
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BeePants;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.StrengthGem;
+import net.siegerpg.siege.core.items.implemented.misc.wands.BeginnerLivingTwig;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.BeginnerClub;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.BeginnerTwig;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.BeginnerScrapyardBow;
 import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
@@ -67,7 +71,6 @@ public class PlayerJoinListener implements Listener {
         String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
 
         if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
-            Bukkit.getLogger().info("1");
             try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
                 // Add the user to the db if he doesn't exist
                 PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
@@ -78,7 +81,10 @@ public class PlayerJoinListener implements Listener {
 
         if (!player.hasPlayedBefore()) {
             player.getInventory().clear();
-            player.getInventory().addItem(new Twig(Utils.randRarity()).getUpdatedItem(false));
+            player.getInventory().addItem(new BeginnerTwig(50).getUpdatedItem(false));
+            player.getInventory().addItem(new BeginnerClub(50).getUpdatedItem(false));
+            player.getInventory().addItem(new BeginnerScrapyardBow(50).getUpdatedItem(false));
+            player.getInventory().addItem(new BeginnerLivingTwig(50).getUpdatedItem(false));
             ItemStack food = new Drumstick(0).getUpdatedItem(false);
             food.setAmount(10);
             player.getInventory().addItem(food);

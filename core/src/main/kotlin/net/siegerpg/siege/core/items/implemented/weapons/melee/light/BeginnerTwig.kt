@@ -9,13 +9,13 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Twig() : CustomMeleeWeapon(
-    name = "Twig",
+class BeginnerTwig() : CustomMeleeWeapon(
+    name = "Beginner Twig",
     customModelData = 110001,
-    description = listOf("A twig found on the ground"),
-    levelRequirement = 1,
+    description = listOf("Try out the light melee weapon!"),
+    levelRequirement = 0,
     material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 5.0),
+    baseStats = CustomItemUtils.statMap(strength = 3.0),
     recipeList = recipes {
         recipe {
             shaped = true

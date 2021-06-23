@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.weapons.melee.light
+package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -9,76 +9,76 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Twig() : CustomMeleeWeapon(
-    name = "Twig",
-    customModelData = 110001,
-    description = listOf("A twig found on the ground"),
-    levelRequirement = 1,
-    material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 5.0),
+class BeginnerClub() : CustomMeleeWeapon(
+    name = "Beginner Club",
+    customModelData = 130001,
+    description = listOf("Try out this heavy melee weapon!"),
+    levelRequirement = 0,
+    material = Material.WOODEN_AXE,
+    baseStats = CustomItemUtils.statMap(strength = 7.0),
     recipeList = recipes {
         recipe {
             shaped = true
-            s1(Stick.tier(1))
-            s4(Stick.tier(1))
+            s1(Stick.tier(2))
+            s4(Stick.tier(2))
             item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
+                val newItem = Club(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
         recipe {
             shaped = true
-            s2(Stick.tier(1))
-            s5(Stick.tier(1))
+            s2(Stick.tier(2))
+            s5(Stick.tier(2))
             item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
+                val newItem = Club(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
         recipe {
             shaped = true
-            s3(Stick.tier(1))
-            s6(Stick.tier(1))
+            s3(Stick.tier(2))
+            s6(Stick.tier(2))
             item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
+                val newItem = Club(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
         recipe {
             shaped = true
-            s4(Stick.tier(1))
-            s7(Stick.tier(1))
+            s4(Stick.tier(2))
+            s7(Stick.tier(2))
             item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
+                val newItem = Club(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
         recipe {
             shaped = true
-            s5(Stick.tier(1))
-            s8(Stick.tier(1))
+            s5(Stick.tier(2))
+            s8(Stick.tier(2))
             item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
+                val newItem = Club(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
         recipe {
             shaped = true
-            s6(Stick.tier(1))
-            s9(Stick.tier(1))
+            s6(Stick.tier(2))
+            s9(Stick.tier(2))
             item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
+                val newItem = Club(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
             }
         }
     },
-    attackSpeed = 1.6
+    attackSpeed = 0.9
 ) {
 
     constructor(quality: Int): this() {
