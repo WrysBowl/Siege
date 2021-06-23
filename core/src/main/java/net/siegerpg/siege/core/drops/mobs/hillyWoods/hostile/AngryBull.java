@@ -16,9 +16,9 @@ public class AngryBull extends MobDropTable {
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 5.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 0.5),
                 new Reward(new Beef(50).getUpdatedItem(false), 20.0),
-                new Reward(new SimpleToughGem(Utils.randRarity()).getUpdatedItem(false), 0.25),
-                new Reward(new FlawedHealthGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
-                new Reward(new SimpleHealthGem(Utils.randRarity()).getUpdatedItem(false), 0.25)
+                new Reward(new FlawedToughGem(Utils.randRarity()).getUpdatedItem(false), 0.25),
+                new Reward(new CrackedHealthGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
+                new Reward(new FlawedHealthGem(Utils.randRarity()).getUpdatedItem(false), 0.25)
         });
     }
 }

@@ -24,8 +24,8 @@ public class ZombifiedDigger extends MobDropTable {
                 new Reward(new Beetroot(50).getUpdatedItem(false), 10.0),
                 new Reward(new Beetroot(0).getUpdatedItem(false), 50.0),
                 new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 10.0),
-                new Reward(new FlawedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
-                new Reward(new CrackedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 2.0)
+                new Reward(new CrackedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
+                new Reward(new RawRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 2.0)
         });
     }
 }

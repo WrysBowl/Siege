@@ -231,7 +231,7 @@ public class BlockBreakListener implements Listener {
         int exp = blockDrop.getExp(true);
         final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
         final boolean upFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
-        final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
+        final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.DOWN).getType());
 
 
         if (keepAir.contains(blockType)) {
@@ -241,7 +241,7 @@ public class BlockBreakListener implements Listener {
         } else {
             e.getBlock().setType(Material.BEDROCK);
         }
-        if (!dependables.contains(blockType) && upFacingDependable || downFacingDependable) {
+        if (!dependables.contains(blockType) && upFacingDependable || !dependables.contains(blockType) && downFacingDependable) {
             return;
         }
 

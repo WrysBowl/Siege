@@ -70,7 +70,7 @@ public class HelpfulTips implements Listener {
     public void webstoreDiscordTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                if (LevelEXPStorage.playerLevel.get(p) > 5) continue;
+                if (LevelEXPStorage.playerLevel.get(p) > 10) continue;
                 p.sendMessage(Utils.parse(""));
                 p.sendMessage(Utils.parse("  <aqua><bold>Join our <light_purple>discord<aqua> here!<reset>"));
                 p.sendMessage(Utils.tacc("  https://discord.siegerpg.net"));

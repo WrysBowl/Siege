@@ -16,7 +16,7 @@ class PebbleShooter() : CustomBow(
     customModelData = 120003,
     description = listOf("Now comes with pebble", "shooting support!"),
     levelRequirement = 10,
-    material = Material.CROSSBOW, //This needs to be changed to a crossbow
+    material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 23.0),
     recipeList = recipes {
         recipe {

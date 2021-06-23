@@ -16,7 +16,7 @@ class ToughPebbleShooter() : CustomBow(
     customModelData = 120003,
     description = listOf("Now comes with pebble", "shooting support!"),
     levelRequirement = 10,
-    material = Material.CROSSBOW,
+    material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 18.0, toughness = 40.0),
     recipeList = recipes {
         recipe {

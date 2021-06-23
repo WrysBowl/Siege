@@ -16,9 +16,9 @@ public class BloodSucker extends MobDropTable {
                 new Reward(Seed.Companion.tier(1).getUpdatedItem(false), 50.0),
                 new Reward(Seed.Companion.tier(2).getUpdatedItem(false), 5.0),
                 new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0),
-                new Reward(new CrackedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
-                new Reward(new SimpleRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 0.5),
-                new Reward(new CrackedLuckGem(Utils.randRarity()).getUpdatedItem(false), 1.0)
+                new Reward(new RawRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
+                new Reward(new FlawedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 0.5),
+                new Reward(new RawLuckGem(Utils.randRarity()).getUpdatedItem(false), 1.0)
         });
     }
 }
