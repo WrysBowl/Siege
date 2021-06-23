@@ -13,6 +13,8 @@ import com.github.stefvanschie.inventoryframework.pane.Pane
 import com.github.stefvanschie.inventoryframework.pane.StaticPane
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.siegerpg.siege.core.informants.Scoreboard
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.VaultHook
 import net.siegerpg.siege.core.utils.lore
@@ -29,7 +31,7 @@ class ShopsCommand: BaseCommand() {
    @Default
    fun default(sender: CommandSender, id: String, @Optional @CommandPermission("siege.shops.open.others") target: OnlinePlayer?) {
 
-       //if (sender is Player && sender.name != "Sumowo") return
+       // if (sender is Player && sender.name == "Sumowo") sender.inventory.addItem(Pebble.tier(1).getUpdatedItem(false))
 
        if (target == null && sender is ConsoleCommandSender) {
            return sender.sendMessage(MiniMessage.get().parse("<red>Please specify a target player!"))
@@ -70,32 +72,41 @@ class ShopsCommand: BaseCommand() {
            val item = it.item.getUpdatedItem(true)
            val meta = item.itemMeta
            meta.lore("")
-           if (it.buyPrice > -1) meta.lore("<aqua>Click to buy for ${it.buyPrice} gold!")
-           if (it.sellPrice > -1) meta.lore("<aqua>Right click to sell for ${it.sellPrice} gold!")
-           if (it.craftable) meta.lore("<yellow>Middle click to craft!")
+           if (it.craftable) {
+               for (entry in it.recipe) {
+                   meta.lore("<aqua>${entry.value}x ${entry.key.name}")
+               }
+               meta.lore("<yellow>Click to craft!")
+           }
+           if (it.buyPrice > -1) meta.lore("<yellow>Right click to buy for ${it.buyPrice} gold!")
            item.itemMeta = meta
            val guiItem = GuiItem(item)
            guiItem.setAction { event ->
                when {
                    event.isLeftClick -> {
-                       if (it.buyPrice < 0) return@setAction
-                       if (VaultHook.econ.getBalance(player) >= it.buyPrice) {
-                           if (event.getView().getBottomInventory().firstEmpty() != -1) {
-                               //player.inventory.addItem(it.item.getUpdatedItem(false))
-                               VaultHook.econ.withdrawPlayer(player, it.buyPrice.toDouble())
-                               Scoreboard.updateScoreboard(event.getWhoClicked() as Player)
-                           } else {
-                               player.sendMessage(Utils.tacc("&cYour inventory is full!"))
+                       if (!it.craftable) return@setAction
+                       if (event.getView().getBottomInventory().firstEmpty() == -1) return@setAction player.sendMessage(MiniMessage.get().parse("<red>Your inventory is full!"))
+                       for (entry in it.recipe) {
+                           if (!player.inventory.containsAtLeast(entry.key.getUpdatedItem(false), entry.value)) {
+                               return@setAction player.sendMessage(MiniMessage.get().parse(if (entry.value == 1) "<red>You don't have a ${entry.key.name}!" else "<red>You don't have enough ${entry.key.name}s!"))
                            }
-                       } else {
-                           player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"))
                        }
-                       //gui.inventory.close()
+                       for (entry in it.recipe) {
+                           val stack = entry.key.getUpdatedItem(false)
+                           stack.amount = entry.value
+                           player.inventory.remove(stack)
+                       }
+                       player.inventory.addItem(it.generate())
                    }
                    event.isRightClick -> {
-                       if (it.sellPrice < 0) return@setAction
-                       event.whoClicked.sendMessage(MiniMessage.get().parse("<yellow>This item sells for ${it.sellPrice}!"))
-                       gui.inventory.close()
+                       if (it.buyPrice < 0) return@setAction
+
+                       if (VaultHook.econ.getBalance(player) < it.buyPrice) player.sendMessage(MiniMessage.get().parse("<red>You don't have enough gold!"))
+                       if (event.getView().getBottomInventory().firstEmpty() == -1) return@setAction player.sendMessage(MiniMessage.get().parse("<red>Your inventory is full!"))
+
+                       player.inventory.addItem(it.generate())
+                       VaultHook.econ.withdrawPlayer(player, it.buyPrice.toDouble())
+                       Scoreboard.updateScoreboard(event.whoClicked as Player)
                    }
 
                }

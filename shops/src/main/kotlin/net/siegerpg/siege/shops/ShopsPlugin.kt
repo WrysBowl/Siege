@@ -1,8 +1,11 @@
 package net.siegerpg.siege.shops
 
 import co.aikar.commands.PaperCommandManager
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.StickyStick
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.WoodenSword
+import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.event.Listener
@@ -28,15 +31,33 @@ class ShopsPlugin: JavaPlugin(), Listener {
         server.pluginManager.registerEvents(this, this)
 
         shopRegistry["one"] = Shop("Test Shop", "siege.shops.whitelist.one", listOf(
-            ShopItem(WoodenSword(50), 10, -1, true),
-            ShopItem(WoodenSword(50), -1, 50, true),
-            ShopItem(WoodenSword(50), 0, 0, true),
-            ShopItem(WoodenSword(50), 0, 0, true),
-            ShopItem(WoodenSword(50), 0, 0, true),
-            ShopItem(WoodenSword(50), 0, 0, true),
-            ShopItem(WoodenSword(50), 0, 0, true),
-            ShopItem(WoodenSword(50), 0, 0, true),
-            ShopItem(WoodenSword(50), 0, 0, true)
+            ShopItem(WoodenSword(50), 10, hashMapOf(Twig(50) to 2), false) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), -1, hashMapOf(Twig(50) to 1), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 200, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Pebble.tier(1) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            }
         ))
 
         Bukkit.getLogger().info("Enabled!")

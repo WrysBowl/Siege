@@ -15,7 +15,7 @@ public class Discord implements CommandExecutor {
         Player player = (Player) sender;
         player.sendMessage(Utils.parse(""));
         player.sendMessage(Utils.parse("  <aqua><bold>Join our discord here!<reset>"));
-        player.sendMessage(Utils.tacc("  https://discord.gg/krftCSF"));
+        player.sendMessage(Utils.tacc("  https://discord.siegerpg.net"));
         player.sendMessage(Utils.parse(""));
         return false;
     }
