@@ -86,7 +86,7 @@ class CustomItemKotlinListener : Listener, Runnable {
     fun onBowUse(e: PlayerInteractEvent) {
         if (e.action == Action.RIGHT_CLICK_AIR) {
             val player: Player = e.player
-            if (CustomItemUtils.getCustomItem(player.inventory.itemInMainHand) is CustomBow) {
+            if (player.inventory.itemInMainHand.type == Material.BOW || player.inventory.itemInMainHand.type == Material.CROSSBOW) {
                 val offHandItem: ItemStack = player.inventory.itemInOffHand
                 if (offHandItem.type != Material.AIR && offHandItem.type != Material.ARROW) player.world.dropItemNaturally(player.location, offHandItem)
                 player.inventory.setItemInOffHand(ItemStack(Material.ARROW))
