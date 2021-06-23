@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.commands.admin.GetItem;
 import net.siegerpg.siege.core.commands.admin.Invsee;
 import net.siegerpg.siege.core.commands.admin.SpawnExp;
 import net.siegerpg.siege.core.commands.admin.SpawnGold;
+import net.siegerpg.siege.core.fishing.commands.getBait;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
 import net.siegerpg.siege.core.items.recipes.CustomRecipe;
@@ -65,6 +66,7 @@ public final class Core extends JavaPlugin {
         this.getCommand("updateScoreboard").setExecutor(new UpdateScoreboard());
         this.getCommand("spawnExp").setExecutor(new SpawnExp());
         this.getCommand("spawnGold").setExecutor(new SpawnGold());
+        this.getCommand("getBait").setExecutor(new getBait());
         this.getCommand("pay").setExecutor(new Pay());
 
         //partyManager = new PartyManager();
