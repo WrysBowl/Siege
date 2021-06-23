@@ -23,6 +23,8 @@ public class playerData implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         hasActionBar.put(e.getPlayer(), false);
-        playerData.broadcastTips.put(e.getPlayer(), true);
+        if (!playerData.broadcastTips.containsKey(e.getPlayer())) {
+            playerData.broadcastTips.put(e.getPlayer(), true);
+        }
     }
 }
