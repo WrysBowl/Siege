@@ -46,3 +46,6 @@ commands:
   pay:
     aliases: [ pay ]
     description: send payment to another player
+  getBait:
+    aliases: [ getBait ]
+    description: gets a bait ;D

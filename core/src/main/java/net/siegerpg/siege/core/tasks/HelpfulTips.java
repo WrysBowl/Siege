@@ -71,13 +71,13 @@ public class HelpfulTips implements Listener {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (LevelEXPStorage.playerLevel.get(p) > 5) continue;
-                p.sendMessage(Utils.lore(""));
-                p.sendMessage(Utils.lore("  <aqua><bold>Join our <light_purple>discord<aqua> here!<reset>"));
-                p.sendMessage(Utils.tacc("  https://discord.gg/krftCSF"));
-                p.sendMessage(Utils.lore(""));
-                p.sendMessage(Utils.lore("  <aqua><bold>Visit our <green>webstore<aqua> here!<reset>"));
+                p.sendMessage(Utils.parse(""));
+                p.sendMessage(Utils.parse("  <aqua><bold>Join our <light_purple>discord<aqua> here!<reset>"));
+                p.sendMessage(Utils.tacc("  https://discord.siegerpg.net"));
+                p.sendMessage(Utils.parse(""));
+                p.sendMessage(Utils.parse("  <aqua><bold>Visit our <green>webstore<aqua> here!<reset>"));
                 p.sendMessage(Utils.tacc("  https://store.siegerpg.net/"));
-                p.sendMessage(Utils.lore(""));
+                p.sendMessage(Utils.parse(""));
             }
         }, 12000, 6000);
     }

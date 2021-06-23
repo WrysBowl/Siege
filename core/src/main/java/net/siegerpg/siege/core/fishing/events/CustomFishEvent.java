@@ -35,7 +35,7 @@ public class CustomFishEvent {
 	private int ticksElapsed =0;
 	private int totalTicksElapsed =0;
 	private int secondsElapsed = 0;
-	private int totalLength = 40;
+	private int totalLength = 70;
 	private BossBar progressBar;
 	private Location baitLocation;
 	private ArmorStand baitModel;
@@ -60,7 +60,7 @@ public class CustomFishEvent {
         setBaitModel(stand);
 
 
-        if(!(player.getInventory().getItemInOffHand()== null && !(player.getInventory().getItemInOffHand().getType() == Material.AIR))) {
+        if(!(player.getInventory().getItemInOffHand()== null) && !(player.getInventory().getItemInOffHand().getType() == Material.AIR)) {
 			ItemStack offHand = e.getPlayer().getInventory().getItemInOffHand();
         	NBTItem nbt = new NBTItem(offHand);
 
@@ -68,6 +68,7 @@ public class CustomFishEvent {
         		String baitType = nbt.getString("baitType");
         		if (BaitCore.hasBait(baitType))
         			this.getFishingData().setBait(BaitCore.getBait(baitType));
+        		this.player.sendMessage(this.getFishingData().getBait().getName());
 			}
 		}
 		this.getFishingData().setFish(FishCore.chooseRandomFish(this.getFishingData().getBait()));

@@ -20,6 +20,7 @@ dependencies {
     implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
     implementation("com.github.stefvanschie.inventoryframework:IF:0.9.7")
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.7.1")
+    compileOnly("com.github.MilkBowl:VaultAPI:1.7")
     implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
 }
 
@@ -38,8 +39,12 @@ tasks {
     jar {
         dependsOn(shadowJar)
     }
+    withType<JavaCompile> {
+        options.compilerArgs.add("-parameters")
+    }
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "11"
+        kotlinOptions.javaParameters = true
     }
 
 }

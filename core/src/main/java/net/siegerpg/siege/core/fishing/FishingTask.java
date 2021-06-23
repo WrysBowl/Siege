@@ -89,7 +89,8 @@ public class FishingTask extends BukkitRunnable {
 			e.setProgressBar(bossbar);
 		}
 		BossBar progressBar = e.getProgressBar();
-		progressBar.setProgress(data.getScore()/ fishCore.getLevel().winScore);
+		if(data.getScore()/ fishCore.getLevel().winScore <=1 && data.getScore()/ fishCore.getLevel().winScore <=0)
+			progressBar.setProgress(data.getScore()/ fishCore.getLevel().winScore);
 		
 		
 		
@@ -101,7 +102,7 @@ public class FishingTask extends BukkitRunnable {
                 	
                     if(cursor.loc == i)
                     {
-                        label = label+ChatColor.BLUE + "-";
+                        label = label+ChatColor.BLUE + "\u25AE";
                         
                         data.setScore(data.getScore()+0.1);
 
@@ -110,7 +111,7 @@ public class FishingTask extends BukkitRunnable {
                     }
                     else
                     {
-                        label = label+ChatColor.GREEN + "-";
+                        label = label+ChatColor.GREEN + "\u25AE";
                         skip=true;
                         break;
                     }
@@ -121,13 +122,13 @@ public class FishingTask extends BukkitRunnable {
 			}
             if(cursor.loc == i)
             {
-                label = label+ChatColor.DARK_BLUE + "-";
+                label = label+ChatColor.DARK_BLUE + "\u25AE";
                 
                 data.setScore(data.getScore()-0.1);
 
 			}
             else
-				label = label + ChatColor.RED + "-";
+				label = label + ChatColor.RED + "\u25AE";
         }
 		if(data.getProcessToAdvance()>=1) {
 			if(data.getLoc() + fishCore.getLevel().length == e.getTotalLength() && data.getDirection()){ data.setDirection(!data.getDirection());}

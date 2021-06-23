@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.fishing.events;
 
 import net.siegerpg.siege.core.fishing.FishingTask;
+import net.siegerpg.siege.core.fishing.baits.BaitCore;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,6 +14,7 @@ public class FishEvent implements Listener {
 	@EventHandler
 	public void onEnable(PluginEnableEvent e) {
 		FishCore.registerAllFishes();
+		BaitCore.registerAllBaits();
 	}
 
 	@EventHandler

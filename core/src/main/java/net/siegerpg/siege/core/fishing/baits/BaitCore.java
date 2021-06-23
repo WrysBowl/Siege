@@ -1,7 +1,12 @@
 package net.siegerpg.siege.core.fishing.baits;
 
 
+import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.fishing.baits.implemented.MoreTunaBait;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
@@ -10,14 +15,27 @@ public abstract class BaitCore {
 	public static ArrayList<BaitCore> baits = new ArrayList<BaitCore>() ;
 
 	private ArrayList<BaitStats> stats = new ArrayList<>();
+	private ItemStack baitItemStack;
 	private String baitName;
 	
-	public BaitCore (BaitStats[] stats, String baitName) {
+	public BaitCore (BaitStats[] stats, String baitName, Material material) {
 		this.baitName=baitName;
 		for(BaitStats stat : stats) {
 			this.stats.add(stat);
 		}
+		ItemStack item = new ItemStack(material);
+		NBTItem nbt = new NBTItem(item);
+		nbt.setString("baitType", baitName);
+		item = nbt.getItem();
+		ItemMeta meta = item.getItemMeta();
+		meta.setDisplayName(ChatColor.AQUA + baitName + " bait");
+		item.setItemMeta(meta);
+		this.baitItemStack = item;
 	}
+
+
+
+
 
 	public static void registerAllBaits() {
 		baits.add(new MoreTunaBait());
@@ -25,7 +43,7 @@ public abstract class BaitCore {
 
 	public static BaitCore getBait(String name) {
 		for(BaitCore bait : baits) {
-			if(bait.getName().equals(name))
+			if(bait.getName().equalsIgnoreCase(name))
 				return bait;
 		}
 		return null;
@@ -65,6 +83,14 @@ public abstract class BaitCore {
 
 		}
 		return null;
+	}
+
+	public ItemStack getBaitItemStack() {
+		return baitItemStack;
+	}
+
+	public void setBaitItemStack(ItemStack baitItemStack) {
+		this.baitItemStack = baitItemStack;
 	}
 
 	public String getName() {
