@@ -30,7 +30,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
 
         server.pluginManager.registerEvents(this, this)
 
-        shopRegistry["one"] = Shop("Test Shop", "siege.shops.whitelist.one", listOf(
+        shopRegistry["0"] = Shop("Test Shop", "siege.shops.shop.0", listOf(
             ShopItem(WoodenSword(50), 10, hashMapOf(Twig(50) to 2), false) {
                 WoodenSword(Utils.randRarity()).getUpdatedItem(false)
             },
@@ -47,6 +47,35 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 WoodenSword(Utils.randRarity()).getUpdatedItem(false)
             },
             ShopItem(WoodenSword(50), 0, hashMapOf(Pebble.tier(1) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            }
+        ))
+        shopRegistry["1"] = Shop("Test Shop", "siege.shops.shop.1", listOf(
+            ShopItem(WoodenSword(50), 10, hashMapOf(Twig(50) to 2), false) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), -1, hashMapOf(Twig(50) to 1), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 200, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {
+                WoodenSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(WoodenSword(50), 0, hashMapOf(Pebble.tier(1) to 2, Pebble.tier(1) to 2), true) {
                 WoodenSword(Utils.randRarity()).getUpdatedItem(false)
             },
             ShopItem(WoodenSword(50), 0, hashMapOf(Twig(50) to 2), true) {

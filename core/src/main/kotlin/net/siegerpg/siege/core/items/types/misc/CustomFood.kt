@@ -57,9 +57,13 @@ abstract class CustomFood(
 
     open fun onEat(e: PlayerInteractEvent) {
         val foodRegenVal: Int = FoodPoints.getHungerRegenValue(e.player.itemInHand.type)
+        val satRegenVal: Double = FoodPoints.getSaturationValue(e.player.itemInHand.type)
         var newFoodLevel = e.player.foodLevel+foodRegenVal
+        var newSatLevel = e.player.saturation+satRegenVal
         if (newFoodLevel > 20) newFoodLevel = 20
+        if (newSatLevel > e.player.foodLevel) newSatLevel = e.player.foodLevel.toDouble()
         e.player.foodLevel = newFoodLevel
+        e.player.saturation = newSatLevel.toFloat()
         e.player.playSound(e.player.location, Sound.ENTITY_GENERIC_EAT, 0.8.toFloat(), 0.8.toFloat())
         e.player.playSound(e.player.location, Sound.ENTITY_FOX_EAT, 0.4.toFloat(), 0.8.toFloat())
         val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth + (e.player.level*2)
