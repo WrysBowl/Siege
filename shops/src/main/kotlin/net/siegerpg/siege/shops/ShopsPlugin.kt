@@ -1,18 +1,19 @@
 package net.siegerpg.siege.shops
 
 import co.aikar.commands.PaperCommandManager
-import net.siegerpg.siege.core.items.implemented.armor.boots.SlimyBoots
+import net.siegerpg.siege.core.items.CustomItem
+import net.siegerpg.siege.core.items.CustomItemUtils
+import net.siegerpg.siege.core.items.implemented.armor.boots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.SlimyChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*
-import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*
-import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
-import net.siegerpg.siege.core.items.implemented.misc.wands.GlisteningTwig
-import net.siegerpg.siege.core.items.implemented.misc.wands.LivingTwig
+import net.siegerpg.siege.core.items.implemented.misc.wands.*
 import net.siegerpg.siege.core.items.implemented.misc.wands.glisteningTwigs.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.giantClubs.*
@@ -22,12 +23,15 @@ import net.siegerpg.siege.core.items.implemented.weapons.ranged.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.woodenBows.*
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Bukkit
+import org.bukkit.Material
 import org.bukkit.event.Listener
+import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 
 
 class ShopsPlugin: JavaPlugin(), Listener {
     // while this is singleton, a class must be initialized by Bukkit, so we can't use 'object'
+    // Please make it possible to fill a slot with a blank item
     companion object {
         var instance: ShopsPlugin? = null
             private set;
@@ -252,6 +256,9 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(2) to 3), true) {
                 HealingSlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
             },
+            ShopItem(Slime.tier(1), -1, hashMapOf(), false) {
+                Slime.tier(1).getUpdatedItem(false)
+            },
 
             //SLIMY CHESTPLATES
             ShopItem(SlimyChestplate(-1), 250, hashMapOf(
@@ -282,6 +289,9 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Slime.tier(2) to 5,
                 Wheat.tier(3) to 1), true) {
                 HealingSlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(Slime.tier(1), -1, hashMapOf(), false) {
+                Slime.tier(1).getUpdatedItem(false)
             },
 
             //SLIMY LEGGINGS
@@ -314,6 +324,9 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(2) to 4), true) {
                 HealingSlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
             },
+            ShopItem(Slime.tier(1), -1, hashMapOf(), false) {
+                Slime.tier(1).getUpdatedItem(false)
+            },
 
             //SLIMY BOOTS
             ShopItem(SlimyBoots(-1), 150, hashMapOf(
@@ -344,6 +357,9 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Slime.tier(2) to 2,
                 Wheat.tier(2) to 6), true) {
                 HealingSlimyBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(Slime.tier(1), -1, hashMapOf(), false) {
+                Slime.tier(1).getUpdatedItem(false)
             },
         ))
 
