@@ -19,6 +19,7 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.VaultHook
 import net.siegerpg.siege.core.utils.lore
+import net.siegerpg.siege.core.utils.name
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.command.CommandSender
@@ -76,7 +77,7 @@ class ShopsCommand: BaseCommand() {
            meta.lore("")
            if (it.craftable) {
                for (entry in it.recipe) {
-                   meta.lore("<aqua>${entry.value}x ${entry.key.name}")
+                   meta.lore("<aqua>${entry.value}x ${entry.key.getUpdatedItem(false).itemMeta.displayName}")
                }
                meta.lore("<yellow>Left click to craft!")
            }

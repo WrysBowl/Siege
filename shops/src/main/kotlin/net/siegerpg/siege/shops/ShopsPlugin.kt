@@ -254,7 +254,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(2) to 3), true) {
                 HealingSlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -288,7 +288,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(3) to 1), true) {
                 HealingSlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -322,7 +322,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(2) to 4), true) {
                 HealingSlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -356,7 +356,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(2) to 6), true) {
                 HealingSlimyBoots(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
         ))
@@ -506,7 +506,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 Wheat.tier(2).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -531,10 +531,10 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(2) to 8), true) {
                 Wheat.tier(3).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -559,10 +559,10 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(3) to 8), true) {
                 Wheat.tier(4).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -587,10 +587,10 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(4) to 8), true) {
                 Wheat.tier(5).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
         ))
@@ -646,10 +646,10 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Titanium.tier(2) to 8), true) {
                 Titanium.tier(3).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -674,10 +674,10 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Titanium.tier(3) to 8), true) {
                 Titanium.tier(4).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -702,10 +702,10 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Titanium.tier(4) to 8), true) {
                 Titanium.tier(5).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
         ))
@@ -723,13 +723,13 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(Bread(0), -1, hashMapOf(Wheat.tier(1) to 6), true) {
                 Bread(0).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -746,13 +746,13 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(Bread(50), -1, hashMapOf(Wheat.tier(2) to 2), true) {
                 Bread(50).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
 
@@ -769,15 +769,39 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(Bread(100), -1, hashMapOf(Wheat.tier(2) to 3), true) {
                 Bread(100).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(GRAYFILLER(-1) to 1), false) {
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             }
+        ))
+        shopRegistry["chelsea"] = Shop("Chelsea", "siege.shops.shop.chelsea", listOf(
+            //Quality 0
+            ShopItem(Drumstick(0), 25, hashMapOf(), false) {
+                Drumstick(0).getUpdatedItem(false)
+            },
+            ShopItem(Apple(0), 20, hashMapOf(), false) {
+                Apple(0).getUpdatedItem(false)
+            },
+            ShopItem(Bread(0), 25, hashMapOf(), false) {
+                Bread(0).getUpdatedItem(false)
+            },
+            ShopItem(Bread(0), -1, hashMapOf(Wheat.tier(1) to 6), true) {
+                Bread(0).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
         ))
 
         Bukkit.getLogger().info("Enabled!")

@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerExpChangeEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
@@ -69,7 +70,7 @@ public class WorldListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void preventLeftClick(PlayerInteractEvent e) {
+    public void preventClick(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.LEFT_CLICK_AIR) || e.getAction().equals(Action.LEFT_CLICK_BLOCK) ||
                 e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getClickedBlock() == null) { return; }
@@ -77,6 +78,15 @@ public class WorldListener implements Listener, Runnable {
                 if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) { return; }
                 e.setCancelled(true);
             }
+        }
+    }
+    @EventHandler
+    public void preventClick(PlayerInteractEntityEvent e) {
+        Entity entity = e.getRightClicked();
+        Player player = e.getPlayer();
+        if (entity instanceof ItemFrame) {
+            if (player.getGameMode().equals(GameMode.CREATIVE)) {return;}
+            e.setCancelled(true);
         }
     }
 
