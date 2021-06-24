@@ -8,7 +8,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class GRAYFILLER() : CustomMaterial(
-    name = "<black><obf>|||",
+    name = "",
     description = listOf(""),
     material = Material.GRAY_STAINED_GLASS_PANE
 ) {

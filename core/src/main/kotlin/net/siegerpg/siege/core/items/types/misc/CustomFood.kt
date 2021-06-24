@@ -107,9 +107,8 @@ abstract class CustomFood(
         description.forEach {
             meta.lore("<r><dark_gray>$it")
         }
-        meta.lore(" ")
-        meta.lore("<r><gray>Level: $levelRequirement")
-        if (hideRarity) meta.lore("<r><red>This is not the real item")
+        //meta.lore(" ")
+        //meta.lore("<r><gray>Level: $levelRequirement")
 
         meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)

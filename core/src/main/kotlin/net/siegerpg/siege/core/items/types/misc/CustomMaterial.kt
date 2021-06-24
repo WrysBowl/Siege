@@ -54,7 +54,9 @@ abstract class CustomMaterial(
 
         val meta = item.itemMeta
 
-        if (name != "<black><obf>|||") {
+        if (name == "") {
+            meta.name("")
+        } else {
             meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
 
             if (meta.hasLore()) meta.lore(mutableListOf())
@@ -63,8 +65,6 @@ abstract class CustomMaterial(
             description.forEach {
                 meta.lore("<r><dark_gray>$it")
             }
-        } else {
-            meta.name("<black><obf>|||")
         }
 
 

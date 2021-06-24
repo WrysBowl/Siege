@@ -15,6 +15,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage
 import net.siegerpg.siege.core.informants.Scoreboard
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig
+import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.VaultHook
 import net.siegerpg.siege.core.utils.lore
