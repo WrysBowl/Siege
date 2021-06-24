@@ -13,6 +13,9 @@ import net.siegerpg.siege.core.items.implemented.misc.food.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
+import net.siegerpg.siege.core.items.implemented.misc.tools.*
+import net.siegerpg.siege.core.items.implemented.misc.tools.IronAxe
+import net.siegerpg.siege.core.items.implemented.misc.tools.StoneAxe
 import net.siegerpg.siege.core.items.implemented.misc.wands.*
 import net.siegerpg.siege.core.items.implemented.misc.wands.glisteningTwigs.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*
@@ -779,28 +782,167 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 GRAYFILLER(-1).getUpdatedItem(false)
             }
         ))
-        shopRegistry["chelsea"] = Shop("Chelsea", "siege.shops.shop.chelsea", listOf(
-            //Quality 0
-            ShopItem(Drumstick(0), 25, hashMapOf(), false) {
-                Drumstick(0).getUpdatedItem(false)
+        shopRegistry["marco"] = Shop("Marco", "siege.shops.shop.marco", listOf(
+            //WOODEN
+            ShopItem(WoodenPickaxe(0), 200, hashMapOf(), false) {
+                WoodenPickaxe(0).getUpdatedItem(false)
             },
-            ShopItem(Apple(0), 20, hashMapOf(), false) {
-                Apple(0).getUpdatedItem(false)
+            ShopItem(WoodenShovel(0), 200, hashMapOf(), false) {
+                WoodenShovel(0).getUpdatedItem(false)
             },
-            ShopItem(Bread(0), 25, hashMapOf(), false) {
-                Bread(0).getUpdatedItem(false)
-            },
-            ShopItem(Bread(0), -1, hashMapOf(Wheat.tier(1) to 6), true) {
-                Bread(0).getUpdatedItem(false)
+            ShopItem(WoodenAxe(0), 200, hashMapOf(), false) {
+                WoodenAxe(0).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-                GRAYFILLER(-1).getUpdatedItem(false)
+            ShopItem(GlowingWoodenPickaxe(0), 400, hashMapOf(), true) {
+                GlowingWoodenPickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingWoodenShovel(0), 400, hashMapOf(), true) {
+                GlowingWoodenShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingWoodenAxe(0), 400, hashMapOf(), true) {
+                GlowingWoodenAxe(0).getUpdatedItem(false)
+            },
+
+            //BONE
+            ShopItem(BonePickaxe(0), 600, hashMapOf(), true) {
+                BonePickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(BoneShovel(0), 600, hashMapOf(), true) {
+                BoneShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(BoneAxe(0), 600, hashMapOf(), true) {
+                BoneAxe(0).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GlowingBonePickaxe(0), 800, hashMapOf(), true) {
+                GlowingBonePickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingBoneShovel(0), 800, hashMapOf(), true) {
+                GlowingBoneShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingBoneAxe(0), 800, hashMapOf(), true) {
+                GlowingBoneAxe(0).getUpdatedItem(false)
+            },
+
+            //STONE
+            ShopItem(StonePickaxe(0), 1300, hashMapOf(), true) {
+                StonePickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(StoneShovel(0), 1300, hashMapOf(), true) {
+                StoneShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(StoneAxe(0), 1300, hashMapOf(), true) {
+                StoneAxe(0).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GlowingStonePickaxe(0), 2000, hashMapOf(), true) {
+                GlowingStonePickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingStoneShovel(0), 2000, hashMapOf(), true) {
+                GlowingStoneShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingStoneAxe(0), 2000, hashMapOf(), true) {
+                GlowingStoneAxe(0).getUpdatedItem(false)
+            },
+
+            //IRON
+            ShopItem(IronPickaxe(0), 2500, hashMapOf(), true) {
+                IronPickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(IronShovel(0), 2500, hashMapOf(), true) {
+                IronShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(IronAxe(0), 2500, hashMapOf(), true) {
+                IronAxe(0).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GlowingIronPickaxe(0), 3500, hashMapOf(), true) {
+                GlowingIronPickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingIronShovel(0), 3500, hashMapOf(), true) {
+                GlowingIronShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingIronAxe(0), 3500, hashMapOf(), true) {
+                GlowingIronAxe(0).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["clemont"] = Shop("Clemont", "siege.shops.shop.clemont", listOf(
+            //LUCKY TOOLS
+            ShopItem(HammerAndChisel(0), 5000, hashMapOf(), true) {
+                HammerAndChisel(0).getUpdatedItem(false)
+            },
+            ShopItem(Trowel(0), 5000, hashMapOf(), true) {
+                Trowel(0).getUpdatedItem(false)
+            },
+            ShopItem(Handsaw(0), 5000, hashMapOf(), true) {
+                Handsaw(0).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GlowingHammerAndChisel(0), 8000, hashMapOf(), true) {
+                GlowingHammerAndChisel(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingTrowel(0), 8000, hashMapOf(), true) {
+                GlowingTrowel(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingHandsaw(0), 8000, hashMapOf(), true) {
+                GlowingHandsaw(0).getUpdatedItem(false)
+            },
+
+            //STEEL
+            ShopItem(SteelPickaxe(0), 10000, hashMapOf(), true) {
+                SteelPickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(SteelShovel(0), 10000, hashMapOf(), true) {
+                SteelShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(SteelAxe(0), 10000, hashMapOf(), true) {
+                Handsaw(0).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GlowingSteelPickaxe(0), 17500, hashMapOf(), true) {
+                GlowingSteelPickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingSteelShovel(0), 17500, hashMapOf(), true) {
+                GlowingSteelShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingSteelAxe(0), 17500, hashMapOf(), true) {
+                GlowingSteelAxe(0).getUpdatedItem(false)
+            },
+
+            //TITANIUM
+            ShopItem(TitaniumPickaxe(0), 30000, hashMapOf(), true) {
+                TitaniumPickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(TitaniumShovel(0), 30000, hashMapOf(), true) {
+                TitaniumShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(TitaniumAxe(0), 30000, hashMapOf(), true) {
+                TitaniumAxe(0).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GlowingTitaniumPickaxe(0), 50000, hashMapOf(), true) {
+                GlowingTitaniumPickaxe(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingTitaniumShovel(0), 50000, hashMapOf(), true) {
+                GlowingTitaniumShovel(0).getUpdatedItem(false)
+            },
+            ShopItem(GlowingTitaniumAxe(0), 50000, hashMapOf(), true) {
+                GlowingTitaniumAxe(0).getUpdatedItem(false)
             },
         ))
 
