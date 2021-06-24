@@ -31,10 +31,10 @@ interface CustomEquipment : CustomItem {
 
         if (meta.hasLore()) meta.lore(mutableListOf())
 
-        if (!hideRarity) {
-            meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${quality}%")
-        } else {
+        if (hideRarity || quality < 0) {
             meta.lore("<r><yellow>Rarity ???<gray>%")
+        } else {
+            meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${quality}%")
         }
         statGem?.let {
             meta.lore(" ")
