@@ -229,6 +229,7 @@ public class BlockBreakListener implements Listener {
         final double luckVal = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
         int goldCoinAmt = blockDrop.getGold(true);
         int exp = blockDrop.getExp(true);
+        double luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
         final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
         final boolean upFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
         final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.DOWN).getType());
@@ -247,11 +248,17 @@ public class BlockBreakListener implements Listener {
 
         if (goldCoinAmt > 0) {
             goldCoinAmt = (int) Math.floor(goldCoinAmt * WebstoreUtils.goldMultiplier);
+            if ((Math.random() * 100) <= luck) {
+                goldCoinAmt *= 2;
+            }
             GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
         }
-
-        if (blockDrop.getExp(true) > 0) {
+        
+        if (exp > 0) {
             exp = (int) Math.floor(exp * WebstoreUtils.expMultiplier);
+            if ((Math.random() * 100) <= luck) {
+                exp *= 2;
+            }
             GoldEXPSpawning.spawnEXP(exp, loc);
         }
 
