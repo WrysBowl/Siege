@@ -18,6 +18,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.VaultHook
 import net.siegerpg.siege.core.utils.lore
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.command.CommandSender
 import org.bukkit.command.ConsoleCommandSender
@@ -76,7 +77,7 @@ class ShopsCommand: BaseCommand() {
                for (entry in it.recipe) {
                    meta.lore("<aqua>${entry.value}x ${entry.key.name}")
                }
-               meta.lore("<yellow>Click to craft!")
+               meta.lore("<yellow>Left click to craft!")
            }
            if (it.buyPrice > -1) meta.lore("<yellow>Right click to buy for ${it.buyPrice} gold!")
            item.itemMeta = meta
@@ -94,7 +95,7 @@ class ShopsCommand: BaseCommand() {
                        for (entry in it.recipe) {
                            val stack = entry.key.getUpdatedItem(false)
                            stack.amount = entry.value
-                           player.inventory.remove(stack)
+                           player.inventory.removeItem(stack)
                        }
                        player.inventory.addItem(it.generate())
                    }
