@@ -8,7 +8,6 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.wands.*;
-import net.siegerpg.siege.core.items.implemented.misc.wands.earthernWands.EarthernWand;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
@@ -475,7 +474,7 @@ public class SymoneCollector implements Listener {
                     Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x1"),
                     Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1")));
-            add(Utils.addLore(new net.siegerpg.siege.core.items.implemented.misc.wands.earthernWands.EarthernWand(50).getUpdatedItem(false),
+            add(Utils.addLore(new EarthernWand(50).getUpdatedItem(false),
                     Utils.lore("<dark_aqua>Click to Craft"),
                     Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A x2"),
                     Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x2"),
