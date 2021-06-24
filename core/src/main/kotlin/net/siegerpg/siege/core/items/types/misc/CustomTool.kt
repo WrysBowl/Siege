@@ -61,7 +61,7 @@ abstract class CustomTool(
         }
 
         meta.isUnbreakable = true
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ENCHANTS)
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         enchantments.forEach { (key, value) ->
             meta.addEnchant(key, value, true)
         }
