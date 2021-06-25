@@ -17,7 +17,7 @@ class StrongStickyStick() : CustomMeleeWeapon(
     description = listOf("Globs of slime on a stick"),
     levelRequirement = 5,
     material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(strength = 12.0),
     recipeList = recipes {
         recipe {
             shaped = true
