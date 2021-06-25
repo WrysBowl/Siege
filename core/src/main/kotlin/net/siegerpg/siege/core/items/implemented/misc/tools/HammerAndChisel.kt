@@ -14,7 +14,7 @@ class HammerAndChisel() : CustomTool(
     description = listOf("Gives extra rewards, same speed as stone version"),
     levelRequirement = 30,
     material = Material.STONE_PICKAXE,
-    baseStats = CustomItemUtils.statMap(luck = 30.0),
+    baseStats = CustomItemUtils.statMap(luck = 15.0),
     recipeList = recipes {
 
     },
