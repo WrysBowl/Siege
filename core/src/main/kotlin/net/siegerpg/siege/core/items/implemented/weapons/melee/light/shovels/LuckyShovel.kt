@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 
 class LuckyShovel() : CustomMeleeWeapon(
     name = "Lucky Shovel",
-    customModelData = 110002,
+    customModelData = 110004,
     description = listOf("A true grave digger"),
     levelRequirement = 13,
     material = Material.WOODEN_SWORD,

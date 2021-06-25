@@ -74,7 +74,7 @@ class ShopsCommand: BaseCommand() {
        shop.items.forEach {
            val item = it.item.getUpdatedItem(true)
            val meta = item.itemMeta
-           meta.lore("")
+           if (meta.displayName != "") meta.lore("")
            if (it.craftable) {
                for (entry in it.recipe) {
                    meta.lore("<aqua>${entry.value}x ${entry.key.getUpdatedItem(false).itemMeta.displayName}")
