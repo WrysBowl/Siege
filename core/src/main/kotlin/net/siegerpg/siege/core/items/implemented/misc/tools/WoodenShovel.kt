@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack
 
 class WoodenShovel() : CustomTool(
     name = "Wooden Shovel",
-    customModelData = 430001,
+    customModelData = 420001,
     description = listOf("Your basic shovel"),
     levelRequirement = 0,
     material = Material.WOODEN_SHOVEL,

@@ -192,41 +192,41 @@ class ShopsPlugin: JavaPlugin(), Listener {
             },
 
             //WANDS
-            ShopItem(LivingTwig(-1), 300, hashMapOf(), false) {
+            ShopItem(LivingTwig(-1), 200, hashMapOf(), false) {
                 LivingTwig(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(GlisteningTwig(-1), 500, hashMapOf(
+            ShopItem(GlisteningTwig(-1), 300, hashMapOf(
                 Seed.tier(2) to 1,
                 Stick.tier(2) to 1,
                 Feather.tier(2) to 2), true) {
                 GlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
             },
 
-            ShopItem(LuckyGlisteningTwig(-1), 600, hashMapOf(
+            ShopItem(LuckyGlisteningTwig(-1), 400, hashMapOf(
                 Seed.tier(2) to 1,
                 Stick.tier(2) to 1,
                 Feather.tier(2) to 2), true) {
                 LuckyGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(StrongGlisteningTwig(-1), 600, hashMapOf(
+            ShopItem(StrongGlisteningTwig(-1), 400, hashMapOf(
                 Seed.tier(2) to 1,
                 Stick.tier(2) to 1,
                 Bone.tier(2) to 1), true) {
                 StrongGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(ToughGlisteningTwig(-1), 600, hashMapOf(
+            ShopItem(ToughGlisteningTwig(-1), 400, hashMapOf(
                 Seed.tier(2) to 1,
                 Stick.tier(2) to 1,
                 Pebble.tier(2) to 2), true) {
                 ToughGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(HealthyGlisteningTwig(-1), 600, hashMapOf(
+            ShopItem(HealthyGlisteningTwig(-1), 400, hashMapOf(
                 Seed.tier(2) to 1,
                 Stick.tier(2) to 1,
                 PlantMatter.tier(2) to 3), true) {
                 HealthyGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(HealingGlisteningTwig(-1), 600, hashMapOf(
+            ShopItem(HealingGlisteningTwig(-1), 400, hashMapOf(
                 Seed.tier(2) to 1,
                 Stick.tier(2) to 1,
                 Wheat.tier(2) to 2), true) {

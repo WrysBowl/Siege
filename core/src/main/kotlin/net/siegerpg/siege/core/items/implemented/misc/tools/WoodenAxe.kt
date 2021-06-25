@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack
 
 class WoodenAxe() : CustomTool(
     name = "Wooden Axe",
-    customModelData = 420001,
+    customModelData = 430001,
     description = listOf("Your basic axe"),
     levelRequirement = 0,
     material = Material.WOODEN_AXE,

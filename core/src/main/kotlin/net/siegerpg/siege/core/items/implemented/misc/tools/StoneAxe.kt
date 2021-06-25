@@ -13,7 +13,7 @@ class StoneAxe() : CustomTool(
     customModelData = 430005,
     description = listOf("Lumberjack"),
     levelRequirement = 15,
-    material = Material.STONE_PICKAXE,
+    material = Material.STONE_AXE,
     baseStats = CustomItemUtils.statMap(),
     recipeList = recipes {
 
