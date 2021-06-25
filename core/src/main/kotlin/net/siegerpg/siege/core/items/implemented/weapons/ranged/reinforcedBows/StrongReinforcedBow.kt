@@ -17,7 +17,7 @@ class StrongReinforcedBow() : CustomBow(
     description = listOf("Stronger wood to give", "the bow a bit more wam"),
     levelRequirement = 18,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 24.0),
+    baseStats = CustomItemUtils.statMap(strength = 26.0),
     recipeList = recipes {
         recipe {
             shaped = true
