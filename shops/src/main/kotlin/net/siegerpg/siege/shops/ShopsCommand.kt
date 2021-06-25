@@ -104,7 +104,10 @@ class ShopsCommand: BaseCommand() {
                    event.isRightClick -> {
                        if (it.buyPrice < 0) return@setAction
 
-                       if (VaultHook.econ.getBalance(player) < it.buyPrice) player.sendMessage(MiniMessage.get().parse("<red>You don't have enough gold!"))
+                       if (VaultHook.econ.getBalance(player) < it.buyPrice) {
+                           player.sendMessage(MiniMessage.get().parse("<red>You don't have enough gold!"))
+                           return@setAction
+                       }
                        if (event.getView().getBottomInventory().firstEmpty() == -1) return@setAction player.sendMessage(MiniMessage.get().parse("<red>Your inventory is full!"))
 
                        player.inventory.addItem(it.generate())

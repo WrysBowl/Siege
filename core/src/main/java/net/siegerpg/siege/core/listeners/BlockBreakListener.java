@@ -253,7 +253,7 @@ public class BlockBreakListener implements Listener {
             }
             GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
         }
-        
+
         if (exp > 0) {
             exp = (int) Math.floor(exp * WebstoreUtils.expMultiplier);
             if ((Math.random() * 100) <= luck) {
