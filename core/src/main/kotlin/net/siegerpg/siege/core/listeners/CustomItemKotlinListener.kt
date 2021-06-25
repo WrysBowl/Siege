@@ -106,6 +106,7 @@ class CustomItemKotlinListener : Listener, Runnable {
     fun onHit(e: EntityDamageEvent) {
 
         if (e.isCancelled) return
+        if (e.entity !is LivingEntity) return
         val victim = e.entity as LivingEntity
         val damage = e.damage
         var actualDamage = e.damage
