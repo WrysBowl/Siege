@@ -41,6 +41,7 @@ public class Pay implements CommandExecutor {
         double playerBal = VaultHook.econ.getBalance(player);
         if (playerBal >= gold) {
             player.sendMessage(Utils.lore("<yellow>You paid " + targetPlayer.getName() + " " + gold + " gold."));
+            if (targetPlayer.isOnline()) ((Player)targetPlayer).sendMessage(Utils.lore("<yellow>You were paid " + gold + " gold by " + player.getName() + "."));
             VaultHook.econ.withdrawPlayer(player, gold);
             VaultHook.econ.depositPlayer(targetPlayer, gold);
         } else {

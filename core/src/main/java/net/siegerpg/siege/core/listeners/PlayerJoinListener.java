@@ -20,6 +20,8 @@ import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,6 +29,9 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.ScoreboardManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -122,6 +127,16 @@ public class PlayerJoinListener implements Listener {
             }
         }
         */
+
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        org.bukkit.scoreboard.Scoreboard board = manager.getNewScoreboard();
+        board.registerNewObjective("showHealth", "health");
+
+        Objective objective = board.getObjective("showHealth");
+        objective.setDisplaySlot(DisplaySlot.BELOW_NAME);
+        objective.setDisplayName("❤");
+        player.setScoreboard(board);
+
         player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
     }
 }
