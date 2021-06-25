@@ -63,6 +63,12 @@ public class MeraTransit implements Listener {
                 Scoreboard.updateScoreboard(player);
                 player.closeInventory();
                 player.sendTitle(Utils.tacc("&aTeleporting to"), Utils.tacc("&eThe Farm"), 10, 40, 10);
+                player.getWorld().spawnParticle(
+                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
+                        player.getLocation(), 1);
+                new Location(hillyWoods, 126, 58, -117).getWorld().spawnParticle(
+                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
+                        new Location(hillyWoods, 126, 58, -117), 1);
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                     player.teleport(new Location(hillyWoods, 126, 58, -117, -95, 0));
                 }, 40L);
@@ -77,6 +83,12 @@ public class MeraTransit implements Listener {
                 Scoreboard.updateScoreboard(player);
                 player.closeInventory();
                 player.sendTitle(Utils.tacc("&aTeleporting to"), Utils.tacc("&7The Cave"), 10, 40, 10);
+                player.getWorld().spawnParticle(
+                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
+                        player.getLocation(), 1);
+                new Location(hillyWoods, -278, 80, 295).getWorld().spawnParticle(
+                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
+                        new Location(hillyWoods, -278, 80, 295), 1);
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                     player.teleport(new Location(hillyWoods, -278, 80, 295, -150, 0));
                 }, 40L);
@@ -91,6 +103,12 @@ public class MeraTransit implements Listener {
                 Scoreboard.updateScoreboard(player);
                 player.closeInventory();
                 player.sendTitle(Utils.tacc("&aTeleporting to"), Utils.tacc("&aThe Village"), 10, 40, 10);
+                player.getWorld().spawnParticle(
+                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
+                        player.getLocation(), 1);
+                new Location(hillyWoods, 223, 92, 204).getWorld().spawnParticle(
+                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
+                        new Location(hillyWoods, 223, 92, 204), 1);
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                     player.teleport(new Location(hillyWoods, 223, 92, 204, 177, 0));
                 }, 40L);
