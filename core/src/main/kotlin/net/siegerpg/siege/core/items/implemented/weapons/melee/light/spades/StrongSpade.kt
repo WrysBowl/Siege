@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 
 class StrongSpade() : CustomMeleeWeapon(
     name = "Strong Spade",
-    customModelData = 110002,
+    customModelData = 110003,
     description = listOf("Not a shovel"),
     levelRequirement = 9,
     material = Material.WOODEN_SWORD,

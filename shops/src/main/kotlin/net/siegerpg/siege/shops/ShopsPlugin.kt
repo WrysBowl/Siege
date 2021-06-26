@@ -29,9 +29,14 @@ import net.siegerpg.siege.core.items.implemented.misc.wands.glisteningTwigs.*
 import net.siegerpg.siege.core.items.implemented.misc.wands.glowingTwigs.*
 import net.siegerpg.siege.core.items.implemented.misc.wands.slimeSpoofers.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.clobbers.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.doubleBladedAxes.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.earthernHammers.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.femurBones.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.giantClubs.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.greatSwords.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.warHammers.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.daggers.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.*
@@ -42,7 +47,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.splinteredB
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.bowbas.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ironBows.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.pebbleShooters.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.recurveBows.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.*
@@ -1841,219 +1848,565 @@ class ShopsPlugin: JavaPlugin(), Listener {
             },
         ))
         shopRegistry["valentine"] = Shop("Valentine", "siege.shops.shop.valentine", listOf(
-            //SCRAP SHARD
-            ShopItem(ScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 2), true) {
-                ScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            //IRON BOW
+            ShopItem(IronBow(-1), 3200, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 3), true) {
+                IronBow(Utils.randRarity()).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(LuckyScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Feather.tier(3) to 2), true) {
-                LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(StrongScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Bone.tier(3) to 2), true) {
-                StrongScrapShard(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(ToughScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Pebble.tier(3) to 2), true) {
-                ToughScrapShard(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealthyScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                PlantMatter.tier(3) to 2), true) {
-                HealthyScrapShard(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealingScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Wheat.tier(3) to 3), true) {
-                HealingScrapShard(Utils.randRarity()).getUpdatedItem(false)
-            },
-
-            //SPLINTERED BONE
-            ShopItem(SplinteredBone(-1), 2500, hashMapOf(
-                Bone.tier(3) to 2), true) {
-                SplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-                GRAYFILLER(-1).getUpdatedItem(false)
-            },
-            ShopItem(LuckySplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 1,
-                Feather.tier(3) to 2), true) {
-                LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(StrongSplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 3), true) {
-                StrongSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(ToughSplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 1,
-                Pebble.tier(3) to 2), true) {
-                ToughSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealthySplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 1,
-                PlantMatter.tier(3) to 2), true) {
-                HealthySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealingSplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 1,
-                Wheat.tier(3) to 3), true) {
-                HealingSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-
-            //REFINED DAGGER
-            ShopItem(RefinedDagger(-1), 2750, hashMapOf(
+            ShopItem(LuckyIronBow(-1), 3500, hashMapOf(
+                Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
-                Stick.tier(3) to 1), true) {
-                RefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+                Feather.tier(3) to 4), true) {
+                LuckyIronBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongIronBow(-1), 3500, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 1,
+                Bone.tier(3) to 4), true) {
+                StrongIronBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughIronBow(-1), 3500, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 1,
+                Pebble.tier(3) to 4), true) {
+                ToughIronBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyIronBow(-1), 3500, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 1,
+                PlantMatter.tier(3) to 3), true) {
+                HealthyIronBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingIronBow(-1), 3500, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 1,
+                Wheat.tier(4) to 1), true) {
+                HealingIronBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //BOWBA
+            ShopItem(Bowba(-1), 4000, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(4) to 1,
+                Bone.tier(4) to 2), true) {
+                Bowba(Utils.randRarity()).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(LuckyRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
-                Stick.tier(3) to 1,
-                Feather.tier(3) to 1), true) {
-                LuckyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            ShopItem(LuckyBowba(-1), 4500, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 4,
+                Bone.tier(4) to 1,
+                Feather.tier(4) to 2), true) {
+                LuckyBowba(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(StrongRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
-                Stick.tier(3) to 1,
-                Bone.tier(3) to 1), true) {
-                StrongRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            ShopItem(StrongBowba(-1), 4500, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 4,
+                Bone.tier(4) to 2), true) {
+                StrongBowba(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(ToughRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
-                Stick.tier(3) to 1,
-                Pebble.tier(3) to 2), true) {
-                ToughRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            ShopItem(ToughBowba(-1), 4500, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 4,
+                Bone.tier(4) to 1,
+                Pebble.tier(4) to 2), true) {
+                ToughBowba(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(HealthyRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
-                Stick.tier(3) to 1,
-                PlantMatter.tier(3) to 1), true) {
-                HealthyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            ShopItem(HealthyBowba(-1), 4500, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 4,
+                Bone.tier(4) to 1,
+                PlantMatter.tier(4) to 2), true) {
+                HealthyBowba(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(HealingRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
-                Stick.tier(3) to 1,
-                Wheat.tier(3) to 2), true) {
-                HealingRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            ShopItem(HealingBowba(-1), 4500, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 4,
+                Bone.tier(4) to 1,
+                Wheat.tier(4) to 4), true) {
+                HealingBowba(Utils.randRarity()).getUpdatedItem(false)
             },
         ))
-        shopRegistry["valentine"] = Shop("Jane", "siege.shops.shop.jane", listOf(
-            //SCRAP SHARD
-            ShopItem(ScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 2), true) {
-                ScrapShard(Utils.randRarity()).getUpdatedItem(false)
+        shopRegistry["gale"] = Shop("Forest", "siege.shops.shop.forest", listOf(
+            //DOUBLE BLADED AXE
+            ShopItem(DoubleBladedAxe(-1), 3000, hashMapOf(), false) {
+                DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(LuckyScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
+            ShopItem(LuckyDoubleBladedAxe(-1), 3500, hashMapOf(
+                Pebble.tier(3) to 3,
+                Stick.tier(3) to 2,
                 Feather.tier(3) to 2), true) {
-                LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false)
+                LuckyDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(StrongScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
+            ShopItem(StrongDoubleBladedAxe(-1), 3500, hashMapOf(
+                Pebble.tier(3) to 3,
+                Stick.tier(3) to 2,
                 Bone.tier(3) to 2), true) {
-                StrongScrapShard(Utils.randRarity()).getUpdatedItem(false)
+                StrongDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(ToughScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Pebble.tier(3) to 2), true) {
-                ToughScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            ShopItem(ToughDoubleBladedAxe(-1), 3500, hashMapOf(
+                Pebble.tier(4) to 1,
+                Stick.tier(3) to 2), true) {
+                ToughDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(HealthyScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
+            ShopItem(HealthyDoubleBladedAxe(-1), 3500, hashMapOf(
+                Pebble.tier(3) to 3,
+                Stick.tier(3) to 2,
                 PlantMatter.tier(3) to 2), true) {
-                HealthyScrapShard(Utils.randRarity()).getUpdatedItem(false)
+                HealthyDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(HealingScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Wheat.tier(3) to 3), true) {
-                HealingScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            ShopItem(HealingDoubleBladedAxe(-1), 3500, hashMapOf(
+                Pebble.tier(3) to 3,
+                Stick.tier(3) to 2,
+                Wheat.tier(4) to 1), true) {
+                HealingDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
             },
 
-            //SPLINTERED BONE
-            ShopItem(SplinteredBone(-1), 2500, hashMapOf(
-                Bone.tier(3) to 2), true) {
-                SplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-                GRAYFILLER(-1).getUpdatedItem(false)
-            },
-            ShopItem(LuckySplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 1,
-                Feather.tier(3) to 2), true) {
-                LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(StrongSplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 3), true) {
-                StrongSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(ToughSplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 1,
-                Pebble.tier(3) to 2), true) {
-                ToughSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealthySplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 1,
-                PlantMatter.tier(3) to 2), true) {
-                HealthySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealingSplinteredBone(-1), 2700, hashMapOf(
-                Bone.tier(3) to 1,
-                Wheat.tier(3) to 3), true) {
-                HealingSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
-            },
-
-            //REFINED DAGGER
-            ShopItem(RefinedDagger(-1), 2750, hashMapOf(
-                RefinedMetal.tier(3) to 1,
+            //GREAT SWORD
+            ShopItem(GreatSword(-1), 3750, hashMapOf(
+                MetalScrap.tier(3) to 2,
                 Stick.tier(3) to 1), true) {
-                RefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+                GreatSword(Utils.randRarity()).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            ShopItem(LuckyRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
+            ShopItem(LuckyGreatSword(-1), 4000, hashMapOf(
+                MetalScrap.tier(3) to 1,
                 Stick.tier(3) to 1,
-                Feather.tier(3) to 1), true) {
-                LuckyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+                Feather.tier(3) to 2), true) {
+                LuckyGreatSword(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(StrongRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
+            ShopItem(StrongGreatSword(-1), 4000, hashMapOf(
+                MetalScrap.tier(3) to 1,
                 Stick.tier(3) to 1,
-                Bone.tier(3) to 1), true) {
-                StrongRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+                Bone.tier(3) to 2), true) {
+                StrongGreatSword(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(ToughRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
+            ShopItem(ToughGreatSword(-1), 4000, hashMapOf(
+                MetalScrap.tier(3) to 1,
                 Stick.tier(3) to 1,
+                Pebble.tier(3) to 3), true) {
+                ToughGreatSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyGreatSword(-1), 4000, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Stick.tier(3) to 1,
+                PlantMatter.tier(3) to 2), true) {
+                HealthyGreatSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingGreatSword(-1), 4000, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Stick.tier(3) to 1,
+                Wheat.tier(4) to 1), true) {
+                HealingGreatSword(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //IRON AXE
+            ShopItem(IronAxe(-1), 4750, hashMapOf(), false) {
+                IronAxe(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyIronAxe(-1), 5000, hashMapOf(
+                RefinedMetal.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Feather.tier(3) to 2), true) {
+                LuckyIronAxe(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongIronAxe(-1), 5000, hashMapOf(
+                RefinedMetal.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Bone.tier(3) to 2), true) {
+                StrongIronAxe(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughIronAxe(-1), 5000, hashMapOf(
+                RefinedMetal.tier(3) to 2,
+                Stick.tier(3) to 2,
                 Pebble.tier(3) to 2), true) {
-                ToughRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+                ToughIronAxe(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(HealthyRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
+            ShopItem(HealthyIronAxe(-1), 5000, hashMapOf(
+                RefinedMetal.tier(3) to 2,
                 Stick.tier(3) to 1,
-                PlantMatter.tier(3) to 1), true) {
-                HealthyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+                PlantMatter.tier(3) to 3), true) {
+                HealthyIronAxe(Utils.randRarity()).getUpdatedItem(false)
             },
-            ShopItem(HealingRefinedDagger(-1), 3000, hashMapOf(
-                RefinedMetal.tier(2) to 4,
-                Stick.tier(3) to 1,
-                Wheat.tier(3) to 2), true) {
-                HealingRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            ShopItem(HealingIronAxe(-1), 5000, hashMapOf(
+                RefinedMetal.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Wheat.tier(4) to 1), true) {
+                HealingIronAxe(Utils.randRarity()).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["forest"] = Shop("Forest", "siege.shops.shop.forest", listOf(
+            //WAR HAMMER
+            ShopItem(WarHammer(-1), 4250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 4,
+                Stick.tier(3) to 2), true) {
+                WarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Feather.tier(3) to 2), true) {
+                LuckyWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Bone.tier(3) to 4), true) {
+                StrongWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(4) to 1,
+                Stick.tier(3) to 2), true) {
+                ToughWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                PlantMatter.tier(3) to 2), true) {
+                HealthyWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Wheat.tier(4) to 1), true) {
+                HealingWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //CLOBBER
+            ShopItem(Clobber(-1), 5250, hashMapOf(
+                RefinedMetal.tier(3) to 5), true) {
+                Clobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Feather.tier(4) to 1), true) {
+                LuckyClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Bone.tier(3) to 3), true) {
+                StrongClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Pebble.tier(4) to 1), true) {
+                ToughClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                PlantMatter.tier(3) to 3), true) {
+                HealthyClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Wheat.tier(4) to 2), true) {
+                HealingClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //EARTHERN HAMMER
+            ShopItem(EarthernHammer(-1), 5750, hashMapOf(
+                PlantMatter.tier(4) to 2,
+                Stick.tier(3) to 3), true) {
+                EarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Feather.tier(3) to 4), true) {
+                LuckyEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Bone.tier(3) to 4), true) {
+                StrongEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Pebble.tier(3) to 4), true) {
+                ToughEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                PlantMatter.tier(3) to 4), true) {
+                HealthyEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Wheat.tier(4) to 2), true) {
+                HealingEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["katherine"] = Shop("Katherine", "siege.shops.shop.katherine", listOf(
+            //WAR HAMMER
+            ShopItem(WarHammer(-1), 4250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 4,
+                Stick.tier(3) to 2), true) {
+                WarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Feather.tier(3) to 2), true) {
+                LuckyWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Bone.tier(3) to 4), true) {
+                StrongWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(4) to 1,
+                Stick.tier(3) to 2), true) {
+                ToughWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                PlantMatter.tier(3) to 2), true) {
+                HealthyWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Wheat.tier(4) to 1), true) {
+                HealingWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //CLOBBER
+            ShopItem(Clobber(-1), 5250, hashMapOf(
+                RefinedMetal.tier(3) to 5), true) {
+                Clobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Feather.tier(4) to 1), true) {
+                LuckyClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Bone.tier(3) to 3), true) {
+                StrongClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Pebble.tier(4) to 1), true) {
+                ToughClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                PlantMatter.tier(3) to 3), true) {
+                HealthyClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Wheat.tier(4) to 2), true) {
+                HealingClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //EARTHERN HAMMER
+            ShopItem(EarthernHammer(-1), 5750, hashMapOf(
+                PlantMatter.tier(4) to 2,
+                Stick.tier(3) to 3), true) {
+                EarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Feather.tier(3) to 4), true) {
+                LuckyEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Bone.tier(3) to 4), true) {
+                StrongEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Pebble.tier(3) to 4), true) {
+                ToughEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                PlantMatter.tier(3) to 4), true) {
+                HealthyEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Wheat.tier(4) to 2), true) {
+                HealingEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["fredric"] = Shop("Fredric", "siege.shops.shop.fredric", listOf(
+            //WAR HAMMER
+            ShopItem(WarHammer(-1), 4250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 4,
+                Stick.tier(3) to 2), true) {
+                WarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Feather.tier(3) to 2), true) {
+                LuckyWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Bone.tier(3) to 4), true) {
+                StrongWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(4) to 1,
+                Stick.tier(3) to 2), true) {
+                ToughWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                PlantMatter.tier(3) to 2), true) {
+                HealthyWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingWarHammer(-1), 4500, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2,
+                Stick.tier(3) to 2,
+                Wheat.tier(4) to 1), true) {
+                HealingWarHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //CLOBBER
+            ShopItem(Clobber(-1), 5250, hashMapOf(
+                RefinedMetal.tier(3) to 5), true) {
+                Clobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Feather.tier(4) to 1), true) {
+                LuckyClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Bone.tier(3) to 3), true) {
+                StrongClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Pebble.tier(4) to 1), true) {
+                ToughClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                PlantMatter.tier(3) to 3), true) {
+                HealthyClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingClobber(-1), 5500, hashMapOf(
+                RefinedMetal.tier(3) to 3,
+                Wheat.tier(4) to 2), true) {
+                HealingClobber(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //EARTHERN HAMMER
+            ShopItem(EarthernHammer(-1), 5750, hashMapOf(
+                PlantMatter.tier(4) to 2,
+                Stick.tier(3) to 3), true) {
+                EarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Feather.tier(3) to 4), true) {
+                LuckyEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Bone.tier(3) to 4), true) {
+                StrongEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Pebble.tier(3) to 4), true) {
+                ToughEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                PlantMatter.tier(3) to 4), true) {
+                HealthyEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingEarthernHammer(-1), 6000, hashMapOf(
+                PlantMatter.tier(4) to 1,
+                Stick.tier(3) to 3,
+                Wheat.tier(4) to 2), true) {
+                HealingEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
             },
         ))
 
