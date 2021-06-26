@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
@@ -101,13 +102,23 @@ public class DeathListener implements Listener {
     }
 
     @EventHandler
-    public void mobDeath(EntityDeathEvent e) {
+    public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException {
 
         if (e.getEntity().getKiller() == null) return;
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
 
         String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
         MobDropTable mobDrop = mobDropTableHashMap.get(mm);
+
+        if (mobDrop instanceof ChestMimic1) {
+            if (Utils.randTest(25.0)) {
+                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
+                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
+                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
+                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
+                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
+            }
+        }
 
         e.setDroppedExp(0);
         e.getDrops().clear();
