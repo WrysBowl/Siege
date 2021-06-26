@@ -88,20 +88,10 @@ public class StatChangeListener implements Listener, Runnable {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (playerHealth.get(p) == null) continue;
+                if (playerData.hasActionBar.get(p)) continue;
                 double health = Utils.round(playerHealth.get(p), 1);
                 double toughness = Utils.round(playerToughness.get(p), 1);
                 double customHealth = Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 1);
-
-                ScoreboardManager manager = Bukkit.getScoreboardManager();
-                org.bukkit.scoreboard.Scoreboard board = manager.getNewScoreboard();
-                board.registerNewObjective("showHealth", "health");
-
-                Objective objective = board.getObjective("showHealth");
-                objective.setDisplaySlot(DisplaySlot.BELOW_NAME);
-                objective.setDisplayName(Utils.tacc("&c"+customHealth+"&4/&c"+health+"\u2661    &3"+toughness+" \uD83D\uDEE1    "));
-                p.setScoreboard(board);
-
-                if (playerData.hasActionBar.get(p)) continue;
                 playerData.hasActionBar.put(p, true);
                 p.sendActionBar(Utils.parse("<red>"
                         + customHealth + "<dark_red>/" + health + " \u2764"
