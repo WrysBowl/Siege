@@ -178,7 +178,7 @@ object CustomItemUtils {
                 totalAmount += item.baseStats[it]!!
             }
             if (addRarity) {
-                totalAmount *= getRarityMultiplier(item.quality)
+                totalAmount *= if (item.quality < 0) getRarityMultiplier(50) else getRarityMultiplier(item.quality)
             }
             if (addGem) {
                 item.statGem?.let { gem ->

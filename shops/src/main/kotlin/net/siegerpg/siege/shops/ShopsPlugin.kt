@@ -42,8 +42,11 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.splinteredB
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.pebbleShooters.*
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.recurveBows.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.*
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.woodenBows.*
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Bukkit
@@ -1601,6 +1604,351 @@ class ShopsPlugin: JavaPlugin(), Listener {
             },
         ))
         shopRegistry["jane"] = Shop("Jane", "siege.shops.shop.jane", listOf(
+            //SCRAP SHARD
+            ShopItem(ScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 2), true) {
+                ScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Feather.tier(3) to 2), true) {
+                LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Bone.tier(3) to 2), true) {
+                StrongScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2), true) {
+                ToughScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                PlantMatter.tier(3) to 2), true) {
+                HealthyScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Wheat.tier(3) to 3), true) {
+                HealingScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //SPLINTERED BONE
+            ShopItem(SplinteredBone(-1), 2500, hashMapOf(
+                Bone.tier(3) to 2), true) {
+                SplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckySplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 1,
+                Feather.tier(3) to 2), true) {
+                LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongSplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 3), true) {
+                StrongSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughSplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 1,
+                Pebble.tier(3) to 2), true) {
+                ToughSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthySplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 1,
+                PlantMatter.tier(3) to 2), true) {
+                HealthySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingSplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 1,
+                Wheat.tier(3) to 3), true) {
+                HealingSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //REFINED DAGGER
+            ShopItem(RefinedDagger(-1), 2750, hashMapOf(
+                RefinedMetal.tier(3) to 1,
+                Stick.tier(3) to 1), true) {
+                RefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                Feather.tier(3) to 1), true) {
+                LuckyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                Bone.tier(3) to 1), true) {
+                StrongRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                Pebble.tier(3) to 2), true) {
+                ToughRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                PlantMatter.tier(3) to 1), true) {
+                HealthyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                Wheat.tier(3) to 2), true) {
+                HealingRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["julie"] = Shop("Julie", "siege.shops.shop.julie", listOf(
+            //SEWER SHOOTER
+            ShopItem(SewerShooter(-1), 1750, hashMapOf(
+                Slime.tier(3) to 1,
+                Magma.tier(3) to 1,
+                Stick.tier(3) to 3,
+                Vine.tier(3) to 3), true) {
+                SewerShooter(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckySewerShooter(-1), 2000, hashMapOf(
+                Slime.tier(3) to 1,
+                Magma.tier(3) to 1,
+                Stick.tier(3) to 3,
+                Vine.tier(3) to 1,
+                Feather.tier(3) to 2), true) {
+                LuckySewerShooter(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongSewerShooter(-1), 2000, hashMapOf(
+                Slime.tier(3) to 1,
+                Magma.tier(3) to 1,
+                Stick.tier(3) to 3,
+                Vine.tier(3) to 1,
+                Bone.tier(3) to 1), true) {
+                StrongSewerShooter(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughSewerShooter(-1), 2000, hashMapOf(
+                Slime.tier(3) to 1,
+                Magma.tier(3) to 1,
+                Stick.tier(3) to 3,
+                Vine.tier(3) to 1,
+                Pebble.tier(3) to 2), true) {
+                ToughSewerShooter(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthySewerShooter(-1), 2000, hashMapOf(
+                Slime.tier(3) to 1,
+                Magma.tier(3) to 1,
+                Stick.tier(3) to 3,
+                Vine.tier(3) to 1,
+                PlantMatter.tier(3) to 2), true) {
+                HealthySewerShooter(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingSewerShooter(-1), 2000, hashMapOf(
+                Slime.tier(3) to 1,
+                Magma.tier(3) to 1,
+                Stick.tier(3) to 3,
+                Vine.tier(3) to 1,
+                Wheat.tier(3) to 3), true) {
+                HealingSewerShooter(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //CROSSBOW
+            ShopItem(Crossbow(-1), 2750, hashMapOf(), false) {
+                Crossbow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyCrossbow(-1), 3000, hashMapOf(
+                Vine.tier(3) to 3,
+                MetalScrap.tier(3) to 1,
+                Feather.tier(3) to 3), true) {
+                LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongCrossbow(-1), 2700, hashMapOf(
+                Vine.tier(3) to 3,
+                MetalScrap.tier(3) to 1,
+                Bone.tier(3) to 3), true) {
+                StrongCrossbow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughCrossbow(-1), 2700, hashMapOf(
+                Vine.tier(3) to 3,
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 3), true) {
+                ToughCrossbow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyCrossbow(-1), 2700, hashMapOf(
+                Vine.tier(3) to 3,
+                MetalScrap.tier(3) to 1,
+                PlantMatter.tier(3) to 3), true) {
+                HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingCrossbow(-1), 2700, hashMapOf(
+                Vine.tier(3) to 3,
+                MetalScrap.tier(3) to 1,
+                Wheat.tier(4) to 1), true) {
+                HealingCrossbow(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //RECURVE BOW
+            ShopItem(RecurveBow(-1), 3000, hashMapOf(), false) {
+                RecurveBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyRecurveBow(-1), 3250, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 1,
+                Feather.tier(4) to 1), true) {
+                LuckyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongRecurveBow(-1), 3250, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 1,
+                Bone.tier(3) to 4), true) {
+                StrongRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughRecurveBow(-1), 3250, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 1,
+                Pebble.tier(4) to 1), true) {
+                ToughRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyRecurveBow(-1), 3250, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 1,
+                PlantMatter.tier(4) to 1), true) {
+                HealthyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingRecurveBow(-1), 3250, hashMapOf(
+                Vine.tier(3) to 3,
+                RefinedMetal.tier(3) to 1,
+                Wheat.tier(4) to 2), true) {
+                HealingRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["valentine"] = Shop("Valentine", "siege.shops.shop.valentine", listOf(
+            //SCRAP SHARD
+            ShopItem(ScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 2), true) {
+                ScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Feather.tier(3) to 2), true) {
+                LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Bone.tier(3) to 2), true) {
+                StrongScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Pebble.tier(3) to 2), true) {
+                ToughScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                PlantMatter.tier(3) to 2), true) {
+                HealthyScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingScrapShard(-1), 2250, hashMapOf(
+                MetalScrap.tier(3) to 1,
+                Wheat.tier(3) to 3), true) {
+                HealingScrapShard(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //SPLINTERED BONE
+            ShopItem(SplinteredBone(-1), 2500, hashMapOf(
+                Bone.tier(3) to 2), true) {
+                SplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckySplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 1,
+                Feather.tier(3) to 2), true) {
+                LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongSplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 3), true) {
+                StrongSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughSplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 1,
+                Pebble.tier(3) to 2), true) {
+                ToughSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthySplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 1,
+                PlantMatter.tier(3) to 2), true) {
+                HealthySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingSplinteredBone(-1), 2700, hashMapOf(
+                Bone.tier(3) to 1,
+                Wheat.tier(3) to 3), true) {
+                HealingSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //REFINED DAGGER
+            ShopItem(RefinedDagger(-1), 2750, hashMapOf(
+                RefinedMetal.tier(3) to 1,
+                Stick.tier(3) to 1), true) {
+                RefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                Feather.tier(3) to 1), true) {
+                LuckyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                Bone.tier(3) to 1), true) {
+                StrongRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                Pebble.tier(3) to 2), true) {
+                ToughRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                PlantMatter.tier(3) to 1), true) {
+                HealthyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingRefinedDagger(-1), 3000, hashMapOf(
+                RefinedMetal.tier(2) to 4,
+                Stick.tier(3) to 1,
+                Wheat.tier(3) to 2), true) {
+                HealingRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["valentine"] = Shop("Jane", "siege.shops.shop.jane", listOf(
             //SCRAP SHARD
             ShopItem(ScrapShard(-1), 2250, hashMapOf(
                 MetalScrap.tier(3) to 2), true) {
