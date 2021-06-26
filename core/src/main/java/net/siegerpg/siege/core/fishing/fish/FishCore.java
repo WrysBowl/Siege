@@ -1,7 +1,9 @@
 package net.siegerpg.siege.core.fishing.fish;
 
 import net.siegerpg.siege.core.fishing.baits.BaitCore;
+import net.siegerpg.siege.core.fishing.baits.BaitStats;
 import net.siegerpg.siege.core.fishing.fish.implemented.*;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 
@@ -34,14 +36,18 @@ public abstract class FishCore {
 	}
 
 	
-	public static FishCore chooseRandomFish(BaitCore baitCore) {
+	public static FishCore chooseRandomFish(BaitCore baitCore, Player player) {
 		double totalWeight = 0;
 		for(FishCore fishCore : FishCore.fishCoreTypes) {
 		    totalWeight += fishCore.getLevel().chance ;
 		    if(baitCore == null)
 		    	continue;
-		    if (baitCore.hasFish(fishCore.getFishName()))
-				totalWeight += baitCore.getStatFromFishName(fishCore.getFishName()).getChanceAdded();
+		    if (baitCore.hasFish(fishCore.getFishName())) {
+				player.sendMessage(baitCore.getName() + "added 1");
+				BaitStats stats =baitCore.getStat(fishCore.getFishName());
+				double stat = stats.getChanceAdded();
+				totalWeight += stat;
+			}
 
 		}
 		int randomIndex = -1;
@@ -50,8 +56,12 @@ public abstract class FishCore {
 		{
 			FishCore fish = FishCore.fishCoreTypes.get(i);
 		    random -= fish.getLevel().chance;
-			if (baitCore != null && baitCore.hasFish(fish.getFishName()))
-				totalWeight += baitCore.getStatFromFishName(fish.getFishName()).getChanceAdded();
+			if (baitCore != null && baitCore.hasFish(fish.getFishName())) {
+				player.sendMessage(baitCore.getName() + "added 2");
+				BaitStats stats =baitCore.getStat(fish.getFishName());
+				double stat = stats.getChanceAdded();
+				random -= stat;
+			}
 		    if (random <= 0.0d)
 		    {
 		        randomIndex = i;

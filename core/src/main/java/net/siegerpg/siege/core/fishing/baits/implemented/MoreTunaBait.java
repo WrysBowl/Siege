@@ -8,7 +8,7 @@ public class MoreTunaBait extends BaitCore {
 
 	// THIS IS AN EXAMPLE BAIT
 	public MoreTunaBait() {
-		super(new BaitStats[]{new BaitStats("Tuna", 50)}, "MoreTuna", Material.SEA_PICKLE);
+		super(new BaitStats[]{new BaitStats("Tuna", 1000)}, "MoreTuna", Material.SEA_PICKLE);
 	}
 
 

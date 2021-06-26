@@ -53,7 +53,6 @@ public class CustomFishEvent {
 		ArmorStand stand = ((ArmorStand)e.getPlayer().getLocation().getWorld().spawnEntity(baitLocation, EntityType.ARMOR_STAND));
 		stand.setVisible(false);
 		stand.setSmall(true);
-		stand.getEquipment().setHelmet(new ItemStack(Material.ACACIA_FENCE));
 		stand.setInvulnerable(true);
 		stand.setGravity(false);
 		stand.teleport(loc);
@@ -67,11 +66,12 @@ public class CustomFishEvent {
         	if (nbt.hasNBTData() && nbt.hasKey("baitType")) {
         		String baitType = nbt.getString("baitType");
         		if (BaitCore.hasBait(baitType))
+					stand.getEquipment().setHelmet(new ItemStack(Material.SEA_PICKLE));
         			this.getFishingData().setBait(BaitCore.getBait(baitType));
         		this.player.sendMessage(this.getFishingData().getBait().getName());
 			}
 		}
-		this.getFishingData().setFish(FishCore.chooseRandomFish(this.getFishingData().getBait()));
+		this.getFishingData().setFish(FishCore.chooseRandomFish(this.getFishingData().getBait(), this.getPlayer()));
 	}
 	public void trigger() {
 		player.sendMessage("custom event triggered");

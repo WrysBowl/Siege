@@ -76,11 +76,10 @@ public abstract class BaitCore {
 		this.stats = stats;
 	}
 
-	public BaitStats getStatFromFishName(String fishName) {
-		for(BaitStats stat : this.stats) {
-			if(stat.getFish().getFishName().equalsIgnoreCase(fishName))
-				return stat;
-
+	public BaitStats getStat(String name) {
+		for(BaitStats stats : this.stats) {
+			if(stats.getFish().getFishName().equalsIgnoreCase(name))
+				return stats;
 		}
 		return null;
 	}
