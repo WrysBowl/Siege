@@ -132,6 +132,11 @@ public class PlayerJoinListener implements Listener {
         org.bukkit.scoreboard.Scoreboard board = manager.getNewScoreboard();
         board.registerNewObjective("showHealth", "health");
 
+        Objective objective = board.getObjective("showHealth");
+        objective.setDisplaySlot(DisplaySlot.BELOW_NAME);
+        objective.setDisplayName("❤");
+        player.setScoreboard(board);
+
         player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
     }
 }
