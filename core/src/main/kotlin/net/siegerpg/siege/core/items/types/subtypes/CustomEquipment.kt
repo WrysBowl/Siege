@@ -1,5 +1,7 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
+import com.google.common.collect.Multimap
+import de.tr7zw.nbtapi.NBTItem
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -7,10 +9,15 @@ import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
+import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
+import org.bukkit.Bukkit
+import org.bukkit.attribute.Attribute
+import org.bukkit.attribute.AttributeModifier
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.ItemMeta
 
 interface CustomEquipment : CustomItem {
 
@@ -38,7 +45,7 @@ interface CustomEquipment : CustomItem {
         }
         statGem?.let {
             meta.lore(" ")
-            meta.lore("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem")
+            meta.lore("<r><color:#F67DF6>+${it.amount} <light_purple>${it.type.stylizedName}")
         }
         if (baseStats.size != 0) {
             meta.lore(" ")
@@ -46,6 +53,9 @@ interface CustomEquipment : CustomItem {
             baseStats.keys.forEach {
                 meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}") // TODO: Make special items work with rarity multiplier
             }
+        }
+        if (CustomItemUtils.getCustomItem(item) is CustomMeleeWeapon) {
+            meta.lore("<r><gray>${(CustomItemUtils.getCustomItem(item) as CustomMeleeWeapon).attackSpeed} Atk Speed")
         }
         meta.lore(" ")
         description.forEach {
