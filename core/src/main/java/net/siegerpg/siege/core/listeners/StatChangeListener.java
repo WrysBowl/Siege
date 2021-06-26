@@ -18,6 +18,9 @@ import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginEnableEvent;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.ScoreboardManager;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -84,18 +87,25 @@ public class StatChangeListener implements Listener, Runnable {
     public static void statBarDisplayTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
+                if (playerHealth.get(p) == null) continue;
+                double health = Utils.round(playerHealth.get(p), 1);
+                double toughness = Utils.round(playerToughness.get(p), 1);
+                double customHealth = Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 1);
+
+                ScoreboardManager manager = Bukkit.getScoreboardManager();
+                org.bukkit.scoreboard.Scoreboard board = manager.getNewScoreboard();
+                board.registerNewObjective("showHealth", "health");
+
+                Objective objective = board.getObjective("showHealth");
+                objective.setDisplaySlot(DisplaySlot.BELOW_NAME);
+                objective.setDisplayName(Utils.tacc("&c"+customHealth+"&4/&c"+health+"\u2661    &3"+toughness+" \uD83D\uDEE1    "));
+                p.setScoreboard(board);
+
                 if (playerData.hasActionBar.get(p)) continue;
                 playerData.hasActionBar.put(p, true);
-                if (playerHealth.get(p) == null) {
-                    p.sendActionBar(Utils.parse("<red>REJOIN or RE-EQUIP your armor"));
-                } else {
-                    double health = Utils.round(playerHealth.get(p), 1);
-                    double toughness = Utils.round(playerToughness.get(p), 1);
-                    double customHealth = Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 1);
-                    p.sendActionBar(Utils.parse("<red>"
-                            + customHealth + "<dark_red>/" + health + " \u2764"
-                            + "          <dark_aqua>" + Utils.round(toughness, 1) + " \uD83D\uDEE1       "));
-                }
+                p.sendActionBar(Utils.parse("<red>"
+                        + customHealth + "<dark_red>/" + health + " \u2764"
+                        + "          <dark_aqua>" + Utils.round(toughness, 1) + " \uD83D\uDEE1       "));
             }
             for (Player p : Bukkit.getOnlinePlayers()) {
                 playerData.hasActionBar.put(p, false);
