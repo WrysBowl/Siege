@@ -106,6 +106,7 @@ object Levels {
                 if (lvl % 10 == 0) {
                     Bukkit.getServer().broadcastMessage("")
                     Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + lvl + "!"))
+                    Bukkit.getServer().broadcastMessage(Utils.tacc("&a/pv " + (lvl%10) + " &7is available"))
                     Bukkit.getServer().broadcastMessage("")
                     val multiplier = floor(lvl/10.0).toInt()
                     VaultHook.perms.playerAdd(player, "cosmicvaults.amount.${multiplier}")

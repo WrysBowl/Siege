@@ -60,6 +60,10 @@ public class DeathListener implements Listener {
             //NEUTRALS
             put("GiantHornet", new GiantHornet());
             put("WildFox", new WildFox());
+            put("ChestMimic1", new ChestMimic1());
+            put("ChestMimic2", new ChestMimic2());
+            put("ChestMimic3", new ChestMimic3());
+            put("ChestMimic4", new ChestMimic4());
 
             //PASSIVES
             put("FeatheredMeat", new FeatheredMeat());
