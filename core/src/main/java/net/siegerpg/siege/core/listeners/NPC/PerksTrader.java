@@ -38,29 +38,33 @@ public class PerksTrader implements Listener {
     @EventHandler
     public void guiClick(InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player)) {return;}
-        if (e.getWhoClicked().getMetadata("BenButcher").size() > 0 &&
-                Objects.equals(e.getWhoClicked().getMetadata("BenButcher").get(0).value(), e.getInventory())) {
+        if (e.getWhoClicked().getMetadata("PerkTrading").size() > 0 &&
+                Objects.equals(e.getWhoClicked().getMetadata("PerkTrading").get(0).value(), e.getInventory())) {
             clickShop(e);
             e.setCancelled(true);
         }
     }
 
     private void clickShop(InventoryClickEvent e) {
-        if (e.getSlot() != 14) return;
+        if (e.getSlot() != 13) return;
 
         Player player = (Player) e.getWhoClicked();
         int highestPV = Utils.getHighestPV(player);
+        if (highestPV == 0) highestPV = 1;
+        int nextPV = highestPV+1;
         int cost = highestPV * 5000;
 
         if (VaultHook.econ.getBalance(player) < cost) {
             player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
+            player.closeInventory();
             return;
         }
-        VaultHook.perms.playerAdd(player, "cosmicvaults.amount."+(highestPV+1));
+        VaultHook.perms.playerAdd(player, "cosmicvaults.amount."+nextPV+" true global");
         VaultHook.econ.withdrawPlayer(player, cost);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         Scoreboard.updateScoreboard(player);
         player.sendMessage(Utils.tacc("&eYou have increased your player vault amount by 1."));
+        player.closeInventory();
     }
 
 
@@ -74,18 +78,19 @@ public class PerksTrader implements Listener {
         }
         int highestPV = Utils.getHighestPV(player);
         int cost = highestPV * 5000;
+        int nextPV = highestPV+1;
         ItemStack buyPerk = new ItemStack(Material.CHEST);
         ItemMeta buyPerkMeta = buyPerk.getItemMeta();
         buyPerkMeta.displayName(Utils.lore("<yellow>Buy +1 Vault"));
         buyPerkMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<gray>" + highestPV + " -> " + highestPV+1));
+                add(Utils.lore("<gray>" + highestPV + " -> " + nextPV));
                 add(Utils.lore("<yellow>Cost " + String.format("%,d", cost)));
                 add(Utils.lore("<yellow><bold>CLICK TO UPGRADE"));
             }
         });
         buyPerk.setItemMeta(buyPerkMeta);
-        gui.setItem(14, buyPerk);
+        gui.setItem(13, buyPerk);
 
         player.setMetadata("PerkTrading", new FixedMetadataValue(Core.plugin(), gui));
         return gui;

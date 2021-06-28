@@ -109,7 +109,7 @@ object Levels {
                     Bukkit.getServer().broadcastMessage(Utils.tacc("&a/pv " + (lvl%10) + " &7is available"))
                     Bukkit.getServer().broadcastMessage("")
                     val multiplier = floor(lvl/10.0).toInt()
-                    VaultHook.perms.playerAdd(player, "cosmicvaults.amount.${multiplier}")
+                    VaultHook.perms.playerAdd(player, "cosmicvaults.amount.${multiplier} true global")
                 }
                 player.sendTitle(
                     Utils.tacc("&5Level Up!"),
