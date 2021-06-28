@@ -51,6 +51,7 @@ public class DeathListener implements Listener {
             put("BloodSucker", new BloodSucker());
             put("ForestSpider", new ForestSpider());
             put("Goblin", new Goblin());
+            put("GoldenGoblin", new GoldenGoblin());
             put("InfectedDigger", new InfectedDigger());
             put("Orc", new Orc());
             put("RockRat", new RockRat());
