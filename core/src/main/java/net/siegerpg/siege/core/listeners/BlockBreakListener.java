@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.drops.BlockDropTable;
 import net.siegerpg.siege.core.drops.materials.*;
+import net.siegerpg.siege.core.drops.materials.decor.*;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.utils.GoldEXPSpawning;
@@ -187,6 +188,25 @@ public class BlockBreakListener implements Listener {
             put(Material.SUGAR_CANE, new SUGAR_CANE());
             put(Material.VINE, new VINE());
             put(Material.WHEAT, new WHEAT());
+
+            put(Material.ALLIUM, new ALLIUM());
+            put(Material.AZURE_BLUET, new AZURE_BLUET());
+            put(Material.BLUE_ORCHID, new BLUE_ORCHID());
+            put(Material.BROWN_MUSHROOM, new BROWN_MUSHROOM());
+            put(Material.CORNFLOWER, new CORNFLOWER());
+            put(Material.DANDELION, new DANDELION());
+            put(Material.DEAD_BUSH, new DEAD_BUSH());
+            put(Material.FERN, new FERN());
+            put(Material.GRASS, new GRASS());
+            put(Material.LILY_OF_THE_VALLEY, new LILY_OF_THE_VALLEY());
+            put(Material.LILY_PAD, new LILY_PAD());
+            put(Material.ORANGE_TULIP, new ORANGE_TULIP());
+            put(Material.PINK_TULIP, new PINK_TULIP());
+            put(Material.POPPY, new POPPY());
+            put(Material.RED_MUSHROOM, new RED_MUSHROOM());
+            put(Material.RED_TULIP, new RED_TULIP());
+            put(Material.WHITE_TULIP, new WHITE_TULIP());
+            put(Material.WITHER_ROSE, new WITHER_ROSE());
         }
     };
 
