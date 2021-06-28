@@ -50,6 +50,11 @@ public class PerksTrader implements Listener {
 
         Player player = (Player) e.getWhoClicked();
         int highestPV = Utils.getHighestPV(player);
+        if (highestPV == 54) {
+            player.sendMessage(Utils.tacc("&cYou can not get more than 54 vaults!"));
+            player.closeInventory();
+            return;
+        }
         if (highestPV == 0) highestPV = 1;
         int nextPV = highestPV+1;
         int cost = highestPV * 5000;
