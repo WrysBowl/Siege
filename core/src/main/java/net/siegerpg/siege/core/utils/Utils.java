@@ -15,14 +15,13 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.permissions.PermissionAttachmentInfo;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class Utils {
     @SuppressWarnings("unused")
@@ -79,6 +78,7 @@ public class Utils {
     }
 
     public static Integer getHighestPV(Player player) {
+        Set<PermissionAttachmentInfo> perms = player.getEffectivePermissions();
         int highestPV = 54;
         while(!player.hasPermission("cosmicvaults.amount."+highestPV)) {
             highestPV-=1;
