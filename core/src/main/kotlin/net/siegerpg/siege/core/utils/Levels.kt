@@ -110,7 +110,9 @@ object Levels {
                     Bukkit.getServer().broadcastMessage("")
                     val multiplier = floor(lvl/10.0).toInt()
                     if (multiplier <= 54) {
-                        VaultHook.perms.playerAdd(player, "cosmicvaults.amount.${multiplier} true global")
+                        val console = Bukkit.getServer().consoleSender
+                        val cmd = "lp user " + player.name + " permission set cosmicvaults.amount."+multiplier+" true global"
+                        Bukkit.dispatchCommand(console, cmd)
                     }
                 }
                 player.sendTitle(

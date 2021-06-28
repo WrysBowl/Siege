@@ -46,7 +46,9 @@ public class WebstoreCommand implements CommandExecutor {
             int diff = 54 - highestPV;
             int addPV = highestPV+2;
             if (diff < 2) addPV = diff;
-            VaultHook.perms.playerAdd((Player)argPlayer, "cosmicvaults.amount."+addPV+" true global");
+            ConsoleCommandSender console2 = Bukkit.getServer().getConsoleSender();
+            String cmd2 = "lp user " + argPlayer.getName() + " permission set cosmicvaults.amount."+addPV+" true global";
+            Bukkit.dispatchCommand(console2, cmd2);
             Bukkit.broadcastMessage(Utils.tacc(""));
             Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &2Warrior &erank!"));
             Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));

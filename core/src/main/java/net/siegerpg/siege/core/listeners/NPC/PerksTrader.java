@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -55,16 +56,17 @@ public class PerksTrader implements Listener {
             player.closeInventory();
             return;
         }
-        if (highestPV == 0) highestPV = 1;
         int nextPV = highestPV+1;
-        int cost = highestPV * 5000;
+        int cost = nextPV * 5000;
 
         if (VaultHook.econ.getBalance(player) < cost) {
             player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
             player.closeInventory();
             return;
         }
-        VaultHook.perms.playerAdd(player, "cosmicvaults.amount."+nextPV+" true global");
+        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+        String cmd = "lp user " + player.getName() + " permission set cosmicvaults.amount."+nextPV+" true global";
+        Bukkit.dispatchCommand(console, cmd);
         VaultHook.econ.withdrawPlayer(player, cost);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         Scoreboard.updateScoreboard(player);
@@ -82,8 +84,8 @@ public class PerksTrader implements Listener {
             gui.setItem(i, filler);
         }
         int highestPV = Utils.getHighestPV(player);
-        int cost = highestPV * 5000;
         int nextPV = highestPV+1;
+        int cost = nextPV * 5000;
         ItemStack buyPerk = new ItemStack(Material.CHEST);
         ItemMeta buyPerkMeta = buyPerk.getItemMeta();
         buyPerkMeta.displayName(Utils.lore("<yellow>Buy +1 Vault"));
