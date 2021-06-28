@@ -43,7 +43,6 @@ public class Utils {
         return MiniMessage.get().parse(str).decoration(TextDecoration.ITALIC, false);
     }
 
-    @SuppressWarnings("unused")
     static public NamespacedKey namespacedKey(String str) {
         return new NamespacedKey(Core.plugin(), str);
     }
@@ -79,18 +78,15 @@ public class Utils {
         return time;
     }
 
-    public static ItemStack getGoldCoin(Integer amount) {
-        ItemStack gold = new ItemStack(Material.SUNFLOWER);
-        ItemMeta meta = gold.getItemMeta();
-        meta.setDisplayName("Gold Coin");
-        if (amount > 0) {
-            gold.setAmount(amount);
+    public static Integer getHighestPV(Player player) {
+        int highestPV = 54;
+        while(!player.hasPermission("cosmicvaults.amount."+highestPV)) {
+            highestPV-=1;
+            if (highestPV < 1) return 0;
         }
-        gold.setItemMeta(meta);
-        return gold;
+        return highestPV;
     }
 
-    @SuppressWarnings("unused")
     public static int randRarity() {
         //((random number between 1 and 100)*(1/random number between 1 and 5))
         double rand1 = ((Math.random() * 70) + 1);

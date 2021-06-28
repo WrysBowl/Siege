@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.Webstore;
 
 import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -41,6 +42,7 @@ public class WebstoreCommand implements CommandExecutor {
             ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
             String cmd = "lp user " + argPlayer.getName() + " parent add Warrior";
             Bukkit.dispatchCommand(console, cmd);
+            VaultHook.perms.playerAdd((Player)argPlayer, "cosmicvaults.amount."+(Utils.getHighestPV((Player)argPlayer)+2));
             Bukkit.broadcastMessage(Utils.tacc(""));
             Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &2Warrior &erank!"));
             Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));

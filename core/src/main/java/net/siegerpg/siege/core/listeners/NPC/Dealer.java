@@ -60,7 +60,7 @@ public class Dealer implements Listener {
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains("Dealer") && e.getRightClicked().getName().contains("6")) {
+        if (e.getRightClicked().getName().contains("Dealer")) {
             Inventory shop = getShopMenu(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }
