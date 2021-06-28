@@ -54,9 +54,6 @@ interface CustomEquipment : CustomItem {
                 meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}") // TODO: Make special items work with rarity multiplier
             }
         }
-        if (CustomItemUtils.getCustomItem(item) is CustomMeleeWeapon) {
-            meta.lore("<r><gray>${(CustomItemUtils.getCustomItem(item) as CustomMeleeWeapon).attackSpeed} Atk Speed")
-        }
         meta.lore(" ")
         description.forEach {
             meta.lore("<r><dark_gray>$it")
