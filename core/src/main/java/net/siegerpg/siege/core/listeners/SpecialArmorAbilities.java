@@ -41,6 +41,7 @@ public class SpecialArmorAbilities implements Listener {
         newArmorContents.remove(e.getOldArmorPiece());
         newArmorContents.add(e.getNewArmorPiece());
 
+        //This sucks
         if (isSlimeSet(newArmorContents)) {
             e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 99999, 1));
         } else if (isBoneSet(newArmorContents)) {
@@ -49,6 +50,8 @@ public class SpecialArmorAbilities implements Listener {
             e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 99999, 1));
         } else if (isMagmaSet(newArmorContents)) {
             e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 99999, 1));
+        } else if(isWoolSet(newArmorContents)) {
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 99999, 0));
         }
     }
 
@@ -181,6 +184,23 @@ public class SpecialArmorAbilities implements Listener {
             } else if (item instanceof MagmaLeggings) {
                 badCheckMethod += 1;
             } else if (item instanceof MagmaBoots) {
+                badCheckMethod += 1;
+            }
+        }
+        return badCheckMethod == 4;
+    }
+
+    private boolean isWoolSet(ArrayList<ItemStack> armorPieces) {
+        int badCheckMethod = 0;
+        for (ItemStack armorPiece : armorPieces) {
+            CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(armorPiece);
+            if (item instanceof WoolHelmet) {
+                badCheckMethod += 1;
+            } else if (item instanceof WoolChestplate) {
+                badCheckMethod += 1;
+            } else if (item instanceof WoolLeggings) {
+                badCheckMethod += 1;
+            } else if (item instanceof WoolBoots) {
                 badCheckMethod += 1;
             }
         }

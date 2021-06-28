@@ -229,7 +229,7 @@ class CustomItemKotlinListener : Listener, Runnable {
     @EventHandler
     @Suppress("unused")
     fun onRegen(e: EntityRegainHealthEvent) {
-        if (e.regainReason != EntityRegainHealthEvent.RegainReason.CUSTOM) {
+        if (e.regainReason != EntityRegainHealthEvent.RegainReason.CUSTOM || e.regainReason != EntityRegainHealthEvent.RegainReason.MAGIC_REGEN) {
             e.isCancelled = true
         }
     }

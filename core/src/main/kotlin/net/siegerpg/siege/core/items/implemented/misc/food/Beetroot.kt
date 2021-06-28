@@ -17,7 +17,7 @@ class Beetroot() : CustomFood(
     recipeList = recipes {
     },
     potion = listOf(
-        PotionEffect(PotionEffectType.HEALTH_BOOST, 600, 1),
+        PotionEffect(PotionEffectType.REGENERATION, 100, 1),
         PotionEffect(PotionEffectType.HUNGER, 200, 1))
 ) {
 
