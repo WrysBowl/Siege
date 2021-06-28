@@ -227,23 +227,20 @@ public class BlockBreakListener implements Listener {
         BlockDropTable blockDrop = blockDropTableHashMap.get(blockType);
 
         //if block broken doesn't have a drop table
-        if (blockDrop == null) {
-            if (rewardableBlocks.contains(blockType)) {
-                e.setCancelled(false);
-                if (Utils.randTest(20.0)) {
-                    GoldEXPSpawning.spawnEXP(1, loc);
-                }
-                if (Utils.randTest(20.0)) {
-                    GoldEXPSpawning.spawnGold(1, loc);
-                }
-                //after 30 seconds, block respawns back
-                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-                    public void run() {
-                        blockState.update(true, false);
-                    }
-                }, 600);
+        if (rewardableBlocks.contains(blockType)) {
+            e.setCancelled(false);
+            if (Utils.randTest(20.0)) {
+                GoldEXPSpawning.spawnEXP(1, loc);
             }
-            return;
+            if (Utils.randTest(20.0)) {
+                GoldEXPSpawning.spawnGold(1, loc);
+            }
+            //after 30 seconds, block respawns back
+            Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+                public void run() {
+                    blockState.update(true, false);
+                }
+            }, 600);
         }
         final int blockDropRegen = blockDrop.getBlockRegen();
         final double luckVal = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
@@ -258,7 +255,9 @@ public class BlockBreakListener implements Listener {
         if (keepAir.contains(blockType)) {
             e.setCancelled(false);
         } else if (dependables.contains(blockType) || upFacingDependable || downFacingDependable) {
-            e.setCancelled(true);
+            if (!rewardableBlocks.contains(blockType)) {
+                e.setCancelled(true);
+            }
         } else {
             e.getBlock().setType(Material.BEDROCK);
         }
@@ -294,6 +293,7 @@ public class BlockBreakListener implements Listener {
         }
 
         //Sets block back from bedrock to original
+        if (rewardableBlocks.contains(blockType)) return;
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
             public void run() {
                 blockState.update(true, false);
