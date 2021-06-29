@@ -242,62 +242,65 @@ public class BlockBreakListener implements Listener {
                 }
             }, 600);
         }
-        final int blockDropRegen = blockDrop.getBlockRegen();
-        final double luckVal = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
-        int goldCoinAmt = blockDrop.getGold(true);
-        int exp = blockDrop.getExp(true);
-        double luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
-        final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
-        final boolean upFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
-        final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.DOWN).getType());
+        if (blockDrop!=null){
+            final int blockDropRegen = blockDrop.getBlockRegen();
+            final double luckVal = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
+            int goldCoinAmt = blockDrop.getGold(true);
+            int exp = blockDrop.getExp(true);
+            double luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
+            final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
+            final boolean upFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
+            final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.DOWN).getType());
 
 
-        if (keepAir.contains(blockType)) {
-            e.setCancelled(false);
-        } else if (dependables.contains(blockType) || upFacingDependable || downFacingDependable) {
-            if (!rewardableBlocks.contains(blockType)) {
-                e.setCancelled(true);
-            }
-        } else {
-            e.getBlock().setType(Material.BEDROCK);
-        }
-        if (!dependables.contains(blockType) && upFacingDependable || !dependables.contains(blockType) && downFacingDependable) {
-            return;
-        }
-
-        if (goldCoinAmt > 0) {
-            goldCoinAmt = (int) Math.floor(goldCoinAmt * WebstoreUtils.goldMultiplier);
-            if ((Math.random() * 100) <= luck) {
-                goldCoinAmt *= 2;
-            }
-            GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
-        }
-
-        if (exp > 0) {
-            exp = (int) Math.floor(exp * WebstoreUtils.expMultiplier);
-            if ((Math.random() * 100) <= luck) {
-                exp *= 2;
-            }
-            GoldEXPSpawning.spawnEXP(exp, loc);
-        }
-
-
-        //Adds blocks to player's inventory
-        for (ItemStack drop : blockDrop.getRewards(luckVal)) {
-            if (!fullInv) {
-                e.getPlayer().getInventory().addItem(drop);
+            if (keepAir.contains(blockType)) {
+                e.setCancelled(false);
+            } else if (dependables.contains(blockType) || upFacingDependable || downFacingDependable) {
+                if (!rewardableBlocks.contains(blockType)) {
+                    e.setCancelled(true);
+                }
             } else {
-                e.getBlock().getWorld().dropItemNaturally(loc, drop);
+                e.getBlock().setType(Material.BEDROCK);
+            }
+            if (!dependables.contains(blockType) && upFacingDependable || !dependables.contains(blockType) && downFacingDependable) {
+                return;
             }
 
+            if (goldCoinAmt > 0) {
+                goldCoinAmt = (int) Math.floor(goldCoinAmt * WebstoreUtils.goldMultiplier);
+                if ((Math.random() * 100) <= luck) {
+                    goldCoinAmt *= 2;
+                }
+                GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
+            }
+
+            if (exp > 0) {
+                exp = (int) Math.floor(exp * WebstoreUtils.expMultiplier);
+                if ((Math.random() * 100) <= luck) {
+                    exp *= 2;
+                }
+                GoldEXPSpawning.spawnEXP(exp, loc);
+            }
+
+
+            //Adds blocks to player's inventory
+            for (ItemStack drop : blockDrop.getRewards(luckVal)) {
+                if (!fullInv) {
+                    e.getPlayer().getInventory().addItem(drop);
+                } else {
+                    e.getBlock().getWorld().dropItemNaturally(loc, drop);
+                }
+
+            }
+
+            //Sets block back from bedrock to original
+            if (rewardableBlocks.contains(blockType)) return;
+            Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+                public void run() {
+                    blockState.update(true, false);
+                }
+            }, blockDropRegen);
         }
 
-        //Sets block back from bedrock to original
-        if (rewardableBlocks.contains(blockType)) return;
-        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-            public void run() {
-                blockState.update(true, false);
-            }
-        }, blockDropRegen);
     }
 }

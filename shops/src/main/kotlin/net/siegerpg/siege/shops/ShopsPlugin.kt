@@ -2,18 +2,22 @@ package net.siegerpg.siege.shops
 
 import co.aikar.commands.PaperCommandManager
 import net.siegerpg.siege.core.items.implemented.armor.boots.*
+import net.siegerpg.siege.core.items.implemented.armor.boots.magmaBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.strawBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.woolBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.magmaChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.strawChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.woolHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.magmaLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.woolLeggings.*
@@ -2175,136 +2179,6 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 HealingEarthernHammer(Utils.randRarity()).getUpdatedItem(false)
             },
         ))
-        shopRegistry["katherine"] = Shop("Katherine", "siege.shops.shop.katherine", listOf(
-            //ROCK WAND
-            ShopItem(RockWand(-1), 3500, hashMapOf(
-                Pebble.tier(3) to 1,
-                Stick.tier(3) to 2), true) {
-                RockWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-                GRAYFILLER(-1).getUpdatedItem(false)
-            },
-            ShopItem(LuckyRockWand(-1), 3750, hashMapOf(
-                Pebble.tier(3) to 1,
-                Feather.tier(3) to 2,
-                Stick.tier(3) to 1), true) {
-                LuckyRockWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(StrongRockWand(-1), 3750, hashMapOf(
-                Pebble.tier(3) to 1,
-                Feather.tier(3) to 1,
-                Bone.tier(3) to 1), true) {
-                StrongRockWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(ToughRockWand(-1), 3750, hashMapOf(
-                Pebble.tier(3) to 3,
-                Stick.tier(3) to 1), true) {
-                ToughRockWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealthyRockWand(-1), 3750, hashMapOf(
-                Pebble.tier(3) to 1,
-                PlantMatter.tier(3) to 2,
-                Stick.tier(3) to 1), true) {
-                HealthyRockWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealingRockWand(-1), 3750, hashMapOf(
-                Pebble.tier(3) to 1,
-                Wheat.tier(3) to 3,
-                Stick.tier(3) to 1), true) {
-                HealingRockWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-
-            //EARTHERN WAND
-            ShopItem(EarthernWand(-1), 5250, hashMapOf(
-                Pebble.tier(3) to 1,
-                Seed.tier(3) to 2,
-                Coal.tier(3) to 2), true) {
-                EarthernWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-                GRAYFILLER(-1).getUpdatedItem(false)
-            },
-            ShopItem(LuckyEarthernWand(-1), 5250, hashMapOf(
-                PlantMatter.tier(3) to 1,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1,
-                Feather.tier(3) to 3), true) {
-                LuckyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(StrongEarthernWand(-1), 5250, hashMapOf(
-                PlantMatter.tier(3) to 1,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1,
-                Bone.tier(3) to 2), true) {
-                StrongEarthernWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(ToughEarthernWand(-1), 5250, hashMapOf(
-                PlantMatter.tier(3) to 1,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1,
-                Pebble.tier(3) to 4), true) {
-                ToughEarthernWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealthyEarthernWand(-1), 5250, hashMapOf(
-                PlantMatter.tier(3) to 4,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1), true) {
-                HealthyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealingEarthernWand(-1), 5250, hashMapOf(
-                PlantMatter.tier(3) to 1,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1,
-                Wheat.tier(4) to 1), true) {
-                HealingEarthernWand(Utils.randRarity()).getUpdatedItem(false)
-            },
-
-            //EARTHERN STAFF
-            ShopItem(EarthernStaff(-1), 6000, hashMapOf(
-                PlantMatter.tier(3) to 1,
-                Seed.tier(4) to 2,
-                Coal.tier(4) to 2), true) {
-                EarthernStaff(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-                GRAYFILLER(-1).getUpdatedItem(false)
-            },
-            ShopItem(LuckyEarthernStaff(-1), 6500, hashMapOf(
-                PlantMatter.tier(3) to 1,
-                Seed.tier(4) to 1,
-                Coal.tier(4) to 1,
-                Feather.tier(4) to 2), true) {
-                LuckyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(StrongEarthernStaff(-1), 6500, hashMapOf(
-                PlantMatter.tier(3) to 1,
-                Seed.tier(4) to 1,
-                Coal.tier(4) to 1,
-                Pebble.tier(4) to 3), true) {
-                StrongEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(ToughEarthernStaff(-1), 6500, hashMapOf(
-                PlantMatter.tier(3) to 1,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1,
-                Pebble.tier(3) to 4), true) {
-                ToughEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealthyEarthernStaff(-1), 6500, hashMapOf(
-                PlantMatter.tier(4) to 2,
-                Seed.tier(4) to 1,
-                Coal.tier(4) to 1), true) {
-                HealthyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
-            },
-            ShopItem(HealingEarthernStaff(-1), 6500, hashMapOf(
-                PlantMatter.tier(3) to 1,
-                Seed.tier(4) to 1,
-                Coal.tier(4) to 1,
-                Wheat.tier(5) to 1), true) {
-                HealingEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
-            },
-        ))
         shopRegistry["fredric"] = Shop("Fredric", "siege.shops.shop.fredric", listOf(
             //TORCH
             ShopItem(Torch(-1), 3500, hashMapOf(
@@ -2435,6 +2309,273 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Coal.tier(4) to 1,
                 Wheat.tier(4) to 3), true) {
                 HealingHotRod(Utils.randRarity()).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["katherine"] = Shop("Katherine", "siege.shops.shop.katherine", listOf(
+            //ROCK WAND
+            ShopItem(RockWand(-1), 3500, hashMapOf(
+                Pebble.tier(3) to 1,
+                Stick.tier(3) to 2), true) {
+                RockWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyRockWand(-1), 3750, hashMapOf(
+                Pebble.tier(3) to 1,
+                Feather.tier(3) to 2,
+                Stick.tier(3) to 1), true) {
+                LuckyRockWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongRockWand(-1), 3750, hashMapOf(
+                Pebble.tier(3) to 1,
+                Feather.tier(3) to 1,
+                Bone.tier(3) to 1), true) {
+                StrongRockWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughRockWand(-1), 3750, hashMapOf(
+                Pebble.tier(3) to 3,
+                Stick.tier(3) to 1), true) {
+                ToughRockWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyRockWand(-1), 3750, hashMapOf(
+                Pebble.tier(3) to 1,
+                PlantMatter.tier(3) to 2,
+                Stick.tier(3) to 1), true) {
+                HealthyRockWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingRockWand(-1), 3750, hashMapOf(
+                Pebble.tier(3) to 1,
+                Wheat.tier(3) to 3,
+                Stick.tier(3) to 1), true) {
+                HealingRockWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //EARTHERN WAND
+            ShopItem(EarthernWand(-1), 5250, hashMapOf(
+                Pebble.tier(3) to 1,
+                Seed.tier(3) to 2,
+                Coal.tier(3) to 2), true) {
+                EarthernWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyEarthernWand(-1), 5250, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(3) to 1,
+                Coal.tier(3) to 1,
+                Feather.tier(3) to 3), true) {
+                LuckyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongEarthernWand(-1), 5250, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(3) to 1,
+                Coal.tier(3) to 1,
+                Bone.tier(3) to 2), true) {
+                StrongEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughEarthernWand(-1), 5250, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(3) to 1,
+                Coal.tier(3) to 1,
+                Pebble.tier(3) to 4), true) {
+                ToughEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyEarthernWand(-1), 5250, hashMapOf(
+                PlantMatter.tier(3) to 4,
+                Seed.tier(3) to 1,
+                Coal.tier(3) to 1), true) {
+                HealthyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingEarthernWand(-1), 5250, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(3) to 1,
+                Coal.tier(3) to 1,
+                Wheat.tier(4) to 1), true) {
+                HealingEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //EARTHERN STAFF
+            ShopItem(EarthernStaff(-1), 6000, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(4) to 2,
+                Coal.tier(4) to 2), true) {
+                EarthernStaff(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyEarthernStaff(-1), 6500, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(4) to 1,
+                Coal.tier(4) to 1,
+                Feather.tier(4) to 2), true) {
+                LuckyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongEarthernStaff(-1), 6500, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(4) to 1,
+                Coal.tier(4) to 1,
+                Pebble.tier(4) to 3), true) {
+                StrongEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughEarthernStaff(-1), 6500, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(3) to 1,
+                Coal.tier(3) to 1,
+                Pebble.tier(3) to 4), true) {
+                ToughEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyEarthernStaff(-1), 6500, hashMapOf(
+                PlantMatter.tier(4) to 2,
+                Seed.tier(4) to 1,
+                Coal.tier(4) to 1), true) {
+                HealthyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingEarthernStaff(-1), 6500, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(4) to 1,
+                Coal.tier(4) to 1,
+                Wheat.tier(5) to 1), true) {
+                HealingEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["magmar"] = Shop("Magmar", "siege.shops.shop.magmar", listOf(
+            //MAGMA HELMET
+            ShopItem(MagmaHelmet(-1), 1000, hashMapOf(
+                Magma.tier(2) to 5), true) {
+                MagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyMagmaHelmet(-1), 1250, hashMapOf(
+                Magma.tier(2) to 3,
+                Feather.tier(2) to 3), true) {
+                LuckyMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongMagmaHelmet(-1), 1250, hashMapOf(
+                Magma.tier(2) to 3,
+                Bone.tier(2) to 2), true) {
+                StrongMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughMagmaHelmet(-1), 1250, hashMapOf(
+                Magma.tier(2) to 2,
+                Pebble.tier(2) to 3), true) {
+                ToughMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyMagmaHelmet(-1), 1250, hashMapOf(
+                Magma.tier(2) to 3,
+                PlantMatter.tier(2) to 2), true) {
+                HealthyMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingMagmaHelmet(-1), 1250, hashMapOf(
+                Magma.tier(2) to 2,
+                Wheat.tier(3) to 1), true) {
+                HealingMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //MAGMA CHESTPLATE
+            ShopItem(MagmaChestplate(-1), 2000, hashMapOf(
+                Magma.tier(2) to 8), true) {
+                MagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyMagmaChestplate(-1), 2250, hashMapOf(
+                Magma.tier(2) to 5,
+                Feather.tier(2) to 3), true) {
+                LuckyMagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongMagmaChestplate(-1), 2250, hashMapOf(
+                Magma.tier(2) to 4,
+                Bone.tier(2) to 3), true) {
+                StrongMagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughMagmaChestplate(-1), 2250, hashMapOf(
+                Magma.tier(2) to 3,
+                Pebble.tier(2) to 5), true) {
+                ToughMagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyMagmaChestplate(-1), 2250, hashMapOf(
+                Magma.tier(2) to 4,
+                PlantMatter.tier(2) to 4), true) {
+                HealthyMagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingMagmaChestplate(-1), 2250, hashMapOf(
+                Magma.tier(2) to 4,
+                Wheat.tier(3) to 2), true) {
+                HealingMagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //MAGMA LEGGINGS
+            ShopItem(MagmaLeggings(-1), 1750, hashMapOf(
+                Magma.tier(2) to 7), true) {
+                MagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyMagmaLeggings(-1), 2000, hashMapOf(
+                Magma.tier(2) to 4,
+                Feather.tier(2) to 3), true) {
+                LuckyMagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongMagmaLeggings(-1), 2000, hashMapOf(
+                Magma.tier(2) to 4,
+                Bone.tier(2) to 3), true) {
+                StrongMagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughMagmaLeggings(-1), 2000, hashMapOf(
+                Magma.tier(2) to 3,
+                Pebble.tier(2) to 5), true) {
+                ToughMagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyMagmaLeggings(-1), 2000, hashMapOf(
+                Magma.tier(2) to 3,
+                PlantMatter.tier(2) to 4), true) {
+                HealthyMagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingMagmaLeggings(-1), 2000, hashMapOf(
+                Magma.tier(2) to 4,
+                Wheat.tier(3) to 1), true) {
+                HealingMagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //MAGMA BOOTS
+            ShopItem(MagmaBoots(-1), 1000, hashMapOf(
+                Magma.tier(2) to 4), true) {
+                MagmaBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyMagmaBoots(-1), 1250, hashMapOf(
+                Magma.tier(2) to 2,
+                Feather.tier(2) to 2), true) {
+                LuckyMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongMagmaBoots(-1), 1250, hashMapOf(
+                Magma.tier(2) to 2,
+                Bone.tier(2) to 2), true) {
+                StrongMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughMagmaBoots(-1), 1250, hashMapOf(
+                Magma.tier(2) to 2,
+                Pebble.tier(2) to 2), true) {
+                ToughMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyMagmaBoots(-1), 1250, hashMapOf(
+                Magma.tier(2) to 3,
+                PlantMatter.tier(2) to 2), true) {
+                HealthyMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingMagmaBoots(-1), 1250, hashMapOf(
+                Magma.tier(2) to 1,
+                Feather.tier(3) to 1), true) {
+                HealingMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
             },
         ))
 

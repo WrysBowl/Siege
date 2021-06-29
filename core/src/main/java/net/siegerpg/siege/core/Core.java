@@ -138,7 +138,6 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityTeleportListener(), this);
         getServer().getPluginManager().registerEvents(new HelpfulTips(), this);
 
-        getServer().getPluginManager().registerEvents(new Auctioneer(), this);
         getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);
