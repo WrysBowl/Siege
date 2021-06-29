@@ -2,21 +2,25 @@ package net.siegerpg.siege.shops
 
 import co.aikar.commands.PaperCommandManager
 import net.siegerpg.siege.core.items.implemented.armor.boots.*
+import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.magmaBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.strawBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.woolBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.magmaChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.strawChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.woolHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.magmaLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.*
@@ -76,13 +80,13 @@ class ShopsPlugin: JavaPlugin(), Listener {
     // Please make it possible to fill a slot with a blank item
     companion object {
         var instance: ShopsPlugin? = null
-            private set;
+            private set
     }
 
     val shopRegistry: HashMap<String, Shop> = hashMapOf()
 
     override fun onEnable() {
-        instance = this;
+        instance = this
         val manager = PaperCommandManager(this)
         manager.registerCommand(ShopsCommand())
 
@@ -2576,6 +2580,143 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Magma.tier(2) to 1,
                 Feather.tier(3) to 1), true) {
                 HealingMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+        ))
+        shopRegistry["rancher"] = Shop("Rancher", "siege.shops.shop.rancher", listOf(
+            //HARDENED LEATHER HELMET
+            ShopItem(LeatherHelmet(-1), 1500, hashMapOf(
+                Leather.tier(2) to 5), true) {
+                LeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyHardenedLeatherHelmet(-1), 1750, hashMapOf(
+                Leather.tier(2) to 3,
+                Feather.tier(2) to 3), true) {
+                LuckyHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongHardenedLeatherHelmet(-1), 1750, hashMapOf(
+                Leather.tier(2) to 3,
+                Bone.tier(2) to 2), true) {
+                StrongHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughHardenedLeatherHelmet(-1), 1750, hashMapOf(
+                Leather.tier(2) to 3,
+                Pebble.tier(2) to 3), true) {
+                ToughHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyHardenedLeatherHelmet(-1), 1750, hashMapOf(
+                Leather.tier(2) to 3,
+                PlantMatter.tier(2) to 3), true) {
+                HealthyHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingHardenedLeatherHelmet(-1), 1750, hashMapOf(
+                Leather.tier(2) to 3,
+                Wheat.tier(4) to 1), true) {
+                HealingHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //HardenedLeather CHESTPLATE
+            ShopItem(LeatherChestplate(-1), 2750, hashMapOf(
+                Leather.tier(2) to 8), true) {
+                LeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyHardenedLeatherChestplate(-1), 3000, hashMapOf(
+                Leather.tier(2) to 4,
+                Feather.tier(2) to 4), true) {
+                LuckyHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongHardenedLeatherChestplate(-1), 3000, hashMapOf(
+                Leather.tier(2) to 5,
+                Bone.tier(2) to 3), true) {
+                StrongHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughHardenedLeatherChestplate(-1), 3000, hashMapOf(
+                Leather.tier(2) to 3,
+                Pebble.tier(2) to 5), true) {
+                ToughHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyHardenedLeatherChestplate(-1), 3000, hashMapOf(
+                Leather.tier(2) to 3,
+                PlantMatter.tier(2) to 5), true) {
+                HealthyHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingHardenedLeatherChestplate(-1), 3000, hashMapOf(
+                Leather.tier(2) to 4,
+                Wheat.tier(4) to 1), true) {
+                HealingHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //HardenedLeather LEGGINGS
+            ShopItem(LeatherLeggings(-1), 2250, hashMapOf(
+                Leather.tier(2) to 7), true) {
+                LeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyHardenedLeatherLeggings(-1), 2500, hashMapOf(
+                Leather.tier(2) to 3,
+                Feather.tier(2) to 4), true) {
+                LuckyHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongHardenedLeatherLeggings(-1), 2500, hashMapOf(
+                Leather.tier(2) to 4,
+                Bone.tier(2) to 3), true) {
+                StrongHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughHardenedLeatherLeggings(-1), 2500, hashMapOf(
+                Leather.tier(2) to 2,
+                Pebble.tier(2) to 5), true) {
+                ToughHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyHardenedLeatherLeggings(-1), 2500, hashMapOf(
+                Leather.tier(2) to 3,
+                PlantMatter.tier(2) to 4), true) {
+                HealthyHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingHardenedLeatherLeggings(-1), 2500, hashMapOf(
+                Leather.tier(2) to 3,
+                Wheat.tier(4) to 1), true) {
+                HealingHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
+            },
+
+            //HardenedLeather BOOTS
+            ShopItem(LeatherBoots(-1), 1250, hashMapOf(
+                Leather.tier(2) to 4), true) {
+                LeatherBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(LuckyHardenedLeatherBoots(-1), 1500, hashMapOf(
+                Leather.tier(2) to 2,
+                Feather.tier(2) to 2), true) {
+                LuckyHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(StrongHardenedLeatherBoots(-1), 1500, hashMapOf(
+                Leather.tier(2) to 3,
+                Bone.tier(2) to 1), true) {
+                StrongHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(ToughHardenedLeatherBoots(-1), 1500, hashMapOf(
+                Leather.tier(2) to 2,
+                Pebble.tier(2) to 3), true) {
+                ToughHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealthyHardenedLeatherBoots(-1), 1500, hashMapOf(
+                Leather.tier(2) to 1,
+                PlantMatter.tier(2) to 4), true) {
+                HealthyHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
+            },
+            ShopItem(HealingHardenedLeatherBoots(-1), 1500, hashMapOf(
+                Leather.tier(2) to 2,
+                Wheat.tier(3) to 4), true) {
+                HealingHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
             },
         ))
 
