@@ -20,9 +20,6 @@ public class MobNames implements Listener {
         String displayName = e.getMob().getDisplayName();
         if (displayName != null) {
             mobNames.put(e.getEntity(), displayName);
-            double maxHealth = Utils.round(((Mob) e.getEntity()).getMaxHealth(), 1);
-            e.getEntity().setCustomName(displayName + Utils.tacc("&a"+maxHealth+"&2/&a"+maxHealth));
-            e.getEntity().setCustomNameVisible(true);
         }
     }
 }
