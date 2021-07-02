@@ -162,7 +162,6 @@ public class DeathListener implements Listener {
         Player player = e.getEntity().getPlayer();
         if (player != null) {
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
-            player.spigot().respawn();
             int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
             double percBal = (Math.floor(bal / 10000.0) / 100);

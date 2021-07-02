@@ -23,7 +23,6 @@ public class UpdateScoreboard implements CommandExecutor {
         }
         Player targetPlayer = Bukkit.getPlayer(args[0]);
         if (targetPlayer == null) {
-            sender.sendMessage(Utils.lore("<red>This player is null."));
             return false;
         }
         Scoreboard.updateScoreboard(targetPlayer);

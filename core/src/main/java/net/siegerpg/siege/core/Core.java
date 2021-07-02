@@ -5,6 +5,7 @@ import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.Webstore.RedeemBoosters;
 import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.cache.LevelEXPStorage;
+import net.siegerpg.siege.core.cache.MobNames;
 import net.siegerpg.siege.core.cache.PlayerBanking;
 import net.siegerpg.siege.core.cache.playerData;
 import net.siegerpg.siege.core.commands.*;
@@ -137,6 +138,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new playerData(), this);
         getServer().getPluginManager().registerEvents(new EntityTeleportListener(), this);
         getServer().getPluginManager().registerEvents(new HelpfulTips(), this);
+        getServer().getPluginManager().registerEvents(new MobNames(), this);
 
         getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
