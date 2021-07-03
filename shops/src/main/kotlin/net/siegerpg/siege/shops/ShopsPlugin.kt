@@ -1182,7 +1182,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
             //STRAW CHESTPLATE
             ShopItem(StrawChestplate(-1), 600, hashMapOf(
                 Wheat.tier(3) to 8), true) {
-                StrawHelmet(Utils.randRarity()).getUpdatedItem(false)
+                StrawChestplate(Utils.randRarity()).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
@@ -2030,8 +2030,8 @@ class ShopsPlugin: JavaPlugin(), Listener {
             },
 
             //IRON AXE
-            ShopItem(IronAxe(-1), 4750, hashMapOf(), false) {
-                IronAxe(Utils.randRarity()).getUpdatedItem(false)
+            ShopItem(net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe(-1), 4750, hashMapOf(), false) {
+                net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe(Utils.randRarity()).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)

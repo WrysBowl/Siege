@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners
 
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.cache.LevelEXPStorage
+import net.siegerpg.siege.core.cache.MobNames
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
@@ -131,21 +132,37 @@ class CustomItemKotlinListener : Listener, Runnable {
             val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
             if (item == null) {
                 e.damage = 1.0
+                if (victim is Mob) {
+                    val displayName: String = MobNames.mobNames[victim] ?: return
+                    victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+                }
                 return
             }
             val levelReq = item.levelRequirement
             if (levelReq == null) {
                 e.damage = 1.0
+                if (victim is Mob) {
+                    val displayName: String = MobNames.mobNames[victim] ?: return
+                    victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+                }
                 return
             }
             if (levelReq > LevelEXPStorage.playerLevel[attacker]!!) {
                 attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
+                if (victim is Mob) {
+                    val displayName: String = MobNames.mobNames[victim] ?: return
+                    victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+                }
                 return
             }
             if (item is CustomBow) {
                 if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
                     e.damage = 1.0
+                    if (victim is Mob) {
+                        val displayName: String = MobNames.mobNames[victim] ?: return
+                        victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+                    }
                     return
                 }
                 maxDamage = 6.0
@@ -161,7 +178,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 maxDamage = damage
                 actualDamage = damage
             }
-            victim.getWorld().spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
+            victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
         }
 
         val vicHealthStat =
@@ -176,6 +193,10 @@ class CustomItemKotlinListener : Listener, Runnable {
             else damage
         val reducedDamage = attStrengthStat * (1 - (vicToughness/1000)) //custom attack damage with toughness considered
         e.damage = (reducedDamage * victim.maxHealth)/vicHealthStat //scaled down to damage player by vanilla damage
+        if (victim is Mob) {
+            val displayName: String = MobNames.mobNames[victim] ?: return
+            victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+        }
     }
 
     @EventHandler
