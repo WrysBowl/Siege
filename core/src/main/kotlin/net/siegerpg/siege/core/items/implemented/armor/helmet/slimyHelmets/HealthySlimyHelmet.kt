@@ -18,21 +18,6 @@ class HealthySlimyHelmet() : CustomHelmet(
     levelRequirement = 3,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(health = 8.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Slime.tier(2))
-            s2(Slime.tier(2))
-            s3(Slime.tier(2))
-            s4(PlantMatter.tier(2))
-            s6(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthySlimyHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.LIME
 ) {
 

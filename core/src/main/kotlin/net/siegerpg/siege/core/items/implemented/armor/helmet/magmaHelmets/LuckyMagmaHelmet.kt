@@ -18,22 +18,6 @@ class LuckyMagmaHelmet() : CustomHelmet(
     levelRequirement = 12,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(health = 10.0, luck = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s2(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Feather.tier(2))
-            s6(Feather.tier(2))
-            s6(Feather.tier(2))
-            item { player, b ->
-                val newItem = LuckyMagmaHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.ORANGE
 ) {
 

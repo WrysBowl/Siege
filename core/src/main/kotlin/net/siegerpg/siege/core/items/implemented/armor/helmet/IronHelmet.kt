@@ -16,34 +16,6 @@ class IronHelmet() : CustomHelmet(
     levelRequirement = 29,
     material = Material.IRON_HELMET,
     baseStats = CustomItemUtils.statMap(health = 25.0, toughness = 80.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(RefinedMetal.tier(2))
-            s2(RefinedMetal.tier(2))
-            s3(RefinedMetal.tier(2))
-            s4(RefinedMetal.tier(2))
-            s6(RefinedMetal.tier(2))
-            item { player, b ->
-                val newItem = IronHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s4(RefinedMetal.tier(2))
-            s5(RefinedMetal.tier(2))
-            s6(RefinedMetal.tier(2))
-            s7(RefinedMetal.tier(2))
-            s9(RefinedMetal.tier(2))
-            item { player, b ->
-                val newItem = IronHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

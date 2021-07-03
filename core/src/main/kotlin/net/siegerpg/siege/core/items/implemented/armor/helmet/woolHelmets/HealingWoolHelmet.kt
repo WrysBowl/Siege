@@ -18,22 +18,6 @@ class HealingWoolHelmet() : CustomHelmet(
     levelRequirement = 8,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(regeneration = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Wool.tier(2))
-            s2(Wool.tier(2))
-            s3(Wool.tier(2))
-            s4(Wheat.tier(2))
-            s6(Wheat.tier(2))
-            s6(Wheat.tier(2))
-            item { player, b ->
-                val newItem = HealingWoolHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.WHITE
 ) {
 

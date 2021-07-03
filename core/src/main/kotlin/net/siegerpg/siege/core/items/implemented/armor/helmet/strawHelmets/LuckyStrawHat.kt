@@ -18,21 +18,6 @@ class LuckyStrawHat() : CustomHelmet(
     levelRequirement = 3,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(health = 5.0, luck = 4.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Seed.tier(2))
-            s2(Seed.tier(2))
-            s3(Feather.tier(2))
-            s4(Feather.tier(2))
-            s6(Feather.tier(2))
-            item { player, b ->
-                val newItem = LuckyStrawHat(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.YELLOW
 ) {
 

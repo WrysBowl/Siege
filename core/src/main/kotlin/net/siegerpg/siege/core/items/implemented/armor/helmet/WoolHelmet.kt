@@ -17,34 +17,6 @@ class WoolHelmet() : CustomHelmet(
     levelRequirement = 8,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(health = 12.0, toughness = 10.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Wool.tier(2))
-            s2(Wool.tier(2))
-            s3(Wool.tier(2))
-            s4(Wool.tier(2))
-            s6(Wool.tier(2))
-            item { player, b ->
-                val newItem = WoolHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s4(Wool.tier(2))
-            s5(Wool.tier(2))
-            s6(Wool.tier(2))
-            s7(Wool.tier(2))
-            s9(Wool.tier(2))
-            item { player, b ->
-                val newItem = WoolHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.WHITE
 ) {
 

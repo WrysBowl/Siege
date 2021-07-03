@@ -18,21 +18,6 @@ class ToughBoneHelmet() : CustomHelmet(
     levelRequirement = 23,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(toughness = 80.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Bone.tier(2))
-            s2(Bone.tier(2))
-            s3(Pebble.tier(2))
-            s4(Pebble.tier(2))
-            s6(Pebble.tier(2))
-            item { player, b ->
-                val newItem = ToughBoneHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.GRAY
 ) {
 

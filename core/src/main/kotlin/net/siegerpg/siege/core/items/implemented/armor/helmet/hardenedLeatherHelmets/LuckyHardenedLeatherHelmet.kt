@@ -17,21 +17,6 @@ class LuckyHardenedLeatherHelmet() : CustomHelmet(
     levelRequirement = 17,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(health = 10.0, luck = 6.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Leather.tier(2))
-            s2(Leather.tier(2))
-            s3(Feather.tier(2))
-            s4(Feather.tier(2))
-            s6(Feather.tier(2))
-            item { player, b ->
-                val newItem = LuckyHardenedLeatherHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    }
 ) {
 
     constructor(quality: Int): this() {

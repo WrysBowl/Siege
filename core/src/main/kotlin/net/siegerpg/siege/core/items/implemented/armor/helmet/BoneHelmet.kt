@@ -17,34 +17,6 @@ class BoneHelmet() : CustomHelmet(
     levelRequirement = 23,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 60.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Bone.tier(2))
-            s2(Bone.tier(2))
-            s3(Bone.tier(2))
-            s4(Bone.tier(2))
-            s6(Bone.tier(2))
-            item { player, b ->
-                val newItem = BoneHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s4(Bone.tier(2))
-            s5(Bone.tier(2))
-            s6(Bone.tier(2))
-            s7(Bone.tier(2))
-            s9(Bone.tier(2))
-            item { player, b ->
-                val newItem = BoneHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.GRAY
 ) {
 

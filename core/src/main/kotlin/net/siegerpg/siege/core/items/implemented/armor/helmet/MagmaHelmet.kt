@@ -17,34 +17,6 @@ class MagmaHelmet() : CustomHelmet(
     levelRequirement = 12,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(health = 15.0, toughness = 14.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s2(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Magma.tier(2))
-            s6(Magma.tier(2))
-            item { player, b ->
-                val newItem = MagmaHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s4(Magma.tier(2))
-            s5(Magma.tier(2))
-            s6(Magma.tier(2))
-            s7(Magma.tier(2))
-            s9(Magma.tier(2))
-            item { player, b ->
-                val newItem = MagmaHelmet(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.ORANGE
 ) {
 

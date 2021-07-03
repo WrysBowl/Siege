@@ -18,22 +18,6 @@ class HealthyStrawHat() : CustomHelmet(
     levelRequirement = 3,
     material = Material.LEATHER_HELMET,
     baseStats = CustomItemUtils.statMap(health = 10.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Seed.tier(2))
-            s2(Seed.tier(2))
-            s3(PlantMatter.tier(2))
-            s4(PlantMatter.tier(2))
-            s6(PlantMatter.tier(2))
-            s6(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthyStrawHat(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.YELLOW
 ) {
 
