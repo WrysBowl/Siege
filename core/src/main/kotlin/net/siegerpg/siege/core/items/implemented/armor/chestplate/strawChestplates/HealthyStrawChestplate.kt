@@ -18,24 +18,6 @@ class HealthyStrawChestplate() : CustomChestplate(
     levelRequirement = 4,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 17.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Seed.tier(2))
-            s3(Seed.tier(2))
-            s4(Seed.tier(2))
-            s5(Seed.tier(2))
-            s6(PlantMatter.tier(2))
-            s7(PlantMatter.tier(2))
-            s8(PlantMatter.tier(2))
-            s9(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthyStrawChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.YELLOW
 ) {
 

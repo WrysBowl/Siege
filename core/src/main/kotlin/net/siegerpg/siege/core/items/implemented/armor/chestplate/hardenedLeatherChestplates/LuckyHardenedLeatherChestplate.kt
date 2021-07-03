@@ -17,24 +17,6 @@ class LuckyHardenedLeatherChestplate() : CustomChestplate(
     levelRequirement = 18,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 15.0, toughness = 40.0, luck = 6.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Leather.tier(2))
-            s3(Leather.tier(2))
-            s4(Leather.tier(2))
-            s5(Leather.tier(2))
-            s6(Feather.tier(2))
-            s7(Feather.tier(2))
-            s8(Feather.tier(2))
-            s9(Feather.tier(2))
-            item { player, b ->
-                val newItem = LuckyHardenedLeatherChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    }
 ) {
 
     constructor(quality: Int): this() {

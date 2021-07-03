@@ -18,24 +18,6 @@ class ToughWoolChestplate() : CustomChestplate(
     levelRequirement = 9,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 5.0, toughness = 60.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Wool.tier(2))
-            s3(Wool.tier(2))
-            s4(Wool.tier(2))
-            s5(Wool.tier(2))
-            s6(Pebble.tier(2))
-            s7(Pebble.tier(2))
-            s8(Pebble.tier(2))
-            s9(Pebble.tier(2))
-            item { player, b ->
-                val newItem = ToughWoolChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.WHITE
 ) {
 

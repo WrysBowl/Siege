@@ -18,24 +18,6 @@ class HealthyMagmaChestplate() : CustomChestplate(
     levelRequirement = 13,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 15.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Magma.tier(2))
-            s5(Magma.tier(2))
-            s6(PlantMatter.tier(2))
-            s7(PlantMatter.tier(2))
-            s8(PlantMatter.tier(2))
-            s9(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthyMagmaChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.ORANGE
 ) {
 

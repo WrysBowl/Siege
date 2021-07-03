@@ -17,24 +17,6 @@ class HealthyHardenedLeatherChestplate() : CustomChestplate(
     levelRequirement = 18,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 20.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Leather.tier(2))
-            s3(Leather.tier(2))
-            s4(Leather.tier(2))
-            s5(PlantMatter.tier(2))
-            s6(PlantMatter.tier(2))
-            s7(PlantMatter.tier(2))
-            s8(PlantMatter.tier(2))
-            s9(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthyHardenedLeatherChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    }
 ) {
 
     constructor(quality: Int): this() {

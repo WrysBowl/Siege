@@ -18,24 +18,6 @@ class GrieferChestplate() : CustomChestplate(
     levelRequirement = 16,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 10.0, luck = 10.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Wheat.tier(3))
-            s5(Wheat.tier(3))
-            s6(Wheat.tier(3))
-            s7(Wheat.tier(3))
-            s8(Wheat.tier(3))
-            s9(Wheat.tier(3))
-            item { player, b ->
-                val newItem = GrieferChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.BLACK
 ) {
 

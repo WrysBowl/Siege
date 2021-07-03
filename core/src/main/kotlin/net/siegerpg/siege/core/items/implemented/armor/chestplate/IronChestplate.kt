@@ -16,24 +16,6 @@ class IronChestplate() : CustomChestplate(
     levelRequirement = 35,
     material = Material.IRON_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 150.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(RefinedMetal.tier(2))
-            s3(RefinedMetal.tier(2))
-            s4(RefinedMetal.tier(2))
-            s5(RefinedMetal.tier(2))
-            s6(RefinedMetal.tier(2))
-            s7(RefinedMetal.tier(2))
-            s8(RefinedMetal.tier(2))
-            s9(RefinedMetal.tier(2))
-            item { player, b ->
-                val newItem = IronChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

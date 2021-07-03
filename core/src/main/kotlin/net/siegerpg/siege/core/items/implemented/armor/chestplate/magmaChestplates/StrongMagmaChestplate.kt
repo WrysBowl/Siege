@@ -18,23 +18,6 @@ class StrongMagmaChestplate() : CustomChestplate(
     levelRequirement = 13,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 20.0, strength = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Magma.tier(2))
-            s5(Magma.tier(2))
-            s6(Bone.tier(2))
-            s7(Bone.tier(2))
-            s8(Bone.tier(2))
-            item { player, b ->
-                val newItem = StrongMagmaChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.ORANGE
 ) {
 

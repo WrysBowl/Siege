@@ -18,24 +18,6 @@ class HealthyWoolChestplate() : CustomChestplate(
     levelRequirement = 9,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 25.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Wool.tier(2))
-            s3(Wool.tier(2))
-            s4(Wool.tier(2))
-            s5(PlantMatter.tier(2))
-            s6(PlantMatter.tier(2))
-            s7(PlantMatter.tier(2))
-            s8(PlantMatter.tier(2))
-            s9(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthyWoolChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.WHITE
 ) {
 

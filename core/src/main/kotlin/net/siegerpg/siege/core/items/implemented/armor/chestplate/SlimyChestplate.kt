@@ -17,24 +17,6 @@ class SlimyChestplate() : CustomChestplate(
     levelRequirement = 4,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 30.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Slime.tier(2))
-            s3(Slime.tier(2))
-            s4(Slime.tier(2))
-            s5(Slime.tier(2))
-            s6(Slime.tier(2))
-            s7(Slime.tier(2))
-            s8(Slime.tier(2))
-            s9(Slime.tier(2))
-            item { player, b ->
-                val newItem = SlimyChestplate(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.LIME
 ) {
 
