@@ -18,24 +18,6 @@ class ToughSlimyLeggings() : CustomLeggings(
     levelRequirement = 4,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(toughness = 30.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Slime.tier(2))
-            s2(Slime.tier(2))
-            s3(Slime.tier(2))
-            s3(Slime.tier(2))
-            s4(Pebble.tier(2))
-            s6(Pebble.tier(2))
-            s7(Pebble.tier(2))
-            s7(Pebble.tier(2))
-            item { player, b ->
-                val newItem = ToughSlimyLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.LIME
 ) {
 

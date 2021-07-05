@@ -18,23 +18,6 @@ class StrongMagmaLeggings() : CustomLeggings(
     levelRequirement = 13,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 20.0, strength = 6.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s2(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Magma.tier(2))
-            s6(Bone.tier(2))
-            s7(Bone.tier(2))
-            s9(Bone.tier(2))
-            item { player, b ->
-                val newItem = StrongMagmaLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.ORANGE
 ) {
 

@@ -17,23 +17,6 @@ class StrongHardenedLeatherLeggings() : CustomLeggings(
     levelRequirement = 18,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 15.0, toughness = 30.0, strength = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Leather.tier(2))
-            s2(Leather.tier(2))
-            s3(Leather.tier(2))
-            s4(Leather.tier(2))
-            s6(Bone.tier(2))
-            s7(Bone.tier(2))
-            s9(Bone.tier(2))
-            item { player, b ->
-                val newItem = StrongHardenedLeatherLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    }
 ) {
 
     constructor(quality: Int): this() {

@@ -18,23 +18,6 @@ class HealthySlimyLeggings() : CustomLeggings(
     levelRequirement = 4,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 14.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Slime.tier(2))
-            s2(Slime.tier(2))
-            s3(Slime.tier(2))
-            s3(Slime.tier(2))
-            s4(PlantMatter.tier(2))
-            s6(PlantMatter.tier(2))
-            s7(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthySlimyLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.LIME
 ) {
 

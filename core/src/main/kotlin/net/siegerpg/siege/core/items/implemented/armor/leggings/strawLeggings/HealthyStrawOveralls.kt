@@ -18,23 +18,6 @@ class HealthyStrawOveralls() : CustomLeggings(
     levelRequirement = 4,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 16.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Seed.tier(2))
-            s2(Seed.tier(2))
-            s3(PlantMatter.tier(2))
-            s4(PlantMatter.tier(2))
-            s6(PlantMatter.tier(2))
-            s7(PlantMatter.tier(2))
-            s7(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthyStrawOveralls(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.YELLOW
 ) {
 

@@ -18,23 +18,6 @@ class HealingWoolLeggings() : CustomLeggings(
     levelRequirement = 9,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 6.0, regeneration = 7.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Wool.tier(2))
-            s2(Wool.tier(2))
-            s3(Wool.tier(2))
-            s4(Wool.tier(2))
-            s6(Wheat.tier(2))
-            s7(Wheat.tier(2))
-            s9(Wheat.tier(2))
-            item { player, b ->
-                val newItem = HealingWoolLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.WHITE
 ) {
 

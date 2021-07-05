@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 class ChainHelmet() : CustomHelmet(
     name = "Chain Helmet",
     customModelData = 1,
-    description = listOf("Dreadlocks"),
+    description = listOf("Top heavy"),
     levelRequirement = 29,
     material = Material.CHAINMAIL_HELMET,
     baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 20.0),
