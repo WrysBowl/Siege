@@ -23,15 +23,11 @@ class StatGemListener : Listener {
     fun onInventoryClick(e: InventoryClickEvent) {
         if (e.whoClicked !is Player) return
         if (e.action != InventoryAction.SWAP_WITH_CURSOR) return
-        //Bukkit.getLogger().info("Inventory Action: ${e.action}")
         val player = e.whoClicked as Player
-        val inventory = e.view.bottomInventory
         val itemOnCursor = getCustomItem(e.cursor)
         val itemInteractedWith = getCustomItem(e.currentItem)
         if (itemOnCursor == null || itemInteractedWith == null) return
-        //Bukkit.getLogger().info("Both are not null")
         if (itemOnCursor !is StatGemType) return
-        //Bukkit.getLogger().info("Both are not null")
         if (itemInteractedWith !is CustomEquipment) return
         itemInteractedWith.statGem?.let {
             player.sendMiniMessage("<red>That item already has a stat gem!")
@@ -39,13 +35,8 @@ class StatGemListener : Listener {
         }
         if (itemOnCursor.levelRequirement!! > LevelEXPStorage.playerLevel[player]!!) {
             player.sendMiniMessage("<red>You are too low level to use this gem!")
-            return;
+            return
         }
-        /*
-        if (!VaultHook.econ.has(player, floor(itemOnCursor.statAmount.pow(3))))
-            return player.sendMiniMessage("<red>You don't have enough money! (\$${floor(itemOnCursor.statAmount.pow(3))}")
-        VaultHook.econ.withdrawPlayer(player, floor(itemOnCursor.statAmount.pow(3)))
-         */
         itemInteractedWith.addStatGem(StatGem(itemOnCursor.statType, itemOnCursor.statAmount))
         itemInteractedWith.updateMeta(false)
         e.currentItem = itemInteractedWith.item

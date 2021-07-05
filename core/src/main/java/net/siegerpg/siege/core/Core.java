@@ -144,7 +144,6 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);
         getServer().getPluginManager().registerEvents(new SymoneCollector(), this);
-        getServer().getPluginManager().registerEvents(new Dealer(), this);
         getServer().getPluginManager().registerEvents(new BenButcher(), this);
         getServer().getPluginManager().registerEvents(new RichardBanker(), this);
         getServer().getPluginManager().registerEvents(new BartBeggar(), this);
