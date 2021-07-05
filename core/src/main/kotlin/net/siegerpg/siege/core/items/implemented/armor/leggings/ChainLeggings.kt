@@ -16,23 +16,6 @@ class ChainLeggings() : CustomLeggings(
     levelRequirement = 30,
     material = Material.CHAINMAIL_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 60.0, toughness = 25.0, regeneration = 25.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Chain.tier(2))
-            s2(Chain.tier(2))
-            s3(Chain.tier(2))
-            s4(Chain.tier(2))
-            s6(Chain.tier(2))
-            s7(Chain.tier(2))
-            s9(Chain.tier(2))
-            item { player, b ->
-                val newItem = ChainLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

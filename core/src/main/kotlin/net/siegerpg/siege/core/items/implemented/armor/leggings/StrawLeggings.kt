@@ -17,23 +17,6 @@ class StrawLeggings() : CustomLeggings(
     levelRequirement = 4,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 10.0, regeneration = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Seed.tier(2))
-            s2(Seed.tier(2))
-            s3(Seed.tier(2))
-            s4(Seed.tier(2))
-            s6(Seed.tier(2))
-            s7(Seed.tier(2))
-            s9(Seed.tier(2))
-            item { player, b ->
-                val newItem = StrawLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.YELLOW
 ) {
 

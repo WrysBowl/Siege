@@ -18,23 +18,6 @@ class BeePants() : CustomLeggings(
     levelRequirement = 12,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 20.0, strength = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Seed.tier(3))
-            s2(Magma.tier(3))
-            s3(Seed.tier(3))
-            s4(Seed.tier(2))
-            s6(Seed.tier(2))
-            s7(Seed.tier(2))
-            s9(Seed.tier(2))
-            item { player, b ->
-                val newItem = BeePants(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.YELLOW
 ) {
 

@@ -1,23 +1,21 @@
-package net.siegerpg.siege.core.items.implemented.armor.leggings
+package net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain
 import net.siegerpg.siege.core.items.recipes.recipes
-import net.siegerpg.siege.core.items.types.armor.CustomLeggings
+import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.utils.Utils
-import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class BoneLeggings() : CustomLeggings(
-    name = "Bone Leggings",
+class HealthyChainHelmet() : CustomHelmet(
+    name = "Healthy Chain Helmet",
     customModelData = 1,
-    description = listOf("Protects your bone...s"),
-    levelRequirement = 24,
-    material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 80.0),
-    leatherColor = Color.GRAY
+    description = listOf("Top heavy"),
+    levelRequirement = 29,
+    material = Material.CHAINMAIL_HELMET,
+    baseStats = CustomItemUtils.statMap(health = 60.0),
 ) {
 
     constructor(quality: Int): this() {

@@ -16,23 +16,6 @@ class IronLeggings() : CustomLeggings(
     levelRequirement = 35,
     material = Material.IRON_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 100.0, regeneration = 10.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(RefinedMetal.tier(2))
-            s2(RefinedMetal.tier(2))
-            s3(RefinedMetal.tier(2))
-            s4(RefinedMetal.tier(2))
-            s6(RefinedMetal.tier(2))
-            s7(RefinedMetal.tier(2))
-            s9(RefinedMetal.tier(2))
-            item { player, b ->
-                val newItem = IronLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

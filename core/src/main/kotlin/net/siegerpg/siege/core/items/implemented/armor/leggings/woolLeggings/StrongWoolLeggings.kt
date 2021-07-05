@@ -18,22 +18,6 @@ class StrongWoolLeggings() : CustomLeggings(
     levelRequirement = 9,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(health = 5.0, strength = 6.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Wool.tier(2))
-            s2(Wool.tier(2))
-            s3(Wool.tier(2))
-            s4(Bone.tier(2))
-            s6(Bone.tier(2))
-            s7(Bone.tier(2))
-            item { player, b ->
-                val newItem = StrongWoolLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.WHITE
 ) {
 

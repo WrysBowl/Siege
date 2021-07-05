@@ -18,23 +18,6 @@ class HealingMagmaLeggings() : CustomLeggings(
     levelRequirement = 13,
     material = Material.LEATHER_LEGGINGS,
     baseStats = CustomItemUtils.statMap(toughness = 30.0, regeneration = 4.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s2(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Magma.tier(2))
-            s6(Wheat.tier(2))
-            s7(Wheat.tier(2))
-            s9(Wheat.tier(2))
-            item { player, b ->
-                val newItem = HealingMagmaLeggings(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.ORANGE
 ) {
 
