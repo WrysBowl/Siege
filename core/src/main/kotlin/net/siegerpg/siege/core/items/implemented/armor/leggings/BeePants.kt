@@ -17,7 +17,7 @@ class BeePants() : CustomLeggings(
     description = listOf("Sting like a bee!"),
     levelRequirement = 12,
     material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 20.0, strength = 5.0),
+    baseStats = CustomItemUtils.statMap(health = 20.0, strength = 5.0, mana = 2.0),
     leatherColor = Color.YELLOW
 ) {
 
