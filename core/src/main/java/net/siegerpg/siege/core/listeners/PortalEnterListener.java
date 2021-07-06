@@ -6,22 +6,24 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityPortalEnterEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.util.Vector;
 
 public class PortalEnterListener implements Listener {
 
     @EventHandler
-    public void portalEnter(PlayerPortalEvent e) {
-        World world = e.getPlayer().getWorld();
+    public void portalEnter(EntityPortalEnterEvent e) {
+        if (!(e.getEntity() instanceof Player)) return;
+        World world = e.getEntity().getWorld();
         World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
         World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
-        Player player = e.getPlayer();
+        Player player = (Player) e.getEntity();
 
-        if (world == siegeHub) {
-            assert hillyWoods != null;
-            player.teleport(hillyWoods.getSpawnLocation());
-        }
+        if (world != siegeHub) return;
+        assert hillyWoods != null;
+
+        player.teleport(hillyWoods.getSpawnLocation());
     }
 
 

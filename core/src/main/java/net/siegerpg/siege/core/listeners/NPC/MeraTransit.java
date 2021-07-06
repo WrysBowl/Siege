@@ -1,13 +1,12 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.informants.Scoreboard;
+import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;

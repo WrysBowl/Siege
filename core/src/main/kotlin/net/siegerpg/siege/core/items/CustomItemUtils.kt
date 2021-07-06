@@ -71,7 +71,9 @@ object CustomItemUtils {
         regeneration: Double? = null,
         toughness: Double? = null,
         health: Double? = null,
-        luck: Double? = null
+        luck: Double? = null,
+        mana: Double? = null,
+        mana_regen: Double? = null
     ): HashMap<StatTypes, Double> {
         val map = hashMapOf<StatTypes, Double>()
         strength?.let { map[StatTypes.STRENGTH] = it }
@@ -79,6 +81,8 @@ object CustomItemUtils {
         toughness?.let { map[StatTypes.TOUGHNESS] = it }
         health?.let { map[StatTypes.HEALTH] = it }
         luck?.let { map[StatTypes.LUCK] = it }
+        mana?.let { map[StatTypes.MANA] = it }
+        mana_regen?.let { map[StatTypes.MANA_REGEN] = it }
         return map
     }
 
@@ -87,6 +91,8 @@ object CustomItemUtils {
         var output = 0.0
         val inventory = player.inventory
         val mainHand = itemInMainHand ?: inventory.itemInMainHand
+
+
 
         getCustomItem(mainHand)?.let {
             //player.chat("You are holding a custom item")

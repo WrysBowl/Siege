@@ -1,11 +1,8 @@
 package net.siegerpg.siege.core.Webstore;
 
-import de.tr7zw.nbtapi.NBTCompound;
-import de.tr7zw.nbtapi.NBTContainer;
 import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.informants.Scoreboard;
-import net.siegerpg.siege.core.informants.Tablist;
+import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -16,8 +13,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.List;
 
 public class RedeemBoosters implements Listener {
 

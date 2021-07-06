@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.neutral.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.passive.*;
-import net.siegerpg.siege.core.informants.Scoreboard;
+import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;

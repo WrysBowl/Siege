@@ -1,6 +1,6 @@
 package net.siegerpg.siege.core.commands;
 
-import net.siegerpg.siege.core.cache.playerData;
+import net.siegerpg.siege.core.utils.cache.playerData;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

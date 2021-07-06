@@ -1,9 +1,6 @@
-package net.siegerpg.siege.core.cache;
+package net.siegerpg.siege.core.utils.cache;
 
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobSpawnEvent;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Mob;
 import org.bukkit.event.EventHandler;

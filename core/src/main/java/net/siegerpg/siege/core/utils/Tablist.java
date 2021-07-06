@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.informants;
+package net.siegerpg.siege.core.utils;
 
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.utils.VaultHook;

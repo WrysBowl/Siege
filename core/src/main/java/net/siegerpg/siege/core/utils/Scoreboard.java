@@ -1,12 +1,7 @@
-package net.siegerpg.siege.core.informants;
+package net.siegerpg.siege.core.utils;
 
-import kotlin.Pair;
-import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
-import net.siegerpg.siege.core.cache.LevelEXPStorage;
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;

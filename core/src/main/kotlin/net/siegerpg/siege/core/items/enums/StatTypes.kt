@@ -5,7 +5,9 @@ enum class StatTypes(val stylizedName: String) {
     TOUGHNESS("Toughness"),
     HEALTH("Health"),
     LUCK("Luck"),
-    REGENERATION("Regeneration");
+    REGENERATION("Regeneration"),
+    MANA("Mana"),
+    MANA_REGEN("Mana Regen");
 
     companion object {
         fun getFromId(id: String?): StatTypes? {

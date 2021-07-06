@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.commands;
 
-import net.siegerpg.siege.core.cache.LevelEXPStorage;
-import net.siegerpg.siege.core.informants.Scoreboard;
+import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;
+import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
