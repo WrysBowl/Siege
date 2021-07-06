@@ -17,32 +17,6 @@ class StrawBoots() : CustomBoots(
     levelRequirement = 3,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(health = 5.0, toughness = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Seed.tier(2))
-            s3(Seed.tier(2))
-            s4(Seed.tier(2))
-            s6(Seed.tier(2))
-            item { player, b ->
-                val newItem = StrawBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s4(Seed.tier(2))
-            s6(Seed.tier(2))
-            s7(Seed.tier(2))
-            s9(Seed.tier(2))
-            item { player, b ->
-                val newItem = StrawBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.YELLOW
 ) {
 

@@ -17,20 +17,6 @@ class HealingHardenedLeatherBoots() : CustomBoots(
     levelRequirement = 17,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(toughness = 20.0, regeneration = 4.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Leather.tier(2))
-            s3(Leather.tier(2))
-            s4(Wheat.tier(2))
-            s6(Wheat.tier(2))
-            item { player, b ->
-                val newItem = HealingHardenedLeatherBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    }
 ) {
 
     constructor(quality: Int): this() {
