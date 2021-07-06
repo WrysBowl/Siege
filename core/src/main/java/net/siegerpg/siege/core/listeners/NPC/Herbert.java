@@ -3,7 +3,7 @@ package net.siegerpg.siege.core.listeners.NPC;
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.*;
 import com.github.stefvanschie.inventoryframework.pane.*;
-import net.siegerpg.siege.core.informants.Scoreboard;
+import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial;

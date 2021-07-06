@@ -1,8 +1,8 @@
 package net.siegerpg.siege.core.listeners
 
 import net.siegerpg.siege.core.Core.plugin
-import net.siegerpg.siege.core.cache.LevelEXPStorage
-import net.siegerpg.siege.core.cache.MobNames
+import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
+import net.siegerpg.siege.core.utils.cache.MobNames
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood

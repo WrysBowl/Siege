@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.cache;
+package net.siegerpg.siege.core.utils.cache;
 
 import net.siegerpg.siege.core.utils.Levels;
 import org.bukkit.Bukkit;

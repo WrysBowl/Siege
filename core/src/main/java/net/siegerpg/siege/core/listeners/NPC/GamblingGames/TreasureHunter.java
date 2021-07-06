@@ -5,7 +5,7 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import com.github.stefvanschie.inventoryframework.pane.StaticPane;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.informants.Scoreboard;
+import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;

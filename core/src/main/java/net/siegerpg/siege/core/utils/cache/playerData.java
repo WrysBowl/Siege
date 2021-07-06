@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.cache;
+package net.siegerpg.siege.core.utils.cache;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

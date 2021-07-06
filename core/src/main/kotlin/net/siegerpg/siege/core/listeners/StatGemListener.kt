@@ -1,21 +1,16 @@
 package net.siegerpg.siege.core.listeners
 
-import net.siegerpg.siege.core.cache.LevelEXPStorage
+import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
-import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.misc.StatGemType
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
-import net.siegerpg.siege.core.utils.VaultHook
 import net.siegerpg.siege.core.utils.sendMiniMessage
-import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
-import kotlin.math.floor
-import kotlin.math.pow
 
 class StatGemListener : Listener {
     @EventHandler

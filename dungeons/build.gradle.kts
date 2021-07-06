@@ -19,6 +19,7 @@ dependencies {
     compileOnly(project(":core"))
     compileOnly("com.intellectualsites.fawe:FAWE-Bukkit:1.16-637") { isTransitive = false }
     compileOnly("com.intellectualsites.fawe:FAWE-Core:1.16-637")
+    implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
 
 }

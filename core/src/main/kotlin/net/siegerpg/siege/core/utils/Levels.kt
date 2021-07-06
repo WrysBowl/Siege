@@ -3,7 +3,7 @@
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import net.siegerpg.siege.core.cache.LevelEXPStorage
+import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.database.DatabaseManager
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer

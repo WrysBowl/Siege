@@ -3,7 +3,7 @@ package net.siegerpg.siege.core.fishing;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.cache.playerData;
+import net.siegerpg.siege.core.utils.cache.playerData;
 import net.siegerpg.siege.core.fishing.data.Cursor;
 import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.events.CustomFishEvent;

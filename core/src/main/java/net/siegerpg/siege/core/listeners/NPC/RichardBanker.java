@@ -1,9 +1,9 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.informants.Scoreboard;
+import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Bank;
-import net.siegerpg.siege.core.cache.PlayerBanking;
+import net.siegerpg.siege.core.utils.cache.PlayerBanking;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
