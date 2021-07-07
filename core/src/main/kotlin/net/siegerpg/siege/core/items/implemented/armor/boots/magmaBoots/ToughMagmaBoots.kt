@@ -18,20 +18,6 @@ class ToughMagmaBoots() : CustomBoots(
     levelRequirement = 12,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(toughness = 30.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Pebble.tier(2))
-            s6(Pebble.tier(2))
-            item { player, b ->
-                val newItem = ToughMagmaBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.ORANGE
 ) {
 

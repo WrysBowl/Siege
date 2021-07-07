@@ -18,21 +18,6 @@ class ToughBoneBoots() : CustomBoots(
     levelRequirement = 23,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(toughness = 80.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Bone.tier(2))
-            s3(Bone.tier(2))
-            s3(Pebble.tier(2))
-            s3(Pebble.tier(2))
-            s3(Pebble.tier(2))
-            item { player, b ->
-                val newItem = ToughBoneBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.GRAY
 ) {
 

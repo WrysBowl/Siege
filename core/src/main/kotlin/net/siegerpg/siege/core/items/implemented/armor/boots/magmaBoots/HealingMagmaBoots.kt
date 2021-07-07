@@ -18,20 +18,6 @@ class HealingMagmaBoots() : CustomBoots(
     levelRequirement = 12,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(health = 4.0, regeneration = 2.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s3(Wheat.tier(2))
-            s4(Wheat.tier(2))
-            s6(Wheat.tier(2))
-            item { player, b ->
-                val newItem = HealingMagmaBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.ORANGE
 ) {
 

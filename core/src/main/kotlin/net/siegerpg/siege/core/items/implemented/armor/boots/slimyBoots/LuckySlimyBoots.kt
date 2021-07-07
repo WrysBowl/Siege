@@ -18,21 +18,6 @@ class LuckySlimyBoots() : CustomBoots(
     levelRequirement = 3,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(luck = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Slime.tier(2))
-            s3(Slime.tier(2))
-            s4(Slime.tier(2))
-            s6(Feather.tier(2))
-            s6(Feather.tier(2))
-            item { player, b ->
-                val newItem = LuckySlimyBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.LIME
 ) {
 

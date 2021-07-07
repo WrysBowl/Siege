@@ -18,20 +18,6 @@ class LuckyMagmaBoots() : CustomBoots(
     levelRequirement = 12,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(health = 5.0, luck = 4.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(2))
-            s3(Magma.tier(2))
-            s4(Feather.tier(2))
-            s6(Feather.tier(2))
-            item { player, b ->
-                val newItem = LuckyMagmaBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.ORANGE
 ) {
 

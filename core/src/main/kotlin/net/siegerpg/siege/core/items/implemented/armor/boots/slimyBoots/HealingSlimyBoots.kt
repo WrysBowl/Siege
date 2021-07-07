@@ -18,21 +18,6 @@ class HealingSlimyBoots() : CustomBoots(
     levelRequirement = 3,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(regeneration = 2.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Slime.tier(2))
-            s3(Slime.tier(2))
-            s4(Wheat.tier(2))
-            s6(Wheat.tier(2))
-            s6(Wheat.tier(2))
-            item { player, b ->
-                val newItem = HealingSlimyBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.LIME
 ) {
 

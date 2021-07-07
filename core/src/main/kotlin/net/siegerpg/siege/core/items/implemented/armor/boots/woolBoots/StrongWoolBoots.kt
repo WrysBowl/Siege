@@ -18,20 +18,6 @@ class StrongWoolBoots() : CustomBoots(
     levelRequirement = 8,
     material = Material.LEATHER_BOOTS,
     baseStats = CustomItemUtils.statMap(strength = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Wool.tier(2))
-            s3(Wool.tier(2))
-            s4(Bone.tier(2))
-            s6(Bone.tier(2))
-            item { player, b ->
-                val newItem = StrongWoolBoots(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     leatherColor = Color.WHITE
 ) {
 
