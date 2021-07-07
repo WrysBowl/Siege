@@ -16,7 +16,7 @@ class StrongIronBow() : CustomBow(
     customModelData = 120008,
     description = listOf("Heavy and durable"),
     levelRequirement = 34,
-    material = Material.CROSSBOW,
+    material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 50.0, luck = 8.0),
     recipeList = recipes {
         recipe {

@@ -8,7 +8,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class LuckyDagger() : CustomMeleeWeapon(
-    name = "Lucky Shank",
+    name = "Lucky Dagger",
     customModelData = 110006,
     description = listOf("The prison shank's big brother"),
     levelRequirement = 20,

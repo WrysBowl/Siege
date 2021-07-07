@@ -1,16 +1,12 @@
 package net.siegerpg.siege.core.skills;
 
-import net.siegerpg.siege.core.items.enums.StatTypes;
-
-import java.util.HashMap;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 public interface Skill {
-    String ID = null;
-    HashMap<StatTypes,Double> stats = null;
 
-    HashMap<String,Skill> skills = new HashMap<>(){
-        {
-            //put("A1", new ArcherPower());
-        }
-    };
+    default void skillAction(PlayerInteractEvent e){}
+    default Skill skill(){return this;}
+
+    //DECODE and ENCODE from the database
+
 }

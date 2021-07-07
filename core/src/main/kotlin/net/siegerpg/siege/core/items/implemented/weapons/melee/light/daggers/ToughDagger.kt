@@ -8,7 +8,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ToughDagger() : CustomMeleeWeapon(
-    name = "Tough Shank",
+    name = "Tough Dagger",
     customModelData = 110006,
     description = listOf("The prison shank's big brother"),
     levelRequirement = 20,

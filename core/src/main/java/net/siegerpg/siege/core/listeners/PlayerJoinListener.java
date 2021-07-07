@@ -2,6 +2,8 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
+import net.siegerpg.siege.core.items.statgems.StatGem;
+import net.siegerpg.siege.core.items.types.misc.StatGemType;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Tablist;
 import net.siegerpg.siege.core.items.CustomItem;
@@ -95,10 +97,11 @@ public class PlayerJoinListener implements Listener {
         }
 
         for (int i = 0; i< player.getInventory().getSize(); i++) {
-            CustomItem Cusitem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
-            if (Cusitem != null) {
-                player.getInventory().setItem(i, Cusitem.getUpdatedItem(false));
-            }
+            CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
+            if (CusItem == null) continue;
+            if (CusItem instanceof StatGemType) continue;
+
+            player.getInventory().setItem(i, CusItem.getUpdatedItem(false));
         }
 
         if (player.getName().equals("Sumowu")) {
