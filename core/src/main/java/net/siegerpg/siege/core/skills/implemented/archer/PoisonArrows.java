@@ -20,10 +20,9 @@ public class PoisonArrows extends ArcherSkill {
     }
 
     @Override
-    public void skillAction(PlayerInteractEvent e) {
+    public void skillActive(PlayerInteractEvent e) {
         if(activeSkill) {
             return;
         }
-
     }
 }
