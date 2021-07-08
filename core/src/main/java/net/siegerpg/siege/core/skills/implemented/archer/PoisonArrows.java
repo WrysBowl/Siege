@@ -10,17 +10,33 @@ import java.util.HashMap;
 
 public class PoisonArrows extends ArcherSkill {
 
-    String ID = "A1";
+    int ID;
     @Nullable HashMap<StatTypes,Double> STATS;
-    Skill SKILL = this;
-    boolean activeSkill = true;
+    Skill SKILL;
+    boolean activeSkill;
+    @Nullable HashMap<Integer, ArcherSkill> CHILDREN;
 
-    public PoisonArrows(String id, @Nullable HashMap<StatTypes,Double> stats, Skill skill){
-        super(id, stats, skill);
+    public PoisonArrows(){
+        this.ID = 1;
+        this.SKILL = this;
+        this.activeSkill = true;
+        this.CHILDREN = new HashMap<>(){
+            {
+            put(1, new PoisonArrows());
+            }
+        };
+    }
+    public PoisonArrows(int id, @Nullable HashMap<StatTypes,Double> stats, @Nullable HashMap<Integer, ArcherSkill> children) {
+        this.ID = id;
+        this.STATS = stats;
+        this.CHILDREN = children;
+    }
+    public PoisonArrows(Skill skill) {
+        this.SKILL = skill;
     }
 
     @Override
-    public void skillActive(PlayerInteractEvent e) {
+    public void skillAction(PlayerInteractEvent e) {
         if(activeSkill) {
             return;
         }

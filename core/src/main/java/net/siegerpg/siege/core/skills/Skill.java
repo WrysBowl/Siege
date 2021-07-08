@@ -1,13 +1,10 @@
 package net.siegerpg.siege.core.skills;
 
+import net.siegerpg.siege.core.skills.implemented.archer.PoisonArrows;
+import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public interface Skill {
 
-    default void skillActive(PlayerInteractEvent e){}
-    default Skill skill(){return this;}
-
-
-    //DECODE and ENCODE from the database
-
+    default void skillAction(PlayerInteractEvent e){}
 }
