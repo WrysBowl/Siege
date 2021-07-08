@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import javax.annotation.Nullable;
 import java.util.HashMap;
 
-public class PoisonArrows extends ArcherSkill {
+public class CriticalShot extends ArcherSkill {
 
     int ID;
     @Nullable HashMap<StatTypes,Double> STATS;
@@ -16,26 +16,25 @@ public class PoisonArrows extends ArcherSkill {
     boolean activeSkill;
     @Nullable HashMap<Integer, ArcherSkill> CHILDREN;
 
-    public PoisonArrows(){
+    public CriticalShot(){
         this.ID = 1;
         this.SKILL = this;
         this.activeSkill = true;
         this.CHILDREN = new HashMap<>(){
             {
-            put(1, new PoisonArrows());
+            put(1, new CriticalShot());
             }
         };
     }
-    public PoisonArrows(int id, @Nullable HashMap<StatTypes,Double> stats, @Nullable HashMap<Integer, ArcherSkill> children) {
+    public CriticalShot(int id, @Nullable HashMap<StatTypes,Double> stats, @Nullable HashMap<Integer, ArcherSkill> children) {
         this.ID = id;
         this.STATS = stats;
         this.CHILDREN = children;
     }
-    public PoisonArrows(Skill skill) {
+    public CriticalShot(Skill skill) {
         this.SKILL = skill;
     }
 
-    @Override
     public void skillAction(PlayerInteractEvent e) {
         if(activeSkill) {
             return;

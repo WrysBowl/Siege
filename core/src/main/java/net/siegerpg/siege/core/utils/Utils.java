@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
+import net.siegerpg.siege.core.skills.Skill;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -137,7 +138,6 @@ public class Utils {
     }
 
     public static ItemStack setCost(ItemStack item, Integer cost) {
-
         List<String> lore;
         if (item.getLore() == null) {
             lore = new ArrayList<>(1);

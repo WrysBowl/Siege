@@ -7,7 +7,7 @@ import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;
 import net.siegerpg.siege.core.utils.cache.MobNames;
 import net.siegerpg.siege.core.utils.cache.PlayerBanking;
-import net.siegerpg.siege.core.utils.cache.playerData;
+import net.siegerpg.siege.core.utils.cache.PlayerData;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.GetItem;
 import net.siegerpg.siege.core.commands.admin.Invsee;
@@ -135,7 +135,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FishEvent(), this);
         getServer().getPluginManager().registerEvents(new RightClickEvent(), this);
         getServer().getPluginManager().registerEvents(new LevelEXPStorage(), this);
-        getServer().getPluginManager().registerEvents(new playerData(), this);
+        getServer().getPluginManager().registerEvents(new PlayerData(), this);
         getServer().getPluginManager().registerEvents(new EntityTeleportListener(), this);
         getServer().getPluginManager().registerEvents(new HelpfulTips(), this);
         getServer().getPluginManager().registerEvents(new MobNames(), this);

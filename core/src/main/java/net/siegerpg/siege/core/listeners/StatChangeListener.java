@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.cache.playerData;
+import net.siegerpg.siege.core.utils.cache.PlayerData;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
@@ -85,17 +85,17 @@ public class StatChangeListener implements Listener, Runnable {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (playerHealth.get(p) == null) continue;
-                if (playerData.hasActionBar.get(p)) continue;
+                if (PlayerData.hasActionBar.get(p)) continue;
                 double health = Utils.round(playerHealth.get(p), 1);
                 double toughness = Utils.round(playerToughness.get(p), 1);
                 double customHealth = Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 1);
-                playerData.hasActionBar.put(p, true);
+                PlayerData.hasActionBar.put(p, true);
                 p.sendActionBar(Utils.parse("<red>"
                         + customHealth + "<dark_red>/" + health + " \u2764"
                         + "          <dark_aqua>" + Utils.round(toughness, 1) + " \uD83D\uDEE1       "));
             }
             for (Player p : Bukkit.getOnlinePlayers()) {
-                playerData.hasActionBar.put(p, false);
+                PlayerData.hasActionBar.put(p, false);
             }
         }, 0, 40);
     }

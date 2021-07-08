@@ -9,7 +9,7 @@ import org.bukkit.event.server.PluginEnableEvent;
 
 import java.util.HashMap;
 
-public class playerData implements Listener {
+public class PlayerData implements Listener {
     public static HashMap<Player, Boolean> hasActionBar = new HashMap<>();
     public static HashMap<Player, Boolean> broadcastTips = new HashMap<>();
 
@@ -17,14 +17,14 @@ public class playerData implements Listener {
     public void onEnable(PluginEnableEvent e) {
         for (Player player : Bukkit.getOnlinePlayers()){
             hasActionBar.put(player, false);
-            playerData.broadcastTips.put(player, true);
+            PlayerData.broadcastTips.put(player, true);
         }
     }
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         hasActionBar.put(e.getPlayer(), false);
-        if (!playerData.broadcastTips.containsKey(e.getPlayer())) {
-            playerData.broadcastTips.put(e.getPlayer(), true);
+        if (!PlayerData.broadcastTips.containsKey(e.getPlayer())) {
+            PlayerData.broadcastTips.put(e.getPlayer(), true);
         }
     }
 }

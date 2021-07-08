@@ -1,6 +1,6 @@
 package net.siegerpg.siege.core.commands;
 
-import net.siegerpg.siege.core.utils.cache.playerData;
+import net.siegerpg.siege.core.utils.cache.PlayerData;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,10 +28,10 @@ public class ToggleTips implements CommandExecutor {
                     "\n"));
         } else if (args[0].equals("enable")) {
             player.sendMessage(Utils.lore("\n<yellow>Tips have been enabled. To disable tips type /tips disable.\n"));
-            playerData.broadcastTips.put(player, true);
+            PlayerData.broadcastTips.put(player, true);
         } else if (args[0].equals("disable")) {
             player.sendMessage(Utils.lore("\n<yellow>Tips have been disabled. To re-enable tips type /tips enable.\n"));
-            playerData.broadcastTips.put(player, false);
+            PlayerData.broadcastTips.put(player, false);
         }
         return false;
     }
