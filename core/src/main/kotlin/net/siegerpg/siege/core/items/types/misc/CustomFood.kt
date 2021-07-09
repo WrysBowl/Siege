@@ -81,7 +81,7 @@ abstract class CustomFood(
         if (e.player.itemInHand.type == Material.SUSPICIOUS_STEW || e.player.itemInHand.type == Material.MUSHROOM_STEW || e.player.itemInHand.type == Material.RABBIT_STEW) {
             e.player.setItemInHand(ItemStack(Material.AIR))
         }
-        StatChangeListener.addHealthTough(e.player)
+        StatChangeListener.setStats(e.player)
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {

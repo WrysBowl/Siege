@@ -1,6 +1,9 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.skills.Skill;
+import net.siegerpg.siege.core.skills.SkillUtils;
+import net.siegerpg.siege.core.skills.Skills;
 import net.siegerpg.siege.core.utils.cache.PlayerData;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
@@ -26,8 +29,11 @@ public class StatChangeListener implements Listener, Runnable {
 
     public static HashMap<Player, Double> playerHealth = new HashMap<>();
     public static HashMap<Player, Double> playerToughness = new HashMap<>();
+    public static HashMap<Player, Double> playerCurrentMana = new HashMap<>();
+    public static HashMap<Player, Double> playerMana = new HashMap<>();
+    public static HashMap<Player, String> playerSkillString = new HashMap<>();
 
-    public static void addHealthTough(Player player) {
+    public static void setStats(Player player) {
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
             playerHealth.put(
                     player,
@@ -36,19 +42,21 @@ public class StatChangeListener implements Listener, Runnable {
             playerToughness.put(
                     player,
                     CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.TOUGHNESS));
+            //playerMana.put(player,CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
+
         }, 2);
     }
 
     @EventHandler
     public void onEnable(PluginEnableEvent e) {
         for (Player player : Bukkit.getOnlinePlayers()){
-            addHealthTough(player);
+            setStats(player);
         }
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        addHealthTough(e.getPlayer());
+        setStats(e.getPlayer());
     }
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
@@ -60,7 +68,7 @@ public class StatChangeListener implements Listener, Runnable {
     public void onEquip(ArmorEquipEvent e){
         @Nullable CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
         if (item == null) {
-            addHealthTough(e.getPlayer());
+            setStats(e.getPlayer());
             return;
         }
         if (item.getLevelRequirement() == null) {return;}
@@ -68,7 +76,7 @@ public class StatChangeListener implements Listener, Runnable {
             e.getPlayer().sendTitle("", ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
             return;
         }
-        addHealthTough(e.getPlayer());
+        setStats(e.getPlayer());
     }
 
     @EventHandler
@@ -76,7 +84,7 @@ public class StatChangeListener implements Listener, Runnable {
         CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
         if (item != null) {
             if (!(item instanceof CustomMaterial)) {
-                addHealthTough(e.getPlayer());
+                setStats(e.getPlayer());
             }
         }
     }
