@@ -1,14 +1,14 @@
 ﻿package net.siegerpg.siege.dungeons
 
 import io.lumine.xikage.mythicmobs.MythicMobs
-import io.lumine.xikage.mythicmobs.adapters.AbstractLocation
-import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitWorld
 import net.siegerpg.siege.core.Core
+import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.OfflinePlayer
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.entity.Player
+import org.bukkit.persistence.PersistentDataType
 import java.util.*
 import java.util.function.Consumer
 
@@ -131,7 +131,9 @@ class Dungeon {
      */
     fun spawnBoss() {
         val bossLoc = location.clone().add(type.relBossLoc)
-        MythicMobs.inst().apiHelper.spawnMythicMob(type.boss, bossLoc, type.dungeonLevel)
+        val boss = MythicMobs.inst().apiHelper.spawnMythicMob(type.boss, bossLoc, type.dungeonLevel)
+        boss.persistentDataContainer.set(Utils.namespacedKey("dungeon"), PersistentDataType.INTEGER, index)
+        boss.persistentDataContainer.set(Utils.namespacedKey("dungeon_type"), PersistentDataType.STRING, type.name)
     }
 
 
