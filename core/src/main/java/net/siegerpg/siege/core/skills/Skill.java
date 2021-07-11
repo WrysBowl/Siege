@@ -5,9 +5,11 @@ import net.siegerpg.siege.core.skills.implemented.archer.CriticalShot;
 import net.siegerpg.siege.core.skills.subTypes.ArcherSkill;
 import net.siegerpg.siege.core.utils.cache.PlayerData;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -27,7 +29,41 @@ public class Skill {
             put(StatTypes.MANA, 0.0);
             put(StatTypes.MANA_REGEN, 2.0);
         }
-    };;
+    };
+    int ID;
+    Skill SKILL;
+    @Nullable HashMap<Integer, ArcherSkill> CHILDREN;
+    ItemStack displayItem;
+
+    public Skill(){
+        this.ID = 0;
+        this.STATS = new HashMap<>(){
+            {
+                put(StatTypes.LUCK, 0.0);
+                put(StatTypes.STRENGTH, 0.0);
+                put(StatTypes.TOUGHNESS, 0.0);
+                put(StatTypes.HEALTH, 0.0);
+                put(StatTypes.REGENERATION, 0.0);
+                put(StatTypes.MANA, 0.0);
+                put(StatTypes.MANA_REGEN, 0.0);
+            }
+        };
+        this.SKILL = this;
+        this.CHILDREN = new HashMap<>(){
+            {
+                put(1, new CriticalShot());
+            }
+        };
+        this.displayItem = new ItemStack(Material.AIR);
+    }
+    public Skill(int id, @Nullable HashMap<StatTypes,Double> stats, @Nullable HashMap<Integer, ArcherSkill> children) {
+        this.ID = id;
+        this.STATS = stats;
+        this.CHILDREN = children;
+    }
+    public Skill(Skill skill) {
+        this.SKILL = skill;
+    }
 
     public boolean skillCheck(PlayerInteractEvent e){
         Player player = e.getPlayer();
@@ -35,18 +71,12 @@ public class Skill {
                 player.getGameMode().equals(GameMode.SPECTATOR)) return false;
         if (!player.getOpenInventory().getType().equals(InventoryType.CRAFTING)) return false;
 
-        
+
 
         //if (StatChangeListener.mana.get(player) >= matchedSkill.STATS.get(StatTypes.MANA)) return false;
         return true;
     }
 
-    /* do later
-    public static String appendSkill(Player player, int id){
-        //get player's skill string here
-        String skills = "";
-        if (skills.isEmpty() || skills == null) return ("A_"+id);
-        return (skills + "_" + id);
-    }
-     */
+
+
 }
