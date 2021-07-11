@@ -2,7 +2,6 @@
 
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormats
-import com.sk89q.worldedit.extent.clipboard.io.ClipboardReader
 import org.bukkit.*
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.generator.ChunkGenerator
@@ -161,7 +160,7 @@ class DungeonType {
      */
     fun nextAvailableDungeon(): Dungeon {
         var available: Dungeon? = null
-        val dungeonLength = dungeons.size
+        val dungeonLength = dungeons.map { d -> d.index }.maxOrNull() ?: 0
         for (dungeon in dungeons) {
             if (dungeon.listPlayers().size < 1) {
                 dungeon.reset()
