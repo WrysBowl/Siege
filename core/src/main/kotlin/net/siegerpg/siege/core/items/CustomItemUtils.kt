@@ -94,8 +94,8 @@ object CustomItemUtils {
         val inventory = player.inventory
         val mainHand = itemInMainHand ?: inventory.itemInMainHand
 
-        val skills = SkillUtils.decode("A_1_4_7")
-        output += SkillUtils.getStats(skills)[statType]!!
+        //val skills = SkillUtils.decode("A_1_4_7")
+        //output += SkillUtils.getStats(skills)[statType]!!
 
         getCustomItem(mainHand)?.let {
             //player.chat("You are holding a custom item")
