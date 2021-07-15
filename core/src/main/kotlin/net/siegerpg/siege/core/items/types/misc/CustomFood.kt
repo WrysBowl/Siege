@@ -7,7 +7,7 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
-import net.siegerpg.siege.core.listeners.StatChangeListener
+import net.siegerpg.siege.core.utils.cache.PlayerData
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.Material
@@ -81,7 +81,7 @@ abstract class CustomFood(
         if (e.player.itemInHand.type == Material.SUSPICIOUS_STEW || e.player.itemInHand.type == Material.MUSHROOM_STEW || e.player.itemInHand.type == Material.RABBIT_STEW) {
             e.player.setItemInHand(ItemStack(Material.AIR))
         }
-        StatChangeListener.setStats(e.player)
+        PlayerData.setStats(e.player)
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {

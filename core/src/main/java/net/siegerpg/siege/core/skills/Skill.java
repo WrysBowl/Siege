@@ -19,21 +19,12 @@ public class Skill {
 
     //Decode needs to be static for us to reference it, but then skillTypes need to be static, and so I transferred
     //all the hashmaps and methods to another class
-    @Nullable HashMap<StatTypes,Double> STATS = new HashMap<>(){
-        {
-            put(StatTypes.LUCK, 0.0);
-            put(StatTypes.STRENGTH, 0.0);
-            put(StatTypes.TOUGHNESS, 0.0);
-            put(StatTypes.HEALTH, 0.0);
-            put(StatTypes.REGENERATION, 0.0);
-            put(StatTypes.MANA, 0.0);
-            put(StatTypes.MANA_REGEN, 2.0);
-        }
-    };
+    @Nullable HashMap<StatTypes,Double> STATS;
     int ID;
     Skill SKILL;
     @Nullable HashMap<Integer, ArcherSkill> CHILDREN;
     ItemStack displayItem;
+    @Nullable Integer MANACOST;
 
     public Skill(){
         this.ID = 0;
@@ -55,11 +46,13 @@ public class Skill {
             }
         };
         this.displayItem = new ItemStack(Material.AIR);
+        this.MANACOST = 0;
     }
-    public Skill(int id, @Nullable HashMap<StatTypes,Double> stats, @Nullable HashMap<Integer, ArcherSkill> children) {
+    public Skill(int id, @Nullable HashMap<StatTypes,Double> stats, @Nullable HashMap<Integer, ArcherSkill> children, int manaCost) {
         this.ID = id;
         this.STATS = stats;
         this.CHILDREN = children;
+        this.MANACOST = manaCost;
     }
     public Skill(Skill skill) {
         this.SKILL = skill;

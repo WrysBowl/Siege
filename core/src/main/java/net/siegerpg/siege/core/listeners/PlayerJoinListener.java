@@ -86,7 +86,7 @@ public class PlayerJoinListener implements Listener {
             food.setAmount(10);
             player.getInventory().addItem(food);
             VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
-            VaultHook.econ.depositPlayer(player, 200.0);
+            VaultHook.econ.depositPlayer(player, 400.0);
             joinMessage = Utils.tacc("&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
         }
         event.setJoinMessage(joinMessage);
@@ -104,24 +104,6 @@ public class PlayerJoinListener implements Listener {
             player.getInventory().setItem(i, CusItem.getUpdatedItem(false));
         }
 
-        if (player.getName().equals("Sumowu")) {
-            Shank shank = new Shank(100);
-            //shank.setStatGem(new StatGem(StatTypes.STRENGTH, 10.0));
-            shank.updateMeta(false);
-            player.getInventory().addItem(shank.getItem());
-        }
-
-        /*
-        for (DungeonType dungeonType : DungeonType.dungeonTypes) {
-            for (Dungeon dungeon : dungeonType.dungeons) {
-                if (dungeon.listPlayers().contains(player) && player.getLocation().distanceSquared(dungeon.location) > dungeonType.dungeonDistance * dungeonType.dungeonDistance) {
-                    player.teleport(dungeon.location.clone().add(dungeonType.spawnLocation));
-                    return;
-                }
-            }
-        }
-        */
-
-        player.teleport(Core.plugin().getServer().getWorld("SiegeHub").getSpawnLocation());
+        player.teleport(Core.plugin().getServer().getWorld("Hub").getSpawnLocation());
     }
 }
