@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.utils.cache.MobNames
@@ -129,6 +130,10 @@ class CustomItemKotlinListener : Listener, Runnable {
         }
 
         if (attacker is Player) {
+            if (victim is Player && victim.world != plugin().server.getWorld("PVP")) {
+                e.isCancelled = true
+                return
+            }
             val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
             if (item == null) {
                 e.damage = 1.0

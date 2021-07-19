@@ -60,10 +60,8 @@ class WandCast : BukkitRunnable {
             this.cancel()
         }
         for (e in loc.getNearbyLivingEntities(damageRadius)) {
-            if (e is Player) continue
-            for (x in loc.getNearbyLivingEntities(damageRadius)) {
-                if (e is Player) continue
-                x.damage(dmg, player)
+            for (en in loc.getNearbyLivingEntities(damageRadius)) {
+                en.damage(dmg, player)
             }
             this.cancel()
         }
