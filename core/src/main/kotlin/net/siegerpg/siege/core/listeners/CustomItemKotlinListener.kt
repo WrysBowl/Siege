@@ -96,20 +96,17 @@ class CustomItemKotlinListener : Listener, Runnable {
         }
     }
     @EventHandler
-    @Suppress("unused")
     fun onBowUse(e: ProjectileHitEvent) {
         if (e.entity is Arrow) {
-            e.entity.remove()
+            if (e.hitEntity == null) e.entity.remove()
         }
     }
 
     @EventHandler
     @Suppress("unused")
     fun onHit(e: EntityDamageEvent) {
-
-        if (e.isCancelled) return
         if (e.entity !is LivingEntity) return
-        val victim = e.entity as LivingEntity
+        var victim = e.entity as LivingEntity
         val damage = e.damage
         var actualDamage = e.damage
         var maxDamage = damage
@@ -123,16 +120,18 @@ class CustomItemKotlinListener : Listener, Runnable {
                     attacker = (e.damager as Projectile).shooter as Player
                 }
             }
+            victim = e.entity as LivingEntity
 
             if (attacker is Player) {
                 maxDamage = attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
             }
         }
-
         if (attacker is Player) {
-            if (victim is Player && victim.world != plugin().server.getWorld("PVP")) {
-                e.isCancelled = true
-                return
+            if (victim is Player){
+                if (victim.world != plugin().server.getWorld("PVP")) {
+                    e.isCancelled = true
+                    return
+                }
             }
             val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
             if (item == null) {
