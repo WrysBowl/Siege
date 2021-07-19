@@ -105,8 +105,9 @@ class CustomItemKotlinListener : Listener, Runnable {
     @EventHandler
     @Suppress("unused")
     fun onHit(e: EntityDamageEvent) {
+        if (e.isCancelled) return
         if (e.entity !is LivingEntity) return
-        var victim = e.entity as LivingEntity
+        val victim = e.entity as LivingEntity
         val damage = e.damage
         var actualDamage = e.damage
         var maxDamage = damage
@@ -120,8 +121,6 @@ class CustomItemKotlinListener : Listener, Runnable {
                     attacker = (e.damager as Projectile).shooter as Player
                 }
             }
-            victim = e.entity as LivingEntity
-
             if (attacker is Player) {
                 maxDamage = attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
             }
