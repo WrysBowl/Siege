@@ -19,60 +19,35 @@ public class WebstoreCommand implements CommandExecutor {
         if (sender instanceof Player) return false;
 
         OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+        if (args[1].equals("booster")) {
+            //arg 2 = EXP or GOLD
+            //arg 3 = multiplier
+            //args 4 = duration in seconds
+            //arg 5 = amount
+            String type = args[2];
+            float multi = 1;
+            int duration = 3600;
+            int amount = 1;
+            try { multi = Float.parseFloat(args[3]); }
+            catch (NumberFormatException e) {
+                Bukkit.getLogger().info(Utils.tacc("&cCould not correctly parse multiplier to a float."));
+            }
+            try { duration = Integer.parseInt(args[4]); }
+            catch (NumberFormatException e) {
+                Bukkit.getLogger().info(Utils.tacc("&cCould not correctly parse duration to an integer."));
+            }
+            try { amount = Integer.parseInt(args[5]); }
+            catch (NumberFormatException e) {
+                Bukkit.getLogger().info(Utils.tacc("&cCould not correctly parse amount to an integer."));
+            }
 
-        if (args[1].equals("5xBoosterEXP1.2")) {
-            ItemStack item = WebstoreUtils.getBooster(5, 1.2, 3600, "EXP");
+            ItemStack item = WebstoreUtils.getBooster(amount, multi, duration, type);
             WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
             Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &dEXP Boosters!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e"+amount+" &a"+multi+"x "+type+" boosters!"));
             Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
             Bukkit.broadcastMessage(Utils.tacc(""));
-            return true;
-        }
-        if (args[1].equals("5xBoosterGOLD1.2")) {
-            ItemStack item = WebstoreUtils.getBooster(5, 1.2, 3600, "GOLD");
-            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &eGold Boosters!"));
-            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            return true;
-        }
-        if (args[1].equals("3xBoosterEXP1.5")) {
-            ItemStack item = WebstoreUtils.getBooster(3, 1.5, 3600, "EXP");
-            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &dEXP Boosters!"));
-            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            return true;
-        }
-        if (args[1].equals("3xBoosterGOLD1.5")) {
-            ItemStack item = WebstoreUtils.getBooster(3, 1.5, 3600, "GOLD");
-            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &eGold Boosters!"));
-            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            return true;
-        }
-        if (args[1].equals("1xBoosterEXP2")) {
-            ItemStack item = WebstoreUtils.getBooster(1, 2, 3600, "EXP");
-            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &dEXP Boosters!"));
-            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            return true;
-        }
-        if (args[1].equals("1xBoosterGOLD2")) {
-            ItemStack item = WebstoreUtils.getBooster(1, 2, 3600, "GOLD");
-            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &eGold Boosters!"));
-            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            return true;
+
         }
         if (args[1].equals("WarriorRank")) {
             ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
