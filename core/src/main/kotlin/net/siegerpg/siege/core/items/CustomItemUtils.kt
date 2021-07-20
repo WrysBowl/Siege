@@ -21,6 +21,7 @@ import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.skills.Skill
 import net.siegerpg.siege.core.skills.SkillUtils
+import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -96,6 +97,9 @@ object CustomItemUtils {
 
         //val skills = SkillUtils.decode("A_1_4_7")
         //output += SkillUtils.getStats(skills)[statType]!!
+        if (statType == StatTypes.MANA) {
+            output += Levels.getExpLevel(player).first * 2
+        }
 
         getCustomItem(mainHand)?.let {
             //player.chat("You are holding a custom item")
