@@ -13,11 +13,11 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class RockSpirit extends MobDropTable {
     public RockSpirit() {
-        super("RockSpirit", 180, 200, 250, 270, new Reward[]{
-                new Reward(Pebble.Companion.tier(3).getUpdatedItem(false), 100.0),
-                new Reward(Seed.Companion.tier(3).getUpdatedItem(false), 100.0),
-                new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 50.0),
-                new Reward(new RockWand(Utils.randRarity()).getUpdatedItem(false), 60.0)
+        super("RockSpirit", 400, 500, 250, 300, new Reward[]{
+                new Reward(Pebble.Companion.tier(3).getUpdatedItem(false), 50.0),
+                new Reward(Seed.Companion.tier(3).getUpdatedItem(false), 50.0),
+                new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 40.0),
+                new Reward(new RockWand(Utils.randRarity()).getUpdatedItem(false), 20.0)
         });
     }
 }
