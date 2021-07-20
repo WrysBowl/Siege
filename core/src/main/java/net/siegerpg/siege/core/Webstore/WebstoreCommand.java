@@ -38,6 +38,42 @@ public class WebstoreCommand implements CommandExecutor {
             Bukkit.broadcastMessage(Utils.tacc(""));
             return true;
         }
+        if (args[1].equals("3xBoosterEXP1.5")) {
+            ItemStack item = WebstoreUtils.getBooster(3, 1.5, 3600, "EXP");
+            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &dEXP Boosters!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            return true;
+        }
+        if (args[1].equals("3xBoosterGOLD1.5")) {
+            ItemStack item = WebstoreUtils.getBooster(3, 1.5, 3600, "GOLD");
+            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &eGold Boosters!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            return true;
+        }
+        if (args[1].equals("1xBoosterEXP2")) {
+            ItemStack item = WebstoreUtils.getBooster(1, 2, 3600, "EXP");
+            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &dEXP Boosters!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            return true;
+        }
+        if (args[1].equals("1xBoosterGOLD2")) {
+            ItemStack item = WebstoreUtils.getBooster(1, 2, 3600, "GOLD");
+            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e5 &a1.2x &eGold Boosters!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            return true;
+        }
         if (args[1].equals("WarriorRank")) {
             ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
             String cmd = "lp user " + argPlayer.getName() + " parent add Warrior";
