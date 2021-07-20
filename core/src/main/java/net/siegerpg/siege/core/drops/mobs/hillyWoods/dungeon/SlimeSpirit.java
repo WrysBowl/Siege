@@ -10,11 +10,15 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class SlimeSpirit extends MobDropTable {
     public SlimeSpirit() {
-        super("SlimeSpirit", 180, 200, 250, 270, new Reward[]{
-                new Reward(Pebble.Companion.tier(3).getUpdatedItem(false), 100.0),
-                new Reward(Seed.Companion.tier(3).getUpdatedItem(false), 100.0),
-                new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 50.0),
-                new Reward(new RockWand(Utils.randRarity()).getUpdatedItem(false), 60.0)
+        super("SlimeSpirit", 600, 700, 350, 450, new Reward[]{
+                new Reward(Slime.Companion.tier(1).getUpdatedItem(false).asQuantity(6), 25.0),
+                new Reward(Slime.Companion.tier(1).getUpdatedItem(false).asQuantity(6), 25.0),
+                new Reward(Slime.Companion.tier(1).getUpdatedItem(false).asQuantity(6), 25.0),
+                new Reward(Slime.Companion.tier(1).getUpdatedItem(false).asQuantity(6), 25.0),
+                new Reward(Slime.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 30.0),
+                new Reward(Seed.Companion.tier(3).getUpdatedItem(false), 50.0),
+                new Reward(new SlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 50.0),
+                new Reward(new SlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 25.0)
         });
     }
 }
