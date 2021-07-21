@@ -8,112 +8,31 @@ import org.bukkit.OfflinePlayer
 import java.sql.ResultSet
 
 object Skills {
-
-    fun getHeavyLevel(player: OfflinePlayer): Short {
+/*
+    fun getSkills(player: OfflinePlayer): String {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
-                "SELECT Heavy FROM skillsData WHERE uuid=?",
+                "SELECT skills FROM skillsData WHERE uuid=?",
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setString(1, player.uniqueId.toString())
             val query = stmt.executeQuery();
-            if (!query.isBeforeFirst) return 0
+            if (!query.isBeforeFirst) return ""
             query.next()
-            return query.getShort("Heavy")
+            return query.getString("skills")
         }
     }
 
-    fun getLightLevel(player: OfflinePlayer): Int {
-        val connection = DatabaseManager.getConnection()
-        connection!!.use {
-            val stmt = connection.prepareStatement(
-                "SELECT Light FROM skillsData WHERE uuid=?",
-                ResultSet.TYPE_SCROLL_SENSITIVE
-            )
-            stmt.setString(1, player.uniqueId.toString())
-            val query = stmt.executeQuery();
-            if (!query.isBeforeFirst) return 0
-            query.next()
-            return query.getInt("Light")
-        }
-    }
-
-    fun getRangedLevel(player: OfflinePlayer): Short {
-        val connection = DatabaseManager.getConnection()
-        connection!!.use {
-            val stmt = connection.prepareStatement(
-                "SELECT Ranged FROM skillsData WHERE uuid=?",
-                ResultSet.TYPE_SCROLL_SENSITIVE
-            )
-            stmt.setString(1, player.uniqueId.toString())
-            val query = stmt.executeQuery();
-            if (!query.isBeforeFirst) return 0
-            query.next()
-            return query.getShort("Ranged")
-        }
-    }
-
-    fun getMagicLevel(player: OfflinePlayer): Int {
-        val connection = DatabaseManager.getConnection()
-        connection!!.use {
-            val stmt = connection.prepareStatement(
-                "SELECT Magic FROM skillsData WHERE uuid=?",
-                ResultSet.TYPE_SCROLL_SENSITIVE
-            )
-            stmt.setString(1, player.uniqueId.toString())
-            val query = stmt.executeQuery();
-            if (!query.isBeforeFirst) return 0
-            query.next()
-            return query.getInt("Magic")
-        }
-    }
-
-    fun setHeavyLevel(player: OfflinePlayer, level: Short) {
+    fun setSkills(player: OfflinePlayer, skills: String) {
         GlobalScope.launch(Dispatchers.IO) {
             val connection = DatabaseManager.getConnection()
             connection!!.use {
-                val stmt = connection.prepareStatement("UPDATE skillsData SET Heavy=? WHERE uuid=?");
-                stmt.setShort(1, level)
+                val stmt = connection.prepareStatement("UPDATE skillsData SET skills=? WHERE uuid=?");
+                stmt.setString(1, skills)
                 stmt.setString(2, player.uniqueId.toString())
                 stmt.executeUpdate()
             }
         }
-    }
-
-    fun setLightLevel(player: OfflinePlayer, level: Short) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val connection = DatabaseManager.getConnection()
-            connection!!.use {
-                val stmt = connection.prepareStatement("UPDATE skillsData SET Light=? WHERE uuid=?");
-                stmt.setShort(1, level)
-                stmt.setString(2, player.uniqueId.toString())
-                stmt.executeUpdate()
-            }
-        }
-    }
-
-    fun setRangedLevel(player: OfflinePlayer, level: Short) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val connection = DatabaseManager.getConnection()
-            connection!!.use {
-                val stmt = connection.prepareStatement("UPDATE skillsData SET Ranged=? WHERE uuid=?");
-                stmt.setShort(1, level)
-                stmt.setString(2, player.uniqueId.toString())
-                stmt.executeUpdate()
-            }
-        }
-    }
-
-    fun setMagicLevel(player: OfflinePlayer, level: Short) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val connection = DatabaseManager.getConnection()
-            connection!!.use {
-                val stmt = connection.prepareStatement("UPDATE skillsData SET Magic=? WHERE uuid=?");
-                stmt.setShort(1, level)
-                stmt.setString(2, player.uniqueId.toString())
-                stmt.executeUpdate()
-            }
-        }
-    }
+    }*/
 }
