@@ -12,9 +12,6 @@ class TestSteak() : CustomFood(
     description = listOf("A food for testing"),
     levelRequirement = 0,
     material = Material.COOKED_BEEF,
-    recipeList = recipes {
-
-    },
     health = 2
 ) {
 

@@ -15,9 +15,7 @@ class TestHelmet() : CustomHelmet(
     levelRequirement = 0,
     material = Material.DIAMOND_HELMET,
     baseStats = CustomItemUtils.statMap(strength = 10.0),
-    recipeList = recipes {
-
-    },leatherColor = Color.LIME
+    leatherColor = Color.LIME
 ) {
 
     constructor(quality: Int): this() {

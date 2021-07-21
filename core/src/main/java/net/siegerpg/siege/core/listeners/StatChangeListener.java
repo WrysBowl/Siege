@@ -1,28 +1,13 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.skills.SkillUtils;
-import net.siegerpg.siege.core.skills.Skills;
 import net.siegerpg.siege.core.utils.cache.PlayerData;
-import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.enums.StatTypes;
-import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
-import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
-import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.server.PluginEnableEvent;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 
 public class StatChangeListener implements Listener, Runnable {

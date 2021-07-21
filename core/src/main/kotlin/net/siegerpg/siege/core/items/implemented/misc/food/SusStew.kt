@@ -14,9 +14,6 @@ class SusStew() : CustomFood(
     description = listOf("Looks just like my grandma's goulash!"),
     levelRequirement = 0,
     material = Material.SUSPICIOUS_STEW,
-    recipeList = recipes {
-
-    },
     health = 30,
     potion = listOf(
         PotionEffect(PotionEffectType.INCREASE_DAMAGE, 200, 0),

@@ -12,8 +12,6 @@ class Apple() : CustomFood(
     description = listOf("Food to tame teachers"),
     levelRequirement = 0,
     material = Material.APPLE, //change this to cooked chicken later
-    recipeList = recipes {
-    },
     health = 10
 ) {
 

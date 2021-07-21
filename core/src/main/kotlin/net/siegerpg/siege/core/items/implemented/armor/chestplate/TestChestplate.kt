@@ -13,9 +13,6 @@ class TestChestplate() : CustomChestplate(
     description = listOf("A chestplate for testing"),
     levelRequirement = 0,
     material = Material.DIAMOND_CHESTPLATE,
-    recipeList = recipes {
-
-    },
     baseStats = CustomItemUtils.statMap(strength = 10.0)
 ) {
 

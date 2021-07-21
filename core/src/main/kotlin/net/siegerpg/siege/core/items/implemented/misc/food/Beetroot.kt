@@ -14,8 +14,6 @@ class Beetroot() : CustomFood(
     description = listOf("The fruit can take a beating"),
     levelRequirement = 0,
     material = Material.BEETROOT, //change this to cooked chicken later
-    recipeList = recipes {
-    },
     potion = listOf(
         PotionEffect(PotionEffectType.REGENERATION, 100, 1),
         PotionEffect(PotionEffectType.HUNGER, 200, 1))

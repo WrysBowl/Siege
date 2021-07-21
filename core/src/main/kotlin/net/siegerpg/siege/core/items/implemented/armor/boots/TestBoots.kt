@@ -13,9 +13,6 @@ class TestBoots() : CustomBoots(
     description = listOf("Boots for testing"),
     levelRequirement = 0,
     material = Material.DIAMOND_BOOTS,
-    recipeList = recipes {
-
-    },
     baseStats = CustomItemUtils.statMap(strength = 10.0)
 ) {
 

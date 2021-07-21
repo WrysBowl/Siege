@@ -12,8 +12,6 @@ class GoldenCarrot() : CustomFood(
     description = listOf("Mercy on your soul"),
     levelRequirement = 0,
     material = Material.GOLDEN_CARROT, //change this to cooked chicken later
-    recipeList = recipes {
-    },
     health = 80
 ) {
 

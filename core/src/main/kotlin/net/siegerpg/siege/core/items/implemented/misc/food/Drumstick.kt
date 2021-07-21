@@ -12,9 +12,6 @@ class Drumstick() : CustomFood(
     description = listOf("Siege fried chicken"),
     levelRequirement = 0,
     material = Material.COOKED_CHICKEN,
-    recipeList = recipes {
-
-    },
     health = 20,
 ) {
 

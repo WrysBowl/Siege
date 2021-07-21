@@ -14,8 +14,6 @@ class Sugar() : CustomFood(
     description = listOf("Gas GAS GASSS!!!"),
     levelRequirement = 0,
     material = Material.TROPICAL_FISH, //change this to cooked chicken later
-    recipeList = recipes {
-    },
     potion = listOf(PotionEffect(PotionEffectType.SPEED, 200, 1))
 ) {
 

@@ -14,9 +14,6 @@ class Beef() : CustomFood(
     description = listOf("Tastes better than raw pork...   "),
     levelRequirement = 0,
     material = Material.BEEF,
-    recipeList = recipes {
-
-    },
     health = 40,
     potion = listOf(
         PotionEffect(PotionEffectType.SATURATION, 200, 1)

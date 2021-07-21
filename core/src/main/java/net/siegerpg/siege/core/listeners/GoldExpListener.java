@@ -2,6 +2,9 @@ package net.siegerpg.siege.core.listeners;
 
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.items.CustomItem;
+import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.types.misc.StatGemType;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
@@ -66,7 +69,7 @@ public class GoldExpListener implements Listener{
         if (e.isCancelled()) return;
         if (item.getType().equals(Material.SUNFLOWER) && item.getItemMeta().getDisplayName().contains("Gold Coin")) {
             e.getTarget().setCustomName(Utils.tacc("&e+" + total + " Gold"));
-        } else {
+        } else if (CustomItemUtils.INSTANCE.getCustomItem(item) != null){
             e.getTarget().setCustomName(Utils.tacc( "&e" + total + "x &r" + item.getItemMeta().getDisplayName()));
         }
         e.getTarget().setCustomNameVisible(true);
@@ -74,9 +77,10 @@ public class GoldExpListener implements Listener{
 
     @EventHandler
     public void setDroppedItemName(ItemSpawnEvent e) {
-        if (e.getEntity() instanceof ExperienceOrb) return;
-        if (e.getEntity().getItemStack().getType().equals(Material.SUNFLOWER)) return;
         ItemStack item = e.getEntity().getItemStack();
+        CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+        if (CusItem == null) return;
+
         e.getEntity().setCustomName(Utils.tacc( "&e" + item.getAmount() + "x &r" + item.getItemMeta().getDisplayName()));
         e.getEntity().setCustomNameVisible(true);
     }

@@ -12,9 +12,6 @@ class Porkchop() : CustomFood(
     description = listOf("Tastes better cooked..."),
     levelRequirement = 0,
     material = Material.PORKCHOP,
-    recipeList = recipes {
-
-    },
     health = 30,
 ) {
 

@@ -12,9 +12,6 @@ class Bread() : CustomFood(
     description = listOf("Doughy"),
     levelRequirement = 0,
     material = Material.BREAD,
-    recipeList = recipes {
-
-    },
     health = 25,
 ) {
 
