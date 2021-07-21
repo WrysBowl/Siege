@@ -33,15 +33,21 @@ public class DeathListener implements Listener {
 
     public static HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>(){
         {
-            /**
-             * HILLY WOODS MOBS
-             */
+
             //BOSSES
-            put("Davy_Jones", new Davy_Jones());
             put("Ogre", new Ogre());
 
             //DUNGEON BOSSES
             put("RockSpirit", new RockSpirit());
+            put("SlimeSpirit", new SlimeSpirit());
+            put("MagmaSpirit", new MagmaSpirit());
+            put("Werewolf", new Werewolf());
+            put("FoxSpirit", new FoxSpirit());
+            put("BullSpirit", new BullSpirit());
+            put("Davy_Jones", new Davy_Jones());
+            put("Necromancer", new Necromancer());
+            put("Lich", new Lich());
+            put("BroodMother", new BroodMother());
 
             //HOSTILES
             put("AngryBull", new AngryBull());
