@@ -8,7 +8,7 @@ import org.bukkit.OfflinePlayer
 import java.sql.ResultSet
 
 object Skills {
-/*
+
     fun getSkills(player: OfflinePlayer): String {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
@@ -34,5 +34,5 @@ object Skills {
                 stmt.executeUpdate()
             }
         }
-    }*/
+    }
 }

@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.statgems.StatGem;
 import net.siegerpg.siege.core.items.types.misc.StatGemType;
+import net.siegerpg.siege.core.skills.Skills;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Tablist;
 import net.siegerpg.siege.core.items.CustomItem;
@@ -75,6 +76,17 @@ public class PlayerJoinListener implements Listener {
                 userData.executeUpdate();
             }catch (SQLException ignored) { }
         }
+        if (event.getPlayer().getName().equals("Wrys")) {
+            if (Skills.INSTANCE.getSkills(player).equals("")) {
+                try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
+                    PreparedStatement skillsData = conn.prepareStatement("INSERT INTO skillsData (uuid) VALUES (?)");
+                    skillsData.setString(1, player.getUniqueId().toString());
+                    skillsData.executeUpdate();
+                }catch (SQLException ignored) { }
+            }
+            Skills.INSTANCE.setSkills(player, "A1_3");
+        }
+
 
         if (!player.hasPlayedBefore()) {
             player.getInventory().clear();
