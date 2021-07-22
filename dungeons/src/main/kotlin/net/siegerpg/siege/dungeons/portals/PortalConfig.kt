@@ -14,9 +14,10 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
         val coordinateSection = configuration.getConfigurationSection("coords") ?: configuration.createSection("coords")
         val linkingSection =
             configuration.getConfigurationSection("relations") ?: configuration.createSection("relations")
-        val corresponding =             coordinateSection.getLong(
-            serializeLocation(player.location.block.location))
-        if(corresponding == 0L){
+        val corresponding = coordinateSection.getLong(
+            serializeLocation(player.location.block.location), -1
+        )
+        if (corresponding == -1L) {
             return false
         }
         val location = linkingSection.getConfigurationSection(
@@ -27,8 +28,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             val dungeonType = DungeonType.dungeonTypes.find { d -> dungeonTypeName == d.name } ?: return false
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
-                    val endLocation = dungeon.location.clone().add(dungeonType.relSpawnLoc)
-                    player.teleport(endLocation)
+                    dungeon.addPlayer(player)
                     /*getParties().forEach { party ->
                         if (party.leader == player)
                             party.members.forEach { member ->
@@ -42,8 +42,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                 }
             }
             val dungeon = dungeonType.nextAvailableDungeon()
-            val endLocation = dungeon.location.clone().add(dungeonType.relSpawnLoc)
-            player.teleport(endLocation)
+            dungeon.addPlayer(player)
             /*
             Party.parties.forEach { party ->
                 if (party.leader == player)
@@ -92,7 +91,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                 return
             }
         }
-        val index = linkingSection.getKeys(false).size+1
+        val index = linkingSection.getKeys(false).size + 1
         coordinateSection.set(serializeLocation(blockLoc), null)
         coordinateSection.set(serializeLocation(blockLoc), index)
         val locationSection = linkingSection.createSection(index.toString()).apply {
@@ -120,7 +119,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                 return
             }
         }
-        val index = linkingSection.getKeys(false).size+1
+        val index = linkingSection.getKeys(false).size + 1
         coordinateSection.set(serializeLocation(blockLoc), null)
         coordinateSection.set(serializeLocation(blockLoc), index)
         val locationSection = linkingSection.createSection(index.toString()).apply {

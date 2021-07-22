@@ -3,7 +3,6 @@ package net.siegerpg.siege.dungeons
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -23,14 +22,14 @@ class DeathEvent : Listener {
             val dungeon = dungeonType.dungeons.find { d -> d.index == dungeonIndex }
             dungeon?.currentPlayers?.forEach { p ->
                 if (p.isOnline) {
-                    GlobalScope.launch {
-                        val player = (p as Player)
-                        player.sendMessage("You successfully killed the boss! Teleporting you back to spawn in 10 seconds")
-                        // Cool music/particles Wrys or someone else should add goes here
-                        delay(10000)
-                        player.teleport(Core.spawnLocation)
-                    }
+                    val player = (p as Player)
+                    player.sendMessage("You successfully killed the boss! Teleporting you back to spawn in 10 seconds")
+                    // Cool music/particles Wrys or someone else should add goes here
                 }
+            }
+            GlobalScope.launch {
+                delay(10000)
+                dungeon?.reset()
             }
         }
     }
