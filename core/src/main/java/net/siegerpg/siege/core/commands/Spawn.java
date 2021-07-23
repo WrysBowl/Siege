@@ -24,6 +24,7 @@ public class Spawn implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
+            if (player.getWorld().getName().equals("Dungeons")) return false;
 
             int time = 60;
             int seconds = time/20;
