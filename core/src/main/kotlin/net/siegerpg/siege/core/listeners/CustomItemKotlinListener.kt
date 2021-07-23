@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.listeners
 
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.utils.cache.MobNames
@@ -20,11 +19,9 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.*
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.event.inventory.InventoryType
-import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.event.player.PlayerItemConsumeEvent
-import org.bukkit.event.player.PlayerItemHeldEvent
-import org.bukkit.event.player.PlayerSwapHandItemsEvent
+import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
 
@@ -33,6 +30,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 
     var cooldownWand: MutableList<Player> = mutableListOf()
     var cooldownFood: MutableList<Player> = mutableListOf()
+    var arrowItems: HashMap<Player, ItemStack> = hashMapOf()
 
 
     /*
@@ -89,10 +87,34 @@ class CustomItemKotlinListener : Listener, Runnable {
         if (e.action == Action.RIGHT_CLICK_AIR) {
             val player: Player = e.player
             if (player.inventory.itemInMainHand.type == Material.BOW || player.inventory.itemInMainHand.type == Material.CROSSBOW) {
-                val offHandItem: ItemStack = player.inventory.itemInOffHand
-                if (offHandItem.type != Material.AIR && offHandItem.type != Material.ARROW) player.world.dropItemNaturally(player.location, offHandItem)
-                player.inventory.setItemInOffHand(ItemStack(Material.ARROW))
+                val item: ItemStack? = player.inventory.getItem(9)
+                if (item != null) {
+                    if (item.type != Material.AIR && item.type != Material.ARROW) arrowItems[player] = item
+                }
+                player.inventory.setItem(9, ItemStack(Material.ARROW))
             }
+        }
+    }
+    @EventHandler
+    fun onBowShoot(e: EntityShootBowEvent) {
+        val entity: Entity = e.entity
+        if (entity !is Player) return
+        if (arrowItems[entity] == null) return
+        entity.inventory.setItem(9, arrowItems[entity])
+    }
+    @EventHandler
+    fun onLeave(e: PlayerQuitEvent) {
+        val player: Player = e.player
+        if (arrowItems[player] == null) return
+        player.inventory.setItem(9, arrowItems[player])
+
+    }
+    @EventHandler
+    fun onInvOpen(e: InventoryOpenEvent) {
+        val player: Player = e.player as Player
+        val offHandItem: ItemStack = player.inventory.itemInOffHand
+        if (offHandItem.type.equals(Material.ARROW)) {
+            player.inventory.setItemInOffHand(null)
         }
     }
     @EventHandler
