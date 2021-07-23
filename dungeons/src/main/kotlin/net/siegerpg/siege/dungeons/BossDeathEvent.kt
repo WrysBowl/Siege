@@ -23,15 +23,12 @@ class BossDeathEvent : Listener {
                 if (p.isOnline) {
                     val player = (p as Player)
                     player.playSound(player.location, Sound.ENTITY_WITHER_DEATH,10.0f, 10.0f)
-                    var i = 1
-                    Bukkit.getScheduler().scheduleSyncRepeatingTask(DungeonPlugin.plugin(), Runnable {
-                        player.sendTitle(Utils.tacc("&6Teleporting to Hub..."), Utils.tacc("&e$i seconds"), 0, 20, 0)
-                        i++
-                    }, 20, 15)
+                    Countdown().countdown(player, 15)
+
                 }
             }
             Bukkit.getScheduler().runTaskLater(DungeonPlugin.plugin(), Runnable {
-                dungeon?.reset()
+                dungeon?.delete()
             }, 300)
         }
     }
