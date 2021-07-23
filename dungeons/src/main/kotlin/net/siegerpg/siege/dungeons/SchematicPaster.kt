@@ -42,10 +42,8 @@ object SchematicPaster {
                 .to(BukkitAdapter.asBlockVector(location))
                 .ignoreAirBlocks(!pasteAir)
                 .build();
-            println("Started pasting schematic")
             Operations.complete(operation);
             editSession.flushQueue()
         }
-        println("Completed operation")
     }
 }

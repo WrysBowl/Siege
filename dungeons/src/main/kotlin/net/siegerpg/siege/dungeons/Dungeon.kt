@@ -134,7 +134,6 @@ class Dungeon {
         val boss = MythicMobs.inst().apiHelper.spawnMythicMob(type.boss, bossLoc, type.dungeonLevel)
         boss.persistentDataContainer.set(Utils.namespacedKey("dungeon"), PersistentDataType.INTEGER, index)
         boss.persistentDataContainer.set(Utils.namespacedKey("dungeon_type"), PersistentDataType.STRING, type.name)
-        println(boss.persistentDataContainer.keys.map { k -> k.key })
     }
 
 

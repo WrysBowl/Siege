@@ -11,15 +11,12 @@ import org.bukkit.persistence.PersistentDataType
 class BossDeathEvent : Listener {
     @EventHandler
     fun mobDeath(e: EntityDeathEvent) {
-        println("Mob died")
         val boss = e.entity
         val dungeonIndex = boss.persistentDataContainer.get(Utils.namespacedKey("dungeon"), PersistentDataType.INTEGER)
         val dungeonTypeName =
             boss.persistentDataContainer.get(Utils.namespacedKey("dungeon_type"), PersistentDataType.STRING)
-        println(dungeonIndex.toString() + ": " + dungeonTypeName)
         val dungeonType = DungeonType.dungeonTypes.find { d -> d.name == dungeonTypeName }
         if (dungeonType != null) {
-            println("Boss died")
             val dungeon = dungeonType.dungeons.find { d -> d.index == dungeonIndex }
             dungeon?.currentPlayers?.forEach { p ->
                 if (p.isOnline) {
