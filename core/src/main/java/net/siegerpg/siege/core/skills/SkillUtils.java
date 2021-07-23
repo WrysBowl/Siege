@@ -2,17 +2,16 @@ package net.siegerpg.siege.core.skills;
 
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.skills.implemented.archer.CriticalShot;
+import net.siegerpg.siege.core.skills.subTypes.ArcherSkills;
+import net.siegerpg.siege.core.utils.cache.PlayerData;
+import org.bukkit.entity.Player;
+import org.bukkit.event.block.Action;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SkillUtils {
 
-    static ArrayList<Skill> archerSkills = new ArrayList<>(){
-        {
-            add(new CriticalShot());
-        }
-    };
     static ArrayList<Skill> warriorSkills = new ArrayList<>(){
         {
         }
@@ -27,13 +26,17 @@ public class SkillUtils {
     };
     static HashMap<Character, ArrayList<Skill>> skillTypes = new HashMap<>(){
         {
-            put('A', archerSkills);
+            put('A', ArcherSkills.skills);
+            put('W', warriorSkills);
+            put('M', mageSkills);
+            put('H', heavySkills);
         }
     };
 
     // Takes string code i.e. "A_1_4_7" and returns hashmap of skills
     public static HashMap<Integer, Skill> decode(String code) {
         HashMap<Integer, Skill> map = new HashMap<Integer, Skill>(); // HashMap to return
+        if (code.equals("")) return map;
         ArrayList<Skill> arr = skillTypes.get(code.charAt(0));
         int indexNum = 0; // ID of skill
         // Start loop at index 2 and iterate by twos across the string

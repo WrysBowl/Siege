@@ -84,7 +84,7 @@ public class PlayerJoinListener implements Listener {
                     skillsData.executeUpdate();
                 }catch (SQLException ignored) { }
             }
-            Skills.INSTANCE.setSkills(player, "A1_3");
+            Skills.INSTANCE.setSkills(player, "A_1_3");
         }
 
 
