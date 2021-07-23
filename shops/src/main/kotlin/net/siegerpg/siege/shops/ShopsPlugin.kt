@@ -769,10 +769,10 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(Apple(0), 20, hashMapOf(), false) {
                 Apple(0).getUpdatedItem(false)
             },
-            ShopItem(Bread(0), 25, hashMapOf(), false) {
+            ShopItem(Bread(0), 40, hashMapOf(), false) {
                 Bread(0).getUpdatedItem(false)
             },
-            ShopItem(Bread(0), -1, hashMapOf(Wheat.tier(1) to 6), true) {
+            ShopItem(Bread(0), -1, hashMapOf(Wheat.tier(2) to 4), true) {
                 Bread(0).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -792,10 +792,10 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(Apple(50), 45, hashMapOf(), false) {
                 Apple(50).getUpdatedItem(false)
             },
-            ShopItem(Bread(50), 75, hashMapOf(), false) {
+            ShopItem(Bread(50), 80, hashMapOf(), false) {
                 Bread(50).getUpdatedItem(false)
             },
-            ShopItem(Bread(50), -1, hashMapOf(Wheat.tier(2) to 2), true) {
+            ShopItem(Bread(50), -1, hashMapOf(Wheat.tier(3) to 1), true) {
                 Bread(50).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -815,10 +815,10 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(Apple(100), 75, hashMapOf(), false) {
                 Apple(100).getUpdatedItem(false)
             },
-            ShopItem(Bread(100), 125, hashMapOf(), false) {
+            ShopItem(Bread(100), 140, hashMapOf(), false) {
                 Bread(100).getUpdatedItem(false)
             },
-            ShopItem(Bread(100), -1, hashMapOf(Wheat.tier(2) to 3), true) {
+            ShopItem(Bread(100), -1, hashMapOf(Wheat.tier(3) to 3), true) {
                 Bread(100).getUpdatedItem(false)
             },
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
