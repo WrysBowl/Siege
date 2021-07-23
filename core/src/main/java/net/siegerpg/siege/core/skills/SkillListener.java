@@ -23,24 +23,18 @@ public class SkillListener implements Listener, Runnable {
         Player player = e.getPlayer();
         if (player.getGameMode().equals(GameMode.CREATIVE) || player.getGameMode().equals(GameMode.SPECTATOR)) return false;
         if (!player.getOpenInventory().getType().equals(InventoryType.CRAFTING)) return false;
-        //Some method to start checking when the server should track the player's clicks
+        if (!SkillUtils.isSkillOrb(player.getItemInHand())) return false;
 
         ArrayList<Action> playerTriggers = PlayerData.playerTriggers.get(player);
         playerTriggers.add(e.getAction());
 
         //If the player hasn't finished their trigger skill activation yet (less than three clicks)
+        SkillUtils.sendTriggers(player, playerTriggers);
         if (playerTriggers.size() < 3) {
-            //Send player title messages to notify them what their current click trigger setup is
             PlayerData.playerTriggers.put(player, playerTriggers);
-            if (playerTriggers.size() == 1) {
-                player.sendTitle(null,Utils.tacc("&e&l"+playerTriggers.get(0)+"  &c&l?  ?"), 10, 30, 10);
-            } else if (playerTriggers.size() == 2) {
-                player.sendTitle(null,Utils.tacc("&e&l"+playerTriggers.get(0)+"  "+playerTriggers.get(1)+"  &c&l?"), 10, 30, 10);
-            }
             return false;
 
         } else {
-            player.sendTitle(null,Utils.tacc("&e&l"+playerTriggers.get(0)+"  "+playerTriggers.get(1)+"  "+playerTriggers.get(2)), 10, 30, 10);
             HashMap<Integer, Skill> playerSkills = PlayerData.playerSkills.get(player);
             PlayerData.playerTriggers.get(player).clear();
 
@@ -48,14 +42,8 @@ public class SkillListener implements Listener, Runnable {
             for(Skill skill : playerSkills.values()) {
                 if (skill.getTrigger()!=playerTriggers) continue;
 
-                //Checks if player has enough mana to use the skill
-                if (PlayerData.playerCurrentMana.get(player) < skill.getManaCost()) {
-                    player.sendTitle(
-                            skill.DISPLAY_ITEM.getI18NDisplayName(),
-                            Utils.tacc("&c&l"+PlayerData.playerCurrentMana.get(player)+"&4/"+skill.getManaCost()+" &emana needed"),
-                            10, 30, 10);
-                    return false;
-                }
+                //Checks if player does not have enough mana to use the skill
+                if(!SkillUtils.canActivate(player, skill)) return false;
                 //Removes the cost of the skill from the player's current mana data
                 PlayerData.playerCurrentMana.put(player, PlayerData.playerCurrentMana.get(player)-skill.getManaCost());
                 skill.skillAction(e);

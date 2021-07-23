@@ -1,11 +1,15 @@
 package net.siegerpg.siege.core.skills;
 
+import de.tr7zw.nbtapi.NBTContainer;
+import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.skills.implemented.archer.CriticalShot;
 import net.siegerpg.siege.core.skills.subTypes.ArcherSkills;
+import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.cache.PlayerData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -73,5 +77,28 @@ public class SkillUtils {
             }
         }
         return map;
+    }
+    public static boolean isSkillOrb(ItemStack item) {
+        NBTContainer nbt = NBTItem.convertItemtoNBT(item);
+        return nbt.getBoolean("skillItem");
+    }
+    public static boolean canActivate(Player player, Skill skill) {
+        if (PlayerData.playerCurrentMana.get(player) < skill.getManaCost()) {
+            player.sendTitle(
+                    skill.DISPLAY_ITEM.getI18NDisplayName(),
+                    Utils.tacc("&c&l"+PlayerData.playerCurrentMana.get(player)+"&4/"+skill.getManaCost()+" &emana needed"),
+                    10, 30, 10);
+            return false;
+        }
+        return true;
+    }
+    public static void sendTriggers(Player player, ArrayList<Action> triggers) {
+        if (triggers.size() == 1) {
+            player.sendTitle(null,Utils.tacc("&e&l"+triggers.get(0)+"  &c&l?  ?"), 10, 30, 10);
+        } else if (triggers.size() == 2) {
+            player.sendTitle(null,Utils.tacc("&e&l"+triggers.get(0)+"  "+triggers.get(1)+"  &c&l?"), 10, 30, 10);
+        } else {
+            player.sendTitle(null,Utils.tacc("&e&l"+triggers.get(0)+"  "+triggers.get(1)+"  "+triggers.get(2)), 10, 30, 10);
+        }
     }
 }
