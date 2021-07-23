@@ -106,11 +106,11 @@ class Dungeon {
      * Deletes the dungeon and its config
      */
     fun delete() {
-        type.dungeons.remove(this)
         for (currentPlayer in currentPlayers) {
             removePlayer(currentPlayer)
         }
         DungeonPlugin.plugin().dungeonConfig.getDungeons(type).set(index.toString(), null)
+        type.dungeons.remove(this)
         DungeonPlugin.plugin().dungeonConfig.save()
 
     }
