@@ -97,7 +97,8 @@ class Dungeon {
             if (dungeon.contains("players"))
                 dungeon.getStringList("players").remove(player.uniqueId.toString())
         }
-        if (player.isOnline) (player as Player).teleport(Core.spawnLocation)
+        if (player.isOnline) Core.plugin().server.getWorld("Hub")
+            ?.let { (player as Player).teleport(it.spawnLocation) }
         DungeonPlugin.plugin().dungeonConfig.save()
 
     }

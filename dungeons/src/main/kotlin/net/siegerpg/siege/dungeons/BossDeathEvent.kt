@@ -2,6 +2,7 @@ package net.siegerpg.siege.dungeons
 
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Bukkit
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -21,13 +22,17 @@ class BossDeathEvent : Listener {
             dungeon?.currentPlayers?.forEach { p ->
                 if (p.isOnline) {
                     val player = (p as Player)
-                    player.sendMessage("You successfully killed the boss! Teleporting you back to spawn in 10 seconds")
-                    // Cool music/particles Wrys or someone else should add goes here
+                    player.playSound(player.location, Sound.ENTITY_WITHER_DEATH,10.0f, 10.0f)
+                    var i = 1
+                    Bukkit.getScheduler().scheduleSyncRepeatingTask(DungeonPlugin.plugin(), Runnable {
+                        player.sendTitle(Utils.tacc("&6Teleporting to Hub..."), Utils.tacc("&e$i seconds"), 0, 20, 0)
+                        i++
+                    }, 20, 15)
                 }
             }
             Bukkit.getScheduler().runTaskLater(DungeonPlugin.plugin(), Runnable {
                 dungeon?.reset()
-            }, 20 * 10)
+            }, 300)
         }
     }
 }

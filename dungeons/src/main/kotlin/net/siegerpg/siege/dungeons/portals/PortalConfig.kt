@@ -5,6 +5,7 @@ import net.siegerpg.siege.dungeons.DungeonPlugin
 import net.siegerpg.siege.dungeons.DungeonType
 import org.bukkit.Bukkit
 import org.bukkit.Location
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import java.io.File
 
@@ -62,6 +63,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                 location.getDouble("z")
             )
             player.teleport(actualLocation)
+            player.playSound(player.location, Sound.ENTITY_WITHER_SPAWN,10.0f, 10.0f)
             return true
         }
     }
