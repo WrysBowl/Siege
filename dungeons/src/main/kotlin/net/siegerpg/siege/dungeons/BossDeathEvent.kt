@@ -10,7 +10,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.persistence.PersistentDataType
 
-class DeathEvent : Listener {
+class BossDeathEvent : Listener {
     @EventHandler
     fun mobDeath(e: EntityDeathEvent) {
         val boss = e.entity

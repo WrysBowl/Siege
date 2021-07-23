@@ -20,6 +20,7 @@ public class DungeonPlugin extends JavaPlugin {
         dungeonConfig = new DungeonConfig();
         dungeonConfig.deserializeDungeonTypes();
         Bukkit.getPluginManager().registerEvents(new PortalTeleport(), this);
+        Bukkit.getPluginManager().registerEvents(new BossDeathEvent(), this);
         Bukkit.getPluginCommand("portal").setExecutor(new PortalCommand());
         getLogger().info("SiegeDungeons has enabled!");
     }

@@ -93,7 +93,7 @@ class Dungeon {
     fun removePlayer(player: OfflinePlayer) {
         if (currentPlayers.contains(player)) {
             currentPlayers.remove(player)
-            var dungeon = DungeonPlugin.plugin().dungeonConfig.getDungeon(type, index)
+            val dungeon = DungeonPlugin.plugin().dungeonConfig.getDungeon(type, index)
             if (dungeon.contains("players"))
                 dungeon.getStringList("players").remove(player.uniqueId.toString())
         }
