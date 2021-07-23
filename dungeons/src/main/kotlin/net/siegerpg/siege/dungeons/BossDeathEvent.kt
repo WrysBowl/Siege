@@ -1,9 +1,7 @@
 package net.siegerpg.siege.dungeons
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import net.siegerpg.siege.core.utils.Utils
+import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -30,11 +28,9 @@ class BossDeathEvent : Listener {
                     // Cool music/particles Wrys or someone else should add goes here
                 }
             }
-            GlobalScope.launch {
-                println("Reset")
-                delay(10000)
+            Bukkit.getScheduler().runTaskLater(DungeonPlugin.plugin(), Runnable {
                 dungeon?.reset()
-            }
+            }, 10000)
         }
     }
 }
