@@ -15,7 +15,7 @@ class TestSword() : CustomMeleeWeapon(
     description = listOf("A sword for testing"),
     levelRequirement = 0,
     material = Material.DIAMOND_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
+    baseStats = CustomItemUtils.statMap(strength = 1000.0),
     recipeList = recipes {
         recipe {
             shaped = true

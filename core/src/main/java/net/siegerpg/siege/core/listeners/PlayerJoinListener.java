@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword;
 import net.siegerpg.siege.core.items.statgems.StatGem;
 import net.siegerpg.siege.core.items.types.misc.StatGemType;
 import net.siegerpg.siege.core.skills.Skills;
@@ -77,14 +78,7 @@ public class PlayerJoinListener implements Listener {
             }catch (SQLException ignored) { }
         }
         if (event.getPlayer().getName().equals("Wrys")) {
-            if (Skills.INSTANCE.getSkills(player).equals("")) {
-                try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
-                    PreparedStatement skillsData = conn.prepareStatement("INSERT INTO skillsData (uuid) VALUES (?)");
-                    skillsData.setString(1, player.getUniqueId().toString());
-                    skillsData.executeUpdate();
-                }catch (SQLException ignored) { }
-            }
-            Skills.INSTANCE.setSkills(player, "A1_3");
+            player.getInventory().addItem(new TestSword(150).getUpdatedItem(false));
         }
 
 
