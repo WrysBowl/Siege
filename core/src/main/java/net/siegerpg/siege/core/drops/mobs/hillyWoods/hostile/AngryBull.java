@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.*;
@@ -18,7 +19,8 @@ public class AngryBull extends MobDropTable {
                 new Reward(new Beef(50).getUpdatedItem(false), 20.0),
                 new Reward(new FlawedToughGem(Utils.randRarity()).getUpdatedItem(false), 0.25),
                 new Reward(new CrackedHealthGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
-                new Reward(new FlawedHealthGem(Utils.randRarity()).getUpdatedItem(false), 0.25)
+                new Reward(new FlawedHealthGem(Utils.randRarity()).getUpdatedItem(false), 0.25),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 1.0),
         });
     }
 }

@@ -1,18 +1,38 @@
 package net.siegerpg.siege.dungeons.portals
 
+import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
+import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey
+import net.siegerpg.siege.core.items.types.misc.CustomKey
+import net.siegerpg.siege.core.items.types.misc.StatGemType
 import net.siegerpg.siege.core.utils.ConfigurationBase
+import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.dungeons.DungeonPlugin
 import net.siegerpg.siege.dungeons.DungeonType
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Sound
+import org.bukkit.World
 import org.bukkit.entity.Player
 import java.io.File
 
 open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.dataFolder, "portal.yml"))) {
 
+    private fun hasKey(player: Player): Boolean {
+        if (!player.inventory.contains(HillyWoodsDungeonKey(0).getUpdatedItem(false))) return false
+        for (i in 0 until player.inventory.size) {
+            val customItem = getCustomItem(player.inventory.getItem(i)) ?: continue
+            if (customItem !is CustomKey) continue
+            val world: World = player.world
+            if (world.name == "Hilly_Woods" && customItem is HillyWoodsDungeonKey) return true
+        }
+        return false
+    }
 
     fun teleportToCorresponding(player: Player): Boolean {
+        if (!hasKey(player)) {
+            player.sendTitle(Utils.tacc("&cKey required!"), Utils.tacc("&eMobs can drop keys"))
+            return false
+        }
         val coordinateSection = configuration.getConfigurationSection("coords") ?: configuration.createSection("coords")
         val linkingSection =
             configuration.getConfigurationSection("relations") ?: configuration.createSection("relations")
