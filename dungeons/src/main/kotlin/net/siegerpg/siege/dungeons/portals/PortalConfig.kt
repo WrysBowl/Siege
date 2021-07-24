@@ -27,6 +27,18 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
         }
         return false
     }
+    private fun removeKey(player: Player) {
+        if (!player.inventory.contains(HillyWoodsDungeonKey(0).getUpdatedItem(false))) return
+        for (i in 0 until player.inventory.size) {
+            val customItem = getCustomItem(player.inventory.getItem(i)) ?: continue
+            if (customItem !is CustomKey) continue
+            val world: World = player.world
+            if (world.name == "Hilly_Woods" && customItem is HillyWoodsDungeonKey) {
+                player.inventory.remove(customItem.getUpdatedItem(false))
+                return
+            }
+        }
+    }
 
     fun teleportToCorresponding(player: Player): Boolean {
         if (!hasKey(player)) {
@@ -77,6 +89,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             */
             return true
         } else {
+            removeKey(player)
             val actualLocation = Location(
                 Bukkit.getWorld(location.getString("world")!!),
                 location.getDouble("x"),
