@@ -27,6 +27,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -182,15 +183,21 @@ public class DeathListener implements Listener, Runnable {
             VaultHook.econ.depositPlayer(player, newBal);
             player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + (bal - newBal) + " gold &7has been lost"), 1, 60, 1);
             Scoreboard.updateScoreboard(player);
+        }
+    }
 
-            if (player.getWorld().equals(Core.plugin().getServer().getWorld("PVP"))) {
-                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-                    public void run() {
-                        World HUB = Core.plugin().getServer().getWorld("Hub");
-                        player.teleport(new Location(HUB, -52, 91, -8, 168, 0));
-                    }
-                }, 5);
-            }
+    @EventHandler
+    public void onRespawn(PlayerRespawnEvent e) {
+        Player player = e.getPlayer();
+        if (player.getWorld() == Core.plugin().getServer().getWorld("Dungeons")) { //Checks if player died in the dungeon world
+            World HUB = Core.plugin().getServer().getWorld("Hub");
+            assert HUB != null;
+            e.setRespawnLocation(HUB.getSpawnLocation());
+            return;
+        }
+        if (player.getWorld().equals(Core.plugin().getServer().getWorld("PVP"))) {
+            World HUB = Core.plugin().getServer().getWorld("Hub");
+            e.setRespawnLocation(new Location(HUB, -52, 91, -8, 168, 0));
         }
     }
 

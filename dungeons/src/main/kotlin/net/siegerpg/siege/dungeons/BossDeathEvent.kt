@@ -2,18 +2,19 @@ package net.siegerpg.siege.dungeons
 
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.Utils
-import net.siegerpg.siege.dungeons.portals.PortalConfig
 import org.bukkit.Bukkit
-import org.bukkit.Location
 import org.bukkit.Sound
+import org.bukkit.World
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.persistence.PersistentDataType
 import org.bukkit.scheduler.BukkitRunnable
+import org.jetbrains.annotations.Nullable
 
-class BossDeathEvent : Listener, Runnable {
+class BossDeathEvent : Listener {
     @EventHandler
     fun mobDeath(e: EntityDeathEvent) {
         val boss = e.entity
@@ -34,17 +35,5 @@ class BossDeathEvent : Listener, Runnable {
                 dungeon?.delete()
             }, 300)
         }
-        if (boss !is Player) return;
-        val player: Player = e.entity as Player
-        if (player.world == Core.plugin().server.getWorld("Dungeons")) { //Checks if player died in the dungeon world
-            object : BukkitRunnable() {
-                override fun run() {
-                    Core.plugin().server.getWorld("Hub")?.let { player.teleport(it.spawnLocation) }
-                }
-            }.runTaskLater(Core.plugin(), 5)
-        }
-    }
-
-    override fun run() {
     }
 }
