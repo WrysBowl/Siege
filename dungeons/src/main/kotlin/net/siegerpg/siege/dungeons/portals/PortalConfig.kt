@@ -11,6 +11,8 @@ import java.io.File
 
 open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.dataFolder, "portal.yml"))) {
 
+    var dungeonSpawning: HashMap<Player, Location> = HashMap()
+
     fun teleportToCorresponding(player: Player): Boolean {
         val coordinateSection = configuration.getConfigurationSection("coords") ?: configuration.createSection("coords")
         val linkingSection =
@@ -63,6 +65,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                 location.getDouble("z")
             )
             player.teleport(actualLocation)
+            dungeonSpawning[player] = actualLocation
             player.playSound(player.location, Sound.ENTITY_WITHER_SPAWN,10.0f, 10.0f)
             return true
         }

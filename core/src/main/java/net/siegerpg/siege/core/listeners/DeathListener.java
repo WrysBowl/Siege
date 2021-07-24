@@ -19,6 +19,7 @@ import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -180,6 +181,12 @@ public class DeathListener implements Listener {
             VaultHook.econ.depositPlayer(player, newBal);
             player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + (bal - newBal) + " gold &7has been lost"), 1, 60, 1);
             Scoreboard.updateScoreboard(player);
+
+            if (player.getWorld().equals(Core.plugin().getServer().getWorld("PVP"))) {
+                World PVP = Core.plugin().getServer().getWorld("Hub");
+                player.teleport(new Location(PVP, -52, 91, -8, 168, 0));
+                return;
+            }
         }
     }
 }
