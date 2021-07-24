@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.CrackedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
@@ -25,7 +26,8 @@ public class InfectedDigger extends MobDropTable {
                 new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 5.0),
                 new Reward(new FlawedHealthGem(Utils.randRarity()).getUpdatedItem(false), 0.5),
                 new Reward(new RawHealthGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
-                new Reward(new RawLuckGem(Utils.randRarity()).getUpdatedItem(false), 2.0)
+                new Reward(new RawLuckGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 5.0)
         });
     }
 }

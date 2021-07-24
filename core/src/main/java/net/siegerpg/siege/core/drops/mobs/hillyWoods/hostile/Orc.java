@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem;
@@ -23,7 +24,8 @@ public class Orc extends MobDropTable {
                 new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 35.0),
                 new Reward(new FlawedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 0.5),
                 new Reward(new RawStrengthGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
-                new Reward(new RawToughGem(Utils.randRarity()).getUpdatedItem(false), 2.0)
+                new Reward(new RawToughGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 10.0)
         });
     }
 }

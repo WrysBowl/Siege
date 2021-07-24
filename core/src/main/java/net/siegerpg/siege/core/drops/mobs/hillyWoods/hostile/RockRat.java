@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
+import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.CrackedToughGem;
@@ -15,7 +16,8 @@ public class RockRat extends MobDropTable {
                 new Reward(Pebble.Companion.tier(1).getUpdatedItem(false), 100.0),
                 new Reward(Pebble.Companion.tier(2).getUpdatedItem(false), 10.0),
                 new Reward(new RockWand(Utils.randRarity()).getUpdatedItem(false), 0.01),
-                new Reward(new RawToughGem(Utils.randRarity()).getUpdatedItem(false), 1.0)
+                new Reward(new RawToughGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 0.25)
         });
     }
 }

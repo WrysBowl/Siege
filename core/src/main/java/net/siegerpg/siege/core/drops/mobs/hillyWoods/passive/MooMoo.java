@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BeePants;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.wands.*;
@@ -15,7 +16,8 @@ public class MooMoo extends MobDropTable {
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 20.0),
                 new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 80.0),
                 new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 8.0),
-                new Reward(new Beef(50).getUpdatedItem(false), 100.0)
+                new Reward(new Beef(50).getUpdatedItem(false), 100.0),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 0.1)
         });
     }
 }
