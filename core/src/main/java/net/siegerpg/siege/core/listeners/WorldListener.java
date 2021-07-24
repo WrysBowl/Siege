@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent;
+import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.block.EnderChest;
@@ -101,6 +102,11 @@ public class WorldListener implements Listener, Runnable {
         }
         if (e.getEntity() instanceof ItemFrame) {
             e.setCancelled(true);
+        }
+        if (e.getEntity() instanceof Player) {
+            World hub = Core.plugin().getServer().getWorld("Hub");
+            World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
+            if (e.getEntity().getWorld().equals(hub) || e.getEntity().getWorld().equals(siegeHub)) e.setCancelled(true);
         }
     }
 
