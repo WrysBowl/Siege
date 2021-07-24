@@ -11,8 +11,9 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.persistence.PersistentDataType
+import org.bukkit.scheduler.BukkitRunnable
 
-class BossDeathEvent : Listener {
+class BossDeathEvent : Listener, Runnable {
     @EventHandler
     fun mobDeath(e: EntityDeathEvent) {
         val boss = e.entity
@@ -36,8 +37,14 @@ class BossDeathEvent : Listener {
         if (boss !is Player) return;
         val player: Player = e.entity as Player
         if (player.world == Core.plugin().server.getWorld("Dungeons")) { //Checks if player died in the dungeon world
-            val location: Location = DungeonPlugin.plugin().portalConfig.dungeonSpawning[player] ?: return //Get the player's dungeon spawn
-            player.teleport(location) //TP player to dungeon spawn
+            object : BukkitRunnable() {
+                override fun run() {
+                    Core.plugin().server.getWorld("Hub")?.let { player.teleport(it.spawnLocation) }
+                }
+            }.runTaskLater(Core.plugin(), 5)
         }
+    }
+
+    override fun run() {
     }
 }

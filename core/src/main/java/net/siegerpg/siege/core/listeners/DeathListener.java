@@ -18,6 +18,7 @@ import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.*;
@@ -30,7 +31,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 
-public class DeathListener implements Listener {
+public class DeathListener implements Listener, Runnable {
 
     public static HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>(){
         {
@@ -183,10 +184,18 @@ public class DeathListener implements Listener {
             Scoreboard.updateScoreboard(player);
 
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("PVP"))) {
-                World PVP = Core.plugin().getServer().getWorld("Hub");
-                player.teleport(new Location(PVP, -52, 91, -8, 168, 0));
-                return;
+                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+                    public void run() {
+                        World HUB = Core.plugin().getServer().getWorld("Hub");
+                        player.teleport(new Location(HUB, -52, 91, -8, 168, 0));
+                    }
+                }, 5);
             }
         }
+    }
+
+    @Override
+    public void run() {
+
     }
 }
