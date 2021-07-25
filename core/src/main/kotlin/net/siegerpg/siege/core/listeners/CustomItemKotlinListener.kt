@@ -101,21 +101,20 @@ class CustomItemKotlinListener : Listener, Runnable {
         if (entity !is Player) return
         if (arrowItems[entity] == null) return
         entity.inventory.setItem(9, arrowItems[entity])
+        arrowItems.remove(entity)
     }
     @EventHandler
     fun onLeave(e: PlayerQuitEvent) {
         val player: Player = e.player
         if (arrowItems[player] == null) return
         player.inventory.setItem(9, arrowItems[player])
-
     }
     @EventHandler
     fun onInvOpen(e: InventoryOpenEvent) {
         val player: Player = e.player as Player
-        val offHandItem: ItemStack = player.inventory.itemInOffHand
-        if (offHandItem.type.equals(Material.ARROW)) {
-            player.inventory.setItemInOffHand(null)
-        }
+        if (arrowItems[player] == null) return
+        if (arrowItems[player]?.type == Material.ARROW) player.inventory.setItem(9, null)
+        player.inventory.setItem(9, arrowItems[player])
     }
     @EventHandler
     fun onBowUse(e: ProjectileHitEvent) {

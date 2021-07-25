@@ -36,7 +36,7 @@ abstract class CustomKey(
 
         val meta = item.itemMeta
 
-        meta.name("<r><gray>$name")
+        meta.name("<r><green>$name")
 
         if (meta.hasLore()) meta.lore(mutableListOf())
 

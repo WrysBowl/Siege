@@ -1,9 +1,14 @@
 package net.siegerpg.siege.core.fishing.fish;
 
+import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.fishing.baits.BaitCore;
 import net.siegerpg.siege.core.fishing.baits.BaitStats;
 import net.siegerpg.siege.core.fishing.fish.implemented.*;
+import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
@@ -21,7 +26,6 @@ public abstract class FishCore {
 	}
 
 	public static void registerAllFishes() {
-		fishCoreTypes.add(new Tuna());
 		fishCoreTypes.add(new BlackDrum());
 		fishCoreTypes.add(new Bearacuda());
 		fishCoreTypes.add(new BigBlueTuna());
@@ -80,6 +84,23 @@ public abstract class FishCore {
 			}
 		}
 		return null;
+	}
+
+	public static ItemStack getItem(FishCore fish) {
+		ItemStack item = new ItemStack(Material.COD);
+		ItemMeta meta = item.getItemMeta();
+		FishStats stats = fish.getLevel();
+		meta.displayName(Utils.lore("<yellow>"+fish.getFishName()));
+		meta.lore(new ArrayList<>(){
+			{
+				add(Utils.lore("  <gray>Size: <white>" + fish));
+			}
+		});
+
+		item.setItemMeta(meta);
+		NBTItem nbtItem = new NBTItem(item);
+		nbtItem.setInteger("CustomModelData", stats.customModelData);
+		return nbtItem.getItem();
 	}
 	
 	

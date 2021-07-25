@@ -19,6 +19,7 @@ public class fishingnpcTBD implements Listener {
             person = e.getPlayer();
             menu = initMenu();
             menu.show(person);
+
         }
     }
 

@@ -13,12 +13,13 @@ import org.bukkit.Location
 import org.bukkit.Sound
 import org.bukkit.World
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
+import org.jetbrains.annotations.Nullable
 import java.io.File
 
 open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.dataFolder, "portal.yml"))) {
 
     private fun hasKey(player: Player): Boolean {
-        if (!player.inventory.contains(HillyWoodsDungeonKey(0).getUpdatedItem(false))) return false
         for (i in 0 until player.inventory.size) {
             val customItem = getCustomItem(player.inventory.getItem(i)) ?: continue
             if (customItem !is CustomKey) continue
@@ -27,14 +28,16 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
         }
         return false
     }
-    private fun removeKey(player: Player) {
-        if (!player.inventory.contains(HillyWoodsDungeonKey(0).getUpdatedItem(false))) return
+    private fun removeKey(player: Player, targetWorld: String) {
         for (i in 0 until player.inventory.size) {
+            Bukkit.getLogger().info(i.toString())
             val customItem = getCustomItem(player.inventory.getItem(i)) ?: continue
-            if (customItem !is CustomKey) continue
-            val world: World = player.world
-            if (world.name == "Hilly_Woods" && customItem is HillyWoodsDungeonKey) {
-                player.inventory.remove(customItem.getUpdatedItem(false))
+            Bukkit.getLogger().info("Key Found")
+            val item: ItemStack =  player.inventory.getItem(i) ?: continue
+            Bukkit.getLogger().info(item.toString())
+            if (targetWorld == "Hilly_Woods" && customItem is HillyWoodsDungeonKey) {
+                Bukkit.getLogger().info("Set Item")
+                player.inventory.setItem(i, item.asQuantity(item.amount-1))
                 return
             }
         }
@@ -89,7 +92,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             */
             return true
         } else {
-            removeKey(player)
+            removeKey(player, player.world.name)
             val actualLocation = Location(
                 Bukkit.getWorld(location.getString("world")!!),
                 location.getDouble("x"),

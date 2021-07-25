@@ -6,6 +6,6 @@ import net.siegerpg.siege.core.fishing.fish.FishStats;
 public class PistolWhipper extends FishCore {
 
     public PistolWhipper(){
-        super(new FishStats(new double[] {20, 30}, 8, 0.1, 8, 50, 4), "Pistol Whipper");
+        super(new FishStats(new double[] {20, 30}, 8, 0.1, 8, 50, 4, 610008), "Pistol Whipper");
     }
 }
