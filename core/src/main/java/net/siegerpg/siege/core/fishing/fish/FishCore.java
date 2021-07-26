@@ -11,35 +11,37 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class FishCore {
 	
 	public static ArrayList<FishCore> fishCoreTypes = new ArrayList<FishCore>();
 	
-	private FishStats level;
+	private Fish level;
 	private String fishType;
 
 	
-	public FishCore(FishStats level, String fishType) {
+	public FishCore(Fish level, String fishType) {
 		this.level=level;
 		this.fishType=fishType;
 	}
 
-	public static void registerAllFishes() {
-		fishCoreTypes.add(new BlackDrum());
-		fishCoreTypes.add(new Bearacuda());
-		fishCoreTypes.add(new BigBlueTuna());
-		fishCoreTypes.add(new Catastrophe());
-		fishCoreTypes.add(new Codzilla());
-		fishCoreTypes.add(new FlashyShark());
-		fishCoreTypes.add(new MrKrabs());
-		fishCoreTypes.add(new MrsPuff());
-		fishCoreTypes.add(new PistolWhipper());
-		fishCoreTypes.add(new RedSnacker());
-		fishCoreTypes.add(new StingWhip());
-	}
+	public static HashMap<String, Fish> registeredFish = new HashMap<String, Fish>(){
+		{
+			put("Bearacuda", new Bearacuda());
+			put("Big Blue Tuna", new BigBlueTuna());
+			put("BlackDrum", new BlackDrum());
+			put("Catastrophe", new Catastrophe());
+			put("Codzilla", new Codzilla());
+			put("Flashy Shark", new FlashyShark());
+			put("Mr. Krabs", new MrKrabs());
+			put("Mrs. Puff", new MrsPuff());
+			put("Pistol Whipper", new PistolWhipper());
+			put("Red Snacker", new RedSnacker());
+			put("Sting Whip", new StingWhip());
+		}
+	};
 
-	
 	public static FishCore chooseRandomFish(BaitCore baitCore, Player player) {
 		double totalWeight = 0;
 		for(FishCore fishCore : FishCore.fishCoreTypes) {
@@ -89,7 +91,7 @@ public abstract class FishCore {
 	public static ItemStack getItem(FishCore fish) {
 		ItemStack item = new ItemStack(Material.COD);
 		ItemMeta meta = item.getItemMeta();
-		FishStats stats = fish.getLevel();
+		Fish stats = fish.getLevel();
 		meta.displayName(Utils.lore("<yellow>"+fish.getFishName()));
 		meta.lore(new ArrayList<>(){
 			{
@@ -105,7 +107,7 @@ public abstract class FishCore {
 	
 	
 
-	public FishStats getLevel() {
+	public Fish getLevel() {
 		return level;
 	}
 

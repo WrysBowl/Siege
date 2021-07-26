@@ -16,9 +16,6 @@ public class FishEvent implements Listener {
 
 	@EventHandler
 	public void onEnable(PluginEnableEvent e) {
-		Core.plugin().getLogger().log(Level.INFO, "startting to resgsiter fishes and baits");
-		FishCore.registerAllFishes();
-		Core.plugin().getLogger().log(Level.INFO, "Fished registering fishes");
 		BaitCore.registerAllBaits();
 		Core.plugin().getLogger().log(Level.INFO, "Baited registering baits");
 	}

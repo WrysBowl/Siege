@@ -2,11 +2,11 @@ package net.siegerpg.siege.core.fishing.fish.implemented;
 
 
 import net.siegerpg.siege.core.fishing.fish.FishCore;
-import net.siegerpg.siege.core.fishing.fish.FishStats;
+import net.siegerpg.siege.core.fishing.fish.Fish;
 
-public class Codzilla extends FishCore {
+public class Codzilla extends Fish {
 
     public Codzilla(){
-        super(new FishStats(new double[] {75, 100}, 20, 0.15, 10, 100, 5, 610001), "Codzilla");
+        super(new double[] {75, 100}, 20, 0.15, 10, 100, 5, 610001);
     }
 }

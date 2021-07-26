@@ -1,11 +1,11 @@
 package net.siegerpg.siege.core.fishing.fish.implemented;
 
 import net.siegerpg.siege.core.fishing.fish.FishCore;
-import net.siegerpg.siege.core.fishing.fish.FishStats;
+import net.siegerpg.siege.core.fishing.fish.Fish;
 
-public class BigBlueTuna extends FishCore {
+public class BigBlueTuna extends Fish {
 
     public BigBlueTuna(){
-        super(new FishStats(new double[] {400, 450}, 45, 0.4, 16, 10, 8, 610006), "Big Blue Tuna");
+        super(new double[] {400, 450}, 45, 0.4, 16, 10, 8, 610006);
     }
 }
