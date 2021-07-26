@@ -16,6 +16,7 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.magmaChestplat
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.strawChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplates.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.chainChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.boneHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.*
@@ -23,6 +24,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.woolHelmets.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.*

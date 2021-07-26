@@ -102,6 +102,19 @@ public class PlayerJoinListener implements Listener {
             Tablist.tablistUpdate(p);
         }
 
+        if (event.getPlayer().getName().equals("Wrys")) {
+            player.getInventory().addItem(new TestSword(150).getUpdatedItem(false));
+            if (Skills.INSTANCE.getSkills(player).equals("")) {
+                try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
+                    PreparedStatement skillsData = conn.prepareStatement("INSERT INTO skillsData (uuid) VALUES (?)");
+                    skillsData.setString(1, player.getUniqueId().toString());
+                    skillsData.executeUpdate();
+                } catch (SQLException ignored) {
+                }
+            }
+            Skills.INSTANCE.setSkills(player, "A_1_3");
+        }
+
         for (int i = 0; i< player.getInventory().getSize(); i++) {
             CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
             if (CusItem == null) continue;
