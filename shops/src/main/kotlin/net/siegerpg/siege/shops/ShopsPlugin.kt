@@ -3,6 +3,7 @@ package net.siegerpg.siege.shops
 import co.aikar.commands.PaperCommandManager
 import net.siegerpg.siege.core.items.implemented.armor.boots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.boneBoots.*
+import net.siegerpg.siege.core.items.implemented.armor.boots.chainBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.magmaBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*
@@ -29,6 +30,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.magmaLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.woolLeggings.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.*
 import net.siegerpg.siege.core.items.implemented.misc.food.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
@@ -2862,7 +2864,6 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Chain.tier(2) to 5), true) {
                 ChainHelmet(Utils.randRarity()).getUpdatedItem(false)
             },
-            /*
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
@@ -2891,7 +2892,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(4) to 1), true) {
                 HealingChainHelmet(Utils.randRarity()).getUpdatedItem(false)
             },
-            */
+
             //Chain CHESTPLATE
             ShopItem(ChainChestplate(-1), 3000, hashMapOf(
                 Chain.tier(2) to 8), true) {
@@ -2900,7 +2901,6 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            /*
             ShopItem(LuckyChainChestplate(-1), 3250, hashMapOf(
                 Chain.tier(2) to 6,
                 Feather.tier(2) to 4), true) {
@@ -2926,7 +2926,6 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(4) to 1), true) {
                 HealingChainChestplate(Utils.randRarity()).getUpdatedItem(false)
             },
-            */
 
             //Chain LEGGINGS
             ShopItem(ChainLeggings(-1), 2750, hashMapOf(
@@ -2936,7 +2935,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            /*
+
             ShopItem(LuckyChainLeggings(-1), 3000, hashMapOf(
                 Chain.tier(2) to 5,
                 Feather.tier(2) to 4), true) {
@@ -2962,7 +2961,6 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Wheat.tier(4) to 1), true) {
                 HealingChainLeggings(Utils.randRarity()).getUpdatedItem(false)
             },
-            */
 
             //Chain BOOTS
             ShopItem(ChainBoots(-1), 1500, hashMapOf(
