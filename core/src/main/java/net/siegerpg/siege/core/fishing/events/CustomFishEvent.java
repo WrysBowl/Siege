@@ -79,7 +79,6 @@ public class CustomFishEvent {
 		this.getFishingData().setFish(fish);
 	}
 	public void trigger() {
-		player.sendMessage("custom event triggered");
 		data.setFishing(true);
 		new FishingTask(this).runTaskTimerAsynchronously(Core.plugin(), 0, 2);
 		
@@ -90,6 +89,7 @@ public class CustomFishEvent {
 		player.sendMessage(ChatColor.YELLOW + "YOU WON A: " + data.getFish().name);
 		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(
 ChatColor.YELLOW + "You won a " + data.getFish().name));
+		player.getInventory().addItem(FishCore.getItem(data.getFish()));
 	}
 	public void loose() {
 		this.remove();

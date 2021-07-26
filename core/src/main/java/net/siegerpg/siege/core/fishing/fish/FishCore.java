@@ -18,17 +18,8 @@ public class FishCore {
 
 	public static ArrayList<Fish> registeredFish = new ArrayList<>() {
 		{
-			add(new BlackDrum());
 			add(new Bearacuda());
-			add(new BigBlueTuna());
-			add(new Catastrophe());
-			add(new Codzilla());
-			add(new FlashyShark());
-			add(new MrKrabs());
-			add(new MrsPuff());
 			add(new PistolWhipper());
-			add(new RedSnacker());
-			add(new StingWhip());
 		}
 	};
 
@@ -72,10 +63,10 @@ public class FishCore {
 	public static ItemStack getItem(Fish fish) {
 		ItemStack item = new ItemStack(Material.COD);
 		ItemMeta meta = item.getItemMeta();
-		meta.displayName(Utils.lore("<yellow>"+fish.name));
+		meta.displayName(Utils.lore("<yellow>"+fish.name+" <gray>"+ fish.actualSize));
 		meta.lore(new ArrayList<>(){
 			{
-				add(Utils.lore("  <gray>Size: <white>" + fish.getRandomSize()));
+				add(Utils.lore("  <gray>Size: <white>" + fish.actualSize));
 			}
 		});
 

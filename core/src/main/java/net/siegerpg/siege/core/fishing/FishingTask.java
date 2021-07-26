@@ -28,7 +28,8 @@ public class FishingTask extends BukkitRunnable {
 	
 	private CustomFishEvent e;
 	private NamespacedKey keyProgress;
-	
+	private final int delay = 1;
+	private int currentWait = 0;
 
 
 
@@ -80,7 +81,7 @@ public class FishingTask extends BukkitRunnable {
 		if(Bukkit.getBossBar(keyProgress) == null ||  e.getProgressBar() == null)
 		{
 			BossBar bossbar = Bukkit.createBossBar(keyProgress,
-					ChatColor.GREEN + "That close to catching the fish",
+					ChatColor.GREEN + "CATCH PROGRESS",
 					BarColor.GREEN,
 					BarStyle.SOLID,
 					BarFlag.CREATE_FOG);
@@ -90,8 +91,18 @@ public class FishingTask extends BukkitRunnable {
 			e.setProgressBar(bossbar);
 		}
 		BossBar progressBar = e.getProgressBar();
-		if(data.getScore()/ fish.winScore <=1 && data.getScore()/ fish.winScore <=0)
-			progressBar.setProgress(data.getScore()/ fish.winScore);
+		if(data.getScore()/ fish.winScore <=1 && data.getScore()/ fish.winScore >=0) {
+			progressBar.setProgress(data.getScore() / fish.winScore);
+			if(data.getCursor().getLoc() < getEvent().getTotalLength()){
+				if (this.currentWait <= this.delay) {
+					this.currentWait++;
+				} else {
+					this.currentWait = 0;
+					data.getCursor().setLoc(data.getCursor().getLoc()+1);
+				}
+
+			}
+		}
 		
 		
 		
