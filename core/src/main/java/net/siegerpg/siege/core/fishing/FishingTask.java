@@ -94,7 +94,7 @@ public class FishingTask extends BukkitRunnable {
 		if(data.getScore()/ fish.winScore <=1 && data.getScore()/ fish.winScore >=0) {
 			progressBar.setProgress(data.getScore() / fish.winScore);
 			if(data.getCursor().getLoc() < getEvent().getTotalLength()){
-				if (this.currentWait <= this.delay) {
+				if (this.currentWait < this.delay) {
 					this.currentWait++;
 				} else {
 					this.currentWait = 0;
