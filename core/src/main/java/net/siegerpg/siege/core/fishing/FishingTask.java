@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.fishing;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.fishing.fish.Fish;
 import net.siegerpg.siege.core.utils.cache.PlayerData;
 import net.siegerpg.siege.core.fishing.data.Cursor;
 import net.siegerpg.siege.core.fishing.data.FishingData;
@@ -35,7 +36,7 @@ public class FishingTask extends BukkitRunnable {
 		this.e=e;
 		
 		//setting the score to a fourth
-		e.getFishingData().setScore((double)e.getFishingData().getFish().getLevel().winScore/3);
+		e.getFishingData().setScore((double)e.getFishingData().getFish().winScore/3);
 		
 		keyProgress = new NamespacedKey(Core.plugin(), "ProgressBar-" + e.getPlayer().getName());
 		runningTasks.put(e.getPlayer().getUniqueId(), this);
@@ -46,18 +47,18 @@ public class FishingTask extends BukkitRunnable {
 	
 	@Override
 	public void run() {
-		FishCore fishCore = e.getFishingData().getFish();
+		Fish fish = e.getFishingData().getFish();
 		FishingData data = e.getFishingData();
 		Cursor cursor = data.getCursor();
 		//keeping up with score ;D
-        if(data.getScore() >= fishCore.getLevel().winScore) {
+        if(data.getScore() >= fish.winScore) {
         	e.win();
         	runningTasks.remove(e.getPlayer().getUniqueId());
         	this.cancel();
 			PlayerData.hasActionBar.put(e.getPlayer(), false);
         }
 
-        if(Utils.randTest(fishCore.getLevel().chanceToChangeDirection))
+        if(Utils.randTest(fish.chanceToChangeDirection))
         	e.getFishingData().setDirection(!e.getFishingData().getDirection());
         
         e.getBaitModel().teleport(e.getBaitLocation());
@@ -73,7 +74,7 @@ public class FishingTask extends BukkitRunnable {
 		//label of the action bar
 		String label="";
 		
-		data.setProcessToAdvance(data.getProcessToAdvance() + fishCore.getLevel().moveSpeed);
+		data.setProcessToAdvance(data.getProcessToAdvance() + fish.moveSpeed);
 		
 		//BossBar for progress
 		if(Bukkit.getBossBar(keyProgress) == null ||  e.getProgressBar() == null)
@@ -83,21 +84,21 @@ public class FishingTask extends BukkitRunnable {
 					BarColor.GREEN,
 					BarStyle.SOLID,
 					BarFlag.CREATE_FOG);
-			bossbar.setProgress(data.getScore()/ fishCore.getLevel().winScore);
+			bossbar.setProgress(data.getScore()/ fish.winScore);
 			bossbar.setVisible(true);
 			bossbar.addPlayer(e.getPlayer());
 			e.setProgressBar(bossbar);
 		}
 		BossBar progressBar = e.getProgressBar();
-		if(data.getScore()/ fishCore.getLevel().winScore <=1 && data.getScore()/ fishCore.getLevel().winScore <=0)
-			progressBar.setProgress(data.getScore()/ fishCore.getLevel().winScore);
+		if(data.getScore()/ fish.winScore <=1 && data.getScore()/ fish.winScore <=0)
+			progressBar.setProgress(data.getScore()/ fish.winScore);
 		
 		
 		
 		
 		for(int i=0; i<e.getTotalLength(); i++) {
 			boolean skip = false;
-            for(int _i = Math.min(data.getLoc(), data.getLoc()+ fishCore.getLevel().length-1); _i <= (data.getLoc()+ fishCore.getLevel().length-1); _i++) {
+            for(int _i = Math.min(data.getLoc(), data.getLoc()+ fish.length-1); _i <= (data.getLoc()+ fish.length-1); _i++) {
                 if(i== _i) {
                 	
                     if(cursor.loc == i)
@@ -131,7 +132,7 @@ public class FishingTask extends BukkitRunnable {
 				label = label + ChatColor.RED + "\u25AE";
         }
 		if(data.getProcessToAdvance()>=1) {
-			if(data.getLoc() + fishCore.getLevel().length == e.getTotalLength() && data.getDirection()){ data.setDirection(!data.getDirection());}
+			if(data.getLoc() + fish.length == e.getTotalLength() && data.getDirection()){ data.setDirection(!data.getDirection());}
 			if(data.getLoc()<=0 && !data.getDirection()) { data.setDirection(!data.getDirection());}
 			if(data.getDirection()) { data.setLoc(data.getLoc()+1); }
 			if(!data.getDirection()) {data.setLoc(data.getLoc()-1);}

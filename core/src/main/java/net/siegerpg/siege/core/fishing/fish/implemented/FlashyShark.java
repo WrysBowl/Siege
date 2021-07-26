@@ -6,6 +6,6 @@ import net.siegerpg.siege.core.fishing.fish.Fish;
 public class FlashyShark extends Fish {
 
     public FlashyShark(){
-        super(new double[] {360, 400}, 30, 0.5, 16, 5, 10, 610007);
+        super("Flashy Shark", new double[] {360, 400}, 30, 0.5, 16, 5, 10, 610007);
     }
 }

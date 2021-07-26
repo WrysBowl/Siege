@@ -1,26 +1,26 @@
 package net.siegerpg.siege.core.fishing.baits;
 
+import net.siegerpg.siege.core.fishing.fish.Fish;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
 
 public class BaitStats {
 	
 	
-	private FishCore fish;
+	private Fish fish;
 	private int chanceAdded;
 	
-	public BaitStats (String fishName, int chanceAdded) {
-		FishCore fish = FishCore.getFish(fishName);
+	public BaitStats (Fish fish, int chanceAdded) {
 		this.fish=fish;
 		this.chanceAdded=chanceAdded;
 		
 	}
 
 
-	public FishCore getFish() {
+	public Fish getFish() {
 		return fish;
 	}
 
-	public void setFish(FishCore fish) {
+	public void setFish(Fish fish) {
 		this.fish = fish;
 	}
 

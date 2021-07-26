@@ -28,10 +28,10 @@ public class CustomFishEvent {
 	
 	private ArrayList<ItemStack> rewards = new ArrayList<ItemStack>();
 	
-	private Player player;
-	private FishHook hook;
-	private State state;
-	private FishingData data;
+	private final Player player;
+	private final FishHook hook;
+	private final State state;
+	private final FishingData data;
 	private int ticksElapsed =0;
 	private int totalTicksElapsed =0;
 	private int secondsElapsed = 0;
@@ -82,9 +82,9 @@ public class CustomFishEvent {
 	
 	public void win() {
 		this.remove();
-		player.sendMessage(ChatColor.YELLOW + "YOU WON A: " + data.getFish().getFishName());
+		player.sendMessage(ChatColor.YELLOW + "YOU WON A: " + data.getFish().name);
 		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(
-ChatColor.YELLOW + "You won a " + data.getFish().getFishName()));
+ChatColor.YELLOW + "You won a " + data.getFish().name));
 	}
 	public void loose() {
 		this.remove();

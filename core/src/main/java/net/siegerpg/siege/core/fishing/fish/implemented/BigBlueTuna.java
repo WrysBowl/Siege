@@ -6,6 +6,6 @@ import net.siegerpg.siege.core.fishing.fish.Fish;
 public class BigBlueTuna extends Fish {
 
     public BigBlueTuna(){
-        super(new double[] {400, 450}, 45, 0.4, 16, 10, 8, 610006);
+        super("Big Blue Tuna", new double[] {400, 450}, 45, 0.4, 16, 10, 8, 610006);
     }
 }

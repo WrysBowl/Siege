@@ -59,7 +59,7 @@ public abstract class BaitCore {
 
 	public boolean hasFish(String name) {
 		for(BaitStats stats : this.stats) {
-			if(stats.getFish().getFishName().equalsIgnoreCase(name))
+			if(stats.getFish().name.equalsIgnoreCase(name))
 				return true;
 		}
 		return false;
@@ -78,7 +78,7 @@ public abstract class BaitCore {
 
 	public BaitStats getStat(String name) {
 		for(BaitStats stats : this.stats) {
-			if(stats.getFish().getFishName().equalsIgnoreCase(name))
+			if(stats.getFish().name.equalsIgnoreCase(name))
 				return stats;
 		}
 		return null;

@@ -7,6 +7,6 @@ public class BlackDrum extends Fish {
 
 	// THIS IS AN EXAMPLE FISH CLASS
 	public BlackDrum(){
-		super(new double[] {3, 5}, 15, 0.5, 15, 10, 5, 610003);
+		super("BlackDrum", new double[] {3, 5}, 15, 0.5, 15, 10, 5, 610003);
 	}
 }
