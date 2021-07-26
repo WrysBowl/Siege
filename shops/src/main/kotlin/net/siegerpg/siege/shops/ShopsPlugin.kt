@@ -2972,7 +2972,6 @@ class ShopsPlugin: JavaPlugin(), Listener {
             ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
                 GRAYFILLER(-1).getUpdatedItem(false)
             },
-            /*
             ShopItem(LuckyChainBoots(-1), 1750, hashMapOf(
                 Chain.tier(2) to 3,
                 Feather.tier(2) to 2), true) {
@@ -2997,8 +2996,7 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Chain.tier(2) to 3,
                 Wheat.tier(4) to 1), true) {
                 HealingChainBoots(Utils.randRarity()).getUpdatedItem(false)
-            },
-             */
+            }
         ))
 
         Bukkit.getLogger().info("Enabled!")
