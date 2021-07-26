@@ -7,7 +7,9 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.FishingTask;
 import net.siegerpg.siege.core.fishing.baits.BaitCore;
 import net.siegerpg.siege.core.fishing.data.FishingData;
+import net.siegerpg.siege.core.fishing.fish.Fish;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
+import net.siegerpg.siege.core.fishing.fish.implemented.BigBlueTuna;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -71,7 +73,10 @@ public class CustomFishEvent {
         		this.player.sendMessage(this.getFishingData().getBait().getName());
 			}
 		}
-		this.getFishingData().setFish(FishCore.chooseRandomFish(this.getFishingData().getBait(), this.getPlayer()));
+
+        //Bait is null, unable to pass through params
+		Fish fish = FishCore.chooseRandomFish(this.data.getBait(), player);
+		this.getFishingData().setFish(fish);
 	}
 	public void trigger() {
 		player.sendMessage("custom event triggered");

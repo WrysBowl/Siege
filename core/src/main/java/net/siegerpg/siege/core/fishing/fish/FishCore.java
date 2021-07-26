@@ -5,32 +5,34 @@ import net.siegerpg.siege.core.fishing.baits.BaitCore;
 import net.siegerpg.siege.core.fishing.baits.BaitStats;
 import net.siegerpg.siege.core.fishing.fish.implemented.*;
 import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 
-public abstract class FishCore {
+public class FishCore {
 
 	public static ArrayList<Fish> registeredFish = new ArrayList<>() {
 		{
-			registeredFish.add(new BlackDrum());
-			registeredFish.add(new Bearacuda());
-			registeredFish.add(new BigBlueTuna());
-			registeredFish.add(new Catastrophe());
-			registeredFish.add(new Codzilla());
-			registeredFish.add(new FlashyShark());
-			registeredFish.add(new MrKrabs());
-			registeredFish.add(new MrsPuff());
-			registeredFish.add(new PistolWhipper());
-			registeredFish.add(new RedSnacker());
-			registeredFish.add(new StingWhip());
+			add(new BlackDrum());
+			add(new Bearacuda());
+			add(new BigBlueTuna());
+			add(new Catastrophe());
+			add(new Codzilla());
+			add(new FlashyShark());
+			add(new MrKrabs());
+			add(new MrsPuff());
+			add(new PistolWhipper());
+			add(new RedSnacker());
+			add(new StingWhip());
 		}
 	};
 
-	public static Fish chooseRandomFish(BaitCore baitCore, Player player) {
+	public static Fish chooseRandomFish(@Nullable BaitCore baitCore, Player player) {
 		double totalWeight = 0;
 		for (Fish fish : registeredFish) {
 			totalWeight += fish.chance;
@@ -48,7 +50,6 @@ public abstract class FishCore {
 		double random = Math.random() * totalWeight;
 		for (Fish fish : registeredFish) {
 			if (baitCore != null && baitCore.hasFish(fish.name)) {
-				//player.sendMessage(baitCore.getName() + "added 2");
 				BaitStats stats = baitCore.getStat(fish.name);
 				double stat = stats.getChanceAdded();
 				weight += stat;
@@ -57,7 +58,7 @@ public abstract class FishCore {
 			if (random > weight) continue; //if the random number is above the totalWeight
 			return fish;
 		}
-		return null;
+		return registeredFish.get(0);
 	}
 
 	public static Fish getFish(String name) {
