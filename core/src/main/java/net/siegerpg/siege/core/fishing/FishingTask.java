@@ -30,6 +30,7 @@ public class FishingTask extends BukkitRunnable {
 	private NamespacedKey keyProgress;
 	private final int delay = 1;
 	private int currentWait = 0;
+	public int direction = -1; //-1 for left, 1 for right
 
 
 
@@ -98,7 +99,7 @@ public class FishingTask extends BukkitRunnable {
 					this.currentWait++;
 				} else {
 					this.currentWait = 0;
-					data.getCursor().setLoc(data.getCursor().getLoc()+1);
+					data.getCursor().setLoc(data.getCursor().getLoc()+this.direction);
 				}
 
 			}

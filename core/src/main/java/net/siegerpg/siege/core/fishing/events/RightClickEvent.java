@@ -26,9 +26,17 @@ public class RightClickEvent implements Listener {
 			{
 				e.setCancelled(true);
 				if(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK)
-				{ 
+				{
+					if(ce.getFishingData().getCursor().getLoc() < ce.getTotalLength()) {
+						if (task.direction == -1) {
+							task.direction = 1;
+							return;
+						}
+					}
 					if(ce.getFishingData().getCursor().getLoc() > 0){
-						ce.getFishingData().getCursor().setLoc(ce.getFishingData().getCursor().getLoc()-1);
+						if (task.direction == 1) {
+							task.direction = -1;
+						}
 					}
 				}
 			}
