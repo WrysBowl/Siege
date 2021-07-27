@@ -20,40 +20,37 @@ public class Skill {
 
     //Decode needs to be static for us to reference it, but then skillTypes need to be static, and so I transferred
     //all the hashmaps and methods to another class
-    int ID;
-    Skill SKILL;
-    ItemStack DISPLAY_ITEM;
-    Integer MANA_COST;
-    @Nullable HashMap<StatTypes,Double> STATS;
-    @Nullable HashMap<Integer, Skill> CHILDREN;
-    @Nullable ArrayList<Action> TRIGGER;
+    public int ID;
+    public Skill SKILL;
+    public ItemStack DISPLAY_ITEM;
+    public Integer MANA_COST;
+    public @Nullable HashMap<StatTypes,Double> STATS;
+    public @Nullable HashMap<Integer, Skill> CHILDREN;
+    public @Nullable ArrayList<Action> TRIGGER;
 
     public Skill(){
         this.ID = 0;
         this.SKILL = this;
         this.MANA_COST = 0;
-        this.STATS = new HashMap<>(){{
-            put(StatTypes.LUCK, 0.0);
-            put(StatTypes.STRENGTH, 0.0);
-            put(StatTypes.TOUGHNESS, 0.0);
-            put(StatTypes.HEALTH, 0.0);
-            put(StatTypes.REGENERATION, 0.0);
-            put(StatTypes.MANA, 0.0);
-            put(StatTypes.MANA_REGEN, 0.0); }
-        };
-        this.CHILDREN = new HashMap<>(){
-            {
-                put(1, new CriticalShot());
-            }
-        };
+        STATS.put(StatTypes.LUCK, 0.0);
+        STATS.put(StatTypes.STRENGTH, 0.0);
+        STATS.put(StatTypes.TOUGHNESS, 0.0);
+        STATS.put(StatTypes.HEALTH, 0.0);
+        STATS.put(StatTypes.REGENERATION, 0.0);
+        STATS.put(StatTypes.MANA, 0.0);
+        STATS.put(StatTypes.MANA_REGEN, 0.0);
+
+        CHILDREN.put(1, new CriticalShot());
+
         this.DISPLAY_ITEM = new ItemStack(Material.BEDROCK);
     }
-    public Skill(int id, @Nullable HashMap<StatTypes,Double> stats, @Nullable HashMap<Integer, Skill> children, int manaCost, @Nullable ArrayList<Action> trigger) {
+    public Skill(int id, @Nullable HashMap<StatTypes,Double> stats, @Nullable HashMap<Integer, Skill> children, int manaCost, @Nullable ArrayList<Action> trigger, ItemStack displayItem) {
         this.ID = id;
         this.STATS = stats;
         this.CHILDREN = children;
         this.MANA_COST = manaCost;
         this.TRIGGER = trigger;
+        this.DISPLAY_ITEM = displayItem;
     }
     public Skill(Skill skill) {
         this.SKILL = skill;

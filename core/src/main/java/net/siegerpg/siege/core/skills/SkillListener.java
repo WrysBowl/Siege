@@ -18,7 +18,6 @@ import java.util.HashMap;
 
 public class SkillListener implements Listener, Runnable {
 
-    @EventHandler
     public boolean skillActivate(PlayerInteractEvent e){
         Player player = e.getPlayer();
         if (player.getGameMode().equals(GameMode.CREATIVE) || player.getGameMode().equals(GameMode.SPECTATOR)) return false;

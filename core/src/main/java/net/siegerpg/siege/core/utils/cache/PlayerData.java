@@ -39,7 +39,7 @@ public class PlayerData implements Listener {
             setStats(player);
             hasActionBar.put(player, false);
             PlayerData.broadcastTips.put(player, true);
-            playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
+            //playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
         }
     }
     @EventHandler
@@ -47,7 +47,7 @@ public class PlayerData implements Listener {
         Player player = e.getPlayer();
         hasActionBar.put(player, false);
         setStats(player);
-        playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
+        //playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
         if (!PlayerData.broadcastTips.containsKey(player)) {
             PlayerData.broadcastTips.put(player, true);
         }
