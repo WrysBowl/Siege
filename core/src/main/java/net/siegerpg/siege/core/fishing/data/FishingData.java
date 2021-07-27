@@ -14,7 +14,7 @@ public class FishingData {
 	private boolean fishing = false;
 	private Fish fish;
 	private double processToAdvance=0;
-	private int loc=0;
+	private int loc=35;
 	private Cursor cursor;
 	private BaitCore bait = null;
 	private double score= 0;

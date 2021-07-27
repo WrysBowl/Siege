@@ -14,7 +14,7 @@ public class Cursor {
 	public void setInGreen(boolean inGreen) {
 		this.inGreen = inGreen;
 	}
-	public int loc;
+	public int loc = 35;
 	public boolean inGreen;
 
 }

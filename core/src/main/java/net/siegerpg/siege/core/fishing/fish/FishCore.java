@@ -16,6 +16,16 @@ import java.util.ArrayList;
 
 public class FishCore {
 
+	public static void refreshFishList() {
+		registeredFish.clear();
+		registeredFish = new ArrayList<>() {
+			{
+				add(new Bearacuda());
+				add(new PistolWhipper());
+			}
+		};
+	}
+
 	public static ArrayList<Fish> registeredFish = new ArrayList<>() {
 		{
 			add(new Bearacuda());
@@ -23,8 +33,10 @@ public class FishCore {
 		}
 	};
 
+
 	public static Fish chooseRandomFish(@Nullable BaitCore baitCore, Player player) {
 		double totalWeight = 0;
+		refreshFishList(); //makes new instances of fish
 		for (Fish fish : registeredFish) {
 			totalWeight += fish.chance;
 			if (baitCore == null)
@@ -60,16 +72,16 @@ public class FishCore {
 		return null;
 	}
 
+	public static Double getRandomSize(Fish fish) {
+		double min = fish.size[0];
+		double max = fish.size[1];
+		return min + (int)(Math.random() * (max - min));
+	}
+
 	public static ItemStack getItem(Fish fish) {
 		ItemStack item = new ItemStack(Material.COD);
 		ItemMeta meta = item.getItemMeta();
 		meta.displayName(Utils.lore("<yellow>"+fish.name+" <gray>"+ fish.actualSize));
-		meta.lore(new ArrayList<>(){
-			{
-				add(Utils.lore("  <gray>Size: <white>" + fish.actualSize));
-			}
-		});
-
 		item.setItemMeta(meta);
 		NBTItem nbtItem = new NBTItem(item);
 		nbtItem.setInteger("CustomModelData", fish.customModelData);

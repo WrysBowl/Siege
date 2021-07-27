@@ -30,7 +30,7 @@ public class FishingTask extends BukkitRunnable {
 	private NamespacedKey keyProgress;
 	private final int delay = 1;
 	private int currentWait = 0;
-	public int direction = -1; //-1 for left, 1 for right
+	public int direction = 1; //-1 for left, 1 for right
 
 
 
@@ -79,29 +79,36 @@ public class FishingTask extends BukkitRunnable {
 		data.setProcessToAdvance(data.getProcessToAdvance() + fish.moveSpeed);
 		
 		//BossBar for progress
+		double progress = data.getScore() / fish.winScore;
 		if(Bukkit.getBossBar(keyProgress) == null ||  e.getProgressBar() == null)
 		{
 			BossBar bossbar = Bukkit.createBossBar(keyProgress,
-					ChatColor.GREEN + "CATCH PROGRESS",
+					Utils.tacc("&a&lStay in the Green!"),
 					BarColor.GREEN,
 					BarStyle.SOLID,
 					BarFlag.CREATE_FOG);
-			bossbar.setProgress(data.getScore()/ fish.winScore);
+			bossbar.setProgress(progress);
 			bossbar.setVisible(true);
 			bossbar.addPlayer(e.getPlayer());
 			e.setProgressBar(bossbar);
+
 		}
 		BossBar progressBar = e.getProgressBar();
-		if(data.getScore()/ fish.winScore <=1 && data.getScore()/ fish.winScore >=0) {
-			progressBar.setProgress(data.getScore() / fish.winScore);
-			if(data.getCursor().getLoc() < getEvent().getTotalLength()){
-				if (this.currentWait < this.delay) {
-					this.currentWait++;
-				} else {
-					this.currentWait = 0;
+		if(progress <=1 && progress >=0) {
+			progressBar.setProgress(progress);
+			if (this.currentWait < this.delay) {
+				this.currentWait++;
+			} else {
+				this.currentWait = 0;
+				if (data.getCursor().getLoc() > 0 && data.getCursor().getLoc() < getEvent().getTotalLength()) {
+					//location of cursor is less than the length of the action bar
+					//location of cursor is greater than the beginning of the action bar
 					data.getCursor().setLoc(data.getCursor().getLoc()+this.direction);
+				} else if(this.direction == -1) {
+					data.getCursor().setLoc(getEvent().getTotalLength()-1);
+				} else if(this.direction == 1) {
+					data.getCursor().setLoc(1);
 				}
-
 			}
 		}
 		

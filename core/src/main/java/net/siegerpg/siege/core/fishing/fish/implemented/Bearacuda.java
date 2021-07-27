@@ -6,6 +6,13 @@ import net.siegerpg.siege.core.fishing.fish.FishCore;
 public class Bearacuda extends Fish {
 
     public Bearacuda(){
-        super("Bearacuda", new double[] {60, 100}, 15, 0.9, 15, 15, 3.5, 610005);
+        super(
+                "Bearacuda",
+                new double[] {60, 100},
+                20,
+                1, 18,
+                15,
+                6,
+                610005);
     }
 }
