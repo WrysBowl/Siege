@@ -10,10 +10,10 @@ public class StingWhip extends Fish {
                 "Sting Whip",
                 new double[] {200, 230},
                 30,
-                0.2,
+                0.5,
                 15,
                 45,
-                7,
+                9,
                 610003);
 
     }

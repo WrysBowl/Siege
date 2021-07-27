@@ -10,10 +10,10 @@ public class MrsPuff extends Fish {
                 "Mrs. Puff",
                 new double[] {30, 60},
                 12,
-                0.1,
-                8,
+                0.4,
+                12,
                 60,
-                4,
+                5,
                 610010);
 
     }

@@ -9,10 +9,11 @@ public class RedSnacker extends Fish {
         super(
                 "Red Snacker",
                 new double[] {90, 110},
-                20,
-                0.2, 10,
+                24,
+                0.6,
+                12,
                 90,
-                5,
+                7,
                 610002);
 
     }

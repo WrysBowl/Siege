@@ -21,7 +21,15 @@ public class FishCore {
 		registeredFish = new ArrayList<>() {
 			{
 				add(new Bearacuda());
+				add(new BigBlueTuna());
+				add(new Catastrophe());
+				add(new Codzilla());
+				add(new FlashyShark());
+				add(new MrKrabs());
+				add(new MrsPuff());
 				add(new PistolWhipper());
+				add(new RedSnacker());
+				add(new StingWhip());
 			}
 		};
 	}
@@ -29,10 +37,17 @@ public class FishCore {
 	public static ArrayList<Fish> registeredFish = new ArrayList<>() {
 		{
 			add(new Bearacuda());
+			add(new BigBlueTuna());
+			add(new Catastrophe());
+			add(new Codzilla());
+			add(new FlashyShark());
+			add(new MrKrabs());
+			add(new MrsPuff());
 			add(new PistolWhipper());
+			add(new RedSnacker());
+			add(new StingWhip());
 		}
 	};
-
 
 	public static Fish chooseRandomFish(@Nullable BaitCore baitCore, Player player) {
 		double totalWeight = 0;

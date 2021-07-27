@@ -10,8 +10,8 @@ public class BigBlueTuna extends Fish {
                 "Big Blue Tuna",
                 new double[] {400, 450},
                 45,
-                0.4,
-                16,
+                0.5,
+                18,
                 10,
                 8,
                 610006);

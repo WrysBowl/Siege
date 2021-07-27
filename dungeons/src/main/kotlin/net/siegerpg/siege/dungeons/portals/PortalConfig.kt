@@ -39,10 +39,6 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
     }
 
     fun teleportToCorresponding(player: Player): Boolean {
-        if (!hasKey(player, "Hilly_Woods")) {
-            player.sendTitle(Utils.tacc("&cKey required!"), Utils.tacc("&eMobs can drop keys"))
-            return false
-        }
         val coordinateSection = configuration.getConfigurationSection("coords") ?: configuration.createSection("coords")
         val linkingSection =
             configuration.getConfigurationSection("relations") ?: configuration.createSection("relations")
@@ -55,7 +51,11 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
         val location = linkingSection.getConfigurationSection(
             corresponding.toString()
         ) ?: return false
-        removeKey(player, player.world.name) //WHY DOESN'T THIS WORK
+        if (!hasKey(player, "Hilly_Woods")) {
+            player.sendTitle(Utils.tacc("&cKey required!"), Utils.tacc("&eMobs can drop keys"))
+            return false
+        }
+        removeKey(player, player.world.name)
         if (location.isSet("dungeon")) {
             val dungeonTypeName = location.getString("dungeon")
             val dungeonType = DungeonType.dungeonTypes.find { d -> dungeonTypeName == d.name } ?: return false

@@ -9,12 +9,11 @@ public class FlashyShark extends Fish {
         super(
                 "Flashy Shark",
                 new double[] {360, 400},
-                30,
-                0.5,
-                16,
+                60,
+                0.8,
+                12,
                 5,
                 10,
                 610007);
-
     }
 }

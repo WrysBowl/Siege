@@ -11,10 +11,10 @@ public class Codzilla extends Fish {
                 "Codzilla",
                 new double[] {75, 100},
                 20,
-                0.15,
-                10,
+                0.5,
+                15,
                 100,
-                5,
+                6,
                 610001);
     }
 }
