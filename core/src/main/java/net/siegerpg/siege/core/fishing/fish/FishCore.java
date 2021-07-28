@@ -100,6 +100,7 @@ public class FishCore {
 		item.setItemMeta(meta);
 		NBTItem nbtItem = new NBTItem(item);
 		nbtItem.setInteger("CustomModelData", fish.customModelData);
+		nbtItem.setString("Name", fish.name);
 		return nbtItem.getItem();
 	}
 }

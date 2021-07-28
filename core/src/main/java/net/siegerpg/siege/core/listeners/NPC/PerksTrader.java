@@ -52,7 +52,7 @@ public class PerksTrader implements Listener {
             return;
         }
         int nextPV = highestPV+1;
-        int cost = nextPV * 5000;
+        int cost = nextPV *10000;
 
         if (VaultHook.econ.getBalance(player) < cost) {
             player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
@@ -80,7 +80,7 @@ public class PerksTrader implements Listener {
         }
         int highestPV = Utils.getHighestPV(player);
         int nextPV = highestPV+1;
-        int cost = nextPV * 5000;
+        int cost = nextPV * 10000;
         ItemStack buyPerk = new ItemStack(Material.CHEST);
         ItemMeta buyPerkMeta = buyPerk.getItemMeta();
         buyPerkMeta.displayName(Utils.lore("<yellow>Buy +1 Vault"));

@@ -27,7 +27,7 @@ public class Herbert implements Listener {
     private ChestGui menu;
     private int total = 0; // Total scrap cash
     boolean inUse = false; // One player at a time
-    boolean passed = false; // Avoid double msg????
+    static boolean passed = false; // Avoid double msg????
     private ItemStack cashInSymbol = new ItemStack(Material.SUNFLOWER);
     private ItemMeta cashMeta = cashInSymbol.getItemMeta();
     private ItemStack scanSymbol = new ItemStack(Material.ARROW);
@@ -122,12 +122,14 @@ public class Herbert implements Listener {
                 if (cItem instanceof CustomMaterial) {
                     quality = ((CustomMaterial)(cItem)).getTier();
                     quantity = cItem.getItem().getAmount();
-                    if (quality > 1) {
-                        total += quantity * Math.pow(2, quality);
-                    }
+                    total += quantity * Math.pow(3, quality-1);
                 }
                 else {
                     quality = cItem.getQuality();
+                    if (cItem.getLevelRequirement() == null) {
+                        total += 1;
+                        continue;
+                    }
                     levelReq = cItem.getLevelRequirement();
                     total += (int) ((levelReq * quality) / 5);
                 }
