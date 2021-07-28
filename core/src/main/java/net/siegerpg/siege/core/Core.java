@@ -4,6 +4,7 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.Webstore.RedeemBoosters;
 import net.siegerpg.siege.core.Webstore.WebstoreCommand;
+import net.siegerpg.siege.core.commands.admin.*;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillListener;
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;
@@ -11,10 +12,6 @@ import net.siegerpg.siege.core.utils.cache.MobNames;
 import net.siegerpg.siege.core.utils.cache.PlayerBanking;
 import net.siegerpg.siege.core.utils.cache.PlayerData;
 import net.siegerpg.siege.core.commands.*;
-import net.siegerpg.siege.core.commands.admin.GetItem;
-import net.siegerpg.siege.core.commands.admin.Invsee;
-import net.siegerpg.siege.core.commands.admin.SpawnExp;
-import net.siegerpg.siege.core.commands.admin.SpawnGold;
 import net.siegerpg.siege.core.fishing.commands.getBait;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
@@ -71,6 +68,8 @@ public final class Core extends JavaPlugin {
         this.getCommand("spawnGold").setExecutor(new SpawnGold());
         this.getCommand("getBait").setExecutor(new getBait());
         this.getCommand("pay").setExecutor(new Pay());
+        this.getCommand("getKey").setExecutor(new GetKey());
+
 
         //partyManager = new PartyManager();
 
@@ -142,6 +141,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new HelpfulTips(), this);
         getServer().getPluginManager().registerEvents(new MobNames(), this);
         getServer().getPluginManager().registerEvents(new SkillListener(), this);
+
 
         getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);

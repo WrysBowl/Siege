@@ -49,3 +49,5 @@ commands:
   getBait:
     aliases: [ getBait ]
     description: gets a bait ;D
+  getKey:
+    description: Gets a hilly woods key or dungeon key
