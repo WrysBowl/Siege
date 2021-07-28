@@ -9,8 +9,9 @@ public class Bearacuda extends Fish {
         super(
                 "Bearacuda",
                 new double[] {60, 100},
-                20,
-                1, 18,
+                15,
+                1,
+                18,
                 15,
                 6,
                 610005);
