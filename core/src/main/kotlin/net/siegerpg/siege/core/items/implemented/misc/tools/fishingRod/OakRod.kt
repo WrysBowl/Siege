@@ -15,7 +15,6 @@ class OakRod() : CustomTool(
     material = Material.FISHING_ROD,
     baseStats = CustomItemUtils.statMap(),
     enchantments = hashMapOf(
-        Enchantment.DURABILITY to 3,
         Enchantment.LURE to 1
     )
 ) {

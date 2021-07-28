@@ -15,7 +15,6 @@ class TitaniumRod() : CustomTool(
     material = Material.FISHING_ROD,
     baseStats = CustomItemUtils.statMap(),
     enchantments = hashMapOf(
-        Enchantment.DURABILITY to 4,
         Enchantment.LURE to 3,
         Enchantment.LUCK to 2,
         )

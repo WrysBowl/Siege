@@ -15,7 +15,6 @@ class MetalRod() : CustomTool(
     material = Material.FISHING_ROD,
     baseStats = CustomItemUtils.statMap(),
     enchantments = hashMapOf(
-        Enchantment.DURABILITY to 2,
         Enchantment.LURE to 2,
         Enchantment.LUCK to 1
     )
