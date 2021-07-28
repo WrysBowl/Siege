@@ -1,22 +1,24 @@
-package net.siegerpg.siege.core.items.implemented.misc.tools
+package net.siegerpg.siege.core.items.implemented.misc.tools.fishingRod
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomTool
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
-class BoneAxe() : CustomTool(
-    name = "Bone Axe",
-    customModelData = 430003,
-    description = listOf("Caveman tools"),
-    levelRequirement = 8,
-    material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(luck = 10.0),
+class TitaniumRod() : CustomTool(
+    name = "Titanium Rod",
+    customModelData = 440006,
+    description = listOf("The strongest alloy known to man"),
+    levelRequirement = 28,
+    material = Material.FISHING_ROD,
+    baseStats = CustomItemUtils.statMap(),
     enchantments = hashMapOf(
-    )
+        Enchantment.DURABILITY to 4,
+        Enchantment.LURE to 3,
+        Enchantment.LUCK to 2,
+        )
 ) {
 
     constructor(quality: Int): this() {

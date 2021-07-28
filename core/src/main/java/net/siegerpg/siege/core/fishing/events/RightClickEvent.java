@@ -1,6 +1,11 @@
 package net.siegerpg.siege.core.fishing.events;
 
 import net.siegerpg.siege.core.fishing.FishingTask;
+import net.siegerpg.siege.core.items.CustomItem;
+import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.types.misc.CustomTool;
+import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -11,6 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 
 
 public class RightClickEvent implements Listener {
@@ -34,6 +40,18 @@ public class RightClickEvent implements Listener {
 					}
 				}
 			}
+		} else if (player.getInventory().getItemInMainHand().getType().equals(Material.FISHING_ROD)) {
+			ItemStack item = player.getInventory().getItemInMainHand();
+			CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+			e.setCancelled(true);
+			if (!(customItem instanceof CustomTool)) return;
+			if (customItem.getLevelRequirement() == null) return;
+			if (customItem.getLevelRequirement() > LevelEXPStorage.playerLevel.get(player)) {
+				player.sendMessage(Utils.parse("<red>You are too weak to cast this fishing rod!"));
+				return;
+			}
+			e.setCancelled(false);
+
 		}
 	}
 

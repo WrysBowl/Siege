@@ -98,6 +98,35 @@ public class WebstoreCommand implements CommandExecutor {
             Bukkit.broadcastMessage(Utils.tacc(""));
             return true;
         }
+        if (args[1].equals("HeroRank")) {
+            ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+            String cmd = "lp user " + argPlayer.getName() + " parent add Hero";
+            Bukkit.dispatchCommand(console, cmd);
+
+            int highestPV = Utils.getHighestPV((Player)argPlayer);
+            int diff = 54 - highestPV;
+            int addPV = highestPV+5;
+
+            if (VaultHook.perms.playerInGroup((Player) argPlayer, "gladiator")) {
+                addPV = highestPV+2;
+                if (diff < 2) addPV = diff;
+                ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
+                String cmd3 = "lp user " + argPlayer.getName() + " parent remove gladiator";
+                Bukkit.dispatchCommand(console4, cmd3);
+            } else {
+                if (diff < 5) addPV = diff;
+            }
+
+            ConsoleCommandSender console2 = Bukkit.getServer().getConsoleSender();
+            String cmd2 = "lp user " + argPlayer.getName() + " permission set cosmicvaults.amount."+addPV+" true global";
+            Bukkit.dispatchCommand(console2, cmd2);
+
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &2Gladiator &erank!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
+            Bukkit.broadcastMessage(Utils.tacc(""));
+            return true;
+        }
 
 
         return false;

@@ -152,6 +152,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BartBeggar(), this);
         getServer().getPluginManager().registerEvents(new Herbert(), this);
         getServer().getPluginManager().registerEvents(new PerksTrader(), this);
+        getServer().getPluginManager().registerEvents(new Henry(), this);
 
         getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
         getServer().getPluginManager().registerEvents(new StatChangeListener(), this);

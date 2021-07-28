@@ -35,24 +35,27 @@ public class MeraTransit implements Listener {
         if (e.getView().getTitle().equals("World Transit")) {
             e.setCancelled(true);
             Player player = (Player) e.getWhoClicked();
-            short level = Levels.INSTANCE.getExpLevel(player).getFirst();
             World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
             int slot = e.getSlot();
             int bal = (int) VaultHook.econ.getBalance(player);
-            int farmCost = 100;
-            int villageCost = 200;
-            int caveCost = 100;
-            if (player.hasPermission("siegecore.merafree")) {
-                 farmCost /= 2;
-                 villageCost /= 2;
-                 caveCost /= 2;
+            int farmCost = 200;
+            int villageCost = 300;
+            int caveCost = 200;
+            if (player.hasPermission("siegecore.mera50")) {
+                 farmCost *= 0.5;
+                 villageCost *= 0.5;
+                 caveCost *= 0.5;
+            } else if (player.hasPermission("siegecore.mera75")) {
+                farmCost *= 0.25;
+                villageCost *= 0.25;
+                caveCost *= 0.25;
+            } else if (player.hasPermission("siegecore.mera100")) {
+                farmCost = 0;
+                villageCost = 0;
+                caveCost = 0;
             }
 
             if (hillyWoods == null) return;
-            if (level < 5) {
-                player.sendMessage(Utils.lore("<red>You are not experienced enough to use fast travel!"));
-                return;
-            }
             if (slot == 10) {
                 if (bal < farmCost) {
                     player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
@@ -127,22 +130,29 @@ public class MeraTransit implements Listener {
         int farmCost = 200;
         int villageCost = 300;
         int caveCost = 200;
-        if (player.hasPermission("siegecore.merafree")) {
-            farmCost /= 2;
-            villageCost /= 2;
-            caveCost /= 2;
+        if (player.hasPermission("siegecore.mera50")) {
+            farmCost *= 0.5;
+            villageCost *= 0.5;
+            caveCost *= 0.5;
+        } else if (player.hasPermission("siegecore.mera75")) {
+            farmCost *= 0.25;
+            villageCost *= 0.25;
+            caveCost *= 0.25;
+        } else if (player.hasPermission("siegecore.mera100")) {
+            farmCost = 0;
+            villageCost = 0;
+            caveCost = 0;
         }
 
         //Creating Wheat Farm Icon
         ItemStack farm = new ItemStack(Material.WHEAT);
         ItemMeta farmMeta = farm.getItemMeta();
-        farmMeta.displayName(Utils.lore("<yellow>Farm"));
+        farmMeta.displayName(Utils.lore("<yellow><bold>Farm"));
         int finalFarmCost = farmCost;
         farmMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<gray>Click to travel"));
+                add(Utils.lore("<green>Click to travel"));
                 add(Utils.lore("<yellow>Cost " + finalFarmCost));
-                add(Utils.lore("<dark_purple>Level 5"));
             }
         });
         farm.setItemMeta(farmMeta);
@@ -150,13 +160,12 @@ public class MeraTransit implements Listener {
         //Creating Forest Cave
         ItemStack cave = new ItemStack(Material.COAL_ORE);
         ItemMeta caveMeta = cave.getItemMeta();
-        caveMeta.displayName(Utils.lore("<gray>Cave"));
+        caveMeta.displayName(Utils.lore("<gray><bold>Cave"));
         int finalCaveCost = caveCost;
         caveMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<gray>Click to travel"));
+                add(Utils.lore("<green>Click to travel"));
                 add(Utils.lore("<yellow>Cost " + finalCaveCost));
-                add(Utils.lore("<dark_purple>Level 5"));
             }
         });
         cave.setItemMeta(caveMeta);
@@ -164,13 +173,12 @@ public class MeraTransit implements Listener {
         //Creating Forest Cave
         ItemStack village = new ItemStack(Material.EMERALD);
         ItemMeta villageMeta = village.getItemMeta();
-        villageMeta.displayName(Utils.lore("<green>Village"));
+        villageMeta.displayName(Utils.lore("<green><bold>Village"));
         int finalVillageCost = villageCost;
         villageMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<gray>Click to travel"));
+                add(Utils.lore("<green>Click to travel"));
                 add(Utils.lore("<yellow>Cost " + finalVillageCost));
-                add(Utils.lore("<dark_purple>Level 5"));
             }
         });
         village.setItemMeta(villageMeta);

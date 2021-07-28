@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.tools
+package net.siegerpg.siege.core.items.implemented.misc.tools.fishingRod
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -8,13 +8,13 @@ import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
-class BoneAxe() : CustomTool(
-    name = "Bone Axe",
-    customModelData = 430003,
-    description = listOf("Caveman tools"),
-    levelRequirement = 8,
-    material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(luck = 10.0),
+class OldRod() : CustomTool(
+    name = "Old Rod",
+    customModelData = 440001,
+    description = listOf("Everyone starts somewhere"),
+    levelRequirement = 6,
+    material = Material.FISHING_ROD,
+    baseStats = CustomItemUtils.statMap(),
     enchantments = hashMapOf(
     )
 ) {

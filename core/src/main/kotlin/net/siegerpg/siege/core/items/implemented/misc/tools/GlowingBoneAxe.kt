@@ -15,9 +15,6 @@ class GlowingBoneAxe() : CustomTool(
     levelRequirement = 12,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(luck = 10.0),
-    recipeList = recipes {
-
-    },
     enchantments = hashMapOf(
         Enchantment.DIG_SPEED to 1
     )
