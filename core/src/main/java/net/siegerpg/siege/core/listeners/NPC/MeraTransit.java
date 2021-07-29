@@ -148,7 +148,7 @@ public class MeraTransit implements Listener {
         ItemStack farm = new ItemStack(Material.WHEAT);
         ItemMeta farmMeta = farm.getItemMeta();
         farmMeta.displayName(Utils.lore("<yellow><bold>Farm"));
-        int finalFarmCost = farmCost;
+        final int finalFarmCost = farmCost;
         farmMeta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<green>Click to travel"));
@@ -161,7 +161,7 @@ public class MeraTransit implements Listener {
         ItemStack cave = new ItemStack(Material.COAL_ORE);
         ItemMeta caveMeta = cave.getItemMeta();
         caveMeta.displayName(Utils.lore("<gray><bold>Cave"));
-        int finalCaveCost = caveCost;
+        final int finalCaveCost = caveCost;
         caveMeta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<green>Click to travel"));
@@ -174,7 +174,7 @@ public class MeraTransit implements Listener {
         ItemStack village = new ItemStack(Material.EMERALD);
         ItemMeta villageMeta = village.getItemMeta();
         villageMeta.displayName(Utils.lore("<green><bold>Village"));
-        int finalVillageCost = villageCost;
+        final int finalVillageCost = villageCost;
         villageMeta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<green>Click to travel"));
