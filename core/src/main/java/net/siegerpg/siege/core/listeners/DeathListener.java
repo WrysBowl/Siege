@@ -36,7 +36,6 @@ public class DeathListener implements Listener, Runnable {
 
     public HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>(){
         {
-
             //BOSSES
             put("Ogre", new Ogre());
 
@@ -86,6 +85,59 @@ public class DeathListener implements Listener, Runnable {
         }
     };
 
+    public void resetHashMap() {
+        mobDropTableHashMap = new HashMap<>(){
+            {
+                //BOSSES
+                put("Ogre", new Ogre());
+
+                //DUNGEON BOSSES
+                put("RockSpirit", new RockSpirit());
+                put("SlimeSpirit", new SlimeSpirit());
+                put("MagmaSpirit", new MagmaSpirit());
+                put("Werewolf", new Werewolf());
+                put("FoxSpirit", new FoxSpirit());
+                put("BullSpirit", new BullSpirit());
+                put("Davy_Jones", new Davy_Jones());
+                put("Necromancer", new Necromancer());
+                put("Lich", new Lich());
+                put("BroodMother", new BroodMother());
+
+                //HOSTILES
+                put("AngryBull", new AngryBull());
+                put("Bandit", new Bandit());
+                put("BanditArcher", new BanditArcher());
+                put("Blob", new Blob());
+                put("BloodSucker", new BloodSucker());
+                put("ForestSpider", new ForestSpider());
+                put("Goblin", new Goblin());
+                put("GoldenGoblin", new GoldenGoblin());
+                put("InfectedDigger", new InfectedDigger());
+                put("Orc", new Orc());
+                put("RockRat", new RockRat());
+                put("ScorchingBlob", new ScorchingBlob());
+                put("Sea_Warrior", new Sea_Warrior());
+                put("ZombifiedDigger", new ZombifiedDigger());
+
+                //NEUTRALS
+                put("GiantHornet", new GiantHornet());
+                put("WildFox", new WildFox());
+                put("ChestMimic1", new ChestMimic1());
+                put("ChestMimic2", new ChestMimic2());
+                put("ChestMimic3", new ChestMimic3());
+                put("ChestMimic4", new ChestMimic4());
+
+                //PASSIVES
+                put("FeatheredMeat", new FeatheredMeat());
+                put("MooMoo", new MooMoo());
+                put("Pigeon", new Pigeon());
+                put("Porky", new Porky());
+                put("Sushi", new Sushi());
+                put("Wooly", new Wooly());
+            }
+        };
+    }
+
     @EventHandler
     public void damageDrops(EntityDamageByEntityEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
@@ -116,6 +168,8 @@ public class DeathListener implements Listener, Runnable {
 
         if (e.getEntity().getKiller() == null) return;
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
+
+        resetHashMap();
 
         String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
         MobDropTable mobDrop = mobDropTableHashMap.get(mm);

@@ -1,8 +1,8 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
+import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.*;
@@ -16,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MeraTransit implements Listener {
 
@@ -130,18 +131,18 @@ public class MeraTransit implements Listener {
         int farmCost = 200;
         int villageCost = 300;
         int caveCost = 200;
-        if (player.hasPermission("siege.mera50")) {
-            farmCost *= 0.5;
-            villageCost *= 0.5;
-            caveCost *= 0.5;
+        if (player.hasPermission("siege.mera100")) {
+            farmCost = 0;
+            villageCost = 0;
+            caveCost = 0;
         } else if (player.hasPermission("siege.mera75")) {
             farmCost *= 0.25;
             villageCost *= 0.25;
             caveCost *= 0.25;
-        } else if (player.hasPermission("siege.mera100")) {
-            farmCost = 0;
-            villageCost = 0;
-            caveCost = 0;
+        } else if (player.hasPermission("siege.mera50")) {
+            farmCost *= 0.5;
+            villageCost *= 0.5;
+            caveCost *= 0.5;
         }
 
         //Creating Wheat Farm Icon
@@ -149,12 +150,13 @@ public class MeraTransit implements Listener {
         ItemMeta farmMeta = farm.getItemMeta();
         farmMeta.displayName(Utils.lore("<yellow><bold>Farm"));
         final int finalFarmCost = farmCost;
-        farmMeta.lore(new ArrayList<>() {
+        List<Component> farmLore = new ArrayList<>() {
             {
                 add(Utils.lore("<green>Click to travel"));
                 add(Utils.lore("<yellow>Cost " + finalFarmCost));
             }
-        });
+        };
+        farmMeta.lore(farmLore);
         farm.setItemMeta(farmMeta);
 
         //Creating Forest Cave
@@ -162,12 +164,13 @@ public class MeraTransit implements Listener {
         ItemMeta caveMeta = cave.getItemMeta();
         caveMeta.displayName(Utils.lore("<gray><bold>Cave"));
         final int finalCaveCost = caveCost;
-        caveMeta.lore(new ArrayList<>() {
+        List<Component> caveLore = new ArrayList<>() {
             {
                 add(Utils.lore("<green>Click to travel"));
                 add(Utils.lore("<yellow>Cost " + finalCaveCost));
             }
-        });
+        };
+        caveMeta.lore(caveLore);
         cave.setItemMeta(caveMeta);
 
         //Creating Forest Cave
@@ -175,12 +178,13 @@ public class MeraTransit implements Listener {
         ItemMeta villageMeta = village.getItemMeta();
         villageMeta.displayName(Utils.lore("<green><bold>Village"));
         final int finalVillageCost = villageCost;
-        villageMeta.lore(new ArrayList<>() {
+        List<Component> villageLore = new ArrayList<>() {
             {
                 add(Utils.lore("<green>Click to travel"));
                 add(Utils.lore("<yellow>Cost " + finalVillageCost));
             }
-        });
+        };
+        villageMeta.lore(villageLore);
         village.setItemMeta(villageMeta);
 
         //This is where you decide what slot the item goes into
