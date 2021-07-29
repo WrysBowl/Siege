@@ -22,9 +22,9 @@ public class Orc extends MobDropTable {
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 6.0),
                 new Reward(new GiantClub(Utils.randRarity()).getUpdatedItem(false), 25.0),
                 new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 35.0),
-                new Reward(new FlawedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 0.5),
-                new Reward(new RawStrengthGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
-                new Reward(new RawToughGem(Utils.randRarity()).getUpdatedItem(false), 2.0),
+                new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 0.5),
+                new Reward(new RawStrengthGem(0).getUpdatedItem(false), 2.0),
+                new Reward(new RawToughGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 10.0)
         });
     }

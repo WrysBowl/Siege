@@ -122,7 +122,7 @@ public class WebstoreCommand implements CommandExecutor {
             Bukkit.dispatchCommand(console2, cmd2);
 
             Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &2Gladiator &erank!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &bHero &erank!"));
             Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
             Bukkit.broadcastMessage(Utils.tacc(""));
             return true;

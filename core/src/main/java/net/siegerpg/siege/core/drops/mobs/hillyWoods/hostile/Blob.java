@@ -13,8 +13,8 @@ public class Blob extends MobDropTable {
         super("Blob", 7, 10, 7, 10, new Reward[]{
                 new Reward(Slime.Companion.tier(1).getUpdatedItem(false), 100.0),
                 new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 10.0),
-                new Reward(new RawRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
-                new Reward(new RawLuckGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
+                new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 1.0),
+                new Reward(new RawLuckGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 0.25)
         });
     }
