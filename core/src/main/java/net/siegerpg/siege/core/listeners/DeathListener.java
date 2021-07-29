@@ -34,7 +34,7 @@ import java.util.HashMap;
 
 public class DeathListener implements Listener, Runnable {
 
-    public static HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>(){
+    public HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>(){
         {
 
             //BOSSES
