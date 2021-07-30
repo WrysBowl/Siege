@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack
 
 class DavyJonesKey() : CustomKey(
     name = "Davy Jones Key",
-    customModelData = 100007,
+    customModelData = 620007,
     description = listOf("Used to craft", "twilight access"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,

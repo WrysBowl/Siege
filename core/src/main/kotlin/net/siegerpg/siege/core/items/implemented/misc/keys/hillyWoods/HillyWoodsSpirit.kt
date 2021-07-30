@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.keys
+package net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -9,11 +9,11 @@ import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
-class HillyWoodsDungeonKey() : CustomKey(
-    name = "Hilly Woods Key",
-    customModelData = 620000,
-    description = listOf("Used to unlock any", "dungeon in Hilly Woods"),
-    levelRequirement = 7,
+class HillyWoodsSpirit() : CustomKey(
+    name = "Hilly Woods Spirit",
+    customModelData = 620011,
+    description = listOf("Allows access", "to Twilight"),
+    levelRequirement = 20,
     material = Material.TRIPWIRE_HOOK,
     baseStats = CustomItemUtils.statMap()
 ) {

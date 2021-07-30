@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack
 
 class FoxSpiritKey() : CustomKey(
     name = "Fox Spirit Key",
-    customModelData = 100005,
+    customModelData = 620004,
     description = listOf("Used to craft", "twilight access"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,

@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack
 
 class BroodmotherKey() : CustomKey(
     name = "Broodmother Key",
-    customModelData = 100010,
+    customModelData = 620010,
     description = listOf("Used to craft", "twilight access"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
