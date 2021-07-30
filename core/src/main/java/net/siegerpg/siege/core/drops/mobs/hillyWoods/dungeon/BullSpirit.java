@@ -6,6 +6,8 @@ import net.siegerpg.siege.core.items.implemented.armor.boots.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.BullSpiritKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.wands.*;
@@ -27,6 +29,8 @@ public class BullSpirit extends MobDropTable {
                 new Reward(new LeatherChestplate(Utils.randRarity()).getUpdatedItem(false), 30.0),
                 new Reward(new LeatherLeggings(Utils.randRarity()).getUpdatedItem(false), 30.0),
                 new Reward(new LeatherBoots(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new BullSpiritKey(0).getUpdatedItem(false), 10.0)
+
         });
     }
 }

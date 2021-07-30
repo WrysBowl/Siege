@@ -2,6 +2,8 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.BroodmotherKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine;
@@ -40,7 +42,9 @@ public class BroodMother extends MobDropTable {
                 new Reward(new FlawedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 50.0),
                 new Reward(new SimpleRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 30.0),
                 new Reward(new FlawedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 50.0),
-                new Reward(new SimpleLuckGem(Utils.randRarity()).getUpdatedItem(false), 30.0)
+                new Reward(new SimpleLuckGem(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new BroodmotherKey(0).getUpdatedItem(false), 10.0)
+
         });
     }
 }

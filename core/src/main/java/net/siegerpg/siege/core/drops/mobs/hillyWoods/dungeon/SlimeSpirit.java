@@ -6,6 +6,8 @@ import net.siegerpg.siege.core.items.implemented.armor.boots.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.wands.*;
@@ -25,7 +27,8 @@ public class SlimeSpirit extends MobDropTable {
                 new Reward(new SlimyHelmet(Utils.randRarity()).getUpdatedItem(false), 30.0),
                 new Reward(new SlimyChestplate(Utils.randRarity()).getUpdatedItem(false), 30.0),
                 new Reward(new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 30.0),
-                new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 30.0)
+                new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new SlimeSpiritKey(0).getUpdatedItem(false), 10.0)
         });
     }
 }

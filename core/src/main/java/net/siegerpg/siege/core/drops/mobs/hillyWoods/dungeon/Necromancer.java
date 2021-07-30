@@ -2,6 +2,8 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.NecromancerKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed;
@@ -34,7 +36,9 @@ public class Necromancer extends MobDropTable {
                 new Reward(new FlawedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 60.0),
                 new Reward(new SimpleStrengthGem(Utils.randRarity()).getUpdatedItem(false), 40.0),
                 new Reward(new FlawedHealthGem(Utils.randRarity()).getUpdatedItem(false), 60.0),
-                new Reward(new SimpleHealthGem(Utils.randRarity()).getUpdatedItem(false), 40.0)
+                new Reward(new SimpleHealthGem(Utils.randRarity()).getUpdatedItem(false), 40.0),
+                new Reward(new NecromancerKey(0).getUpdatedItem(false), 10.0)
+
         });
     }
 }
