@@ -34,6 +34,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.woolLeggings.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.*
 import net.siegerpg.siege.core.items.implemented.misc.food.*
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
@@ -3030,6 +3031,41 @@ class ShopsPlugin: JavaPlugin(), Listener {
                 Chain.tier(3) to 2,
                 Titanium.tier(4) to 1), true) {
                 TitaniumRod(0).getUpdatedItem(false)
+            }
+        ))
+        shopRegistry["hillySpirit"] = Shop("Hilly Spirit", "siege.shops.shop.hillySpirit", listOf(
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },
+            ShopItem(HillyWoodsSpirit(0), -1, hashMapOf(
+                RockSpiritKey(0) to 1,
+                SlimeSpiritKey(0) to 1,
+                MagmaSpiritKey(0) to 1,
+                FoxSpiritKey(0) to 1,
+                WerewolfKey(0) to 1,
+                BullSpiritKey(0) to 1,
+                DavyJonesKey(0) to 1,
+                NecromancerKey(0) to 1,
+                LichKey(0) to 1,
+                BroodmotherKey(0) to 1), true) {
+                HillyWoodsSpirit(0).getUpdatedItem(false)
+            },
+            ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
+            },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+                GRAYFILLER(-1).getUpdatedItem(false)
             }
         ))
         Bukkit.getLogger().info("Enabled!")
