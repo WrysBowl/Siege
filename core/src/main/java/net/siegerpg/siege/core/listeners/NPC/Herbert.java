@@ -3,6 +3,9 @@ package net.siegerpg.siege.core.listeners.NPC;
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.*;
 import com.github.stefvanschie.inventoryframework.pane.*;
+import net.siegerpg.siege.core.items.statgems.StatGem;
+import net.siegerpg.siege.core.items.types.misc.CustomKey;
+import net.siegerpg.siege.core.items.types.misc.StatGemType;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
@@ -123,8 +126,21 @@ public class Herbert implements Listener {
                     quality = ((CustomMaterial)(cItem)).getTier();
                     quantity = cItem.getItem().getAmount();
                     total += quantity * Math.pow(3, quality-1);
-                }
-                else {
+                } else if (cItem instanceof StatGemType) {
+                    if (cItem.getLevelRequirement() == null) {
+                        total += 1;
+                        continue;
+                    }
+                    levelReq = cItem.getLevelRequirement();
+                    total += 25*levelReq;
+                } else if (cItem instanceof CustomKey) {
+                    if (cItem.getLevelRequirement() == null) {
+                        total += 1;
+                        continue;
+                    }
+                    levelReq = cItem.getLevelRequirement();
+                    total += 50 * levelReq;
+                } else {
                     quality = cItem.getQuality();
                     if (cItem.getLevelRequirement() == null) {
                         total += 1;

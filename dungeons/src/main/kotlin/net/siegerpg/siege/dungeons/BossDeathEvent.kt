@@ -33,7 +33,7 @@ class BossDeathEvent : Listener {
             }
             Bukkit.getScheduler().runTaskLater(DungeonPlugin.plugin(), Runnable {
                 dungeon?.delete()
-            }, 300)
+            }, 400)
         }
     }
 }

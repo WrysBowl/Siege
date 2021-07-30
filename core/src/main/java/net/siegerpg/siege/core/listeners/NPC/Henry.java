@@ -36,7 +36,7 @@ public class Henry implements Listener {
         NBTItem nbt = new NBTItem(hand);
         String fishName = nbt.getString("Name");
         if (fishName == null) {
-            player.sendMessage(Utils.parse("<red>This is not a fish!"));
+            player.sendMessage(Utils.parse("<red>This is not a fish."));
             return;
         }
         Fish fish = FishCore.getFish(fishName);
