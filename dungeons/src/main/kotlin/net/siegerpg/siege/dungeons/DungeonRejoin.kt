@@ -14,7 +14,7 @@ import org.bukkit.persistence.PersistentDataType
 import org.bukkit.scheduler.BukkitRunnable
 import org.jetbrains.annotations.Nullable
 
-class BossDeathEvent : Listener {
+class DungeonRejoin : Listener {
     @EventHandler
     fun mobDeath(e: EntityDeathEvent) {
         val boss = e.entity
@@ -28,12 +28,12 @@ class BossDeathEvent : Listener {
                 if (p.isOnline) {
                     val player = (p as Player)
                     player.playSound(player.location, Sound.ENTITY_WITHER_DEATH,10.0f, 10.0f)
-                    Countdown().countdown(player, 15)
+                    Countdown().countdown(player, dungeon, 30)
                 }
             }
-            Bukkit.getScheduler().runTaskLater(DungeonPlugin.plugin(), Runnable {
-                dungeon?.delete()
-            }, 400)
         }
     }
+    //Player join event (if player quits the server check if their name is in the dungeon configs and teleport them to their dungeon)
+    //Player teleport event (if player teleports outside the dungeon then delete it)
+    //
 }

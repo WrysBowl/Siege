@@ -2,17 +2,20 @@ package net.siegerpg.siege.dungeons
 
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.Utils
+import org.bukkit.World
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 
 class Countdown {
-    fun countdown(player: Player, countDown: Int) { //A method
+    fun countdown(player: Player, dungeon: Dungeon, countDown: Int) {
+        val world: World = player.world
         object : BukkitRunnable() {
             //BukkitRunnable, not Runnable
             var countdown = countDown //Instance variable in our anonymous class to easily hold the countdown value
             override fun run() {
-                if (countdown <= 0 || !player.isOnline) { //countdown is over or player left the server, just two example reasons to exit
+                if (countdown <= 0 || !player.isOnline || player.world != world) { //countdown is over or player left the server, just two example reasons to exit
                     this.cancel() //cancel the repeating task
+                    dungeon.delete() //deletes dungeon after countdown
                     return  //exit the method
                 }
                 player.sendTitle(Utils.tacc("&6Teleporting to Hub..."), Utils.tacc("&e$countdown seconds"), 0, 30, 0)

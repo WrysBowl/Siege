@@ -86,6 +86,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                 return true
             }
             */
+            player.playSound(player.location, Sound.ENTITY_WITHER_SPAWN,10.0f, 10.0f)
             return true
         } else {
             val actualLocation = Location(
@@ -95,7 +96,6 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                 location.getDouble("z")
             )
             player.teleport(actualLocation)
-            player.playSound(player.location, Sound.ENTITY_WITHER_SPAWN,10.0f, 10.0f)
             return true
         }
     }
