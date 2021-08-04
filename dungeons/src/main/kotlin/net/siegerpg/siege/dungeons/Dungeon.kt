@@ -82,7 +82,10 @@ class Dungeon {
         }
         if (player.isOnline) (player as Player).teleport(location.clone().add(type.relSpawnLoc))
         DungeonPlugin.plugin().dungeonConfig.save()
+    }
 
+    fun getDungeonLocation() : Location{
+        return location.clone().add(type.relSpawnLoc)
     }
 
     /**
