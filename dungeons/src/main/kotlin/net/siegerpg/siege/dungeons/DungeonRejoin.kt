@@ -11,6 +11,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.persistence.PersistentDataType
 import org.bukkit.scheduler.BukkitRunnable
@@ -66,6 +67,52 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
             }
         }
     }
+
+    @EventHandler
+    fun playerJoin(e: PlayerJoinEvent) {
+        val player: Player = e.player
+        val coordinateSection = configuration.getConfigurationSection("coords") ?: configuration.createSection("coords")
+        val linkingSection =
+            configuration.getConfigurationSection("relations") ?: configuration.createSection("relations")
+        val corresponding = coordinateSection.getLong(
+            serializeLocation(player.location.block.location), -1
+        )
+        if (corresponding == -1L) {
+            return
+        }
+        val location = linkingSection.getConfigurationSection(
+            corresponding.toString()
+        ) ?: return
+        if (location.isSet("dungeon")) {
+            val dungeonTypeName = location.getString("dungeon")
+            val dungeonType = DungeonType.dungeonTypes.find { d -> dungeonTypeName == d.name } ?: return
+            for (dungeon in dungeonType.dungeons) {
+                if (dungeon.listPlayers().contains(player)) {
+
+                    object : BukkitRunnable() {
+                        //BukkitRunnable, not Runnable
+                        var countdown = 5 //Instance variable in our anonymous class to easily hold the countdown value
+                        override fun run() {
+                            if (countdown <= 0 || !player.isOnline) { //countdown is over or player left the server, just two example reasons to exit
+                                player.teleport(dungeon.getDungeonLocation())
+                                this.cancel() //cancel the repeating task
+                                return  //exit the method
+                            }
+                            player.sendTitle(Utils.tacc("&6Teleporting to Dungeon..."), Utils.tacc("&e$countdown seconds"), 0, 30, 0)
+                            countdown-- //decrement
+                        }
+                    }.runTaskTimer(
+                        Core.plugin(),
+                        0,
+                        20
+                    )
+                    return
+
+                }
+            }
+        }
+    }
+
     private fun serializeLocation(loc: Location): String {
         return "${loc.x};${loc.y};${loc.z};${loc.world.name}"
     }
