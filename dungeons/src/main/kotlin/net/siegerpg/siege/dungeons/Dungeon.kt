@@ -80,11 +80,11 @@ class Dungeon {
             if (dungeon.contains("players")) dungeon.getStringList("players").add(player.uniqueId.toString())
             else dungeon.set("players", listOf(player.uniqueId.toString()))
         }
-        if (player.isOnline) (player as Player).teleport(location.clone().add(type.relSpawnLoc))
+        if (player.isOnline) (player as Player).teleport(getSpawn())
         DungeonPlugin.plugin().dungeonConfig.save()
     }
 
-    fun getDungeonLocation() : Location{
+    fun getSpawn() : Location{
         return location.clone().add(type.relSpawnLoc)
     }
 
