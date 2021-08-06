@@ -13,6 +13,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerRespawnEvent
+import org.bukkit.event.player.PlayerTeleportEvent
 import org.bukkit.persistence.PersistentDataType
 import org.bukkit.scheduler.BukkitRunnable
 import org.jetbrains.annotations.Nullable
@@ -62,6 +63,34 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
                     e.respawnLocation = dungeon.getDungeonLocation()
+                    return
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    fun playerTeleport(e: PlayerTeleportEvent) {
+        val player: Player = e.player
+        if (player.world.name != "dungeons") return
+        val coordinateSection = configuration.getConfigurationSection("coords") ?: configuration.createSection("coords")
+        val linkingSection =
+            configuration.getConfigurationSection("relations") ?: configuration.createSection("relations")
+        val corresponding = coordinateSection.getLong(
+            serializeLocation(player.location.block.location), -1
+        )
+        if (corresponding == -1L) {
+            return
+        }
+        val location = linkingSection.getConfigurationSection(
+            corresponding.toString()
+        ) ?: return
+        if (location.isSet("dungeon")) {
+            val dungeonTypeName = location.getString("dungeon")
+            val dungeonType = DungeonType.dungeonTypes.find { d -> dungeonTypeName == d.name } ?: return
+            for (dungeon in dungeonType.dungeons) {
+                if (dungeon.listPlayers().contains(player)) {
+                    dungeon.delete()
                     return
                 }
             }

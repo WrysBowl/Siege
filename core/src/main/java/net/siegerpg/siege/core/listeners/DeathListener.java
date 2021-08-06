@@ -243,12 +243,12 @@ public class DeathListener implements Listener, Runnable {
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e) {
         Player player = e.getPlayer();
-        if (player.getWorld() == Core.plugin().getServer().getWorld("Dungeons")) { //Checks if player died in the dungeon world
+        /*if (player.getWorld() == Core.plugin().getServer().getWorld("Dungeons")) { //Checks if player died in the dungeon world
             World HUB = Core.plugin().getServer().getWorld("Hub");
             assert HUB != null;
             e.setRespawnLocation(HUB.getSpawnLocation());
             return;
-        }
+        }*/
         if (player.getWorld().equals(Core.plugin().getServer().getWorld("PVP"))) {
             World HUB = Core.plugin().getServer().getWorld("Hub");
             e.setRespawnLocation(new Location(HUB, -52, 91, -8, 168, 0));
