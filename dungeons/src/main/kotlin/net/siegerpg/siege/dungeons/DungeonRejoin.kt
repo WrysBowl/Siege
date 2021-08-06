@@ -1,10 +1,9 @@
 package net.siegerpg.siege.dungeons
 
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.ConfigurationBase
 import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.dungeons.timers.Countdown
 import org.bukkit.Bukkit
-import org.bukkit.Location
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -13,7 +12,6 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.persistence.PersistentDataType
-import org.bukkit.scheduler.BukkitRunnable
 import java.io.File
 
 class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(plugin.dataFolder, "portal.yml"))) {
@@ -30,14 +28,20 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
                 if (p.isOnline) {
                     val player = (p as Player)
                     player.playSound(player.location, Sound.ENTITY_WITHER_DEATH,10.0f, 10.0f)
-                    Countdown().countdown(player, dungeon, 30)
+                    Countdown().dungeonLeave(player, dungeon, 30)
                 }
             }
         }
     }
     //Player join event (if player quits the server check if their name is in the dungeon configs and teleport them to their dungeon)
     //Player teleport event (if player teleports outside the dungeon then delete it)
-    //
+    //**TO DO**
+    //(For Wrys)
+    //> 1. Upgrade server to 1.17 with all it's plugins
+    //> 2. Implement fishing baits into the fishing shop
+    //> 3. Work on checking if the player has disconnected while inside the dungeon, they get respawned at the dungeon spawn point when they rejoin (UNTESTED)
+    //> 4. Work on spreadsheet items
+    //> 5. Allow players to respawn in their dungeon (UNTESTED)
     @EventHandler
     fun playerRespawn(e: PlayerRespawnEvent) {
         val player: Player = e.player
@@ -57,24 +61,8 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
         val player: Player = e.player
         for (dungeonType in DungeonType.dungeonTypes) {
             for (dungeon in dungeonType.dungeons) {
-                if (dungeon.listPlayers().contains(player)) {
-                    object : BukkitRunnable() {
-                        //BukkitRunnable, not Runnable
-                        var countdown = 5 //Instance variable in our anonymous class to easily hold the countdown value
-                        override fun run() {
-                            if (countdown <= 0 || !player.isOnline) { //countdown is over or player left the server, just two example reasons to exit
-                                player.teleport(dungeon.getSpawn())
-                                this.cancel() //cancel the repeating task
-                                return  //exit the method
-                            }
-                            player.sendTitle(Utils.tacc("&6Teleporting to Dungeon..."), Utils.tacc("&e$countdown seconds"), 0, 30, 0)
-                            countdown-- //decrement
-                        }
-                    }.runTaskTimer(
-                        Core.plugin(),
-                        0,
-                        20
-                    )
+                if (dungeon.listPlayers().contains(player)) { //This condition is not passing
+                    Countdown().dungeonJoin(player, dungeon, 5)
                     return
                 }
             }
