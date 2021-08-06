@@ -57,7 +57,7 @@ public class SpecialArmorAbilities implements Listener {
 
     @EventHandler
     public void onHit(EntityDamageByEntityEvent e) {
-        if (!(e.getDamager() instanceof Player)) return;
+        if (!(e.getDamager() instanceof Player) && !e.getDamager().getWorld().getName().equals("PVP")) return;
         Player player = ((Player) e.getDamager()).getPlayer();
         if (player == null) return;
         if (isBeePants(player.getInventory().getLeggings())) {
