@@ -5,7 +5,6 @@ import net.siegerpg.siege.core.fishing.baits.BaitCore;
 import net.siegerpg.siege.core.fishing.baits.BaitStats;
 import net.siegerpg.siege.core.fishing.fish.implemented.*;
 import net.siegerpg.siege.core.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -96,7 +95,12 @@ public class FishCore {
 	public static ItemStack getItem(Fish fish) {
 		ItemStack item = new ItemStack(Material.COD);
 		ItemMeta meta = item.getItemMeta();
-		meta.displayName(Utils.lore("<yellow>"+fish.name+" <gray>"+ fish.actualSize));
+		meta.displayName(Utils.lore("<yellow>"+fish.name));
+		meta.lore(new ArrayList<>(){
+			{
+				add(Utils.lore("<yellow>Size <gray>"+ fish.actualSize+" cm"));
+			}
+		});
 		item.setItemMeta(meta);
 		NBTItem nbtItem = new NBTItem(item);
 		nbtItem.setInteger("CustomModelData", fish.customModelData);

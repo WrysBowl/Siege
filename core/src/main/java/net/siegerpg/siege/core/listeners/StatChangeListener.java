@@ -20,6 +20,7 @@ public class StatChangeListener implements Listener, Runnable {
                 if (playerHealth.get(p) == null) continue;
                 if (PlayerData.hasActionBar.get(p)) continue;
                 double health = Utils.round(playerHealth.get(p), 1);
+                if (health < 0.0) p.damage(9999999.0);
                 double mana = Utils.round(playerMana.get(p), 1);
                 double customHealth = Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 1);
                 PlayerData.hasActionBar.put(p, true);

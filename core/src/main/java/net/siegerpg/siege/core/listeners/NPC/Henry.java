@@ -5,6 +5,7 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import de.tr7zw.nbtapi.NBTContainer;
 import de.tr7zw.nbtapi.NBTItem;
+import kotlin.Suppress;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.fish.Fish;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
@@ -29,7 +30,6 @@ public class Henry implements Listener {
             buyFish(person);
         }
     }
-
     private void buyFish(Player player) {
         ItemStack hand = player.getInventory().getItemInMainHand().asOne();
         if (hand.getType().equals(Material.AIR)) return;

@@ -12,7 +12,8 @@ class RegenerationTask : Runnable {
         Bukkit.getServer().scheduler.scheduleSyncRepeatingTask(Core.plugin(), {
 
             for (player in Bukkit.getOnlinePlayers()) {
-                val regenStat = CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION) + 1.0
+                var regenStat = CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION) + 1.0
+                if (regenStat < 0.0) regenStat = 0.0
                 val healthStat = CustomItemUtils.getPlayerStat(player, StatTypes.HEALTH) + player.maxHealth + (player.level*2)
                 val currentCustomHealth = CustomItemUtils.getCustomHealth(player)
                 val addedHealth = ((regenStat + currentCustomHealth)/healthStat) * player.maxHealth

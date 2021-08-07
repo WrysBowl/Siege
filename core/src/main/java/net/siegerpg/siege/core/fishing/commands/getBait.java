@@ -15,7 +15,7 @@ public class getBait implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
         if(sender instanceof Player) {
             Player player = (Player) sender;
-            if(player.hasPermission("SiegeCore.getBait")){
+            if(player.hasPermission("Siege.getBait")){
                 if(args.length==1) {
                     try{
                         BaitCore bait = BaitCore.getBait(args[0]);

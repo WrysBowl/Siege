@@ -51,7 +51,9 @@ interface CustomEquipment : CustomItem {
             meta.lore(" ")
             val realStats = CustomItemUtils.getStats(this, addGem = false, addRarity = true)
             baseStats.keys.forEach {
-                meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}") // TODO: Make special items work with rarity multiplier
+                if (realStats[it]!! < 0.0) {
+                    meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
+                } else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}") // TODO: Make special items work with rarity multiplier
             }
         }
         meta.lore(" ")

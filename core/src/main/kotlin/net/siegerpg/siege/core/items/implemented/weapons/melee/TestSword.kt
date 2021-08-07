@@ -15,18 +15,7 @@ class TestSword() : CustomMeleeWeapon(
     description = listOf("A sword for testing"),
     levelRequirement = 0,
     material = Material.DIAMOND_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 1000.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Pebble.tier(1))
-            item { player, b ->
-                val newItem = TestSword(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
+    baseStats = CustomItemUtils.statMap(strength = 1000.0, health = -50.0),
     attackSpeed = 1.7
 ) {
 

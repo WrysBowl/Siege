@@ -1,6 +1,7 @@
 package net.siegerpg.siege.shops
 
 import co.aikar.commands.PaperCommandManager
+import net.siegerpg.siege.core.fishing.baits.BaitCore
 import net.siegerpg.siege.core.items.implemented.armor.boots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.boneBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.boots.chainBoots.*
