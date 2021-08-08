@@ -14,9 +14,6 @@ class HotRod() : CustomWand(
     levelRequirement = 33,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 32.0, luck = 6.0),
-    recipeList = recipes {
-
-    },
     range = 19,
     red = 204,
     green = 51,

@@ -14,9 +14,6 @@ class LivingTwig() : CustomWand(
     levelRequirement = 4,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 4.0, luck = 4.0),
-    recipeList = recipes {
-
-    },
     range = 12,
     red = 204,
     green = 255,

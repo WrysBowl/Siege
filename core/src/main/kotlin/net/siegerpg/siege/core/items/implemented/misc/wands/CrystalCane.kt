@@ -11,18 +11,18 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class EarthernWand() : CustomWand(
-    name = "Earthern Wand",
-    customModelData = 140008,
-    description = listOf("Life forces from earthern materials", "glow around this object"),
-    levelRequirement = 28,
+class CrystalCane() : CustomWand(
+    name = "Crystal Cane",
+    customModelData = 140012,
+    description = listOf("Old person reference"),
+    levelRequirement = 47,
     material = Material.WOODEN_HOE,
-    baseStats = CustomItemUtils.statMap(strength = 28.0, luck = 10.0),
-    range = 17,
-    red = 0,
-    green = 204,
-    blue = 0,
-    damageRadius = 3.0
+    baseStats = CustomItemUtils.statMap(strength = 40.0, toughness = -100.0, health = -80.0, regeneration = -20.0),
+    range = 16,
+    red = 127,
+    green = 194,
+    blue = 199,
+    damageRadius = 6.0
 ) {
 
     constructor(quality: Int): this() {

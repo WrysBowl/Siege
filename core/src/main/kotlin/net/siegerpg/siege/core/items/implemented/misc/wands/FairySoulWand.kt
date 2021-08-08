@@ -11,17 +11,17 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class EarthernWand() : CustomWand(
-    name = "Earthern Wand",
-    customModelData = 140008,
-    description = listOf("Life forces from earthern materials", "glow around this object"),
-    levelRequirement = 28,
+class FairySoulWand() : CustomWand(
+    name = "Fairy Soul Wand",
+    customModelData = 140013,
+    description = listOf("Use the power","of fairy souls"),
+    levelRequirement = 52,
     material = Material.WOODEN_HOE,
-    baseStats = CustomItemUtils.statMap(strength = 28.0, luck = 10.0),
-    range = 17,
-    red = 0,
-    green = 204,
-    blue = 0,
+    baseStats = CustomItemUtils.statMap(strength = 50.0, toughness = -300.0, luck = 60.0),
+    range = 22,
+    red = 190,
+    green = 242,
+    blue = 85,
     damageRadius = 3.0
 ) {
 

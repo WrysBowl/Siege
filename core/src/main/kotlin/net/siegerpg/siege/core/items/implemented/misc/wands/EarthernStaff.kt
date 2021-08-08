@@ -18,21 +18,6 @@ class EarthernStaff() : CustomWand(
     levelRequirement = 37,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 35.0, luck = 12.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s2(PlantMatter.tier(4))
-            s4(Coal.tier(4))
-            s5(Seed.tier(4))
-            s6(Coal.tier(4))
-            s8(Seed.tier(4))
-            item { player, b ->
-                val newItem = EarthernStaff(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     range = 17,
     red = 0,
     green = 204,

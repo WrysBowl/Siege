@@ -16,41 +16,6 @@ class GlowingTwig() : CustomWand(
     levelRequirement = 8,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 10.0, luck = 8.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(PlantMatter.tier(3))
-            s4(PlantMatter.tier(3))
-            s7(PlantMatter.tier(3))
-            item { player, b ->
-                val newItem = GlowingTwig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s2(PlantMatter.tier(3))
-            s5(PlantMatter.tier(3))
-            s8(PlantMatter.tier(3))
-            item { player, b ->
-                val newItem = GlowingTwig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s3(PlantMatter.tier(3))
-            s6(PlantMatter.tier(3))
-            s9(PlantMatter.tier(3))
-            item { player, b ->
-                val newItem = GlowingTwig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     range = 12,
     red = 255,
     green = 255,

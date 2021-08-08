@@ -14,8 +14,6 @@ class SlimeSpoofer() : CustomWand(
     levelRequirement = 11,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 12.0, luck = 8.0),
-    recipeList = recipes {
-    },
     range = 10,
     red = 153,
     green = 255,

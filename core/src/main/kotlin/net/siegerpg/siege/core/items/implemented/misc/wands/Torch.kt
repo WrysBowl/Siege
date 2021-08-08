@@ -17,41 +17,6 @@ class Torch() : CustomWand(
     levelRequirement = 19,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 22.0, luck = 10.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Magma.tier(3))
-            s4(Stick.tier(3))
-            s7(Stick.tier(3))
-            item { player, b ->
-                val newItem = Torch(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s2(Magma.tier(3))
-            s5(Stick.tier(3))
-            s8(Stick.tier(3))
-            item { player, b ->
-                val newItem = Torch(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s3(Magma.tier(3))
-            s6(Stick.tier(3))
-            s9(Stick.tier(3))
-            item { player, b ->
-                val newItem = Torch(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     range = 19,
     red = 255,
     green = 153,

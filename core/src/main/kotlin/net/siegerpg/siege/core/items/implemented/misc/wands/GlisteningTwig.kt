@@ -19,41 +19,6 @@ class GlisteningTwig() : CustomWand(
     levelRequirement = 6,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 8.0, luck = 6.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Seed.tier(3))
-            s4(PlantMatter.tier(2))
-            s7(Stick.tier(2))
-            item { player, b ->
-                val newItem = GlisteningTwig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s2(Seed.tier(3))
-            s5(PlantMatter.tier(2))
-            s8(Stick.tier(2))
-            item { player, b ->
-                val newItem = GlisteningTwig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s3(Pebble.tier(3))
-            s6(PlantMatter.tier(2))
-            s9(Stick.tier(2))
-            item { player, b ->
-                val newItem = GlisteningTwig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     range = 12,
     red = 255,
     green = 255,

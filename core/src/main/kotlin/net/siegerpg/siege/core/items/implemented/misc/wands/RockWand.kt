@@ -17,41 +17,6 @@ class RockWand() : CustomWand(
     levelRequirement = 15,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 6.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Pebble.tier(3))
-            s4(Stick.tier(3))
-            s7(Stick.tier(3))
-            item { player, b ->
-                val newItem = RockWand(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s2(Pebble.tier(3))
-            s5(Stick.tier(3))
-            s8(Stick.tier(3))
-            item { player, b ->
-                val newItem = RockWand(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s3(Pebble.tier(3))
-            s6(Stick.tier(3))
-            s9(Stick.tier(3))
-            item { player, b ->
-                val newItem = RockWand(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     range = 19,
     red = 140,
     green = 140,
