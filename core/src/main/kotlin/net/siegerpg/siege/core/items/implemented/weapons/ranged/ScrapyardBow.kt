@@ -16,23 +16,7 @@ class ScrapyardBow() : CustomBow(
     description = listOf("Instructions unclear . . .", "made an arrow flinger"),
     levelRequirement = 2,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 10.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s2(Stick.tier(2))
-            s3(Vine.tier(2))
-            s4(Stick.tier(2))
-            s6(Vine.tier(2))
-            s8(Stick.tier(2))
-            s9(Vine.tier(2))
-            item { player, b ->
-                val newItem = ScrapyardBow(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
+    baseStats = CustomItemUtils.statMap(strength = 10.0)
 ) {
 
     constructor(quality: Int): this() {

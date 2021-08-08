@@ -16,23 +16,7 @@ class BeginnerScrapyardBow() : CustomBow(
     description = listOf("Try out this ranged weapon!"),
     levelRequirement = 0,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s2(Stick.tier(2))
-            s3(Vine.tier(2))
-            s4(Stick.tier(2))
-            s6(Vine.tier(2))
-            s8(Stick.tier(2))
-            s9(Vine.tier(2))
-            item { player, b ->
-                val newItem = ScrapyardBow(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
+    baseStats = CustomItemUtils.statMap(strength = 5.0)
 ) {
 
     constructor(quality: Int): this() {

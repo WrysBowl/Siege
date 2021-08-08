@@ -13,9 +13,7 @@ class RecurveBow() : CustomBow(
     description = listOf("Slight curves at the ends", "give the bow a bit more power"),
     levelRequirement = 30,
     material = Material.BOW, //This needs to be changed to a crossbow
-    baseStats = CustomItemUtils.statMap(strength = 34.0, luck = 13.0),
-    recipeList = recipes {
-    },
+    baseStats = CustomItemUtils.statMap(strength = 34.0, luck = 13.0)
 ) {
 
     constructor(quality: Int): this() {

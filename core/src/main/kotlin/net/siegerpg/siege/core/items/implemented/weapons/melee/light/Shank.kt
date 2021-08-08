@@ -14,9 +14,6 @@ class Shank() : CustomMeleeWeapon(
     levelRequirement = 18,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 18.0),
-    recipeList = recipes {
-
-    },
     attackSpeed = 1.7
 ) {
 

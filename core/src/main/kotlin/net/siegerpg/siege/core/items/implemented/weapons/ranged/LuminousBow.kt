@@ -2,18 +2,17 @@ package net.siegerpg.siege.core.items.implemented.weapons.ranged
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class TestBow() : CustomBow(
-    name = "Test Bow",
-    customModelData = 1,
-    description = listOf("A bow for testing"),
-    levelRequirement = 0,
+class LuminousBow() : CustomBow(
+    name = "Luminous Bow",
+    customModelData = 120012,
+    description = listOf("A glowy bow"),
+    levelRequirement = 48,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 20.0)
+    baseStats = CustomItemUtils.statMap(strength = 75.0, regeneration = 10.0, health = 40.0, luck = -30.0, toughness = -100.0)
 ) {
 
     constructor(quality: Int): this() {

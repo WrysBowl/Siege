@@ -16,18 +16,6 @@ class WoodenSword() : CustomMeleeWeapon(
     levelRequirement = 25,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 28.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(1))
-            s4(Stick.tier(1))
-            item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.6
 ) {
 

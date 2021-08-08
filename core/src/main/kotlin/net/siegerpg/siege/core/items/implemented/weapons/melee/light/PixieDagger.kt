@@ -2,21 +2,18 @@ package net.siegerpg.siege.core.items.implemented.weapons.melee.light
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
-import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class SplinteredBone() : CustomMeleeWeapon(
-    name = "Splintered Bone",
-    customModelData = 110009,
-    description = listOf("The shard of a", "human femur bone"),
-    levelRequirement = 34,
+class PixieDagger() : CustomMeleeWeapon(
+    name = "Pixie Dagger",
+    customModelData = 110013,
+    description = listOf("It's an extremely","sharp needle"),
+    levelRequirement = 54,
     material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 38.0),
-    attackSpeed = 1.5
+    baseStats = CustomItemUtils.statMap(strength = 60.0, luck = 45.0, toughness = -150.0),
+    attackSpeed = 1.7
 ) {
 
     constructor(quality: Int): this() {

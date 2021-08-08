@@ -16,68 +16,6 @@ class Twig() : CustomMeleeWeapon(
     levelRequirement = 1,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(1))
-            s4(Stick.tier(1))
-            item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s2(Stick.tier(1))
-            s5(Stick.tier(1))
-            item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s3(Stick.tier(1))
-            s6(Stick.tier(1))
-            item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s4(Stick.tier(1))
-            s7(Stick.tier(1))
-            item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s5(Stick.tier(1))
-            s8(Stick.tier(1))
-            item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s6(Stick.tier(1))
-            s9(Stick.tier(1))
-            item { player, b ->
-                val newItem = Twig(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.6
 ) {
 

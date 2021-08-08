@@ -17,23 +17,7 @@ class PebbleShooter() : CustomBow(
     description = listOf("Now comes with pebble", "shooting support!"),
     levelRequirement = 10,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 23.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s2(Pebble.tier(3))
-            s4(Stick.tier(3))
-            s6(Stick.tier(3))
-            s7(Vine.tier(3))
-            s8(Vine.tier(3))
-            s9(Vine.tier(3))
-            item { player, b ->
-                val newItem = PebbleShooter(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
+    baseStats = CustomItemUtils.statMap(strength = 23.0)
 ) {
 
     constructor(quality: Int): this() {

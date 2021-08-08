@@ -16,68 +16,6 @@ class ScrapShard() : CustomMeleeWeapon(
     levelRequirement = 29,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 34.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(MetalScrap.tier(3))
-            s4(MetalScrap.tier(3))
-            item { player, b ->
-                val newItem = ScrapShard(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s2(MetalScrap.tier(3))
-            s5(MetalScrap.tier(3))
-            item { player, b ->
-                val newItem = ScrapShard(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s3(MetalScrap.tier(3))
-            s6(MetalScrap.tier(3))
-            item { player, b ->
-                val newItem = ScrapShard(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s4(MetalScrap.tier(3))
-            s7(MetalScrap.tier(3))
-            item { player, b ->
-                val newItem = ScrapShard(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s5(MetalScrap.tier(3))
-            s8(MetalScrap.tier(3))
-            item { player, b ->
-                val newItem = ScrapShard(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s6(MetalScrap.tier(3))
-            s9(MetalScrap.tier(3))
-            item { player, b ->
-                val newItem = ScrapShard(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 
