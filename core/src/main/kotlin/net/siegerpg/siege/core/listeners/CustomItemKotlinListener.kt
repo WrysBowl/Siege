@@ -109,13 +109,14 @@ class CustomItemKotlinListener : Listener, Runnable {
         if (arrowItems[player] == null) return
         player.inventory.setItem(9, arrowItems[player])
     }
+    /*
     @EventHandler
     fun onInvOpen(e: InventoryOpenEvent) {
         val player: Player = e.player as Player
         if (arrowItems[player] == null) return
         if (arrowItems[player]?.type == Material.ARROW) player.inventory.setItem(9, null)
         player.inventory.setItem(9, arrowItems[player])
-    }
+    }*/
     @EventHandler
     fun onBowUse(e: ProjectileHitEvent) {
         if (e.entity is Arrow) {
