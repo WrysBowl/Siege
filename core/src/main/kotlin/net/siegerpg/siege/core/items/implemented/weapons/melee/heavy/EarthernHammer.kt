@@ -17,34 +17,6 @@ class EarthernHammer() : CustomMeleeWeapon(
     levelRequirement = 39,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 70.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(PlantMatter.tier(4))
-            s2(Stick.tier(3))
-            s4(PlantMatter.tier(4))
-            s5(Stick.tier(3))
-            s8(Stick.tier(3))
-            item { player, b ->
-                val newItem = EarthernHammer(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s2(PlantMatter.tier(4))
-            s3(Stick.tier(3))
-            s5(PlantMatter.tier(4))
-            s6(Stick.tier(3))
-            s9(Stick.tier(3))
-            item { player, b ->
-                val newItem = EarthernHammer(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.7
 ) {
 

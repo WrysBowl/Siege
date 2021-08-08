@@ -16,68 +16,6 @@ class Club() : CustomMeleeWeapon(
     levelRequirement = 3,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 14.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(2))
-            s4(Stick.tier(2))
-            item { player, b ->
-                val newItem = Club(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s2(Stick.tier(2))
-            s5(Stick.tier(2))
-            item { player, b ->
-                val newItem = Club(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s3(Stick.tier(2))
-            s6(Stick.tier(2))
-            item { player, b ->
-                val newItem = Club(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s4(Stick.tier(2))
-            s7(Stick.tier(2))
-            item { player, b ->
-                val newItem = Club(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s5(Stick.tier(2))
-            s8(Stick.tier(2))
-            item { player, b ->
-                val newItem = Club(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-        recipe {
-            shaped = true
-            s6(Stick.tier(2))
-            s9(Stick.tier(2))
-            item { player, b ->
-                val newItem = Club(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.9
 ) {
 

@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.items.implemented.weapons.melee.heavy
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
 import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
@@ -10,13 +10,13 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class GreatSword() : CustomMeleeWeapon(
-    name = "Great Sword",
-    customModelData = 130006,
-    description = listOf("A typical medieval weapon"),
-    levelRequirement = 23,
+class SpiritSpearChastiefol() : CustomMeleeWeapon(
+    name = "Spirit Spear Chastiefol",
+    customModelData = 130013,
+    description = listOf("Do ya get","the reference?"),
+    levelRequirement = 54,
     material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 36.0),
+    baseStats = CustomItemUtils.statMap(strength = 90.0, health = 20.0, toughness = -80.0, luck = -15.0),
     attackSpeed = 0.9
 ) {
 

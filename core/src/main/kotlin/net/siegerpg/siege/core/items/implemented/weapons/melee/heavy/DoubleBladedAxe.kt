@@ -14,8 +14,6 @@ class DoubleBladedAxe() : CustomMeleeWeapon(
     levelRequirement = 19,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 40.0),
-    recipeList = recipes {
-    },
     attackSpeed = 0.7
 ) {
 

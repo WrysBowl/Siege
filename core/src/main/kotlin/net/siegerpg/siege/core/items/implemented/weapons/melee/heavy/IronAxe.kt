@@ -14,8 +14,6 @@ class IronAxe() : CustomMeleeWeapon(
     levelRequirement = 31,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 40.0),
-    recipeList = recipes {
-    },
     attackSpeed = 1.0
 ) {
 

@@ -14,8 +14,6 @@ class GiantClub() : CustomMeleeWeapon(
     levelRequirement = 7,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 18.0),
-    recipeList = recipes {
-    },
     attackSpeed = 0.7
 ) {
 
