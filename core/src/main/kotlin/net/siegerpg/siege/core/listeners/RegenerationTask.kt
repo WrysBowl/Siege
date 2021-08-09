@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import org.bukkit.Bukkit
+import kotlin.math.abs
 
 class RegenerationTask : Runnable {
 
@@ -13,7 +14,7 @@ class RegenerationTask : Runnable {
 
             for (player in Bukkit.getOnlinePlayers()) {
                 var regenStat = CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION) + 1.0
-                val healthStat = CustomItemUtils.getPlayerStat(player, StatTypes.HEALTH) + player.maxHealth + (player.level*2)
+                val healthStat = abs(CustomItemUtils.getPlayerStat(player, StatTypes.HEALTH) + player.maxHealth + (player.level*2))
                 val currentCustomHealth = CustomItemUtils.getCustomHealth(player)
                 val addedHealth = ((regenStat + currentCustomHealth)/healthStat) * player.maxHealth
                 if (addedHealth <= player.maxHealth)
