@@ -17,7 +17,7 @@ class RegenerationTask : Runnable {
                 val healthStat = abs(CustomItemUtils.getPlayerStat(player, StatTypes.HEALTH) + player.maxHealth + (player.level*2))
                 val currentCustomHealth = abs(CustomItemUtils.getCustomHealth(player))
                 val addedHealth = ((regenStat + currentCustomHealth)/healthStat) * player.maxHealth
-                
+
                 if (addedHealth <= player.maxHealth)
                     player.health = addedHealth
                 else player.health = player.maxHealth
