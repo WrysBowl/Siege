@@ -3,21 +3,14 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.LichKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.RockWand;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class Lich extends MobDropTable {

@@ -2,13 +2,9 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.WerewolfKey;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.wands.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class Werewolf extends MobDropTable {

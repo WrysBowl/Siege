@@ -3,17 +3,12 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.RockWand;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class FoxSpirit extends MobDropTable {

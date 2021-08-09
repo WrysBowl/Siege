@@ -19,7 +19,8 @@ class RegenerationTask : Runnable {
                 val addedHealth = ((regenStat + currentCustomHealth)/healthStat) * player.maxHealth
 
                 if (addedHealth <= player.maxHealth)
-                    player.health = addedHealth
+                    if (addedHealth < 0.0) player.damage(abs(player.health+addedHealth))
+                    else player.health = addedHealth
                 else player.health = player.maxHealth
             }
         }, 100, 100)

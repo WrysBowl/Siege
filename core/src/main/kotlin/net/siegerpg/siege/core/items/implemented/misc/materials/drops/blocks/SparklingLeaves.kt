@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs
+package net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.recipes.recipes
@@ -6,10 +6,10 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Bone() : CustomMaterial(
-    name = "Bone",
-    customModelData = 310004,
-    description = listOf("Remains of a once living animal"),
+class SparklingLeaves() : CustomMaterial(
+    name = "Sparkling Leaves",
+    customModelData = 320017,
+    description = listOf("A glowing leaf","with magical properties"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
@@ -28,8 +28,8 @@ class Bone() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Bone {
-            val newItem = Bone(0)
+        fun tier(tier: Int): Chain {
+            val newItem = Chain(0)
             newItem.tier = tier
             return newItem
         }

@@ -6,7 +6,6 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.*;
-import net.siegerpg.siege.core.utils.Utils;
 
 public class Blob extends MobDropTable {
     public Blob() {

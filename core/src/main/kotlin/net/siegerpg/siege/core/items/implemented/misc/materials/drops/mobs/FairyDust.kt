@@ -6,10 +6,10 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Bone() : CustomMaterial(
-    name = "Bone",
-    customModelData = 310004,
-    description = listOf("Remains of a once living animal"),
+class FairyDust() : CustomMaterial(
+    name = "Fairy Dust",
+    customModelData = 310009,
+    description = listOf("A bright powder that","has magical properties"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {

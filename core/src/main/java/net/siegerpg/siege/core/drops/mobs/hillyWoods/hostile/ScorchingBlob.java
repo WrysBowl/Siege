@@ -4,11 +4,8 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawStrengthGem;
-import net.siegerpg.siege.core.utils.Utils;
 
 public class ScorchingBlob extends MobDropTable {
     public ScorchingBlob() {

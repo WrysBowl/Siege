@@ -67,10 +67,11 @@ public class CustomFishEvent {
 
         	if (nbt.hasNBTData() && nbt.hasKey("baitType")) {
         		String baitType = nbt.getString("baitType");
-        		if (BaitCore.hasBait(baitType))
+        		if (BaitCore.hasBait(baitType)) {
 					stand.getEquipment().setHelmet(new ItemStack(Material.SEA_PICKLE));
-        			this.getFishingData().setBait(BaitCore.getBait(baitType));
-        		this.player.sendMessage(this.getFishingData().getBait().getName());
+					this.getFishingData().setBait(BaitCore.getBait(baitType));
+					player.getItemInHand().setAmount(player.getItemInHand().getAmount()-1);
+				}
 			}
 		}
 

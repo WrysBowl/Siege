@@ -7,7 +7,6 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.*;
-import net.siegerpg.siege.core.utils.Utils;
 
 public class AngryBull extends MobDropTable {
     public AngryBull() {

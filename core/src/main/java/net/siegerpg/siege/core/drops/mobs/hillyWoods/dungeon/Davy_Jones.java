@@ -3,7 +3,6 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.DavyJonesKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;

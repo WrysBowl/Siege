@@ -6,23 +6,23 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Bone() : CustomMaterial(
-    name = "Bone",
-    customModelData = 310004,
-    description = listOf("Remains of a once living animal"),
+class SteelString() : CustomMaterial(
+    name = "Steel String",
+    customModelData = 310015,
+    description = listOf("The sound of a bow","with this string","is very loud"),
     levelRequirement = 0,
     material = Material.FLINT,
     recipeList = recipes {
     }
 ) {
 
-    constructor(quality: Int): this() {
+    constructor(quality: Int) : this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
         this.serialize()
     }
 
-    constructor(item: ItemStack): this() {
+    constructor(item: ItemStack) : this() {
         this.item = item
         deserialize()
     }

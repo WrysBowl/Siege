@@ -4,8 +4,6 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.CrackedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.RawToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.wands.*;
 import net.siegerpg.siege.core.utils.Utils;
