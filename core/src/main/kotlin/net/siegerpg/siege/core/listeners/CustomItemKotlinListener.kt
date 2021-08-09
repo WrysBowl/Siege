@@ -236,6 +236,10 @@ class CustomItemKotlinListener : Listener, Runnable {
         val vicHealthStat =
             if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH) + victim.maxHealth + (victim.level*2)
             else victim.maxHealth
+        if (vicHealthStat < 0.0) {
+            victim.damage(9999.0)
+            return
+        }
         val vicToughness =
             if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
             else 0.0
@@ -244,7 +248,9 @@ class CustomItemKotlinListener : Listener, Runnable {
                 (damage/maxDamage) * actualDamage //if player spam clicks it won't deal max damage
             else damage
         val reducedDamage = attStrengthStat * (1 - (vicToughness/1000)) //custom attack damage with toughness considered
+
         e.damage = (reducedDamage * victim.maxHealth)/vicHealthStat //scaled down to damage player by vanilla damage
+
         if (victim is Mob) {
             val displayName: String = MobNames.mobNames[victim] ?: return
             victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
