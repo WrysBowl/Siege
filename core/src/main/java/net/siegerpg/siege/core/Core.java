@@ -5,6 +5,7 @@ import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.Webstore.RedeemBoosters;
 import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.admin.*;
+import net.siegerpg.siege.core.items.types.subtypes.CustomArmor;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillListener;
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;

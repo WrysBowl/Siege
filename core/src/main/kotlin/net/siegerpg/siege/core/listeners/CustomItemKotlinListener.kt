@@ -1,12 +1,14 @@
 package net.siegerpg.siege.core.listeners
 
 import net.siegerpg.siege.core.Core.plugin
+import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.utils.cache.MobNames
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomWand
+import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
@@ -205,6 +207,31 @@ class CustomItemKotlinListener : Listener, Runnable {
             }
             victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
         }
+
+
+        /*if (attacker is Player) {
+            val item = attacker.inventory.itemInMainHand
+            val customItem: CustomItem? = CustomItemUtils.getCustomItem(item)
+
+            customItem?.let {
+                if (it is CustomMeleeWeapon) {
+                    it.onHit(e)
+                }
+            }
+        }*/
+        if (victim is Player) {
+            val armor = victim.inventory.armorContents
+            if (armor.isNullOrEmpty()) return
+            armor.forEach { item ->
+                val customItem: CustomItem? = CustomItemUtils.getCustomItem(item)
+                customItem?.let {
+                    if (it is CustomArmor) {
+                        it.onHit(e)
+                    }
+                }
+            }
+        }
+
 
         val vicHealthStat =
             if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH) + victim.maxHealth + (victim.level*2)

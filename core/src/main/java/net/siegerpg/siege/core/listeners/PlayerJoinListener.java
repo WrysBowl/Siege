@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.GrieferChestplate;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword;
 import net.siegerpg.siege.core.items.statgems.StatGem;
 import net.siegerpg.siege.core.items.types.misc.StatGemType;
@@ -79,6 +80,8 @@ public class PlayerJoinListener implements Listener {
         }
         if (event.getPlayer().getName().equals("Wrys")) {
             player.getInventory().addItem(new TestSword(150).getUpdatedItem(false));
+            player.getInventory().addItem(new GrieferChestplate(150).getUpdatedItem(false));
+
         }
 
 
@@ -102,7 +105,7 @@ public class PlayerJoinListener implements Listener {
             Tablist.tablistUpdate(p);
         }
 
-        if (event.getPlayer().getName().equals("Wrys")) {
+        /*if (event.getPlayer().getName().equals("Wrys")) {
             player.getInventory().addItem(new TestSword(150).getUpdatedItem(false));
             if (Skills.INSTANCE.getSkills(player).equals("")) {
                 try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
@@ -113,7 +116,7 @@ public class PlayerJoinListener implements Listener {
                 }
             }
             Skills.INSTANCE.setSkills(player, "A_1_3");
-        }
+        }*/
 
         for (int i = 0; i< player.getInventory().getSize(); i++) {
             CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
