@@ -37,14 +37,14 @@ public class Stats implements CommandExecutor {
         double regeneration = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION);
 
         sender.sendMessage(Utils.lore(" "));
-        sender.sendMessage(Utils.lore("<aqua><bold>Player Statistics"));
+        sender.sendMessage(Utils.lore("<yellow><bold>Player Statistics"));
         sender.sendMessage(Utils.lore(" "));
         sender.sendMessage(Utils.lore("<gold>" + player.getName()));
-        sender.sendMessage(Utils.lore("<gray>Strength      <reset><dark_red>" + strength));
-        sender.sendMessage(Utils.lore("<gray>Toughness     <reset><blue>" + toughness));
-        sender.sendMessage(Utils.lore("<gray>Health        <reset><red>" + health));
-        sender.sendMessage(Utils.lore("<gray>Regeneration  <reset><orange>" + regeneration));
-        sender.sendMessage(Utils.lore("<gray>Luck          <reset><light_green>" + luck));
+        sender.sendMessage(Utils.lore("  <gray>Strength        <reset><dark_red>" + strength));
+        sender.sendMessage(Utils.lore("  <gray>Toughness     <reset><blue>" + toughness));
+        sender.sendMessage(Utils.lore("  <gray>Health           <reset><red>" + health));
+        sender.sendMessage(Utils.lore("  <gray>Regeneration  <reset><gold>" + regeneration));
+        sender.sendMessage(Utils.lore("  <gray>Luck             <reset><green>" + luck));
         sender.sendMessage(Utils.lore(" "));
 
         return true;

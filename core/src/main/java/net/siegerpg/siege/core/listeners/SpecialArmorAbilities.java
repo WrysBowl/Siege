@@ -55,27 +55,6 @@ public class SpecialArmorAbilities implements Listener {
         }
     }
 
-    @EventHandler
-    public void onHit(EntityDamageByEntityEvent e) {
-        if (!(e.getDamager() instanceof Player) && !e.getDamager().getWorld().getName().equals("PVP")) return;
-        Player player = ((Player) e.getDamager()).getPlayer();
-        if (player == null) return;
-        if (isBeePants(player.getInventory().getLeggings())) {
-            ItemStack item = player.getInventory().getLeggings();
-            CustomItem cusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
-            if (cusItem == null) return;
-            if (cusItem.getLevelRequirement() == null) return;
-            if (cusItem.getLevelRequirement() > player.getLevel()) return;
-            PotionEffect potion = new PotionEffect(PotionEffectType.POISON, 60, 1);
-            ((LivingEntity)e.getEntity()).addPotionEffect(potion);
-        }
-    }
-
-    private boolean isBeePants(ItemStack armorPiece) {
-        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(armorPiece);
-        return item instanceof BeePants;
-    }
-
     private boolean isSlimeSet(ArrayList<ItemStack> armorPieces) {
         int badCheckMethod = 0;
         for (ItemStack armorPiece : armorPieces) {
