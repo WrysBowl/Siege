@@ -70,6 +70,8 @@ public final class Core extends JavaPlugin {
         this.getCommand("getBait").setExecutor(new getBait());
         this.getCommand("pay").setExecutor(new Pay());
         this.getCommand("getKey").setExecutor(new GetKey());
+        this.getCommand("stats").setExecutor(new Stats());
+
 
 
         //partyManager = new PartyManager();

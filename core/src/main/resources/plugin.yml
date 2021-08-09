@@ -51,3 +51,5 @@ commands:
     description: gets a bait ;D
   getKey:
     description: Gets a hilly woods key or dungeon key
+  stats:
+    description: Displays your stats
