@@ -228,7 +228,7 @@ public class DeathListener implements Listener, Runnable {
 
             double percBal = (Math.floor(bal / 10000.0) / 100);
             if (percBal > 0.15) percBal = 0.15;
-            int newBal = (int) Math.round(bal * (0.95 - percBal));
+            int newBal = (int) Math.round(bal * (0.90 - percBal));
 
 
             if (newBal < 0) newBal = 0;
