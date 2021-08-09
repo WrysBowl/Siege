@@ -13,7 +13,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class Davy_Jones extends MobDropTable {
     public Davy_Jones() {
-        super("Davy_Jones", 1000, 1100, 2000, 2200, new Reward[]{
+        super("Davy_Jones", 800, 900, 1500, 1700, new Reward[]{
                 new Reward(new IronAxe(Utils.randRarity()).getUpdatedItem(false), 100.0),
                 new Reward(new Trident(Utils.randRarity()).getUpdatedItem(false), 100.0),
                 new Reward(new IronAxe(Utils.randRarity()).getUpdatedItem(false), 50.0),

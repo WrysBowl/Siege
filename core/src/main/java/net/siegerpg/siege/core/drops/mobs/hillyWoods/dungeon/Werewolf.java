@@ -9,7 +9,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class Werewolf extends MobDropTable {
     public Werewolf() {
-        super("Werewolf", 1000, 1200, 1000, 1200, new Reward[]{
+        super("Werewolf", 800, 1000, 800, 1000, new Reward[]{
                 new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 50.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 40.0),
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false).asQuantity(16), 30.0),
