@@ -37,6 +37,7 @@ class BeePants() : CustomLeggings(
 
     override fun onHit(e: EntityDamageEvent) {
         if (e !is EntityDamageByEntityEvent) return
+        if (e.damager !is Player) return
         if (e.damager is Player && e.damager.world.name == "PVP") return
         val player = (e.damager as Player).player ?: return
         val item = player.inventory.leggings
