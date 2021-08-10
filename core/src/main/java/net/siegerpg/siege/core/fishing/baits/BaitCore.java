@@ -31,7 +31,7 @@ public class BaitCore {
 		nbt.setString("baitType", baitName);
 		item = nbt.getItem();
 		ItemMeta meta = item.getItemMeta();
-		meta.setDisplayName(ChatColor.AQUA + baitName + " bait");
+		meta.setDisplayName(ChatColor.AQUA + baitName);
 		meta.lore(new ArrayList<>(){
 			{
 				add(Utils.lore("<yellow>Hold in off-hand to use"));

@@ -8,6 +8,6 @@ import org.bukkit.Material;
 
 public class FlashySharkBait extends BaitCore {
     public FlashySharkBait() {
-        super(new BaitStats[]{new BaitStats(new FlashyShark(), 200)}, "FlashySharkBait", Material.SEA_PICKLE);
+        super(new BaitStats[]{new BaitStats(new FlashyShark(), 200)}, "Flashy Shark Bait", Material.SEA_PICKLE);
     }
 }

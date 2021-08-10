@@ -9,7 +9,7 @@ public class BigBlueTunaBait extends BaitCore {
 
 	// THIS IS AN EXAMPLE BAIT
 	public BigBlueTunaBait() {
-		super(new BaitStats[]{new BaitStats(new BigBlueTuna(), 1000)}, "BigBlueTunaBait", Material.SEA_PICKLE);
+		super(new BaitStats[]{new BaitStats(new BigBlueTuna(), 1000)}, "Big Blue Tuna Bait", Material.SEA_PICKLE);
 	}
 
 

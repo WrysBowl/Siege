@@ -7,6 +7,6 @@ import org.bukkit.Material;
 
 public class BearacudaBait extends BaitCore {
     public BearacudaBait() {
-        super(new BaitStats[]{new BaitStats(new Bearacuda(), 200)}, "BearacudaBait", Material.SEA_PICKLE);
+        super(new BaitStats[]{new BaitStats(new Bearacuda(), 200)}, "Bearacuda Bait", Material.SEA_PICKLE);
     }
 }
