@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.drops.mobs.twilight.passive;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
+import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 
@@ -14,6 +15,8 @@ public class Crystal_Turtle extends MobDropTable {
                 new Reward(Crystal.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 5.0),
                 new Reward(FairyDust.Companion.tier(2).getUpdatedItem(false).asQuantity(16), 35.0),
                 new Reward(FairyDust.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 5.0),
+                new Reward(new Drumstick(50).getUpdatedItem(false).asQuantity(2), 25.0)
+
         });
     }
 }

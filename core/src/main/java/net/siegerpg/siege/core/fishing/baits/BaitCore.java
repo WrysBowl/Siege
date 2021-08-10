@@ -5,6 +5,7 @@ import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.fishing.baits.implemented.BearacudaBait;
 import net.siegerpg.siege.core.fishing.baits.implemented.FlashySharkBait;
 import net.siegerpg.siege.core.fishing.baits.implemented.BigBlueTunaBait;
+import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -31,6 +32,12 @@ public class BaitCore {
 		item = nbt.getItem();
 		ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName(ChatColor.AQUA + baitName + " bait");
+		meta.lore(new ArrayList<>(){
+			{
+				add(Utils.lore("<yellow>Hold in off-hand to use"));
+
+			}
+		});
 		item.setItemMeta(meta);
 		this.baitItemStack = item;
 	}

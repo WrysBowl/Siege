@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.drops.mobs.twilight.passive;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
+import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 
 
@@ -12,7 +13,9 @@ public class Twilight_Cat extends MobDropTable {
                 new Reward(SteelString.Companion.tier(1).getUpdatedItem(false), 25.0),
                 new Reward(Pelt.Companion.tier(1).getUpdatedItem(false), 50.0),
                 new Reward(Pelt.Companion.tier(2).getUpdatedItem(false), 10.0),
-                new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 25.0)
+                new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 25.0),
+                new Reward(new Drumstick(50).getUpdatedItem(false), 25.0)
+
         });
     }
 }
