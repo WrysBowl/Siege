@@ -24,7 +24,7 @@ class ToughEarthernWand() : CustomWand(
     red = 0,
     green = 204,
     blue = 0,
-    damageRadius = 3.0
+    damageRadius = 2.0
 ) {
 
     constructor(quality: Int): this() {
