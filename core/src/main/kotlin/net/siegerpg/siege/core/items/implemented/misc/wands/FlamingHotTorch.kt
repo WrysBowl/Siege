@@ -22,7 +22,7 @@ class FlamingHotTorch() : CustomWand(
     red = 255,
     green = 0,
     blue = 0,
-    damageRadius = 3.0
+    damageRadius = 2.0
 ) {
 
     constructor(quality: Int): this() {

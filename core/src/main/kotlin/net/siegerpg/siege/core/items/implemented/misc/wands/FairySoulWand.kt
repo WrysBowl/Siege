@@ -22,7 +22,7 @@ class FairySoulWand() : CustomWand(
     red = 190,
     green = 242,
     blue = 85,
-    damageRadius = 3.0
+    damageRadius = 2.0
 ) {
 
     constructor(quality: Int): this() {

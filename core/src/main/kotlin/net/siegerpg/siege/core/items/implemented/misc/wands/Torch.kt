@@ -21,7 +21,7 @@ class Torch() : CustomWand(
     red = 255,
     green = 153,
     blue = 51,
-    damageRadius = 3.0
+    damageRadius = 2.0
 ) {
 
     constructor(quality: Int): this() {

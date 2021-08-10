@@ -22,7 +22,7 @@ class CrystalCane() : CustomWand(
     red = 127,
     green = 194,
     blue = 199,
-    damageRadius = 6.0
+    damageRadius = 4.0
 ) {
 
     constructor(quality: Int): this() {
