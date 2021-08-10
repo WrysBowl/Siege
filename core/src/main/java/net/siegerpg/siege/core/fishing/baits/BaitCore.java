@@ -2,7 +2,9 @@ package net.siegerpg.siege.core.fishing.baits;
 
 
 import de.tr7zw.nbtapi.NBTItem;
-import net.siegerpg.siege.core.fishing.baits.implemented.MoreTunaBait;
+import net.siegerpg.siege.core.fishing.baits.implemented.BearacudaBait;
+import net.siegerpg.siege.core.fishing.baits.implemented.FlashySharkBait;
+import net.siegerpg.siege.core.fishing.baits.implemented.BigBlueTunaBait;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -10,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
-public abstract class BaitCore {
+public class BaitCore {
 
 	public static ArrayList<BaitCore> baits = new ArrayList<BaitCore>() ;
 
@@ -38,7 +40,9 @@ public abstract class BaitCore {
 
 
 	public static void registerAllBaits() {
-		baits.add(new MoreTunaBait());
+		baits.add(new BigBlueTunaBait());
+		baits.add(new FlashySharkBait());
+		baits.add(new BearacudaBait());
 	}
 
 	public static BaitCore getBait(String name) {

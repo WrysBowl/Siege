@@ -9,7 +9,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 
 public class ChestMimic1 extends MobDropTable {
     public ChestMimic1() {
-        super("ChestMimic", 150, 300, 150, 300, new Reward[]{
+        super("ChestMimic1", 150, 300, 150, 300, new Reward[]{
                 new Reward(Pebble.Companion.tier(2).getUpdatedItem(false), 50.0),
                 new Reward(Pebble.Companion.tier(3).getUpdatedItem(false), 25.0),
                 new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 50.0),

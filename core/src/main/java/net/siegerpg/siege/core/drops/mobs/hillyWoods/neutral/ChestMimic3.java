@@ -8,7 +8,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leath
 
 public class ChestMimic3 extends MobDropTable {
     public ChestMimic3() {
-        super("ChestMimic", 150, 300, 150, 300, new Reward[]{
+        super("ChestMimic3", 150, 300, 150, 300, new Reward[]{
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 25.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 5.0),
                 new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 50.0),
