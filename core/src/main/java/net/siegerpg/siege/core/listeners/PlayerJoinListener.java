@@ -79,8 +79,6 @@ public class PlayerJoinListener implements Listener {
             }catch (SQLException ignored) { }
         }
         if (event.getPlayer().getName().equals("Wrys")) {
-            player.getInventory().addItem(new TestSword(150).getUpdatedItem(false));
-            player.getInventory().addItem(new GrieferChestplate(150).getUpdatedItem(false));
 
         }
 

@@ -12,7 +12,7 @@ public class Wind_Rabbit extends MobDropTable {
                 new Reward(RabbitFoot.Companion.tier(2).getUpdatedItem(false), 25.0),
                 new Reward(Pelt.Companion.tier(1).getUpdatedItem(false), 50.0),
                 new Reward(Pelt.Companion.tier(2).getUpdatedItem(false), 10.0),
-                new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(6), 25.0),
+                new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 25.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(6), 25.0)
 
         });
