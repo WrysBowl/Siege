@@ -19,9 +19,9 @@ public class Ogre extends MobDropTable {
                 new Reward(Leather.Companion.tier(3).getUpdatedItem(false), 50.0),
                 new Reward(new GoldenCarrot(100).getUpdatedItem(false), 100.0),
                 new Reward(new GoldenCarrot(100).getUpdatedItem(false), 100.0),
-                new Reward(new SimpleHealthGem(Utils.randRarity()).getUpdatedItem(false), 20.0),
-                new Reward(new SimpleRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 20.0),
-                new Reward(new SimpleStrengthGem(Utils.randRarity()).getUpdatedItem(false), 20.0)
+                new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 20.0),
+                new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 20.0),
+                new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 20.0)
         });
     }
 }

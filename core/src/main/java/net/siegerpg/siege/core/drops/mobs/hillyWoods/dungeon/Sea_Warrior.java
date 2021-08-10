@@ -13,8 +13,8 @@ public class Sea_Warrior extends MobDropTable {
         super("Sea_Warrior", 12, 15, 20, 23, new Reward[]{
                 new Reward(new Trident(Utils.randRarity()).getUpdatedItem(false), 5.0),
                 new Reward(new GoldenCarrot(50).getUpdatedItem(false), 5.0),
-                new Reward(new RawStrengthGem(Utils.randRarity()).getUpdatedItem(false), 1.0),
-                new Reward(new CrackedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 2.0)
+                new Reward(new RawStrengthGem(0).getUpdatedItem(false), 1.0),
+                new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 2.0)
         });
     }
 }

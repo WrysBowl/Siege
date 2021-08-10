@@ -28,13 +28,12 @@ public class BroodMother extends MobDropTable {
                 new Reward(new EarthernHammer(Utils.randRarity()).getUpdatedItem(false), 20.0),
                 new Reward(new EarthernWand(Utils.randRarity()).getUpdatedItem(false), 10.0),
 
-                new Reward(new FlawedToughGem(Utils.randRarity()).getUpdatedItem(false), 50.0),
-                new Reward(new SimpleToughGem(Utils.randRarity()).getUpdatedItem(false), 40.0),
-                new Reward(new PolishedToughGem(Utils.randRarity()).getUpdatedItem(false), 20.0),
-                new Reward(new FlawedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 50.0),
-                new Reward(new SimpleRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 30.0),
-                new Reward(new FlawedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 50.0),
-                new Reward(new SimpleLuckGem(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new FlawedToughGem(0).getUpdatedItem(false), 50.0),
+                new Reward(new SimpleToughGem(0).getUpdatedItem(false), 40.0),
+                new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 50.0),
+                new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 30.0),
+                new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 50.0),
+                new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 30.0),
                 new Reward(new BroodmotherKey(0).getUpdatedItem(false), 10.0)
 
         });

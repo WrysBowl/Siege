@@ -22,11 +22,11 @@ public class Necromancer extends MobDropTable {
                 new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 50.0),
                 new Reward(MetalScrap.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 20.0),
 
-                new Reward(new CrackedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 80.0),
-                new Reward(new FlawedStrengthGem(Utils.randRarity()).getUpdatedItem(false), 60.0),
-                new Reward(new SimpleStrengthGem(Utils.randRarity()).getUpdatedItem(false), 40.0),
-                new Reward(new FlawedHealthGem(Utils.randRarity()).getUpdatedItem(false), 60.0),
-                new Reward(new SimpleHealthGem(Utils.randRarity()).getUpdatedItem(false), 40.0),
+                new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 80.0),
+                new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 60.0),
+                new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 40.0),
+                new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 60.0),
+                new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 40.0),
                 new Reward(new NecromancerKey(0).getUpdatedItem(false), 10.0)
 
         });
