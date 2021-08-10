@@ -16,11 +16,6 @@ public class ChestMimic2 extends MobDropTable {
                 new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 25.0),
                 new Reward(new Drumstick(100).getUpdatedItem(false).asQuantity(4), 25.0),
                 new Reward(new Drumstick(50).getUpdatedItem(false).asQuantity(8), 50.0),
-                new Reward(BaitCore.getBait("BearacudaBait").getBaitItemStack().asQuantity(4), 15.0),
-                new Reward(BaitCore.getBait("BigBlueTunaBait").getBaitItemStack().asQuantity(5), 25.0),
-                new Reward(BaitCore.getBait("FlashySharkBait").getBaitItemStack().asQuantity(3), 10.0)
-
-
         });
     }
 }

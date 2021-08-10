@@ -19,7 +19,6 @@ public class getBait implements CommandExecutor {
                 if(args.length==1) {
                     try{
                         BaitCore bait = BaitCore.getBait(args[0]);
-                        player.sendMessage(bait.getName());
                         ItemStack item = bait.getBaitItemStack();
                         player.getInventory().addItem(item);
                         return true;
