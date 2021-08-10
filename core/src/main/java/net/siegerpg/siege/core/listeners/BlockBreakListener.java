@@ -169,6 +169,12 @@ public class BlockBreakListener implements Listener {
             put(Material.OAK_LEAVES, new OAK_LEAVES());
             put(Material.OAK_LOG, new OAK_LOG());
             put(Material.OAK_WOOD, new OAK_WOOD());
+            put(Material.PINK_CONCRETE, new PINK_CONCRETE());
+            put(Material.PINK_CONCRETE_POWDER, new PINK_CONCRETE_POWDER());
+            put(Material.PINK_STAINED_GLASS, new PINK_STAINED_GLASS());
+            put(Material.SHROOMLIGHT, new SHROOMLIGHT());
+            put(Material.SNOW, new SNOW());
+            put(Material.SNOW_BLOCK, new SNOW_BLOCK());
             put(Material.SPRUCE_LEAVES, new SPRUCE_LEAVES());
             put(Material.SPRUCE_LOG, new SPRUCE_LOG());
             put(Material.SPRUCE_WOOD, new SPRUCE_WOOD());
@@ -185,8 +191,10 @@ public class BlockBreakListener implements Listener {
             put(Material.STRIPPED_OAK_WOOD, new STRIPPED_OAK_WOOD());
             put(Material.STRIPPED_SPRUCE_LOG, new STRIPPED_SPRUCE_LOG());
             put(Material.STRIPPED_SPRUCE_WOOD, new STRIPPED_SPRUCE_WOOD());
+            put(Material.STRIPPED_WARPED_HYPHAE, new STRIPPED_WARPED_HYPHAE());
             put(Material.SUGAR_CANE, new SUGAR_CANE());
             put(Material.VINE, new VINE());
+            put(Material.WARPED_HYPHAE, new WARPED_HYPHAE());
             put(Material.WHEAT, new WHEAT());
 
             put(Material.ALLIUM, new ALLIUM());
