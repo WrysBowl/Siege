@@ -61,7 +61,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             val dungeonType = DungeonType.dungeonTypes.find { d -> dungeonTypeName == d.name } ?: return false
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
-                    dungeon.addPlayer(player)
+                    player.teleport(dungeon.getSpawn())
                     /*getParties().forEach { party ->
                         if (party.leader == player)
                             party.members.forEach { member ->
