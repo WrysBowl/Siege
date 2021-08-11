@@ -69,6 +69,7 @@ public class PlayerJoinListener implements Listener {
 
         String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
         String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
+        player.teleport(Core.plugin().getServer().getWorld("Hub").getSpawnLocation());
 
         if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
             try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
@@ -123,7 +124,5 @@ public class PlayerJoinListener implements Listener {
 
             player.getInventory().setItem(i, CusItem.getUpdatedItem(false));
         }
-
-        player.teleport(Core.plugin().getServer().getWorld("Hub").getSpawnLocation());
     }
 }
