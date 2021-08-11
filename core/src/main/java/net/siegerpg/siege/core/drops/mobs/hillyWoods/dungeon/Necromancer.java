@@ -14,7 +14,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class Necromancer extends MobDropTable {
     public Necromancer() {
-        super("Necromancer", 750, 850, 800, 900, new Reward[]{
+        super("Necromancer", 950, 1050, 1000, 1100, new Reward[]{
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false).asQuantity(32), 40.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 50.0),
                 new Reward(Bone.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 20.0),
