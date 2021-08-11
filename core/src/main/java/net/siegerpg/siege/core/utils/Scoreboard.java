@@ -38,7 +38,7 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&7\u2560 &7Gold &e" + WebstoreUtils.goldMultiplier) + "x").setScore(7);
         o.getScore("   ").setScore(6);
         o.getScore(Utils.tacc("&7SiegeRPG.minehut.gg")).setScore(5);
-        o.getScore(Utils.tacc("&6/discord &7Full Access")).setScore(4);
+        o.getScore(Utils.tacc("&6/discord &7Community!")).setScore(4);
         p.setScoreboard(b);
 
     }
