@@ -48,7 +48,7 @@ public class DeathListener implements Listener, Runnable {
             put("Davy_Jones", new Davy_Jones());
             put("Necromancer", new Necromancer());
             put("Lich", new Lich());
-            put("BroodMother", new BroodMother());
+            put("Broodmother", new BroodMother());
 
             //HOSTILES
             put("AngryBull", new AngryBull());
