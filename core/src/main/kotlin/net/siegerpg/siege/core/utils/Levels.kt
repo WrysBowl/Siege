@@ -115,7 +115,7 @@ object Levels {
             if (!player.isOnline) continue
             if (levelRewards.size < lvl) continue //ensure that the level reward is set in the array list
 
-            val reward: LevelReward = levelRewards[lvl.toInt()-1]
+            val reward: LevelReward = levelRewards[lvl.toInt()-2]
             reward.giveReward(player, lvl)
         }
         return Pair(lvl, exp)
