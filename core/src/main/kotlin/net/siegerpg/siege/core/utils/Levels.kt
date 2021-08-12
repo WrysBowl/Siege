@@ -5,15 +5,25 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.database.DatabaseManager
-import org.bukkit.Bukkit
+import net.siegerpg.siege.core.utils.levelReward.LevelReward
+import net.siegerpg.siege.core.utils.levelReward.*
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import java.sql.ResultSet
 import java.util.*
-import kotlin.math.floor
 import kotlin.math.pow
 
 object Levels {
+
+    private val levelRewards: ArrayList<LevelReward> = arrayListOf(
+        Reward1(), Reward2(), Reward3(), Reward4(), Reward5(),
+        Reward6(), Reward7(), Reward8(), Reward9(), Reward10(),
+        Reward11(), Reward12(), Reward13(), Reward14(), Reward15(),
+        Reward16(), Reward17(), Reward18(), Reward19(), Reward20(),
+        Reward21(), Reward22(), Reward23(), Reward24(), Reward25(),
+        Reward26(), Reward27(), Reward28(), Reward29()
+    )
+
     fun calculateRequiredExperience(level: Short): Int {
         return (level + 3.0).pow(3).toInt()
     }
@@ -102,26 +112,12 @@ object Levels {
         while (calculateRequiredExperience(lvl) <= exp) {
             exp -= calculateRequiredExperience(lvl)
             lvl = (lvl + 1).toShort()
-            if (player.isOnline) {
-                if (lvl % 10 == 0) {
-                    Bukkit.getServer().broadcastMessage("")
-                    Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + lvl + "!"))
-                    Bukkit.getServer().broadcastMessage(Utils.tacc("&a/pv " + Utils.round((lvl/10).toDouble(), 0) + " &7is available"))
-                    Bukkit.getServer().broadcastMessage("")
-                    val multiplier = floor(lvl/10.0).toInt()
-                    if (multiplier <= 54) {
-                        VaultHook.perms.playerAdd("global", player, "cosmicvaults.amount.${multiplier}")
-                    }
-                }
-                player.sendTitle(
-                    Utils.tacc("&5Level Up!"),
-                    Utils.tacc("&c+2 HP"),
-                    1, 80, 1
-                )
-            }
+            if (!player.isOnline) continue
+            if (levelRewards.size < lvl) continue //ensure that the level reward is set in the array list
+
+            val reward: LevelReward = levelRewards[lvl.toInt()-1]
+            reward.giveReward(player, lvl)
         }
-        LevelEXPStorage.playerLevel[player] = lvl
-        LevelEXPStorage.playerExperience[player] = exp
         return Pair(lvl, exp)
     }
 
@@ -136,8 +132,14 @@ object Levels {
                 stmt.executeUpdate()
                 if (player.isOnline) {
                     val p = (player as Player)
-                    p.level = levelExp.first.toInt()
-                    p.exp = levelExp.second / calculateRequiredExperience(levelExp.first).toFloat()
+                    val lvl = levelExp.first.toInt()
+                    val exp = levelExp.second
+                    val expPercent = exp / calculateRequiredExperience(levelExp.first).toFloat()
+                    p.level = lvl
+                    p.exp = expPercent
+                    LevelEXPStorage.playerLevel[player] = lvl.toShort()
+                    LevelEXPStorage.playerExperience[player] = exp
+
                 }
             }
         }

@@ -31,9 +31,13 @@ public class GoldExpListener implements Listener{
         if (!item.getItemMeta().getDisplayName().contains("Gold Coin")) return;
         Player player = e.getPlayer();
         e.setCancelled(true);
-        int goldAmount = e.getItem().getItemStack().getAmount();
-        net.siegerpg.siege.core.utils.VaultHook.econ.depositPlayer(player, goldAmount);
         e.getItem().remove();
+        int goldAmount = e.getItem().getItemStack().getAmount();
+        giveGold(player, goldAmount);
+    }
+
+    public void giveGold(Player player, int goldAmount) {
+        net.siegerpg.siege.core.utils.VaultHook.econ.depositPlayer(player, goldAmount);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {

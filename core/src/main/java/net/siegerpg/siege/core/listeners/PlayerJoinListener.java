@@ -80,7 +80,6 @@ public class PlayerJoinListener implements Listener {
             }catch (SQLException ignored) { }
         }
         if (event.getPlayer().getName().equals("Wrys")) {
-
         }
 
 
