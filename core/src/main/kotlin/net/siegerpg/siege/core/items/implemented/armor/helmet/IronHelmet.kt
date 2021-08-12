@@ -15,7 +15,7 @@ class IronHelmet() : CustomHelmet(
     description = listOf("Thick skull"),
     levelRequirement = 34,
     material = Material.IRON_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 25.0, toughness = 80.0),
+    baseStats = CustomItemUtils.statMap(health = 25.0, toughness = 80.0, strength = -6.0),
 ) {
 
     constructor(quality: Int): this() {
