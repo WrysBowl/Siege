@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.utils.levelReward
+package net.siegerpg.siege.core.levelReward
 
 import org.bukkit.entity.Player
 

@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.utils.levelReward
+package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
@@ -7,7 +7,7 @@ import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 
-class Reward25 : LevelReward {
+class Reward22 : LevelReward {
     override fun giveReward(player: Player, level: Short) {
         player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP,5.0f, 5.0f)
         player.sendTitle(Utils.tacc(""), Utils.tacc("&d${level-1} &7\u21E2 &5$level"), 10, 80, 10)

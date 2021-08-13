@@ -5,8 +5,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.database.DatabaseManager
-import net.siegerpg.siege.core.utils.levelReward.LevelReward
-import net.siegerpg.siege.core.utils.levelReward.*
+import net.siegerpg.siege.core.levelReward.LevelReward
+import net.siegerpg.siege.core.levelReward.*
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import java.sql.ResultSet
