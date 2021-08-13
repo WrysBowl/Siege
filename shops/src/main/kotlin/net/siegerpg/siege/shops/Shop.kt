@@ -1,7 +1,7 @@
 package net.siegerpg.siege.shops
 
-open class Shop(name: String, permission: String, items: List<ShopItem>) {
-    val name : String = name
-    val permission : String = permission
-    val items : List<ShopItem> = items
+abstract class Shop {
+    abstract var name: String
+    abstract var permission: String
+    abstract var items: List<ShopItem>
 }
