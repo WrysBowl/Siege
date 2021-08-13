@@ -12,8 +12,8 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedT
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 
 
-public class Skeletal_Bowman extends MobDropTable {
-    public Skeletal_Bowman() {
+public class Skeletal_Archer extends MobDropTable {
+    public Skeletal_Archer() {
         super("Skeletal_Bowman", 40, 50, 50, 60, new Reward[]{
                 new Reward(CorruptCrystal.Companion.tier(1).getUpdatedItem(false), 50.0),
                 new Reward(CorruptCrystal.Companion.tier(2).getUpdatedItem(false), 10.0),

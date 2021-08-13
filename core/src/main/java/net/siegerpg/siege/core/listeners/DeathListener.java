@@ -11,6 +11,12 @@ import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.neutral.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.passive.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.bosses.Skeletal_General;
+import net.siegerpg.siege.core.drops.mobs.twilight.bosses.Unicorn;
+import net.siegerpg.siege.core.drops.mobs.twilight.hostile.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.neutral.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.passive.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.passive.Bat;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
@@ -38,6 +44,8 @@ public class DeathListener implements Listener, Runnable {
             //BOSSES
             put("Ogre", new Ogre());
 
+            put("Unicorn", new Unicorn());
+
             //DUNGEON BOSSES
             put("RockSpirit", new RockSpirit());
             put("SlimeSpirit", new SlimeSpirit());
@@ -48,7 +56,7 @@ public class DeathListener implements Listener, Runnable {
             put("Davy_Jones", new Davy_Jones());
             put("Necromancer", new Necromancer());
             put("Lich", new Lich());
-            put("Broodmother", new BroodMother());
+            put("Broodmother", new Broodmother());
 
             //HOSTILES
             put("AngryBull", new AngryBull());
@@ -66,6 +74,22 @@ public class DeathListener implements Listener, Runnable {
             put("Sea_Warrior", new Sea_Warrior());
             put("ZombifiedDigger", new ZombifiedDigger());
 
+            put("Corrupted_Skeleton", new Corrupted_Skeleton());
+            put("Dark_Elf", new Dark_Elf());
+            put("Dark_Fairy", new Dark_Fairy());
+            put("Digger_Overseer", new Digger_Overseer());
+            put("Fairy_Outlaw", new Fairy_Outlaw());
+            put("Freezing_Skeletal_Warrior", new Freezing_Skeletal_Warrior());
+            put("Greater_Spider", new Greater_Spider());
+            put("Leaf_Monster", new Leaf_Monster());
+            put("Moss_Lurker", new Moss_Lurker());
+            put("Nightmare", new Nightmare());
+            put("Shroomlight_Monster", new Shroomlight_Monster());
+            put("Skeletal_Archer", new Skeletal_Archer());
+            put("Skeletal_General", new Skeletal_General());
+            put("Skeletal_Warrior", new Skeletal_Warrior());
+            put("Stone_Monster", new Stone_Monster());
+
             //NEUTRALS
             put("GiantHornet", new GiantHornet());
             put("WildFox", new WildFox());
@@ -74,6 +98,11 @@ public class DeathListener implements Listener, Runnable {
             put("ChestMimic3", new ChestMimic3());
             put("ChestMimic4", new ChestMimic4());
 
+            put("Archer_Elf", new Archer_Elf());
+            put("Warrior_Elf", new Warrior_Elf());
+            put("Twilight_Wolf", new Twilight_Wolf());
+
+
             //PASSIVES
             put("FeatheredMeat", new FeatheredMeat());
             put("MooMoo", new MooMoo());
@@ -81,6 +110,16 @@ public class DeathListener implements Listener, Runnable {
             put("Porky", new Porky());
             put("Sushi", new Sushi());
             put("Wooly", new Wooly());
+
+            put("Bat", new Bat());
+            put("Crow", new Crow());
+            put("Crystal_Rat", new Crystal_Rat());
+            put("Crystal_Turtle", new Crystal_Turtle());
+            put("Polar_Bear", new Polar_Bear());
+            put("Twilight_Cat", new Twilight_Cat());
+            put("Warrior_Dwarf", new Warrior_Dwarf());
+            put("Wind_Rabbit", new Wind_Rabbit());
+
         }
     };
 
@@ -100,7 +139,7 @@ public class DeathListener implements Listener, Runnable {
                 put("Davy_Jones", new Davy_Jones());
                 put("Necromancer", new Necromancer());
                 put("Lich", new Lich());
-                put("BroodMother", new BroodMother());
+                put("BroodMother", new Broodmother());
 
                 //HOSTILES
                 put("AngryBull", new AngryBull());
