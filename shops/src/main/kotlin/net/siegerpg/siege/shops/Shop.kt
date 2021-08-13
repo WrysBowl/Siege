@@ -1,3 +1,7 @@
 package net.siegerpg.siege.shops
 
-data class Shop(val name: String, val permission: String, val items: List<ShopItem>)
+open class Shop(name: String, permission: String, items: List<ShopItem>) {
+    val name : String = name
+    val permission : String = permission
+    val items : List<ShopItem> = items
+}
