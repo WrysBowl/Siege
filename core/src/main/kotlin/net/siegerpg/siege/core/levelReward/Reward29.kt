@@ -1,13 +1,11 @@
 package net.siegerpg.siege.core.levelReward
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.VaultHook
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.entity.Player
-import kotlin.math.floor
 
 class Reward29 : LevelReward {
     override fun giveReward(player: Player, level: Short) {

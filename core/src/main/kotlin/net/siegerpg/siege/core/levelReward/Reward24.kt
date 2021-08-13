@@ -1,8 +1,5 @@
 package net.siegerpg.siege.core.levelReward
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Sound

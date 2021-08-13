@@ -1,7 +1,5 @@
 package net.siegerpg.siege.core.levelReward
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Sound
