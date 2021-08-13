@@ -14,20 +14,23 @@ class ShopsPlugin: JavaPlugin(), Listener {
             private set
     }
 
-    val shopRegistry: HashMap<String, Shop> = hashMapOf(
-        "chip" to Chip(), "chop" to Chop(), "sylvester" to Sylvester(), "phillip" to Phillip(),
-        "minnow" to Minnow(), "chelsea" to Chelsea(), "marco" to Marco(), "clemont" to Clemont(),
-        "bailey" to Bailey(), "joe" to Joe(), "steve" to Steve(), "ellie" to Ellie(),
-        "barney" to Barney(), "jane" to Jane(), "julie" to Julie(), "valentine" to Valentine(),
-        "gale" to Gale(), "forest" to Forest(), "fredric" to Fredric(), "katherine" to Katherine(),
-        "magmar" to Magmar(), "rancher" to Rancher(), "brown" to Brown(), "kayla" to Kayla(),
-        "mary" to Mary(), "hillySpirit" to HillySpirit()
-    )
+    val shopRegistry: HashMap<String, Shop> = hashMapOf()
 
     override fun onEnable() {
         instance = this
         val manager = PaperCommandManager(this)
         manager.registerCommand(ShopsCommand())
         server.pluginManager.registerEvents(this, this)
+
+        shopRegistry.putAll(hashMapOf(
+            "chip" to Chip(), "chop" to Chop(), "sylvester" to Sylvester(), "phillip" to Phillip(),
+            "minnow" to Minnow(), "chelsea" to Chelsea(), "marco" to Marco(), "clemont" to Clemont(),
+            "bailey" to Bailey(), "joe" to Joe(), "steve" to Steve(), "ellie" to Ellie(),
+            "barney" to Barney(), "jane" to Jane(), "julie" to Julie(), "valentine" to Valentine(),
+            "gale" to Gale(), "forest" to Forest(), "fredric" to Fredric(), "katherine" to Katherine(),
+            "magmar" to Magmar(), "rancher" to Rancher(), "brown" to Brown(), "kayla" to Kayla(),
+            "mary" to Mary(), "hillySpirit" to HillySpirit()
+        ))
+
     }
 }
