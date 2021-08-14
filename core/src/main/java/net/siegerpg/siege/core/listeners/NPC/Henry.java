@@ -21,8 +21,11 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Henry implements Listener {
 
@@ -49,7 +52,13 @@ public class Henry implements Listener {
             if (lore != null && lore.get(1).contains(Utils.lore("Size "))) {
                 Component lineOne = lore.get(1);
                 String line = PlainTextComponentSerializer.plainText().serialize(lineOne);
-                String newLine = line.replace("Size ", "").replace(" cm", "");
+                //String newLine = line.replace("Size ", "").replace(" cm", "");
+                Pattern pattern = Pattern.compile("\\d+");
+                Matcher matcher = pattern.matcher(line);
+                String newLine = null;
+                while (matcher.find()) {
+                    newLine = matcher.group();
+                }
                 try {
                     goldAmount = Integer.parseInt(newLine);
                 } catch(Exception ignored){
