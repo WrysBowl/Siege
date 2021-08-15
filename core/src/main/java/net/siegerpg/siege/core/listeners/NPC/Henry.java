@@ -1,11 +1,6 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
 import de.tr7zw.nbtapi.NBTItem;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
-import net.kyori.adventure.text.TextReplacementConfig;
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
-import net.kyori.adventure.util.Buildable;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.fish.Fish;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
@@ -21,13 +16,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Henry implements Listener {
 
