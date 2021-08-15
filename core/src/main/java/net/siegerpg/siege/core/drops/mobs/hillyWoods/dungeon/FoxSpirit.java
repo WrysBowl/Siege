@@ -15,16 +15,14 @@ public class FoxSpirit extends MobDropTable {
     public FoxSpirit() {
         super("FoxSpirit", 600, 700, 400, 500, new Reward[]{
                 new Reward(new Shank(Utils.randRarity()).getUpdatedItem(false), 80.0),
-                new Reward(new CrackedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 80.0),
-                new Reward(new FlawedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 60.0),
-                new Reward(new SimpleRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 40.0),
-                new Reward(new FlawedLuckGem(Utils.randRarity()).getUpdatedItem(false), 60.0),
-                new Reward(new SimpleLuckGem(Utils.randRarity()).getUpdatedItem(false), 40.0),
-                new Reward(new CrackedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 80.0),
-                new Reward(new FlawedRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 60.0),
-                new Reward(new SimpleRegenerationGem(Utils.randRarity()).getUpdatedItem(false), 40.0),
-                new Reward(new FlawedLuckGem(Utils.randRarity()).getUpdatedItem(false), 60.0),
-                new Reward(new SimpleLuckGem(Utils.randRarity()).getUpdatedItem(false), 40.0),
+                new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 80.0),
+                new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 60.0),
+                new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 40.0),
+                new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 60.0),
+                new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 40.0),
+                new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 80.0),
+                new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 60.0),
+                new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 60.0),
                 new Reward(new FoxSpiritKey(0).getUpdatedItem(false), 10.0)
 
         });
