@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class Bandit extends MobDropTable {
     public Bandit() {
-        super("Bandit", 25, 28, 45, 48, new Reward[]{
+        super("Bandit", 35, 38, 55, 58, new Reward[]{
                 new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 25.0),
                 new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 25.0),
