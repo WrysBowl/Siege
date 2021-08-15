@@ -5,6 +5,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.TextReplacementConfig;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+import net.kyori.adventure.util.Buildable;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.fish.Fish;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
@@ -12,6 +13,7 @@ import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -48,24 +50,10 @@ public class Henry implements Listener {
         Fish fish = FishCore.getFish(fishName);
         int goldAmount;
         if (fish == null) {
-            List<Component> lore = hand.lore();
-            if (lore != null && lore.get(1).contains(Utils.lore("Size "))) {
-                Component lineOne = lore.get(1);
-                String line = PlainTextComponentSerializer.plainText().serialize(lineOne);
-                //String newLine = line.replace("Size ", "").replace(" cm", "");
-                Pattern pattern = Pattern.compile("\\d+");
-                Matcher matcher = pattern.matcher(line);
-                String newLine = null;
-                while (matcher.find()) {
-                    newLine = matcher.group();
-                }
-                try {
-                    goldAmount = Integer.parseInt(newLine);
-                } catch(Exception ignored){
-                    player.sendMessage(Utils.parse("<red>This is not a fish!"));
-                    return;
-                }
-
+            List<String> lore = hand.getItemMeta().getLore();
+            if (lore != null && lore.get(0) != null && ChatColor.stripColor(lore.get(0)).contains("Size ")) {
+                String newLine = ChatColor.stripColor(lore.get(0).replace("Size ", "").replace(".0 cm", ""));
+                goldAmount = Integer.parseInt(newLine);
             } else {
                 player.sendMessage(Utils.parse("<red>This is not a fish!"));
                 return;
@@ -77,7 +65,7 @@ public class Henry implements Listener {
         VaultHook.econ.depositPlayer(player, goldAmount);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
-        player.sendMessage(Utils.parse("\n<green>You sold a <aqua>"+ goldAmount +" cm "+fish.name+" <yellow>for "+goldAmount+" coins!\n"));
+        player.sendMessage(Utils.parse("\n<green>You sold a <aqua>"+ goldAmount +" cm "+fishName+" <yellow>for "+goldAmount+" coins!\n"));
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
             public void run() {
                 Scoreboard.updateScoreboard(player);
