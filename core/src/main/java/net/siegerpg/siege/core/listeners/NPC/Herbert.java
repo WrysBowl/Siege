@@ -122,9 +122,9 @@ public class Herbert implements Listener {
 
             // Award value to qualifying items
             if (cItem != null) {
+                quantity = cItem.getItem().getAmount();
                 if (cItem instanceof CustomMaterial) {
                     quality = ((CustomMaterial)(cItem)).getTier();
-                    quantity = cItem.getItem().getAmount();
                     total += quantity * Math.pow(3, quality-1);
                 } else if (cItem instanceof StatGemType) {
                     if (cItem.getLevelRequirement() == null) {
@@ -132,7 +132,7 @@ public class Herbert implements Listener {
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += 25*levelReq;
+                    total += quantity*25*levelReq;
                 } else if (cItem instanceof CustomKey) {
                     if (cItem.getLevelRequirement() == null) {
                         total += 1;
@@ -147,7 +147,7 @@ public class Herbert implements Listener {
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += (int) ((levelReq * quality) / 5);
+                    total += (int)quantity * ((levelReq * quality) / 5);
                 }
             }
         }
