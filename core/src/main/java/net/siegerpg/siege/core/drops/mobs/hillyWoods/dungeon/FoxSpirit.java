@@ -13,7 +13,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class FoxSpirit extends MobDropTable {
     public FoxSpirit() {
-        super("FoxSpirit", 600, 700, 400, 500, new Reward[]{
+        super("FoxSpirit", 600, 700, 450, 550, new Reward[]{
                 new Reward(new Shank(Utils.randRarity()).getUpdatedItem(false), 80.0),
                 new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 80.0),
                 new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 60.0),
