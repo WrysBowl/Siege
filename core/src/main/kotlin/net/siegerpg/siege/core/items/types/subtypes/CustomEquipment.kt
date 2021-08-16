@@ -39,7 +39,7 @@ interface CustomEquipment : CustomItem {
         if (meta.hasLore()) meta.lore(mutableListOf())
 
         if (hideRarity || quality < 0) {
-            meta.lore("<r><yellow>Rarity <gray>???%")
+            meta.lore("<r><yellow>Rarity <gray>1-100%")
         } else {
             meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${quality}%")
         }
@@ -52,8 +52,12 @@ interface CustomEquipment : CustomItem {
             val realStats = CustomItemUtils.getStats(this, addGem = false, addRarity = true)
             baseStats.keys.forEach {
                 if (realStats[it]!! < 0.0) {
-                    meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
-                } else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}") // TODO: Make special items work with rarity multiplier
+                    if (hideRarity || quality < 0) meta.lore("<r><red>${baseStats[it]?.times(0.5)}-${baseStats[it]?.times(1.5)} <gray>${it.stylizedName}")
+                    else meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
+                } else {
+                    if (hideRarity || quality < 0) meta.lore("<r><green>+${baseStats[it]?.times(0.5)}-${baseStats[it]?.times(1.5)} <gray>${it.stylizedName}")
+                    else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+                } // TODO: Make special items work with rarity multiplier
             }
         }
         meta.lore(" ")
