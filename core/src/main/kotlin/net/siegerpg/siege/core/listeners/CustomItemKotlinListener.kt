@@ -86,7 +86,7 @@ class CustomItemKotlinListener : Listener, Runnable {
     @EventHandler
     @Suppress("unused")
     fun onBowUse(e: PlayerInteractEvent) {
-        if (e.action == Action.RIGHT_CLICK_AIR) {
+        if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK || e is PlayerInteractEntityEvent) {
             val player: Player = e.player
             if (player.inventory.itemInMainHand.type == Material.BOW || player.inventory.itemInMainHand.type == Material.CROSSBOW) {
                 val item: ItemStack? = player.inventory.getItem(9)
