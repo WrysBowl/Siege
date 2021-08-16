@@ -11,6 +11,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerRespawnEvent
+import org.bukkit.event.player.PlayerTeleportEvent
 import org.bukkit.persistence.PersistentDataType
 import java.io.File
 
@@ -49,7 +50,21 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
                     e.respawnLocation = dungeon.getSpawn()
-                    Bukkit.getLogger().info("Respawn location: ${e.respawnLocation}")
+                    return
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    fun playerTeleport(e: PlayerTeleportEvent) {
+        val player: Player = e.player
+        if (e.from.world.name != "Dungeons") return
+        if (e.to.world.name != "Hub") return
+        for (dungeonType in DungeonType.dungeonTypes) {
+            for (dungeon in dungeonType.dungeons) {
+                if (dungeon.listPlayers().contains(player)) {
+                    dungeon.delete()
                     return
                 }
             }
