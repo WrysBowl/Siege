@@ -28,8 +28,8 @@ class SteelString() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Bone {
-            val newItem = Bone(0)
+        fun tier(tier: Int): SteelString {
+            val newItem = SteelString(0)
             newItem.tier = tier
             return newItem
         }
