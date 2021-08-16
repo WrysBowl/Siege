@@ -84,16 +84,7 @@ public class PlayerJoinListener implements Listener {
 
 
         if (!player.hasPlayedBefore()) {
-            player.getInventory().clear();
-            player.getInventory().addItem(new BeginnerTwig(50).getUpdatedItem(false));
-            player.getInventory().addItem(new BeginnerClub(50).getUpdatedItem(false));
-            player.getInventory().addItem(new BeginnerScrapyardBow(50).getUpdatedItem(false));
-            player.getInventory().addItem(new BeginnerLivingTwig(50).getUpdatedItem(false));
-            ItemStack food = new Drumstick(0).getUpdatedItem(false);
-            food.setAmount(10);
-            player.getInventory().addItem(food);
-            VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
-            VaultHook.econ.depositPlayer(player, 400.0);
+            newPlayerReward(player);
             joinMessage = Utils.tacc("&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
         }
         event.setJoinMessage(joinMessage);
@@ -115,13 +106,25 @@ public class PlayerJoinListener implements Listener {
             }
             Skills.INSTANCE.setSkills(player, "A_1_3");
         }*/
+    }
 
+    public void updateInventory(Player player) {
         for (int i = 0; i< player.getInventory().getSize(); i++) {
             CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
             if (CusItem == null) continue;
             if (CusItem instanceof StatGemType) continue;
-
             player.getInventory().setItem(i, CusItem.getUpdatedItem(false));
         }
+    }
+    public void newPlayerReward(Player player) {
+        player.getInventory().clear();
+        player.getInventory().addItem(new BeginnerTwig(50).getUpdatedItem(false));
+        player.getInventory().addItem(new BeginnerClub(50).getUpdatedItem(false));
+        player.getInventory().addItem(new BeginnerScrapyardBow(50).getUpdatedItem(false));
+        player.getInventory().addItem(new BeginnerLivingTwig(50).getUpdatedItem(false));
+        ItemStack food = new Drumstick(0).getUpdatedItem(false).asQuantity(10);
+        player.getInventory().addItem(food);
+        VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
+        VaultHook.econ.depositPlayer(player, 400.0);
     }
 }
