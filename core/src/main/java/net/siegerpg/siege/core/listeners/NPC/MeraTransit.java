@@ -42,18 +42,18 @@ public class MeraTransit implements Listener {
             int farmCost = 200;
             int villageCost = 300;
             int caveCost = 200;
-            if (player.hasPermission("siege.mera50")) {
-                 farmCost *= 0.5;
-                 villageCost *= 0.5;
-                 caveCost *= 0.5;
+            if (player.hasPermission("siege.mera100")) {
+                farmCost = 0;
+                villageCost = 0;
+                caveCost = 0;
             } else if (player.hasPermission("siege.mera75")) {
                 farmCost *= 0.25;
                 villageCost *= 0.25;
                 caveCost *= 0.25;
-            } else if (player.hasPermission("siege.mera100")) {
-                farmCost = 0;
-                villageCost = 0;
-                caveCost = 0;
+            } else if (player.hasPermission("siege.mera50")) {
+                farmCost *= 0.5;
+                villageCost *= 0.5;
+                caveCost *= 0.5;
             }
 
             if (hillyWoods == null) return;

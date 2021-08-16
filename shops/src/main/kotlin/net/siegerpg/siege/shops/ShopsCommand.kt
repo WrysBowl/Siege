@@ -12,9 +12,7 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane
 import com.github.stefvanschie.inventoryframework.pane.Pane
 import com.github.stefvanschie.inventoryframework.pane.StaticPane
 import net.kyori.adventure.text.minimessage.MiniMessage
-import net.siegerpg.siege.core.utils.Scoreboard
-import net.siegerpg.siege.core.utils.VaultHook
-import net.siegerpg.siege.core.utils.lore
+import net.siegerpg.siege.core.utils.*
 import org.bukkit.Material
 import org.bukkit.command.CommandSender
 import org.bukkit.command.ConsoleCommandSender
