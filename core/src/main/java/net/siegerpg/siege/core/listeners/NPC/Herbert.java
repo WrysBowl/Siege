@@ -18,6 +18,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -56,6 +57,25 @@ public class Herbert implements Listener {
                 passed = true;
             }
 
+        }
+    }
+
+    @EventHandler
+    public void onLeave(PlayerQuitEvent e) {
+        Player player = e.getPlayer();
+        if (player.equals(person)) {
+            ArrayList<ItemStack> Items = new ArrayList<ItemStack>(pullItems());
+            for (ItemStack item : Items) {
+                if (person.getInventory().firstEmpty() == -1) {
+                    person.getWorld().dropItemNaturally(person.getLocation(), item);
+                }
+                else {
+                    person.getInventory().addItem(item);
+                }
+            }
+            clearItems();
+            refresh();
+            inUse = false;
         }
     }
 
@@ -108,6 +128,8 @@ public class Herbert implements Listener {
         Scoreboard.updateScoreboard(person); // Update scoreboard
         scanner(e); // Scan again to display zero gold
     }
+
+
 
     // Calculate item values in the scrapper
     private void scanner(InventoryClickEvent e) {
