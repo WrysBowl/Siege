@@ -16,11 +16,9 @@ class HillySpirit : Shop() {
         },
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
-        },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            HillyWoodsSpirit(0), -1, hashMapOf(
+            HillyWoodsSpirit(0), 150000, hashMapOf(
                 RockSpiritKey(0) to 1,
                 SlimeSpiritKey(0) to 1,
                 MagmaSpiritKey(0) to 1,
@@ -34,8 +32,6 @@ class HillySpirit : Shop() {
             HillyWoodsSpirit(0).getUpdatedItem(false)
         },
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
-        },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
