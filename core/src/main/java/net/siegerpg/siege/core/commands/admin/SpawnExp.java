@@ -15,7 +15,7 @@ public class SpawnExp implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (player.hasPermission("SiegeCore.spawnExp")) {
-                if(args.length < 0)
+                if(args.length > 0)
                 {
                     if(args.length == 2)
                     {
