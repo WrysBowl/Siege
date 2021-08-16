@@ -17,7 +17,7 @@ class SimpleStrengthGem() : StatGemType(
 
     },
     statType = StatTypes.STRENGTH,
-    statAmount = 6.0
+    statAmount = 10.0
 ) {
 
     constructor(quality: Int): this() {

@@ -17,7 +17,7 @@ class PolishedStrengthGem() : StatGemType(
 
     },
     statType = StatTypes.STRENGTH,
-    statAmount = 7.0
+    statAmount = 13.0
 ) {
 
     constructor(quality: Int): this() {

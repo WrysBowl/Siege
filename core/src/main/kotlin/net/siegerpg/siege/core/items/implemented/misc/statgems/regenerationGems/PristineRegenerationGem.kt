@@ -17,7 +17,7 @@ class PristineRegenerationGem() : StatGemType(
 
     },
     statType = StatTypes.REGENERATION,
-    statAmount = 8.0
+    statAmount = 17.0
 ) {
 
     constructor(quality: Int): this() {
