@@ -113,7 +113,7 @@ object Levels {
             exp -= calculateRequiredExperience(lvl)
             lvl = (lvl + 1).toShort()
             if (!player.isOnline) continue
-            if (levelRewards.size < lvl) continue //ensure that the level reward is set in the array list
+            if (levelRewards.size < lvl+1) continue //ensure that the level reward is set in the array list
 
             val reward: LevelReward = levelRewards[lvl.toInt()-2]
             reward.giveReward(player, lvl)
