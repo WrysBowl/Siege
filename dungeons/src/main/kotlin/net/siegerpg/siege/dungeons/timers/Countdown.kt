@@ -3,6 +3,8 @@ package net.siegerpg.siege.dungeons.timers
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.dungeons.Dungeon
+import net.siegerpg.siege.dungeons.DungeonPlugin
+import net.siegerpg.siege.dungeons.DungeonRejoin
 import org.bukkit.World
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
@@ -17,6 +19,7 @@ class Countdown {
                 if (countdown <= 0 || !player.isOnline || player.world != world) { //countdown is over or player left the server, just two example reasons to exit
                     this.cancel() //cancel the repeating task
                     dungeon.delete() //deletes dungeon after countdown
+                    DungeonRejoin(DungeonPlugin.plugin()).dungeonDeaths[player] = 0
                     return  //exit the method
                 }
                 player.sendTitle(Utils.tacc("&6Teleporting to Hub..."), Utils.tacc("&e$countdown seconds"), 0, 30, 0)

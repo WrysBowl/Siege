@@ -65,6 +65,7 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
                     } else {
                         dungeon.delete()
                         e.respawnLocation = Core.plugin().server.getWorld("Hub")?.spawnLocation!!
+                        dungeonDeaths[player] = 0
                     }
                     return
                 }
@@ -81,6 +82,7 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
                     dungeon.delete()
+                    dungeonDeaths[player] = 0
                     return
                 }
             }
@@ -95,6 +97,7 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) { //This condition is not passing
                     dungeon.delete()
+                    dungeonDeaths[player] = 0
                     return
                 }
             }

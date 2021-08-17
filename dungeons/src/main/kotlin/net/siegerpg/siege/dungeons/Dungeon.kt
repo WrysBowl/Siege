@@ -112,6 +112,7 @@ class Dungeon {
     fun delete() {
         for (currentPlayer in currentPlayers) {
             removePlayer(currentPlayer)
+            DungeonRejoin(DungeonPlugin.plugin()).dungeonDeaths[currentPlayer as Player] = 0
         }
         DungeonPlugin.plugin().dungeonConfig.getDungeons(type).set(index.toString(), null)
         type.dungeons.remove(this)
