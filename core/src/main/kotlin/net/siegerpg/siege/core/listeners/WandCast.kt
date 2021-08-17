@@ -61,8 +61,10 @@ class WandCast : BukkitRunnable {
         }
         for (e in loc.getNearbyLivingEntities(damageRadius)) {
             if (e.equals(player)) continue
+            if (e is Player && e.world.name != "PVP") continue
             for (en in loc.getNearbyLivingEntities(damageRadius)) {
-                if (en.equals(player)) continue
+                if (e.equals(player)) continue
+                if (en is Player && en.world.name != "PVP") continue
                 en.damage(dmg, player)
             }
             this.cancel()
