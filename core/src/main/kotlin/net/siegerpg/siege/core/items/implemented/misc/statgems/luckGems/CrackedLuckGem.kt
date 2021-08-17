@@ -17,7 +17,7 @@ class CrackedLuckGem() : StatGemType(
 
     },
     statType = StatTypes.LUCK,
-    statAmount = 5.0
+    statAmount = 6.0
 ) {
 
     constructor(quality: Int): this() {
