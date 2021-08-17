@@ -18,7 +18,7 @@ class Reward13 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Magma \u272a\u272a x16"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 2000)
+        GoldExpListener.giveGold(player, 2000)
         Utils.giveItem(player, Magma.tier(2).getUpdatedItem(false).asQuantity(16))
 
     }

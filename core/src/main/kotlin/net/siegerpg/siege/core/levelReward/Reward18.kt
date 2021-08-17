@@ -19,7 +19,7 @@ class Reward18 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Pebble \u272a\u272a x24"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 3000)
+        GoldExpListener.giveGold(player, 3000)
         Utils.giveItem(player, Stick.tier(2).getUpdatedItem(false).asQuantity(18))
         Utils.giveItem(player, Pebble.tier(2).getUpdatedItem(false).asQuantity(24))
     }

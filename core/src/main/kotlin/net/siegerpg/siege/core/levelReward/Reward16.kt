@@ -18,7 +18,7 @@ class Reward16 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Leather \u272a x32"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 3000)
+        GoldExpListener.giveGold(player, 3000)
         Utils.giveItem(player, Leather.tier(1).getUpdatedItem(false).asQuantity(32))
     }
 }

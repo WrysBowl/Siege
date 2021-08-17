@@ -18,7 +18,7 @@ class Reward6 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Wool \u272a\u272a x8"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 500)
+        GoldExpListener.giveGold(player, 500)
         Utils.giveItem(player, Wool.tier(2).getUpdatedItem(false).asQuantity(8))
 
     }

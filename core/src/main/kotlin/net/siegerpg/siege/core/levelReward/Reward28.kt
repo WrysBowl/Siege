@@ -18,7 +18,7 @@ class Reward28 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Chain \u272a x128"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 3500)
+        GoldExpListener.giveGold(player, 3500)
         Utils.giveItem(player, Chain.tier(1).getUpdatedItem(false).asQuantity(64))
         Utils.giveItem(player, Chain.tier(1).getUpdatedItem(false).asQuantity(64))
     }

@@ -18,7 +18,7 @@ class Reward8 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Stick \u272a\u272a x12"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 1000)
+        GoldExpListener.giveGold(player, 1000)
         Utils.giveItem(player, Stick.tier(2).getUpdatedItem(false).asQuantity(12))
 
     }

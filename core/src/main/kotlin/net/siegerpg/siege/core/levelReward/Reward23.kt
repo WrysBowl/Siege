@@ -18,7 +18,7 @@ class Reward23 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Bone \u272a\u272a x24"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 3500)
+        GoldExpListener.giveGold(player, 3500)
         Utils.giveItem(player, Bone.tier(2).getUpdatedItem(false).asQuantity(24))
     }
 }

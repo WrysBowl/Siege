@@ -17,7 +17,7 @@ class Reward20 : LevelReward {
         player.sendMessage(Utils.lore("<red>+ 2 HP"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 3500)
+        GoldExpListener.giveGold(player, 3500)
         Utils.giveItem(player, StrongDagger(Utils.randRarity()).getUpdatedItem(false))
     }
 }

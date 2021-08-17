@@ -24,7 +24,7 @@ class Reward9 : LevelReward {
         player.sendMessage(Utils.lore("<red>+ 1 Player Vault"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 7500)
+        GoldExpListener.giveGold(player, 7500)
         val highestPV = Utils.getHighestPV(player)
         VaultHook.perms.playerAdd("global", player, "cosmicvaults.amount."+(highestPV+1))
     }

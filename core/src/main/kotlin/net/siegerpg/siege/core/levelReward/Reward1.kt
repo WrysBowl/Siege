@@ -20,7 +20,7 @@ class Reward1 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Stick \u272a x12"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 100)
+        GoldExpListener.giveGold(player, 100)
         Utils.giveItem(player, Twig(Utils.randRarity()).getUpdatedItem(false))
         Utils.giveItem(player, Stick.tier(1).getUpdatedItem(false).asQuantity(12))
     }

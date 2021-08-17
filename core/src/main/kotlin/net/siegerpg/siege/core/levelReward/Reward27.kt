@@ -18,7 +18,7 @@ class Reward27 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Metal Scrap \u272a x128"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 3500)
+        GoldExpListener.giveGold(player, 3500)
         Utils.giveItem(player, MetalScrap.tier(1).getUpdatedItem(false).asQuantity(64))
         Utils.giveItem(player, MetalScrap.tier(1).getUpdatedItem(false).asQuantity(64))
 

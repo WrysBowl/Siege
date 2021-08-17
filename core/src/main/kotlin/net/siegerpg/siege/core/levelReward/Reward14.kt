@@ -16,6 +16,6 @@ class Reward14 : LevelReward {
         player.sendMessage(Utils.lore("<red>+ 2 HP"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 8000)
+        GoldExpListener.giveGold(player, 8000)
     }
 }

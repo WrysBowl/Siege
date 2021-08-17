@@ -18,7 +18,7 @@ class Reward3 : LevelReward {
         player.sendMessage(Utils.lore("<green>+ Slime \u272a\u272a x8"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener().giveGold(player, 250)
+        GoldExpListener.giveGold(player, 250)
         Utils.giveItem(player, Slime.tier(2).getUpdatedItem(false).asQuantity(8))
     }
 }
