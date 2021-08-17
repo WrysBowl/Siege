@@ -93,6 +93,7 @@ class ShopsCommand: BaseCommand() {
                            player.inventory.removeItem(stack)
                        }
                        player.inventory.addItem(it.generate())
+                       player.updateInventory()
                    }
                    event.isRightClick -> {
                        if (it.buyPrice < 0) return@setAction
@@ -105,6 +106,7 @@ class ShopsCommand: BaseCommand() {
 
                        player.inventory.addItem(it.generate())
                        VaultHook.econ.withdrawPlayer(player, it.buyPrice.toDouble())
+                       player.updateInventory()
                        Scoreboard.updateScoreboard(event.whoClicked as Player)
                    }
 

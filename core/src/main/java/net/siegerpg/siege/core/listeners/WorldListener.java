@@ -12,9 +12,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
@@ -47,6 +49,17 @@ public class WorldListener implements Listener, Runnable {
                 e.setCancelled(true);
             }
         }
+    }
+
+    @EventHandler
+    public void closeInv(InventoryCloseEvent e) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Player p = (Player) e.getPlayer();
+                p.updateInventory();
+            }
+        }.runTaskLater(Core.plugin(), 1);
     }
 
     @EventHandler
