@@ -36,7 +36,7 @@ public class GoldExpListener implements Listener{
         giveGold(player, goldAmount);
     }
 
-    public void giveGold(Player player, int goldAmount) {
+    public static void giveGold(Player player, int goldAmount) {
         net.siegerpg.siege.core.utils.VaultHook.econ.depositPlayer(player, goldAmount);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));

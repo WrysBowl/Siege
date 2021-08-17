@@ -119,7 +119,6 @@ public class PlayerJoinListener implements Listener {
         for (int i = 0; i< player.getInventory().getSize(); i++) {
             CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
             if (CusItem == null) continue;
-            if (CusItem instanceof StatGemType) continue;
             player.getInventory().setItem(i, CusItem.getUpdatedItem(false));
         }
     }
