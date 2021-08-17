@@ -12,10 +12,14 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.event.player.PlayerTeleportEvent
+import org.bukkit.inventory.ItemStack
 import org.bukkit.persistence.PersistentDataType
 import java.io.File
 
 class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(plugin.dataFolder, "portal.yml"))) {
+
+    var dungeonDeaths: HashMap<Player, Int> = hashMapOf()
+
     @EventHandler
     fun mobDeath(e: EntityDeathEvent) {
         val boss = e.entity
@@ -49,7 +53,16 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
         for (dungeonType in DungeonType.dungeonTypes) {
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
-                    e.respawnLocation = dungeon.getSpawn()
+                    val count: Int = dungeonDeaths[player] ?: 0
+
+                    dungeonDeaths[player] = count + 1
+                    if (dungeonDeaths[player]!! < 3) {
+                        player.sendMessage(Utils.lore("<yellow>You have ${3 - dungeonDeaths[player]!!} lives left!"))
+                        player.sendTitle(Utils.tacc(""), Utils.tacc("<yellow>${3 - dungeonDeaths[player]!!} lives left"), 0, 30, 0)
+                        e.respawnLocation = dungeon.getSpawn()
+                    } else {
+                        dungeon.delete()
+                    }
                     return
                 }
             }
