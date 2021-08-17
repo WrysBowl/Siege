@@ -17,7 +17,7 @@ class CrackedHealthGem() : StatGemType(
 
     },
     statType = StatTypes.HEALTH,
-    statAmount = 7.0
+    statAmount = 10.0
 ) {
 
     constructor(quality: Int): this() {

@@ -17,7 +17,7 @@ class RawHealthGem() : StatGemType(
 
     },
     statType = StatTypes.HEALTH,
-    statAmount = 5.0
+    statAmount = 8.0
 ) {
 
     constructor(quality: Int): this() {
