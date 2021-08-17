@@ -19,10 +19,10 @@ public class HelpfulTips implements Listener {
     public static ArrayList<String> tips = new ArrayList<>(){
         {
             add(Utils.tacc("&eKill chickens, pigs, birds, sheep, and cows for food."));
-            add(Utils.tacc("&eClick on Symone to craft stronger weapons and armor pieces."));
-            add(Utils.tacc("&eClick on Symone and then either block drops or mob drops to upgrade your materials."));
+            add(Utils.tacc("&eClick on weapon/armor vendors to craft stronger weapons and armor pieces."));
+            add(Utils.tacc("&eClick on material vendors and then either block drops or mob drops to upgrade your materials."));
             add(Utils.tacc("&eClick and drag stat gems onto a weapon or armor piece to apply it."));
-            add(Utils.tacc("&eKillable mobs are often found hiding in corners and along walls."));
+            add(Utils.tacc("&eMobs are often found hiding in corners and along walls."));
             add(Utils.tacc("&eArmor stats do not apply if you are not the appropriate level."));
             add(Utils.tacc("&eYou can still wear armor if you are not the appropriate level."));
             add(Utils.tacc("&eWeapon stats will not apply if you are not the appropriate level."));
@@ -35,15 +35,18 @@ public class HelpfulTips implements Listener {
             add(Utils.tacc("&eHerbert does not like tier 1 materials, so you need to convert them to at least tier 2 for him to buy them."));
             add(Utils.tacc("&eUse the /hub command to teleport to the hub."));
             add(Utils.tacc("&eUse the /spawn command to teleport to spawn 3 seconds after sending it."));
-            add(Utils.tacc("&eThe server is a WIP!"));
+            add(Utils.tacc("&eUse Hilly Woods keys to join Hilly Woods dungeons!"));
             add(Utils.tacc("&eLooking to partner with us? DM Wrys#8935 to speak with the owner."));
             add(Utils.tacc("&eMost plants can be broken for a chance to get gold or experience."));
             add(Utils.tacc("&eWarrior rank gives you 9 more slots per player vault."));
+            add(Utils.tacc("&eGladiator rank gives you 18 more slots per player vault."));
+            add(Utils.tacc("&eHero rank gives you 27 more slots per player vault."));
+            add(Utils.tacc("&eRank gives you extra daily rewards!."));
+
             add(Utils.tacc("&eYou will gain a player vault for every 10 levels you rank up."));
-            add(Utils.tacc("&eDavy Jones spawns in Hilly Woods every 2 hours. He drops insane loot!"));
             add(Utils.tacc("&eAn Ogre can spawn at night, he's terrifying."));
             add(Utils.tacc("&eGoblins and Wild Foxes can steal your money and run away with it."));
-            add(Utils.tacc("&eZombified Diggers can duplicate when it hits you."));
+            add(Utils.tacc("&eZombified Diggers can duplicate when they hit you."));
             add(Utils.tacc("&eA sweeping effect is played every time a player damages a mob."));
             add(Utils.tacc("&eYou can put your money in the bank at the village on the opposite corner of the map."));
             add(Utils.tacc("&eYou can buy food from the butcher at the village on the opposite corner of the map."));
