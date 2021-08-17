@@ -35,6 +35,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
 public class DeathListener implements Listener, Runnable {
@@ -119,62 +120,8 @@ public class DeathListener implements Listener, Runnable {
             put("Twilight_Cat", new Twilight_Cat());
             put("Warrior_Dwarf", new Warrior_Dwarf());
             put("Wind_Rabbit", new Wind_Rabbit());
-
         }
     };
-
-    public void resetHashMap() {
-        mobDropTableHashMap = new HashMap<>(){
-            {
-                //BOSSES
-                put("Ogre", new Ogre());
-
-                //DUNGEON BOSSES
-                put("RockSpirit", new RockSpirit());
-                put("SlimeSpirit", new SlimeSpirit());
-                put("MagmaSpirit", new MagmaSpirit());
-                put("Werewolf", new Werewolf());
-                put("FoxSpirit", new FoxSpirit());
-                put("BullSpirit", new BullSpirit());
-                put("Davy_Jones", new Davy_Jones());
-                put("Necromancer", new Necromancer());
-                put("Lich", new Lich());
-                put("BroodMother", new Broodmother());
-
-                //HOSTILES
-                put("AngryBull", new AngryBull());
-                put("Bandit", new Bandit());
-                put("BanditArcher", new BanditArcher());
-                put("Blob", new Blob());
-                put("BloodSucker", new BloodSucker());
-                put("ForestSpider", new ForestSpider());
-                put("Goblin", new Goblin());
-                put("GoldenGoblin", new GoldenGoblin());
-                put("InfectedDigger", new InfectedDigger());
-                put("Orc", new Orc());
-                put("RockRat", new RockRat());
-                put("ScorchingBlob", new ScorchingBlob());
-                put("Sea_Warrior", new Sea_Warrior());
-                put("ZombifiedDigger", new ZombifiedDigger());
-
-                //NEUTRALS
-                put("GiantHornet", new GiantHornet());
-                put("WildFox", new WildFox());
-                put("ChestMimic1", new ChestMimic1());
-                put("ChestMimic2", new ChestMimic2());
-                put("ChestMimic3", new ChestMimic3());
-                put("ChestMimic4", new ChestMimic4());
-
-                //PASSIVES
-                put("FeatheredMeat", new FeatheredMeat());
-                put("MooMoo", new MooMoo());
-                put("Pigeon", new Pigeon());
-                put("Porky", new Porky());
-                put("Sushi", new Sushi());
-                put("Wooly", new Wooly());
-            }
-        };
-    }
 
     @EventHandler
     public void damageDrops(EntityDamageByEntityEvent e) {
@@ -202,15 +149,13 @@ public class DeathListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException {
+    public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 
         if (e.getEntity().getKiller() == null) return;
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
 
-        resetHashMap();
-
         String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
-        MobDropTable mobDrop = mobDropTableHashMap.get(mm);
+        MobDropTable mobDrop = mobDropTableHashMap.get(mm).getClass().getDeclaredConstructor().newInstance();
 
         if (mobDrop instanceof ChestMimic1) {
             if (Utils.randTest(25.0)) {
