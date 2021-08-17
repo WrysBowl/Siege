@@ -3,18 +3,31 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.neutral;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.food.Sugar;
+import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Wool;
 
 public class ChestMimic4 extends MobDropTable {
     public ChestMimic4() {
         super("ChestMimic4", 150, 300, 150, 300, new Reward[]{
-                new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 25.0),
-                new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 5.0),
-                new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 50.0),
-                new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
-                new Reward(new Drumstick(100).getUpdatedItem(false), 5.0),
-                new Reward(new Drumstick(50).getUpdatedItem(false), 25.0)
+                new Reward(PlantMatter.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
+                new Reward(Seed.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
+
+                new Reward(PlantMatter.Companion.tier(2).getUpdatedItem(false).asQuantity(12), 15.0),
+                new Reward(Seed.Companion.tier(2).getUpdatedItem(false).asQuantity(12), 15.0),
+
+                new Reward(PlantMatter.Companion.tier(3).getUpdatedItem(false).asQuantity(8), 15.0),
+                new Reward(Seed.Companion.tier(3).getUpdatedItem(false).asQuantity(8), 15.0),
+
+                new Reward(new Sugar(100).getUpdatedItem(false).asQuantity(4), 50.0),
+                new Reward(new Sugar(100).getUpdatedItem(false).asQuantity(4), 50.0),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false).asQuantity(3), 30.0),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false).asQuantity(3), 30.0)
+
         });
     }
 }
