@@ -208,6 +208,7 @@ public class DeathListener implements Listener, Runnable {
         Player player = e.getEntity().getPlayer();
         if (player != null) {
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
+            player.spigot().respawn();
             int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
             double percBal = (Math.floor(bal / 10000.0) / 100);
@@ -226,6 +227,11 @@ public class DeathListener implements Listener, Runnable {
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e) {
         Player player = e.getPlayer();
+        World world = player.getWorld();
+        if (world.getName().equals("Hilly_Woods")) {
+            e.setRespawnLocation(world.getSpawnLocation());
+            return;
+        }
         /*if (player.getWorld() == Core.plugin().getServer().getWorld("Dungeons")) { //Checks if player died in the dungeon world
             World HUB = Core.plugin().getServer().getWorld("Hub");
             assert HUB != null;
