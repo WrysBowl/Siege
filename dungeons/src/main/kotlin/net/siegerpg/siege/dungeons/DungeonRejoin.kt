@@ -1,5 +1,6 @@
 package net.siegerpg.siege.dungeons
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.ConfigurationBase
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.dungeons.timers.Countdown
@@ -10,6 +11,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.event.player.PlayerTeleportEvent
 import org.bukkit.inventory.ItemStack
@@ -58,10 +60,11 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
                     dungeonDeaths[player] = count + 1
                     if (dungeonDeaths[player]!! < 3) {
                         player.sendMessage(Utils.lore("<yellow>You have ${3 - dungeonDeaths[player]!!} lives left!"))
-                        player.sendTitle(Utils.tacc(""), Utils.tacc("<yellow>${3 - dungeonDeaths[player]!!} lives left"), 0, 30, 0)
+                        player.sendTitle(Utils.tacc(""), Utils.tacc("<yellow>${3 - dungeonDeaths[player]!!} lives left"), 0, 100, 0)
                         e.respawnLocation = dungeon.getSpawn()
                     } else {
                         dungeon.delete()
+                        e.respawnLocation = Core.plugin().server.getWorld("Hub")?.spawnLocation!!
                     }
                     return
                 }
@@ -85,12 +88,13 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
     }
 
     @EventHandler
-    fun playerJoin(e: PlayerJoinEvent) {
+    fun playerQuit(e: PlayerQuitEvent) {
         val player: Player = e.player
+        if (player.world.name == "Dungeons")
         for (dungeonType in DungeonType.dungeonTypes) {
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) { //This condition is not passing
-                    Countdown().dungeonJoin(player, dungeon, 5)
+                    dungeon.delete()
                     return
                 }
             }
