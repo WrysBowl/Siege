@@ -43,13 +43,13 @@ public class Henry implements Listener {
             List<String> lore = hand.getItemMeta().getLore();
             if (lore != null && lore.get(0) != null && ChatColor.stripColor(lore.get(0)).contains("Size ")) {
                 String newLine = ChatColor.stripColor(lore.get(0).replace("Size ", "").replace(".0 cm", ""));
-                goldAmount = Integer.parseInt(newLine);
+                goldAmount = Integer.parseInt(newLine)*3;
             } else {
                 player.sendMessage(Utils.parse("<red>This is not a fish!"));
                 return;
             }
         } else {
-            goldAmount = (int)fish.actualSize;
+            goldAmount = (int)fish.actualSize*3;
         }
 
         VaultHook.econ.depositPlayer(player, goldAmount);
