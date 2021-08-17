@@ -21,7 +21,9 @@ object Levels {
         Reward11(), Reward12(), Reward13(), Reward14(), Reward15(),
         Reward16(), Reward17(), Reward18(), Reward19(), Reward20(),
         Reward21(), Reward22(), Reward23(), Reward24(), Reward25(),
-        Reward26(), Reward27(), Reward28(), Reward29()
+        Reward26(), Reward27(), Reward28(), Reward29(), Reward30(),
+        Reward31(), Reward32(), Reward33(), Reward34(), Reward35(),
+        Reward36(), Reward37(), Reward38(), Reward39()
     )
 
     fun calculateRequiredExperience(level: Short): Int {
