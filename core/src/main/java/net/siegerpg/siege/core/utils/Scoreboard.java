@@ -10,7 +10,7 @@ import org.bukkit.scoreboard.Objective;
 public class Scoreboard {
     public static void updateScoreboard(Player p) {
         org.bukkit.scoreboard.Scoreboard b = Bukkit.getScoreboardManager().getNewScoreboard();
-        Objective o = b.registerNewObjective("Title", "", Utils.tacc("&6SiegeRPG DEMO &7(" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getMaxPlayers() + ")"));
+        Objective o = b.registerNewObjective("Title", "", Utils.tacc("&6SiegeRPG &7(" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getMaxPlayers() + ")"));
         o.setDisplaySlot(DisplaySlot.SIDEBAR);
         int level;
         if (LevelEXPStorage.playerLevel.get(p) != null) { level = LevelEXPStorage.playerLevel.get(p); }
@@ -25,7 +25,7 @@ public class Scoreboard {
         double division = exp/reqExp;
         double levelPercent = Utils.round(division, 3);
         String gold = String.format("%,d", (int) VaultHook.econ.getBalance(p));
-        o.getScore("").setScore(15);
+        o.getScore(" ").setScore(15);
 
         o.getScore(Utils.tacc("&6&lWorld &r&7") + p.getWorld().getName()).setScore(14);
 
@@ -38,7 +38,7 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&7\u2560 &7Gold &e" + WebstoreUtils.goldMultiplier) + "x").setScore(7);
         o.getScore("   ").setScore(6);
         o.getScore(Utils.tacc("&7SiegeRPG.minehut.gg")).setScore(5);
-        o.getScore(Utils.tacc("&6/discord &7Community!")).setScore(4);
+        o.getScore(Utils.tacc("&7play.SiegeRPG.net")).setScore(4);
         p.setScoreboard(b);
 
     }
