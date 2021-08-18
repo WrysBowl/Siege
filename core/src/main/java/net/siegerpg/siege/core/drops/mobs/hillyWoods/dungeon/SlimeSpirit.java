@@ -14,7 +14,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class SlimeSpirit extends MobDropTable {
     public SlimeSpirit() {
-        super("SlimeSpirit", 1000, 1100, 500, 600, new Reward[]{
+        super("SlimeSpirit", 800, 900, 500, 600, new Reward[]{
                 new Reward(Slime.Companion.tier(1).getUpdatedItem(false).asQuantity(6), 25.0),
                 new Reward(Slime.Companion.tier(1).getUpdatedItem(false).asQuantity(6), 25.0),
                 new Reward(Slime.Companion.tier(1).getUpdatedItem(false).asQuantity(6), 25.0),

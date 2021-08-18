@@ -15,7 +15,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class Lich extends MobDropTable {
     public Lich() {
-        super("Lich", 5500, 6000, 2800, 3000, new Reward[]{
+        super("Lich", 4200, 4300, 2800, 3000, new Reward[]{
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false).asQuantity(32), 40.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 50.0),
                 new Reward(Bone.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 20.0),

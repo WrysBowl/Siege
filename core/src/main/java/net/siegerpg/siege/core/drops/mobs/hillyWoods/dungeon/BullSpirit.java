@@ -12,7 +12,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class BullSpirit extends MobDropTable {
     public BullSpirit() {
-        super("BullSpirit", 3600, 3700, 1850, 1900, new Reward[]{
+        super("BullSpirit", 2600, 2700, 1850, 1900, new Reward[]{
                 new Reward(Leather.Companion.tier(3).getUpdatedItem(false), 40.0),
                 new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 50.0),
                 new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 50.0),
