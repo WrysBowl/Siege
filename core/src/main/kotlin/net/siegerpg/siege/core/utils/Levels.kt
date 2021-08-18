@@ -3,12 +3,14 @@
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.database.DatabaseManager
 import net.siegerpg.siege.core.levelReward.LevelReward
 import net.siegerpg.siege.core.levelReward.*
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
+import org.bukkit.scheduler.BukkitRunnable
 import java.sql.ResultSet
 import java.util.*
 import kotlin.math.pow
@@ -118,7 +120,11 @@ object Levels {
             if (levelRewards.size < lvl+1) continue //ensure that the level reward is set in the array list
 
             val reward: LevelReward = levelRewards[lvl.toInt()-2]
-            reward.giveReward(player, lvl)
+            object : BukkitRunnable() {
+                override fun run() {
+                    reward.giveReward(player, lvl)
+                }
+            }.runTask(Core.plugin())
         }
         return Pair(lvl, exp)
     }
