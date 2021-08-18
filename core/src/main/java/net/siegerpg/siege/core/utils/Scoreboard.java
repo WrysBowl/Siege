@@ -37,8 +37,7 @@ public class Scoreboard {
         o.getScore(Utils.tacc("&7\u2560 &7EXP &d" + WebstoreUtils.expMultiplier) + "x").setScore(8);
         o.getScore(Utils.tacc("&7\u2560 &7Gold &e" + WebstoreUtils.goldMultiplier) + "x").setScore(7);
         o.getScore("   ").setScore(6);
-        o.getScore(Utils.tacc("&7SiegeRPG.minehut.gg")).setScore(5);
-        o.getScore(Utils.tacc("&7play.SiegeRPG.net")).setScore(4);
+        o.getScore(Utils.tacc("&7play.SiegeRPG.net")).setScore(5);
         p.setScoreboard(b);
 
     }
