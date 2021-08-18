@@ -29,6 +29,11 @@ interface CustomEquipment : CustomItem {
         this.serialize()
     }
 
+    fun removeStatGem() {
+        this.statGem = null
+        this.serialize()
+    }
+
     override fun updateMeta(hideRarity: Boolean): ItemStack {
         val meta = item.itemMeta
 
