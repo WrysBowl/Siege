@@ -34,6 +34,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -208,7 +209,6 @@ public class DeathListener implements Listener, Runnable {
         Player player = e.getEntity().getPlayer();
         if (player != null) {
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
-            player.spigot().respawn();
             int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
             double percBal = (Math.floor(bal / 10000.0) / 100);
@@ -219,8 +219,16 @@ public class DeathListener implements Listener, Runnable {
             if (newBal < 0) newBal = 0;
             VaultHook.econ.withdrawPlayer(player, bal);
             VaultHook.econ.depositPlayer(player, newBal);
-            player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + (bal - newBal) + " gold &7has been lost"), 1, 60, 1);
-            Scoreboard.updateScoreboard(player);
+            int goldLost = bal-newBal;
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    player.spigot().respawn();
+                    player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + goldLost + " gold &7has been lost"), 1, 60, 1);
+                    Scoreboard.updateScoreboard(player);
+                }
+            }.runTaskLater(Core.plugin(), 1);
+
         }
     }
 
