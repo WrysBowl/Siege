@@ -18,7 +18,7 @@ class HealthyBowba() : CustomBow(
     description = listOf("Bones fused with metal in the shape of a bow"),
     levelRequirement = 38,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 40.0, luck = 13.0, health = 25.0),
+    baseStats = CustomItemUtils.statMap(strength = 40.0, luck = 10.0, health = 50.0),
     recipeList = recipes {
         recipe {
             shaped = true

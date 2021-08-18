@@ -18,7 +18,7 @@ class ToughBowba() : CustomBow(
     description = listOf("Bones fused with metal in the shape of a bow"),
     levelRequirement = 38,
     material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 50.0, luck = 13.0, toughness = 60.0),
+    baseStats = CustomItemUtils.statMap(strength = 45.0, luck = 13.0, toughness = 80.0),
     recipeList = recipes {
         recipe {
             shaped = true
