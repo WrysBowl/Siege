@@ -23,7 +23,7 @@ class RegenerationTask : Runnable {
                     else player.health = addedHealth
                 else player.health = player.maxHealth
             }
-        }, 100, 100)
+        }, 80, 80)
     }
 
     override fun run() {

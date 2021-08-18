@@ -28,8 +28,8 @@ class CharredStick() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Chain {
-            val newItem = Chain(0)
+        fun tier(tier: Int): CharredStick {
+            val newItem = CharredStick(0)
             newItem.tier = tier
             return newItem
         }

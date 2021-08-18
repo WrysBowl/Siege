@@ -74,6 +74,11 @@ abstract class CustomMaterial(
         return item
     }
 
+    fun asQuantity(amount: Int) : CustomMaterial {
+        this.item.amount = amount
+        return this
+    }
+
     override fun equals(other: Any?): Boolean {
         if (other == null) return false
         Bukkit.getLogger().info("Other is not null")

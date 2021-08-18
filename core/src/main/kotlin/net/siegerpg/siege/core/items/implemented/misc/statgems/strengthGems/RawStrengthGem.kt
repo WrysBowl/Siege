@@ -17,7 +17,7 @@ class RawStrengthGem() : StatGemType(
 
     },
     statType = StatTypes.STRENGTH,
-    statAmount = 3.0
+    statAmount = 4.0
 ) {
 
     constructor(quality: Int): this() {

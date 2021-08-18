@@ -9,39 +9,21 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 
 public class ChestMimic1 extends MobDropTable {
     public ChestMimic1() {
-        super("ChestMimic1", 150, 300, 150, 300, new Reward[]{
-                new Reward(Pebble.Companion.tier(2).getUpdatedItem(false), 50.0),
-                new Reward(Pebble.Companion.tier(3).getUpdatedItem(false), 25.0),
-                new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 50.0),
-                new Reward(Magma.Companion.tier(3).getUpdatedItem(false), 25.0),
-                new Reward(Stick.Companion.tier(2).getUpdatedItem(false), 50.0),
-                new Reward(Stick.Companion.tier(3).getUpdatedItem(false), 25.0),
-                new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false), 25.0),
-                new Reward(RefinedMetal.Companion.tier(1).getUpdatedItem(false), 25.0),
-                new Reward(new Sugar(100).getUpdatedItem(false), 50.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 10.0),
+        super("ChestMimic1", 150, 200, 450, 500, new Reward[]{
+                new Reward(Slime.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
+                new Reward(Stick.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
+                new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
 
-                new Reward(Pebble.Companion.tier(2).getUpdatedItem(false), 50.0),
-                new Reward(Pebble.Companion.tier(3).getUpdatedItem(false), 25.0),
-                new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 50.0),
-                new Reward(Magma.Companion.tier(3).getUpdatedItem(false), 25.0),
-                new Reward(Stick.Companion.tier(2).getUpdatedItem(false), 50.0),
-                new Reward(Stick.Companion.tier(3).getUpdatedItem(false), 25.0),
-                new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false), 25.0),
-                new Reward(RefinedMetal.Companion.tier(1).getUpdatedItem(false), 25.0),
-                new Reward(new Sugar(100).getUpdatedItem(false), 50.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 10.0),
+                new Reward(Slime.Companion.tier(2).getUpdatedItem(false).asQuantity(12), 15.0),
+                new Reward(Stick.Companion.tier(2).getUpdatedItem(false).asQuantity(12), 15.0),
+                new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(12), 15.0),
 
-                new Reward(Pebble.Companion.tier(2).getUpdatedItem(false), 50.0),
-                new Reward(Pebble.Companion.tier(3).getUpdatedItem(false), 25.0),
-                new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 50.0),
-                new Reward(Magma.Companion.tier(3).getUpdatedItem(false), 25.0),
-                new Reward(Stick.Companion.tier(2).getUpdatedItem(false), 50.0),
-                new Reward(Stick.Companion.tier(3).getUpdatedItem(false), 25.0),
-                new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false), 25.0),
-                new Reward(RefinedMetal.Companion.tier(1).getUpdatedItem(false), 25.0),
-                new Reward(new Sugar(100).getUpdatedItem(false), 50.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 10.0)
+                new Reward(Slime.Companion.tier(3).getUpdatedItem(false).asQuantity(8), 15.0),
+                new Reward(Stick.Companion.tier(3).getUpdatedItem(false).asQuantity(8), 15.0),
+                new Reward(Vine.Companion.tier(3).getUpdatedItem(false).asQuantity(8), 15.0),
+
+                new Reward(new Sugar(100).getUpdatedItem(false).asQuantity(4), 50.0),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false).asQuantity(3), 30.0)
         });
     }
 }

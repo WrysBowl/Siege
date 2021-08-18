@@ -28,8 +28,8 @@ class IceShard() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Chain {
-            val newItem = Chain(0)
+        fun tier(tier: Int): IceShard {
+            val newItem = IceShard(0)
             newItem.tier = tier
             return newItem
         }

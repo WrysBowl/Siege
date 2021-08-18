@@ -28,8 +28,8 @@ class MagicVine() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Chain {
-            val newItem = Chain(0)
+        fun tier(tier: Int): MagicVine {
+            val newItem = MagicVine(0)
             newItem.tier = tier
             return newItem
         }

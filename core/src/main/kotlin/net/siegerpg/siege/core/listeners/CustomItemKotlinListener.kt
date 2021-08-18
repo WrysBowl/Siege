@@ -86,7 +86,7 @@ class CustomItemKotlinListener : Listener, Runnable {
     @EventHandler
     @Suppress("unused")
     fun onBowUse(e: PlayerInteractEvent) {
-        if (e.action == Action.RIGHT_CLICK_AIR) {
+        if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK || e is PlayerInteractEntityEvent) {
             val player: Player = e.player
             if (player.inventory.itemInMainHand.type == Material.BOW || player.inventory.itemInMainHand.type == Material.CROSSBOW) {
                 val item: ItemStack? = player.inventory.getItem(9)
@@ -192,7 +192,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                     }
                     return
                 }
-                maxDamage = 6.0
+                maxDamage = 7.25
                 actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
             } else if (item is CustomWand) {
                 maxDamage = damage
@@ -200,6 +200,7 @@ class CustomItemKotlinListener : Listener, Runnable {
             //If the item is an axe/sword and the damage cause is melee attack then set correct damage
             if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK){
                 actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
+                if ((damage/maxDamage) > 1) maxDamage = 0.8 //less maxDamage = more damage (damage/maxDamage)
             }
             if (damage > 1.5 && maxDamage <= 1) {
                 maxDamage = damage

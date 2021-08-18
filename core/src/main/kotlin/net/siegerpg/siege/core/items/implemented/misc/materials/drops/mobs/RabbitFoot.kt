@@ -28,8 +28,8 @@ class RabbitFoot() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Bone {
-            val newItem = Bone(0)
+        fun tier(tier: Int): RabbitFoot {
+            val newItem = RabbitFoot(0)
             newItem.tier = tier
             return newItem
         }

@@ -15,7 +15,7 @@ class ChainChestplate() : CustomChestplate(
     description = listOf("Cut resistant"),
     levelRequirement = 30,
     material = Material.CHAINMAIL_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 70.0, toughness = 30.0),
+    baseStats = CustomItemUtils.statMap(health = 80.0, toughness = 60.0),
 ) {
 
     constructor(quality: Int): this() {

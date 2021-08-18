@@ -28,8 +28,8 @@ class FairyWing() : CustomMaterial(
     }
 
     companion object {
-        fun tier(tier: Int): Bone {
-            val newItem = Bone(0)
+        fun tier(tier: Int): FairyWing {
+            val newItem = FairyWing(0)
             newItem.tier = tier
             return newItem
         }

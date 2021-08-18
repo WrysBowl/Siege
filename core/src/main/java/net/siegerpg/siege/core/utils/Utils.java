@@ -152,4 +152,13 @@ public class Utils {
         item.setItemMeta(meta);
         return item;
     }
+
+    public static void giveItem(Player player, ItemStack item) {
+        final boolean fullInv = player.getInventory().firstEmpty() == -1;
+        if (!fullInv) {
+            player.getInventory().addItem(item);
+        } else {
+            player.getWorld().dropItemNaturally(player.getLocation(), item);
+        }
+    }
 }

@@ -17,7 +17,7 @@ class SimpleToughGem() : StatGemType(
 
     },
     statType = StatTypes.TOUGHNESS,
-    statAmount = 25.0
+    statAmount = 30.0
 ) {
 
     constructor(quality: Int): this() {

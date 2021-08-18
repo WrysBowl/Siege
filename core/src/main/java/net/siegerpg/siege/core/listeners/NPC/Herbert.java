@@ -18,6 +18,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -56,6 +57,25 @@ public class Herbert implements Listener {
                 passed = true;
             }
 
+        }
+    }
+
+    @EventHandler
+    public void onLeave(PlayerQuitEvent e) {
+        Player player = e.getPlayer();
+        if (player.equals(person)) {
+            ArrayList<ItemStack> Items = new ArrayList<ItemStack>(pullItems());
+            for (ItemStack item : Items) {
+                if (person.getInventory().firstEmpty() == -1) {
+                    person.getWorld().dropItemNaturally(person.getLocation(), item);
+                }
+                else {
+                    person.getInventory().addItem(item);
+                }
+            }
+            clearItems();
+            refresh();
+            inUse = false;
         }
     }
 
@@ -109,6 +129,8 @@ public class Herbert implements Listener {
         scanner(e); // Scan again to display zero gold
     }
 
+
+
     // Calculate item values in the scrapper
     private void scanner(InventoryClickEvent e) {
         ArrayList<ItemStack> scraps = new ArrayList<ItemStack>(pullItems()); // Get scrapper items
@@ -122,9 +144,9 @@ public class Herbert implements Listener {
 
             // Award value to qualifying items
             if (cItem != null) {
+                quantity = cItem.getItem().getAmount();
                 if (cItem instanceof CustomMaterial) {
                     quality = ((CustomMaterial)(cItem)).getTier();
-                    quantity = cItem.getItem().getAmount();
                     total += quantity * Math.pow(3, quality-1);
                 } else if (cItem instanceof StatGemType) {
                     if (cItem.getLevelRequirement() == null) {
@@ -132,7 +154,7 @@ public class Herbert implements Listener {
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += 25*levelReq;
+                    total += quantity*25*levelReq;
                 } else if (cItem instanceof CustomKey) {
                     if (cItem.getLevelRequirement() == null) {
                         total += 1;
@@ -147,7 +169,7 @@ public class Herbert implements Listener {
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += (int) ((levelReq * quality) / 5);
+                    total += (int)quantity * ((levelReq * quality) / 5);
                 }
             }
         }

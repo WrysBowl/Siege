@@ -17,7 +17,7 @@ class PolishedRegenerationGem() : StatGemType(
 
     },
     statType = StatTypes.REGENERATION,
-    statAmount = 7.0
+    statAmount = 14.0
 ) {
 
     constructor(quality: Int): this() {

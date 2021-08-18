@@ -17,7 +17,7 @@ class PristineLuckGem() : StatGemType(
 
     },
     statType = StatTypes.LUCK,
-    statAmount = 8.0
+    statAmount = 18.0
 ) {
 
     constructor(quality: Int): this() {

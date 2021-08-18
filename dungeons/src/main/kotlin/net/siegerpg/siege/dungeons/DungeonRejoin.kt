@@ -1,5 +1,6 @@
 package net.siegerpg.siege.dungeons
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.ConfigurationBase
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.dungeons.timers.Countdown
@@ -10,11 +11,17 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.event.player.PlayerRespawnEvent
+import org.bukkit.event.player.PlayerTeleportEvent
+import org.bukkit.inventory.ItemStack
 import org.bukkit.persistence.PersistentDataType
 import java.io.File
 
 class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(plugin.dataFolder, "portal.yml"))) {
+
+    var dungeonDeaths: HashMap<Player, Int> = hashMapOf()
+
     @EventHandler
     fun mobDeath(e: EntityDeathEvent) {
         val boss = e.entity
@@ -48,8 +55,18 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
         for (dungeonType in DungeonType.dungeonTypes) {
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
-                    e.respawnLocation = dungeon.getSpawn()
-                    Bukkit.getLogger().info("Respawn location: ${e.respawnLocation}")
+                    val count: Int = dungeonDeaths[player] ?: 0
+
+                    dungeonDeaths[player] = count + 1
+                    if (dungeonDeaths[player]!! < 3) {
+                        player.sendMessage(Utils.lore("<yellow>You have ${3 - dungeonDeaths[player]!!} lives left!"))
+                        player.sendTitle(Utils.tacc(""), Utils.tacc("<yellow>${3 - dungeonDeaths[player]!!} lives left"), 0, 100, 0)
+                        e.respawnLocation = dungeon.getSpawn()
+                    } else {
+                        dungeon.delete()
+                        e.respawnLocation = Core.plugin().server.getWorld("Hub")?.spawnLocation!!
+                        dungeonDeaths[player] = 0
+                    }
                     return
                 }
             }
@@ -57,12 +74,30 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
     }
 
     @EventHandler
-    fun playerJoin(e: PlayerJoinEvent) {
+    fun playerTeleport(e: PlayerTeleportEvent) {
         val player: Player = e.player
+        if (e.from.world.name != "Dungeons") return
+        if (e.to.world.name != "Hub") return
+        for (dungeonType in DungeonType.dungeonTypes) {
+            for (dungeon in dungeonType.dungeons) {
+                if (dungeon.listPlayers().contains(player)) {
+                    dungeon.delete()
+                    dungeonDeaths[player] = 0
+                    return
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    fun playerQuit(e: PlayerQuitEvent) {
+        val player: Player = e.player
+        if (player.world.name == "Dungeons")
         for (dungeonType in DungeonType.dungeonTypes) {
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) { //This condition is not passing
-                    Countdown().dungeonJoin(player, dungeon, 5)
+                    dungeon.delete()
+                    dungeonDeaths[player] = 0
                     return
                 }
             }

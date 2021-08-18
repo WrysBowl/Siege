@@ -16,7 +16,7 @@ class StrongRecurveBow() : CustomBow(
     customModelData = 120007,
     description = listOf("Slight curves at the ends", "give the bow a bit more power"),
     levelRequirement = 30,
-    material = Material.CROSSBOW,
+    material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 41.0, luck = 4.0),
     recipeList = recipes {
         recipe{

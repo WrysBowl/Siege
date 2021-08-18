@@ -16,9 +16,9 @@ import net.siegerpg.siege.core.items.implemented.misc.wands.EarthernWand;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.EarthernHammer;
 import net.siegerpg.siege.core.utils.Utils;
 
-public class BroodMother extends MobDropTable {
-    public BroodMother() {
-        super("BroodMother", 1200, 1300, 1200, 1300, new Reward[]{
+public class Broodmother extends MobDropTable {
+    public Broodmother() {
+        super("Broodmother", 6500, 7000, 3500, 3600, new Reward[]{
                 new Reward(Vine.Companion.tier(3).getUpdatedItem(false), 50.0),
                 new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 40.0),
                 new Reward(Seed.Companion.tier(1).getUpdatedItem(false).asQuantity(32), 30.0),

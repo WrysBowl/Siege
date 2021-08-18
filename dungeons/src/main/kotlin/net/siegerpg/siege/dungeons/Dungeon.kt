@@ -100,8 +100,8 @@ class Dungeon {
             if (dungeon.contains("players"))
                 dungeon.getStringList("players").remove(player.uniqueId.toString())
         }
-        if (player.isOnline) Core.plugin().server.getWorld("Hub")
-            ?.let { (player as Player).teleport(it.spawnLocation) }
+        if (player.isOnline)
+            Core.plugin().server.getWorld("Hub")?.let { (player as Player).teleport(it.spawnLocation) }
         DungeonPlugin.plugin().dungeonConfig.save()
 
     }
@@ -112,6 +112,7 @@ class Dungeon {
     fun delete() {
         for (currentPlayer in currentPlayers) {
             removePlayer(currentPlayer)
+            DungeonRejoin(DungeonPlugin.plugin()).dungeonDeaths[currentPlayer as Player] = 0
         }
         DungeonPlugin.plugin().dungeonConfig.getDungeons(type).set(index.toString(), null)
         type.dungeons.remove(this)

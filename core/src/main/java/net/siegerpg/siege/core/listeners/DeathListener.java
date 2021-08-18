@@ -11,6 +11,12 @@ import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.neutral.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.passive.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.bosses.Skeletal_General;
+import net.siegerpg.siege.core.drops.mobs.twilight.bosses.Unicorn;
+import net.siegerpg.siege.core.drops.mobs.twilight.hostile.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.neutral.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.passive.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.passive.Bat;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
@@ -29,6 +35,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
 public class DeathListener implements Listener, Runnable {
@@ -37,6 +44,8 @@ public class DeathListener implements Listener, Runnable {
         {
             //BOSSES
             put("Ogre", new Ogre());
+
+            put("Unicorn", new Unicorn());
 
             //DUNGEON BOSSES
             put("RockSpirit", new RockSpirit());
@@ -48,7 +57,7 @@ public class DeathListener implements Listener, Runnable {
             put("Davy_Jones", new Davy_Jones());
             put("Necromancer", new Necromancer());
             put("Lich", new Lich());
-            put("BroodMother", new BroodMother());
+            put("Broodmother", new Broodmother());
 
             //HOSTILES
             put("AngryBull", new AngryBull());
@@ -66,6 +75,22 @@ public class DeathListener implements Listener, Runnable {
             put("Sea_Warrior", new Sea_Warrior());
             put("ZombifiedDigger", new ZombifiedDigger());
 
+            put("Corrupted_Skeleton", new Corrupted_Skeleton());
+            put("Dark_Elf", new Dark_Elf());
+            put("Dark_Fairy", new Dark_Fairy());
+            put("Digger_Overseer", new Digger_Overseer());
+            put("Fairy_Outlaw", new Fairy_Outlaw());
+            put("Freezing_Skeletal_Warrior", new Freezing_Skeletal_Warrior());
+            put("Greater_Spider", new Greater_Spider());
+            put("Leaf_Monster", new Leaf_Monster());
+            put("Moss_Lurker", new Moss_Lurker());
+            put("Nightmare", new Nightmare());
+            put("Shroomlight_Monster", new Shroomlight_Monster());
+            put("Skeletal_Archer", new Skeletal_Archer());
+            put("Skeletal_General", new Skeletal_General());
+            put("Skeletal_Warrior", new Skeletal_Warrior());
+            put("Stone_Monster", new Stone_Monster());
+
             //NEUTRALS
             put("GiantHornet", new GiantHornet());
             put("WildFox", new WildFox());
@@ -74,6 +99,11 @@ public class DeathListener implements Listener, Runnable {
             put("ChestMimic3", new ChestMimic3());
             put("ChestMimic4", new ChestMimic4());
 
+            put("Archer_Elf", new Archer_Elf());
+            put("Warrior_Elf", new Warrior_Elf());
+            put("Twilight_Wolf", new Twilight_Wolf());
+
+
             //PASSIVES
             put("FeatheredMeat", new FeatheredMeat());
             put("MooMoo", new MooMoo());
@@ -81,61 +111,17 @@ public class DeathListener implements Listener, Runnable {
             put("Porky", new Porky());
             put("Sushi", new Sushi());
             put("Wooly", new Wooly());
+
+            put("Bat", new Bat());
+            put("Crow", new Crow());
+            put("Crystal_Rat", new Crystal_Rat());
+            put("Crystal_Turtle", new Crystal_Turtle());
+            put("Polar_Bear", new Polar_Bear());
+            put("Twilight_Cat", new Twilight_Cat());
+            put("Warrior_Dwarf", new Warrior_Dwarf());
+            put("Wind_Rabbit", new Wind_Rabbit());
         }
     };
-
-    public void resetHashMap() {
-        mobDropTableHashMap = new HashMap<>(){
-            {
-                //BOSSES
-                put("Ogre", new Ogre());
-
-                //DUNGEON BOSSES
-                put("RockSpirit", new RockSpirit());
-                put("SlimeSpirit", new SlimeSpirit());
-                put("MagmaSpirit", new MagmaSpirit());
-                put("Werewolf", new Werewolf());
-                put("FoxSpirit", new FoxSpirit());
-                put("BullSpirit", new BullSpirit());
-                put("Davy_Jones", new Davy_Jones());
-                put("Necromancer", new Necromancer());
-                put("Lich", new Lich());
-                put("BroodMother", new BroodMother());
-
-                //HOSTILES
-                put("AngryBull", new AngryBull());
-                put("Bandit", new Bandit());
-                put("BanditArcher", new BanditArcher());
-                put("Blob", new Blob());
-                put("BloodSucker", new BloodSucker());
-                put("ForestSpider", new ForestSpider());
-                put("Goblin", new Goblin());
-                put("GoldenGoblin", new GoldenGoblin());
-                put("InfectedDigger", new InfectedDigger());
-                put("Orc", new Orc());
-                put("RockRat", new RockRat());
-                put("ScorchingBlob", new ScorchingBlob());
-                put("Sea_Warrior", new Sea_Warrior());
-                put("ZombifiedDigger", new ZombifiedDigger());
-
-                //NEUTRALS
-                put("GiantHornet", new GiantHornet());
-                put("WildFox", new WildFox());
-                put("ChestMimic1", new ChestMimic1());
-                put("ChestMimic2", new ChestMimic2());
-                put("ChestMimic3", new ChestMimic3());
-                put("ChestMimic4", new ChestMimic4());
-
-                //PASSIVES
-                put("FeatheredMeat", new FeatheredMeat());
-                put("MooMoo", new MooMoo());
-                put("Pigeon", new Pigeon());
-                put("Porky", new Porky());
-                put("Sushi", new Sushi());
-                put("Wooly", new Wooly());
-            }
-        };
-    }
 
     @EventHandler
     public void damageDrops(EntityDamageByEntityEvent e) {
@@ -163,15 +149,13 @@ public class DeathListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException {
+    public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 
         if (e.getEntity().getKiller() == null) return;
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
 
-        resetHashMap();
-
         String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
-        MobDropTable mobDrop = mobDropTableHashMap.get(mm);
+        MobDropTable mobDrop = mobDropTableHashMap.get(mm).getClass().getDeclaredConstructor().newInstance();
 
         if (mobDrop instanceof ChestMimic1) {
             if (Utils.randTest(25.0)) {
@@ -224,6 +208,7 @@ public class DeathListener implements Listener, Runnable {
         Player player = e.getEntity().getPlayer();
         if (player != null) {
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
+            player.spigot().respawn();
             int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
             double percBal = (Math.floor(bal / 10000.0) / 100);
@@ -242,6 +227,11 @@ public class DeathListener implements Listener, Runnable {
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e) {
         Player player = e.getPlayer();
+        World world = player.getWorld();
+        if (world.getName().equals("Hilly_Woods")) {
+            e.setRespawnLocation(world.getSpawnLocation());
+            return;
+        }
         /*if (player.getWorld() == Core.plugin().getServer().getWorld("Dungeons")) { //Checks if player died in the dungeon world
             World HUB = Core.plugin().getServer().getWorld("Hub");
             assert HUB != null;

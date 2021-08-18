@@ -16,7 +16,7 @@ class HealingRecurveBow() : CustomBow(
     customModelData = 120007,
     description = listOf("Slight curves at the ends", "give the bow a bit more power"),
     levelRequirement = 30,
-    material = Material.CROSSBOW,
+    material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 28.0, luck = 8.0, regeneration = 9.0),
     recipeList = recipes {
         recipe{

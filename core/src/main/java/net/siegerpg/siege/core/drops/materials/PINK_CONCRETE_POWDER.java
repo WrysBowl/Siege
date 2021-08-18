@@ -16,7 +16,6 @@ public class PINK_CONCRETE_POWDER extends BlockDropTable {
                 new Reward(FairyDust.Companion.tier(1).getUpdatedItem(false), 75.0),
                 new Reward(FairyDust.Companion.tier(2).getUpdatedItem(false), 7.5),
                 new Reward(CorruptCrystal.Companion.tier(1).getUpdatedItem(false), 5.0),
-
         });
     }
 }

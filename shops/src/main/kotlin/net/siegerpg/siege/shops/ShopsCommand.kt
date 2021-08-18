@@ -12,9 +12,7 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane
 import com.github.stefvanschie.inventoryframework.pane.Pane
 import com.github.stefvanschie.inventoryframework.pane.StaticPane
 import net.kyori.adventure.text.minimessage.MiniMessage
-import net.siegerpg.siege.core.utils.Scoreboard
-import net.siegerpg.siege.core.utils.VaultHook
-import net.siegerpg.siege.core.utils.lore
+import net.siegerpg.siege.core.utils.*
 import org.bukkit.Material
 import org.bukkit.command.CommandSender
 import org.bukkit.command.ConsoleCommandSender
@@ -70,6 +68,7 @@ class ShopsCommand: BaseCommand() {
            val meta = item.itemMeta
            if (meta.displayName != "") meta.lore("")
            if (it.craftable) {
+               meta.lore("<gray>Crafting Materials:")
                for (entry in it.recipe) {
                    meta.lore("<aqua>${entry.value}x ${entry.key.getUpdatedItem(false).itemMeta.displayName}")
                }
@@ -94,6 +93,7 @@ class ShopsCommand: BaseCommand() {
                            player.inventory.removeItem(stack)
                        }
                        player.inventory.addItem(it.generate())
+                       player.updateInventory()
                    }
                    event.isRightClick -> {
                        if (it.buyPrice < 0) return@setAction
@@ -106,6 +106,7 @@ class ShopsCommand: BaseCommand() {
 
                        player.inventory.addItem(it.generate())
                        VaultHook.econ.withdrawPlayer(player, it.buyPrice.toDouble())
+                       player.updateInventory()
                        Scoreboard.updateScoreboard(event.whoClicked as Player)
                    }
 

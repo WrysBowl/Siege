@@ -23,6 +23,7 @@ import net.siegerpg.siege.core.skills.Skill
 import net.siegerpg.siege.core.skills.SkillUtils
 import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import java.lang.reflect.Constructor
@@ -98,7 +99,7 @@ object CustomItemUtils {
         //val skills = SkillUtils.decode("A_1_4_7")
         //output += SkillUtils.getStats(skills)[statType]!!
         if (statType == StatTypes.MANA) {
-            output += Levels.getExpLevel(player).first * 2
+            output += LevelEXPStorage.playerLevel.get(player)?.times(2) ?: 0
         }
 
         getCustomItem(mainHand)?.let {
