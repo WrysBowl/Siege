@@ -161,7 +161,7 @@ public class Herbert implements Listener {
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += 50 * levelReq;
+                    total += 500 * levelReq;
                 } else {
                     quality = cItem.getQuality();
                     if (cItem.getLevelRequirement() == null) {
