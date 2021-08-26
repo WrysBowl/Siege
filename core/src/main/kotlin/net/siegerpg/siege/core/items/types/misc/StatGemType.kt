@@ -12,7 +12,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
-class StatGemType(
+abstract class StatGemType(
     override val name: String,
     override val customModelData: Int? = null,
     override val levelRequirement: Int? = null,

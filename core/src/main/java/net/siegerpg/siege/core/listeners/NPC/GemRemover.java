@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.listeners.NPC;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.statgems.StatGem;
 import net.siegerpg.siege.core.items.types.misc.StatGemType;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
@@ -21,6 +22,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -111,22 +113,10 @@ public class GemRemover implements Listener {
                 if (!((CustomEquipment) customItem).hasGem()) return;
                 //How to get the stat gem from the item? Check in the stat gem listener class
                 //StatGem(itemOnCursor.statType, itemOnCursor.statAmount
-                ItemStack gem = new StatGemType(
-                        customItem.getName(),
-                        customItem.getCustomModelData(),
-                        customItem.getLevelRequirement(),
-                        customItem.getDescription(),
-                        customItem.getMaterial(),
-                        -1,
-                        customItem.getItem(),
-                        customItem.getType(),
-                        null,
-                        Objects.requireNonNull(((CustomEquipment) customItem).getStatGem()).getType(),
-                        Objects.requireNonNull(((CustomEquipment) customItem).getStatGem()).getAmount()
-                ).getUpdatedItem(false);
+                StatGem gem = new StatGem(((CustomEquipment) customItem).getStatGem().getType(), ((CustomEquipment) customItem).getStatGem().getAmount());
                 ((CustomEquipment)customItem).removeStatGem();
                 customItem.updateMeta(false);
-                player.getInventory().addItem(gem);
+                player.getInventory().addItem();
                 player.sendMessage(Utils.tacc("&aSuccessfully removed gem!"));
 
             } else {

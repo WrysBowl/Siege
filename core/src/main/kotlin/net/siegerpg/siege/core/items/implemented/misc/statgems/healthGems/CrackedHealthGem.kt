@@ -13,9 +13,6 @@ class CrackedHealthGem() : StatGemType(
     description = listOf("Most of it's power has been leaked"),
     levelRequirement = 12,
     material = Material.POPPED_CHORUS_FRUIT,
-    recipeList = recipes {
-
-    },
     statType = StatTypes.HEALTH,
     statAmount = 10.0
 ) {
