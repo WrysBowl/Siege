@@ -33,6 +33,12 @@ interface CustomEquipment : CustomItem {
         this.statGem = null
         this.serialize()
     }
+    fun hasGem() : Boolean {
+        if (this.statGem == null) {
+            return false
+        }
+        return true
+    }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
         val meta = item.itemMeta
