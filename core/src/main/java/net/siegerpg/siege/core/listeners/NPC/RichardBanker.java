@@ -49,7 +49,7 @@ public class RichardBanker implements Listener {
         short bankLvl = PlayerBanking.bankLevels.get(player);
         int bankAmt = PlayerBanking.bankAmounts.get(player);
         int upgradeCost = bankLvl*2000;
-        int maxAmt = bankLvl*5000;
+        int maxAmt = bankLvl*7500;
         short upgradedLvl = (short) (bankLvl+1);
         double pocketBal = VaultHook.econ.getBalance(player);
 
