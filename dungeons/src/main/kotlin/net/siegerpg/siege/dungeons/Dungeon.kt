@@ -7,6 +7,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.OfflinePlayer
 import org.bukkit.configuration.ConfigurationSection
+import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
 import org.bukkit.persistence.PersistentDataType
 import java.util.*
@@ -117,7 +118,7 @@ class Dungeon {
         DungeonPlugin.plugin().dungeonConfig.getDungeons(type).set(index.toString(), null)
         type.dungeons.remove(this)
         DungeonPlugin.plugin().dungeonConfig.save()
-
+        type.bossInst?.remove()
     }
 
     /**
@@ -139,6 +140,7 @@ class Dungeon {
         val boss = MythicMobs.inst().apiHelper.spawnMythicMob(type.boss, bossLoc, type.dungeonLevel)
         boss.persistentDataContainer.set(Utils.namespacedKey("dungeon"), PersistentDataType.INTEGER, index)
         boss.persistentDataContainer.set(Utils.namespacedKey("dungeon_type"), PersistentDataType.STRING, type.name)
+        type.bossInst = boss
     }
 
 

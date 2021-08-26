@@ -4,6 +4,7 @@ import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormats
 import org.bukkit.*
 import org.bukkit.configuration.ConfigurationSection
+import org.bukkit.entity.Entity
 import org.bukkit.generator.ChunkGenerator
 import java.io.File
 import java.util.*
@@ -41,6 +42,7 @@ class DungeonType {
     lateinit var schematic: Clipboard
     var dungeonDistance: Short
     var dungeons = mutableListOf<Dungeon>()
+    var bossInst: Entity? = null
 
     companion object {
         var dungeonTypes = mutableListOf<DungeonType>()

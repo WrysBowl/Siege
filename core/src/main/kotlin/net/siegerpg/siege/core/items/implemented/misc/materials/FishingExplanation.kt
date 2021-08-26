@@ -22,7 +22,7 @@ class FishingExplanation() : CustomMaterial(
         Utils.tacc("&b5. Your objective is to keep up with the"),
         Utils.tacc("&bmoving green bar so that the progress in"),
         Utils.tacc("&bthe bar at the top of your screen can fill up"),
-        Utils.tacc(""),
+        "",
         Utils.tacc("&eGreen moving bar above your hot bar is the"),
         Utils.tacc("&ebtemper of the fish. It doesn't want you to"),
         Utils.tacc("&ecatch it, so it moves around a lot"),
