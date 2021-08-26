@@ -69,11 +69,11 @@ public class MeraTransit implements Listener {
                 player.getWorld().spawnParticle(
                         Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
                         player.getLocation(), 1);
-                new Location(hillyWoods, 288, 61, -122).getWorld().spawnParticle(
+                new Location(hillyWoods, 188, 61, -122).getWorld().spawnParticle(
                         Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-                        new Location(hillyWoods, 288, 61, -122), 1);
+                        new Location(hillyWoods, 188, 61, -122), 1);
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                    player.teleport(new Location(hillyWoods, 288, 61, -122, -95, 0));
+                    player.teleport(new Location(hillyWoods, 188, 61, -122, -95, 0));
                 }, 40L);
                 return;
             }
