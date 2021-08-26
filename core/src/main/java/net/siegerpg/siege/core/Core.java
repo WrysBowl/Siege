@@ -129,6 +129,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
         getServer().getPluginManager().registerEvents(new StatGemListener(), this);
+        getServer().getPluginManager().registerEvents(new GemRemover(), this);
         getServer().getPluginManager().registerEvents(new WorldListener(), this);
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
