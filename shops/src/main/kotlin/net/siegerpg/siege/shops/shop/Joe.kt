@@ -95,7 +95,7 @@ class Joe : Shop() {
         ShopItem(
             HealingStrawChestplate(-1), 700, hashMapOf(
                 Wheat.tier(3) to 10), true) {
-            HealingStrawHat(Utils.randRarity()).getUpdatedItem(false)
+            HealingStrawChestplate(Utils.randRarity()).getUpdatedItem(false)
         },
 
         //STRAW LEGGINGS
