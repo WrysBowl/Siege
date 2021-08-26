@@ -55,12 +55,12 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             player.sendTitle(Utils.tacc("&cKey required!"), Utils.tacc("&eMobs can drop keys"))
             return false
         }
-        removeKey(player, player.world.name)
         if (location.isSet("dungeon")) {
             val dungeonTypeName = location.getString("dungeon")
             val dungeonType = DungeonType.dungeonTypes.find { d -> dungeonTypeName == d.name } ?: return false
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
+                    removeKey(player, player.world.name)
                     player.teleport(dungeon.getSpawn())
                     /*getParties().forEach { party ->
                         if (party.leader == player)
@@ -75,6 +75,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                 }
             }
             val dungeon = dungeonType.nextAvailableDungeon()
+            removeKey(player, player.world.name)
             dungeon.addPlayer(player)
             /*
             Party.parties.forEach { party ->
