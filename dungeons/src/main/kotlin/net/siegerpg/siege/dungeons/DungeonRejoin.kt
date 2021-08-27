@@ -40,15 +40,6 @@ class DungeonRejoin(plugin: DungeonPlugin) : Listener, ConfigurationBase((File(p
             }
         }
     }
-    //Player join event (if player quits the server check if their name is in the dungeon configs and teleport them to their dungeon)
-    //Player teleport event (if player teleports outside the dungeon then delete it)
-    //**TO DO**
-    //(For Wrys)
-    //> 1. Upgrade server to 1.17 with all it's plugins
-    //> 2. Implement fishing baits into the fishing shop
-    //> 3. Work on checking if the player has disconnected while inside the dungeon, they get respawned at the dungeon spawn point when they rejoin (UNTESTED)
-    //> 4. Work on spreadsheet items
-    //> 5. Allow players to respawn in their dungeon (UNTESTED)
     @EventHandler
     fun playerRespawn(e: PlayerRespawnEvent) {
         val player: Player = e.player

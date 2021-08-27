@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.fish.Fish;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
 import net.siegerpg.siege.core.fishing.fish.implemented.BigBlueTuna;
+import net.siegerpg.siege.core.utils.Levels;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -87,10 +88,12 @@ public class CustomFishEvent {
 	
 	public void win() {
 		this.remove();
-		player.sendMessage(ChatColor.YELLOW + "YOU WON A: " + data.getFish().name);
+		Fish fish = data.getFish();
+		player.sendMessage(ChatColor.YELLOW + "YOU WON A: " + fish.name);
 		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(
-ChatColor.YELLOW + "You won a " + data.getFish().name));
-		player.getInventory().addItem(FishCore.getItem(data.getFish()));
+ChatColor.YELLOW + "You won a " + fish.name));
+		player.getInventory().addItem(FishCore.getItem(fish));
+		Levels.INSTANCE.addExp(player, (int) fish.actualSize);
 	}
 	public void loose() {
 		this.remove();
