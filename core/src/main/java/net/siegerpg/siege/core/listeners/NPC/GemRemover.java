@@ -4,6 +4,11 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.*;
 import net.siegerpg.siege.core.items.statgems.StatGem;
 import net.siegerpg.siege.core.items.types.misc.StatGemType;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
@@ -114,9 +119,83 @@ public class GemRemover implements Listener {
                 //How to get the stat gem from the item? Check in the stat gem listener class
                 //StatGem(itemOnCursor.statType, itemOnCursor.statAmount
                 StatGem gem = new StatGem(((CustomEquipment) customItem).getStatGem().getType(), ((CustomEquipment) customItem).getStatGem().getAmount());
+                ItemStack item = new ItemStack(Material.AIR);
+                switch(gem.getType()) {
+                    case HEALTH:
+                        if (gem.getAmount() == 8.0) {
+                            item = new RawHealthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 10.0) {
+                            item = new CrackedHealthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 12.0) {
+                            item = new FlawedHealthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 15.0) {
+                            item = new SimpleHealthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 18.0) {
+                            item = new PolishedHealthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 22.0) {
+                            item = new PristineHealthGem(0).getUpdatedItem(false);
+                        }
+                    case STRENGTH:
+                        if (gem.getAmount() == 4.0) {
+                            item = new RawStrengthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 6.0) {
+                            item = new CrackedStrengthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 8.0) {
+                            item = new FlawedStrengthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 11.0) {
+                            item = new SimpleStrengthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 14.0) {
+                            item = new PolishedStrengthGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 18.0) {
+                            item = new PristineStrengthGem(0).getUpdatedItem(false);
+                        }
+                    case LUCK:
+                        if (gem.getAmount() == 4.0) {
+                            item = new RawLuckGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 6.0) {
+                            item = new CrackedLuckGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 8.0) {
+                            item = new FlawedLuckGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 11.0) {
+                            item = new SimpleLuckGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 14.0) {
+                            item = new PolishedLuckGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 18.0) {
+                            item = new PristineLuckGem(0).getUpdatedItem(false);
+                        }
+                    case TOUGHNESS:
+                        if (gem.getAmount() == 10.0) {
+                            item = new RawToughGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 15.0) {
+                            item = new CrackedToughGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 20.0) {
+                            item = new FlawedToughGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 30.0) {
+                            item = new SimpleToughGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 40.0) {
+                            item = new PolishedToughGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 50.0) {
+                            item = new PristineToughGem(0).getUpdatedItem(false);
+                        }
+                    case REGENERATION:
+                        if (gem.getAmount() == 4.0) {
+                            item = new RawRegenerationGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 6.0) {
+                            item = new CrackedRegenerationGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 8.0) {
+                            item = new FlawedRegenerationGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 11.0) {
+                            item = new SimpleRegenerationGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 14.0) {
+                            item = new PolishedRegenerationGem(0).getUpdatedItem(false);
+                        } else if (gem.getAmount() == 18.0) {
+                            item = new PristineRegenerationGem(0).getUpdatedItem(false);
+                        }
+                }
+
                 ((CustomEquipment)customItem).removeStatGem();
                 customItem.updateMeta(false);
-                player.getInventory().addItem();
+                player.getInventory().addItem(item);
                 player.sendMessage(Utils.tacc("&aSuccessfully removed gem!"));
 
             } else {
