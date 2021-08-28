@@ -89,17 +89,11 @@ public class CustomFishEvent {
 	public void win() {
 		this.remove();
 		Fish fish = data.getFish();
-		player.sendMessage(ChatColor.YELLOW + "YOU WON A: " + fish.name);
-		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(
-ChatColor.YELLOW + "You won a " + fish.name));
 		player.getInventory().addItem(FishCore.getItem(fish));
 		Levels.INSTANCE.addExp(player, (int) fish.actualSize);
 	}
-	public void loose() {
+	public void lose() {
 		this.remove();
-		player.sendMessage(ChatColor.YELLOW + "YOU LOST");
-		player.sendActionBar(ChatColor.YELLOW + "YOU LOST");
-		
 	}
 	
 	

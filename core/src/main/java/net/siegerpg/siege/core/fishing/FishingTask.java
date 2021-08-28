@@ -8,7 +8,6 @@ import net.siegerpg.siege.core.utils.cache.PlayerData;
 import net.siegerpg.siege.core.fishing.data.Cursor;
 import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.events.CustomFishEvent;
-import net.siegerpg.siege.core.fishing.fish.FishCore;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -68,7 +67,7 @@ public class FishingTask extends BukkitRunnable {
         
 
         if(data.getScore() <= 0) {
-        	e.loose();
+        	e.lose();
         	runningTasks.remove(e.getPlayer().getUniqueId());
         	this.cancel();
 			PlayerData.hasActionBar.put(e.getPlayer(), false);
@@ -122,7 +121,7 @@ public class FishingTask extends BukkitRunnable {
                 	
                     if(cursor.loc == i)
                     {
-                        label = label+ChatColor.BLUE + "\u25AE";
+                        label = label+ChatColor.BLUE + Utils.tacc("&l\u25AA");
                         
                         data.setScore(data.getScore()+0.1);
 
@@ -131,7 +130,7 @@ public class FishingTask extends BukkitRunnable {
                     }
                     else
                     {
-                        label = label+ChatColor.GREEN + "\u25AE";
+                        label = label+ChatColor.GREEN + Utils.tacc("&l\u25AA");
                         skip=true;
                         break;
                     }
@@ -142,13 +141,13 @@ public class FishingTask extends BukkitRunnable {
 			}
             if(cursor.loc == i)
             {
-                label = label+ChatColor.DARK_BLUE + "\u25AE";
+                label = label+ChatColor.DARK_BLUE + Utils.tacc("&l\u25AA");
                 
                 data.setScore(data.getScore()-0.1);
 
 			}
             else
-				label = label + ChatColor.RED + "\u25AE";
+				label = label + ChatColor.RED + Utils.tacc("&l\u25AA");
         }
 		if(data.getProcessToAdvance()>=1) {
 			if(data.getLoc() + fish.length == e.getTotalLength() && data.getDirection()){ data.setDirection(!data.getDirection());}
