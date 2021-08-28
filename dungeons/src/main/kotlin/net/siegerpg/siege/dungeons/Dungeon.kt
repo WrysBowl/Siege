@@ -21,7 +21,7 @@ class Dungeon {
     var type: DungeonType
     var index: Int
     var currentPlayers = HashSet<OfflinePlayer>()
-    private lateinit var bossInst: Entity
+    private var bossInst: Entity? = null
 
 
     /**
@@ -120,7 +120,7 @@ class Dungeon {
         DungeonPlugin.plugin().dungeonConfig.getDungeons(type).set(index.toString(), null)
         type.dungeons.remove(this)
         DungeonPlugin.plugin().dungeonConfig.save()
-        bossInst.remove()
+        bossInst?.remove()
     }
 
     /**
