@@ -21,6 +21,8 @@ class Dungeon {
     var type: DungeonType
     var index: Int
     var currentPlayers = HashSet<OfflinePlayer>()
+    private lateinit var bossInst: Entity
+
 
     /**
      * @return Returns the list of players in the dungeon
@@ -118,7 +120,7 @@ class Dungeon {
         DungeonPlugin.plugin().dungeonConfig.getDungeons(type).set(index.toString(), null)
         type.dungeons.remove(this)
         DungeonPlugin.plugin().dungeonConfig.save()
-        type.bossInst?.remove()
+        bossInst.remove()
     }
 
     /**
@@ -140,7 +142,7 @@ class Dungeon {
         val boss = MythicMobs.inst().apiHelper.spawnMythicMob(type.boss, bossLoc, type.dungeonLevel)
         boss.persistentDataContainer.set(Utils.namespacedKey("dungeon"), PersistentDataType.INTEGER, index)
         boss.persistentDataContainer.set(Utils.namespacedKey("dungeon_type"), PersistentDataType.STRING, type.name)
-        type.bossInst = boss
+        bossInst = boss
     }
 
 

@@ -42,7 +42,6 @@ class DungeonType {
     lateinit var schematic: Clipboard
     var dungeonDistance: Short
     var dungeons = mutableListOf<Dungeon>()
-    var bossInst: Entity? = null
 
     companion object {
         var dungeonTypes = mutableListOf<DungeonType>()
