@@ -40,7 +40,7 @@ public class Henry implements Listener {
         Fish fish = FishCore.getFish(fishName);
         int goldAmount;
         if (fish == null) {
-            fishName = hand.getI18NDisplayName();
+            fishName = hand.getItemMeta().getDisplayName();
             List<String> lore = hand.getItemMeta().getLore();
             if (lore != null && lore.get(0) != null && ChatColor.stripColor(lore.get(0)).contains("Size ")) {
                 String newLine = ChatColor.stripColor(lore.get(0).replace("Size ", "").replace(".0 cm", ""));
