@@ -224,28 +224,31 @@ fun ItemStack.setNbtTags(vararg pairs: Pair<String, Any?>): ItemStack {
     val tags = hashMapOf(*pairs)
     val nbtItem = NBTItem(this)
     tags.forEach { entry ->
-        entry.value?.let {
-            when (it) {
-                // Numbers
-                is Int -> nbtItem.setInteger(entry.key, it)
-                is Long -> nbtItem.setLong(entry.key, it)
-                is Short -> nbtItem.setShort(entry.key, it)
-                is Double -> nbtItem.setDouble(entry.key, it)
-                is Float -> nbtItem.setFloat(entry.key, it)
-                is IntArray -> nbtItem.setIntArray(entry.key, it)
-                // Bytes
-                is Byte -> nbtItem.setByte(entry.key, it)
-                is ByteArray -> nbtItem.setByteArray(entry.key, it)
-                // Other Types
-                is String -> nbtItem.setString(entry.key, it)
-                is Boolean -> nbtItem.setBoolean(entry.key, it)
-                // Useful Objects
-                is ItemStack -> nbtItem.setItemStack(entry.key, it)
-                is UUID -> nbtItem.setUUID(entry.key, it)
-                // Leftovers
-                else -> nbtItem.setObject(entry.key, it)
+        if (entry.value == null) {
+            nbtItem.removeKey(entry.key)
+        } else
+            entry.value?.let {
+                when (it) {
+                    // Numbers
+                    is Int -> nbtItem.setInteger(entry.key, it)
+                    is Long -> nbtItem.setLong(entry.key, it)
+                    is Short -> nbtItem.setShort(entry.key, it)
+                    is Double -> nbtItem.setDouble(entry.key, it)
+                    is Float -> nbtItem.setFloat(entry.key, it)
+                    is IntArray -> nbtItem.setIntArray(entry.key, it)
+                    // Bytes
+                    is Byte -> nbtItem.setByte(entry.key, it)
+                    is ByteArray -> nbtItem.setByteArray(entry.key, it)
+                    // Other Types
+                    is String -> nbtItem.setString(entry.key, it)
+                    is Boolean -> nbtItem.setBoolean(entry.key, it)
+                    // Useful Objects
+                    is ItemStack -> nbtItem.setItemStack(entry.key, it)
+                    is UUID -> nbtItem.setUUID(entry.key, it)
+                    // Leftovers
+                    else -> nbtItem.setObject(entry.key, it)
+                }
             }
-        }
 
     }
     return nbtItem.item
