@@ -104,13 +104,11 @@ public class GemRemover implements Listener {
 
         //if player wants to accept the trade
         if (slot == 31) {
-            VaultHook.econ.withdrawPlayer(player, this.cost);
-            Scoreboard.updateScoreboard(player);
+            CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
+            if (customItem == null) return;
+            if (!(customItem instanceof CustomEquipment)) return;
+            if (!((CustomEquipment) customItem).hasGem()) return;
             if (Utils.randTest((double) this.chance)) {
-                CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
-                if (customItem == null) return;
-                if (!(customItem instanceof CustomEquipment)) return;
-                if (!((CustomEquipment) customItem).hasGem()) return;
                 //How to get the stat gem from the item? Check in the stat gem listener class
                 //StatGem(itemOnCursor.statType, itemOnCursor.statAmount
                 StatGem gem = new StatGem(((CustomEquipment) customItem).getStatGem().getType(), ((CustomEquipment) customItem).getStatGem().getAmount());
@@ -192,19 +190,20 @@ public class GemRemover implements Listener {
                         }
                 }
 
-                ((CustomEquipment)customItem).removeStatGem();
                 player.getInventory().addItem(item);
-                player.getInventory().setItemInMainHand(customItem.getUpdatedItem(false));
                 player.sendMessage(Utils.tacc("&aSuccessfully removed gem!"));
-                player.updateInventory();
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 
             } else {
                 player.sendMessage(Utils.tacc("&cThe gem broke upon trying to remove it!"));
-                player.getInventory().removeItem(this.item);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_BREAK, 1.0f, 1.0f);
 
             }
+            VaultHook.econ.withdrawPlayer(player, this.cost); //takes the cost they put in from the player
+            Scoreboard.updateScoreboard(player);
+            ((CustomEquipment)customItem).removeStatGem(); //removes stat gem
+            player.getInventory().setItemInMainHand(customItem.getUpdatedItem(false)); //updates the stat gem
+            player.updateInventory();
             player.closeInventory();
         }
     }
@@ -215,7 +214,7 @@ public class GemRemover implements Listener {
         if (customItem == null) return 0;
         if(customItem.getLevelRequirement() == null) return 0;
         int levelReq = customItem.getLevelRequirement();
-        double calculatedChance = 50.0 + ((double)(this.cost/(levelReq*5)));
+        double calculatedChance = 30.0 + (this.cost/((double)(levelReq*5)));
         if (calculatedChance > 100) return 100;
         else return calculatedChance;
         /**
