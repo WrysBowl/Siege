@@ -201,9 +201,10 @@ public class GemRemover implements Listener {
             }
             VaultHook.econ.withdrawPlayer(player, this.cost); //takes the cost they put in from the player
             Scoreboard.updateScoreboard(player);
-            ((CustomEquipment)customItem).removeStatGem(); //removes stat gem
-            player.getInventory().setItemInMainHand(customItem.getUpdatedItem(false)); //updates the stat gem
-            player.updateInventory();
+            CustomEquipment equipmentItem = (CustomEquipment) customItem;
+            equipmentItem.removeStatGem(); //removes stat gem
+            equipmentItem.updateMeta(false);
+            player.getInventory().setItemInMainHand(equipmentItem.getItem()); //updates the stat gem
             player.closeInventory();
         }
     }
@@ -214,12 +215,9 @@ public class GemRemover implements Listener {
         if (customItem == null) return 0;
         if(customItem.getLevelRequirement() == null) return 0;
         int levelReq = customItem.getLevelRequirement();
-        double calculatedChance = 30.0 + (this.cost/((double)(levelReq*5)));
+        double calculatedChance = Utils.round(30.0 + (this.cost/((double)(levelReq*5))), 2);
         if (calculatedChance > 100) return 100;
         else return calculatedChance;
-        /**
-         * If levelReq is 1, cost needs to be 200 to get the gem out 100%
-         */
     }
 
 
