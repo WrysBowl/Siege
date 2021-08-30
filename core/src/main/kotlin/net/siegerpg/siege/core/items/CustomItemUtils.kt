@@ -1,4 +1,5 @@
-@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+@file:Suppress(
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
     "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
     "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
     "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
@@ -19,9 +20,6 @@ import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.misc.CustomWand
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
-import net.siegerpg.siege.core.skills.Skill
-import net.siegerpg.siege.core.skills.SkillUtils
-import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import org.bukkit.entity.Player
@@ -33,7 +31,9 @@ import java.util.*
 object CustomItemUtils {
 
     fun getCustomItem(item: ItemStack?): CustomItem? {
-        if (item == null) { return null }
+        if (item == null) {
+            return null
+        }
         if (!item.hasItemMeta()) return null
         //Bukkit.getLogger().info("Item has meta")
         val nbtItem = NBTItem(item)
@@ -53,7 +53,7 @@ object CustomItemUtils {
                 //Bukkit.getLogger().info("Got the instance")
                 newClass as? CustomItem
 
-            } catch(e: Exception) {
+            } catch (e: Exception) {
                 e.printStackTrace()
                 //Bukkit.getLogger().info("Failed")
                 null
@@ -181,7 +181,7 @@ object CustomItemUtils {
 
     fun getCustomHealth(player: Player): Double {
         val healthStat = getPlayerStat(player, StatTypes.HEALTH)
-        return (player.health/player.maxHealth) * (healthStat + player.maxHealth + player.level * 2)
+        return (player.health / player.maxHealth) * (healthStat + player.maxHealth + player.level * 2)
     }
 
     fun getStats(item: CustomEquipment, addGem: Boolean, addRarity: Boolean): HashMap<StatTypes, Double> {
@@ -247,6 +247,14 @@ fun ItemStack.setNbtTags(vararg pairs: Pair<String, Any?>): ItemStack {
             }
         }
 
+    }
+    return nbtItem.item
+}
+
+fun ItemStack.deleteNbtTags(vararg tags: String): ItemStack {
+    val nbtItem = NBTItem(this)
+    for (tag in tags) {
+        nbtItem.removeKey(tag)
     }
     return nbtItem.item
 }
