@@ -105,7 +105,6 @@ public class GemRemover implements Listener {
         //if player wants to accept the trade
         if (slot == 31) {
             VaultHook.econ.withdrawPlayer(player, this.cost);
-            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             Scoreboard.updateScoreboard(player);
             if (Utils.randTest((double) this.chance)) {
                 CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
@@ -194,13 +193,17 @@ public class GemRemover implements Listener {
                 }
 
                 ((CustomEquipment)customItem).removeStatGem();
-                customItem.updateMeta(false);
                 player.getInventory().addItem(item);
+                player.getInventory().setItemInMainHand(customItem.getUpdatedItem(false));
                 player.sendMessage(Utils.tacc("&aSuccessfully removed gem!"));
                 player.updateInventory();
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+
             } else {
                 player.sendMessage(Utils.tacc("&cThe gem broke upon trying to remove it!"));
                 player.getInventory().removeItem(this.item);
+                player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_BREAK, 1.0f, 1.0f);
+
             }
             player.closeInventory();
         }
