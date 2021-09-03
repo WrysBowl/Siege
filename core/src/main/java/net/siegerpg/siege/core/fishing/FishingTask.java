@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
@@ -121,7 +122,7 @@ public class FishingTask extends BukkitRunnable {
                 	
                     if(cursor.loc == i)
                     {
-                        label = label+ChatColor.BLUE + Utils.tacc("&l\u25AA");
+                        label = label+ChatColor.AQUA + Utils.tacc("&l\u25AA");
                         
                         data.setScore(data.getScore()+0.1);
 
@@ -141,9 +142,10 @@ public class FishingTask extends BukkitRunnable {
 			}
             if(cursor.loc == i)
             {
-                label = label+ChatColor.DARK_BLUE + Utils.tacc("&l\u25AA");
+                label = label+ChatColor.AQUA + Utils.tacc("&l\u25AA");
                 
                 data.setScore(data.getScore()-0.1);
+				e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_FISH_SWIM, 2.0f, 2.0f);
 
 			}
             else

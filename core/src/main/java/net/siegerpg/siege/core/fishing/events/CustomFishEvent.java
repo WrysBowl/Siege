@@ -14,6 +14,7 @@ import net.siegerpg.siege.core.utils.Levels;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
@@ -83,17 +84,19 @@ public class CustomFishEvent {
 	public void trigger() {
 		data.setFishing(true);
 		new FishingTask(this).runTaskTimerAsynchronously(Core.plugin(), 0, 2);
-		
+		player.playSound(player.getLocation(), Sound.ENTITY_FISHING_BOBBER_SPLASH, 2.0f, 2.0f);
 	}
 	
 	public void win() {
 		this.remove();
 		Fish fish = data.getFish();
+		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
 		player.getInventory().addItem(FishCore.getItem(fish));
 		Levels.INSTANCE.addExp(player, (int) fish.actualSize);
 	}
 	public void lose() {
 		this.remove();
+		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_NO, 1.0f, 1.0f);
 	}
 	
 	

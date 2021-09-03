@@ -206,6 +206,8 @@ public class GemRemover implements Listener {
             equipmentItem.updateMeta(false);
             player.getInventory().setItemInMainHand(equipmentItem.getItem()); //updates the stat gem
             player.closeInventory();
+            this.cost=0;
+            this.item=null;
         }
     }
 
