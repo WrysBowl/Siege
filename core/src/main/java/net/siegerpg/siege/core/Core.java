@@ -132,7 +132,6 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GemRemover(), this);
         getServer().getPluginManager().registerEvents(new WorldListener(), this);
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
-        getServer().getPluginManager().registerEvents(new CustomCraftingEvents(), this);
         getServer().getPluginManager().registerEvents(new PlayerBanking(), this);
         getServer().getPluginManager().registerEvents(new TutorialListeners(), this);
         getServer().getPluginManager().registerEvents(new FishEvent(), this);
