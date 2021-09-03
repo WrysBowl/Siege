@@ -122,7 +122,6 @@ public final class Core extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        getServer().getPluginManager().registerEvents(new DamageIndicatorListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
         getServer().getPluginManager().registerEvents(new GoldExpListener(), this);
@@ -162,7 +161,6 @@ public final class Core extends JavaPlugin {
         SmokyBlacksmith.resetItems();
         StatChangeListener.statBarDisplayTask();
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
-        getServer().getPluginManager().registerEvents(new VanillaCraftingListener(), this);
         new RegenerationTask().startRegenTask();
         new HelpfulTips().broadcastTasks();
         new GoldReward().giveGold();
