@@ -51,7 +51,7 @@ public class GemRemover implements Listener {
             CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
             if (customItem instanceof CustomEquipment) {
                 if (((CustomEquipment) customItem).hasGem()) {
-                    Inventory shop = getMenu(e.getPlayer());
+                    Inventory shop = new GemRemover().getMenu(e.getPlayer());
                     player.openInventory(shop);
                 }
             }
@@ -194,22 +194,21 @@ public class GemRemover implements Listener {
                 }
 
                 player.getInventory().addItem(item);
-                player.getInventory().remove(this.item);
                 player.sendMessage(Utils.tacc("&aSuccessfully removed gem!"));
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 
             } else {
                 player.sendMessage(Utils.tacc("&cThe gem broke upon trying to remove it!"));
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_BREAK, 1.0f, 1.0f);
-
             }
+            player.closeInventory();
             VaultHook.econ.withdrawPlayer(player, this.cost); //takes the cost they put in from the player
             Scoreboard.updateScoreboard(player);
             CustomEquipment equipmentItem = (CustomEquipment) customItem;
             equipmentItem.removeStatGem(); //removes stat gem
             equipmentItem.updateMeta(false);
-            player.getInventory().setItemInMainHand(equipmentItem.getItem()); //updates the stat gem
-            player.closeInventory();
+            player.getInventory().addItem(equipmentItem.getItem());
+            player.getInventory().remove(this.item);
             this.cost=0;
             this.item=null;
         }
@@ -237,44 +236,44 @@ public class GemRemover implements Listener {
         }
         ItemStack item = player.getInventory().getItemInMainHand();
         CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
-        if (customItem != null && ((CustomEquipment) customItem).hasGem()) {
+        if (customItem instanceof CustomEquipment) {
+            if (((CustomEquipment) customItem).hasGem()) {
+                //Store the item stack to be removed (if)
+                this.item = item;
+                this.chance=calcChance();
 
-            //Store the item stack to be removed (if)
-            this.item = item;
-            this.chance=calcChance();
+                //Initialize gold increase item
+                ItemStack goldIncrease = new ItemStack(Material.YELLOW_STAINED_GLASS_PANE);
+                ItemMeta goldIncreaseMeta = goldIncrease.getItemMeta();
+                goldIncreaseMeta.displayName(Utils.lore("<green>Add 100"));
+                goldIncrease.setItemMeta(goldIncreaseMeta);
 
-            //Initialize gold increase item
-            ItemStack goldIncrease = new ItemStack(Material.YELLOW_STAINED_GLASS_PANE);
-            ItemMeta goldIncreaseMeta = goldIncrease.getItemMeta();
-            goldIncreaseMeta.displayName(Utils.lore("<green>Add 100"));
-            goldIncrease.setItemMeta(goldIncreaseMeta);
+                //Initialize gold decrease item
+                ItemStack goldDecrease = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+                ItemMeta goldDecreaseMeta = goldDecrease.getItemMeta();
+                goldDecreaseMeta.displayName(Utils.lore("<red>Remove 100"));
+                goldDecrease.setItemMeta(goldDecreaseMeta);
 
-            //Initialize gold decrease item
-            ItemStack goldDecrease = new ItemStack(Material.RED_STAINED_GLASS_PANE);
-            ItemMeta goldDecreaseMeta = goldDecrease.getItemMeta();
-            goldDecreaseMeta.displayName(Utils.lore("<red>Remove 100"));
-            goldDecrease.setItemMeta(goldDecreaseMeta);
+                //String.format("%,d", cost)
+                //Initialize gold display item
+                ItemStack goldDisplay = new ItemStack(Material.SUNFLOWER);
+                ItemMeta goldDisplayMeta = goldDisplay.getItemMeta();
+                goldDisplayMeta.displayName(Utils.lore("<yellow>Cost: " + this.cost));
+                final double finalChance = this.chance;
+                goldDisplayMeta.lore(new ArrayList<>() {
+                    {
+                        add(Utils.lore("<aqua>Chance of Recovery: " + finalChance));
+                        add(Utils.lore("<gold><bold>CLICK TO GET <reset><yellow>(maybe)"));
 
-            //String.format("%,d", cost)
-            //Initialize gold display item
-            ItemStack goldDisplay = new ItemStack(Material.SUNFLOWER);
-            ItemMeta goldDisplayMeta = goldDisplay.getItemMeta();
-            goldDisplayMeta.displayName(Utils.lore("<yellow>Cost: " + this.cost));
-            final double finalChance = this.chance;
-            goldDisplayMeta.lore(new ArrayList<>() {
-                {
-                    add(Utils.lore("<aqua>Chance of Recovery: " + finalChance));
-                    add(Utils.lore("<gold><bold>CLICK TO GET <reset><yellow>(maybe)"));
+                    }
+                });
+                goldDisplay.setItemMeta(goldDisplayMeta);
 
-                }
-            });
-            goldDisplay.setItemMeta(goldDisplayMeta);
-
-            gui.setItem(12, goldDecrease);
-            gui.setItem(13, goldDisplay);
-            gui.setItem(14, goldIncrease);
-            gui.setItem(31, item);
-
+                gui.setItem(12, goldDecrease);
+                gui.setItem(13, goldDisplay);
+                gui.setItem(14, goldIncrease);
+                gui.setItem(31, item);
+            }
         }
 
 
