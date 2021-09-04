@@ -49,9 +49,11 @@ public class GemRemover implements Listener {
             Player player = e.getPlayer();
             ItemStack item = player.getInventory().getItemInMainHand();
             CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
-            if (customItem != null && ((CustomEquipment) customItem).hasGem()) {
-                Inventory shop = getMenu(e.getPlayer());
-                player.openInventory(shop);
+            if (customItem instanceof CustomEquipment) {
+                if (((CustomEquipment) customItem).hasGem()) {
+                    Inventory shop = getMenu(e.getPlayer());
+                    player.openInventory(shop);
+                }
             }
             e.setCancelled(true);
         }
@@ -104,6 +106,7 @@ public class GemRemover implements Listener {
 
         //if player wants to accept the trade
         if (slot == 31) {
+            if (this.item == null || this.item.getType().isAir()) return;
             CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
             if (customItem == null) return;
             if (!(customItem instanceof CustomEquipment)) return;
@@ -191,6 +194,7 @@ public class GemRemover implements Listener {
                 }
 
                 player.getInventory().addItem(item);
+                player.getInventory().remove(this.item);
                 player.sendMessage(Utils.tacc("&aSuccessfully removed gem!"));
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 
