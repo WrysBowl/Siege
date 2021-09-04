@@ -1,17 +1,12 @@
 package net.siegerpg.siege.core;
 
+import co.aikar.commands.PaperCommandManager;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.Webstore.RedeemBoosters;
 import net.siegerpg.siege.core.Webstore.WebstoreCommand;
-import net.siegerpg.siege.core.commands.admin.*;
-import net.siegerpg.siege.core.listeners.tasks.GoldReward;
-import net.siegerpg.siege.core.skills.SkillListener;
-import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;
-import net.siegerpg.siege.core.utils.cache.MobNames;
-import net.siegerpg.siege.core.utils.cache.PlayerBanking;
-import net.siegerpg.siege.core.utils.cache.PlayerData;
 import net.siegerpg.siege.core.commands.*;
+import net.siegerpg.siege.core.commands.admin.*;
 import net.siegerpg.siege.core.fishing.commands.getBait;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
@@ -19,10 +14,16 @@ import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.*;
-import net.siegerpg.siege.core.party.PartyConfig;
-import net.siegerpg.siege.core.party.PartyManager;
+import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.listeners.tasks.HelpfulTips;
+import net.siegerpg.siege.core.parties.PartyCommand;
+import net.siegerpg.siege.core.parties.PartyConfig;
+import net.siegerpg.siege.core.skills.SkillListener;
 import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;
+import net.siegerpg.siege.core.utils.cache.MobNames;
+import net.siegerpg.siege.core.utils.cache.PlayerBanking;
+import net.siegerpg.siege.core.utils.cache.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -33,11 +34,11 @@ public final class Core extends JavaPlugin {
 
     private static Core INSTANCE;
 
-    public static PartyManager partyManager;
+    PaperCommandManager manager = new PaperCommandManager(this);
 
     public static Color defaultLeatherColor;
 
-    public PartyConfig partyConfig = new PartyConfig(this);
+    public PartyConfig partyConfig = new PartyConfig();
 
     public static Location spawnLocation;
 
@@ -52,6 +53,7 @@ public final class Core extends JavaPlugin {
 
         spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
         protocolManager = ProtocolLibrary.getProtocolManager();
+        manager.registerCommand(new PartyCommand());
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discord").setExecutor(new Discord());
         this.getCommand("webstore").setExecutor(new Webstore());
@@ -70,7 +72,6 @@ public final class Core extends JavaPlugin {
         this.getCommand("pay").setExecutor(new Pay());
         this.getCommand("getKey").setExecutor(new GetKey());
         this.getCommand("stats").setExecutor(new Stats());
-
 
 
         //partyManager = new PartyManager();
@@ -173,7 +174,6 @@ public final class Core extends JavaPlugin {
 //        recipe.s1(Pebble.Companion.tier(1));
 //        CustomRecipe.Companion.registerRecipe(recipe);
         Bukkit.getLogger().info(String.valueOf(CustomRecipe.Companion.getRecipes().size()));
-
 
 
     }

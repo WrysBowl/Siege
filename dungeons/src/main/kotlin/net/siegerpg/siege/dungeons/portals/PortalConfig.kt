@@ -1,9 +1,9 @@
 package net.siegerpg.siege.dungeons.portals
 
-import io.lumine.xikage.mythicmobs.MythicMobs.p
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey
 import net.siegerpg.siege.core.items.types.misc.CustomKey
+import net.siegerpg.siege.core.parties.Party
 import net.siegerpg.siege.core.utils.ConfigurationBase
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.dungeons.DungeonPlugin
@@ -22,6 +22,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
         if (targetWorld == "Hilly_Woods" && getCustomItem(getKey(player)) is HillyWoodsDungeonKey) return true
         return false
     }
+
     private fun removeKey(player: Player, targetWorld: String) {
         val item: ItemStack = getKey(player) ?: return
         if (targetWorld == "Hilly_Woods" && getCustomItem(item) is HillyWoodsDungeonKey) {
@@ -29,6 +30,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
         }
         return
     }
+
     private fun getKey(player: Player): ItemStack? {
         for (i in 0 until player.inventory.size) {
             val customItem = getCustomItem(player.inventory.getItem(i)) ?: continue
@@ -52,7 +54,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             corresponding.toString()
         ) ?: return false
         if (!hasKey(player, "Hilly_Woods")) {
-            player.sendTitle(Utils.tacc("&cKey required!"), Utils.tacc("&eMobs can drop keys"))
+            player.sendTitle(Utils.tacc("&cKey required!"), Utils.tacc("&eMobs can drop keys"), 0, 2 * 20, 0)
             return false
         }
         if (location.isSet("dungeon")) {
@@ -61,33 +63,30 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
                     removeKey(player, player.world.name)
-                    player.teleport(dungeon.getSpawn())
-                    /*getParties().forEach { party ->
-                        if (party.leader == player)
-                            party.members.forEach { member ->
-                                if (member.isOnline)
-                                    (member as Player).teleport(endLocation)
+                    // First we add the leader and then all the members
+                    dungeon.addPlayer(player)
+                    Party.parties.forEach { (partyID, party) ->
+                        if (party.getLeader() == player)
+                            party.getMembers().forEach { member ->
+                                dungeon.addPlayer(member)
                             }
                         return true
                     }
-                     */
+
                     return true
                 }
             }
             val dungeon = dungeonType.nextAvailableDungeon()
             removeKey(player, player.world.name)
             dungeon.addPlayer(player)
-            /*
-            Party.parties.forEach { party ->
-                if (party.leader == player)
-                    party.members.forEach { member ->
-                        if (member.isOnline)
-                            (member as Player).teleport(endLocation)
+            Party.parties.forEach { (partyID, party) ->
+                if (party.getLeader() == player)
+                    party.getMembers().forEach { member ->
+                        dungeon.addPlayer(member)
                     }
                 return true
             }
-            */
-            player.playSound(player.location, Sound.ENTITY_WITHER_SPAWN,10.0f, 10.0f)
+            player.playSound(player.location, Sound.ENTITY_WITHER_SPAWN, 10.0f, 10.0f)
             return true
         } else {
             val actualLocation = Location(

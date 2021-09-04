@@ -82,12 +82,12 @@ class Dungeon {
             val dungeon = DungeonPlugin.plugin().dungeonConfig.getDungeon(type, index)
             if (dungeon.contains("players")) dungeon.getStringList("players").add(player.uniqueId.toString())
             else dungeon.set("players", listOf(player.uniqueId.toString()))
+            DungeonPlugin.plugin().dungeonConfig.save()
         }
         if (player.isOnline) (player as Player).teleport(getSpawn())
-        DungeonPlugin.plugin().dungeonConfig.save()
     }
 
-    fun getSpawn() : Location{
+    fun getSpawn(): Location {
         return location.clone().add(type.relSpawnLoc)
     }
 
