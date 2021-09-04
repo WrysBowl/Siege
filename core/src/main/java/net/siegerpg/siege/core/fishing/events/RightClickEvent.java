@@ -9,6 +9,7 @@ import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -48,6 +49,8 @@ public class RightClickEvent implements Listener {
 			if (customItem.getLevelRequirement() == null) return;
 			if (customItem.getLevelRequirement() > LevelEXPStorage.playerLevel.get(player)) {
 				player.sendMessage(Utils.parse("<red>You are too weak to cast this fishing rod!"));
+				player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
+
 				return;
 			}
 			e.setCancelled(false);

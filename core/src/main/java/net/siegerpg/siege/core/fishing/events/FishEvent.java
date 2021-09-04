@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.FishingTask;
 import net.siegerpg.siege.core.fishing.baits.BaitCore;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
+import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;

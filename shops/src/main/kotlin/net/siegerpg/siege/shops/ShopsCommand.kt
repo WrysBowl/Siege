@@ -68,10 +68,13 @@ class ShopsCommand: BaseCommand() {
            val meta = item.itemMeta
            if (meta.displayName != "") meta.lore("")
            if (it.craftable) {
-               meta.lore("<gray>Crafting Materials:")
+               meta.lore("<gold>Required Crafting Materials:")
+               var counter = 1
                for (entry in it.recipe) {
-                   meta.lore("<aqua>${entry.value}x ${entry.key.getUpdatedItem(false).itemMeta.displayName}")
+                   meta.lore("<gold>${counter}. <aqua>${entry.value}x ${entry.key.getUpdatedItem(false).itemMeta.displayName}")
+                   counter++
                }
+               meta.lore("")
                meta.lore("<yellow>Left click to craft!")
            }
            if (it.buyPrice > -1) meta.lore("<yellow>Right click to buy for ${it.buyPrice} gold!")

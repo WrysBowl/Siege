@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
@@ -171,6 +172,9 @@ public class WorldListener implements Listener, Runnable {
 
     @EventHandler
     public void denyBurn(BlockBurnEvent e) { e.setCancelled(true); }
+
+    @EventHandler
+    public void denyCraft(CraftItemEvent e) { e.setCancelled(true); }
 
     @EventHandler
     public void denyBlockExp(BlockExpEvent e) { e.setExpToDrop(0); }
