@@ -92,7 +92,7 @@ public class CustomFishEvent {
 		Fish fish = data.getFish();
 		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
 		player.getInventory().addItem(FishCore.getItem(fish));
-		Levels.INSTANCE.addExp(player, (int) fish.actualSize);
+		Levels.INSTANCE.addExpShared(player, (int) fish.actualSize);
 	}
 	public void lose() {
 		this.remove();

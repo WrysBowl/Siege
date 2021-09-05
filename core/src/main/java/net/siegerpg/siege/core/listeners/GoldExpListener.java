@@ -52,7 +52,7 @@ public class GoldExpListener implements Listener{
         if (e.getExperienceOrb().getName().contains("EXP")) {
             Player player = e.getPlayer();
             int exp = e.getExperienceOrb().getExperience();
-            Levels.INSTANCE.addExp(player, exp);
+            Levels.INSTANCE.addExpShared(player, exp);
             player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
 
             Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {

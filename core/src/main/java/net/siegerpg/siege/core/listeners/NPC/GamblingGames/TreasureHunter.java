@@ -182,7 +182,7 @@ public class TreasureHunter {
             VaultHook.econ.depositPlayer(player, this.goldRewards);
         }
         if (this.expRewards > 0) {
-            Levels.INSTANCE.addExp(player, this.expRewards);
+            Levels.INSTANCE.addExpShared(player, this.expRewards);
         }
         if (this.itemRewards.size() > 0) {
             final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;

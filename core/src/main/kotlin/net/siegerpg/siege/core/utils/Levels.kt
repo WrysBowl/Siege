@@ -4,10 +4,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.database.DatabaseManager
-import net.siegerpg.siege.core.levelReward.LevelReward
 import net.siegerpg.siege.core.levelReward.*
+import net.siegerpg.siege.core.parties.Party
+import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
+import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
@@ -44,6 +45,25 @@ object Levels {
             if (!query.isBeforeFirst) return Pair(0, 0)
             query.next()
             return Pair(query.getShort("level"), query.getInt("experience"))
+        }
+    }
+
+    fun getExpLevel(players: ArrayList<OfflinePlayer>): HashMap<UUID, Pair<Short, Int>> {
+        val connection = DatabaseManager.getConnection()
+        val playerIDs = players.map { p -> p.uniqueId }.toTypedArray()
+        val map = HashMap<UUID, Pair<Short, Int>>()
+        connection!!.use {
+            val stmt = connection.prepareStatement(
+                "SELECT level,experience FROM userData WHERE uuid IN ?",
+                ResultSet.TYPE_SCROLL_SENSITIVE
+            )
+            stmt.setArray(1, connection.createArrayOf("VARCHAR", playerIDs))
+            val resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                val uuid = UUID.fromString(resultSet.getString("uuid"))
+                map[uuid] = Pair(resultSet.getShort("level"), resultSet.getInt("experience"))
+            }
+            return map
         }
     }
 
@@ -110,19 +130,19 @@ object Levels {
     /**
      * Returns the new user level based on a level and exp
      */
-    fun calculateExpLevel(level: Short, experience: Int, player: Player): Pair<Short, Int> {
+    fun calculateExpLevel(level: Short, experience: Int, player: OfflinePlayer): Pair<Short, Int> {
         var exp = experience;
         var lvl = level;
         while (calculateRequiredExperience(lvl) <= exp) {
             exp -= calculateRequiredExperience(lvl)
             lvl = (lvl + 1).toShort()
             if (!player.isOnline) continue
-            if (levelRewards.size < lvl+2) continue //ensure that the level reward is set in the array list
+            if (levelRewards.size < lvl + 2) continue //ensure that the level reward is set in the array list
 
-            val reward: LevelReward = levelRewards[lvl.toInt()-2]
+            val reward: LevelReward = levelRewards[lvl.toInt() - 2]
             object : BukkitRunnable() {
                 override fun run() {
-                    reward.giveReward(player, lvl)
+                    reward.giveReward(player as Player, lvl)
                 }
             }.runTask(Core.plugin())
         }
@@ -153,6 +173,43 @@ object Levels {
         }
     }
 
+    fun setExpLevel(data: HashMap<UUID, Pair<Short, Int>>) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val connection = DatabaseManager.getConnection()
+            connection!!.use {
+                val stm = connection.createStatement()
+                // We batch the sql queries together for speed (it will only make one request instead of multiple)
+                data.forEach { (uuid, data) ->
+                    // We prepare the query
+                    val stmt = connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?");
+                    stmt.setShort(1, data.first)
+                    stmt.setInt(2, data.second)
+                    stmt.setString(3, uuid.toString())
+                    // We add it to the batch
+                    stm.addBatch(stmt.toString())
+
+                    // Same process as in the setExpLevel method above
+                    val player = Bukkit.getOfflinePlayer(uuid)
+                    if (player.isOnline) {
+                        val p = (player as Player)
+                        val lvl = data.first.toInt()
+                        val exp = data.second
+                        val expPercent = exp / calculateRequiredExperience(data.first).toFloat()
+                        p.level = lvl
+                        p.exp = expPercent
+                        LevelEXPStorage.playerLevel[player] = lvl.toShort()
+                        LevelEXPStorage.playerExperience[player] = exp
+                    }
+                }
+                // We execute the batch
+                stm.executeBatch()
+            }
+        }
+    }
+
+    /**
+     * Sets a player's exp
+     */
     fun setExp(player: OfflinePlayer, exp: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             val level = getExpLevel(player).first
@@ -161,11 +218,48 @@ object Levels {
         }
     }
 
+    /**
+     * Adds experience (and levels up automatically) for one player
+     */
     fun addExp(player: OfflinePlayer, exp: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             val levelExp = getExpLevel(player)
             val new = calculateExpLevel(levelExp.first, levelExp.second + exp, player as Player)
             setExpLevel(player, new)
         }
+    }
+
+    /**
+     * Adds the same experience to multiple players
+     */
+    fun addExp(players: ArrayList<OfflinePlayer>, exp: Int) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val levelExp = getExpLevel(players)
+            levelExp.forEach { (uuid, data) ->
+                // Updates the data in levelExp for each player to reflect the new exp and level
+                val new = calculateExpLevel(data.first, data.second + exp, Bukkit.getOfflinePlayer(uuid))
+                levelExp[uuid] = Pair(new.first, new.second)
+            }
+            // Finally sets the new exp and level for all the players in question
+            setExpLevel(levelExp)
+        }
+    }
+
+    /**
+     * Adds 100% of the experience to one player and 10% to all their party members
+     */
+    fun addExpShared(player: OfflinePlayer, exp: Int) {
+        addExp(player, exp)
+        val teamMembers = ArrayList<OfflinePlayer>()
+        val party = Party.getPlayerParty(player)
+            ?: return
+        // Gets all members apart from the player
+        party.getMembers().forEach { m ->
+            if (m != player) {
+                teamMembers.add(m)
+            }
+        }
+        // Adds 1/10th of the exp to all the team members
+        addExp(teamMembers, Math.floorDiv(exp, 10))
     }
 }
