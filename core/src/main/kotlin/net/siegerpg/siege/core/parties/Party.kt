@@ -107,6 +107,14 @@ class Party(private val partyID: UUID, private var leader: OfflinePlayer) {
             }
             return party
         }
+
+        fun getPlayerParty(player: OfflinePlayer): Party? {
+            parties.forEach { (_, party) ->
+                if (party.isMember(player))
+                    return party
+            }
+            return null
+        }
     }
 
     private fun save() {

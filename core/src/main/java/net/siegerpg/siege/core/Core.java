@@ -34,7 +34,7 @@ public final class Core extends JavaPlugin {
 
     private static Core INSTANCE;
 
-    PaperCommandManager manager = new PaperCommandManager(this);
+    public PaperCommandManager commandManager = new PaperCommandManager(this);
 
     public static Color defaultLeatherColor;
 
@@ -53,7 +53,7 @@ public final class Core extends JavaPlugin {
 
         spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
         protocolManager = ProtocolLibrary.getProtocolManager();
-        manager.registerCommand(new PartyCommand());
+        commandManager.registerCommand(new PartyCommand());
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discord").setExecutor(new Discord());
         this.getCommand("webstore").setExecutor(new Webstore());
