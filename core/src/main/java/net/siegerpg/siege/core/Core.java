@@ -34,7 +34,7 @@ public final class Core extends JavaPlugin {
 
     private static Core INSTANCE;
 
-    public PaperCommandManager commandManager = new PaperCommandManager(this);
+    public PaperCommandManager commandManager;
 
     public static Color defaultLeatherColor;
 
@@ -47,6 +47,7 @@ public final class Core extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+        commandManager = new PaperCommandManager(this);
         INSTANCE = this;
         defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
         (new VaultHook()).createHooks();
