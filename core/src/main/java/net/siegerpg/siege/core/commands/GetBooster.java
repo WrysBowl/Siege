@@ -48,7 +48,7 @@ public class GetBooster implements CommandExecutor {
         ItemStack item = WebstoreUtils.getBooster(amount, multiplier, seconds, booster);
         WebstoreUtils.giveItemToPlayer(targetPlayer, item);
         Bukkit.broadcastMessage(Utils.tacc(""));
-        Bukkit.broadcastMessage(Utils.tacc("  &b" + targetPlayer.getName() + " has received &e" + amount + " &a" + multiplier + "x &e" + booster + " booster(s)!"));
+        Bukkit.broadcastMessage(Utils.tacc("  &b" + targetPlayer.getName() + " has received &e" + amount + " &a" + ((multiplier*100)-100.0) + "x &e" + booster + " booster(s)!"));
         Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
         Bukkit.broadcastMessage(Utils.tacc(""));
         return true;

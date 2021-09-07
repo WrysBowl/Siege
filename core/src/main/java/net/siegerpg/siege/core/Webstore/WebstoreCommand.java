@@ -44,7 +44,7 @@ public class WebstoreCommand implements CommandExecutor {
             ItemStack item = WebstoreUtils.getBooster(amount, multi, duration, type);
             WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
             Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e"+amount+" &a"+multi+"x "+type+" boosters!"));
+            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e"+amount+" &a"+((multi*100)-100.0)+"x "+type+" boosters!"));
             Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
             Bukkit.broadcastMessage(Utils.tacc(""));
 

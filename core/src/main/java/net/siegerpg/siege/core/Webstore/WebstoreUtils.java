@@ -27,7 +27,7 @@ public class WebstoreUtils {
         itemMeta.lore(new ArrayList<>(){
             {
                 add(Utils.lore("  <gray>Duration: <white>" + Utils.convertSecondsToTime(seconds)));
-                add(Utils.lore("  <yellow>Multiplier: " + multiplier + "x EXP"));
+                add(Utils.lore("  <yellow>Multiplier: +" + ((multiplier*100)-100.0) + "% EXP"));
                 add(Utils.lore(""));
                 add(Utils.lore("<green><bold>CLICK TO REDEEM"));
             }
@@ -46,7 +46,7 @@ public class WebstoreUtils {
         itemMeta.lore(new ArrayList<>(){
             {
                 add(Utils.lore("  <gray>Duration: <white>" + Utils.convertSecondsToTime(seconds)));
-                add(Utils.lore("  <yellow>Multiplier: " + multiplier + "x Gold"));
+                add(Utils.lore("  <yellow>Multiplier: +" + ((multiplier*100)-100.0) + "% Gold"));
                 add(Utils.lore(""));
                 add(Utils.lore("<green><bold>CLICK TO REDEEM"));
             }
