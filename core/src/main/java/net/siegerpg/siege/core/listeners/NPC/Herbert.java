@@ -154,14 +154,14 @@ public class Herbert implements Listener {
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += quantity*25*levelReq;
+                    total += quantity*35*levelReq;
                 } else if (cItem instanceof CustomKey) {
                     if (cItem.getLevelRequirement() == null) {
                         total += 1;
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += 500 * levelReq;
+                    total += quantity* 100 * levelReq;
                 } else {
                     quality = cItem.getQuality();
                     if (cItem.getLevelRequirement() == null) {

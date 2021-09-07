@@ -56,7 +56,7 @@ public class Henry implements Listener {
         VaultHook.econ.depositPlayer(player, goldAmount);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
-        player.sendMessage(Utils.parse("\n<green>You sold a <aqua>"+ goldAmount +" cm "+fishName+" <yellow>for "+goldAmount+" coins!\n"));
+        player.sendMessage(Utils.parse("\n<green>You sold a <aqua>"+ ((int)(goldAmount/3)) +" cm "+fishName+" <yellow>for "+goldAmount+" coins!\n"));
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
             public void run() {
                 Scoreboard.updateScoreboard(player);

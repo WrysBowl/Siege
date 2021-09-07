@@ -22,12 +22,15 @@ public class Stats implements CommandExecutor {
         OfflinePlayer player = (Player) sender;
         if (args.length > 0) {
             OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+            if (!argPlayer.isOnline()) {
+                ((Player)player).sendMessage(Utils.lore("<red>That player can not be found."));
+                return false;
+            }
             if (Levels.INSTANCE.getExpLevel(argPlayer).getFirst() == null) {
                 ((Player)player).sendMessage(Utils.lore("<red>That player can not be found."));
                return false;
-            } else {
-                player = argPlayer;
             }
+            player = argPlayer;
         }
 
         double health = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH);
