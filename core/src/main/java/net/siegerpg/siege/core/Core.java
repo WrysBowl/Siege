@@ -38,7 +38,7 @@ public final class Core extends JavaPlugin {
 
     public static Color defaultLeatherColor;
 
-    public PartyConfig partyConfig = new PartyConfig();
+    public PartyConfig partyConfig;
 
     public static Location spawnLocation;
 
@@ -47,8 +47,9 @@ public final class Core extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        commandManager = new PaperCommandManager(this);
         INSTANCE = this;
+        partyConfig = new PartyConfig();
+        commandManager = new PaperCommandManager(this);
         defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
         (new VaultHook()).createHooks();
 
