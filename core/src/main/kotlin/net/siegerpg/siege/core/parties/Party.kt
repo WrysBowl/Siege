@@ -8,9 +8,11 @@ import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.entity.Player
 import java.util.*
 
-class Party(private val partyID: UUID, private var leader: OfflinePlayer) {
+class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
     private val invited: ArrayList<Player> = ArrayList()
     private val members: HashSet<OfflinePlayer> = HashSet()
+
+    constructor(leader: OfflinePlayer) : this(UUID.randomUUID(), leader)
 
     init {
         save()
@@ -64,6 +66,9 @@ class Party(private val partyID: UUID, private var leader: OfflinePlayer) {
     }
 
     fun setLeader(newLeader: Player) {
+        if (!isMember(newLeader)) return
+        addMember(leader)
+        removeMember(newLeader)
         leader = newLeader
         save()
     }
@@ -92,6 +97,15 @@ class Party(private val partyID: UUID, private var leader: OfflinePlayer) {
         }
     }
 
+    fun kick(player: Player) {
+        if (player == getLeader()) {
+            send(Utils.tacc("&6${leader.name} &r&7can't be kicked from the party!"))
+            return
+        }
+        send(Utils.tacc("&6${leader.name} &r&7kicked &6${player.displayName()} &r&7from the party!"))
+        removeMember(player)
+    }
+
 
     companion object {
         val parties: HashMap<UUID, Party> = HashMap()
@@ -109,11 +123,21 @@ class Party(private val partyID: UUID, private var leader: OfflinePlayer) {
         }
 
         fun getPlayerParty(player: OfflinePlayer): Party? {
-            parties.forEach { (_, party) ->
+            for ((_, party) in parties) {
                 if (party.isMember(player))
                     return party
             }
             return null
+        }
+
+        fun getPlayerInvites(player: Player): HashMap<UUID, Party> {
+            val partiesWithInvites = hashMapOf<UUID, Party>()
+            for ((partyID, party) in parties) {
+                if (party.isInvited(player)) {
+                    partiesWithInvites[partyID] = party
+                }
+            }
+            return partiesWithInvites
         }
     }
 
