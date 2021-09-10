@@ -3,9 +3,8 @@ package net.siegerpg.siege.core.parties
 import co.aikar.commands.BaseCommand
 import co.aikar.commands.CommandCompletions
 import co.aikar.commands.annotation.*
-import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.event.ClickEvent
-import net.kyori.adventure.text.format.NamedTextColor
+import net.kyori.adventure.text.minimessage.MiniMessage
+import net.kyori.adventure.text.minimessage.Template
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.entity.Player
@@ -144,15 +143,12 @@ class PartyCommand : BaseCommand() {
         party.addInvite(invitee)
 
         // Kyori component used to let them run a command by clicking on the message
-        val textComponent = Component.text("You have been invited to").color(NamedTextColor.GOLD)
-            .append(player.displayName().colorIfAbsent(NamedTextColor.GOLD))
-            .append(Component.text("'s party! Type ", NamedTextColor.GRAY))
-            .append(
-                Component.text("/party accept ${player.name}", NamedTextColor.GOLD)
-                    .clickEvent(
-                        ClickEvent.clickEvent(ClickEvent.Action.RUN_COMMAND, "/party accept ${player.name}")
-                    )
-            ).append(Component.text(" to join!", NamedTextColor.GRAY))
+        val textComponent = MiniMessage.get().parse(
+            "<hover:show_text:\"<gold>Click here to accept <pre><playerDisplayName></pre><gold>'s invite!\"><click:run_command:/party accept <playerName>><gold>You have been invited to <pre><playerDisplayName></pre><reset><gray>'s party! Type <gold>/party accept <playerName> <gray>to join!",
+            listOf(
+                Template.of("playerDisplayName", player.displayName()), Template.of("playerName", player.name)
+            )
+        )
         invitee.sendMessage(textComponent)
     }
 
