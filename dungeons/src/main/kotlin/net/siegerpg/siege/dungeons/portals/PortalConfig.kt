@@ -65,7 +65,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                     removeKey(player, player.world.name)
                     // First we add the leader and then all the members
                     dungeon.addPlayer(player)
-                    Party.parties.forEach { (partyID, party) ->
+                    Party.parties.forEach { (_, party) ->
                         if (party.getLeader() == player)
                             party.getMembers().forEach { member ->
                                 dungeon.addPlayer(member)
@@ -79,7 +79,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             val dungeon = dungeonType.nextAvailableDungeon()
             removeKey(player, player.world.name)
             dungeon.addPlayer(player)
-            Party.parties.forEach { (partyID, party) ->
+            Party.parties.forEach { (_, party) ->
                 if (party.getLeader() == player)
                     party.getMembers().forEach { member ->
                         dungeon.addPlayer(member)

@@ -75,8 +75,13 @@ class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
 
     fun disband() {
         send(Utils.tacc("&7The party has been disbanded!"))
+        delete()
+    }
+
+    private fun delete() {
         members.clear()
         invited.clear()
+        parties.remove(partyID)
         Core.plugin().partyConfig.setParty(partyID, null)
     }
 
