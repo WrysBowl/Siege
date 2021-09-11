@@ -14,6 +14,8 @@ import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -49,6 +51,15 @@ public class WorldListener implements Listener, Runnable {
                 else if (e.getClickedBlock().getType().equals(Material.ENDER_CHEST)) { return; }
                 e.setCancelled(true);
             }
+        }
+    }
+
+    public void denyInventory(InventoryOpenEvent e) {
+        if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
+            if (e.getInventory().getType().equals(InventoryType.CHEST)) return;
+            if (e.getInventory().getType().equals(InventoryType.PLAYER)) return;
+            if (e.getInventory().getType().equals(InventoryType.ENDER_CHEST)) return;
+            e.setCancelled(true);
         }
     }
 
