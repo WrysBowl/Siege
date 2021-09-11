@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -70,15 +71,15 @@ public class WebstoreUtils {
         }
         return item;
     }
-    public static void giveItemToPlayer(Player player, ItemStack item) {
-        final boolean fullInv = player.getInventory().firstEmpty() == -1;
-        final boolean fullEnderChest = player.getEnderChest().firstEmpty() == -1;
+    public static void giveItemToPlayer(OfflinePlayer player, ItemStack item) {
+        final boolean fullInv = ((Player)player).getInventory().firstEmpty() == -1;
+        final boolean fullEnderChest = ((Player)player).getEnderChest().firstEmpty() == -1;
         if (!fullInv) {
-            player.getInventory().addItem(item);
+            ((Player)player).getInventory().addItem(item);
         } else if (!fullEnderChest) {
-            player.getEnderChest().addItem(item);
+            ((Player)player).getEnderChest().addItem(item);
         } else {
-            player.getWorld().dropItemNaturally(player.getLocation(), item);
+            ((Player)player).getWorld().dropItemNaturally(((Player)player).getLocation(), item);
         }
     }
 }
