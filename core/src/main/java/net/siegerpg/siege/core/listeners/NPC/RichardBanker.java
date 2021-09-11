@@ -139,7 +139,7 @@ public class RichardBanker implements Listener {
         int upgradeCost = bankLvl*2000;
         short upgradedLvl = (short) (bankLvl+1);
         int pocketBal = (int) VaultHook.econ.getBalance(player);
-        int maxAmt = bankLvl*5000;
+        int maxAmt = bankLvl*7500;
         int diff = (maxAmt-bankAmt);
         if (pocketBal < diff) {
             diff = pocketBal;
