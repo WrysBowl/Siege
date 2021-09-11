@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     testImplementation("junit:junit:4.12")
-    compileOnly("org.projectlombok:lombok:1.18.16")
+    compileOnly("org.projectlombok:lombok:1.18.20")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.5.0")
     compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
     /*
@@ -32,7 +32,7 @@ dependencies {
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.7.1")
     implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
     implementation("com.zaxxer:HikariCP:4.0.3")
-    annotationProcessor("org.projectlombok:lombok:1.18.16")
+    annotationProcessor("org.projectlombok:lombok:1.18.20")
     //compile(fileTree(include(["*.jar"]), dir("libs")))
 }
 
