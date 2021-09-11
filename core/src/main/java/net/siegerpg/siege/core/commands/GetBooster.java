@@ -4,6 +4,7 @@ import net.bytebuddy.build.Plugin;
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,11 +24,7 @@ public class GetBooster implements CommandExecutor {
             sender.sendMessage(Utils.lore("<red>You did not fill in the proper arguments /getBooster player amount multiplier seconds EXP/GOLD."));
             return false;
         }
-        Player targetPlayer = Bukkit.getPlayer(args[0]);
-        if (targetPlayer == null) {
-            sender.sendMessage(Utils.lore("<red>This player is null."));
-            return false;
-        }
+        OfflinePlayer targetPlayer = Bukkit.getOfflinePlayer(args[0]);
         int amount;
         double multiplier;
         int seconds;
