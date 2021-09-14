@@ -19,7 +19,6 @@ public class ForestSpider extends MobDropTable {
                 new Reward(new RawHealthGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new RawLuckGem(0).getUpdatedItem(false), 2.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 0.75)
         });
     }
 }
