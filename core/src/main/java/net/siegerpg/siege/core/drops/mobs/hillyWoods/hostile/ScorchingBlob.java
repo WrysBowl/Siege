@@ -14,7 +14,6 @@ public class ScorchingBlob extends MobDropTable {
                 new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 10.0),
                 new Reward(new RawStrengthGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 2.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 0.25)
         });
     }
 }

@@ -25,10 +25,6 @@ public class ChestMimic4 extends MobDropTable {
 
                 new Reward(new Sugar(100).getUpdatedItem(false).asQuantity(4), 50.0),
                 new Reward(new Sugar(100).getUpdatedItem(false).asQuantity(4), 50.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 30.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 30.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 30.0),
-
         });
     }
 }

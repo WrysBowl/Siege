@@ -20,7 +20,6 @@ public class BloodSucker extends MobDropTable {
                 new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 0.5),
                 new Reward(new RawLuckGem(0).getUpdatedItem(false), 1.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 0.75)
         });
     }
 }

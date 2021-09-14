@@ -22,7 +22,6 @@ public class BanditArcher extends MobDropTable {
                 new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 2.0),
         });
     }
 }

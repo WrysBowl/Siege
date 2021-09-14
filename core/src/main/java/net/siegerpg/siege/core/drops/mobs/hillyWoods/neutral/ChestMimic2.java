@@ -30,9 +30,6 @@ public class ChestMimic2 extends MobDropTable {
                 new Reward(Pebble.Companion.tier(3).getUpdatedItem(false).asQuantity(8), 15.0),
 
                 new Reward(new Sugar(100).getUpdatedItem(false).asQuantity(4), 50.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 30.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 30.0),
-                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 30.0),
         });
     }
 }
