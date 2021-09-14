@@ -15,6 +15,7 @@ public class RockRat extends MobDropTable {
                 new Reward(Pebble.Companion.tier(2).getUpdatedItem(false), 10.0),
                 new Reward(new RockWand(Utils.randRarity()).getUpdatedItem(false), 0.01),
                 new Reward(new RawToughGem(0).getUpdatedItem(false), 1.0),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 0.25)
         });
     }
 }

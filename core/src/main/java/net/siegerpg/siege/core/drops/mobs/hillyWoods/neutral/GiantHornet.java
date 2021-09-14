@@ -16,6 +16,7 @@ public class GiantHornet extends MobDropTable {
                 new Reward(Seed.Companion.tier(1).getUpdatedItem(false), 50.0),
                 new Reward(Seed.Companion.tier(2).getUpdatedItem(false), 5.0),
                 new Reward(new BeePants(Utils.randRarity()).getUpdatedItem(false), 2.5),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 0.5)
         });
     }
 }

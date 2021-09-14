@@ -19,6 +19,7 @@ public class AngryBull extends MobDropTable {
                 new Reward(new FlawedToughGem(0).getUpdatedItem(false), 0.25),
                 new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 0.25),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 1.0),
         });
     }
 }
