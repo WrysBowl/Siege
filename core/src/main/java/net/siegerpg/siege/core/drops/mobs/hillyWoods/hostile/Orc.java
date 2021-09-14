@@ -22,6 +22,7 @@ public class Orc extends MobDropTable {
                 new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 0.5),
                 new Reward(new RawStrengthGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new RawToughGem(0).getUpdatedItem(false), 2.0),
+                new Reward(new HillyWoodsDungeonKey(0).getUpdatedItem(false), 10.0)
         });
     }
 }

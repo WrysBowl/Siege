@@ -35,6 +35,7 @@ public class HelpfulTips implements Listener {
             add(Utils.tacc("&eHerbert does not like tier 1 materials, so you need to convert them to at least tier 2 for him to buy them."));
             add(Utils.tacc("&eUse the /hub command to teleport to the hub."));
             add(Utils.tacc("&eUse the /spawn command to teleport to spawn 3 seconds after sending it."));
+            add(Utils.tacc("&eUse Hilly Woods keys to join Hilly Woods dungeons!"));
             add(Utils.tacc("&eLooking to partner with us? DM Wrys#8935 to speak with the owner."));
             add(Utils.tacc("&eMost plants can be broken for a chance to get gold or experience."));
             add(Utils.tacc("&eWarrior rank gives you 9 more slots per player vault."));
