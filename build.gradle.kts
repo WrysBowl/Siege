@@ -27,7 +27,7 @@ subprojects {
 
     dependencies {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
-        compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+        compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
         compileOnly("com.comphenix.protocol:ProtocolLib:4.6.0")
     }
 
