@@ -1,6 +1,6 @@
 plugins {
     java
-    kotlin("jvm") version "1.4.32"
+    kotlin("jvm") version "1.5.30"
     id("com.github.johnrengelman.shadow") version "5.2.0"
 }
 
@@ -26,14 +26,14 @@ subprojects {
     apply(plugin = "com.github.johnrengelman.shadow")
 
     dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
         compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
         compileOnly("com.comphenix.protocol:ProtocolLib:4.6.0")
     }
 
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_16
+        targetCompatibility = JavaVersion.VERSION_16
     }
 }
