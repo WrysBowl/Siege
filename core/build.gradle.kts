@@ -53,7 +53,7 @@ tasks {
         dependsOn(shadowJar)
     }
     withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "16"
+        kotlinOptions.jvmTarget = "11"
     }
 //    withType<KotlinCompile> {
 //        kotlinOptions.jvmTarget = "1.8"
