@@ -1,8 +1,6 @@
 package net.siegerpg.siege.core;
 
 import co.aikar.commands.PaperCommandManager;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
 import net.siegerpg.siege.core.Webstore.RedeemBoosters;
 import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.*;
@@ -42,7 +40,6 @@ public final class Core extends JavaPlugin {
 
     public static Location spawnLocation;
 
-    public static ProtocolManager protocolManager;
 
     @Override
     public void onEnable() {
@@ -53,8 +50,8 @@ public final class Core extends JavaPlugin {
         defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
         (new VaultHook()).createHooks();
 
+
         spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
-        protocolManager = ProtocolLibrary.getProtocolManager();
         commandManager.registerCommand(new PartyCommand());
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discord").setExecutor(new Discord());
