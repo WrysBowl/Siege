@@ -155,14 +155,16 @@ class PartyCommand : BaseCommand() {
     @HelpCommand
     fun helpWithParty(player: Player) {
         player.sendMessage(
-            "&6 ----- Party Commands -----",
-            "&6/party create: &7Creates a party",
-            "&6/party join [inviter]: &7Joins a party you've been invited to!",
-            "&6/party leave|disband: &7Leaves/disbands the party you're in!",
-            "&6/party kick <player>: &7Kicks a player from the party!",
-            "&6/party promote <player>: &7Makes a member the new leader!",
-            "&6/party send <message>: &7Sends a message to all the party members!",
-            "&6/party invite <player>: &7Invites a player to the party!"
+            listOf(
+                "&6 ----- Party Commands -----",
+                "&6/party create: &7Creates a party",
+                "&6/party join [inviter]: &7Joins a party you've been invited to!",
+                "&6/party leave|disband: &7Leaves/disbands the party you're in!",
+                "&6/party kick <player>: &7Kicks a player from the party!",
+                "&6/party promote <player>: &7Makes a member the new leader!",
+                "&6/party send <message>: &7Sends a message to all the party members!",
+                "&6/party invite <player>: &7Invites a player to the party!"
+            ).toTypedArray()
         )
     }
 
