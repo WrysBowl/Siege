@@ -1,6 +1,9 @@
 package net.siegerpg.siege.core;
 
 import co.aikar.commands.PaperCommandManager;
+import io.github.retrooper.packetevents.PacketEvents;
+import io.github.retrooper.packetevents.settings.PacketEventsSettings;
+import io.github.retrooper.packetevents.utils.server.ServerVersion;
 import net.siegerpg.siege.core.Webstore.RedeemBoosters;
 import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.*;
@@ -40,16 +43,32 @@ public final class Core extends JavaPlugin {
 
     public static Location spawnLocation;
 
+    @Override
+    public void onLoad() {
+        // Set up packetevents
+        PacketEvents.create(this);
+        PacketEventsSettings settings = PacketEvents.get().getSettings();
+        settings.fallbackServerVersion(ServerVersion.v_1_16_5)
+                .compatInjector(true)
+                .checkForUpdates(false);
+        PacketEvents.get().loadAsyncNewThread();
+
+
+    }
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         INSTANCE = this;
+
+        // Load packetevents
+        PacketEvents.get().init();
+
+        // Other
         partyConfig = new PartyConfig();
         commandManager = new PaperCommandManager(this);
         defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
         (new VaultHook()).createHooks();
-
 
         spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
         commandManager.registerCommand(new PartyCommand());
@@ -178,7 +197,9 @@ public final class Core extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         INSTANCE = null;
-//        partyManager.saveAll();
+
+        // Stop packetevents
+        PacketEvents.get().terminate();
     }
 
     /**
