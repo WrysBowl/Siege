@@ -20,6 +20,7 @@ import net.siegerpg.siege.core.listeners.tasks.HelpfulTips;
 import net.siegerpg.siege.core.parties.PartyCommand;
 import net.siegerpg.siege.core.parties.PartyConfig;
 import net.siegerpg.siege.core.skills.SkillListener;
+import net.siegerpg.siege.core.utils.DropUtils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import net.siegerpg.siege.core.utils.cache.LevelEXPStorage;
 import net.siegerpg.siege.core.utils.cache.MobNames;
@@ -138,7 +139,7 @@ public final class Core extends JavaPlugin {
 //        });
         // TODO: uncomment this when working on party command
 
-
+        getServer().getPluginManager().registerEvents(new DropUtils(), this);
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
