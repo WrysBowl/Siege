@@ -1,10 +1,11 @@
 package net.siegerpg.siege.core.utils
 
-import io.github.retrooper.packetevents.PacketEvents
-import io.github.retrooper.packetevents.packetwrappers.play.out.entitydestroy.WrappedPacketOutEntityDestroy
+import io.github.retrooper.packetevents.event.PacketListenerAbstract
+import io.github.retrooper.packetevents.event.impl.PacketPlaySendEvent
+import io.github.retrooper.packetevents.packettype.PacketType
+import io.github.retrooper.packetevents.packetwrappers.play.out.spawnentity.WrappedPacketOutSpawnEntity
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
-import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Item
@@ -15,7 +16,7 @@ import org.bukkit.event.entity.EntityPickupItemEvent
 import org.bukkit.inventory.ItemStack
 import java.util.*
 
-class DropUtils : Listener {
+class DropUtils : Listener, PacketListenerAbstract() {
 
     @EventHandler
     fun onItemPickup(evt: EntityPickupItemEvent) {
@@ -29,17 +30,24 @@ class DropUtils : Listener {
             evt.isCancelled = true
     }
 
+    override fun onPacketPlaySend(evt: PacketPlaySendEvent) {
+        if (evt.packetId == PacketType.Play.Server.SPAWN_ENTITY_SPAWN) {
+            val wrappedPacket = WrappedPacketOutSpawnEntity(evt.nmsPacket)
+            if (wrappedPacket.entity?.type != EntityType.DROPPED_ITEM)
+                return
+            val item = wrappedPacket.entity as Item
+            val itemStack = item.itemStack
+            val seepickableby = itemStack.getNbtTag<List<String>>("seepickableby")
+                ?: return
+            if (!seepickableby.contains(evt.player.uniqueId.toString()))
+                evt.isCancelled = true
+        }
+    }
+
 
     companion object {
         fun dropItemForPlayers(loc: Location, item: ItemStack, players: List<UUID>): Item {
-            val droppedItem =
-                loc.world.dropItem(loc, item.setNbtTags(Pair("seepickableby", players.map { it::toString })))
-            val playersToHideThisFrom = Bukkit.getOnlinePlayers().filter { p -> !players.contains(p.uniqueId) }
-            val wrappedPacket = WrappedPacketOutEntityDestroy(droppedItem.entityId)
-            playersToHideThisFrom.forEach { p ->
-                PacketEvents.get().playerUtils.sendPacket(p, wrappedPacket)
-            }
-            return droppedItem
+            return loc.world.dropItem(loc, item.setNbtTags(Pair("seepickableby", players.map { it::toString })))
         }
     }
 }

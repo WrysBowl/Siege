@@ -63,6 +63,7 @@ public final class Core extends JavaPlugin {
         INSTANCE = this;
 
         // Load packetevents
+        PacketEvents.get().registerListener(new DropUtils());
         PacketEvents.get().init();
 
         // Other
