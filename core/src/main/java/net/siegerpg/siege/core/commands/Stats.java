@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.commands;
 
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
-import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -23,12 +22,8 @@ public class Stats implements CommandExecutor {
         if (args.length > 0) {
             OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
             if (!argPlayer.isOnline()) {
-                ((Player)player).sendMessage(Utils.lore("<red>That player can not be found."));
+                ((Player) player).sendMessage(Utils.lore("<red>That player can not be found."));
                 return false;
-            }
-            if (Levels.INSTANCE.getExpLevel(argPlayer).getFirst() == null) {
-                ((Player)player).sendMessage(Utils.lore("<red>That player can not be found."));
-               return false;
             }
             player = argPlayer;
         }

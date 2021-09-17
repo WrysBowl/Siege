@@ -1,9 +1,8 @@
 package net.siegerpg.siege.core.skills
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.database.DatabaseManager
+import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import java.sql.ResultSet
 
@@ -25,7 +24,7 @@ object Skills {
     }
 
     fun setSkills(player: OfflinePlayer, skills: String) {
-        GlobalScope.launch(Dispatchers.IO) {
+        Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             val connection = DatabaseManager.getConnection()
             connection!!.use {
                 val stmt = connection.prepareStatement("UPDATE skillsData SET skills=? WHERE uuid=?");
@@ -33,6 +32,6 @@ object Skills {
                 stmt.setString(2, player.uniqueId.toString())
                 stmt.executeUpdate()
             }
-        }
+        })
     }
 }

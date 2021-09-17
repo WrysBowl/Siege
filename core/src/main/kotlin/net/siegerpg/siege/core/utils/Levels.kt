@@ -1,22 +1,23 @@
 ﻿package net.siegerpg.siege.core.utils
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.database.DatabaseManager
 import net.siegerpg.siege.core.levelReward.*
 import net.siegerpg.siege.core.parties.Party
-import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
+import org.bukkit.scheduler.BukkitTask
 import java.sql.ResultSet
+import java.time.Instant
 import java.util.*
 import kotlin.math.pow
 
 object Levels {
+    // How long data is cached for
+    private const val cacheDuration = 10 * 60;
+    private val cachedLevelExp = HashMap<UUID, Triple<Short, Int, Instant>>()
 
     private val levelRewards: ArrayList<LevelReward> = arrayListOf(
         Reward1(), Reward2(), Reward3(), Reward4(), Reward5(),
@@ -29,75 +30,135 @@ object Levels {
         Reward36(), Reward37(), Reward38(), Reward39()
     )
 
+    /**
+     * Calculates the experience required to reach a level.
+     */
     fun calculateRequiredExperience(level: Short): Int {
         return (level + 3.0).pow(3).toInt()
     }
 
-    fun getExpLevel(player: OfflinePlayer): Pair<Short, Int> {
-        val connection = DatabaseManager.getConnection()
-        connection!!.use {
-            val stmt = connection.prepareStatement(
-                "SELECT level,experience FROM userData WHERE uuid=?",
-                ResultSet.TYPE_SCROLL_SENSITIVE
-            )
-            stmt.setString(1, player.uniqueId.toString())
-            val query = stmt.executeQuery();
-            if (!query.isBeforeFirst) return Pair(0, 0)
-            query.next()
-            return Pair(query.getShort("level"), query.getInt("experience"))
-        }
+    /**
+     * Gets the exp and level of a player.
+     * @param runAfter A lambda/closure which does something with the exp/level data
+     * @return The task that will fetch the data from the database
+     */
+    fun getExpLevel(player: OfflinePlayer, runAfter: (levelExp: Pair<Short, Int>?) -> Unit): BukkitTask {
+        return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
+            // Checks the cache before everything else
+            val cachedData = cachedLevelExp[player.uniqueId]
+            val now = Instant.now();
+            if (cachedData != null) {
+                if (cachedData.third.plusSeconds(cacheDuration.toLong()).isAfter(now)) {
+                    val pair = Pair(cachedData.first, cachedData.second)
+                    runAfter(pair)
+                    return@Runnable
+                }
+            }
+            val connection = DatabaseManager.getConnection()
+            connection!!.use {
+                val stmt = connection.prepareStatement(
+                    "SELECT level,experience FROM userData WHERE uuid=?",
+                    ResultSet.TYPE_SCROLL_SENSITIVE
+                )
+                stmt.setString(1, player.uniqueId.toString())
+                val query = stmt.executeQuery();
+                if (!query.isBeforeFirst) {
+                    runAfter(null)
+                } else {
+                    query.next()
+                    val data = Pair(query.getShort("level"), query.getInt("experience"))
+                    // Updates the cache, too
+                    val dataToCache = Triple(data.first, data.second, now)
+                    cachedLevelExp[player.uniqueId] = dataToCache
+
+                    // Runs the passed function
+                    runAfter(data)
+                }
+            }
+        })
     }
 
-    fun getExpLevel(players: ArrayList<OfflinePlayer>): HashMap<UUID, Pair<Short, Int>> {
-        val connection = DatabaseManager.getConnection()
-        val playerIDs = players.map { p -> p.uniqueId }.toTypedArray()
-        val map = HashMap<UUID, Pair<Short, Int>>()
-        connection!!.use {
-            val stmt = connection.prepareStatement(
-                "SELECT level,experience FROM userData WHERE uuid IN ?",
-                ResultSet.TYPE_SCROLL_SENSITIVE
-            )
-            stmt.setArray(1, connection.createArrayOf("VARCHAR", playerIDs))
-            val resultSet = stmt.executeQuery();
-            while (resultSet.next()) {
-                val uuid = UUID.fromString(resultSet.getString("uuid"))
-                map[uuid] = Pair(resultSet.getShort("level"), resultSet.getInt("experience"))
+    /**
+     * Gets the exp and level of multiple players.
+     * @param runAfter A lambda/closure which does something with the exp/level data
+     * @return The task that will fetch the data from the database
+     */
+    fun getExpLevel(players: List<OfflinePlayer>, runAfter: (HashMap<UUID, Pair<Short, Int>>?) -> Unit): BukkitTask {
+        return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
+            val connection = DatabaseManager.getConnection()
+            // Gets the cache data for each cached player, and gets the data of the not-yet-cached players
+            val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
+            val map = HashMap<UUID, Pair<Short, Int>>()
+            val now = Instant.now();
+            playerIDs.forEach { id ->
+                val cachedData = cachedLevelExp[id]
+                if (cachedData != null && cachedData.third.plusSeconds(cacheDuration.toLong()).isAfter(now)) {
+                    val pair = Pair(cachedData.first, cachedData.second)
+                    map[id] = pair
+                    playerIDs.remove(id)
+                }
             }
-            return map
-        }
+            if (playerIDs.size == 0) {
+                runAfter(if (map.size > 0) map else null)
+                return@Runnable
+            }
+            connection!!.use {
+                val stmt = connection.prepareStatement(
+                    "SELECT level,experience FROM userData WHERE uuid IN ?",
+                    ResultSet.TYPE_SCROLL_SENSITIVE
+                )
+                stmt.setArray(1, connection.createArrayOf("VARCHAR", playerIDs.toTypedArray()))
+                val resultSet = stmt.executeQuery();
+                while (resultSet.next()) {
+                    val uuid = UUID.fromString(resultSet.getString("uuid"))
+                    val result = Pair(resultSet.getShort("level"), resultSet.getInt("experience"))
+                    map[uuid] = result
+                    // Save user data to cache
+                    cachedLevelExp[uuid] = Triple(result.first, result.second, Instant.now())
+                }
+            }
+            runAfter(if (map.size > 0) map else null)
+        })
     }
 
     /**
      * Gets the exp and level of every player (sorted from highest level to lowest)
+     * This bypasses the cache so be careful not to overuse it.
      * @param limit: Instead of getting exp&level of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
      */
-    fun getAllExpLevel(limit: Int): ArrayList<Triple<UUID, Short, Int>> {
-        val connection = DatabaseManager.getConnection()
-        val arrayList = arrayListOf<Triple<UUID, Short, Int>>()
-        val limitStr = if (limit <= 0) {
-            ""
-        } else {
-            "LIMIT $limit"
-        }
-        connection!!.use {
-            val stmt =
-                connection.prepareStatement("SELECT level,experience,uuid FROM userData ORDER BY level DESC $limitStr")
-            val query = stmt.executeQuery();
-            if (!query.isBeforeFirst) return arrayList
-            while (query.next()) {
-                val triple = Triple(
-                    UUID.fromString(query.getString("uuid")),
-                    query.getShort("level"),
-                    query.getInt("experience")
-                )
-                arrayList.add(triple)
+    fun getAllExpLevel(limit: Int, runAfter: (ArrayList<Triple<UUID, Short, Int>>?) -> Unit): BukkitTask {
+        return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
+            val connection = DatabaseManager.getConnection()
+            val arrayList = arrayListOf<Triple<UUID, Short, Int>>()
+            val limitStr = if (limit <= 0) {
+                ""
+            } else {
+                "LIMIT $limit"
             }
-            return arrayList
-        }
+            connection!!.use {
+                val stmt =
+                    connection.prepareStatement("SELECT level,experience,uuid FROM userData ORDER BY level DESC $limitStr")
+                val query = stmt.executeQuery();
+                if (!query.isBeforeFirst) return@Runnable
+                while (query.next()) {
+                    val uuid = UUID.fromString(query.getString("uuid"))
+                    val data = Pair(query.getShort("level"), query.getInt("experience"))
+                    val triple = Triple(
+                        uuid,
+                        data.first,
+                        data.second
+                    )
+                    arrayList.add(triple)
+                    // Updates the cache
+                    cachedLevelExp[uuid] = Triple(data.first, data.second, Instant.now())
+                }
+            }
+            runAfter(if (arrayList.size > 0) arrayList else null)
+        })
     }
 
-    fun setLevel(player: OfflinePlayer, level: Short) {
-        GlobalScope.launch(Dispatchers.IO) {
+    fun setLevel(player: OfflinePlayer, level: Short): BukkitTask {
+        return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             val connection = DatabaseManager.getConnection()
             connection!!.use {
                 val stmt = connection.prepareStatement("UPDATE userData SET level=? WHERE uuid=?");
@@ -107,12 +168,15 @@ object Levels {
                 if (player.isOnline) {
                     (player as Player).level = level.toInt()
                 }
+                // cache
+                val levelExp = cachedLevelExp[player.uniqueId]
+                cachedLevelExp[player.uniqueId] = Triple(level, levelExp?.second ?: 0, Instant.now())
             }
-        }
+        })
     }
 
-    fun addLevel(player: OfflinePlayer, level: Short) {
-        GlobalScope.launch(Dispatchers.IO) {
+    fun addLevel(player: OfflinePlayer, level: Short): BukkitTask {
+        return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             val connection = DatabaseManager.getConnection()
             connection!!.use {
                 val stmt = connection.prepareStatement("UPDATE userData SET level=level+? WHERE uuid=?");
@@ -123,8 +187,12 @@ object Levels {
                     val p = player as Player
                     p.giveExpLevels(level.toInt())
                 }
+                // cache
+                val levelExp = cachedLevelExp[player.uniqueId]
+                cachedLevelExp[player.uniqueId] =
+                    Triple(((levelExp?.first ?: 0) + level).toShort(), levelExp?.second ?: 0, Instant.now())
             }
-        }
+        })
     }
 
     /**
@@ -149,8 +217,11 @@ object Levels {
         return Pair(lvl, exp)
     }
 
-    fun setExpLevel(player: OfflinePlayer, levelExp: Pair<Short, Int>) {
-        GlobalScope.launch(Dispatchers.IO) {
+    /**
+     * Sets the exp and level of a player
+     */
+    fun setExpLevel(player: OfflinePlayer, levelExp: Pair<Short, Int>): BukkitTask {
+        return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             val connection = DatabaseManager.getConnection()
             connection!!.use {
                 val stmt = connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?");
@@ -165,16 +236,18 @@ object Levels {
                     val expPercent = exp / calculateRequiredExperience(levelExp.first).toFloat()
                     p.level = lvl
                     p.exp = expPercent
-                    LevelEXPStorage.playerLevel[player] = lvl.toShort()
-                    LevelEXPStorage.playerExperience[player] = exp
-
+                    // Updates the cache
+                    cachedLevelExp[player.uniqueId] = Triple(levelExp.first, levelExp.second, Instant.now())
                 }
             }
-        }
+        })
     }
 
-    fun setExpLevel(data: HashMap<UUID, Pair<Short, Int>>) {
-        GlobalScope.launch(Dispatchers.IO) {
+    /**
+     * Sets the exp and level of multiple players
+     */
+    fun setExpLevel(data: HashMap<UUID, Pair<Short, Int>>): BukkitTask {
+        return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             val connection = DatabaseManager.getConnection()
             connection!!.use {
                 val stm = connection.createStatement()
@@ -197,23 +270,22 @@ object Levels {
                         val expPercent = exp / calculateRequiredExperience(data.first).toFloat()
                         p.level = lvl
                         p.exp = expPercent
-                        LevelEXPStorage.playerLevel[player] = lvl.toShort()
-                        LevelEXPStorage.playerExperience[player] = exp
+                        // Updates the cache
+                        cachedLevelExp[player.uniqueId] = Triple(data.first, data.second, Instant.now())
                     }
                 }
                 // We execute the batch
                 stm.executeBatch()
             }
-        }
+        })
     }
 
     /**
      * Sets a player's exp
      */
-    fun setExp(player: OfflinePlayer, exp: Int) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val level = getExpLevel(player).first
-            val new = calculateExpLevel(level, exp, player as Player)
+    fun setExp(player: OfflinePlayer, exp: Int): BukkitTask {
+        return getExpLevel(player) { pair ->
+            val new = calculateExpLevel(pair?.first ?: 0, exp, player as Player)
             setExpLevel(player, new)
         }
     }
@@ -221,10 +293,9 @@ object Levels {
     /**
      * Adds experience (and levels up automatically) for one player
      */
-    fun addExp(player: OfflinePlayer, exp: Int) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val levelExp = getExpLevel(player)
-            val new = calculateExpLevel(levelExp.first, levelExp.second + exp, player as Player)
+    fun addExp(player: OfflinePlayer, expToAdd: Int): BukkitTask {
+        return getExpLevel(player) { pair ->
+            val new = calculateExpLevel(pair?.first ?: 0, (pair?.second ?: 0) + expToAdd, player as Player)
             setExpLevel(player, new)
         }
     }
@@ -232,16 +303,22 @@ object Levels {
     /**
      * Adds the same experience to multiple players
      */
-    fun addExp(players: ArrayList<OfflinePlayer>, exp: Int) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val levelExp = getExpLevel(players)
-            levelExp.forEach { (uuid, data) ->
-                // Updates the data in levelExp for each player to reflect the new exp and level
-                val new = calculateExpLevel(data.first, data.second + exp, Bukkit.getOfflinePlayer(uuid))
-                levelExp[uuid] = Pair(new.first, new.second)
+    fun addExp(players: ArrayList<OfflinePlayer>, exp: Int): BukkitTask {
+        return getExpLevel(players) { levelExp ->
+            if (levelExp != null) {
+                levelExp.forEach { (uuid, data) ->
+                    // Updates the data in levelExp for each player to reflect the new exp and level
+                    levelExp[uuid] = calculateExpLevel(data.first, data.second + exp, Bukkit.getOfflinePlayer(uuid))
+                }
+                // Finally sets the new exp and level for all the players in question
+                setExpLevel(levelExp)
+            } else {
+                val startingLevelExp = HashMap<UUID, Pair<Short, Int>>()
+                players.forEach { p ->
+                    startingLevelExp[p.uniqueId] = calculateExpLevel(0, 0 + exp, p)
+                }
+                setExpLevel(startingLevelExp)
             }
-            // Finally sets the new exp and level for all the players in question
-            setExpLevel(levelExp)
         }
     }
 

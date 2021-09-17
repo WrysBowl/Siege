@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.listeners
 
-import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.misc.StatGemType
@@ -28,7 +27,8 @@ class StatGemListener : Listener {
             player.sendMiniMessage("<red>That item already has a stat gem!")
             return
         }
-        if (itemOnCursor.levelRequirement!! > LevelEXPStorage.playerLevel[player]!!) {
+
+        if (itemOnCursor.levelRequirement!! > LevelEXPStorage.playerLevel[player.uniqueId]!!) {
             player.sendMiniMessage("<red>You are too low level to use this gem!")
             return
         }

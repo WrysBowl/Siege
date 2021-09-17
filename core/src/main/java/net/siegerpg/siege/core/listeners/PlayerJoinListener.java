@@ -2,24 +2,14 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.GrieferChestplate;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword;
-import net.siegerpg.siege.core.items.statgems.StatGem;
-import net.siegerpg.siege.core.items.types.misc.StatGemType;
-import net.siegerpg.siege.core.skills.Skills;
-import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Tablist;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.wands.BeginnerLivingTwig;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.BeginnerClub;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.BeginnerTwig;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.BeginnerScrapyardBow;
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -77,9 +67,8 @@ public class PlayerJoinListener implements Listener {
                 PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
                 userData.setString(1, player.getUniqueId().toString());
                 userData.executeUpdate();
-            }catch (SQLException ignored) { }
-        }
-        if (event.getPlayer().getName().equals("Wrys")) {
+            } catch (SQLException ignored) {
+            }
         }
 
 
@@ -116,12 +105,13 @@ public class PlayerJoinListener implements Listener {
     }
 
     public void updateInventory(Player player) {
-        for (int i = 0; i< player.getInventory().getSize(); i++) {
+        for (int i = 0; i < player.getInventory().getSize(); i++) {
             CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
             if (CusItem == null) continue;
             player.getInventory().setItem(i, CusItem.getUpdatedItem(false));
         }
     }
+
     public void newPlayerReward(Player player) {
         player.getInventory().clear();
         player.getInventory().addItem(new BeginnerTwig(50).getUpdatedItem(false));
