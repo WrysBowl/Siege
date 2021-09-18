@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.misc.StatGemType
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
+import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.sendMiniMessage
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -28,7 +29,7 @@ class StatGemListener : Listener {
             return
         }
 
-        if (itemOnCursor.levelRequirement!! > LevelEXPStorage.playerLevel[player.uniqueId]!!) {
+        if (itemOnCursor.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first ?: 0)) {
             player.sendMiniMessage("<red>You are too low level to use this gem!")
             return
         }

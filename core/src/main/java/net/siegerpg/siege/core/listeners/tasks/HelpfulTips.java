@@ -1,8 +1,9 @@
 package net.siegerpg.siege.core.listeners.tasks;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.cache.PlayerData;
+import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.cache.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -15,7 +16,7 @@ public class HelpfulTips implements Listener {
      * TIPS ARE SUBJECT TO CHANGE WITH NEW UPDATES
      */
 
-    public static ArrayList<String> tips = new ArrayList<>(){
+    public static ArrayList<String> tips = new ArrayList<>() {
         {
             add(Utils.tacc("&eKill chickens, pigs, birds, sheep, and cows for food."));
             add(Utils.tacc("&eClick on weapon/armor vendors to craft stronger weapons and armor pieces."));
@@ -59,25 +60,34 @@ public class HelpfulTips implements Listener {
 
     public void tipsTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
-            int randNum = (int)(Math.random()*tips.size());
+            int randNum = (int) (Math.random() * tips.size());
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (!PlayerData.broadcastTips.get(p)) continue;
-                p.sendMessage(Utils.tacc("\n&6&lTIP &r"+tips.get(randNum)+"&r\n&7To disable tips type /tips disable.\n\n "));
+                p.sendMessage(Utils.tacc("\n&6&lTIP &r" + tips.get(randNum) + "&r\n&7To disable tips type /tips disable.\n\n "));
             }
         }, 6000, 6000);
     }
+
     public void webstoreDiscordTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                if (LevelEXPStorage.playerLevel.get(p) > 10) continue;
-                p.sendMessage(Utils.parse(""));
-                p.sendMessage(Utils.parse("  <aqua><bold>Join our <light_purple>discord<aqua> here!<reset>"));
-                p.sendMessage(Utils.tacc("  https://discord.siegerpg.net"));
-                p.sendMessage(Utils.parse(""));
-                p.sendMessage(Utils.parse("  <aqua><bold>Visit our <green>webstore<aqua> here!<reset>"));
-                p.sendMessage(Utils.tacc("  https://store.siegerpg.net/"));
-                p.sendMessage(Utils.parse(""));
-            }
+            Levels.INSTANCE.getExpLevel(new ArrayList<Player>(Bukkit.getOnlinePlayers()),
+                    uuidPairHashMap -> {
+                        uuidPairHashMap.forEach((uuid, shortIntegerPair) ->
+                        {
+                            if (shortIntegerPair.getFirst() > 10) return;
+                            Player p = Bukkit.getPlayer(uuid);
+                            if (p == null) return;
+                            p.sendMessage(Utils.parse(""));
+                            p.sendMessage(Utils.parse("  <aqua><bold>Join our <light_purple>discord<aqua> here!<reset>"));
+                            p.sendMessage(Utils.tacc("  https://discord.siegerpg.net"));
+                            p.sendMessage(Utils.parse(""));
+                            p.sendMessage(Utils.parse("  <aqua><bold>Visit our <green>webstore<aqua> here!<reset>"));
+                            p.sendMessage(Utils.tacc("  https://store.siegerpg.net/"));
+                            p.sendMessage(Utils.parse(""));
+                        });
+                        return null;
+                    });
+
         }, 12000, 6000);
     }
 }

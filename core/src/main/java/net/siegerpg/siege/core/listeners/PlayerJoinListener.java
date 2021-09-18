@@ -61,16 +61,19 @@ public class PlayerJoinListener implements Listener {
         String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
         player.teleport(Core.plugin().getServer().getWorld("Hub").getSpawnLocation());
 
-        if (Levels.INSTANCE.getExpLevel(player).getFirst() < 1) {
-            try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
-                // Add the user to the db if he doesn't exist
-                PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
-                userData.setString(1, player.getUniqueId().toString());
-                userData.executeUpdate();
-            } catch (SQLException ignored) {
-            }
-        }
+        Levels.INSTANCE.getExpLevel(player, shortIntegerPair -> {
+            if (shortIntegerPair == null) {
+                try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
+                    // Add the user to the db if he doesn't exist
+                    PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
+                    userData.setString(1, player.getUniqueId().toString());
+                    userData.executeUpdate();
+                } catch (SQLException ignored) {
+                }
 
+            }
+            return null;
+        });
 
         if (!player.hasPlayedBefore()) {
             newPlayerReward(player);

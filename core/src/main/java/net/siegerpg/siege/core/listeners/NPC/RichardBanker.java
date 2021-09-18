@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
+import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.Bank;
 import net.siegerpg.siege.core.utils.Scoreboard;
@@ -46,9 +47,10 @@ public class RichardBanker implements Listener {
     private void clickMenu(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
         int slot = e.getSlot();
-
-        short bankLvl = PlayerBanking.bankLevels.get(player);
-        int bankAmt = PlayerBanking.bankAmounts.get(player);
+        Pair<Short, Integer> bankLvlAmt = Bank.INSTANCE.blockingGetBankLevelAmount(player);
+        if (bankLvlAmt == null) bankLvlAmt = new Pair<>((short) 0, 0);
+        short bankLvl = bankLvlAmt.getFirst();
+        int bankAmt = bankLvlAmt.getSecond();
         int upgradeCost = bankLvl * 2000;
         int maxAmt = bankLvl * 7500;
         short upgradedLvl = (short) (bankLvl + 1);
@@ -99,14 +101,14 @@ public class RichardBanker implements Listener {
                     diff = (int) pocketBal;
                 }
                 VaultHook.econ.withdrawPlayer(player, diff);
-                PlayerBanking.bankAmounts.replace(player.getUniqueId(), bankAmt + diff);
+                Bank.INSTANCE.setBankAmount(player, diff);
                 bankAmt = bankAmt + diff;
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
             }
         } else if (slot == 31) { //if slot is upgrading
             if (pocketBal >= upgradeCost) {
                 VaultHook.econ.withdrawPlayer(player, upgradeCost);
-                PlayerBanking.bankLevels.replace(player.getUniqueId(), upgradedLvl);
+                Bank.INSTANCE.setBankLevel(player, upgradedLvl);
                 bankLvl = upgradedLvl;
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
             } else if (bankAmt + pocketBal >= upgradeCost) {
@@ -119,8 +121,8 @@ public class RichardBanker implements Listener {
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
             }
         }
-        PlayerBanking.bankAmounts.replace(player.getUniqueId(), bankAmt);
-        PlayerBanking.bankLevels.replace(player.getUniqueId(), bankLvl);
+        Bank.INSTANCE.setBankLevel(player, bankLvl);
+        Bank.INSTANCE.setBankAmount(player, bankAmt);
         player.openInventory(getMenu(player));
         Scoreboard.updateScoreboard(player);
         Bank.INSTANCE.setBankAmount(player, bankAmt);
@@ -136,9 +138,10 @@ public class RichardBanker implements Listener {
         for (int i = 0; i < gui.getSize(); i++) {
             gui.setItem(i, filler);
         }
-
-        short bankLvl = PlayerBanking.bankLevels.get(player);
-        int bankAmt = PlayerBanking.bankAmounts.get(player);
+        Pair<Short, Integer> bankLvlAmt = Bank.INSTANCE.blockingGetBankLevelAmount(player);
+        if (bankLvlAmt == null) bankLvlAmt = new Pair<>((short) 0, 0);
+        short bankLvl = bankLvlAmt.getFirst();
+        int bankAmt = bankLvlAmt.getSecond();
         int upgradeCost = bankLvl * 2000;
         short upgradedLvl = (short) (bankLvl + 1);
         int pocketBal = (int) VaultHook.econ.getBalance(player);

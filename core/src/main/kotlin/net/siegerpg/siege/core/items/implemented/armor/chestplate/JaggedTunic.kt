@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.items.implemented.armor.chestplate
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.armor.CustomChestplate
+import net.siegerpg.siege.core.utils.Levels
 import org.bukkit.Color
 import org.bukkit.EntityEffect
 import org.bukkit.Material
@@ -41,7 +42,7 @@ class JaggedTunic() : CustomChestplate(
         val cusItem = CustomItemUtils.getCustomItem(item) ?: return
         if (e !is EntityDamageByEntityEvent) return
         if (cusItem.levelRequirement == null) return
-        if (cusItem.levelRequirement!! > LevelEXPStorage.playerLevel[player.uniqueId]!!) return
+        if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first ?: 0)) return
         val attacker: Entity = e.damager
         (attacker as LivingEntity).damage(5.0, player)
         attacker.playEffect(EntityEffect.SHIELD_BREAK)

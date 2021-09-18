@@ -20,6 +20,7 @@ import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.misc.CustomWand
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
+import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.attribute.Attribute
 import org.bukkit.entity.Player
@@ -99,7 +100,7 @@ object CustomItemUtils {
         //val skills = SkillUtils.decode("A_1_4_7")
         //output += SkillUtils.getStats(skills)[statType]!!
         if (statType == StatTypes.MANA) {
-            output += LevelEXPStorage.playerLevel.get(player.uniqueId)?.times(2) ?: 0
+            output += Levels.blockingGetExpLevel(player)?.first?.times(2) ?: 0
         }
 
         getCustomItem(mainHand)?.let {
@@ -181,7 +182,7 @@ object CustomItemUtils {
 
     fun getCustomHealth(player: Player): Double {
         val healthStat = getPlayerStat(player, StatTypes.HEALTH)
-        val maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        val maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
         return (player.health / maxHealth) * (healthStat + maxHealth + player.level * 2)
     }
 

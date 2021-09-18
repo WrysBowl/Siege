@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
+import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.cache.MobNames
 import org.bukkit.Material
@@ -191,7 +192,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 }
                 return
             }
-            if (levelReq > LevelEXPStorage.playerLevel[attacker.uniqueId]!!) {
+            if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
                 attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
                 if (victim is Mob) {
