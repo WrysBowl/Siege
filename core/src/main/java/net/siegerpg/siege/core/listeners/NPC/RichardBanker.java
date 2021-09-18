@@ -1,9 +1,9 @@
 package net.siegerpg.siege.core.listeners.NPC;
 
+import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Bank;
-import net.siegerpg.siege.core.utils.cache.PlayerBanking;
+import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
@@ -34,7 +34,9 @@ public class RichardBanker implements Listener {
 
     @EventHandler
     public void guiClick(InventoryClickEvent e) {
-        if (!(e.getWhoClicked() instanceof Player)) {return;}
+        if (!(e.getWhoClicked() instanceof Player)) {
+            return;
+        }
         if (e.getWhoClicked().getMetadata("RichardBank").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("RichardBank").get(0).value(), e.getInventory())) {
             clickMenu(e);
@@ -45,12 +47,13 @@ public class RichardBanker implements Listener {
     private void clickMenu(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
         int slot = e.getSlot();
-
-        short bankLvl = PlayerBanking.bankLevels.get(player);
-        int bankAmt = PlayerBanking.bankAmounts.get(player);
-        int upgradeCost = bankLvl*2000;
-        int maxAmt = bankLvl*7500;
-        short upgradedLvl = (short) (bankLvl+1);
+        Pair<Short, Integer> bankLvlAmt = Bank.INSTANCE.blockingGetBankLevelAmount(player);
+        if (bankLvlAmt == null) bankLvlAmt = new Pair<>((short) 0, 0);
+        short bankLvl = bankLvlAmt.getFirst();
+        int bankAmt = bankLvlAmt.getSecond();
+        int upgradeCost = bankLvl * 2000;
+        int maxAmt = bankLvl * 7500;
+        short upgradedLvl = (short) (bankLvl + 1);
         double pocketBal = VaultHook.econ.getBalance(player);
 
         if (slot > 27 && slot < 31) { //if slots are withdrawing from bank
@@ -61,7 +64,7 @@ public class RichardBanker implements Listener {
             } else if (slot == 29) {
                 if (bankAmt >= 1000) {
                     VaultHook.econ.depositPlayer(player, 1000);
-                    bankAmt = bankAmt-1000;
+                    bankAmt = bankAmt - 1000;
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
                 } else {
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
@@ -69,7 +72,7 @@ public class RichardBanker implements Listener {
             } else {
                 if (bankAmt >= 100) {
                     VaultHook.econ.depositPlayer(player, 100);
-                    bankAmt = bankAmt-100;
+                    bankAmt = bankAmt - 100;
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
                 } else {
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
@@ -77,47 +80,49 @@ public class RichardBanker implements Listener {
             }
         } else if (slot > 31 && slot < 35) { //if slots are depositing to the bank
             if (slot == 32) {
-                if (pocketBal >= 100 && bankAmt+100 <= maxAmt) {
+                if (pocketBal >= 100 && bankAmt + 100 <= maxAmt) {
                     VaultHook.econ.withdrawPlayer(player, 100);
-                    bankAmt = bankAmt+100;
+                    bankAmt = bankAmt + 100;
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
                 } else {
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
                 }
             } else if (slot == 33) {
-                if (pocketBal >= 1000 && bankAmt+1000 <= maxAmt) {
+                if (pocketBal >= 1000 && bankAmt + 1000 <= maxAmt) {
                     VaultHook.econ.withdrawPlayer(player, 1000);
-                    bankAmt = bankAmt+1000;
+                    bankAmt = bankAmt + 1000;
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
                 } else {
                     player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
                 }
             } else {
-                int diff = (maxAmt-bankAmt);
-                if (pocketBal < diff) { diff = (int) pocketBal; }
+                int diff = (maxAmt - bankAmt);
+                if (pocketBal < diff) {
+                    diff = (int) pocketBal;
+                }
                 VaultHook.econ.withdrawPlayer(player, diff);
-                PlayerBanking.bankAmounts.replace(player, bankAmt + diff);
+                Bank.INSTANCE.setBankAmount(player, diff);
                 bankAmt = bankAmt + diff;
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
             }
         } else if (slot == 31) { //if slot is upgrading
             if (pocketBal >= upgradeCost) {
                 VaultHook.econ.withdrawPlayer(player, upgradeCost);
-                PlayerBanking.bankLevels.replace(player, upgradedLvl);
+                Bank.INSTANCE.setBankLevel(player, upgradedLvl);
                 bankLvl = upgradedLvl;
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
             } else if (bankAmt + pocketBal >= upgradeCost) {
-                int subBankDiff = (int) (upgradeCost-pocketBal);
+                int subBankDiff = (int) (upgradeCost - pocketBal);
                 VaultHook.econ.withdrawPlayer(player, pocketBal);
                 bankLvl = upgradedLvl;
-                bankAmt = bankAmt-subBankDiff;
+                bankAmt = bankAmt - subBankDiff;
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
             } else {
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
             }
         }
-        PlayerBanking.bankAmounts.replace(player, bankAmt);
-        PlayerBanking.bankLevels.replace(player, bankLvl);
+        Bank.INSTANCE.setBankLevel(player, bankLvl);
+        Bank.INSTANCE.setBankAmount(player, bankAmt);
         player.openInventory(getMenu(player));
         Scoreboard.updateScoreboard(player);
         Bank.INSTANCE.setBankAmount(player, bankAmt);
@@ -133,14 +138,15 @@ public class RichardBanker implements Listener {
         for (int i = 0; i < gui.getSize(); i++) {
             gui.setItem(i, filler);
         }
-
-        short bankLvl = PlayerBanking.bankLevels.get(player);
-        int bankAmt = PlayerBanking.bankAmounts.get(player);
-        int upgradeCost = bankLvl*2000;
-        short upgradedLvl = (short) (bankLvl+1);
+        Pair<Short, Integer> bankLvlAmt = Bank.INSTANCE.blockingGetBankLevelAmount(player);
+        if (bankLvlAmt == null) bankLvlAmt = new Pair<>((short) 0, 0);
+        short bankLvl = bankLvlAmt.getFirst();
+        int bankAmt = bankLvlAmt.getSecond();
+        int upgradeCost = bankLvl * 2000;
+        short upgradedLvl = (short) (bankLvl + 1);
         int pocketBal = (int) VaultHook.econ.getBalance(player);
-        int maxAmt = bankLvl*7500;
-        int diff = (maxAmt-bankAmt);
+        int maxAmt = bankLvl * 7500;
+        int diff = (maxAmt - bankAmt);
         if (pocketBal < diff) {
             diff = pocketBal;
         }

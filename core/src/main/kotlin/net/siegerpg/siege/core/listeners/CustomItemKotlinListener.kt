@@ -2,8 +2,6 @@ package net.siegerpg.siege.core.listeners
 
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
-import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
-import net.siegerpg.siege.core.utils.cache.MobNames
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
@@ -12,8 +10,11 @@ import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
+import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
-import org.bukkit.*
+import net.siegerpg.siege.core.utils.cache.MobNames
+import org.bukkit.Material
+import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
 import org.bukkit.entity.*
 import org.bukkit.event.EventHandler
@@ -21,7 +22,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.*
 import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
@@ -45,7 +45,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 
     @EventHandler
     @Suppress("unused")
-    fun onItemSwitch(e: PlayerItemHeldEvent) {
+    fun onItemSwitch(/*evt: PlayerItemHeldEvent*/) {
         //e.player.chat("switched item from ${e.previousSlot} to ${e.newSlot}")
         //CustomItemUtils.getPlayerStat(e.player, StatTypes.STRENGTH)
         //e.player.sendMessage("item in new slot: ${e.player.inventory.getItem(e.newSlot)?.type}")
@@ -53,12 +53,11 @@ class CustomItemKotlinListener : Listener, Runnable {
         //e.player.sendMessage("item in previous slot: ${e.player.inventory.getItem(e.previousSlot)?.type}")
         //e.player.sendMessage("strength stat: ${CustomItemUtils.getPlayerStat(e.player, StatTypes.STRENGTH, e.player.inventory.getItem(e.newSlot))}")
         // TODO: Permanent fadein action bar
-//        GlobalScope.launch {
+//        {
 //            delay(10)
 //            e.player.sendMessage("item now in main hand: ${e.player.inventory.itemInMainHand.type}")
 //            e.player.sendMessage("strength stat: ${CustomItemUtils.getPlayerStat(e.player, StatTypes.STRENGTH)}")
 //        }
-//        Thread.sleep(50)
 //        Scoreboard.updateScoreboard(e.player)
 
 //        val customItem = e.player.inventory.getItem(e.newSlot)?.let { CustomItemUtils.getCustomItem(it) }
@@ -73,6 +72,7 @@ class CustomItemKotlinListener : Listener, Runnable {
     fun onItemSwap(e: PlayerSwapHandItemsEvent) {
         e.isCancelled = true
     }
+
     @EventHandler
     @Suppress("unused")
     fun onItemSwapClick(e: InventoryClickEvent) {
@@ -97,6 +97,7 @@ class CustomItemKotlinListener : Listener, Runnable {
             }
         }
     }
+
     @EventHandler
     fun onBowShoot(e: EntityShootBowEvent) {
         val entity: Entity = e.entity
@@ -105,12 +106,14 @@ class CustomItemKotlinListener : Listener, Runnable {
         entity.inventory.setItem(9, arrowItems[entity])
         arrowItems.remove(entity)
     }
+
     @EventHandler
     fun onLeave(e: PlayerQuitEvent) {
         val player: Player = e.player
         if (arrowItems[player] == null) return
         player.inventory.setItem(9, arrowItems[player])
     }
+
     /*
     @EventHandler
     fun onInvOpen(e: InventoryOpenEvent) {
@@ -136,6 +139,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         var actualDamage = e.damage
         var maxDamage = damage
         var attacker: Entity? = null
+        val vicMaxHealth = victim.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
         if (e is EntityDamageByEntityEvent) {
             attacker =
                 if (e.damager is Player) e.damager as Player
@@ -150,7 +154,7 @@ class CustomItemKotlinListener : Listener, Runnable {
             }
         }
         if (attacker is Player) {
-            if (victim is Player){
+            if (victim is Player) {
                 if (victim.world != plugin().server.getWorld("PVP")) {
                     e.isCancelled = true
                     return
@@ -161,7 +165,14 @@ class CustomItemKotlinListener : Listener, Runnable {
                 e.damage = 1.0
                 if (victim is Mob) {
                     val displayName: String = MobNames.mobNames[victim] ?: return
-                    victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+                    victim.customName = Utils.tacc(
+                        "$displayName &a${
+                            Utils.round(
+                                victim.health - e.damage,
+                                1
+                            )
+                        }&2/&a${Utils.round(vicMaxHealth, 1)}"
+                    )
                 }
                 return
             }
@@ -170,16 +181,30 @@ class CustomItemKotlinListener : Listener, Runnable {
                 e.damage = 1.0
                 if (victim is Mob) {
                     val displayName: String = MobNames.mobNames[victim] ?: return
-                    victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+                    victim.customName = Utils.tacc(
+                        "$displayName &a${
+                            Utils.round(
+                                victim.health - e.damage,
+                                1
+                            )
+                        }&2/&a${Utils.round(vicMaxHealth, 1)}"
+                    )
                 }
                 return
             }
-            if (levelReq > LevelEXPStorage.playerLevel[attacker]!!) {
+            if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
                 attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
                 if (victim is Mob) {
                     val displayName: String = MobNames.mobNames[victim] ?: return
-                    victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+                    victim.customName = Utils.tacc(
+                        "$displayName &a${
+                            Utils.round(
+                                victim.health - e.damage,
+                                1
+                            )
+                        }&2/&a${Utils.round(vicMaxHealth, 1)}"
+                    )
                 }
                 return
             }
@@ -188,7 +213,14 @@ class CustomItemKotlinListener : Listener, Runnable {
                     e.damage = 1.0
                     if (victim is Mob) {
                         val displayName: String = MobNames.mobNames[victim] ?: return
-                        victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+                        victim.customName = Utils.tacc(
+                            "$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${
+                                Utils.round(
+                                    vicMaxHealth,
+                                    1
+                                )
+                            }"
+                        )
                     }
                     return
                 }
@@ -198,9 +230,9 @@ class CustomItemKotlinListener : Listener, Runnable {
                 maxDamage = damage
             }
             //If the item is an axe/sword and the damage cause is melee attack then set correct damage
-            if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK){
+            if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
                 actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
-                if ((damage/maxDamage) > 1) maxDamage = 0.8 //less maxDamage = more damage (damage/maxDamage)
+                if ((damage / maxDamage) > 1) maxDamage = 0.8 //less maxDamage = more damage (damage/maxDamage)
             }
             if (damage > 1.5 && maxDamage <= 1) {
                 maxDamage = damage
@@ -233,10 +265,12 @@ class CustomItemKotlinListener : Listener, Runnable {
             }
         }
 
-
         val vicHealthStat =
-            if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.HEALTH) + victim.maxHealth + (victim.level*2)
-            else victim.maxHealth
+            if (victim is Player) CustomItemUtils.getPlayerStat(
+                victim,
+                StatTypes.HEALTH
+            ) + vicMaxHealth + (victim.level * 2)
+            else vicMaxHealth
         if (vicHealthStat < 0.0) {
             e.damage = 9999.0
             return
@@ -246,15 +280,23 @@ class CustomItemKotlinListener : Listener, Runnable {
             else 0.0
         val attStrengthStat =
             if (attacker is Player && actualDamage > 0)
-                (damage/maxDamage) * actualDamage //if player spam clicks it won't deal max damage
+                (damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
             else damage
-        val reducedDamage = attStrengthStat * (1 - (vicToughness/1000)) //custom attack damage with toughness considered
+        val reducedDamage =
+            attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
 
-        e.damage = (reducedDamage * victim.maxHealth)/vicHealthStat //scaled down to damage player by vanilla damage
+        e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
 
         if (victim is Mob) {
             val displayName: String = MobNames.mobNames[victim] ?: return
-            victim.customName = Utils.tacc("$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${Utils.round(victim.maxHealth, 1)}")
+            victim.customName = Utils.tacc(
+                "$displayName &a${
+                    Utils.round(
+                        victim.health - e.damage,
+                        1
+                    )
+                }&2/&a${Utils.round(vicMaxHealth, 1)}"
+            )
         }
     }
 
@@ -273,7 +315,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         if (e.action != Action.RIGHT_CLICK_AIR &&
             e.action != Action.RIGHT_CLICK_BLOCK
         ) return
-        CustomItemUtils.getCustomItem(e.player.itemInHand)?.let {
+        CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand)?.let {
             if (it is CustomFood) {
                 val player: Player = e.player
                 if (cooldownFood.contains(player)) {
@@ -282,7 +324,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 }
                 cooldownFood.add(player)
                 it.onEat(e)
-                e.player.itemInHand.amount = e.player.itemInHand.amount-1
+                e.player.inventory.itemInMainHand.amount = e.player.inventory.itemInMainHand.amount - 1
                 object : BukkitRunnable() {
                     override fun run() {
                         cooldownFood.remove(player)
@@ -353,7 +395,11 @@ class CustomItemKotlinListener : Listener, Runnable {
 
                 val loc = player.location.add(0.0, player.eyeHeight, 0.0) //player location
                 val fromPlayerToTarget = targetLoc.toVector().subtract(loc.toVector())
-                WandCast(plugin(), it, player, fromPlayerToTarget, loc, dmg, targetLoc, 0.06).runTaskTimer(plugin(), 1, 0)
+                WandCast(plugin(), it, player, fromPlayerToTarget, loc, dmg, targetLoc, 0.06).runTaskTimer(
+                    plugin(),
+                    1,
+                    0
+                )
             }
         }
     }

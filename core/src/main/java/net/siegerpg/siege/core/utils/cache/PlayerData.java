@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.utils.cache;
 
+import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
@@ -7,8 +8,6 @@ import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
 import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.skills.SkillUtils;
-import net.siegerpg.siege.core.skills.Skills;
 import net.siegerpg.siege.core.utils.Levels;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,8 +19,8 @@ import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginEnableEvent;
-
 import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,15 +32,17 @@ public class PlayerData implements Listener {
     public static HashMap<Player, Double> playerMana = new HashMap<>();
     public static HashMap<Player, HashMap<Integer, Skill>> playerSkills = new HashMap<>();
     public static HashMap<Player, ArrayList<Action>> playerTriggers = new HashMap<>();
+
     @EventHandler
     public void onEnable(PluginEnableEvent e) {
-        for (Player player : Bukkit.getOnlinePlayers()){
+        for (Player player : Bukkit.getOnlinePlayers()) {
             setStats(player);
             hasActionBar.put(player, false);
             PlayerData.broadcastTips.put(player, true);
             //playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
         }
     }
+
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
@@ -76,16 +77,18 @@ public class PlayerData implements Listener {
     }
 
 
-
     @EventHandler
-    public void onEquip(ArmorEquipEvent e){
+    public void onEquip(ArmorEquipEvent e) {
         @Nullable CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
         if (item == null) {
             setStats(e.getPlayer());
             return;
         }
-        if (item.getLevelRequirement() == null) {return;}
-        if (item.getLevelRequirement() > Levels.INSTANCE.getExpLevel(e.getPlayer()).getFirst()) {
+        if (item.getLevelRequirement() == null) {
+            return;
+        }
+        Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
+        if (item.getLevelRequirement() > (expLevel != null ? expLevel.getFirst() : 0)) {
             e.getPlayer().sendTitle("", ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
             return;
         }

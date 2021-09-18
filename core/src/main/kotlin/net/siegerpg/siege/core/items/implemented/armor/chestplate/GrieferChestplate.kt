@@ -4,9 +4,8 @@ import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.armor.CustomChestplate
+import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
-import net.siegerpg.siege.core.utils.cache.LevelEXPStorage
-import net.siegerpg.siege.core.utils.cache.PlayerData
 import org.bukkit.Color
 import org.bukkit.EntityEffect
 import org.bukkit.Material
@@ -42,7 +41,7 @@ class GrieferChestplate() : CustomChestplate(
             val item = player.inventory.chestplate
             val cusItem = getCustomItem(item) ?: return
             if (cusItem.levelRequirement == null) return
-            if (cusItem.levelRequirement!! > LevelEXPStorage.playerLevel[player]!!) return
+            if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first ?: 0)) return
             for (entity in player.location.getNearbyLivingEntities(4.0)) {
                 if (entity is Player) continue
                 entity.damage(50.0, player)

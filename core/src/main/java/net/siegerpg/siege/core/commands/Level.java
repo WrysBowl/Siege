@@ -17,47 +17,50 @@ public class Level implements CommandExecutor {
         if (!(sender instanceof Player)) {
             return false;
         }
-        OfflinePlayer player = (Player) sender;
         if (args.length > 0) {
             OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
-            if (Levels.INSTANCE.getExpLevel(argPlayer).getFirst() == null) {
-                ((Player)player).sendMessage(Utils.lore("<red>That player can not be found."));
-               return false;
-            } else {
-                player = argPlayer;
-            }
+            doTheThing(sender, argPlayer);
+            return true;
         }
-
-        short level = Levels.INSTANCE.getExpLevel(player).getFirst();
-        float reqExp = Levels.INSTANCE.calculateRequiredExperience(level);
-        Integer experience = Levels.INSTANCE.getExpLevel(player).getSecond();
-        double division = experience/reqExp;
-        String name = player.getName();
-        String levelPercent = String.valueOf(Utils.round(Utils.round(division, 3)*100,2));
-
-        int total = 0;
-        for (int i = 2; i < level; i++) {
-
-            total = total + Levels.INSTANCE.calculateRequiredExperience((short) i);
-
-        }
-        total = total + experience;
-        String totalFormat = String.format("%,d", total);
-        String expLeft = String.format("%,d", (int) (reqExp-experience));
-
-
-        sender.sendMessage(Utils.lore(" "));
-        sender.sendMessage(Utils.lore("<dark_purple><bold>Level Statistics"));
-        sender.sendMessage(Utils.lore(" "));
-        sender.sendMessage(Utils.lore("<gold>" + name));
-        sender.sendMessage(Utils.lore("<gray>Level         <reset><dark_purple>" + level));
-        sender.sendMessage(Utils.lore("<gray>Exp %         <reset><light_purple>" + levelPercent + "%"));
-        sender.sendMessage(Utils.lore("<gray>Exp            <reset><light_purple>" + experience));
-        sender.sendMessage(Utils.lore("<gray>Exp to Next  <reset><light_purple>" + expLeft));
-        sender.sendMessage(Utils.lore("<gray>Total Exp     <reset><light_purple>" + totalFormat));
-        sender.sendMessage(Utils.lore(" "));
+        Player player = (Player) sender;
+        doTheThing(sender, player);
 
         return true;
+
+    }
+
+    public void doTheThing(CommandSender executor, OfflinePlayer player) {
+        Levels.INSTANCE.getExpLevel(player, pair -> {
+            if (pair == null) {
+                executor.sendMessage(Utils.lore("<red>That player can not be found."));
+            }
+            float reqExp = Levels.INSTANCE.calculateRequiredExperience(pair.getFirst());
+            double division = pair.getSecond() / reqExp;
+            String name = player.getName();
+            String levelPercent = String.valueOf(Utils.round(Utils.round(division, 3) * 100, 2));
+
+            int total = 0;
+            for (int i = 2; i < pair.getFirst(); i++) {
+
+                total = total + Levels.INSTANCE.calculateRequiredExperience((short) i);
+
+            }
+            total = total + pair.getSecond();
+            String totalFormat = String.format("%,d", total);
+            String expLeft = String.format("%,d", (int) (reqExp - pair.getSecond()));
+
+            executor.sendMessage(Utils.lore("<dark_purple><bold>Level Statistics"));
+            executor.sendMessage(Utils.lore(" "));
+            executor.sendMessage(Utils.lore(" "));
+            executor.sendMessage(Utils.lore("<gold>" + name));
+            executor.sendMessage(Utils.lore("<gray>Level         <reset><dark_purple>" + pair.getFirst()));
+            executor.sendMessage(Utils.lore("<gray>Exp %         <reset><light_purple>" + levelPercent + "%"));
+            executor.sendMessage(Utils.lore("<gray>Exp            <reset><light_purple>" + pair.getSecond()));
+            executor.sendMessage(Utils.lore("<gray>Exp to Next  <reset><light_purple>" + expLeft));
+            executor.sendMessage(Utils.lore("<gray>Total Exp     <reset><light_purple>" + totalFormat));
+            executor.sendMessage(Utils.lore(" "));
+            return null;
+        });
     }
 
 }
