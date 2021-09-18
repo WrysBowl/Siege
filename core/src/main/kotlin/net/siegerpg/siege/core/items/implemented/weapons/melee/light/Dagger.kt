@@ -14,7 +14,7 @@ class Dagger() : CustomMeleeWeapon(
     levelRequirement = 20,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 23.0),
-    attackSpeed = 1.7
+    attackSpeed = 2.0
 ) {
 
     constructor(quality: Int): this() {

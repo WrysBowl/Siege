@@ -15,6 +15,7 @@ import net.siegerpg.siege.core.utils.name
 import org.bukkit.Bukkit
 import org.bukkit.attribute.Attribute
 import org.bukkit.attribute.AttributeModifier
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
@@ -90,6 +91,10 @@ interface CustomEquipment : CustomItem {
         item = item.setNbtTags(
             "equipmentStatGem" to if (statGem != null) statGem.toString() else null
         )
+    }
+
+    fun onHit(e: EntityDamageByEntityEvent) {
+        // placeholder for optional event
     }
 
     override fun deserialize() {

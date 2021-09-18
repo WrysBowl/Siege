@@ -2,6 +2,10 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
+import net.siegerpg.siege.core.items.implemented.armor.boots.LeatherBoots;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.LeatherChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
@@ -16,6 +20,12 @@ public class Bandit extends MobDropTable {
                 new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 25.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 5.0),
+
+                new Reward(new LeatherHelmet(0).getUpdatedItem(false), 4.5),
+                new Reward(new LeatherChestplate(0).getUpdatedItem(false), 4.5),
+                new Reward(new LeatherLeggings(0).getUpdatedItem(false), 4.5),
+                new Reward(new LeatherBoots(0).getUpdatedItem(false), 4.5),
+
                 new Reward(MetalScrap.Companion.tier(1).getUpdatedItem(false), 15.0),
                 new Reward(new Dagger(Utils.randRarity()).getUpdatedItem(false), 5.0),
                 new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 2.0),
