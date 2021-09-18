@@ -149,11 +149,12 @@ object Levels {
     /**
      * Adds 100% of the experience to one player and 10% to all their party members
      */
-    fun addExpShared(player: OfflinePlayer, exp: Int) {
-        addExp(player, exp)
+    fun addExpShared(player: OfflinePlayer, exp: Int): List<BukkitTask> {
+        val list = mutableListOf<BukkitTask>()
+        list.add(addExp(player, exp))
         val teamMembers = ArrayList<OfflinePlayer>()
         val party = Party.getPlayerParty(player)
-            ?: return
+            ?: return list
         // Gets all members apart from the player
         party.getMembers().forEach { m ->
             if (m != player) {
@@ -161,7 +162,8 @@ object Levels {
             }
         }
         // Adds 1/10th of the exp to all the team members
-        addExp(teamMembers, Math.floorDiv(exp, 10))
+        list.add(addExp(teamMembers, Math.floorDiv(exp, 10)))
+        return list
     }
 
     // ---------------------------------------------------------
@@ -170,8 +172,7 @@ object Levels {
 
     /**
      * Gets the exp and level of a player, blocking the thread.
-     * @param runAfter A lambda/closure which does something with the exp/level data
-     * @return The task that will fetch the data from the database
+     * @return The level and exp
      */
     fun blockingGetExpLevel(player: OfflinePlayer): Pair<Short, Int>? {
         val cachedData = cachedLevelExp[player.uniqueId]
@@ -206,8 +207,7 @@ object Levels {
 
     /**
      * Gets the exp and level of multiple players, blocking the thread.
-     * @param runAfter A lambda/closure which does something with the exp/level data
-     * @return The task that will fetch the data from the database
+     * @return The level and experience
      */
     fun blockingGetExpLevel(
         players: List<OfflinePlayer>
@@ -247,7 +247,7 @@ object Levels {
     }
 
     /**
-     * Gets the exp and level of every player (sorted from highest level to lowest)
+     * Gets the exp and level of every player (sorted from highest level to lowest), blocking the thread.
      * This bypasses the cache so be careful not to overuse it.
      * @param limit: Instead of getting exp&level of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
      */
