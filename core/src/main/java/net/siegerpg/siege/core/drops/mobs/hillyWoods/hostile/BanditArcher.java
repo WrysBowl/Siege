@@ -13,12 +13,15 @@ import net.siegerpg.siege.core.utils.Utils;
 public class BanditArcher extends MobDropTable {
     public BanditArcher() {
         super("BanditArcher", 30, 34, 62, 66, new Reward[]{
-                new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 25.0),
-                new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 2.5),
-                new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 15.0),
-                new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 1.5),
-                new Reward(MetalScrap.Companion.tier(1).getUpdatedItem(false), 7.5),
-                new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5),
+                new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 50.0),
+                new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
+                new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 50.0),
+                new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 5.0),
+                new Reward(MetalScrap.Companion.tier(1).getUpdatedItem(false), 25.0),
+
+                new Reward(new Crossbow(100).getUpdatedItem(false), 0.5),
+                new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 2.5),
+
                 new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.0),
