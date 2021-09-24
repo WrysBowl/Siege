@@ -1,14 +1,14 @@
-package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
+package net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.boots.ChainBoots;
+import net.siegerpg.siege.core.items.implemented.armor.boots.IronBoots;
 import net.siegerpg.siege.core.items.implemented.armor.boots.LeatherBoots;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.ChainChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.IronChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.LeatherChestplate;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.ChainHelmet;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.IronHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.IronLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
@@ -26,22 +26,23 @@ public class Mercenary extends MobDropTable {
                 new Reward(Leather.Companion.tier(3).getUpdatedItem(false), 5.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 50.0),
                 new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 5.0),
-                new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false), 25.0),
+                new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 25.0),
+                new Reward(MetalScrap.Companion.tier(3).getUpdatedItem(false), 5.0),
 
-                new Reward(new ChainHelmet(100).getUpdatedItem(false), 0.5),
-                new Reward(new ChainChestplate(100).getUpdatedItem(false), 0.5),
-                new Reward(new ChainLeggings(100).getUpdatedItem(false), 0.5),
-                new Reward(new ChainBoots(100).getUpdatedItem(false), 0.5),
+                new Reward(new IronHelmet(100).getUpdatedItem(false), 0.5),
+                new Reward(new IronChestplate(100).getUpdatedItem(false), 0.5),
+                new Reward(new IronLeggings(100).getUpdatedItem(false), 0.5),
+                new Reward(new IronBoots(100).getUpdatedItem(false), 0.5),
 
-                new Reward(new ChainHelmet(80).getUpdatedItem(false), 2.5),
-                new Reward(new ChainChestplate(80).getUpdatedItem(false), 2.5),
-                new Reward(new ChainLeggings(80).getUpdatedItem(false), 2.5),
-                new Reward(new ChainBoots(80).getUpdatedItem(false), 2.5),
+                new Reward(new IronHelmet(80).getUpdatedItem(false), 2.5),
+                new Reward(new IronChestplate(80).getUpdatedItem(false), 2.5),
+                new Reward(new IronLeggings(80).getUpdatedItem(false), 2.5),
+                new Reward(new IronBoots(80).getUpdatedItem(false), 2.5),
 
-                new Reward(new ChainHelmet(Utils.randRarity()).getUpdatedItem(false), 2.5),
-                new Reward(new ChainChestplate(Utils.randRarity()).getUpdatedItem(false), 2.5),
-                new Reward(new ChainLeggings(Utils.randRarity()).getUpdatedItem(false), 2.5),
-                new Reward(new ChainBoots(Utils.randRarity()).getUpdatedItem(false), 2.5),
+                new Reward(new IronHelmet(Utils.randRarity()).getUpdatedItem(false), 2.5),
+                new Reward(new IronChestplate(Utils.randRarity()).getUpdatedItem(false), 2.5),
+                new Reward(new IronLeggings(Utils.randRarity()).getUpdatedItem(false), 2.5),
+                new Reward(new IronBoots(Utils.randRarity()).getUpdatedItem(false), 2.5),
 
                 new Reward(new RefinedDagger(50).getUpdatedItem(false), 3.0),
                 new Reward(new RefinedDagger(Utils.randRarity()).getUpdatedItem(false), 5.0),
