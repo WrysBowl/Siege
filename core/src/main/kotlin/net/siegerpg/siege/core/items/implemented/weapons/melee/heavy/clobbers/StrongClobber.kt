@@ -17,21 +17,6 @@ class StrongClobber() : CustomMeleeWeapon(
     levelRequirement = 35,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 54.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(RefinedMetal.tier(3))
-            s2(RefinedMetal.tier(3))
-            s4(RefinedMetal.tier(3))
-            s5(Bone.tier(3))
-            s6(Bone.tier(3))
-            item { player, b ->
-                val newItem = StrongClobber(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.9
 ) {
 

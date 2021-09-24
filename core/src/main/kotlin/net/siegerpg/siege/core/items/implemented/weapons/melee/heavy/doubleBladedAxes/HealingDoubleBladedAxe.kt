@@ -18,20 +18,6 @@ class HealingDoubleBladedAxe() : CustomMeleeWeapon(
     levelRequirement = 19,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 35.0, regeneration = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Pebble.tier(3))
-            s2(Stick.tier(3))
-            s3(Stick.tier(3))
-            s4(Wheat.tier(4))
-            item { player, b ->
-                val newItem = HealingDoubleBladedAxe(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.7
 ) {
 

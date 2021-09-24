@@ -17,19 +17,6 @@ class ToughDoubleBladedAxe() : CustomMeleeWeapon(
     levelRequirement = 19,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 35.0, toughness = 7.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Pebble.tier(4))
-            s2(Stick.tier(3))
-            s3(Stick.tier(3))
-            item { player, b ->
-                val newItem = StrongDoubleBladedAxe(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.7
 ) {
 

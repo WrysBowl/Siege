@@ -17,22 +17,6 @@ class HealthyClobber() : CustomMeleeWeapon(
     levelRequirement = 35,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 46.0, health = 10.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(RefinedMetal.tier(3))
-            s2(RefinedMetal.tier(3))
-            s4(RefinedMetal.tier(3))
-            s5(PlantMatter.tier(3))
-            s5(PlantMatter.tier(3))
-            s5(PlantMatter.tier(3))
-            item { player, b ->
-                val newItem = HealthyClobber(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.9
 ) {
 

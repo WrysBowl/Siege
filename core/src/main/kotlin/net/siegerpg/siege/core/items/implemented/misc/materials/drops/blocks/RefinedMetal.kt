@@ -11,16 +11,7 @@ class RefinedMetal() : CustomMaterial(
     customModelData = 320009,
     description = listOf("Polished and shiny!"),
     levelRequirement = 0,
-    material = Material.FLINT,
-    recipeList = recipes {
-        recipe {
-            shaped = false
-            s1(MetalScrap())
-            item { player, b ->
-                RefinedMetal()
-            }
-        }
-    }
+    material = Material.FLINT
 ) {
 
     constructor(quality: Int): this() {

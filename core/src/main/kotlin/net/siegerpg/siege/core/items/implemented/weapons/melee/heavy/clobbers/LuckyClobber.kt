@@ -17,20 +17,6 @@ class LuckyClobber() : CustomMeleeWeapon(
     levelRequirement = 35,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 45.0, luck = 6.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(RefinedMetal.tier(3))
-            s2(RefinedMetal.tier(3))
-            s4(RefinedMetal.tier(3))
-            s5(Feather.tier(4))
-            item { player, b ->
-                val newItem = LuckyClobber(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.9
 ) {
 

@@ -17,19 +17,6 @@ class LuckyFemurBone() : CustomMeleeWeapon(
     levelRequirement = 11,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 18.0, luck = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Bone.tier(3))
-            s4(Bone.tier(3))
-            s7(Feather.tier(3))
-            item { player, b ->
-                val newItem = LuckyFemurBone(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.9
 ) {
 

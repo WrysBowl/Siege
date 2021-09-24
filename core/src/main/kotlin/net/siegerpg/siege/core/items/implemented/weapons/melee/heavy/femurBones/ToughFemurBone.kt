@@ -17,19 +17,6 @@ class ToughFemurBone() : CustomMeleeWeapon(
     levelRequirement = 11,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 20.0, toughness = 50.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Bone.tier(3))
-            s2(Bone.tier(3))
-            s3(Pebble.tier(3))
-            item { player, b ->
-                val newItem = ToughFemurBone(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.9
 ) {
 

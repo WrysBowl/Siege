@@ -17,19 +17,6 @@ class HealthyFemurBone() : CustomMeleeWeapon(
     levelRequirement = 11,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 20.0, health = 6.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Bone.tier(3))
-            s2(Bone.tier(3))
-            s3(PlantMatter.tier(3))
-            item { player, b ->
-                val newItem = HealthyFemurBone(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.9
 ) {
 
