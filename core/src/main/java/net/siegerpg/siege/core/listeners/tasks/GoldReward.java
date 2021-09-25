@@ -14,6 +14,7 @@ public class GoldReward implements Listener {
 
     public void giveGold() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
+            if (Bukkit.getOnlinePlayers().isEmpty()) return;
             Levels.INSTANCE.getExpLevel(new ArrayList<Player>(Bukkit.getOnlinePlayers()),
                     uuidPairHashMap -> {
                         uuidPairHashMap.forEach((uuid, shortIntegerPair) ->
