@@ -6,15 +6,11 @@ import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.drops.MobDropTable;
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.Ogre;
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.Orc;
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.RockSpirit;
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.Werewolf;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.neutral.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.passive.*;
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.Skeletal_General;
 import net.siegerpg.siege.core.drops.mobs.twilight.bosses.Unicorn;
 import net.siegerpg.siege.core.drops.mobs.twilight.hostile.*;
 import net.siegerpg.siege.core.drops.mobs.twilight.neutral.*;
@@ -39,6 +35,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
@@ -47,21 +44,27 @@ public class DeathListener implements Listener, Runnable {
     public HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>(){
         {
             //BOSSES
+            put("Blubber", new Blubber());
+            put("DeathBull", new DeathBull());
+            put("Mercenary", new Mercenary());
+            put("Molter", new Molter());
             put("Ogre", new Ogre());
+            put("Orc", new Orc());
+            put("RockSpirit", new RockSpirit());
+            put("Werewolf", new Werewolf());
 
             put("Unicorn", new Unicorn());
 
             //DUNGEON BOSSES
-            put("RockSpirit", new RockSpirit());
-            put("SlimeSpirit", new SlimeSpirit());
-            put("MagmaSpirit", new MagmaSpirit());
-            put("Werewolf", new Werewolf());
-            put("FoxSpirit", new FoxSpirit());
+            put("Broodmother", new Broodmother());
             put("BullSpirit", new BullSpirit());
             put("Davy_Jones", new Davy_Jones());
-            put("Necromancer", new Necromancer());
             put("Lich", new Lich());
-            put("Broodmother", new Broodmother());
+            put("MagmaSpirit", new MagmaSpirit());
+            put("Necromancer", new Necromancer());
+            put("SkeletalGeneral", new SkeletalGeneral());
+            put("SlimeSpirit", new SlimeSpirit());
+
 
             //HOSTILES
             put("AngryBull", new AngryBull());
@@ -73,7 +76,6 @@ public class DeathListener implements Listener, Runnable {
             put("Goblin", new Goblin());
             put("GoldenGoblin", new GoldenGoblin());
             put("InfectedDigger", new InfectedDigger());
-            put("Orc", new Orc());
             put("RockRat", new RockRat());
             put("ScorchingBlob", new ScorchingBlob());
             put("Sea_Warrior", new Sea_Warrior());
@@ -91,7 +93,6 @@ public class DeathListener implements Listener, Runnable {
             put("Nightmare", new Nightmare());
             put("Shroomlight_Monster", new Shroomlight_Monster());
             put("Skeletal_Archer", new Skeletal_Archer());
-            put("Skeletal_General", new Skeletal_General());
             put("Skeletal_Warrior", new Skeletal_Warrior());
             put("Stone_Monster", new Stone_Monster());
 
@@ -153,7 +154,7 @@ public class DeathListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
 
         if (e.getEntity().getKiller() == null) return;
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
