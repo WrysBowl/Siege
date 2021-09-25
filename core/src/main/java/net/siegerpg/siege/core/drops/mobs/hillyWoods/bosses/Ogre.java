@@ -7,6 +7,8 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate
 import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.NecromancerKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
@@ -42,6 +44,7 @@ public class Ogre extends MobDropTable {
 
                 new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.5),
                 new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 2.0),
+                new Reward(new NecromancerKey(0).getUpdatedItem(false), 10.0),
         });
     }
 }

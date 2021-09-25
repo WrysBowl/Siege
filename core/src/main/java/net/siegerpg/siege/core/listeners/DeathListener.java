@@ -58,12 +58,11 @@ public class DeathListener implements Listener, Runnable {
             put("Broodmother", new Broodmother());
             put("BullSpirit", new BullSpirit());
             put("Davy_Jones", new Davy_Jones());
+            put("FoxSpirit", new FoxSpirit());
             put("Lich", new Lich());
             put("MagmaSpirit", new MagmaSpirit());
             put("Necromancer", new Necromancer());
-            put("SkeletalGeneral", new SkeletalGeneral());
             put("SlimeSpirit", new SlimeSpirit());
-
 
             //HOSTILES
             put("AngryBull", new AngryBull());
@@ -86,6 +85,7 @@ public class DeathListener implements Listener, Runnable {
             put("Thief", new Thief());
             put("ZombifiedDigger", new ZombifiedDigger());
 
+            put("SkeletalGeneral", new SkeletalGeneral());
             put("Corrupted_Skeleton", new Corrupted_Skeleton());
             put("Dark_Elf", new Dark_Elf());
             put("Dark_Fairy", new Dark_Fairy());

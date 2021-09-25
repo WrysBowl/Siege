@@ -10,6 +10,8 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.ChainHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.MagmaHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.MagmaLeggings;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.MagmaSpiritKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
@@ -24,11 +26,6 @@ public class Molter extends MobDropTable {
                 new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 100.0),
                 new Reward(Magma.Companion.tier(3).getUpdatedItem(false), 10.0),
 
-                new Reward(new MagmaHelmet(100).getUpdatedItem(false), 0.5),
-                new Reward(new MagmaChestplate(100).getUpdatedItem(false), 0.5),
-                new Reward(new MagmaLeggings(100).getUpdatedItem(false), 0.5),
-                new Reward(new MagmaBoots(100).getUpdatedItem(false), 0.5),
-
                 new Reward(new MagmaHelmet(80).getUpdatedItem(false), 2.5),
                 new Reward(new MagmaChestplate(80).getUpdatedItem(false), 2.5),
                 new Reward(new MagmaLeggings(80).getUpdatedItem(false), 2.5),
@@ -42,6 +39,7 @@ public class Molter extends MobDropTable {
 
                 new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 2.0),
+                new Reward(new MagmaSpiritKey(0).getUpdatedItem(false), 10.0),
         });
     }
 }

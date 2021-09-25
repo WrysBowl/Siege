@@ -10,6 +10,8 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.IronHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.IronLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.BroodmotherKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
@@ -49,6 +51,7 @@ public class Mercenary extends MobDropTable {
 
                 new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.0),
+                new Reward(new BroodmotherKey(0).getUpdatedItem(false), 10.0),
         });
     }
 }

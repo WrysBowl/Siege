@@ -12,6 +12,8 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.DavyJonesKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
@@ -46,6 +48,7 @@ public class Orc extends MobDropTable {
 
                 new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 0.25),
                 new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 1.0),
+                new Reward(new DavyJonesKey(0).getUpdatedItem(false), 10.0),
         });
     }
 }
