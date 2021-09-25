@@ -35,7 +35,6 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
@@ -72,13 +71,19 @@ public class DeathListener implements Listener, Runnable {
             put("BanditArcher", new BanditArcher());
             put("Blob", new Blob());
             put("BloodSucker", new BloodSucker());
+            put("Bully", new Bully());
+            put("FlamingGoo", new FlamingGoo());
             put("ForestSpider", new ForestSpider());
             put("Goblin", new Goblin());
             put("GoldenGoblin", new GoldenGoblin());
             put("InfectedDigger", new InfectedDigger());
             put("RockRat", new RockRat());
             put("ScorchingBlob", new ScorchingBlob());
+            put("ScrapRat", new ScrapRat());
             put("Sea_Warrior", new Sea_Warrior());
+            put("Skeletal_Archer", new Skeletal_Archer());
+            put("Skeletal_Warrior", new Skeletal_Warrior());
+            put("Thief", new Thief());
             put("ZombifiedDigger", new ZombifiedDigger());
 
             put("Corrupted_Skeleton", new Corrupted_Skeleton());
@@ -92,8 +97,6 @@ public class DeathListener implements Listener, Runnable {
             put("Moss_Lurker", new Moss_Lurker());
             put("Nightmare", new Nightmare());
             put("Shroomlight_Monster", new Shroomlight_Monster());
-            put("Skeletal_Archer", new Skeletal_Archer());
-            put("Skeletal_Warrior", new Skeletal_Warrior());
             put("Stone_Monster", new Stone_Monster());
 
             //NEUTRALS
