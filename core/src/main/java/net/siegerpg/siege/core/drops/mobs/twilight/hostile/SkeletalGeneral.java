@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
+package net.siegerpg.siege.core.drops.mobs.twilight.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
