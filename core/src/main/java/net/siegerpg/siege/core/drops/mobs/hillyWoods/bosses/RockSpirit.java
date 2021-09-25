@@ -32,6 +32,10 @@ public class RockSpirit extends MobDropTable {
                 new Reward(new PebbleShooter(100).getUpdatedItem(false), 1.0),
                 new Reward(new PebbleShooter(80).getUpdatedItem(false), 2.0),
 
+                new Reward(new RockWand(Utils.randRarity()).getUpdatedItem(false), 4.0),
+                new Reward(new RockWand(100).getUpdatedItem(false), 1.0),
+                new Reward(new RockWand(80).getUpdatedItem(false), 2.0),
+
                 new Reward(new SimpleToughGem(0).getUpdatedItem(false), 5.0),
                 new Reward(new LichKey(0).getUpdatedItem(false), 10.0),
         });

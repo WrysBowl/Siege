@@ -40,10 +40,9 @@ public class BullSpirit extends MobDropTable {
                 new Reward(new DoubleBladedAxe(100).getUpdatedItem(false), 20.5),
                 new Reward(new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 25.5),
 
-                new Reward(new Beef(100).getUpdatedItem(false), 20.0),
-                new Reward(new SimpleToughGem(0).getUpdatedItem(false), 0.25),
-                new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 1.0),
-                new Reward(new BullSpiritKey(0).getUpdatedItem(false), 10.0),
+                new Reward(new Beef(100).getUpdatedItem(false).asQuantity(16), 20.0),
+                new Reward(new SimpleToughGem(0).getUpdatedItem(false), 25.0),
+                new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 25.0),
 
         });
     }

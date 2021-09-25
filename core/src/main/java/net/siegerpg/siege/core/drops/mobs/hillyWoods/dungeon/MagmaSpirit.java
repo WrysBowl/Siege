@@ -42,7 +42,6 @@ public class MagmaSpirit extends MobDropTable {
 
                 new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 20.0),
                 new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 20.0),
-                new Reward(new MagmaSpiritKey(0).getUpdatedItem(false), 10.0),
         });
     }
 }
