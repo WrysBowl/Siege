@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 class MagmaSpiritKey() : CustomKey(
     name = "Magma Spirit Key",
     customModelData = 620003,
-    description = listOf("Used to craft", "twilight access"),
+    description = listOf("Used to summon", "the Magma spirit"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
     baseStats = CustomItemUtils.statMap()

@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 class NecromancerKey() : CustomKey(
     name = "Necromancer Key",
     customModelData = 620008,
-    description = listOf("Used to craft", "twilight access"),
+    description = listOf("Used to summon", "the Necromancer"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
     baseStats = CustomItemUtils.statMap()

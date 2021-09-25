@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 class RockSpiritKey() : CustomKey(
     name = "Rock Spirit Key",
     customModelData = 620001,
-    description = listOf("Used to craft", "twilight access"),
+    description = listOf("Used to summon", "the Rock spirit"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
     baseStats = CustomItemUtils.statMap()

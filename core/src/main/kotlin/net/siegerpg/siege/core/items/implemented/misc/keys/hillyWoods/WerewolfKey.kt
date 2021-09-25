@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 class WerewolfKey() : CustomKey(
     name = "Werewolf Key",
     customModelData = 620005,
-    description = listOf("Used to craft", "twilight access"),
+    description = listOf("Used to summon", "the Werewolf"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
     baseStats = CustomItemUtils.statMap()

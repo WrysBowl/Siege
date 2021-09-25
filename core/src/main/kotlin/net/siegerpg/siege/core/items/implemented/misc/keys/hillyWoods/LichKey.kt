@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 class LichKey() : CustomKey(
     name = "Lich Key",
     customModelData = 620009,
-    description = listOf("Used to craft", "twilight access"),
+    description = listOf("Used to summon", "the Lich"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
     baseStats = CustomItemUtils.statMap()

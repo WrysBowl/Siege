@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 class DavyJonesKey() : CustomKey(
     name = "Davy Jones Key",
     customModelData = 620007,
-    description = listOf("Used to craft", "twilight access"),
+    description = listOf("Used to summon", "Davy Jones"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
     baseStats = CustomItemUtils.statMap()
