@@ -2,29 +2,57 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
+import net.siegerpg.siege.core.items.implemented.armor.boots.ChainBoots;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.ChainChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.ChainHelmet;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.ScrapShard;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.SplinteredBone;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class FoxSpirit extends MobDropTable {
     public FoxSpirit() {
-        super("FoxSpirit", 2000, 2200, 1200, 1250, new Reward[]{
-                new Reward(new Shank(Utils.randRarity()).getUpdatedItem(false), 80.0),
-                new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 80.0),
-                new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 60.0),
-                new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 40.0),
-                new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 60.0),
-                new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 40.0),
-                new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 80.0),
-                new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 60.0),
-                new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 60.0),
-                new Reward(new FoxSpiritKey(0).getUpdatedItem(false), 10.0)
+        super("FoxSpirit", 1500, 1600, 1600, 1680, new Reward[]{
+                new Reward(Chain.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),
+                new Reward(Chain.Companion.tier(3).getUpdatedItem(false), 12.0),
+                new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),
+                new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 12.0),
 
+                new Reward(new ChainHelmet(100).getUpdatedItem(false), 10.5),
+                new Reward(new ChainChestplate(100).getUpdatedItem(false), 10.5),
+                new Reward(new ChainLeggings(100).getUpdatedItem(false), 10.5),
+                new Reward(new ChainBoots(100).getUpdatedItem(false), 10.5),
+
+                new Reward(new ChainHelmet(80).getUpdatedItem(false), 20.5),
+                new Reward(new ChainChestplate(80).getUpdatedItem(false), 20.5),
+                new Reward(new ChainLeggings(80).getUpdatedItem(false), 20.5),
+                new Reward(new ChainBoots(80).getUpdatedItem(false), 20.5),
+
+                new Reward(new ChainHelmet(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new ChainChestplate(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new ChainLeggings(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new ChainBoots(Utils.randRarity()).getUpdatedItem(false), 30.0),
+
+                new Reward(new SplinteredBone(100).getUpdatedItem(false), 10.5),
+                new Reward(new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 20.5),
+
+                new Reward(new ScrapShard(100).getUpdatedItem(false), 10.5),
+                new Reward(new ScrapShard(Utils.randRarity()).getUpdatedItem(false), 20.5),
+
+                new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false).asQuantity(2), 10.25),
+                new Reward(new SimpleLuckGem(0).getUpdatedItem(false).asQuantity(3), 10.0),
         });
     }
 }
