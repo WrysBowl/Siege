@@ -8,6 +8,8 @@ import net.siegerpg.siege.core.Webstore.RedeemBoosters;
 import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
+import net.siegerpg.siege.core.dungeons.DungeonCommand;
+import net.siegerpg.siege.core.dungeons.DungeonListener;
 import net.siegerpg.siege.core.fishing.commands.getBait;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
@@ -90,6 +92,8 @@ public final class Core extends JavaPlugin {
         this.getCommand("pay").setExecutor(new Pay());
         this.getCommand("getKey").setExecutor(new GetKey());
         this.getCommand("stats").setExecutor(new Stats());
+        this.getCommand("dungeon").setExecutor(new DungeonCommand());
+
 
 
         //partyManager = new PartyManager();
@@ -160,6 +164,7 @@ public final class Core extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new MobNames(), this);
         getServer().getPluginManager().registerEvents(new SkillListener(), this);
+        getServer().getPluginManager().registerEvents(new DungeonListener(), this);
 
 
         getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);

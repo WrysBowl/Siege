@@ -53,3 +53,5 @@ commands:
     description: Gets a hilly woods key or dungeon key
   stats:
     description: Displays your stats
+  dungeon:
+    description: Console command to summon dungeon boss
