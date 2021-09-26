@@ -31,11 +31,6 @@ public class Mercenary extends MobDropTable {
                 new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 25.0),
                 new Reward(MetalScrap.Companion.tier(3).getUpdatedItem(false), 5.0),
 
-                new Reward(new IronHelmet(100).getUpdatedItem(false), 0.5),
-                new Reward(new IronChestplate(100).getUpdatedItem(false), 0.5),
-                new Reward(new IronLeggings(100).getUpdatedItem(false), 0.5),
-                new Reward(new IronBoots(100).getUpdatedItem(false), 0.5),
-
                 new Reward(new IronHelmet(80).getUpdatedItem(false), 2.5),
                 new Reward(new IronChestplate(80).getUpdatedItem(false), 2.5),
                 new Reward(new IronLeggings(80).getUpdatedItem(false), 2.5),
