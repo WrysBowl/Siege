@@ -13,8 +13,10 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.MagmaLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.MagmaSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.wands.MatchStick;
@@ -37,8 +39,8 @@ public class Molter extends MobDropTable {
                 new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 2.0),
                 new Reward(new MatchStick(Utils.randRarity()).getUpdatedItem(false), 5.0),
 
-                new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 2.0),
-                new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 2.0),
+                new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 2.0),
+                new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new MagmaSpiritKey(0).getUpdatedItem(false), 10.0),
         });
     }
