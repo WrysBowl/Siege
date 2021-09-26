@@ -75,6 +75,7 @@ public class DeathListener implements Listener, Runnable {
             put("ForestSpider", new ForestSpider());
             put("Goblin", new Goblin());
             put("GoldenGoblin", new GoldenGoblin());
+            put("Goo", new Goo());
             put("InfectedDigger", new InfectedDigger());
             put("RockRat", new RockRat());
             put("ScorchingBlob", new ScorchingBlob());
