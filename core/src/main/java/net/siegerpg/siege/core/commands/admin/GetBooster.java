@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.commands;
+package net.siegerpg.siege.core.commands.admin;
 
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.utils.Utils;
