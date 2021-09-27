@@ -1,22 +1,15 @@
 package net.siegerpg.siege.core.dungeons;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.mobs.MythicMob;
-import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.dungeons.dungeon.SlimeSpirit;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.*;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
 import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.cache.PlayerData;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -64,7 +57,7 @@ public class DungeonCommand implements CommandExecutor {
                 player.sendMessage(Utils.lore("<yellow>"+dungeon.currentKeyCount+"<yellow>/8 keys <gray>have been used."));
             } else {
                 dungeon.currentKeyCount = 0; //reset key count
-                dungeon.boss = MythicMobs.inst().getAPIHelper().spawnMythicMob(boss, dungeon.spawnLoc);
+                dungeon.spawning();
                 player.sendMessage(Utils.lore("<green>The boss has spawned!"));
             }
 
