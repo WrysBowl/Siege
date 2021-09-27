@@ -1,12 +1,15 @@
 package net.siegerpg.siege.core.dungeons;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
+import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.dungeons.dungeon.SlimeSpirit;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
-public class DungeonCommand implements CommandExecutor {
+public class DungeonCommand implements CommandExecutor, Runnable {
 
     public static HashMap<String, Dungeon> dungeons = new HashMap<>(){
         {
@@ -58,10 +61,24 @@ public class DungeonCommand implements CommandExecutor {
             } else {
                 dungeon.currentKeyCount = 0; //reset key count
                 dungeon.spawning();
+                Location loc = dungeon.spawnLoc;
+                loc.setWorld(Core.plugin().getServer().getWorld(dungeon.world));
+                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+                    try {
+                        dungeon.boss = MythicMobs.inst().getAPIHelper().spawnMythicMob(boss, loc);
+                    } catch (InvalidMobTypeException e) {
+                        e.printStackTrace();
+                    }
+                }, dungeon.bossSpawnDelay);
                 player.sendMessage(Utils.lore("<green>The boss has spawned!"));
             }
 
         } catch (Exception x) { return false; }
         return false;
+    }
+
+    @Override
+    public void run() {
+
     }
 }
