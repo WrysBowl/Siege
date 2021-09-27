@@ -19,7 +19,7 @@ public class Helix implements Runnable{
             public void run() {
                 t = t + Math.PI / 16;
                 double x = r * Math.cos(t);
-                double y = r * Math.sin(t);
+                double y = 0.5*t;
                 double z = r * Math.sin(t);
                 loc.add(x, y, z);
                 location.getWorld().spawnParticle(Particle.SLIME.builder().count(2).offset(0,0,0).particle(), loc, 5);
