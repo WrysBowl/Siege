@@ -45,12 +45,12 @@ public class DungeonCommand implements CommandExecutor, Runnable {
                 player.sendMessage(Utils.lore("<yellow>"+dungeon.currentKeyCount+"<yellow>/8 keys <gray>have been used."));
                 return false;
             }
-            if (hand.getClass() != reqKey.getClass()) {
-                player.sendMessage(Utils.lore("<red>Please use the correct key."));
-                return false;
-            }
             if (dungeon.boss != null) {
                 player.sendMessage(Utils.lore("<red>The boss is currently alive... somewhere."));
+                return false;
+            }
+            if (hand.getClass() != reqKey.getClass()) {
+                player.sendMessage(Utils.lore("<red>Please use the correct key."));
                 return false;
             }
             player.getInventory().removeItem(hand.getItem().asOne());
