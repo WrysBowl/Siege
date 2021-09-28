@@ -3,7 +3,7 @@ package net.siegerpg.siege.core.dungeons;
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.dungeons.dungeon.SlimeSpirit;
+import net.siegerpg.siege.core.dungeons.dungeon.*;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
@@ -23,6 +23,9 @@ public class DungeonCommand implements CommandExecutor, Runnable {
     public static HashMap<String, Dungeon> dungeons = new HashMap<>(){
         {
             put("SlimeSpirit", new SlimeSpirit());
+            put("MagmaSpirit", new MagmaSpirit());
+            put("BullSpirit", new BullSpirit());
+
         }
     };
 

@@ -1,9 +1,8 @@
 package net.siegerpg.siege.core.dungeons.dungeon;
 
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.dungeons.Dungeon;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.MagmaSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.utils.particleEffects.Helix;
 import net.siegerpg.siege.core.utils.particleEffects.Waves;
@@ -12,20 +11,20 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 
-public class SlimeSpirit extends Dungeon {
+public class MagmaSpirit extends Dungeon {
 
-    public SlimeSpirit() {
-        super("SlimeSpirit", 8,
-                new SlimeSpiritKey(0),
-                new Location(null, -169, 70, 24), "Hilly_Woods",
+    public MagmaSpirit() {
+        super("MagmaSpirit", 8,
+                new MagmaSpiritKey(0),
+                new Location(null, 307, 51, -117), "Hilly_Woods",
                 100
         );
     }
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -169, 70, 24);
-        new Helix().createHelix(loc, Particle.SLIME);
+        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 307, 51, -117);
+        new Helix().createHelix(loc, Particle.LAVA);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
             new Waves().createWaves(loc);
