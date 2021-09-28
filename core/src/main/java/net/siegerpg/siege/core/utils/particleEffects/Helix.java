@@ -10,7 +10,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class Helix implements Runnable{
 
-    public void createHelix(Location location) {
+    public void createHelix(Location location, Particle particle) {
         new BukkitRunnable() {
             Location loc = location;
             double t = 0;
@@ -22,7 +22,7 @@ public class Helix implements Runnable{
                 double y = 0.5*t;
                 double z = r * Math.sin(t);
                 loc.add(x, y, z);
-                location.getWorld().spawnParticle(Particle.SLIME.builder().count(2).offset(0,0,0).particle(), loc, 5);
+                location.getWorld().spawnParticle(particle.builder().count(2).offset(0,0,0).particle(), loc, 5);
                 loc.subtract(x, y, z);
                 if (t > Math.PI * 8) {
                     this.cancel();
