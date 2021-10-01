@@ -2,8 +2,11 @@ package net.siegerpg.siege.core.dungeons;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
+import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.dungeons.dungeon.*;
+import net.siegerpg.siege.core.events.BossFight;
+import net.siegerpg.siege.core.events.BossLeaderboard;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
@@ -16,11 +19,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.time.Instant;
 import java.util.HashMap;
 
 public class DungeonCommand implements CommandExecutor, Runnable {
 
-    public static HashMap<String, Dungeon> dungeons = new HashMap<>(){
+    public static HashMap<String, Dungeon> dungeons = new HashMap<>() {
         {
             put("SlimeSpirit", new SlimeSpirit());
             put("MagmaSpirit", new MagmaSpirit());
@@ -50,7 +54,7 @@ public class DungeonCommand implements CommandExecutor, Runnable {
             CustomKey reqKey = dungeon.reqKey;
             CustomItem hand = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
             if (hand == null) {
-                player.sendMessage(Utils.lore("<yellow>"+dungeon.currentKeyCount+"<yellow>/8 keys <gray>have been used."));
+                player.sendMessage(Utils.lore("<yellow>" + dungeon.currentKeyCount + "<yellow>/8 keys <gray>have been used."));
                 return false;
             }
             if (dungeon.boss != null) {
@@ -65,7 +69,7 @@ public class DungeonCommand implements CommandExecutor, Runnable {
             int count = dungeon.currentKeyCount + 1; //add one to key count
             if (count < 8) { //if key count + 1 is less than 8, add to key count
                 dungeon.currentKeyCount = count;
-                player.sendMessage(Utils.lore("<yellow>"+dungeon.currentKeyCount+"<yellow>/8 keys <gray>have been used."));
+                player.sendMessage(Utils.lore("<yellow>" + dungeon.currentKeyCount + "<yellow>/8 keys <gray>have been used."));
             } else {
                 dungeon.currentKeyCount = 0; //reset key count
                 dungeon.spawning();
@@ -74,6 +78,9 @@ public class DungeonCommand implements CommandExecutor, Runnable {
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                     try {
                         dungeon.boss = MythicMobs.inst().getAPIHelper().spawnMythicMob(boss, loc);
+                        ActiveMob mythicMob = MythicMobs.inst().getAPIHelper().getMythicMobInstance(dungeon.boss);
+                        BossFight newBossFight = new BossFight(Instant.now(), mythicMob);
+                        BossLeaderboard.Companion.getCurrentBossFights().add(newBossFight);
                     } catch (InvalidMobTypeException e) {
                         e.printStackTrace();
                     }
@@ -81,7 +88,9 @@ public class DungeonCommand implements CommandExecutor, Runnable {
                 player.sendMessage(Utils.lore("<green>The boss has spawned!"));
             }
 
-        } catch (Exception x) { return false; }
+        } catch (Exception x) {
+            return false;
+        }
         return false;
     }
 

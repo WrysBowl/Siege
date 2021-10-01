@@ -22,23 +22,11 @@ data class BossFight(val startTime: Instant, val entity: ActiveMob) {
 }
 
 class BossLeaderboard : Listener {
-    private val currentBossFights = ArrayList<BossFight>()
 
-
-    @EventHandler
-    public fun onBossSpawn(evt: EntitySpawnEvent) {
-        val mm = MythicMobs.inst().apiHelper.getMythicMobInstance(evt.entity) ?: return
-        var isBoss = false
-        DungeonCommand.dungeons.forEach { (_, dungeon) ->
-            if (dungeon.boss.uniqueId == mm.uniqueId) {
-                isBoss = true
-                return@forEach
-            }
-        }
-        if (!isBoss) return
-        val newBossFight = BossFight(Instant.now(), mm)
-        currentBossFights.add(newBossFight)
+    companion object {
+        val currentBossFights = ArrayList<BossFight>()
     }
+
 
     @EventHandler
     public fun onBossGetHit(evt: EntityDamageByEntityEvent) {
