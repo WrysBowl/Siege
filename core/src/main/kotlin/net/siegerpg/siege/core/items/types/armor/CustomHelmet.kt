@@ -70,7 +70,6 @@ abstract class CustomHelmet(
         this.initMaterial = null
         this.initCustomModelData = null
         this.serialize()
-
         return nbtItem.getUpdatedItem(hideRarity)
     }
 

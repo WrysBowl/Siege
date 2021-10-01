@@ -21,6 +21,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
+import org.bukkit.inventory.meta.LeatherArmorMeta
 
 interface CustomEquipment : CustomItem {
 
@@ -44,7 +45,7 @@ interface CustomEquipment : CustomItem {
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
-        val meta = item.itemMeta
+        var meta = item.itemMeta
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
@@ -58,7 +59,7 @@ interface CustomEquipment : CustomItem {
             meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${quality}%")
         }
 
-        if (this is CustomHelmet) meta.lore("<r><color:#79ECEB><b>COSMETIC")
+        if (this is CustomHelmet && this.cosmetic) meta.lore("<r><color:#79ECEB><b>COSMETIC")
 
 
         statGem?.let {
@@ -88,6 +89,7 @@ interface CustomEquipment : CustomItem {
 
         meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
+
         item.itemMeta = meta
         return item
     }
