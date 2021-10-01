@@ -180,6 +180,9 @@ public final class Core extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
         getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
+        getServer().getPluginManager().registerEvents(new CosmeticsListener(), this);
+
+
         SmokyBlacksmith.resetItems();
         StatChangeListener.statBarDisplayTask();
         getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);

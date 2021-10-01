@@ -26,6 +26,10 @@ public class DungeonCommand implements CommandExecutor, Runnable {
             put("MagmaSpirit", new MagmaSpirit());
             put("BullSpirit", new BullSpirit());
             put("Lich", new Lich());
+            put("Davy_Jones", new Davy_Jones());
+            put("Necromancer", new Necromancer());
+            put("FoxSpirit", new FoxSpirit());
+            put("Broodmother", new Broodmother());
 
         }
     };
