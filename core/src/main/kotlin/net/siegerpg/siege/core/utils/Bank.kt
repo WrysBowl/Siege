@@ -78,7 +78,7 @@ object Bank {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
-                "SELECT bankLvl FROM userData WHERE uuid=?",
+                "SELECT bankLvl,bankAmt FROM userData WHERE uuid=?",
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setString(1, player.uniqueId.toString())
