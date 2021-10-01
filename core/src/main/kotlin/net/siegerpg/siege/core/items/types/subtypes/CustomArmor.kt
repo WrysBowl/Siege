@@ -36,7 +36,6 @@ interface CustomArmor: CustomEquipment {
         meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
         item.itemMeta = meta
         return item
-
     }
 
 

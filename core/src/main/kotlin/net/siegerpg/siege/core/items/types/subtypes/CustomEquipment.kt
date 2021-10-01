@@ -9,10 +9,12 @@ import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
+import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.Bukkit
+import org.bukkit.Material
 import org.bukkit.attribute.Attribute
 import org.bukkit.attribute.AttributeModifier
 import org.bukkit.event.entity.EntityDamageByEntityEvent
@@ -55,6 +57,10 @@ interface CustomEquipment : CustomItem {
         } else {
             meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${quality}%")
         }
+
+        if (this is CustomHelmet) meta.lore("<r><color:#79ECEB><b>COSMETIC")
+
+
         statGem?.let {
             meta.lore(" ")
             meta.lore("<r><color:#F67DF6>+${it.amount} <light_purple>${it.type.stylizedName}")
