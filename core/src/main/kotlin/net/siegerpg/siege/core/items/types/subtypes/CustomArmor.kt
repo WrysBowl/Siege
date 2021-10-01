@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
+import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.attribute.Attribute
@@ -17,7 +18,9 @@ interface CustomArmor: CustomEquipment {
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
         super.updateMeta(hideRarity)
+        item.type = this.material
         val meta = item.itemMeta
+
         if (item.type == Material.LEATHER_BOOTS ||
             item.type == Material.LEATHER_LEGGINGS ||
             item.type == Material.LEATHER_CHESTPLATE ||
@@ -35,5 +38,7 @@ interface CustomArmor: CustomEquipment {
         return item
 
     }
+
+
 
 }
