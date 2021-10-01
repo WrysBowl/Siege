@@ -69,6 +69,12 @@ object Bank {
      * @return The bank data
      */
     fun blockingGetBankLevelAmount(player: OfflinePlayer): Pair<Short, Int>? {
+        val cachedData = cachedBankData[player.uniqueId]
+        if (cachedData != null) {
+            if (cachedData.third.plusSeconds(cacheDuration.toLong()).isAfter(Instant.now())) {
+                return Pair(cachedData.first, cachedData.second)
+            }
+        }
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
@@ -97,7 +103,6 @@ object Bank {
     fun blockingGetBankLevelAmount(
         players: List<OfflinePlayer>
     ): HashMap<UUID, Pair<Short, Int>>? {
-        val connection = DatabaseManager.getConnection()
         val map = HashMap<UUID, Pair<Short, Int>>()
         val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
         val now = Instant.now();
@@ -109,11 +114,12 @@ object Bank {
                 playerIDs.remove(id)
             }
         }
+        // If all the data was already cached skip the db entirely
+        if (playerIDs.size == 0) {
+            return if (map.size > 0) map else null
+        }
+        val connection = DatabaseManager.getConnection()
         connection!!.use {
-            // If all the data was already cached skip the db entirely
-            if (playerIDs.size == 0) {
-                return if (map.size > 0) map else null
-            }
 
             val stmt = connection.prepareStatement(
                 "SELECT bankLvl,bankAmt FROM userData WHERE uuid IN ?",

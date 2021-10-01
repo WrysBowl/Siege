@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
+import net.siegerpg.siege.core.events.BossLeaderboard;
 import net.siegerpg.siege.core.fishing.commands.getBait;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
@@ -95,7 +96,6 @@ public final class Core extends JavaPlugin {
         this.getCommand("dungeon").setExecutor(new DungeonCommand());
 
 
-
         //partyManager = new PartyManager();
 
 //        PaperCommandManager manager = new PaperCommandManager(this);
@@ -142,6 +142,7 @@ public final class Core extends JavaPlugin {
 //        });
         // TODO: uncomment this when working on party command
 
+        getServer().getPluginManager().registerEvents(new BossLeaderboard(), this);
         getServer().getPluginManager().registerEvents(new DropUtils(), this);
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);

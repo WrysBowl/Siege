@@ -11,16 +11,16 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 
 public class Dungeon {
-    String bossName;
-    int maxKeyCount;
-    CustomKey reqKey;
-    Location spawnLoc;
-    String world;
-    int bossSpawnDelay = 0;
+    public String bossName;
+    public int maxKeyCount;
+    public CustomKey reqKey;
+    public Location spawnLoc;
+    public String world;
+    public int bossSpawnDelay = 0;
 
     //variable
-    Entity boss = null;
-    int currentKeyCount = 0;
+    public Entity boss = null;
+    public int currentKeyCount = 0;
 
     public Dungeon(String bossName, int maxKeyCount, CustomKey reqKey, Location spawnLoc, String world, int bossSpawnDelay) {
         this.bossName = bossName;

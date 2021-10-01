@@ -25,7 +25,7 @@ class HealingStoneAxe() : CustomMeleeWeapon(
             s2(Stick.tier(3))
             s3(Stick.tier(3))
             s4(Wheat.tier(4))
-            item { player, b ->
+            item { _, b ->
                 val newItem = HealingStoneAxe(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem

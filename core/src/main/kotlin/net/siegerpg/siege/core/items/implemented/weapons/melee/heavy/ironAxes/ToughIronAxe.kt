@@ -27,7 +27,7 @@ class ToughIronAxe() : CustomMeleeWeapon(
             s4(Stick.tier(3))
             s5(Pebble.tier(3))
             s6(Pebble.tier(3))
-            item { player, b ->
+            item { _, b ->
                 val newItem = ToughIronAxe(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem

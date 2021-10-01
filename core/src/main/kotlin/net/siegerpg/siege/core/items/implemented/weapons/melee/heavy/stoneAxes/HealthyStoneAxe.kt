@@ -27,7 +27,7 @@ class HealthyStoneAxe() : CustomMeleeWeapon(
             s4(PlantMatter.tier(3))
             s5(PlantMatter.tier(3))
             s6(PlantMatter.tier(3))
-            item { player, b ->
+            item { _, b ->
                 val newItem = HealthyStoneAxe(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem

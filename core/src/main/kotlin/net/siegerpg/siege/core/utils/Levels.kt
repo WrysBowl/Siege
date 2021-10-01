@@ -230,7 +230,7 @@ object Levels {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
-                "SELECT level,experience FROM userData WHERE uuid IN ?",
+                "SELECT level,experience,uuid FROM userData WHERE uuid IN ?",
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setArray(1, connection.createArrayOf("VARCHAR", playerIDs.toTypedArray()))

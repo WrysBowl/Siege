@@ -27,7 +27,7 @@ class StrongIronAxe() : CustomMeleeWeapon(
             s4(Stick.tier(3))
             s5(Bone.tier(3))
             s6(Bone.tier(3))
-            item { player, b ->
+            item { _, b ->
                 val newItem = StrongIronAxe(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem

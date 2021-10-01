@@ -27,7 +27,7 @@ class LuckyIronAxe() : CustomMeleeWeapon(
             s4(Stick.tier(3))
             s5(Feather.tier(3))
             s6(Feather.tier(3))
-            item { player, b ->
+            item { _, b ->
                 val newItem = LuckyIronAxe(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem

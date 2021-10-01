@@ -26,7 +26,7 @@ class ToughGreatSword() : CustomMeleeWeapon(
             s3(Pebble.tier(3))
             s4(Pebble.tier(3))
             s5(Pebble.tier(3))
-            item { player, b ->
+            item { _, b ->
                 val newItem = ToughGreatSword(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem

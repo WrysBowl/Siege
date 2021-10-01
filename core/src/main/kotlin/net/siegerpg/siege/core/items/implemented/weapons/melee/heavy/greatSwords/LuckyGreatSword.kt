@@ -25,7 +25,7 @@ class LuckyGreatSword() : CustomMeleeWeapon(
             s2(Stick.tier(3))
             s3(Feather.tier(3))
             s4(Feather.tier(3))
-            item { player, b ->
+            item { _, b ->
                 val newItem = LuckyGreatSword(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem

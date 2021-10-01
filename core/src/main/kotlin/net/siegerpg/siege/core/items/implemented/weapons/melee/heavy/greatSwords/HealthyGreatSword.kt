@@ -25,7 +25,7 @@ class HealthyGreatSword() : CustomMeleeWeapon(
             s2(Stick.tier(3))
             s3(PlantMatter.tier(3))
             s4(PlantMatter.tier(3))
-            item { player, b ->
+            item { _, b ->
                 val newItem = HealthyGreatSword(if (b) 50 else Utils.randRarity())
                 newItem.updateMeta(b)
                 newItem
@@ -35,13 +35,13 @@ class HealthyGreatSword() : CustomMeleeWeapon(
     attackSpeed = 0.9
 ) {
 
-    constructor(quality: Int): this() {
+    constructor(quality: Int) : this() {
         this.quality = quality
         this.rarity = Rarity.getFromInt(quality)
         this.serialize()
     }
 
-    constructor(item: ItemStack): this() {
+    constructor(item: ItemStack) : this() {
         this.item = item
         deserialize()
     }
