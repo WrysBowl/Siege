@@ -39,7 +39,7 @@ class CosmeticsListener : Listener {
         } else if (itemOnCursor != null && itemInteractedWith != null) { //fusing held cosmetic to clicked item
             if (e.action != InventoryAction.SWAP_WITH_CURSOR) return
             if (itemInteractedWith !is CustomHelmet || itemOnCursor !is CustomHelmet) return //verify both items are CustomHelmets
-            if (itemInteractedWith.cosmetic && !itemOnCursor.cosmetic) return //verify cursor is cosmetic, clicked item is not
+            if (itemInteractedWith.cosmetic || !itemOnCursor.cosmetic) return //verify cursor is cosmetic, clicked item is not
             if (itemInteractedWith.storedItem != null ||
                 itemInteractedWith.initMaterial != null ||
                 itemInteractedWith.initCustomModelData != null) {

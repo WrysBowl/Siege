@@ -89,15 +89,12 @@ abstract class CustomHelmet(
         try {
             item.getNbtTag<String>("initMaterial")?.let {
                 initMaterial = Material.valueOf(it)
-                Bukkit.getLogger().info("1 initMaterial: $it")
             }
             item.getNbtTag<Int>("initCustomModelData")?.let {
                 initCustomModelData = it
-                Bukkit.getLogger().info("1 initCustomModelData: $it")
             }
             item.getNbtTag<ItemStack>("storedItem")?.let {
                 storedItem = it
-                Bukkit.getLogger().info("1 storedItem: $it")
             }
         } catch(e: Exception) { }
     }
