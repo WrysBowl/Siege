@@ -4,6 +4,8 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.implemented.misc.cosmetics.TestingCosmetic;
+import net.siegerpg.siege.core.items.implemented.misc.cosmetics.TestingCosmetic2;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.wands.BeginnerLivingTwig;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.BeginnerClub;
@@ -126,4 +128,5 @@ public class PlayerJoinListener implements Listener {
         VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
         VaultHook.econ.depositPlayer(player, 400.0);
     }
+
 }

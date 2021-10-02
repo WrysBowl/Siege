@@ -59,9 +59,6 @@ interface CustomEquipment : CustomItem {
             meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${quality}%")
         }
 
-        if (this is CustomHelmet && this.cosmetic) meta.lore("<r><color:#79ECEB><b>COSMETIC")
-
-
         statGem?.let {
             meta.lore(" ")
             meta.lore("<r><color:#F67DF6>+${it.amount} <light_purple>${it.type.stylizedName}")

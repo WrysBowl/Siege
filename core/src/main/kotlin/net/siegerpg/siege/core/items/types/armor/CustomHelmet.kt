@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
+import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import org.bukkit.Bukkit
 import org.bukkit.Color
@@ -29,7 +30,6 @@ abstract class CustomHelmet(
     override val recipeList: CustomRecipeList? = null,
     override var statGem: StatGem? = null,
     override var leatherColor: Color = Core.defaultLeatherColor,
-    val cosmetic: Boolean = false,
     var initMaterial: Material? = null,
     var initCustomModelData: Int? = null,
     var storedItem: ItemStack? = null
@@ -41,42 +41,9 @@ abstract class CustomHelmet(
         this.rarity = Rarity.getFromInt(this.quality)
     }
 
-    override fun equals(other: Any?): Boolean {
-        other?.let { return false }
-        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
-        return true
-    }
-
-    fun fuseCosmetic(cosmetic: CustomHelmet) {
-
-        this.storedItem = cosmetic.item //store the cosmetic item
-        this.initMaterial = this.material //store the original material
-        this.initCustomModelData = this.customModelData //store the original customModelData
-
-        this.material = cosmetic.material
-        this.customModelData = cosmetic.customModelData
-        this.leatherColor = cosmetic.leatherColor
-
-        this.serialize()
-    }
-
-    fun unFuseCosmetic(hideRarity: Boolean): ItemStack? {
-        val nbtItem: CustomItem = CustomItemUtils.getCustomItem(this.storedItem) ?: return null
-        if (nbtItem !is CustomHelmet) return null
-
-        this.item = nbtItem.item
-
-        this.storedItem = null
-        this.initMaterial = null
-        this.initCustomModelData = null
-        this.serialize()
-        return nbtItem.getUpdatedItem(hideRarity)
-    }
-
     override fun serialize() {
         super.serialize()
         item = item.setNbtTags(
-            "cosmetic" to cosmetic,
             "initMaterial" to initMaterial.toString(),
             "initCustomModelData" to initCustomModelData,
             "storedItem" to storedItem
@@ -96,5 +63,57 @@ abstract class CustomHelmet(
                 storedItem = it
             }
         } catch(e: Exception) { }
+    }
+
+    fun fuseCosmetic(cosmetic: Cosmetic) {
+
+        this.storedItem = cosmetic.item //store the cosmetic item
+        this.initMaterial = this.material //store the original material
+        this.initCustomModelData = this.customModelData //store the original customModelData
+
+        this.material = cosmetic.material
+        this.customModelData = cosmetic.customModelData
+        this.leatherColor = cosmetic.leatherColor
+
+        this.serialize()
+    }
+
+    fun unFuseCosmetic(hideRarity: Boolean): ItemStack? {
+        val nbtItem: CustomItem = CustomItemUtils.getCustomItem(this.storedItem) ?: return null
+        if (nbtItem !is Cosmetic) return null
+
+        this.item = nbtItem.item
+
+        this.storedItem = null
+        this.initMaterial = null
+        this.initCustomModelData = null
+        this.serialize()
+        return nbtItem.getUpdatedItem(hideRarity)
+    }
+
+    override fun equals(other: Any?): Boolean {
+        other?.let { return false }
+        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + (customModelData ?: 0)
+        result = 31 * result + (levelRequirement ?: 0)
+        result = 31 * result + description.hashCode()
+        result = 31 * result + material.hashCode()
+        result = 31 * result + quality
+        result = 31 * result + item.hashCode()
+        result = 31 * result + baseStats.hashCode()
+        result = 31 * result + type.hashCode()
+        result = 31 * result + (recipeList?.hashCode() ?: 0)
+        result = 31 * result + (statGem?.hashCode() ?: 0)
+        result = 31 * result + leatherColor.hashCode()
+        result = 31 * result + (initMaterial?.hashCode() ?: 0)
+        result = 31 * result + (initCustomModelData ?: 0)
+        result = 31 * result + (storedItem?.hashCode() ?: 0)
+        result = 31 * result + rarity.hashCode()
+        return result
     }
 }
