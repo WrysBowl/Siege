@@ -67,7 +67,7 @@ abstract class CustomHelmet(
 
     fun fuseCosmetic(cosmetic: Cosmetic) {
 
-        this.storedItem = cosmetic.item //store the cosmetic item
+        this.storedItem = cosmetic.item.asOne() //store the cosmetic item
         this.initMaterial = this.material //store the original material
         this.initCustomModelData = this.customModelData //store the original customModelData
 

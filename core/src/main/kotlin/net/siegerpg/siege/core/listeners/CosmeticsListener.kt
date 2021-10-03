@@ -59,7 +59,9 @@ class CosmeticsListener : Listener {
 
             e.currentItem = itemInteractedWith.item //change clicked item to the new cosmetic item
             e.isCancelled = true
-            player.setItemOnCursor(null)
+            player.setItemOnCursor(
+                itemOnCursor.item.asQuantity(itemOnCursor.item.amount-1)
+            )
         }
     }
 
