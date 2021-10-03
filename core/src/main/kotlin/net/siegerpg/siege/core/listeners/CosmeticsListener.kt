@@ -1,24 +1,19 @@
 package net.siegerpg.siege.core.listeners
 
-import net.siegerpg.siege.core.fishing.events.RightClickEvent
 import net.siegerpg.siege.core.items.CustomItem
-import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
-import net.siegerpg.siege.core.items.getNbtTag
-import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
-import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
+import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent
 import net.siegerpg.siege.core.utils.sendMiniMessage
-import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.block.Action
 import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.inventory.Inventory
-import org.bukkit.inventory.ItemStack
 
 class CosmeticsListener : Listener {
 
@@ -66,21 +61,53 @@ class CosmeticsListener : Listener {
     }
 
     @EventHandler
-    fun onCosmeticEquipAttempt(e: PlayerInteractEvent) {
+    fun onCosmeticHandEquipAttempt(e: PlayerInteractEvent) {
         val player = e.player
-        val itemInteractedWith = getCustomItem(player.inventory.itemInMainHand) //helmet
-        if (itemInteractedWith != null) { //fusing held cosmetic to clicked item
-            if (itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
-            if (itemInteractedWith.storedItem == null ||
-                itemInteractedWith.initMaterial == null ||
-                itemInteractedWith.initCustomModelData == null) {
-                return
-            }
-            if (player.inventory.helmet != null) return
+        val itemInteractedWith = getCustomItem(player.inventory.itemInMainHand) ?: return //helmet
+        if (itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
+        if (itemInteractedWith.storedItem == null ||
+            itemInteractedWith.initMaterial == null ||
+            itemInteractedWith.initCustomModelData == null) {
+            return
+        }
+        if (player.inventory.helmet != null) return
+        if (e.action == Action.RIGHT_CLICK_BLOCK || e.action == Action.RIGHT_CLICK_AIR) {
             player.inventory.helmet = itemInteractedWith.item //change clicked item to the new cosmetic item
             player.inventory.setItemInMainHand(
                 player.inventory.itemInMainHand.asQuantity(player.inventory.itemInMainHand.amount-1)
             )
         }
+    }
+
+    @EventHandler
+    fun onCosmeticInteract(e: PlayerInteractEvent) {
+        val player = e.player
+        val itemInteractedWith = getCustomItem(player.inventory.itemInMainHand) ?: return //helmet
+        if (itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
+        if (itemInteractedWith.storedItem == null ||
+            itemInteractedWith.initMaterial == null ||
+            itemInteractedWith.initCustomModelData == null) return
+        val nbtItem: CustomItem = getCustomItem(itemInteractedWith.storedItem) ?: return
+        if (nbtItem !is Cosmetic) return
+        if (e.action == Action.LEFT_CLICK_AIR || e.action == Action.LEFT_CLICK_BLOCK) nbtItem.onCosmeticInteract(e)
+    }
+
+    @EventHandler
+    fun onCosmeticEquip(e: ArmorEquipEvent) {
+        val itemInteractedWith = getCustomItem(e.newArmorPiece) ?: return //helmet
+        if (itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
+        if (itemInteractedWith.storedItem == null ||
+            itemInteractedWith.initMaterial == null ||
+            itemInteractedWith.initCustomModelData == null) return
+        val nbtItem: CustomItem = getCustomItem(itemInteractedWith.storedItem) ?: return
+        if (nbtItem !is Cosmetic) return
+        nbtItem.onCosmeticEquip(e)
+    }
+
+    @EventHandler
+    fun onCosmeticSpeak(e: AsyncPlayerChatEvent) {
+        val itemInteractedWith = getCustomItem(e.player.inventory.itemInMainHand) ?: return //helmet
+        if (itemInteractedWith !is Cosmetic) return //verify both items are CustomHelmets
+        itemInteractedWith.onCosmeticSpeak(e)
     }
 }
