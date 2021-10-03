@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
+import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic
 import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Material
@@ -46,7 +47,7 @@ abstract class CustomHelmet(
         item = item.setNbtTags(
             "initMaterial" to initMaterial.toString(),
             "initCustomModelData" to initCustomModelData,
-            "storedItem" to storedItem
+            "storedItem" to storedItem,
         ) //need to now figure out how to deserialize and create the item with a method
     }
 
@@ -65,7 +66,7 @@ abstract class CustomHelmet(
         } catch(e: Exception) { }
     }
 
-    fun fuseCosmetic(cosmetic: Cosmetic) {
+    fun fuseCosmetic(cosmetic: CustomCosmetic) {
 
         this.storedItem = cosmetic.item.asOne() //store the cosmetic item
         this.initMaterial = this.material //store the original material

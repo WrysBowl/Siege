@@ -46,8 +46,6 @@ interface CustomEquipment : CustomItem {
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
-        var meta = item.itemMeta
-
         if (this is CustomHelmet) {
             val cosmetic: CustomItem? = CustomItemUtils.getCustomItem(this.storedItem)
             if (cosmetic is Cosmetic) {
@@ -57,6 +55,7 @@ interface CustomEquipment : CustomItem {
             }
         }
 
+        val meta = item.itemMeta
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 

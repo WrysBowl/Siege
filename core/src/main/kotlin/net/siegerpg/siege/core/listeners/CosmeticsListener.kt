@@ -2,12 +2,16 @@ package net.siegerpg.siege.core.listeners
 
 import io.papermc.paper.event.player.AsyncChatEvent
 import net.siegerpg.siege.core.items.CustomItem
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
+import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
+import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent
 import net.siegerpg.siege.core.utils.sendMiniMessage
 import org.bukkit.Bukkit
+import org.bukkit.Color
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -39,15 +43,13 @@ class CosmeticsListener : Listener {
         } else if (itemOnCursor != null && itemInteractedWith != null) { //fusing held cosmetic to clicked item
             if (e.action != InventoryAction.SWAP_WITH_CURSOR) return
             if (itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
-            if (itemOnCursor !is Cosmetic) return
+            if (itemOnCursor !is CustomCosmetic) return
             if (itemInteractedWith.storedItem != null ||
                 itemInteractedWith.initMaterial != null ||
                 itemInteractedWith.initCustomModelData != null) {
                 player.sendMiniMessage("<red>That item is already attached to a cosmetic!")
                 return
             }
-
-            //Now we can begin fusing the sterile cosmetic and item
 
             //storing all changed variables to NBT
             itemInteractedWith.fuseCosmetic(itemOnCursor)
@@ -89,7 +91,7 @@ class CosmeticsListener : Listener {
             itemInteractedWith.initMaterial == null ||
             itemInteractedWith.initCustomModelData == null) return
         val nbtItem: CustomItem = getCustomItem(itemInteractedWith.storedItem) ?: return
-        if (nbtItem !is Cosmetic) return
+        if (nbtItem !is CustomCosmetic) return
         if (e.action == Action.LEFT_CLICK_AIR || e.action == Action.LEFT_CLICK_BLOCK) nbtItem.onCosmeticInteract(e)
     }
 
@@ -101,14 +103,14 @@ class CosmeticsListener : Listener {
             itemInteractedWith.initMaterial == null ||
             itemInteractedWith.initCustomModelData == null) return
         val nbtItem: CustomItem = getCustomItem(itemInteractedWith.storedItem) ?: return
-        if (nbtItem !is Cosmetic) return
+        if (nbtItem !is CustomCosmetic) return
         nbtItem.onCosmeticEquip(e)
     }
 
     @EventHandler
     fun onCosmeticSpeak(e: AsyncChatEvent) {
         val itemInteractedWith = getCustomItem(e.player.inventory.itemInMainHand) ?: return //helmet
-        if (itemInteractedWith !is Cosmetic) return //verify both items are CustomHelmets
+        if (itemInteractedWith !is CustomCosmetic) return //verify both items are CustomHelmets
         itemInteractedWith.onCosmeticSpeak(e)
     }
 }
