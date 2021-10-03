@@ -38,6 +38,7 @@ abstract class CustomFood(
         this.rarity = Rarity.getFromInt(this.quality)
     }
 
+    @Suppress("deprecated")
     open fun onEat(e: PlayerItemConsumeEvent) {
         val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth + (e.player.level*2)
         val currentCustomHealth = CustomItemUtils.getCustomHealth(e.player)
@@ -50,14 +51,17 @@ abstract class CustomFood(
             val realPotion = PotionEffect(it.type, realPotionDuration, it.amplifier)
             e.player.addPotionEffect(realPotion)
         }
-        if (e.item.type == Material.SUSPICIOUS_STEW || e.item.type == Material.MUSHROOM_STEW || e.item.type == Material.RABBIT_STEW) {
-            e.player.setItemInHand(ItemStack(Material.AIR))
+        if (e.item.type == Material.SUSPICIOUS_STEW ||
+            e.item.type == Material.MUSHROOM_STEW ||
+            e.item.type == Material.RABBIT_STEW) {
+            e.player.inventory.setItemInMainHand(ItemStack(Material.AIR))
         }
     }
 
+    @Suppress("deprecated")
     open fun onEat(e: PlayerInteractEvent) {
-        val foodRegenVal: Int = FoodPoints.getHungerRegenValue(e.player.itemInHand.type)
-        val satRegenVal: Double = FoodPoints.getSaturationValue(e.player.itemInHand.type)
+        val foodRegenVal: Int = FoodPoints.getHungerRegenValue(e.player.inventory.itemInMainHand.type)
+        val satRegenVal: Double = FoodPoints.getSaturationValue(e.player.inventory.itemInMainHand.type)
         var newFoodLevel = e.player.foodLevel+foodRegenVal
         var newSatLevel = e.player.saturation+satRegenVal
         if (newFoodLevel > 20) newFoodLevel = 20
@@ -78,8 +82,10 @@ abstract class CustomFood(
             e.player.addPotionEffect(realPotion)
         }
 
-        if (e.player.itemInHand.type == Material.SUSPICIOUS_STEW || e.player.itemInHand.type == Material.MUSHROOM_STEW || e.player.itemInHand.type == Material.RABBIT_STEW) {
-            e.player.setItemInHand(ItemStack(Material.AIR))
+        if (e.player.inventory.itemInMainHand.type == Material.SUSPICIOUS_STEW ||
+            e.player.inventory.itemInMainHand.type == Material.MUSHROOM_STEW ||
+            e.player.inventory.itemInMainHand.type == Material.RABBIT_STEW) {
+            e.player.inventory.setItemInMainHand(ItemStack(Material.AIR))
         }
         PlayerData.setStats(e.player)
     }

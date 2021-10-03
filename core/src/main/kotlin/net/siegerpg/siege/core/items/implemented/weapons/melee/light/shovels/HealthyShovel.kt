@@ -18,20 +18,6 @@ class HealthyShovel() : CustomMeleeWeapon(
     levelRequirement = 13,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 14.0, health =  8.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(3))
-            s2(Pebble.tier(2))
-            s3(PlantMatter.tier(2))
-            s4(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthyShovel(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

@@ -18,22 +18,6 @@ class LuckySpade() : CustomMeleeWeapon(
     levelRequirement = 9,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 8.0, luck = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(2))
-            s2(Stick.tier(2))
-            s3(Stick.tier(2))
-            s4(Stick.tier(2))
-            s5(Pebble.tier(2))
-            s6(Feather.tier(2))
-            item { player, b ->
-                val newItem = LuckySpade(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

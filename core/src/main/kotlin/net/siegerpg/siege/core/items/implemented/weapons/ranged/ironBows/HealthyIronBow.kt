@@ -18,23 +18,6 @@ class HealthyIronBow() : CustomBow(
     levelRequirement = 34,
     material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 30.0, luck = 12.0, health = 20.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Vine.tier(3))
-            s2(Vine.tier(3))
-            s3(Vine.tier(3))
-            s4(RefinedMetal.tier(3))
-            s5(PlantMatter.tier(3))
-            s6(PlantMatter.tier(3))
-            s7(PlantMatter.tier(3))
-            item { player, b ->
-                val newItem = HealthyIronBow(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

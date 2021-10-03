@@ -18,25 +18,6 @@ class StrongSpade() : CustomMeleeWeapon(
     levelRequirement = 9,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 15.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(2))
-            s2(Stick.tier(2))
-            s3(Stick.tier(2))
-            s4(Stick.tier(2))
-            s5(Pebble.tier(2))
-            s6(Bone.tier(1))
-            s7(Bone.tier(1))
-            s8(Bone.tier(1))
-            s9(Bone.tier(1))
-            item { player, b ->
-                val newItem = StrongSpade(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

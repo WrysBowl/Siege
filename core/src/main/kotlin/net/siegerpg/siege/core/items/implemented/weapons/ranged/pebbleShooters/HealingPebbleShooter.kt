@@ -19,22 +19,6 @@ class HealingPebbleShooter() : CustomBow(
     levelRequirement = 10,
     material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 18.0, regeneration = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(3))
-            s2(Stick.tier(3))
-            s3(Pebble.tier(3))
-            s4(Vine.tier(3))
-            s5(Wheat.tier(3))
-            s6(Wheat.tier(3))
-            item { player, b ->
-                val newItem = HealingPebbleShooter(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

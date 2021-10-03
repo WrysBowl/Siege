@@ -17,20 +17,6 @@ class HealingScrapShard() : CustomMeleeWeapon(
     levelRequirement = 29,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 27.0, regeneration = 8.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(MetalScrap.tier(3))
-            s2(Wheat.tier(3))
-            s3(Wheat.tier(3))
-            s4(Wheat.tier(3))
-            item { player, b ->
-                val newItem = HealingScrapShard(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

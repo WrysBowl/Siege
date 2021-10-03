@@ -18,22 +18,6 @@ class HealthyRecurveBow() : CustomBow(
     levelRequirement = 30,
     material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 30.0, luck = 8.0, health = 20.0),
-    recipeList = recipes {
-        recipe{
-            shaped = true
-            s1(Vine.tier(3))
-            s2(Vine.tier(3))
-            s3(Vine.tier(3))
-            s4(RefinedMetal.tier(3))
-            s5(RefinedMetal.tier(3))
-            s6(PlantMatter.tier(4))
-            item { player, b ->
-                val newItem = HealthyRecurveBow(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

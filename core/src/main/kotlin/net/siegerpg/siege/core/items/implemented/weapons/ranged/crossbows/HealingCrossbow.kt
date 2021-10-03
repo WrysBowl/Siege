@@ -18,23 +18,6 @@ class HealingCrossbow() : CustomBow(
     levelRequirement = 26,
     material = Material.CROSSBOW,
     baseStats = CustomItemUtils.statMap(strength = 27.0, luck = 8.0, regeneration = 8.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Vine.tier(3))
-            s2(Vine.tier(3))
-            s3(Vine.tier(3))
-            s4(MetalScrap.tier(3))
-            s5(MetalScrap.tier(3))
-            s6(MetalScrap.tier(3))
-            s7(Wheat.tier(4))
-            item { player, b ->
-                val newItem = HealingCrossbow(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

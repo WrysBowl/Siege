@@ -18,23 +18,6 @@ class HealingSpade() : CustomMeleeWeapon(
     levelRequirement = 9,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 9.0, regeneration = 3.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(2))
-            s2(Stick.tier(2))
-            s3(Stick.tier(2))
-            s4(Stick.tier(2))
-            s5(Wheat.tier(2))
-            s6(Pebble.tier(2))
-            s7(Wheat.tier(2))
-            item { player, b ->
-                val newItem = HealingSpade(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

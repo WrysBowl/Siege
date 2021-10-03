@@ -18,20 +18,6 @@ class HealthyStickyStick() : CustomMeleeWeapon(
     levelRequirement = 5,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 5.0, health = 4.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(2))
-            s2(Slime.tier(2))
-            s3(Stick.tier(2))
-            s4(PlantMatter.tier(2))
-            item { player, b ->
-                val newItem = HealthyStickyStick(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.6
 ) {
 

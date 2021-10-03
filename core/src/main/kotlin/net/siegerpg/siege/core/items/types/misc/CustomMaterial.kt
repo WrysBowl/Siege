@@ -82,7 +82,7 @@ abstract class CustomMaterial(
     override fun equals(other: Any?): Boolean {
         if (other == null) return false
         Bukkit.getLogger().info("Other is not null")
-        if (this::class.qualifiedName != other!!::class.qualifiedName) return false
+        if (this::class.qualifiedName != other::class.qualifiedName) return false
         Bukkit.getLogger().info("Qualified names match")
         val castedOther = other as CustomMaterial
 

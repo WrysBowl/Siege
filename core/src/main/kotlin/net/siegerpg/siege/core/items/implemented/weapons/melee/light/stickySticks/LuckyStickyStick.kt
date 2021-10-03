@@ -18,23 +18,6 @@ class LuckyStickyStick() : CustomMeleeWeapon(
     levelRequirement = 5,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 2.0, luck = 2.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(2))
-            s4(Stick.tier(2))
-            s2(Slime.tier(2))
-            s5(Feather.tier(1))
-            s3(Feather.tier(1))
-            s6(Feather.tier(1))
-            s7(Feather.tier(1))
-            item { player, b ->
-                val newItem = LuckyStickyStick(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.6
 ) {
 

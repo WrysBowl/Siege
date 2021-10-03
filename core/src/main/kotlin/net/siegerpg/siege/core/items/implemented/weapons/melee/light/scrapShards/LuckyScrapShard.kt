@@ -17,19 +17,6 @@ class LuckyScrapShard() : CustomMeleeWeapon(
     levelRequirement = 29,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 26.0, luck = 7.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(MetalScrap.tier(3))
-            s2(Feather.tier(3))
-            s3(Feather.tier(3))
-            item { player, b ->
-                val newItem = LuckyScrapShard(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

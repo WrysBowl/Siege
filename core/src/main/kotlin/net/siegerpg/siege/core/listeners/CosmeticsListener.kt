@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
+import io.papermc.paper.event.player.AsyncChatEvent
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
@@ -12,7 +13,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
 class CosmeticsListener : Listener {
@@ -105,7 +105,7 @@ class CosmeticsListener : Listener {
     }
 
     @EventHandler
-    fun onCosmeticSpeak(e: AsyncPlayerChatEvent) {
+    fun onCosmeticSpeak(e: AsyncChatEvent) {
         val itemInteractedWith = getCustomItem(e.player.inventory.itemInMainHand) ?: return //helmet
         if (itemInteractedWith !is Cosmetic) return //verify both items are CustomHelmets
         itemInteractedWith.onCosmeticSpeak(e)

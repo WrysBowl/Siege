@@ -14,7 +14,7 @@ fun test() {
             shaped = false
             s1(TestSword(25))
             s2(TestSword(25))
-            item { player, b ->
+            item { _, b ->
                 val customItem = TestSword(50)
                 customItem.updateMeta(b)
                 customItem
@@ -24,7 +24,7 @@ fun test() {
             shaped = true
             s3(TestSword(50))
             s4(TestSword(50))
-            item { player, b ->
+            item { _, b ->
                 val customItem = TestSword(50)
                 customItem.updateMeta(b)
                 customItem

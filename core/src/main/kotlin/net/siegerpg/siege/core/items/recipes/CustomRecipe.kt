@@ -18,7 +18,7 @@ open class CustomRecipe(var items: MutableList<CustomItem?>, var shaped: Boolean
         }
     }
 
-    constructor() : this(arrayOfNulls<CustomItem?>(9).toMutableList(), true, { p: Player?, shaped: Boolean ->
+    constructor() : this(arrayOfNulls<CustomItem?>(9).toMutableList(), true, { _: Player?, _: Boolean ->
         TestSword(5)
     })
 
@@ -103,7 +103,7 @@ open class CustomRecipe(var items: MutableList<CustomItem?>, var shaped: Boolean
                         val item = clazz.newInstance()
                         if (item is CustomItem) {
                             item.registerRecipes()
-                            classList.put(it.canonicalName, clazz as Class<out CustomItem>)
+                            classList[it.canonicalName] = clazz as Class<out CustomItem>
                         }
 
                     } catch (e: Exception) {

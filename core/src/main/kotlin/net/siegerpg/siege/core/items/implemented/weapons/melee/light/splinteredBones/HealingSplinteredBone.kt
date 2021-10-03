@@ -17,20 +17,6 @@ class HealingSplinteredBone() : CustomMeleeWeapon(
     levelRequirement = 34,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 33.0, regeneration = 6.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Bone.tier(3))
-            s2(Wheat.tier(3))
-            s3(Wheat.tier(3))
-            s4(Wheat.tier(3))
-            item { player, b ->
-                val newItem = HealingSplinteredBone(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

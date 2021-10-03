@@ -18,22 +18,6 @@ class StrongRefinedDagger() : CustomMeleeWeapon(
     levelRequirement = 37,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 45.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(RefinedMetal.tier(2))
-            s2(RefinedMetal.tier(2))
-            s3(RefinedMetal.tier(2))
-            s4(RefinedMetal.tier(2))
-            s5(Stick.tier(3))
-            s6(Bone.tier(3))
-            item { player, b ->
-                val newItem = StrongRefinedDagger(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.6
 ) {
 

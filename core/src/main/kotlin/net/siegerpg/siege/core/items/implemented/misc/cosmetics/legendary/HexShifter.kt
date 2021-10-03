@@ -1,18 +1,15 @@
 package net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary
 
-import net.kyori.adventure.util.RGBLike
-import net.siegerpg.siege.core.Core
+import io.papermc.paper.event.player.AsyncChatEvent
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import net.siegerpg.siege.core.utils.HexColorCode
 import net.siegerpg.siege.core.utils.Utils
+import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.entity.Player
-import org.bukkit.event.player.AsyncPlayerChatEvent
-import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
-import org.w3c.dom.css.RGBColor
 
 class HexShifter() : Cosmetic(
     name = "Hex Shifter",
@@ -22,13 +19,15 @@ class HexShifter() : Cosmetic(
     leatherColor = Color.fromRGB(0xFBC84B)
 ) {
 
-    override fun onCosmeticSpeak(e: AsyncPlayerChatEvent) {
-        super.onCosmeticSpeak(e)
+    override fun onCosmeticSpeak(e: AsyncChatEvent) {
         val player: Player = e.player
-        val message: String = e.message
+        val message: String = e.message().toString()
+        Bukkit.getLogger().info(message)
         if (HexColorCode.isValidHexCode(message)) {
             leatherColor = HexColorCode.hex2Rgb(message)
             player.sendMessage(Utils.lore("<color:$message>Cosmetic color changed!"))
+            player.inventory.setItemInMainHand(this.getUpdatedItem(false))
+            this.serialize()
         }
     }
 

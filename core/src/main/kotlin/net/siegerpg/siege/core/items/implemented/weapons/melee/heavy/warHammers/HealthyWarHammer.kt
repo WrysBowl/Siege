@@ -19,23 +19,6 @@ class HealthyWarHammer() : CustomMeleeWeapon(
     levelRequirement = 27,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 45.0, health = 10.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(MetalScrap.tier(3))
-            s2(Pebble.tier(3))
-            s3(Pebble.tier(3))
-            s4(Stick.tier(3))
-            s5(Stick.tier(3))
-            s6(PlantMatter.tier(3))
-            s7(PlantMatter.tier(3))
-            item { player, b ->
-                val newItem = HealthyWarHammer(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.7
 ) {
 

@@ -17,19 +17,6 @@ class ToughScrapShard() : CustomMeleeWeapon(
     levelRequirement = 29,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 30.0, toughness = 50.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(MetalScrap.tier(3))
-            s2(Pebble.tier(3))
-            s3(Pebble.tier(3))
-            item { player, b ->
-                val newItem = ToughScrapShard(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

@@ -18,21 +18,6 @@ class StrongStoneAxe() : CustomMeleeWeapon(
     levelRequirement = 15,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 35.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Pebble.tier(3))
-            s2(Stick.tier(3))
-            s4(Stick.tier(3))
-            s5(Bone.tier(3))
-            s8(Bone.tier(3))
-            item { player, b ->
-                val newItem = StrongStoneAxe(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.8
 ) {
 

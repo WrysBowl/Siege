@@ -17,19 +17,6 @@ class ToughSplinteredBone() : CustomMeleeWeapon(
     levelRequirement = 34,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 32.0, toughness = 50.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Bone.tier(3))
-            s3(Pebble.tier(3))
-            s4(Pebble.tier(3))
-            item { player, b ->
-                val newItem = ToughSplinteredBone(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

@@ -20,24 +20,6 @@ class ToughSewerShooter() : CustomBow(
     levelRequirement = 22,
     material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 23.0, luck = 5.0, toughness = 60.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Slime.tier(3))
-            s2(Magma.tier(3))
-            s3(Stick.tier(3))
-            s4(Stick.tier(3))
-            s5(Stick.tier(3))
-            s6(Vine.tier(3))
-            s7(Pebble.tier(3))
-            s8(Pebble.tier(3))
-            item { player, b ->
-                val newItem = ToughSewerShooter(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

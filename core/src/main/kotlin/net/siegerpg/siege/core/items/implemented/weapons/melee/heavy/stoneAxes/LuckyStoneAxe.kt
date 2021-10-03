@@ -18,21 +18,6 @@ class LuckyStoneAxe() : CustomMeleeWeapon(
     levelRequirement = 15,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 26.0, luck = 5.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Pebble.tier(3))
-            s2(Stick.tier(3))
-            s4(Stick.tier(3))
-            s5(Feather.tier(3))
-            s8(Feather.tier(3))
-            item { player, b ->
-                val newItem = LuckyStoneAxe(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.8
 ) {
 

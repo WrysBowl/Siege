@@ -18,21 +18,6 @@ class LuckyReinforcedBow() : CustomBow(
     levelRequirement = 18,
     material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 14.0, luck = 12.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s2(Stick.tier(3))
-            s3(Stick.tier(3))
-            s4(Stick.tier(3))
-            s6(Feather.tier(3))
-            s9(Vine.tier(3))
-            item { player, b ->
-                val newItem = LuckyReinforcedBow(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

@@ -18,21 +18,6 @@ class StrongWoodenBow() : CustomBow(
     levelRequirement = 6,
     material = Material.BOW,
     baseStats = CustomItemUtils.statMap(strength = 18.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(3))
-            s2(Stick.tier(3))
-            s3(Stick.tier(3))
-            s4(Vine.tier(3))
-            s5(Bone.tier(3))
-            item { player, b ->
-                val newItem = StrongWoodenBow(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
 ) {
 
     constructor(quality: Int): this() {

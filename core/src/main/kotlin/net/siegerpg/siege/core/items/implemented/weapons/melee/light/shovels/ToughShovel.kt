@@ -17,21 +17,6 @@ class ToughShovel() : CustomMeleeWeapon(
     levelRequirement = 13,
     material = Material.WOODEN_SWORD,
     baseStats = CustomItemUtils.statMap(strength = 12.0, toughness = 40.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(Stick.tier(3))
-            s2(Pebble.tier(2))
-            s3(Pebble.tier(2))
-            s4(Pebble.tier(2))
-            s5(Pebble.tier(2))
-            item { player, b ->
-                val newItem = ToughShovel(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 1.5
 ) {
 

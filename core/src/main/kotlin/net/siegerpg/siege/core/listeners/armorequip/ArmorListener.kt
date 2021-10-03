@@ -185,7 +185,7 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
             val p = e.player
             val armorEquipEvent = ArmorEquipEvent(p, EquipMethod.BROKE, type, e.brokenItem, null)
             Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
-            if (armorEquipEvent.isCancelled()) {
+            if (armorEquipEvent.isCancelled) {
                 val i = e.brokenItem.clone()
                 i.amount = 1
                 i.durability = (i.durability - 1).toShort()

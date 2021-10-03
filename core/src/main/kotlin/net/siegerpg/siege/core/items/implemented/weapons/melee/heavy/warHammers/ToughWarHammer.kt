@@ -18,20 +18,6 @@ class ToughWarHammer() : CustomMeleeWeapon(
     levelRequirement = 27,
     material = Material.WOODEN_AXE,
     baseStats = CustomItemUtils.statMap(strength = 46.0, toughness = 60.0),
-    recipeList = recipes {
-        recipe {
-            shaped = true
-            s1(MetalScrap.tier(3))
-            s2(Pebble.tier(4))
-            s3(Stick.tier(3))
-            s4(Stick.tier(3))
-            item { player, b ->
-                val newItem = ToughWarHammer(if (b) 50 else Utils.randRarity())
-                newItem.updateMeta(b)
-                newItem
-            }
-        }
-    },
     attackSpeed = 0.7
 ) {
 
