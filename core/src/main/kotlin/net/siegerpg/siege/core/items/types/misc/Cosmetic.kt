@@ -10,11 +10,15 @@ import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
+import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetics
+import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.attribute.Attribute
+import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.LeatherArmorMeta
@@ -30,7 +34,7 @@ abstract class Cosmetic(
     final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     var leatherColor: Color = Core.defaultLeatherColor
-) : CustomItem {
+) : CustomCosmetics {
 
     override var rarity: Rarity = Rarity.COMMON
 
@@ -57,14 +61,17 @@ abstract class Cosmetic(
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
         meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
+        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> Tier" else "<r>${shownRarity.color}${shownRarity.id} Tier")
 
         if (meta.hasLore()) meta.lore(mutableListOf())
 
         meta.lore("<r><color:#79ECEB><b>COSMETIC")
 
-        meta.lore(" ")
-        description.forEach {
-            meta.lore("<r><dark_gray>$it")
+        if (!description.contains("")) {
+            meta.lore(" ")
+            description.forEach {
+                meta.lore("<r><dark_gray>$it")
+            }
         }
 
         meta.isUnbreakable = true
@@ -73,7 +80,6 @@ abstract class Cosmetic(
         item.itemMeta = meta
         return item
     }
-
 
     override fun equals(other: Any?): Boolean {
         other?.let { return false }
