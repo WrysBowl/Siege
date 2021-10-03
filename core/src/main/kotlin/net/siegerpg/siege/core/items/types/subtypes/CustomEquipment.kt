@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
+import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
@@ -46,6 +47,16 @@ interface CustomEquipment : CustomItem {
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
         var meta = item.itemMeta
+
+        if (this is CustomHelmet) {
+            val cosmetic: CustomItem? = CustomItemUtils.getCustomItem(this.storedItem)
+            if (cosmetic is Cosmetic) {
+                this.material = cosmetic.material
+                this.customModelData = cosmetic.customModelData
+                this.leatherColor = cosmetic.leatherColor
+            }
+        }
+
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
