@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.drops.mobs.twilight.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.misc.keys.TwilightDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
@@ -31,7 +30,6 @@ public class Moss_Lurker extends MobDropTable {
                 new Reward(new PolishedToughGem(0).getUpdatedItem(false), 2.0),
                 new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new CrystalCane(Utils.randRarity()).getUpdatedItem(false), 2.5),
-                new Reward(new TwilightDungeonKey(0).getUpdatedItem(false), 1.0)
         });
     }
 }

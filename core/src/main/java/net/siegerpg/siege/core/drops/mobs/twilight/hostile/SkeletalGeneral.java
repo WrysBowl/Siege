@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.drops.mobs.twilight.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.misc.keys.TwilightDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
@@ -25,7 +24,6 @@ public class SkeletalGeneral extends MobDropTable {
 
                 new Reward(new PolishedToughGem(0).getUpdatedItem(false), 10.0),
                 new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 10.0),
-                new Reward(new TwilightDungeonKey(0).getUpdatedItem(false), 10.0)
         });
     }
 }

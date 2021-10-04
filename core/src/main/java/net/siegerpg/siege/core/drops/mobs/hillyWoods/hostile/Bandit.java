@@ -6,7 +6,6 @@ import net.siegerpg.siege.core.items.implemented.armor.boots.LeatherBoots;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.LeatherChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
-import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;

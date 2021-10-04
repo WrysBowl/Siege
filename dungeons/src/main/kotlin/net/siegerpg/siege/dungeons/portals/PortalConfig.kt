@@ -1,23 +1,19 @@
 package net.siegerpg.siege.dungeons.portals
 
-import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
-import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey
-import net.siegerpg.siege.core.items.types.misc.CustomKey
 import net.siegerpg.siege.core.parties.Party
 import net.siegerpg.siege.core.utils.ConfigurationBase
-import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.dungeons.DungeonPlugin
 import net.siegerpg.siege.dungeons.DungeonType
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Sound
 import org.bukkit.entity.Player
-import org.bukkit.inventory.ItemStack
 import java.io.File
 
 
 open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.dataFolder, "portal.yml"))) {
 
+    /*
     private fun hasKey(player: Player, targetWorld: String): Boolean {
         if (targetWorld == "Hilly_Woods" && getCustomItem(getKey(player)) is HillyWoodsDungeonKey) return true
         return false
@@ -38,7 +34,7 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
             return player.inventory.getItem(i) ?: continue
         }
         return null
-    }
+    }*/
 
     fun teleportToCorresponding(player: Player): Boolean {
         val coordinateSection = configuration.getConfigurationSection("coords") ?: configuration.createSection("coords")
@@ -53,16 +49,15 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
         val location = linkingSection.getConfigurationSection(
             corresponding.toString()
         ) ?: return false
-        if (!hasKey(player, "Hilly_Woods")) {
+        /*if (!hasKey(player, "Hilly_Woods")) {
             player.sendTitle(Utils.tacc("&cKey required!"), Utils.tacc("&eMobs can drop keys"), 0, 2 * 20, 0)
             return false
-        }
+        }*/
         if (location.isSet("dungeon")) {
             val dungeonTypeName = location.getString("dungeon")
             val dungeonType = DungeonType.dungeonTypes.find { d -> dungeonTypeName == d.name } ?: return false
             for (dungeon in dungeonType.dungeons) {
                 if (dungeon.listPlayers().contains(player)) {
-                    removeKey(player, player.world.name)
                     // First we add the leader and then all the members
                     dungeon.addPlayer(player)
                     Party.parties.forEach { (_, party) ->
@@ -77,7 +72,6 @@ open class PortalConfig(plugin: DungeonPlugin) : ConfigurationBase((File(plugin.
                 }
             }
             val dungeon = dungeonType.nextAvailableDungeon()
-            removeKey(player, player.world.name)
             dungeon.addPlayer(player)
             Party.parties.forEach { (_, party) ->
                 if (party.getLeader() == player)

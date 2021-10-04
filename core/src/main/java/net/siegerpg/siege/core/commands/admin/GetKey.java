@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.commands.admin;
 
 import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -37,12 +36,6 @@ public class GetKey implements CommandExecutor {
         } catch (Exception e){
             sender.sendMessage(Utils.lore("<red>Exception parsing command."));
             return false;
-        }
-        if (!type.equals("HillyWoods") && !type.equals("Twilight")) {
-            sender.sendMessage(Utils.lore("<red>The key type is incorrect."));
-            return false;
-        } else if (type.equals("HillyWoods")) {
-            WebstoreUtils.giveItemToPlayer(targetPlayer, new HillyWoodsDungeonKey(0).getUpdatedItem(false).asQuantity(amount));
         }
         return true;
     }

@@ -13,9 +13,9 @@ class RockSpiritKey() : CustomKey(
     name = "Rock Spirit Key",
     customModelData = 620001,
     description = listOf("Used to summon", "the Rock spirit"),
-    levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap()
+    baseStats = CustomItemUtils.statMap(),
+    quality = 0
 ) {
 
     constructor(quality: Int): this() {

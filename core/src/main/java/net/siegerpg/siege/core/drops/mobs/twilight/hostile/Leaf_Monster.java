@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.drops.mobs.twilight.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.misc.keys.TwilightDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.SparklingLeaves;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.FairyDust;
@@ -21,7 +20,6 @@ public class Leaf_Monster extends MobDropTable {
 
                 new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 0.5),
-                new Reward(new TwilightDungeonKey(0).getUpdatedItem(false), 1.0)
         });
     }
 }

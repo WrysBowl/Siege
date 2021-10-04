@@ -20,7 +20,8 @@ class HexShifter() : Cosmetic(
     customModelData = 1,
     description = listOf("1. Hold cosmetic helmet", "2. Type HEX color in chat", "Ex. #FBC84B"),
     material = Material.LEATHER_HELMET,
-    leatherColor = Color.fromRGB(0xFBC84B)
+    leatherColor = Color.fromRGB(0xFBC84B),
+    quality = 100
 ) {
 
     override fun onCosmeticSpeak(e: AsyncChatEvent) {
@@ -40,8 +41,8 @@ class HexShifter() : Cosmetic(
 
 
     constructor(quality: Int): this() {
-        this.quality = 100
-        this.rarity = Rarity.LEGENDARY
+        this.quality = quality
+        this.rarity = Rarity.getFromInt(quality)
         this.serialize()
     }
 

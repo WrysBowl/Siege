@@ -3,7 +3,6 @@ package net.siegerpg.siege.core.drops.mobs.twilight.bosses;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot;
-import net.siegerpg.siege.core.items.implemented.misc.keys.TwilightDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PristineHealthGem;
@@ -25,7 +24,6 @@ public class Unicorn extends MobDropTable {
                 new Reward(new GoldenCarrot(100).getUpdatedItem(false).asQuantity(4), 100.0),
                 new Reward(new PristineHealthGem(0).getUpdatedItem(false), 20.0),
                 new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 20.0),
-                new Reward(new TwilightDungeonKey(0).getUpdatedItem(false), 100.0)
         });
     }
 }

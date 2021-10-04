@@ -6,7 +6,6 @@ import net.siegerpg.siege.core.items.implemented.armor.boots.BoneBoots;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
-import net.siegerpg.siege.core.items.implemented.misc.keys.TwilightDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;

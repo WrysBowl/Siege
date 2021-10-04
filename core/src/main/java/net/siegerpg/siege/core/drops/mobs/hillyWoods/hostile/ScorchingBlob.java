@@ -10,7 +10,6 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.MagmaHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.MagmaLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings;
-import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawStrengthGem;

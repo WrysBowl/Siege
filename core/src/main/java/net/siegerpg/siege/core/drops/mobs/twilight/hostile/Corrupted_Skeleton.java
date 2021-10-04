@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.drops.mobs.twilight.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.misc.keys.TwilightDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
@@ -27,7 +26,6 @@ public class Corrupted_Skeleton extends MobDropTable {
                 new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new SimpleToughGem(0).getUpdatedItem(false), 0.5),
                 new Reward(new CursedSickle(Utils.randRarity()).getUpdatedItem(false), 5.0),
-                new Reward(new TwilightDungeonKey(0).getUpdatedItem(false), 1.0)
         });
     }
 }

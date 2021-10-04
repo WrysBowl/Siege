@@ -13,9 +13,9 @@ class DavyJonesKey() : CustomKey(
     name = "Davy Jones Key",
     customModelData = 620007,
     description = listOf("Used to summon", "Davy Jones"),
-    levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap()
+    baseStats = CustomItemUtils.statMap(),
+    quality = 50
 ) {
 
     constructor(quality: Int): this() {

@@ -13,9 +13,9 @@ class FoxSpiritKey() : CustomKey(
     name = "Fox Spirit Key",
     customModelData = 620004,
     description = listOf("Used to summon", "the Fox spirit"),
-    levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap()
+    baseStats = CustomItemUtils.statMap(),
+    quality = 90
 ) {
 
     constructor(quality: Int): this() {

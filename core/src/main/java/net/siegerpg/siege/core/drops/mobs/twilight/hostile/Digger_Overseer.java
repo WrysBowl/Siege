@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.drops.mobs.twilight.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.misc.keys.TwilightDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.IceShard;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PolishedHealthGem;
@@ -29,7 +28,6 @@ public class Digger_Overseer extends MobDropTable {
 
                 new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 0.5),
                 new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 1.0),
-                new Reward(new TwilightDungeonKey(0).getUpdatedItem(false), 2.0)
         });
     }
 }

@@ -147,13 +147,19 @@ object BossLeaderboardDB {
         if (mutableIDs.size == 0) {
             return if (map.size > 0) map else null
         }
+
+        val stringMutableIDs = ArrayList<String>()
+        for (mutableID in playerIDs) {
+            stringMutableIDs.add(mutableID.toString())
+        }
+
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
                 "SELECT percentageDone,timeTaken,uuid FROM bossData WHERE uuid IN ? AND bossName=?",
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
-            stmt.setArray(1, connection.createArrayOf("VARCHAR", mutableIDs.toTypedArray()))
+            stmt.setArray(1, connection.createArrayOf("VARCHAR", stringMutableIDs.toTypedArray()))
             stmt.setString(2, bossName)
             val resultSet = stmt.executeQuery();
             while (resultSet.next()) {

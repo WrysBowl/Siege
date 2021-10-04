@@ -9,8 +9,8 @@ import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
-class HillyWoodsDungeonKey() : CustomKey(
-    name = "Hilly Woods Key",
+class NormalCrateKey() : CustomKey(
+    name = "Normal Crate Key",
     customModelData = 620000,
     description = listOf("Used to unlock any", "dungeon in Hilly Woods"),
     levelRequirement = 7,

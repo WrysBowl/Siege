@@ -4,8 +4,6 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.Beetroot;
 import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
-import net.siegerpg.siege.core.items.implemented.misc.keys.HillyWoodsDungeonKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.TwilightDungeonKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.FairyDust;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.FairyWing;
@@ -28,7 +26,6 @@ public class Fairy_Outlaw extends MobDropTable {
 
                 new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 1.0),
-                new Reward(new TwilightDungeonKey(0).getUpdatedItem(false), 1.0)
         });
     }
 }
