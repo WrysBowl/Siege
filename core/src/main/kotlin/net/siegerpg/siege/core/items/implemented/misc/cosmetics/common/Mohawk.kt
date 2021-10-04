@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack
 
 class Mohawk() : Cosmetic(
     name = "Mohawk",
-    customModelData = 710010,
+    customModelData = 710001,
     description = listOf(""),
     material = Material.KNOWLEDGE_BOOK,
 ) {

@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.cosmetics.common
+package net.siegerpg.siege.core.items.implemented.misc.cosmetics.rare
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack
 
 class SpartanHelmet() : Cosmetic(
     name = "Spartan Helmet",
-    customModelData = 710001,
+    customModelData = 730001,
     description = listOf(""),
     material = Material.KNOWLEDGE_BOOK,
 ) {

@@ -1,14 +1,13 @@
-package net.siegerpg.siege.core.items.implemented.misc.cosmetics.common
+package net.siegerpg.siege.core.items.implemented.misc.cosmetics.uncommon
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
-import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Unicorn() : Cosmetic(
     name = "Unicorn",
-    customModelData = 710009,
+    customModelData = 720001,
     description = listOf(""),
     material = Material.KNOWLEDGE_BOOK,
 ) {
