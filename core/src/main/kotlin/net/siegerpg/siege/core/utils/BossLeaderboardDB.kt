@@ -148,10 +148,7 @@ object BossLeaderboardDB {
             return if (map.size > 0) map else null
         }
 
-        val stringMutableIDs = ArrayList<String>()
-        for (mutableID in playerIDs) {
-            stringMutableIDs.add(mutableID.toString())
-        }
+        val stringMutableIDs: List<String> = mutableIDs.map { it.toString() }
 
         val connection = DatabaseManager.getConnection()
         connection!!.use {
