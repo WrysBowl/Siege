@@ -11,12 +11,11 @@ class GrouchoGlasses() : Cosmetic(
     customModelData = 710008,
     description = listOf(""),
     material = Material.KNOWLEDGE_BOOK,
-    quality = 0
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 0
+        this.rarity = Rarity.COMMON
         this.serialize()
     }
 

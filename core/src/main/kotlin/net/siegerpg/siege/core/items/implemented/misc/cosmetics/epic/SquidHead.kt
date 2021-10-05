@@ -1,20 +1,20 @@
-package net.siegerpg.siege.core.items.implemented.misc.cosmetics.uncommon
+package net.siegerpg.siege.core.items.implemented.misc.cosmetics.epic
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
+import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Unicorn() : Cosmetic(
-    name = "Unicorn",
-    customModelData = 720001,
+class SquidHead() : Cosmetic(
+    name = "Squid Head",
+    customModelData = 740002,
     description = listOf(""),
     material = Material.KNOWLEDGE_BOOK,
 ) {
-
     constructor(quality: Int): this() {
-        this.quality = 50
-        this.rarity = Rarity.UNCOMMON
+        this.quality = 90
+        this.rarity = Rarity.EPIC
         this.serialize()
     }
 

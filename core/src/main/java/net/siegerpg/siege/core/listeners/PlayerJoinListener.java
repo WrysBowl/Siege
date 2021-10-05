@@ -95,7 +95,7 @@ public class PlayerJoinListener implements Listener {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);
         }
-        player.getInventory().addItem(new HexShifter().getUpdatedItem(false));
+        player.getInventory().addItem(new HexShifter(0).getUpdatedItem(false));
 
 
         /*if (event.getPlayer().getName().equals("Wrys")) {

@@ -5,9 +5,9 @@ import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class Unicorn() : Cosmetic(
-    name = "Unicorn",
-    customModelData = 720001,
+class HotHead() : Cosmetic(
+    name = "Hot Head",
+    customModelData = 720002,
     description = listOf(""),
     material = Material.KNOWLEDGE_BOOK,
 ) {
