@@ -38,12 +38,26 @@ public class DungeonCommand implements CommandExecutor, Runnable {
         }
     };
 
+    public HashMap<String, Long> coolDowns = new HashMap<>();
+
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player) {
             sender.sendMessage(Utils.lore("<red>You are not able to run the dungeons command."));
             return false;
         }
+
+        //cooldown
+        int cooldownTime = 2;
+        if(coolDowns.containsKey(sender.getName())) {
+            long secondsLeft = ((coolDowns.get(sender.getName())/1000)+cooldownTime) - (System.currentTimeMillis()/1000);
+            if(secondsLeft>0) {
+                return false;
+            }
+        }
+        coolDowns.put(sender.getName(), System.currentTimeMillis());
+
         try {
             String boss = args[0];
             Player player = Bukkit.getPlayer(args[1]);

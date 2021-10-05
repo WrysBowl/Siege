@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.misc.keys
+package net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -9,11 +9,10 @@ import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
-class NormalCrateKey() : CustomKey(
-    name = "Normal Crate Key",
-    customModelData = 620000,
-    description = listOf("Used to unlock any", "dungeon in Hilly Woods"),
-    levelRequirement = 7,
+class RareKey() : CustomKey(
+    name = "Rare Key",
+    customModelData = 630003,
+    description = listOf("Get a rare cosmetic"),
     material = Material.TRIPWIRE_HOOK,
     baseStats = CustomItemUtils.statMap()
 ) {

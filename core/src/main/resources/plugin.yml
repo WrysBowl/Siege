@@ -54,4 +54,5 @@ commands:
   stats:
     description: Displays your stats
   dungeon:
+    cooldown: 10
     description: Console command to summon dungeon boss
