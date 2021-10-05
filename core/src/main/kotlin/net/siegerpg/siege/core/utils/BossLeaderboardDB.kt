@@ -3,7 +3,6 @@ package net.siegerpg.siege.core.utils
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.database.DatabaseManager
 import org.bukkit.Bukkit
-import org.bukkit.event.Listener
 import org.bukkit.scheduler.BukkitTask
 import java.sql.ResultSet
 import java.time.Instant
@@ -134,7 +133,7 @@ object BossLeaderboardDB {
      */
     fun blockingGetBossLeaderboardData(playerIDs: List<UUID>, bossName: String): HashMap<UUID, Pair<Byte, Int>>? {
         val now = Instant.now()
-        val mutableIDs = playerIDs.toMutableList()
+        val mutableIDs = playerIDs.toMutableSet()
         val map = HashMap<UUID, Pair<Byte, Int>>()
         mutableIDs.forEach { id ->
             val cachedData = getCacheData(bossName, id)
@@ -148,15 +147,13 @@ object BossLeaderboardDB {
             return if (map.size > 0) map else null
         }
 
-        val stringMutableIDs: List<String> = mutableIDs.map { it.toString() }
-
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
                 "SELECT percentageDone,timeTaken,uuid FROM bossData WHERE uuid IN ? AND bossName=?",
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
-            stmt.setArray(1, connection.createArrayOf("VARCHAR", stringMutableIDs.toTypedArray()))
+            stmt.setArray(1, connection.createArrayOf("VARCHAR", mutableIDs.toTypedArray()))
             stmt.setString(2, bossName)
             val resultSet = stmt.executeQuery();
             while (resultSet.next()) {
