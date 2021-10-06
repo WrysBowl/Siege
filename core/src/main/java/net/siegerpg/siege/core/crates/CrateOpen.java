@@ -58,15 +58,20 @@ public class CrateOpen implements Listener {
         CosmeticDropTable dropTable = getItem(item);
         if (dropTable == null) return;
         CustomCosmetic reward = dropTable.pickItem();
-        Location loc = targetedBlock.getLocation();
-        loc.setY(loc.getY()+1);
+        Location blockLoc = new Location(
+                targetedBlock.getWorld(),
+                targetedBlock.getX()+0.5,
+                targetedBlock.getY()+0.5,
+                targetedBlock.getZ()+0.5
+        );
+        blockLoc.setY(blockLoc.getY()+1);
         e.setCancelled(true);
 
         //Play item getting animation
         //Plays item win effect
         //Gives item to player
         new Animation().openCrate(
-                loc,
+                blockLoc,
                 dropTable.dropTable.keySet(),
                 reward, player);
         player.getInventory().removeItem(item.getItem().asOne());

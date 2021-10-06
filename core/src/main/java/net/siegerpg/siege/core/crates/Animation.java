@@ -4,6 +4,8 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.types.misc.Cosmetic;
 import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
 import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.particleEffects.Helix;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -18,14 +20,16 @@ import java.util.List;
 import java.util.Set;
 
 public class Animation implements Runnable{
-    public void openCrate(Location loc, Set<CustomCosmetic> cosmetics, CustomCosmetic cosmetic, Player player) {
+    public void openCrate(Location location, Set<CustomCosmetic> cosmetics, CustomCosmetic cosmetic, Player player) {
+        new Helix().createHelix(location, Particle.FALLING_OBSIDIAN_TEAR, 1.5, 0.5, 3.0);
         new BukkitRunnable() {
 
-            int ticker = 10;
+            final int ticker = 10;
             final int duration = 100;
             int durationTicks = duration;
             final ArrayList<CustomCosmetic> cosmeticArray = new ArrayList<>(cosmetics);
             Item displayedItem;
+            final Location loc = location;
 
             public void run() {
 
@@ -37,11 +41,16 @@ public class Animation implements Runnable{
                 displayedItem.setGravity(false);
                 displayedItem.setPickupDelay(99999);
                 player.playSound(player.getLocation(), Sound.BLOCK_STONE_BUTTON_CLICK_ON, 1.0f, 1.0f);
+                loc.setY(loc.getY()+0.1);
 
                 durationTicks-=5;
 
                 if (durationTicks <= 0) {
                     displayedItem.remove();
+                    displayedItem = location.getWorld().dropItem(location, cosmetic.getUpdatedItem(false));
+                    displayedItem.setGravity(false);
+                    displayedItem.setPickupDelay(99999);
+                    player.playSound(player.getLocation(), Sound.BLOCK_STONE_BUTTON_CLICK_ON, 1.0f, 1.0f);
                     //play rarity win effect
                     switch(cosmetic.getRarity()) {
                         case COMMON:
@@ -62,7 +71,11 @@ public class Animation implements Runnable{
                     }
 
                     //give player item
-                    Utils.giveItem(player, cosmetic.getUpdatedItem(false));
+                    Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+                        displayedItem.remove();
+                        Utils.giveItem(player, cosmetic.getUpdatedItem(false));
+                    },30);
+
 
                     this.cancel();
                 }
