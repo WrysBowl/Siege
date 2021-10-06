@@ -9,6 +9,7 @@ import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
 import net.siegerpg.siege.core.crates.CosmeticCrate;
+import net.siegerpg.siege.core.crates.CrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
 import net.siegerpg.siege.core.events.BossLeaderboard;
@@ -166,6 +167,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityTeleportListener(), this);
         getServer().getPluginManager().registerEvents(new HelpfulTips(), this);
         getServer().getPluginManager().registerEvents(new GoldReward(), this);
+        getServer().getPluginManager().registerEvents(new CrateOpen(), this);
 
         getServer().getPluginManager().registerEvents(new MobNames(), this);
         getServer().getPluginManager().registerEvents(new SkillListener(), this);

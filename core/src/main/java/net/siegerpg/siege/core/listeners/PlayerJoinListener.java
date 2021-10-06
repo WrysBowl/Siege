@@ -8,6 +8,9 @@ import net.siegerpg.siege.core.items.implemented.misc.cosmetics.TestingCosmetic;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.TestingCosmetic2;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.HexShifter;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.wands.BeginnerLivingTwig;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.BeginnerClub;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.BeginnerTwig;
@@ -95,7 +98,10 @@ public class PlayerJoinListener implements Listener {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);
         }
-        player.getInventory().addItem(new HexShifter(0).getUpdatedItem(false));
+        player.getInventory().addItem(new NormalKey(0).getUpdatedItem(false));
+        player.getInventory().addItem(new CommonKey(0).getUpdatedItem(false));
+        player.getInventory().addItem(new UncommonKey(0).getUpdatedItem(false));
+
 
 
         /*if (event.getPlayer().getName().equals("Wrys")) {

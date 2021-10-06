@@ -30,20 +30,18 @@ public class Animation implements Runnable{
             public void run() {
 
                 //exponentially increase delay
-                if ((durationTicks/ticker) > 1) {
-                    ItemStack randomItem = cosmeticArray.get((int) (Math.random()*cosmeticArray.size())).getItem();
-                    if (displayedItem != null) displayedItem.remove();
-                    displayedItem = loc.getWorld().dropItem(loc, randomItem);
-                    displayedItem.setPickupDelay(99999);
-                    player.playSound(player.getLocation(), Sound.BLOCK_STONE_BUTTON_CLICK_ON, 1.0f, 1.0f);
-                    ticker += 1;
-                }
+                int randomNumber = (int)(Math.random()*cosmeticArray.size());
+                ItemStack randomItem = cosmeticArray.get(randomNumber).getUpdatedItem(false);
+                if (displayedItem != null) displayedItem.remove();
+                displayedItem = loc.getWorld().dropItem(loc, randomItem);
+                displayedItem.setGravity(false);
+                displayedItem.setPickupDelay(99999);
+                player.playSound(player.getLocation(), Sound.BLOCK_STONE_BUTTON_CLICK_ON, 1.0f, 1.0f);
 
-
-                durationTicks-=1;
+                durationTicks-=5;
 
                 if (durationTicks <= 0) {
-
+                    displayedItem.remove();
                     //play rarity win effect
                     switch(cosmetic.getRarity()) {
                         case COMMON:
@@ -69,7 +67,7 @@ public class Animation implements Runnable{
                     this.cancel();
                 }
             }
-        }.runTaskTimer(Core.plugin(), 0, 1);
+        }.runTaskTimer(Core.plugin(), 0, 5);
     }
 
     @Override

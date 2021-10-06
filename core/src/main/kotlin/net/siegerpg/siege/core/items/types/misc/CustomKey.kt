@@ -12,6 +12,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
+//be sure to remove excess variables (quality, recipe list, etc.) same with cosmetics
 abstract class CustomKey(
     override val name: String,
     override val customModelData: Int? = null,
