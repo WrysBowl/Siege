@@ -18,8 +18,8 @@ class SuperiorKey() : CustomKey(
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 80
+        this.rarity = Rarity.RARE
         this.serialize()
     }
 

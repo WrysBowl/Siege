@@ -6,8 +6,8 @@ import net.siegerpg.siege.core.items.implemented.misc.cosmetics.common.AnonMask;
 
 import java.util.HashMap;
 
-public class NormalDropTable extends CosmeticDropTable {
-    public NormalDropTable() {
+public class SpiritDropTable extends CosmeticDropTable {
+    public SpiritDropTable() {
         dropTable = new HashMap<>(){
             {
                 put(new AnonMask(0), 10);

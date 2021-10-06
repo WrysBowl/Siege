@@ -18,8 +18,8 @@ class EpicKey() : CustomKey(
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 90
+        this.rarity = Rarity.EPIC
         this.serialize()
     }
 

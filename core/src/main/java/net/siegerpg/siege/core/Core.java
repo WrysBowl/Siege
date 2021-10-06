@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.Webstore.RedeemBoosters;
 import net.siegerpg.siege.core.Webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
+import net.siegerpg.siege.core.crates.CosmeticCrate;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
 import net.siegerpg.siege.core.events.BossLeaderboard;
@@ -31,6 +32,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
 
 @SuppressWarnings("unused")
 public final class Core extends JavaPlugin {
@@ -73,7 +76,8 @@ public final class Core extends JavaPlugin {
         defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
         (new VaultHook()).createHooks();
 
-        spawnLocation = new Location(Bukkit.getWorld("SiegeHub"), 70.5, 71, 3.5, 90, 0);
+        spawnLocation = new Location(Bukkit.getWorld("Hub"), 70.5, 71, 3.5, 90, 0);
+
         commandManager.registerCommand(new PartyCommand());
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("discord").setExecutor(new Discord());

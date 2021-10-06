@@ -18,8 +18,8 @@ class UncommonKey() : CustomKey(
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 50
+        this.rarity = Rarity.UNCOMMON
         this.serialize()
     }
 

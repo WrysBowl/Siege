@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.crates.dropTables;
+package net.siegerpg.siege.core.crates;
 
 import net.siegerpg.siege.core.dungeons.Dungeon;
 import net.siegerpg.siege.core.fishing.baits.BaitStats;
