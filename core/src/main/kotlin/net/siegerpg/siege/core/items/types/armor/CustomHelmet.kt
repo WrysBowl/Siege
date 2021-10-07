@@ -7,7 +7,6 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
@@ -28,7 +27,6 @@ abstract class CustomHelmet(
     override var item: ItemStack = ItemStack(material),
     override val baseStats: HashMap<StatTypes, Double>,
     override val type: ItemTypes = ItemTypes.HELMET,
-    override val recipeList: CustomRecipeList? = null,
     override var statGem: StatGem? = null,
     override var leatherColor: Color = Core.defaultLeatherColor,
     var initMaterial: Material? = null,
@@ -108,7 +106,6 @@ abstract class CustomHelmet(
         result = 31 * result + item.hashCode()
         result = 31 * result + baseStats.hashCode()
         result = 31 * result + type.hashCode()
-        result = 31 * result + (recipeList?.hashCode() ?: 0)
         result = 31 * result + (statGem?.hashCode() ?: 0)
         result = 31 * result + leatherColor.hashCode()
         result = 31 * result + (initMaterial?.hashCode() ?: 0)

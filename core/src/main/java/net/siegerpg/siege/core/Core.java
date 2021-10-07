@@ -16,7 +16,6 @@ import net.siegerpg.siege.core.events.BossLeaderboard;
 import net.siegerpg.siege.core.fishing.commands.getBait;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
-import net.siegerpg.siege.core.items.recipes.CustomRecipe;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.*;
@@ -196,12 +195,10 @@ public final class Core extends JavaPlugin {
         new RegenerationTask().startRegenTask();
         new HelpfulTips().broadcastTasks();
         new GoldReward().giveGold();
-        CustomRecipe.Companion.registerAllRecipes();
 
 //        CustomRecipe recipe = new CustomRecipe();
 //        recipe.s1(Pebble.Companion.tier(1));
 //        CustomRecipe.Companion.registerRecipe(recipe);
-        Bukkit.getLogger().info(String.valueOf(CustomRecipe.Companion.getRecipes().size()));
 
 
     }

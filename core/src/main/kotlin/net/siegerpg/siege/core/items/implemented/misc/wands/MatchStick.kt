@@ -2,20 +2,14 @@ package net.siegerpg.siege.core.items.implemented.misc.wands
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomWand
 import net.siegerpg.siege.core.utils.Levels
-import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemStack
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 
 class MatchStick() : CustomWand(
     name = "Match Stick",

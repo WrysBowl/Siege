@@ -3,7 +3,6 @@ package net.siegerpg.siege.core.items.types.misc
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic
 import org.bukkit.Color
 import org.bukkit.Material
@@ -16,7 +15,6 @@ abstract class Cosmetic(
     override val description: List<String>,
     override val type: ItemTypes = ItemTypes.COSMETIC,
     override var material: Material,
-    override val recipeList: CustomRecipeList? = null,
     final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override var leatherColor: Color = Core.defaultLeatherColor
@@ -45,7 +43,6 @@ abstract class Cosmetic(
         result = 31 * result + quality
         result = 31 * result + item.hashCode()
         result = 31 * result + type.hashCode()
-        result = 31 * result + (recipeList?.hashCode() ?: 0)
         result = 31 * result + leatherColor.hashCode()
         result = 31 * result + rarity.hashCode()
         return result

@@ -11,10 +11,12 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane
 import com.github.stefvanschie.inventoryframework.pane.Pane
 import com.github.stefvanschie.inventoryframework.pane.StaticPane
+import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.minimessage.MiniMessage
-import net.siegerpg.siege.core.utils.Scoreboard
-import net.siegerpg.siege.core.utils.VaultHook
-import net.siegerpg.siege.core.utils.lore
+import net.siegerpg.siege.core.items.getNbtTag
+import net.siegerpg.siege.core.items.types.misc.CustomMaterial
+import net.siegerpg.siege.core.utils.*
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.command.CommandSender
 import org.bukkit.command.ConsoleCommandSender
@@ -84,7 +86,8 @@ class ShopsCommand : BaseCommand() {
                 meta.lore("<gold>Required Crafting Materials:")
                 var counter = 1
                 for (entry in it.recipe) {
-                    meta.lore("<gold>${counter}. <aqua>${entry.value}x <pre>${entry.key.getUpdatedItem(false).itemMeta.displayName()}</pre>")
+                    val updatedItem = entry.key.getUpdatedItem(false).itemMeta.displayName
+                    meta.lore("<gold>${counter}. <aqua>${entry.value}x <pre>${updatedItem}</pre>")
                     counter++
                 }
                 meta.lore("")

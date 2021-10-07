@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.items.implemented.misc.tools
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomTool
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
@@ -15,9 +14,7 @@ class GlowingWoodenPickaxe() : CustomTool(
     levelRequirement = 5,
     material = Material.WOODEN_PICKAXE,
     baseStats = CustomItemUtils.statMap(),
-    recipeList = recipes {
-
-    },
+    
     enchantments = hashMapOf(
         Enchantment.DIG_SPEED to 1
     )

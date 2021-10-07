@@ -5,7 +5,6 @@ import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.utils.lore
@@ -24,7 +23,6 @@ abstract class CustomTool(
     final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.MATERIAL,
-    override val recipeList: CustomRecipeList? = null,
     override val baseStats: HashMap<StatTypes, Double>,
     override var statGem: StatGem? = null,
     val enchantments: MutableMap<Enchantment, Int>
@@ -88,7 +86,6 @@ abstract class CustomTool(
         result = 31 * result + quality
         result = 31 * result + item.hashCode()
         result = 31 * result + type.hashCode()
-        result = 31 * result + (recipeList?.hashCode() ?: 0)
         result = 31 * result + enchantments.hashCode()
         result = 31 * result + rarity.hashCode()
         return result

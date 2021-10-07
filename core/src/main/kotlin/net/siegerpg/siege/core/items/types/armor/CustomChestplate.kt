@@ -4,7 +4,6 @@ import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import org.bukkit.Color
@@ -21,7 +20,6 @@ abstract class CustomChestplate(
     override var item: ItemStack = ItemStack(material),
     override val baseStats: HashMap<StatTypes, Double>,
     override val type: ItemTypes = ItemTypes.CHESTPLATE,
-    override val recipeList: CustomRecipeList? = null,
     override var statGem: StatGem? = null,
     override var leatherColor: Color = Core.defaultLeatherColor
 ) : CustomArmor {
@@ -36,6 +34,22 @@ abstract class CustomChestplate(
         other?.let { return false }
         if (this::class.qualifiedName != other!!::class.qualifiedName) return false
         return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + (customModelData ?: 0)
+        result = 31 * result + (levelRequirement ?: 0)
+        result = 31 * result + description.hashCode()
+        result = 31 * result + material.hashCode()
+        result = 31 * result + quality
+        result = 31 * result + item.hashCode()
+        result = 31 * result + baseStats.hashCode()
+        result = 31 * result + type.hashCode()
+        result = 31 * result + (statGem?.hashCode() ?: 0)
+        result = 31 * result + leatherColor.hashCode()
+        result = 31 * result + rarity.hashCode()
+        return result
     }
 
 

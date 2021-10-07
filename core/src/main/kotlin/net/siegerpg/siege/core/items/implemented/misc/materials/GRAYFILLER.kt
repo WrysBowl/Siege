@@ -1,8 +1,6 @@
 package net.siegerpg.siege.core.items.implemented.misc.materials
 
-import net.kyori.adventure.text.minimessage.MiniMessage
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
