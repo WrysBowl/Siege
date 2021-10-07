@@ -41,8 +41,8 @@ public class CrateOpen implements Listener {
         Block targetedBlock = e.getClickedBlock();
         if (targetedBlock == null) return;
         if (targetedBlock.getType() != Material.ENDER_CHEST) return;
-        //if (currentlyUsedChests.contains(targetedBlock.getLocation())) return;
         if (!targetedBlock.getLocation().getWorld().getName().equals("Hub")) return;
+        if (currentlyUsedChests.contains(targetedBlock.getLocation())) return;
 
         //Make sure item is a cosmetic key
         Player player = e.getPlayer();
@@ -52,26 +52,19 @@ public class CrateOpen implements Listener {
         if (!keyCheck(item)) return;
 
         //Add chest location to arraylist to prevent further use
-        //currentlyUsedChests.add(targetedBlock.getLocation());
+        currentlyUsedChests.add(targetedBlock.getLocation());
 
         //Pick item reward to give to player
         CosmeticDropTable dropTable = getItem(item);
         if (dropTable == null) return;
         CustomCosmetic reward = dropTable.pickItem();
-        Location blockLoc = new Location(
-                targetedBlock.getWorld(),
-                targetedBlock.getX()+0.5,
-                targetedBlock.getY()+0.5,
-                targetedBlock.getZ()+0.5
-        );
-        blockLoc.setY(blockLoc.getY()+1);
         e.setCancelled(true);
 
         //Play item getting animation
         //Plays item win effect
         //Gives item to player
         new Animation().openCrate(
-                blockLoc,
+                targetedBlock.getLocation(),
                 dropTable.dropTable.keySet(),
                 reward, player);
         player.getInventory().removeItem(item.getItem().asOne());

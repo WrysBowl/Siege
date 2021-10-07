@@ -13,6 +13,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -21,15 +22,21 @@ import java.util.Set;
 
 public class Animation implements Runnable{
     public void openCrate(Location location, Set<CustomCosmetic> cosmetics, CustomCosmetic cosmetic, Player player) {
-        new Helix().createHelix(location, Particle.FALLING_OBSIDIAN_TEAR, 1.5, 0.5, 3.0);
+        new Helix().createHelix(location, Particle.FALLING_OBSIDIAN_TEAR, 3.0, 0.0, 4.0);
+        new Helix().createHelix(location, Particle.FALLING_OBSIDIAN_TEAR, 2.0, 0.0, 4.0);
+
         new BukkitRunnable() {
 
-            final int ticker = 10;
+            final int ticker = 5;
             final int duration = 100;
             int durationTicks = duration;
             final ArrayList<CustomCosmetic> cosmeticArray = new ArrayList<>(cosmetics);
             Item displayedItem;
-            final Location loc = location;
+            final Location loc =new Location(
+                    location.getWorld(),
+                    location.getX()+0.5,
+                    location.getY()+1.5,
+                    location.getZ()+0.5);
 
             public void run() {
 
@@ -40,6 +47,7 @@ public class Animation implements Runnable{
                 displayedItem = loc.getWorld().dropItem(loc, randomItem);
                 displayedItem.setGravity(false);
                 displayedItem.setPickupDelay(99999);
+                displayedItem.setVelocity(new Vector());
                 player.playSound(player.getLocation(), Sound.BLOCK_STONE_BUTTON_CLICK_ON, 1.0f, 1.0f);
                 loc.setY(loc.getY()+0.1);
 
@@ -47,35 +55,47 @@ public class Animation implements Runnable{
 
                 if (durationTicks <= 0) {
                     displayedItem.remove();
-                    displayedItem = location.getWorld().dropItem(location, cosmetic.getUpdatedItem(false));
+                    displayedItem = location.getWorld().dropItem(loc, cosmetic.getUpdatedItem(false));
                     displayedItem.setGravity(false);
                     displayedItem.setPickupDelay(99999);
-                    player.playSound(player.getLocation(), Sound.BLOCK_STONE_BUTTON_CLICK_ON, 1.0f, 1.0f);
-                    //play rarity win effect
-                    switch(cosmetic.getRarity()) {
-                        case COMMON:
-                            CosmeticCrate.commonWin(loc);
-                            break;
-                        case UNCOMMON:
-                            CosmeticCrate.uncommonWin(loc);
-                            break;
-                        case RARE:
-                            CosmeticCrate.rareWin(loc);
-                            break;
-                        case EPIC:
-                            CosmeticCrate.epicWin(loc);
-                            break;
-                        case LEGENDARY:
-                            CosmeticCrate.legendaryWIn(loc);
-                            break;
-                    }
+                    player.playSound(location, Sound.BLOCK_STONE_BUTTON_CLICK_ON, 1.0f, 1.0f);
 
-                    //give player item
                     Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                        displayedItem.remove();
-                        Utils.giveItem(player, cosmetic.getUpdatedItem(false));
-                    },30);
+                        Vector vector = Utils.getDifferentialVector(loc, player.getLocation().subtract(0, 4, 0));
+                        vector.normalize();
+                        displayedItem.setVelocity(vector);
 
+                        player.playSound(location, Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1.0f, 1.0f);
+                        location.getWorld().spawnParticle(Particle.REVERSE_PORTAL.builder().count(75).particle(), loc, 50);
+
+
+                        //play rarity win effect
+                        switch(cosmetic.getRarity()) {
+                            case COMMON:
+                                CosmeticCrate.commonWin(loc);
+                                break;
+                            case UNCOMMON:
+                                CosmeticCrate.uncommonWin(loc);
+                                break;
+                            case RARE:
+                                CosmeticCrate.rareWin(loc);
+                                break;
+                            case EPIC:
+                                CosmeticCrate.epicWin(loc);
+                                break;
+                            case LEGENDARY:
+                                CosmeticCrate.legendaryWIn(loc);
+                                break;
+                        }
+
+                        //give player item
+                        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+                            displayedItem.remove();
+                            Utils.giveItem(player, cosmetic.getUpdatedItem(false));
+                            CrateOpen.currentlyUsedChests.remove(location);
+
+                        },20);
+                    },20);
 
                     this.cancel();
                 }

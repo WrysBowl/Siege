@@ -84,8 +84,8 @@ public class GoldExpListener implements Listener{
         ItemStack item = e.getEntity().getItemStack();
         CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
         if (CusItem == null) return;
-
-        e.getEntity().setCustomName(Utils.tacc( "&e" + item.getAmount() + "x &r" + item.getItemMeta().getDisplayName()));
+        if (item.getAmount() <= 1) e.getEntity().setCustomName(Utils.tacc(item.getItemMeta().getDisplayName()));
+        else e.getEntity().setCustomName(Utils.tacc( "&e" + item.getAmount() + "x &r" + item.getItemMeta().getDisplayName()));
         e.getEntity().setCustomNameVisible(true);
     }
 
