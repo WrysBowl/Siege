@@ -14,7 +14,6 @@ class DavyJonesKey() : CustomKey(
     customModelData = 620007,
     description = listOf("Used to summon", "Davy Jones"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap(),
     quality = 50
 ) {
 

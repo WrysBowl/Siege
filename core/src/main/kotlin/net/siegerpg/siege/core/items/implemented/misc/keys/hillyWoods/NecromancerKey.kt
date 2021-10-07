@@ -15,7 +15,6 @@ class NecromancerKey() : CustomKey(
     description = listOf("Used to summon", "the Necromancer"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap(),
     quality = 80
 ) {
 

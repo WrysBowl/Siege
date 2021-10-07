@@ -14,7 +14,6 @@ class SlimeSpiritKey() : CustomKey(
     customModelData = 620002,
     description = listOf("Used to summon", "the Slime spirit"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap(),
     quality = 0
 ) {
 

@@ -15,7 +15,6 @@ class WerewolfKey() : CustomKey(
     description = listOf("Used to summon", "the Werewolf"),
     levelRequirement = 1,
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap(),
     quality = 90
 ) {
 

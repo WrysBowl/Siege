@@ -14,7 +14,6 @@ class UncommonKey() : CustomKey(
     customModelData = 630002,
     description = listOf("Get an uncommon cosmetic"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap()
 ) {
 
     constructor(quality: Int): this() {

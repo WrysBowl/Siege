@@ -14,7 +14,6 @@ class RockSpiritKey() : CustomKey(
     customModelData = 620001,
     description = listOf("Used to summon", "the Rock spirit"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap(),
     quality = 0
 ) {
 

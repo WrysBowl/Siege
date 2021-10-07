@@ -14,7 +14,6 @@ class LichKey() : CustomKey(
     customModelData = 620009,
     description = listOf("Used to summon", "the Lich"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap(),
     quality = 50
 ) {
 

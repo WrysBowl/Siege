@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.types.misc
 
+import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
@@ -23,9 +24,7 @@ abstract class CustomKey(
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.MATERIAL,
     override val recipeList: CustomRecipeList? = null,
-    override val baseStats: HashMap<StatTypes, Double>,
-    override var statGem: StatGem? = null,
-) : CustomEquipment {
+) : CustomItem {
 
     override var rarity: Rarity = Rarity.COMMON
 

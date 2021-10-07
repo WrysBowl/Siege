@@ -14,7 +14,6 @@ class BullSpiritKey() : CustomKey(
     customModelData = 620006,
     description = listOf("Used to summon", "the Bull spirit"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap(),
     quality = 0
 ) {
 

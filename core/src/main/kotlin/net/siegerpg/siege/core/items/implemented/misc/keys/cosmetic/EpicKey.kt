@@ -14,7 +14,6 @@ class EpicKey() : CustomKey(
     customModelData = 630004,
     description = listOf("Get an epic cosmetic"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap()
 ) {
 
     constructor(quality: Int): this() {

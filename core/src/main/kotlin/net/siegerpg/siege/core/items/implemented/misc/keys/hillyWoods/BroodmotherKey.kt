@@ -14,7 +14,6 @@ class BroodmotherKey() : CustomKey(
     customModelData = 620010,
     description = listOf("Used to summon", "the Broodmother"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap(),
     quality = 100
 ) {
 

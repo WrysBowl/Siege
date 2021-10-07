@@ -14,7 +14,6 @@ class RareKey() : CustomKey(
     customModelData = 630003,
     description = listOf("Get a rare cosmetic"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap()
 ) {
 
     constructor(quality: Int): this() {

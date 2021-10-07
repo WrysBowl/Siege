@@ -14,7 +14,6 @@ class CommonKey() : CustomKey(
     customModelData = 630001,
     description = listOf("Get a common cosmetic"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap()
 ) {
 
     constructor(quality: Int): this() {

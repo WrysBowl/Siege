@@ -14,7 +14,6 @@ class MagmaSpiritKey() : CustomKey(
     customModelData = 620003,
     description = listOf("Used to summon", "the Magma spirit"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap(),
     quality = 0
 ) {
 

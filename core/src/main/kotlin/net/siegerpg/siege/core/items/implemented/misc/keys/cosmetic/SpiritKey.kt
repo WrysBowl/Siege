@@ -14,7 +14,6 @@ class SpiritKey() : CustomKey(
     customModelData = 630008,
     description = listOf("High chance of a","legendary cosmetic"),
     material = Material.TRIPWIRE_HOOK,
-    baseStats = CustomItemUtils.statMap()
 ) {
 
     constructor(quality: Int): this() {
