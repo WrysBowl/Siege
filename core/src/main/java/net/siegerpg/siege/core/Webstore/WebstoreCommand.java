@@ -16,7 +16,10 @@ public class WebstoreCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (sender instanceof Player) return false;
+        if (sender instanceof Player) {
+            ((Player) sender).performCommand("craftingstore:buy");
+            return false;
+        }
 
         OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
         if (args[1].equals("booster")) {
@@ -127,8 +130,6 @@ public class WebstoreCommand implements CommandExecutor {
             Bukkit.broadcastMessage(Utils.tacc(""));
             return true;
         }
-
-
         return false;
     }
 }
