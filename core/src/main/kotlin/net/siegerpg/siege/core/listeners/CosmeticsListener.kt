@@ -90,6 +90,7 @@ class CosmeticsListener : Listener {
         if (e.action == Action.LEFT_CLICK_AIR || e.action == Action.LEFT_CLICK_BLOCK) nbtItem.onCosmeticInteract(e)
     }
 
+    @EventHandler
     fun onCosmeticEquip(e: ArmorEquipEvent) {
         val itemInteractedWith = getCustomItem(e.newArmorPiece) ?: return //helmet
         if (itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
