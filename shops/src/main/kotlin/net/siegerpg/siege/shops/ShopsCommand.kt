@@ -14,6 +14,7 @@ import com.github.stefvanschie.inventoryframework.pane.StaticPane
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.siegerpg.siege.core.items.getNbtTag
+import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import net.siegerpg.siege.core.utils.*
 import org.bukkit.Bukkit
@@ -57,10 +58,24 @@ class ShopsCommand : BaseCommand() {
             MiniMessage.get().parse("<red>You do not have permission to open this shop!")
         )
 
-        val gui = ChestGui(6, shop.name)
+        var gui = ChestGui(3, shop.name)
+        var outlinePane = OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST)
+        var mainPane = StaticPane(1, 1, 9, 3, Pane.Priority.HIGHEST)
 
-        // glass outline
-        val outlinePane = OutlinePane(0, 0, 9, 6, Pane.Priority.LOWEST)
+        if (shop.items.size <= 14) {
+            gui = ChestGui(4, shop.name)
+            outlinePane = OutlinePane(0, 0, 9, 4, Pane.Priority.LOWEST)
+            mainPane = StaticPane(1, 1, 9, 4, Pane.Priority.HIGHEST)
+        } else if(shop.items.size <= 21) {
+            gui = ChestGui(5, shop.name)
+            outlinePane = OutlinePane(0, 0, 9, 5, Pane.Priority.LOWEST)
+            mainPane = StaticPane(1, 1, 9, 5, Pane.Priority.HIGHEST)
+        } else if(shop.items.size <= 28) {
+            gui = ChestGui(6, shop.name)
+            outlinePane = OutlinePane(0, 0, 9, 6, Pane.Priority.LOWEST)
+            mainPane = StaticPane(1, 1, 9, 6, Pane.Priority.HIGHEST)
+        }
+
         val glassPane = ItemStack(Material.GRAY_STAINED_GLASS_PANE)
         val glassPaneMeta = glassPane.itemMeta
         glassPaneMeta.displayName(MiniMessage.get().parse("<black><obf>|||"))
@@ -72,14 +87,14 @@ class ShopsCommand : BaseCommand() {
         }
 
         // main pane
-        val mainPane = StaticPane(1, 1, 9, 6, Pane.Priority.HIGHEST)
+
         mainPane.setOnClick {
             it.isCancelled = true
         }
         var currentX = 0
         var currentY = 0
         shop.items.forEach {
-            val item = it.item.getUpdatedItem(true)
+            var item = it.item.getUpdatedItem(true)
             val meta = item.itemMeta
             if (meta.displayName() != null) meta.lore("")
             if (it.craftable) {
@@ -95,6 +110,12 @@ class ShopsCommand : BaseCommand() {
             }
             if (it.buyPrice > -1) meta.lore("<yellow>Right click to buy for ${it.buyPrice} gold!")
             item.itemMeta = meta
+            if (it.item is GRAYFILLER) {
+                item = ItemStack(Material.GRAY_STAINED_GLASS_PANE)
+                val itemMeta = item.itemMeta
+                itemMeta.displayName(MiniMessage.get().parse("<black><obf>|||"))
+                item.itemMeta = itemMeta
+            }
             val guiItem = GuiItem(item)
             guiItem.setAction { event ->
                 when {
