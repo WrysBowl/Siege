@@ -81,25 +81,15 @@ class CosmeticsListener : Listener {
     fun onCosmeticInteract(e: PlayerInteractEvent) {
         val player = e.player
         val itemInteractedWith = getCustomItem(player.inventory.itemInMainHand) ?: return //helmet
-        if (itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
-        if (itemInteractedWith.storedItem == null ||
-            itemInteractedWith.initMaterial == null ||
-            itemInteractedWith.initCustomModelData == null) return
-        val nbtItem: CustomItem = getCustomItem(itemInteractedWith.storedItem) ?: return
-        if (nbtItem !is CustomCosmetic) return
-        if (e.action == Action.LEFT_CLICK_AIR || e.action == Action.LEFT_CLICK_BLOCK) nbtItem.onCosmeticInteract(e)
+        if (itemInteractedWith !is CustomCosmetic) return //verify both items are CustomHelmets
+        if (e.action == Action.LEFT_CLICK_AIR || e.action == Action.LEFT_CLICK_BLOCK) itemInteractedWith.onCosmeticInteract(e)
     }
 
     @EventHandler
     fun onCosmeticEquip(e: ArmorEquipEvent) {
         val itemInteractedWith = getCustomItem(e.newArmorPiece) ?: return //helmet
-        if (itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
-        if (itemInteractedWith.storedItem == null ||
-            itemInteractedWith.initMaterial == null ||
-            itemInteractedWith.initCustomModelData == null) return
-        val nbtItem: CustomItem = getCustomItem(itemInteractedWith.storedItem) ?: return
-        if (nbtItem !is CustomCosmetic) return
-        nbtItem.onCosmeticEquip(e)
+        if (itemInteractedWith !is CustomCosmetic) return //verify both items are CustomHelmets
+        itemInteractedWith.onCosmeticEquip(e)
     }
 
     @EventHandler
