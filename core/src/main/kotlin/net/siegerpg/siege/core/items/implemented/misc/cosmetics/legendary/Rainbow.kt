@@ -19,8 +19,13 @@ class Rainbow() : Cosmetic(
 
     override fun onCosmeticEquip(e: ArmorEquipEvent) {
         val player = e.player
+        Bukkit.getLogger().info("1")
         val newArmor = CustomItemUtils.getCustomItem(e.newArmorPiece) ?: return
+        Bukkit.getLogger().info("2")
+
         if (newArmor !is Rainbow) return
+        Bukkit.getLogger().info("3")
+
         val rainbowArray: ArrayList<Material> = arrayListOf(
             Material.RED_STAINED_GLASS,
             Material.ORANGE_STAINED_GLASS,
@@ -39,6 +44,7 @@ class Rainbow() : Cosmetic(
             override fun run() {
                 ticker += 1
                 if (ticker >= rainbowArray.size) ticker = 0
+                Bukkit.getLogger().info("4")
 
                 //change the material type of the cosmetic helmet to the stained glass
                 //update meta
@@ -47,6 +53,8 @@ class Rainbow() : Cosmetic(
 
                 if (player.inventory.helmet == null ||
                     !rainbowArray.contains(player.inventory.helmet!!.type)) {
+                    Bukkit.getLogger().info("5")
+
                     cancel()
                 }
             }
