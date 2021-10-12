@@ -1,5 +1,8 @@
 package net.siegerpg.siege.core.listeners.ArmorEquip;
 
+import net.siegerpg.siege.core.items.CustomItem;
+import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.CustomItemUtilsKt;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -25,7 +28,8 @@ public enum ArmorType{
     public static ArmorType matchType(final ItemStack itemStack){
         if(ArmorListener.isAirOrNull(itemStack)) return null;
         String type = itemStack.getType().name();
-        if(type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("_HEAD")) return HELMET;
+        CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(itemStack);
+        if(type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("_HEAD") || customItem != null) return HELMET;
         else if(type.endsWith("_CHESTPLATE") || type.equals("ELYTRA")) return CHESTPLATE;
         else if(type.endsWith("_LEGGINGS")) return LEGGINGS;
         else if(type.endsWith("_BOOTS")) return BOOTS;

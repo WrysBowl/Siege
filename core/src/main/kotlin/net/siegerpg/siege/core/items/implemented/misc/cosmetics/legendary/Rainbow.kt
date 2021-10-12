@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary
 
+import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -17,9 +18,9 @@ class Rainbow() : Cosmetic(
     material = Material.WHITE_STAINED_GLASS
 ) {
 
-    override fun onCosmeticEquip(e: ArmorEquipEvent) {
+    override fun onCosmeticEquip(e: PlayerArmorChangeEvent) {
         val player = e.player
-        val newArmor = CustomItemUtils.getCustomItem(e.newArmorPiece) ?: return
+        val newArmor = CustomItemUtils.getCustomItem(e.newItem) ?: return
         if (newArmor !is Rainbow) return
         val rainbowArray: ArrayList<Material> = arrayListOf(
             Material.RED_STAINED_GLASS,

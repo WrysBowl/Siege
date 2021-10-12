@@ -1,24 +1,26 @@
 package net.siegerpg.siege.core.listeners
 
+import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent
 import io.papermc.paper.event.player.AsyncChatEvent
 import net.siegerpg.siege.core.items.CustomItem
-import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
-import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent
+import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorType
 import net.siegerpg.siege.core.utils.sendMiniMessage
 import org.bukkit.Bukkit
-import org.bukkit.Color
 import org.bukkit.entity.Player
+import org.bukkit.event.Event
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.inventory.ItemStack
 
 class CosmeticsListener : Listener {
 
@@ -67,14 +69,22 @@ class CosmeticsListener : Listener {
     fun onCosmeticHandEquipAttempt(e: PlayerInteractEvent) {
         val player = e.player
         val itemInteractedWith = getCustomItem(player.inventory.itemInMainHand) ?: return //helmet
-        if (itemInteractedWith !is Cosmetic) return //verify both items are CustomHelmets
+        if (itemInteractedWith !is Cosmetic && itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
         e.isCancelled = true
         if (player.inventory.helmet != null) return
         if (e.action == Action.RIGHT_CLICK_BLOCK || e.action == Action.RIGHT_CLICK_AIR) {
-            player.inventory.helmet = itemInteractedWith.getUpdatedItem(false) //change clicked item to the new cosmetic item
+            e.setUseItemInHand(Event.Result.ALLOW)
+            player.inventory.helmet = itemInteractedWith.getUpdatedItem(false).asOne() //change clicked item to the new cosmetic item
             player.inventory.setItemInMainHand(
                 player.inventory.itemInMainHand.asQuantity(player.inventory.itemInMainHand.amount-1)
             )
+            val armorEquipEvent =
+                ArmorEquipEvent(e.player, ArmorEquipEvent.EquipMethod.HOTBAR, ArmorType.matchType(e.item), null, e.item)
+            Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
+            if (armorEquipEvent.isCancelled) {
+                e.isCancelled = true
+                player.updateInventory()
+            }
         }
     }
 
@@ -86,9 +96,16 @@ class CosmeticsListener : Listener {
     }
 
     @EventHandler
-    fun onCosmeticEquip(e: ArmorEquipEvent) {
-        val itemInteractedWith = getCustomItem(e.newArmorPiece) ?: return //helmet
-        if (itemInteractedWith !is CustomCosmetic) return //verify both items are CustomHelmets
+    fun onCosmeticEquip(e: PlayerArmorChangeEvent) {
+        val itemInteractedWith = getCustomItem(e.newItem) ?: return //helmet
+        if (itemInteractedWith !is CustomCosmetic) {
+            if (itemInteractedWith is CustomHelmet) {
+                val item: ItemStack = itemInteractedWith.storedItem ?: return
+                val customItem: CustomItem = getCustomItem(item) ?: return
+                if (customItem is CustomCosmetic) customItem.onCosmeticEquip(e)
+            }
+            return
+        } //verify both items are CustomHelmets
         itemInteractedWith.onCosmeticEquip(e)
     }
 

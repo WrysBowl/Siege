@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary
 
+import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent
 import io.papermc.paper.event.player.AsyncChatEvent
 import net.kyori.adventure.text.TextComponent
 import net.siegerpg.siege.core.items.CustomItemUtils
@@ -22,10 +23,10 @@ class GlowSquid() : Cosmetic(
     material = Material.KNOWLEDGE_BOOK
 ) {
 
-    override fun onCosmeticEquip(e: ArmorEquipEvent) {
+    override fun onCosmeticEquip(e: PlayerArmorChangeEvent) {
         val player = e.player
-        val newArmor = CustomItemUtils.getCustomItem(e.newArmorPiece)
-        val oldArmor = CustomItemUtils.getCustomItem(e.oldArmorPiece)
+        val newArmor = CustomItemUtils.getCustomItem(e.newItem)
+        val oldArmor = CustomItemUtils.getCustomItem(e.oldItem)
 
         if (newArmor != null) {
             if (newArmor is GlowSquid) player.addPotionEffect(PotionEffect(PotionEffectType.GLOWING, 999999, 9))

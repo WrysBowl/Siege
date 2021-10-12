@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
+import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent
 import io.papermc.paper.event.player.AsyncChatEvent
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
@@ -22,7 +23,7 @@ interface CustomCosmetic: CustomItem {
     var leatherColor: Color
 
     fun onCosmeticInteract(e: PlayerInteractEvent) {}
-    fun onCosmeticEquip(e: ArmorEquipEvent) {}
+    fun onCosmeticEquip(e: PlayerArmorChangeEvent) {}
     fun onCosmeticSpeak(e: AsyncChatEvent) {}
 
     override fun serialize() {
