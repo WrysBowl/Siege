@@ -59,19 +59,18 @@ interface CustomCosmetic: CustomItem {
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
         meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
-        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> Tier" else "<r>${shownRarity.color}${shownRarity.id} Tier")
 
         if (meta.hasLore()) meta.lore(mutableListOf())
 
         meta.lore("<r><color:#79ECEB><b>COSMETIC")
-
         if (!description.contains("")) {
             meta.lore(" ")
             description.forEach {
                 meta.lore("<r><dark_gray>$it")
             }
         }
-
+        meta.lore("")
+        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> Tier" else "<r>${shownRarity.color}${shownRarity.id} Tier")
         meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 
