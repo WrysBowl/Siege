@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.TestingCosmetic;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.TestingCosmetic2;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.HexShifter;
+import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.Rainbow;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey;
@@ -101,6 +102,7 @@ public class PlayerJoinListener implements Listener {
         player.getInventory().addItem(new NormalKey(0).getUpdatedItem(false));
         player.getInventory().addItem(new CommonKey(0).getUpdatedItem(false));
         player.getInventory().addItem(new UncommonKey(0).getUpdatedItem(false));
+        player.getInventory().addItem(new Rainbow(0).getUpdatedItem(false));
 
 
 

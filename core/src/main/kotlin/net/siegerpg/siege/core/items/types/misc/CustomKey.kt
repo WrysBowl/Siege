@@ -4,7 +4,6 @@ import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.utils.lore
@@ -23,7 +22,6 @@ abstract class CustomKey(
     final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.MATERIAL,
-    override val recipeList: CustomRecipeList? = null,
 ) : CustomItem {
 
     override var rarity: Rarity = Rarity.COMMON
@@ -65,7 +63,6 @@ abstract class CustomKey(
         result = 31 * result + quality
         result = 31 * result + item.hashCode()
         result = 31 * result + type.hashCode()
-        result = 31 * result + (recipeList?.hashCode() ?: 0)
         result = 31 * result + rarity.hashCode()
         return result
     }

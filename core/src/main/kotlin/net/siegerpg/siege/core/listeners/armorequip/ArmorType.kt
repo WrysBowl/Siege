@@ -1,5 +1,7 @@
 package net.siegerpg.siege.core.listeners.armorequip
 
+import net.siegerpg.siege.core.items.CustomItem
+import net.siegerpg.siege.core.items.CustomItemUtils
 import org.bukkit.inventory.ItemStack
 
 
@@ -20,7 +22,8 @@ enum class ArmorType(val slot: Int) {
         fun matchType(itemStack: ItemStack?): ArmorType? {
             if (ArmorListener.isAirOrNull(itemStack)) return null
             val type = itemStack!!.type.name
-            return if (type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("_HEAD")) HELMET else if (type.endsWith(
+            val customItem = CustomItemUtils.getCustomItem(itemStack)
+            return if (type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("_HEAD") || customItem != null) HELMET else if (type.endsWith(
                     "_CHESTPLATE"
                 ) || type == "ELYTRA"
             ) CHESTPLATE else if (type.endsWith("_LEGGINGS")) LEGGINGS else if (type.endsWith("_BOOTS")) BOOTS else null

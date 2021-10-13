@@ -4,7 +4,6 @@ import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
@@ -23,7 +22,6 @@ abstract class CustomWand(
     final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.WAND,
-    override val recipeList: CustomRecipeList? = null,
     override val baseStats: HashMap<StatTypes, Double>,
     val range: Int = 12,
     val red: Int = 255,
@@ -112,7 +110,6 @@ abstract class CustomWand(
         result = 31 * result + quality
         result = 31 * result + item.hashCode()
         result = 31 * result + type.hashCode()
-        result = 31 * result + (recipeList?.hashCode() ?: 0)
         result = 31 * result + baseStats.hashCode()
         result = 31 * result + range
         result = 31 * result + red

@@ -47,15 +47,13 @@ public class MobDropTable implements Listener {
     }
     public Integer getGold(boolean rand) {
         if (rand) {
-            double randomGold = (Math.random() * goldMax) + goldMin;
-            return (int) Math.round(randomGold);
+            return (int)(Math.random() * goldMax) + goldMin;
         }
         return goldMax;
     }
     public Integer getExp(boolean rand) {
         if (rand) {
-            double randomExp = (Math.random() * expMax) + expMin;
-            return (int) Math.round(randomExp);
+            return (int)(Math.random() * expMax) + expMin;
         }
         return expMax;
     }

@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.items.implemented.armor.helmet
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import org.bukkit.Color
 import org.bukkit.Material

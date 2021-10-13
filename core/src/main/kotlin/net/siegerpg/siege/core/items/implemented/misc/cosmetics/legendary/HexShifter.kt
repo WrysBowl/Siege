@@ -2,14 +2,10 @@ package net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary
 
 import io.papermc.paper.event.player.AsyncChatEvent
 import net.kyori.adventure.text.TextComponent
-import net.siegerpg.siege.core.items.CustomItem
-import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import net.siegerpg.siege.core.utils.HexColorCode
 import net.siegerpg.siege.core.utils.Utils
-import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.entity.Player

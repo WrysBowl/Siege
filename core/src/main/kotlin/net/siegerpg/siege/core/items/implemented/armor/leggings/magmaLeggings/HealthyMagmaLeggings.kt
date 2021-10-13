@@ -2,11 +2,7 @@ package net.siegerpg.siege.core.items.implemented.armor.leggings.magmaLeggings
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.armor.CustomLeggings
-import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack

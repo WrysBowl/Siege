@@ -3,7 +3,6 @@ package net.siegerpg.siege.core.items.types.weapons
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import org.bukkit.Material
@@ -19,7 +18,6 @@ abstract class CustomBow(
     override var item: ItemStack = ItemStack(material),
     override val baseStats: HashMap<StatTypes, Double>,
     override val type: ItemTypes = ItemTypes.BOW,
-    override val recipeList: CustomRecipeList? = null,
     override var statGem: StatGem? = null
 ) : CustomWeapon {
 

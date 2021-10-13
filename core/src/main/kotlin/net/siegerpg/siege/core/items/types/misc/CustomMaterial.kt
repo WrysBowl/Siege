@@ -4,7 +4,6 @@ import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.getNbtTag
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
@@ -22,7 +21,6 @@ abstract class CustomMaterial(
     final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.MATERIAL,
-    override val recipeList: CustomRecipeList? = null
 ) : CustomItem {
 
     override var rarity: Rarity = Rarity.COMMON
@@ -54,19 +52,14 @@ abstract class CustomMaterial(
 
         val meta = item.itemMeta
 
-        if (name == "") {
-            meta.name("")
-        } else {
-            meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
+        meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
 
-            if (meta.hasLore()) meta.lore(mutableListOf())
+        if (meta.hasLore()) meta.lore(mutableListOf())
 
-            meta.lore(" ")
-            description.forEach {
-                meta.lore("<r><dark_gray>$it")
-            }
+        meta.lore(" ")
+        description.forEach {
+            meta.lore("<r><dark_gray>$it")
         }
-
 
         meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
@@ -100,7 +93,6 @@ abstract class CustomMaterial(
         result = 31 * result + quality
         result = 31 * result + item.hashCode()
         result = 31 * result + type.hashCode()
-        result = 31 * result + (recipeList?.hashCode() ?: 0)
         result = 31 * result + rarity.hashCode()
         result = 31 * result + tier
         return result

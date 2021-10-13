@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.items.implemented.weapons.ranged
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack

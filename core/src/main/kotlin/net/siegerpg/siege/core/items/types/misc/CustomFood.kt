@@ -6,7 +6,6 @@ import net.siegerpg.siege.core.items.enums.FoodPoints
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.utils.cache.PlayerData
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
@@ -27,7 +26,6 @@ abstract class CustomFood(
     final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.FOOD,
-    override val recipeList: CustomRecipeList? = null,
     val health: Int = 0,
     val potion: List<PotionEffect>? = null
 ) : CustomItem {
@@ -139,7 +137,6 @@ abstract class CustomFood(
         result = 31 * result + quality
         result = 31 * result + item.hashCode()
         result = 31 * result + type.hashCode()
-        result = 31 * result + (recipeList?.hashCode() ?: 0)
         result = 31 * result + health
         result = 31 * result + (potion?.hashCode() ?: 0)
         result = 31 * result + rarity.hashCode()

@@ -4,7 +4,6 @@ import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.recipes.CustomRecipeList
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.utils.lore
@@ -25,7 +24,6 @@ abstract class CustomMeleeWeapon(
     override var item: ItemStack = ItemStack(material),
     override val baseStats: HashMap<StatTypes, Double>,
     override val type: ItemTypes = ItemTypes.MELEEWEAPON,
-    override val recipeList: CustomRecipeList? = null,
     val attackSpeed: Double,
     override var statGem: StatGem? = null
 ) : CustomWeapon {

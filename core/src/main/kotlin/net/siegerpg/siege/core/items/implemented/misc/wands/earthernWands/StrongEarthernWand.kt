@@ -2,12 +2,7 @@ package net.siegerpg.siege.core.items.implemented.misc.wands.earthernWands
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Coal
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed
-import net.siegerpg.siege.core.items.recipes.recipes
 import net.siegerpg.siege.core.items.types.misc.CustomWand
-import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
@@ -18,8 +13,7 @@ class StrongEarthernWand() : CustomWand(
     levelRequirement = 28,
     material = Material.WOODEN_HOE,
     baseStats = CustomItemUtils.statMap(strength = 32.0, luck = 4.0),
-    recipeList = recipes {
-    },
+    
     range = 17,
     red = 0,
     green = 204,

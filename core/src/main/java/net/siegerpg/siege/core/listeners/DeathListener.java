@@ -23,6 +23,7 @@ import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.*;
@@ -166,6 +167,13 @@ public class DeathListener implements Listener, Runnable {
         String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
         MobDropTable mobDrop = mobDropTableHashMap.get(mm).getClass().getDeclaredConstructor().newInstance();
 
+
+
+        e.setDroppedExp(0);
+        e.getDrops().clear();
+
+        if (mobDrop == null) return;
+
         if (mobDrop instanceof ChestMimic1) {
             if (Utils.randTest(25.0)) {
                 e.getEntity().getKiller().sendMessage(Utils.lore("<red>Oh no! Your supply drop carried zombies!"));
@@ -176,11 +184,6 @@ public class DeathListener implements Listener, Runnable {
                 MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
             }
         }
-
-        e.setDroppedExp(0);
-        e.getDrops().clear();
-
-        if (mobDrop == null) return;
 
         Player player = e.getEntity().getKiller();
         double luck = 0.0;

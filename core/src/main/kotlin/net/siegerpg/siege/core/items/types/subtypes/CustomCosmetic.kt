@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
+import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent
 import io.papermc.paper.event.player.AsyncChatEvent
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
@@ -22,7 +23,7 @@ interface CustomCosmetic: CustomItem {
     var leatherColor: Color
 
     fun onCosmeticInteract(e: PlayerInteractEvent) {}
-    fun onCosmeticEquip(e: ArmorEquipEvent) {}
+    fun onCosmeticEquip(e: PlayerArmorChangeEvent) {}
     fun onCosmeticSpeak(e: AsyncChatEvent) {}
 
     override fun serialize() {
@@ -58,19 +59,18 @@ interface CustomCosmetic: CustomItem {
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
         meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
-        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> Tier" else "<r>${shownRarity.color}${shownRarity.id} Tier")
 
         if (meta.hasLore()) meta.lore(mutableListOf())
 
         meta.lore("<r><color:#79ECEB><b>COSMETIC")
-
         if (!description.contains("")) {
             meta.lore(" ")
             description.forEach {
                 meta.lore("<r><dark_gray>$it")
             }
         }
-
+        meta.lore("")
+        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> Tier" else "<r>${shownRarity.color}${shownRarity.id} Tier")
         meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 
