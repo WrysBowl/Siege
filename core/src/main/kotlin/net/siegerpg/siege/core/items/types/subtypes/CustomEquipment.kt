@@ -54,7 +54,6 @@ interface CustomEquipment : CustomItem {
                 this.leatherColor = cosmetic.leatherColor
             }
         }
-
         val meta = item.itemMeta
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity

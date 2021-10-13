@@ -23,7 +23,7 @@ class Rainbow() : Cosmetic(
 
     override fun onCosmeticEquip(e: PlayerArmorChangeEvent) {
         val player = e.player
-        val newArmor = CustomItemUtils.getCustomItem(e.newItem) ?: return
+        var newArmor = CustomItemUtils.getCustomItem(e.newItem) ?: return
         if (newArmor !is Cosmetic && newArmor !is CustomHelmet) return
         val rainbowArray: ArrayList<Material> = arrayListOf(
             Material.RED_STAINED_GLASS,
@@ -46,14 +46,14 @@ class Rainbow() : Cosmetic(
                     val randNum: Int = (Math.random()*rainbowArray.size).toInt()
                     if (newArmor is Cosmetic) {
                         newArmor.material = rainbowArray[randNum]
+                        newArmor.updateMeta(false)
                     } else if (newArmor is CustomHelmet) {
-                        newArmor.material = rainbowArray[randNum] //need to fix why hidden helmet isn't changing
+                        newArmor.item.type = rainbowArray[randNum] //need to fix why hidden helmet isn't changing
                     }
-                    newArmor.updateMeta(false)
                     player.inventory.helmet = newArmor.item
                 }
             }
-        }.runTaskTimer(Core.plugin(), 20, 20)
+        }.runTaskTimer(Core.plugin(), 20, 0)
     }
 
 
