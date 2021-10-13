@@ -150,11 +150,15 @@ object BossLeaderboardDB {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
-                "SELECT percentageDone,timeTaken,uuid FROM bossData WHERE uuid IN ? AND bossName=?",
+                String.format("SELECT percentageDone,timeTaken,uuid FROM bossData WHERE bossName=? AND uuid IN (%s)",
+                    mutableIDs.joinToString(", ") { "?" }),
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
-            stmt.setArray(1, connection.createArrayOf("VARCHAR", mutableIDs.toTypedArray()))
-            stmt.setString(2, bossName)
+            var currentIndex = 0;
+            stmt.setString(++currentIndex, bossName)
+            mutableIDs.forEach { id ->
+                stmt.setString(++currentIndex, id.toString())
+            }
             val resultSet = stmt.executeQuery();
             while (resultSet.next()) {
                 val uuid = UUID.fromString(resultSet.getString("uuid"))

@@ -16,7 +16,7 @@ import kotlin.math.pow
 
 object Levels {
     // How long data is cached for
-    private const val cacheDuration = 10 * 60;
+    private const val cacheDuration = 10 * 60
     private val cachedLevelExp = HashMap<UUID, Triple<Short, Int, Instant>>()
 
     private val levelRewards: ArrayList<LevelReward> = arrayListOf(
@@ -41,8 +41,8 @@ object Levels {
      * Returns the new user level based on a level and exp
      */
     fun calculateExpLevel(level: Short, experience: Int, player: OfflinePlayer): Pair<Short, Int> {
-        var exp = experience;
-        var lvl = level;
+        var exp = experience
+        var lvl = level
         while (calculateRequiredExperience(lvl) <= exp) {
             exp -= calculateRequiredExperience(lvl)
             lvl = (lvl + 1).toShort()
@@ -176,7 +176,7 @@ object Levels {
      */
     fun blockingGetExpLevel(player: OfflinePlayer): Pair<Short, Int>? {
         val cachedData = cachedLevelExp[player.uniqueId]
-        val now = Instant.now();
+        val now = Instant.now()
         if (cachedData != null) {
             if (cachedData.third.plusSeconds(cacheDuration.toLong()).isAfter(now)) {
                 return Pair(cachedData.first, cachedData.second)
@@ -189,7 +189,7 @@ object Levels {
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setString(1, player.uniqueId.toString())
-            val query = stmt.executeQuery();
+            val query = stmt.executeQuery()
             return if (!query.isBeforeFirst) {
                 null
             } else {
@@ -215,7 +215,7 @@ object Levels {
         // Gets the cache data for each cached player, and gets the data of the not-yet-cached players
         val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
         val map = HashMap<UUID, Pair<Short, Int>>()
-        val now = Instant.now();
+        val now = Instant.now()
         playerIDs.forEach { id ->
             val cachedData = cachedLevelExp[id]
             if (cachedData != null && cachedData.third.plusSeconds(cacheDuration.toLong()).isAfter(now)) {
@@ -230,11 +230,15 @@ object Levels {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
-                "SELECT level,experience,uuid FROM userData WHERE uuid IN ?",
+                String.format("SELECT level,experience,uuid FROM userData WHERE uuid IN (%s)",
+                    playerIDs.joinToString(", ") { "?" }),
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
-            stmt.setArray(1, connection.createArrayOf("VARCHAR", playerIDs.toTypedArray()))
-            val resultSet = stmt.executeQuery();
+            var currentIndex = 0
+            playerIDs.forEach { id ->
+                stmt.setString(++currentIndex, id.toString())
+            }
+            val resultSet = stmt.executeQuery()
             while (resultSet.next()) {
                 val uuid = UUID.fromString(resultSet.getString("uuid"))
                 val result = Pair(resultSet.getShort("level"), resultSet.getInt("experience"))
@@ -262,7 +266,7 @@ object Levels {
         connection!!.use {
             val stmt =
                 connection.prepareStatement("SELECT level,experience,uuid FROM userData ORDER BY level DESC $limitStr")
-            val query = stmt.executeQuery();
+            val query = stmt.executeQuery()
             if (!query.isBeforeFirst) return null
             while (query.next()) {
                 val uuid = UUID.fromString(query.getString("uuid"))
@@ -286,7 +290,7 @@ object Levels {
     fun blockingSetExpLevel(player: OfflinePlayer, levelExp: Pair<Short, Int>) {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
-            val stmt = connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?");
+            val stmt = connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?")
             stmt.setShort(1, levelExp.first)
             stmt.setInt(2, levelExp.second)
             stmt.setString(3, player.uniqueId.toString())
@@ -314,7 +318,7 @@ object Levels {
             // We batch the sql queries together for speed (it will only make one request instead of multiple)
             data.forEach { (uuid, data) ->
                 // We prepare the query
-                val stmt = connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?");
+                val stmt = connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?")
                 stmt.setShort(1, data.first)
                 stmt.setInt(2, data.second)
                 stmt.setString(3, uuid.toString())
