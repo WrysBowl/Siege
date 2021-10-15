@@ -256,6 +256,8 @@ object BossLeaderboardDB {
                 }
                 setCacheData(bossName, uuid, data, Instant.now())
             }
+            batchStmt.executeBatch()
+            batchStmt.closeOnCompletion()
         }
     }
 
