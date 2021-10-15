@@ -256,11 +256,6 @@ object BossLeaderboardDB {
                 }
                 setCacheData(bossName, uuid, data, Instant.now())
             }
-            try {
-                batchStmt.executeBatch()
-            } catch (exc: SQLException) {
-                exc.forEach { e -> println(e.localizedMessage) }
-            }
         }
     }
 
