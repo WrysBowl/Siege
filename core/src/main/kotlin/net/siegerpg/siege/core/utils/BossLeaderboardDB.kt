@@ -159,7 +159,6 @@ object BossLeaderboardDB {
             mutableIDs.forEach { id ->
                 stmt.setString(++currentIndex, id.toString())
             }
-            println(stmt.toString())
             val resultSet = stmt.executeQuery();
             while (resultSet.next()) {
                 val uuid = UUID.fromString(resultSet.getString("playerID"))
@@ -211,6 +210,7 @@ object BossLeaderboardDB {
                 stmt.setInt(2, data.second)
                 stmt.setString(3, playerID.toString())
                 stmt.setString(4, bossName)
+                println(stmt.toString())
                 stmt.executeUpdate()
             } else {
                 val stmt =
@@ -219,6 +219,7 @@ object BossLeaderboardDB {
                 stmt.setInt(4, data.second)
                 stmt.setString(2, playerID.toString())
                 stmt.setString(1, bossName)
+                println(stmt.toString())
                 stmt.executeUpdate()
             }
             setCacheData(bossName, playerID, data, Instant.now())
@@ -256,6 +257,7 @@ object BossLeaderboardDB {
                 }
                 setCacheData(bossName, uuid, data, Instant.now())
             }
+            println(batchStmt.toString())
             batchStmt.executeBatch()
         }
     }
