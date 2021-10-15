@@ -29,7 +29,9 @@ class ShopsPlugin: JavaPlugin(), Listener {
             "barney" to Barney(), "jane" to Jane(), "julie" to Julie(), "valentine" to Valentine(),
             "gale" to Gale(), "forest" to Forest(), "fredric" to Fredric(), "katherine" to Katherine(),
             "magmar" to Magmar(), "rancher" to Rancher(), "brown" to Brown(), "kayla" to Kayla(),
-            "mary" to Mary(), "rose" to Rose(), "grace" to Grace()
+            "mary" to Mary(), "rose" to Rose(), "grace" to Grace(), "edward" to Edward(), "edith" to Edith(),
+            "lucia" to Lucia(), "margaret" to Margaret(), "helen" to Helen(), "charles" to Charles(),
+            "tim" to Tim(), "gilbert" to Gilbert(), "jewel" to Jewel(), "berta" to Berta()
         ))
 
     }

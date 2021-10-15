@@ -22,6 +22,9 @@ class Chop : Shop() {
             Slime.tier(2) to 5), true) {
             SlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
+        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+            GRAYFILLER(-1).getUpdatedItem(false)
+        },
         ShopItem(LuckySlimyHelmet(-1), 300, hashMapOf(
             Slime.tier(2) to 3,
             Feather.tier(2) to 2), true) {
@@ -55,6 +58,9 @@ class Chop : Shop() {
         ShopItem(SlimyChestplate(-1), 450, hashMapOf(
             Slime.tier(2) to 8), true) {
             SlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
+        },
+        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+            GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(LuckySlimyChestplate(-1), 600, hashMapOf(
             Slime.tier(2) to 5,
@@ -90,6 +96,9 @@ class Chop : Shop() {
             Slime.tier(2) to 7), true) {
             SlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
         },
+        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+            GRAYFILLER(-1).getUpdatedItem(false)
+        },
         ShopItem(LuckySlimyLeggings(-1), 500, hashMapOf(
             Slime.tier(2) to 3,
             Feather.tier(2) to 3), true) {
@@ -124,6 +133,9 @@ class Chop : Shop() {
         ShopItem(SlimyBoots(-1), 200, hashMapOf(
             Slime.tier(2) to 4), true) {
             SlimyBoots(Utils.randRarity()).getUpdatedItem(false)
+        },
+        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+            GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(LuckySlimyBoots(-1), 300, hashMapOf(
             Slime.tier(2) to 3,

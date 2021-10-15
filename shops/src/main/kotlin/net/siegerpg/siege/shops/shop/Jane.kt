@@ -15,46 +15,6 @@ class Jane : Shop() {
     override var name: String = "Jane"
     override var permission: String = "siege.shops.shop.jane"
     override var items: List<ShopItem> = listOf(
-        //SCRAP SHARD
-        ShopItem(
-            ScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 2), true) {
-            ScrapShard(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
-        },
-        ShopItem(
-            LuckyScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Feather.tier(3) to 2), true) {
-            LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(
-            StrongScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Bone.tier(3) to 2), true) {
-            StrongScrapShard(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(
-            ToughScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Pebble.tier(3) to 2), true) {
-            ToughScrapShard(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(
-            HealthyScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                PlantMatter.tier(3) to 2), true) {
-            HealthyScrapShard(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(
-            HealingScrapShard(-1), 2250, hashMapOf(
-                MetalScrap.tier(3) to 1,
-                Wheat.tier(3) to 3), true) {
-            HealingScrapShard(Utils.randRarity()).getUpdatedItem(false)
-        },
-
         //SPLINTERED BONE
         ShopItem(
             SplinteredBone(-1), 2500, hashMapOf(

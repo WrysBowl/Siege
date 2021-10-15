@@ -101,49 +101,6 @@ class Gale : Shop() {
                 Stick.tier(3) to 1,
                 Wheat.tier(4) to 1), true) {
             HealingGreatSword(Utils.randRarity()).getUpdatedItem(false)
-        },
-
-        //IRON AXE
-        ShopItem(net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe(-1), 4750, hashMapOf(), false) {
-            net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
-        },
-        ShopItem(
-            LuckyIronAxe(-1), 5000, hashMapOf(
-                RefinedMetal.tier(3) to 2,
-                Stick.tier(3) to 2,
-                Feather.tier(3) to 2), true) {
-            LuckyIronAxe(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(
-            StrongIronAxe(-1), 5000, hashMapOf(
-                RefinedMetal.tier(3) to 2,
-                Stick.tier(3) to 2,
-                Bone.tier(3) to 2), true) {
-            StrongIronAxe(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(
-            ToughIronAxe(-1), 5000, hashMapOf(
-                RefinedMetal.tier(3) to 2,
-                Stick.tier(3) to 2,
-                Pebble.tier(3) to 2), true) {
-            ToughIronAxe(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(
-            HealthyIronAxe(-1), 5000, hashMapOf(
-                RefinedMetal.tier(3) to 2,
-                Stick.tier(3) to 1,
-                PlantMatter.tier(3) to 3), true) {
-            HealthyIronAxe(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(
-            HealingIronAxe(-1), 5000, hashMapOf(
-                RefinedMetal.tier(3) to 2,
-                Stick.tier(3) to 2,
-                Wheat.tier(4) to 1), true) {
-            HealingIronAxe(Utils.randRarity()).getUpdatedItem(false)
-        },
+        }
     )
 }

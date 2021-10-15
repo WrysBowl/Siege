@@ -14,59 +14,59 @@ import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
-class Katherine : Shop() {
-    override var name: String = "Katherine"
-    override var permission: String = "siege.shops.shop.katherine"
+class Lucia : Shop() {
+    override var name: String = "Lucia"
+    override var permission: String = "siege.shops.shop.lucia"
     override var items: List<ShopItem> = listOf(
-        //EARTHERN WAND
+        //EARTHERN STAFF
         ShopItem(
-            EarthernWand(-1), 5250, hashMapOf(
-                Pebble.tier(3) to 1,
-                Seed.tier(3) to 2,
-                Coal.tier(3) to 2), true) {
-            EarthernWand(Utils.randRarity()).getUpdatedItem(false)
+            EarthernStaff(-1), 6000, hashMapOf(
+                PlantMatter.tier(3) to 1,
+                Seed.tier(4) to 2,
+                Coal.tier(4) to 2), true) {
+            EarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyEarthernWand(-1), 5250, hashMapOf(
+            LuckyEarthernStaff(-1), 6500, hashMapOf(
                 PlantMatter.tier(3) to 1,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1,
-                Feather.tier(3) to 3), true) {
-            LuckyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+                Seed.tier(4) to 1,
+                Coal.tier(4) to 1,
+                Feather.tier(4) to 2), true) {
+            LuckyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongEarthernWand(-1), 5250, hashMapOf(
+            StrongEarthernStaff(-1), 6500, hashMapOf(
                 PlantMatter.tier(3) to 1,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1,
-                Bone.tier(3) to 2), true) {
-            StrongEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+                Seed.tier(4) to 1,
+                Coal.tier(4) to 1,
+                Pebble.tier(4) to 3), true) {
+            StrongEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughEarthernWand(-1), 5250, hashMapOf(
+            ToughEarthernStaff(-1), 6500, hashMapOf(
                 PlantMatter.tier(3) to 1,
                 Seed.tier(3) to 1,
                 Coal.tier(3) to 1,
                 Pebble.tier(3) to 4), true) {
-            ToughEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+            ToughEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyEarthernWand(-1), 5250, hashMapOf(
-                PlantMatter.tier(3) to 4,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1), true) {
-            HealthyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+            HealthyEarthernStaff(-1), 6500, hashMapOf(
+                PlantMatter.tier(4) to 2,
+                Seed.tier(4) to 1,
+                Coal.tier(4) to 1), true) {
+            HealthyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingEarthernWand(-1), 5250, hashMapOf(
+            HealingEarthernStaff(-1), 6500, hashMapOf(
                 PlantMatter.tier(3) to 1,
-                Seed.tier(3) to 1,
-                Coal.tier(3) to 1,
-                Wheat.tier(4) to 1), true) {
-            HealingEarthernWand(Utils.randRarity()).getUpdatedItem(false)
+                Seed.tier(4) to 1,
+                Coal.tier(4) to 1,
+                Wheat.tier(5) to 1), true) {
+            HealingEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         }
     )
 }

@@ -109,7 +109,6 @@ class Kayla : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
-
         ShopItem(
             LuckyChainLeggings(-1), 3000, hashMapOf(
                 Chain.tier(2) to 5,
