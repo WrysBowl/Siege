@@ -210,7 +210,6 @@ object BossLeaderboardDB {
                 stmt.setInt(2, data.second)
                 stmt.setString(3, playerID.toString())
                 stmt.setString(4, bossName)
-                println(stmt.toString())
                 stmt.executeUpdate()
             } else {
                 val stmt =
@@ -219,7 +218,6 @@ object BossLeaderboardDB {
                 stmt.setInt(4, data.second)
                 stmt.setString(2, playerID.toString())
                 stmt.setString(1, bossName)
-                println(stmt.toString())
                 stmt.executeUpdate()
             }
             setCacheData(bossName, playerID, data, Instant.now())
