@@ -159,6 +159,7 @@ object BossLeaderboardDB {
             mutableIDs.forEach { id ->
                 stmt.setString(++currentIndex, id.toString())
             }
+            println(stmt.toString())
             val resultSet = stmt.executeQuery();
             while (resultSet.next()) {
                 val uuid = UUID.fromString(resultSet.getString("playerID"))
