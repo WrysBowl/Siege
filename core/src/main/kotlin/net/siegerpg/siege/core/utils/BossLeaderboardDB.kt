@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.database.DatabaseManager
 import org.bukkit.Bukkit
 import org.bukkit.scheduler.BukkitTask
 import java.sql.ResultSet
+import java.sql.SQLException
 import java.time.Instant
 import java.util.*
 
@@ -255,8 +256,11 @@ object BossLeaderboardDB {
                 }
                 setCacheData(bossName, uuid, data, Instant.now())
             }
-            println(batchStmt.toString())
-            batchStmt.executeBatch()
+            try {
+                batchStmt.executeBatch()
+            } catch (exc: SQLException) {
+                exc.forEach { e -> println(e.localizedMessage) }
+            }
         }
     }
 
