@@ -47,7 +47,7 @@ class Rainbow() : Cosmetic(
                     player.inventory.helmet = newArmor.item
                 }
             }
-        }.runTaskTimer(Core.plugin(), 20, 0)
+        }.runTaskTimer(Core.plugin(), 3, 3)
     }
 
 
