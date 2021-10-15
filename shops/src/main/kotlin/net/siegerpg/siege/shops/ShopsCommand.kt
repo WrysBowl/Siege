@@ -62,15 +62,15 @@ class ShopsCommand : BaseCommand() {
         var outlinePane = OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST)
         var mainPane = StaticPane(1, 1, 9, 3, Pane.Priority.HIGHEST)
 
-        if (shop.items.size <= 14) {
+        if (shop.items.size in 8..14) {
             gui = ChestGui(4, shop.name)
             outlinePane = OutlinePane(0, 0, 9, 4, Pane.Priority.LOWEST)
             mainPane = StaticPane(1, 1, 9, 4, Pane.Priority.HIGHEST)
-        } else if(shop.items.size <= 21) {
+        } else if(shop.items.size in 15..21) {
             gui = ChestGui(5, shop.name)
             outlinePane = OutlinePane(0, 0, 9, 5, Pane.Priority.LOWEST)
             mainPane = StaticPane(1, 1, 9, 5, Pane.Priority.HIGHEST)
-        } else if(shop.items.size <= 28) {
+        } else if(shop.items.size in 22..28) {
             gui = ChestGui(6, shop.name)
             outlinePane = OutlinePane(0, 0, 9, 6, Pane.Priority.LOWEST)
             mainPane = StaticPane(1, 1, 9, 6, Pane.Priority.HIGHEST)

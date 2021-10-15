@@ -50,9 +50,6 @@ class Chop : Shop() {
             Wheat.tier(2) to 3), true) {
             HealingSlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
-        },
 
         //SLIMY CHESTPLATES
         ShopItem(SlimyChestplate(-1), 450, hashMapOf(
@@ -86,9 +83,6 @@ class Chop : Shop() {
             Slime.tier(2) to 5,
             Wheat.tier(3) to 1), true) {
             HealingSlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
         },
 
         //SLIMY LEGGINGS
@@ -125,9 +119,6 @@ class Chop : Shop() {
             Wheat.tier(2) to 4), true) {
             HealingSlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
-        },
 
         //SLIMY BOOTS
         ShopItem(SlimyBoots(-1), 200, hashMapOf(
@@ -161,9 +152,6 @@ class Chop : Shop() {
             Slime.tier(2) to 2,
             Wheat.tier(2) to 6), true) {
             HealingSlimyBoots(Utils.randRarity()).getUpdatedItem(false)
-        },
-        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
         },
     )
 }
