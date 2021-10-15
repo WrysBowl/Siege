@@ -245,8 +245,8 @@ object BossLeaderboardDB {
                     stmt.setInt(2, data.second)
                     stmt.setString(3, uuid.toString())
                     stmt.setString(4, bossName)
-                    println(toString())
-                    batchStmt.addBatch(toString())
+                    println(stmt.toString())
+                    batchStmt.addBatch(stmt.toString())
                 } else {
                     val stmt =
                         connection.prepareStatement("INSERT INTO bossData (bossName, playerID, percentageDone, timeTaken) VALUES (?, ?, ?, ?)");
@@ -254,9 +254,9 @@ object BossLeaderboardDB {
                     stmt.setInt(4, data.second)
                     stmt.setString(2, uuid.toString())
                     stmt.setString(1, bossName)
-                    println(toString())
+                    println(stmt.toString())
 
-                    batchStmt.addBatch(toString())
+                    batchStmt.addBatch(stmt.toString())
                 }
                 setCacheData(bossName, uuid, data, Instant.now())
             }
