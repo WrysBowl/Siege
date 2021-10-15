@@ -110,7 +110,7 @@ object BossLeaderboardDB {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
-                "SELECT percentageDone,timeTaken FROM bossData WHERE uuid=? AND bossName=?",
+                "SELECT percentageDone,timeTaken FROM bossData WHERE playerID=? AND bossName=?",
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setString(1, playerID.toString())
@@ -150,7 +150,7 @@ object BossLeaderboardDB {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
-                String.format("SELECT percentageDone,timeTaken,uuid FROM bossData WHERE bossName=? AND uuid IN (%s)",
+                String.format("SELECT percentageDone,timeTaken,playerID FROM bossData WHERE bossName=? AND playerID IN (%s)",
                     mutableIDs.joinToString(", ") { "?" }),
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
@@ -161,7 +161,7 @@ object BossLeaderboardDB {
             }
             val resultSet = stmt.executeQuery();
             while (resultSet.next()) {
-                val uuid = UUID.fromString(resultSet.getString("uuid"))
+                val uuid = UUID.fromString(resultSet.getString("playerID"))
                 val data = Pair(resultSet.getByte("percentageDone"), resultSet.getInt("timeTaken"))
                 map[uuid] = data
                 setCacheData(bossName, uuid, data, Instant.now())
@@ -179,13 +179,13 @@ object BossLeaderboardDB {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
-                "SELECT percentageDone,timeTaken,uuid FROM bossData WHERE bossName=? ORDER BY percentageDone/timeTaken DESC LIMIT 10",
+                "SELECT percentageDone,timeTaken,playerID FROM bossData WHERE bossName=? ORDER BY percentageDone/timeTaken DESC LIMIT 10",
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setString(1, bossName)
             val resultSet = stmt.executeQuery();
             while (resultSet.next()) {
-                val uuid = UUID.fromString(resultSet.getString("uuid"))
+                val uuid = UUID.fromString(resultSet.getString("playerID"))
                 val data = Pair(resultSet.getByte("percentageDone"), resultSet.getInt("timeTaken"))
                 map[uuid] = data
                 setCacheData(bossName, uuid, data, Instant.now())
@@ -205,7 +205,7 @@ object BossLeaderboardDB {
                 // If the new db data would be worse than the current one then don't change anything
                 if (dbData.first / dbData.second > data.first / data.second) return
                 val stmt =
-                    connection.prepareStatement("UPDATE bossData SET percentageDone=?,timeTaken=? WHERE uuid=? AND bossName=?");
+                    connection.prepareStatement("UPDATE bossData SET percentageDone=?,timeTaken=? WHERE playerID=? AND bossName=?");
                 stmt.setByte(1, data.first)
                 stmt.setInt(2, data.second)
                 stmt.setString(3, playerID.toString())
@@ -238,7 +238,7 @@ object BossLeaderboardDB {
                     // If the new db data would be worse than the current one then don't change anything
                     if (dbData[uuid]!!.first / dbData[uuid]!!.second > data.first / data.second) return
                     val stmt =
-                        connection.prepareStatement("UPDATE bossData SET percentageDone=?,timeTaken=? WHERE uuid=? AND bossName=?");
+                        connection.prepareStatement("UPDATE bossData SET percentageDone=?,timeTaken=? WHERE playerID=? AND bossName=?");
                     stmt.setByte(1, data.first)
                     stmt.setInt(2, data.second)
                     stmt.setString(3, uuid.toString())
