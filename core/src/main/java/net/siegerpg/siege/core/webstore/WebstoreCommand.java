@@ -1,7 +1,9 @@
-package net.siegerpg.siege.core.Webstore;
+package net.siegerpg.siege.core.webstore;
 
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.webstore.categories.WebstorePackage;
+import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -12,7 +14,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class WebstoreCommand implements CommandExecutor {
+
+    //Make sure to allow arg-1 to also be a player
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -21,7 +29,7 @@ public class WebstoreCommand implements CommandExecutor {
             return false;
         }
 
-        OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+        /*OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
         if (args[1].equals("booster")) {
             //arg 2 = EXP or GOLD
             //arg 3 = multiplier
@@ -44,8 +52,8 @@ public class WebstoreCommand implements CommandExecutor {
                 Bukkit.getLogger().info(Utils.tacc("&cCould not correctly parse amount to an integer."));
             }
 
-            ItemStack item = WebstoreUtils.getBooster(amount, multi, duration, type);
-            WebstoreUtils.giveItemToPlayer((Player)argPlayer, item);
+            ItemStack item = WebstoreBoosters.(amount, multi, duration, type);
+            Utils.giveItem((Player)argPlayer, item);
             Bukkit.broadcastMessage(Utils.tacc(""));
             Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e"+amount+" &a"+((multi*100)-100.0)+"% "+type+" boosters!"));
             Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
@@ -129,7 +137,7 @@ public class WebstoreCommand implements CommandExecutor {
             Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
             Bukkit.broadcastMessage(Utils.tacc(""));
             return true;
-        }
+        }*/
         return false;
     }
 }

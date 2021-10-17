@@ -155,12 +155,16 @@ public class Utils {
         return item;
     }
 
-    public static void giveItem(Player player, ItemStack item) {
-        final boolean fullInv = player.getInventory().firstEmpty() == -1;
+    public static boolean giveItem(Player player, ItemStack item) {
+        final boolean fullInv = ((Player)player).getInventory().firstEmpty() == -1;
+        final boolean fullEnderChest = ((Player)player).getEnderChest().firstEmpty() == -1;
         if (!fullInv) {
-            player.getInventory().addItem(item);
+            ((Player)player).getInventory().addItem(item);
+        } else if (!fullEnderChest) {
+            ((Player)player).getEnderChest().addItem(item);
         } else {
-            player.getWorld().dropItemNaturally(player.getLocation(), item);
+            return false;
         }
+        return true;
     }
 }

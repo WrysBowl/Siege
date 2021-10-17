@@ -1,7 +1,8 @@
 package net.siegerpg.siege.core.utils;
 
 import kotlin.Pair;
-import net.siegerpg.siege.core.Webstore.WebstoreUtils;
+import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
+import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -30,14 +31,14 @@ public class Scoreboard {
         replaceScore(o, 13, Utils.tacc("&6Profile " + VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName()));
         replaceScore(o, 12, Utils.tacc("&7\u2560 Level &5" + expLevel.getFirst() + " &d(" + Utils.round(levelPercent * 100, 2) + "%)"));
         replaceScore(o, 11, Utils.tacc("&7\u2560 Gold &e" + gold));
-        if (WebstoreUtils.expMultiplier > 1.0 || WebstoreUtils.goldMultiplier > 1.0) {
+        if (GlobalMultipliers.expMultiplier > 1.0 || GlobalMultipliers.goldMultiplier > 1.0) {
             replaceScore(o, 10, "  ");
             replaceScore(o, 9, Utils.tacc("&6Global"));
-            if (WebstoreUtils.expMultiplier > 1.0) {
-                replaceScore(o, 8, Utils.tacc("&7\u2560 &7EXP &d" + WebstoreUtils.expMultiplier) + "x");
+            if (GlobalMultipliers.expMultiplier > 1.0) {
+                replaceScore(o, 8, Utils.tacc("&7\u2560 &7EXP &d" + GlobalMultipliers.expMultiplier) + "x");
             }
-            if (WebstoreUtils.goldMultiplier > 1.0) {
-                replaceScore(o, 7, Utils.tacc("&7\u2560 &7Gold &e" + WebstoreUtils.goldMultiplier) + "x");
+            if (GlobalMultipliers.goldMultiplier > 1.0) {
+                replaceScore(o, 7, Utils.tacc("&7\u2560 &7Gold &e" + GlobalMultipliers.goldMultiplier) + "x");
             }
         }
         replaceScore(o, 6, "   ");

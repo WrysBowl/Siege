@@ -1,9 +1,11 @@
-package net.siegerpg.siege.core.Webstore;
+package net.siegerpg.siege.core.webstore;
 
 import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
+import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,7 +16,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class RedeemBoosters implements Listener {
+public class WebstoreListener implements Listener {
 
     @EventHandler
     public void onEXPBoosterRedeem(PlayerInteractEvent e) {
@@ -25,7 +27,7 @@ public class RedeemBoosters implements Listener {
             if (item.getItemMeta().getDisplayName().contains("EXP Booster")) {
 
                 //Check if the exp multiplier is already above 1, if it is then prevent the next steps by returning
-                if (WebstoreUtils.expMultiplier > 1.0) {
+                if (GlobalMultipliers.expMultiplier > 1.0) {
                     player.sendMessage(Utils.lore("<red>A global booster is already active!"));
                     return;
                 }
@@ -34,7 +36,7 @@ public class RedeemBoosters implements Listener {
                 NBTItem nbt = new NBTItem(item);
                 double multi = nbt.getDouble("multiplier");
                 int sec = nbt.getInteger("seconds");
-                WebstoreUtils.expMultiplier = multi;
+                GlobalMultipliers.expMultiplier = multi;
 
                 //Send a message to the player saying their booster has been activated
                 player.sendMessage(Utils.lore("<green>Your EXP multiplier has been redeemed."));
@@ -50,7 +52,7 @@ public class RedeemBoosters implements Listener {
                 new BukkitRunnable() {
                     @Override
                     public void run() {
-                        WebstoreUtils.expMultiplier = 1.0;
+                        GlobalMultipliers.expMultiplier = 1.0;
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             Scoreboard.updateScoreboard(p);
                         }
@@ -69,7 +71,7 @@ public class RedeemBoosters implements Listener {
             if (item.getItemMeta().getDisplayName().contains("Gold Booster")) {
 
                 //Check if the gold multiplier is already above 1, if it is then prevent the next steps by returning
-                if (WebstoreUtils.goldMultiplier > 1.0) {
+                if (GlobalMultipliers.goldMultiplier > 1.0) {
                     player.sendMessage(Utils.lore("<red>A global booster is already active!"));
                     return;
                 }
@@ -78,7 +80,7 @@ public class RedeemBoosters implements Listener {
                 NBTItem nbt = new NBTItem(item);
                 double multi = nbt.getDouble("multiplier");
                 int sec = nbt.getInteger("seconds");
-                WebstoreUtils.goldMultiplier = multi;
+                GlobalMultipliers.goldMultiplier = multi;
 
                 //Send a message to the player saying their booster has been activated
                 player.sendMessage(Utils.lore("<green>Your Gold multiplier has been redeemed."));
@@ -94,7 +96,7 @@ public class RedeemBoosters implements Listener {
                 new BukkitRunnable() {
                     @Override
                     public void run() {
-                        WebstoreUtils.goldMultiplier = 1.0;
+                        GlobalMultipliers.goldMultiplier = 1.0;
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             Scoreboard.updateScoreboard(p);
                         }

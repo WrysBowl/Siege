@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.utils;
 
-import net.siegerpg.siege.core.Webstore.WebstoreUtils;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.ExperienceOrb;

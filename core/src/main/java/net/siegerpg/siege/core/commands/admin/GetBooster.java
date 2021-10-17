@@ -1,6 +1,6 @@
 package net.siegerpg.siege.core.commands.admin;
 
-import net.siegerpg.siege.core.Webstore.WebstoreUtils;
+import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -23,7 +23,8 @@ public class GetBooster implements CommandExecutor {
             sender.sendMessage(Utils.lore("<red>You did not fill in the proper arguments /getBooster player amount multiplier seconds EXP/GOLD."));
             return false;
         }
-        OfflinePlayer targetPlayer = Bukkit.getOfflinePlayer(args[0]);
+        Player targetPlayer = Bukkit.getPlayer(args[0]);
+        if (targetPlayer == null) return false;
         int amount;
         double multiplier;
         int seconds;
@@ -41,8 +42,8 @@ public class GetBooster implements CommandExecutor {
             sender.sendMessage(Utils.lore("<red>This player is null."));
             return false;
         }
-        ItemStack item = WebstoreUtils.getBooster(amount, multiplier, seconds, booster);
-        WebstoreUtils.giveItemToPlayer(targetPlayer, item);
+        ItemStack item = new WebstoreBoosters("booster", booster, multiplier, seconds, amount).getBoosterItem();
+        Utils.giveItem(targetPlayer, item);
         Bukkit.broadcastMessage(Utils.tacc(""));
         Bukkit.broadcastMessage(Utils.tacc("  &b" + targetPlayer.getName() + " has received &e" + amount + " &a" + ((multiplier*100)-100.0) + "x &e" + booster + " booster(s)!"));
         Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));

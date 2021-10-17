@@ -1,7 +1,8 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.Webstore.WebstoreUtils;
+import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
+import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import net.siegerpg.siege.core.drops.BlockDropTable;
 import net.siegerpg.siege.core.drops.materials.*;
 import net.siegerpg.siege.core.drops.materials.decor.*;
@@ -276,7 +277,7 @@ public class BlockBreakListener implements Listener {
             }
 
             if (goldCoinAmt > 0) {
-                goldCoinAmt = (int) Math.floor(goldCoinAmt * WebstoreUtils.goldMultiplier);
+                goldCoinAmt = (int) Math.floor(goldCoinAmt * GlobalMultipliers.goldMultiplier);
                 if ((Math.random() * 100) <= luck) {
                     goldCoinAmt *= 2;
                 }
@@ -284,7 +285,7 @@ public class BlockBreakListener implements Listener {
             }
 
             if (exp > 0) {
-                exp = (int) Math.floor(exp * WebstoreUtils.expMultiplier);
+                exp = (int) Math.floor(exp * GlobalMultipliers.expMultiplier);
                 if ((Math.random() * 100) <= luck) {
                     exp *= 2;
                 }

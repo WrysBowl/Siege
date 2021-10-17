@@ -4,7 +4,8 @@ import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.Webstore.WebstoreUtils;
+import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
+import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
@@ -23,7 +24,6 @@ import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.*;
@@ -194,7 +194,7 @@ public class DeathListener implements Listener, Runnable {
 
         if (mobDrop.getExp(true) > 0 && player != null) {
             int exp = mobDrop.getExp(true);
-            exp = (int) Math.floor(exp * WebstoreUtils.expMultiplier);
+            exp = (int) Math.floor(exp * GlobalMultipliers.expMultiplier);
             if ((Math.random() * 100) <= luck) {
                 exp *= 2;
             }
@@ -202,7 +202,7 @@ public class DeathListener implements Listener, Runnable {
         } //Give exp reward
 
         if (goldCoinAmt > 0 && player != null) {
-            goldCoinAmt = (int) Math.floor(goldCoinAmt * WebstoreUtils.goldMultiplier);
+            goldCoinAmt = (int) Math.floor(goldCoinAmt * GlobalMultipliers.goldMultiplier);
             if ((Math.random() * 100) <= luck) {
                 goldCoinAmt *= 2;
             }

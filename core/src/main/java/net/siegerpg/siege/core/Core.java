@@ -4,11 +4,10 @@ import co.aikar.commands.PaperCommandManager;
 import io.github.retrooper.packetevents.PacketEvents;
 import io.github.retrooper.packetevents.settings.PacketEventsSettings;
 import io.github.retrooper.packetevents.utils.server.ServerVersion;
-import net.siegerpg.siege.core.Webstore.RedeemBoosters;
-import net.siegerpg.siege.core.Webstore.WebstoreCommand;
+import net.siegerpg.siege.core.webstore.WebstoreListener;
+import net.siegerpg.siege.core.webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
-import net.siegerpg.siege.core.crates.CosmeticCrate;
 import net.siegerpg.siege.core.crates.CrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
@@ -32,8 +31,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.HashMap;
 
 @SuppressWarnings("unused")
 public final class Core extends JavaPlugin {
@@ -173,7 +170,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DungeonListener(), this);
 
 
-        getServer().getPluginManager().registerEvents(new RedeemBoosters(), this);
+        getServer().getPluginManager().registerEvents(new WebstoreListener(), this);
         getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
         getServer().getPluginManager().registerEvents(new MeraTransit(), this);
         getServer().getPluginManager().registerEvents(new SymoneCollector(), this);
