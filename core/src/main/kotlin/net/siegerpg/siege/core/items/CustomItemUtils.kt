@@ -21,6 +21,7 @@ import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.utils.cache.PlayerData
 import org.bukkit.attribute.Attribute
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -179,6 +180,15 @@ object CustomItemUtils {
         val healthStat = getPlayerStat(player, StatTypes.HEALTH)
         val maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
         return (player.health / maxHealth) * (healthStat + maxHealth + player.level * 2)
+    }
+
+    fun addHealth(player: Player, health: Double) {
+        val healthStat = getPlayerStat(player, StatTypes.HEALTH) + player.maxHealth + (player.level*2)
+        val currentCustomHealth = getCustomHealth(player)
+        val addedHealth = ((health + currentCustomHealth)/healthStat) * player.maxHealth
+        if (addedHealth <= player.maxHealth) player.health = addedHealth
+        else player.health = player.maxHealth
+        PlayerData.setStats(player)
     }
 
     fun getStats(item: CustomEquipment, addGem: Boolean, addRarity: Boolean): HashMap<StatTypes, Double> {
