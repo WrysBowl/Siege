@@ -1,20 +1,29 @@
 package net.siegerpg.siege.core.items.implemented.misc.food
 
+import net.siegerpg.siege.core.Core
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import org.bukkit.Material
+import org.bukkit.Sound
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.bukkit.scheduler.BukkitRunnable
 
 class Sugar() : CustomFood(
     name = "Sugar",
     customModelData = 330002,
     description = listOf("Gas GAS GASSS!!!"),
     levelRequirement = 0,
-    material = Material.TROPICAL_FISH, //change this to cooked chicken later
-    potion = listOf(PotionEffect(PotionEffectType.SPEED, 200, 1))
+    material = Material.TROPICAL_FISH,
 ) {
+
+    override fun speciality(player: Player) {
+        val realPotion = PotionEffect(PotionEffectType.SPEED, 300, 1)
+        player.addPotionEffect(realPotion)
+    }
 
     constructor(quality: Int): this() {
         this.quality = quality

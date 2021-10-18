@@ -11,7 +11,7 @@ class TestSteak() : CustomFood(
     description = listOf("A food for testing"),
     levelRequirement = 0,
     material = Material.COOKED_BEEF,
-    health = 2
+    health = 20.0
 ) {
 
     constructor(quality: Int): this() {

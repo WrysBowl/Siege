@@ -1,9 +1,14 @@
 package net.siegerpg.siege.core.items.implemented.misc.food
 
+import net.siegerpg.siege.core.Core
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import org.bukkit.Material
+import org.bukkit.Sound
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
+import org.bukkit.scheduler.BukkitRunnable
 
 class GoldenCarrot() : CustomFood(
     name = "Golden Carrot",
@@ -11,12 +16,12 @@ class GoldenCarrot() : CustomFood(
     description = listOf("Mercy on your soul"),
     levelRequirement = 0,
     material = Material.GOLDEN_CARROT, //change this to cooked chicken later
-    health = 80
+    health = 200.0
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 100
+        this.rarity = Rarity.LEGENDARY
         this.serialize()
     }
 

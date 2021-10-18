@@ -10,13 +10,13 @@ class Apple() : CustomFood(
     customModelData = 330003,
     description = listOf("Food to tame teachers"),
     levelRequirement = 0,
-    material = Material.APPLE, //change this to cooked chicken later
-    health = 10
+    material = Material.APPLE,
+    health = 25.0
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 0
+        this.rarity = Rarity.COMMON
         this.serialize()
     }
 

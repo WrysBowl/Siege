@@ -8,7 +8,10 @@ import net.siegerpg.siege.core.items.implemented.misc.cosmetics.TestingCosmetic;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.TestingCosmetic2;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.HexShifter;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.Rainbow;
+import net.siegerpg.siege.core.items.implemented.misc.food.Beetroot;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot;
+import net.siegerpg.siege.core.items.implemented.misc.food.Sugar;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey;
@@ -99,10 +102,9 @@ public class PlayerJoinListener implements Listener {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);
         }
-        player.getInventory().addItem(new NormalKey(0).getUpdatedItem(false));
-        player.getInventory().addItem(new CommonKey(0).getUpdatedItem(false));
-        player.getInventory().addItem(new UncommonKey(0).getUpdatedItem(false));
-        player.getInventory().addItem(new Rainbow(0).getUpdatedItem(false));
+        player.getInventory().addItem(new GoldenCarrot(0).getUpdatedItem(false));
+        player.getInventory().addItem(new Beetroot(0).getUpdatedItem(false));
+        player.getInventory().addItem(new Sugar(0).getUpdatedItem(false));
 
 
 

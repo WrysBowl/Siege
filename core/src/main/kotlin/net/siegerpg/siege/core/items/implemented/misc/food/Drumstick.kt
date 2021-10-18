@@ -11,12 +11,12 @@ class Drumstick() : CustomFood(
     description = listOf("Siege fried chicken"),
     levelRequirement = 0,
     material = Material.COOKED_CHICKEN,
-    health = 20,
+    health = 35.0,
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 0
+        this.rarity = Rarity.COMMON
         this.serialize()
     }
 
