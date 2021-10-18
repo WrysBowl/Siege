@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
 import org.bukkit.Material
 import org.bukkit.Sound
+import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
@@ -26,8 +27,7 @@ abstract class CustomFood(
     final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.FOOD,
-    val health: Int = 0,
-    val potion: List<PotionEffect>? = null
+    val health: Double = 0.0,
 ) : CustomItem {
 
     override var rarity: Rarity = Rarity.COMMON
@@ -36,56 +36,43 @@ abstract class CustomFood(
         this.rarity = Rarity.getFromInt(this.quality)
     }
 
+    open fun speciality(player: Player) {}
+
     @Suppress("deprecated")
     open fun onEat(e: PlayerItemConsumeEvent) {
-        val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth + (e.player.level*2)
-        val currentCustomHealth = CustomItemUtils.getCustomHealth(e.player)
-        val addedHealth = (((health * getRarityMultiplier(quality)) + currentCustomHealth)/healthStat) * e.player.maxHealth
-        if (addedHealth <= e.player.maxHealth)
-            e.player.health = addedHealth
-        else e.player.health = e.player.maxHealth
-        potion?.forEach {
-            val realPotionDuration = (it.duration * getRarityMultiplier(quality)).toInt()
-            val realPotion = PotionEffect(it.type, realPotionDuration, it.amplifier)
-            e.player.addPotionEffect(realPotion)
-        }
+        CustomItemUtils.addHealth(e.player, health)
         if (e.item.type == Material.SUSPICIOUS_STEW ||
             e.item.type == Material.MUSHROOM_STEW ||
             e.item.type == Material.RABBIT_STEW) {
             e.player.inventory.setItemInMainHand(ItemStack(Material.AIR))
         }
+        speciality(e.player)
     }
 
     @Suppress("deprecated")
     open fun onEat(e: PlayerInteractEvent) {
-        val foodRegenVal: Int = FoodPoints.getHungerRegenValue(e.player.inventory.itemInMainHand.type)
-        val satRegenVal: Double = FoodPoints.getSaturationValue(e.player.inventory.itemInMainHand.type)
-        var newFoodLevel = e.player.foodLevel+foodRegenVal
-        var newSatLevel = e.player.saturation+satRegenVal
-        if (newFoodLevel > 20) newFoodLevel = 20
-        if (newSatLevel > e.player.foodLevel) newSatLevel = e.player.foodLevel.toDouble()
-        e.player.foodLevel = newFoodLevel
-        e.player.saturation = newSatLevel.toFloat()
-        e.player.playSound(e.player.location, Sound.ENTITY_GENERIC_EAT, 0.8.toFloat(), 0.8.toFloat())
-        e.player.playSound(e.player.location, Sound.ENTITY_FOX_EAT, 0.4.toFloat(), 0.8.toFloat())
-        val healthStat = CustomItemUtils.getPlayerStat(e.player, StatTypes.HEALTH) + e.player.maxHealth + (e.player.level*2)
-        val currentCustomHealth = CustomItemUtils.getCustomHealth(e.player)
-        val addedHealth = (((health * getRarityMultiplier(quality)) + currentCustomHealth)/healthStat) * e.player.maxHealth
-        if (addedHealth <= e.player.maxHealth)
-            e.player.health = addedHealth
-        else e.player.health = e.player.maxHealth
-        potion?.forEach {
-            val realPotionDuration = (it.duration * getRarityMultiplier(quality)).toInt()
-            val realPotion = PotionEffect(it.type, realPotionDuration, it.amplifier)
-            e.player.addPotionEffect(realPotion)
-        }
+        pseudoEat(e.player)
+        CustomItemUtils.addHealth(e.player, health)
 
         if (e.player.inventory.itemInMainHand.type == Material.SUSPICIOUS_STEW ||
             e.player.inventory.itemInMainHand.type == Material.MUSHROOM_STEW ||
             e.player.inventory.itemInMainHand.type == Material.RABBIT_STEW) {
             e.player.inventory.setItemInMainHand(ItemStack(Material.AIR))
         }
-        PlayerData.setStats(e.player)
+        speciality(e.player)
+    }
+
+    private fun pseudoEat(player: Player) {
+        val foodRegenVal: Int = FoodPoints.getHungerRegenValue(player.inventory.itemInMainHand.type)
+        val satRegenVal: Double = FoodPoints.getSaturationValue(player.inventory.itemInMainHand.type)
+        var newFoodLevel = player.foodLevel+foodRegenVal
+        var newSatLevel = player.saturation+satRegenVal
+        if (newFoodLevel > 20) newFoodLevel = 20
+        if (newSatLevel > player.foodLevel) newSatLevel = player.foodLevel.toDouble()
+        player.foodLevel = newFoodLevel
+        player.saturation = newSatLevel.toFloat()
+        player.playSound(player.location, Sound.ENTITY_GENERIC_EAT, 0.8.toFloat(), 0.8.toFloat())
+        player.playSound(player.location, Sound.ENTITY_FOX_EAT, 0.4.toFloat(), 0.8.toFloat())
     }
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
@@ -98,29 +85,18 @@ abstract class CustomFood(
 
         if (meta.hasLore()) meta.lore(mutableListOf())
 
-        meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${if (hideRarity) 50 else quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${if (hideRarity) 50 else quality}%")
-        val realHealth = (health * getRarityMultiplier(quality)).toInt()
-        if (realHealth > 0 || potion != null) meta.lore(" ")
+        val realHealth = health
         if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
-        potion?.forEach {
-            val realPotionDuration = ((it.duration * getRarityMultiplier(quality))/20).toInt()
-            val realPotionAmplifier = it.amplifier + 1
-            meta.lore("<r><yellow>+ ${it.type.name} " + "<r><yellow>$realPotionAmplifier " + "<r><gold>$realPotionDuration sec")
-        }
         meta.lore(" ")
         description.forEach {
             meta.lore("<r><dark_gray>$it")
         }
-        //meta.lore(" ")
-        //meta.lore("<r><gray>Level: $levelRequirement")
 
         meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
         return item
     }
-
-    private fun getRarityMultiplier(quality: Int): Double = quality / 100.0 + 0.5
 
     override fun equals(other: Any?): Boolean {
         other?.let { return false }
@@ -137,8 +113,7 @@ abstract class CustomFood(
         result = 31 * result + quality
         result = 31 * result + item.hashCode()
         result = 31 * result + type.hashCode()
-        result = 31 * result + health
-        result = 31 * result + (potion?.hashCode() ?: 0)
+        result = (31 * result + health).toInt()
         result = 31 * result + rarity.hashCode()
         return result
     }
