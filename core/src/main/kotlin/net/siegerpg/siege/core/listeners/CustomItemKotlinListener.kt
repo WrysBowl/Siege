@@ -285,7 +285,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         }
     }
 
-    @EventHandler
+    /*
     fun onFoodClick(e: PlayerInteractEvent) {
         if (e.action != Action.RIGHT_CLICK_AIR &&
             e.action != Action.RIGHT_CLICK_BLOCK
@@ -307,7 +307,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 }.runTaskLater(plugin(), 50)
             }
         }
-    }
+    }*/
 
 
     @EventHandler
