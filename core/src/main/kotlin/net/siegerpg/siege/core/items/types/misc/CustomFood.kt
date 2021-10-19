@@ -48,7 +48,7 @@ abstract class CustomFood(
         }
         speciality(e.player)
     }
-
+/*
     @Suppress("deprecated")
     open fun onEat(e: PlayerInteractEvent) {
         pseudoEat(e.player)
@@ -73,7 +73,7 @@ abstract class CustomFood(
         player.saturation = newSatLevel.toFloat()
         player.playSound(player.location, Sound.ENTITY_GENERIC_EAT, 0.8.toFloat(), 0.8.toFloat())
         player.playSound(player.location, Sound.ENTITY_FOX_EAT, 0.4.toFloat(), 0.8.toFloat())
-    }
+    }*/
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
 
