@@ -41,10 +41,12 @@ class JaggedTunic() : CustomChestplate(
         val item = player.inventory.chestplate
         val cusItem = CustomItemUtils.getCustomItem(item) ?: return
         if (e !is EntityDamageByEntityEvent) return
+        val attacker: Entity = e.damager
+        if (attacker !is LivingEntity) return
         if (cusItem.levelRequirement == null) return
         if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first ?: 0)) return
-        val attacker: Entity = e.damager
-        (attacker as LivingEntity).damage(5.0, player)
+
+        attacker.damage(5.0, player)
         attacker.playEffect(EntityEffect.SHIELD_BREAK)
         player.playSound(attacker.location, Sound.BLOCK_SAND_STEP, 1.0f, 5.0f)
     }
