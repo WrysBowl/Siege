@@ -1,7 +1,7 @@
 plugins {
     java
     kotlin("jvm") version "1.5.30"
-    id("com.github.johnrengelman.shadow") version "5.2.0"
+    id("com.github.johnrengelman.shadow") version "7.1.0"
 }
 
 repositories {
@@ -11,14 +11,6 @@ repositories {
 }
 
 subprojects {
-    buildscript {
-        repositories {
-            jcenter()
-        }
-        dependencies {
-            classpath("com.github.jengelman.gradle.plugins:shadow:5.2.0")
-        }
-    }
 
     apply(plugin = "java")
     apply(plugin = "org.jetbrains.kotlin.jvm")
@@ -27,7 +19,6 @@ subprojects {
     dependencies {
         compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     }
-
 
     java {
         sourceCompatibility = JavaVersion.VERSION_11
