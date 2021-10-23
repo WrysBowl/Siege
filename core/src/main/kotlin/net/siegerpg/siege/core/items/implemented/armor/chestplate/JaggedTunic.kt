@@ -18,11 +18,11 @@ import org.bukkit.inventory.ItemStack
 class JaggedTunic() : CustomChestplate(
     name = "Jagged Tunic",
     customModelData = 1,
-    description = listOf("Deals small amount of damage to the damager"),
+    description = listOf("Deals small amount of","damage to the damager"),
     levelRequirement = 2,
     material = Material.LEATHER_CHESTPLATE,
     baseStats = CustomItemUtils.statMap(health = 5.0, strength = 2.0),
-    leatherColor = Color.YELLOW
+    leatherColor = Color.GRAY
 ) {
 
     constructor(quality: Int): this() {
