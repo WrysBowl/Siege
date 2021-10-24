@@ -12,6 +12,7 @@ import org.bukkit.event.entity.EntityDeathEvent
 import java.time.Duration
 import java.time.Instant
 import java.util.*
+import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.round
 
@@ -49,7 +50,7 @@ class BossLeaderboard : Listener {
         // Uploads data to the db
         val hashMapData = HashMap<UUID, Pair<Byte, Int>>()
         val startingBossHealth = round(bossFight.entityHealth).toInt()
-        val fightDuration = Duration.between(bossFight.startTime, deathTime).abs().seconds
+        val fightDuration = ceil((Duration.between(bossFight.startTime, deathTime).abs().toMillis() + 100.0) / 1000)
         bossFight.fighters.forEach { (fighter, damageDone) ->
             val percentageDamage = floor(damageDone / startingBossHealth * 100).toInt().toByte()
             hashMapData[fighter] = Pair(percentageDamage, fightDuration.toInt())
