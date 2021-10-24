@@ -55,6 +55,8 @@ class BossLeaderboard : Listener {
             println("The fighter $fighter did $damageDone out of $startingBossHealth! Crazy ikr?")
             hashMapData[fighter] = Pair(percentageDamage, fightDuration.toInt())
         }
+        println("New data:")
+        hashMapData.forEach { (uuid, pair) -> print("$uuid did ${pair.first}% in ${pair.second} seconds") }
         BossLeaderboardDB.setBossData(bossFight.entity.type.internalName, hashMapData)
     }
 }
