@@ -12,7 +12,7 @@ class TestSword() : CustomMeleeWeapon(
     description = listOf("A sword for testing"),
     levelRequirement = 0,
     material = Material.DIAMOND_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = -1000.0, health = -50.0, toughness = -1000.0, luck = -100.0, regeneration = -100.0),
+    baseStats = CustomItemUtils.statMap(strength = 5000.0),
     attackSpeed = 1.7
 ) {
 

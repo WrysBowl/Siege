@@ -16,6 +16,7 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.wands.BeginnerLivingTwig;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.BeginnerClub;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.BeginnerTwig;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.BeginnerScrapyardBow;
@@ -102,9 +103,7 @@ public class PlayerJoinListener implements Listener {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);
         }
-        player.getInventory().addItem(new GoldenCarrot(0).getUpdatedItem(false));
-        player.getInventory().addItem(new Beetroot(0).getUpdatedItem(false));
-        player.getInventory().addItem(new Sugar(0).getUpdatedItem(false));
+        player.getInventory().addItem(new TestSword(150).getUpdatedItem(false));
 
 
 
