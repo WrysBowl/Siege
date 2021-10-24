@@ -32,6 +32,7 @@ class BossLeaderboard : Listener {
     public fun onBossGetHit(evt: EntityDamageByEntityEvent) {
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return
+        println("Ouch! The boss called ${bossFight.entity.displayName} got hit!")
         if (evt.damager.type != EntityType.PLAYER) return
         val damager = evt.damager as Player
         bossFight.fighters[damager.uniqueId] =
@@ -43,6 +44,8 @@ class BossLeaderboard : Listener {
         val deathTime = Instant.now()
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return
+        println("RIP! The boss called ${bossFight.entity.displayName} died!")
+
         // Uploads data to the db
         val hashMapData = HashMap<UUID, Pair<Byte, Int>>()
         val startingBossHealth = floor(bossFight.entityHealth).toInt()
