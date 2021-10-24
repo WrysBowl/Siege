@@ -4,6 +4,7 @@ import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot;
 import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,13 +48,13 @@ public class MobDropTable implements Listener {
     }
     public Integer getGold(boolean rand) {
         if (rand) {
-            return (int)(Math.random() * goldMax) + goldMin;
+            return (int) Math.floor(Math.random()*(goldMax-goldMin+1)+goldMin);
         }
         return goldMax;
     }
     public Integer getExp(boolean rand) {
         if (rand) {
-            return (int)(Math.random() * expMax) + expMin;
+            return (int) Math.floor(Math.random()*(expMax-expMin+1)+expMin);
         }
         return expMax;
     }

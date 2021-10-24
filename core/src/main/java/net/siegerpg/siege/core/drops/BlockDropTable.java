@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.drops;
 
 import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
@@ -49,15 +50,13 @@ public class BlockDropTable implements Listener {
     }
     public Integer getGold(boolean rand) {
         if (rand) {
-            double randomGold = (Math.random() * goldMax) + goldMin;
-            return (int) Math.round(randomGold);
+            return (int) Math.floor(Math.random()*(goldMax-goldMin+1)+goldMin);
         }
         return goldMax;
     }
     public Integer getExp(boolean rand) {
         if (rand) {
-            double randomExp = (Math.random() * expMax) + expMin;
-            return (int) Math.round(randomExp);
+            return (int) Math.floor(Math.random()*(expMax-expMin+1)+expMin);
         }
         return expMax;
     }

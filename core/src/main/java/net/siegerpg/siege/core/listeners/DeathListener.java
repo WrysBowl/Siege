@@ -24,6 +24,7 @@ import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.*;
@@ -188,12 +189,12 @@ public class DeathListener implements Listener, Runnable {
         Player player = e.getEntity().getKiller();
         double luck = 0.0;
         int goldCoinAmt = mobDrop.getGold(true);
+        int exp = mobDrop.getExp(true);
         Location loc = e.getEntity().getLocation();
 
         if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());}
 
-        if (mobDrop.getExp(true) > 0 && player != null) {
-            int exp = mobDrop.getExp(true);
+        if (exp > 0 && player != null) {
             exp = (int) Math.floor(exp * GlobalMultipliers.expMultiplier);
             if ((Math.random() * 100) <= luck) {
                 exp *= 2;
