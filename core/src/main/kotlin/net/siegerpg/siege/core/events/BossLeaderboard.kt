@@ -1,8 +1,6 @@
 package net.siegerpg.siege.core.events
 
-import io.lumine.xikage.mythicmobs.MythicMobs
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob
-import net.siegerpg.siege.core.dungeons.DungeonCommand
 import net.siegerpg.siege.core.utils.BossLeaderboardDB
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
@@ -10,7 +8,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDeathEvent
-import org.bukkit.event.entity.EntitySpawnEvent
 import java.time.Duration
 import java.time.Instant
 import java.util.*
@@ -35,8 +32,11 @@ class BossLeaderboard : Listener {
         println("Ouch! The boss called ${bossFight.entity.displayName} got hit!")
         if (evt.damager.type != EntityType.PLAYER) return
         val damager = evt.damager as Player
+        println("Omg woah ${bossFight.entity.displayName} was hit by a PLAYER :o")
         bossFight.fighters[damager.uniqueId] =
             (bossFight.fighters[damager.uniqueId] ?: 0.0) + evt.finalDamage
+        println("New data: ${bossFight.fighters[damager.uniqueId]}")
+        println("Data from currentBossFights: ${currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }?.fighters?.map { (k, v) -> "$k: $v" }}")
     }
 
     @EventHandler
