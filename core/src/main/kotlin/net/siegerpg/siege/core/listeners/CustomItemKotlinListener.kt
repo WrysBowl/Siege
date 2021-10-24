@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
@@ -13,6 +14,7 @@ import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.cache.MobNames
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
@@ -278,11 +280,14 @@ class CustomItemKotlinListener : Listener, Runnable {
     @EventHandler
     @Suppress("unused")
     fun onConsume(e: PlayerItemConsumeEvent) {
-        CustomItemUtils.getCustomItem(e.item)?.let {
-            if (it is CustomFood) {
-                it.onEat(e)
+        Bukkit.getScheduler().runTaskAsynchronously(plugin(), Runnable {
+            CustomItemUtils.getCustomItem(e.item)?.let {
+                if (it is CustomFood) {
+                    it.onEat(e)
+                }
             }
-        }
+        })
+
     }
 
     /*
