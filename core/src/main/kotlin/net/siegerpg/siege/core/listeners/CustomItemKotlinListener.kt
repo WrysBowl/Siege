@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.listeners
 
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
@@ -261,8 +260,8 @@ class CustomItemKotlinListener : Listener, Runnable {
             else damage
         val reducedDamage =
             attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
-
         e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
+        println("Reduced dmg: $reducedDamage\n Max health: $vicMaxHealth\n Max health stat: $vicHealthStat")
 
         if (victim is Mob) {
             val displayName: String = MobNames.mobNames[victim] ?: return
