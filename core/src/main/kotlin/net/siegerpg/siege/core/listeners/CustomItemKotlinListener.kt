@@ -261,7 +261,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         val reducedDamage =
             attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
         e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
-        println("Reduced dmg: $reducedDamage\n Max health: $vicMaxHealth\n Max health stat: $vicHealthStat")
+        println("Reduced dmg: $reducedDamage\nFinal damage: ${e.finalDamage}\nDamage saved: ${e.damage}  \n Max health: $vicMaxHealth\n Max health stat: $vicHealthStat")
 
         if (victim is Mob) {
             val displayName: String = MobNames.mobNames[victim] ?: return
