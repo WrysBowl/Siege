@@ -26,7 +26,7 @@ class BossLeaderboard : Listener {
     }
 
 
-    @EventHandler()
+    @EventHandler
     public fun onBossGetHit(evt: EntityDamageByEntityEvent) {
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return
