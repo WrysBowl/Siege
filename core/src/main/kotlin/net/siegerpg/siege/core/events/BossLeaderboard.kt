@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.events
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.utils.BossLeaderboardDB
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -31,8 +32,10 @@ class BossLeaderboard : Listener {
             ?: return
         if (evt.damager.type != EntityType.PLAYER) return
         val damager = evt.damager as Player
+        val entity = evt.entity as LivingEntity
+        val damageDone = if (evt.finalDamage > entity.health) entity.health else evt.finalDamage
         bossFight.fighters[damager.uniqueId] =
-            (bossFight.fighters[damager.uniqueId] ?: 0.0) + evt.finalDamage
+            (bossFight.fighters[damager.uniqueId] ?: 0.0) + damageDone
     }
 
     @EventHandler
