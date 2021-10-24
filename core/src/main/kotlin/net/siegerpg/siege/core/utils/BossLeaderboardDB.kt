@@ -5,7 +5,6 @@ import net.siegerpg.siege.core.database.DatabaseManager
 import org.bukkit.Bukkit
 import org.bukkit.scheduler.BukkitTask
 import java.sql.ResultSet
-import java.sql.SQLException
 import java.time.Instant
 import java.util.*
 
@@ -233,31 +232,37 @@ object BossLeaderboardDB {
         val dbData = blockingGetBossLeaderboardData(playerIDs, bossName)
         val connection = DatabaseManager.getConnection()
         connection!!.use {
-            val batchStmt = connection.createStatement()
+            var updateNumbers = 0
+            var insertNumbers = 0
+
+            val updateStmt =
+                connection.prepareStatement("UPDATE bossData SET percentageDone=?, timeTaken=? WHERE playerID=? AND bossName=?")
+            val insertStmt =
+                connection.prepareStatement("INSERT INTO bossData (bossName, playerID, percentageDone, timeTaken) VALUES (?, ?, ?, ?)");
             data.forEach { (uuid, data) ->
                 if (dbData?.get(uuid) != null) {
                     // If the new db data would be worse than the current one then don't change anything
                     if (dbData[uuid]!!.first / dbData[uuid]!!.second > data.first / data.second) return
-                    val stmt =
-                        connection.prepareStatement("UPDATE bossData SET percentageDone=?,timeTaken=? WHERE playerID=? AND bossName=?");
-                    stmt.setByte(1, data.first)
-                    stmt.setInt(2, data.second)
-                    stmt.setString(3, uuid.toString())
-                    stmt.setString(4, bossName)
-                    batchStmt.addBatch(stmt.toString())
+                    updateStmt.setByte(1, data.first)
+                    updateStmt.setInt(2, data.second)
+                    updateStmt.setString(3, uuid.toString())
+                    updateStmt.setString(4, bossName)
+                    updateStmt.addBatch()
+                    updateNumbers++
                 } else {
-                    val stmt =
-                        connection.prepareStatement("INSERT INTO bossData (bossName, playerID, percentageDone, timeTaken) VALUES (?, ?, ?, ?)");
-                    stmt.setByte(3, data.first)
-                    stmt.setInt(4, data.second)
-                    stmt.setString(2, uuid.toString())
-                    stmt.setString(1, bossName)
-                    batchStmt.addBatch(stmt.toString())
+                    insertStmt.setByte(3, data.first)
+                    insertStmt.setInt(4, data.second)
+                    insertStmt.setString(2, uuid.toString())
+                    insertStmt.setString(1, bossName)
+                    insertStmt.addBatch()
+                    insertNumbers++
                 }
                 setCacheData(bossName, uuid, data, Instant.now())
             }
-            batchStmt.executeBatch()
-            batchStmt.closeOnCompletion()
+            if (updateNumbers != 0)
+                updateStmt.executeBatch()
+            if (insertNumbers != 0)
+                insertStmt.executeBatch()
         }
     }
 

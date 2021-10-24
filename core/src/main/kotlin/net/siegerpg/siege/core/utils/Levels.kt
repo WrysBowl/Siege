@@ -314,16 +314,15 @@ object Levels {
     fun blockingSetExpLevel(data: HashMap<UUID, Pair<Short, Int>>) {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
-            val stm = connection.createStatement()
+            val stmt = connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?")
             // We batch the sql queries together for speed (it will only make one request instead of multiple)
             data.forEach { (uuid, data) ->
                 // We prepare the query
-                val stmt = connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?")
                 stmt.setShort(1, data.first)
                 stmt.setInt(2, data.second)
                 stmt.setString(3, uuid.toString())
                 // We add it to the batch
-                stm.addBatch(stmt.toString())
+                stmt.addBatch()
 
                 // Same process as in the setExpLevel method above
                 val player = Bukkit.getOfflinePlayer(uuid)
@@ -339,7 +338,7 @@ object Levels {
                 }
             }
             // We execute the batch
-            stm.executeBatch()
+            stmt.executeBatch()
         }
     }
 
