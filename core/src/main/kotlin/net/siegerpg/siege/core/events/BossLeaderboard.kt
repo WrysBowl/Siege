@@ -13,6 +13,7 @@ import java.time.Duration
 import java.time.Instant
 import java.util.*
 import kotlin.math.floor
+import kotlin.math.round
 
 data class BossFight(val startTime: Instant, val entity: ActiveMob) {
     val fighters = HashMap<UUID, Double>()
@@ -47,7 +48,7 @@ class BossLeaderboard : Listener {
             ?: return
         // Uploads data to the db
         val hashMapData = HashMap<UUID, Pair<Byte, Int>>()
-        val startingBossHealth = floor(bossFight.entityHealth).toInt()
+        val startingBossHealth = round(bossFight.entityHealth).toInt()
         val fightDuration = Duration.between(bossFight.startTime, deathTime).abs().seconds
         bossFight.fighters.forEach { (fighter, damageDone) ->
             val percentageDamage = floor(damageDone / startingBossHealth * 100).toInt().toByte()
