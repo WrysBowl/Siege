@@ -13,8 +13,8 @@ import java.util.UUID;
 
 public class WebstoreRanks extends WebstorePackage {
 
-    String arg2 = "rank"; //booster
-    String arg3 = "warrior"; //booster type
+    String arg2 = "rank"; //rank
+    String arg3 = "warrior"; //rank type
 
     public WebstoreRanks(String arg2, String arg3){
         this.arg2=arg2;
@@ -35,7 +35,7 @@ public class WebstoreRanks extends WebstorePackage {
 
         VaultHook.perms.playerAddGroup(player, arg3);
 
-        //send a message that they purchased a booster
+        //send a message that they purchased a rank
         Bukkit.broadcast(Utils.lore(""));
         Bukkit.broadcast(Utils.lore("  <aqua>" + player.getName() + " has bought <yellow>"+arg3+" rank!"));
         Bukkit.broadcast(Utils.lore("  <aqua>https://store.siegerpg.net/"));
