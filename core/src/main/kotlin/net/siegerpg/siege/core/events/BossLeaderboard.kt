@@ -25,14 +25,14 @@ class BossLeaderboard : Listener {
     }
 
 
-    @EventHandler
+    @EventHandler()
     public fun onBossGetHit(evt: EntityDamageByEntityEvent) {
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return
         if (evt.damager.type != EntityType.PLAYER) return
         val damager = evt.damager as Player
         bossFight.fighters[damager.uniqueId] =
-            (bossFight.fighters[damager.uniqueId] ?: 0.0) + evt.finalDamage
+            (bossFight.fighters[damager.uniqueId] ?: 0.0) + evt.damage
     }
 
     @EventHandler

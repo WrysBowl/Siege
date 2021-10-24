@@ -106,7 +106,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.LOWEST)
     @Suppress("unused")
     fun onHit(e: EntityDamageEvent) {
         if (e.isCancelled) return
