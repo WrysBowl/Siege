@@ -32,7 +32,7 @@ class BossLeaderboard : Listener {
         if (evt.damager.type != EntityType.PLAYER) return
         val damager = evt.damager as Player
         bossFight.fighters[damager.uniqueId] =
-            (bossFight.fighters[damager.uniqueId] ?: 0.0) + evt.damage
+            (bossFight.fighters[damager.uniqueId] ?: 0.0) + evt.finalDamage
     }
 
     @EventHandler

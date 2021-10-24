@@ -242,7 +242,7 @@ object BossLeaderboardDB {
             data.forEach { (uuid, data) ->
                 if (dbData?.get(uuid) != null) {
                     // If the new db data would be worse than the current one then don't change anything
-                    if (dbData[uuid]!!.first / dbData[uuid]!!.second > data.first / data.second) return
+                    if (dbData[uuid]!!.first / dbData[uuid]!!.second >= data.first / data.second) return
                     updateStmt.setByte(1, data.first)
                     updateStmt.setInt(2, data.second)
                     updateStmt.setString(3, uuid.toString())
