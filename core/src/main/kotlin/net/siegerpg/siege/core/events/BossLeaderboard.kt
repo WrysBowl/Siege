@@ -45,13 +45,14 @@ class BossLeaderboard : Listener {
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return
         println("RIP! The boss called ${bossFight.entity.displayName} died!")
-
         // Uploads data to the db
         val hashMapData = HashMap<UUID, Pair<Byte, Int>>()
         val startingBossHealth = floor(bossFight.entityHealth).toInt()
         val fightDuration = Duration.between(bossFight.startTime, deathTime).abs().seconds
+        println("The fight lasted $fightDuration seconds!")
         bossFight.fighters.forEach { (fighter, damageDone) ->
-            val percentageDamage = floor(damageDone / startingBossHealth).toInt().toByte()
+            val percentageDamage = floor(damageDone / startingBossHealth * 100).toInt().toByte()
+            println("The fighter $fighter did $damageDone out of $startingBossHealth! Crazy ikr?")
             hashMapData[fighter] = Pair(percentageDamage, fightDuration.toInt())
         }
         BossLeaderboardDB.setBossData(bossFight.entity.type.internalName, hashMapData)
