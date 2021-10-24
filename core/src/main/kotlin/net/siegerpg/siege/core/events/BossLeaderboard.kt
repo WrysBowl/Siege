@@ -36,6 +36,8 @@ class BossLeaderboard : Listener {
         val damageDone = if (evt.finalDamage > entity.health) entity.health else evt.finalDamage
         bossFight.fighters[damager.uniqueId] =
             (bossFight.fighters[damager.uniqueId] ?: 0.0) + damageDone
+        println("User ${damager.name} has just dealt $damageDone (for a total of ${bossFight.fighters[damager.uniqueId]}) ")
+
     }
 
     @EventHandler
