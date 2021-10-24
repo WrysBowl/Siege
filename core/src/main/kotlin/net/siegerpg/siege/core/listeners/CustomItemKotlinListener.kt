@@ -19,6 +19,7 @@ import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
 import org.bukkit.entity.*
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.*
@@ -105,7 +106,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     @Suppress("unused")
     fun onHit(e: EntityDamageEvent) {
         if (e.isCancelled) return
@@ -261,11 +262,6 @@ class CustomItemKotlinListener : Listener, Runnable {
         val reducedDamage =
             attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
         e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
-        println(
-            "Reduced dmg: $reducedDamage\n" +
-                    "Damage saved: ${e.damage} \nFinal damage: ${e.finalDamage} \n Max health: $vicMaxHealth\n Max health stat: $vicHealthStat"
-        )
-
         if (victim is Mob) {
             val displayName: String = MobNames.mobNames[victim] ?: return
             victim.customName = Utils.tacc(
