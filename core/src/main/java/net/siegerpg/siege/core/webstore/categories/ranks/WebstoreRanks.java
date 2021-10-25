@@ -23,9 +23,19 @@ public class WebstoreRanks extends WebstorePackage {
     public WebstoreRanks(String[] args) {
         super(args);
         try {
-            this.arg2 = getArgs()[1];
-            this.arg3 = getArgs()[2];
+            this.arg2 = args[1];
+            this.arg3 = args[2];
         } catch (Exception ignored) {}
+    }
+
+    @Override
+    public void setArgs(String[] args) {
+        try {
+            this.arg2 = args[0];
+            this.arg3 = args[1];
+        } catch (Exception ignored) {
+            ignored.printStackTrace();
+        }
     }
 
     @Override

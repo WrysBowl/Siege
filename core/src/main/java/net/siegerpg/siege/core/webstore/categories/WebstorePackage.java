@@ -11,7 +11,7 @@ public class WebstorePackage {
     public WebstorePackage(String[] args) {this.args = args;}
     public WebstorePackage(){}
 
-    private void setArgs(String[] args) {this.args = args;}
+    public void setArgs(String[] args) {this.args = args;}
     public String[] getArgs() {return args;}
     public void completePurchase(UUID uuid){}
 

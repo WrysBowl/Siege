@@ -31,11 +31,11 @@ public class WebstoreBoosters extends WebstorePackage {
     public WebstoreBoosters(String[] args) {
         super(args);
         try {
-            this.arg2 = getArgs()[1];
-            this.arg3 = getArgs()[2];
-            this.arg4 = Double.parseDouble(getArgs()[3]);
-            this.arg5 = Integer.parseInt(getArgs()[4]);
-            this.arg6 = Integer.parseInt(getArgs()[5]);
+            this.arg2 = args[1];
+            this.arg3 = args[2];
+            this.arg4 = Double.parseDouble(args[3]);
+            this.arg5 = Integer.parseInt(args[4]);
+            this.arg6 = Integer.parseInt(args[5]);
         } catch (Exception ignored) {}
     }
 
@@ -47,6 +47,19 @@ public class WebstoreBoosters extends WebstorePackage {
     }
     public void setAmount(int amount) {
         this.arg6 = amount;
+    }
+
+    @Override
+    public void setArgs(String[] args) {
+        try {
+            this.arg2 = args[0];
+            this.arg3 = args[1];
+            this.arg4 = Double.parseDouble(args[2]);
+            this.arg5 = Integer.parseInt(args[3]);
+            this.arg6 = Integer.parseInt(args[4]);
+        } catch (Exception ignored) {
+            ignored.printStackTrace();
+        }
     }
 
     @Override
