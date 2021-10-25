@@ -32,17 +32,22 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
         if (args.length < 2) return false; //check if command was used properly
 
         UUID uuid;
+        Player player;
 
         //Parse UUID as a player and check if player is online
         try {
-            uuid = UUID.fromString(args[0]);
+            player = Bukkit.getPlayer(args[0]);
+            if (player == null) {
+                uuid = UUID.fromString(args[0]);
+                player = Bukkit.getPlayer(uuid);
+            } else {
+                uuid = player.getUniqueId();
+            }
 
         } catch (IllegalArgumentException x) {
             Bukkit.getLogger().info(Utils.tacc("&cParsing of the UUID has thrown an error."));
             return false;
         }
-
-        Player player = Bukkit.getPlayer(uuid);
         if (player == null) return false;
         if (player.isOnline()) { //if player is online then they get their item right away
 
