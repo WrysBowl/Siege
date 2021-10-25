@@ -5,6 +5,6 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.RareKey;
 
 public class EpicCosmeticKey extends WebstoreKeys{
     public EpicCosmeticKey() {
-        super("cosmetic", "epic", 1, new EpicKey());
+        super("cosmetic", "epic", 1, new EpicKey(0));
     }
 }
