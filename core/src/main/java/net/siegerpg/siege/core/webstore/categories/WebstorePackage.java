@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.UUID;
 
 public class WebstorePackage {
-    private List<String> args;
+    private String[] args;
 
-    public WebstorePackage(List<String> args) {this.args = args;}
+    public WebstorePackage(String[] args) {this.args = args;}
     public WebstorePackage(){}
 
-    private void setArgs(List<String> args) {this.args = args;}
-    public List<String> getArgs() {return args;}
+    private void setArgs(String[] args) {this.args = args;}
+    public String[] getArgs() {return args;}
     public void completePurchase(UUID uuid){}
 
 }

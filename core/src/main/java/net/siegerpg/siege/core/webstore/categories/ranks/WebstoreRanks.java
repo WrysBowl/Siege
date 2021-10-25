@@ -20,11 +20,11 @@ public class WebstoreRanks extends WebstorePackage {
         this.arg2=arg2;
         this.arg3=arg3;
     }
-    public WebstoreRanks(List<String> args) {
+    public WebstoreRanks(String[] args) {
         super(args);
         try {
-            this.arg2 = getArgs().get(1);
-            this.arg3 = getArgs().get(2);
+            this.arg2 = getArgs()[1];
+            this.arg3 = getArgs()[2];
         } catch (Exception ignored) {}
     }
 

@@ -17,8 +17,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
-public class WebstoreCommand implements CommandExecutor {
+public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
 
     //Make sure to allow arg-1 to also be a player
 
@@ -28,116 +29,31 @@ public class WebstoreCommand implements CommandExecutor {
             ((Player) sender).performCommand("craftingstore:buy");
             return false;
         }
+        if (args.length < 2) return false; //check if command was used properly
 
-        /*OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
-        if (args[1].equals("booster")) {
-            //arg 2 = EXP or GOLD
-            //arg 3 = multiplier
-            //args 4 = duration in seconds
-            //arg 5 = amount
-            String type = args[2];
-            float multi = 1;
-            int duration = 3600;
-            int amount = 1;
-            try { multi = Float.parseFloat(args[3]); }
-            catch (NumberFormatException e) {
-                Bukkit.getLogger().info(Utils.tacc("&cCould not correctly parse multiplier to a float."));
-            }
-            try { duration = Integer.parseInt(args[4]); }
-            catch (NumberFormatException e) {
-                Bukkit.getLogger().info(Utils.tacc("&cCould not correctly parse duration to an integer."));
-            }
-            try { amount = Integer.parseInt(args[5]); }
-            catch (NumberFormatException e) {
-                Bukkit.getLogger().info(Utils.tacc("&cCould not correctly parse amount to an integer."));
-            }
+        UUID uuid;
 
-            ItemStack item = WebstoreBoosters.(amount, multi, duration, type);
-            Utils.giveItem((Player)argPlayer, item);
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &e"+amount+" &a"+((multi*100)-100.0)+"% "+type+" boosters!"));
-            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
-            Bukkit.broadcastMessage(Utils.tacc(""));
+        //Parse UUID as a player and check if player is online
+        try {
+            uuid = UUID.fromString(args[0]);
+
+        } catch (IllegalArgumentException x) {
+            Bukkit.getLogger().info(Utils.tacc("&cParsing of the UUID has thrown an error."));
+            return false;
+        }
+
+        Player player = Bukkit.getPlayer(uuid);
+        if (player == null) return false;
+        if (player.isOnline()) { //if player is online then they get their item right away
+
+            //Call the method that gets the package and calls the complete purchase method
+            packageDelivery(args, uuid);
+
+        } else { //if player is not online then their information is stored in a database
 
         }
-        if (args[1].equals("WarriorRank")) {
-            ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-            String cmd = "lp user " + argPlayer.getName() + " parent add Warrior";
-            Bukkit.dispatchCommand(console, cmd);
 
-            int highestPV = Utils.getHighestPV((Player)argPlayer);
-            int diff = 54 - highestPV;
-            int addPV = highestPV+2;
-            if (diff < 2) addPV = diff;
 
-            ConsoleCommandSender console2 = Bukkit.getServer().getConsoleSender();
-            String cmd2 = "lp user " + argPlayer.getName() + " permission set cosmicvaults.amount."+addPV+" true global";
-            Bukkit.dispatchCommand(console2, cmd2);
-
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &2Warrior &erank!"));
-            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            return true;
-        }
-        if (args[1].equals("GladiatorRank")) {
-            ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-            String cmd = "lp user " + argPlayer.getName() + " parent add Gladiator";
-            Bukkit.dispatchCommand(console, cmd);
-
-            int highestPV = Utils.getHighestPV((Player)argPlayer);
-            int diff = 54 - highestPV;
-            int addPV = highestPV+3;
-
-            if (VaultHook.perms.playerInGroup((Player) argPlayer, "warrior")) {
-                addPV = highestPV+1;
-                if (diff < 1) addPV = diff;
-                ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
-                String cmd3 = "lp user " + argPlayer.getName() + " parent remove warrior";
-                Bukkit.dispatchCommand(console4, cmd3);
-            } else {
-                if (diff < 3) addPV = diff;
-            }
-
-            ConsoleCommandSender console2 = Bukkit.getServer().getConsoleSender();
-            String cmd2 = "lp user " + argPlayer.getName() + " permission set cosmicvaults.amount."+addPV+" true global";
-            Bukkit.dispatchCommand(console2, cmd2);
-
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &2Gladiator &erank!"));
-            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            return true;
-        }
-        if (args[1].equals("HeroRank")) {
-            ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-            String cmd = "lp user " + argPlayer.getName() + " parent add Hero";
-            Bukkit.dispatchCommand(console, cmd);
-
-            int highestPV = Utils.getHighestPV((Player)argPlayer);
-            int diff = 54 - highestPV;
-            int addPV = highestPV+5;
-
-            if (VaultHook.perms.playerInGroup((Player) argPlayer, "gladiator")) {
-                addPV = highestPV+2;
-                if (diff < 2) addPV = diff;
-                ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
-                String cmd3 = "lp user " + argPlayer.getName() + " parent remove gladiator";
-                Bukkit.dispatchCommand(console4, cmd3);
-            } else {
-                if (diff < 5) addPV = diff;
-            }
-
-            ConsoleCommandSender console2 = Bukkit.getServer().getConsoleSender();
-            String cmd2 = "lp user " + argPlayer.getName() + " permission set cosmicvaults.amount."+addPV+" true global";
-            Bukkit.dispatchCommand(console2, cmd2);
-
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            Bukkit.broadcastMessage(Utils.tacc("  &b" + argPlayer.getName() + " has bought &bHero &erank!"));
-            Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
-            Bukkit.broadcastMessage(Utils.tacc(""));
-            return true;
-        }*/
-        return false;
+        return true;
     }
 }

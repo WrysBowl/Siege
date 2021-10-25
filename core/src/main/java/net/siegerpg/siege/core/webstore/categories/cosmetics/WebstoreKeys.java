@@ -17,8 +17,8 @@ import java.util.UUID;
 
 public class WebstoreKeys extends WebstorePackage {
 
-    String arg2 = "cosmetic"; //booster
-    String arg3 = "normal"; //booster type
+    String arg2 = "cosmetic";
+    String arg3 = "normal"; //key type
     Integer arg4 = 1; //amount
     CustomKey key = new NormalKey(0);
 
@@ -45,5 +45,8 @@ public class WebstoreKeys extends WebstorePackage {
         Bukkit.broadcast(Utils.lore("  <aqua>" + player.getName() + " has bought <yellow>cosmetic keys!"));
         Bukkit.broadcast(Utils.lore("  <aqua>https://store.siegerpg.net/"));
         Bukkit.broadcast(Utils.lore(""));
+    }
+    public void setAmount(int amount) {
+        this.arg4 = amount;
     }
 }

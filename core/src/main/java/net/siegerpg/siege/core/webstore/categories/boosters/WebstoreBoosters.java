@@ -29,14 +29,14 @@ public class WebstoreBoosters extends WebstorePackage {
         this.arg5=arg5;
         this.arg6=arg6;
     }
-    public WebstoreBoosters(List<String> args) {
+    public WebstoreBoosters(String[] args) {
         super(args);
         try {
-            this.arg2 = getArgs().get(1);
-            this.arg3 = getArgs().get(2);
-            this.arg4 = Double.parseDouble(getArgs().get(3));
-            this.arg5 = Integer.parseInt(getArgs().get(4));
-            this.arg6 = Integer.parseInt(getArgs().get(5));
+            this.arg2 = getArgs()[1];
+            this.arg3 = getArgs()[2];
+            this.arg4 = Double.parseDouble(getArgs()[3]);
+            this.arg5 = Integer.parseInt(getArgs()[4]);
+            this.arg6 = Integer.parseInt(getArgs()[5]);
         } catch (Exception ignored) {}
     }
 
