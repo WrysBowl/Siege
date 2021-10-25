@@ -9,7 +9,7 @@ public class BaitStats {
 	private Fish fish;
 	private int chanceAdded;
 	
-	public BaitStats (Fish fish, int chanceAdded) {
+	public BaitStats (final Fish fish, final int chanceAdded) {
 		this.fish=fish;
 		this.chanceAdded=chanceAdded;
 		
@@ -17,18 +17,18 @@ public class BaitStats {
 
 
 	public Fish getFish() {
-		return fish;
+		return this.fish;
 	}
 
-	public void setFish(Fish fish) {
+	public void setFish(final Fish fish) {
 		this.fish = fish;
 	}
 
 	public int getChanceAdded() {
-		return chanceAdded;
+		return this.chanceAdded;
 	}
 
-	public void setChanceAdded(int chanceAdded) {
+	public void setChanceAdded(final int chanceAdded) {
 		this.chanceAdded = chanceAdded;
 	}
 

@@ -21,25 +21,25 @@ public class BaitCore {
 	private ItemStack baitItemStack;
 	private String baitName;
 	
-	public BaitCore (BaitStats[] stats, String baitName, Material material) {
+	public BaitCore (final BaitStats[] stats, final String baitName, final Material material) {
 		this.baitName=baitName;
-		for(BaitStats stat : stats) {
+		for(final BaitStats stat : stats) {
 			this.stats.add(stat);
 		}
 		ItemStack item = new ItemStack(material);
-		NBTItem nbt = new NBTItem(item);
+		final NBTItem nbt = new NBTItem(item);
 		nbt.setString("baitType", baitName);
 		item = nbt.getItem();
-		ItemMeta meta = item.getItemMeta();
+		final ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName(ChatColor.AQUA + baitName);
 		meta.lore(new ArrayList<>(){
 			{
-				add(Utils.lore("<yellow>Hold in off-hand to use"));
+				this.add(Utils.lore("<yellow>Hold in off-hand to use"));
 
 			}
 		});
 		item.setItemMeta(meta);
-		this.baitItemStack = item;
+		baitItemStack = item;
 	}
 
 
@@ -47,29 +47,29 @@ public class BaitCore {
 
 
 	public static void registerAllBaits() {
-		baits.add(new BigBlueTunaBait());
-		baits.add(new FlashySharkBait());
-		baits.add(new BearacudaBait());
+		BaitCore.baits.add(new BigBlueTunaBait());
+		BaitCore.baits.add(new FlashySharkBait());
+		BaitCore.baits.add(new BearacudaBait());
 	}
 
-	public static BaitCore getBait(String name) {
-		for(BaitCore bait : baits) {
+	public static BaitCore getBait(final String name) {
+		for(final BaitCore bait : BaitCore.baits) {
 			if(bait.getName().equalsIgnoreCase(name))
 				return bait;
 		}
 		return null;
 	}
 
-	public static boolean hasBait(String name) {
-		for(BaitCore bait : baits) {
+	public static boolean hasBait(final String name) {
+		for(final BaitCore bait : BaitCore.baits) {
 			if(bait.getName().equals(name))
 				return true;
 		}
 		return false;
 	}
 
-	public boolean hasFish(String name) {
-		for(BaitStats stats : this.stats) {
+	public boolean hasFish(final String name) {
+		for(final BaitStats stats : stats) {
 			if(stats.getFish().name.equalsIgnoreCase(name))
 				return true;
 		}
@@ -80,15 +80,15 @@ public class BaitCore {
 
 
 	public ArrayList<BaitStats> getStats() {
-		return stats;
+		return this.stats;
 	}
 
-	public void setStats(ArrayList<BaitStats> stats) {
+	public void setStats(final ArrayList<BaitStats> stats) {
 		this.stats = stats;
 	}
 
-	public BaitStats getStat(String name) {
-		for(BaitStats stats : this.stats) {
+	public BaitStats getStat(final String name) {
+		for(final BaitStats stats : stats) {
 			if(stats.getFish().name.equalsIgnoreCase(name))
 				return stats;
 		}
@@ -96,18 +96,18 @@ public class BaitCore {
 	}
 
 	public ItemStack getBaitItemStack() {
-		return baitItemStack;
+		return this.baitItemStack;
 	}
 
-	public void setBaitItemStack(ItemStack baitItemStack) {
+	public void setBaitItemStack(final ItemStack baitItemStack) {
 		this.baitItemStack = baitItemStack;
 	}
 
 	public String getName() {
-		return baitName;
+		return this.baitName;
 	}
 
-	public void setName(String baitName) {
+	public void setName(final String baitName) {
 		this.baitName = baitName;
 	}
 }

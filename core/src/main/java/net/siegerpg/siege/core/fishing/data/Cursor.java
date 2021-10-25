@@ -3,15 +3,15 @@ package net.siegerpg.siege.core.fishing.data;
 public class Cursor {
 	
 	public int getLoc() {
-		return loc;
+		return this.loc;
 	}
-	public void setLoc(int loc) {
+	public void setLoc(final int loc) {
 		this.loc = loc;
 	}
 	public boolean isInGreen() {
-		return inGreen;
+		return this.inGreen;
 	}
-	public void setInGreen(boolean inGreen) {
+	public void setInGreen(final boolean inGreen) {
 		this.inGreen = inGreen;
 	}
 	public int loc = 35;

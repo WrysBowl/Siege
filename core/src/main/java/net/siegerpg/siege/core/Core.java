@@ -49,7 +49,7 @@ public final class Core extends JavaPlugin {
     public void onLoad() {
         // Set up packetevents
         PacketEvents.create(this);
-        PacketEventsSettings settings = PacketEvents.get().getSettings();
+        final PacketEventsSettings settings = PacketEvents.get().getSettings();
         settings.fallbackServerVersion(ServerVersion.v_1_16_5)
                 .compatInjector(true)
                 .checkForUpdates(false);
@@ -61,40 +61,40 @@ public final class Core extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        INSTANCE = this;
+	    Core.INSTANCE = this;
 
         // Load packetevents
         PacketEvents.get().registerListener(new DropUtils());
         PacketEvents.get().init();
 
         // Other
-        partyConfig = new PartyConfig();
-        commandManager = new PaperCommandManager(this);
-        defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
+	    this.partyConfig = new PartyConfig();
+	    this.commandManager = new PaperCommandManager(this);
+	    Core.defaultLeatherColor = getServer().getItemFactory().getDefaultLeatherColor();
         (new VaultHook()).createHooks();
 
-        spawnLocation = new Location(Bukkit.getWorld("Hub"), 70.5, 71, 3.5, 90, 0);
+	    Core.spawnLocation = new Location(Bukkit.getWorld("Hub"), 70.5, 71, 3.5, 90, 0);
 
-        commandManager.registerCommand(new PartyCommand());
-        this.getCommand("hub").setExecutor(new Hub());
-        this.getCommand("discord").setExecutor(new Discord());
-        this.getCommand("webstore").setExecutor(new Webstore());
-        this.getCommand("getItem").setExecutor(new GetItem());
-        this.getCommand("spawn").setExecutor(new Spawn());
-        this.getCommand("invsee").setExecutor(new Invsee());
-        this.getCommand("leaderboard").setExecutor(new Leaderboard());
-        this.getCommand("level").setExecutor(new Level());
-        this.getCommand("buy").setExecutor(new WebstoreCommand());
-        this.getCommand("tips").setExecutor(new ToggleTips());
-        this.getCommand("getBooster").setExecutor(new GetBooster());
-        this.getCommand("updateScoreboard").setExecutor(new UpdateScoreboard());
-        this.getCommand("spawnExp").setExecutor(new SpawnExp());
-        this.getCommand("spawnGold").setExecutor(new SpawnGold());
-        this.getCommand("getBait").setExecutor(new getBait());
-        this.getCommand("pay").setExecutor(new Pay());
-        this.getCommand("getKey").setExecutor(new GetKey());
-        this.getCommand("stats").setExecutor(new Stats());
-        this.getCommand("dungeon").setExecutor(new DungeonCommand());
+	    this.commandManager.registerCommand(new PartyCommand());
+        getCommand("hub").setExecutor(new Hub());
+        getCommand("discord").setExecutor(new Discord());
+        getCommand("webstore").setExecutor(new Webstore());
+        getCommand("getItem").setExecutor(new GetItem());
+        getCommand("spawn").setExecutor(new Spawn());
+        getCommand("invsee").setExecutor(new Invsee());
+        getCommand("leaderboard").setExecutor(new Leaderboard());
+        getCommand("level").setExecutor(new Level());
+        getCommand("buy").setExecutor(new WebstoreCommand());
+        getCommand("tips").setExecutor(new ToggleTips());
+        getCommand("getBooster").setExecutor(new GetBooster());
+        getCommand("updateScoreboard").setExecutor(new UpdateScoreboard());
+        getCommand("spawnExp").setExecutor(new SpawnExp());
+        getCommand("spawnGold").setExecutor(new SpawnGold());
+        getCommand("getBait").setExecutor(new getBait());
+        getCommand("pay").setExecutor(new Pay());
+        getCommand("getKey").setExecutor(new GetKey());
+        getCommand("stats").setExecutor(new Stats());
+        getCommand("dungeon").setExecutor(new DungeonCommand());
 
 
         //partyManager = new PartyManager();
@@ -143,52 +143,52 @@ public final class Core extends JavaPlugin {
 //        });
         // TODO: uncomment this when working on party command
 
-        getServer().getPluginManager().registerEvents(new BossLeaderboard(), this);
-        getServer().getPluginManager().registerEvents(new DropUtils(), this);
-        getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
-        getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        getServer().getPluginManager().registerEvents(new DeathListener(), this);
-        getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
-        getServer().getPluginManager().registerEvents(new GoldExpListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
-        getServer().getPluginManager().registerEvents(new StatGemListener(), this);
-        getServer().getPluginManager().registerEvents(new GemRemover(), this);
-        getServer().getPluginManager().registerEvents(new WorldListener(), this);
-        getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
-        getServer().getPluginManager().registerEvents(new TutorialListeners(), this);
-        getServer().getPluginManager().registerEvents(new FishEvent(), this);
-        getServer().getPluginManager().registerEvents(new RightClickEvent(), this);
-        getServer().getPluginManager().registerEvents(new PlayerData(), this);
-        getServer().getPluginManager().registerEvents(new EntityTeleportListener(), this);
-        getServer().getPluginManager().registerEvents(new HelpfulTips(), this);
-        getServer().getPluginManager().registerEvents(new GoldReward(), this);
-        getServer().getPluginManager().registerEvents(new CrateOpen(), this);
+	    this.getServer().getPluginManager().registerEvents(new BossLeaderboard(), this);
+	    this.getServer().getPluginManager().registerEvents(new DropUtils(), this);
+	    this.getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new ChatListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new DeathListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new GoldExpListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new StatGemListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new GemRemover(), this);
+	    this.getServer().getPluginManager().registerEvents(new WorldListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new TutorialListeners(), this);
+	    this.getServer().getPluginManager().registerEvents(new FishEvent(), this);
+	    this.getServer().getPluginManager().registerEvents(new RightClickEvent(), this);
+	    this.getServer().getPluginManager().registerEvents(new PlayerData(), this);
+	    this.getServer().getPluginManager().registerEvents(new EntityTeleportListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new HelpfulTips(), this);
+	    this.getServer().getPluginManager().registerEvents(new GoldReward(), this);
+	    this.getServer().getPluginManager().registerEvents(new CrateOpen(), this);
 
-        getServer().getPluginManager().registerEvents(new MobNames(), this);
-        getServer().getPluginManager().registerEvents(new SkillListener(), this);
-        getServer().getPluginManager().registerEvents(new DungeonListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new MobNames(), this);
+	    this.getServer().getPluginManager().registerEvents(new SkillListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new DungeonListener(), this);
 
 
-        getServer().getPluginManager().registerEvents(new WebstoreListener(), this);
-        getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
-        getServer().getPluginManager().registerEvents(new MeraTransit(), this);
-        getServer().getPluginManager().registerEvents(new SymoneCollector(), this);
-        getServer().getPluginManager().registerEvents(new BenButcher(), this);
-        getServer().getPluginManager().registerEvents(new RichardBanker(), this);
-        getServer().getPluginManager().registerEvents(new BartBeggar(), this);
-        getServer().getPluginManager().registerEvents(new Herbert(), this);
-        getServer().getPluginManager().registerEvents(new PerksTrader(), this);
-        getServer().getPluginManager().registerEvents(new Henry(), this);
+	    this.getServer().getPluginManager().registerEvents(new WebstoreListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new SmokyBlacksmith(), this);
+	    this.getServer().getPluginManager().registerEvents(new MeraTransit(), this);
+	    this.getServer().getPluginManager().registerEvents(new SymoneCollector(), this);
+	    this.getServer().getPluginManager().registerEvents(new BenButcher(), this);
+	    this.getServer().getPluginManager().registerEvents(new RichardBanker(), this);
+	    this.getServer().getPluginManager().registerEvents(new BartBeggar(), this);
+	    this.getServer().getPluginManager().registerEvents(new Herbert(), this);
+	    this.getServer().getPluginManager().registerEvents(new PerksTrader(), this);
+	    this.getServer().getPluginManager().registerEvents(new Henry(), this);
 
-        getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
-        getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
-        getServer().getPluginManager().registerEvents(new CosmeticsListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new ArmorListener(this.getConfig().getStringList("blocked")), this);
+	    this.getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new CosmeticsListener(), this);
 
 
         SmokyBlacksmith.resetItems();
         StatChangeListener.statBarDisplayTask();
-        getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
+	    this.getServer().getPluginManager().registerEvents(new CustomItemKotlinListener(), this);
         new RegenerationTask().startRegenTask();
         new HelpfulTips().broadcastTasks();
         new GoldReward().giveGold();
@@ -203,7 +203,7 @@ public final class Core extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        INSTANCE = null;
+	    Core.INSTANCE = null;
 
         // Stop packetevents
         PacketEvents.get().terminate();
@@ -216,7 +216,7 @@ public final class Core extends JavaPlugin {
      * @return The main plugin
      */
     public static Core plugin() {
-        return INSTANCE;
+        return Core.INSTANCE;
     }
 
 }

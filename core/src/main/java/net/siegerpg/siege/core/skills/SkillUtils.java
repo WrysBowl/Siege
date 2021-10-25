@@ -30,18 +30,18 @@ public class SkillUtils {
     };
     static HashMap<Character, ArrayList<Skill>> skillTypes = new HashMap<>(){
         {
-            put('A', ArcherSkills.skills);
-            put('W', warriorSkills);
-            put('M', mageSkills);
-            put('H', heavySkills);
+	        this.put('A', ArcherSkills.skills);
+	        this.put('W', SkillUtils.warriorSkills);
+	        this.put('M', SkillUtils.mageSkills);
+	        this.put('H', SkillUtils.heavySkills);
         }
     };
 
     // Takes string code i.e. "A_1_4_7" and returns hashmap of skills
-    public static HashMap<Integer, Skill> decode(String code) {
-        HashMap<Integer, Skill> map = new HashMap<Integer, Skill>(); // HashMap to return
+    public static HashMap<Integer, Skill> decode(final String code) {
+        final HashMap<Integer, Skill> map = new HashMap<Integer, Skill>(); // HashMap to return
         if (code.equals("")) return map;
-        ArrayList<Skill> arr = skillTypes.get(code.charAt(0));
+        final ArrayList<Skill> arr = SkillUtils.skillTypes.get(code.charAt(0));
         int indexNum = 0; // ID of skill
         // Start loop at index 2 and iterate by twos across the string
         for (int i = 2; i < code.length(); i += 2) {
@@ -52,37 +52,37 @@ public class SkillUtils {
     }
 
     // Takes hashmap from decode and returns total stat change from skills in the form of a hashmap
-    public static HashMap<StatTypes, Double> getStats(HashMap<Integer, Skill> decoded) {
-        HashMap<StatTypes, Double> map; // HashMap to return
+    public static HashMap<StatTypes, Double> getStats(final HashMap<Integer, Skill> decoded) {
+        final HashMap<StatTypes, Double> map; // HashMap to return
         // Init with zero values
         map = new HashMap<>(){
             {
-                put(StatTypes.LUCK, 0.0);
-                put(StatTypes.STRENGTH, 0.0);
-                put(StatTypes.TOUGHNESS, 0.0);
-                put(StatTypes.HEALTH, 0.0);
-                put(StatTypes.REGENERATION, 0.0);
-                put(StatTypes.MANA, 0.0);
-                put(StatTypes.MANA_REGEN, 2.0);
+	            this.put(StatTypes.LUCK, 0.0);
+	            this.put(StatTypes.STRENGTH, 0.0);
+	            this.put(StatTypes.TOUGHNESS, 0.0);
+	            this.put(StatTypes.HEALTH, 0.0);
+	            this.put(StatTypes.REGENERATION, 0.0);
+	            this.put(StatTypes.MANA, 0.0);
+	            this.put(StatTypes.MANA_REGEN, 2.0);
             }
         };
         // Loop across every entry in the decoded map
-        for (HashMap.Entry<Integer, Skill> entry : decoded.entrySet()) {
-            Skill value = entry.getValue(); // get value of each entry
-            HashMap<StatTypes,Double> skillStats = value.STATS; // get the stat changes for each entry
+        for (final HashMap.Entry<Integer, Skill> entry : decoded.entrySet()) {
+            final Skill value = entry.getValue(); // get value of each entry
+            final HashMap<StatTypes,Double> skillStats = value.STATS; // get the stat changes for each entry
             // Loop across every stat change in an entry
             assert skillStats != null;
-            for (HashMap.Entry<StatTypes, Double> vEntry : skillStats.entrySet()) {
+            for (final HashMap.Entry<StatTypes, Double> vEntry : skillStats.entrySet()) {
                 map.replace(vEntry.getKey(), value.STATS.get(vEntry.getKey()) + vEntry.getValue()); // Update return hashmap
             }
         }
         return map;
     }
-    public static boolean isSkillOrb(ItemStack item) {
-        NBTContainer nbt = NBTItem.convertItemtoNBT(item);
+    public static boolean isSkillOrb(final ItemStack item) {
+        final NBTContainer nbt = NBTItem.convertItemtoNBT(item);
         return nbt.getBoolean("skillItem");
     }
-    public static boolean canActivate(Player player, Skill skill) {
+    public static boolean canActivate(final Player player, final Skill skill) {
         if (PlayerData.playerCurrentMana.get(player) < skill.getManaCost()) {
             player.sendTitle(
                     skill.DISPLAY_ITEM.getI18NDisplayName(),
@@ -92,7 +92,7 @@ public class SkillUtils {
         }
         return true;
     }
-    public static void sendTriggers(Player player, ArrayList<Action> triggers) {
+    public static void sendTriggers(final Player player, final ArrayList<Action> triggers) {
         if (triggers.size() == 1) {
             player.sendTitle(null,Utils.tacc("&e&l"+triggers.get(0)+"  &c&l?  ?"), 10, 30, 10);
         } else if (triggers.size() == 2) {

@@ -69,7 +69,7 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
                         if (equipping) e.currentItem else null
                     )
                     Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
-                    if (armorEquipEvent.isCancelled()) {
+                    if (armorEquipEvent.isCancelled) {
                         e.isCancelled = true
                     }
                 }
@@ -106,7 +106,7 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
                 val armorEquipEvent =
                     ArmorEquipEvent(e.whoClicked as Player, method, newArmorType, oldArmorPiece, newArmorPiece)
                 Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
-                if (armorEquipEvent.isCancelled()) {
+                if (armorEquipEvent.isCancelled) {
                     e.isCancelled = true
                 }
             }
@@ -140,7 +140,7 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
                     val armorEquipEvent =
                         ArmorEquipEvent(e.player, EquipMethod.HOTBAR, ArmorType.matchType(e.item), null, e.item)
                     Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
-                    if (armorEquipEvent.isCancelled()) {
+                    if (armorEquipEvent.isCancelled) {
                         e.isCancelled = true
                         player.updateInventory()
                     }
@@ -161,7 +161,7 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
             val armorEquipEvent =
                 ArmorEquipEvent(event.whoClicked as Player, EquipMethod.DRAG, type, null, event.oldCursor)
             Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
-            if (armorEquipEvent.isCancelled()) {
+            if (armorEquipEvent.isCancelled) {
                 event.result = Event.Result.DENY
                 event.isCancelled = true
             }

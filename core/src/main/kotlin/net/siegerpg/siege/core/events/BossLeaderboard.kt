@@ -29,7 +29,7 @@ class BossLeaderboard : Listener {
 
 
     @EventHandler
-    public fun onBossGetHit(evt: EntityDamageByEntityEvent) {
+	fun onBossGetHit(evt: EntityDamageByEntityEvent) {
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return
         if (evt.damager.type != EntityType.PLAYER) return
@@ -43,7 +43,7 @@ class BossLeaderboard : Listener {
     }
 
     @EventHandler
-    public fun onBossUnlive(evt: EntityDeathEvent) {
+	fun onBossUnlive(evt: EntityDeathEvent) {
         val deathTime = Instant.now()
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return

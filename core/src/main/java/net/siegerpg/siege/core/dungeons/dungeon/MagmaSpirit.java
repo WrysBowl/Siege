@@ -23,7 +23,7 @@ public class MagmaSpirit extends Dungeon {
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 307, 51, -117);
+        final Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 307, 51, -117);
         new Helix().createHelix(loc, Particle.LAVA);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {

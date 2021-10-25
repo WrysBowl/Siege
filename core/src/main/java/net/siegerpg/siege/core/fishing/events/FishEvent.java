@@ -8,7 +8,6 @@ import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
-import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.server.PluginEnableEvent;
 
 import java.util.logging.Level;
@@ -16,23 +15,23 @@ import java.util.logging.Level;
 public class FishEvent implements Listener {
 
 	@EventHandler
-	public void onEnable(PluginEnableEvent e) {
+	public void onEnable(final PluginEnableEvent e) {
 		BaitCore.registerAllBaits();
 		Core.plugin().getLogger().log(Level.INFO, "Baited registering baits");
 	}
 
 	@EventHandler
-	public void onFish(PlayerFishEvent e) {
+	public void onFish(final PlayerFishEvent e) {
 		if(FishingTask.runningTasks.containsKey(e.getPlayer().getUniqueId())) {
-			FishingTask task = FishingTask.runningTasks.get(e.getPlayer().getUniqueId());
-			CustomFishEvent ce = task.getEvent();
+			final FishingTask task = FishingTask.runningTasks.get(e.getPlayer().getUniqueId());
+			final CustomFishEvent ce = task.getEvent();
 			if(ce.getFishingData().isFishing()) {
 				e.setCancelled(true);
 			}
 		}
-		if(e.getState() == State.CAUGHT_FISH) {
+		if(e.getState() == PlayerFishEvent.State.CAUGHT_FISH) {
 			e.setCancelled(true);
-			CustomFishEvent cfe = new CustomFishEvent(e);
+			final CustomFishEvent cfe = new CustomFishEvent(e);
 			cfe.trigger();
 		}
 		

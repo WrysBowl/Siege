@@ -13,12 +13,12 @@ import java.util.Map;
 
 public class DungeonListener implements Listener {
     @EventHandler
-    public void onBossDeath(EntityDeathEvent e) {
+    public void onBossDeath(final EntityDeathEvent e) {
 
-        for (Map.Entry<String, Dungeon> entry : DungeonCommand.dungeons.entrySet()) {
-            String key = entry.getKey();
-            Dungeon value = entry.getValue();
-            Entity boss = value.boss;
+        for (final Map.Entry<String, Dungeon> entry : DungeonCommand.dungeons.entrySet()) {
+            final String key = entry.getKey();
+            final Dungeon value = entry.getValue();
+            final Entity boss = value.boss;
             if (boss == null) continue;
             if (boss.isDead()) value.boss = null;
         }

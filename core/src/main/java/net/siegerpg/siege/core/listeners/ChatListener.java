@@ -15,13 +15,13 @@ import org.bukkit.inventory.ItemStack;
 public class ChatListener implements Listener {
 
     @EventHandler
-    public void playerChat(AsyncPlayerChatEvent e) {
-        Player player = e.getPlayer();
-        Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
-        String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";
-        String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
-        String message = e.getMessage().replaceAll("&k", "");
-        String check = Utils.strip(message);
+    public void playerChat(final AsyncPlayerChatEvent e) {
+        final Player player = e.getPlayer();
+        final Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
+        final String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";
+        final String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
+        final String message = e.getMessage().replaceAll("&k", "");
+        final String check = Utils.strip(message);
         if (check.equalsIgnoreCase("") || check.equalsIgnoreCase(" ")) {
             e.getPlayer().sendMessage(Utils.tacc("You can not send a empty message!"));
             e.setCancelled(true);
@@ -30,12 +30,12 @@ public class ChatListener implements Listener {
         if (message.contains("[item]")) {
             e.setCancelled(true);
             if (player.getInventory().getItemInMainHand().getType() != Material.AIR) {
-                ItemStack item = player.getInventory().getItemInMainHand();
+                final ItemStack item = player.getInventory().getItemInMainHand();
                 String name = item.getItemMeta().getDisplayName();
                 if (name.equals("")) name = player.getInventory().getItemInMainHand().getI18NDisplayName();
-                Component miniMessage = Utils.lore("<bold><yellow>" + item.getAmount() + "x " + name).hoverEvent(item);
-                Component prefixes = Utils.lore(Utils.tacc(level + " " + prefix + " &7" + player.getName() + " &f"));
-                Component actualMessage = Utils.lore(e.getMessage()).replaceText("[item]", miniMessage);
+                final Component miniMessage = Utils.lore("<bold><yellow>" + item.getAmount() + "x " + name).hoverEvent(item);
+                final Component prefixes = Utils.lore(Utils.tacc(level + " " + prefix + " &7" + player.getName() + " &f"));
+                final Component actualMessage = Utils.lore(e.getMessage()).replaceText("[item]", miniMessage);
                 Bukkit.getServer().sendMessage(prefixes.append(actualMessage));
                 return;
             }

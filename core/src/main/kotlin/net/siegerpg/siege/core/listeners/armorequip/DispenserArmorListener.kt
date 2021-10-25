@@ -21,7 +21,7 @@ class DispenserArmorListener : Listener {
                 val p = event.targetEntity as Player
                 val armorEquipEvent = ArmorEquipEvent(p, ArmorEquipEvent.EquipMethod.DISPENSER, type, null, event.item)
                 Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
-                if (armorEquipEvent.isCancelled()) {
+                if (armorEquipEvent.isCancelled) {
                     event.isCancelled = true
                 }
             }

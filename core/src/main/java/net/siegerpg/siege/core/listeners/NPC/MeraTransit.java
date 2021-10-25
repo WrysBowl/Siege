@@ -21,24 +21,24 @@ import java.util.List;
 public class MeraTransit implements Listener {
 
     @EventHandler
-    public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
+    public void onRightClickOnEntity(final PlayerInteractEntityEvent e) {
         if (e.getRightClicked().getName().contains("Mera") && e.getRightClicked().getName().contains("6")) {
-            Inventory shop = getGUIWorldTransit(e.getPlayer());
+            final Inventory shop = this.getGUIWorldTransit(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }
     }
 
     @EventHandler
-    public void guiClick(InventoryClickEvent e) {
+    public void guiClick(final InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player)) {
             return;
         }
         if (e.getView().getTitle().equals("World Transit")) {
             e.setCancelled(true);
-            Player player = (Player) e.getWhoClicked();
-            World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
-            int slot = e.getSlot();
-            int bal = (int) VaultHook.econ.getBalance(player);
+            final Player player = (Player) e.getWhoClicked();
+            final World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
+            final int slot = e.getSlot();
+            final int bal = (int) VaultHook.econ.getBalance(player);
             int farmCost = 200;
             int villageCost = 300;
             int caveCost = 200;
@@ -119,11 +119,11 @@ public class MeraTransit implements Listener {
         }
     }
 
-    private Inventory getGUIWorldTransit(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "World Transit");
+    private Inventory getGUIWorldTransit(final Player player) {
+        final Inventory gui = Bukkit.createInventory(null, 27, "World Transit");
 
         //Fill in the GUI
-        ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        final ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         for (int i = 0; i < gui.getSize(); i++) {
             gui.setItem(i, filler);
         }
@@ -146,42 +146,42 @@ public class MeraTransit implements Listener {
         }
 
         //Creating Wheat Farm Icon
-        ItemStack farm = new ItemStack(Material.WHEAT);
-        ItemMeta farmMeta = farm.getItemMeta();
+        final ItemStack farm = new ItemStack(Material.WHEAT);
+        final ItemMeta farmMeta = farm.getItemMeta();
         farmMeta.displayName(Utils.lore("<yellow><bold>Farm"));
-        final int finalFarmCost = farmCost;
-        List<Component> farmLore = new ArrayList<>() {
+        int finalFarmCost = farmCost;
+        final List<Component> farmLore = new ArrayList<>() {
             {
-                add(Utils.lore("<green>Click to travel"));
-                add(Utils.lore("<yellow>Cost " + finalFarmCost));
+                this.add(Utils.lore("<green>Click to travel"));
+                this.add(Utils.lore("<yellow>Cost " + finalFarmCost));
             }
         };
         farmMeta.lore(farmLore);
         farm.setItemMeta(farmMeta);
 
         //Creating Forest Cave
-        ItemStack cave = new ItemStack(Material.COAL_ORE);
-        ItemMeta caveMeta = cave.getItemMeta();
+        final ItemStack cave = new ItemStack(Material.COAL_ORE);
+        final ItemMeta caveMeta = cave.getItemMeta();
         caveMeta.displayName(Utils.lore("<gray><bold>Cave"));
-        final int finalCaveCost = caveCost;
-        List<Component> caveLore = new ArrayList<>() {
+        int finalCaveCost = caveCost;
+        final List<Component> caveLore = new ArrayList<>() {
             {
-                add(Utils.lore("<green>Click to travel"));
-                add(Utils.lore("<yellow>Cost " + finalCaveCost));
+                this.add(Utils.lore("<green>Click to travel"));
+                this.add(Utils.lore("<yellow>Cost " + finalCaveCost));
             }
         };
         caveMeta.lore(caveLore);
         cave.setItemMeta(caveMeta);
 
         //Creating Forest Cave
-        ItemStack village = new ItemStack(Material.EMERALD);
-        ItemMeta villageMeta = village.getItemMeta();
+        final ItemStack village = new ItemStack(Material.EMERALD);
+        final ItemMeta villageMeta = village.getItemMeta();
         villageMeta.displayName(Utils.lore("<green><bold>Village"));
-        final int finalVillageCost = villageCost;
-        List<Component> villageLore = new ArrayList<>() {
+        int finalVillageCost = villageCost;
+        final List<Component> villageLore = new ArrayList<>() {
             {
-                add(Utils.lore("<green>Click to travel"));
-                add(Utils.lore("<yellow>Cost " + finalVillageCost));
+                this.add(Utils.lore("<green>Click to travel"));
+                this.add(Utils.lore("<yellow>Cost " + finalVillageCost));
             }
         };
         villageMeta.lore(villageLore);

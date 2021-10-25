@@ -24,44 +24,44 @@ import java.util.*;
 
 public class Utils {
     @SuppressWarnings("unused")
-    static public String tacc(String str) {
+    public static String tacc(final String str) {
         return ChatColor.translateAlternateColorCodes('&', str);
     }
 
     @SuppressWarnings("unused")
-    static public String strip(String str) {
+    public static String strip(final String str) {
         return ChatColor.stripColor(str);
     }
 
-    static public Component parse(String str) {
+    public static Component parse(final String str) {
         return MiniMessage.get().parse(str);
     }
 
-    static public Component lore(String str) {
+    public static Component lore(final String str) {
         return MiniMessage.get().parse(str).decoration(TextDecoration.ITALIC, false);
     }
 
-    static public NamespacedKey namespacedKey(String str) {
+    public static NamespacedKey namespacedKey(final String str) {
         return new NamespacedKey(Core.plugin(), str);
     }
 
-    public static boolean randTest(Double num) {
-        double randNumber = Math.random() * 100;
+    public static boolean randTest(final Double num) {
+        final double randNumber = Math.random() * 100;
         return randNumber <= num;
     }
 
-    public static org.bukkit.util.Vector getDifferentialVector(Location from, Location to) {
+    public static org.bukkit.util.Vector getDifferentialVector(final Location from, final Location to) {
         return new Vector((to.getX() - from.getX()), to.getY() - from.getY(), (to.getZ() - from.getZ()));
     }
 
-    public static double round (double value, int precision) {
-        int scale = (int) Math.pow(10, precision);
+    public static double round (final double value, final int precision) {
+        final int scale = (int) Math.pow(10, precision);
         return (double) Math.round(value * scale) / scale;
     }
 
-    public static String convertSecondsToTime(int seconds) {
-        double minutes = seconds/60.0;
-        double hours = minutes/60;
+    public static String convertSecondsToTime(final int seconds) {
+        final double minutes = seconds/60.0;
+        final double hours = minutes/60;
         String time = "";
 
         if (hours >= 1) {
@@ -80,8 +80,8 @@ public class Utils {
         return time;
     }
 
-    public static Integer getHighestPV(Player player) {
-        Set<PermissionAttachmentInfo> perms = player.getEffectivePermissions();
+    public static Integer getHighestPV(final Player player) {
+        final Set<PermissionAttachmentInfo> perms = player.getEffectivePermissions();
         int highestPV = 54;
         while(!player.hasPermission("cosmicvaults.amount."+highestPV)) {
             highestPV-=1;
@@ -92,76 +92,76 @@ public class Utils {
 
     public static int randRarity() {
         //((random number between 1 and 100)*(1/random number between 1 and 5))
-        double rand1 = ((Math.random() * 70) + 1);
-        double rand2 = (((Math.random() * 70) + 1));
+        final double rand1 = ((Math.random() * 70) + 1);
+        final double rand2 = (((Math.random() * 70) + 1));
         return (int) ((Math.sqrt(rand1*rand2)) + 29);
     }
 
-    public static ItemStack setLoreCost(CustomItem item) {
-        ItemStack updatedItem = item.getUpdatedItem(false);
-        int itemCost = item.getQuality() * item.getLevelRequirement() * 2;
+    public static ItemStack setLoreCost(final CustomItem item) {
+        final ItemStack updatedItem = item.getUpdatedItem(false);
+        final int itemCost = item.getQuality() * item.getLevelRequirement() * 2;
 
-        List<String> lore = new ArrayList<>(updatedItem.getLore().size()+1);
+        final List<String> lore = new ArrayList<>(updatedItem.getLore().size()+1);
         lore.addAll(updatedItem.getLore());
-        lore.add(Utils.tacc("&eCost " + itemCost));
+        lore.add(tacc("&eCost " + itemCost));
 
-        ItemMeta meta = updatedItem.getItemMeta();
+        final ItemMeta meta = updatedItem.getItemMeta();
         meta.setLore(lore);
         updatedItem.setItemMeta(meta);
         return updatedItem;
     }
 
-    public static Integer getCost(ItemStack item) {
+    public static Integer getCost(final ItemStack item) {
         String cost = item.getLore().get(item.getLore().size()-1);
-        cost = cost.replace(Utils.tacc("&eCost "), "");
+        cost = cost.replace(tacc("&eCost "), "");
         return Integer.valueOf(cost);
     }
 
-    public static ItemStack removeLastLore(ItemStack item) {
-        List<String> lore = new ArrayList<>(item.getLore().size()-1);
+    public static ItemStack removeLastLore(final ItemStack item) {
+        final List<String> lore = new ArrayList<>(item.getLore().size()-1);
         lore.addAll(item.getLore());
         lore.remove(item.getLore().size()-1);
 
-        ItemMeta meta = item.getItemMeta();
+        final ItemMeta meta = item.getItemMeta();
         meta.setLore(lore);
         item.setItemMeta(meta);
         return item;
     }
 
-    public static ItemStack addLore(ItemStack item, Component... lore) {
+    public static ItemStack addLore(final ItemStack item, final Component... lore) {
         List<Component> newLore = item.lore();
         if (newLore == null) {
             newLore = new ArrayList<>(lore.length);
         }
-        newLore.add(lore(" "));
+        newLore.add(Utils.lore(" "));
         newLore.addAll(Arrays.asList(lore));
         item.lore(newLore);
         return item;
     }
 
-    public static ItemStack setCost(ItemStack item, Integer cost) {
-        List<String> lore;
+    public static ItemStack setCost(final ItemStack item, final Integer cost) {
+        final List<String> lore;
         if (item.getLore() == null) {
             lore = new ArrayList<>(1);
         } else {
             lore = new ArrayList<>(item.getLore().size() + 1);
             lore.addAll(item.getLore());
         }
-        lore.add(Utils.tacc("&eCost " + cost));
+        lore.add(tacc("&eCost " + cost));
 
-        ItemMeta meta = item.getItemMeta();
+        final ItemMeta meta = item.getItemMeta();
         meta.setLore(lore);
         item.setItemMeta(meta);
         return item;
     }
 
-    public static boolean giveItem(Player player, ItemStack item) {
-        final boolean fullInv = ((Player)player).getInventory().firstEmpty() == -1;
-        final boolean fullEnderChest = ((Player)player).getEnderChest().firstEmpty() == -1;
+    public static boolean giveItem(final Player player, final ItemStack item) {
+        boolean fullInv = player.getInventory().firstEmpty() == -1;
+        boolean fullEnderChest = player.getEnderChest().firstEmpty() == -1;
         if (!fullInv) {
-            ((Player)player).getInventory().addItem(item);
+            player.getInventory().addItem(item);
         } else if (!fullEnderChest) {
-            ((Player)player).getEnderChest().addItem(item);
+            player.getEnderChest().addItem(item);
         } else {
             return false;
         }

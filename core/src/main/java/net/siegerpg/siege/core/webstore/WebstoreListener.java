@@ -19,10 +19,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class WebstoreListener implements Listener {
 
     @EventHandler
-    public void onEXPBoosterRedeem(PlayerInteractEvent e) {
+    public void onEXPBoosterRedeem(final PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            Player player = e.getPlayer();
-            ItemStack item = player.getInventory().getItemInMainHand();
+            final Player player = e.getPlayer();
+            final ItemStack item = player.getInventory().getItemInMainHand();
             if (item.getType() != Material.PAPER) return;
             if (item.getItemMeta().getDisplayName().contains("EXP Booster")) {
 
@@ -33,9 +33,9 @@ public class WebstoreListener implements Listener {
                 }
 
                 //Getting the hidden 'NBT' value that contains the multiplier of the item and setting the exp multiplier to it
-                NBTItem nbt = new NBTItem(item);
-                double multi = nbt.getDouble("multiplier");
-                int sec = nbt.getInteger("seconds");
+                final NBTItem nbt = new NBTItem(item);
+                final double multi = nbt.getDouble("multiplier");
+                final int sec = nbt.getInteger("seconds");
                 GlobalMultipliers.expMultiplier = multi;
 
                 //Send a message to the player saying their booster has been activated
@@ -53,7 +53,7 @@ public class WebstoreListener implements Listener {
                     @Override
                     public void run() {
                         GlobalMultipliers.expMultiplier = 1.0;
-                        for (Player p : Bukkit.getOnlinePlayers()) {
+                        for (final Player p : Bukkit.getOnlinePlayers()) {
                             Scoreboard.updateScoreboard(p);
                         }
                     }
@@ -63,10 +63,10 @@ public class WebstoreListener implements Listener {
     }
 
     @EventHandler
-    public void onGoldBoosterRedeem(PlayerInteractEvent e) {
+    public void onGoldBoosterRedeem(final PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            Player player = e.getPlayer();
-            ItemStack item = player.getInventory().getItemInMainHand();
+            final Player player = e.getPlayer();
+            final ItemStack item = player.getInventory().getItemInMainHand();
             if (item.getType() != Material.PAPER) return;
             if (item.getItemMeta().getDisplayName().contains("Gold Booster")) {
 
@@ -77,9 +77,9 @@ public class WebstoreListener implements Listener {
                 }
 
                 //Getting the hidden 'NBT' value that contains the multiplier of the item and setting the gold multiplier to it
-                NBTItem nbt = new NBTItem(item);
-                double multi = nbt.getDouble("multiplier");
-                int sec = nbt.getInteger("seconds");
+                final NBTItem nbt = new NBTItem(item);
+                final double multi = nbt.getDouble("multiplier");
+                final int sec = nbt.getInteger("seconds");
                 GlobalMultipliers.goldMultiplier = multi;
 
                 //Send a message to the player saying their booster has been activated
@@ -97,7 +97,7 @@ public class WebstoreListener implements Listener {
                     @Override
                     public void run() {
                         GlobalMultipliers.goldMultiplier = 1.0;
-                        for (Player p : Bukkit.getOnlinePlayers()) {
+                        for (final Player p : Bukkit.getOnlinePlayers()) {
                             Scoreboard.updateScoreboard(p);
                         }
                     }

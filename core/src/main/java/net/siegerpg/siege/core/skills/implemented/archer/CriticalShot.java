@@ -13,31 +13,31 @@ import java.util.HashMap;
 public class CriticalShot extends Skill {
 
     public CriticalShot(){
-        this.ID = 1;
-        this.SKILL = this;
+        ID = 1;
+        SKILL = this;
 
-        this.DISPLAY_ITEM = new ItemStack(Material.TIPPED_ARROW);
-        this.DISPLAY_ITEM.getItemMeta().displayName(Utils.lore("<blue>Critical Shot"));
-        this.DISPLAY_ITEM.lore(new ArrayList<>(){{
-            add(Utils.lore(""));
-            add(Utils.lore(""));
-            add(Utils.lore(""));
-            add(Utils.lore(""));
-            add(Utils.lore(""));
-            add(Utils.lore(""));
+        DISPLAY_ITEM = new ItemStack(Material.TIPPED_ARROW);
+        DISPLAY_ITEM.getItemMeta().displayName(Utils.lore("<blue>Critical Shot"));
+        DISPLAY_ITEM.lore(new ArrayList<>(){{
+	        this.add(Utils.lore(""));
+	        this.add(Utils.lore(""));
+	        this.add(Utils.lore(""));
+	        this.add(Utils.lore(""));
+	        this.add(Utils.lore(""));
+	        this.add(Utils.lore(""));
         }});
-        this.MANA_COST = 10;
-        this.CHILDREN = new HashMap<>(){{
-            put(1, new CriticalShot());
+        MANA_COST = 10;
+        CHILDREN = new HashMap<>(){{
+	        this.put(1, new CriticalShot());
         }};
-        this.TRIGGER = new ArrayList<>(){{
-            add(Action.LEFT_CLICK_AIR);
-            add(Action.LEFT_CLICK_AIR);
-            add(Action.LEFT_CLICK_AIR);
+        TRIGGER = new ArrayList<>(){{
+	        this.add(Action.LEFT_CLICK_AIR);
+	        this.add(Action.LEFT_CLICK_AIR);
+	        this.add(Action.LEFT_CLICK_AIR);
         }};
     }
 
-    public void skillAction(PlayerInteractEvent e) {
+    public void skillAction(final PlayerInteractEvent e) {
 
     }
 }

@@ -11,12 +11,12 @@ import org.jetbrains.annotations.NotNull;
 public class ToggleTips implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (!(sender instanceof Player)) {
             sender.sendMessage(Utils.lore("<red>You can not toggle tips!"));
             return false;
         }
-        Player player = (Player) sender;
+        final Player player = (Player) sender;
         if (args.length < 1) {
             player.sendMessage(Utils.parse("\n" +
                     "<gold><bold>TOGGLE TIPS<reset>" +

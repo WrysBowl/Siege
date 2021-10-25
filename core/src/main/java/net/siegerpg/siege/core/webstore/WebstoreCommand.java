@@ -24,14 +24,14 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
     //Make sure to allow arg-1 to also be a player
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (sender instanceof Player) {
             ((Player) sender).performCommand("craftingstore:buy");
             return false;
         }
         if (args.length < 2) return false; //check if command was used properly
 
-        UUID uuid;
+        final UUID uuid;
         Player player;
 
         //Parse UUID as a player and check if player is online
@@ -44,7 +44,7 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
                 uuid = player.getUniqueId();
             }
 
-        } catch (IllegalArgumentException x) {
+        } catch (final IllegalArgumentException x) {
             Bukkit.getLogger().info(Utils.tacc("&cParsing of the UUID has thrown an error."));
             return false;
         }
@@ -52,7 +52,7 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
         if (player.isOnline()) { //if player is online then they get their item right away
 
             //Call the method that gets the package and calls the complete purchase method
-            packageDelivery(args, uuid);
+            WebstoreUtils.packageDelivery(args, uuid);
 
         } else { //if player is not online then their information is stored in a database
 

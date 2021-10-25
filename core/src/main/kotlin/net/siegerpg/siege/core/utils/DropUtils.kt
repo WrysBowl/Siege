@@ -69,7 +69,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
          * @param item The item to drop
          * @param players The list of player uuids that will be able to pick the item up
          */
-        public fun dropItemForPlayers(loc: Location, item: ItemStack, players: List<UUID>): Item {
+		fun dropItemForPlayers(loc: Location, item: ItemStack, players: List<UUID>): Item {
             return loc.world.dropItem(loc, itemWithSeepickableNbtTags(item, players))
         }
 
@@ -79,7 +79,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
          * @param item The item to drop
          * @param players The list of player uuids that will be able to pick the item up
          */
-        public fun dropItemNaturallyForPlayers(loc: Location, item: ItemStack, players: List<UUID>): Item {
+		fun dropItemNaturallyForPlayers(loc: Location, item: ItemStack, players: List<UUID>): Item {
             return loc.world.dropItemNaturally(
                 loc,
                 itemWithSeepickableNbtTags(item, players)

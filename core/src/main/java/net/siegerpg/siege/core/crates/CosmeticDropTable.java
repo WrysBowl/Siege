@@ -17,21 +17,21 @@ public class CosmeticDropTable {
     //Method used to pick a random item from a drop table
     public CustomCosmetic pickItem() {
         double totalWeight = 0;
-        for (Map.Entry<CustomCosmetic, Integer> entry : dropTable.entrySet()) {
-            Integer value = entry.getValue();
+        for (final Map.Entry<CustomCosmetic, Integer> entry : this.dropTable.entrySet()) {
+            final Integer value = entry.getValue();
             totalWeight += value;
         }
 
         int weight = 0;
-        double random = Math.random() * totalWeight;
-        for (Map.Entry<CustomCosmetic, Integer> entry : dropTable.entrySet()) {
-            CustomCosmetic key = entry.getKey();
-            Integer value = entry.getValue();
+        final double random = Math.random() * totalWeight;
+        for (final Map.Entry<CustomCosmetic, Integer> entry : this.dropTable.entrySet()) {
+            final CustomCosmetic key = entry.getKey();
+            final Integer value = entry.getValue();
 
             weight += value;
             if (random > weight) continue; //if the random number is above the totalWeight
             return key;
         }
-        return dropTable.entrySet().iterator().next().getKey();
+        return this.dropTable.entrySet().iterator().next().getKey();
     }
 }

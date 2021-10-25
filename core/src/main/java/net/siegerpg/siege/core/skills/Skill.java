@@ -21,49 +21,52 @@ public class Skill {
     public Skill SKILL;
     public ItemStack DISPLAY_ITEM;
     public Integer MANA_COST;
-    public @Nullable
+    @Nullable
+    public
     HashMap<StatTypes, Double> STATS;
-    public @Nullable
+    @Nullable
+    public
     HashMap<Integer, Skill> CHILDREN;
-    public @Nullable
+    @Nullable
+    public
     ArrayList<Action> TRIGGER;
 
     public Skill() {
-        this.ID = 0;
-        this.SKILL = this;
-        this.MANA_COST = 0;
-        STATS.put(StatTypes.LUCK, 0.0);
-        STATS.put(StatTypes.STRENGTH, 0.0);
-        STATS.put(StatTypes.TOUGHNESS, 0.0);
-        STATS.put(StatTypes.HEALTH, 0.0);
-        STATS.put(StatTypes.REGENERATION, 0.0);
-        STATS.put(StatTypes.MANA, 0.0);
-        STATS.put(StatTypes.MANA_REGEN, 0.0);
+        ID = 0;
+        SKILL = this;
+        MANA_COST = 0;
+	    this.STATS.put(StatTypes.LUCK, 0.0);
+	    this.STATS.put(StatTypes.STRENGTH, 0.0);
+	    this.STATS.put(StatTypes.TOUGHNESS, 0.0);
+	    this.STATS.put(StatTypes.HEALTH, 0.0);
+	    this.STATS.put(StatTypes.REGENERATION, 0.0);
+	    this.STATS.put(StatTypes.MANA, 0.0);
+	    this.STATS.put(StatTypes.MANA_REGEN, 0.0);
 
-        CHILDREN.put(1, new CriticalShot());
+	    this.CHILDREN.put(1, new CriticalShot());
 
-        this.DISPLAY_ITEM = new ItemStack(Material.BEDROCK);
+        DISPLAY_ITEM = new ItemStack(Material.BEDROCK);
     }
 
-    public Skill(int id, @Nullable HashMap<StatTypes, Double> stats, @Nullable HashMap<Integer, Skill> children, int manaCost, @Nullable ArrayList<Action> trigger, ItemStack displayItem) {
-        this.ID = id;
-        this.STATS = stats;
-        this.CHILDREN = children;
-        this.MANA_COST = manaCost;
-        this.TRIGGER = trigger;
-        this.DISPLAY_ITEM = displayItem;
+    public Skill(final int id, @Nullable final HashMap<StatTypes, Double> stats, @Nullable final HashMap<Integer, Skill> children, final int manaCost, @Nullable final ArrayList<Action> trigger, final ItemStack displayItem) {
+        ID = id;
+        STATS = stats;
+        CHILDREN = children;
+        MANA_COST = manaCost;
+        TRIGGER = trigger;
+        DISPLAY_ITEM = displayItem;
     }
 
-    public Skill(Skill skill) {
-        this.SKILL = skill;
+    public Skill(final Skill skill) {
+        SKILL = skill;
     }
 
     public HashMap<StatTypes, Double> getStats() {
-        return this.STATS;
+        return STATS;
     }
 
     public int getID() {
-        return this.ID;
+        return ID;
     }
 
     public Skill getSkill() {
@@ -71,22 +74,22 @@ public class Skill {
     }
 
     public HashMap<Integer, Skill> getChildren() {
-        return this.CHILDREN;
+        return CHILDREN;
     }
 
     public ItemStack getDisplayItem() {
-        return this.DISPLAY_ITEM;
+        return DISPLAY_ITEM;
     }
 
     public Integer getManaCost() {
-        return this.MANA_COST;
+        return MANA_COST;
     }
 
     public ArrayList<Action> getTrigger() {
-        return this.TRIGGER;
+        return TRIGGER;
     }
 
-    public void skillAction(PlayerInteractEvent e) {
+    public void skillAction(final PlayerInteractEvent e) {
         Bukkit.getLogger().info(Utils.tacc("&cPlayer tried to activate invalid skill!"));
     }
 }

@@ -35,7 +35,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
     public static ArrayList<ItemStack> shopWeapons = new ArrayList<>();
     public static ArrayList<ItemStack> armorItems = new ArrayList<>();
     public static ArrayList<ItemStack> shopArmor = new ArrayList<>();
-    private static int addVal = -10;
+    private static final int addVal = -10;
 
     @Override
     public void run() {
@@ -43,12 +43,12 @@ public class SmokyBlacksmith implements Listener, Runnable {
 
     public static void resetItems() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
-            setShopWeapons();
-            setShopArmor();
-            weaponItems.clear();
-            armorItems.clear();
-            ArrayList<Integer> usedWeapons = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
-            ArrayList<Integer> usedArmor = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
+            SmokyBlacksmith.setShopWeapons();
+            SmokyBlacksmith.setShopArmor();
+            SmokyBlacksmith.weaponItems.clear();
+            SmokyBlacksmith.armorItems.clear();
+            final ArrayList<Integer> usedWeapons = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
+            final ArrayList<Integer> usedArmor = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
             for (int i = 0; i<7; i++) { //this loops 7 times
                 int wepIndex = (int) (Math.random() * 11); //initializes a variable that is a random number from 0 - 14
                 int armIndex = (int) (Math.random() * 11); //initializes a variable that is a random number from 0 - 19
@@ -64,85 +64,85 @@ public class SmokyBlacksmith implements Listener, Runnable {
                 usedArmor.add(armIndex);
 
 
-                weaponItems.add(shopWeapons.get(wepIndex));
-                armorItems.add(shopArmor.get(wepIndex));
+                SmokyBlacksmith.weaponItems.add(SmokyBlacksmith.shopWeapons.get(wepIndex));
+                SmokyBlacksmith.armorItems.add(SmokyBlacksmith.shopArmor.get(wepIndex));
             }
             Bukkit.broadcastMessage(Utils.tacc("&aSmoky's shop has reset with new items!"));
         }, 0, 36000);
     }
 
     private static void setShopWeapons() {
-        shopWeapons.clear();
-        shopWeapons.add(0, Utils.setLoreCost(new Twig(Utils.randRarity() + addVal)));
-        shopWeapons.add(1, Utils.setLoreCost(new StickyStick(Utils.randRarity() + addVal)));
-        shopWeapons.add(2, Utils.setLoreCost(new Spade(Utils.randRarity() + addVal)));
-        shopWeapons.add(3, Utils.setLoreCost(new ScrapyardBow(Utils.randRarity() + addVal)));
-        shopWeapons.add(4, Utils.setLoreCost(new WoodenBow(Utils.randRarity() + addVal)));
-        shopWeapons.add(5, Utils.setLoreCost(new PebbleShooter(Utils.randRarity() + addVal)));
-        shopWeapons.add(6, Utils.setLoreCost(new Club(Utils.randRarity() + addVal)));
-        shopWeapons.add(7, Utils.setLoreCost(new GiantClub(Utils.randRarity() + addVal)));
-        shopWeapons.add(8, Utils.setLoreCost(new FemurBone(Utils.randRarity() + addVal)));
-        shopWeapons.add(9, Utils.setLoreCost(new LivingTwig(Utils.randRarity() + addVal)));
-        shopWeapons.add(10, Utils.setLoreCost(new GlisteningTwig(Utils.randRarity() + addVal)));
-        shopWeapons.add(11, Utils.setLoreCost(new GlowingTwig(Utils.randRarity() + addVal)));
+        SmokyBlacksmith.shopWeapons.clear();
+        SmokyBlacksmith.shopWeapons.add(0, Utils.setLoreCost(new Twig(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(1, Utils.setLoreCost(new StickyStick(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(2, Utils.setLoreCost(new Spade(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(3, Utils.setLoreCost(new ScrapyardBow(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(4, Utils.setLoreCost(new WoodenBow(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(5, Utils.setLoreCost(new PebbleShooter(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(6, Utils.setLoreCost(new Club(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(7, Utils.setLoreCost(new GiantClub(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(8, Utils.setLoreCost(new FemurBone(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(9, Utils.setLoreCost(new LivingTwig(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(10, Utils.setLoreCost(new GlisteningTwig(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopWeapons.add(11, Utils.setLoreCost(new GlowingTwig(Utils.randRarity() + SmokyBlacksmith.addVal)));
     }
 
     private static void setShopArmor() {
-        shopArmor.clear();
-        shopArmor.add(0, Utils.setLoreCost(new SlimyHelmet(Utils.randRarity() + addVal)));
-        shopArmor.add(1, Utils.setLoreCost(new SlimyChestplate(Utils.randRarity() + addVal)));
-        shopArmor.add(2, Utils.setLoreCost(new SlimyLeggings(Utils.randRarity() + addVal)));
-        shopArmor.add(3, Utils.setLoreCost(new SlimyBoots(Utils.randRarity() + addVal)));
-        shopArmor.add(4, Utils.setLoreCost(new MagmaHelmet(Utils.randRarity() + addVal)));
-        shopArmor.add(5, Utils.setLoreCost(new MagmaChestplate(Utils.randRarity() + addVal)));
-        shopArmor.add(6, Utils.setLoreCost(new MagmaLeggings(Utils.randRarity() + addVal)));
-        shopArmor.add(7, Utils.setLoreCost(new MagmaBoots(Utils.randRarity() + addVal)));
-        shopArmor.add(8, Utils.setLoreCost(new WoolHelmet(Utils.randRarity() + addVal)));
-        shopArmor.add(9, Utils.setLoreCost(new WoolChestplate(Utils.randRarity() + addVal)));
-        shopArmor.add(10, Utils.setLoreCost(new WoolLeggings(Utils.randRarity() + addVal)));
-        shopArmor.add(11, Utils.setLoreCost(new WoolBoots(Utils.randRarity() + addVal)));
+        SmokyBlacksmith.shopArmor.clear();
+        SmokyBlacksmith.shopArmor.add(0, Utils.setLoreCost(new SlimyHelmet(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(1, Utils.setLoreCost(new SlimyChestplate(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(2, Utils.setLoreCost(new SlimyLeggings(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(3, Utils.setLoreCost(new SlimyBoots(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(4, Utils.setLoreCost(new MagmaHelmet(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(5, Utils.setLoreCost(new MagmaChestplate(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(6, Utils.setLoreCost(new MagmaLeggings(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(7, Utils.setLoreCost(new MagmaBoots(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(8, Utils.setLoreCost(new WoolHelmet(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(9, Utils.setLoreCost(new WoolChestplate(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(10, Utils.setLoreCost(new WoolLeggings(Utils.randRarity() + SmokyBlacksmith.addVal)));
+        SmokyBlacksmith.shopArmor.add(11, Utils.setLoreCost(new WoolBoots(Utils.randRarity() + SmokyBlacksmith.addVal)));
     }
 
     @EventHandler
-    public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
+    public void onRightClickOnEntity(final PlayerInteractEntityEvent e) {
         if (e.getRightClicked().getName().contains("Smoky") && e.getRightClicked().getName().contains("6")) {
-            Inventory shop = getShopMenu(e.getPlayer());
+            final Inventory shop = this.getShopMenu(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }
     }
 
     @EventHandler
-    public void guiClick(InventoryClickEvent e) {
+    public void guiClick(final InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player)) {return;}
         if (e.getWhoClicked().getMetadata("SmokyShop").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SmokyShop").get(0).value(), e.getInventory())) {
-            clickShopMenu(e);
+            this.clickShopMenu(e);
             e.setCancelled(true);
         } else if (e.getWhoClicked().getMetadata("SmokyShopWeapons").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SmokyShopWeapons").get(0).value(), e.getInventory())) {
-            clickShopWeapons(e);
+            this.clickShopWeapons(e);
             e.setCancelled(true);
         } else if (e.getWhoClicked().getMetadata("SmokyShopArmor").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("SmokyShopArmor").get(0).value(), e.getInventory())) {
-            clickShopArmor(e);
+            this.clickShopArmor(e);
             e.setCancelled(true);
         }
     }
 
-    private void clickShopMenu(InventoryClickEvent e) {
-        int slot = e.getSlot();
-        Player player = (Player) e.getWhoClicked();
+    private void clickShopMenu(final InventoryClickEvent e) {
+        final int slot = e.getSlot();
+        final Player player = (Player) e.getWhoClicked();
         if (slot == 11) {
-            player.openInventory(getWeaponsMenu(player));
+            player.openInventory(this.getWeaponsMenu(player));
         } else if (slot == 15) {
-            player.openInventory(getArmorMenu(player));
+            player.openInventory(this.getArmorMenu(player));
         }
     }
-    private void clickShopWeapons(InventoryClickEvent e) {
-        int slot = e.getSlot();
-        Player player = (Player) e.getWhoClicked();
+    private void clickShopWeapons(final InventoryClickEvent e) {
+        final int slot = e.getSlot();
+        final Player player = (Player) e.getWhoClicked();
         if (slot > 9 && slot < 17 && e.getCurrentItem() != null) {
-            int cost = Utils.getCost(e.getCurrentItem());
+            final int cost = Utils.getCost(e.getCurrentItem());
             if (VaultHook.econ.getBalance(player) >= cost) {
                 if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
                     player.closeInventory();
@@ -159,11 +159,11 @@ public class SmokyBlacksmith implements Listener, Runnable {
             }
         }
     }
-    private void clickShopArmor(InventoryClickEvent e) {
-        int slot = e.getSlot();
-        Player player = (Player) e.getWhoClicked();
+    private void clickShopArmor(final InventoryClickEvent e) {
+        final int slot = e.getSlot();
+        final Player player = (Player) e.getWhoClicked();
         if (slot > 9 && slot < 17 && e.getCurrentItem() != null) {
-            int cost = Utils.getCost(e.getCurrentItem());
+            final int cost = Utils.getCost(e.getCurrentItem());
             if (VaultHook.econ.getBalance(player) >= cost) {
                 if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
                     player.closeInventory();
@@ -181,22 +181,22 @@ public class SmokyBlacksmith implements Listener, Runnable {
         }
     }
 
-    private Inventory getShopMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
+    private Inventory getShopMenu(final Player player) {
+        final Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
         //Fill in the GUI
-        ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        final ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         for (int i = 0; i < gui.getSize(); i++) {
             gui.setItem(i, filler);
         }
 
         //Creating Weapons Icon
-        ItemStack weapons = new ItemStack (Material.STONE_SWORD);
-        ItemMeta weaponsMeta = weapons.getItemMeta();
+        final ItemStack weapons = new ItemStack (Material.STONE_SWORD);
+        final ItemMeta weaponsMeta = weapons.getItemMeta();
         weaponsMeta.displayName(Utils.lore("<dark_red>Weapons"));
         weaponsMeta.lore(new ArrayList<>(){
             {
-                add(Utils.lore("<gray>Click for Weapons"));
+                this.add(Utils.lore("<gray>Click for Weapons"));
             }
         });
         weaponsMeta.removeAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE);
@@ -204,12 +204,12 @@ public class SmokyBlacksmith implements Listener, Runnable {
         weapons.setItemMeta(weaponsMeta);
 
         //Creating Armor Icon
-        ItemStack armor = new ItemStack (Material.IRON_CHESTPLATE);
-        ItemMeta armorMeta = armor.getItemMeta();
+        final ItemStack armor = new ItemStack (Material.IRON_CHESTPLATE);
+        final ItemMeta armorMeta = armor.getItemMeta();
         armorMeta.displayName(Utils.lore("<dark_aqua>Armor"));
         armorMeta.lore(new ArrayList<>(){
             {
-                add(Utils.lore("<gray>Click for Armor"));
+                this.add(Utils.lore("<gray>Click for Armor"));
             }
         });
         armorMeta.removeAttributeModifier(Attribute.GENERIC_ARMOR);
@@ -223,44 +223,44 @@ public class SmokyBlacksmith implements Listener, Runnable {
         return gui;
     }
 
-    private Inventory getWeaponsMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
+    private Inventory getWeaponsMenu(final Player player) {
+        final Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
         //Fill in the GUI
-        ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        final ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         for (int i = 0; i < gui.getSize(); i++) {
             gui.setItem(i, filler);
         }
 
-        gui.setItem(10, weaponItems.get(0));
-        gui.setItem(11, weaponItems.get(1));
-        gui.setItem(12, weaponItems.get(2));
-        gui.setItem(13, weaponItems.get(3));
-        gui.setItem(14, weaponItems.get(4));
-        gui.setItem(15, weaponItems.get(5));
-        gui.setItem(16, weaponItems.get(6));
+        gui.setItem(10, SmokyBlacksmith.weaponItems.get(0));
+        gui.setItem(11, SmokyBlacksmith.weaponItems.get(1));
+        gui.setItem(12, SmokyBlacksmith.weaponItems.get(2));
+        gui.setItem(13, SmokyBlacksmith.weaponItems.get(3));
+        gui.setItem(14, SmokyBlacksmith.weaponItems.get(4));
+        gui.setItem(15, SmokyBlacksmith.weaponItems.get(5));
+        gui.setItem(16, SmokyBlacksmith.weaponItems.get(6));
 
 
         player.setMetadata("SmokyShopWeapons", new FixedMetadataValue(Core.plugin(), gui));
         return gui;
     }
 
-    private Inventory getArmorMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
+    private Inventory getArmorMenu(final Player player) {
+        final Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
         //Fill in the GUI
-        ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        final ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         for (int i = 0; i < gui.getSize(); i++) {
             gui.setItem(i, filler);
         }
 
-        gui.setItem(10, armorItems.get(0));
-        gui.setItem(11, armorItems.get(1));
-        gui.setItem(12, armorItems.get(2));
-        gui.setItem(13, armorItems.get(3));
-        gui.setItem(14, armorItems.get(4));
-        gui.setItem(15, armorItems.get(5));
-        gui.setItem(16, armorItems.get(6));
+        gui.setItem(10, SmokyBlacksmith.armorItems.get(0));
+        gui.setItem(11, SmokyBlacksmith.armorItems.get(1));
+        gui.setItem(12, SmokyBlacksmith.armorItems.get(2));
+        gui.setItem(13, SmokyBlacksmith.armorItems.get(3));
+        gui.setItem(14, SmokyBlacksmith.armorItems.get(4));
+        gui.setItem(15, SmokyBlacksmith.armorItems.get(5));
+        gui.setItem(16, SmokyBlacksmith.armorItems.get(6));
 
 
         player.setMetadata("SmokyShopArmor", new FixedMetadataValue(Core.plugin(), gui));

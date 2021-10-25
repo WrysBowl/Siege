@@ -11,12 +11,12 @@ import org.jetbrains.annotations.NotNull;
 public class Invsee implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (sender instanceof Player) {
-            Player player = (Player) sender;
+            final Player player = (Player) sender;
             if(player.hasPermission("SiegeCore.invsee")){
                 if (args.length == 1) {
-                    Player targetPlayer = Bukkit.getPlayer(args[0]);
+                    final Player targetPlayer = Bukkit.getPlayer(args[0]);
                     if (targetPlayer != null && targetPlayer.isOnline()) {
                         player.openInventory(targetPlayer.getInventory());
                         return true;

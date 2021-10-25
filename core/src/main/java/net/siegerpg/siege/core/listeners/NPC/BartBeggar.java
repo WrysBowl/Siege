@@ -21,21 +21,21 @@ import java.util.ArrayList;
 public class BartBeggar implements Listener {
 
     @EventHandler
-    public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
+    public void onRightClickOnEntity(final PlayerInteractEntityEvent e) {
         if (e.getRightClicked().getName().contains("Bart") && e.getRightClicked().getName().contains("6")) {
-            getMenu().show(e.getPlayer());
+            this.getMenu().show(e.getPlayer());
         }
     }
     private ChestGui getMenu() {
         //Menu
-        ChestGui menu = new ChestGui(3, "Bart's Treasure Hunt");
+        final ChestGui menu = new ChestGui(3, "Bart's Treasure Hunt");
 
         menu.setOnGlobalClick(event -> event.setCancelled(true));
 
-        OutlinePane background = new OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST);
+        final OutlinePane background = new OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST);
 
-        ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
-        ItemMeta fillerMeta = filler.getItemMeta();
+        final ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        final ItemMeta fillerMeta = filler.getItemMeta();
         fillerMeta.displayName(Utils.lore(""));
         filler.setItemMeta(fillerMeta);
         background.addItem(new GuiItem(filler));
@@ -44,33 +44,33 @@ public class BartBeggar implements Listener {
 
         menu.addPane(background);
 
-        OutlinePane navigator = new OutlinePane(4, 0, 1, 2);
+        final OutlinePane navigator = new OutlinePane(4, 0, 1, 2);
 
         //Creating Start Icon
-        ItemStack startIcon = new ItemStack (Material.ENDER_EYE);
-        ItemMeta startIconMeta = startIcon.getItemMeta();
+        final ItemStack startIcon = new ItemStack (Material.ENDER_EYE);
+        final ItemMeta startIconMeta = startIcon.getItemMeta();
         startIconMeta.displayName(Utils.lore("<gold><bold>TREASURE HUNTER"));
         startIconMeta.lore(new ArrayList<>(){
             {
-                add(Utils.lore("<gray>Uncover as many"));
-                add(Utils.lore("<gray>rewards as you can"));
-                add(Utils.lore("<gray>without blowing up!"));
-                add(Utils.lore(""));
-                add(Utils.lore("<yellow>COST 500 gold"));
-                add(Utils.lore("<green><BOLD>CLICK TO PLAY"));
+                this.add(Utils.lore("<gray>Uncover as many"));
+                this.add(Utils.lore("<gray>rewards as you can"));
+                this.add(Utils.lore("<gray>without blowing up!"));
+                this.add(Utils.lore(""));
+                this.add(Utils.lore("<yellow>COST 500 gold"));
+                this.add(Utils.lore("<green><BOLD>CLICK TO PLAY"));
             }
         });
         startIcon.setItemMeta(startIconMeta);
 
         //Creating JackPot Icon
-        ItemStack jackPotIcon = new ItemStack (Material.SUNFLOWER);
-        ItemMeta jackPotIconMeta = jackPotIcon.getItemMeta();
+        final ItemStack jackPotIcon = new ItemStack (Material.SUNFLOWER);
+        final ItemMeta jackPotIconMeta = jackPotIcon.getItemMeta();
         jackPotIconMeta.displayName(Utils.lore("<yellow><bold>WIN THE JACKPOTS"));
         jackPotIconMeta.lore(new ArrayList<>(){
             {
-                add(Utils.lore("<gray>1x <yellow>2,000 <gray>Gold"));
-                add(Utils.lore("<gray>2x <yellow>1,000 <gray>Gold"));
-                add(Utils.lore("<gray>3x <yellow>500 <gray>Gold"));
+                this.add(Utils.lore("<gray>1x <yellow>2,000 <gray>Gold"));
+                this.add(Utils.lore("<gray>2x <yellow>1,000 <gray>Gold"));
+                this.add(Utils.lore("<gray>3x <yellow>500 <gray>Gold"));
             }
         });
         jackPotIcon.setItemMeta(jackPotIconMeta);
@@ -82,14 +82,14 @@ public class BartBeggar implements Listener {
         return menu;
     }
 
-    private void clickStart(InventoryClickEvent e) {
+    private void clickStart(final InventoryClickEvent e) {
         if (e.getSlot() == 13) {
-            Player player = (Player) e.getWhoClicked();
-            int cost = 500;
+            final Player player = (Player) e.getWhoClicked();
+            final int cost = 500;
             if (VaultHook.econ.getBalance(player) >= cost) {
                 VaultHook.econ.withdrawPlayer(player, cost);
                 Scoreboard.updateScoreboard((Player) e.getWhoClicked());
-                TreasureHunter game = new TreasureHunter(player);
+                final TreasureHunter game = new TreasureHunter(player);
                 return;
             }
             player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));

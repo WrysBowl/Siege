@@ -9,25 +9,25 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class DungeonPlugin extends JavaPlugin {
     private static DungeonPlugin INSTANCE;
 
-    public DungeonConfig dungeonConfig = null;
-    public PortalConfig portalConfig = null;
+    public DungeonConfig dungeonConfig;
+    public PortalConfig portalConfig;
 
     @Override
     public void onEnable() {
-        INSTANCE = this;
-        portalConfig = new PortalConfig(this);
+	    DungeonPlugin.INSTANCE = this;
+	    this.portalConfig = new PortalConfig(this);
 
-        dungeonConfig = new DungeonConfig();
-        dungeonConfig.deserializeDungeonTypes();
+	    this.dungeonConfig = new DungeonConfig();
+	    this.dungeonConfig.deserializeDungeonTypes();
         Bukkit.getPluginManager().registerEvents(new PortalTeleport(), this);
         Bukkit.getPluginManager().registerEvents(new DungeonRejoin(this), this);
         Bukkit.getPluginCommand("portal").setExecutor(new PortalCommand());
-        getLogger().info("SiegeDungeons has enabled!");
+	    this.getLogger().info("SiegeDungeons has enabled!");
     }
 
     @Override
     public void onDisable() {
-        INSTANCE = null;
+	    DungeonPlugin.INSTANCE = null;
     }
 
     /**
@@ -37,6 +37,6 @@ public class DungeonPlugin extends JavaPlugin {
      * @return The main plugin
      */
     public static DungeonPlugin plugin() {
-        return INSTANCE;
+        return DungeonPlugin.INSTANCE;
     }
 }

@@ -29,117 +29,117 @@ public class Herbert implements Listener {
 
     private Player person; // Interacting player
     private ChestGui menu;
-    private int total = 0; // Total scrap cash
-    boolean inUse = false; // One player at a time
-    static boolean passed = false; // Avoid double msg????
-    private ItemStack cashInSymbol = new ItemStack(Material.SUNFLOWER);
-    private ItemMeta cashMeta = cashInSymbol.getItemMeta();
-    private ItemStack scanSymbol = new ItemStack(Material.ARROW);
-    private ItemMeta scanMeta = scanSymbol.getItemMeta();
-    private OutlinePane infoPane = new OutlinePane(1, 1, 1, 2);
+    private int total; // Total scrap cash
+    boolean inUse; // One player at a time
+    static boolean passed; // Avoid double msg????
+    private final ItemStack cashInSymbol = new ItemStack(Material.SUNFLOWER);
+    private final ItemMeta cashMeta = this.cashInSymbol.getItemMeta();
+    private final ItemStack scanSymbol = new ItemStack(Material.ARROW);
+    private final ItemMeta scanMeta = this.scanSymbol.getItemMeta();
+    private final OutlinePane infoPane = new OutlinePane(1, 1, 1, 2);
 
     @EventHandler
-    public void onRightClickEntity(PlayerInteractEntityEvent e) {
+    public void onRightClickEntity(final PlayerInteractEntityEvent e) {
         if (e.getRightClicked().getName().contains("Herbert") && e.getRightClicked().getName().contains("6")) {
-            if (passed) {
-                if (!inUse) {
-                    inUse = true;
-                    person = e.getPlayer();
-                    menu = initMenu();
-                    menu.show(person);
+            if (Herbert.passed) {
+                if (!this.inUse) {
+                    this.inUse = true;
+                    this.person = e.getPlayer();
+                    this.menu = this.initMenu();
+                    this.menu.show(this.person);
                     return;
                 } else {
                     e.getPlayer().sendMessage(Utils.tacc("Herbert is currently in use!"));
                 }
-                passed = false;
+                Herbert.passed = false;
             }
             else {
-                passed = true;
+                Herbert.passed = true;
             }
 
         }
     }
 
     @EventHandler
-    public void onLeave(PlayerQuitEvent e) {
-        Player player = e.getPlayer();
-        if (player.equals(person)) {
-            ArrayList<ItemStack> Items = new ArrayList<ItemStack>(pullItems());
-            for (ItemStack item : Items) {
-                if (person.getInventory().firstEmpty() == -1) {
-                    person.getWorld().dropItemNaturally(person.getLocation(), item);
+    public void onLeave(final PlayerQuitEvent e) {
+        final Player player = e.getPlayer();
+        if (player.equals(this.person)) {
+            final ArrayList<ItemStack> Items = new ArrayList<ItemStack>(this.pullItems());
+            for (final ItemStack item : Items) {
+                if (this.person.getInventory().firstEmpty() == -1) {
+                    this.person.getWorld().dropItemNaturally(this.person.getLocation(), item);
                 }
                 else {
-                    person.getInventory().addItem(item);
+                    this.person.getInventory().addItem(item);
                 }
             }
-            clearItems();
-            refresh();
-            inUse = false;
+            this.clearItems();
+            this.refresh();
+            this.inUse = false;
         }
     }
 
     // Initialize menu
     private ChestGui initMenu() {
-        ChestGui menu = new ChestGui(5, "Scrapper");
+        final ChestGui menu = new ChestGui(5, "Scrapper");
 
         menu.setOnClose(this::onInvClose);
 
-        ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        final ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
 
         // Setup background pane
-        OutlinePane background = new OutlinePane(0, 0, 3, 5, Pane.Priority.LOWEST);
+        final OutlinePane background = new OutlinePane(0, 0, 3, 5, Pane.Priority.LOWEST);
         background.addItem(new GuiItem(filler, event -> event.setCancelled(true)));
         background.setRepeat(true);
         menu.addPane(background);
 
         // Setup cash in sunflower
-        cashMeta.displayName(Utils.lore("<gold><bold>CASH IN"));
-        cashMeta.lore(new ArrayList<>() {
+        this.cashMeta.displayName(Utils.lore("<gold><bold>CASH IN"));
+        this.cashMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<gray>Total: <gold>0"));
-                add(Utils.lore("<red><bold>THIS ACTION CANNOT BE UNDONE!"));
-                add(Utils.lore("<gray>Click \"Calculate\" to update total!"));
+                this.add(Utils.lore("<gray>Total: <gold>0"));
+                this.add(Utils.lore("<red><bold>THIS ACTION CANNOT BE UNDONE!"));
+                this.add(Utils.lore("<gray>Click \"Calculate\" to update total!"));
             }
         });
-        cashInSymbol.setItemMeta(cashMeta);
+        this.cashInSymbol.setItemMeta(this.cashMeta);
 
         // Setup scan arrow
-        scanMeta.displayName(Utils.lore("<green>Calculate"));
-        scanMeta.lore(new ArrayList<>() {
+        this.scanMeta.displayName(Utils.lore("<green>Calculate"));
+        this.scanMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<grey>Compute your gains!"));
+                this.add(Utils.lore("<grey>Compute your gains!"));
             }
         });
-        scanSymbol.setItemMeta(scanMeta);
-        infoPane.addItem(new GuiItem(scanSymbol, this::scanner));
-        infoPane.addItem(new GuiItem(cashInSymbol, this::clickCash));
-        menu.addPane(infoPane);
+        this.scanSymbol.setItemMeta(this.scanMeta);
+        this.infoPane.addItem(new GuiItem(this.scanSymbol, this::scanner));
+        this.infoPane.addItem(new GuiItem(this.cashInSymbol, this::clickCash));
+        menu.addPane(this.infoPane);
 
         return menu;
     }
 
     // Cash in all items in the scrapper
-    private void clickCash(InventoryClickEvent e) {
-        scanner(e); // Update values
-        clearItems(); // Trash items
-        refresh(); // Update Gui
-        VaultHook.econ.depositPlayer(person, total); // Award gold
-        Scoreboard.updateScoreboard(person); // Update scoreboard
-        scanner(e); // Scan again to display zero gold
+    private void clickCash(final InventoryClickEvent e) {
+        this.scanner(e); // Update values
+        this.clearItems(); // Trash items
+        this.refresh(); // Update Gui
+        VaultHook.econ.depositPlayer(this.person, this.total); // Award gold
+        Scoreboard.updateScoreboard(this.person); // Update scoreboard
+        this.scanner(e); // Scan again to display zero gold
     }
 
 
 
     // Calculate item values in the scrapper
-    private void scanner(InventoryClickEvent e) {
-        ArrayList<ItemStack> scraps = new ArrayList<ItemStack>(pullItems()); // Get scrapper items
-        total = 0;
+    private void scanner(final InventoryClickEvent e) {
+        final ArrayList<ItemStack> scraps = new ArrayList<ItemStack>(this.pullItems()); // Get scrapper items
+        this.total = 0;
         int quality = 0;
         int levelReq = 0;
         int quantity = 1;
         CustomItem cItem;
-        for (ItemStack scrap : scraps) {
+        for (final ItemStack scrap : scraps) {
             cItem = CustomItemUtils.INSTANCE.getCustomItem(scrap);
 
             // Award value to qualifying items
@@ -147,71 +147,71 @@ public class Herbert implements Listener {
                 quantity = cItem.getItem().getAmount();
                 if (cItem instanceof CustomMaterial) {
                     quality = ((CustomMaterial)(cItem)).getTier();
-                    total += quantity * Math.pow(3, quality-1);
+                    this.total += quantity * Math.pow(3, quality-1);
                 } else if (cItem instanceof StatGemType) {
                     if (cItem.getLevelRequirement() == null) {
-                        total += 1;
+                        this.total += 1;
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += quantity*35*levelReq;
+                    this.total += quantity*35*levelReq;
                 } else if (cItem instanceof CustomKey) {
                     if (cItem.getLevelRequirement() == null) {
-                        total += 1;
+                        this.total += 1;
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += quantity* 100 * levelReq;
+                    this.total += quantity* 100 * levelReq;
                 } else {
                     quality = cItem.getQuality();
                     if (cItem.getLevelRequirement() == null) {
-                        total += 1;
+                        this.total += 1;
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += (int)quantity * ((levelReq * quality) / 5);
+                    this.total += quantity * ((levelReq * quality) / 5);
                 }
             }
         }
 
         // Refresh cash in sunflower
-        infoPane.clear();
-        final int cash = total;
-        cashMeta.displayName(Utils.lore("<gold><bold>CASH IN"));
-        cashMeta.lore(new ArrayList<>() {
+        this.infoPane.clear();
+        int cash = this.total;
+        this.cashMeta.displayName(Utils.lore("<gold><bold>CASH IN"));
+        this.cashMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<gray>Total: <gold>" + cash));
-                add(Utils.lore("<red><bold>THIS ACTION CANNOT BE UNDONE!"));
-                add(Utils.lore("<gray>Click \"Calculate\" to update total!"));
+                this.add(Utils.lore("<gray>Total: <gold>" + cash));
+                this.add(Utils.lore("<red><bold>THIS ACTION CANNOT BE UNDONE!"));
+                this.add(Utils.lore("<gray>Click \"Calculate\" to update total!"));
             }
         });
-        cashInSymbol.setItemMeta(cashMeta);
+        this.cashInSymbol.setItemMeta(this.cashMeta);
 
-        infoPane.addItem(new GuiItem(scanSymbol, this::scanner));
-        infoPane.addItem(new GuiItem(cashInSymbol, this::clickCash));
-        refresh(); // Update Gui
+        this.infoPane.addItem(new GuiItem(this.scanSymbol, this::scanner));
+        this.infoPane.addItem(new GuiItem(this.cashInSymbol, this::clickCash));
+        this.refresh(); // Update Gui
     }
 
     // Return player items still in the scrapper on close
-    public void onInvClose(InventoryCloseEvent e) {
-        ArrayList<ItemStack> Items = new ArrayList<ItemStack>(pullItems());
-        for (ItemStack item : Items) {
-            if (person.getInventory().firstEmpty() == -1) {
-                person.getWorld().dropItemNaturally(person.getLocation(), item);
+    public void onInvClose(final InventoryCloseEvent e) {
+        final ArrayList<ItemStack> Items = new ArrayList<ItemStack>(this.pullItems());
+        for (final ItemStack item : Items) {
+            if (this.person.getInventory().firstEmpty() == -1) {
+                this.person.getWorld().dropItemNaturally(this.person.getLocation(), item);
             }
             else {
-                person.getInventory().addItem(item);
+                this.person.getInventory().addItem(item);
             }
         }
-        clearItems();
-        refresh();
-        inUse = false;
+        this.clearItems();
+        this.refresh();
+        this.inUse = false;
     }
 
     // Get the coordinates of all items in the scrapper from top left to bottom right
     private ArrayList<Integer> pullItemCoords() {
-        Inventory inv = menu.getInventory();
-        ArrayList<Integer> scraps = new ArrayList<Integer>();
+        final Inventory inv = this.menu.getInventory();
+        final ArrayList<Integer> scraps = new ArrayList<Integer>();
         int y = 0;
         while (y < 5) {
             int x = 3;
@@ -228,8 +228,8 @@ public class Herbert implements Listener {
 
     // Get an ArrayList of all ItemStacks in the scrapper from top left to bottom right
     private ArrayList<ItemStack> pullItems() {
-        Inventory inv = menu.getInventory();
-        ArrayList<ItemStack> scraps = new ArrayList<ItemStack>();
+        final Inventory inv = this.menu.getInventory();
+        final ArrayList<ItemStack> scraps = new ArrayList<ItemStack>();
         int y = 0;
         while (y < 5) {
             int x = 3;
@@ -246,28 +246,28 @@ public class Herbert implements Listener {
 
     // Clear items in the scrapper
     private void clearItems() {
-        Inventory inv = menu.getInventory();
-        ArrayList<Integer> coords = new ArrayList<Integer>(pullItemCoords());
-        for (Integer coord : coords) {
+        final Inventory inv = this.menu.getInventory();
+        final ArrayList<Integer> coords = new ArrayList<Integer>(this.pullItemCoords());
+        for (final Integer coord : coords) {
             inv.setItem(coord, null);
         }
     }
 
     // Updates the gui and reseats items
     private void refresh() {
-        ArrayList<ItemStack> raws =  new ArrayList<ItemStack>(pullItems());
-        ArrayList<Integer> coords = new ArrayList<Integer>(pullItemCoords());
+        final ArrayList<ItemStack> raws =  new ArrayList<ItemStack>(this.pullItems());
+        final ArrayList<Integer> coords = new ArrayList<Integer>(this.pullItemCoords());
 
-        menu.update();
+        this.menu.update();
 
-        Inventory inv = menu.getInventory();
+        final Inventory inv = this.menu.getInventory();
         for (int i = 0; i < coords.size(); i++) {
             inv.setItem(coords.get(i), raws.get(i));
         }
     }
 
     // Function for testing sends msgs to the interacting player
-    private void log(String phrase) {
-        person.sendMessage(Utils.tacc(phrase));
+    private void log(final String phrase) {
+        this.person.sendMessage(Utils.tacc(phrase));
     }
 }

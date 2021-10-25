@@ -30,199 +30,199 @@ public class BlockBreakListener implements Listener {
 
     public static List<Material> keepAir = new ArrayList<>() {
         {
-            add(Material.WHEAT);
-            add(Material.VINE);
-            add(Material.STONE_BUTTON);
+            this.add(Material.WHEAT);
+            this.add(Material.VINE);
+            this.add(Material.STONE_BUTTON);
         }
     };
     public static List<Material> dependables = new ArrayList<>() {
         {
-            add(Material.OAK_SAPLING);
-            add(Material.SPRUCE_SAPLING);
-            add(Material.BIRCH_SAPLING);
-            add(Material.JUNGLE_SAPLING);
-            add(Material.ACACIA_SAPLING);
-            add(Material.DARK_OAK_SAPLING);
-            add(Material.GRASS);
-            add(Material.FERN);
-            add(Material.DEAD_BUSH);
-            add(Material.SEAGRASS);
-            add(Material.LILY_OF_THE_VALLEY);
-            add(Material.LILY_PAD);
-            add(Material.BLUE_ORCHID);
-            add(Material.FERN);
-            add(Material.ORANGE_TULIP);
-            add(Material.WHITE_TULIP);
-            add(Material.AZURE_BLUET);
-            add(Material.OXEYE_DAISY);
-            add(Material.WITHER_ROSE);
-            add(Material.BROWN_MUSHROOM);
-            add(Material.RED_MUSHROOM);
-            add(Material.CRIMSON_FUNGUS);
-            add(Material.WARPED_FUNGUS);
-            add(Material.CRIMSON_ROOTS);
-            add(Material.WARPED_ROOTS);
-            add(Material.NETHER_SPROUTS);
-            add(Material.WEEPING_VINES);
-            add(Material.TWISTING_VINES);
-            add(Material.KELP);
-            add(Material.ALLIUM);
-            add(Material.DANDELION);
-            add(Material.RED_TULIP);
-            add(Material.CORNFLOWER);
-            add(Material.PINK_TULIP);
-            add(Material.POPPY);
-            add(Material.CACTUS);
-            add(Material.PEONY);
-            add(Material.SUNFLOWER);
-            add(Material.LILAC);
-            add(Material.ROSE_BUSH);
-            add(Material.TALL_GRASS);
-            add(Material.LARGE_FERN);
-            add(Material.WHEAT);
-            add(Material.BAMBOO);
-            add(Material.SUGAR_CANE);
-            add(Material.BEETROOT_SEEDS);
-            add(Material.MELON_SEEDS);
-            add(Material.PUMPKIN_SEEDS);
-            add(Material.WHEAT_SEEDS);
-            add(Material.CARROT);
-            add(Material.NETHER_WART);
+            this.add(Material.OAK_SAPLING);
+            this.add(Material.SPRUCE_SAPLING);
+            this.add(Material.BIRCH_SAPLING);
+            this.add(Material.JUNGLE_SAPLING);
+            this.add(Material.ACACIA_SAPLING);
+            this.add(Material.DARK_OAK_SAPLING);
+            this.add(Material.GRASS);
+            this.add(Material.FERN);
+            this.add(Material.DEAD_BUSH);
+            this.add(Material.SEAGRASS);
+            this.add(Material.LILY_OF_THE_VALLEY);
+            this.add(Material.LILY_PAD);
+            this.add(Material.BLUE_ORCHID);
+            this.add(Material.FERN);
+            this.add(Material.ORANGE_TULIP);
+            this.add(Material.WHITE_TULIP);
+            this.add(Material.AZURE_BLUET);
+            this.add(Material.OXEYE_DAISY);
+            this.add(Material.WITHER_ROSE);
+            this.add(Material.BROWN_MUSHROOM);
+            this.add(Material.RED_MUSHROOM);
+            this.add(Material.CRIMSON_FUNGUS);
+            this.add(Material.WARPED_FUNGUS);
+            this.add(Material.CRIMSON_ROOTS);
+            this.add(Material.WARPED_ROOTS);
+            this.add(Material.NETHER_SPROUTS);
+            this.add(Material.WEEPING_VINES);
+            this.add(Material.TWISTING_VINES);
+            this.add(Material.KELP);
+            this.add(Material.ALLIUM);
+            this.add(Material.DANDELION);
+            this.add(Material.RED_TULIP);
+            this.add(Material.CORNFLOWER);
+            this.add(Material.PINK_TULIP);
+            this.add(Material.POPPY);
+            this.add(Material.CACTUS);
+            this.add(Material.PEONY);
+            this.add(Material.SUNFLOWER);
+            this.add(Material.LILAC);
+            this.add(Material.ROSE_BUSH);
+            this.add(Material.TALL_GRASS);
+            this.add(Material.LARGE_FERN);
+            this.add(Material.WHEAT);
+            this.add(Material.BAMBOO);
+            this.add(Material.SUGAR_CANE);
+            this.add(Material.BEETROOT_SEEDS);
+            this.add(Material.MELON_SEEDS);
+            this.add(Material.PUMPKIN_SEEDS);
+            this.add(Material.WHEAT_SEEDS);
+            this.add(Material.CARROT);
+            this.add(Material.NETHER_WART);
         }
     };
     public static List<Material> rewardableBlocks = new ArrayList<>() {
         {
-            add(Material.GRASS);
-            add(Material.DEAD_BUSH);
-            add(Material.LILY_OF_THE_VALLEY);
-            add(Material.LILY_PAD);
-            add(Material.BLUE_ORCHID);
-            add(Material.FERN);
-            add(Material.ORANGE_TULIP);
-            add(Material.WHITE_TULIP);
-            add(Material.AZURE_BLUET);
-            add(Material.OXEYE_DAISY);
-            add(Material.WITHER_ROSE);
-            add(Material.BROWN_MUSHROOM);
-            add(Material.RED_MUSHROOM);
-            add(Material.ALLIUM);
-            add(Material.DANDELION);
-            add(Material.RED_TULIP);
-            add(Material.CORNFLOWER);
-            add(Material.PINK_TULIP);
-            add(Material.POPPY);
-            add(Material.POTTED_WITHER_ROSE);
-            add(Material.POTTED_ACACIA_SAPLING);
-            add(Material.POTTED_ALLIUM);
-            add(Material.POTTED_BAMBOO);
-            add(Material.POTTED_AZURE_BLUET);
-            add(Material.POTTED_BIRCH_SAPLING);
-            add(Material.POTTED_BLUE_ORCHID);
-            add(Material.POTTED_BROWN_MUSHROOM);
-            add(Material.POTTED_CACTUS);
-            add(Material.POTTED_CORNFLOWER);
-            add(Material.POTTED_CRIMSON_FUNGUS);
-            add(Material.POTTED_CRIMSON_ROOTS);
-            add(Material.POTTED_DANDELION);
-            add(Material.POTTED_DARK_OAK_SAPLING);
-            add(Material.POTTED_DEAD_BUSH);
-            add(Material.POTTED_FERN);
-            add(Material.POTTED_JUNGLE_SAPLING);
-            add(Material.POTTED_LILY_OF_THE_VALLEY);
-            add(Material.POTTED_OAK_SAPLING);
-            add(Material.POTTED_ORANGE_TULIP);
-            add(Material.POTTED_OXEYE_DAISY);
-            add(Material.POTTED_PINK_TULIP);
-            add(Material.POTTED_POPPY);
-            add(Material.POTTED_RED_MUSHROOM);
-            add(Material.POTTED_RED_TULIP);
-            add(Material.POTTED_SPRUCE_SAPLING);
-            add(Material.POTTED_WARPED_FUNGUS);
-            add(Material.POTTED_WARPED_ROOTS);
-            add(Material.POTTED_WHITE_TULIP);
+            this.add(Material.GRASS);
+            this.add(Material.DEAD_BUSH);
+            this.add(Material.LILY_OF_THE_VALLEY);
+            this.add(Material.LILY_PAD);
+            this.add(Material.BLUE_ORCHID);
+            this.add(Material.FERN);
+            this.add(Material.ORANGE_TULIP);
+            this.add(Material.WHITE_TULIP);
+            this.add(Material.AZURE_BLUET);
+            this.add(Material.OXEYE_DAISY);
+            this.add(Material.WITHER_ROSE);
+            this.add(Material.BROWN_MUSHROOM);
+            this.add(Material.RED_MUSHROOM);
+            this.add(Material.ALLIUM);
+            this.add(Material.DANDELION);
+            this.add(Material.RED_TULIP);
+            this.add(Material.CORNFLOWER);
+            this.add(Material.PINK_TULIP);
+            this.add(Material.POPPY);
+            this.add(Material.POTTED_WITHER_ROSE);
+            this.add(Material.POTTED_ACACIA_SAPLING);
+            this.add(Material.POTTED_ALLIUM);
+            this.add(Material.POTTED_BAMBOO);
+            this.add(Material.POTTED_AZURE_BLUET);
+            this.add(Material.POTTED_BIRCH_SAPLING);
+            this.add(Material.POTTED_BLUE_ORCHID);
+            this.add(Material.POTTED_BROWN_MUSHROOM);
+            this.add(Material.POTTED_CACTUS);
+            this.add(Material.POTTED_CORNFLOWER);
+            this.add(Material.POTTED_CRIMSON_FUNGUS);
+            this.add(Material.POTTED_CRIMSON_ROOTS);
+            this.add(Material.POTTED_DANDELION);
+            this.add(Material.POTTED_DARK_OAK_SAPLING);
+            this.add(Material.POTTED_DEAD_BUSH);
+            this.add(Material.POTTED_FERN);
+            this.add(Material.POTTED_JUNGLE_SAPLING);
+            this.add(Material.POTTED_LILY_OF_THE_VALLEY);
+            this.add(Material.POTTED_OAK_SAPLING);
+            this.add(Material.POTTED_ORANGE_TULIP);
+            this.add(Material.POTTED_OXEYE_DAISY);
+            this.add(Material.POTTED_PINK_TULIP);
+            this.add(Material.POTTED_POPPY);
+            this.add(Material.POTTED_RED_MUSHROOM);
+            this.add(Material.POTTED_RED_TULIP);
+            this.add(Material.POTTED_SPRUCE_SAPLING);
+            this.add(Material.POTTED_WARPED_FUNGUS);
+            this.add(Material.POTTED_WARPED_ROOTS);
+            this.add(Material.POTTED_WHITE_TULIP);
         }
     };
     public static HashMap<Material, BlockDropTable> blockDropTableHashMap = new HashMap<>(){
         {
-            put(Material.ACACIA_LOG, new ACACIA_LOG());
-            put(Material.ACACIA_WOOD, new ACACIA_WOOD());
-            put(Material.ANDESITE, new ANDESITE());
-            put(Material.BAMBOO, new BAMBOO());
-            put(Material.BIRCH_LEAVES, new BIRCH_LEAVES());
-            put(Material.BIRCH_LOG, new BIRCH_LOG());
-            put(Material.BIRCH_WOOD, new BIRCH_WOOD());
-            put(Material.CHAIN, new CHAIN());
-            put(Material.COAL_ORE, new COAL_ORE());
-            put(Material.COARSE_DIRT, new COARSE_DIRT());
-            put(Material.DARK_OAK_LEAVES, new DARK_OAK_LEAVES());
-            put(Material.DARK_OAK_LOG, new DARK_OAK_LOG());
-            put(Material.DARK_OAK_WOOD, new DARK_OAK_WOOD());
-            put(Material.DIRT, new DIRT());
-            put(Material.GRASS_BLOCK, new GRASS_BLOCK());
-            put(Material.GREEN_CONCRETE, new GREEN_CONCRETE());
-            put(Material.GREEN_TERRACOTTA, new GREEN_TERRACOTTA());
-            put(Material.HAY_BLOCK, new HAY_BLOCK());
-            put(Material.IRON_ORE, new IRON_ORE());
-            put(Material.JUNGLE_LEAVES, new JUNGLE_LEAVES());
-            put(Material.JUNGLE_LOG, new JUNGLE_LOG());
-            put(Material.JUNGLE_WOOD, new JUNGLE_WOOD());
-            put(Material.LIGHT_GRAY_CONCRETE, new LIGHT_GRAY_CONCRETE());
-            put(Material.LIME_TERRACOTTA, new LIME_TERRACOTTA());
-            put(Material.OAK_LEAVES, new OAK_LEAVES());
-            put(Material.OAK_LOG, new OAK_LOG());
-            put(Material.OAK_WOOD, new OAK_WOOD());
-            put(Material.PINK_CONCRETE, new PINK_CONCRETE());
-            put(Material.PINK_CONCRETE_POWDER, new PINK_CONCRETE_POWDER());
-            put(Material.PINK_STAINED_GLASS, new PINK_STAINED_GLASS());
-            put(Material.SHROOMLIGHT, new SHROOMLIGHT());
-            put(Material.SNOW, new SNOW());
-            put(Material.SNOW_BLOCK, new SNOW_BLOCK());
-            put(Material.SPRUCE_LEAVES, new SPRUCE_LEAVES());
-            put(Material.SPRUCE_LOG, new SPRUCE_LOG());
-            put(Material.SPRUCE_WOOD, new SPRUCE_WOOD());
-            put(Material.STONE, new STONE());
-            put(Material.STRIPPED_ACACIA_LOG, new STRIPPED_ACACIA_LOG());
-            put(Material.STRIPPED_ACACIA_WOOD, new STRIPPED_ACACIA_WOOD());
-            put(Material.STRIPPED_BIRCH_LOG, new STRIPPED_BIRCH_LOG());
-            put(Material.STRIPPED_BIRCH_WOOD, new STRIPPED_BIRCH_WOOD());
-            put(Material.STRIPPED_DARK_OAK_LOG, new STRIPPED_DARK_OAK_LOG());
-            put(Material.STRIPPED_DARK_OAK_WOOD, new STRIPPED_DARK_OAK_WOOD());
-            put(Material.STRIPPED_JUNGLE_LOG, new STRIPPED_JUNGLE_LOG());
-            put(Material.STRIPPED_JUNGLE_WOOD, new STRIPPED_JUNGLE_WOOD());
-            put(Material.STRIPPED_OAK_LOG, new STRIPPED_OAK_LOG());
-            put(Material.STRIPPED_OAK_WOOD, new STRIPPED_OAK_WOOD());
-            put(Material.STRIPPED_SPRUCE_LOG, new STRIPPED_SPRUCE_LOG());
-            put(Material.STRIPPED_SPRUCE_WOOD, new STRIPPED_SPRUCE_WOOD());
-            put(Material.STRIPPED_WARPED_HYPHAE, new STRIPPED_WARPED_HYPHAE());
-            put(Material.SUGAR_CANE, new SUGAR_CANE());
-            put(Material.VINE, new VINE());
-            put(Material.WARPED_HYPHAE, new WARPED_HYPHAE());
-            put(Material.WHEAT, new WHEAT());
+            this.put(Material.ACACIA_LOG, new ACACIA_LOG());
+            this.put(Material.ACACIA_WOOD, new ACACIA_WOOD());
+            this.put(Material.ANDESITE, new ANDESITE());
+            this.put(Material.BAMBOO, new BAMBOO());
+            this.put(Material.BIRCH_LEAVES, new BIRCH_LEAVES());
+            this.put(Material.BIRCH_LOG, new BIRCH_LOG());
+            this.put(Material.BIRCH_WOOD, new BIRCH_WOOD());
+            this.put(Material.CHAIN, new CHAIN());
+            this.put(Material.COAL_ORE, new COAL_ORE());
+            this.put(Material.COARSE_DIRT, new COARSE_DIRT());
+            this.put(Material.DARK_OAK_LEAVES, new DARK_OAK_LEAVES());
+            this.put(Material.DARK_OAK_LOG, new DARK_OAK_LOG());
+            this.put(Material.DARK_OAK_WOOD, new DARK_OAK_WOOD());
+            this.put(Material.DIRT, new DIRT());
+            this.put(Material.GRASS_BLOCK, new GRASS_BLOCK());
+            this.put(Material.GREEN_CONCRETE, new GREEN_CONCRETE());
+            this.put(Material.GREEN_TERRACOTTA, new GREEN_TERRACOTTA());
+            this.put(Material.HAY_BLOCK, new HAY_BLOCK());
+            this.put(Material.IRON_ORE, new IRON_ORE());
+            this.put(Material.JUNGLE_LEAVES, new JUNGLE_LEAVES());
+            this.put(Material.JUNGLE_LOG, new JUNGLE_LOG());
+            this.put(Material.JUNGLE_WOOD, new JUNGLE_WOOD());
+            this.put(Material.LIGHT_GRAY_CONCRETE, new LIGHT_GRAY_CONCRETE());
+            this.put(Material.LIME_TERRACOTTA, new LIME_TERRACOTTA());
+            this.put(Material.OAK_LEAVES, new OAK_LEAVES());
+            this.put(Material.OAK_LOG, new OAK_LOG());
+            this.put(Material.OAK_WOOD, new OAK_WOOD());
+            this.put(Material.PINK_CONCRETE, new PINK_CONCRETE());
+            this.put(Material.PINK_CONCRETE_POWDER, new PINK_CONCRETE_POWDER());
+            this.put(Material.PINK_STAINED_GLASS, new PINK_STAINED_GLASS());
+            this.put(Material.SHROOMLIGHT, new SHROOMLIGHT());
+            this.put(Material.SNOW, new SNOW());
+            this.put(Material.SNOW_BLOCK, new SNOW_BLOCK());
+            this.put(Material.SPRUCE_LEAVES, new SPRUCE_LEAVES());
+            this.put(Material.SPRUCE_LOG, new SPRUCE_LOG());
+            this.put(Material.SPRUCE_WOOD, new SPRUCE_WOOD());
+            this.put(Material.STONE, new STONE());
+            this.put(Material.STRIPPED_ACACIA_LOG, new STRIPPED_ACACIA_LOG());
+            this.put(Material.STRIPPED_ACACIA_WOOD, new STRIPPED_ACACIA_WOOD());
+            this.put(Material.STRIPPED_BIRCH_LOG, new STRIPPED_BIRCH_LOG());
+            this.put(Material.STRIPPED_BIRCH_WOOD, new STRIPPED_BIRCH_WOOD());
+            this.put(Material.STRIPPED_DARK_OAK_LOG, new STRIPPED_DARK_OAK_LOG());
+            this.put(Material.STRIPPED_DARK_OAK_WOOD, new STRIPPED_DARK_OAK_WOOD());
+            this.put(Material.STRIPPED_JUNGLE_LOG, new STRIPPED_JUNGLE_LOG());
+            this.put(Material.STRIPPED_JUNGLE_WOOD, new STRIPPED_JUNGLE_WOOD());
+            this.put(Material.STRIPPED_OAK_LOG, new STRIPPED_OAK_LOG());
+            this.put(Material.STRIPPED_OAK_WOOD, new STRIPPED_OAK_WOOD());
+            this.put(Material.STRIPPED_SPRUCE_LOG, new STRIPPED_SPRUCE_LOG());
+            this.put(Material.STRIPPED_SPRUCE_WOOD, new STRIPPED_SPRUCE_WOOD());
+            this.put(Material.STRIPPED_WARPED_HYPHAE, new STRIPPED_WARPED_HYPHAE());
+            this.put(Material.SUGAR_CANE, new SUGAR_CANE());
+            this.put(Material.VINE, new VINE());
+            this.put(Material.WARPED_HYPHAE, new WARPED_HYPHAE());
+            this.put(Material.WHEAT, new WHEAT());
 
-            put(Material.ALLIUM, new ALLIUM());
-            put(Material.AZURE_BLUET, new AZURE_BLUET());
-            put(Material.BLUE_ORCHID, new BLUE_ORCHID());
-            put(Material.BROWN_MUSHROOM, new BROWN_MUSHROOM());
-            put(Material.CORNFLOWER, new CORNFLOWER());
-            put(Material.DANDELION, new DANDELION());
-            put(Material.DEAD_BUSH, new DEAD_BUSH());
-            put(Material.FERN, new FERN());
-            put(Material.GRASS, new GRASS());
-            put(Material.LILY_OF_THE_VALLEY, new LILY_OF_THE_VALLEY());
-            put(Material.LILY_PAD, new LILY_PAD());
-            put(Material.ORANGE_TULIP, new ORANGE_TULIP());
-            put(Material.PINK_TULIP, new PINK_TULIP());
-            put(Material.POPPY, new POPPY());
-            put(Material.RED_MUSHROOM, new RED_MUSHROOM());
-            put(Material.RED_TULIP, new RED_TULIP());
-            put(Material.WHITE_TULIP, new WHITE_TULIP());
-            put(Material.WITHER_ROSE, new WITHER_ROSE());
+            this.put(Material.ALLIUM, new ALLIUM());
+            this.put(Material.AZURE_BLUET, new AZURE_BLUET());
+            this.put(Material.BLUE_ORCHID, new BLUE_ORCHID());
+            this.put(Material.BROWN_MUSHROOM, new BROWN_MUSHROOM());
+            this.put(Material.CORNFLOWER, new CORNFLOWER());
+            this.put(Material.DANDELION, new DANDELION());
+            this.put(Material.DEAD_BUSH, new DEAD_BUSH());
+            this.put(Material.FERN, new FERN());
+            this.put(Material.GRASS, new GRASS());
+            this.put(Material.LILY_OF_THE_VALLEY, new LILY_OF_THE_VALLEY());
+            this.put(Material.LILY_PAD, new LILY_PAD());
+            this.put(Material.ORANGE_TULIP, new ORANGE_TULIP());
+            this.put(Material.PINK_TULIP, new PINK_TULIP());
+            this.put(Material.POPPY, new POPPY());
+            this.put(Material.RED_MUSHROOM, new RED_MUSHROOM());
+            this.put(Material.RED_TULIP, new RED_TULIP());
+            this.put(Material.WHITE_TULIP, new WHITE_TULIP());
+            this.put(Material.WITHER_ROSE, new WITHER_ROSE());
         }
     };
 
     @EventHandler
-    public void onBreak(BlockBreakEvent e) {
-        Player player = e.getPlayer();
+    public void onBreak(final BlockBreakEvent e) {
+        final Player player = e.getPlayer();
 
         //Stop any block drops if player isn't in survival
         if (player.getGameMode() != GameMode.SURVIVAL) {
@@ -231,13 +231,13 @@ public class BlockBreakListener implements Listener {
         }
         e.setCancelled(true);
         e.setDropItems(false);
-        Material blockType = e.getBlock().getType();
-        final BlockState blockState = e.getBlock().getState();
-        final Location loc = e.getBlock().getLocation();
-        BlockDropTable blockDrop = blockDropTableHashMap.get(blockType);
+        final Material blockType = e.getBlock().getType();
+        BlockState blockState = e.getBlock().getState();
+        Location loc = e.getBlock().getLocation();
+        final BlockDropTable blockDrop = BlockBreakListener.blockDropTableHashMap.get(blockType);
 
         //if block broken doesn't have a drop table
-        if (rewardableBlocks.contains(blockType)) {
+        if (BlockBreakListener.rewardableBlocks.contains(blockType)) {
             e.setCancelled(false);
             if (Utils.randTest(20.0)) {
                 GoldEXPSpawning.spawnEXP(1, loc);
@@ -253,26 +253,26 @@ public class BlockBreakListener implements Listener {
             }, 600);
         }
         if (blockDrop!=null){
-            final int blockDropRegen = blockDrop.getBlockRegen();
-            final double luckVal = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
+            int blockDropRegen = blockDrop.getBlockRegen();
+            double luckVal = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
             int goldCoinAmt = blockDrop.getGold(true);
             int exp = blockDrop.getExp(true);
-            double luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
-            final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
-            final boolean upFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
-            final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.DOWN).getType());
+            final double luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
+            boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
+            boolean upFacingDependable = BlockBreakListener.dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
+            boolean downFacingDependable = BlockBreakListener.dependables.contains(e.getBlock().getRelative(BlockFace.DOWN).getType());
 
 
-            if (keepAir.contains(blockType)) {
+            if (BlockBreakListener.keepAir.contains(blockType)) {
                 e.setCancelled(false);
-            } else if (dependables.contains(blockType) || upFacingDependable || downFacingDependable) {
-                if (!rewardableBlocks.contains(blockType)) {
+            } else if (BlockBreakListener.dependables.contains(blockType) || upFacingDependable || downFacingDependable) {
+                if (!BlockBreakListener.rewardableBlocks.contains(blockType)) {
                     e.setCancelled(true);
                 }
             } else {
                 e.getBlock().setType(Material.BEDROCK);
             }
-            if (!dependables.contains(blockType) && upFacingDependable || !dependables.contains(blockType) && downFacingDependable) {
+            if (!BlockBreakListener.dependables.contains(blockType) && upFacingDependable || !BlockBreakListener.dependables.contains(blockType) && downFacingDependable) {
                 return;
             }
 
@@ -294,7 +294,7 @@ public class BlockBreakListener implements Listener {
 
 
             //Adds blocks to player's inventory
-            for (ItemStack drop : blockDrop.getRewards(luckVal)) {
+            for (final ItemStack drop : blockDrop.getRewards(luckVal)) {
                 if (!fullInv) {
                     e.getPlayer().getInventory().addItem(drop);
                 } else {
@@ -304,7 +304,7 @@ public class BlockBreakListener implements Listener {
             }
 
             //Sets block back from bedrock to original
-            if (rewardableBlocks.contains(blockType)) return;
+            if (BlockBreakListener.rewardableBlocks.contains(blockType)) return;
             Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
                 public void run() {
                     blockState.update(true, false);

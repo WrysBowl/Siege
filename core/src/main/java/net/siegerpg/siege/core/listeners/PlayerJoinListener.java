@@ -38,25 +38,25 @@ import java.sql.SQLException;
 public class PlayerJoinListener implements Listener {
 
     @EventHandler
-    public void connectEvent(AsyncPlayerPreLoginEvent e) {
+    public void connectEvent(final AsyncPlayerPreLoginEvent e) {
         new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
             @Override
             public void run() {
-                String ip = e.getAddress().getHostAddress();
-                String uuid = e.getUniqueId().toString();
+                final String ip = e.getAddress().getHostAddress();
+                final String uuid = e.getUniqueId().toString();
                 // Add user ips to the db (So that we can in the future find all alts of an user)
-                try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
-                    PreparedStatement stat = conn.prepareStatement("SELECT ip FROM ipData WHERE uuid=? AND ip=?");
+                try (final Connection conn = DatabaseManager.INSTANCE.getConnection()) {
+                    final PreparedStatement stat = conn.prepareStatement("SELECT ip FROM ipData WHERE uuid=? AND ip=?");
                     stat.setString(1, uuid);
                     stat.setString(2, ip);
-                    ResultSet set = stat.executeQuery();
+                    final ResultSet set = stat.executeQuery();
                     if (!set.isBeforeFirst()) {
-                        PreparedStatement statement = conn.prepareStatement("INSERT INTO ipData (uuid, ip) VALUES (?, ?)");
+                        final PreparedStatement statement = conn.prepareStatement("INSERT INTO ipData (uuid, ip) VALUES (?, ?)");
                         statement.setString(1, uuid);
                         statement.setString(2, ip);
                         statement.executeUpdate();
                     }
-                } catch (SQLException ignored) {
+                } catch (final SQLException ignored) {
                 }
             }
         }.runTaskAsynchronously(Core.plugin());
@@ -64,22 +64,22 @@ public class PlayerJoinListener implements Listener {
 
 
     @EventHandler
-    public void joinEvent(PlayerJoinEvent event) {
+    public void joinEvent(final PlayerJoinEvent event) {
 
-        Player player = event.getPlayer();
+        final Player player = event.getPlayer();
 
-        String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
+        final String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
         String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
         player.teleport(Core.plugin().getServer().getWorld("Hub").getSpawnLocation());
 
         Levels.INSTANCE.getExpLevel(player, shortIntegerPair -> {
             if (shortIntegerPair == null) {
-                try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
+                try (final Connection conn = DatabaseManager.INSTANCE.getConnection()) {
                     // Add the user to the db if he doesn't exist
-                    PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
+                    final PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
                     userData.setString(1, player.getUniqueId().toString());
                     userData.executeUpdate();
-                } catch (SQLException ignored) {
+                } catch (final SQLException ignored) {
                 }
 
             }
@@ -87,19 +87,19 @@ public class PlayerJoinListener implements Listener {
         });
 
         if (!player.hasPlayedBefore()) {
-            newPlayerReward(player);
+            this.newPlayerReward(player);
             joinMessage = Utils.tacc("&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
         } else {
             new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
                 @Override
                 public void run() {
-                    updateInventory(player);
+                    PlayerJoinListener.this.updateInventory(player);
                 }
             }.runTaskAsynchronously(Core.plugin());
         }
         event.setJoinMessage(joinMessage);
 
-        for (Player p : Bukkit.getOnlinePlayers()) {
+        for (final Player p : Bukkit.getOnlinePlayers()) {
             Scoreboard.updateScoreboard(p);
             Tablist.tablistUpdate(p);
         }
@@ -118,21 +118,21 @@ public class PlayerJoinListener implements Listener {
         }*/
     }
 
-    public void updateInventory(Player player) {
+    public void updateInventory(final Player player) {
         for (int i = 0; i < player.getInventory().getSize(); i++) {
-            CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
+            final CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
             if (CusItem == null) continue;
             player.getInventory().setItem(i, CusItem.getUpdatedItem(false));
         }
     }
 
-    public void newPlayerReward(Player player) {
+    public void newPlayerReward(final Player player) {
         player.getInventory().clear();
         player.getInventory().addItem(new BeginnerTwig(50).getUpdatedItem(false));
         player.getInventory().addItem(new BeginnerClub(50).getUpdatedItem(false));
         player.getInventory().addItem(new BeginnerScrapyardBow(50).getUpdatedItem(false));
         player.getInventory().addItem(new BeginnerLivingTwig(50).getUpdatedItem(false));
-        ItemStack food = new Drumstick(0).getUpdatedItem(false).asQuantity(10);
+        final ItemStack food = new Drumstick(0).getUpdatedItem(false).asQuantity(10);
         player.getInventory().addItem(food);
         VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
         VaultHook.econ.depositPlayer(player, 400.0);

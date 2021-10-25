@@ -14,13 +14,13 @@ import org.jetbrains.annotations.NotNull;
 public class Stats implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (!(sender instanceof Player)) {
             return false;
         }
         OfflinePlayer player = (Player) sender;
         if (args.length > 0) {
-            OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+            final OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
             if (!argPlayer.isOnline()) {
                 ((Player) player).sendMessage(Utils.lore("<red>That player can not be found."));
                 return false;
@@ -28,11 +28,11 @@ public class Stats implements CommandExecutor {
             player = argPlayer;
         }
 
-        double health = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH);
-        double strength = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH);
-        double toughness = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.TOUGHNESS);
-        double luck = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK);
-        double regeneration = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION);
+        final double health = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH);
+        final double strength = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH);
+        final double toughness = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.TOUGHNESS);
+        final double luck = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK);
+        final double regeneration = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION);
 
         sender.sendMessage(Utils.lore(" "));
         sender.sendMessage(Utils.lore("<yellow><bold>Player Statistics"));

@@ -21,40 +21,40 @@ public class WebstoreBoosters extends WebstorePackage {
     Integer arg6 = 1; //amount
 
 
-    public WebstoreBoosters(String arg2, String arg3, Double arg4, Integer arg5, Integer arg6){
+    public WebstoreBoosters(final String arg2, final String arg3, final Double arg4, final Integer arg5, final Integer arg6){
         this.arg2=arg2;
         this.arg3=arg3;
         this.arg4=arg4;
         this.arg5=arg5;
         this.arg6=arg6;
     }
-    public WebstoreBoosters(String[] args) {
+    public WebstoreBoosters(final String[] args) {
         super(args);
         try {
-            this.arg2 = getArgs()[1];
-            this.arg3 = getArgs()[2];
-            this.arg4 = Double.parseDouble(getArgs()[3]);
-            this.arg5 = Integer.parseInt(getArgs()[4]);
-            this.arg6 = Integer.parseInt(getArgs()[5]);
-        } catch (Exception ignored) {}
+            arg2 = this.getArgs()[1];
+            arg3 = this.getArgs()[2];
+            arg4 = Double.parseDouble(this.getArgs()[3]);
+            arg5 = Integer.parseInt(this.getArgs()[4]);
+            arg6 = Integer.parseInt(this.getArgs()[5]);
+        } catch (final Exception ignored) {}
     }
 
-    public void setMultiplier(double multi) {
-        this.arg4 = multi;
+    public void setMultiplier(final double multi) {
+        arg4 = multi;
     }
-    public void setDuration(int duration) {
-        this.arg5 = duration;
+    public void setDuration(final int duration) {
+        arg5 = duration;
     }
-    public void setAmount(int amount) {
-        this.arg6 = amount;
+    public void setAmount(final int amount) {
+        arg6 = amount;
     }
 
     @Override
-    public void completePurchase(UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
+    public void completePurchase(final UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
         //give player the booster item
-        Player player = Bukkit.getPlayer(uuid);
+        final Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
-        if (!Utils.giveItem(player, getBoosterItem())) {
+        if (!Utils.giveItem(player, this.getBoosterItem())) {
             //when giveItem is run it will give the player the booster if the condition is not met
             player.sendMessage(Utils.lore(
                     "<red>An item has been purchased for this account, but your inventory and ender chest was too full. Please rejoin the server with space for the item(s) in your inventory."));
@@ -63,30 +63,30 @@ public class WebstoreBoosters extends WebstorePackage {
 
         //send a message that they purchased a booster
         Bukkit.broadcast(Utils.lore(""));
-        Bukkit.broadcast(Utils.lore("  <aqua>" + player.getName() + " has bought <yellow>"+arg6+" "+arg3+" <green>booster(s)!"));
+        Bukkit.broadcast(Utils.lore("  <aqua>" + player.getName() + " has bought <yellow>"+ this.arg6 +" "+ this.arg3 +" <green>booster(s)!"));
         Bukkit.broadcast(Utils.lore("  <aqua>https://store.siegerpg.net/"));
         Bukkit.broadcast(Utils.lore(""));
     }
 
     public ItemStack getBoosterItem() {
-        ItemStack item = new ItemStack(Material.PAPER, arg6);
-        ItemMeta itemMeta = item.getItemMeta();
-        if (this.arg3.equals("EXP")) itemMeta.displayName(Utils.lore("<light_purple>EXP Booster"));
-        else if (this.arg3.equals("GOLD")) itemMeta.displayName(Utils.lore("<yellow>Gold Booster"));
+        final ItemStack item = new ItemStack(Material.PAPER, this.arg6);
+        final ItemMeta itemMeta = item.getItemMeta();
+        if (arg3.equals("EXP")) itemMeta.displayName(Utils.lore("<light_purple>EXP Booster"));
+        else if (arg3.equals("GOLD")) itemMeta.displayName(Utils.lore("<yellow>Gold Booster"));
         else return null;
         itemMeta.lore(new ArrayList<>(){
             {
-                add(Utils.lore("  <gray>Duration: <white>" + Utils.convertSecondsToTime(arg5)));
-                add(Utils.lore("  <yellow>Multiplier: +" + ((arg4*100)-100.0) + "% "+arg3));
-                add(Utils.lore(""));
-                add(Utils.lore("<green><bold>CLICK TO REDEEM"));
+	            this.add(Utils.lore("  <gray>Duration: <white>" + Utils.convertSecondsToTime(WebstoreBoosters.this.arg5)));
+	            this.add(Utils.lore("  <yellow>Multiplier: +" + ((WebstoreBoosters.this.arg4 *100)-100.0) + "% "+ WebstoreBoosters.this.arg3));
+	            this.add(Utils.lore(""));
+	            this.add(Utils.lore("<green><bold>CLICK TO REDEEM"));
             }
         });
 
         item.setItemMeta(itemMeta);
-        NBTItem nbtItem = new NBTItem(item);
-        nbtItem.setInteger("seconds", arg5);
-        nbtItem.setDouble("multiplier", arg4);
+        final NBTItem nbtItem = new NBTItem(item);
+        nbtItem.setInteger("seconds", this.arg5);
+        nbtItem.setDouble("multiplier", this.arg4);
         return nbtItem.getItem();
     }
 }

@@ -13,31 +13,31 @@ import org.jetbrains.annotations.NotNull;
 public class Level implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (!(sender instanceof Player)) {
             return false;
         }
         if (args.length > 0) {
-            OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
-            doTheThing(sender, argPlayer);
+            final OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+            this.doTheThing(sender, argPlayer);
             return true;
         }
-        Player player = (Player) sender;
-        doTheThing(sender, player);
+        final Player player = (Player) sender;
+        this.doTheThing(sender, player);
 
         return true;
 
     }
 
-    public void doTheThing(CommandSender executor, OfflinePlayer player) {
+    public void doTheThing(final CommandSender executor, final OfflinePlayer player) {
         Levels.INSTANCE.getExpLevel(player, pair -> {
             if (pair == null) {
                 executor.sendMessage(Utils.lore("<red>That player can not be found."));
             }
-            float reqExp = Levels.INSTANCE.calculateRequiredExperience(pair.getFirst());
-            double division = pair.getSecond() / reqExp;
-            String name = player.getName();
-            String levelPercent = String.valueOf(Utils.round(Utils.round(division, 3) * 100, 2));
+            final float reqExp = Levels.INSTANCE.calculateRequiredExperience(pair.getFirst());
+            final double division = pair.getSecond() / reqExp;
+            final String name = player.getName();
+            final String levelPercent = String.valueOf(Utils.round(Utils.round(division, 3) * 100, 2));
 
             int total = 0;
             for (int i = 2; i < pair.getFirst(); i++) {
@@ -46,8 +46,8 @@ public class Level implements CommandExecutor {
 
             }
             total = total + pair.getSecond();
-            String totalFormat = String.format("%,d", total);
-            String expLeft = String.format("%,d", (int) (reqExp - pair.getSecond()));
+            final String totalFormat = String.format("%,d", total);
+            final String expLeft = String.format("%,d", (int) (reqExp - pair.getSecond()));
 
             executor.sendMessage(Utils.lore("<dark_purple><bold>Level Statistics"));
             executor.sendMessage(Utils.lore(" "));

@@ -24,7 +24,7 @@ public class SlimeSpirit extends Dungeon {
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -169, 70, 24);
+        final Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -169, 70, 24);
         new Helix().createHelix(loc, Particle.SLIME);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {

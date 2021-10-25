@@ -14,20 +14,20 @@ public class StatChangeListener implements Listener, Runnable {
 
     public static void statBarDisplayTask() {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                HashMap<Player, Double> playerHealth = PlayerData.playerHealth;
-                HashMap<Player, Double> playerMana = PlayerData.playerMana;
+            for (final Player p : Bukkit.getOnlinePlayers()) {
+                final HashMap<Player, Double> playerHealth = PlayerData.playerHealth;
+                final HashMap<Player, Double> playerMana = PlayerData.playerMana;
                 if (playerHealth.get(p) == null) continue;
                 if (PlayerData.hasActionBar.get(p)) continue;
-                double health = Utils.round(playerHealth.get(p), 1);
+                final double health = Utils.round(playerHealth.get(p), 1);
                 if (health < 0.0) p.damage(9999999.0);
-                double mana = Utils.round(playerMana.get(p), 1);
-                double customHealth = Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 1);
+                final double mana = Utils.round(playerMana.get(p), 1);
+                final double customHealth = Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 1);
                 PlayerData.hasActionBar.put(p, true);
                 p.sendActionBar(Utils.parse("<red>"
                         + customHealth + "<dark_red>/" + health + " \u2764"));
             }
-            for (Player p : Bukkit.getOnlinePlayers()) {
+            for (final Player p : Bukkit.getOnlinePlayers()) {
                 PlayerData.hasActionBar.put(p, false);
             }
         }, 0, 40);

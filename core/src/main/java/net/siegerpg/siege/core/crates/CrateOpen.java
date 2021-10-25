@@ -34,30 +34,30 @@ public class CrateOpen implements Listener {
     public static ArrayList<Location> currentlyUsedChests = new ArrayList<>();
 
     @EventHandler
-    public void onCrateOpen(PlayerInteractEvent e) {
+    public void onCrateOpen(final PlayerInteractEvent e) {
 
         //Make sure clicked block is trapped chest in the Hub
         if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
-        Block targetedBlock = e.getClickedBlock();
+        final Block targetedBlock = e.getClickedBlock();
         if (targetedBlock == null) return;
         if (targetedBlock.getType() != Material.ENDER_CHEST) return;
         if (!targetedBlock.getLocation().getWorld().getName().equals("Hub")) return;
-        if (currentlyUsedChests.contains(targetedBlock.getLocation())) return;
+        if (CrateOpen.currentlyUsedChests.contains(targetedBlock.getLocation())) return;
 
         //Make sure item is a cosmetic key
-        Player player = e.getPlayer();
-        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
+        final Player player = e.getPlayer();
+        final CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
         if (item == null) return;
         if (!(item instanceof CustomKey)) return;
-        if (!keyCheck(item)) return;
+        if (!this.keyCheck(item)) return;
 
         //Add chest location to arraylist to prevent further use
-        currentlyUsedChests.add(targetedBlock.getLocation());
+	    CrateOpen.currentlyUsedChests.add(targetedBlock.getLocation());
 
         //Pick item reward to give to player
-        CosmeticDropTable dropTable = getItem(item);
+        final CosmeticDropTable dropTable = this.getItem(item);
         if (dropTable == null) return;
-        CustomCosmetic reward = dropTable.pickItem();
+        final CustomCosmetic reward = dropTable.pickItem();
         e.setCancelled(true);
 
         //Play item getting animation
@@ -70,16 +70,16 @@ public class CrateOpen implements Listener {
         player.getInventory().removeItem(item.getItem().asOne());
 
     }
-    private boolean keyCheck(CustomItem item) {
-        for (Map.Entry<CustomKey, CosmeticDropTable> entry : CosmeticCrate.crates.entrySet()) {
-            CustomKey key = entry.getKey();
+    private boolean keyCheck(final CustomItem item) {
+        for (final Map.Entry<CustomKey, CosmeticDropTable> entry : CosmeticCrate.crates.entrySet()) {
+            final CustomKey key = entry.getKey();
             if (item.getClass() == key.getClass()) return true;
         }
         return false;
     }
-    private CosmeticDropTable getItem(CustomItem item) {
-        for (Map.Entry<CustomKey, CosmeticDropTable> entry : CosmeticCrate.crates.entrySet()) {
-            CustomKey key = entry.getKey();
+    private CosmeticDropTable getItem(final CustomItem item) {
+        for (final Map.Entry<CustomKey, CosmeticDropTable> entry : CosmeticCrate.crates.entrySet()) {
+            final CustomKey key = entry.getKey();
             if (item.getClass() == key.getClass()) return entry.getValue();
         }
         return null;

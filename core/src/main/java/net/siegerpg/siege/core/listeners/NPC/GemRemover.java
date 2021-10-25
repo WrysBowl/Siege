@@ -33,25 +33,25 @@ public class GemRemover implements Listener {
 
     ArrayList<Integer> clickable = new ArrayList<Integer>(){
         {
-            add(12);
-            add(14);
-            add(31);
+            this.add(12);
+            this.add(14);
+            this.add(31);
         }
     };
 
-    int cost = 0;
-    double chance = 0;
-    ItemStack item = null;
+    int cost;
+    double chance;
+    ItemStack item;
 
     @EventHandler
-    public void onRightClickOnEntity(PlayerInteractEvent e) {
+    public void onRightClickOnEntity(final PlayerInteractEvent e) {
         if (e.getClickedBlock() != null && e.getClickedBlock().getType().equals(Material.CHIPPED_ANVIL)) {
-            Player player = e.getPlayer();
-            ItemStack item = player.getInventory().getItemInMainHand();
-            CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+            final Player player = e.getPlayer();
+            final ItemStack item = player.getInventory().getItemInMainHand();
+            final CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
             if (customItem instanceof CustomEquipment) {
                 if (((CustomEquipment) customItem).hasGem()) {
-                    Inventory shop = new GemRemover().getMenu(e.getPlayer());
+                    final Inventory shop = new GemRemover().getMenu(e.getPlayer());
                     player.openInventory(shop);
                 }
             }
@@ -60,11 +60,11 @@ public class GemRemover implements Listener {
     }
 
     @EventHandler
-    public void guiClick(InventoryClickEvent e) {
+    public void guiClick(final InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player)) {return;}
         if (e.getWhoClicked().getMetadata("GemRemover").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("GemRemover").get(0).value(), e.getInventory())) {
-            clickMenu(e);
+            this.clickMenu(e);
             e.setCancelled(true);
         }
     }
@@ -77,44 +77,44 @@ public class GemRemover implements Listener {
      * Display the gem in the GUI
      */
 
-    private void clickMenu(InventoryClickEvent e) {
-        if (!clickable.contains(e.getSlot())) return; //if clicked slot is not contained in the array list
-        Player player = (Player) e.getWhoClicked();
-        int slot = e.getSlot();
+    private void clickMenu(final InventoryClickEvent e) {
+        if (!this.clickable.contains(e.getSlot())) return; //if clicked slot is not contained in the array list
+        final Player player = (Player) e.getWhoClicked();
+        final int slot = e.getSlot();
 
         //if clicked slot is the decrease gold button
         if(slot == 12) {
-            if (this.cost < 100) return;
-            this.cost -= 100;
-            player.openInventory(getMenu(player));
+            if (cost < 100) return;
+            cost -= 100;
+            player.openInventory(this.getMenu(player));
             player.updateInventory();
 
         }
 
         //if clicked slot is the increase gold button
         if (slot == 14) {
-            double bal = VaultHook.econ.getBalance(player);
+            final double bal = VaultHook.econ.getBalance(player);
             if (bal < 100) {
                 player.sendMessage(Utils.tacc("&cYou do not have enough money to increase the chance!"));
                 return;
             } else {
-                this.cost += 100;
-                player.openInventory(getMenu(player));
+                cost += 100;
+                player.openInventory(this.getMenu(player));
                 player.updateInventory();
             }
         }
 
         //if player wants to accept the trade
         if (slot == 31) {
-            if (this.item == null || this.item.getType().isAir()) return;
-            CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
+            if (item == null || item.getType().isAir()) return;
+            final CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
             if (customItem == null) return;
             if (!(customItem instanceof CustomEquipment)) return;
             if (!((CustomEquipment) customItem).hasGem()) return;
-            if (Utils.randTest((double) this.chance)) {
+            if (Utils.randTest(chance)) {
                 //How to get the stat gem from the item? Check in the stat gem listener class
                 //StatGem(itemOnCursor.statType, itemOnCursor.statAmount
-                StatGem gem = new StatGem(((CustomEquipment) customItem).getStatGem().getType(), ((CustomEquipment) customItem).getStatGem().getAmount());
+                final StatGem gem = new StatGem(((CustomEquipment) customItem).getStatGem().getType(), ((CustomEquipment) customItem).getStatGem().getAmount());
                 ItemStack item = new ItemStack(Material.AIR);
                 switch(gem.getType()) {
                     case HEALTH:
@@ -202,68 +202,68 @@ public class GemRemover implements Listener {
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_BREAK, 1.0f, 1.0f);
             }
             player.closeInventory();
-            VaultHook.econ.withdrawPlayer(player, this.cost); //takes the cost they put in from the player
+            VaultHook.econ.withdrawPlayer(player, cost); //takes the cost they put in from the player
             Scoreboard.updateScoreboard(player);
-            CustomEquipment equipmentItem = (CustomEquipment) customItem;
+            final CustomEquipment equipmentItem = (CustomEquipment) customItem;
             equipmentItem.removeStatGem(); //removes stat gem
             equipmentItem.updateMeta(false);
             player.getInventory().addItem(equipmentItem.getItem());
-            player.getInventory().remove(this.item);
-            this.cost=0;
-            this.item=null;
+            player.getInventory().remove(item);
+            cost=0;
+            item=null;
         }
     }
 
     private double calcChance() {
-        if (this.item == null) return 0;
-        CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
+        if (item == null) return 0;
+        final CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
         if (customItem == null) return 0;
         if(customItem.getLevelRequirement() == null) return 0;
-        int levelReq = customItem.getLevelRequirement();
-        double calculatedChance = Utils.round(30.0 + (this.cost/((double)(levelReq*5))), 2);
+        final int levelReq = customItem.getLevelRequirement();
+        final double calculatedChance = Utils.round(30.0 + (cost/((double)(levelReq*5))), 2);
         if (calculatedChance > 100) return 100;
         else return calculatedChance;
     }
 
 
-    private Inventory getMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 45, "Gem Remover");
+    private Inventory getMenu(final Player player) {
+        final Inventory gui = Bukkit.createInventory(null, 45, "Gem Remover");
 
         //Fill in the GUI
-        ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        final ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         for (int i = 0; i < gui.getSize(); i++) {
             gui.setItem(i, filler);
         }
-        ItemStack item = player.getInventory().getItemInMainHand();
-        CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+        final ItemStack item = player.getInventory().getItemInMainHand();
+        final CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
         if (customItem instanceof CustomEquipment) {
             if (((CustomEquipment) customItem).hasGem()) {
                 //Store the item stack to be removed (if)
                 this.item = item;
-                this.chance=calcChance();
+                chance= this.calcChance();
 
                 //Initialize gold increase item
-                ItemStack goldIncrease = new ItemStack(Material.YELLOW_STAINED_GLASS_PANE);
-                ItemMeta goldIncreaseMeta = goldIncrease.getItemMeta();
+                final ItemStack goldIncrease = new ItemStack(Material.YELLOW_STAINED_GLASS_PANE);
+                final ItemMeta goldIncreaseMeta = goldIncrease.getItemMeta();
                 goldIncreaseMeta.displayName(Utils.lore("<green>Add 100"));
                 goldIncrease.setItemMeta(goldIncreaseMeta);
 
                 //Initialize gold decrease item
-                ItemStack goldDecrease = new ItemStack(Material.RED_STAINED_GLASS_PANE);
-                ItemMeta goldDecreaseMeta = goldDecrease.getItemMeta();
+                final ItemStack goldDecrease = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+                final ItemMeta goldDecreaseMeta = goldDecrease.getItemMeta();
                 goldDecreaseMeta.displayName(Utils.lore("<red>Remove 100"));
                 goldDecrease.setItemMeta(goldDecreaseMeta);
 
                 //String.format("%,d", cost)
                 //Initialize gold display item
-                ItemStack goldDisplay = new ItemStack(Material.SUNFLOWER);
-                ItemMeta goldDisplayMeta = goldDisplay.getItemMeta();
-                goldDisplayMeta.displayName(Utils.lore("<yellow>Cost: " + this.cost));
-                final double finalChance = this.chance;
+                final ItemStack goldDisplay = new ItemStack(Material.SUNFLOWER);
+                final ItemMeta goldDisplayMeta = goldDisplay.getItemMeta();
+                goldDisplayMeta.displayName(Utils.lore("<yellow>Cost: " + cost));
+                double finalChance = chance;
                 goldDisplayMeta.lore(new ArrayList<>() {
                     {
-                        add(Utils.lore("<aqua>Chance of Recovery: " + finalChance));
-                        add(Utils.lore("<gold><bold>CLICK TO GET <reset><yellow>(maybe)"));
+                        this.add(Utils.lore("<aqua>Chance of Recovery: " + finalChance));
+                        this.add(Utils.lore("<gold><bold>CLICK TO GET <reset><yellow>(maybe)"));
 
                     }
                 });

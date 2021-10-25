@@ -15,7 +15,7 @@ public enum ArmorType{
 
     private final int slot;
 
-    ArmorType(int slot){
+    ArmorType(final int slot){
         this.slot = slot;
     }
 
@@ -25,18 +25,18 @@ public enum ArmorType{
      * @param itemStack The ItemStack to parse the type of.
      * @return The parsed ArmorType, or null if not found.
      */
-    public static ArmorType matchType(final ItemStack itemStack){
+    public static ArmorType matchType(ItemStack itemStack){
         if(ArmorListener.isAirOrNull(itemStack)) return null;
-        String type = itemStack.getType().name();
-        CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(itemStack);
-        if(type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("_HEAD") || customItem != null) return HELMET;
-        else if(type.endsWith("_CHESTPLATE") || type.equals("ELYTRA")) return CHESTPLATE;
-        else if(type.endsWith("_LEGGINGS")) return LEGGINGS;
-        else if(type.endsWith("_BOOTS")) return BOOTS;
+        final String type = itemStack.getType().name();
+        final CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(itemStack);
+        if(type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("_HEAD") || customItem != null) return ArmorType.HELMET;
+        else if(type.endsWith("_CHESTPLATE") || type.equals("ELYTRA")) return ArmorType.CHESTPLATE;
+        else if(type.endsWith("_LEGGINGS")) return ArmorType.LEGGINGS;
+        else if(type.endsWith("_BOOTS")) return ArmorType.BOOTS;
         else return null;
     }
 
     public int getSlot(){
-        return slot;
+        return this.slot;
     }
 }

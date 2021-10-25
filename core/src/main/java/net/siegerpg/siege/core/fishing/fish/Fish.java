@@ -17,8 +17,8 @@ public class Fish {
 	 * moveSpeed ex: 0,5 means it moves 0,5 character for every 2 tick(1 every 4 ticks) - 0,2 = moves 0,2 characters every 0,2 ticks (1 every 10 tick)
 	 * winScore you get 1 per second in the green and the win score is the max to win
 	 * */
-	public Fish(String name, double[] size, double winScore, double moveSpeed, int length, int chance,
-				double chanceToChangeDirection, int customModelData)
+	public Fish(final String name, final double[] size, final double winScore, final double moveSpeed, final int length, final int chance,
+	            final double chanceToChangeDirection, final int customModelData)
 	{
 		this.name=name;
 		this.chanceToChangeDirection=chanceToChangeDirection;
@@ -28,6 +28,6 @@ public class Fish {
 		this.winScore=winScore;
 		this.chance=chance;
 		this.customModelData=customModelData;
-		this.actualSize=FishCore.getRandomSize(this);
+		actualSize=FishCore.getRandomSize(this);
 	}
 }

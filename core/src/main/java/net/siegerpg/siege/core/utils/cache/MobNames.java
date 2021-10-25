@@ -12,11 +12,11 @@ public class MobNames implements Listener {
     public static HashMap<Entity, String> mobNames = new HashMap<>();
 
     @EventHandler
-    public void onSpawn(MythicMobSpawnEvent e) {
+    public void onSpawn(final MythicMobSpawnEvent e) {
         if (!(e.getEntity() instanceof Mob)) return;
-        String displayName = e.getMob().getDisplayName();
+        final String displayName = e.getMob().getDisplayName();
         if (displayName != null) {
-            mobNames.put(e.getEntity(), displayName);
+	        MobNames.mobNames.put(e.getEntity(), displayName);
         }
     }
 }

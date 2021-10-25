@@ -13,13 +13,13 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class PlayerQuitListener implements Listener {
 
     @EventHandler
-    public void quitEvent(PlayerQuitEvent e) {
+    public void quitEvent(final PlayerQuitEvent e) {
 
         e.setQuitMessage(Utils.tacc("&c&lLEAVE &7[&c-&7] " + e.getPlayer().getName()));
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
 
-            for (Player p : Bukkit.getOnlinePlayers()) {
+            for (final Player p : Bukkit.getOnlinePlayers()) {
                 Scoreboard.updateScoreboard(p);
                 Tablist.tablistUpdate(p);
             }

@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public class GetBooster implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (sender instanceof Player) {
             sender.sendMessage(Utils.lore("<red>Only console can use this command."));
             return false;
@@ -23,18 +23,18 @@ public class GetBooster implements CommandExecutor {
             sender.sendMessage(Utils.lore("<red>You did not fill in the proper arguments /getBooster player amount multiplier seconds EXP/GOLD."));
             return false;
         }
-        Player targetPlayer = Bukkit.getPlayer(args[0]);
+        final Player targetPlayer = Bukkit.getPlayer(args[0]);
         if (targetPlayer == null) return false;
-        int amount;
-        double multiplier;
-        int seconds;
-        String booster;
+        final int amount;
+        final double multiplier;
+        final int seconds;
+        final String booster;
         try {
             amount = Integer.parseInt(args[1]);
             multiplier = Double.parseDouble(args[2]);
             seconds = Integer.parseInt(args[3]);
             booster = args[4];
-        } catch (Exception e){
+        } catch (final Exception e){
             sender.sendMessage(Utils.lore("<red>Exception parsing command."));
             return false;
         }
@@ -42,7 +42,7 @@ public class GetBooster implements CommandExecutor {
             sender.sendMessage(Utils.lore("<red>This player is null."));
             return false;
         }
-        ItemStack item = new WebstoreBoosters("booster", booster, multiplier, seconds, amount).getBoosterItem();
+        final ItemStack item = new WebstoreBoosters("booster", booster, multiplier, seconds, amount).getBoosterItem();
         Utils.giveItem(targetPlayer, item);
         Bukkit.broadcastMessage(Utils.tacc(""));
         Bukkit.broadcastMessage(Utils.tacc("  &b" + targetPlayer.getName() + " has received &e" + amount + " &a" + ((multiplier*100)-100.0) + "x &e" + booster + " booster(s)!"));

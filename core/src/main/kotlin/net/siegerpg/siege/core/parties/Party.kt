@@ -8,7 +8,7 @@ import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.entity.Player
 import java.util.*
 
-class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
+class Party(val partyID: UUID, private var leader: OfflinePlayer) {
     private val invited: ArrayList<Player> = ArrayList()
     private val members: HashSet<OfflinePlayer> = HashSet()
 

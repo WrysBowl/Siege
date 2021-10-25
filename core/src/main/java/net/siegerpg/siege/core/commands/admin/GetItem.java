@@ -15,15 +15,15 @@ public class GetItem implements CommandExecutor {
 
     @SneakyThrows
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (sender instanceof Player) {
-            Player player = (Player) sender;
+            final Player player = (Player) sender;
             if (player.hasPermission("SiegeCore.getItem")) {
                 if (args.length == 2) {
-                    CustomItem item = CustomItem.class.newInstance();
+                    final CustomItem item = CustomItem.class.newInstance();
                     if (Class.forName(args[0]).isInstance(item)) {
-                        Gson gson = new Gson();
-                        CustomItem obj = gson.fromJson(args[0], CustomItem.class);
+                        final Gson gson = new Gson();
+                        final CustomItem obj = gson.fromJson(args[0], CustomItem.class);
                         player.getInventory().addItem(obj.getUpdatedItem(Boolean.getBoolean(args[1])));
                         return true;
                     }

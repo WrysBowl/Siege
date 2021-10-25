@@ -21,11 +21,11 @@ public class RightClickEvent implements Listener {
 
 
     @EventHandler
-    public void onClick(PlayerInteractEvent e) {
-        Player player = e.getPlayer();
+    public void onClick(final PlayerInteractEvent e) {
+        final Player player = e.getPlayer();
         if (FishingTask.runningTasks.containsKey(player.getUniqueId())) {
-            FishingTask task = FishingTask.runningTasks.get(player.getUniqueId());
-            CustomFishEvent ce = task.getEvent();
+            final FishingTask task = FishingTask.runningTasks.get(player.getUniqueId());
+            final CustomFishEvent ce = task.getEvent();
             if (ce.getFishingData().isFishing()) {
                 e.setCancelled(true);
                 if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
@@ -37,12 +37,12 @@ public class RightClickEvent implements Listener {
                 }
             }
         } else if (player.getInventory().getItemInMainHand().getType().equals(Material.FISHING_ROD)) {
-            ItemStack item = player.getInventory().getItemInMainHand();
-            CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+            final ItemStack item = player.getInventory().getItemInMainHand();
+            final CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
             e.setCancelled(true);
             if (!(customItem instanceof CustomTool)) return;
             if (customItem.getLevelRequirement() == null) return;
-            Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
+            final Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
             if (levelExp == null || customItem.getLevelRequirement() > levelExp.getFirst()) {
                 player.sendMessage(Utils.parse("<red>You are too weak to cast this fishing rod!"));
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);

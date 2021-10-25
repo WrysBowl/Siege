@@ -12,18 +12,18 @@ import org.jetbrains.annotations.NotNull;
 public class getBait implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command cmd, @NotNull final String label, @NotNull final String[] args) {
         if(sender instanceof Player) {
-            Player player = (Player) sender;
+            final Player player = (Player) sender;
             if(player.hasPermission("Siege.getBait")){
                 if(args.length==1) {
                     try{
-                        BaitCore bait = BaitCore.getBait(args[0]);
-                        ItemStack item = bait.getBaitItemStack();
+                        final BaitCore bait = BaitCore.getBait(args[0]);
+                        final ItemStack item = bait.getBaitItemStack();
                         player.getInventory().addItem(item);
                         return true;
                     }
-                    catch(Exception exception) {
+                    catch(final Exception exception) {
                         exception.printStackTrace();
                         player.sendMessage(ChatColor.RED + "Invalid syntax, please use /getBait <baitName>, this bait does not exist");
                         return false;

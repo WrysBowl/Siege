@@ -34,42 +34,42 @@ public class PlayerData implements Listener {
     public static HashMap<Player, ArrayList<Action>> playerTriggers = new HashMap<>();
 
     @EventHandler
-    public void onEnable(PluginEnableEvent e) {
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            setStats(player);
-            hasActionBar.put(player, false);
-            PlayerData.broadcastTips.put(player, true);
+    public void onEnable(final PluginEnableEvent e) {
+        for (final Player player : Bukkit.getOnlinePlayers()) {
+            PlayerData.setStats(player);
+            PlayerData.hasActionBar.put(player, false);
+            broadcastTips.put(player, true);
             //playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
         }
     }
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
-        hasActionBar.put(player, false);
-        setStats(player);
+    public void onJoin(final PlayerJoinEvent e) {
+        final Player player = e.getPlayer();
+        PlayerData.hasActionBar.put(player, false);
+        PlayerData.setStats(player);
         //playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
-        if (!PlayerData.broadcastTips.containsKey(player)) {
-            PlayerData.broadcastTips.put(player, true);
+        if (!broadcastTips.containsKey(player)) {
+            broadcastTips.put(player, true);
         }
     }
 
     @EventHandler
-    public void onLeave(PlayerQuitEvent e) {
-        Player player = e.getPlayer();
-        playerHealth.remove(player);
-        playerMana.remove(player);
-        playerCurrentMana.remove(player);
-        playerSkills.remove(player);
+    public void onLeave(final PlayerQuitEvent e) {
+        final Player player = e.getPlayer();
+        PlayerData.playerHealth.remove(player);
+        PlayerData.playerMana.remove(player);
+        PlayerData.playerCurrentMana.remove(player);
+        PlayerData.playerSkills.remove(player);
     }
 
-    public static void setStats(Player player) {
+    public static void setStats(final Player player) {
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
-            playerHealth.put(
+            PlayerData.playerHealth.put(
                     player,
                     CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + player.getMaxHealth() + player.getLevel() * 2);
 
-            playerMana.put(
+            PlayerData.playerMana.put(
                     player,
                     CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
 
@@ -78,29 +78,29 @@ public class PlayerData implements Listener {
 
 
     @EventHandler
-    public void onEquip(ArmorEquipEvent e) {
-        @Nullable CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
+    public void onEquip(final ArmorEquipEvent e) {
+        @Nullable final CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
         if (item == null) {
-            setStats(e.getPlayer());
+            PlayerData.setStats(e.getPlayer());
             return;
         }
         if (item.getLevelRequirement() == null) {
             return;
         }
-        Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
+        final Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
         if (item.getLevelRequirement() > (expLevel != null ? expLevel.getFirst() : 0)) {
             e.getPlayer().sendTitle("", ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
             return;
         }
-        setStats(e.getPlayer());
+        PlayerData.setStats(e.getPlayer());
     }
 
     @EventHandler
-    public void toolSwitch(PlayerItemHeldEvent e) {
-        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
+    public void toolSwitch(final PlayerItemHeldEvent e) {
+        final CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
         if (item != null) {
             if (!(item instanceof CustomMaterial)) {
-                setStats(e.getPlayer());
+                PlayerData.setStats(e.getPlayer());
             }
         }
     }

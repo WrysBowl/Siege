@@ -15,19 +15,19 @@ import org.jetbrains.annotations.NotNull;
 public class Pay implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        Player player = (Player) sender;
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
+        final Player player = (Player) sender;
         Levels.INSTANCE.getExpLevel(player, pair -> {
             if (pair == null || pair.getFirst() < 3) {
                 player.sendMessage(Utils.lore("<red>You need to be level 3 to use this command!"));
                 return null;
             }
             int gold = 0;
-            OfflinePlayer targetPlayer;
+            final OfflinePlayer targetPlayer;
             try {
                 targetPlayer = Bukkit.getOfflinePlayer(args[0]);
                 gold = Integer.parseInt(args[1]);
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 player.sendMessage(Utils.lore("<red>Incorrect arguments. Type /pay player gold"));
                 return null;
             }
@@ -39,7 +39,7 @@ public class Pay implements CommandExecutor {
                 player.sendMessage(Utils.lore("<red>Incorrect arguments. Type /pay player GOLD"));
                 return null;
             }
-            double playerBal = VaultHook.econ.getBalance(player);
+            final double playerBal = VaultHook.econ.getBalance(player);
             if (playerBal >= gold) {
                 player.sendMessage(Utils.lore("<yellow>You paid " + targetPlayer.getName() + " " + gold + " gold."));
                 if (targetPlayer.isOnline())

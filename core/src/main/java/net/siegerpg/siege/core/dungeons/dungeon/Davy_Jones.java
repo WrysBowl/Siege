@@ -23,7 +23,7 @@ public class Davy_Jones extends Dungeon {
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 9, 51, 146);
+        final Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 9, 51, 146);
         new Helix().createHelix(loc, Particle.WATER_BUBBLE);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {

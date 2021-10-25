@@ -45,100 +45,100 @@ public class DeathListener implements Listener, Runnable {
     public HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>(){
         {
             //BOSSES
-            put("Blubber", new Blubber());
-            put("DeathBull", new DeathBull());
-            put("Mercenary", new Mercenary());
-            put("Molter", new Molter());
-            put("Ogre", new Ogre());
-            put("Orc", new Orc());
-            put("RockSpirit", new RockSpirit());
-            put("Werewolf", new Werewolf());
+            this.put("Blubber", new Blubber());
+            this.put("DeathBull", new DeathBull());
+            this.put("Mercenary", new Mercenary());
+            this.put("Molter", new Molter());
+            this.put("Ogre", new Ogre());
+            this.put("Orc", new Orc());
+            this.put("RockSpirit", new RockSpirit());
+            this.put("Werewolf", new Werewolf());
 
-            put("Unicorn", new Unicorn());
+            this.put("Unicorn", new Unicorn());
 
             //DUNGEON BOSSES
-            put("Broodmother", new Broodmother());
-            put("BullSpirit", new BullSpirit());
-            put("Davy_Jones", new Davy_Jones());
-            put("FoxSpirit", new FoxSpirit());
-            put("Lich", new Lich());
-            put("MagmaSpirit", new MagmaSpirit());
-            put("Necromancer", new Necromancer());
-            put("SlimeSpirit", new SlimeSpirit());
+            this.put("Broodmother", new Broodmother());
+            this.put("BullSpirit", new BullSpirit());
+            this.put("Davy_Jones", new Davy_Jones());
+            this.put("FoxSpirit", new FoxSpirit());
+            this.put("Lich", new Lich());
+            this.put("MagmaSpirit", new MagmaSpirit());
+            this.put("Necromancer", new Necromancer());
+            this.put("SlimeSpirit", new SlimeSpirit());
 
             //HOSTILES
-            put("AngryBull", new AngryBull());
-            put("Bandit", new Bandit());
-            put("BanditArcher", new BanditArcher());
-            put("Blob", new Blob());
-            put("BloodSucker", new BloodSucker());
-            put("Bully", new Bully());
-            put("FlamingGoo", new FlamingGoo());
-            put("ForestSpider", new ForestSpider());
-            put("Goblin", new Goblin());
-            put("GoldenGoblin", new GoldenGoblin());
-            put("Goo", new Goo());
-            put("InfectedDigger", new InfectedDigger());
-            put("RockRat", new RockRat());
-            put("ScorchingBlob", new ScorchingBlob());
-            put("ScrapRat", new ScrapRat());
-            put("Sea_Warrior", new Sea_Warrior());
-            put("Skeletal_Archer", new Skeletal_Archer());
-            put("Skeletal_Warrior", new Skeletal_Warrior());
-            put("Thief", new Thief());
-            put("ZombifiedDigger", new ZombifiedDigger());
+            this.put("AngryBull", new AngryBull());
+            this.put("Bandit", new Bandit());
+            this.put("BanditArcher", new BanditArcher());
+            this.put("Blob", new Blob());
+            this.put("BloodSucker", new BloodSucker());
+            this.put("Bully", new Bully());
+            this.put("FlamingGoo", new FlamingGoo());
+            this.put("ForestSpider", new ForestSpider());
+            this.put("Goblin", new Goblin());
+            this.put("GoldenGoblin", new GoldenGoblin());
+            this.put("Goo", new Goo());
+            this.put("InfectedDigger", new InfectedDigger());
+            this.put("RockRat", new RockRat());
+            this.put("ScorchingBlob", new ScorchingBlob());
+            this.put("ScrapRat", new ScrapRat());
+            this.put("Sea_Warrior", new Sea_Warrior());
+            this.put("Skeletal_Archer", new Skeletal_Archer());
+            this.put("Skeletal_Warrior", new Skeletal_Warrior());
+            this.put("Thief", new Thief());
+            this.put("ZombifiedDigger", new ZombifiedDigger());
 
-            put("SkeletalGeneral", new SkeletalGeneral());
-            put("Corrupted_Skeleton", new Corrupted_Skeleton());
-            put("Dark_Elf", new Dark_Elf());
-            put("Dark_Fairy", new Dark_Fairy());
-            put("Digger_Overseer", new Digger_Overseer());
-            put("Fairy_Outlaw", new Fairy_Outlaw());
-            put("Freezing_Skeletal_Warrior", new Freezing_Skeletal_Warrior());
-            put("Greater_Spider", new Greater_Spider());
-            put("Leaf_Monster", new Leaf_Monster());
-            put("Moss_Lurker", new Moss_Lurker());
-            put("Nightmare", new Nightmare());
-            put("Shroomlight_Monster", new Shroomlight_Monster());
-            put("Stone_Monster", new Stone_Monster());
+            this.put("SkeletalGeneral", new SkeletalGeneral());
+            this.put("Corrupted_Skeleton", new Corrupted_Skeleton());
+            this.put("Dark_Elf", new Dark_Elf());
+            this.put("Dark_Fairy", new Dark_Fairy());
+            this.put("Digger_Overseer", new Digger_Overseer());
+            this.put("Fairy_Outlaw", new Fairy_Outlaw());
+            this.put("Freezing_Skeletal_Warrior", new Freezing_Skeletal_Warrior());
+            this.put("Greater_Spider", new Greater_Spider());
+            this.put("Leaf_Monster", new Leaf_Monster());
+            this.put("Moss_Lurker", new Moss_Lurker());
+            this.put("Nightmare", new Nightmare());
+            this.put("Shroomlight_Monster", new Shroomlight_Monster());
+            this.put("Stone_Monster", new Stone_Monster());
 
             //NEUTRALS
-            put("GiantHornet", new GiantHornet());
-            put("WildFox", new WildFox());
-            put("ChestMimic1", new ChestMimic1());
-            put("ChestMimic2", new ChestMimic2());
-            put("ChestMimic3", new ChestMimic3());
-            put("ChestMimic4", new ChestMimic4());
+            this.put("GiantHornet", new GiantHornet());
+            this.put("WildFox", new WildFox());
+            this.put("ChestMimic1", new ChestMimic1());
+            this.put("ChestMimic2", new ChestMimic2());
+            this.put("ChestMimic3", new ChestMimic3());
+            this.put("ChestMimic4", new ChestMimic4());
 
-            put("Archer_Elf", new Archer_Elf());
-            put("Warrior_Elf", new Warrior_Elf());
-            put("Twilight_Wolf", new Twilight_Wolf());
+            this.put("Archer_Elf", new Archer_Elf());
+            this.put("Warrior_Elf", new Warrior_Elf());
+            this.put("Twilight_Wolf", new Twilight_Wolf());
 
 
             //PASSIVES
-            put("FeatheredMeat", new FeatheredMeat());
-            put("MooMoo", new MooMoo());
-            put("Pigeon", new Pigeon());
-            put("Porky", new Porky());
-            put("Sushi", new Sushi());
-            put("Wooly", new Wooly());
+            this.put("FeatheredMeat", new FeatheredMeat());
+            this.put("MooMoo", new MooMoo());
+            this.put("Pigeon", new Pigeon());
+            this.put("Porky", new Porky());
+            this.put("Sushi", new Sushi());
+            this.put("Wooly", new Wooly());
 
-            put("Bat", new Bat());
-            put("Crow", new Crow());
-            put("Crystal_Rat", new Crystal_Rat());
-            put("Crystal_Turtle", new Crystal_Turtle());
-            put("Polar_Bear", new Polar_Bear());
-            put("Twilight_Cat", new Twilight_Cat());
-            put("Warrior_Dwarf", new Warrior_Dwarf());
-            put("Wind_Rabbit", new Wind_Rabbit());
+            this.put("Bat", new Bat());
+            this.put("Crow", new Crow());
+            this.put("Crystal_Rat", new Crystal_Rat());
+            this.put("Crystal_Turtle", new Crystal_Turtle());
+            this.put("Polar_Bear", new Polar_Bear());
+            this.put("Twilight_Cat", new Twilight_Cat());
+            this.put("Warrior_Dwarf", new Warrior_Dwarf());
+            this.put("Wind_Rabbit", new Wind_Rabbit());
         }
     };
 
     @EventHandler
-    public void damageDrops(EntityDamageByEntityEvent e) {
+    public void damageDrops(final EntityDamageByEntityEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
 
-        ActiveMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getDamager());
+        final ActiveMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getDamager());
         if (mm == null) return;
 
         ItemStack reward = null;
@@ -160,13 +160,13 @@ public class DeathListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
+    public void mobDeath(final EntityDeathEvent e) throws InvalidMobTypeException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
 
         if (e.getEntity().getKiller() == null) return;
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
 
-        String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
-        MobDropTable mobDrop = mobDropTableHashMap.get(mm).getClass().getDeclaredConstructor().newInstance();
+        final String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
+        final MobDropTable mobDrop = this.mobDropTableHashMap.get(mm).getClass().getDeclaredConstructor().newInstance();
 
 
 
@@ -186,11 +186,11 @@ public class DeathListener implements Listener, Runnable {
             }
         }
 
-        Player player = e.getEntity().getKiller();
+        final Player player = e.getEntity().getKiller();
         double luck = 0.0;
         int goldCoinAmt = mobDrop.getGold(true);
         int exp = mobDrop.getExp(true);
-        Location loc = e.getEntity().getLocation();
+        final Location loc = e.getEntity().getLocation();
 
         if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());}
 
@@ -210,18 +210,18 @@ public class DeathListener implements Listener, Runnable {
             GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
         }
 
-        for (ItemStack drop : mobDrop.getRewards(luck)) { //Loop through all drops
+        for (final ItemStack drop : mobDrop.getRewards(luck)) { //Loop through all drops
             loc.getWorld().dropItemNaturally(loc, drop);
         }
     }
 
     @EventHandler
-    public void removePlayerGold(PlayerDeathEvent e) {
+    public void removePlayerGold(final PlayerDeathEvent e) {
         e.deathMessage(null);
-        Player player = e.getEntity().getPlayer();
+        final Player player = e.getEntity().getPlayer();
         if (player != null) {
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
-            int bal = (int) Math.round(VaultHook.econ.getBalance(player));
+            final int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
             double percBal = (Math.floor(bal / 10000.0) / 100);
             if (percBal > 0.15) percBal = 0.15;
@@ -231,7 +231,7 @@ public class DeathListener implements Listener, Runnable {
             if (newBal < 0) newBal = 0;
             VaultHook.econ.withdrawPlayer(player, bal);
             VaultHook.econ.depositPlayer(player, newBal);
-            int goldLost = bal-newBal;
+            final int goldLost = bal-newBal;
             new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -245,9 +245,9 @@ public class DeathListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void onRespawn(PlayerRespawnEvent e) {
-        Player player = e.getPlayer();
-        World world = player.getWorld();
+    public void onRespawn(final PlayerRespawnEvent e) {
+        final Player player = e.getPlayer();
+        final World world = player.getWorld();
         if (world.getName().equals("Hilly_Woods")) {
             e.setRespawnLocation(world.getSpawnLocation());
             return;
@@ -259,7 +259,7 @@ public class DeathListener implements Listener, Runnable {
             return;
         }*/
         if (player.getWorld().equals(Core.plugin().getServer().getWorld("PVP"))) {
-            World HUB = Core.plugin().getServer().getWorld("Hub");
+            final World HUB = Core.plugin().getServer().getWorld("Hub");
             e.setRespawnLocation(new Location(HUB, -52, 91, -8, 168, 0));
         }
     }

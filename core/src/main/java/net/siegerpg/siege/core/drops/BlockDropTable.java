@@ -19,7 +19,7 @@ public class BlockDropTable implements Listener {
     int expMax;
     Reward[] rewards;
 
-    public BlockDropTable(int blockRegen, Material material, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
+    public BlockDropTable(final int blockRegen, final Material material, final int goldMin, final int goldMax, final int expMin, final int expMax, final Reward[] rewards) {
         this.blockRegen = blockRegen;
         this.material = material;
         this.goldMin = goldMin;
@@ -30,14 +30,14 @@ public class BlockDropTable implements Listener {
     }
 
     public Integer getBlockRegen() {
-        return blockRegen;
+        return this.blockRegen;
     }
     public Material getMaterial() {
-        return material;
+        return this.material;
     }
-    public ArrayList<ItemStack> getRewards(double luckChance) {
-        ArrayList<ItemStack> itemList = new ArrayList<>();
-        for (Reward reward : rewards) {
+    public ArrayList<ItemStack> getRewards(final double luckChance) {
+        final ArrayList<ItemStack> itemList = new ArrayList<>();
+        for (final Reward reward : this.rewards) {
             if (!Utils.randTest(reward.chance)) continue;
             for (double i=luckChance; i>=0;i-=100) {
                 itemList.add(reward.item);
@@ -48,16 +48,16 @@ public class BlockDropTable implements Listener {
         }
         return itemList;
     }
-    public Integer getGold(boolean rand) {
+    public Integer getGold(final boolean rand) {
         if (rand) {
-            return (int) Math.floor(Math.random()*(goldMax-goldMin+1)+goldMin);
+            return (int) Math.floor(Math.random()*(this.goldMax - this.goldMin +1)+ this.goldMin);
         }
-        return goldMax;
+        return this.goldMax;
     }
-    public Integer getExp(boolean rand) {
+    public Integer getExp(final boolean rand) {
         if (rand) {
-            return (int) Math.floor(Math.random()*(expMax-expMin+1)+expMin);
+            return (int) Math.floor(Math.random()*(this.expMax - this.expMin +1)+ this.expMin);
         }
-        return expMax;
+        return this.expMax;
     }
 }

@@ -11,7 +11,7 @@ import java.util.*
 object BossLeaderboardDB {
 
     // How long data is cached for
-    private const val cacheDuration = 10 * 60;
+    private const val cacheDuration = 10 * 60
 
     /**
      * A hashmap for caching the boss data
@@ -115,7 +115,7 @@ object BossLeaderboardDB {
             )
             stmt.setString(1, playerID.toString())
             stmt.setString(2, bossName)
-            val query = stmt.executeQuery();
+            val query = stmt.executeQuery()
             if (!query.isBeforeFirst) {
                 return null
             }
@@ -154,12 +154,12 @@ object BossLeaderboardDB {
                     mutableIDs.joinToString(", ") { "?" }),
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
-            var currentIndex = 0;
+            var currentIndex = 0
             stmt.setString(++currentIndex, bossName)
             mutableIDs.forEach { id ->
                 stmt.setString(++currentIndex, id.toString())
             }
-            val resultSet = stmt.executeQuery();
+            val resultSet = stmt.executeQuery()
             while (resultSet.next()) {
                 val uuid = UUID.fromString(resultSet.getString("playerID"))
                 val data = Pair(resultSet.getByte("percentageDone"), resultSet.getInt("timeTaken"))
@@ -183,7 +183,7 @@ object BossLeaderboardDB {
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setString(1, bossName)
-            val resultSet = stmt.executeQuery();
+            val resultSet = stmt.executeQuery()
             while (resultSet.next()) {
                 val uuid = UUID.fromString(resultSet.getString("playerID"))
                 val data = Pair(resultSet.getByte("percentageDone"), resultSet.getInt("timeTaken"))
@@ -205,7 +205,7 @@ object BossLeaderboardDB {
                 // If the new db data would be worse than the current one then don't change anything
                 if (dbData.first / dbData.second > data.first / data.second) return
                 val stmt =
-                    connection.prepareStatement("UPDATE bossData SET percentageDone=?,timeTaken=? WHERE playerID=? AND bossName=?");
+                    connection.prepareStatement("UPDATE bossData SET percentageDone=?,timeTaken=? WHERE playerID=? AND bossName=?")
                 stmt.setByte(1, data.first)
                 stmt.setInt(2, data.second)
                 stmt.setString(3, playerID.toString())
@@ -213,7 +213,7 @@ object BossLeaderboardDB {
                 stmt.executeUpdate()
             } else {
                 val stmt =
-                    connection.prepareStatement("INSERT INTO bossData (bossName, playerID, percentageDone, timeTaken) VALUES (?, ?, ?, ?)");
+                    connection.prepareStatement("INSERT INTO bossData (bossName, playerID, percentageDone, timeTaken) VALUES (?, ?, ?, ?)")
                 stmt.setByte(3, data.first)
                 stmt.setInt(4, data.second)
                 stmt.setString(2, playerID.toString())
@@ -238,7 +238,7 @@ object BossLeaderboardDB {
             val updateStmt =
                 connection.prepareStatement("UPDATE bossData SET percentageDone=?, timeTaken=? WHERE playerID=? AND bossName=?")
             val insertStmt =
-                connection.prepareStatement("INSERT INTO bossData (bossName, playerID, percentageDone, timeTaken) VALUES (?, ?, ?, ?)");
+                connection.prepareStatement("INSERT INTO bossData (bossName, playerID, percentageDone, timeTaken) VALUES (?, ?, ?, ?)")
             data.forEach { (uuid, data) ->
                 if (dbData?.get(uuid) != null) {
                     // If the new db data would be worse than the current one then don't change anything

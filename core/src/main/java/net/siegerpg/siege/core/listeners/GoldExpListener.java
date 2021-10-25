@@ -24,19 +24,19 @@ import org.bukkit.inventory.ItemStack;
 public class GoldExpListener implements Listener{
 
     @EventHandler
-    public void goldPickUp(PlayerAttemptPickupItemEvent e) {
-        ItemStack item = e.getItem().getItemStack();
+    public void goldPickUp(final PlayerAttemptPickupItemEvent e) {
+        final ItemStack item = e.getItem().getItemStack();
         if (e.isCancelled()) return;
         if (!item.getType().equals(Material.SUNFLOWER)) return;
         if (!item.getItemMeta().getDisplayName().contains("Gold Coin")) return;
-        Player player = e.getPlayer();
+        final Player player = e.getPlayer();
         e.setCancelled(true);
         e.getItem().remove();
-        int goldAmount = e.getItem().getItemStack().getAmount();
-        giveGold(player, goldAmount);
+        final int goldAmount = e.getItem().getItemStack().getAmount();
+        GoldExpListener.giveGold(player, goldAmount);
     }
 
-    public static void giveGold(Player player, int goldAmount) {
+    public static void giveGold(final Player player, final int goldAmount) {
         net.siegerpg.siege.core.utils.VaultHook.econ.depositPlayer(player, goldAmount);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
@@ -48,10 +48,10 @@ public class GoldExpListener implements Listener{
     }
 
     @EventHandler
-    public void expPickUp(PlayerPickupExperienceEvent e) {
+    public void expPickUp(final PlayerPickupExperienceEvent e) {
         if (e.getExperienceOrb().getName().contains("EXP")) {
-            Player player = e.getPlayer();
-            int exp = e.getExperienceOrb().getExperience();
+            final Player player = e.getPlayer();
+            final int exp = e.getExperienceOrb().getExperience();
             Levels.INSTANCE.addExpShared(player, exp);
             player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
 
@@ -65,11 +65,11 @@ public class GoldExpListener implements Listener{
     }
 
     @EventHandler
-    public void goldMerge(ItemMergeEvent e) {
-        ItemStack item = e.getEntity().getItemStack();
-        Item source = e.getEntity();
-        Item target = e.getTarget();
-        int total = source.getItemStack().getAmount() + target.getItemStack().getAmount();
+    public void goldMerge(final ItemMergeEvent e) {
+        final ItemStack item = e.getEntity().getItemStack();
+        final Item source = e.getEntity();
+        final Item target = e.getTarget();
+        final int total = source.getItemStack().getAmount() + target.getItemStack().getAmount();
         if (e.isCancelled()) return;
         if (item.getType().equals(Material.SUNFLOWER) && item.getItemMeta().getDisplayName().contains("Gold Coin")) {
             e.getTarget().setCustomName(Utils.tacc("&e+" + total + " Gold"));
@@ -80,9 +80,9 @@ public class GoldExpListener implements Listener{
     }
 
     @EventHandler
-    public void setDroppedItemName(ItemSpawnEvent e) {
-        ItemStack item = e.getEntity().getItemStack();
-        CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+    public void setDroppedItemName(final ItemSpawnEvent e) {
+        final ItemStack item = e.getEntity().getItemStack();
+        final CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
         if (CusItem == null) return;
         if (item.getAmount() <= 1) e.getEntity().setCustomName(Utils.tacc(item.getItemMeta().getDisplayName()));
         else e.getEntity().setCustomName(Utils.tacc( "&e" + item.getAmount() + "x &r" + item.getItemMeta().getDisplayName()));

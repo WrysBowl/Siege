@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class UpdateScoreboard implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (sender instanceof Player) {
             sender.sendMessage(Utils.lore("<red>Only console can use this command."));
             return false;
@@ -21,7 +21,7 @@ public class UpdateScoreboard implements CommandExecutor {
             sender.sendMessage(Utils.lore("<red>You did not fill in the proper arguments /getBooster player amount multiplier seconds EXP/GOLD."));
             return false;
         }
-        Player targetPlayer = Bukkit.getPlayer(args[0]);
+        final Player targetPlayer = Bukkit.getPlayer(args[0]);
         if (targetPlayer == null) {
             return false;
         }

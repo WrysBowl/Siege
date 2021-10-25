@@ -16,38 +16,38 @@ public class HeroRank extends WebstoreRanks {
 
     @SuppressWarnings("Deprecated")
     @Override
-    public void completePurchase(UUID uuid) {
+    public void completePurchase(final UUID uuid) {
 
-        Player player = Bukkit.getPlayer(uuid);
+        final Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
 
-        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-        String cmd = "lp user " + player.getName() + " parent add Hero";
+        final ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+        final String cmd = "lp user " + player.getName() + " parent add Hero";
         Bukkit.dispatchCommand(console, cmd);
 
-        int highestPV = Utils.getHighestPV(player);
-        int diff = 54 - highestPV;
+        final int highestPV = Utils.getHighestPV(player);
+        final int diff = 54 - highestPV;
         int addPV = highestPV+5;
 
         //this is so inefficient it hurts to look at
         if (VaultHook.perms.playerInGroup(player, "warrior")) {
             addPV = highestPV + 3;
             if (diff < 3) addPV = diff;
-            ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
-            String cmd3 = "lp user " + player.getName() + " parent remove warrior";
+            final ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
+            final String cmd3 = "lp user " + player.getName() + " parent remove warrior";
             Bukkit.dispatchCommand(console4, cmd3);
         } else if (VaultHook.perms.playerInGroup(player, "gladiator")) {
             addPV = highestPV+2;
             if (diff < 2) addPV = diff;
-            ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
-            String cmd3 = "lp user " + player.getName() + " parent remove gladiator";
+            final ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
+            final String cmd3 = "lp user " + player.getName() + " parent remove gladiator";
             Bukkit.dispatchCommand(console4, cmd3);
         } else {
             if (diff < 5) addPV = diff;
         }
 
-        ConsoleCommandSender console2 = Bukkit.getServer().getConsoleSender();
-        String cmd2 = "lp user " + player.getName() + " permission set cosmicvaults.amount."+addPV+" true global";
+        final ConsoleCommandSender console2 = Bukkit.getServer().getConsoleSender();
+        final String cmd2 = "lp user " + player.getName() + " permission set cosmicvaults.amount."+addPV+" true global";
         Bukkit.dispatchCommand(console2, cmd2);
 
         Bukkit.broadcastMessage(Utils.tacc(""));

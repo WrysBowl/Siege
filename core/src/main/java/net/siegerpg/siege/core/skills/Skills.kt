@@ -16,8 +16,8 @@ object Skills {
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setString(1, player.uniqueId.toString())
-            val query = stmt.executeQuery();
-            if (!query.isBeforeFirst) return ""
+            val query = stmt.executeQuery()
+			if (!query.isBeforeFirst) return ""
             query.next()
             return query.getString("skills")
         }
@@ -27,8 +27,8 @@ object Skills {
         Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             val connection = DatabaseManager.getConnection()
             connection!!.use {
-                val stmt = connection.prepareStatement("UPDATE skillsData SET skills=? WHERE uuid=?");
-                stmt.setString(1, skills)
+                val stmt = connection.prepareStatement("UPDATE skillsData SET skills=? WHERE uuid=?")
+				stmt.setString(1, skills)
                 stmt.setString(2, player.uniqueId.toString())
                 stmt.executeUpdate()
             }

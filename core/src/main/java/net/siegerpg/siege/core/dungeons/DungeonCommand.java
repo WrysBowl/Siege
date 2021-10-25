@@ -26,14 +26,14 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 
     public static HashMap<String, Dungeon> dungeons = new HashMap<>() {
         {
-            put("SlimeSpirit", new SlimeSpirit());
-            put("MagmaSpirit", new MagmaSpirit());
-            put("BullSpirit", new BullSpirit());
-            put("Lich", new Lich());
-            put("Davy_Jones", new Davy_Jones());
-            put("Necromancer", new Necromancer());
-            put("FoxSpirit", new FoxSpirit());
-            put("Broodmother", new Broodmother());
+            this.put("SlimeSpirit", new SlimeSpirit());
+            this.put("MagmaSpirit", new MagmaSpirit());
+            this.put("BullSpirit", new BullSpirit());
+            this.put("Lich", new Lich());
+            this.put("Davy_Jones", new Davy_Jones());
+            this.put("Necromancer", new Necromancer());
+            this.put("FoxSpirit", new FoxSpirit());
+            this.put("Broodmother", new Broodmother());
 
         }
     };
@@ -42,31 +42,31 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (sender instanceof Player) {
             sender.sendMessage(Utils.lore("<red>You are not able to run the dungeons command."));
             return false;
         }
 
         //cooldown
-        int cooldownTime = 2;
-        if(coolDowns.containsKey(sender.getName())) {
-            long secondsLeft = ((coolDowns.get(sender.getName())/1000)+cooldownTime) - (System.currentTimeMillis()/1000);
+        final int cooldownTime = 2;
+        if(this.coolDowns.containsKey(sender.getName())) {
+            final long secondsLeft = ((this.coolDowns.get(sender.getName())/1000)+cooldownTime) - (System.currentTimeMillis()/1000);
             if(secondsLeft>0) {
                 return false;
             }
         }
-        coolDowns.put(sender.getName(), System.currentTimeMillis());
+        this.coolDowns.put(sender.getName(), System.currentTimeMillis());
 
         try {
-            String boss = args[0];
-            Player player = Bukkit.getPlayer(args[1]);
+            final String boss = args[0];
+            final Player player = Bukkit.getPlayer(args[1]);
             if (player == null) return false;
 
-            Dungeon dungeon = dungeons.get(boss);
+            final Dungeon dungeon = DungeonCommand.dungeons.get(boss);
 
-            CustomKey reqKey = dungeon.reqKey;
-            CustomItem hand = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
+            final CustomKey reqKey = dungeon.reqKey;
+            final CustomItem hand = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
             if (hand == null) {
                 player.sendMessage(Utils.lore("<yellow>" + dungeon.currentKeyCount + "<yellow>/8 keys <gray>have been used."));
                 return false;
@@ -80,29 +80,29 @@ public class DungeonCommand implements CommandExecutor, Runnable {
                 return false;
             }
             player.getInventory().removeItem(hand.getItem().asOne());
-            int count = dungeon.currentKeyCount + 1; //add one to key count
+            final int count = dungeon.currentKeyCount + 1; //add one to key count
             if (count < 8) { //if key count + 1 is less than 8, add to key count
                 dungeon.currentKeyCount = count;
                 player.sendMessage(Utils.lore("<yellow>" + dungeon.currentKeyCount + "<yellow>/8 keys <gray>have been used."));
             } else {
                 dungeon.currentKeyCount = 0; //reset key count
                 dungeon.spawning();
-                Location loc = dungeon.spawnLoc;
+                final Location loc = dungeon.spawnLoc;
                 loc.setWorld(Core.plugin().getServer().getWorld(dungeon.world));
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                     try {
                         dungeon.boss = MythicMobs.inst().getAPIHelper().spawnMythicMob(boss, loc);
-                        ActiveMob mythicMob = MythicMobs.inst().getAPIHelper().getMythicMobInstance(dungeon.boss);
-                        BossFight newBossFight = new BossFight(Instant.now(), mythicMob);
+                        final ActiveMob mythicMob = MythicMobs.inst().getAPIHelper().getMythicMobInstance(dungeon.boss);
+                        final BossFight newBossFight = new BossFight(Instant.now(), mythicMob);
                         BossLeaderboard.Companion.getCurrentBossFights().add(newBossFight);
-                    } catch (InvalidMobTypeException e) {
+                    } catch (final InvalidMobTypeException e) {
                         e.printStackTrace();
                     }
                 }, dungeon.bossSpawnDelay);
                 player.sendMessage(Utils.lore("<green>The boss has spawned!"));
             }
 
-        } catch (Exception x) {
+        } catch (final Exception x) {
             return false;
         }
         return false;

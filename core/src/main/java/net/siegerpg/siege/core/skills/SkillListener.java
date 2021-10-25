@@ -18,13 +18,13 @@ import java.util.HashMap;
 
 public class SkillListener implements Listener, Runnable {
 
-    public boolean skillActivate(PlayerInteractEvent e){
-        Player player = e.getPlayer();
+    public boolean skillActivate(final PlayerInteractEvent e){
+        final Player player = e.getPlayer();
         if (player.getGameMode().equals(GameMode.CREATIVE) || player.getGameMode().equals(GameMode.SPECTATOR)) return false;
         if (!player.getOpenInventory().getType().equals(InventoryType.CRAFTING)) return false;
         if (!SkillUtils.isSkillOrb(player.getItemInHand())) return false;
 
-        ArrayList<Action> playerTriggers = PlayerData.playerTriggers.get(player);
+        final ArrayList<Action> playerTriggers = PlayerData.playerTriggers.get(player);
         playerTriggers.add(e.getAction());
 
         //If the player hasn't finished their trigger skill activation yet (less than three clicks)
@@ -34,11 +34,11 @@ public class SkillListener implements Listener, Runnable {
             return false;
 
         } else {
-            HashMap<Integer, Skill> playerSkills = PlayerData.playerSkills.get(player);
+            final HashMap<Integer, Skill> playerSkills = PlayerData.playerSkills.get(player);
             PlayerData.playerTriggers.get(player).clear();
 
             //Compare the player's cached skills to the trigger they have created and activate the skill
-            for(Skill skill : playerSkills.values()) {
+            for(final Skill skill : playerSkills.values()) {
                 if (skill.getTrigger()!=playerTriggers) continue;
 
                 //Checks if player does not have enough mana to use the skill

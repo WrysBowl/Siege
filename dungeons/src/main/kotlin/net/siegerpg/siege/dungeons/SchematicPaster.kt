@@ -33,7 +33,7 @@ object SchematicPaster {
      * @param ignoreAirBlocks Whether or not air blocks are skipped while pasting
      * @throws IOException Thrown when the resource can't be read
      */
-    public fun pasteSchematic(clipboard: Clipboard, location: Location, pasteAir: Boolean) {
+	fun pasteSchematic(clipboard: Clipboard, location: Location, pasteAir: Boolean) {
         val weWorld = FaweAPI.getWorld(location.world.name)
         val editSession = EditSessionBuilder(weWorld).allowedRegionsEverywhere().limitUnlimited().build()
         editSession.use {
@@ -41,9 +41,9 @@ object SchematicPaster {
                 .createPaste(it)
                 .to(BukkitAdapter.asBlockVector(location))
                 .ignoreAirBlocks(!pasteAir)
-                .build();
-            Operations.complete(operation);
-            editSession.flushQueue()
+                .build()
+			Operations.complete(operation)
+			editSession.flushQueue()
         }
     }
 }

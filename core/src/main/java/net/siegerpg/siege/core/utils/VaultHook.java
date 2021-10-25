@@ -10,39 +10,39 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import static org.bukkit.Bukkit.getServer;
 
 public class VaultHook {
-    public static Economy econ = null;
-    public static Permission perms = null;
-    public static Chat chat = null;
+    public static Economy econ;
+    public static Permission perms;
+    public static Chat chat;
 
     public void createHooks() {
-        if (!setupEconomy()) {
+        if (!this.setupEconomy()) {
             Core.plugin().getLogger().severe("Vault was not found!");
             getServer().getPluginManager().disablePlugin(Core.plugin());
             return;
         }
-        setupPermissions();
-        setupChat();
+        this.setupPermissions();
+        this.setupChat();
     }
 
     private boolean setupEconomy() {
-        if (Bukkit.getServer().getPluginManager().getPlugin("Vault") == null) {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
         }
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        final RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
             return false;
         }
-        econ = rsp.getProvider();
-        return econ != null;
+        VaultHook.econ = rsp.getProvider();
+        return VaultHook.econ != null;
     }
 
     private void setupChat() {
-        RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
-        chat = rsp.getProvider();
+        final RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
+        VaultHook.chat = rsp.getProvider();
     }
 
     private void setupPermissions() {
-        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
-        perms = rsp.getProvider();
+        final RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        VaultHook.perms = rsp.getProvider();
     }
 }

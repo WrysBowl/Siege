@@ -8,9 +8,9 @@ import java.util.HashMap;
 
 public class RareDropTable extends CosmeticDropTable {
     public RareDropTable() {
-        dropTable = new HashMap<>(){
+	    this.dropTable = new HashMap<>(){
             {
-                put(new AnonMask(0), 10);
+	            this.put(new AnonMask(0), 10);
             }
         };
     }

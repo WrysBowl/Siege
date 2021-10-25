@@ -15,13 +15,13 @@ public class ArcherSkills {
 
     public static ArrayList<Skill> skills = new ArrayList<>(){
         {
-            add(new CriticalShot());
+	        this.add(new CriticalShot());
         }
     };
 
-    public static String appendSkill(Player player, Skill skill){
-        int id = skill.getID();
-        String playerSkills = Skills.INSTANCE.getSkills(player);
+    public static String appendSkill(final Player player, final Skill skill){
+        final int id = skill.getID();
+        final String playerSkills = Skills.INSTANCE.getSkills(player);
         if (playerSkills.isEmpty()) return ("A_"+id);
         return (playerSkills + "_" + id);
     }

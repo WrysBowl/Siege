@@ -8,11 +8,11 @@ import java.util.UUID;
 public class WebstorePackage {
     private String[] args;
 
-    public WebstorePackage(String[] args) {this.args = args;}
+    public WebstorePackage(final String[] args) {this.args = args;}
     public WebstorePackage(){}
 
-    private void setArgs(String[] args) {this.args = args;}
-    public String[] getArgs() {return args;}
-    public void completePurchase(UUID uuid){}
+    private void setArgs(final String[] args) {this.args = args;}
+    public String[] getArgs() {return this.args;}
+    public void completePurchase(final UUID uuid){}
 
 }

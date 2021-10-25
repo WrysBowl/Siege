@@ -11,103 +11,103 @@ public class FishingData {
 	
 	public static HashMap<UUID, FishingData> list = new HashMap<>();
 	
-	private boolean fishing = false;
+	private boolean fishing;
 	private Fish fish;
-	private double processToAdvance=0;
+	private double processToAdvance;
 	private int loc=35;
-	private Cursor cursor;
-	private BaitCore bait = null;
-	private double score= 0;
+	private final Cursor cursor;
+	private BaitCore bait;
+	private double score;
 	
 	//true=forward false=backward
 	private boolean direction = true;
 	
 	
 	public FishingData() {
-		this.cursor= new Cursor();
+		cursor= new Cursor();
 	}
 
 	
 	
 	public boolean isFishing() {
-		return fishing;
+		return this.fishing;
 	}
 
-	public void setFishing(boolean fishing) {
+	public void setFishing(final boolean fishing) {
 		this.fishing = fishing;
 	}
 
 
 
 	public Fish getFish() {
-		return fish;
+		return this.fish;
 	}
 
 
 
-	public void setFish(Fish fish) {
+	public void setFish(final Fish fish) {
 		this.fish = fish;
 	}
 
 	public static HashMap<UUID, FishingData> getList() {
-		return list;
+		return FishingData.list;
 	}
 
 
 
 	public int getLoc() {
-		return loc;
+		return this.loc;
 	}
 
 
 
-	public void setLoc(int loc) {
+	public void setLoc(final int loc) {
 		this.loc = loc;
 	}
 
 
 
 	public double getProcessToAdvance() {
-		return processToAdvance;
+		return this.processToAdvance;
 	}
 
 
 
-	public void setProcessToAdvance(double processToAdvance) {
+	public void setProcessToAdvance(final double processToAdvance) {
 		this.processToAdvance = processToAdvance;
 	}
 	public boolean getDirection() {
-		return direction;
+		return this.direction;
 	}
 
 
 
-	public void setDirection(boolean direction) {
+	public void setDirection(final boolean direction) {
 		this.direction = direction;
 	}
 
 
 
 	public Cursor getCursor() {
-		return cursor;
+		return this.cursor;
 	}
 
 
 	public BaitCore getBait() {
-		return bait;
+		return this.bait;
 	}
 
-	public void setBait(BaitCore bait) {
+	public void setBait(final BaitCore bait) {
 		this.bait = bait;
 	}
 
 	public double getScore() {
-		return score;
+		return this.score;
 	}
 
 
 
-	public void setScore(double score) {
+	public void setScore(final double score) {
 		this.score = score;
 	}
 

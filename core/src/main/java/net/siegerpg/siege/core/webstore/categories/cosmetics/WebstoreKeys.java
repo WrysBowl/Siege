@@ -22,7 +22,7 @@ public class WebstoreKeys extends WebstorePackage {
     Integer arg4 = 1; //amount
     CustomKey key = new NormalKey(0);
 
-    public WebstoreKeys(String arg2, String arg3, Integer arg4, CustomKey key){
+    public WebstoreKeys(final String arg2, final String arg3, final Integer arg4, final CustomKey key){
         this.arg2=arg2;
         this.arg3=arg3;
         this.arg4=arg4;
@@ -30,10 +30,10 @@ public class WebstoreKeys extends WebstorePackage {
     }
 
     @Override
-    public void completePurchase(UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
-        Player player = Bukkit.getPlayer(uuid);
+    public void completePurchase(final UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
+        final Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
-        if (!Utils.giveItem(player, key.getItem().asQuantity(arg4))) {
+        if (!Utils.giveItem(player, this.key.getItem().asQuantity(this.arg4))) {
             //when giveItem is run it will give the player the booster if the condition is not met
             player.sendMessage(Utils.lore(
                     "<red>An item has been purchased for this account, but your inventory and ender chest was too full. Please rejoin the server with space for the item(s) in your inventory."));
@@ -46,7 +46,7 @@ public class WebstoreKeys extends WebstorePackage {
         Bukkit.broadcast(Utils.lore("  <aqua>https://store.siegerpg.net/"));
         Bukkit.broadcast(Utils.lore(""));
     }
-    public void setAmount(int amount) {
-        this.arg4 = amount;
+    public void setAmount(final int amount) {
+        arg4 = amount;
     }
 }

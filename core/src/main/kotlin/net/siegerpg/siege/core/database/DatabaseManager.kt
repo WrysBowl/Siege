@@ -38,8 +38,8 @@ object DatabaseManager {
         config.addDataSourceProperty("cachePrepStmts", "true")
         config.addDataSourceProperty("prepStmtCacheSize", "250")
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048")
-        config.leakDetectionThreshold = 30000;
-        ds = HikariDataSource(config)
+        config.leakDetectionThreshold = 30000
+		ds = HikariDataSource(config)
     }
 
     @Throws(SQLException::class)

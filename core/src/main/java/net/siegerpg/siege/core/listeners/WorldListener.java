@@ -30,23 +30,23 @@ import java.util.Objects;
 public class WorldListener implements Listener, Runnable {
     
     @EventHandler
-    public void onTrample(PlayerInteractEvent event) {
+    public void onTrample(final PlayerInteractEvent event) {
         if (!event.getAction().equals(Action.PHYSICAL)) return;
         if (event.getClickedBlock() == null || !event.getClickedBlock().getType().equals(Material.FARMLAND)) return;
         event.setCancelled(true);
     }
     
     @EventHandler
-    public void onPlace(BlockPlaceEvent event) {
+    public void onPlace(final BlockPlaceEvent event) {
         if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) return;
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void openDeniedBlocks(PlayerInteractEvent e) {
+    public void openDeniedBlocks(final PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
-                BlockData block = Objects.requireNonNull(e.getClickedBlock()).getBlockData();
+                final BlockData block = Objects.requireNonNull(e.getClickedBlock()).getBlockData();
                 if (block instanceof Door) { return; }
                 else if (e.getClickedBlock().getType().equals(Material.ENDER_CHEST)) { return; }
                 e.setCancelled(true);
@@ -54,7 +54,7 @@ public class WorldListener implements Listener, Runnable {
         }
     }
 
-    public void denyInventory(InventoryOpenEvent e) {
+    public void denyInventory(final InventoryOpenEvent e) {
         if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
             if (e.getInventory().getType().equals(InventoryType.CHEST)) return;
             if (e.getInventory().getType().equals(InventoryType.PLAYER)) return;
@@ -64,26 +64,26 @@ public class WorldListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void closeInv(InventoryCloseEvent e) {
+    public void closeInv(final InventoryCloseEvent e) {
         new BukkitRunnable() {
             @Override
             public void run() {
-                Player p = (Player) e.getPlayer();
+                final Player p = (Player) e.getPlayer();
                 p.updateInventory();
             }
         }.runTaskLater(Core.plugin(), 1);
     }
 
     @EventHandler
-    public void onEntityEnter(EntityEnterBlockEvent e) {
+    public void onEntityEnter(final EntityEnterBlockEvent e) {
         if (e.getEntity() instanceof Bee) {
             e.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void denySpawning(ItemSpawnEvent e) {
-        Material type = e.getEntity().getItemStack().getType();
+    public void denySpawning(final ItemSpawnEvent e) {
+        final Material type = e.getEntity().getItemStack().getType();
         if (type == Material.ARROW) {
             e.setCancelled(true);
         } else if (type == Material.EGG) {
@@ -92,12 +92,12 @@ public class WorldListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void expMerge(ExperienceOrbMergeEvent e) {
+    public void expMerge(final ExperienceOrbMergeEvent e) {
         e.setCancelled(true);
     }
 
     @EventHandler
-    public void preventClick(PlayerInteractEvent e) {
+    public void preventClick(final PlayerInteractEvent e) {
         if (e.getAction().equals(Action.LEFT_CLICK_AIR) || e.getAction().equals(Action.LEFT_CLICK_BLOCK) ||
                 e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getClickedBlock() == null) { return; }
@@ -108,9 +108,9 @@ public class WorldListener implements Listener, Runnable {
         }
     }
     @EventHandler
-    public void preventClick(PlayerInteractEntityEvent e) {
-        Entity entity = e.getRightClicked();
-        Player player = e.getPlayer();
+    public void preventClick(final PlayerInteractEntityEvent e) {
+        final Entity entity = e.getRightClicked();
+        final Player player = e.getPlayer();
         if (entity instanceof ItemFrame) {
             if (player.getGameMode().equals(GameMode.CREATIVE)) {return;}
             e.setCancelled(true);
@@ -118,10 +118,10 @@ public class WorldListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void preventDamage(EntityDamageEvent e) {
+    public void preventDamage(final EntityDamageEvent e) {
         if(e instanceof EntityDamageByEntityEvent) {
             if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
-                Player player = (Player) ((EntityDamageByEntityEvent) e).getDamager();
+                final Player player = (Player) ((EntityDamageByEntityEvent) e).getDamager();
                 if (player.getGameMode().equals(GameMode.CREATIVE)) { return; }
             }
         }
@@ -129,16 +129,16 @@ public class WorldListener implements Listener, Runnable {
             e.setCancelled(true);
         }
         if (e.getEntity() instanceof Player) {
-            World hub = Core.plugin().getServer().getWorld("Hub");
-            World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
+            final World hub = Core.plugin().getServer().getWorld("Hub");
+            final World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
             if (e.getEntity().getWorld().equals(hub) || e.getEntity().getWorld().equals(siegeHub)) e.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void spawnProt(EntityDamageByEntityEvent e) {
+    public void spawnProt(final EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player) {
-            Player player = (Player) e.getDamager();
+            final Player player = (Player) e.getDamager();
             if (player.getGameMode().equals(GameMode.CREATIVE)) {
                 return;
             }
@@ -149,15 +149,15 @@ public class WorldListener implements Listener, Runnable {
     }
 
     @EventHandler
-    public void preventTame(EntityTameEvent e) {
-        Player player = (Player) e.getOwner();
+    public void preventTame(final EntityTameEvent e) {
+        final Player player = (Player) e.getOwner();
         if (!player.getGameMode().equals(GameMode.CREATIVE)) {
             e.setCancelled(true);
         }
     }
     @EventHandler
-    public void preventBreed(EntityBreedEvent e) {
-        Player player = (Player) e.getBreeder();
+    public void preventBreed(final EntityBreedEvent e) {
+        final Player player = (Player) e.getBreeder();
         if (player != null) {
             if (player.getGameMode().equals(GameMode.CREATIVE)) {
                 return;
@@ -166,32 +166,32 @@ public class WorldListener implements Listener, Runnable {
         e.setCancelled(true);
     }
     @EventHandler
-    public void preventExplosion(BlockExplodeEvent e) {
+    public void preventExplosion(final BlockExplodeEvent e) {
         e.setCancelled(true);
     }
 
     @EventHandler
-    public void preventExplosion2(EntityExplodeEvent e) {
+    public void preventExplosion2(final EntityExplodeEvent e) {
         e.setCancelled(true);
     }
 
     @EventHandler
-    public void denySlimeSplit(SlimeSplitEvent e) { e.setCancelled(true); }
+    public void denySlimeSplit(final SlimeSplitEvent e) { e.setCancelled(true); }
 
     @EventHandler
-    public void denyLeavesDecay(LeavesDecayEvent e) { e.setCancelled(true); }
+    public void denyLeavesDecay(final LeavesDecayEvent e) { e.setCancelled(true); }
 
     @EventHandler
-    public void denyBurn(BlockBurnEvent e) { e.setCancelled(true); }
+    public void denyBurn(final BlockBurnEvent e) { e.setCancelled(true); }
 
     @EventHandler
-    public void denyCraft(CraftItemEvent e) { e.setCancelled(true); }
+    public void denyCraft(final CraftItemEvent e) { e.setCancelled(true); }
 
     @EventHandler
-    public void denyBlockExp(BlockExpEvent e) { e.setExpToDrop(0); }
+    public void denyBlockExp(final BlockExpEvent e) { e.setExpToDrop(0); }
 
     @EventHandler
-    public void denyBlockFade(BlockFadeEvent e) { e.setCancelled(true); }
+    public void denyBlockFade(final BlockFadeEvent e) { e.setCancelled(true); }
 
     @Override
     public void run() {

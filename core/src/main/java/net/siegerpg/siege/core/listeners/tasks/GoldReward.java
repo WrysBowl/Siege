@@ -19,10 +19,10 @@ public class GoldReward implements Listener {
                     uuidPairHashMap -> {
                         uuidPairHashMap.forEach((uuid, shortIntegerPair) ->
                         {
-                            Player p = Bukkit.getPlayer(uuid);
+                            final Player p = Bukkit.getPlayer(uuid);
                             if (p == null) return;
-                            int level = shortIntegerPair.getFirst();
-                            int gold = level * 10;
+                            final int level = shortIntegerPair.getFirst();
+                            final int gold = level * 10;
                             GoldExpListener.giveGold(p, gold);
                             p.sendMessage(Utils.parse(""));
                             p.sendMessage(Utils.parse("  <yellow>You received " + gold + " gold for existing!"));

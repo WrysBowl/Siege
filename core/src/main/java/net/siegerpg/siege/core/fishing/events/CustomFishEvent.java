@@ -21,7 +21,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerFishEvent;
-import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
@@ -34,137 +33,137 @@ public class CustomFishEvent {
 	
 	private final Player player;
 	private final FishHook hook;
-	private final State state;
+	private final PlayerFishEvent.State state;
 	private final FishingData data;
-	private int ticksElapsed =0;
-	private int totalTicksElapsed =0;
-	private int secondsElapsed = 0;
+	private int ticksElapsed;
+	private int totalTicksElapsed;
+	private int secondsElapsed;
 	private int totalLength = 70;
 	private BossBar progressBar;
 	private Location baitLocation;
 	private ArmorStand baitModel;
-	
-	
-	public CustomFishEvent(PlayerFishEvent e) {
-		this.player=e.getPlayer();
-		this.hook=e.getHook();
-		this.state=e.getState();
-		this.data = new FishingData();
-		
-		Location loc = e.getHook().getLocation();	
+
+
+	public CustomFishEvent(final PlayerFishEvent e) {
+		player=e.getPlayer();
+		hook=e.getHook();
+		state=e.getState();
+		data = new FishingData();
+
+		final Location loc = e.getHook().getLocation();
 		loc.subtract(new Vector(0, 0.3, 0));
-		this.baitLocation=loc;
-		ArmorStand stand = ((ArmorStand)e.getPlayer().getLocation().getWorld().spawnEntity(baitLocation, EntityType.ARMOR_STAND));
+		baitLocation=loc;
+		final ArmorStand stand = ((ArmorStand)e.getPlayer().getLocation().getWorld().spawnEntity(this.baitLocation, EntityType.ARMOR_STAND));
 		stand.setVisible(false);
 		stand.setSmall(true);
 		stand.setInvulnerable(true);
 		stand.setGravity(false);
 		stand.teleport(loc);
-        setBaitModel(stand);
+		this.setBaitModel(stand);
 
 
-        if(!(player.getInventory().getItemInOffHand()== null) && !(player.getInventory().getItemInOffHand().getType() == Material.AIR)) {
-			ItemStack offHand = e.getPlayer().getInventory().getItemInOffHand();
-        	NBTItem nbt = new NBTItem(offHand);
+        if(!(this.player.getInventory().getItemInOffHand()== null) && !(this.player.getInventory().getItemInOffHand().getType() == Material.AIR)) {
+			final ItemStack offHand = e.getPlayer().getInventory().getItemInOffHand();
+        	final NBTItem nbt = new NBTItem(offHand);
 
         	if (nbt.hasNBTData() && nbt.hasKey("baitType")) {
-        		String baitType = nbt.getString("baitType");
+        		final String baitType = nbt.getString("baitType");
         		if (BaitCore.hasBait(baitType)) {
 					stand.getEquipment().setHelmet(new ItemStack(Material.SEA_PICKLE));
-					this.getFishingData().setBait(BaitCore.getBait(baitType));
-					player.getItemInHand().setAmount(player.getItemInHand().getAmount()-1);
+					getFishingData().setBait(BaitCore.getBait(baitType));
+			        this.player.getItemInHand().setAmount(this.player.getItemInHand().getAmount()-1);
 				}
 			}
 		}
 
         //Bait is null, unable to pass through params
-		Fish fish = FishCore.chooseRandomFish(this.data.getBait(), player);
-		this.getFishingData().setFish(fish);
+		final Fish fish = FishCore.chooseRandomFish(data.getBait(), this.player);
+		getFishingData().setFish(fish);
 	}
 	public void trigger() {
-		data.setFishing(true);
+		this.data.setFishing(true);
 		new FishingTask(this).runTaskTimerAsynchronously(Core.plugin(), 0, 2);
-		player.playSound(player.getLocation(), Sound.ENTITY_FISHING_BOBBER_SPLASH, 2.0f, 2.0f);
+		this.player.playSound(this.player.getLocation(), Sound.ENTITY_FISHING_BOBBER_SPLASH, 2.0f, 2.0f);
 	}
-	
+
 	public void win() {
-		this.remove();
-		Fish fish = data.getFish();
-		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
-		player.getInventory().addItem(FishCore.getItem(fish));
-		Levels.INSTANCE.addExpShared(player, (int) fish.actualSize);
+		remove();
+		final Fish fish = this.data.getFish();
+		this.player.playSound(this.player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
+		this.player.getInventory().addItem(FishCore.getItem(fish));
+		Levels.INSTANCE.addExpShared(this.player, (int) fish.actualSize);
 	}
 	public void lose() {
-		this.remove();
-		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_NO, 1.0f, 1.0f);
+		remove();
+		this.player.playSound(this.player.getLocation(), Sound.ENTITY_WANDERING_TRADER_NO, 1.0f, 1.0f);
 	}
-	
-	
+
+
 	public void remove() {
-		baitModel.remove();
-		progressBar.removeAll();
-		this.hook.remove();
+		this.baitModel.remove();
+		this.progressBar.removeAll();
+		hook.remove();
 	}
-	
+
 	public Player getPlayer() {
-		return player;
+		return this.player;
 	}
 	public FishHook getHook() {
-		return hook;
+		return this.hook;
 	}
-	public State getState() {
-		return state;
+	public PlayerFishEvent.State getState() {
+		return this.state;
 	}
 	public int getTicksElapsed() {
-		return ticksElapsed;
+		return this.ticksElapsed;
 	}
-	public void setTicksElapsed(int num) {
+	public void setTicksElapsed(final int num) {
 		if(num >=0 && num < 21)
-			this.ticksElapsed = num;
+			ticksElapsed = num;
 	}
-	public void setSecondsElapsed(int num) {
-		this.secondsElapsed=num;
+	public void setSecondsElapsed(final int num) {
+		secondsElapsed=num;
 	}
 	public int getSecondsElapsed() {
-		return this.secondsElapsed;
+		return secondsElapsed;
 	}
 	public int getTotalTicksElapsed() {
-		return totalTicksElapsed;
+		return this.totalTicksElapsed;
 	}
-	public void setTotalTicksElapsed(int totalTicksElapsed) {
+	public void setTotalTicksElapsed(final int totalTicksElapsed) {
 		this.totalTicksElapsed = totalTicksElapsed;
 	}
 	public FishingData getFishingData() {
-		return this.data;
+		return data;
 	}
 	public int getTotalLength() {
-		return totalLength;
+		return this.totalLength;
 	}
-	public void setTotalLength(int totalLength) {
+	public void setTotalLength(final int totalLength) {
 		this.totalLength = totalLength;
 	}
 	public ArrayList<ItemStack> getRewards() {
-		return rewards;
+		return this.rewards;
 	}
-	public void setRewards(ArrayList<ItemStack> rewards) {
+	public void setRewards(final ArrayList<ItemStack> rewards) {
 		this.rewards = rewards;
 	}
 	public BossBar getProgressBar() {
-		return progressBar;
+		return this.progressBar;
 	}
-	public void setProgressBar(BossBar progressBar) {
+	public void setProgressBar(final BossBar progressBar) {
 		this.progressBar = progressBar;
 	}
 	public ArmorStand getBaitModel() {
-		return baitModel;
+		return this.baitModel;
 	}
-	public void setBaitModel(ArmorStand baitModel) {
+	public void setBaitModel(final ArmorStand baitModel) {
 		this.baitModel = baitModel;
 	}
 	public Location getBaitLocation() {
-		return baitLocation;
+		return this.baitLocation;
 	}
-	public void setBaitLocation(Location baitLocation) {
+	public void setBaitLocation(final Location baitLocation) {
 		this.baitLocation = baitLocation;
 	}
 	

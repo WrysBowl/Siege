@@ -12,8 +12,8 @@ import java.util.*
 object Bank {
 
     // How long data is cached for
-    private const val cacheDuration = 10 * 60;
-    private val cachedBankData = HashMap<UUID, Triple<Short, Int, Instant>>()
+    private const val cacheDuration = 10 * 60
+	private val cachedBankData = HashMap<UUID, Triple<Short, Int, Instant>>()
 
     /**
      * Gets the bank level and amount of a player
@@ -82,8 +82,8 @@ object Bank {
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setString(1, player.uniqueId.toString())
-            val query = stmt.executeQuery();
-            // If no rows were found don't runAfter
+            val query = stmt.executeQuery()
+			// If no rows were found don't runAfter
             if (!query.isBeforeFirst) {
                 return null
             }
@@ -105,8 +105,8 @@ object Bank {
     ): HashMap<UUID, Pair<Short, Int>>? {
         val map = HashMap<UUID, Pair<Short, Int>>()
         val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
-        val now = Instant.now();
-        playerIDs.forEach { id ->
+        val now = Instant.now()
+		playerIDs.forEach { id ->
             val cachedData = cachedBankData[id]
             if (cachedData != null && cachedData.third.plusSeconds(cacheDuration.toLong()).isAfter(now)) {
                 val pair = Pair(cachedData.first, cachedData.second)
@@ -126,8 +126,8 @@ object Bank {
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
             stmt.setArray(1, connection.createArrayOf("VARCHAR", playerIDs.toTypedArray()))
-            val resultSet = stmt.executeQuery();
-            while (resultSet.next()) {
+            val resultSet = stmt.executeQuery()
+			while (resultSet.next()) {
                 val uuid = UUID.fromString(resultSet.getString("uuid"))
                 val data = Pair(resultSet.getShort("bankLvl"), resultSet.getInt("bankAmt"))
                 map[uuid] = data
@@ -144,8 +144,8 @@ object Bank {
     fun blockingSetBankLevel(player: OfflinePlayer, level: Short) {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
-            val stmt = connection.prepareStatement("UPDATE userData SET bankLvl=? WHERE uuid=?");
-            stmt.setShort(1, level)
+            val stmt = connection.prepareStatement("UPDATE userData SET bankLvl=? WHERE uuid=?")
+			stmt.setShort(1, level)
             stmt.setString(2, player.uniqueId.toString())
             stmt.executeUpdate()
             val cachedData = cachedBankData[player.uniqueId]
@@ -159,8 +159,8 @@ object Bank {
     fun blockingSetBankAmount(player: OfflinePlayer, amount: Int) {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
-            val stmt = connection.prepareStatement("UPDATE userData SET bankAmt=? WHERE uuid=?");
-            stmt.setInt(1, amount)
+            val stmt = connection.prepareStatement("UPDATE userData SET bankAmt=? WHERE uuid=?")
+			stmt.setInt(1, amount)
             stmt.setString(2, player.uniqueId.toString())
             stmt.executeUpdate()
             val cachedData = cachedBankData[player.uniqueId]

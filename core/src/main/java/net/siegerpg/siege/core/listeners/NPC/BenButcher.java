@@ -23,55 +23,55 @@ public class BenButcher implements Listener {
 
     ArrayList<Triple<Integer, ItemStack, Integer>> foodItems = new ArrayList<>() {
         {
-            add(new Triple<>(0, new Drumstick(0).getUpdatedItem(false), 5));
-            add(new Triple<>(1, new Drumstick(50).getUpdatedItem(false), 15));
-            add(new Triple<>(2, new Drumstick(100).getUpdatedItem(false), 30));
-            add(new Triple<>(3, new Porkchop(0).getUpdatedItem(false), 10));
-            add(new Triple<>(4, new Porkchop(50).getUpdatedItem(false), 30));
-            add(new Triple<>(5, new Porkchop(100).getUpdatedItem(false), 45));
-            add(new Triple<>(6, new Beef(0).getUpdatedItem(false), 15));
-            add(new Triple<>(7, new Beef(50).getUpdatedItem(false), 45));
-            add(new Triple<>(8, new Beef(100).getUpdatedItem(false), 75));
+            this.add(new Triple<>(0, new Drumstick(0).getUpdatedItem(false), 5));
+            this.add(new Triple<>(1, new Drumstick(50).getUpdatedItem(false), 15));
+            this.add(new Triple<>(2, new Drumstick(100).getUpdatedItem(false), 30));
+            this.add(new Triple<>(3, new Porkchop(0).getUpdatedItem(false), 10));
+            this.add(new Triple<>(4, new Porkchop(50).getUpdatedItem(false), 30));
+            this.add(new Triple<>(5, new Porkchop(100).getUpdatedItem(false), 45));
+            this.add(new Triple<>(6, new Beef(0).getUpdatedItem(false), 15));
+            this.add(new Triple<>(7, new Beef(50).getUpdatedItem(false), 45));
+            this.add(new Triple<>(8, new Beef(100).getUpdatedItem(false), 75));
         }
     };
 
     ArrayList<ItemStack> foodItemCost = new ArrayList<>(){
         {
-            add(Utils.setCost(new Drumstick(0).getUpdatedItem(false), 5));
-            add(Utils.setCost(new Drumstick(50).getUpdatedItem(false), 15));
-            add(Utils.setCost(new Drumstick(100).getUpdatedItem(false), 30));
-            add(Utils.setCost(new Porkchop(0).getUpdatedItem(false), 10));
-            add(Utils.setCost(new Porkchop(50).getUpdatedItem(false), 30));
-            add(Utils.setCost(new Porkchop(100).getUpdatedItem(false), 45));
-            add(Utils.setCost(new Beef(0).getUpdatedItem(false), 15));
-            add(Utils.setCost(new Beef(50).getUpdatedItem(false), 45));
-            add(Utils.setCost(new Beef(100).getUpdatedItem(false), 75));
+            this.add(Utils.setCost(new Drumstick(0).getUpdatedItem(false), 5));
+            this.add(Utils.setCost(new Drumstick(50).getUpdatedItem(false), 15));
+            this.add(Utils.setCost(new Drumstick(100).getUpdatedItem(false), 30));
+            this.add(Utils.setCost(new Porkchop(0).getUpdatedItem(false), 10));
+            this.add(Utils.setCost(new Porkchop(50).getUpdatedItem(false), 30));
+            this.add(Utils.setCost(new Porkchop(100).getUpdatedItem(false), 45));
+            this.add(Utils.setCost(new Beef(0).getUpdatedItem(false), 15));
+            this.add(Utils.setCost(new Beef(50).getUpdatedItem(false), 45));
+            this.add(Utils.setCost(new Beef(100).getUpdatedItem(false), 75));
         }
     };
 
     @EventHandler
-    public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
+    public void onRightClickOnEntity(final PlayerInteractEntityEvent e) {
         if (e.getRightClicked().getName().contains("Ben") && e.getRightClicked().getName().contains("6")) {
-            Inventory shop = getShopMenu(e.getPlayer());
+            final Inventory shop = this.getShopMenu(e.getPlayer());
             e.getPlayer().openInventory(shop);
         }
     }
 
     @EventHandler
-    public void guiClick(InventoryClickEvent e) {
+    public void guiClick(final InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player)) {return;}
         if (e.getWhoClicked().getMetadata("BenButcher").size() > 0 &&
                 Objects.equals(e.getWhoClicked().getMetadata("BenButcher").get(0).value(), e.getInventory())) {
-            clickShop(e);
+            this.clickShop(e);
             e.setCancelled(true);
         }
     }
 
-    private void clickShop(InventoryClickEvent e) {
-        Player player = (Player) e.getWhoClicked();
+    private void clickShop(final InventoryClickEvent e) {
+        final Player player = (Player) e.getWhoClicked();
         if (e.getCurrentItem() == null) {return;}
-        int cost = foodItems.get(e.getSlot()).component3();
-        ItemStack item = foodItems.get(e.getSlot()).component2();
+        final int cost = this.foodItems.get(e.getSlot()).component3();
+        final ItemStack item = this.foodItems.get(e.getSlot()).component2();
         if (VaultHook.econ.getBalance(player) < cost) {
             player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
             return; }
@@ -86,11 +86,11 @@ public class BenButcher implements Listener {
     }
 
 
-    private Inventory getShopMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 9, "Ben the Butcher");
+    private Inventory getShopMenu(final Player player) {
+        final Inventory gui = Bukkit.createInventory(null, 9, "Ben the Butcher");
 
         //Fill in the GUI
-        for (ItemStack item : foodItemCost) {
+        for (final ItemStack item : this.foodItemCost) {
             gui.addItem(item);
         }
 

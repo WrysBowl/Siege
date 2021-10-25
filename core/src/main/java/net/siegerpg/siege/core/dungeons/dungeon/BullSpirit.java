@@ -23,7 +23,7 @@ public class BullSpirit extends Dungeon {
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 272, 70, 20);
+        final Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 272, 70, 20);
         new Helix().createHelix(loc, Particle.CRIT);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {

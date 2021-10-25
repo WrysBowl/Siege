@@ -24,21 +24,21 @@ public class CosmeticCrate {
      */
     public static HashMap<CustomKey, CosmeticDropTable> crates = new HashMap<>(){
         {
-            put(new NormalKey(0), new NormalDropTable());
-            put(new SuperiorKey(0), new SuperiorDropTable());
-            put(new SpiritKey(0), new SpiritDropTable());
-            put(new CommonKey(0), new CommonDropTable());
-            put(new UncommonKey(0), new UncommonDropTable());
-            put(new RareKey(0), new RareDropTable());
-            put(new EpicKey(0), new EpicDropTable());
-            put(new LegendaryKey(0), new LegendaryDropTable());
+	        this.put(new NormalKey(0), new NormalDropTable());
+	        this.put(new SuperiorKey(0), new SuperiorDropTable());
+	        this.put(new SpiritKey(0), new SpiritDropTable());
+	        this.put(new CommonKey(0), new CommonDropTable());
+	        this.put(new UncommonKey(0), new UncommonDropTable());
+	        this.put(new RareKey(0), new RareDropTable());
+	        this.put(new EpicKey(0), new EpicDropTable());
+	        this.put(new LegendaryKey(0), new LegendaryDropTable());
         }
     };
 
-    public static void commonWin(Location loc) {}
-    public static void uncommonWin(Location loc) {}
-    public static void rareWin(Location loc) {}
-    public static void epicWin(Location loc) {}
-    public static void legendaryWIn(Location loc) {}
+    public static void commonWin(final Location loc) {}
+    public static void uncommonWin(final Location loc) {}
+    public static void rareWin(final Location loc) {}
+    public static void epicWin(final Location loc) {}
+    public static void legendaryWIn(final Location loc) {}
 }
 

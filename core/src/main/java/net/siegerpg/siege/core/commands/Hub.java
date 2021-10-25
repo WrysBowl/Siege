@@ -12,9 +12,9 @@ import org.jetbrains.annotations.NotNull;
 public class Hub implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String label, @NotNull final String[] args) {
         if (sender instanceof Player) {
-            Player player = (Player) sender;
+            final Player player = (Player) sender;
             player.teleport(Core.plugin().getServer().getWorld("Hub").getSpawnLocation());
             return true;
         }
