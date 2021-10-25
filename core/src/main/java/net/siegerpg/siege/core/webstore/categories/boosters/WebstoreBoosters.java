@@ -10,14 +10,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class WebstoreBoosters extends WebstorePackage {
 
     String arg2 = "booster"; //booster
     String arg3 = "GOLD"; //booster type
-    Double arg4 = 1.0; //multiplier
+    Double arg4 = 1.2; //multiplier
     Integer arg5 = 3600; //duration
     Integer arg6 = 1; //amount
 
@@ -38,6 +37,16 @@ public class WebstoreBoosters extends WebstorePackage {
             this.arg5 = Integer.parseInt(getArgs()[4]);
             this.arg6 = Integer.parseInt(getArgs()[5]);
         } catch (Exception ignored) {}
+    }
+
+    public void setMultiplier(double multi) {
+        this.arg4 = multi;
+    }
+    public void setDuration(int duration) {
+        this.arg5 = duration;
+    }
+    public void setAmount(int amount) {
+        this.arg6 = amount;
     }
 
     @Override
