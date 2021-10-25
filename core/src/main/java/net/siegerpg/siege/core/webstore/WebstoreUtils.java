@@ -1,12 +1,18 @@
 package net.siegerpg.siege.core.webstore;
 
+import net.siegerpg.siege.core.dungeons.Dungeon;
+import net.siegerpg.siege.core.dungeons.DungeonCommand;
+import net.siegerpg.siege.core.items.types.misc.CustomKey;
+import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.webstore.categories.WebstorePackage;
 import net.siegerpg.siege.core.webstore.categories.boosters.*;
 import net.siegerpg.siege.core.webstore.categories.cosmetics.*;
 import net.siegerpg.siege.core.webstore.categories.ranks.*;
+import org.bukkit.Bukkit;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class WebstoreUtils {
@@ -37,19 +43,39 @@ public class WebstoreUtils {
     public static void packageDelivery(String[] args, UUID uuid) {
         String[] info;
         WebstorePackage webPackage;
+        Bukkit.getLogger().info("Purchase is being delivered");
 
         try {
             //Create new String[] of arg 1 and up
             info = Arrays.copyOfRange(args, 1, args.length);
 
-            //Gets the package using the hashmap from WebstoreUtils using the new String[]
-            webPackage = packages.get(info);
-        } catch (Exception x) {
-            return;
-        }
+            //Iterate through each pair in the hashmap
+            outerLoop: for (Map.Entry<String[], WebstorePackage> entry : packages.entrySet()) {
+                String[] packageArgs = entry.getKey();
 
-        //Call the complete purchase method
-        webPackage.completePurchase(uuid);
+                //Compare the first index of the hashmap string[] to the args parameter
+                for (int index = 0; index < packageArgs.length; index++) {
+
+                    //Check if the index from hashmap is equal to the index of the arguments from command
+                    if (!packageArgs[index].equals(info[index])) {
+                        //If the index does not match the index of the args
+                        //Then we go to the next set in the hashmap
+                        continue outerLoop;
+                    }
+                }
+                //gets the current iteration of the loop
+                //because it is the one that matches our arguments
+                webPackage = entry.getValue();
+                webPackage.setArgs(info);
+                webPackage.completePurchase(uuid);
+                Bukkit.getLogger().info("Purchase Completed");
+                break;
+            }
+            //Gets the package using the hashmap from WebstoreUtils using the new String[]
+        } catch (Exception x) {
+            x.printStackTrace();
+            Bukkit.getLogger().info(Utils.tacc("&cError processing purchase"));
+        }
     }
 
     public static String[] fetchPackageArguments(UUID uuid) { //called to fetch command arguments from database
