@@ -1,7 +1,10 @@
 package net.siegerpg.siege.core.utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
@@ -21,8 +24,9 @@ public class GoldEXPSpawning {
     }
 
     public static void spawnGold(int goldCoinAmt, Location loc) {
-        ItemStack goldCoin = getGoldCoin(goldCoinAmt);
-        Item gold = loc.getWorld().dropItemNaturally(loc, goldCoin);
+        ItemStack goldCoins = getGoldCoin(1);
+        Item gold = loc.getWorld().dropItemNaturally(loc, goldCoins);
+        gold.getItemStack().setAmount(goldCoinAmt);
         gold.setCustomName(Utils.tacc("&e+" + goldCoinAmt + " Gold"));
         gold.setCustomNameVisible(true);
     }
