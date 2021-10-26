@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.commands.admin;
+package net.siegerpg.siege.core.commands;
 
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.command.Command;
