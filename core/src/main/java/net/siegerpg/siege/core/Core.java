@@ -75,7 +75,7 @@ public final class Core extends JavaPlugin {
 
         spawnLocation = new Location(Bukkit.getWorld("Hub"), 70.5, 71, 3.5, 90, 0);
 
-           
+
 
         commandManager.registerCommand(new PartyCommand());
         this.getCommand("hub").setExecutor(new Hub());
