@@ -16,15 +16,15 @@ public class Necromancer extends Dungeon {
     public Necromancer() {
         super("Necromancer", 10,
                 new NecromancerKey(0),
-                new Location(null, 242, 91, 87), "Hilly_Woods",
+                new Location(null, -265, 82, 285), "Hilly_Woods",
                 100
         );
     }
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 242, 91, 87);
-        new Helix().createHelix(loc, Particle.ASH);
+        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -265, 82, 285);
+        new Helix().createHelix(loc, Particle.SMOKE_LARGE);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
             new Waves().createWaves(loc);
