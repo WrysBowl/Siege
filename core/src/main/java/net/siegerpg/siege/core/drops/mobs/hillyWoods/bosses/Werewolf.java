@@ -48,7 +48,7 @@ public class Werewolf extends MobDropTable {
 
                 new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 0.25),
                 new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 1.0),
-                new Reward(new LichKey(0).getUpdatedItem(false), 10.0),
+                new Reward(new FoxSpiritKey(0).getUpdatedItem(false), 10.0),
         });
     }
 }
