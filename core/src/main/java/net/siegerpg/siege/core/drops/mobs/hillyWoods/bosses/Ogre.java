@@ -18,7 +18,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class Ogre extends MobDropTable {
     public Ogre() {
-        super("Ogre", 65, 69, 70, 74, new Reward[]{
+        super("Ogre", 250, 300, 300, 325, new Reward[]{
                 new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 40.0),
                 new Reward(Leather.Companion.tier(3).getUpdatedItem(false), 6.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 60.0),
