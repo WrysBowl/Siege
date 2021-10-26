@@ -16,14 +16,14 @@ public class Lich extends Dungeon {
     public Lich() {
         super("Lich", 8,
                 new LichKey(0),
-                new Location(null, 242, 91, 87), "Hilly_Woods",
+                new Location(null, 372, 87, 132), "Hilly_Woods",
                 100
         );
     }
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 242, 91, 87);
+        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 372, 87, 132);
         new Helix().createHelix(loc, Particle.SOUL);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {

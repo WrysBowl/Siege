@@ -16,14 +16,14 @@ public class FoxSpirit extends Dungeon {
     public FoxSpirit() {
         super("FoxSpirit", 12,
                 new FoxSpiritKey(0),
-                new Location(null, 242, 91, 87), "Hilly_Woods",
+                new Location(null, -427, 59, -7), "Hilly_Woods",
                 100
         );
     }
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 242, 91, 87);
+        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -427, 59, -7);
         new Helix().createHelix(loc, Particle.FLASH);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {

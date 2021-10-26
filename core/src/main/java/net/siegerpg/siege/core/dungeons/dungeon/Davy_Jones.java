@@ -16,14 +16,14 @@ public class Davy_Jones extends Dungeon {
     public Davy_Jones() {
         super("Davy_Jones", 10,
                 new DavyJonesKey(0),
-                new Location(null, 9, 51, 146), "Hilly_Woods",
+                new Location(null, 16, 40, 411), "Hilly_Woods",
                 100
         );
     }
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 9, 51, 146);
+        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 16, 40, 411);
         new Helix().createHelix(loc, Particle.WATER_BUBBLE);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
