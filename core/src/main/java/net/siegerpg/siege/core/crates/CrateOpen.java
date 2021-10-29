@@ -64,7 +64,7 @@ public class CrateOpen implements Listener {
         //Plays item win effect
         //Gives item to player
         new Animation().openCrate(
-                targetedBlock.getLocation(),
+                targetedBlock.getLocation().toCenterLocation(),
                 dropTable.dropTable.keySet(),
                 reward, player);
         player.getInventory().removeItem(item.getItem().asOne());
