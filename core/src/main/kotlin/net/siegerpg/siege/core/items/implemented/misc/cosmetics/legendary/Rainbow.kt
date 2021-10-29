@@ -39,7 +39,7 @@ class Rainbow() : Cosmetic(
         )
         object : BukkitRunnable() {
             override fun run() {
-                if (player.inventory.helmet == null) {
+                if (player.inventory.helmet == null || !e.player.isOnline) {
                     cancel()
                 } else if (player.inventory.helmet == newArmor.item){
                     val randNum: Int = (Math.random()*rainbowArray.size).toInt()
