@@ -16,14 +16,14 @@ public class Broodmother extends Dungeon {
     public Broodmother() {
         super("Broodmother", 12,
                 new BroodmotherKey(0),
-                new Location(null, 242, 91, 87), "Hilly_Woods",
+                new Location(null, 7, 89, -416), "Hilly_Woods",
                 100
         );
     }
 
     @Override
     public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 242, 91, 87);
+        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 27, 89, -416);
         new Helix().createHelix(loc, Particle.SUSPENDED_DEPTH);
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
