@@ -57,4 +57,5 @@ commands:
     cooldown: 10
     description: Console command to summon dungeon boss
   help:
+    aliases: [ help ]
     description: Guide to Siege
