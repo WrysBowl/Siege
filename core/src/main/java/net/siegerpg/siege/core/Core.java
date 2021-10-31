@@ -100,6 +100,7 @@ public final class Core extends JavaPlugin {
         this.getCommand("dungeon").setExecutor(new DungeonCommand());
 
 
+        
         //partyManager = new PartyManager();
 
 //        PaperCommandManager manager = new PaperCommandManager(this);
