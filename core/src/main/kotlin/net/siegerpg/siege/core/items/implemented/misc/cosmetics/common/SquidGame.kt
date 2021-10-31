@@ -5,8 +5,8 @@ import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class BullHorns() : Cosmetic(
-    name = "Bull Horns",
+class SquidGame() : Cosmetic(
+    name = "Squid Game",
     customModelData = 710003,
     description = listOf(""),
     material = Material.KNOWLEDGE_BOOK,

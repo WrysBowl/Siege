@@ -13,6 +13,7 @@ import net.siegerpg.siege.core.utils.name
 import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Material
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -25,6 +26,7 @@ interface CustomCosmetic: CustomItem {
     fun onCosmeticInteract(e: PlayerInteractEvent) {}
     fun onCosmeticEquip(e: PlayerArmorChangeEvent) {}
     fun onCosmeticSpeak(e: AsyncChatEvent) {}
+    fun onCosmeticDamage(e: EntityDamageByEntityEvent) {}
 
     override fun serialize() {
         super.serialize()
