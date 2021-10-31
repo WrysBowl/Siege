@@ -19,4 +19,20 @@ public class Help implements CommandExecutor {
         player.sendMessage(Utils.parse(""));
         return false;
     }
+
+    //-----[HELP SIEGE]-----
+    public void firstLine(Player player) {
+        player.sendMessage(Utils.parse("    <gold><bold>HELP    "));
+    }
+
+    public void lastLine(Player player) {
+        player.sendMessage(Utils.parse(""));
+    }
+
+    public void firstPage(Player player) {
+
+        //COMMAND LIST
+
+        //  <yellow>/buy <gray>Opens the webstore
+    }
 }
