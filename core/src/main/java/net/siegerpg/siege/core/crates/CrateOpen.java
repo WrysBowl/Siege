@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.crates;
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.dungeons.Dungeon;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
@@ -14,6 +15,7 @@ import net.siegerpg.siege.core.items.enums.Rarity;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
 import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
+import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -24,6 +26,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -63,6 +66,8 @@ public class CrateOpen implements Listener {
         //Play item getting animation
         //Plays item win effect
         //Gives item to player
+        Bukkit.broadcast(Utils.parse("<green>"+player.getName()+" is opening a crate!"));
+
         new Animation().openCrate(
                 targetedBlock.getLocation().toCenterLocation(),
                 dropTable.dropTable.keySet(),
