@@ -11,7 +11,7 @@ class Drumstick() : CustomFood(
     description = listOf("Siege fried chicken"),
     levelRequirement = 0,
     material = Material.COOKED_CHICKEN,
-    health = 35.0,
+    health = 20.0,
 ) {
 
     constructor(quality: Int): this() {

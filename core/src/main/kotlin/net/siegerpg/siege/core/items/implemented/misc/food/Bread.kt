@@ -13,7 +13,7 @@ class Bread() : CustomFood(
     description = listOf("Doughy"),
     levelRequirement = 0,
     material = Material.BREAD,
-    health = 40.0,
+    health = 30.0,
 ) {
 
     constructor(quality: Int): this() {
