@@ -33,6 +33,8 @@ public class BlockBreakListener implements Listener {
             add(Material.WHEAT);
             add(Material.VINE);
             add(Material.STONE_BUTTON);
+            add(Material.CARROT);
+
         }
     };
     public static List<Material> dependables = new ArrayList<>() {
@@ -151,6 +153,7 @@ public class BlockBreakListener implements Listener {
             put(Material.BIRCH_LEAVES, new BIRCH_LEAVES());
             put(Material.BIRCH_LOG, new BIRCH_LOG());
             put(Material.BIRCH_WOOD, new BIRCH_WOOD());
+            put(Material.CARROT, new CARROT());
             put(Material.CHAIN, new CHAIN());
             put(Material.COAL_ORE, new COAL_ORE());
             put(Material.COARSE_DIRT, new COARSE_DIRT());
@@ -168,12 +171,14 @@ public class BlockBreakListener implements Listener {
             put(Material.JUNGLE_WOOD, new JUNGLE_WOOD());
             put(Material.LIGHT_GRAY_CONCRETE, new LIGHT_GRAY_CONCRETE());
             put(Material.LIME_TERRACOTTA, new LIME_TERRACOTTA());
+            put(Material.MELON, new MELON());
             put(Material.OAK_LEAVES, new OAK_LEAVES());
             put(Material.OAK_LOG, new OAK_LOG());
             put(Material.OAK_WOOD, new OAK_WOOD());
             put(Material.PINK_CONCRETE, new PINK_CONCRETE());
             put(Material.PINK_CONCRETE_POWDER, new PINK_CONCRETE_POWDER());
             put(Material.PINK_STAINED_GLASS, new PINK_STAINED_GLASS());
+            put(Material.PUMPKIN, new PUMPKIN());
             put(Material.SHROOMLIGHT, new SHROOMLIGHT());
             put(Material.SNOW, new SNOW());
             put(Material.SNOW_BLOCK, new SNOW_BLOCK());
