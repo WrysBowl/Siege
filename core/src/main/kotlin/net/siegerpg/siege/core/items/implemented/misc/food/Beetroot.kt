@@ -18,7 +18,7 @@ class Beetroot() : CustomFood(
     description = listOf("The fruit can take a beating"),
     levelRequirement = 0,
     material = Material.BEETROOT,
-    health = 50.0
+    health = 20.0
 ) {
 
     override fun speciality(player: Player) {

@@ -11,7 +11,7 @@ class Apple() : CustomFood(
     description = listOf("Food to tame teachers"),
     levelRequirement = 0,
     material = Material.APPLE,
-    health = 25.0
+    health = 20.0
 ) {
 
     constructor(quality: Int): this() {

@@ -11,7 +11,7 @@ class Porkchop() : CustomFood(
     description = listOf("Tastes better cooked..."),
     levelRequirement = 0,
     material = Material.PORKCHOP,
-    health = 75.0,
+    health = 65.0,
 ) {
 
     constructor(quality: Int): this() {
