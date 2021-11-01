@@ -13,15 +13,14 @@ public class Help implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player player = (Player) sender;
-        player.sendMessage(Utils.parse(""));
-        player.sendMessage(Utils.parse("  <aqua><bold>Join our discord here!<reset>"));
-        player.sendMessage(Utils.tacc("  https://discord.siegerpg.net"));
-        player.sendMessage(Utils.parse(""));
+        firstLine(player,1);
+        firstPage(player);
+        lastLine(player);
         return false;
     }
     //-----[HELP SIEGE]-----
-    public void firstLine(Player player) {
-        player.sendMessage(Utils.parse("    <gold><bold>HELP    "));
+    public void firstLine(Player player,Integer firstpage) {
+        player.sendMessage(Utils.parse("    <gold><bold>HELP Page #"+firstpage+"    "));
     }
 
     public void lastLine(Player player) {
@@ -31,7 +30,6 @@ public class Help implements CommandExecutor {
     public void firstPage(Player player) {
 
         //COMMAND LIST
-
         player.sendMessage(Utils.parse("   <yellow>/buy <gray>Opens the in-game webstore"));
         player.sendMessage(Utils.parse("   <yellow>/discord <gray>Visit the discord server"));
         player.sendMessage(Utils.parse("   <yellow>/hub <gray>Visit the hub off Siege"));
