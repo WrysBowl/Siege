@@ -7,38 +7,39 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.scheduler.BukkitTask
 import java.sql.ResultSet
 import java.util.*
+import kotlin.collections.ArrayList
 
 object WebstoreDB {
 
     /**
-     * Gets the exp and level of a player.
-     * @param runAfter A lambda/closure which does something with the exp/level data
+     * Gets the store commands of a player.
+     * @param runAfter A lambda/closure which does something with the store commands data
      * @return The task that will fetch the data from the database
      */
-    fun getStoreCommand(player: OfflinePlayer, runAfter: (cmdArgs: String?) -> Unit): BukkitTask {
+    fun getStoreCommands(player: OfflinePlayer, runAfter: (commands: Array<String>?) -> Unit): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
-            runAfter(blockingGetStoreCommand(player))
+            runAfter(blockingGetStoreCommands(player))
         })
     }
 
     /**
-     * Gets the exp and level of multiple players.
-     * @param runAfter A lambda/closure which does something with the exp/level data
+     * Gets the store commands of multiple players.
+     * @param runAfter A lambda/closure which does something with the store commands data
      * @return The task that will fetch the data from the database
      */
-    fun getStoreCommand(
+    fun getStoreCommands(
         players: List<OfflinePlayer>,
-        runAfter: (HashMap<UUID, String>?) -> Unit
+        runAfter: (HashMap<UUID, ArrayList<String>>?) -> Unit
     ): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
-            runAfter(blockingGetStoreCommand(players))
+            runAfter(blockingGetStoreCommands(players))
         })
     }
 
     /**
-     * Gets the exp and level of every player (sorted from highest level to lowest)
+     * Gets the store commands of every player (sorted from highest level to lowest)
      * This bypasses the cache so be careful not to overuse it.
-     * @param limit: Instead of getting exp&level of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
+     * @param limit: Instead of getting store commands of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
      */
     fun getAllStoreCommands(limit: Int, runAfter: (ArrayList<Pair<UUID, String>>?) -> Unit): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
@@ -48,7 +49,7 @@ object WebstoreDB {
 
 
     /**
-     * Sets the exp and level of a player
+     * Sets the store commands of a player
      */
     fun setStoreCommand(player: OfflinePlayer, cmdArgs: String): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
@@ -57,7 +58,7 @@ object WebstoreDB {
     }
 
     /**
-     * Sets the exp and level of multiple players
+     * Sets the store commands of multiple players
      */
     fun setStoreCommand(data: HashMap<UUID, String>): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
@@ -70,10 +71,10 @@ object WebstoreDB {
     // ---------------------------------------------------------
 
     /**
-     * Gets the exp and level of a player, blocking the thread.
-     * @return The level and exp
+     * Gets the store commands of a player, blocking the thread.
+     * @return The store commands
      */
-    fun blockingGetStoreCommand(player: OfflinePlayer): String? {
+    fun blockingGetStoreCommands(player: OfflinePlayer): Array<String>? {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
             val stmt = connection.prepareStatement(
@@ -85,23 +86,27 @@ object WebstoreDB {
             return if (!query.isBeforeFirst) {
                 null
             } else {
-                query.next()
-                val data = query.getString("command")
+
+                val data: Array<String> = Array<String>(query.fetchSize) {
+                    if (query.next())
+                        query.getString("command")
+                    else ""
+                }
                 data
             }
         }
     }
 
     /**
-     * Gets the exp and level of multiple players, blocking the thread.
+     * Gets the store commands of multiple players, blocking the thread.
      * @return The level and experience
      */
-    fun blockingGetStoreCommand(
+    fun blockingGetStoreCommands(
         players: List<OfflinePlayer>
-    ): HashMap<UUID, String>? {
+    ): HashMap<UUID, ArrayList<String>>? {
         // Gets the cache data for each cached player, and gets the data of the not-yet-cached players
         val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
-        val map = HashMap<UUID, String>()
+        val map = HashMap<UUID, ArrayList<String>>()
         if (playerIDs.size == 0) {
             return if (map.size > 0) map else null
         }
@@ -120,14 +125,16 @@ object WebstoreDB {
             while (resultSet.next()) {
                 val uuid = UUID.fromString(resultSet.getString("uuid"))
                 val result = resultSet.getString("command")
-                map[uuid] = result
+                if (map[uuid] == null) {
+                    map[uuid] = arrayListOf(result)
+                } else map[uuid]?.add(result)
             }
         }
         return if (map.size > 0) map else null
     }
 
     /**
-     * Gets the exp and level of every player (sorted from highest level to lowest), blocking the thread.
+     * Gets the store commands of every player (sorted from highest level to lowest), blocking the thread.
      * This bypasses the cache so be careful not to overuse it.
      * @param limit: Instead of getting exp&level of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
      */
@@ -158,7 +165,7 @@ object WebstoreDB {
     }
 
     /**
-     * Sets the exp and level of a player, blocking the thread
+     * Sets the store commands of a player, blocking the thread
      */
     fun blockingSetStoreCommands(player: OfflinePlayer, cmdArgs: String) {
         val connection = DatabaseManager.getConnection()
@@ -171,7 +178,7 @@ object WebstoreDB {
     }
 
     /**
-     * Sets the exp and level of multiple players, blocking the thread
+     * Sets the store commands of multiple players, blocking the thread
      */
     fun blockingSetStoreCommands(data: HashMap<UUID, String>) {
         val connection = DatabaseManager.getConnection()
