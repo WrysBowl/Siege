@@ -15,10 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
 
@@ -33,23 +30,18 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
         if (2 > args.length) return false; //check if command was used properly
 
         UUID uuid;
-        Player player;
+        OfflinePlayer player;
 
-        //Parse UUID as a player and check if player is online
         try {
-            player = Bukkit.getPlayer(args[0]);
-            if (null == player) {
-                uuid = UUID.fromString(args[0]);
-                player = Bukkit.getPlayer(uuid);
-            } else {
-                uuid = player.getUniqueId();
-            }
+            uuid = UUID.fromString(args[0]);
+            player = Bukkit.getOfflinePlayer(uuid);
+            Bukkit.getLogger().info(uuid.toString());
+            Bukkit.getLogger().info(player.toString());
         } catch (IllegalArgumentException x) {
             String msg = Utils.tacc("&cParsing of the UUID has thrown an error.");
             Bukkit.getLogger().info(msg);
             return false;
         }
-        if (null == player) return false;
         if (player.isOnline()) { //if player is online then they get their item right away
             //Call the method that gets the package and calls the complete purchase method
             WebstoreUtils.packageDelivery(args, uuid);
@@ -57,10 +49,15 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
         } else { //if player is not online then their information is stored in a database
 
             //converts the list into a string separated by a space
-            String stringArgs = WebstoreUtils.stringify(args);
+            String stringArgs = WebstoreUtils.stringify(
+                    Arrays.copyOfRange(args, 1, args.length) //remove uuid from args
+            );
 
             //stores the arguments under the player's UUID in a database
             WebstoreDB.INSTANCE.setStoreCommand(player, stringArgs);
+
+            String msg = Utils.tacc("&ePlayer is not online. Webstore purchase stored in database.");
+            Bukkit.getLogger().info(msg);
         }
 
 
