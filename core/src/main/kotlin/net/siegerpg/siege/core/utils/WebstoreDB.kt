@@ -52,7 +52,7 @@ object WebstoreDB {
      */
     fun setStoreCommand(player: OfflinePlayer, cmdArgs: String): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
-            blockingStoreCommands(player, cmdArgs)
+            blockingSetStoreCommands(player, cmdArgs)
         })
     }
 
@@ -61,7 +61,7 @@ object WebstoreDB {
      */
     fun setStoreCommand(data: HashMap<UUID, String>): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
-            blockingStoreCommands(data)
+            blockingSetStoreCommands(data)
         })
     }
 
@@ -160,10 +160,10 @@ object WebstoreDB {
     /**
      * Sets the exp and level of a player, blocking the thread
      */
-    fun blockingStoreCommands(player: OfflinePlayer, cmdArgs: String) {
+    fun blockingSetStoreCommands(player: OfflinePlayer, cmdArgs: String) {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
-            val stmt = connection.prepareStatement("UPDATE webstoreData SET command=? WHERE uuid=?")
+            val stmt = connection.prepareStatement("INSERT INTO webstoreData (command,uuid) VALUES (?, ?)")
             stmt.setString(1, cmdArgs)
             stmt.setString(2, player.uniqueId.toString())
             stmt.executeUpdate()
@@ -173,10 +173,10 @@ object WebstoreDB {
     /**
      * Sets the exp and level of multiple players, blocking the thread
      */
-    fun blockingStoreCommands(data: HashMap<UUID, String>) {
+    fun blockingSetStoreCommands(data: HashMap<UUID, String>) {
         val connection = DatabaseManager.getConnection()
         connection!!.use {
-            val stmt = connection.prepareStatement("UPDATE webstoreData SET command=? WHERE uuid=?")
+            val stmt = connection.prepareStatement("INSERT INTO webstoreData (command,uuid) VALUES (?, ?)")
             // We batch the sql queries together for speed (it will only make one request instead of multiple)
             data.forEach { (uuid, data) ->
                 // We prepare the query
