@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -124,6 +125,7 @@ public class Herbert implements Listener {
         scanner(e); // Update values
         clearItems(); // Trash items
         refresh(); // Update Gui
+        person.sendMessage(Utils.parse("<yellow>You earned "+total+" coins"));
         VaultHook.econ.depositPlayer(person, total); // Award gold
         Scoreboard.updateScoreboard(person); // Update scoreboard
         scanner(e); // Scan again to display zero gold
@@ -147,7 +149,7 @@ public class Herbert implements Listener {
                 quantity = cItem.getItem().getAmount();
                 if (cItem instanceof CustomMaterial) {
                     quality = ((CustomMaterial)(cItem)).getTier();
-                    total += quantity * Math.pow(3, quality-1);
+                    total += quantity * Math.pow(3, quality);
                 } else if (cItem instanceof StatGemType) {
                     if (cItem.getLevelRequirement() == null) {
                         total += 1;
@@ -169,7 +171,7 @@ public class Herbert implements Listener {
                         continue;
                     }
                     levelReq = cItem.getLevelRequirement();
-                    total += (int)quantity * ((levelReq * quality) / 5);
+                    total += (int)quantity * ((levelReq * quality) / 3);
                 }
             }
         }
