@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.webstore;
 
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.utils.WebstoreDB;
 import net.siegerpg.siege.core.webstore.categories.WebstorePackage;
 import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import org.bukkit.Bukkit;
@@ -55,6 +56,11 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
 
         } else { //if player is not online then their information is stored in a database
 
+            //converts the list into a string separated by a space
+            String stringArgs = WebstoreUtils.stringify(args);
+
+            //stores the arguments under the player's UUID in a database
+            WebstoreDB.INSTANCE.setStoreCommand(player, stringArgs);
         }
 
 

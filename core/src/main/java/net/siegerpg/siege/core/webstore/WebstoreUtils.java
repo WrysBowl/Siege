@@ -77,12 +77,7 @@ public class WebstoreUtils {
             Bukkit.getLogger().info(Utils.tacc("&cError processing purchase"));
         }
     }
-
-    public static String[] fetchPackageArguments(UUID uuid) { //called to fetch command arguments from database
-        //command arguments are stored in database when player is not online
-        //at the time of their purchase
-
-        //Return arguments from the webstore database based on the UUID
-        return null;
+    public static String stringify(String[] list) {
+        return String.join(" ", list);
     }
 }
