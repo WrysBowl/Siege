@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.levelReward.*
 import net.siegerpg.siege.core.parties.Party
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.scheduler.BukkitTask
@@ -53,8 +54,9 @@ object Levels {
             object : BukkitRunnable() {
                 override fun run() {
                     reward.giveReward(player as Player, lvl)
+                    player.playSound(player.location, Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 1.0f)
                 }
-            }.runTask(Core.plugin())
+            }.runTaskLater(Core.plugin(), 20)
         }
         return Pair(lvl, exp)
     }
