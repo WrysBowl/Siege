@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
-import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import net.siegerpg.siege.core.drops.BlockDropTable;
 import net.siegerpg.siege.core.drops.materials.*;
 import net.siegerpg.siege.core.drops.materials.decor.*;
@@ -33,7 +32,7 @@ public class BlockBreakListener implements Listener {
             add(Material.WHEAT);
             add(Material.VINE);
             add(Material.STONE_BUTTON);
-            add(Material.CARROT);
+            add(Material.CARROTS);
 
         }
     };
@@ -153,7 +152,7 @@ public class BlockBreakListener implements Listener {
             put(Material.BIRCH_LEAVES, new BIRCH_LEAVES());
             put(Material.BIRCH_LOG, new BIRCH_LOG());
             put(Material.BIRCH_WOOD, new BIRCH_WOOD());
-            put(Material.CARROT, new CARROT());
+            put(Material.CARROTS, new CARROTS());
             put(Material.CHAIN, new CHAIN());
             put(Material.COAL_ORE, new COAL_ORE());
             put(Material.COARSE_DIRT, new COARSE_DIRT());
