@@ -19,6 +19,7 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import net.siegerpg.siege.core.utils.*
 import org.bukkit.Bukkit
 import org.bukkit.Material
+import org.bukkit.Sound
 import org.bukkit.command.CommandSender
 import org.bukkit.command.ConsoleCommandSender
 import org.bukkit.entity.Player
@@ -123,9 +124,13 @@ class ShopsCommand : BaseCommand() {
                         if (!it.craftable) return@setAction
                         if (event.view.bottomInventory
                                 .firstEmpty() == -1
-                        ) return@setAction player.sendMessage(MiniMessage.get().parse("<red>Your inventory is full!"))
+                        ) {
+                            player.playSound(player.location, Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f)
+                            return@setAction player.sendMessage(MiniMessage.get().parse("<red>Your inventory is full!"))
+                        }
                         for (entry in it.recipe) {
                             if (!player.inventory.containsAtLeast(entry.key.getUpdatedItem(false), entry.value)) {
+                                player.playSound(player.location, Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f)
                                 return@setAction player.sendMessage(
                                     MiniMessage.get()
                                         .parse(if (entry.value == 1) "<red>You don't have a ${entry.key.name}!" else "<red>You don't have enough ${entry.key.name}s!")
@@ -138,20 +143,25 @@ class ShopsCommand : BaseCommand() {
                             player.inventory.removeItem(stack)
                         }
                         player.inventory.addItem(it.generate())
+                        player.playSound(player.location, Sound.ENTITY_VILLAGER_TRADE, 1.0f, 1.0f)
                         player.updateInventory()
                     }
                     event.isRightClick -> {
                         if (it.buyPrice < 0) return@setAction
 
                         if (VaultHook.econ.getBalance(player) < it.buyPrice) {
-                            player.sendMessage(MiniMessage.get().parse("<red>You don't have enough gold!"))
-                            return@setAction
+                            player.playSound(player.location, Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f)
+                            return@setAction player.sendMessage(MiniMessage.get().parse("<red>You don't have enough gold!"))
                         }
                         if (event.view.bottomInventory
                                 .firstEmpty() == -1
-                        ) return@setAction player.sendMessage(MiniMessage.get().parse("<red>Your inventory is full!"))
+                        ) {
+                            player.playSound(player.location, Sound.ENTITY_VILLAGER_TRADE, 1.0f, 1.0f)
+                            return@setAction player.sendMessage(MiniMessage.get().parse("<red>Your inventory is full!"))
+                        }
 
                         player.inventory.addItem(it.generate())
+                        player.playSound(player.location, Sound.ENTITY_VILLAGER_TRADE, 1.0f, 1.0f)
                         VaultHook.econ.withdrawPlayer(player, it.buyPrice.toDouble())
                         player.updateInventory()
                         Scoreboard.updateScoreboard(event.whoClicked as Player)
