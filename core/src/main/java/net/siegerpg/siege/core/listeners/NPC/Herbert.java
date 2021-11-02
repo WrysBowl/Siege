@@ -4,6 +4,7 @@ import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.*;
 import com.github.stefvanschie.inventoryframework.pane.*;
 import net.siegerpg.siege.core.items.statgems.StatGem;
+import net.siegerpg.siege.core.items.types.misc.CustomFood;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
 import net.siegerpg.siege.core.items.types.misc.StatGemType;
 import net.siegerpg.siege.core.utils.Scoreboard;
@@ -28,60 +29,25 @@ import java.util.ArrayList;
 
 public class Herbert implements Listener {
 
-    private Player person; // Interacting player
     private ChestGui menu;
     private int total = 0; // Total scrap cash
-    boolean inUse = false; // One player at a time
-    static boolean passed = false; // Avoid double msg????
-    private ItemStack cashInSymbol = new ItemStack(Material.SUNFLOWER);
-    private ItemMeta cashMeta = cashInSymbol.getItemMeta();
-    private ItemStack scanSymbol = new ItemStack(Material.ARROW);
-    private ItemMeta scanMeta = scanSymbol.getItemMeta();
-    private OutlinePane infoPane = new OutlinePane(1, 1, 1, 2);
+    private final ItemStack cashInSymbol = new ItemStack(Material.SUNFLOWER);
+    private final ItemMeta cashMeta = cashInSymbol.getItemMeta();
+    private final ItemStack scanSymbol = new ItemStack(Material.ARROW);
+    private final ItemMeta scanMeta = scanSymbol.getItemMeta();
+    private final OutlinePane infoPane = new OutlinePane(1, 1, 1, 2);
 
     @EventHandler
     public void onRightClickEntity(PlayerInteractEntityEvent e) {
         if (e.getRightClicked().getName().contains("Herbert") && e.getRightClicked().getName().contains("6")) {
-            if (passed) {
-                if (!inUse) {
-                    inUse = true;
-                    person = e.getPlayer();
-                    menu = initMenu();
-                    menu.show(person);
-                    return;
-                } else {
-                    e.getPlayer().sendMessage(Utils.tacc("Herbert is currently in use!"));
-                }
-                passed = false;
-            }
-            else {
-                passed = true;
-            }
-
+            new Herbert(e.getPlayer());
         }
     }
 
-    @EventHandler
-    public void onLeave(PlayerQuitEvent e) {
-        Player player = e.getPlayer();
-        if (player.equals(person)) {
-            ArrayList<ItemStack> Items = new ArrayList<ItemStack>(pullItems());
-            for (ItemStack item : Items) {
-                if (person.getInventory().firstEmpty() == -1) {
-                    person.getWorld().dropItemNaturally(person.getLocation(), item);
-                }
-                else {
-                    person.getInventory().addItem(item);
-                }
-            }
-            clearItems();
-            refresh();
-            inUse = false;
-        }
-    }
+    public Herbert(){}
 
     // Initialize menu
-    private ChestGui initMenu() {
+    public Herbert(Player player) {
         ChestGui menu = new ChestGui(5, "Scrapper");
 
         menu.setOnClose(this::onInvClose);
@@ -116,8 +82,8 @@ public class Herbert implements Listener {
         infoPane.addItem(new GuiItem(scanSymbol, this::scanner));
         infoPane.addItem(new GuiItem(cashInSymbol, this::clickCash));
         menu.addPane(infoPane);
-
-        return menu;
+        this.menu = menu;
+        menu.show(player);
     }
 
     // Cash in all items in the scrapper
@@ -125,10 +91,9 @@ public class Herbert implements Listener {
         scanner(e); // Update values
         clearItems(); // Trash items
         refresh(); // Update Gui
-        person.sendMessage(Utils.parse("<yellow>You earned "+total+" coins"));
-        VaultHook.econ.depositPlayer(person, total); // Award gold
-        Scoreboard.updateScoreboard(person); // Update scoreboard
-        scanner(e); // Scan again to display zero gold
+        e.getWhoClicked().sendMessage(Utils.parse("<yellow>You earned "+total+" coins"));
+        VaultHook.econ.depositPlayer((Player)e.getWhoClicked(), total); // Award gold
+        Scoreboard.updateScoreboard((Player)e.getWhoClicked()); // Update scoreboard
     }
 
 
@@ -143,36 +108,37 @@ public class Herbert implements Listener {
         CustomItem cItem;
         for (ItemStack scrap : scraps) {
             cItem = CustomItemUtils.INSTANCE.getCustomItem(scrap);
-
+            if (cItem == null) continue;
             // Award value to qualifying items
-            if (cItem != null) {
-                quantity = cItem.getItem().getAmount();
-                if (cItem instanceof CustomMaterial) {
-                    quality = ((CustomMaterial)(cItem)).getTier();
-                    total += quantity * Math.pow(3, quality);
-                } else if (cItem instanceof StatGemType) {
-                    if (cItem.getLevelRequirement() == null) {
-                        total += 1;
-                        continue;
-                    }
-                    levelReq = cItem.getLevelRequirement();
-                    total += quantity*35*levelReq;
-                } else if (cItem instanceof CustomKey) {
-                    if (cItem.getLevelRequirement() == null) {
-                        total += 1;
-                        continue;
-                    }
-                    levelReq = cItem.getLevelRequirement();
-                    total += quantity* 100 * levelReq;
-                } else {
-                    quality = cItem.getQuality();
-                    if (cItem.getLevelRequirement() == null) {
-                        total += 1;
-                        continue;
-                    }
-                    levelReq = cItem.getLevelRequirement();
-                    total += (int)quantity * ((levelReq * quality) / 3);
+            quantity = cItem.getItem().getAmount();
+            if (cItem instanceof CustomMaterial) {
+                quality = ((CustomMaterial)(cItem)).getTier();
+                total += quantity * Math.pow(3, quality);
+            } else if (cItem instanceof StatGemType) {
+                if (cItem.getLevelRequirement() == null) {
+                    total += 1;
+                    continue;
                 }
+                levelReq = cItem.getLevelRequirement();
+                total += quantity*35*levelReq;
+            } else if (cItem instanceof CustomKey) {
+                if (cItem.getLevelRequirement() == null) {
+                    total += 1;
+                    continue;
+                }
+                levelReq = cItem.getLevelRequirement();
+                total += quantity* 100 * levelReq;
+            } else if (cItem instanceof CustomFood) {
+                quality = cItem.getQuality();
+                total += (int)(quantity * ((quality/100)+1));
+            } else {
+                quality = cItem.getQuality();
+                if (cItem.getLevelRequirement() == null) {
+                    total += 1;
+                    continue;
+                }
+                levelReq = cItem.getLevelRequirement();
+                total += (int)quantity * ((levelReq * quality) / 3);
             }
         }
 
@@ -198,16 +164,15 @@ public class Herbert implements Listener {
     public void onInvClose(InventoryCloseEvent e) {
         ArrayList<ItemStack> Items = new ArrayList<ItemStack>(pullItems());
         for (ItemStack item : Items) {
-            if (person.getInventory().firstEmpty() == -1) {
-                person.getWorld().dropItemNaturally(person.getLocation(), item);
+            if (e.getPlayer().getInventory().firstEmpty() == -1) {
+                e.getPlayer().getWorld().dropItemNaturally(e.getPlayer().getLocation(), item);
             }
             else {
-                person.getInventory().addItem(item);
+                e.getPlayer().getInventory().addItem(item);
             }
         }
         clearItems();
         refresh();
-        inUse = false;
     }
 
     // Get the coordinates of all items in the scrapper from top left to bottom right
@@ -266,10 +231,5 @@ public class Herbert implements Listener {
         for (int i = 0; i < coords.size(); i++) {
             inv.setItem(coords.get(i), raws.get(i));
         }
-    }
-
-    // Function for testing sends msgs to the interacting player
-    private void log(String phrase) {
-        person.sendMessage(Utils.tacc(phrase));
     }
 }
