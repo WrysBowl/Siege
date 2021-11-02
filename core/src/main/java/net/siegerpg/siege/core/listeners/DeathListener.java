@@ -171,17 +171,6 @@ public class DeathListener implements Listener, Runnable {
 
         if (mobDrop == null) return;
 
-        if (mobDrop instanceof ChestMimic1) {
-            if (Utils.randTest(25.0)) {
-                e.getEntity().getKiller().sendMessage(Utils.lore("<red>Oh no! Your supply drop carried zombies!"));
-                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
-                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
-                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
-                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
-                MythicMobs.inst().getAPIHelper().spawnMythicMob("ZombifiedDigger", e.getEntity().getLocation());
-            }
-        }
-
         Player player = e.getEntity().getKiller();
         double luck = 0.0;
         int goldCoinAmt = mobDrop.getGold(true);
