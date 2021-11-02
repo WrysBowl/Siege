@@ -15,7 +15,7 @@ public class PlayerQuitListener implements Listener {
     @EventHandler
     public void quitEvent(PlayerQuitEvent e) {
 
-        e.setQuitMessage(Utils.tacc("&c&lLEAVE &7[&c-&7] " + e.getPlayer().getName()));
+        e.quitMessage(Utils.parse("<red><bold>LEAVE <gray>[<red>-<gray>] " + e.getPlayer().getName()));
 
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
 

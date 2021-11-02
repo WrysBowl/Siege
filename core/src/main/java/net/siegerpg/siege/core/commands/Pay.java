@@ -25,7 +25,11 @@ public class Pay implements CommandExecutor {
             int gold = 0;
             OfflinePlayer targetPlayer;
             try {
-                targetPlayer = Bukkit.getOfflinePlayer(args[0]);
+                targetPlayer = Bukkit.getOfflinePlayerIfCached(args[0]);
+                if (targetPlayer == null) {
+                    sender.sendMessage(Utils.parse("<red>That player could not be found."));
+                    return null;
+                }
                 gold = Integer.parseInt(args[1]);
             } catch (Exception ex) {
                 player.sendMessage(Utils.lore("<red>Incorrect arguments. Type /pay player gold"));

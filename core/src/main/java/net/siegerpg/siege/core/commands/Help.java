@@ -13,18 +13,19 @@ public class Help implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player player = (Player) sender;
-        firstLine(player,1);
+        firstLine(player, 1);
         firstPage(player);
         lastLine(player);
         return false;
     }
+
     //-----[HELP SIEGE]-----
-    public void firstLine(Player player,Integer firstpage) {
-        player.sendMessage(Utils.parse("    <gold><bold>HELP Page #"+firstpage+"    "));
+    public void firstLine(Player player, Integer firstpage) {
+        player.sendMessage(Utils.parse("    <gold><bold>HELP Page #" + firstpage + "    "));
     }
 
     public void lastLine(Player player) {
-        player.sendMessage(Utils.parse(""));
+        player.sendMessage("");
     }
 
     public void firstPage(Player player) {
