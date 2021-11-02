@@ -35,8 +35,6 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
         try {
             uuid = UUID.fromString(args[0]);
             player = Bukkit.getOfflinePlayer(uuid);
-            Bukkit.getLogger().info(uuid.toString());
-            Bukkit.getLogger().info(player.toString());
         } catch (IllegalArgumentException x) {
             String msg = Utils.tacc("&cParsing of the UUID has thrown an error.");
             Bukkit.getLogger().info(msg);

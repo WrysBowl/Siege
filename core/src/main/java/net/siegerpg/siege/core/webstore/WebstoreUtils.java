@@ -48,7 +48,7 @@ public class WebstoreUtils {
                 for (int index = 0; index < packageArgs.length; index++) {
 
                     //Check if the index from hashmap is equal to the index of the arguments from command
-                    if (!packageArgs[index].equalsIgnoreCase(info[index])) {
+                    if (!packageArgs[index].equals(info[index])) {
                         //If the index does not match the index of the args
                         //Then we go to the next set in the hashmap
                         continue outerLoop;
