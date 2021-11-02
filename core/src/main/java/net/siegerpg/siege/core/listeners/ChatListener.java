@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,6 +27,11 @@ public class ChatListener implements Listener {
             e.getPlayer().sendMessage(Utils.tacc("You can not send a empty message!"));
             e.setCancelled(true);
             return;
+        }
+        for(Player p: Bukkit.getOnlinePlayers()) {
+            if(message.contains(p.getName())) {
+                p.playSound(p.getLocation(), Sound.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, 1.0F, 1.0F);
+            }
         }
         if (message.contains("[item]")) {
             e.setCancelled(true);
