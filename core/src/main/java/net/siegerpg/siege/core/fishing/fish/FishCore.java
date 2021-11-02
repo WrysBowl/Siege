@@ -56,7 +56,6 @@ public class FishCore {
             if (baitCore == null)
                 continue;
             if (baitCore.hasFish(fish.name)) {
-                player.sendMessage(baitCore.getName() + "added 1");
                 BaitStats stats = baitCore.getStat(fish.name);
                 double stat = stats.getChanceAdded();
                 totalWeight += stat;
@@ -99,6 +98,8 @@ public class FishCore {
         meta.lore(new ArrayList<>() {
             {
                 add(Utils.lore("<yellow>Size <gray>" + fish.actualSize + " cm"));
+                add(Utils.lore("<gray>Right click <gold>Henry Fisher"));
+                add(Utils.lore("<gray>to sell the fish in your hand!"));
             }
         });
         item.setItemMeta(meta);
