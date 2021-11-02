@@ -19,14 +19,23 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.UUID;
+
 public class WebstoreListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         String[] commands = WebstoreDB.INSTANCE.blockingGetStoreCommands(e.getPlayer());
+        if (commands == null) return;
+        if (commands.length < 1) return;
+        UUID playerId = e.getPlayer().getUniqueId();
 
-        //TODO: Iterate through the array and convert each iteration from string to array
-        //  , separated by a space. Then add the uuid of the player to the 0th index
+        for (String string : commands) {
+            WebstoreUtils.packageDelivery(string.split(" "), playerId);
+        }
+        WebstoreDB.INSTANCE.blockingRemoveStoreCommands(e.getPlayer());
     }
 
     @EventHandler

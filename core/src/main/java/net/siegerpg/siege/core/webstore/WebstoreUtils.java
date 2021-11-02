@@ -7,10 +7,8 @@ import net.siegerpg.siege.core.webstore.categories.cosmetics.*;
 import net.siegerpg.siege.core.webstore.categories.ranks.*;
 import org.bukkit.Bukkit;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.sql.Array;
+import java.util.*;
 
 public class WebstoreUtils {
     public static HashMap<String[], WebstorePackage> packages = new HashMap<>(){
@@ -37,15 +35,11 @@ public class WebstoreUtils {
         }
     };
 
-    public static void packageDelivery(String[] args, UUID uuid) {
-        String[] info;
+    public static void packageDelivery(String[] info, UUID uuid) {
         WebstorePackage webPackage;
         Bukkit.getLogger().info("Purchase is being delivered");
 
         try {
-            //Create new String[] of arg 1 and up
-            info = Arrays.copyOfRange(args, 1, args.length);
-
             //Iterate through each pair in the hashmap
             outerLoop: for (Map.Entry<String[], WebstorePackage> entry : packages.entrySet()) {
                 String[] packageArgs = entry.getKey();
