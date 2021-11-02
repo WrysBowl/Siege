@@ -208,7 +208,8 @@ object WebstoreDB {
                 "DELETE FROM webstoreData WHERE uuid=?",
                 ResultSet.TYPE_SCROLL_SENSITIVE
             )
-            stmt.executeQuery()
+            stmt.setString(1, player.uniqueId.toString())
+            stmt.executeUpdate()
         }
     }
 
