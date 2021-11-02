@@ -40,19 +40,19 @@ public class WebstoreKeys extends WebstorePackage {
     public WebstoreKeys(String[] args) {
         super(args);
         try {
-            this.arg2 = args[0];
-            this.arg3 = args[1];
-            this.arg4 = Integer.parseInt(args[2]);
-            this.key = keys.get(args[1]);
+            this.arg2 = args[1];
+            this.arg3 = args[2];
+            this.arg4 = Integer.parseInt(args[3]);
+            this.key = keys.get(args[2]);
         } catch (Exception ignored) {}
     }
 
     @Override
     public void setArgs(String[] args) {
         try {
-            this.arg2 = args[0];
-            this.arg3 = args[1];
-            this.arg4 = Integer.parseInt(args[2]);
+            this.arg2 = args[1];
+            this.arg3 = args[2];
+            this.arg4 = Integer.parseInt(args[3]);
         } catch (Exception ignored) {
             ignored.printStackTrace();
         }
