@@ -75,6 +75,7 @@ public class MeraTransit implements Listener {
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                     player.teleport(new Location(hillyWoods, 188, 61, -122, -95, 0));
                 }, 40L);
+                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
                 return;
             }
             if (slot == 13) {
@@ -95,6 +96,7 @@ public class MeraTransit implements Listener {
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                     player.teleport(new Location(hillyWoods, -278, 80, 295, -150, 0));
                 }, 40L);
+                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
                 return;
             }
             if (slot == 16) {
@@ -115,6 +117,7 @@ public class MeraTransit implements Listener {
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                     player.teleport(new Location(hillyWoods, 223, 92, 204, 177, 0));
                 }, 40L);
+                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
             }
         }
     }

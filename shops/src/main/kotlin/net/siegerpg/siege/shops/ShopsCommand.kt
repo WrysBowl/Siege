@@ -143,7 +143,7 @@ class ShopsCommand : BaseCommand() {
                             player.inventory.removeItem(stack)
                         }
                         player.inventory.addItem(it.generate())
-                        player.playSound(player.location, Sound.ENTITY_VILLAGER_TRADE, 1.0f, 1.0f)
+                        player.playSound(player.location, Sound.ENTITY_VILLAGER_CELEBRATE, 1.0f, 1.0f)
                         player.updateInventory()
                     }
                     event.isRightClick -> {
@@ -156,12 +156,12 @@ class ShopsCommand : BaseCommand() {
                         if (event.view.bottomInventory
                                 .firstEmpty() == -1
                         ) {
-                            player.playSound(player.location, Sound.ENTITY_VILLAGER_TRADE, 1.0f, 1.0f)
+                            player.playSound(player.location, Sound.ENTITY_VILLAGER_CELEBRATE, 1.0f, 1.0f)
                             return@setAction player.sendMessage(MiniMessage.get().parse("<red>Your inventory is full!"))
                         }
 
                         player.inventory.addItem(it.generate())
-                        player.playSound(player.location, Sound.ENTITY_VILLAGER_TRADE, 1.0f, 1.0f)
+                        player.playSound(player.location, Sound.ENTITY_VILLAGER_CELEBRATE, 1.0f, 1.0f)
                         VaultHook.econ.withdrawPlayer(player, it.buyPrice.toDouble())
                         player.updateInventory()
                         Scoreboard.updateScoreboard(event.whoClicked as Player)

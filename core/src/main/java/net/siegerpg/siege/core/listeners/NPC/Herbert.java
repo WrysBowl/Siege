@@ -15,6 +15,7 @@ import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -92,6 +93,7 @@ public class Herbert implements Listener {
         clearItems(); // Trash items
         refresh(); // Update Gui
         e.getWhoClicked().sendMessage(Utils.parse("<yellow>You earned "+total+" coins"));
+        ((Player)e.getWhoClicked()).playSound(((Player)e.getWhoClicked()).getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         VaultHook.econ.depositPlayer((Player)e.getWhoClicked(), total); // Award gold
         Scoreboard.updateScoreboard((Player)e.getWhoClicked()); // Update scoreboard
     }
