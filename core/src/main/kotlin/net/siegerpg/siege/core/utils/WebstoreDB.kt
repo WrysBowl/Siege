@@ -86,13 +86,13 @@ object WebstoreDB {
             return if (!query.isBeforeFirst) {
                 null
             } else {
-
-                val data: Array<String> = Array<String>(query.fetchSize) {
-                    if (query.next())
-                        query.getString("command")
-                    else ""
+                val data: ArrayList<String> = arrayListOf()
+                var i: Int = 0
+                while(query.next()) {
+                    data.add(query.getString("command"))
+                    i++
                 }
-                data
+                data.toTypedArray()
             }
         }
     }
@@ -197,5 +197,19 @@ object WebstoreDB {
         }
     }
 
+    /**
+     * Removes the store commands of a player, blocking the thread.
+     * @return The store commands
+     */
+    fun blockingRemoveStoreCommands(player: OfflinePlayer) {
+        val connection = DatabaseManager.getConnection()
+        connection!!.use {
+            val stmt = connection.prepareStatement(
+                "DELETE FROM webstoreData WHERE uuid=?",
+                ResultSet.TYPE_SCROLL_SENSITIVE
+            )
+            stmt.executeQuery()
+        }
+    }
 
 }
