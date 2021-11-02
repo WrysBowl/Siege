@@ -29,7 +29,7 @@ public class Spawn implements CommandExecutor {
             player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, (float) 0.5, (float) 0.8);
             return true;
         }
-        Bukkit.getLogger().info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
+        Bukkit.getLogger().info(Utils.tacc("&cAn entity other than the player ran the /hub command"));
         return false;
     }
 }

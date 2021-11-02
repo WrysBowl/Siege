@@ -4,8 +4,6 @@ import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
-import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
@@ -16,18 +14,17 @@ import net.siegerpg.siege.core.drops.mobs.twilight.bosses.Unicorn;
 import net.siegerpg.siege.core.drops.mobs.twilight.hostile.*;
 import net.siegerpg.siege.core.drops.mobs.twilight.neutral.*;
 import net.siegerpg.siege.core.drops.mobs.twilight.passive.*;
-import net.siegerpg.siege.core.drops.mobs.twilight.passive.Bat;
-import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
-import net.siegerpg.siege.core.items.implemented.misc.food.*;
+import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot;
 import net.siegerpg.siege.core.utils.GoldEXPSpawning;
+import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
-import org.bukkit.Bukkit;
+import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -42,7 +39,7 @@ import java.util.HashMap;
 
 public class DeathListener implements Listener, Runnable {
 
-    public HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>(){
+    public static HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>() {
         {
             //BOSSES
             put("Blubber", new Blubber());
@@ -169,7 +166,6 @@ public class DeathListener implements Listener, Runnable {
         MobDropTable mobDrop = mobDropTableHashMap.get(mm).getClass().getDeclaredConstructor().newInstance();
 
 
-
         e.setDroppedExp(0);
         e.getDrops().clear();
 
@@ -192,7 +188,9 @@ public class DeathListener implements Listener, Runnable {
         int exp = mobDrop.getExp(true);
         Location loc = e.getEntity().getLocation();
 
-        if (player != null) {luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());}
+        if (player != null) {
+            luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
+        }
 
         if (exp > 0 && player != null) {
             exp = (int) Math.floor(exp * GlobalMultipliers.expMultiplier);
@@ -231,7 +229,7 @@ public class DeathListener implements Listener, Runnable {
             if (newBal < 0) newBal = 0;
             VaultHook.econ.withdrawPlayer(player, bal);
             VaultHook.econ.depositPlayer(player, newBal);
-            int goldLost = bal-newBal;
+            int goldLost = bal - newBal;
             new BukkitRunnable() {
                 @Override
                 public void run() {

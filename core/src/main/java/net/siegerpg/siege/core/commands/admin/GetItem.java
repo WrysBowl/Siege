@@ -20,7 +20,7 @@ public class GetItem implements CommandExecutor {
             Player player = (Player) sender;
             if (player.hasPermission("SiegeCore.getItem")) {
                 if (args.length == 2) {
-                    CustomItem item = CustomItem.class.newInstance();
+                    CustomItem item = CustomItem.class.getDeclaredConstructor().newInstance();
                     if (Class.forName(args[0]).isInstance(item)) {
                         Gson gson = new Gson();
                         CustomItem obj = gson.fromJson(args[0], CustomItem.class);
