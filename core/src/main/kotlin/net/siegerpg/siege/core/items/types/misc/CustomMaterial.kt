@@ -61,8 +61,8 @@ abstract class CustomMaterial(
             meta.lore("<r><dark_gray>$it")
         }
         meta.lore(" ")
-        meta.lore("<gray>Upgrade to the next \u272A with")
-        meta.lore("<gray><yellow>Phillip <gray>or <yellow>Sylvester")
+        meta.lore("<gray>Upgrade to the next \u272A")
+        meta.lore("<gray>with <yellow>Phillip <gray>or <yellow>Sylvester")
         meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         item.itemMeta = meta
