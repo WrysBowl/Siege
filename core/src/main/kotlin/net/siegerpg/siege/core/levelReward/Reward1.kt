@@ -14,13 +14,13 @@ class Reward1 : LevelReward {
         player.sendMessage(Utils.lore(""))
         player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
         player.sendMessage(Utils.lore("<gold><bold>Level Reward"))
-        player.sendMessage(Utils.lore("<yellow>+ 100 gold"))
+        player.sendMessage(Utils.lore("<yellow>+ 200 gold"))
         player.sendMessage(Utils.lore("<red>+ 2 HP"))
         player.sendMessage(Utils.lore("<green>+ Twig <yellow>???"))
         player.sendMessage(Utils.lore("<green>+ Stick \u272a x12"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener.giveGold(player, 100)
+        GoldExpListener.giveGold(player, 200)
         Utils.giveItem(player, Twig(Utils.randRarity()).getUpdatedItem(false))
         Utils.giveItem(player, Stick.tier(1).getUpdatedItem(false).asQuantity(12))
     }

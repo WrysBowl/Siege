@@ -1,8 +1,11 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.SpiritKey
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.VaultHook
+import net.siegerpg.siege.core.webstore.categories.boosters.EXPBooster_50
+import net.siegerpg.siege.core.webstore.categories.boosters.GOLDBooster_50
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.entity.Player
@@ -19,12 +22,16 @@ class Reward19 : LevelReward {
         player.sendMessage(Utils.lore(""))
         player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
         player.sendMessage(Utils.lore("<gold><bold>Level Reward"))
-        player.sendMessage(Utils.lore("<yellow>+ 15,000 gold"))
+        player.sendMessage(Utils.lore("<yellow>+ 10,000 gold"))
         player.sendMessage(Utils.lore("<red>+ 2 HP"))
+        player.sendMessage(Utils.lore("<green>+ 50% GOLD and EXP Boosters"))
         player.sendMessage(Utils.lore("<red>+ 1 Player Vault"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener.giveGold(player, 15000)
+        GoldExpListener.giveGold(player, 10000)
+        Utils.giveItem(player, GOLDBooster_50().boosterItem)
+        Utils.giveItem(player, EXPBooster_50().boosterItem)
+
         val highestPV = Utils.getHighestPV(player)
         VaultHook.perms.playerAdd("global", player, "cosmicvaults.amount."+(highestPV+1))
     }

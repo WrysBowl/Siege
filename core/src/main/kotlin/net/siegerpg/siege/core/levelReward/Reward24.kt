@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.SpiritKey
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Sound
@@ -14,8 +15,11 @@ class Reward24 : LevelReward {
         player.sendMessage(Utils.lore("<gold><bold>Level Reward"))
         player.sendMessage(Utils.lore("<yellow>+ 15,000 gold"))
         player.sendMessage(Utils.lore("<red>+ 2 HP"))
+        player.sendMessage(Utils.lore("<green>+ 2 Spirit Cosmetic Keys"))
         player.sendMessage(Utils.lore(""))
 
         GoldExpListener.giveGold(player, 15000)
+        Utils.giveItem(player, SpiritKey(0).getUpdatedItem(false).asQuantity(2))
+
     }
 }

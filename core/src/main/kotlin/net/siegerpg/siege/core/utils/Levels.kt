@@ -46,7 +46,7 @@ object Levels {
         var lvl = level
         while (calculateRequiredExperience(lvl) <= exp) {
             exp -= calculateRequiredExperience(lvl)
-            lvl = (lvl + 1).toShort()
+            lvl++
             if (!player.isOnline) continue
             if (levelRewards.size < lvl + 2) continue //ensure that the level reward is set in the array list
 

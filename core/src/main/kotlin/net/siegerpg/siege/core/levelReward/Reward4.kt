@@ -1,5 +1,7 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.utils.Utils
 import org.bukkit.Sound
@@ -12,10 +14,12 @@ class Reward4 : LevelReward {
         player.sendMessage(Utils.lore(""))
         player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
         player.sendMessage(Utils.lore("<gold><bold>Level Reward"))
-        player.sendMessage(Utils.lore("<yellow>+ 2,500 gold"))
+        player.sendMessage(Utils.lore("<yellow>+ 1,500 gold"))
         player.sendMessage(Utils.lore("<red>+ 2 HP"))
+        player.sendMessage(Utils.lore("<green>+ 1 Normal Cosmetic Key"))
         player.sendMessage(Utils.lore(""))
 
-        GoldExpListener.giveGold(player, 2500)
+        GoldExpListener.giveGold(player, 1500)
+        Utils.giveItem(player, NormalKey(0).getUpdatedItem(false))
     }
 }
