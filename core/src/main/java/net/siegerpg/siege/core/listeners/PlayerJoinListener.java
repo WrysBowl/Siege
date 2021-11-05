@@ -98,6 +98,7 @@ public class PlayerJoinListener implements Listener {
             }.runTaskAsynchronously(Core.plugin());
         }
         event.setJoinMessage(joinMessage);
+        player.setWalkSpeed(0.3f);
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             Scoreboard.updateScoreboard(p);
