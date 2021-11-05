@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.utils.cache.PlayerData;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,88 +37,34 @@ public class MeraTransit implements Listener {
         if (e.getView().getTitle().equals("World Transit")) {
             e.setCancelled(true);
             Player player = (Player) e.getWhoClicked();
-            World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
             int slot = e.getSlot();
             int bal = (int) VaultHook.econ.getBalance(player);
-            int farmCost = 200;
-            int villageCost = 300;
-            int caveCost = 200;
-            if (player.hasPermission("siege.mera100")) {
-                farmCost = 0;
-                villageCost = 0;
-                caveCost = 0;
-            } else if (player.hasPermission("siege.mera75")) {
-                farmCost *= 0.25;
-                villageCost *= 0.25;
-                caveCost *= 0.25;
-            } else if (player.hasPermission("siege.mera50")) {
-                farmCost *= 0.5;
-                villageCost *= 0.5;
-                caveCost *= 0.5;
-            }
+            final Location deathLocation = (PlayerData.playerDeathLocations.get(player) != null)
+                    ? PlayerData.playerDeathLocations.get(player) :
+                    player.getLocation();
+            int locationCostComputation = (int)player.getLocation().distance(deathLocation);
+            int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
 
-            if (hillyWoods == null) return;
-            if (slot == 10) {
-                if (bal < farmCost) {
-                    player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
-                    return;
-                }
-                VaultHook.econ.withdrawPlayer(player, farmCost);
-                Scoreboard.updateScoreboard(player);
-                player.closeInventory();
-                player.sendTitle(Utils.tacc("&aTeleporting to"), Utils.tacc("&eThe Farm"), 10, 40, 10);
-                player.getWorld().spawnParticle(
-                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-                        player.getLocation(), 1);
-                new Location(hillyWoods, 188, 61, -122).getWorld().spawnParticle(
-                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-                        new Location(hillyWoods, 188, 61, -122), 1);
-                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                    player.teleport(new Location(hillyWoods, 188, 61, -122, -95, 0));
-                }, 40L);
-                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
-                return;
-            }
+
             if (slot == 13) {
-                if (bal < caveCost) {
+                if (bal < deathTeleportCost) {
                     player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
                     return;
                 }
-                VaultHook.econ.withdrawPlayer(player, caveCost);
+                VaultHook.econ.withdrawPlayer(player, deathTeleportCost);
                 Scoreboard.updateScoreboard(player);
                 player.closeInventory();
-                player.sendTitle(Utils.tacc("&aTeleporting to"), Utils.tacc("&7The Cave"), 10, 40, 10);
+                player.sendTitle(Utils.tacc("&aTeleporting to..."), Utils.tacc("&eLast Death Point"), 10, 30, 10);
                 player.getWorld().spawnParticle(
                         Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-                        player.getLocation(), 1);
-                new Location(hillyWoods, -278, 80, 295).getWorld().spawnParticle(
+                        player.getLocation(), 10);
+                deathLocation.getWorld().spawnParticle(
                         Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-                        new Location(hillyWoods, -278, 80, 295), 1);
+                        deathLocation, 10);
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                    player.teleport(new Location(hillyWoods, -278, 80, 295, -150, 0));
+                    player.teleport(deathLocation);
                 }, 40L);
-                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
-                return;
-            }
-            if (slot == 16) {
-                if (bal < villageCost) {
-                    player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
-                    return;
-                }
-                VaultHook.econ.withdrawPlayer(player, villageCost);
-                Scoreboard.updateScoreboard(player);
-                player.closeInventory();
-                player.sendTitle(Utils.tacc("&aTeleporting to"), Utils.tacc("&aThe Village"), 10, 40, 10);
-                player.getWorld().spawnParticle(
-                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-                        player.getLocation(), 1);
-                new Location(hillyWoods, 223, 92, 204).getWorld().spawnParticle(
-                        Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-                        new Location(hillyWoods, 223, 92, 204), 1);
-                Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-                    player.teleport(new Location(hillyWoods, 223, 92, 204, 177, 0));
-                }, 40L);
-                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
+                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 0.8f);
             }
         }
     }
@@ -131,69 +78,34 @@ public class MeraTransit implements Listener {
             gui.setItem(i, filler);
         }
 
-        int farmCost = 200;
-        int villageCost = 300;
-        int caveCost = 200;
-        if (player.hasPermission("siege.mera100")) {
-            farmCost = 0;
-            villageCost = 0;
-            caveCost = 0;
-        } else if (player.hasPermission("siege.mera75")) {
-            farmCost *= 0.25;
-            villageCost *= 0.25;
-            caveCost *= 0.25;
-        } else if (player.hasPermission("siege.mera50")) {
-            farmCost *= 0.5;
-            villageCost *= 0.5;
-            caveCost *= 0.5;
-        }
+        final Location deathLocation = (PlayerData.playerDeathLocations.get(player) != null)
+                ? PlayerData.playerDeathLocations.get(player) :
+                player.getLocation();
+        int locationCostComputation = (int)player.getLocation().distance(deathLocation);
+        final int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
+
 
         //Creating Wheat Farm Icon
-        ItemStack farm = new ItemStack(Material.WHEAT);
-        ItemMeta farmMeta = farm.getItemMeta();
-        farmMeta.displayName(Utils.lore("<yellow><bold>Farm"));
-        final int finalFarmCost = farmCost;
+        ItemStack deathLocationIcon = new ItemStack(Material.SKELETON_SKULL);
+        ItemMeta deathLocationIconItemMeta = deathLocationIcon.getItemMeta();
+        deathLocationIconItemMeta.displayName(Utils.lore("<gray><bold>Last Death"));
         List<Component> farmLore = new ArrayList<>() {
             {
-                add(Utils.lore("<green>Click to travel"));
-                add(Utils.lore("<yellow>Cost " + finalFarmCost));
+                add(Utils.lore(""));
+                add(Utils.lore("<green>Location"));
+                add(Utils.lore("<green>x: <gray>"+ (int)deathLocation.getX()));
+                add(Utils.lore("<green>y: <gray>"+ (int)deathLocation.getY()));
+                add(Utils.lore("<green>z: <gray>"+ (int)deathLocation.getZ()));
+                add(Utils.lore(""));
+                add(Utils.lore("<yellow>Cost " + deathTeleportCost));
+                add(Utils.lore("<gray>Click to Purchase"));
             }
         };
-        farmMeta.lore(farmLore);
-        farm.setItemMeta(farmMeta);
-
-        //Creating Forest Cave
-        ItemStack cave = new ItemStack(Material.COAL_ORE);
-        ItemMeta caveMeta = cave.getItemMeta();
-        caveMeta.displayName(Utils.lore("<gray><bold>Cave"));
-        final int finalCaveCost = caveCost;
-        List<Component> caveLore = new ArrayList<>() {
-            {
-                add(Utils.lore("<green>Click to travel"));
-                add(Utils.lore("<yellow>Cost " + finalCaveCost));
-            }
-        };
-        caveMeta.lore(caveLore);
-        cave.setItemMeta(caveMeta);
-
-        //Creating Forest Cave
-        ItemStack village = new ItemStack(Material.EMERALD);
-        ItemMeta villageMeta = village.getItemMeta();
-        villageMeta.displayName(Utils.lore("<green><bold>Village"));
-        final int finalVillageCost = villageCost;
-        List<Component> villageLore = new ArrayList<>() {
-            {
-                add(Utils.lore("<green>Click to travel"));
-                add(Utils.lore("<yellow>Cost " + finalVillageCost));
-            }
-        };
-        villageMeta.lore(villageLore);
-        village.setItemMeta(villageMeta);
+        deathLocationIconItemMeta.lore(farmLore);
+        deathLocationIcon.setItemMeta(deathLocationIconItemMeta);
 
         //This is where you decide what slot the item goes into
-        gui.setItem(10, farm);
-        gui.setItem(13, cave);
-        gui.setItem(16, village);
+        gui.setItem(13, deathLocationIcon);
 
         return gui;
     }
