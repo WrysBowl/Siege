@@ -13,12 +13,13 @@ import org.bukkit.scheduler.BukkitTask
 import java.sql.ResultSet
 import java.time.Instant
 import java.util.*
+import java.util.concurrent.ConcurrentHashMap
 import kotlin.math.pow
 
 object Levels {
     // How long data is cached for
     private const val cacheDuration = 10 * 60
-    private val cachedLevelExp = HashMap<UUID, Triple<Short, Int, Instant>>()
+    private val cachedLevelExp = ConcurrentHashMap<UUID, Triple<Short, Int, Instant>>()
 
     private val levelRewards: ArrayList<LevelReward> = arrayListOf(
         Reward1(), Reward2(), Reward3(), Reward4(), Reward5(),
