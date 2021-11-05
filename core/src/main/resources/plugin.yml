@@ -59,3 +59,5 @@ commands:
   help:
     aliases: [ help ]
     description: Guide to Siege
+  setBed:
+    description: Sets the respawn point of a player

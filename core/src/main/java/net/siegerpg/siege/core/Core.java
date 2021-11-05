@@ -79,6 +79,7 @@ public final class Core extends JavaPlugin {
 
         commandManager.registerCommand(new PartyCommand());
         this.getCommand("hub").setExecutor(new Hub());
+        this.getCommand("setBed").setExecutor(new SetRespawn());
         this.getCommand("help").setExecutor(new Help());
         this.getCommand("discord").setExecutor(new Discord());
         this.getCommand("webstore").setExecutor(new Webstore());
