@@ -63,8 +63,8 @@ public class MeraTransit implements Listener {
                         deathLocation, 10);
                 Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                     player.teleport(deathLocation);
+                    player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 0.8f);
                 }, 40L);
-                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 0.8f);
             }
         }
     }
