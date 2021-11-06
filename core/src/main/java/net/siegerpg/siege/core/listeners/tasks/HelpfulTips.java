@@ -55,6 +55,7 @@ public class HelpfulTips implements Listener {
             add(Utils.tacc("&eYou can put your money in the bank at the village on the opposite corner of the map."));
             add(Utils.tacc("&eYou can buy food from the butcher at the village on the opposite corner of the map."));
             add(Utils.tacc("&eYou can gamble for money with Bart at the village on the opposite corner of the map."));
+            add(Utils.tacc("&eHerbert the Scrapper will buy your items (but he's cheap about it)."));
 
             //Different types of Mobs
             add(Utils.tacc("&eGoblins and Wild Foxes can steal your money and run away with it."));
@@ -72,7 +73,6 @@ public class HelpfulTips implements Listener {
             //MISC Interactions
             add(Utils.tacc("&eMost plants can be broken for a chance to get gold and experience."));
             add(Utils.tacc("&eLooking to partner with us? DM Wrys#8935."));
-            add(Utils.tacc("&eHerbert the Scrapper will buy your items (but he's cheap about it)."));
             add(Utils.tacc("&eA sweeping effect is played every time a player damages a mob."));
 
         }
