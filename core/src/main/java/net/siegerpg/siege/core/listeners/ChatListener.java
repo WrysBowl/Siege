@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import kotlin.Pair;
 import net.kyori.adventure.text.Component;
+import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.DropUtils;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
@@ -21,7 +22,9 @@ public class ChatListener implements Listener {
     @EventHandler
     public void playerChat(AsyncPlayerChatEvent e) {
         Player player = e.getPlayer();
-        DropUtils.Companion.dropItemForPlayers(player.getLocation(), new ItemStack(Material.DIAMOND_AXE), List.of(player.getUniqueId()));
+        Bukkit.getScheduler().runTask(Core.plugin(), () -> {
+            DropUtils.Companion.dropItemForPlayers(player.getLocation(), new ItemStack(Material.DIAMOND_AXE), List.of(player.getUniqueId()));
+        });
         Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
         String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";
         String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
