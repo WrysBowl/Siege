@@ -6,6 +6,7 @@ import io.github.retrooper.packetevents.event.PacketListenerAbstract
 import io.github.retrooper.packetevents.event.impl.PacketPlaySendEvent
 import io.github.retrooper.packetevents.packettype.PacketType
 import io.github.retrooper.packetevents.packetwrappers.play.out.spawnentity.WrappedPacketOutSpawnEntity
+import net.siegerpg.siege.core.items.deleteNbtTags
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
 import org.bukkit.Location
@@ -38,6 +39,9 @@ class DropUtils : Listener, PacketListenerAbstract() {
         // If seepickableby does not contain the player's uuid we cancel the evt
         if (!stringUUIDs.contains(player.uniqueId.toString()))
             evt.isCancelled = true
+        else {
+            evt.item.itemStack = item.deleteNbtTags("seepickableby")
+        }
     }
 
     /**
@@ -76,6 +80,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
 
         /**
          * Drops an item which will only be visible and pickable by specific players
+         * Once picked up it will be visible for **everyone**
          * @param loc The location to drop the item at
          * @param item The item to drop
          * @param players The list of player uuids that will be able to pick the item up
@@ -86,6 +91,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
 
         /**
          * Drops an item naturally which will only be visible and pickable by specific players
+         * Once picked up it will be visible for **everyone**
          * @param loc The location to drop the item at
          * @param item The item to drop
          * @param players The list of player uuids that will be able to pick the item up
