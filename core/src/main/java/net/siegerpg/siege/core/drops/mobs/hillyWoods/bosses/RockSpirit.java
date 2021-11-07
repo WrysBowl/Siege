@@ -5,11 +5,9 @@ import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.GrieferChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.JaggedTunic;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.LichKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.*;
+import net.siegerpg.siege.core.items.implemented.weapons.wands.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
 import net.siegerpg.siege.core.utils.Utils;
 

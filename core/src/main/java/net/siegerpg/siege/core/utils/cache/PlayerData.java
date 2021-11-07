@@ -11,10 +11,12 @@ import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.utils.Levels;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -30,6 +32,8 @@ public class PlayerData implements Listener {
     public static HashMap<Player, Double> playerHealth = new HashMap<>();
     public static HashMap<Player, Double> playerCurrentMana = new HashMap<>();
     public static HashMap<Player, Double> playerMana = new HashMap<>();
+    public static HashMap<Player, Location> playerDeathLocations = new HashMap<>();
+
     public static HashMap<Player, HashMap<Integer, Skill>> playerSkills = new HashMap<>();
     public static HashMap<Player, ArrayList<Action>> playerTriggers = new HashMap<>();
 
@@ -103,5 +107,11 @@ public class PlayerData implements Listener {
                 setStats(e.getPlayer());
             }
         }
+    }
+
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent e) {
+        Player player = e.getEntity();
+        playerDeathLocations.put(player, player.getLocation());
     }
 }

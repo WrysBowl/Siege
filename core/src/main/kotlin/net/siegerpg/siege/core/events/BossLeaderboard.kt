@@ -1,8 +1,16 @@
 package net.siegerpg.siege.core.events
 
+import com.google.common.collect.Lists
+import io.lumine.xikage.mythicmobs.MythicMobs
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob
-import net.siegerpg.siege.core.utils.BossLeaderboardDB
+import net.siegerpg.siege.core.drops.MobDropTable
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
+import net.siegerpg.siege.core.dungeons.dungeon.Broodmother
+import net.siegerpg.siege.core.utils.*
+import net.siegerpg.siege.core.utils.cache.GlobalMultipliers
+import org.bukkit.Bukkit
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Item
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -12,6 +20,7 @@ import org.bukkit.event.entity.EntityDeathEvent
 import java.time.Duration
 import java.time.Instant
 import java.util.*
+import kotlin.collections.HashMap
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.round
@@ -22,6 +31,17 @@ data class BossFight(val startTime: Instant, val entity: ActiveMob) {
 }
 
 class BossLeaderboard : Listener {
+
+    private val dungeonBossDropTableHashMap = mutableMapOf(
+            "Broodmother" to Broodmother(),
+            "BullSpirit" to BullSpirit(),
+            "Davy_Jones" to Davy_Jones(),
+            "FoxSpirit" to FoxSpirit(),
+            "Lich" to Lich(),
+            "MagmaSpirit" to MagmaSpirit(),
+            "Necromancer" to Necromancer(),
+            "SlimeSpirit" to SlimeSpirit()
+    ) as HashMap<String, MobDropTable>
 
     companion object {
         val currentBossFights = ArrayList<BossFight>()
@@ -47,13 +67,46 @@ class BossLeaderboard : Listener {
         val deathTime = Instant.now()
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return
+
+        var dropTable: MobDropTable? = null
+        if (MythicMobs.inst().apiHelper.isMythicMob(evt.entity)) {
+            val bossName = MythicMobs.inst().apiHelper.getMythicMobInstance(evt.entity).type.internalName
+            if (dungeonBossDropTableHashMap.containsKey(bossName)) {
+                dropTable = dungeonBossDropTableHashMap[bossName]
+            }
+        }
+
         // Uploads data to the db
         val hashMapData = HashMap<UUID, Pair<Byte, Int>>()
         val startingBossHealth = round(bossFight.entityHealth).toInt()
         val fightDuration = ceil((Duration.between(bossFight.startTime, deathTime).abs().toMillis() + 100.0) / 1000)
         bossFight.fighters.forEach { (fighter, damageDone) ->
-            val percentageDamage = floor(damageDone / startingBossHealth * 100).toInt().toByte()
-            hashMapData[fighter] = Pair(percentageDamage, fightDuration.toInt())
+            val percentageDamage = floor(damageDone / startingBossHealth * 100).toInt()
+            hashMapData[fighter] = Pair(percentageDamage.toByte(), fightDuration.toInt())
+
+            if (dropTable != null) {
+
+//                if (percentageDamage >= 50) {
+//                    val dropMultiplier = 1
+//                } else {
+//                    val dropMultiplier = 1
+//                }
+
+
+
+
+                val loc = evt.entity.location
+
+                val tableExp = dropTable.getExp(true) ?: 0
+                Levels.addExpShared(Bukkit.getOfflinePlayer(fighter), tableExp)
+
+                val tableGoldCoinAmt = dropTable.getGold(true) ?: 0
+                val goldCoinAmt = floor(tableGoldCoinAmt * GlobalMultipliers.goldMultiplier).toInt()
+
+                val gold: Item = DropUtils.dropItemNaturallyForPlayers(loc, GoldEXPSpawning.getGoldCoin(1), listOf(fighter))
+                gold.itemStack.amount = goldCoinAmt
+
+            }
         }
         BossLeaderboardDB.setBossData(bossFight.entity.type.internalName, hashMapData)
     }

@@ -24,9 +24,9 @@ public class Spawn implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (player.getWorld().getName().equals("Dungeons")) return false;
             player.teleport(player.getWorld().getSpawnLocation());
             player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, (float) 0.5, (float) 0.8);
+            player.setBedSpawnLocation(null, true);
             return true;
         }
         Bukkit.getLogger().info(Utils.tacc("&cAn entity other than the player ran the /hub command"));

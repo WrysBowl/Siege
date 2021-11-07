@@ -2,14 +2,9 @@ package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
-import net.siegerpg.siege.core.items.implemented.misc.wands.EarthernStaff
-import net.siegerpg.siege.core.items.implemented.misc.wands.EarthernWand
-import net.siegerpg.siege.core.items.implemented.misc.wands.RockWand
-import net.siegerpg.siege.core.items.implemented.misc.wands.earthernStaffs.*
-import net.siegerpg.siege.core.items.implemented.misc.wands.earthernWands.*
-import net.siegerpg.siege.core.items.implemented.misc.wands.rockWands.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernStaff
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernStaffs.*
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem

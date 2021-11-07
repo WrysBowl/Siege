@@ -4,8 +4,8 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
-import net.siegerpg.siege.core.items.implemented.misc.wands.SlimeSpoofer
-import net.siegerpg.siege.core.items.implemented.misc.wands.slimeSpoofers.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.SlimeSpoofer
+import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shovel
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shovels.*

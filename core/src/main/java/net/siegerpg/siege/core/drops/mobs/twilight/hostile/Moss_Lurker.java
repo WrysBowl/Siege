@@ -2,20 +2,10 @@ package net.siegerpg.siege.core.drops.mobs.twilight.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PolishedStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.CrystalCane;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.CursedSickle;
+import net.siegerpg.siege.core.items.implemented.weapons.wands.CrystalCane;
 import net.siegerpg.siege.core.utils.Utils;
 
 

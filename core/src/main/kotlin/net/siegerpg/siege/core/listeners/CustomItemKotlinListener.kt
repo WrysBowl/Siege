@@ -5,7 +5,8 @@ import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
-import net.siegerpg.siege.core.items.types.misc.CustomWand
+import net.siegerpg.siege.core.items.types.misc.CustomPotion
+import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
@@ -282,10 +283,11 @@ class CustomItemKotlinListener : Listener, Runnable {
             CustomItemUtils.getCustomItem(e.item)?.let {
                 if (it is CustomFood) {
                     it.onEat(e)
+                } else if (it is CustomPotion) {
+                    it.onConsume(e)
                 }
             }
         })
-
     }
 
     /*

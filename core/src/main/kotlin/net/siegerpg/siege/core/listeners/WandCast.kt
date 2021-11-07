@@ -1,26 +1,13 @@
 package net.siegerpg.siege.core.listeners
 
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.items.CustomItemUtils
-import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.types.misc.CustomWand
-import net.siegerpg.siege.core.items.types.weapons.CustomBow
-import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
-import net.siegerpg.siege.core.utils.Levels
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import org.bukkit.*
-import org.bukkit.attribute.Attribute
-import org.bukkit.entity.Entity
-import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
-import org.bukkit.entity.Projectile
-import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.util.Vector
-import kotlin.math.*
 
 
 class WandCast : BukkitRunnable {
@@ -59,13 +46,14 @@ class WandCast : BukkitRunnable {
         if (loc.distance(targetLoc) < 1) {
             this.cancel()
         }
-        for (e in loc.getNearbyLivingEntities(damageRadius)) {
+        for (e in loc.getNearbyLivingEntities(1.0)) {
             if (e.equals(player)) continue
             if (e is Player && e.world.name != "PVP") continue
             for (en in loc.getNearbyLivingEntities(damageRadius)) {
                 if (e.equals(player)) continue
                 if (en is Player && en.world.name != "PVP") continue
                 en.damage(dmg, player)
+                en.world.spawnParticle(Particle.SWEEP_ATTACK, en.location, 3)
             }
             this.cancel()
         }

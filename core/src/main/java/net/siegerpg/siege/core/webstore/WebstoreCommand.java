@@ -42,7 +42,7 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
         }
         if (player.isOnline()) { //if player is online then they get their item right away
             //Call the method that gets the package and calls the complete purchase method
-            WebstoreUtils.packageDelivery(args, uuid);
+            WebstoreUtils.packageDelivery(Arrays.copyOfRange(args, 1, args.length), uuid);
 
         } else { //if player is not online then their information is stored in a database
 

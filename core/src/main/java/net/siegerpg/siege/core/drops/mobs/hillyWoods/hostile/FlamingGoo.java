@@ -7,9 +7,7 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.MagmaChestplat
 import net.siegerpg.siege.core.items.implemented.armor.helmet.MagmaHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.MagmaLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.MatchStick;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class FlamingGoo extends MobDropTable {

@@ -9,16 +9,8 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.RawLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.SlimeSpoofer;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.StickyStick;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.*;
+import net.siegerpg.siege.core.items.implemented.weapons.wands.SlimeSpoofer;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class Blubber extends MobDropTable {
