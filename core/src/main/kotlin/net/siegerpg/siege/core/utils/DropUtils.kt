@@ -44,20 +44,16 @@ class DropUtils : Listener, PacketListenerAbstract() {
      * Doesn't send the entity spawn packet for those entities
      */
     override fun onPacketPlaySend(evt: PacketPlaySendEvent) {
-        println(evt.packetName + ": " + evt.packetId)
         if (evt.packetId == PacketType.Play.Server.SPAWN_ENTITY) {
-            println("Entity just spawned!")
             val wrappedPacket = WrappedPacketOutSpawnEntity(evt.nmsPacket)
             if (wrappedPacket.entity?.type != EntityType.DROPPED_ITEM)
                 return
             val item = wrappedPacket.entity as Item
-            println("Entity item")
             val itemStack = item.itemStack
             val seepickableby = itemStack.getNbtTag<String>("seepickableby")
                 ?: return
-            println("See pickable fetched: $seepickableby")
+            if (seepickableby.isEmpty()) return
             val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
-
             println("IN PACKET: " + stringUUIDs.joinToString(", "))
             println("IN PACKET: " + evt.player.uniqueId.toString())
             if (!stringUUIDs.contains(evt.player.uniqueId.toString()))
