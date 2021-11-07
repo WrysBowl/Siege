@@ -54,8 +54,6 @@ public final class Core extends JavaPlugin {
                 .compatInjector(true)
                 .checkForUpdates(false);
         PacketEvents.get().loadAsyncNewThread();
-
-
     }
 
     @Override
@@ -206,11 +204,10 @@ public final class Core extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
-        INSTANCE = null;
-
         // Stop packetevents
         PacketEvents.get().terminate();
+        // Plugin shutdown logic
+        INSTANCE = null;
     }
 
     /**

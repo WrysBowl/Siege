@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.utils
 
+import com.google.gson.Gson
 import io.github.retrooper.packetevents.event.PacketListenerAbstract
 import io.github.retrooper.packetevents.event.impl.PacketPlaySendEvent
 import io.github.retrooper.packetevents.packettype.PacketType
@@ -11,6 +12,7 @@ import org.bukkit.entity.EntityType
 import org.bukkit.entity.Item
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityPickupItemEvent
 import org.bukkit.inventory.ItemStack
@@ -24,15 +26,16 @@ class DropUtils : Listener, PacketListenerAbstract() {
     /**
      * Disables item picking up for items you shouldn't be able to pick up.
      */
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     fun onItemPickup(evt: EntityPickupItemEvent) {
         val item = evt.item.itemStack
-        val seepickableby = item.getNbtTag<List<String>>("seepickableby")
+        val seepickableby = item.getNbtTag<String>("seepickableby")
             ?: return
         if (evt.entityType != EntityType.PLAYER) return
         val player = evt.entity as Player
+        val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
         // If seepickableby does not contain the player's uuid we cancel the evt
-        if (!seepickableby.contains(player.uniqueId.toString()))
+        if (!stringUUIDs.contains(player.uniqueId.toString()))
             evt.isCancelled = true
     }
 
@@ -46,9 +49,10 @@ class DropUtils : Listener, PacketListenerAbstract() {
                 return
             val item = wrappedPacket.entity as Item
             val itemStack = item.itemStack
-            val seepickableby = itemStack.getNbtTag<List<String>>("seepickableby")
+            val seepickableby = itemStack.getNbtTag<String>("seepickableby")
                 ?: return
-            if (!seepickableby.contains(evt.player.uniqueId.toString()))
+            val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
+            if (!stringUUIDs.contains(evt.player.uniqueId.toString()))
                 evt.isCancelled = true
         }
     }
@@ -60,7 +64,8 @@ class DropUtils : Listener, PacketListenerAbstract() {
          * Internal method used to set the nbt tags of an item
          */
         private fun itemWithSeepickableNbtTags(item: ItemStack, players: List<UUID>): ItemStack {
-            return item.setNbtTags(Pair("seepickableby", players.map { it::toString }))
+            val uuidArray = Gson().toJson(players.map { it::toString }.toTypedArray())
+            return item.setNbtTags(Pair("seepickableby", uuidArray))
         }
 
         /**
