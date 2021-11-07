@@ -4,9 +4,9 @@ import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.neutral.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.passive.*;
@@ -21,7 +21,6 @@ import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
-import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -52,16 +51,6 @@ public class DeathListener implements Listener, Runnable {
             put("Werewolf", new Werewolf());
 
             put("Unicorn", new Unicorn());
-
-            //DUNGEON BOSSES
-            put("Broodmother", new Broodmother());
-            put("BullSpirit", new BullSpirit());
-            put("Davy_Jones", new Davy_Jones());
-            put("FoxSpirit", new FoxSpirit());
-            put("Lich", new Lich());
-            put("MagmaSpirit", new MagmaSpirit());
-            put("Necromancer", new Necromancer());
-            put("SlimeSpirit", new SlimeSpirit());
 
             //HOSTILES
             put("AngryBull", new AngryBull());
