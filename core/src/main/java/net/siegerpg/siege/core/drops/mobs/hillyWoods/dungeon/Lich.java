@@ -2,23 +2,12 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.GrieferChestplate;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.JaggedTunic;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.LichKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.EarthernStaff;
-import net.siegerpg.siege.core.items.implemented.misc.wands.EarthernWand;
-import net.siegerpg.siege.core.items.implemented.misc.wands.FlamingHotTorch;
+import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernWand;
+import net.siegerpg.siege.core.items.implemented.weapons.wands.FlamingHotTorch;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.GreatSword;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class Lich extends MobDropTable {

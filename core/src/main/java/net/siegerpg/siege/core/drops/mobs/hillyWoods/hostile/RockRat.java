@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.JaggedTunic;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.RawToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.*;
+import net.siegerpg.siege.core.items.implemented.weapons.wands.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
 import net.siegerpg.siege.core.utils.Utils;
 

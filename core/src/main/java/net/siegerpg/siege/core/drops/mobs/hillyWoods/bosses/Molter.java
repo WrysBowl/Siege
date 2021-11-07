@@ -2,24 +2,15 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.boots.ChainBoots;
 import net.siegerpg.siege.core.items.implemented.armor.boots.MagmaBoots;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.ChainChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.MagmaChestplate;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.ChainHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.MagmaHelmet;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.MagmaLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.MagmaSpiritKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.MatchStick;
+import net.siegerpg.siege.core.items.implemented.weapons.wands.MatchStick;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class Molter extends MobDropTable {

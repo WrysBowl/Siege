@@ -3,8 +3,8 @@ package net.siegerpg.siege.shops.shop
 import net.siegerpg.siege.core.items.implemented.misc.materials.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
-import net.siegerpg.siege.core.items.implemented.misc.wands.GlowingTwig
-import net.siegerpg.siege.core.items.implemented.misc.wands.glowingTwigs.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.GlowingTwig
+import net.siegerpg.siege.core.items.implemented.weapons.wands.glowingTwigs.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.FemurBone
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.femurBones.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Spade

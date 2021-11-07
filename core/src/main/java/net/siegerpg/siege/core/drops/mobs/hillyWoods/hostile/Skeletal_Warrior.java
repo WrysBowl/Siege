@@ -8,24 +8,14 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.PolishedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PolishedStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.wands.FlamingHotTorch;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.ScrapShard;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.SplinteredBone;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.WoodenSword;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.splinteredBones.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.ReinforcedBow;
 import net.siegerpg.siege.core.utils.Utils;
 
 

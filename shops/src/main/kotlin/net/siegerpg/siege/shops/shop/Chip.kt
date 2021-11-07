@@ -2,8 +2,8 @@ package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
-import net.siegerpg.siege.core.items.implemented.misc.wands.*
-import net.siegerpg.siege.core.items.implemented.misc.wands.glisteningTwigs.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.glisteningTwigs.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.giantClubs.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*
