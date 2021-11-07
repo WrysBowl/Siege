@@ -20,7 +20,7 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 
-abstract class CustomPotions(
+abstract class CustomPotion(
     override val name: String,
     override val customModelData: Int? = null,
     override val levelRequirement: Int? = null,
@@ -29,7 +29,6 @@ abstract class CustomPotions(
     final override var quality: Int = -1,
     override var item: ItemStack = ItemStack(material),
     override val type: ItemTypes = ItemTypes.FOOD,
-    val health: Double = 0.0,
 ) : CustomItem {
 
     override var rarity: Rarity = Rarity.COMMON
@@ -41,17 +40,12 @@ abstract class CustomPotions(
     open fun speciality(player: Player) {}
 
     @Suppress("deprecated")
-    open fun onEat(e: PlayerItemConsumeEvent) {
-        CustomItemUtils.addHealth(e.player, health)
-        if (e.item.type == Material.SUSPICIOUS_STEW ||
-            e.item.type == Material.MUSHROOM_STEW ||
-            e.item.type == Material.RABBIT_STEW) {
-            e.player.inventory.setItemInMainHand(ItemStack(Material.AIR))
-        }
+    open fun onConsume(e: PlayerItemConsumeEvent) {
+        e.isCancelled = true //cancelled to prevent player from drinking a vanilla type potion
+        e.setItem(e.item.asQuantity(e.item.amount-1))
         Bukkit.getScheduler().runTask(Core.plugin(), Runnable {
             speciality(e.player)
         })
-
     }
 /*
     @Suppress("deprecated")
@@ -90,8 +84,6 @@ abstract class CustomPotions(
 
         if (meta.hasLore()) meta.lore(mutableListOf())
 
-        val realHealth = health
-        if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
         meta.lore(" ")
         description.forEach {
             meta.lore("<r><dark_gray>$it")
@@ -118,7 +110,6 @@ abstract class CustomPotions(
         result = 31 * result + quality
         result = 31 * result + item.hashCode()
         result = 31 * result + type.hashCode()
-        result = (31 * result + health).toInt()
         result = 31 * result + rarity.hashCode()
         return result
     }
