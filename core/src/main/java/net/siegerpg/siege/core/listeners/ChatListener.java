@@ -23,7 +23,7 @@ public class ChatListener implements Listener {
     public void playerChat(AsyncPlayerChatEvent e) {
         Player player = e.getPlayer();
         Bukkit.getScheduler().runTask(Core.plugin(), () -> {
-            DropUtils.Companion.dropItemForPlayers(player.getLocation(), new ItemStack(Material.DIAMOND_AXE), List.of(player.getUniqueId()));
+            DropUtils.Companion.dropItemForPlayers(player.getLocation(), new ItemStack(Material.DIRT), List.of(player.getUniqueId()));
         });
         Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
         String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";

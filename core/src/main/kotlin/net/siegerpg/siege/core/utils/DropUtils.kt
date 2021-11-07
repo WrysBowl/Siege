@@ -54,8 +54,6 @@ class DropUtils : Listener, PacketListenerAbstract() {
                 ?: return
             if (seepickableby.isEmpty()) return
             val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
-            println("IN PACKET: " + stringUUIDs.joinToString(", "))
-            println("IN PACKET: " + evt.player.uniqueId.toString())
             if (!stringUUIDs.contains(evt.player.uniqueId.toString()))
                 evt.isCancelled = true
         }
