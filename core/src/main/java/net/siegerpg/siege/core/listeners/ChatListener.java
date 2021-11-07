@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import kotlin.Pair;
 import net.kyori.adventure.text.Component;
+import net.siegerpg.siege.core.utils.DropUtils;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
@@ -13,11 +14,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.List;
+
 public class ChatListener implements Listener {
 
     @EventHandler
     public void playerChat(AsyncPlayerChatEvent e) {
         Player player = e.getPlayer();
+        DropUtils.Companion.dropItemForPlayers(player.getLocation(), new ItemStack(Material.DIAMOND_AXE), List.of(player.getUniqueId()));
         Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
         String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";
         String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
@@ -28,8 +32,8 @@ public class ChatListener implements Listener {
             e.setCancelled(true);
             return;
         }
-        for(Player p: Bukkit.getOnlinePlayers()) {
-            if(message.contains(p.getName())) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (message.contains(p.getName())) {
                 p.playSound(p.getLocation(), Sound.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, 1.0F, 1.0F);
             }
         }
