@@ -31,12 +31,12 @@ class DropUtils : Listener, PacketListenerAbstract() {
         val item = evt.item.itemStack
         val seepickableby = item.getNbtTag<String>("seepickableby")
             ?: return
+        println(seepickableby)
         if (evt.entityType != EntityType.PLAYER) return
         val player = evt.entity as Player
         val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
         // If seepickableby does not contain the player's uuid we cancel the evt
         println(stringUUIDs.joinToString(", "))
-        println(player.uniqueId.toString())
         if (!stringUUIDs.contains(player.uniqueId.toString()))
             evt.isCancelled = true
     }
@@ -73,6 +73,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
          */
         private fun itemWithSeepickableNbtTags(item: ItemStack, players: List<UUID>): ItemStack {
             val uuidArray = Gson().toJson(players.map { it::toString }.toTypedArray())
+            println(uuidArray)
             return item.setNbtTags(Pair("seepickableby", uuidArray))
         }
 
