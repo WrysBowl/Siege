@@ -59,13 +59,14 @@ class WandCast : BukkitRunnable {
         if (loc.distance(targetLoc) < 1) {
             this.cancel()
         }
-        for (e in loc.getNearbyLivingEntities(damageRadius)) {
+        for (e in loc.getNearbyLivingEntities(1.0)) {
             if (e.equals(player)) continue
             if (e is Player && e.world.name != "PVP") continue
             for (en in loc.getNearbyLivingEntities(damageRadius)) {
                 if (e.equals(player)) continue
                 if (en is Player && en.world.name != "PVP") continue
                 en.damage(dmg, player)
+                en.world.spawnParticle(Particle.SWEEP_ATTACK, en.location, 3)
             }
             this.cancel()
         }
