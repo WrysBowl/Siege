@@ -31,11 +31,10 @@ class DropUtils : Listener, PacketListenerAbstract() {
     @EventHandler(priority = EventPriority.LOWEST)
     fun onItemPickup(evt: EntityPickupItemEvent) {
         val item = evt.item.itemStack
-        val seepickableby = item.getNbtTag<String>("seepickableby")
-            ?: return
+        val seepickableby = item.getNbtTag<String>("seepickableby") ?: return
         if (evt.entityType != EntityType.PLAYER) return
         val player = evt.entity as Player
-        val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
+        val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java) ?: return
         // If seepickableby does not contain the player's uuid we cancel the evt
         if (!stringUUIDs.contains(player.uniqueId.toString()))
             evt.isCancelled = true
