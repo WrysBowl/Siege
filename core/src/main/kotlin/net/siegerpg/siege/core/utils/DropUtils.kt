@@ -72,6 +72,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
          * Internal method used to set the nbt tags of an item
          */
         private fun itemWithSeepickableNbtTags(item: ItemStack, players: List<UUID>): ItemStack {
+            println(players.joinToString(", "))
             val uuidArray = Gson().toJson(players.map { it::toString }.toTypedArray())
             println(uuidArray)
             return item.setNbtTags(Pair("seepickableby", uuidArray))
