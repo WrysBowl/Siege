@@ -1,12 +1,16 @@
 package net.siegerpg.siege.core.events
 
+import com.google.common.collect.Lists
 import io.lumine.xikage.mythicmobs.MythicMobs
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.drops.MobDropTable
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
 import net.siegerpg.siege.core.dungeons.dungeon.Broodmother
-import net.siegerpg.siege.core.utils.BossLeaderboardDB
+import net.siegerpg.siege.core.utils.*
+import net.siegerpg.siege.core.utils.cache.GlobalMultipliers
+import org.bukkit.Bukkit
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Item
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -81,7 +85,27 @@ class BossLeaderboard : Listener {
             hashMapData[fighter] = Pair(percentageDamage.toByte(), fightDuration.toInt())
 
             if (dropTable != null) {
-                // Handle drops for dungeon bosses
+
+//                if (percentageDamage >= 50) {
+//                    val dropMultiplier = 1
+//                } else {
+//                    val dropMultiplier = 1
+//                }
+
+
+
+
+                val loc = evt.entity.location
+
+                val tableExp = dropTable.getExp(true) ?: 0
+                Levels.addExpShared(Bukkit.getOfflinePlayer(fighter), tableExp)
+
+                val tableGoldCoinAmt = dropTable.getGold(true) ?: 0
+                val goldCoinAmt = floor(tableGoldCoinAmt * GlobalMultipliers.goldMultiplier).toInt()
+
+                val gold: Item = DropUtils.dropItemNaturallyForPlayers(loc, GoldEXPSpawning.getGoldCoin(1), listOf(fighter))
+                gold.itemStack.amount = goldCoinAmt
+
             }
         }
         BossLeaderboardDB.setBossData(bossFight.entity.type.internalName, hashMapData)

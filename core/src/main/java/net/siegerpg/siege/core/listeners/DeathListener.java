@@ -151,14 +151,12 @@ public class DeathListener implements Listener, Runnable {
         if (e.getEntity().getKiller() == null) return;
         if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
 
-        String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
-        MobDropTable mobDrop = mobDropTableHashMap.get(mm).getClass().getDeclaredConstructor().newInstance();
-
-
         e.setDroppedExp(0);
         e.getDrops().clear();
 
-        if (mobDrop == null) return;
+        String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
+        if (!(mobDropTableHashMap.containsKey(mm))) return;
+        MobDropTable mobDrop = mobDropTableHashMap.get(mm).getClass().getDeclaredConstructor().newInstance();
 
         Player player = e.getEntity().getKiller();
         double luck = 0.0;
