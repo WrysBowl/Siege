@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.utils
 
 import com.google.gson.Gson
+import com.google.gson.JsonArray
 import io.github.retrooper.packetevents.event.PacketListenerAbstract
 import io.github.retrooper.packetevents.event.impl.PacketPlaySendEvent
 import io.github.retrooper.packetevents.packettype.PacketType
@@ -72,9 +73,11 @@ class DropUtils : Listener, PacketListenerAbstract() {
          * Internal method used to set the nbt tags of an item
          */
         private fun itemWithSeepickableNbtTags(item: ItemStack, players: List<UUID>): ItemStack {
-            println(players.joinToString(", "))
-            val uuidArray = Gson().toJson(players.map { it::toString }.toTypedArray(), Array<String>::class.java)
-            println(uuidArray)
+            val jsonArray = JsonArray()
+            players.forEach { p ->
+                jsonArray.add(p.toString())
+            }
+            val uuidArray = Gson().toJson(jsonArray)
             return item.setNbtTags(Pair("seepickableby", uuidArray))
         }
 
