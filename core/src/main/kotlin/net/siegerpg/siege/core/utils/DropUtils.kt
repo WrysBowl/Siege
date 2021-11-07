@@ -58,8 +58,8 @@ class DropUtils : Listener, PacketListenerAbstract() {
             println("See pickable fetched: $seepickableby")
             val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
 
-            println("IN PACKET: "+ stringUUIDs.joinToString(", "))
-            println("IN PACKET: "+ evt.player.uniqueId.toString())
+            println("IN PACKET: " + stringUUIDs.joinToString(", "))
+            println("IN PACKET: " + evt.player.uniqueId.toString())
             if (!stringUUIDs.contains(evt.player.uniqueId.toString()))
                 evt.isCancelled = true
         }
@@ -73,7 +73,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
          */
         private fun itemWithSeepickableNbtTags(item: ItemStack, players: List<UUID>): ItemStack {
             println(players.joinToString(", "))
-            val uuidArray = Gson().toJson(players.map { it::toString }.toTypedArray())
+            val uuidArray = Gson().toJson(players.map { it::toString }.toTypedArray(), Array<String>::class.java)
             println(uuidArray)
             return item.setNbtTags(Pair("seepickableby", uuidArray))
         }
