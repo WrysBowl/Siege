@@ -30,18 +30,29 @@ public class HelpfulTips implements Listener {
             add(Utils.tacc("&eWeapons will only deal 1 damage if you are not the appropriate level."));
 
             //Leveling
+            add(Utils.tacc("&eYou can gain EXP from crates that fall from the sky."));
+            add(Utils.tacc("&eKill mobs and break blocks to gain experience!"));
 
             //Gear Collecting
             add(Utils.tacc("&eClick on weapon/armor vendors to craft stronger weapons and armor pieces."));
             add(Utils.tacc("&eClick on material vendors to upgrade your materials."));
+            add(Utils.tacc("&eMobs can sometimes drop gear."));
 
             //Material Collecting
+            add(Utils.tacc("&eMaterials can be collected from killing mobs or breaking blocks."));
 
             //Dungeons
+            add(Utils.tacc("&eDungeons are hidden around the map. Find them all!"));
+            add(Utils.tacc("&eYour speed run time is tracked after killing a dungeon boss."));
+            add(Utils.tacc("&eTo spawn a dungeon boss, you need to farm for it's key."));
 
             //Cosmetic Keys
+            add(Utils.tacc("&eCosmetic keys are sold in the webstore."));
+            add(Utils.tacc("&eCosmetic keys can be used in /hub to get a random cosmetic."));
 
             //Boosters
+            add(Utils.tacc("&eBoosters are sold in the webstore."));
+            add(Utils.tacc("&eBoosters give everyone a percent increase in gold or experience."));
 
             //Ranks
             add(Utils.tacc("&eWarrior rank gives you 9 more slots per player vault."));
@@ -50,6 +61,8 @@ public class HelpfulTips implements Listener {
 
             //Inventory Storage
             add(Utils.tacc("&eYou will gain a player vault for every 10 levels you rank up."));
+            add(Utils.tacc("&eUse your ender chest for storage."));
+            add(Utils.tacc("&ePurchase vault space from the Perks slime in /hub."));
 
             //Different types of NPCs
             add(Utils.tacc("&eYou can put your money in the bank at the village on the opposite corner of the map."));
