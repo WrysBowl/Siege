@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.items.implemented.misc.wands.earthernStaffs
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.types.misc.CustomWand
+import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 

@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.types.misc
+package net.siegerpg.siege.core.items.types.weapons
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.ItemTypes

@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.misc.*
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
+import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import kotlin.reflect.KClass
 
 enum class ItemTypes(val stylizedName: String, val clazz: KClass<out CustomItem>) {
