@@ -44,8 +44,8 @@ class DropUtils : Listener, PacketListenerAbstract() {
      * Doesn't send the entity spawn packet for those entities
      */
     override fun onPacketPlaySend(evt: PacketPlaySendEvent) {
-        println(evt.packetName)
-        if (evt.packetId == PacketType.Play.Server.SPAWN_ENTITY_SPAWN) {
+        println(evt.packetName + ": " + evt.packetId)
+        if (evt.packetId == PacketType.Play.Server.SPAWN_ENTITY) {
             println("Entity just spawned!")
             val wrappedPacket = WrappedPacketOutSpawnEntity(evt.nmsPacket)
             if (wrappedPacket.entity?.type != EntityType.DROPPED_ITEM)
