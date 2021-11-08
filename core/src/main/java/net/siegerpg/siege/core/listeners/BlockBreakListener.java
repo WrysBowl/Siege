@@ -185,6 +185,7 @@ public class BlockBreakListener implements Listener {
             put(Material.SPRUCE_LOG, new SPRUCE_LOG());
             put(Material.SPRUCE_WOOD, new SPRUCE_WOOD());
             put(Material.STONE, new STONE());
+            put(Material.STONE_BUTTON, new STONE_BUTTON());
             put(Material.STRIPPED_ACACIA_LOG, new STRIPPED_ACACIA_LOG());
             put(Material.STRIPPED_ACACIA_WOOD, new STRIPPED_ACACIA_WOOD());
             put(Material.STRIPPED_BIRCH_LOG, new STRIPPED_BIRCH_LOG());
