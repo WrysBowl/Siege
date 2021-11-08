@@ -97,7 +97,7 @@ public class Animation implements Runnable{
                             Bukkit.getServer().sendMessage(Utils.parse("<green>"+player.getName()+" opened a crate and got a "+miniMessage));
 
                             Utils.giveItem(player, cosmetic.getUpdatedItem(false));
-                            CrateOpen.currentlyUsedChests.remove(location);
+                            CrateOpen.currentlyUsedChests.clear();
 
                         },20);
                     },20);
