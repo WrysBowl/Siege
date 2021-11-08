@@ -106,7 +106,7 @@ class BossLeaderboard : Listener {
                 gold.itemStack.amount = goldCoinAmt
 
                 for (drop in getRewards((percentageDamage/100.0), dropTable)) { //Loop through all drops
-                    loc.world.dropItemNaturally(loc, drop)
+                    DropUtils.dropItemNaturallyForPlayers(loc, drop, listOf(fighter))
                 }
 
             }
