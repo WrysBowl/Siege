@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.ranged.BeginnerScrapyar
 import net.siegerpg.siege.core.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -114,6 +115,7 @@ public class PlayerJoinListener implements Listener {
             player.teleport(new Location(
                     Core.plugin().getServer().getWorld("SiegeHub"), 51.5, 70, 5.5, 90, 20));
         }
+        player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP,1.0f, 1.0f);
 
     }
 
