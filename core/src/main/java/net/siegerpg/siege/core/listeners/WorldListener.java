@@ -130,8 +130,7 @@ public class WorldListener implements Listener, Runnable {
         }
         if (e.getEntity() instanceof Player) {
             World hub = Core.plugin().getServer().getWorld("Hub");
-            World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
-            if (e.getEntity().getWorld().equals(hub) || e.getEntity().getWorld().equals(siegeHub)) e.setCancelled(true);
+            if (e.getEntity().getWorld().equals(hub)) e.setCancelled(true);
         }
     }
 
