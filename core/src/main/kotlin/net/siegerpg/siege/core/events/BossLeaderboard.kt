@@ -94,6 +94,8 @@ class BossLeaderboard : Listener {
                 val goldCoinAmt = floor(tableGoldCoinAmt.toDouble() * GlobalMultipliers.goldMultiplier * dropMultiplier).toInt()
                 val gold: Item = DropUtils.dropItemNaturallyForPlayers(evt.entity.location,
                         GoldEXPSpawning.getGoldCoin(1), listOf(fighter))
+                gold.customName = Utils.tacc("&e+$goldCoinAmt Gold")
+                gold.isCustomNameVisible = true;
                 gold.itemStack.amount = goldCoinAmt
 
                 for (drop in getRewards((percentageDamage/100.0), dropTable)) { //Loop through all drops
