@@ -9,4 +9,12 @@ public class Reward {
         this.item = item;
         this.chance = chance;
     }
+
+    public double getChance() {
+        return chance;
+    }
+
+    public ItemStack getItem() {
+        return item;
+    }
 }

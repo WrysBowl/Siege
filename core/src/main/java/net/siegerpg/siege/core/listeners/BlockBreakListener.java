@@ -298,7 +298,7 @@ public class BlockBreakListener implements Listener {
 
 
             //Adds blocks to player's inventory
-            for (ItemStack drop : blockDrop.getRewards(luckVal)) {
+            for (ItemStack drop : blockDrop.calculateRewards(luckVal)) {
                 if (!fullInv) {
                     e.getPlayer().getInventory().addItem(drop);
                 } else {

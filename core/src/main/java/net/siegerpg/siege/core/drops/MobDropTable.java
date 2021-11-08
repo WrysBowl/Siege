@@ -34,7 +34,7 @@ public class MobDropTable implements Listener {
         return mobName;
     }
 
-    public ArrayList<ItemStack> getRewards(double luckChance) {
+    public ArrayList<ItemStack> calculateRewards(double luckChance) {
         ArrayList<ItemStack> itemList = new ArrayList<>();
         for (Reward reward : rewards) {
             if (Utils.randTest(reward.chance)) {
@@ -58,4 +58,8 @@ public class MobDropTable implements Listener {
         }
         return expMax;
     }
+    public Reward[] getRewards() {
+        return rewards;
+    }
+
 }

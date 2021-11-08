@@ -184,7 +184,7 @@ public class DeathListener implements Listener, Runnable {
             GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
         }
 
-        for (ItemStack drop : mobDrop.getRewards(luck)) { //Loop through all drops
+        for (ItemStack drop : mobDrop.calculateRewards(luck)) { //Loop through all drops
             loc.getWorld().dropItemNaturally(loc, drop);
         }
     }

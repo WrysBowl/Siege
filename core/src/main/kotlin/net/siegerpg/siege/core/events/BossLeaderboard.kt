@@ -1,10 +1,9 @@
 package net.siegerpg.siege.core.events
 
-import com.google.common.collect.Lists
 import io.lumine.xikage.mythicmobs.MythicMobs
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.drops.MobDropTable
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
 import net.siegerpg.siege.core.dungeons.dungeon.Broodmother
 import net.siegerpg.siege.core.utils.*
 import net.siegerpg.siege.core.utils.cache.GlobalMultipliers
@@ -17,10 +16,10 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.inventory.ItemStack
 import java.time.Duration
 import java.time.Instant
 import java.util.*
-import kotlin.collections.HashMap
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.round
@@ -106,8 +105,23 @@ class BossLeaderboard : Listener {
                 val gold: Item = DropUtils.dropItemNaturallyForPlayers(loc, GoldEXPSpawning.getGoldCoin(1), listOf(fighter))
                 gold.itemStack.amount = goldCoinAmt
 
+                for (drop in getRewards((percentageDamage/100.0), dropTable)) { //Loop through all drops
+                    loc.world.dropItemNaturally(loc, drop)
+                }
+
             }
         }
         BossLeaderboardDB.setBossData(bossFight.entity.type.internalName, hashMapData)
+    }
+
+    private fun getRewards(dmgPercent: Double, dropTable:MobDropTable) : ArrayList<ItemStack> {
+        val itemList = ArrayList<ItemStack>()
+        for (reward in dropTable.rewards) {
+            val chance: Double = (2 * dmgPercent) * reward.chance
+            if (Utils.randTest(chance)) {
+                itemList.add(reward.item)
+            }
+        }
+        return itemList
     }
 }
