@@ -37,7 +37,7 @@ public class Help implements CommandExecutor {
         player.sendMessage(Utils.parse("   <yellow>/leaderboard <gray>See the leaderboard"));
         player.sendMessage(Utils.parse("   <yellow>/level <gray>See your level"));
         player.sendMessage(Utils.parse("   <yellow>/pay <gray>Pay a player"));
-        player.sendMessage(Utils.parse("   <yellow>/spawn <gray>Visit the spawn off Siege"));
+        player.sendMessage(Utils.parse("   <yellow>/spawn <gray>Teleport to the spawn of your world"));
         player.sendMessage(Utils.parse("   <yellow>/stats <gray>See a player's stats"));
         player.sendMessage(Utils.parse("   <yellow>/tips enable/disable <gray>Disable/Enable tips"));
         player.sendMessage(Utils.parse("   <yellow>/webstore <gray>Sends link to the webstore"));
