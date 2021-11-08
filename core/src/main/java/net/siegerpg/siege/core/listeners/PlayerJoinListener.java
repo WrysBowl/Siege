@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.BeginnerTwi
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.BeginnerScrapyardBow;
 import net.siegerpg.siege.core.utils.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -106,6 +107,8 @@ public class PlayerJoinListener implements Listener {
             }
             Skills.INSTANCE.setSkills(player, "A_1_3");
         }*/
+        player.teleport(new Location(
+                Core.plugin().getServer().getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
     }
 
     public void updateInventory(Player player) {
