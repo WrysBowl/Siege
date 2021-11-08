@@ -107,8 +107,14 @@ public class PlayerJoinListener implements Listener {
             }
             Skills.INSTANCE.setSkills(player, "A_1_3");
         }*/
-        player.teleport(new Location(
-                Core.plugin().getServer().getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
+        if (player.hasPlayedBefore()) {
+            player.teleport(new Location(
+                    Core.plugin().getServer().getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
+        } else {
+            player.teleport(new Location(
+                    Core.plugin().getServer().getWorld("SiegeHub"), 51.5, 70, 5.5, 90, 20));
+        }
+
     }
 
     public void updateInventory(Player player) {
