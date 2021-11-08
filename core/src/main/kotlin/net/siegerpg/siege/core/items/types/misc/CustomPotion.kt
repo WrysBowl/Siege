@@ -47,32 +47,6 @@ abstract class CustomPotion(
             speciality(e.player)
         })
     }
-/*
-    @Suppress("deprecated")
-    open fun onEat(e: PlayerInteractEvent) {
-        pseudoEat(e.player)
-        CustomItemUtils.addHealth(e.player, health)
-
-        if (e.player.inventory.itemInMainHand.type == Material.SUSPICIOUS_STEW ||
-            e.player.inventory.itemInMainHand.type == Material.MUSHROOM_STEW ||
-            e.player.inventory.itemInMainHand.type == Material.RABBIT_STEW) {
-            e.player.inventory.setItemInMainHand(ItemStack(Material.AIR))
-        }
-        speciality(e.player)
-    }
-
-    private fun pseudoEat(player: Player) {
-        val foodRegenVal: Int = FoodPoints.getHungerRegenValue(player.inventory.itemInMainHand.type)
-        val satRegenVal: Double = FoodPoints.getSaturationValue(player.inventory.itemInMainHand.type)
-        var newFoodLevel = player.foodLevel+foodRegenVal
-        var newSatLevel = player.saturation+satRegenVal
-        if (newFoodLevel > 20) newFoodLevel = 20
-        if (newSatLevel > player.foodLevel) newSatLevel = player.foodLevel.toDouble()
-        player.foodLevel = newFoodLevel
-        player.saturation = newSatLevel.toFloat()
-        player.playSound(player.location, Sound.ENTITY_GENERIC_EAT, 0.8.toFloat(), 0.8.toFloat())
-        player.playSound(player.location, Sound.ENTITY_FOX_EAT, 0.4.toFloat(), 0.8.toFloat())
-    }*/
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
 
