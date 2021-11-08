@@ -6,8 +6,8 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class TestPotion() : CustomFood(
-    name = "Apple",
-    customModelData = 330003,
+    name = "Health Vial",
+    customModelData = 710001,
     description = listOf("Food to tame teachers"),
     levelRequirement = 0,
     material = Material.APPLE,
