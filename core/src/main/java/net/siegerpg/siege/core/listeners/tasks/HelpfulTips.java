@@ -93,7 +93,6 @@ public class HelpfulTips implements Listener {
 
     public void broadcastTasks() {
         tipsTask();
-        webstoreDiscordTask();
     }
 
     public void tipsTask() {
@@ -104,29 +103,5 @@ public class HelpfulTips implements Listener {
                 p.sendMessage(Utils.tacc("\n&6&lTIP &r" + tips.get(randNum) + "&r\n&7To disable tips type /tips disable.\n\n "));
             }
         }, 6000, 6000);
-    }
-
-    public void webstoreDiscordTask() {
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
-            if (Bukkit.getOnlinePlayers().isEmpty()) return;
-            Levels.INSTANCE.getExpLevel(new ArrayList<Player>(Bukkit.getOnlinePlayers()),
-                    uuidPairHashMap -> {
-                        uuidPairHashMap.forEach((uuid, shortIntegerPair) ->
-                        {
-                            if (shortIntegerPair.getFirst() > 10) return;
-                            Player p = Bukkit.getPlayer(uuid);
-                            if (p == null) return;
-                            p.sendMessage(Utils.parse(""));
-                            p.sendMessage(Utils.parse("  <aqua><bold>Join our <light_purple>discord<aqua> here!<reset>"));
-                            p.sendMessage(Utils.tacc("  https://discord.siegerpg.net"));
-                            p.sendMessage(Utils.parse(""));
-                            p.sendMessage(Utils.parse("  <aqua><bold>Visit our <green>webstore<aqua> here!<reset>"));
-                            p.sendMessage(Utils.tacc("  https://store.siegerpg.net/"));
-                            p.sendMessage(Utils.parse(""));
-                        });
-                        return null;
-                    });
-
-        }, 12000, 6000);
     }
 }
