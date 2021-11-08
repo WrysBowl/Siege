@@ -85,7 +85,7 @@ class BossLeaderboard : Listener {
 
             if (dropTable != null) {
 
-                val dropMultiplier = if (percentageDamage >= 50) 1.0 else (percentageDamage.toDouble() / 100) * 2
+                val dropMultiplier = if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
 
                 val tableExp = dropTable.getExp(true) ?: 0
                 Levels.addExpShared(Bukkit.getOfflinePlayer(fighter), floor(tableExp.toDouble() * dropMultiplier).toInt())
@@ -97,7 +97,7 @@ class BossLeaderboard : Listener {
                 gold.itemStack.amount = goldCoinAmt
 
                 for (drop in getRewards((percentageDamage/100.0), dropTable)) { //Loop through all drops
-                    DropUtils.dropItemNaturallyForPlayers(loc, drop, listOf(fighter))
+                    DropUtils.dropItemNaturallyForPlayers(evt.entity.location, drop, listOf(fighter))
                 }
 
             }
