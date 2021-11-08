@@ -124,12 +124,7 @@ public class Herbert implements Listener {
                 levelReq = cItem.getLevelRequirement();
                 total += quantity*35*levelReq;
             } else if (cItem instanceof CustomKey) {
-                if (cItem.getLevelRequirement() == null) {
-                    total += 1;
-                    continue;
-                }
-                levelReq = cItem.getLevelRequirement();
-                total += quantity* 100 * levelReq;
+                total += 500;
             } else if (cItem instanceof CustomFood) {
                 quality = cItem.getQuality();
                 total += (int)(quantity * ((quality/100)+1));
