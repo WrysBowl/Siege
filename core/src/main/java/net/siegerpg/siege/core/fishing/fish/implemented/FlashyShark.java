@@ -11,9 +11,9 @@ public class FlashyShark extends Fish {
                 new double[] {360, 400},
                 60,
                 0.8,
-                12,
+                11,
                 5,
-                10,
+                11,
                 610007);
     }
 }
