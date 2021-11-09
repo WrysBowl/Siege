@@ -11,7 +11,7 @@ public class Wooly extends MobDropTable {
                 new Reward(Wool.Companion.tier(1).getUpdatedItem(false), 100.0),
                 new Reward(Wool.Companion.tier(2).getUpdatedItem(false), 10.0),
                 new Reward(Wool.Companion.tier(3).getUpdatedItem(false), 1.0),
-                new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 80.0),
+                new Reward(Bone.Companion.tier(1).getUpdatedItem(false).asQuantity(2), 80.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 8.0),
 
                 new Reward(new Drumstick(50).getUpdatedItem(false), 25.0),

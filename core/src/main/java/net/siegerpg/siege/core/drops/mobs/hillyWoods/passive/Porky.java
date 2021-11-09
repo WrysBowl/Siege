@@ -10,7 +10,7 @@ public class Porky extends MobDropTable {
         super("Porky", 6, 9, 8, 11, new Reward[]{
                 new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 25.0),
                 new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
-                new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 70.0),
+                new Reward(Bone.Companion.tier(1).getUpdatedItem(false).asQuantity(2), 70.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 7.0),
 
                 new Reward(new Porkchop(50).getUpdatedItem(false), 60.0),
