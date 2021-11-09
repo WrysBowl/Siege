@@ -25,6 +25,7 @@ public class EntityTeleportListener implements Listener {
     }
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent e) {
+        if (!Bukkit.getOnlinePlayers().contains(e.getPlayer())) return;
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
             Scoreboard.updateScoreboard(e.getPlayer());
         }, 2);
