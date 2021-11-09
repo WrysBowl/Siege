@@ -8,8 +8,8 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.shops.*
 
 class Chelsea : Shop() {
-    override var name: String = "siege.shops.shop.chelsea"
-    override var permission: String = "Chelsea"
+    override var name: String = "Chelsea"
+    override var permission: String = "siege.shops.shop.chelsea"
     override var items: List<ShopItem> = listOf(
         ShopItem(Drumstick(0), 25, hashMapOf(), false) {
             Drumstick(0).getUpdatedItem(false)
