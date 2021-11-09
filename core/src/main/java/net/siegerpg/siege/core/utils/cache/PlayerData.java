@@ -116,17 +116,20 @@ public class PlayerData implements Listener {
         if (item == null) return;
         if (!(item instanceof CustomEquipment)) return;
 
-        Integer level = item.getLevelRequirement();
-        Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
+        if (item instanceof CustomWeapon || item instanceof CustomTool) {
+            Integer level = item.getLevelRequirement();
+            Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
 
-        if (expLevel == null) return;
-        if (expLevel.getFirst() == null) return;
-        if (level == null) return;
-        if (expLevel.getFirst() < level) {
-            PotionEffect potion = new PotionEffect(PotionEffectType.SLOW_DIGGING, 99999, 2);
-            player.addPotionEffect(potion);
-            return;
+            if (expLevel == null) return;
+            if (expLevel.getFirst() == null) return;
+            if (level == null) return;
+            if (expLevel.getFirst() < level) {
+                PotionEffect potion = new PotionEffect(PotionEffectType.SLOW_DIGGING, 99999, 2);
+                player.addPotionEffect(potion);
+                return;
+            }
         }
+
         setStats(e.getPlayer());
     }
 
