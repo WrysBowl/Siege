@@ -259,10 +259,9 @@ public class BlockBreakListener implements Listener {
         }
         if (blockDrop!=null){
             final int blockDropRegen = blockDrop.getBlockRegen();
-            final double luckVal = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
             int goldCoinAmt = blockDrop.getGold(true);
             int exp = blockDrop.getExp(true);
-            double luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
+            final double luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
             final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
             final boolean upFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
             final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.DOWN).getType());
@@ -299,7 +298,7 @@ public class BlockBreakListener implements Listener {
 
 
             //Adds blocks to player's inventory
-            for (ItemStack drop : blockDrop.calculateRewards(luckVal)) {
+            for (ItemStack drop : blockDrop.calculateRewards(luck)) {
                 if (!fullInv) {
                     e.getPlayer().getInventory().addItem(drop);
                 } else {
