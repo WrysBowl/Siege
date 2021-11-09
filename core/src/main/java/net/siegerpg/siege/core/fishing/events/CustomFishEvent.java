@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.fish.Fish;
 import net.siegerpg.siege.core.fishing.fish.FishCore;
 import net.siegerpg.siege.core.fishing.fish.implemented.BigBlueTuna;
+import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Levels;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -92,7 +93,7 @@ public class CustomFishEvent {
 		Fish fish = data.getFish();
 		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
 		player.getInventory().addItem(FishCore.getItem(fish));
-		Levels.INSTANCE.addExpShared(player, (int) fish.actualSize);
+		GoldEXPSpawning.spawnEXP((int) fish.actualSize, hook.getLocation());
 	}
 	public void lose() {
 		this.remove();
