@@ -12,10 +12,9 @@ import net.siegerpg.siege.core.fishing.fish.FishCore;
 import net.siegerpg.siege.core.fishing.fish.implemented.BigBlueTuna;
 import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Levels;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import net.siegerpg.siege.core.utils.Scoreboard;
+import net.siegerpg.siege.core.utils.Utils;
+import org.bukkit.*;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
@@ -93,7 +92,13 @@ public class CustomFishEvent {
 		Fish fish = data.getFish();
 		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
 		player.getInventory().addItem(FishCore.getItem(fish));
-		GoldEXPSpawning.spawnEXP((int) fish.actualSize, hook.getLocation());
+		Levels.INSTANCE.addExpShared(player, (int) fish.actualSize);
+		player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) fish.actualSize + " <dark_purple>EXP"));
+		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+			public void run() {
+				Scoreboard.updateScoreboard(player);
+			}
+		}, 20);
 	}
 	public void lose() {
 		this.remove();
