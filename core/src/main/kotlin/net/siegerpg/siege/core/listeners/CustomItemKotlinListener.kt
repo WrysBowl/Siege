@@ -247,7 +247,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 if (mobHealth == 0.0) mobHealth = Utils.round(victim.health, 2)
 
                 //sets displayed mob's health
-                victim.customName = Utils.tacc("$displayName &a${mobHealth}&2/&a${vicMaxHealth}")
+                victim.customName = Utils.tacc("$displayName &a${mobHealth}&2/&a${Utils.round(vicMaxHealth, 1)}")
             }
         }.runTaskLater(plugin(),2)
 
