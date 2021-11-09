@@ -35,9 +35,9 @@ public class Animation implements Runnable{
             Item displayedItem;
             final Location loc =new Location(
                     location.getWorld(),
-                    location.getX()+0.5,
+                    location.getX(),
                     location.getY()+1.5,
-                    location.getZ()+0.5);
+                    location.getZ());
 
             public void run() {
 
