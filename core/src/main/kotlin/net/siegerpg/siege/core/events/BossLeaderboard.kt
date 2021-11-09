@@ -8,13 +8,11 @@ import net.siegerpg.siege.core.dungeons.dungeon.Broodmother
 import net.siegerpg.siege.core.utils.*
 import net.siegerpg.siege.core.utils.cache.GlobalMultipliers
 import org.bukkit.Bukkit
-import org.bukkit.entity.EntityType
-import org.bukkit.entity.Item
-import org.bukkit.entity.LivingEntity
-import org.bukkit.entity.Player
+import org.bukkit.entity.*
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.inventory.ItemStack
 import java.time.Duration
@@ -52,12 +50,20 @@ class BossLeaderboard : Listener {
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return
         if (evt.damager.type != EntityType.PLAYER) return
-        val damager = evt.damager as Player
+        var damager =
+            if (evt.damager is Player) evt.damager as Player
+            else evt.damager
         val entity = evt.entity as LivingEntity
+
+        if (damager is Projectile) {
+            if ((damager as Projectile).shooter is Player) {
+                damager = (damager as Projectile).shooter as Player
+            }
+        }
+
         val damageDone = if (evt.finalDamage > entity.health) entity.health else evt.finalDamage
         bossFight.fighters[damager.uniqueId] =
             (bossFight.fighters[damager.uniqueId] ?: 0.0) + damageDone
-        println("User ${damager.name} has just dealt $damageDone (for a total of ${bossFight.fighters[damager.uniqueId]}) ")
 
     }
 
