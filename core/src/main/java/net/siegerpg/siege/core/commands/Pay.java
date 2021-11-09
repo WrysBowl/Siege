@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.commands;
 
+import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
@@ -10,6 +11,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
 public class Pay implements CommandExecutor {
@@ -54,10 +56,16 @@ public class Pay implements CommandExecutor {
                 player.sendMessage(Utils.lore("<red>You don't have enough money to pay this person " + gold + " gold."));
                 return null;
             }
-            Scoreboard.updateScoreboard(player);
-            if (targetPlayer.isOnline()) Scoreboard.updateScoreboard((Player) targetPlayer);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    Scoreboard.updateScoreboard(player);
+                    if (targetPlayer.isOnline()) Scoreboard.updateScoreboard((Player) targetPlayer);
+                }
+            }.runTask(Core.plugin());
             return null;
         });
+
         return true;
     }
 }
