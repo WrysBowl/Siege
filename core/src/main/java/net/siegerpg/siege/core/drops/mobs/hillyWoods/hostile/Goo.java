@@ -16,18 +16,18 @@ import net.siegerpg.siege.core.utils.Utils;
 public class Goo extends MobDropTable {
     public Goo() {
         super("Goo", 3, 5, 3, 5, new Reward[]{
-                new Reward(Slime.Companion.tier(1).getUpdatedItem(false), 50.0),
-                new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 5.0),
+                new Reward(Slime.Companion.tier(1).getUpdatedItem(false), 100.0),
+                new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 10.0),
 
-                new Reward(new SlimyHelmet(30).getUpdatedItem(false), 3.0),
-                new Reward(new SlimyChestplate(30).getUpdatedItem(false), 3.0),
-                new Reward(new SlimyLeggings(30).getUpdatedItem(false), 3.0),
-                new Reward(new SlimyBoots(30).getUpdatedItem(false), 3.0),
+                new Reward(new SlimyHelmet(30).getUpdatedItem(false), 2.0),
+                new Reward(new SlimyChestplate(30).getUpdatedItem(false), 2.0),
+                new Reward(new SlimyLeggings(30).getUpdatedItem(false), 2.0),
+                new Reward(new SlimyBoots(30).getUpdatedItem(false), 2.0),
 
-                new Reward(new SlimyHelmet(Utils.randRarity()).getUpdatedItem(false), 0.5),
-                new Reward(new SlimyChestplate(Utils.randRarity()).getUpdatedItem(false), 0.5),
-                new Reward(new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 0.5),
-                new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 0.5),
+                new Reward(new SlimyHelmet(Utils.randRarity()).getUpdatedItem(false), 0.3),
+                new Reward(new SlimyChestplate(Utils.randRarity()).getUpdatedItem(false), 0.3),
+                new Reward(new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 0.3),
+                new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 0.3),
 
                 new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 1.0),
         });
