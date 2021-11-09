@@ -39,9 +39,11 @@ public class MeraTransit implements Listener {
             Player player = (Player) e.getWhoClicked();
             int slot = e.getSlot();
             int bal = (int) VaultHook.econ.getBalance(player);
-            final Location deathLocation = (PlayerData.playerDeathLocations.get(player) != null)
-                    ? PlayerData.playerDeathLocations.get(player) :
-                    player.getLocation();
+            final Location deathLocation = PlayerData.playerDeathLocations.get(player);
+            if (deathLocation == null) {
+                player.playSound(player.getLocation(), Sound.ENTITY_WITCH_AMBIENT,1.0f, 1.0f);
+                return;
+            }
             int locationCostComputation = (int)player.getLocation().distance(deathLocation);
             int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
 
@@ -49,6 +51,7 @@ public class MeraTransit implements Listener {
             if (slot == 13) {
                 if (bal < deathTeleportCost) {
                     player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
+                    player.playSound(player.getLocation(), Sound.ENTITY_WITCH_AMBIENT,1.0f, 1.0f);
                     return;
                 }
                 VaultHook.econ.withdrawPlayer(player, deathTeleportCost);
@@ -78,30 +81,40 @@ public class MeraTransit implements Listener {
             gui.setItem(i, filler);
         }
 
-        final Location deathLocation = (PlayerData.playerDeathLocations.get(player) != null)
-                ? PlayerData.playerDeathLocations.get(player) :
-                player.getLocation();
-        int locationCostComputation = (int)player.getLocation().distance(deathLocation);
-        final int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
-
-
-        //Creating Wheat Farm Icon
+        final Location deathLocation = PlayerData.playerDeathLocations.get(player);
         ItemStack deathLocationIcon = new ItemStack(Material.SKELETON_SKULL);
         ItemMeta deathLocationIconItemMeta = deathLocationIcon.getItemMeta();
         deathLocationIconItemMeta.displayName(Utils.lore("<gray><bold>Last Death"));
-        List<Component> farmLore = new ArrayList<>() {
-            {
-                add(Utils.lore(""));
-                add(Utils.lore("<green>Location"));
-                add(Utils.lore("<green>x: <gray>"+ (int)deathLocation.getX()));
-                add(Utils.lore("<green>y: <gray>"+ (int)deathLocation.getY()));
-                add(Utils.lore("<green>z: <gray>"+ (int)deathLocation.getZ()));
-                add(Utils.lore(""));
-                add(Utils.lore("<yellow>Cost " + deathTeleportCost));
-                add(Utils.lore("<gray>Click to Purchase"));
-            }
-        };
-        deathLocationIconItemMeta.lore(farmLore);
+        if (deathLocation == null) {
+
+            List<Component> lore = new ArrayList<>() {
+                {
+                    add(Utils.lore(""));
+                    add(Utils.lore("<red>Oh, you have"));
+                    add(Utils.lore("<red>not died yet."));
+                }
+            };
+            deathLocationIconItemMeta.lore(lore);
+
+        } else {
+            int locationCostComputation = (int)player.getLocation().distance(deathLocation);
+            final int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
+
+            List<Component> lore = new ArrayList<>() {
+                {
+                    add(Utils.lore(""));
+                    add(Utils.lore("<green>Location"));
+                    add(Utils.lore("<green>x: <gray>"+ (int)deathLocation.getX()));
+                    add(Utils.lore("<green>y: <gray>"+ (int)deathLocation.getY()));
+                    add(Utils.lore("<green>z: <gray>"+ (int)deathLocation.getZ()));
+                    add(Utils.lore(""));
+                    add(Utils.lore("<yellow>Cost " + deathTeleportCost));
+                    add(Utils.lore("<gray>Click to Purchase"));
+                }
+            };
+            deathLocationIconItemMeta.lore(lore);
+
+        }
         deathLocationIcon.setItemMeta(deathLocationIconItemMeta);
 
         //This is where you decide what slot the item goes into
