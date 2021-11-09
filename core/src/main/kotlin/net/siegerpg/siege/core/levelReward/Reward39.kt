@@ -9,7 +9,8 @@ import org.bukkit.Sound
 import org.bukkit.entity.Player
 
 class Reward39 : LevelReward {
-    override fun giveReward(player: Player, level: Short) {
+    override fun giveReward(player: Player) {
+        val level: Short = 39
         Bukkit.getServer().broadcast(Utils.lore(""))
         Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + level + "!"))
         Bukkit.getServer().broadcastMessage(Utils.tacc("&a/pv 4 &7is available"))

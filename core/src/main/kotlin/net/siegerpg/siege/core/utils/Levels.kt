@@ -54,7 +54,7 @@ object Levels {
             val reward: LevelReward = levelRewards[lvl.toInt() - 2]
             object : BukkitRunnable() {
                 override fun run() {
-                    reward.giveReward(player as Player, lvl)
+                    reward.giveReward(player as Player)
                     player.playSound(player.location, Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f)
                     player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 0.5f)
                 }
