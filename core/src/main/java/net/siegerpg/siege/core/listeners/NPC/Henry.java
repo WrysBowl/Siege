@@ -44,20 +44,20 @@ public class Henry implements Listener {
             List<String> lore = hand.getItemMeta().getLore();
             if (lore != null && lore.get(0) != null && ChatColor.stripColor(lore.get(0)).contains("Size ")) {
                 String newLine = ChatColor.stripColor(lore.get(0).replace("Size ", "").replace(".0 cm", ""));
-                goldAmount = Integer.parseInt(newLine)*3;
+                goldAmount = Integer.parseInt(newLine)*2;
             } else {
                 player.sendMessage(Utils.parse("<red>This is not a fish!"));
                 return;
             }
         } else {
-            goldAmount = (int)fish.actualSize*3;
+            goldAmount = (int)fish.actualSize*2;
         }
         if (fishName.contains("Krabs")) goldAmount*=4;
 
         VaultHook.econ.depositPlayer(player, goldAmount);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
-        player.sendMessage(Utils.parse("\n<green>You sold a <aqua>"+ ((int)(goldAmount/3)) +" cm "+fishName+" <yellow>for "+goldAmount+" coins!\n"));
+        player.sendMessage(Utils.parse("\n<green>You sold a <aqua>"+ ((int)(goldAmount/2)) +" cm "+fishName+" <yellow>for "+goldAmount+" coins!\n"));
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
             public void run() {
                 Scoreboard.updateScoreboard(player);
