@@ -94,7 +94,7 @@ public class PlayerData implements Listener {
         if (item.getLevelRequirement() == null) return;
         Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
         if (item.getLevelRequirement() > (expLevel != null ? expLevel.getFirst() : 0)) {
-            e.getPlayer().sendTitle("&c&lSORRY!", ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
+            e.getPlayer().sendTitle(Utils.tacc("&c&lSORRY!"), ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
             e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_VILLAGER_NO,1.0f, 1.0f);
             e.setCancelled(true);
             return;
