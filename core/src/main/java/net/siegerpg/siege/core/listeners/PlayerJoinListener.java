@@ -80,6 +80,13 @@ public class PlayerJoinListener implements Listener {
         if (!player.hasPlayedBefore()) {
             newPlayerReward(player);
             joinMessage = Utils.tacc("&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
+        } else {
+            new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
+                @Override
+                public void run() {
+                    updateInventory(player);
+                }
+            }.runTaskAsynchronously(Core.plugin());
         }
         event.setJoinMessage(joinMessage);
         player.setWalkSpeed(0.3f);
