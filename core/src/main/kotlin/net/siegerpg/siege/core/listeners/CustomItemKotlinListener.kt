@@ -14,6 +14,7 @@ import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.utils.Levels
 import net.siegerpg.siege.core.utils.Utils
 import net.siegerpg.siege.core.utils.cache.MobNames
+import net.siegerpg.siege.core.utils.cache.PlayerData
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Particle
@@ -141,65 +142,25 @@ class CustomItemKotlinListener : Listener, Runnable {
             val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
             if (item == null) {
                 e.damage = 1.0
-                if (victim is Mob) {
-                    val displayName: String = MobNames.mobNames[victim] ?: return
-                    victim.customName = Utils.tacc(
-                        "$displayName &a${
-                            Utils.round(
-                                victim.health - e.damage,
-                                1
-                            )
-                        }&2/&a${Utils.round(vicMaxHealth, 1)}"
-                    )
-                }
+                setVictimName(victim, e.damage, vicMaxHealth)
                 return
             }
             val levelReq = item.levelRequirement
             if (levelReq == null) {
                 e.damage = 1.0
-                if (victim is Mob) {
-                    val displayName: String = MobNames.mobNames[victim] ?: return
-                    victim.customName = Utils.tacc(
-                        "$displayName &a${
-                            Utils.round(
-                                victim.health - e.damage,
-                                1
-                            )
-                        }&2/&a${Utils.round(vicMaxHealth, 1)}"
-                    )
-                }
+                setVictimName(victim, e.damage, vicMaxHealth)
                 return
             }
             if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
                 attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
-                if (victim is Mob) {
-                    val displayName: String = MobNames.mobNames[victim] ?: return
-                    victim.customName = Utils.tacc(
-                        "$displayName &a${
-                            Utils.round(
-                                victim.health - e.damage,
-                                1
-                            )
-                        }&2/&a${Utils.round(vicMaxHealth, 1)}"
-                    )
-                }
+                setVictimName(victim, e.damage, vicMaxHealth)
                 return
             }
             if (item is CustomBow) {
                 if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
                     e.damage = 1.0
-                    if (victim is Mob) {
-                        val displayName: String = MobNames.mobNames[victim] ?: return
-                        victim.customName = Utils.tacc(
-                            "$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${
-                                Utils.round(
-                                    vicMaxHealth,
-                                    1
-                                )
-                            }"
-                        )
-                    }
+                    setVictimName(victim, e.damage, vicMaxHealth)
                     return
                 }
                 maxDamage = 7.25
@@ -232,7 +193,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         }*/
         if (victim is Player) {
             val armor = victim.inventory.armorContents
-            if (armor.isNullOrEmpty()) return
+            if (armor.isEmpty()) return
             armor.forEach { item ->
                 val customItem: CustomItem? = CustomItemUtils.getCustomItem(item)
                 customItem?.let {
@@ -243,18 +204,12 @@ class CustomItemKotlinListener : Listener, Runnable {
             }
         }
 
+        //calculate exact damage to deal
         val vicHealthStat =
-            if (victim is Player) CustomItemUtils.getPlayerStat(
-                victim,
-                StatTypes.HEALTH
-            ) + vicMaxHealth + (victim.level * 2)
+            if (victim is Player) PlayerData.playerHealth[victim] ?: 0.0
             else vicMaxHealth
-        if (vicHealthStat < 0.0) {
-            e.damage = 9999.0
-            return
-        }
         val vicToughness =
-            if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
+            if (victim is Player) PlayerData.playerToughness[victim] ?: 0.0
             else 0.0
         val attStrengthStat =
             if (attacker is Player && actualDamage > 0)
@@ -263,17 +218,18 @@ class CustomItemKotlinListener : Listener, Runnable {
         val reducedDamage =
             attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
         e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
-        if (victim is Mob) {
-            val displayName: String = MobNames.mobNames[victim] ?: return
-            victim.customName = Utils.tacc(
-                "$displayName &a${
-                    Utils.round(
-                        victim.health - e.damage,
-                        1
-                    )
-                }&2/&a${Utils.round(vicMaxHealth, 1)}"
-            )
-        }
+        setVictimName(victim, e.damage, vicMaxHealth)
+    }
+    private fun setVictimName(victim: LivingEntity, damage: Double, vicMaxHealth: Double) {
+        //change the mob's displayed health
+        val displayName: String = MobNames.mobNames[victim] ?: return
+
+        //calculates displayed mob health
+        var mobHealth = Utils.round(victim.health - damage, 1)
+        if (mobHealth == 0.0) mobHealth = Utils.round(victim.health - damage, 2)
+
+        //sets displayed mob's health
+        victim.customName = Utils.tacc("$displayName &a${mobHealth}&2/&a${Utils.round(vicMaxHealth, 1)}")
     }
 
     @EventHandler

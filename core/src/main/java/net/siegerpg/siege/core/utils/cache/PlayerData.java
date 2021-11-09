@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
+import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.utils.Levels;
@@ -32,10 +33,13 @@ public class PlayerData implements Listener {
     public static HashMap<Player, Double> playerHealth = new HashMap<>();
     public static HashMap<Player, Double> playerCurrentMana = new HashMap<>();
     public static HashMap<Player, Double> playerMana = new HashMap<>();
+    public static HashMap<Player, Double> playerToughness = new HashMap<>();
+
     public static HashMap<Player, Location> playerDeathLocations = new HashMap<>();
 
     public static HashMap<Player, HashMap<Integer, Skill>> playerSkills = new HashMap<>();
     public static HashMap<Player, ArrayList<Action>> playerTriggers = new HashMap<>();
+
 
     @EventHandler
     public void onEnable(PluginEnableEvent e) {
@@ -73,6 +77,10 @@ public class PlayerData implements Listener {
                     player,
                     CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + player.getMaxHealth() + player.getLevel() * 2);
 
+            playerToughness.put(
+                    player,
+                    CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.TOUGHNESS));
+
             playerMana.put(
                     player,
                     CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
@@ -94,6 +102,7 @@ public class PlayerData implements Listener {
         Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
         if (item.getLevelRequirement() > (expLevel != null ? expLevel.getFirst() : 0)) {
             e.getPlayer().sendTitle("", ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
+            e.setCancelled(true);
             return;
         }
         setStats(e.getPlayer());
@@ -102,10 +111,9 @@ public class PlayerData implements Listener {
     @EventHandler
     public void toolSwitch(PlayerItemHeldEvent e) {
         CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
-        if (item != null) {
-            if (!(item instanceof CustomMaterial)) {
-                setStats(e.getPlayer());
-            }
+        if (item == null) return;
+        if (item instanceof CustomEquipment) {
+            setStats(e.getPlayer());
         }
     }
 
