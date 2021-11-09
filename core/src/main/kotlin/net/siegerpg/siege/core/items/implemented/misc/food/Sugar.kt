@@ -15,13 +15,13 @@ import org.bukkit.scheduler.BukkitRunnable
 class Sugar() : CustomFood(
     name = "Sugar",
     customModelData = 330002,
-    description = listOf("Gas GAS GASSS!!!"),
+    description = listOf("Gas GAS GASSS!!!", "Speed 3 for 30 seconds"),
     levelRequirement = 0,
     material = Material.TROPICAL_FISH,
 ) {
 
     override fun speciality(player: Player) {
-        val realPotion = PotionEffect(PotionEffectType.SPEED, 300, 1)
+        val realPotion = PotionEffect(PotionEffectType.SPEED, 600, 2)
         player.addPotionEffect(realPotion)
     }
 
