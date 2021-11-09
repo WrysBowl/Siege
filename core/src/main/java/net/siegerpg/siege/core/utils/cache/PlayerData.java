@@ -6,6 +6,9 @@ import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
+import net.siegerpg.siege.core.items.types.misc.CustomTool;
+import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
+import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.utils.Levels;
@@ -24,6 +27,8 @@ import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginEnableEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -104,12 +109,25 @@ public class PlayerData implements Listener {
 
     @EventHandler
     public void toolSwitch(PlayerItemHeldEvent e) {
-        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
-        if (item != null) {
-            if (!(item instanceof CustomMaterial)) {
-                setStats(e.getPlayer());
-            }
+        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItem(e.getNewSlot()));
+        Player player = e.getPlayer();
+        player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+
+        if (item == null) return;
+        if (!(item instanceof CustomEquipment)) return;
+
+        Integer level = item.getLevelRequirement();
+        Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
+
+        if (expLevel == null) return;
+        if (expLevel.getFirst() == null) return;
+        if (level == null) return;
+        if (expLevel.getFirst() < level) {
+            PotionEffect potion = new PotionEffect(PotionEffectType.SLOW_DIGGING, 99999, 2);
+            player.addPotionEffect(potion);
+            return;
         }
+        setStats(e.getPlayer());
     }
 
     @EventHandler
