@@ -93,7 +93,7 @@ public class Animation implements Runnable{
                         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
                             displayedItem.remove();
                             ItemStack rewardItem = cosmetic.getUpdatedItem(false);
-                            Component miniMessage = Utils.lore("<green>"+player.getName()+" opened a crate and got a <bold><yellow>" + rewardItem.getItemMeta().getDisplayName()).hoverEvent(rewardItem);
+                            Component miniMessage = Utils.lore("<green>"+player.getName()+"<gray> opened a crate and got a <bold><yellow>" + rewardItem.getItemMeta().getDisplayName()).hoverEvent(rewardItem);
                             Bukkit.getServer().sendMessage(miniMessage);
 
                             Utils.giveItem(player, cosmetic.getUpdatedItem(false));
