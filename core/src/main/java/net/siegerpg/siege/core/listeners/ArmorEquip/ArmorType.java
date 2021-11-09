@@ -3,6 +3,8 @@ package net.siegerpg.siege.core.listeners.ArmorEquip;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.CustomItemUtilsKt;
+import net.siegerpg.siege.core.items.types.armor.CustomHelmet;
+import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -29,7 +31,8 @@ public enum ArmorType{
         if(ArmorListener.isAirOrNull(itemStack)) return null;
         String type = itemStack.getType().name();
         CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(itemStack);
-        if(type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("_HEAD") || customItem != null) return HELMET;
+        if (customItem instanceof CustomHelmet || customItem instanceof CustomCosmetic) return HELMET;
+        if(type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("_HEAD")) return HELMET;
         else if(type.endsWith("_CHESTPLATE") || type.equals("ELYTRA")) return CHESTPLATE;
         else if(type.endsWith("_LEGGINGS")) return LEGGINGS;
         else if(type.endsWith("_BOOTS")) return BOOTS;

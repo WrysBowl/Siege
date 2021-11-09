@@ -9,11 +9,14 @@ import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.utils.Levels;
+import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -81,19 +84,19 @@ public class PlayerData implements Listener {
     }
 
 
-    @EventHandler
+    @EventHandler(priority =  EventPriority.LOWEST)
     public void onEquip(ArmorEquipEvent e) {
-        @Nullable CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
+        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
         if (item == null) {
             setStats(e.getPlayer());
             return;
         }
-        if (item.getLevelRequirement() == null) {
-            return;
-        }
+        if (item.getLevelRequirement() == null) return;
         Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
         if (item.getLevelRequirement() > (expLevel != null ? expLevel.getFirst() : 0)) {
-            e.getPlayer().sendTitle("", ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
+            e.getPlayer().sendTitle("&c&lSORRY!", ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
+            e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_VILLAGER_NO,1.0f, 1.0f);
+            e.setCancelled(true);
             return;
         }
         setStats(e.getPlayer());
