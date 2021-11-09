@@ -25,7 +25,8 @@ class Spongebob() : Cosmetic(
                 if (player.inventory.helmet == null || !(e.entity as Player).isOnline) {
                     cancel()
                 } else if (player.inventory.helmet == playerHelmet) {
-                    playerHelmet.type = Material.SPONGE;
+                    playerHelmet.type = Material.SPONGE
+                    player.inventory.helmet = playerHelmet
                 }
             }
         }.runTaskLater(Core.plugin(), 40);
