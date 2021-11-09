@@ -52,6 +52,7 @@ public class Henry implements Listener {
         } else {
             goldAmount = (int)fish.actualSize*3;
         }
+        if (fishName.contains("Krabs")) goldAmount*=4;
 
         VaultHook.econ.depositPlayer(player, goldAmount);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
