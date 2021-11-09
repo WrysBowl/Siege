@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
@@ -142,15 +143,7 @@ class CustomItemKotlinListener : Listener, Runnable {
             if (item == null) {
                 e.damage = 1.0
                 if (victim is Mob) {
-                    val displayName: String = MobNames.mobNames[victim] ?: return
-                    victim.customName = Utils.tacc(
-                        "$displayName &a${
-                            Utils.round(
-                                victim.health - e.damage,
-                                1
-                            )
-                        }&2/&a${Utils.round(vicMaxHealth, 1)}"
-                    )
+                    setVictimName(victim, e.damage,vicMaxHealth)
                 }
                 return
             }
@@ -158,15 +151,7 @@ class CustomItemKotlinListener : Listener, Runnable {
             if (levelReq == null) {
                 e.damage = 1.0
                 if (victim is Mob) {
-                    val displayName: String = MobNames.mobNames[victim] ?: return
-                    victim.customName = Utils.tacc(
-                        "$displayName &a${
-                            Utils.round(
-                                victim.health - e.damage,
-                                1
-                            )
-                        }&2/&a${Utils.round(vicMaxHealth, 1)}"
-                    )
+                    setVictimName(victim, e.damage,vicMaxHealth)
                 }
                 return
             }
@@ -174,15 +159,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
                 if (victim is Mob) {
-                    val displayName: String = MobNames.mobNames[victim] ?: return
-                    victim.customName = Utils.tacc(
-                        "$displayName &a${
-                            Utils.round(
-                                victim.health - e.damage,
-                                1
-                            )
-                        }&2/&a${Utils.round(vicMaxHealth, 1)}"
-                    )
+                    setVictimName(victim, e.damage,vicMaxHealth)
                 }
                 return
             }
@@ -190,15 +167,7 @@ class CustomItemKotlinListener : Listener, Runnable {
                 if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
                     e.damage = 1.0
                     if (victim is Mob) {
-                        val displayName: String = MobNames.mobNames[victim] ?: return
-                        victim.customName = Utils.tacc(
-                            "$displayName &a${Utils.round(victim.health - e.damage, 1)}&2/&a${
-                                Utils.round(
-                                    vicMaxHealth,
-                                    1
-                                )
-                            }"
-                        )
+                        setVictimName(victim, e.damage,vicMaxHealth)
                     }
                     return
                 }
@@ -264,16 +233,21 @@ class CustomItemKotlinListener : Listener, Runnable {
             attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
         e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
         if (victim is Mob) {
-            val displayName: String = MobNames.mobNames[victim] ?: return
-            victim.customName = Utils.tacc(
-                "$displayName &a${
-                    Utils.round(
-                        victim.health - e.damage,
-                        1
-                    )
-                }&2/&a${Utils.round(vicMaxHealth, 1)}"
-            )
+            setVictimName(victim, e.damage,vicMaxHealth)
         }
+    }
+    private fun setVictimName(victim: Mob, damage: Double, vicMaxHealth: Double) {
+        //change the mob's displayed health
+        val displayName: String = MobNames.mobNames[victim] ?: return
+
+        //calculates displayed mob health
+        var mobHealth = Utils.round(victim.health - damage, 1)
+        if (mobHealth == 0.0) mobHealth = Utils.round(victim.health - damage, 2)
+        if (mobHealth < 0.0) victim.health = 0.0
+
+        //sets displayed mob's health
+        victim.customName = Utils.tacc("$displayName &a${mobHealth}&2/&a${vicMaxHealth}")
+
     }
 
     @EventHandler
