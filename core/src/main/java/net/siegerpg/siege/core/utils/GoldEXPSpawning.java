@@ -32,7 +32,7 @@ public class GoldEXPSpawning {
     }
     public static void spawnEXP(int exp, Location loc) {
         ExperienceOrb orb = loc.getWorld().spawn(loc, ExperienceOrb.class);
-        orb.setCustomName(Utils.tacc("&5+" + exp + " EXP"));
+        orb.setCustomName(Utils.tacc("&d+" + exp + " EXP"));
         orb.setExperience(exp);
         orb.setCustomNameVisible(true);
     }
