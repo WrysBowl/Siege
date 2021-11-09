@@ -23,9 +23,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -116,21 +114,36 @@ public class PlayerData implements Listener {
         if (item == null) return;
         if (!(item instanceof CustomEquipment)) return;
 
+        setStats(e.getPlayer());
+    }
+    @EventHandler
+    public void toolUse(PlayerInteractEvent e) {
+        if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
+
+            CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
+            Player player = e.getPlayer();
+            player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+
+            if (item == null) return;
+            if (!(item instanceof CustomEquipment)) return;
+
+            effectUnderLeveled(item, player);
+
+        }
+    }
+    private void effectUnderLeveled(CustomItem item, Player player) {
         if (item instanceof CustomWeapon || item instanceof CustomTool) {
             Integer level = item.getLevelRequirement();
-            Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
+            Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
 
             if (expLevel == null) return;
             if (expLevel.getFirst() == null) return;
             if (level == null) return;
-            if (expLevel.getFirst() < level) {
-                PotionEffect potion = new PotionEffect(PotionEffectType.SLOW_DIGGING, 99999, 2);
-                player.addPotionEffect(potion);
-                return;
-            }
-        }
+            if (expLevel.getFirst() >= level) return;
 
-        setStats(e.getPlayer());
+            PotionEffect potion = new PotionEffect(PotionEffectType.SLOW_DIGGING, 99999, 2);
+            player.addPotionEffect(potion);
+        }
     }
 
     @EventHandler
