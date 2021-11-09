@@ -8,7 +8,7 @@ import org.bukkit.Material;
 
 public class MELON extends BlockDropTable {
     public MELON() {
-        super(200, Material.MELON, 5, 7, 4, 6, new Reward[]{
+        super(200, Material.MELON, 3, 5, 2, 5, new Reward[]{
                 new Reward(new Watermelon(0).getUpdatedItem(false).asQuantity(3), 100.0),
                 new Reward(new Watermelon(0).getUpdatedItem(false).asQuantity(5), 10.0),
         });
