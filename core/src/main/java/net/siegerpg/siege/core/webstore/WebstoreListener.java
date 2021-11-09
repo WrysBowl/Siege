@@ -27,15 +27,29 @@ public class WebstoreListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        String[] commands = WebstoreDB.INSTANCE.blockingGetStoreCommands(e.getPlayer());
-        if (commands == null) return;
-        if (commands.length < 1) return;
-        UUID playerId = e.getPlayer().getUniqueId();
+        new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
+            @Override
+            public void run() {
+                String[] commands = WebstoreDB.INSTANCE.blockingGetStoreCommands(e.getPlayer());
+                if (commands == null) return;
+                if (commands.length < 1) return;
+                WebstoreDB.INSTANCE.blockingRemoveStoreCommands(e.getPlayer());
 
-        for (String string : commands) {
-            WebstoreUtils.packageDelivery(string.split(" "), playerId);
-        }
-        WebstoreDB.INSTANCE.blockingRemoveStoreCommands(e.getPlayer());
+
+                new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
+                    @Override
+                    public void run() {
+                        UUID playerId = e.getPlayer().getUniqueId();
+
+                        for (String string : commands) {
+                            WebstoreUtils.packageDelivery(string.split(" "), playerId);
+                        }
+                    }
+                }.runTask(Core.plugin());
+
+
+            }
+        }.runTaskAsynchronously(Core.plugin());
     }
 
     @EventHandler
