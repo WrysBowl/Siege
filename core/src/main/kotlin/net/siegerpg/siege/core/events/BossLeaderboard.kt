@@ -49,18 +49,18 @@ class BossLeaderboard : Listener {
     public fun onBossGetHit(evt: EntityDamageByEntityEvent) {
         val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
             ?: return
-        if (evt.damager.type != EntityType.PLAYER) return
         var damager =
             if (evt.damager is Player) evt.damager as Player
             else evt.damager
-        val entity = evt.entity as LivingEntity
 
-        if (damager is Projectile) {
-            if ((damager as Projectile).shooter is Player) {
-                damager = (damager as Projectile).shooter as Player
+        if (evt.damager is Projectile) {
+            if ((evt.damager as Projectile).shooter is Player) {
+                damager = (evt.damager as Projectile).shooter as Player
             }
         }
 
+        if (damager !is Player) return
+        val entity = evt.entity as LivingEntity
         val damageDone = if (evt.finalDamage > entity.health) entity.health else evt.finalDamage
         bossFight.fighters[damager.uniqueId] =
             (bossFight.fighters[damager.uniqueId] ?: 0.0) + damageDone
@@ -92,6 +92,8 @@ class BossLeaderboard : Listener {
             if (dropTable != null) {
 
                 val dropMultiplier = if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
+
+                Bukkit.getPlayer(fighter)?.sendMessage(Utils.lore("<green>You dealt <gold>$percentageDamage% <green>of the damage to the boss!"))
 
                 val tableExp = dropTable.getExp(true) ?: 0
                 Levels.addExpShared(Bukkit.getOfflinePlayer(fighter), floor(tableExp.toDouble() * dropMultiplier).toInt())
