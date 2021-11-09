@@ -9,7 +9,7 @@ import org.bukkit.entity.Player
 
 class Reward1 : LevelReward {
     override fun giveReward(player: Player) {
-        val level: Short = 1
+        val level: Short = 2
         player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP,5.0f, 5.0f)
         player.sendTitle(Utils.tacc(""), Utils.tacc("&d${level-1} &7\u21E2 &5$level"), 10, 80, 10)
         player.sendMessage(Utils.lore(""))

@@ -12,7 +12,7 @@ import org.bukkit.entity.Player
 
 class Reward9 : LevelReward {
     override fun giveReward(player: Player) {
-        val level: Short = 9
+        val level: Short = 10
         Bukkit.getServer().broadcast(Utils.lore(""))
         Bukkit.getServer().broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + level + "!"))
         Bukkit.getServer().broadcastMessage(Utils.tacc("&a/pv 1 &7is available"))
