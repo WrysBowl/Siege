@@ -23,7 +23,7 @@ class FishingExplanation() : CustomMaterial(
         Utils.tacc("&bthe bar at the top of your screen can fill up"),
         "",
         Utils.tacc("&eGreen moving bar above your hot bar is the"),
-        Utils.tacc("&ebtemper of the fish. It doesn't want you to"),
+        Utils.tacc("&etemper of the fish. It doesn't want you to"),
         Utils.tacc("&ecatch it, so it moves around a lot"),
         Utils.tacc("&eStay within the green moving"),
         Utils.tacc("&ebar to keep up with it!"),
