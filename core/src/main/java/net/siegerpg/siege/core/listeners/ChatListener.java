@@ -55,7 +55,7 @@ public class ChatListener implements Listener {
             player.sendMessage(Utils.lore("<red>You need an item to display!"));
         }
         if (player.hasPermission("siege.text.format")) {
-            e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f"+message));
+            e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f"+message.replaceAll("%", "%%")));
         } else e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f%2$s"));
     }
 }
