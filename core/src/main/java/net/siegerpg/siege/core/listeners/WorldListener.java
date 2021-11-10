@@ -44,14 +44,12 @@ public class WorldListener implements Listener, Runnable {
 
     @EventHandler
     public void openDeniedBlocks(PlayerInteractEvent e) {
-        if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
-                BlockData block = Objects.requireNonNull(e.getClickedBlock()).getBlockData();
-                if (block instanceof Door) { return; }
-                else if (e.getClickedBlock().getType().equals(Material.ENDER_CHEST)) { return; }
-                e.setCancelled(true);
-            }
-        }
+        if (e.getClickedBlock() == null) return;
+        if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) return;
+            BlockData block = e.getClickedBlock().getBlockData();
+            if (block instanceof Door) return;
+            else if (e.getClickedBlock().getType().equals(Material.ENDER_CHEST)) return;
+            e.setCancelled(true);
     }
 
     public void denyInventory(InventoryOpenEvent e) {

@@ -37,7 +37,6 @@ import kotlin.math.ceil
 class CustomItemKotlinListener : Listener, Runnable {
 
     var cooldownWand: MutableList<Player> = mutableListOf()
-    var cooldownFood: MutableList<Player> = mutableListOf()
     var arrowItems: HashMap<Player, ItemStack> = hashMapOf()
 
 
