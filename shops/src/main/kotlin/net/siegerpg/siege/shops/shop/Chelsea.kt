@@ -15,8 +15,14 @@ class Chelsea : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
+        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+            GRAYFILLER(-1).getUpdatedItem(false)
+        },
         ShopItem(Apple(0), 20, hashMapOf(), false) {
             Apple(0).getUpdatedItem(false)
+        },
+        ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+            GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
@@ -28,14 +34,6 @@ class Chelsea : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         }, ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
-        },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
-        },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
-        },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-            GRAYFILLER(-1).getUpdatedItem(false)
-        },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
