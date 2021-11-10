@@ -25,20 +25,20 @@ public class Lich extends MobDropTable {
                 new Reward(Vine.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 10.0),
                 new Reward(Vine.Companion.tier(4).getUpdatedItem(false).asQuantity(4), 1.0),
 
-                new Reward(new GreatSword(Utils.randRarity()).getUpdatedItem(false), 30.0),
-                new Reward(new GreatSword(100).getUpdatedItem(false), 10.0),
-                new Reward(new GreatSword(80).getUpdatedItem(false), 20.0),
+                new Reward(new GreatSword(Utils.randRarity()).getUpdatedItem(false), 40.0),
+                new Reward(new GreatSword(100).getUpdatedItem(false), 20.0),
+                new Reward(new GreatSword(80).getUpdatedItem(false), 30.0),
 
-                new Reward(new FlamingHotTorch(Utils.randRarity()).getUpdatedItem(false), 30.0),
-                new Reward(new FlamingHotTorch(100).getUpdatedItem(false), 10.0),
-                new Reward(new FlamingHotTorch(80).getUpdatedItem(false), 20.0),
+                new Reward(new FlamingHotTorch(Utils.randRarity()).getUpdatedItem(false), 40.0),
+                new Reward(new FlamingHotTorch(100).getUpdatedItem(false), 20.0),
+                new Reward(new FlamingHotTorch(80).getUpdatedItem(false), 30.0),
 
-                new Reward(new EarthernWand(Utils.randRarity()).getUpdatedItem(false), 30.0),
-                new Reward(new EarthernWand(100).getUpdatedItem(false), 10.0),
-                new Reward(new EarthernWand(80).getUpdatedItem(false), 20.0),
+                new Reward(new EarthernWand(Utils.randRarity()).getUpdatedItem(false), 40.0),
+                new Reward(new EarthernWand(100).getUpdatedItem(false), 20.0),
+                new Reward(new EarthernWand(80).getUpdatedItem(false), 30.0),
 
-                new Reward(new SimpleToughGem(0).getUpdatedItem(false), 25.0),
-                new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 25.0),
+                new Reward(new SimpleToughGem(0).getUpdatedItem(false), 45.0),
+                new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 45.0),
         });
     }
 }
