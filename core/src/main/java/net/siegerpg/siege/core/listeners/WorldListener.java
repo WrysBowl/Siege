@@ -64,6 +64,14 @@ public class WorldListener implements Listener, Runnable {
     }
 
     @EventHandler
+    public void onRodThrow(final ProjectileLaunchEvent e) {
+        final double v = 1.5; //velocity of the rod
+        if (e.getEntityType().equals(EntityType.FISHING_HOOK)) {
+            e.getEntity().setVelocity(e.getEntity().getVelocity().multiply(v));
+        }
+    }
+
+    @EventHandler
     public void closeInv(InventoryCloseEvent e) {
         new BukkitRunnable() {
             @Override
