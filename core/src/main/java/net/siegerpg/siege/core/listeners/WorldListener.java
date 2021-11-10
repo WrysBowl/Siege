@@ -46,10 +46,13 @@ public class WorldListener implements Listener, Runnable {
     public void openDeniedBlocks(PlayerInteractEvent e) {
         if (e.getClickedBlock() == null) return;
         if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) return;
-            BlockData block = e.getClickedBlock().getBlockData();
-            if (block instanceof Door) return;
-            else if (e.getClickedBlock().getType().equals(Material.ENDER_CHEST)) return;
-            e.setCancelled(true);
+        if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
+        BlockData block = e.getClickedBlock().getBlockData();
+        Material type = e.getClickedBlock().getType();
+        if (block instanceof Door) return;
+        else if (type.equals(Material.ENDER_CHEST)) return;
+        if (!type.isInteractable()) return;
+        e.setCancelled(true);
     }
 
     public void denyInventory(InventoryOpenEvent e) {
