@@ -28,11 +28,11 @@ public class Stats implements CommandExecutor {
             player = argPlayer;
         }
 
-        double health = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH);
-        double strength = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH);
-        double toughness = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.TOUGHNESS);
-        double luck = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK);
-        double regeneration = CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION);
+        double health = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH), 2);
+        double strength = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH), 2);
+        double toughness = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.TOUGHNESS), 2);
+        double luck = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK), 2);
+        double regeneration = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION), 2);
 
         sender.sendMessage(Utils.lore(" "));
         sender.sendMessage(Utils.lore("<yellow><bold>Player Statistics"));
