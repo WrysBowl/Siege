@@ -24,10 +24,10 @@ public class Bully extends MobDropTable {
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 5.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 0.5),
 
-                new Reward(new LeatherHelmet(30).getUpdatedItem(false), 3.0),
-                new Reward(new LeatherChestplate(30).getUpdatedItem(false), 3.0),
-                new Reward(new LeatherLeggings(30).getUpdatedItem(false), 3.0),
-                new Reward(new LeatherBoots(30).getUpdatedItem(false), 3.0),
+                new Reward(new LeatherHelmet(30).getUpdatedItem(false), 2.0),
+                new Reward(new LeatherChestplate(30).getUpdatedItem(false), 2.0),
+                new Reward(new LeatherLeggings(30).getUpdatedItem(false), 2.0),
+                new Reward(new LeatherBoots(30).getUpdatedItem(false), 2.0),
 
                 new Reward(new LeatherHelmet(Utils.randRarity()).getUpdatedItem(false), 0.5),
                 new Reward(new LeatherChestplate(Utils.randRarity()).getUpdatedItem(false), 0.5),

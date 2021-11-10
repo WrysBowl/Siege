@@ -21,19 +21,19 @@ public class AngryBull extends MobDropTable {
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 50.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 5.0),
 
-                new Reward(new LeatherHelmet(50).getUpdatedItem(false), 2.5),
-                new Reward(new LeatherChestplate(50).getUpdatedItem(false), 2.5),
-                new Reward(new LeatherLeggings(50).getUpdatedItem(false), 2.5),
-                new Reward(new LeatherBoots(50).getUpdatedItem(false), 2.5),
+                new Reward(new LeatherHelmet(50).getUpdatedItem(false), 1.5),
+                new Reward(new LeatherChestplate(50).getUpdatedItem(false), 1.5),
+                new Reward(new LeatherLeggings(50).getUpdatedItem(false), 1.5),
+                new Reward(new LeatherBoots(50).getUpdatedItem(false), 1.5),
 
                 new Reward(new LeatherHelmet(Utils.randRarity()).getUpdatedItem(false), 1.0),
                 new Reward(new LeatherChestplate(Utils.randRarity()).getUpdatedItem(false), 1.0),
                 new Reward(new LeatherLeggings(Utils.randRarity()).getUpdatedItem(false), 1.0),
                 new Reward(new LeatherBoots(Utils.randRarity()).getUpdatedItem(false), 1.0),
 
-                new Reward(new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 2.5),
+                new Reward(new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.5),
 
-                new Reward(new Beef(50).getUpdatedItem(false), 20.0),
+                new Reward(new Beef(50).getUpdatedItem(false), 40.0),
 
                 new Reward(new FlawedToughGem(0).getUpdatedItem(false), 0.25),
                 new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 0.25),
