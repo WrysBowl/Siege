@@ -26,8 +26,8 @@ class Sugar() : CustomFood(
     }
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 100
+        this.rarity = Rarity.LEGENDARY
         this.serialize()
     }
 
