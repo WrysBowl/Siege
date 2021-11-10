@@ -10,7 +10,7 @@ class FlawedRegenerationGem() : StatGemType(
     name = "Flawed Regeneration Gem",
     customModelData = 530005,
     description = listOf("Defects over time has made this gem weak"),
-    levelRequirement = 20,
+    levelRequirement = 15,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.REGENERATION,

@@ -10,7 +10,7 @@ class CrackedToughGem() : StatGemType(
     name = "Cracked Tough Gem",
     customModelData = 520004,
     description = listOf("Most of it's power has been leaked"),
-    levelRequirement = 12,
+    levelRequirement = 8,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.TOUGHNESS,

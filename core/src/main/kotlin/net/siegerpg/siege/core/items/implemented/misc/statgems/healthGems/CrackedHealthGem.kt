@@ -10,7 +10,7 @@ class CrackedHealthGem() : StatGemType(
     name = "Cracked Health Gem",
     customModelData = 520001,
     description = listOf("Most of it's power has been leaked"),
-    levelRequirement = 12,
+    levelRequirement = 8,
     material = Material.POPPED_CHORUS_FRUIT,
     statType = StatTypes.HEALTH,
     statAmount = 10.0

@@ -10,7 +10,7 @@ class SimpleToughGem() : StatGemType(
     name = "Simple Tough Gem",
     customModelData = 540004,
     description = listOf("A simple gem"),
-    levelRequirement = 28,
+    levelRequirement = 20,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.TOUGHNESS,

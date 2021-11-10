@@ -10,7 +10,7 @@ class SimpleStrengthGem() : StatGemType(
     name = "Simple Strength Gem",
     customModelData = 540002,
     description = listOf("A simple gem"),
-    levelRequirement = 28,
+    levelRequirement = 20,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.STRENGTH,

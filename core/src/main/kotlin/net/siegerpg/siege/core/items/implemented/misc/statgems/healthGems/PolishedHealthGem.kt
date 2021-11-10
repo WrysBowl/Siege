@@ -10,7 +10,7 @@ class PolishedHealthGem() : StatGemType(
     name = "Polished Health Gem",
     customModelData = 550001,
     description = listOf("Energy primed for use!"),
-    levelRequirement = 36,
+    levelRequirement = 26,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.HEALTH,

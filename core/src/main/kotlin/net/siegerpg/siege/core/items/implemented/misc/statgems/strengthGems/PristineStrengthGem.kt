@@ -10,7 +10,7 @@ class PristineStrengthGem() : StatGemType(
     name = "Pristine Strength Gem",
     customModelData = 560002,
     description = listOf("Power radiates from the core of this gem"),
-    levelRequirement = 44,
+    levelRequirement = 35,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.STRENGTH,

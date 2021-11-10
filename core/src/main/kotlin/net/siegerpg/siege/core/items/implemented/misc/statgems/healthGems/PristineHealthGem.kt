@@ -10,7 +10,7 @@ class PristineHealthGem() : StatGemType(
     name = "Pristine Health Gem",
     customModelData = 560001,
     description = listOf("Power radiates from the core of this gem"),
-    levelRequirement = 44,
+    levelRequirement = 35,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.HEALTH,

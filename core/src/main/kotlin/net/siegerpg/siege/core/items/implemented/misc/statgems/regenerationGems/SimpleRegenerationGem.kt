@@ -10,7 +10,7 @@ class SimpleRegenerationGem() : StatGemType(
     name = "Simple Regeneration Gem",
     customModelData = 540005,
     description = listOf("A simple gem"),
-    levelRequirement = 28,
+    levelRequirement = 20,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.REGENERATION,

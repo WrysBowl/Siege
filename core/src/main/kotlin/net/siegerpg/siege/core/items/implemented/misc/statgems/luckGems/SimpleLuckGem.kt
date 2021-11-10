@@ -10,7 +10,7 @@ class SimpleLuckGem() : StatGemType(
     name = "Simple Luck Gem",
     customModelData = 540003,
     description = listOf("A simple gem"),
-    levelRequirement = 28,
+    levelRequirement = 20,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.LUCK,

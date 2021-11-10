@@ -10,7 +10,7 @@ class SimpleHealthGem() : StatGemType(
     name = "Simple Health Gem",
     customModelData = 540001,
     description = listOf("A simple gem"),
-    levelRequirement = 28,
+    levelRequirement = 20,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.HEALTH,

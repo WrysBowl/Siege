@@ -10,7 +10,7 @@ class PolishedStrengthGem() : StatGemType(
     name = "Polished Strength Gem",
     customModelData = 550002,
     description = listOf("Energy primed for use!"),
-    levelRequirement = 36,
+    levelRequirement = 26,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.STRENGTH,

@@ -58,7 +58,7 @@ object Levels {
                     player.playSound(player.location, Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f)
                     player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 0.5f)
                 }
-            }.runTaskLater(Core.plugin(), 20)
+            }.runTask(Core.plugin())
         }
         return Pair(lvl, exp)
     }

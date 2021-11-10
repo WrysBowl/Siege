@@ -10,7 +10,7 @@ class PolishedRegenerationGem() : StatGemType(
     name = "Polished Regeneration Gem",
     customModelData = 550005,
     description = listOf("Energy primed for use!"),
-    levelRequirement = 36,
+    levelRequirement = 26,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.REGENERATION,

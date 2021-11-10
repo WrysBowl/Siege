@@ -10,7 +10,7 @@ class CrackedRegenerationGem() : StatGemType(
     name = "Cracked Regeneration Gem",
     customModelData = 520005,
     description = listOf("Most of it's power has been leaked"),
-    levelRequirement = 12,
+    levelRequirement = 8,
     material = Material.POPPED_CHORUS_FRUIT,
     
     statType = StatTypes.REGENERATION,
