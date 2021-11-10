@@ -12,7 +12,7 @@ class LuckyStickyStick() : CustomMeleeWeapon(
     description = listOf("Globs of slime on a stick"),
     levelRequirement = 5,
     material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 2.0, luck = 2.0),
+    baseStats = CustomItemUtils.statMap(strength = 5.0, luck = 3.0),
     attackSpeed = 1.6
 ) {
 
