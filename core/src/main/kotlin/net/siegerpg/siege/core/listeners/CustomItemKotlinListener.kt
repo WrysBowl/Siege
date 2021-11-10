@@ -257,15 +257,16 @@ class CustomItemKotlinListener : Listener, Runnable {
     @EventHandler
     @Suppress("unused")
     fun onConsume(e: PlayerItemConsumeEvent) {
-        Bukkit.getScheduler().runTaskAsynchronously(plugin(), Runnable {
-            CustomItemUtils.getCustomItem(e.item)?.let {
-                if (it is CustomFood) {
-                    it.onEat(e)
-                } else if (it is CustomPotion) {
-                    it.onConsume(e)
+        object : BukkitRunnable() {
+            override fun run() {
+                val item: CustomItem = CustomItemUtils.getCustomItem(e.item) ?: return
+                if (item is CustomFood) {
+                    item.onEat(e)
+                } else if (item is CustomPotion) {
+                    item.onConsume(e)
                 }
             }
-        })
+        }.runTaskAsynchronously(plugin())
     }
 
     /*

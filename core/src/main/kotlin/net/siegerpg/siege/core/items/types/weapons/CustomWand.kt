@@ -9,7 +9,10 @@ import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.utils.lore
 import net.siegerpg.siege.core.utils.name
+import org.bukkit.Bukkit
 import org.bukkit.Material
+import org.bukkit.attribute.Attribute
+import org.bukkit.attribute.AttributeModifier
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
@@ -39,6 +42,10 @@ abstract class CustomWand(
 
     override fun updateMeta(hideRarity: Boolean): ItemStack {
         val meta = item.itemMeta
+
+        meta.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED)
+        val modifier =  AttributeModifier( "generic.attackSpeed", (-4.0 + 0.65), AttributeModifier.Operation.ADD_NUMBER)
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier)
 
         val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
