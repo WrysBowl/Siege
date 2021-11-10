@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
+import io.lumine.xikage.mythicmobs.MythicMobs
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
@@ -30,6 +31,7 @@ import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
+import kotlin.math.ceil
 
 
 class CustomItemKotlinListener : Listener, Runnable {
@@ -142,33 +144,25 @@ class CustomItemKotlinListener : Listener, Runnable {
             val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
             if (item == null) {
                 e.damage = 1.0
-                if (victim is Mob) {
-                    setVictimName(victim, e.damage,vicMaxHealth)
-                }
+                setVictimName(victim, e.damage,vicMaxHealth)
                 return
             }
             val levelReq = item.levelRequirement
             if (levelReq == null) {
                 e.damage = 1.0
-                if (victim is Mob) {
-                    setVictimName(victim, e.damage,vicMaxHealth)
-                }
+                setVictimName(victim, e.damage,vicMaxHealth)
                 return
             }
             if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
                 attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
                 e.damage = 1.0
-                if (victim is Mob) {
-                    setVictimName(victim, e.damage,vicMaxHealth)
-                }
+                setVictimName(victim, e.damage,vicMaxHealth)
                 return
             }
             if (item is CustomBow) {
                 if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
                     e.damage = 1.0
-                    if (victim is Mob) {
-                        setVictimName(victim, e.damage,vicMaxHealth)
-                    }
+                    setVictimName(victim, e.damage,vicMaxHealth)
                     return
                 }
                 maxDamage = 7.25
@@ -232,24 +226,18 @@ class CustomItemKotlinListener : Listener, Runnable {
         val reducedDamage =
             attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
         e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
-        if (victim is Mob) {
-            setVictimName(victim, e.damage, vicMaxHealth)
-        }
+        setVictimName(victim, e.damage, vicMaxHealth)
     }
-    private fun setVictimName(victim: Mob, damage: Double, vicMaxHealth: Double) {
+    private fun setVictimName(victim: LivingEntity, damage: Double, vicMaxHealth: Double) {
+
         //change the mob's displayed health
         val displayName: String = MobNames.mobNames[victim] ?: return
 
-        object : BukkitRunnable() {
-            override fun run() {
-                //calculates displayed mob health
-                var mobHealth = Utils.round(victim.health, 1)
-                if (mobHealth == 0.0) mobHealth = Utils.round(victim.health, 2)
+        //calculates displayed mob health
+        val mobHealth = ceil((victim.health - damage)*100)/100
 
-                //sets displayed mob's health
-                victim.customName = Utils.tacc("$displayName &a${mobHealth}&2/&a${Utils.round(vicMaxHealth, 1)}")
-            }
-        }.runTaskLater(plugin(),2)
+        //sets displayed mob's health
+        victim.customName = Utils.tacc("$displayName &a${mobHealth}&2/&a${Utils.round(vicMaxHealth, 1)}")
 
 
     }
