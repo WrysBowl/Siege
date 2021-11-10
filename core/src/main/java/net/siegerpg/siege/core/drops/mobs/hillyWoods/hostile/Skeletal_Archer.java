@@ -20,7 +20,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class Skeletal_Archer extends MobDropTable {
     public Skeletal_Archer() {
-        super("Skeletal_Archer", 40, 50, 50, 60, new Reward[]{
+        super("Skeletal_Archer", 60, 70, 80, 90, new Reward[]{
                 new Reward(Bone.Companion.tier(1).getUpdatedItem(false).asQuantity(4), 100.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 10.0),
                 new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 1.0),
