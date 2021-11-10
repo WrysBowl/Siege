@@ -21,12 +21,13 @@ import net.siegerpg.siege.core.utils.GoldEXPSpawning;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -191,9 +192,31 @@ public class DeathListener implements Listener, Runnable {
 
     @EventHandler
     public void removePlayerGold(PlayerDeathEvent e) {
-        e.deathMessage(null);
+        e.setDeathSound(Sound.ENTITY_PLAYER_DEATH);
+        EntityDamageEvent event = e.getEntity().getLastDamageCause();
+        if (event != null) {
+            Entity entity = event.getEntity();
+            try {
+                String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(entity).getDisplayName();
+                entity.setCustomName(mm);
+
+                e.getEntity().setLastDamageCause(
+                        new EntityDamageEvent(entity, event.getCause(), event.getDamage())
+                );
+            } catch (Exception ignored) { }
+        }
+
         Player player = e.getEntity().getPlayer();
+        String deathMessage = Utils.tacc("&c"+e.getDeathMessage());
+        e.setDeathMessage(deathMessage);
+
         if (player != null) {
+
+            String time = Utils.convertSecondsToTime(e.getEntity().getStatistic(Statistic.TIME_SINCE_DEATH)/20);
+
+            player.sendMessage("");
+            player.sendMessage(Utils.lore("<gray>Time Since Last Death: <yellow>"+time));
+
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
             int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
