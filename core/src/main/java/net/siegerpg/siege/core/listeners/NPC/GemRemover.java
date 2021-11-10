@@ -31,7 +31,7 @@ import java.util.Objects;
 
 public class GemRemover implements Listener {
 
-    ArrayList<Integer> clickable = new ArrayList<Integer>(){
+    private final ArrayList<Integer> clickable = new ArrayList<Integer>(){
         {
             add(12);
             add(14);
@@ -39,9 +39,9 @@ public class GemRemover implements Listener {
         }
     };
 
-    int cost = 0;
-    double chance = 0;
-    ItemStack item = null;
+    private int cost = 0;
+    private double chance = 0;
+    private ItemStack item = null;
 
     @EventHandler
     public void onRightClickOnEntity(PlayerInteractEvent e) {
@@ -53,6 +53,9 @@ public class GemRemover implements Listener {
                 if (((CustomEquipment) customItem).hasGem()) {
                     Inventory shop = new GemRemover().getMenu(e.getPlayer());
                     player.openInventory(shop);
+                    this.item = null;
+                    this.cost = 0;
+                    this.chance = 0;
                 }
             }
             e.setCancelled(true);
