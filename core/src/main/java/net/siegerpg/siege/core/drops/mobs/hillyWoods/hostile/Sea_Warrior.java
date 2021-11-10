@@ -25,20 +25,6 @@ public class Sea_Warrior extends MobDropTable {
                 new Reward(Chain.Companion.tier(1).getUpdatedItem(false).asQuantity(2), 100.0),
                 new Reward(Chain.Companion.tier(2).getUpdatedItem(false).asQuantity(1), 10.0),
 
-                new Reward(new Trident(50).getUpdatedItem(false), 1.0),
-                new Reward(new LuckyTrident(50).getUpdatedItem(false), 1.0),
-                new Reward(new StrongTrident(50).getUpdatedItem(false), 1.0),
-                new Reward(new HealingTrident(50).getUpdatedItem(false), 1.0),
-                new Reward(new ToughTrident(50).getUpdatedItem(false), 1.0),
-                new Reward(new HealthyTrident(50).getUpdatedItem(false), 1.0),
-
-                new Reward(new Trident(30).getUpdatedItem(false), 2.0),
-                new Reward(new LuckyTrident(30).getUpdatedItem(false), 2.0),
-                new Reward(new StrongTrident(30).getUpdatedItem(false), 2.0),
-                new Reward(new HealingTrident(30).getUpdatedItem(false), 2.0),
-                new Reward(new ToughTrident(30).getUpdatedItem(false), 2.0),
-                new Reward(new HealthyTrident(30).getUpdatedItem(false), 2.0),
-
                 new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0),
                 new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 1.0),
                 new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 1.0),
