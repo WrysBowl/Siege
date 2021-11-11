@@ -211,7 +211,7 @@ public class GemRemover implements Listener {
             equipmentItem.removeStatGem(); //removes stat gem
             equipmentItem.updateMeta(false);
             player.getInventory().addItem(equipmentItem.getItem());
-            player.getInventory().remove(this.item);
+            player.getInventory().remove(this.item.asOne());
             player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1.0f, 1.0f);
             this.cost=0;
             this.item=null;
