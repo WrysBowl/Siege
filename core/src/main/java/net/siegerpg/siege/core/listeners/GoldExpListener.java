@@ -21,7 +21,13 @@ import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class GoldExpListener implements Listener{
+
+    public static ArrayList<Player> expCalculating = new ArrayList<>();
 
     @EventHandler
     public void goldPickUp(PlayerAttemptPickupItemEvent e) {
@@ -51,6 +57,10 @@ public class GoldExpListener implements Listener{
     public void expPickUp(PlayerPickupExperienceEvent e) {
         if (e.getExperienceOrb().getName().contains("EXP")) {
             Player player = e.getPlayer();
+
+            if (expCalculating.contains(player)) return; //if player is processing exp calculation
+            else expCalculating.add(player); //put player in hashmap if they are currently not calculating
+
             int exp = e.getExperienceOrb().getExperience();
             Levels.INSTANCE.addExpShared(player, exp);
             player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));

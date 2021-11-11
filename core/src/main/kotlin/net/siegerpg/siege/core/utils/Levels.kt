@@ -3,6 +3,7 @@
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.database.DatabaseManager
 import net.siegerpg.siege.core.levelReward.*
+import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.parties.Party
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
@@ -60,6 +61,7 @@ object Levels {
                 }
             }.runTask(Core.plugin())
         }
+        GoldExpListener.expCalculating.remove(player)
         return Pair(lvl, exp)
     }
 
