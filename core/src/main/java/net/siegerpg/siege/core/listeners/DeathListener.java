@@ -165,6 +165,8 @@ public class DeathListener implements Listener, Runnable {
         int exp = mobDrop.getExp(true);
         Location loc = e.getEntity().getLocation();
 
+        loc.getWorld().spawnParticle(Particle.SOUL.builder().particle(), loc, 1);
+
         if (player != null) {
             luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
         }
