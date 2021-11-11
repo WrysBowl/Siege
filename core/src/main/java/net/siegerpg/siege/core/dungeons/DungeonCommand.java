@@ -81,9 +81,9 @@ public class DungeonCommand implements CommandExecutor, Runnable {
             }
             player.getInventory().removeItem(hand.getItem().asOne());
             int count = dungeon.currentKeyCount + 1; //add one to key count
-            if (count < 8) { //if key count + 1 is less than 8, add to key count
+            if (count < dungeon.maxKeyCount) { //if key count + 1 is less than 8, add to key count
                 dungeon.currentKeyCount = count;
-                player.sendMessage(Utils.lore("<yellow>" + dungeon.currentKeyCount + "<yellow>/8 keys <gray>have been used."));
+                player.sendMessage(Utils.lore("<yellow>" + dungeon.currentKeyCount + "<yellow>/"+dungeon.maxKeyCount+" keys <gray>have been used."));
             } else {
                 dungeon.currentKeyCount = 0; //reset key count
                 dungeon.spawning();
