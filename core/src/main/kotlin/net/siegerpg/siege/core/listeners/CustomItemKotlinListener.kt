@@ -142,26 +142,26 @@ class CustomItemKotlinListener : Listener, Runnable {
             }
             val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
             if (item == null) {
+                setVictimName(victim, e.damage, vicMaxHealth)
                 e.damage = 1.0
-                setVictimName(victim, e.damage,vicMaxHealth)
                 return
             }
             val levelReq = item.levelRequirement
             if (levelReq == null) {
+                setVictimName(victim, e.damage, vicMaxHealth)
                 e.damage = 1.0
-                setVictimName(victim, e.damage,vicMaxHealth)
                 return
             }
             if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
                 attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
+                setVictimName(victim, e.damage, vicMaxHealth)
                 e.damage = 1.0
-                setVictimName(victim, e.damage,vicMaxHealth)
                 return
             }
             if (item is CustomBow) {
                 if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
+                    setVictimName(victim, e.damage, vicMaxHealth)
                     e.damage = 1.0
-                    setVictimName(victim, e.damage,vicMaxHealth)
                     return
                 }
                 maxDamage = 7.25
@@ -224,8 +224,8 @@ class CustomItemKotlinListener : Listener, Runnable {
             else damage
         val reducedDamage =
             attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
-        e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
         setVictimName(victim, e.damage, vicMaxHealth)
+        e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
     }
     private fun setVictimName(victim: LivingEntity, damage: Double, vicMaxHealth: Double) {
 
@@ -233,7 +233,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         val displayName: String = MobNames.mobNames[victim] ?: return
 
         //calculates displayed mob health
-        val mobHealth = ceil((victim.health - damage)*100)/100
+        val mobHealth = Utils.round(victim.health - damage, 2)
 
         //sets displayed mob's health
         victim.customName = Utils.tacc("$displayName &a${mobHealth}&2/&a${Utils.round(vicMaxHealth, 1)}")
