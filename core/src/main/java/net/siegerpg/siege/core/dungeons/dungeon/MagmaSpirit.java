@@ -14,7 +14,7 @@ import org.bukkit.Sound;
 public class MagmaSpirit extends Dungeon {
 
     public MagmaSpirit() {
-        super("MagmaSpirit", 4,
+        super("MagmaSpirit", 8,
                 new MagmaSpiritKey(0),
                 new Location(null, 307, 51, -117), "Hilly_Woods",
                 100

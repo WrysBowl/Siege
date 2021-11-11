@@ -14,7 +14,7 @@ import org.bukkit.Sound;
 public class Necromancer extends Dungeon {
 
     public Necromancer() {
-        super("Necromancer", 8,
+        super("Necromancer", 10,
                 new NecromancerKey(0),
                 new Location(null, -265, 82, 285), "Hilly_Woods",
                 100
