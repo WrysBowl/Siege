@@ -94,7 +94,8 @@ interface CustomEquipment : CustomItem {
         //if (hideRarity) meta.lore("<r><red>This is not the real item")
 
         meta.isUnbreakable = true
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_DYE)
+        meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
 
         item.itemMeta = meta
         return item

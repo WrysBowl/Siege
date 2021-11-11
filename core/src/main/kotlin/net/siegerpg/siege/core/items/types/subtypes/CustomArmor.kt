@@ -5,6 +5,7 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.attribute.Attribute
 import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.LeatherArmorMeta
 
@@ -33,6 +34,7 @@ interface CustomArmor: CustomEquipment {
 
             }
         }
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_DYE)
         meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
         item.itemMeta = meta
         return item
