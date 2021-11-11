@@ -18,8 +18,8 @@ class CrackedLuckGem() : StatGemType(
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 0
+        this.rarity = Rarity.COMMON
         this.serialize()
     }
 
