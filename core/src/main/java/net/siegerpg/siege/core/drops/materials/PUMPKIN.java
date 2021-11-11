@@ -8,7 +8,7 @@ import org.bukkit.Material;
 
 public class PUMPKIN extends BlockDropTable {
     public PUMPKIN() {
-        super(200, Material.PUMPKIN, 3, 5, 2, 4, new Reward[]{
+        super(200, Material.PUMPKIN, 3, 5, 1, 3, new Reward[]{
                 new Reward(new PumpkinPie(0).getUpdatedItem(false).asQuantity(1), 100.0),
                 new Reward(new PumpkinPie(0).getUpdatedItem(false).asQuantity(3), 10.0),
         });

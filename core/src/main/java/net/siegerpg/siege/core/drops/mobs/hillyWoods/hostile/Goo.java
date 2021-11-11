@@ -15,7 +15,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class Goo extends MobDropTable {
     public Goo() {
-        super("Goo", 3, 5, 3, 5, new Reward[]{
+        super("Goo", 3, 5, 4, 7, new Reward[]{
                 new Reward(Slime.Companion.tier(1).getUpdatedItem(false), 100.0),
                 new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 10.0),
 
