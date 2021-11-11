@@ -14,7 +14,7 @@ import org.bukkit.Sound;
 public class BullSpirit extends Dungeon {
 
     public BullSpirit() {
-        super("BullSpirit", 8,
+        super("BullSpirit", 6,
                 new BullSpiritKey(0),
                 new Location(null, 272, 70, 20), "Hilly_Woods",
                 100

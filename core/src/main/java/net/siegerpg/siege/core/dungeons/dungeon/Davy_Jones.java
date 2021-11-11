@@ -14,7 +14,7 @@ import org.bukkit.Sound;
 public class Davy_Jones extends Dungeon {
 
     public Davy_Jones() {
-        super("Davy_Jones", 10,
+        super("Davy_Jones", 8,
                 new DavyJonesKey(0),
                 new Location(null, 16, 40, 411), "Hilly_Woods",
                 100

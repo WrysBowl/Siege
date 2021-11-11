@@ -14,7 +14,7 @@ import org.bukkit.Sound;
 public class Broodmother extends Dungeon {
 
     public Broodmother() {
-        super("Broodmother", 12,
+        super("Broodmother", 10,
                 new BroodmotherKey(0),
                 new Location(null, 7, 89, -416), "Hilly_Woods",
                 100

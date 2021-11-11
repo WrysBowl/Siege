@@ -14,7 +14,7 @@ import org.bukkit.Sound;
 public class Lich extends Dungeon {
 
     public Lich() {
-        super("Lich", 8,
+        super("Lich", 6,
                 new LichKey(0),
                 new Location(null, 372, 87, 132), "Hilly_Woods",
                 100
