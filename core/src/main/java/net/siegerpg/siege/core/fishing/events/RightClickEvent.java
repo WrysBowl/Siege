@@ -4,7 +4,7 @@ import kotlin.Pair;
 import net.siegerpg.siege.core.fishing.FishingTask;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.types.misc.CustomTool;
+import net.siegerpg.siege.core.items.types.misc.CustomRod;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
@@ -40,7 +40,7 @@ public class RightClickEvent implements Listener {
             ItemStack item = player.getInventory().getItemInMainHand();
             CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
             e.setCancelled(true);
-            if (!(customItem instanceof CustomTool)) return;
+            if (!(customItem instanceof CustomRod)) return;
             if (customItem.getLevelRequirement() == null) return;
             Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
             if (levelExp == null || customItem.getLevelRequirement() > levelExp.getFirst()) {
@@ -50,7 +50,6 @@ public class RightClickEvent implements Listener {
                 return;
             }
             e.setCancelled(false);
-
         }
     }
 

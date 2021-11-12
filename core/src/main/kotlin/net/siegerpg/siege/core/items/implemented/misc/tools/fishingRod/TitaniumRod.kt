@@ -1,13 +1,14 @@
 package net.siegerpg.siege.core.items.implemented.misc.tools.fishingRod
 
+import net.siegerpg.siege.core.fishing.droptables.OldFishTable
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.types.misc.CustomTool
+import net.siegerpg.siege.core.items.types.misc.CustomRod
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
-class TitaniumRod() : CustomTool(
+class TitaniumRod() : CustomRod(
     name = "Titanium Rod",
     customModelData = 440006,
     description = listOf("The strongest alloy known to man"),
@@ -16,13 +17,13 @@ class TitaniumRod() : CustomTool(
     baseStats = CustomItemUtils.statMap(),
     enchantments = hashMapOf(
         Enchantment.LURE to 3,
-        Enchantment.LUCK to 2,
-        )
+        ),
+    fishDropTable = OldFishTable()
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
+        this.quality = 0
+        this.rarity = Rarity.RARE
         this.serialize()
     }
 

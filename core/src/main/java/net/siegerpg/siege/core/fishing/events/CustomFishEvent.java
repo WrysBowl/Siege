@@ -1,29 +1,20 @@
 package net.siegerpg.siege.core.fishing.events;
 
-import de.tr7zw.nbtapi.NBTItem;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.FishingTask;
-import net.siegerpg.siege.core.fishing.baits.BaitCore;
 import net.siegerpg.siege.core.fishing.data.FishingData;
-import net.siegerpg.siege.core.fishing.fish.Fish;
-import net.siegerpg.siege.core.fishing.fish.FishCore;
-import net.siegerpg.siege.core.fishing.fish.implemented.BigBlueTuna;
-import net.siegerpg.siege.core.utils.GoldEXPSpawning;
+import net.siegerpg.siege.core.fishing.catches.Fish;
+import net.siegerpg.siege.core.fishing.catches.FishCore;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.boss.BossBar;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 
@@ -41,8 +32,6 @@ public class CustomFishEvent {
 	private int secondsElapsed = 0;
 	private int totalLength = 70;
 	private BossBar progressBar;
-	private Location baitLocation;
-	private ArmorStand baitModel;
 	
 	
 	public CustomFishEvent(PlayerFishEvent e) {
@@ -50,35 +39,9 @@ public class CustomFishEvent {
 		this.hook=e.getHook();
 		this.state=e.getState();
 		this.data = new FishingData();
-		
-		Location loc = e.getHook().getLocation();	
-		loc.subtract(new Vector(0, 0.3, 0));
-		this.baitLocation=loc;
-		ArmorStand stand = ((ArmorStand)e.getPlayer().getLocation().getWorld().spawnEntity(baitLocation, EntityType.ARMOR_STAND));
-		stand.setVisible(false);
-		stand.setSmall(true);
-		stand.setInvulnerable(true);
-		stand.setGravity(false);
-		stand.teleport(loc);
-        setBaitModel(stand);
-
-
-        if(!(player.getInventory().getItemInOffHand()== null) && !(player.getInventory().getItemInOffHand().getType() == Material.AIR)) {
-			ItemStack offHand = e.getPlayer().getInventory().getItemInOffHand();
-        	NBTItem nbt = new NBTItem(offHand);
-
-        	if (nbt.hasNBTData() && nbt.hasKey("baitType")) {
-        		String baitType = nbt.getString("baitType");
-        		if (BaitCore.hasBait(baitType)) {
-					stand.getEquipment().setHelmet(new ItemStack(Material.SEA_PICKLE));
-					this.getFishingData().setBait(BaitCore.getBait(baitType));
-					player.getItemInHand().setAmount(player.getItemInHand().getAmount()-1);
-				}
-			}
-		}
 
         //Bait is null, unable to pass through params
-		Fish fish = FishCore.chooseRandomFish(this.data.getBait(), player);
+		Fish fish = FishCore.chooseRandomFish(player);
 		this.getFishingData().setFish(fish);
 	}
 	public void trigger() {
@@ -91,14 +54,17 @@ public class CustomFishEvent {
 		this.remove();
 		Fish fish = data.getFish();
 		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
-		player.getInventory().addItem(FishCore.getItem(fish));
-		Levels.INSTANCE.addExpShared(player, (int) fish.actualSize);
-		player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) fish.actualSize + " <dark_purple>EXP"));
-		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-			public void run() {
-				Scoreboard.updateScoreboard(player);
-			}
-		}, 20);
+		player.getInventory().addItem(fish.getItem());
+		if (fish.actualSize > 0) {
+			Levels.INSTANCE.addExpShared(player, (int) fish.actualSize);
+			player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) fish.actualSize + " <dark_purple>EXP"));
+			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+				public void run() {
+					Scoreboard.updateScoreboard(player);
+				}
+			}, 20);
+		}
+
 	}
 	public void lose() {
 		this.remove();
@@ -107,7 +73,6 @@ public class CustomFishEvent {
 	
 	
 	public void remove() {
-		baitModel.remove();
 		progressBar.removeAll();
 		this.hook.remove();
 	}
@@ -160,18 +125,6 @@ public class CustomFishEvent {
 	}
 	public void setProgressBar(BossBar progressBar) {
 		this.progressBar = progressBar;
-	}
-	public ArmorStand getBaitModel() {
-		return baitModel;
-	}
-	public void setBaitModel(ArmorStand baitModel) {
-		this.baitModel = baitModel;
-	}
-	public Location getBaitLocation() {
-		return baitLocation;
-	}
-	public void setBaitLocation(Location baitLocation) {
-		this.baitLocation = baitLocation;
 	}
 	
 }
