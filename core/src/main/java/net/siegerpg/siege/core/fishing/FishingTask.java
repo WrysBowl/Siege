@@ -32,8 +32,6 @@ public class FishingTask extends BukkitRunnable {
 	private int currentWait = 0;
 	public int direction = 1; //-1 for left, 1 for right
 
-
-
 	public FishingTask(CustomFishEvent e) {
 		this.e=e;
 		
@@ -100,7 +98,7 @@ public class FishingTask extends BukkitRunnable {
 				if (data.getCursor().getLoc() > 0 && data.getCursor().getLoc() < getEvent().getTotalLength()) {
 					//location of cursor is less than the length of the action bar
 					//location of cursor is greater than the beginning of the action bar
-					data.getCursor().setLoc(data.getCursor().getLoc()+this.direction);
+					data.getCursor().setLoc(data.getCursor().getLoc()+this.direction*2);
 				} else if(this.direction == -1) {
 					data.getCursor().setLoc(getEvent().getTotalLength()-1);
 				} else if(this.direction == 1) {
@@ -110,8 +108,6 @@ public class FishingTask extends BukkitRunnable {
 		}
 		
 		
-		
-		
 		for(int i=0; i<e.getTotalLength(); i++) {
 			boolean skip = false;
             for(int _i = Math.min(data.getLoc(), data.getLoc()+ fish.length-1); _i <= (data.getLoc()+ fish.length-1); _i++) {
@@ -119,7 +115,7 @@ public class FishingTask extends BukkitRunnable {
                 	
                     if(cursor.loc == i)
                     {
-                        label = label+ChatColor.BLUE + Utils.tacc("&l\u25AA");
+                        label = label+ChatColor.BLUE + Utils.tacc("&l\u2595");
                         
                         data.setScore(data.getScore()+0.1);
 
@@ -128,7 +124,7 @@ public class FishingTask extends BukkitRunnable {
                     }
                     else
                     {
-                        label = label+ChatColor.GREEN + Utils.tacc("&l\u25AA");
+                        label = label+ChatColor.GREEN + Utils.tacc("&l\u2595");
                         skip=true;
                         break;
                     }
@@ -139,14 +135,14 @@ public class FishingTask extends BukkitRunnable {
 			}
             if(cursor.loc == i)
             {
-                label = label+ChatColor.BLUE + Utils.tacc("&l\u25AA");
+                label = label+ChatColor.BLUE + Utils.tacc("&l\u2595");
                 
                 data.setScore(data.getScore()-0.1);
-				e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_FISH_SWIM, 2.0f, 2.0f);
+				e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_FISH_SWIM, 1.0f, 2.0f);
 
 			}
             else
-				label = label + ChatColor.RED + Utils.tacc("&l\u25AA");
+				label = label + ChatColor.RED + Utils.tacc("&l\u2595");
         }
 		if(data.getProcessToAdvance()>=1) {
 			if(data.getLoc() + fish.length == e.getTotalLength() && data.getDirection()){ data.setDirection(!data.getDirection());}

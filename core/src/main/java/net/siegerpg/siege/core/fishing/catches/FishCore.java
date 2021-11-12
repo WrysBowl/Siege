@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.fishing.droptables.FishDropTable;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomRod;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -48,8 +49,10 @@ public class FishCore {
             if (random > weight) continue; //if the random number is above the totalWeight
             try {
                 fish = fish.getClass().getDeclaredConstructor().newInstance();
-            } catch (Exception ignored) {}
-            return fish;
+                return fish;
+            } catch (Exception ignored) {
+                return fish;
+            }
         }
         return registeredFish.get(0);
     }

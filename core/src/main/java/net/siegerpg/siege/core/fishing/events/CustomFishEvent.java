@@ -36,7 +36,7 @@ public class CustomFishEvent {
 	private int ticksElapsed =0;
 	private int totalTicksElapsed =0;
 	private int secondsElapsed = 0;
-	private int totalLength = 70;
+	private int totalLength = 120;
 	private BossBar progressBar;
 	
 	
@@ -52,7 +52,7 @@ public class CustomFishEvent {
 	}
 	public void trigger() {
 		data.setFishing(true);
-		new FishingTask(this).runTaskTimerAsynchronously(Core.plugin(), 0, 2);
+		new FishingTask(this).runTaskTimerAsynchronously(Core.plugin(), 0, 1);
 		player.playSound(player.getLocation(), Sound.ENTITY_FISHING_BOBBER_SPLASH, 2.0f, 2.0f);
 	}
 	
@@ -68,8 +68,11 @@ public class CustomFishEvent {
 				//Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(loc, fish.getItem(), List.of(player.getUniqueId()));
 				Item displayedItem = loc.getWorld().dropItemNaturally(loc, fish.getItem());
 
-				Vector vector = Utils.getDifferentialVector(loc, player.getLocation().add(0, 2, 0));
+				Vector vector = Utils.getDifferentialVector(loc, player.getLocation().add(0, 6, 0));
 				vector.normalize();
+				vector.setX(vector.getX()/1.2);
+				vector.setY(vector.getY()/1.2);
+				vector.setZ(vector.getZ()/1.2);
 				displayedItem.setVelocity(vector);
 
 
