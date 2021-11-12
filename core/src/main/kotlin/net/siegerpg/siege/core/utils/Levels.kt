@@ -37,7 +37,7 @@ object Levels {
      * Calculates the experience required to reach a level.
      */
     fun calculateRequiredExperience(level: Short): Int {
-        return (level + 3.0).pow(2.7).toInt()
+        return (level + 3.0).pow(3).toInt()
     }
 
     /**
