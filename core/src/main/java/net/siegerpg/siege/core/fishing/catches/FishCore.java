@@ -3,7 +3,6 @@ package net.siegerpg.siege.core.fishing.catches;
 import net.siegerpg.siege.core.fishing.catches.fish.*;
 import net.siegerpg.siege.core.fishing.droptables.OldFishTable;
 import net.siegerpg.siege.core.fishing.droptables.FishDropTable;
-import net.siegerpg.siege.core.fishing.catches.fish.implemented.*;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomRod;

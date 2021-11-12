@@ -1,7 +1,6 @@
 package net.siegerpg.siege.core.fishing.droptables;
 
 import net.siegerpg.siege.core.fishing.catches.fish.*;
-import net.siegerpg.siege.core.fishing.catches.fish.implemented.*;
 
 import java.util.HashMap;
 
