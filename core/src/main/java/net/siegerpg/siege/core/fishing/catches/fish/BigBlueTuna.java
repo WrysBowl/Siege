@@ -1,7 +1,6 @@
-package net.siegerpg.siege.core.fishing.fish.implemented;
+package net.siegerpg.siege.core.fishing.catches.fish;
 
-import net.siegerpg.siege.core.fishing.fish.FishCore;
-import net.siegerpg.siege.core.fishing.fish.Fish;
+import net.siegerpg.siege.core.fishing.catches.Fish;
 
 public class BigBlueTuna extends Fish {
 
@@ -12,9 +11,7 @@ public class BigBlueTuna extends Fish {
                 45,
                 0.6,
                 12,
-                10,
                 9,
                 610006);
-
     }
 }

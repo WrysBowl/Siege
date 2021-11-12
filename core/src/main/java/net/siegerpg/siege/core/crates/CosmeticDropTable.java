@@ -1,8 +1,5 @@
 package net.siegerpg.siege.core.crates;
 
-import net.siegerpg.siege.core.dungeons.Dungeon;
-import net.siegerpg.siege.core.fishing.baits.BaitStats;
-import net.siegerpg.siege.core.fishing.fish.Fish;
 import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
 import org.bukkit.entity.Entity;
 

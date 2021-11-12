@@ -1,7 +1,6 @@
-package net.siegerpg.siege.core.fishing.fish.implemented;
+package net.siegerpg.siege.core.fishing.catches.fish;
 
-import net.siegerpg.siege.core.fishing.fish.FishCore;
-import net.siegerpg.siege.core.fishing.fish.Fish;
+import net.siegerpg.siege.core.fishing.catches.Fish;
 
 public class Catastrophe extends Fish {
 
@@ -12,8 +11,7 @@ public class Catastrophe extends Fish {
                 20,
                 0.7,
                 24,
-                60,
-                8,
+                6,
                 610004);
     }
 }

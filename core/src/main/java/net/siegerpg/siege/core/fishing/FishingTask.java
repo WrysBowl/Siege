@@ -3,7 +3,7 @@ package net.siegerpg.siege.core.fishing;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.fishing.fish.Fish;
+import net.siegerpg.siege.core.fishing.catches.Fish;
 import net.siegerpg.siege.core.utils.cache.PlayerData;
 import net.siegerpg.siege.core.fishing.data.Cursor;
 import net.siegerpg.siege.core.fishing.data.FishingData;
@@ -62,9 +62,6 @@ public class FishingTask extends BukkitRunnable {
 
         if(Utils.randTest(fish.chanceToChangeDirection))
         	e.getFishingData().setDirection(!e.getFishingData().getDirection());
-        
-        e.getBaitModel().teleport(e.getBaitLocation());
-        e.setBaitLocation(e.getHook().getLocation().subtract(0, 1.3, 0));
         
 
         if(data.getScore() <= 0) {

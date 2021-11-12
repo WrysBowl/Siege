@@ -1,8 +1,7 @@
-package net.siegerpg.siege.core.fishing.fish.implemented;
+package net.siegerpg.siege.core.fishing.catches.fish;
 
 
-import net.siegerpg.siege.core.fishing.fish.FishCore;
-import net.siegerpg.siege.core.fishing.fish.Fish;
+import net.siegerpg.siege.core.fishing.catches.Fish;
 
 public class Codzilla extends Fish {
 
@@ -13,7 +12,6 @@ public class Codzilla extends Fish {
                 20,
                 0.5,
                 15,
-                100,
                 6,
                 610001);
     }

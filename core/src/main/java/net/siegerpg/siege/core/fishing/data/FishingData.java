@@ -1,8 +1,6 @@
 package net.siegerpg.siege.core.fishing.data;
 
-import net.siegerpg.siege.core.fishing.baits.BaitCore;
-import net.siegerpg.siege.core.fishing.fish.Fish;
-import net.siegerpg.siege.core.fishing.fish.FishCore;
+import net.siegerpg.siege.core.fishing.catches.Fish;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -16,7 +14,6 @@ public class FishingData {
 	private double processToAdvance=0;
 	private int loc=35;
 	private Cursor cursor;
-	private BaitCore bait = null;
 	private double score= 0;
 	
 	//true=forward false=backward
@@ -87,19 +84,10 @@ public class FishingData {
 	}
 
 
-
 	public Cursor getCursor() {
 		return cursor;
 	}
 
-
-	public BaitCore getBait() {
-		return bait;
-	}
-
-	public void setBait(BaitCore bait) {
-		this.bait = bait;
-	}
 
 	public double getScore() {
 		return score;

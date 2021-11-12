@@ -2,8 +2,8 @@ package net.siegerpg.siege.core.listeners.NPC;
 
 import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.fishing.fish.Fish;
-import net.siegerpg.siege.core.fishing.fish.FishCore;
+import net.siegerpg.siege.core.fishing.catches.Fish;
+import net.siegerpg.siege.core.fishing.catches.FishCore;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import net.siegerpg.siege.core.utils.VaultHook;

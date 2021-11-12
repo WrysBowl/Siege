@@ -12,7 +12,6 @@ import net.siegerpg.siege.core.crates.CrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
 import net.siegerpg.siege.core.events.BossLeaderboard;
-import net.siegerpg.siege.core.fishing.commands.getBait;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
@@ -92,7 +91,6 @@ public final class Core extends JavaPlugin {
         this.getCommand("updateScoreboard").setExecutor(new UpdateScoreboard());
         this.getCommand("spawnExp").setExecutor(new SpawnExp());
         this.getCommand("spawnGold").setExecutor(new SpawnGold());
-        this.getCommand("getBait").setExecutor(new getBait());
         this.getCommand("pay").setExecutor(new Pay());
         this.getCommand("getKey").setExecutor(new GetKey());
         this.getCommand("stats").setExecutor(new Stats());

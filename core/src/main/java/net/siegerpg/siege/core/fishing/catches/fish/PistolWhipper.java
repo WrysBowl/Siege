@@ -1,7 +1,6 @@
-package net.siegerpg.siege.core.fishing.fish.implemented;
+package net.siegerpg.siege.core.fishing.catches.fish;
 
-import net.siegerpg.siege.core.fishing.fish.FishCore;
-import net.siegerpg.siege.core.fishing.fish.Fish;
+import net.siegerpg.siege.core.fishing.catches.Fish;
 
 public class PistolWhipper extends Fish {
 
@@ -12,7 +11,6 @@ public class PistolWhipper extends Fish {
                 10,
                 0.6,
                 15,
-                50,
                 3,
                 610008);
     }
