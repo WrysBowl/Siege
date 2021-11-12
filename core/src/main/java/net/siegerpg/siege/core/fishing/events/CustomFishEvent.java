@@ -61,16 +61,19 @@ public class CustomFishEvent {
 		Fish fish = data.getFish();
 		Location loc = hook.getLocation();
 
+		//win rewards should be synchronous with the thread
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(loc, fish.getItem(), List.of(player.getUniqueId()));
+				//Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(loc, fish.getItem(), List.of(player.getUniqueId()));
+				Item displayedItem = loc.getWorld().dropItemNaturally(loc, fish.getItem());
 
 				Vector vector = Utils.getDifferentialVector(loc, player.getLocation().add(0, 2, 0));
 				vector.normalize();
 				displayedItem.setVelocity(vector);
 
 
+				//add timer
 				new BukkitRunnable() {
 					@Override
 					public void run() {
