@@ -22,10 +22,10 @@ public class BullSpirit extends MobDropTable {
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 50.0),
                 new Reward(Bone.Companion.tier(3).getUpdatedItem(false).asQuantity(2), 25.0),
 
-                new Reward(new LeatherHelmet(100).getUpdatedItem(false), 20.5),
-                new Reward(new LeatherChestplate(100).getUpdatedItem(false), 20.5),
-                new Reward(new LeatherLeggings(100).getUpdatedItem(false), 20.5),
-                new Reward(new LeatherBoots(100).getUpdatedItem(false), 20.5),
+                new Reward(new LeatherHelmet(100).getUpdatedItem(false), 5.5),
+                new Reward(new LeatherChestplate(100).getUpdatedItem(false), 5.5),
+                new Reward(new LeatherLeggings(100).getUpdatedItem(false), 5.5),
+                new Reward(new LeatherBoots(100).getUpdatedItem(false), 5.5),
 
                 new Reward(new LeatherHelmet(80).getUpdatedItem(false), 25.5),
                 new Reward(new LeatherChestplate(80).getUpdatedItem(false), 25.5),
@@ -37,7 +37,7 @@ public class BullSpirit extends MobDropTable {
                 new Reward(new LeatherLeggings(Utils.randRarity()).getUpdatedItem(false), 30.0),
                 new Reward(new LeatherBoots(Utils.randRarity()).getUpdatedItem(false), 30.0),
 
-                new Reward(new DoubleBladedAxe(100).getUpdatedItem(false), 20.5),
+                new Reward(new DoubleBladedAxe(100).getUpdatedItem(false), 5.5),
                 new Reward(new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 25.5),
 
                 new Reward(new Beef(100).getUpdatedItem(false).asQuantity(16), 20.0),

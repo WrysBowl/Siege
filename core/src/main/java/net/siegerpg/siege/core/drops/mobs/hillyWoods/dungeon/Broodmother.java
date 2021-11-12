@@ -26,10 +26,10 @@ public class Broodmother extends MobDropTable {
                 new Reward(Vine.Companion.tier(4).getUpdatedItem(false).asQuantity(2), 25.0),
                 new Reward(Vine.Companion.tier(5).getUpdatedItem(false), 5.0),
 
-                new Reward(new IronHelmet(100).getUpdatedItem(false), 10.5),
-                new Reward(new IronChestplate(100).getUpdatedItem(false), 10.5),
-                new Reward(new IronLeggings(100).getUpdatedItem(false), 10.5),
-                new Reward(new IronBoots(100).getUpdatedItem(false), 10.5),
+                new Reward(new IronHelmet(100).getUpdatedItem(false), 5.5),
+                new Reward(new IronChestplate(100).getUpdatedItem(false), 5.5),
+                new Reward(new IronLeggings(100).getUpdatedItem(false), 5.5),
+                new Reward(new IronBoots(100).getUpdatedItem(false), 5.5),
 
                 new Reward(new IronHelmet(80).getUpdatedItem(false), 20.5),
                 new Reward(new IronChestplate(80).getUpdatedItem(false), 20.5),

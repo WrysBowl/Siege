@@ -19,10 +19,10 @@ public class MagmaSpirit extends MobDropTable {
                 new Reward(Magma.Companion.tier(3).getUpdatedItem(false).asQuantity(3), 30.0),
                 new Reward(Magma.Companion.tier(4).getUpdatedItem(false).asQuantity(2), 10.0),
 
-                new Reward(new MagmaHelmet(100).getUpdatedItem(false), 20.5),
-                new Reward(new MagmaChestplate(100).getUpdatedItem(false), 20.5),
-                new Reward(new MagmaLeggings(100).getUpdatedItem(false), 20.5),
-                new Reward(new MagmaBoots(100).getUpdatedItem(false), 20.5),
+                new Reward(new MagmaHelmet(100).getUpdatedItem(false), 5.5),
+                new Reward(new MagmaChestplate(100).getUpdatedItem(false), 5.5),
+                new Reward(new MagmaLeggings(100).getUpdatedItem(false), 5.5),
+                new Reward(new MagmaBoots(100).getUpdatedItem(false), 5.5),
 
                 new Reward(new MagmaHelmet(80).getUpdatedItem(false), 10.5),
                 new Reward(new MagmaChestplate(80).getUpdatedItem(false), 10.5),

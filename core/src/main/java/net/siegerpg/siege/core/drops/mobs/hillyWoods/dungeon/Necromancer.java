@@ -26,10 +26,10 @@ public class Necromancer extends MobDropTable {
                 new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 60.0),
                 new Reward(MetalScrap.Companion.tier(3).getUpdatedItem(false), 6.0),
 
-                new Reward(new ChainHelmet(100).getUpdatedItem(false), 10.5),
-                new Reward(new ChainChestplate(100).getUpdatedItem(false), 10.5),
-                new Reward(new ChainLeggings(100).getUpdatedItem(false), 10.5),
-                new Reward(new ChainBoots(100).getUpdatedItem(false), 10.5),
+                new Reward(new ChainHelmet(100).getUpdatedItem(false), 5.5),
+                new Reward(new ChainChestplate(100).getUpdatedItem(false), 5.5),
+                new Reward(new ChainLeggings(100).getUpdatedItem(false), 5.5),
+                new Reward(new ChainBoots(100).getUpdatedItem(false), 5.5),
 
                 new Reward(new ChainHelmet(80).getUpdatedItem(false), 20.5),
                 new Reward(new ChainChestplate(80).getUpdatedItem(false), 20.5),

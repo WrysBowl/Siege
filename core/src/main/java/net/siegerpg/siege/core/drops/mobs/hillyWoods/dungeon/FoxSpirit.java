@@ -30,10 +30,10 @@ public class FoxSpirit extends MobDropTable {
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),
                 new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 12.0),
 
-                new Reward(new ChainHelmet(100).getUpdatedItem(false), 10.5),
-                new Reward(new ChainChestplate(100).getUpdatedItem(false), 10.5),
-                new Reward(new ChainLeggings(100).getUpdatedItem(false), 10.5),
-                new Reward(new ChainBoots(100).getUpdatedItem(false), 10.5),
+                new Reward(new ChainHelmet(100).getUpdatedItem(false), 5.5),
+                new Reward(new ChainChestplate(100).getUpdatedItem(false), 5.5),
+                new Reward(new ChainLeggings(100).getUpdatedItem(false), 5.5),
+                new Reward(new ChainBoots(100).getUpdatedItem(false), 5.5),
 
                 new Reward(new ChainHelmet(80).getUpdatedItem(false), 20.5),
                 new Reward(new ChainChestplate(80).getUpdatedItem(false), 20.5),
@@ -45,10 +45,10 @@ public class FoxSpirit extends MobDropTable {
                 new Reward(new ChainLeggings(Utils.randRarity()).getUpdatedItem(false), 30.0),
                 new Reward(new ChainBoots(Utils.randRarity()).getUpdatedItem(false), 30.0),
 
-                new Reward(new SplinteredBone(100).getUpdatedItem(false), 10.5),
+                new Reward(new SplinteredBone(100).getUpdatedItem(false), 5.5),
                 new Reward(new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 20.5),
 
-                new Reward(new ScrapShard(100).getUpdatedItem(false), 10.5),
+                new Reward(new ScrapShard(100).getUpdatedItem(false), 5.5),
                 new Reward(new ScrapShard(Utils.randRarity()).getUpdatedItem(false), 20.5),
 
                 new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false).asQuantity(2), 10.25),
