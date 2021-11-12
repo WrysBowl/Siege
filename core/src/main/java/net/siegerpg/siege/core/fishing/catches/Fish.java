@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 public class Fish {
 
-	public String name;
-	public double[] size;
-	public double moveSpeed;
-	public int length;
-	public double chanceToChangeDirection;
-	public double winScore;
-	public int customModelData;
+	public String name = "";
+	public double[] size = null;
+	public double moveSpeed = 0;
+	public int length = 0;
+	public double chanceToChangeDirection = 0;
+	public double winScore = 0;
+	public int customModelData = 0;
 	public double actualSize = 0;
 	public ItemStack item = null;
 	

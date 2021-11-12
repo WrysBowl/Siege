@@ -5,18 +5,24 @@ import net.siegerpg.siege.core.fishing.FishingTask;
 import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.catches.Fish;
 import net.siegerpg.siege.core.fishing.catches.FishCore;
+import net.siegerpg.siege.core.utils.DropUtils;
 import net.siegerpg.siege.core.utils.Levels;
 import net.siegerpg.siege.core.utils.Scoreboard;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.FishHook;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class CustomFishEvent {
 
@@ -53,18 +59,36 @@ public class CustomFishEvent {
 	public void win() {
 		this.remove();
 		Fish fish = data.getFish();
-		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
-		player.getInventory().addItem(fish.getItem());
-		if (fish.actualSize > 0) {
-			Levels.INSTANCE.addExpShared(player, (int) fish.actualSize);
-			player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) fish.actualSize + " <dark_purple>EXP"));
-			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-				public void run() {
-					Scoreboard.updateScoreboard(player);
-				}
-			}, 20);
-		}
+		Location loc = hook.getLocation();
 
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(loc, fish.getItem(), List.of(player.getUniqueId()));
+
+				Vector vector = Utils.getDifferentialVector(loc, player.getLocation().add(0, 2, 0));
+				vector.normalize();
+				displayedItem.setVelocity(vector);
+
+
+				new BukkitRunnable() {
+					@Override
+					public void run() {
+						player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
+
+						if (fish.actualSize > 0) {
+							Levels.INSTANCE.addExpShared(player, (int) fish.actualSize);
+							player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) fish.actualSize + " <dark_purple>EXP"));
+							Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+								public void run() {
+									Scoreboard.updateScoreboard(player);
+								}
+							}, 20);
+						}
+					}
+				}.runTaskLater(Core.plugin(), 20);
+			}
+		}.runTask(Core.plugin());
 	}
 	public void lose() {
 		this.remove();
