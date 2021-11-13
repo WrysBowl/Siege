@@ -83,8 +83,8 @@ public class CustomFishEvent {
 						player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
 
 						if (fish.actualSize > 0) {
-							Levels.INSTANCE.addExpShared(player, (int) fish.actualSize);
-							player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) fish.actualSize + " <dark_purple>EXP"));
+							Levels.INSTANCE.addExpShared(player, (int) (fish.actualSize/2));
+							player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) (fish.actualSize/2) + " <dark_purple>EXP"));
 							Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 								public void run() {
 									Scoreboard.updateScoreboard(player);
