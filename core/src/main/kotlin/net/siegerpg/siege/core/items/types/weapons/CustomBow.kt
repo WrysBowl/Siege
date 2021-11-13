@@ -75,6 +75,8 @@ abstract class CustomBow(
         meta.isUnbreakable = true
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
         if (material == Material.CROSSBOW) meta.addEnchant(Enchantment.PIERCING, 3, true)
+        if (material == Material.TRIDENT) meta.addEnchant(Enchantment.LOYALTY, 3, true)
+
         item.itemMeta = meta
         return item
     }
