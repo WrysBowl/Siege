@@ -98,7 +98,7 @@ public class FishingTask extends BukkitRunnable {
 				if (data.getCursor().getLoc() > 0 && data.getCursor().getLoc() < getEvent().getTotalLength()) {
 					//location of cursor is less than the length of the action bar
 					//location of cursor is greater than the beginning of the action bar
-					data.getCursor().setLoc(data.getCursor().getLoc()+this.direction*2);
+					data.getCursor().setLoc(data.getCursor().getLoc()+this.direction);
 				} else if(this.direction == -1) {
 					data.getCursor().setLoc(getEvent().getTotalLength()-1);
 				} else if(this.direction == 1) {
