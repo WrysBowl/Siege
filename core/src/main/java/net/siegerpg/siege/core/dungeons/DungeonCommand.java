@@ -68,7 +68,7 @@ public class DungeonCommand implements CommandExecutor, Runnable {
             CustomKey reqKey = dungeon.reqKey;
             CustomItem hand = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
             if (hand == null) {
-                player.sendMessage(Utils.lore("<yellow>" + dungeon.currentKeyCount + "<yellow>/8 keys <gray>have been used."));
+                player.sendMessage(Utils.lore("<yellow>" + dungeon.currentKeyCount + "<yellow>/"+dungeon.maxKeyCount+" keys <gray>have been used."));
                 return false;
             }
             if (dungeon.boss != null) {

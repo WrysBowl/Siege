@@ -4,7 +4,6 @@ import io.lumine.xikage.mythicmobs.MythicMobs
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.drops.MobDropTable
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
-import net.siegerpg.siege.core.dungeons.dungeon.Broodmother
 import net.siegerpg.siege.core.utils.*
 import net.siegerpg.siege.core.utils.cache.GlobalMultipliers
 import org.bukkit.Bukkit
