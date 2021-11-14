@@ -28,7 +28,7 @@ public class FishingTask extends BukkitRunnable {
 	
 	private CustomFishEvent e;
 	private NamespacedKey keyProgress;
-	private final int delay = 1;
+	private final int delay = 10;
 	private int currentWait = 0;
 	public int direction = 1; //-1 for left, 1 for right
 
@@ -58,8 +58,13 @@ public class FishingTask extends BukkitRunnable {
 			PlayerData.hasActionBar.put(e.getPlayer(), false);
         }
 
-        if(Utils.randTest(fish.chanceToChangeDirection))
-        	e.getFishingData().setDirection(!e.getFishingData().getDirection());
+		if (this.currentWait < this.delay) {
+			this.currentWait++;
+		} else {
+			this.currentWait = 0;
+			if(Utils.randTest(fish.chanceToChangeDirection))
+				e.getFishingData().setDirection(!e.getFishingData().getDirection());
+		}
         
 
         if(data.getScore() <= 0) {
@@ -91,19 +96,14 @@ public class FishingTask extends BukkitRunnable {
 		BossBar progressBar = e.getProgressBar();
 		if(progress <=1 && progress >=0) {
 			progressBar.setProgress(progress);
-			if (this.currentWait < this.delay) {
-				this.currentWait++;
-			} else {
-				this.currentWait = 0;
-				if (data.getCursor().getLoc() > 0 && data.getCursor().getLoc() < getEvent().getTotalLength()) {
-					//location of cursor is less than the length of the action bar
-					//location of cursor is greater than the beginning of the action bar
-					data.getCursor().setLoc(data.getCursor().getLoc()+this.direction);
-				} else if(this.direction == -1) {
-					data.getCursor().setLoc(getEvent().getTotalLength()-1);
-				} else if(this.direction == 1) {
-					data.getCursor().setLoc(1);
-				}
+			if (data.getCursor().getLoc() > 0 && data.getCursor().getLoc() < getEvent().getTotalLength()) {
+				//location of cursor is less than the length of the action bar
+				//location of cursor is greater than the beginning of the action bar
+				data.getCursor().setLoc(data.getCursor().getLoc()+this.direction);
+			} else if(this.direction == -1) {
+				data.getCursor().setLoc(getEvent().getTotalLength()-1);
+			} else if(this.direction == 1) {
+				data.getCursor().setLoc(1);
 			}
 		}
 		
