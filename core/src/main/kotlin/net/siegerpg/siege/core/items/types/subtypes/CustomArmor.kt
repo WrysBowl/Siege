@@ -4,6 +4,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.attribute.Attribute
+import org.bukkit.attribute.AttributeModifier
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -36,6 +37,9 @@ interface CustomArmor: CustomEquipment {
         }
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_DYE)
         meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
+        val modifier =  AttributeModifier( "generic.armor", 0.0, AttributeModifier.Operation.ADD_NUMBER)
+        meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier)
+
         item.itemMeta = meta
         return item
     }
