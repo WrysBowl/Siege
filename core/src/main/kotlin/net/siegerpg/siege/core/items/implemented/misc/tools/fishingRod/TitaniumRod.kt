@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.items.implemented.misc.tools.fishingRod
 
 import net.siegerpg.siege.core.fishing.droptables.OldFishTable
+import net.siegerpg.siege.core.fishing.droptables.TitaniumFishTable
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.CustomRod
@@ -18,11 +19,11 @@ class TitaniumRod() : CustomRod(
     enchantments = hashMapOf(
         Enchantment.LURE to 3,
         ),
-    fishDropTable = OldFishTable()
+    fishDropTable = TitaniumFishTable()
 ) {
 
     constructor(quality: Int): this() {
-        this.quality = 0
+        this.quality = 70
         this.rarity = Rarity.RARE
         this.serialize()
     }

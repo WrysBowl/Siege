@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.implemented.misc.tools.fishingRod
 
+import net.siegerpg.siege.core.fishing.droptables.OakFishTable
 import net.siegerpg.siege.core.fishing.droptables.OldFishTable
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -18,7 +19,7 @@ class OakRod() : CustomRod(
     enchantments = hashMapOf(
         Enchantment.LURE to 1
     ),
-    fishDropTable = OldFishTable()
+    fishDropTable = OakFishTable()
 ) {
 
     constructor(quality: Int): this() {

@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.fishing.catches;
 import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -44,6 +45,8 @@ public class Fish {
 		this.winScore=winScore;
 		this.item = item;
 	}
+
+	public void accomplishment(Player player) {}
 
 	public Double getRandomSize() {
 		double min = this.size[0];
