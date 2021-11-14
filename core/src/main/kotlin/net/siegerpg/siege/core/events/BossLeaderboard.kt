@@ -27,7 +27,6 @@ import kotlin.math.round
 
 data class BossFight(val startTime: Instant, val entity: ActiveMob) {
     val fighters = HashMap<UUID, Double>()
-    val entityHealth = entity.entity.maxHealth
 }
 
 class BossLeaderboard : Listener {
@@ -83,13 +82,13 @@ class BossLeaderboard : Listener {
                 dropTable = dungeonBossDropTableHashMap[bossName]
             }
         }
+        val totalDamageDone = round(bossFight.fighters.values.reduce { acc, d -> acc + d }).toInt()
 
         // Uploads data to the db
         val hashMapData = HashMap<UUID, Pair<Byte, Int>>()
-        val startingBossHealth = round(bossFight.entityHealth).toInt()
         val fightDuration = ceil((Duration.between(bossFight.startTime, deathTime).abs().toMillis() + 100.0) / 1000)
         bossFight.fighters.forEach { (fighter, damageDone) ->
-            val percentageDamage = floor(damageDone / startingBossHealth * 100).toInt()
+            val percentageDamage = floor(damageDone / totalDamageDone * 100).toInt()
             hashMapData[fighter] = Pair(percentageDamage.toByte(), fightDuration.toInt())
 
             if (dropTable != null) {

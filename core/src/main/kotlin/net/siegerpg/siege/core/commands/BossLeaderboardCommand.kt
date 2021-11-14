@@ -29,6 +29,7 @@ class BossLeaderboardCommand : BaseCommand() {
     @CommandCompletion("@bosses")
     @Syntax("<boss>")
     fun bossData(player: Player, boss: String) {
+        player.sendMessage(Utils.parse("<gray>Fetching data...."))
         BossLeaderboardDB.getBossLeaderboardTop10Data(boss) { data ->
             if (data == null) {
                 player.sendMessage(Utils.parse("<red>No data exists for this boss!"))
@@ -47,5 +48,6 @@ class BossLeaderboardCommand : BaseCommand() {
             player.sendMessage(Utils.parse("<gold>------------"))
         }
     }
+
 
 }
