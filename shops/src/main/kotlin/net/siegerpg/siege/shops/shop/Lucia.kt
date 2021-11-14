@@ -25,7 +25,7 @@ class Lucia : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyEarthernStaff(-1), 6500, hashMapOf(
+            LuckyEarthernStaff(-1), -1, hashMapOf(
                 PlantMatter.tier(3) to 1,
                 Seed.tier(4) to 1,
                 Coal.tier(4) to 1,
@@ -33,7 +33,7 @@ class Lucia : Shop() {
             LuckyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongEarthernStaff(-1), 6500, hashMapOf(
+            StrongEarthernStaff(-1), -1, hashMapOf(
                 PlantMatter.tier(3) to 1,
                 Seed.tier(4) to 1,
                 Coal.tier(4) to 1,
@@ -41,7 +41,7 @@ class Lucia : Shop() {
             StrongEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughEarthernStaff(-1), 6500, hashMapOf(
+            ToughEarthernStaff(-1), -1, hashMapOf(
                 PlantMatter.tier(3) to 1,
                 Seed.tier(3) to 1,
                 Coal.tier(3) to 1,
@@ -49,14 +49,14 @@ class Lucia : Shop() {
             ToughEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyEarthernStaff(-1), 6500, hashMapOf(
+            HealthyEarthernStaff(-1), -1, hashMapOf(
                 PlantMatter.tier(4) to 2,
                 Seed.tier(4) to 1,
                 Coal.tier(4) to 1), true) {
             HealthyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingEarthernStaff(-1), 6500, hashMapOf(
+            HealingEarthernStaff(-1), -1, hashMapOf(
                 PlantMatter.tier(3) to 1,
                 Seed.tier(4) to 1,
                 Coal.tier(4) to 1,

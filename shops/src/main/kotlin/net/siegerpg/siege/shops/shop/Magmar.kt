@@ -32,31 +32,31 @@ class Magmar : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyMagmaHelmet(-1), 1250, hashMapOf(
+            LuckyMagmaHelmet(-1), -1, hashMapOf(
                 Magma.tier(2) to 3,
                 Feather.tier(2) to 3), true) {
             LuckyMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongMagmaHelmet(-1), 1250, hashMapOf(
+            StrongMagmaHelmet(-1), -1, hashMapOf(
                 Magma.tier(2) to 3,
                 Bone.tier(2) to 2), true) {
             StrongMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughMagmaHelmet(-1), 1250, hashMapOf(
+            ToughMagmaHelmet(-1), -1, hashMapOf(
                 Magma.tier(2) to 2,
                 Pebble.tier(2) to 3), true) {
             ToughMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyMagmaHelmet(-1), 1250, hashMapOf(
+            HealthyMagmaHelmet(-1), -1, hashMapOf(
                 Magma.tier(2) to 3,
                 PlantMatter.tier(2) to 2), true) {
             HealthyMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingMagmaHelmet(-1), 1250, hashMapOf(
+            HealingMagmaHelmet(-1), -1, hashMapOf(
                 Magma.tier(2) to 2,
                 Wheat.tier(3) to 1), true) {
             HealingMagmaHelmet(Utils.randRarity()).getUpdatedItem(false)
@@ -149,31 +149,31 @@ class Magmar : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyMagmaBoots(-1), 1250, hashMapOf(
+            LuckyMagmaBoots(-1), -1, hashMapOf(
                 Magma.tier(2) to 2,
                 Feather.tier(2) to 2), true) {
             LuckyMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongMagmaBoots(-1), 1250, hashMapOf(
+            StrongMagmaBoots(-1), -1, hashMapOf(
                 Magma.tier(2) to 2,
                 Bone.tier(2) to 2), true) {
             StrongMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughMagmaBoots(-1), 1250, hashMapOf(
+            ToughMagmaBoots(-1), -1, hashMapOf(
                 Magma.tier(2) to 2,
                 Pebble.tier(2) to 2), true) {
             ToughMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyMagmaBoots(-1), 1250, hashMapOf(
+            HealthyMagmaBoots(-1), -1, hashMapOf(
                 Magma.tier(2) to 3,
                 PlantMatter.tier(2) to 2), true) {
             HealthyMagmaBoots(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingMagmaBoots(-1), 1250, hashMapOf(
+            HealingMagmaBoots(-1), -1, hashMapOf(
                 Magma.tier(2) to 1,
                 Feather.tier(3) to 1), true) {
             HealingMagmaBoots(Utils.randRarity()).getUpdatedItem(false)

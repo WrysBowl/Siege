@@ -25,31 +25,31 @@ class Berta : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyScrapShard(-1), 2250, hashMapOf(
+            LuckyScrapShard(-1), -1, hashMapOf(
                 MetalScrap.tier(3) to 1,
                 Feather.tier(3) to 2), true) {
             LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongScrapShard(-1), 2250, hashMapOf(
+            StrongScrapShard(-1), -1, hashMapOf(
                 MetalScrap.tier(3) to 1,
                 Bone.tier(3) to 2), true) {
             StrongScrapShard(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughScrapShard(-1), 2250, hashMapOf(
+            ToughScrapShard(-1), -1, hashMapOf(
                 MetalScrap.tier(3) to 1,
                 Pebble.tier(3) to 2), true) {
             ToughScrapShard(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyScrapShard(-1), 2250, hashMapOf(
+            HealthyScrapShard(-1), -1, hashMapOf(
                 MetalScrap.tier(3) to 1,
                 PlantMatter.tier(3) to 2), true) {
             HealthyScrapShard(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingScrapShard(-1), 2250, hashMapOf(
+            HealingScrapShard(-1), -1, hashMapOf(
                 MetalScrap.tier(3) to 1,
                 Wheat.tier(3) to 3), true) {
             HealingScrapShard(Utils.randRarity()).getUpdatedItem(false)

@@ -32,31 +32,31 @@ class Rancher : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyHardenedLeatherHelmet(-1), 1750, hashMapOf(
+            LuckyHardenedLeatherHelmet(-1), -1, hashMapOf(
                 Leather.tier(2) to 3,
                 Feather.tier(2) to 3), true) {
             LuckyHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongHardenedLeatherHelmet(-1), 1750, hashMapOf(
+            StrongHardenedLeatherHelmet(-1), -1, hashMapOf(
                 Leather.tier(2) to 3,
                 Bone.tier(2) to 2), true) {
             StrongHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughHardenedLeatherHelmet(-1), 1750, hashMapOf(
+            ToughHardenedLeatherHelmet(-1), -1, hashMapOf(
                 Leather.tier(2) to 3,
                 Pebble.tier(2) to 3), true) {
             ToughHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyHardenedLeatherHelmet(-1), 1750, hashMapOf(
+            HealthyHardenedLeatherHelmet(-1), -1, hashMapOf(
                 Leather.tier(2) to 3,
                 PlantMatter.tier(2) to 3), true) {
             HealthyHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingHardenedLeatherHelmet(-1), 1750, hashMapOf(
+            HealingHardenedLeatherHelmet(-1), -1, hashMapOf(
                 Leather.tier(2) to 3,
                 Wheat.tier(4) to 1), true) {
             HealingHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)

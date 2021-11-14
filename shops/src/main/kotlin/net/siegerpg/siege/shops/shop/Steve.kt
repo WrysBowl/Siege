@@ -32,31 +32,31 @@ class Steve : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyWoolHelmet(-1), 700, hashMapOf(
+            LuckyWoolHelmet(-1), -1, hashMapOf(
                 Wool.tier(2) to 3,
                 Feather.tier(2) to 2), true) {
             LuckyWoolHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongWoolHelmet(-1), 700, hashMapOf(
+            StrongWoolHelmet(-1), -1, hashMapOf(
                 Wool.tier(2) to 2,
                 Bone.tier(2) to 3), true) {
             StrongWoolHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughWoolHelmet(-1), 700, hashMapOf(
+            ToughWoolHelmet(-1), -1, hashMapOf(
                 Wool.tier(2) to 2,
                 Pebble.tier(2) to 4), true) {
             ToughWoolHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyWoolHelmet(-1), 700, hashMapOf(
+            HealthyWoolHelmet(-1), -1, hashMapOf(
                 Wool.tier(2) to 2,
                 PlantMatter.tier(2) to 3), true) {
             HealthyWoolHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingWoolHelmet(-1), 700, hashMapOf(
+            HealingWoolHelmet(-1), -1, hashMapOf(
                 Wool.tier(2) to 3,
                 Wheat.tier(2) to 3), true) {
             HealingWoolHelmet(Utils.randRarity()).getUpdatedItem(false)

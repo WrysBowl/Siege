@@ -28,34 +28,34 @@ class Forest : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
-        ShopItem(LuckyWarHammer(-1), 4500, hashMapOf(
+        ShopItem(LuckyWarHammer(-1), -1, hashMapOf(
             MetalScrap.tier(3) to 1,
             Pebble.tier(3) to 2,
             Stick.tier(3) to 2,
             Feather.tier(3) to 2), true) {
             LuckyWarHammer(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(StrongWarHammer(-1), 4500, hashMapOf(
+        ShopItem(StrongWarHammer(-1), -1, hashMapOf(
             MetalScrap.tier(3) to 1,
             Pebble.tier(3) to 2,
             Stick.tier(3) to 2,
             Bone.tier(3) to 4), true) {
             StrongWarHammer(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(ToughWarHammer(-1), 4500, hashMapOf(
+        ShopItem(ToughWarHammer(-1), -1, hashMapOf(
             MetalScrap.tier(3) to 1,
             Pebble.tier(4) to 1,
             Stick.tier(3) to 2), true) {
             ToughWarHammer(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealthyWarHammer(-1), 4500, hashMapOf(
+        ShopItem(HealthyWarHammer(-1), -1, hashMapOf(
             MetalScrap.tier(3) to 1,
             Pebble.tier(3) to 2,
             Stick.tier(3) to 2,
             PlantMatter.tier(3) to 2), true) {
             HealthyWarHammer(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealingWarHammer(-1), 4500, hashMapOf(
+        ShopItem(HealingWarHammer(-1), -1, hashMapOf(
             MetalScrap.tier(3) to 1,
             Pebble.tier(3) to 2,
             Stick.tier(3) to 2,

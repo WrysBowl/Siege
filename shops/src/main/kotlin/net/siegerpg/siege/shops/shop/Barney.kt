@@ -21,19 +21,19 @@ class Barney : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
-        ShopItem(LuckyShank(-1), 1750, hashMapOf(), false) {
+        ShopItem(LuckyShank(-1), -1, hashMapOf(), false) {
             LuckyShank(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(StrongShank(-1), 1750, hashMapOf(), false) {
+        ShopItem(StrongShank(-1), -1, hashMapOf(), false) {
             StrongShank(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(ToughShank(-1), 1750, hashMapOf(), false) {
+        ShopItem(ToughShank(-1), -1, hashMapOf(), false) {
             ToughShank(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealthyShank(-1), 1750, hashMapOf(), false) {
+        ShopItem(HealthyShank(-1), -1, hashMapOf(), false) {
             HealthyShank(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealingShank(-1), 1750, hashMapOf(), false) {
+        ShopItem(HealingShank(-1), -1, hashMapOf(), false) {
             HealingShank(Utils.randRarity()).getUpdatedItem(false)
         },
 
@@ -44,19 +44,19 @@ class Barney : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
-        ShopItem(LuckyDagger(-1), 2250, hashMapOf(), false) {
+        ShopItem(LuckyDagger(-1), -1, hashMapOf(), false) {
             LuckyDagger(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(StrongDagger(-1), 2250, hashMapOf(), false) {
+        ShopItem(StrongDagger(-1), -1, hashMapOf(), false) {
             StrongDagger(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(ToughDagger(-1), 2250, hashMapOf(), false) {
+        ShopItem(ToughDagger(-1), -1, hashMapOf(), false) {
             ToughDagger(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealthyDagger(-1), 2250, hashMapOf(), false) {
+        ShopItem(HealthyDagger(-1), -1, hashMapOf(), false) {
             HealthyDagger(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealingDagger(-1), 2250, hashMapOf(), false) {
+        ShopItem(HealingDagger(-1), -1, hashMapOf(), false) {
             HealingDagger(Utils.randRarity()).getUpdatedItem(false)
         }
     )

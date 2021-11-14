@@ -31,31 +31,31 @@ class Joe : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyStrawHat(-1), 500, hashMapOf(
+            LuckyStrawHat(-1), -1, hashMapOf(
                 Wheat.tier(2) to 2,
                 Feather.tier(2) to 4), true) {
             LuckyStrawHat(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongStrawHat(-1), 500, hashMapOf(
+            StrongStrawHat(-1), -1, hashMapOf(
                 Wheat.tier(2) to 2,
                 Bone.tier(2) to 4), true) {
             StrongStrawHat(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughStrawHat(-1), 500, hashMapOf(
+            ToughStrawHat(-1), -1, hashMapOf(
                 Wheat.tier(2) to 2,
                 Pebble.tier(2) to 4), true) {
             ToughStrawHat(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyStrawHat(-1), 500, hashMapOf(
+            HealthyStrawHat(-1), -1, hashMapOf(
                 Wheat.tier(2) to 2,
                 PlantMatter.tier(2) to 4), true) {
             HealthyStrawHat(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingStrawHat(-1), 500, hashMapOf(
+            HealingStrawHat(-1), -1, hashMapOf(
                 Wheat.tier(2) to 3), true) {
             HealingStrawHat(Utils.randRarity()).getUpdatedItem(false)
         },

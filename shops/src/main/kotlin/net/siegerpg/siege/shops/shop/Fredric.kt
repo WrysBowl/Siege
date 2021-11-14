@@ -26,7 +26,7 @@ class Fredric : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyFlamingHotTorch(-1), 5250, hashMapOf(
+            LuckyFlamingHotTorch(-1), -1, hashMapOf(
             Magma.tier(4) to 1,
             Seed.tier(3) to 4,
             Stick.tier(3) to 1,
@@ -34,7 +34,7 @@ class Fredric : Shop() {
             LuckyFlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongFlamingHotTorch(-1), 5250, hashMapOf(
+            StrongFlamingHotTorch(-1), -1, hashMapOf(
             Magma.tier(4) to 1,
             Seed.tier(3) to 4,
             Stick.tier(3) to 1,
@@ -42,7 +42,7 @@ class Fredric : Shop() {
             StrongFlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughFlamingHotTorch(-1), 5250, hashMapOf(
+            ToughFlamingHotTorch(-1), -1, hashMapOf(
             Magma.tier(4) to 1,
             Seed.tier(3) to 4,
             Stick.tier(3) to 1,
@@ -50,7 +50,7 @@ class Fredric : Shop() {
             ToughFlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyFlamingHotTorch(-1), 5250, hashMapOf(
+            HealthyFlamingHotTorch(-1), -1, hashMapOf(
             Magma.tier(4) to 1,
             Seed.tier(3) to 4,
             Stick.tier(3) to 1,
@@ -58,7 +58,7 @@ class Fredric : Shop() {
             HealthyFlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingFlamingHotTorch(-1), 5250, hashMapOf(
+            HealingFlamingHotTorch(-1), -1, hashMapOf(
             Magma.tier(4) to 1,
             Seed.tier(3) to 1,
             Stick.tier(3) to 1,

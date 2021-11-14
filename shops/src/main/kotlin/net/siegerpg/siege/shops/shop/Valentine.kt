@@ -27,35 +27,35 @@ class Valentine : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyIronBow(-1), 3500, hashMapOf(
+            LuckyIronBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 Feather.tier(3) to 4), true) {
             LuckyIronBow(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongIronBow(-1), 3500, hashMapOf(
+            StrongIronBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 Bone.tier(3) to 4), true) {
             StrongIronBow(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughIronBow(-1), 3500, hashMapOf(
+            ToughIronBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 Pebble.tier(3) to 4), true) {
             ToughIronBow(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyIronBow(-1), 3500, hashMapOf(
+            HealthyIronBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 PlantMatter.tier(3) to 3), true) {
             HealthyIronBow(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingIronBow(-1), 3500, hashMapOf(
+            HealingIronBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 Wheat.tier(4) to 1), true) {

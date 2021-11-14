@@ -32,31 +32,31 @@ class Kayla : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyChainHelmet(-1), 2000, hashMapOf(
+            LuckyChainHelmet(-1), -1, hashMapOf(
                 Chain.tier(2) to 3,
                 Feather.tier(2) to 3), true) {
             LuckyChainHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongChainHelmet(-1), 2000, hashMapOf(
+            StrongChainHelmet(-1), -1, hashMapOf(
                 Chain.tier(2) to 3,
                 Bone.tier(2) to 5), true) {
             StrongChainHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughChainHelmet(-1), 2000, hashMapOf(
+            ToughChainHelmet(-1), -1, hashMapOf(
                 Chain.tier(2) to 3,
                 Pebble.tier(2) to 5), true) {
             ToughChainHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyChainHelmet(-1), 2000, hashMapOf(
+            HealthyChainHelmet(-1), -1, hashMapOf(
                 Chain.tier(2) to 3,
                 PlantMatter.tier(2) to 5), true) {
             HealthyChainHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingChainHelmet(-1), 2000, hashMapOf(
+            HealingChainHelmet(-1), -1, hashMapOf(
                 Chain.tier(2) to 3,
                 Wheat.tier(4) to 1), true) {
             HealingChainHelmet(Utils.randRarity()).getUpdatedItem(false)

@@ -25,27 +25,27 @@ class Chop : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
-        ShopItem(LuckySlimyHelmet(-1), 300, hashMapOf(
+        ShopItem(LuckySlimyHelmet(-1), -1, hashMapOf(
             Slime.tier(2) to 3,
             Feather.tier(2) to 2), true) {
             LuckySlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(StrongSlimyHelmet(-1), 300, hashMapOf(
+        ShopItem(StrongSlimyHelmet(-1), -1, hashMapOf(
             Slime.tier(2) to 3,
             Bone.tier(2) to 1), true) {
             StrongSlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(ToughSlimyHelmet(-1), 300, hashMapOf(
+        ShopItem(ToughSlimyHelmet(-1), -1, hashMapOf(
             Slime.tier(2) to 3,
             Pebble.tier(2) to 2), true) {
             ToughSlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealthySlimyHelmet(-1), 300, hashMapOf(
+        ShopItem(HealthySlimyHelmet(-1), -1, hashMapOf(
             Slime.tier(2) to 3,
             PlantMatter.tier(2) to 2), true) {
             HealthySlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealingSlimyHelmet(-1), 300, hashMapOf(
+        ShopItem(HealingSlimyHelmet(-1), -1, hashMapOf(
             Slime.tier(2) to 3,
             Wheat.tier(2) to 3), true) {
             HealingSlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
@@ -128,27 +128,27 @@ class Chop : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
-        ShopItem(LuckySlimyBoots(-1), 300, hashMapOf(
+        ShopItem(LuckySlimyBoots(-1), -1, hashMapOf(
             Slime.tier(2) to 3,
             Feather.tier(2) to 2), true) {
             LuckySlimyBoots(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(StrongSlimyBoots(-1), 300, hashMapOf(
+        ShopItem(StrongSlimyBoots(-1), -1, hashMapOf(
             Slime.tier(2) to 2,
             Bone.tier(2) to 3), true) {
             StrongSlimyBoots(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(ToughSlimyBoots(-1), 300, hashMapOf(
+        ShopItem(ToughSlimyBoots(-1), -1, hashMapOf(
             Slime.tier(2) to 2,
             Pebble.tier(2) to 3), true) {
             ToughSlimyBoots(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealthySlimyBoots(-1), 300, hashMapOf(
+        ShopItem(HealthySlimyBoots(-1), -1, hashMapOf(
             Slime.tier(2) to 2,
             PlantMatter.tier(2) to 3), true) {
             HealthySlimyBoots(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealingSlimyBoots(-1), 300, hashMapOf(
+        ShopItem(HealingSlimyBoots(-1), -1, hashMapOf(
             Slime.tier(2) to 2,
             Wheat.tier(2) to 6), true) {
             HealingSlimyBoots(Utils.randRarity()).getUpdatedItem(false)

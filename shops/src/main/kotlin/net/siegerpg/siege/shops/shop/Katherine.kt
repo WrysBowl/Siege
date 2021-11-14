@@ -26,7 +26,7 @@ class Katherine : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyEarthernWand(-1), 5250, hashMapOf(
+            LuckyEarthernWand(-1), -1, hashMapOf(
                 PlantMatter.tier(3) to 1,
                 Seed.tier(3) to 1,
                 Coal.tier(3) to 1,
@@ -34,7 +34,7 @@ class Katherine : Shop() {
             LuckyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongEarthernWand(-1), 5250, hashMapOf(
+            StrongEarthernWand(-1), -1, hashMapOf(
                 PlantMatter.tier(3) to 1,
                 Seed.tier(3) to 1,
                 Coal.tier(3) to 1,
@@ -42,7 +42,7 @@ class Katherine : Shop() {
             StrongEarthernWand(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughEarthernWand(-1), 5250, hashMapOf(
+            ToughEarthernWand(-1), -1, hashMapOf(
                 PlantMatter.tier(3) to 1,
                 Seed.tier(3) to 1,
                 Coal.tier(3) to 1,
@@ -50,14 +50,14 @@ class Katherine : Shop() {
             ToughEarthernWand(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyEarthernWand(-1), 5250, hashMapOf(
+            HealthyEarthernWand(-1), -1, hashMapOf(
                 PlantMatter.tier(3) to 4,
                 Seed.tier(3) to 1,
                 Coal.tier(3) to 1), true) {
             HealthyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingEarthernWand(-1), 5250, hashMapOf(
+            HealingEarthernWand(-1), -1, hashMapOf(
                 PlantMatter.tier(3) to 1,
                 Seed.tier(3) to 1,
                 Coal.tier(3) to 1,

@@ -26,35 +26,35 @@ class Helen : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyTorch(-1), 3750, hashMapOf(
+            LuckyTorch(-1), -1, hashMapOf(
             Magma.tier(3) to 1,
             Feather.tier(3) to 1,
             Stick.tier(3) to 1), true) {
             LuckyTorch(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongTorch(-1), 3750, hashMapOf(
+            StrongTorch(-1), -1, hashMapOf(
             Magma.tier(3) to 1,
             Bone.tier(3) to 1,
             Stick.tier(3) to 1), true) {
             StrongTorch(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughTorch(-1), 3750, hashMapOf(
+            ToughTorch(-1), -1, hashMapOf(
             Magma.tier(3) to 1,
             Pebble.tier(3) to 2,
             Stick.tier(3) to 1), true) {
             ToughTorch(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyTorch(-1), 3750, hashMapOf(
+            HealthyTorch(-1), -1, hashMapOf(
             Magma.tier(3) to 1,
             PlantMatter.tier(3) to 2,
             Stick.tier(3) to 1), true) {
             HealthyTorch(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingTorch(-1), 3750, hashMapOf(
+            HealingTorch(-1), -1, hashMapOf(
             Magma.tier(3) to 1,
             Wheat.tier(4) to 1,
             Stick.tier(3) to 1), true) {

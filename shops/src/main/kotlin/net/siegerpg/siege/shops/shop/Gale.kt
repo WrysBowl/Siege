@@ -23,34 +23,34 @@ class Gale : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyDoubleBladedAxe(-1), 3500, hashMapOf(
+            LuckyDoubleBladedAxe(-1), -1, hashMapOf(
                 Pebble.tier(3) to 3,
                 Stick.tier(3) to 2,
                 Feather.tier(3) to 2), true) {
             LuckyDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongDoubleBladedAxe(-1), 3500, hashMapOf(
+            StrongDoubleBladedAxe(-1), -1, hashMapOf(
                 Pebble.tier(3) to 3,
                 Stick.tier(3) to 2,
                 Bone.tier(3) to 2), true) {
             StrongDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughDoubleBladedAxe(-1), 3500, hashMapOf(
+            ToughDoubleBladedAxe(-1), -1, hashMapOf(
                 Pebble.tier(4) to 1,
                 Stick.tier(3) to 2), true) {
             ToughDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyDoubleBladedAxe(-1), 3500, hashMapOf(
+            HealthyDoubleBladedAxe(-1), -1, hashMapOf(
                 Pebble.tier(3) to 3,
                 Stick.tier(3) to 2,
                 PlantMatter.tier(3) to 2), true) {
             HealthyDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingDoubleBladedAxe(-1), 3500, hashMapOf(
+            HealingDoubleBladedAxe(-1), -1, hashMapOf(
                 Pebble.tier(3) to 3,
                 Stick.tier(3) to 2,
                 Wheat.tier(4) to 1), true) {

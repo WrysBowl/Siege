@@ -21,19 +21,19 @@ class Tim : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
-        ShopItem(LuckyWoodenSword(-1), 2750, hashMapOf(), false) {
+        ShopItem(LuckyWoodenSword(-1), -1, hashMapOf(), false) {
             LuckyWoodenSword(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(StrongWoodenSword(-1), 2750, hashMapOf(), false) {
+        ShopItem(StrongWoodenSword(-1), -1, hashMapOf(), false) {
             StrongWoodenSword(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(ToughWoodenSword(-1), 2750, hashMapOf(), false) {
+        ShopItem(ToughWoodenSword(-1), -1, hashMapOf(), false) {
             ToughWoodenSword(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealthyWoodenSword(-1), 2750, hashMapOf(), false) {
+        ShopItem(HealthyWoodenSword(-1), -1, hashMapOf(), false) {
             HealthyWoodenSword(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealingWoodenSword(-1), 2750, hashMapOf(), false) {
+        ShopItem(HealingWoodenSword(-1), -1, hashMapOf(), false) {
             HealingWoodenSword(Utils.randRarity()).getUpdatedItem(false)
         }
     )

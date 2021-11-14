@@ -28,30 +28,30 @@ class Ellie : Shop() {
         ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
-        ShopItem(LuckyShovel(-1), 700, hashMapOf(
+        ShopItem(LuckyShovel(-1), -1, hashMapOf(
             Pebble.tier(2) to 1,
             Stick.tier(3) to 1,
             Feather.tier(2) to 2), true) {
             LuckyShovel(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(StrongShovel(-1), 700, hashMapOf(
+        ShopItem(StrongShovel(-1), -1, hashMapOf(
             Pebble.tier(2) to 1,
             Stick.tier(3) to 1,
             Bone.tier(2) to 1), true) {
             StrongShovel(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(ToughShovel(-1), 700, hashMapOf(
+        ShopItem(ToughShovel(-1), -1, hashMapOf(
             Pebble.tier(2) to 4,
             Stick.tier(3) to 1), true) {
             ToughShovel(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealthyShovel(-1), 700, hashMapOf(
+        ShopItem(HealthyShovel(-1), -1, hashMapOf(
             Pebble.tier(2) to 1,
             Stick.tier(3) to 1,
             PlantMatter.tier(2) to 2), true) {
             HealthyShovel(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealingShovel(-1), 700, hashMapOf(
+        ShopItem(HealingShovel(-1), -1, hashMapOf(
             Pebble.tier(2) to 1,
             Stick.tier(3) to 1,
             Wheat.tier(3) to 1), true) {

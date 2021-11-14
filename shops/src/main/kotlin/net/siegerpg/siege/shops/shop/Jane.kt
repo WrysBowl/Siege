@@ -25,30 +25,30 @@ class Jane : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckySplinteredBone(-1), 2700, hashMapOf(
+            LuckySplinteredBone(-1), -1, hashMapOf(
                 Bone.tier(3) to 1,
                 Feather.tier(3) to 2), true) {
             LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongSplinteredBone(-1), 2700, hashMapOf(
+            StrongSplinteredBone(-1), -1, hashMapOf(
                 Bone.tier(3) to 3), true) {
             StrongSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughSplinteredBone(-1), 2700, hashMapOf(
+            ToughSplinteredBone(-1), -1, hashMapOf(
                 Bone.tier(3) to 1,
                 Pebble.tier(3) to 2), true) {
             ToughSplinteredBone(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthySplinteredBone(-1), 2700, hashMapOf(
+            HealthySplinteredBone(-1), -1, hashMapOf(
                 Bone.tier(3) to 1,
                 PlantMatter.tier(3) to 2), true) {
             HealthySplinteredBone(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingSplinteredBone(-1), 2700, hashMapOf(
+            HealingSplinteredBone(-1), -1, hashMapOf(
                 Bone.tier(3) to 1,
                 Wheat.tier(3) to 3), true) {
             HealingSplinteredBone(Utils.randRarity()).getUpdatedItem(false)

@@ -29,31 +29,31 @@ class Edward : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyIronHelmet(-1), 3000, hashMapOf(
+            LuckyIronHelmet(-1), -1, hashMapOf(
                 RefinedMetal.tier(2) to 3,
                 Feather.tier(2) to 3), true) {
             LuckyIronHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongIronHelmet(-1), 3000, hashMapOf(
+            StrongIronHelmet(-1), -1, hashMapOf(
                 RefinedMetal.tier(2) to 3,
                 Bone.tier(2) to 5), true) {
             StrongIronHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughIronHelmet(-1), 3000, hashMapOf(
+            ToughIronHelmet(-1), -1, hashMapOf(
                 RefinedMetal.tier(2) to 3,
                 Pebble.tier(2) to 5), true) {
             ToughIronHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyIronHelmet(-1), 3000, hashMapOf(
+            HealthyIronHelmet(-1), -1, hashMapOf(
                 RefinedMetal.tier(2) to 3,
                 PlantMatter.tier(2) to 5), true) {
             HealthyIronHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingIronHelmet(-1), 3000, hashMapOf(
+            HealingIronHelmet(-1), -1, hashMapOf(
                 RefinedMetal.tier(2) to 3,
                 Wheat.tier(4) to 1), true) {
             HealingIronHelmet(Utils.randRarity()).getUpdatedItem(false)

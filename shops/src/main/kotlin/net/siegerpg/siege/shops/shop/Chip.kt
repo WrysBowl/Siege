@@ -26,31 +26,31 @@ class Chip : Shop() {
             Stick.tier(2) to 2), true) {
             StickyStick(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(LuckyStickyStick(-1), 200, hashMapOf(
+        ShopItem(LuckyStickyStick(-1), -1, hashMapOf(
             Slime.tier(2) to 1,
             Stick.tier(2) to 2,
             Feather.tier(1) to 4), true) {
             LuckyStickyStick(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(StrongStickyStick(-1), 200, hashMapOf(
+        ShopItem(StrongStickyStick(-1), -1, hashMapOf(
             Slime.tier(2) to 1,
             Stick.tier(2) to 2,
             Bone.tier(1) to 1), true) {
             StrongStickyStick(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(ToughStickyStick(-1), 200, hashMapOf(
+        ShopItem(ToughStickyStick(-1), -1, hashMapOf(
             Slime.tier(2) to 1,
             Stick.tier(2) to 2,
             Pebble.tier(1) to 6), true) {
             ToughStickyStick(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealthyStickyStick(-1), 200, hashMapOf(
+        ShopItem(HealthyStickyStick(-1), -1, hashMapOf(
             Slime.tier(2) to 1,
             Stick.tier(2) to 2,
             PlantMatter.tier(2) to 1), true) {
             HealthyStickyStick(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealingStickyStick(-1), 200, hashMapOf(
+        ShopItem(HealingStickyStick(-1), -1, hashMapOf(
             Slime.tier(2) to 1,
             Stick.tier(2) to 2,
             Wheat.tier(2) to 2), true) {
@@ -68,31 +68,31 @@ class Chip : Shop() {
             Vine.tier(3) to 3), true) {
             WoodenBow(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(LuckyWoodenBow(-1), 300, hashMapOf(
+        ShopItem(LuckyWoodenBow(-1), -1, hashMapOf(
             Stick.tier(3) to 3,
             Vine.tier(3) to 1,
             Feather.tier(3) to 1), true) {
             LuckyWoodenBow(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(StrongWoodenBow(-1), 300, hashMapOf(
+        ShopItem(StrongWoodenBow(-1), -1, hashMapOf(
             Stick.tier(3) to 3,
             Vine.tier(3) to 1,
             Bone.tier(2) to 6), true) {
             StrongWoodenBow(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(ToughWoodenBow(-1), 300, hashMapOf(
+        ShopItem(ToughWoodenBow(-1), -1, hashMapOf(
             Stick.tier(3) to 3,
             Vine.tier(3) to 1,
             Pebble.tier(3) to 1), true) {
             ToughWoodenBow(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealthyWoodenBow(-1), 300, hashMapOf(
+        ShopItem(HealthyWoodenBow(-1), -1, hashMapOf(
             Stick.tier(3) to 3,
             Vine.tier(3) to 1,
             PlantMatter.tier(3) to 1), true) {
             HealthyWoodenBow(Utils.randRarity()).getUpdatedItem(false)
         },
-        ShopItem(HealingWoodenBow(-1), 300, hashMapOf(
+        ShopItem(HealingWoodenBow(-1), -1, hashMapOf(
             Stick.tier(3) to 3,
             Vine.tier(3) to 1,
             Wheat.tier(3) to 1), true) {

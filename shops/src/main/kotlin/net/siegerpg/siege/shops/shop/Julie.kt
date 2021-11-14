@@ -33,7 +33,7 @@ class Julie : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckySewerShooter(-1), 2000, hashMapOf(
+            LuckySewerShooter(-1), -1, hashMapOf(
                 Slime.tier(3) to 1,
                 Magma.tier(3) to 1,
                 Stick.tier(3) to 3,
@@ -42,7 +42,7 @@ class Julie : Shop() {
             LuckySewerShooter(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongSewerShooter(-1), 2000, hashMapOf(
+            StrongSewerShooter(-1), -1, hashMapOf(
                 Slime.tier(3) to 1,
                 Magma.tier(3) to 1,
                 Stick.tier(3) to 3,
@@ -51,7 +51,7 @@ class Julie : Shop() {
             StrongSewerShooter(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughSewerShooter(-1), 2000, hashMapOf(
+            ToughSewerShooter(-1), -1, hashMapOf(
                 Slime.tier(3) to 1,
                 Magma.tier(3) to 1,
                 Stick.tier(3) to 3,
@@ -60,7 +60,7 @@ class Julie : Shop() {
             ToughSewerShooter(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthySewerShooter(-1), 2000, hashMapOf(
+            HealthySewerShooter(-1), -1, hashMapOf(
                 Slime.tier(3) to 1,
                 Magma.tier(3) to 1,
                 Stick.tier(3) to 3,
@@ -69,7 +69,7 @@ class Julie : Shop() {
             HealthySewerShooter(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingSewerShooter(-1), 2000, hashMapOf(
+            HealingSewerShooter(-1), -1, hashMapOf(
                 Slime.tier(3) to 1,
                 Magma.tier(3) to 1,
                 Stick.tier(3) to 3,

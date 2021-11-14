@@ -26,7 +26,7 @@ class Margaret : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyHotRod(-1), 6750, hashMapOf(
+            LuckyHotRod(-1), -1, hashMapOf(
             PlantMatter.tier(3) to 1,
             Seed.tier(4) to 1,
             Coal.tier(4) to 1,
@@ -34,7 +34,7 @@ class Margaret : Shop() {
             LuckyHotRod(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongHotRod(-1), 6750, hashMapOf(
+            StrongHotRod(-1), -1, hashMapOf(
             PlantMatter.tier(3) to 1,
             Seed.tier(4) to 1,
             Coal.tier(4) to 1,
@@ -42,7 +42,7 @@ class Margaret : Shop() {
             StrongHotRod(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughHotRod(-1), 6750, hashMapOf(
+            ToughHotRod(-1), -1, hashMapOf(
             PlantMatter.tier(3) to 1,
             Seed.tier(4) to 1,
             Coal.tier(4) to 1,
@@ -50,14 +50,14 @@ class Margaret : Shop() {
             ToughHotRod(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyHotRod(-1), 6750, hashMapOf(
+            HealthyHotRod(-1), -1, hashMapOf(
             PlantMatter.tier(4) to 2,
             Seed.tier(4) to 1,
             Coal.tier(4) to 1), true) {
             HealthyHotRod(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingHotRod(-1), 6750, hashMapOf(
+            HealingHotRod(-1), -1, hashMapOf(
             PlantMatter.tier(3) to 1,
             Seed.tier(4) to 1,
             Coal.tier(4) to 1,

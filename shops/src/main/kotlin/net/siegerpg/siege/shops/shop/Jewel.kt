@@ -28,35 +28,35 @@ class Jewel : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-            LuckyRecurveBow(-1), 3250, hashMapOf(
+            LuckyRecurveBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 Feather.tier(4) to 1), true) {
             LuckyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            StrongRecurveBow(-1), 3250, hashMapOf(
+            StrongRecurveBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 Bone.tier(3) to 4), true) {
             StrongRecurveBow(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            ToughRecurveBow(-1), 3250, hashMapOf(
+            ToughRecurveBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 Pebble.tier(4) to 1), true) {
             ToughRecurveBow(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealthyRecurveBow(-1), 3250, hashMapOf(
+            HealthyRecurveBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 PlantMatter.tier(4) to 1), true) {
             HealthyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-            HealingRecurveBow(-1), 3250, hashMapOf(
+            HealingRecurveBow(-1), -1, hashMapOf(
                 Vine.tier(3) to 3,
                 RefinedMetal.tier(3) to 1,
                 Wheat.tier(4) to 2), true) {

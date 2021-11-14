@@ -27,37 +27,37 @@ class Brown : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-        LuckyBoneHelmet(-1), 2000, hashMapOf(
+        LuckyBoneHelmet(-1), -1, hashMapOf(
         Bone.tier(2) to 3,
         Feather.tier(2) to 3), true) {
             LuckyBoneHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        StrongBoneHelmet(-1), 2000, hashMapOf(
+        StrongBoneHelmet(-1), -1, hashMapOf(
         Bone.tier(2) to 6), true) {
             StrongBoneHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        ToughBoneHelmet(-1), 2000, hashMapOf(
+        ToughBoneHelmet(-1), -1, hashMapOf(
         Bone.tier(2) to 3,
         Pebble.tier(2) to 3), true) {
             ToughBoneHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        HealthyBoneHelmet(-1), 2000, hashMapOf(
+        HealthyBoneHelmet(-1), -1, hashMapOf(
         Bone.tier(2) to 3,
         PlantMatter.tier(2) to 3), true) {
             HealthyBoneHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        HealingBoneHelmet(-1), 2000, hashMapOf(
+        HealingBoneHelmet(-1), -1, hashMapOf(
         Bone.tier(2) to 3,
         Wheat.tier(4) to 1), true) {
             HealingBoneHelmet(Utils.randRarity()).getUpdatedItem(false)
         },
 
         //BONE CHESTPLATE
-        ShopItem(BoneChestplate(-1), 3000, hashMapOf(
+        ShopItem(BoneChestplate(-1), -1, hashMapOf(
         Bone.tier(2) to 8), true) {
             BoneChestplate(Utils.randRarity()).getUpdatedItem(false)
         },
@@ -65,30 +65,30 @@ class Brown : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-        LuckyBoneChestplate(-1), 3250, hashMapOf(
+        LuckyBoneChestplate(-1), -1, hashMapOf(
         Bone.tier(2) to 6,
         Feather.tier(2) to 4), true) {
             LuckyBoneChestplate(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        StrongBoneChestplate(-1), 3250, hashMapOf(
+        StrongBoneChestplate(-1), -1, hashMapOf(
         Bone.tier(3) to 2), true) {
             StrongBoneChestplate(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        ToughBoneChestplate(-1), 3250, hashMapOf(
+        ToughBoneChestplate(-1), -1, hashMapOf(
         Bone.tier(2) to 5,
         Pebble.tier(2) to 5), true) {
             ToughBoneChestplate(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        HealthyBoneChestplate(-1), 3250, hashMapOf(
+        HealthyBoneChestplate(-1), -1, hashMapOf(
         Bone.tier(2) to 6,
         PlantMatter.tier(2) to 4), true) {
             HealthyBoneChestplate(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        HealingBoneChestplate(-1), 3250, hashMapOf(
+        HealingBoneChestplate(-1), -1, hashMapOf(
         Bone.tier(2) to 3,
         Wheat.tier(4) to 1), true) {
             HealingBoneChestplate(Utils.randRarity()).getUpdatedItem(false)
@@ -103,30 +103,30 @@ class Brown : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-        LuckyBoneLeggings(-1), 3000, hashMapOf(
+        LuckyBoneLeggings(-1), -1, hashMapOf(
         Bone.tier(2) to 5,
         Feather.tier(2) to 4), true) {
             LuckyBoneLeggings(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        StrongBoneLeggings(-1), 3000, hashMapOf(
+        StrongBoneLeggings(-1), -1, hashMapOf(
         Bone.tier(2) to 8), true) {
             StrongBoneLeggings(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        ToughBoneLeggings(-1), 3000, hashMapOf(
+        ToughBoneLeggings(-1), -1, hashMapOf(
         Bone.tier(2) to 6,
         Pebble.tier(2) to 5), true) {
             ToughBoneLeggings(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        HealthyBoneLeggings(-1), 3000, hashMapOf(
+        HealthyBoneLeggings(-1), -1, hashMapOf(
         Bone.tier(2) to 6,
         PlantMatter.tier(2) to 4), true) {
             HealthyBoneLeggings(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        HealingBoneLeggings(-1), 3000, hashMapOf(
+        HealingBoneLeggings(-1), -1, hashMapOf(
         Bone.tier(2) to 6,
         Wheat.tier(4) to 1), true) {
             HealingBoneLeggings(Utils.randRarity()).getUpdatedItem(false)
@@ -141,30 +141,30 @@ class Brown : Shop() {
             GRAYFILLER(-1).getUpdatedItem(false)
         },
         ShopItem(
-        LuckyBoneBoots(-1), 1750, hashMapOf(
+        LuckyBoneBoots(-1), -1, hashMapOf(
         Bone.tier(2) to 3,
         Feather.tier(2) to 2), true) {
             LuckyBoneBoots(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        StrongBoneBoots(-1), 1750, hashMapOf(
+        StrongBoneBoots(-1), -1, hashMapOf(
         Bone.tier(2) to 6), true) {
             StrongBoneBoots(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        ToughBoneBoots(-1), 1750, hashMapOf(
+        ToughBoneBoots(-1), -1, hashMapOf(
         Bone.tier(2) to 3,
         Pebble.tier(2) to 3), true) {
             ToughBoneBoots(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        HealthyBoneBoots(-1), 1750, hashMapOf(
+        HealthyBoneBoots(-1), -1, hashMapOf(
         Bone.tier(2) to 3,
         PlantMatter.tier(2) to 4), true) {
             HealthyBoneBoots(Utils.randRarity()).getUpdatedItem(false)
         },
         ShopItem(
-        HealingBoneBoots(-1), 1750, hashMapOf(
+        HealingBoneBoots(-1), -1, hashMapOf(
         Bone.tier(2) to 3,
         Wheat.tier(4) to 1), true) {
             HealingBoneBoots(Utils.randRarity()).getUpdatedItem(false)
