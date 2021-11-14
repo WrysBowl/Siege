@@ -222,12 +222,10 @@ public class DeathListener implements Listener, Runnable {
             if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
             int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
-            double percBal = (Math.floor(bal / 10000.0) / 100);
-            if (percBal > 0.15) percBal = 0.15;
-            int newBal = (int) Math.round(bal * (0.90 - percBal));
+            int newBal = (int) Math.round(bal * 0.95);
 
 
-            if (newBal < 0) newBal = 0;
+            if (newBal < 1) newBal = 0;
             VaultHook.econ.withdrawPlayer(player, bal);
             VaultHook.econ.depositPlayer(player, newBal);
             int goldLost = bal - newBal;
@@ -235,7 +233,7 @@ public class DeathListener implements Listener, Runnable {
                 @Override
                 public void run() {
                     player.spigot().respawn();
-                    player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + goldLost + " gold &7has been lost"), 1, 60, 1);
+                    player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + String.format("%,d", goldLost) + " gold &7has been lost"), 1, 60, 1);
                     Scoreboard.updateScoreboard(player);
                 }
             }.runTaskLater(Core.plugin(), 1);

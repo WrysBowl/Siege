@@ -225,9 +225,6 @@ class CustomItemKotlinListener : Listener, Runnable {
             else damage
         val reducedDamage =
             attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
-        Bukkit.getLogger().info("Toughness: $vicToughness")
-        Bukkit.getLogger().info("Attack Stat: $attStrengthStat")
-        Bukkit.getLogger().info("Reduced Damage: $reducedDamage")
 
         setVictimName(victim, e.damage, vicMaxHealth)
         e.damage = (reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
@@ -243,7 +240,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         val mobHealth: BigDecimal = BigDecimal.valueOf(victim.health - damage)
 
         //sets displayed mob's health
-        victim.customName = Utils.tacc("$displayName &a${mobHealth}&2/&a${Utils.round(vicMaxHealth, 1)}")
+        victim.customName = Utils.tacc("$displayName &a${Utils.round(mobHealth.toDouble(), 2)}&2/&a${Utils.round(vicMaxHealth, 1)}")
     }
 
     @EventHandler

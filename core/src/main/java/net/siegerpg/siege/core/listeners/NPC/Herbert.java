@@ -92,7 +92,7 @@ public class Herbert implements Listener {
         scanner(e); // Update values
         clearItems(); // Trash items
         refresh(); // Update Gui
-        e.getWhoClicked().sendMessage(Utils.parse("<yellow>You earned "+total+" coins"));
+        e.getWhoClicked().sendMessage(Utils.parse("<yellow>You earned "+String.format("%,d",total)+" coins"));
         ((Player)e.getWhoClicked()).playSound(((Player)e.getWhoClicked()).getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         VaultHook.econ.depositPlayer((Player)e.getWhoClicked(), total); // Award gold
         Scoreboard.updateScoreboard((Player)e.getWhoClicked()); // Update scoreboard
@@ -145,7 +145,7 @@ public class Herbert implements Listener {
         cashMeta.displayName(Utils.lore("<gold><bold>CASH IN"));
         cashMeta.lore(new ArrayList<>() {
             {
-                add(Utils.lore("<gray>Total: <gold>" + cash));
+                add(Utils.lore("<gray>Total: <gold>" + String.format("%,d",cash)));
                 add(Utils.lore("<red><bold>THIS ACTION CANNOT BE UNDONE!"));
                 add(Utils.lore("<gray>Click \"Calculate\" to update total!"));
             }
