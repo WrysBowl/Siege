@@ -27,12 +27,12 @@ public class GoldEXPSpawning {
         ItemStack goldCoins = getGoldCoin(1);
         Item gold = loc.getWorld().dropItemNaturally(loc, goldCoins);
         gold.getItemStack().setAmount(goldCoinAmt);
-        gold.setCustomName(Utils.tacc("&e+" + goldCoinAmt + " Gold"));
+        gold.setCustomName(Utils.tacc("&e+" + String.format("%,d", goldCoinAmt) + " Gold"));
         gold.setCustomNameVisible(true);
     }
     public static void spawnEXP(int exp, Location loc) {
         ExperienceOrb orb = loc.getWorld().spawn(loc, ExperienceOrb.class);
-        orb.setCustomName(Utils.tacc("&d+" + exp + " EXP"));
+        orb.setCustomName(Utils.tacc("&d+" + String.format("%,d", exp) + " EXP"));
         orb.setExperience(exp);
         orb.setCustomNameVisible(true);
     }
