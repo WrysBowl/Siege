@@ -67,8 +67,9 @@ public class CustomFishEvent {
 			public void run() {
 				//Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(loc, fish.getItem(), List.of(player.getUniqueId()));
 				Item displayedItem = loc.getWorld().dropItemNaturally(loc, fish.getItem());
+				displayedItem.setPickupDelay(99999);
 
-				Vector vector = Utils.getDifferentialVector(loc, player.getLocation().add(0, 6, 0));
+				Vector vector = Utils.getDifferentialVector(loc, player.getLocation().add(0, 2, 0));
 				vector.normalize();
 				vector.setX(vector.getX()/1.2);
 				vector.setY(vector.getY()/1.2);
@@ -81,8 +82,11 @@ public class CustomFishEvent {
 					@Override
 					public void run() {
 						player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
+						fish.accomplishment(player);
 
 						if (fish.actualSize > 0) {
+							displayedItem.remove();
+							Utils.giveItem(player, fish.getItem());
 							Levels.INSTANCE.addExpShared(player, (int) (fish.actualSize/2));
 							player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) (fish.actualSize/2) + " <dark_purple>EXP"));
 							Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
