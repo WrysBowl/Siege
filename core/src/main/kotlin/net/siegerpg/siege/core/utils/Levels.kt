@@ -105,35 +105,37 @@ object Levels {
     /**
      * Sets the exp and level of a player
      */
-    fun setExpLevel(player: OfflinePlayer, levelExp: Pair<Short, Int>): BukkitTask {
+    fun setExpLevel(player: OfflinePlayer, levelExp: Pair<Short, Int>, then: () -> Unit = {}): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             blockingSetExpLevel(player, levelExp)
+            then()
         })
     }
 
     /**
      * Sets the exp and level of multiple players
      */
-    fun setExpLevel(data: HashMap<UUID, Pair<Short, Int>>): BukkitTask {
+    fun setExpLevel(data: HashMap<UUID, Pair<Short, Int>>, then: () -> Unit = {}): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             blockingSetExpLevel(data)
+            then()
         })
     }
 
     /**
      * Adds experience (and levels up automatically) for one player
      */
-    fun addExp(player: OfflinePlayer, expToAdd: Int): BukkitTask {
+    fun addExp(player: OfflinePlayer, expToAdd: Int, then: () -> Unit = {}): BukkitTask {
         return getExpLevel(player) { pair ->
             val new = calculateExpLevel(pair?.first ?: 0, (pair?.second ?: 0) + expToAdd, player as Player)
-            setExpLevel(player, new)
+            setExpLevel(player, new, then)
         }
     }
 
     /**
      * Adds the same experience to multiple players
      */
-    fun addExp(players: ArrayList<OfflinePlayer>, exp: Int): BukkitTask {
+    fun addExp(players: ArrayList<OfflinePlayer>, exp: Int, then: () -> Unit = {}): BukkitTask {
         return getExpLevel(players) { levelExp ->
             if (levelExp != null) {
                 levelExp.forEach { (uuid, data) ->
@@ -141,13 +143,13 @@ object Levels {
                     levelExp[uuid] = calculateExpLevel(data.first, data.second + exp, Bukkit.getOfflinePlayer(uuid))
                 }
                 // Finally sets the new exp and level for all the players in question
-                setExpLevel(levelExp)
+                setExpLevel(levelExp, then)
             } else {
                 val startingLevelExp = HashMap<UUID, Pair<Short, Int>>()
                 players.forEach { p ->
                     startingLevelExp[p.uniqueId] = calculateExpLevel(0, 0 + exp, p)
                 }
-                setExpLevel(startingLevelExp)
+                setExpLevel(startingLevelExp, then)
             }
         }
     }
@@ -155,7 +157,7 @@ object Levels {
     /**
      * Adds 100% of the experience to one player and 10% to all their party members
      */
-    fun addExpShared(player: OfflinePlayer, exp: Int): List<BukkitTask> {
+    fun addExpShared(player: OfflinePlayer, exp: Int, then: () -> Unit = {}): List<BukkitTask> {
         val list = mutableListOf<BukkitTask>()
         list.add(addExp(player, exp))
         val teamMembers = ArrayList<OfflinePlayer>()
@@ -168,7 +170,7 @@ object Levels {
             }
         }
         // Adds 1/10th of the exp to all the team members
-        list.add(addExp(teamMembers, Math.floorDiv(exp, 10)))
+        list.add(addExp(teamMembers, Math.floorDiv(exp, 10), then))
         return list
     }
 
