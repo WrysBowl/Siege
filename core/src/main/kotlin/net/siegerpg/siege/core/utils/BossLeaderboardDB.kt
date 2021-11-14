@@ -76,7 +76,15 @@ object BossLeaderboardDB {
      * Sets the boss percentageDone and timeTaken for a player
      * @return The task that will fetch the data from the database
      */
-    fun setBossData(bossName: String, playerID: UUID, data: Pair<Byte, Int>, then: () -> Unit = {}): BukkitTask {
+    fun setBossData(bossName: String, playerID: UUID, data: Pair<Byte, Int>): BukkitTask {
+        return setBossData(bossName, playerID, data) {}
+    }
+
+    /**
+     * Sets the boss percentageDone and timeTaken for a player
+     * @return The task that will fetch the data from the database
+     */
+    fun setBossData(bossName: String, playerID: UUID, data: Pair<Byte, Int>, then: () -> Unit): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             blockingSetBossLeaderboardData(bossName, playerID, data)
             then()
@@ -87,7 +95,15 @@ object BossLeaderboardDB {
      * Sets the boss percentageDone and timeTaken for multiple players
      * @return The task that will fetch the data from the database
      */
-    fun setBossData(bossName: String, data: HashMap<UUID, Pair<Byte, Int>>, then: () -> Unit = {}): BukkitTask {
+    fun setBossData(bossName: String, data: HashMap<UUID, Pair<Byte, Int>>): BukkitTask {
+        return setBossData(bossName, data) {}
+    }
+
+    /**
+     * Sets the boss percentageDone and timeTaken for multiple players
+     * @return The task that will fetch the data from the database
+     */
+    fun setBossData(bossName: String, data: HashMap<UUID, Pair<Byte, Int>>, then: () -> Unit): BukkitTask {
         return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
             blockingSetBossLeaderboardData(bossName, data)
             then()
