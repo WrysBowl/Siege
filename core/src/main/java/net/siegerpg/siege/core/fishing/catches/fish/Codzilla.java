@@ -9,10 +9,10 @@ public class Codzilla extends Fish {
         super(
                 "Codzilla",
                 new double[] {75, 100},
-                20,
+                30,
                 0.5,
-                15,
-                6,
+                32,
+                7,
                 610001);
     }
 }

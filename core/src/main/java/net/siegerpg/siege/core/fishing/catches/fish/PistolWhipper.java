@@ -8,10 +8,10 @@ public class PistolWhipper extends Fish {
         super(
                 "Pistol Whipper",
                 new double[] {20, 30},
-                10,
-                0.6,
-                15,
-                3,
+                24,
+                0.5,
+                28,
+                4,
                 610008);
     }
 

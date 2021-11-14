@@ -10,7 +10,7 @@ public class RedSnacker extends Fish {
                 new double[] {90, 110},
                 24,
                 0.6,
-                12,
+                20,
                 7,
                 610002);
 

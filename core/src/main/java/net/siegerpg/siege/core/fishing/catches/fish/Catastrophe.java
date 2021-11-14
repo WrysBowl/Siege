@@ -8,10 +8,10 @@ public class Catastrophe extends Fish {
         super(
                 "Catastrophe",
                 new double[] {130, 180},
-                20,
-                0.7,
-                24,
-                6,
+                40,
+                0.5,
+                32,
+                7,
                 610004);
     }
 }

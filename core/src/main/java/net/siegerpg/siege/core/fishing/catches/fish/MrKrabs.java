@@ -8,9 +8,9 @@ public class MrKrabs extends Fish {
         super(
                 "Mr. Krabs",
                 new double[] {5, 15},
-                6,
+                32,
                 0.3,
-                8,
+                24,
                 5,
                 610009);
 

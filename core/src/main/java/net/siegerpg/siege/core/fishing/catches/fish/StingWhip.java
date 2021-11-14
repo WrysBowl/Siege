@@ -8,9 +8,9 @@ public class StingWhip extends Fish {
         super(
                 "Sting Whip",
                 new double[] {200, 230},
-                30,
+                50,
                 0.5,
-                15,
+                24,
                 9,
                 610003);
 

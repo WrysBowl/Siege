@@ -8,9 +8,9 @@ public class BigBlueTuna extends Fish {
         super(
                 "Big Blue Tuna",
                 new double[] {400, 450},
-                45,
+                60,
                 0.6,
-                12,
+                16,
                 9,
                 610006);
     }
