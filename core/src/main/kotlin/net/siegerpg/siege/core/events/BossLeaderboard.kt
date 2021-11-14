@@ -1,17 +1,21 @@
 package net.siegerpg.siege.core.events
 
+import com.gmail.filoghost.holographicdisplays.api.HologramsAPI
 import io.lumine.xikage.mythicmobs.MythicMobs
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.drops.MobDropTable
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
 import net.siegerpg.siege.core.utils.*
 import net.siegerpg.siege.core.utils.cache.GlobalMultipliers
 import org.bukkit.Bukkit
-import org.bukkit.entity.*
+import org.bukkit.entity.Item
+import org.bukkit.entity.LivingEntity
+import org.bukkit.entity.Player
+import org.bukkit.entity.Projectile
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.inventory.ItemStack
 import java.time.Duration
@@ -29,14 +33,14 @@ data class BossFight(val startTime: Instant, val entity: ActiveMob) {
 class BossLeaderboard : Listener {
 
     private val dungeonBossDropTableHashMap = mutableMapOf(
-            "Broodmother" to Broodmother(),
-            "BullSpirit" to BullSpirit(),
-            "Davy_Jones" to Davy_Jones(),
-            "FoxSpirit" to FoxSpirit(),
-            "Lich" to Lich(),
-            "MagmaSpirit" to MagmaSpirit(),
-            "Necromancer" to Necromancer(),
-            "SlimeSpirit" to SlimeSpirit()
+        "Broodmother" to Broodmother(),
+        "BullSpirit" to BullSpirit(),
+        "Davy_Jones" to Davy_Jones(),
+        "FoxSpirit" to FoxSpirit(),
+        "Lich" to Lich(),
+        "MagmaSpirit" to MagmaSpirit(),
+        "Necromancer" to Necromancer(),
+        "SlimeSpirit" to SlimeSpirit()
     ) as HashMap<String, MobDropTable>
 
     companion object {
@@ -92,29 +96,41 @@ class BossLeaderboard : Listener {
 
                 val dropMultiplier = if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
 
-                Bukkit.getPlayer(fighter)?.sendMessage(Utils.lore("<green>You dealt <gold>$percentageDamage% <green>of the damage to the boss!"))
+                Bukkit.getPlayer(fighter)
+                    ?.sendMessage(Utils.lore("<green>You dealt <gold>$percentageDamage% <green>of the damage to the boss!"))
 
                 val tableExp = dropTable.getExp(true) ?: 0
-                Levels.addExpShared(Bukkit.getOfflinePlayer(fighter), floor(tableExp.toDouble() * dropMultiplier).toInt())
+                Levels.addExpShared(
+                    Bukkit.getOfflinePlayer(fighter),
+                    floor(tableExp.toDouble() * dropMultiplier).toInt()
+                )
 
                 val tableGoldCoinAmt = dropTable.getGold(true) ?: 0
-                val goldCoinAmt = floor(tableGoldCoinAmt.toDouble() * GlobalMultipliers.goldMultiplier * dropMultiplier).toInt()
-                val gold: Item = DropUtils.dropItemNaturallyForPlayers(evt.entity.location,
-                        GoldEXPSpawning.getGoldCoin(1), listOf(fighter))
+                val goldCoinAmt =
+                    floor(tableGoldCoinAmt.toDouble() * GlobalMultipliers.goldMultiplier * dropMultiplier).toInt()
+                val gold: Item = DropUtils.dropItemNaturallyForPlayers(
+                    evt.entity.location,
+                    GoldEXPSpawning.getGoldCoin(1), listOf(fighter)
+                )
                 gold.customName = Utils.tacc("&e+$goldCoinAmt Gold")
                 gold.isCustomNameVisible = true;
                 gold.itemStack.amount = goldCoinAmt
 
-                for (drop in getRewards((percentageDamage/100.0), dropTable)) { //Loop through all drops
+                for (drop in getRewards((percentageDamage / 100.0), dropTable)) { //Loop through all drops
                     DropUtils.dropItemNaturallyForPlayers(evt.entity.location, drop, listOf(fighter))
                 }
 
             }
         }
-        BossLeaderboardDB.setBossData(bossFight.entity.type.internalName, hashMapData)
+        BossLeaderboardDB.setBossData(bossFight.entity.type.internalName, hashMapData) {
+            val holograms = HologramsAPI.getHolograms(Core.plugin())
+            holograms.forEach { hologram ->
+                //TODO()
+            }
+        }
     }
 
-    private fun getRewards(dmgPercent: Double, dropTable:MobDropTable) : ArrayList<ItemStack> {
+    private fun getRewards(dmgPercent: Double, dropTable: MobDropTable): ArrayList<ItemStack> {
         val itemList = ArrayList<ItemStack>()
         for (reward in dropTable.rewards) {
             val chance: Double = (2 * dmgPercent) * reward.chance

@@ -4,8 +4,6 @@ import co.aikar.commands.PaperCommandManager;
 import io.github.retrooper.packetevents.PacketEvents;
 import io.github.retrooper.packetevents.settings.PacketEventsSettings;
 import io.github.retrooper.packetevents.utils.server.ServerVersion;
-import net.siegerpg.siege.core.webstore.WebstoreListener;
-import net.siegerpg.siege.core.webstore.WebstoreCommand;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
 import net.siegerpg.siege.core.crates.CrateOpen;
@@ -26,6 +24,8 @@ import net.siegerpg.siege.core.utils.DropUtils;
 import net.siegerpg.siege.core.utils.VaultHook;
 import net.siegerpg.siege.core.utils.cache.MobNames;
 import net.siegerpg.siege.core.utils.cache.PlayerData;
+import net.siegerpg.siege.core.webstore.WebstoreCommand;
+import net.siegerpg.siege.core.webstore.WebstoreListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -73,7 +73,7 @@ public final class Core extends JavaPlugin {
         spawnLocation = new Location(Bukkit.getWorld("Hub"), 70.5, 71, 3.5, 90, 0);
 
 
-
+        commandManager.registerCommand(new BossLeaderboardCommand());
         commandManager.registerCommand(new PartyCommand());
         this.getCommand("hub").setExecutor(new Hub());
         this.getCommand("setBed").setExecutor(new SetRespawn());
@@ -97,7 +97,6 @@ public final class Core extends JavaPlugin {
         this.getCommand("dungeon").setExecutor(new DungeonCommand());
 
 
-        
         //partyManager = new PartyManager();
 
 //        PaperCommandManager manager = new PaperCommandManager(this);
