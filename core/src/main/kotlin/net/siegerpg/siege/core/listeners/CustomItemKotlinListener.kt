@@ -31,6 +31,7 @@ import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
+import java.math.BigDecimal
 import kotlin.math.ceil
 
 
@@ -239,7 +240,7 @@ class CustomItemKotlinListener : Listener, Runnable {
         val displayName: String = MobNames.mobNames[victim] ?: return
 
         //calculates displayed mob health
-        val mobHealth = Utils.round(victim.health - damage, 2)
+        val mobHealth: BigDecimal = BigDecimal.valueOf(victim.health - damage)
 
         //sets displayed mob's health
         victim.customName = Utils.tacc("$displayName &a${mobHealth}&2/&a${Utils.round(vicMaxHealth, 1)}")
