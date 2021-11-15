@@ -25,7 +25,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class Broodmother extends MobDropTable {
     public Broodmother() {
-        super("Broodmother", 2000, 2508, 2000, 2500, new Reward[]{
+        super("Broodmother", 28000, 32000, 35000, 40000, new Reward[]{
                 new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(16), 100.0),
                 new Reward(Vine.Companion.tier(3).getUpdatedItem(false).asQuantity(8), 50.0),
                 new Reward(Vine.Companion.tier(4).getUpdatedItem(false).asQuantity(2), 25.0),
