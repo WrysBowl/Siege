@@ -7,16 +7,19 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.*;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.*;
 import net.siegerpg.siege.core.utils.Utils;
 
 public class SlimeSpirit extends MobDropTable {
     public SlimeSpirit() {
-        super("SlimeSpirit", 340, 400, 340, 500, new Reward[]{
-                new Reward(Slime.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 100.0),
-                new Reward(Slime.Companion.tier(3).getUpdatedItem(false).asQuantity(3), 30.0),
+        super("SlimeSpirit", 1000, 1500, 1000, 1500, new Reward[]{
+                new Reward(Slime.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
+                new Reward(Slime.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 50.0),
                 new Reward(Slime.Companion.tier(4).getUpdatedItem(false).asQuantity(2), 10.0),
 
                 new Reward(new SlimeSpoofer(100).getUpdatedItem(false), 5.0),
@@ -37,9 +40,21 @@ public class SlimeSpirit extends MobDropTable {
                 new Reward(new SlimyChestplate(Utils.randRarity()).getUpdatedItem(false), 15.0),
                 new Reward(new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 15.0),
                 new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 15.0),
+                new Reward(new SlimyHelmet(Utils.randRarity()).getUpdatedItem(false), 15.0),
+                new Reward(new SlimyChestplate(Utils.randRarity()).getUpdatedItem(false), 15.0),
+                new Reward(new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 15.0),
+                new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 15.0),
 
-                new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 10.0),
-                new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new RawStrengthGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new RawLuckGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new RawToughGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new RawHealthGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new CrackedToughGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 5.0),
         });
     }
 }
