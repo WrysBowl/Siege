@@ -32,7 +32,7 @@ import net.siegerpg.siege.core.utils.Utils;
 
 public class FoxSpirit extends MobDropTable {
     public FoxSpirit() {
-        super("FoxSpirit", 1500, 1600, 1600, 1680, new Reward[]{
+        super("FoxSpirit", 9000, 10000, 10000, 11000, new Reward[]{
                 new Reward(Chain.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),
                 new Reward(Chain.Companion.tier(3).getUpdatedItem(false), 12.0),
                 new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),

@@ -49,7 +49,7 @@ public class Broodmother extends MobDropTable {
                 new Reward(new IronChestplate(Utils.randRarity()).getUpdatedItem(false), 20.5),
                 new Reward(new IronLeggings(Utils.randRarity()).getUpdatedItem(false), 20.5),
                 new Reward(new IronBoots(Utils.randRarity()).getUpdatedItem(false), 20.5),
-                
+
                 new Reward(new HotRod(50).getUpdatedItem(false), 30.0),
                 new Reward(new HotRod(Utils.randRarity()).getUpdatedItem(false), 25.0),
 
