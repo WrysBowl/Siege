@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.commands
 import co.aikar.commands.BaseCommand
 import co.aikar.commands.CommandCompletions
 import co.aikar.commands.annotation.*
+import com.gmail.filoghost.holographicdisplays.api.HologramsAPI
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.dungeons.DungeonCommand
 import net.siegerpg.siege.core.utils.BossLeaderboardDB
@@ -93,6 +94,7 @@ class BossLeaderboardCommand : BaseCommand() {
     }
 
     @Subcommand("holo|hologram")
+    @CommandPermission("op")
     public class Holo : BaseCommand() {
 
         @Subcommand("spawn|add|create")
