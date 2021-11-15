@@ -10,12 +10,20 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritK
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PolishedHealthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PristineHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PolishedLuckGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PristineLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PolishedStrengthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PristineStrengthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PristineToughGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.ScrapShard;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
@@ -44,6 +52,10 @@ public class FoxSpirit extends MobDropTable {
                 new Reward(new ChainChestplate(Utils.randRarity()).getUpdatedItem(false), 30.0),
                 new Reward(new ChainLeggings(Utils.randRarity()).getUpdatedItem(false), 30.0),
                 new Reward(new ChainBoots(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new ChainHelmet(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new ChainChestplate(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new ChainLeggings(Utils.randRarity()).getUpdatedItem(false), 30.0),
+                new Reward(new ChainBoots(Utils.randRarity()).getUpdatedItem(false), 30.0),
 
                 new Reward(new SplinteredBone(100).getUpdatedItem(false), 5.5),
                 new Reward(new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 20.5),
@@ -51,8 +63,16 @@ public class FoxSpirit extends MobDropTable {
                 new Reward(new ScrapShard(100).getUpdatedItem(false), 5.5),
                 new Reward(new ScrapShard(Utils.randRarity()).getUpdatedItem(false), 20.5),
 
-                new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false).asQuantity(2), 10.25),
-                new Reward(new SimpleLuckGem(0).getUpdatedItem(false).asQuantity(3), 10.0),
+                new Reward(new PristineRegenerationGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new PristineStrengthGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new PristineLuckGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new PristineToughGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new PristineHealthGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new PolishedToughGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 10.0),
         });
     }
 }

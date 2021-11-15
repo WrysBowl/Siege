@@ -8,10 +8,15 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.IronHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.IronLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PolishedHealthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PristineHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PolishedLuckGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PristineLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.PolishedRegenerationGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.PristineRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PolishedStrengthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PristineStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PristineToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernStaff;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.HotRod;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.Clobber;
@@ -40,7 +45,11 @@ public class Broodmother extends MobDropTable {
                 new Reward(new IronChestplate(Utils.randRarity()).getUpdatedItem(false), 20.5),
                 new Reward(new IronLeggings(Utils.randRarity()).getUpdatedItem(false), 20.5),
                 new Reward(new IronBoots(Utils.randRarity()).getUpdatedItem(false), 20.5),
-
+                new Reward(new IronHelmet(Utils.randRarity()).getUpdatedItem(false), 20.5),
+                new Reward(new IronChestplate(Utils.randRarity()).getUpdatedItem(false), 20.5),
+                new Reward(new IronLeggings(Utils.randRarity()).getUpdatedItem(false), 20.5),
+                new Reward(new IronBoots(Utils.randRarity()).getUpdatedItem(false), 20.5),
+                
                 new Reward(new HotRod(50).getUpdatedItem(false), 30.0),
                 new Reward(new HotRod(Utils.randRarity()).getUpdatedItem(false), 25.0),
 
@@ -53,11 +62,16 @@ public class Broodmother extends MobDropTable {
                 new Reward(new EarthernHammer(50).getUpdatedItem(false), 30.0),
                 new Reward(new EarthernHammer(Utils.randRarity()).getUpdatedItem(false), 25.0),
 
-                new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 20.0),
-                new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 20.0),
-                new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 20.0),
-                new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 20.0),
-                new Reward(new PolishedToughGem(0).getUpdatedItem(false), 20.0),
+                new Reward(new PristineRegenerationGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new PristineStrengthGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new PristineLuckGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new PristineToughGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new PristineHealthGem(0).getUpdatedItem(false), 10.0),
+                new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new PolishedToughGem(0).getUpdatedItem(false), 5.0),
+                new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 5.0),
         });
     }
 }
