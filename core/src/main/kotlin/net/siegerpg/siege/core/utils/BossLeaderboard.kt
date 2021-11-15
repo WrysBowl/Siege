@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.events
 
 import com.gmail.filoghost.holographicdisplays.api.Hologram
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI
+import com.gmail.filoghost.holographicdisplays.api.line.TextLine
 import io.lumine.xikage.mythicmobs.MythicMobs
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.Core
@@ -31,32 +32,41 @@ data class BossFight(val startTime: Instant, val entity: ActiveMob) {
 }
 
 object BossLeaderboard {
-	public fun updateHologram(h: Hologram, bossName: String) {
+	fun updateHologram(h: Hologram, bossName: String) {
+		BossLeaderboardDB.getBossLeaderboardTop10Data(bossName) { data ->
+			updateHologram(h, bossName, data)
+		}
+	}
+
+	fun updateHologram(
+		h: Hologram,
+		bossName: String,
+		data: List<Pair<UUID, Pair<Byte, Int>>>?
+	) {
 		h.clearLines()
 		h.appendTextLine(Utils.tacc("&6----- &7$bossName -----"))
-		BossLeaderboardDB.getBossLeaderboardTop10Data(bossName) { data ->
-			if (data == null) {
-				h.appendTextLine(Utils.tacc("&cNo data exists for this boss!"))
-				return@getBossLeaderboardTop10Data
-			}
-			data.forEachIndexed { index, (uuid, data) ->
-				val duration = Duration.ofSeconds(data.second.toLong())
-				val HH = duration.toHours()
-				val MM = duration.toMinutesPart().toLong()
-				val SS = duration.toSecondsPart().toLong()
-				val timeInHHMMSS = String.format("%02d:%02d:%02d", HH, MM, SS)
-				val lbPlayer = Bukkit.getOfflinePlayer(uuid)
-				h.appendTextLine(Utils.tacc("&6${index + 1}. &7${lbPlayer.name}: &6${data.first}% &7(in &6${timeInHHMMSS} &7)"))
-			}
+		if (data == null) {
+			h.appendTextLine(Utils.tacc("&cNo data exists for this boss!"))
+			return
+		}
+		data.forEachIndexed { index, (uuid, data) ->
+			val duration = Duration.ofSeconds(data.second.toLong())
+			val HH = duration.toHours()
+			val MM = duration.toMinutesPart().toLong()
+			val SS = duration.toSecondsPart().toLong()
+			val timeInHHMMSS = String.format("%02d:%02d:%02d", HH, MM, SS)
+			val lbPlayer = Bukkit.getOfflinePlayer(uuid)
+			h.appendTextLine(Utils.tacc("&6${index + 1}. &7${lbPlayer.name}: &6${data.first}% &7(in &6${timeInHHMMSS} &7)"))
 		}
 		h.appendTextLine("&6----------")
 	}
 
 	public fun getBossHolograms(bossName: String):
 			Collection<Hologram> {
-		val holograms= HologramsAPI.getHolograms(Core.plugin()).filter {
-			h -> h.getLine(0)
+		val holograms = HologramsAPI.getHolograms(Core.plugin()).filter { h ->
+			(h.getLine(0) as TextLine).text.lowercase().contains(bossName.lowercase())
 		}
+		return holograms
 	}
 }
 
@@ -108,12 +118,15 @@ class BossLeaderboardListener : Listener {
 			?: return
 
 		var dropTable: MobDropTable? = null
+		val bossName: String;
 		if (MythicMobs.inst().apiHelper.isMythicMob(evt.entity)) {
-			val bossName =
+			bossName =
 				MythicMobs.inst().apiHelper.getMythicMobInstance(evt.entity).type.internalName
 			if (dungeonBossDropTableHashMap.containsKey(bossName)) {
 				dropTable = dungeonBossDropTableHashMap[bossName]
 			}
+		} else {
+			bossName = evt.entity.customName ?: evt.entity.name
 		}
 		val totalDamageDone = round(bossFight.fighters.values.reduce { acc, d -> acc + d }).toInt()
 
@@ -163,10 +176,13 @@ class BossLeaderboardListener : Listener {
 
 			}
 		}
-		BossLeaderboardDB.setBossData(bossFight.entity.type.internalName, hashMapData) {
-			val holograms = HologramsAPI.getHolograms(Core.plugin())
-			holograms.forEach { hologram ->
-				//TODO()
+
+		BossLeaderboardDB.setBossData(bossName, hashMapData) {
+			BossLeaderboardDB.getBossLeaderboardTop10Data(bossName) { data ->
+				BossLeaderboard.getBossHolograms(bossName).forEach { holo ->
+					BossLeaderboard.updateHologram(holo, bossName, data)
+				}
+
 			}
 		}
 	}
