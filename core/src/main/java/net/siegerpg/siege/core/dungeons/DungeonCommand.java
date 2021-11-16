@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.dungeons.dungeon.*;
 import net.siegerpg.siege.core.events.BossFight;
 import net.siegerpg.siege.core.events.BossLeaderboard;
+import net.siegerpg.siege.core.events.BossLeaderboardListener;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
@@ -118,7 +119,7 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 										.getAPIHelper()
 										.getMythicMobInstance(dungeon.boss);
 								BossFight newBossFight = new BossFight(Instant.now(), mythicMob);
-								BossLeaderboard.Companion
+								BossLeaderboardListener.Companion
 										.getCurrentBossFights()
 										.add(newBossFight);
 							} catch (InvalidMobTypeException e) {
