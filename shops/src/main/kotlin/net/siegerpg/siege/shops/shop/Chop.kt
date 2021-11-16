@@ -1,13 +1,29 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.armor.boots.SlimyBoots
-import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*
+import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.HealingSlimyBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.HealthySlimyBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.LuckySlimyBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.StrongSlimyBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.ToughSlimyBoots
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.SlimyChestplate
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.HealingSlimyChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.HealthySlimyChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.LuckySlimyChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.StrongSlimyChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.ToughSlimyChestplate
 import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet
-import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.HealingSlimyHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.HealthySlimyHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.LuckySlimyHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.StrongSlimyHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.ToughSlimyHelmet
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings
-import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.HealingSlimyLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.HealthySlimyLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.LuckySlimyLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.StrongSlimyLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.ToughSlimyLeggings
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
@@ -20,14 +36,15 @@ import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Chop : Shop() {
+
 	override var name: String = "Chop"
 	override var permission: String = "siege.shops.shop.chop"
 	override var items: List<ShopItem> = listOf(
 		ShopItem(
 			SlimyHelmet(-1), 250, hashMapOf(
 				Slime.tier(2) to 5
-			), true
-		) {
+			                               ), true
+		        ) {
 			SlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -37,40 +54,40 @@ class Chop : Shop() {
 			LuckySlimyHelmet(-1), -1, hashMapOf(
 				Slime.tier(2) to 3,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                   ), true
+		        ) {
 			LuckySlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongSlimyHelmet(-1), -1, hashMapOf(
 				Slime.tier(2) to 3,
 				Bone.tier(2) to 1
-			), true
-		) {
+			                                    ), true
+		        ) {
 			StrongSlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughSlimyHelmet(-1), -1, hashMapOf(
 				Slime.tier(2) to 3,
 				Pebble.tier(2) to 2
-			), true
-		) {
+			                                   ), true
+		        ) {
 			ToughSlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthySlimyHelmet(-1), -1, hashMapOf(
 				Slime.tier(2) to 3,
 				PlantMatter.tier(2) to 2
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealthySlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingSlimyHelmet(-1), -1, hashMapOf(
 				Slime.tier(2) to 3,
 				Wheat.tier(2) to 3
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealingSlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -78,8 +95,8 @@ class Chop : Shop() {
 		ShopItem(
 			SlimyChestplate(-1), 450, hashMapOf(
 				Slime.tier(2) to 8
-			), true
-		) {
+			                                   ), true
+		        ) {
 			SlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -89,40 +106,40 @@ class Chop : Shop() {
 			LuckySlimyChestplate(-1), 600, hashMapOf(
 				Slime.tier(2) to 5,
 				Feather.tier(2) to 3
-			), true
-		) {
+			                                        ), true
+		        ) {
 			LuckySlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongSlimyChestplate(-1), 600, hashMapOf(
 				Slime.tier(2) to 5,
 				Bone.tier(2) to 2
-			), true
-		) {
+			                                         ), true
+		        ) {
 			StrongSlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughSlimyChestplate(-1), 600, hashMapOf(
 				Slime.tier(2) to 5,
 				Pebble.tier(3) to 1
-			), true
-		) {
+			                                        ), true
+		        ) {
 			ToughSlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthySlimyChestplate(-1), 600, hashMapOf(
 				Slime.tier(2) to 5,
 				PlantMatter.tier(3) to 1
-			), true
-		) {
+			                                          ), true
+		        ) {
 			HealthySlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingSlimyChestplate(-1), 600, hashMapOf(
 				Slime.tier(2) to 5,
 				Wheat.tier(3) to 1
-			), true
-		) {
+			                                          ), true
+		        ) {
 			HealingSlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -130,8 +147,8 @@ class Chop : Shop() {
 		ShopItem(
 			SlimyLeggings(-1), 350, hashMapOf(
 				Slime.tier(2) to 7
-			), true
-		) {
+			                                 ), true
+		        ) {
 			SlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -141,40 +158,40 @@ class Chop : Shop() {
 			LuckySlimyLeggings(-1), 500, hashMapOf(
 				Slime.tier(2) to 3,
 				Feather.tier(2) to 3
-			), true
-		) {
+			                                      ), true
+		        ) {
 			LuckySlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongSlimyLeggings(-1), 500, hashMapOf(
 				Slime.tier(2) to 3,
 				Bone.tier(2) to 4
-			), true
-		) {
+			                                       ), true
+		        ) {
 			StrongSlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughSlimyLeggings(-1), 500, hashMapOf(
 				Slime.tier(2) to 4,
 				Pebble.tier(2) to 4
-			), true
-		) {
+			                                      ), true
+		        ) {
 			ToughSlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthySlimyLeggings(-1), 500, hashMapOf(
 				Slime.tier(2) to 4,
 				PlantMatter.tier(2) to 3
-			), true
-		) {
+			                                        ), true
+		        ) {
 			HealthySlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingSlimyLeggings(-1), 500, hashMapOf(
 				Slime.tier(2) to 3,
 				Wheat.tier(2) to 4
-			), true
-		) {
+			                                        ), true
+		        ) {
 			HealingSlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -182,8 +199,8 @@ class Chop : Shop() {
 		ShopItem(
 			SlimyBoots(-1), 200, hashMapOf(
 				Slime.tier(2) to 4
-			), true
-		) {
+			                              ), true
+		        ) {
 			SlimyBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -193,41 +210,41 @@ class Chop : Shop() {
 			LuckySlimyBoots(-1), -1, hashMapOf(
 				Slime.tier(2) to 3,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                  ), true
+		        ) {
 			LuckySlimyBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongSlimyBoots(-1), -1, hashMapOf(
 				Slime.tier(2) to 2,
 				Bone.tier(2) to 3
-			), true
-		) {
+			                                   ), true
+		        ) {
 			StrongSlimyBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughSlimyBoots(-1), -1, hashMapOf(
 				Slime.tier(2) to 2,
 				Pebble.tier(2) to 3
-			), true
-		) {
+			                                  ), true
+		        ) {
 			ToughSlimyBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthySlimyBoots(-1), -1, hashMapOf(
 				Slime.tier(2) to 2,
 				PlantMatter.tier(2) to 3
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealthySlimyBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingSlimyBoots(-1), -1, hashMapOf(
 				Slime.tier(2) to 2,
 				Wheat.tier(2) to 6
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealingSlimyBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
-	)
+	                                           )
 }
