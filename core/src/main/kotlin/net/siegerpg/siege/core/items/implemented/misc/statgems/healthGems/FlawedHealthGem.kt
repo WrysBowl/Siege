@@ -7,25 +7,25 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class FlawedHealthGem() : StatGemType(
-    name = "Flawed Health Gem",
-    customModelData = 530001,
-    description = listOf("Defects over time has made this gem weak"),
-    levelRequirement = 15,
-    material = Material.POPPED_CHORUS_FRUIT,
-    
-    statType = StatTypes.HEALTH,
-    statAmount = 12.0
+	name = "Flawed Health Gem",
+	customModelData = 530001,
+	description = listOf("Defects over time has made this gem weak"),
+	levelRequirement = 15,
+	material = Material.POPPED_CHORUS_FRUIT,
+
+	statType = StatTypes.HEALTH,
+	statAmount = 12.0
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = 0
-        this.rarity = Rarity.COMMON
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 0
+		this.rarity = Rarity.COMMON
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

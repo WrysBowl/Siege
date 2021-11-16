@@ -7,25 +7,25 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealingDagger() : CustomMeleeWeapon(
-    name = "Healing Dagger",
-    customModelData = 110006,
-    description = listOf("The prison shank's big brother"),
-    levelRequirement = 20,
-    material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 18.0, regeneration = 6.0),
-    
-    attackSpeed = 1.7
+	name = "Healing Dagger",
+	customModelData = 110006,
+	description = listOf("The prison shank's big brother"),
+	levelRequirement = 20,
+	material = Material.WOODEN_SWORD,
+	baseStats = CustomItemUtils.statMap(strength = 18.0, regeneration = 6.0),
+
+	attackSpeed = 1.7
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        this.deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		this.deserialize()
+	}
 
 }

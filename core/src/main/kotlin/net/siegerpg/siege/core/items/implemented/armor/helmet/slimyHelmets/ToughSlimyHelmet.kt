@@ -8,24 +8,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ToughSlimyHelmet() : CustomHelmet(
-    name = "Tough Slimy Helmet",
-    customModelData = 1,
-    description = listOf("So this is what it feels", "like to be a slime"),
-    levelRequirement = 3,
-    material = Material.LEATHER_HELMET,
-    baseStats = CustomItemUtils.statMap(toughness = 8.0),
-    leatherColor = Color.LIME
+	name = "Tough Slimy Helmet",
+	customModelData = 1,
+	description = listOf("So this is what it feels", "like to be a slime"),
+	levelRequirement = 3,
+	material = Material.LEATHER_HELMET,
+	baseStats = CustomItemUtils.statMap(toughness = 8.0),
+	leatherColor = Color.LIME
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

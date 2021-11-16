@@ -7,28 +7,28 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class BeginnerLivingTwig() : CustomWand(
-    name = "Beginner Living Twig",
-    customModelData = 140001,
-    description = listOf("Try out this wand!"),
-    levelRequirement = 0,
-    material = Material.WOODEN_HOE,
-    baseStats = CustomItemUtils.statMap(strength = 2.0, luck = 2.0),
-    range = 12,
-    red = 204,
-    green = 255,
-    blue = 102,
-    damageRadius = 2.5
+	name = "Beginner Living Twig",
+	customModelData = 140001,
+	description = listOf("Try out this wand!"),
+	levelRequirement = 0,
+	material = Material.WOODEN_HOE,
+	baseStats = CustomItemUtils.statMap(strength = 2.0, luck = 2.0),
+	range = 12,
+	red = 204,
+	green = 255,
+	blue = 102,
+	damageRadius = 2.5
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

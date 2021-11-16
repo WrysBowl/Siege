@@ -4,11 +4,11 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.catches.Fish;
-import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import net.siegerpg.siege.core.fishing.data.Cursor;
 import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.events.CustomFishEvent;
 import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -25,63 +25,59 @@ import java.util.UUID;
 public class FishingTask extends BukkitRunnable {
 
 	public static HashMap<UUID, FishingTask> runningTasks = new HashMap<UUID, FishingTask>();
-	
+	private final int delay = 10;
+	public int direction = 1; //-1 for left, 1 for right
 	private CustomFishEvent e;
 	private NamespacedKey keyProgress;
-	private final int delay = 10;
 	private int currentWait = 0;
-	public int direction = 1; //-1 for left, 1 for right
 
-	public FishingTask(CustomFishEvent e) {
-		this.e=e;
-		
+	public FishingTask (CustomFishEvent e) {
+		this.e = e;
+
 		//setting the score to a fourth
-		e.getFishingData().setScore((double)e.getFishingData().getFish().winScore/3);
-		
+		e.getFishingData().setScore((double) e.getFishingData().getFish().winScore / 3);
+
 		keyProgress = new NamespacedKey(Core.plugin(), "ProgressBar-" + e.getPlayer().getName());
 		runningTasks.put(e.getPlayer().getUniqueId(), this);
 	}
-	
 
-	
-	
+
 	@Override
-	public void run() {
+	public void run () {
 		Fish fish = e.getFishingData().getFish();
 		FishingData data = e.getFishingData();
 		Cursor cursor = data.getCursor();
 		//keeping up with score ;D
-        if(data.getScore() >= fish.winScore) {
-        	e.win();
-        	runningTasks.remove(e.getPlayer().getUniqueId());
-        	this.cancel();
+		if (data.getScore() >= fish.winScore) {
+			e.win();
+			runningTasks.remove(e.getPlayer().getUniqueId());
+			this.cancel();
 			PlayerData.hasActionBar.put(e.getPlayer(), false);
-        }
+		}
 
 		if (this.currentWait < this.delay) {
 			this.currentWait++;
 		} else {
 			this.currentWait = 0;
-			if(Utils.randTest(fish.chanceToChangeDirection))
+			if (Utils.randTest(fish.chanceToChangeDirection))
 				e.getFishingData().setDirection(!e.getFishingData().getDirection());
 		}
-        
 
-        if(data.getScore() <= 0) {
-        	e.lose();
-        	runningTasks.remove(e.getPlayer().getUniqueId());
-        	this.cancel();
+
+		if (data.getScore() <= 0) {
+			e.lose();
+			runningTasks.remove(e.getPlayer().getUniqueId());
+			this.cancel();
 			PlayerData.hasActionBar.put(e.getPlayer(), false);
-        }
+		}
 		//label of the action bar
-		String label="";
-		
+		String label = "";
+
 		data.setProcessToAdvance(data.getProcessToAdvance() + fish.moveSpeed);
-		
+
 		//BossBar for progress
 		double progress = data.getScore() / fish.winScore;
-		if(Bukkit.getBossBar(keyProgress) == null ||  e.getProgressBar() == null)
-		{
+		if (Bukkit.getBossBar(keyProgress) == null || e.getProgressBar() == null) {
 			BossBar bossbar = Bukkit.createBossBar(keyProgress,
 					Utils.tacc("&a&lStay in the Green!"),
 					BarColor.GREEN,
@@ -94,91 +90,90 @@ public class FishingTask extends BukkitRunnable {
 
 		}
 		BossBar progressBar = e.getProgressBar();
-		if(progress <=1 && progress >=0) {
+		if (progress <= 1 && progress >= 0) {
 			progressBar.setProgress(progress);
 			if (data.getCursor().getLoc() > 0 && data.getCursor().getLoc() < getEvent().getTotalLength()) {
 				//location of cursor is less than the length of the action bar
 				//location of cursor is greater than the beginning of the action bar
-				data.getCursor().setLoc(data.getCursor().getLoc()+this.direction);
-			} else if(this.direction == -1) {
-				data.getCursor().setLoc(getEvent().getTotalLength()-1);
-			} else if(this.direction == 1) {
+				data.getCursor().setLoc(data.getCursor().getLoc() + this.direction);
+			} else if (this.direction == -1) {
+				data.getCursor().setLoc(getEvent().getTotalLength() - 1);
+			} else if (this.direction == 1) {
 				data.getCursor().setLoc(1);
 			}
 		}
-		
-		
-		for(int i=0; i<e.getTotalLength(); i++) {
-			boolean skip = false;
-            for(int _i = Math.min(data.getLoc(), data.getLoc()+ fish.length-1); _i <= (data.getLoc()+ fish.length-1); _i++) {
-                if(i== _i) {
-                	
-                    if(cursor.loc == i)
-                    {
-                        label = label+ChatColor.BLUE + Utils.tacc("&l\u2595");
-                        
-                        data.setScore(data.getScore()+0.1);
 
-                        skip=true;
-                        break;
-                    }
-                    else
-                    {
-                        label = label+ChatColor.GREEN + Utils.tacc("&l\u2595");
-                        skip=true;
-                        break;
-                    }
-                }
-            }
-            if(skip) {
+
+		for (int i = 0; i < e.getTotalLength(); i++) {
+			boolean skip = false;
+			for (int _i = Math.min(data.getLoc(), data.getLoc() + fish.length - 1); _i <= (data.getLoc() + fish.length - 1); _i++) {
+				if (i == _i) {
+
+					if (cursor.loc == i) {
+						label = label + ChatColor.BLUE + Utils.tacc("&l\u2595");
+
+						data.setScore(data.getScore() + 0.1);
+
+						skip = true;
+						break;
+					} else {
+						label = label + ChatColor.GREEN + Utils.tacc("&l\u2595");
+						skip = true;
+						break;
+					}
+				}
+			}
+			if (skip) {
 				continue;
 			}
-            if(cursor.loc == i)
-            {
-                label = label+ChatColor.BLUE + Utils.tacc("&l\u2595");
-                
-                data.setScore(data.getScore()-0.1);
+			if (cursor.loc == i) {
+				label = label + ChatColor.BLUE + Utils.tacc("&l\u2595");
+
+				data.setScore(data.getScore() - 0.1);
 				e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_FISH_SWIM, 1.0f, 2.0f);
 
-			}
-            else
+			} else
 				label = label + ChatColor.RED + Utils.tacc("&l\u2595");
-        }
-		if(data.getProcessToAdvance()>=1) {
-			if(data.getLoc() + fish.length == e.getTotalLength() && data.getDirection()){ data.setDirection(!data.getDirection());}
-			if(data.getLoc()<=0 && !data.getDirection()) { data.setDirection(!data.getDirection());}
-			if(data.getDirection()) { data.setLoc(data.getLoc()+1); }
-			if(!data.getDirection()) {data.setLoc(data.getLoc()-1);}
-			data.setProcessToAdvance(0); 
 		}
-		
-		e.setTicksElapsed(e.getTicksElapsed()+2);
+		if (data.getProcessToAdvance() >= 1) {
+			if (data.getLoc() + fish.length == e.getTotalLength() && data.getDirection()) {
+				data.setDirection(!data.getDirection());
+			}
+			if (data.getLoc() <= 0 && !data.getDirection()) {
+				data.setDirection(!data.getDirection());
+			}
+			if (data.getDirection()) {
+				data.setLoc(data.getLoc() + 1);
+			}
+			if (!data.getDirection()) {
+				data.setLoc(data.getLoc() - 1);
+			}
+			data.setProcessToAdvance(0);
+		}
+
+		e.setTicksElapsed(e.getTicksElapsed() + 2);
 		e.setTotalTicksElapsed(e.getTotalTicksElapsed() + 2);
-		if(e.getTicksElapsed() >= 20)
-		{
+		if (e.getTicksElapsed() >= 20) {
 			e.setTicksElapsed(0);
-			e.setSecondsElapsed(e.getSecondsElapsed()+1);
+			e.setSecondsElapsed(e.getSecondsElapsed() + 1);
 		}
 		e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(label));
 		PlayerData.hasActionBar.put(e.getPlayer(), true);
 	}
-	
-	public CustomFishEvent getEvent() {
+
+	public CustomFishEvent getEvent () {
 		return this.e;
 	}
-	
-	
-	public NamespacedKey getKeyProgress() {
+
+
+	public NamespacedKey getKeyProgress () {
 		return keyProgress;
 	}
 
 
-
-
-	public void setKeyProgress(NamespacedKey keyProgress) {
+	public void setKeyProgress (NamespacedKey keyProgress) {
 		this.keyProgress = keyProgress;
 	}
-
 
 
 }

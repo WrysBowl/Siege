@@ -6,31 +6,31 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Pebble() : CustomMaterial(
-    name = "Pebble",
-    customModelData = 320006,
-    description = listOf("Tiny bits of rock"),
-    levelRequirement = 0,
-    material = Material.FLINT,
-    
-) {
+	name = "Pebble",
+	customModelData = 320006,
+	description = listOf("Tiny bits of rock"),
+	levelRequirement = 0,
+	material = Material.FLINT,
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	) {
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    companion object {
-        fun tier(tier: Int): Pebble {
-            val newItem = Pebble(0)
-            newItem.tier = tier
-            return newItem
-        }
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
+
+	companion object {
+		fun tier(tier: Int): Pebble {
+			val newItem = Pebble(0)
+			newItem.tier = tier
+			return newItem
+		}
+	}
 
 }

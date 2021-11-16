@@ -6,21 +6,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CommonKey() : CustomKey(
-    name = "Common Key",
-    customModelData = 630001,
-    description = listOf("Get a common cosmetic"),
-    material = Material.TRIPWIRE_HOOK,
+	name = "Common Key",
+	customModelData = 630001,
+	description = listOf("Get a common cosmetic"),
+	material = Material.TRIPWIRE_HOOK,
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = 0
-        this.rarity = Rarity.COMMON
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 0
+		this.rarity = Rarity.COMMON
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

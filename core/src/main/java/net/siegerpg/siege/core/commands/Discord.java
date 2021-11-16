@@ -10,13 +10,13 @@ import org.jetbrains.annotations.NotNull;
 public class Discord implements CommandExecutor {
 
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        Player player = (Player) sender;
-        player.sendMessage("");
-        player.sendMessage(Utils.parse("  <aqua><bold>Join our discord here!<reset>"));
-        player.sendMessage("  https://discord.siegerpg.net");
-        player.sendMessage("");
-        return false;
-    }
+	@Override
+	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+		Player player = (Player) sender;
+		player.sendMessage("");
+		player.sendMessage(Utils.parse("  <aqua><bold>Join our discord here!<reset>"));
+		player.sendMessage("  https://discord.siegerpg.net");
+		player.sendMessage("");
+		return false;
+	}
 }

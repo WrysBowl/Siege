@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class SewerShooter() : CustomBow(
-    name = "Sewer Shooter",
-    customModelData = 120005,
-    description = listOf("A bow made of mob flesh,", "that's a first"),
-    levelRequirement = 22,
-    material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 25.0, luck = 9.0)
+	name = "Sewer Shooter",
+	customModelData = 120005,
+	description = listOf("A bow made of mob flesh,", "that's a first"),
+	levelRequirement = 22,
+	material = Material.BOW,
+	baseStats = CustomItemUtils.statMap(strength = 25.0, luck = 9.0)
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

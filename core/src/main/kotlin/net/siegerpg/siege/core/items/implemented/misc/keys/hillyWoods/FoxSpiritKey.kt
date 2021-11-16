@@ -6,22 +6,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class FoxSpiritKey() : CustomKey(
-    name = "Fox Spirit Key",
-    customModelData = 620004,
-    description = listOf("Used to summon", "the Fox spirit"),
-    material = Material.TRIPWIRE_HOOK,
-    quality = 90
+	name = "Fox Spirit Key",
+	customModelData = 620004,
+	description = listOf("Used to summon", "the Fox spirit"),
+	material = Material.TRIPWIRE_HOOK,
+	quality = 90
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

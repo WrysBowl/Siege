@@ -7,23 +7,29 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class TitaniumBoots() : CustomBoots(
-    name = "Titanium Boots",
-    customModelData = 1,
-    description = listOf("Twinkle toes"),
-    levelRequirement = 49,
-    material = Material.IRON_BOOTS,
-    baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 100.0, regeneration = 10.0, luck = -15.0, strength = -20.0),
+	name = "Titanium Boots",
+	customModelData = 1,
+	description = listOf("Twinkle toes"),
+	levelRequirement = 49,
+	material = Material.IRON_BOOTS,
+	baseStats = CustomItemUtils.statMap(
+		health = 40.0,
+		toughness = 100.0,
+		regeneration = 10.0,
+		luck = -15.0,
+		strength = -20.0
+	),
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

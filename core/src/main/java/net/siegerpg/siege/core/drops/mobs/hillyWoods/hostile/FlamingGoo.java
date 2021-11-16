@@ -11,22 +11,22 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawS
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class FlamingGoo extends MobDropTable {
-    public FlamingGoo() {
-        super("FlamingGoo", 3, 6, 5, 7, new Reward[]{
-                new Reward(Magma.Companion.tier(1).getUpdatedItem(false), 50.0),
-                new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 5.0),
+	public FlamingGoo () {
+		super("FlamingGoo", 3, 6, 5, 7, new Reward[] {
+				new Reward(Magma.Companion.tier(1).getUpdatedItem(false), 50.0),
+				new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 5.0),
 
-                new Reward(new MagmaHelmet(30).getUpdatedItem(false), 1.0),
-                new Reward(new MagmaChestplate(30).getUpdatedItem(false), 1.0),
-                new Reward(new MagmaLeggings(30).getUpdatedItem(false), 1.0),
-                new Reward(new MagmaBoots(30).getUpdatedItem(false), 1.0),
+				new Reward(new MagmaHelmet(30).getUpdatedItem(false), 1.0),
+				new Reward(new MagmaChestplate(30).getUpdatedItem(false), 1.0),
+				new Reward(new MagmaLeggings(30).getUpdatedItem(false), 1.0),
+				new Reward(new MagmaBoots(30).getUpdatedItem(false), 1.0),
 
-                new Reward(new MagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.5),
-                new Reward(new MagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.5),
-                new Reward(new MagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.5),
-                new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new MagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new MagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new MagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.5),
 
-                new Reward(new RawStrengthGem(0).getUpdatedItem(false), 1.0)
-        });
-    }
+				new Reward(new RawStrengthGem(0).getUpdatedItem(false), 1.0)
+		});
+	}
 }

@@ -7,23 +7,28 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class SharpShooter() : CustomBow(
-    name = "Sharp Shooter",
-    customModelData = 120014,
-    description = listOf("Never misses!","If you are skilled enough"),
-    levelRequirement = 59,
-    material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 110.0, luck = -15.0, health = -20.0, toughness = -150.0)
+	name = "Sharp Shooter",
+	customModelData = 120014,
+	description = listOf("Never misses!", "If you are skilled enough"),
+	levelRequirement = 59,
+	material = Material.BOW,
+	baseStats = CustomItemUtils.statMap(
+		strength = 110.0,
+		luck = -15.0,
+		health = -20.0,
+		toughness = -150.0
+	)
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

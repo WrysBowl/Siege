@@ -6,21 +6,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Unirod() : Cosmetic(
-    name = "Unirod",
-    customModelData = 1,
-    description = listOf(""),
-    material = Material.END_ROD,
+	name = "Unirod",
+	customModelData = 1,
+	description = listOf(""),
+	material = Material.END_ROD,
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = 80
-        this.rarity = Rarity.RARE
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 80
+		this.rarity = Rarity.RARE
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

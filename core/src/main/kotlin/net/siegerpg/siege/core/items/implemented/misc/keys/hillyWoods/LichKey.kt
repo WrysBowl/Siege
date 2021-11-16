@@ -6,22 +6,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class LichKey() : CustomKey(
-    name = "Lich Key",
-    customModelData = 620009,
-    description = listOf("Used to summon", "the Lich"),
-    material = Material.TRIPWIRE_HOOK,
-    quality = 50
+	name = "Lich Key",
+	customModelData = 620009,
+	description = listOf("Used to summon", "the Lich"),
+	material = Material.TRIPWIRE_HOOK,
+	quality = 50
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

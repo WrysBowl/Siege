@@ -6,21 +6,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class PigNose() : Cosmetic(
-    name = "Pig Nose",
-    customModelData = 710005,
-    description = listOf(""),
-    material = Material.KNOWLEDGE_BOOK,
+	name = "Pig Nose",
+	customModelData = 710005,
+	description = listOf(""),
+	material = Material.KNOWLEDGE_BOOK,
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = 0
-        this.rarity = Rarity.COMMON
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 0
+		this.rarity = Rarity.COMMON
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Crossbow() : CustomBow(
-    name = "Crossbow",
-    customModelData = 0,
-    description = listOf("The OG pistol"),
-    levelRequirement = 26,
-    material = Material.CROSSBOW, //This needs to be changed to a crossbow
-    baseStats = CustomItemUtils.statMap(strength = 30.0, luck = 11.0)
+	name = "Crossbow",
+	customModelData = 0,
+	description = listOf("The OG pistol"),
+	levelRequirement = 26,
+	material = Material.CROSSBOW, //This needs to be changed to a crossbow
+	baseStats = CustomItemUtils.statMap(strength = 30.0, luck = 11.0)
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

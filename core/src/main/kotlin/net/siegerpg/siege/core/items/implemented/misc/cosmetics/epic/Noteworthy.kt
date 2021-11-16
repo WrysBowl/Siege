@@ -10,26 +10,27 @@ import org.bukkit.inventory.ItemStack
 import java.util.*
 
 class Noteworthy() : Cosmetic(
-    name = "Noteworthy",
-    customModelData = 1,
-    description = listOf(""),
-    material = Material.NOTE_BLOCK,
+	name = "Noteworthy",
+	customModelData = 1,
+	description = listOf(""),
+	material = Material.NOTE_BLOCK,
 ) {
-    override fun onCosmeticDamage(e: EntityDamageByEntityEvent) {
-        val hitPlayer = e.entity as Player
-        val notePitch = 0.5f + Random().nextFloat() * (2.0f - 0.5f) // Random pitch between 0.5f and 2.0f
-        hitPlayer.world.playSound(hitPlayer.location, Sound.BLOCK_NOTE_BLOCK_BELL, 1.0f, notePitch)
-    }
+	override fun onCosmeticDamage(e: EntityDamageByEntityEvent) {
+		val hitPlayer = e.entity as Player
+		val notePitch =
+			0.5f + Random().nextFloat() * (2.0f - 0.5f) // Random pitch between 0.5f and 2.0f
+		hitPlayer.world.playSound(hitPlayer.location, Sound.BLOCK_NOTE_BLOCK_BELL, 1.0f, notePitch)
+	}
 
-    constructor(quality: Int): this() {
-        this.quality = 90
-        this.rarity = Rarity.EPIC
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 90
+		this.rarity = Rarity.EPIC
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

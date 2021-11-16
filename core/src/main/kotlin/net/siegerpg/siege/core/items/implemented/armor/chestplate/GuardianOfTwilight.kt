@@ -8,24 +8,30 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class GuardianOfTwilight() : CustomChestplate(
-    name = "Guardian Of Twilight",
-    customModelData = 1,
-    description = listOf("Protector of the","Twilight Forests"),
-    levelRequirement = 60,
-    material = Material.LEATHER_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 125.0, toughness = 400.0, regeneration = 20.0, strength = -50.0, luck = -60.0),
-    leatherColor = Color.SILVER
+	name = "Guardian Of Twilight",
+	customModelData = 1,
+	description = listOf("Protector of the", "Twilight Forests"),
+	levelRequirement = 60,
+	material = Material.LEATHER_CHESTPLATE,
+	baseStats = CustomItemUtils.statMap(
+		health = 125.0,
+		toughness = 400.0,
+		regeneration = 20.0,
+		strength = -50.0,
+		luck = -60.0
+	),
+	leatherColor = Color.SILVER
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

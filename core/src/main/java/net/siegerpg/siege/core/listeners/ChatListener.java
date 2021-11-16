@@ -15,43 +15,44 @@ import org.bukkit.inventory.ItemStack;
 
 public class ChatListener implements Listener {
 
-    @EventHandler
-    public void playerChat(AsyncPlayerChatEvent e) {
-        Player player = e.getPlayer();
-        Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
-        String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";
-        String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(player);
-        String message = e.getMessage().replaceAll("&k", "");
-        String check = Utils.strip(message);
+	@EventHandler
+	public void playerChat (AsyncPlayerChatEvent e) {
+		Player player = e.getPlayer();
+		Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
+		String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";
+		String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(player);
+		String message = e.getMessage().replaceAll("&k", "");
+		String check = Utils.strip(message);
 
-        if (check.equalsIgnoreCase("") || check.equalsIgnoreCase(" ")) {
-            e.getPlayer().sendMessage(Utils.tacc("You can not send a empty message!"));
-            e.setCancelled(true);
-            return;
-        }
+		if (check.equalsIgnoreCase("") || check.equalsIgnoreCase(" ")) {
+			e.getPlayer().sendMessage(Utils.tacc("You can not send a empty message!"));
+			e.setCancelled(true);
+			return;
+		}
 
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            if (message.contains(p.getName())) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 1.0F, 2.0F);
-            }
-        }
+		for (Player p : Bukkit.getOnlinePlayers()) {
+			if (message.contains(p.getName())) {
+				p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 1.0F, 2.0F);
+			}
+		}
 
-        if (message.contains("[item]")) {
-            e.setCancelled(true);
-            if (player.getInventory().getItemInMainHand().getType() != Material.AIR) {
-                ItemStack item = player.getInventory().getItemInMainHand();
-                String name = item.getItemMeta().getDisplayName();
-                if (name.equals("")) name = player.getInventory().getItemInMainHand().getI18NDisplayName();
-                Component miniMessage = Utils.lore("<yellow>" + item.getAmount() + "x " + name).hoverEvent(item);
-                Component prefixes = Utils.lore(Utils.tacc(level + " " + prefix + " &7" + player.getName() + " &f"));
-                Component actualMessage = Utils.lore(Utils.tacc(e.getMessage())).replaceText("[item]", miniMessage);
-                Bukkit.getServer().sendMessage(prefixes.append(actualMessage));
-                return;
-            }
-            player.sendMessage(Utils.lore("<red>You need an item to display!"));
-        }
-        if (player.hasPermission("siege.text.format")) {
-            e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f"+message.replaceAll("%", "%%")));
-        } else e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f%2$s"));
-    }
+		if (message.contains("[item]")) {
+			e.setCancelled(true);
+			if (player.getInventory().getItemInMainHand().getType() != Material.AIR) {
+				ItemStack item = player.getInventory().getItemInMainHand();
+				String name = item.getItemMeta().getDisplayName();
+				if (name.equals(""))
+					name = player.getInventory().getItemInMainHand().getI18NDisplayName();
+				Component miniMessage = Utils.lore("<yellow>" + item.getAmount() + "x " + name).hoverEvent(item);
+				Component prefixes = Utils.lore(Utils.tacc(level + " " + prefix + " &7" + player.getName() + " &f"));
+				Component actualMessage = Utils.lore(Utils.tacc(e.getMessage())).replaceText("[item]", miniMessage);
+				Bukkit.getServer().sendMessage(prefixes.append(actualMessage));
+				return;
+			}
+			player.sendMessage(Utils.lore("<red>You need an item to display!"));
+		}
+		if (player.hasPermission("siege.text.format")) {
+			e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f" + message.replaceAll("%", "%%")));
+		} else e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f%2$s"));
+	}
 }

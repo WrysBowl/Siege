@@ -54,7 +54,7 @@ jobs:
           path: ~/repo/dungeons/build/libs/SiegeDungeons.jar
       - when:
           condition:
-              equal: [ master, << pipeline.git.branch >> ]
+            equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run: sudo apt-get update
             - run: sudo apt-get install lftp
@@ -65,8 +65,8 @@ jobs:
             #- run: cd plugins
             #- run: put ~/repo/build/libs/SiegeMC.jar
             #- run: exit
-          
-          
+
+
 #workflows:
 #  version: 2
 #  build-and-deploy:

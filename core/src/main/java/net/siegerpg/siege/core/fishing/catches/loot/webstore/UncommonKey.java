@@ -7,13 +7,13 @@ import org.bukkit.entity.Player;
 
 public class UncommonKey extends Fish {
 
-    public UncommonKey(){
-        super(50, 1, 12, 20,
-                new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey(0).getUpdatedItem(false));
-    }
+	public UncommonKey () {
+		super(50, 1, 12, 20,
+				new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey(0).getUpdatedItem(false));
+	}
 
-    @Override
-    public void accomplishment(Player player) {
-        Bukkit.getServer().sendMessage(Utils.lore("<green>"+player.getName()+" has found an uncommon key from fishing!"));
-    }
+	@Override
+	public void accomplishment (Player player) {
+		Bukkit.getServer().sendMessage(Utils.lore("<green>" + player.getName() + " has found an uncommon key from fishing!"));
+	}
 }

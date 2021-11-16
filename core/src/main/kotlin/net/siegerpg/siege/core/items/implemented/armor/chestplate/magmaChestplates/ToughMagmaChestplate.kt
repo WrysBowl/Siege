@@ -8,24 +8,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ToughMagmaChestplate() : CustomChestplate(
-    name = "Tough Magma Chestplate",
-    customModelData = 1,
-    description = listOf("This really warms my heart"),
-    levelRequirement = 13,
-    material = Material.LEATHER_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 15.0, toughness = 55.0),
-    leatherColor = Color.ORANGE
+	name = "Tough Magma Chestplate",
+	customModelData = 1,
+	description = listOf("This really warms my heart"),
+	levelRequirement = 13,
+	material = Material.LEATHER_CHESTPLATE,
+	baseStats = CustomItemUtils.statMap(health = 15.0, toughness = 55.0),
+	leatherColor = Color.ORANGE
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

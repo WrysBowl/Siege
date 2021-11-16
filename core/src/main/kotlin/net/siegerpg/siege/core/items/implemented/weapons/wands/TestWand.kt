@@ -7,28 +7,28 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class TestWand() : CustomWand(
-    name = "Test Wand",
-    customModelData = 1,
-    description = listOf("A wand for testing"),
-    levelRequirement = 0,
-    material = Material.WOODEN_HOE,
-    baseStats = CustomItemUtils.statMap(strength = 30.0),
-    range = 15,
-    red = 100,
-    green = 100,
-    blue = 100,
-    damageRadius = 3.5
+	name = "Test Wand",
+	customModelData = 1,
+	description = listOf("A wand for testing"),
+	levelRequirement = 0,
+	material = Material.WOODEN_HOE,
+	baseStats = CustomItemUtils.statMap(strength = 30.0),
+	range = 15,
+	red = 100,
+	green = 100,
+	blue = 100,
+	damageRadius = 3.5
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

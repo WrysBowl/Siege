@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealthyRecurveBow() : CustomBow(
-    name = "Healthy Recurve Bow",
-    customModelData = 120007,
-    description = listOf("Slight curves at the ends", "give the bow a bit more power"),
-    levelRequirement = 30,
-    material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 30.0, luck = 8.0, health = 20.0),
+	name = "Healthy Recurve Bow",
+	customModelData = 120007,
+	description = listOf("Slight curves at the ends", "give the bow a bit more power"),
+	levelRequirement = 30,
+	material = Material.BOW,
+	baseStats = CustomItemUtils.statMap(strength = 30.0, luck = 8.0, health = 20.0),
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

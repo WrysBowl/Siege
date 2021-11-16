@@ -7,29 +7,29 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class LuckyEarthernWand() : CustomWand(
-    name = "Lucky Earthern Wand",
-    customModelData = 140008,
-    description = listOf("Life forces from earthern materials", "glow around this object"),
-    levelRequirement = 28,
-    material = Material.WOODEN_HOE,
-    baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 15.0),
-    
-    range = 17,
-    red = 0,
-    green = 204,
-    blue = 0,
-    damageRadius = 2.0
+	name = "Lucky Earthern Wand",
+	customModelData = 140008,
+	description = listOf("Life forces from earthern materials", "glow around this object"),
+	levelRequirement = 28,
+	material = Material.WOODEN_HOE,
+	baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 15.0),
+
+	range = 17,
+	red = 0,
+	green = 204,
+	blue = 0,
+	damageRadius = 2.0
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

@@ -6,20 +6,20 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Crown() : Cosmetic(
-    name = "Crown",
-    customModelData = 740004,
-    description = listOf(""),
-    material = Material.KNOWLEDGE_BOOK,
+	name = "Crown",
+	customModelData = 740004,
+	description = listOf(""),
+	material = Material.KNOWLEDGE_BOOK,
 ) {
-    constructor(quality: Int): this() {
-        this.quality = 90
-        this.rarity = Rarity.EPIC
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 90
+		this.rarity = Rarity.EPIC
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

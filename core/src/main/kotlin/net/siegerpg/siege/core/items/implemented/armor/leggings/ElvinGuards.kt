@@ -7,23 +7,28 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ElvinGuards() : CustomLeggings(
-    name = "Elvin Guards",
-    customModelData = 1,
-    description = listOf("Magical protection"),
-    levelRequirement = 45,
-    material = Material.CHAINMAIL_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 60.0, luck = 50.0, strength = -20.0, toughness = -150.0),
+	name = "Elvin Guards",
+	customModelData = 1,
+	description = listOf("Magical protection"),
+	levelRequirement = 45,
+	material = Material.CHAINMAIL_LEGGINGS,
+	baseStats = CustomItemUtils.statMap(
+		health = 60.0,
+		luck = 50.0,
+		strength = -20.0,
+		toughness = -150.0
+	),
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

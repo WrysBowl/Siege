@@ -1,2 +1,4 @@
-package net.siegerpg.siege.core.crates.cosmetics;public class AnonMask {
+package net.siegerpg.siege.core.crates.cosmetics;
+
+public class AnonMask {
 }

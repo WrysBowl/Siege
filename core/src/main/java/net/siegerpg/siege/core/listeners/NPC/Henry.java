@@ -21,49 +21,50 @@ import java.util.List;
 
 public class Henry implements Listener {
 
-    @EventHandler
-    public void onRightClickEntity(PlayerInteractEntityEvent e) {
-        if (e.getRightClicked().getName().contains("Henry") && e.getRightClicked().getName().contains("6")) {
-            Player person = e.getPlayer();
-            buyFish(person);
-        }
-    }
-    private void buyFish(Player player) {
-        ItemStack hand = player.getInventory().getItemInMainHand();
-        if (hand.getType().equals(Material.AIR)) return;
-        NBTItem nbt = new NBTItem(hand);
-        String fishName = nbt.getString("Name");
-        if (fishName == null) {
-            player.sendMessage(Utils.parse("<red>This is not a fish."));
-            return;
-        }
-        Fish fish = FishCore.getFish(fishName);
-        int goldAmount;
-        if (fish == null) {
-            fishName = hand.getItemMeta().getDisplayName();
-            List<String> lore = hand.getItemMeta().getLore();
-            if (lore != null && lore.get(0) != null && ChatColor.stripColor(lore.get(0)).contains("Size ")) {
-                String newLine = ChatColor.stripColor(lore.get(0).replace("Size ", "").replace(".0 cm", ""));
-                goldAmount = Integer.parseInt(newLine)*2;
-            } else {
-                player.sendMessage(Utils.parse("<red>This is not a fish!"));
-                return;
-            }
-        } else {
-            goldAmount = (int)fish.actualSize*2;
-        }
-        if (fishName.contains("Krabs")) goldAmount*=4;
+	@EventHandler
+	public void onRightClickEntity (PlayerInteractEntityEvent e) {
+		if (e.getRightClicked().getName().contains("Henry") && e.getRightClicked().getName().contains("6")) {
+			Player person = e.getPlayer();
+			buyFish(person);
+		}
+	}
 
-        VaultHook.econ.depositPlayer(player, goldAmount);
-        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
-        player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
-        player.sendMessage(Utils.parse("\n<green>You sold a <aqua>"+ ((int)(goldAmount/2)) +" cm "+fishName+" <yellow>for "+goldAmount+" coins!\n"));
-        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-            public void run() {
-                Scoreboard.updateScoreboard(player);
-            }
-        }, 20);
+	private void buyFish (Player player) {
+		ItemStack hand = player.getInventory().getItemInMainHand();
+		if (hand.getType().equals(Material.AIR)) return;
+		NBTItem nbt = new NBTItem(hand);
+		String fishName = nbt.getString("Name");
+		if (fishName == null) {
+			player.sendMessage(Utils.parse("<red>This is not a fish."));
+			return;
+		}
+		Fish fish = FishCore.getFish(fishName);
+		int goldAmount;
+		if (fish == null) {
+			fishName = hand.getItemMeta().getDisplayName();
+			List<String> lore = hand.getItemMeta().getLore();
+			if (lore != null && lore.get(0) != null && ChatColor.stripColor(lore.get(0)).contains("Size ")) {
+				String newLine = ChatColor.stripColor(lore.get(0).replace("Size ", "").replace(".0 cm", ""));
+				goldAmount = Integer.parseInt(newLine) * 2;
+			} else {
+				player.sendMessage(Utils.parse("<red>This is not a fish!"));
+				return;
+			}
+		} else {
+			goldAmount = (int) fish.actualSize * 2;
+		}
+		if (fishName.contains("Krabs")) goldAmount *= 4;
 
-        player.getInventory().removeItem(hand.asOne());
-    }
+		VaultHook.econ.depositPlayer(player, goldAmount);
+		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+		player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
+		player.sendMessage(Utils.parse("\n<green>You sold a <aqua>" + ((int) (goldAmount / 2)) + " cm " + fishName + " <yellow>for " + goldAmount + " coins!\n"));
+		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+			public void run () {
+				Scoreboard.updateScoreboard(player);
+			}
+		}, 20);
+
+		player.getInventory().removeItem(hand.asOne());
+	}
 }

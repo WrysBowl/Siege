@@ -12,59 +12,59 @@ import org.jetbrains.annotations.NotNull;
 
 public class Level implements CommandExecutor {
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (!(sender instanceof Player)) {
-            return false;
-        }
-        if (args.length > 0) {
-            OfflinePlayer argPlayer = Bukkit.getOfflinePlayerIfCached(args[0]);
-            if (argPlayer == null) {
-                sender.sendMessage(Utils.parse("<red>That player could not be found."));
-                return true;
-            }
-            doTheThing(sender, argPlayer);
-            return true;
-        }
-        Player player = (Player) sender;
-        doTheThing(sender, player);
+	@Override
+	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+		if (!(sender instanceof Player)) {
+			return false;
+		}
+		if (args.length > 0) {
+			OfflinePlayer argPlayer = Bukkit.getOfflinePlayerIfCached(args[0]);
+			if (argPlayer == null) {
+				sender.sendMessage(Utils.parse("<red>That player could not be found."));
+				return true;
+			}
+			doTheThing(sender, argPlayer);
+			return true;
+		}
+		Player player = (Player) sender;
+		doTheThing(sender, player);
 
-        return true;
+		return true;
 
-    }
+	}
 
-    public void doTheThing(CommandSender executor, OfflinePlayer player) {
-        Levels.INSTANCE.getExpLevel(player, pair -> {
-            if (pair == null) {
-                executor.sendMessage(Utils.lore("<red>That player could not be found."));
-                return null;
-            }
-            float reqExp = Levels.INSTANCE.calculateRequiredExperience(pair.getFirst());
-            double division = pair.getSecond() / reqExp;
-            String name = player.getName();
-            String levelPercent = Utils.round(Utils.round(division, 3) * 100, 2) + "%";
+	public void doTheThing (CommandSender executor, OfflinePlayer player) {
+		Levels.INSTANCE.getExpLevel(player, pair -> {
+			if (pair == null) {
+				executor.sendMessage(Utils.lore("<red>That player could not be found."));
+				return null;
+			}
+			float reqExp = Levels.INSTANCE.calculateRequiredExperience(pair.getFirst());
+			double division = pair.getSecond() / reqExp;
+			String name = player.getName();
+			String levelPercent = Utils.round(Utils.round(division, 3) * 100, 2) + "%";
 
-            int total = 0;
-            for (int i = 2; i < pair.getFirst(); i++) {
-                total = total + Levels.INSTANCE.calculateRequiredExperience((short) i);
+			int total = 0;
+			for (int i = 2; i < pair.getFirst(); i++) {
+				total = total + Levels.INSTANCE.calculateRequiredExperience((short) i);
 
-            }
-            total = total + pair.getSecond();
-            String totalFormat = String.format("%,d", total);
-            String expLeft = String.format("%,d", (int) (reqExp - pair.getSecond()));
-            executor.sendMessage(Utils.lore("<dark_purple><bold>Level Statistics"));
-            executor.sendMessage("");
-            executor.sendMessage("");
-            executor.sendMessage(Utils.lore("<gold>" + name));
-            executor.sendMessage(Utils.lore("<gray>Level         <reset><dark_purple>" + pair.getFirst()));
-            executor.sendMessage(Utils.lore("<gray>Exp %         <reset><light_purple>" + levelPercent));
-            executor.sendMessage(Utils.lore("<gray>Exp            <reset><light_purple>" + pair.getSecond()));
-            executor.sendMessage(Utils.lore("<gray>Exp to Next  <reset><light_purple>" + expLeft));
-            executor.sendMessage(Utils.lore("<gray>Total Exp     <reset><light_purple>" + totalFormat));
-            executor.sendMessage(Utils.lore(" "));
-            return null;
-        });
-    }
+			}
+			total = total + pair.getSecond();
+			String totalFormat = String.format("%,d", total);
+			String expLeft = String.format("%,d", (int) (reqExp - pair.getSecond()));
+			executor.sendMessage(Utils.lore("<dark_purple><bold>Level Statistics"));
+			executor.sendMessage("");
+			executor.sendMessage("");
+			executor.sendMessage(Utils.lore("<gold>" + name));
+			executor.sendMessage(Utils.lore("<gray>Level         <reset><dark_purple>" + pair.getFirst()));
+			executor.sendMessage(Utils.lore("<gray>Exp %         <reset><light_purple>" + levelPercent));
+			executor.sendMessage(Utils.lore("<gray>Exp            <reset><light_purple>" + pair.getSecond()));
+			executor.sendMessage(Utils.lore("<gray>Exp to Next  <reset><light_purple>" + expLeft));
+			executor.sendMessage(Utils.lore("<gray>Total Exp     <reset><light_purple>" + totalFormat));
+			executor.sendMessage(Utils.lore(" "));
+			return null;
+		});
+	}
 
 }
 

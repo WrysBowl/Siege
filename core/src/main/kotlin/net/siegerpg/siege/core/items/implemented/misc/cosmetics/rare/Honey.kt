@@ -6,21 +6,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Honey() : Cosmetic(
-    name = "Honey",
-    customModelData = 1,
-    description = listOf(""),
-    material = Material.HONEY_BLOCK,
+	name = "Honey",
+	customModelData = 1,
+	description = listOf(""),
+	material = Material.HONEY_BLOCK,
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = 80
-        this.rarity = Rarity.RARE
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 80
+		this.rarity = Rarity.RARE
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

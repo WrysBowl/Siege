@@ -7,24 +7,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealingEarthernHammer() : CustomMeleeWeapon(
-    name = "Healing Earthern Hammer",
-    customModelData = 130010,
-    description = listOf("Let's go clobbing!"),
-    levelRequirement = 39,
-    material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 64.0, regeneration = 9.0),
-    attackSpeed = 0.7
+	name = "Healing Earthern Hammer",
+	customModelData = 130010,
+	description = listOf("Let's go clobbing!"),
+	levelRequirement = 39,
+	material = Material.WOODEN_AXE,
+	baseStats = CustomItemUtils.statMap(strength = 64.0, regeneration = 9.0),
+	attackSpeed = 0.7
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

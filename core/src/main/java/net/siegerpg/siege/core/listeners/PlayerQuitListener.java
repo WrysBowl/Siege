@@ -12,17 +12,17 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerQuitListener implements Listener {
 
-    @EventHandler
-    public void quitEvent(PlayerQuitEvent e) {
+	@EventHandler
+	public void quitEvent (PlayerQuitEvent e) {
 
-        e.quitMessage(Utils.parse("<red><bold>LEAVE <reset><gray>[<red>-<gray>] " + e.getPlayer().getName()));
+		e.quitMessage(Utils.parse("<red><bold>LEAVE <reset><gray>[<red>-<gray>] " + e.getPlayer().getName()));
 
-        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
 
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                Scoreboard.updateScoreboard(p);
-                Tablist.tablistUpdate(p);
-            }
-        }, 20L);
-    }
+			for (Player p : Bukkit.getOnlinePlayers()) {
+				Scoreboard.updateScoreboard(p);
+				Tablist.tablistUpdate(p);
+			}
+		}, 20L);
+	}
 }

@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealingIronChestplate() : CustomChestplate(
-    name = "Healing Iron Chestplate",
-    customModelData = 1,
-    description = listOf("Bullet proof"),
-    levelRequirement = 35,
-    material = Material.IRON_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 50.0, regeneration = 8.0),
+	name = "Healing Iron Chestplate",
+	customModelData = 1,
+	description = listOf("Bullet proof"),
+	levelRequirement = 35,
+	material = Material.IRON_CHESTPLATE,
+	baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 50.0, regeneration = 8.0),
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

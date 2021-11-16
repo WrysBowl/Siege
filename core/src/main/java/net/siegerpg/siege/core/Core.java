@@ -17,13 +17,13 @@ import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.listeners.tasks.HelpfulTips;
-import net.siegerpg.siege.core.parties.PartyCommand;
-import net.siegerpg.siege.core.parties.PartyConfig;
-import net.siegerpg.siege.core.skills.SkillListener;
 import net.siegerpg.siege.core.miscellaneous.DropUtils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import net.siegerpg.siege.core.miscellaneous.cache.MobNames;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
+import net.siegerpg.siege.core.parties.PartyCommand;
+import net.siegerpg.siege.core.parties.PartyConfig;
+import net.siegerpg.siege.core.skills.SkillListener;
 import net.siegerpg.siege.core.webstore.WebstoreCommand;
 import net.siegerpg.siege.core.webstore.WebstoreListener;
 import org.bukkit.Bukkit;
@@ -34,15 +34,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 @SuppressWarnings("unused")
 public final class Core extends JavaPlugin {
 
-	private static Core INSTANCE;
-
-	public PaperCommandManager commandManager;
-
 	public static Color defaultLeatherColor;
-
+	public static Location spawnLocation;
+	private static Core INSTANCE;
+	public PaperCommandManager commandManager;
 	public PartyConfig partyConfig;
 
-	public static Location spawnLocation;
+	/**
+	 * Method to get the plugin from other classes
+	 * You can use Core.plugin() in other classes to get the plugin instance
+	 *
+	 * @return The main plugin
+	 */
+	public static Core plugin () {
+		return INSTANCE;
+	}
 
 	@Override
 	public void onLoad () {
@@ -206,16 +212,6 @@ public final class Core extends JavaPlugin {
 		PacketEvents.get().terminate();
 		// Plugin shutdown logic
 		INSTANCE = null;
-	}
-
-	/**
-	 * Method to get the plugin from other classes
-	 * You can use Core.plugin() in other classes to get the plugin instance
-	 *
-	 * @return The main plugin
-	 */
-	public static Core plugin () {
-		return INSTANCE;
 	}
 
 }

@@ -8,27 +8,27 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
 class GlowingStonePickaxe() : CustomTool(
-    name = "Glowing Stone Pickaxe",
-    customModelData = 410006,
-    description = listOf("Use rock to break rock"),
-    levelRequirement = 18,
-    material = Material.STONE_PICKAXE,
-    baseStats = CustomItemUtils.statMap(),
-    
-    enchantments = hashMapOf(
-        Enchantment.DIG_SPEED to 1
-    )
+	name = "Glowing Stone Pickaxe",
+	customModelData = 410006,
+	description = listOf("Use rock to break rock"),
+	levelRequirement = 18,
+	material = Material.STONE_PICKAXE,
+	baseStats = CustomItemUtils.statMap(),
+
+	enchantments = hashMapOf(
+		Enchantment.DIG_SPEED to 1
+	)
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

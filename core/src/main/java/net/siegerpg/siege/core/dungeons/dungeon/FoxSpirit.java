@@ -12,22 +12,22 @@ import org.bukkit.Sound;
 
 public class FoxSpirit extends Dungeon {
 
-    public FoxSpirit() {
-        super("FoxSpirit", 10,
-                new FoxSpiritKey(0),
-                new Location(null, -427, 59, -7), "Hilly_Woods",
-                100
-        );
-    }
+	public FoxSpirit () {
+		super("FoxSpirit", 10,
+				new FoxSpiritKey(0),
+				new Location(null, -427, 59, -7), "Hilly_Woods",
+				100
+		);
+	}
 
-    @Override
-    public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -427, 59, -7);
-        new Helix().createHelix(loc, Particle.FLASH);
+	@Override
+	public void spawning () {
+		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -427, 59, -7);
+		new Helix().createHelix(loc, Particle.FLASH);
 
-        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-            new Waves().createWaves(loc);
-            loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
-        }, 80);
-    }
+		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+			new Waves().createWaves(loc);
+			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
+		}, 80);
+	}
 }

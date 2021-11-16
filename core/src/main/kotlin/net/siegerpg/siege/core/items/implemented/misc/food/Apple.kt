@@ -6,23 +6,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Apple() : CustomFood(
-    name = "Apple",
-    customModelData = 330003,
-    description = listOf("Food to tame teachers"),
-    levelRequirement = 0,
-    material = Material.APPLE,
-    health = 20.0
+	name = "Apple",
+	customModelData = 330003,
+	description = listOf("Food to tame teachers"),
+	levelRequirement = 0,
+	material = Material.APPLE,
+	health = 20.0
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = 0
-        this.rarity = Rarity.COMMON
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 0
+		this.rarity = Rarity.COMMON
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        this.deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		this.deserialize()
+	}
 
 }

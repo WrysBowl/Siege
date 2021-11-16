@@ -6,22 +6,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class MagmaSpiritKey() : CustomKey(
-    name = "Magma Spirit Key",
-    customModelData = 620003,
-    description = listOf("Used to summon", "the Magma spirit"),
-    material = Material.TRIPWIRE_HOOK,
-    quality = 0
+	name = "Magma Spirit Key",
+	customModelData = 620003,
+	description = listOf("Used to summon", "the Magma spirit"),
+	material = Material.TRIPWIRE_HOOK,
+	quality = 0
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

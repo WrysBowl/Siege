@@ -7,24 +7,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class StrongIronAxe() : CustomMeleeWeapon(
-    name = "Strong Iron Axe",
-    customModelData = 130008,
-    description = listOf("A fast tree cutter"),
-    levelRequirement = 31,
-    material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 44.0),
-    attackSpeed = 1.0
+	name = "Strong Iron Axe",
+	customModelData = 130008,
+	description = listOf("A fast tree cutter"),
+	levelRequirement = 31,
+	material = Material.WOODEN_AXE,
+	baseStats = CustomItemUtils.statMap(strength = 44.0),
+	attackSpeed = 1.0
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

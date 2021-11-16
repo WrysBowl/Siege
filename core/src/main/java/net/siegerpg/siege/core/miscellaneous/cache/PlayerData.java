@@ -9,9 +9,9 @@ import net.siegerpg.siege.core.items.types.misc.CustomTool;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
-import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.skills.Skill;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -22,7 +22,10 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.*;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -31,122 +34,123 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PlayerData implements Listener {
-    public static HashMap<Player, Boolean> hasActionBar = new HashMap<>();
-    public static HashMap<Player, Boolean> broadcastTips = new HashMap<>();
-    public static HashMap<Player, Double> playerHealth = new HashMap<>();
-    public static HashMap<Player, Double> playerCurrentMana = new HashMap<>();
-    public static HashMap<Player, Double> playerMana = new HashMap<>();
-    public static HashMap<Player, Location> playerDeathLocations = new HashMap<>();
+	public static HashMap<Player, Boolean> hasActionBar = new HashMap<>();
+	public static HashMap<Player, Boolean> broadcastTips = new HashMap<>();
+	public static HashMap<Player, Double> playerHealth = new HashMap<>();
+	public static HashMap<Player, Double> playerCurrentMana = new HashMap<>();
+	public static HashMap<Player, Double> playerMana = new HashMap<>();
+	public static HashMap<Player, Location> playerDeathLocations = new HashMap<>();
 
-    public static HashMap<Player, HashMap<Integer, Skill>> playerSkills = new HashMap<>();
-    public static HashMap<Player, ArrayList<Action>> playerTriggers = new HashMap<>();
+	public static HashMap<Player, HashMap<Integer, Skill>> playerSkills = new HashMap<>();
+	public static HashMap<Player, ArrayList<Action>> playerTriggers = new HashMap<>();
 
-    @EventHandler
-    public void onEnable(PluginEnableEvent e) {
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            setStats(player);
-            hasActionBar.put(player, false);
-            PlayerData.broadcastTips.put(player, true);
-            //playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
-        }
-    }
+	public static void setStats (Player player) {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
+			playerHealth.put(
+					player,
+					CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + player.getMaxHealth() + player.getLevel() * 2);
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
-        hasActionBar.put(player, false);
-        setStats(player);
-        //playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
-        if (!PlayerData.broadcastTips.containsKey(player)) {
-            PlayerData.broadcastTips.put(player, true);
-        }
-    }
+			playerMana.put(
+					player,
+					CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
 
-    @EventHandler
-    public void onLeave(PlayerQuitEvent e) {
-        Player player = e.getPlayer();
-        playerHealth.remove(player);
-        playerMana.remove(player);
-        playerCurrentMana.remove(player);
-        playerSkills.remove(player);
-    }
+		}, 2);
+	}
 
-    public static void setStats(Player player) {
-        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
-            playerHealth.put(
-                    player,
-                    CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + player.getMaxHealth() + player.getLevel() * 2);
+	@EventHandler
+	public void onEnable (PluginEnableEvent e) {
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			setStats(player);
+			hasActionBar.put(player, false);
+			PlayerData.broadcastTips.put(player, true);
+			//playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
+		}
+	}
 
-            playerMana.put(
-                    player,
-                    CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
+	@EventHandler
+	public void onJoin (PlayerJoinEvent e) {
+		Player player = e.getPlayer();
+		hasActionBar.put(player, false);
+		setStats(player);
+		//playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
+		if (!PlayerData.broadcastTips.containsKey(player)) {
+			PlayerData.broadcastTips.put(player, true);
+		}
+	}
 
-        }, 2);
-    }
+	@EventHandler
+	public void onLeave (PlayerQuitEvent e) {
+		Player player = e.getPlayer();
+		playerHealth.remove(player);
+		playerMana.remove(player);
+		playerCurrentMana.remove(player);
+		playerSkills.remove(player);
+	}
 
+	@EventHandler(priority = EventPriority.LOWEST)
+	public void onEquip (ArmorEquipEvent e) {
+		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
+		if (item == null) {
+			setStats(e.getPlayer());
+			return;
+		}
+		if (item.getLevelRequirement() == null) return;
+		Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
+		if (item.getLevelRequirement() > (expLevel != null ? expLevel.getFirst() : 0)) {
+			e.getPlayer().sendTitle(Utils.tacc("&c&lSORRY!"), ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
+			e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
+			e.setCancelled(true);
+			return;
+		}
+		setStats(e.getPlayer());
+	}
 
-    @EventHandler(priority =  EventPriority.LOWEST)
-    public void onEquip(ArmorEquipEvent e) {
-        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
-        if (item == null) {
-            setStats(e.getPlayer());
-            return;
-        }
-        if (item.getLevelRequirement() == null) return;
-        Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
-        if (item.getLevelRequirement() > (expLevel != null ? expLevel.getFirst() : 0)) {
-            e.getPlayer().sendTitle(Utils.tacc("&c&lSORRY!"), ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
-            e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_VILLAGER_NO,1.0f, 1.0f);
-            e.setCancelled(true);
-            return;
-        }
-        setStats(e.getPlayer());
-    }
+	@EventHandler
+	public void toolSwitch (PlayerItemHeldEvent e) {
+		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItem(e.getNewSlot()));
+		Player player = e.getPlayer();
+		player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
 
-    @EventHandler
-    public void toolSwitch(PlayerItemHeldEvent e) {
-        CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItem(e.getNewSlot()));
-        Player player = e.getPlayer();
-        player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+		if (item == null) return;
+		if (!(item instanceof CustomEquipment)) return;
 
-        if (item == null) return;
-        if (!(item instanceof CustomEquipment)) return;
+		setStats(e.getPlayer());
+	}
 
-        setStats(e.getPlayer());
-    }
-    @EventHandler
-    public void toolUse(PlayerInteractEvent e) {
-        if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
+	@EventHandler
+	public void toolUse (PlayerInteractEvent e) {
+		if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
 
-            CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
-            Player player = e.getPlayer();
-            player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+			CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
+			Player player = e.getPlayer();
+			player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
 
-            if (item == null) return;
-            if (!(item instanceof CustomEquipment)) return;
+			if (item == null) return;
+			if (!(item instanceof CustomEquipment)) return;
 
-            effectUnderLeveled(item, player);
+			effectUnderLeveled(item, player);
 
-        }
-    }
-    private void effectUnderLeveled(CustomItem item, Player player) {
-        if (item instanceof CustomWeapon || item instanceof CustomTool) {
-            Integer level = item.getLevelRequirement();
-            Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
+		}
+	}
 
-            if (expLevel == null) return;
-            if (expLevel.getFirst() == null) return;
-            if (level == null) return;
-            if (expLevel.getFirst() >= level) return;
+	private void effectUnderLeveled (CustomItem item, Player player) {
+		if (item instanceof CustomWeapon || item instanceof CustomTool) {
+			Integer level = item.getLevelRequirement();
+			Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
 
-            PotionEffect potion = new PotionEffect(PotionEffectType.SLOW_DIGGING, 99999, 2);
-            player.addPotionEffect(potion);
-        }
-    }
+			if (expLevel == null) return;
+			if (expLevel.getFirst() == null) return;
+			if (level == null) return;
+			if (expLevel.getFirst() >= level) return;
 
-    @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent e) {
-        Player player = e.getEntity();
-        playerDeathLocations.put(player, player.getLocation());
-    }
+			PotionEffect potion = new PotionEffect(PotionEffectType.SLOW_DIGGING, 99999, 2);
+			player.addPotionEffect(potion);
+		}
+	}
+
+	@EventHandler
+	public void onPlayerDeath (PlayerDeathEvent e) {
+		Player player = e.getEntity();
+		playerDeathLocations.put(player, player.getLocation());
+	}
 }

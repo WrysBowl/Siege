@@ -12,22 +12,22 @@ import org.bukkit.Sound;
 
 public class BullSpirit extends Dungeon {
 
-    public BullSpirit() {
-        super("BullSpirit", 8,
-                new BullSpiritKey(0),
-                new Location(null, 272, 70, 20), "Hilly_Woods",
-                100
-        );
-    }
+	public BullSpirit () {
+		super("BullSpirit", 8,
+				new BullSpiritKey(0),
+				new Location(null, 272, 70, 20), "Hilly_Woods",
+				100
+		);
+	}
 
-    @Override
-    public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 272, 70, 20);
-        new Helix().createHelix(loc, Particle.CRIT);
+	@Override
+	public void spawning () {
+		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 272, 70, 20);
+		new Helix().createHelix(loc, Particle.CRIT);
 
-        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-            new Waves().createWaves(loc);
-            loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
-        }, 80);
-    }
+		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+			new Waves().createWaves(loc);
+			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
+		}, 80);
+	}
 }

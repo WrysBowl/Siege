@@ -6,21 +6,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Bedridden() : Cosmetic(
-    name = "Bedridden",
-    customModelData = 1,
-    description = listOf(""),
-    material = Material.RED_BED,
+	name = "Bedridden",
+	customModelData = 1,
+	description = listOf(""),
+	material = Material.RED_BED,
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = 80
-        this.rarity = Rarity.RARE
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 80
+		this.rarity = Rarity.RARE
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

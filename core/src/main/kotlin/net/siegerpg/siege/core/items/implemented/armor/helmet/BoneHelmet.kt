@@ -8,24 +8,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class BoneHelmet() : CustomHelmet(
-    name = "Bone Helmet",
-    customModelData = 1,
-    description = listOf("A second skull"),
-    levelRequirement = 23,
-    material = Material.LEATHER_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 60.0),
-    leatherColor = Color.GRAY
+	name = "Bone Helmet",
+	customModelData = 1,
+	description = listOf("A second skull"),
+	levelRequirement = 23,
+	material = Material.LEATHER_HELMET,
+	baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 60.0),
+	leatherColor = Color.GRAY
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

@@ -12,22 +12,22 @@ import org.bukkit.Sound;
 
 public class SlimeSpirit extends Dungeon {
 
-    public SlimeSpirit() {
-        super("SlimeSpirit", 8,
-                new SlimeSpiritKey(0),
-                new Location(null, -169, 70, 24), "Hilly_Woods",
-                100
-        );
-    }
+	public SlimeSpirit () {
+		super("SlimeSpirit", 8,
+				new SlimeSpiritKey(0),
+				new Location(null, -169, 70, 24), "Hilly_Woods",
+				100
+		);
+	}
 
-    @Override
-    public void spawning() {
-        Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -169, 70, 24);
-        new Helix().createHelix(loc, Particle.SLIME);
+	@Override
+	public void spawning () {
+		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -169, 70, 24);
+		new Helix().createHelix(loc, Particle.SLIME);
 
-        Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-            new Waves().createWaves(loc);
-            loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
-        }, 80);
-    }
+		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+			new Waves().createWaves(loc);
+			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
+		}, 80);
+	}
 }

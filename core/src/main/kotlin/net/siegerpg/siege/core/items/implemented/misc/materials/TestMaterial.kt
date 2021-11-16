@@ -6,31 +6,31 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class TestMaterial() : CustomMaterial(
-    name = "Iron Material",
-    customModelData = 1,
-    description = listOf("A material for testing"),
-    levelRequirement = 0,
-    material = Material.IRON_INGOT,
+	name = "Iron Material",
+	customModelData = 1,
+	description = listOf("A material for testing"),
+	levelRequirement = 0,
+	material = Material.IRON_INGOT,
 
-) {
+	) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
-    companion object {
-        fun tier(tier: Int): TestMaterial {
-            val newItem = TestMaterial(0)
-            newItem.tier = tier
-            return newItem
-        }
-    }
+	companion object {
+		fun tier(tier: Int): TestMaterial {
+			val newItem = TestMaterial(0)
+			newItem.tier = tier
+			return newItem
+		}
+	}
 
 }

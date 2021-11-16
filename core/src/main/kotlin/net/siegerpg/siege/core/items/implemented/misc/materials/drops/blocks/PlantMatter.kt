@@ -6,31 +6,31 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class PlantMatter() : CustomMaterial(
-    name = "Plant Matter",
-    customModelData = 320001,
-    description = listOf("Parts of a plant"),
-    levelRequirement = 0,
-    material = Material.FLINT,
-    
-) {
+	name = "Plant Matter",
+	customModelData = 320001,
+	description = listOf("Parts of a plant"),
+	levelRequirement = 0,
+	material = Material.FLINT,
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	) {
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
+
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 
-    companion object {
-        fun tier(tier: Int): PlantMatter {
-            val newItem = PlantMatter(0)
-            newItem.tier = tier
-            return newItem
-        }
-    }
+	companion object {
+		fun tier(tier: Int): PlantMatter {
+			val newItem = PlantMatter(0)
+			newItem.tier = tier
+			return newItem
+		}
+	}
 }

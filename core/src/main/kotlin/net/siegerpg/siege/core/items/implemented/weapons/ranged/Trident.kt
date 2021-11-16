@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Trident() : CustomBow(
-    name = "Trident",
-    customModelData = 0,
-    description = listOf("Poesiden's fork"),
-    levelRequirement = 34,
-    material = Material.TRIDENT,
-    baseStats = CustomItemUtils.statMap(strength = 40.0, luck = 23.0)
+	name = "Trident",
+	customModelData = 0,
+	description = listOf("Poesiden's fork"),
+	levelRequirement = 34,
+	material = Material.TRIDENT,
+	baseStats = CustomItemUtils.statMap(strength = 40.0, luck = 23.0)
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

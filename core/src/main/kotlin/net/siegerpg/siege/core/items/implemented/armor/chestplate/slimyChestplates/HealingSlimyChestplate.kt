@@ -8,24 +8,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealingSlimyChestplate() : CustomChestplate(
-    name = "Healing Slimy Chestplate",
-    customModelData = 1,
-    description = listOf("Jelly belly"),
-    levelRequirement = 4,
-    material = Material.LEATHER_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 20.0, regeneration = 3.0),
-    leatherColor = Color.LIME
+	name = "Healing Slimy Chestplate",
+	customModelData = 1,
+	description = listOf("Jelly belly"),
+	levelRequirement = 4,
+	material = Material.LEATHER_CHESTPLATE,
+	baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 20.0, regeneration = 3.0),
+	leatherColor = Color.LIME
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

@@ -7,25 +7,25 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealthyShank() : CustomMeleeWeapon(
-    name = "Healthy Shank",
-    customModelData = 110005,
-    description = listOf("An essential tool...in prison"),
-    levelRequirement = 18,
-    material = Material.WOODEN_SWORD,
-    baseStats = CustomItemUtils.statMap(strength = 15.0, health = 8.0),
-    
-    attackSpeed = 1.7
+	name = "Healthy Shank",
+	customModelData = 110005,
+	description = listOf("An essential tool...in prison"),
+	levelRequirement = 18,
+	material = Material.WOODEN_SWORD,
+	baseStats = CustomItemUtils.statMap(strength = 15.0, health = 8.0),
+
+	attackSpeed = 1.7
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        this.deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		this.deserialize()
+	}
 
 }

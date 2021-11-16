@@ -6,31 +6,31 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class RabbitFoot() : CustomMaterial(
-    name = "Rabbit Foot",
-    customModelData = 310011,
-    description = listOf("Are you lucky?"),
-    levelRequirement = 0,
-    material = Material.FLINT,
-    
-) {
+	name = "Rabbit Foot",
+	customModelData = 310011,
+	description = listOf("Are you lucky?"),
+	levelRequirement = 0,
+	material = Material.FLINT,
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	) {
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    companion object {
-        fun tier(tier: Int): RabbitFoot {
-            val newItem = RabbitFoot(0)
-            newItem.tier = tier
-            return newItem
-        }
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
+
+	companion object {
+		fun tier(tier: Int): RabbitFoot {
+			val newItem = RabbitFoot(0)
+			newItem.tier = tier
+			return newItem
+		}
+	}
 
 }

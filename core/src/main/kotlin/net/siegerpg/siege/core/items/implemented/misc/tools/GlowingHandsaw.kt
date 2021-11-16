@@ -8,27 +8,27 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
 class GlowingHandsaw() : CustomTool(
-    name = "Glowing Handsaw",
-    customModelData = 430010,
-    description = listOf("Cuts wood faster with higher luck"),
-    levelRequirement = 35,
-    material = Material.STONE_AXE,
-    baseStats = CustomItemUtils.statMap(luck = 30.0),
-    
-    enchantments = hashMapOf(
-        Enchantment.DIG_SPEED to 1
-    )
+	name = "Glowing Handsaw",
+	customModelData = 430010,
+	description = listOf("Cuts wood faster with higher luck"),
+	levelRequirement = 35,
+	material = Material.STONE_AXE,
+	baseStats = CustomItemUtils.statMap(luck = 30.0),
+
+	enchantments = hashMapOf(
+		Enchantment.DIG_SPEED to 1
+	)
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

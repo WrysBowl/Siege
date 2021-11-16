@@ -6,31 +6,31 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Crystal() : CustomMaterial(
-    name = "Crystal",
-    customModelData = 320013,
-    description = listOf("A pure crystal","from Twilight"),
-    levelRequirement = 0,
-    material = Material.FLINT,
-    
-) {
+	name = "Crystal",
+	customModelData = 320013,
+	description = listOf("A pure crystal", "from Twilight"),
+	levelRequirement = 0,
+	material = Material.FLINT,
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	) {
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    companion object {
-        fun tier(tier: Int): Crystal {
-            val newItem = Crystal(0)
-            newItem.tier = tier
-            return newItem
-        }
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
+
+	companion object {
+		fun tier(tier: Int): Crystal {
+			val newItem = Crystal(0)
+			newItem.tier = tier
+			return newItem
+		}
+	}
 
 }

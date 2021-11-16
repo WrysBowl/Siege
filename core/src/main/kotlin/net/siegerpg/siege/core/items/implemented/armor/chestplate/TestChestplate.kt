@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class TestChestplate() : CustomChestplate(
-    name = "Test Chestplate",
-    customModelData = 1,
-    description = listOf("A chestplate for testing"),
-    levelRequirement = 0,
-    material = Material.DIAMOND_CHESTPLATE,
-    baseStats = CustomItemUtils.statMap(strength = 10.0)
+	name = "Test Chestplate",
+	customModelData = 1,
+	description = listOf("A chestplate for testing"),
+	levelRequirement = 0,
+	material = Material.DIAMOND_CHESTPLATE,
+	baseStats = CustomItemUtils.statMap(strength = 10.0)
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

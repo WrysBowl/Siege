@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ScrapyardBow() : CustomBow(
-    name = "Scrapyard Bow",
-    customModelData = 120001,
-    description = listOf("Instructions unclear . . .", "made an arrow flinger"),
-    levelRequirement = 2,
-    material = Material.BOW,
-    baseStats = CustomItemUtils.statMap(strength = 10.0)
+	name = "Scrapyard Bow",
+	customModelData = 120001,
+	description = listOf("Instructions unclear . . .", "made an arrow flinger"),
+	levelRequirement = 2,
+	material = Material.BOW,
+	baseStats = CustomItemUtils.statMap(strength = 10.0)
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

@@ -8,24 +8,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealthyStrawHat() : CustomHelmet(
-    name = "Healthy Straw Hat",
-    customModelData = 1,
-    description = listOf("Farmer"),
-    levelRequirement = 3,
-    material = Material.LEATHER_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 10.0),
-    leatherColor = Color.YELLOW
+	name = "Healthy Straw Hat",
+	customModelData = 1,
+	description = listOf("Farmer"),
+	levelRequirement = 3,
+	material = Material.LEATHER_HELMET,
+	baseStats = CustomItemUtils.statMap(health = 10.0),
+	leatherColor = Color.YELLOW
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

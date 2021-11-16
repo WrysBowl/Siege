@@ -8,13 +8,13 @@ import org.bukkit.entity.Player;
 
 public class EXP50 extends Fish {
 
-    public EXP50(){
-        super(60, 0.9, 12, 15,
-                new EXPBooster_50().getBoosterItem());
-    }
+	public EXP50 () {
+		super(60, 0.9, 12, 15,
+				new EXPBooster_50().getBoosterItem());
+	}
 
-    @Override
-    public void accomplishment(Player player) {
-        Bukkit.getServer().sendMessage(Utils.lore("<green>"+player.getName()+" has found a <purple>50% EXP Booster<green> from fishing!"));
-    }
+	@Override
+	public void accomplishment (Player player) {
+		Bukkit.getServer().sendMessage(Utils.lore("<green>" + player.getName() + " has found a <purple>50% EXP Booster<green> from fishing!"));
+	}
 }

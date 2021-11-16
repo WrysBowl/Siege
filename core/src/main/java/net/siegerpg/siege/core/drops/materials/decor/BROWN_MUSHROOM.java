@@ -8,14 +8,14 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Sti
 import org.bukkit.Material;
 
 public class BROWN_MUSHROOM extends BlockDropTable {
-    public BROWN_MUSHROOM() {
-        super(100, Material.BROWN_MUSHROOM, 0, 0, 0, 0, new Reward[]{
-                new Reward(Seed.Companion.tier(1).getUpdatedItem(false), 25.0),
-                new Reward(PlantMatter.Companion.tier(1).getUpdatedItem(false), 25.0),
-                new Reward(Stick.Companion.tier(1).getUpdatedItem(false), 25.0),
-                new Reward(Seed.Companion.tier(2).getUpdatedItem(false), 2.5),
-                new Reward(PlantMatter.Companion.tier(2).getUpdatedItem(false), 2.5),
-                new Reward(Stick.Companion.tier(2).getUpdatedItem(false), 2.5)
-        });
-    }
+	public BROWN_MUSHROOM () {
+		super(100, Material.BROWN_MUSHROOM, 0, 0, 0, 0, new Reward[] {
+				new Reward(Seed.Companion.tier(1).getUpdatedItem(false), 25.0),
+				new Reward(PlantMatter.Companion.tier(1).getUpdatedItem(false), 25.0),
+				new Reward(Stick.Companion.tier(1).getUpdatedItem(false), 25.0),
+				new Reward(Seed.Companion.tier(2).getUpdatedItem(false), 2.5),
+				new Reward(PlantMatter.Companion.tier(2).getUpdatedItem(false), 2.5),
+				new Reward(Stick.Companion.tier(2).getUpdatedItem(false), 2.5)
+		});
+	}
 }

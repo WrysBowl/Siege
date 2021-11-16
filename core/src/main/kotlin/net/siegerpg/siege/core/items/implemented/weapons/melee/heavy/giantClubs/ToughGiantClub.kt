@@ -7,25 +7,25 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ToughGiantClub() : CustomMeleeWeapon(
-    name = "Tough Giant Club",
-    customModelData = 130002,
-    description = listOf("Kneecap smasher"),
-    levelRequirement = 7,
-    material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 15.0, toughness = 30.0),
-    
-    attackSpeed = 0.7
+	name = "Tough Giant Club",
+	customModelData = 130002,
+	description = listOf("Kneecap smasher"),
+	levelRequirement = 7,
+	material = Material.WOODEN_AXE,
+	baseStats = CustomItemUtils.statMap(strength = 15.0, toughness = 30.0),
+
+	attackSpeed = 0.7
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

@@ -13,92 +13,93 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
 abstract class CustomMaterial(
-    override val name: String,
-    override val customModelData: Int? = null,
-    override val levelRequirement: Int? = null,
-    override val description: List<String>,
-    override val material: Material,
-    final override var quality: Int = -1,
-    override var item: ItemStack = ItemStack(material),
-    override val type: ItemTypes = ItemTypes.MATERIAL,
+	override val name: String,
+	override val customModelData: Int? = null,
+	override val levelRequirement: Int? = null,
+	override val description: List<String>,
+	override val material: Material,
+	final override var quality: Int = -1,
+	override var item: ItemStack = ItemStack(material),
+	override val type: ItemTypes = ItemTypes.MATERIAL,
 ) : CustomItem {
 
-    override var rarity: Rarity = Rarity.COMMON
+	override var rarity: Rarity = Rarity.COMMON
 
-    var tier: Int = 1
-        set(value) {
-            field = value
-            this.serialize()
-        }
+	var tier: Int = 1
+		set(value) {
+			field = value
+			this.serialize()
+		}
 
-    init {
-        this.rarity = Rarity.getFromInt(this.quality)
-    }
+	init {
+		this.rarity = Rarity.getFromInt(this.quality)
+	}
 
-    override fun serialize() {
-        super.serialize()
-        item = item.setNbtTags(
-            "materialTier" to tier
-        )
-    }
-    override fun deserialize() {
-        super.deserialize()
-        item.getNbtTag<Int>("materialTier")?.let {
-            tier = it
-        }
-    }
+	override fun serialize() {
+		super.serialize()
+		item = item.setNbtTags(
+			"materialTier" to tier
+		)
+	}
 
-    override fun updateMeta(hideRarity: Boolean): ItemStack {
+	override fun deserialize() {
+		super.deserialize()
+		item.getNbtTag<Int>("materialTier")?.let {
+			tier = it
+		}
+	}
 
-        val meta = item.itemMeta
+	override fun updateMeta(hideRarity: Boolean): ItemStack {
 
-        meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
+		val meta = item.itemMeta
 
-        if (meta.hasLore()) meta.lore(mutableListOf())
+		meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
 
-        meta.lore(" ")
-        description.forEach {
-            meta.lore("<r><dark_gray>$it")
-        }
-        meta.lore(" ")
-        meta.lore("<gray>Upgrade to the next \u272A")
-        meta.lore("<gray>with <yellow>Phillip <gray>or <yellow>Sylvester")
-        meta.isUnbreakable = true
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
-        item.itemMeta = meta
-        return item
-    }
+		if (meta.hasLore()) meta.lore(mutableListOf())
 
-    fun asQuantity(amount: Int) : CustomMaterial {
-        this.item.amount = amount
-        return this
-    }
+		meta.lore(" ")
+		description.forEach {
+			meta.lore("<r><dark_gray>$it")
+		}
+		meta.lore(" ")
+		meta.lore("<gray>Upgrade to the next \u272A")
+		meta.lore("<gray>with <yellow>Phillip <gray>or <yellow>Sylvester")
+		meta.isUnbreakable = true
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
+		item.itemMeta = meta
+		return item
+	}
 
-    override fun equals(other: Any?): Boolean {
-        if (other == null) return false
-        Bukkit.getLogger().info("Other is not null")
-        if (this::class.qualifiedName != other::class.qualifiedName) return false
-        Bukkit.getLogger().info("Qualified names match")
-        val castedOther = other as CustomMaterial
+	fun asQuantity(amount: Int): CustomMaterial {
+		this.item.amount = amount
+		return this
+	}
 
-        if (this.tier != castedOther.tier) return false
-        Bukkit.getLogger().info("Tiers match")
-        return true
-    }
+	override fun equals(other: Any?): Boolean {
+		if (other == null) return false
+		Bukkit.getLogger().info("Other is not null")
+		if (this::class.qualifiedName != other::class.qualifiedName) return false
+		Bukkit.getLogger().info("Qualified names match")
+		val castedOther = other as CustomMaterial
 
-    override fun hashCode(): Int {
-        var result = name.hashCode()
-        result = 31 * result + (customModelData ?: 0)
-        result = 31 * result + (levelRequirement ?: 0)
-        result = 31 * result + description.hashCode()
-        result = 31 * result + material.hashCode()
-        result = 31 * result + quality
-        result = 31 * result + item.hashCode()
-        result = 31 * result + type.hashCode()
-        result = 31 * result + rarity.hashCode()
-        result = 31 * result + tier
-        return result
-    }
+		if (this.tier != castedOther.tier) return false
+		Bukkit.getLogger().info("Tiers match")
+		return true
+	}
+
+	override fun hashCode(): Int {
+		var result = name.hashCode()
+		result = 31 * result + (customModelData ?: 0)
+		result = 31 * result + (levelRequirement ?: 0)
+		result = 31 * result + description.hashCode()
+		result = 31 * result + material.hashCode()
+		result = 31 * result + quality
+		result = 31 * result + item.hashCode()
+		result = 31 * result + type.hashCode()
+		result = 31 * result + rarity.hashCode()
+		result = 31 * result + tier
+		return result
+	}
 
 
 }

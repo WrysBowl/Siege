@@ -7,24 +7,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealingStoneAxe() : CustomMeleeWeapon(
-    name = "Healing Stone Axe",
-    customModelData = 130004,
-    description = listOf("Commonly used for chopping trees"),
-    levelRequirement = 15,
-    material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 27.0, regeneration = 5.0),
-    attackSpeed = 0.8
+	name = "Healing Stone Axe",
+	customModelData = 130004,
+	description = listOf("Commonly used for chopping trees"),
+	levelRequirement = 15,
+	material = Material.WOODEN_AXE,
+	baseStats = CustomItemUtils.statMap(strength = 27.0, regeneration = 5.0),
+	attackSpeed = 0.8
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

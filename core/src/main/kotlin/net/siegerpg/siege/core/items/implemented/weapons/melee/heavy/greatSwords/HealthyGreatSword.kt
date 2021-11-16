@@ -7,24 +7,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealthyGreatSword() : CustomMeleeWeapon(
-    name = "Healthy Great Sword",
-    customModelData = 130006,
-    description = listOf("A typical medieval weapon"),
-    levelRequirement = 23,
-    material = Material.WOODEN_AXE,
-    baseStats = CustomItemUtils.statMap(strength = 30.0, health = 10.0),
-    attackSpeed = 0.9
+	name = "Healthy Great Sword",
+	customModelData = 130006,
+	description = listOf("A typical medieval weapon"),
+	levelRequirement = 23,
+	material = Material.WOODEN_AXE,
+	baseStats = CustomItemUtils.statMap(strength = 30.0, health = 10.0),
+	attackSpeed = 0.9
 ) {
 
-    constructor(quality: Int) : this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack) : this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

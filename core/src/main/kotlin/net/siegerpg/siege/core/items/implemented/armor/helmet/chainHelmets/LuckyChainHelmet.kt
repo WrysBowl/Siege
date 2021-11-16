@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class LuckyChainHelmet() : CustomHelmet(
-    name = "Lucky Chain Helmet",
-    customModelData = 1,
-    description = listOf("Top heavy"),
-    levelRequirement = 29,
-    material = Material.CHAINMAIL_HELMET,
-    baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 20.0, luck = 6.0),
+	name = "Lucky Chain Helmet",
+	customModelData = 1,
+	description = listOf("Top heavy"),
+	levelRequirement = 29,
+	material = Material.CHAINMAIL_HELMET,
+	baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 20.0, luck = 6.0),
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

@@ -6,31 +6,31 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CorruptCrystal() : CustomMaterial(
-    name = "Corrupt Crystal",
-    customModelData = 310013,
-    description = listOf("A crystal overwhelmed","by corruption"),
-    levelRequirement = 0,
-    material = Material.FLINT,
-    
-) {
+	name = "Corrupt Crystal",
+	customModelData = 310013,
+	description = listOf("A crystal overwhelmed", "by corruption"),
+	levelRequirement = 0,
+	material = Material.FLINT,
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	) {
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    companion object {
-        fun tier(tier: Int): CorruptCrystal {
-            val newItem = CorruptCrystal(0)
-            newItem.tier = tier
-            return newItem
-        }
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
+
+	companion object {
+		fun tier(tier: Int): CorruptCrystal {
+			val newItem = CorruptCrystal(0)
+			newItem.tier = tier
+			return newItem
+		}
+	}
 
 }

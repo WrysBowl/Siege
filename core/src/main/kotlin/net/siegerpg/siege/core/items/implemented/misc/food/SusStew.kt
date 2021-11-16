@@ -9,28 +9,28 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
 class SusStew() : CustomFood(
-    name = "Suspicious Stew",
-    customModelData = 330008,
-    description = listOf("Looks just like my grandma's goulash!"),
-    levelRequirement = 0,
-    material = Material.SUSPICIOUS_STEW,
-    health = 125.0,
+	name = "Suspicious Stew",
+	customModelData = 330008,
+	description = listOf("Looks just like my grandma's goulash!"),
+	levelRequirement = 0,
+	material = Material.SUSPICIOUS_STEW,
+	health = 125.0,
 ) {
 
-    override fun speciality(player: Player) {
-        val realPotion = PotionEffect(PotionEffectType.CONFUSION, 200, 9)
-        player.addPotionEffect(realPotion)
-    }
+	override fun speciality(player: Player) {
+		val realPotion = PotionEffect(PotionEffectType.CONFUSION, 200, 9)
+		player.addPotionEffect(realPotion)
+	}
 
-    constructor(quality: Int): this() {
-        this.quality = 80
-        this.rarity = Rarity.RARE
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = 80
+		this.rarity = Rarity.RARE
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        this.deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		this.deserialize()
+	}
 
 }

@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class LeatherLeggings() : CustomLeggings(
-    name = "Hardened Leather Leggings",
-    customModelData = 1,
-    description = listOf("Leather but erect"),
-    levelRequirement = 18,
-    material = Material.LEATHER_LEGGINGS,
-    baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 30.0, regeneration = 7.0),
+	name = "Hardened Leather Leggings",
+	customModelData = 1,
+	description = listOf("Leather but erect"),
+	levelRequirement = 18,
+	material = Material.LEATHER_LEGGINGS,
+	baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 30.0, regeneration = 7.0),
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

@@ -15,7 +15,7 @@ commands:
     aliases: [ p ]
   bossleaderboard:
     description: See the boss leaderboard of a boss or of a boss and an user or modify leaderboard holograms
-    aliases: [ blb, bosslb]
+    aliases: [ blb, bosslb ]
   hub:
     description: Teleports the player to SiegeHub
   discord:

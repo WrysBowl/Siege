@@ -7,26 +7,26 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Handsaw() : CustomTool(
-    name = "Handsaw",
-    customModelData = 430009,
-    description = listOf("Gives extra rewards, same speed as stone version"),
-    levelRequirement = 32,
-    material = Material.STONE_AXE,
-    baseStats = CustomItemUtils.statMap(luck = 15.0),
-    
-    enchantments = hashMapOf(
-    )
+	name = "Handsaw",
+	customModelData = 430009,
+	description = listOf("Gives extra rewards, same speed as stone version"),
+	levelRequirement = 32,
+	material = Material.STONE_AXE,
+	baseStats = CustomItemUtils.statMap(luck = 15.0),
+
+	enchantments = hashMapOf(
+	)
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

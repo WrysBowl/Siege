@@ -7,28 +7,28 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class FairySoulWand() : CustomWand(
-    name = "Fairy Soul Wand",
-    customModelData = 140013,
-    description = listOf("Use the power","of fairy souls"),
-    levelRequirement = 52,
-    material = Material.WOODEN_HOE,
-    baseStats = CustomItemUtils.statMap(strength = 50.0, toughness = -300.0, luck = 60.0),
-    range = 22,
-    red = 190,
-    green = 242,
-    blue = 85,
-    damageRadius = 2.0
+	name = "Fairy Soul Wand",
+	customModelData = 140013,
+	description = listOf("Use the power", "of fairy souls"),
+	levelRequirement = 52,
+	material = Material.WOODEN_HOE,
+	baseStats = CustomItemUtils.statMap(strength = 50.0, toughness = -300.0, luck = 60.0),
+	range = 22,
+	red = 190,
+	green = 242,
+	blue = 85,
+	damageRadius = 2.0
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
 }

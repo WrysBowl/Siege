@@ -14,39 +14,39 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
 class PebbleWand() : CustomWand(
-    name = "Pebble Wand",
-    customModelData = 140005,
-    description = listOf("Nature made rocks to be weaponized"),
-    levelRequirement = 5,
-    material = Material.WOODEN_HOE,
-    baseStats = CustomItemUtils.statMap(strength = 6.0, luck = 3.0),
-    range = 15,
-    red = 140,
-    green = 140,
-    blue = 140,
-    damageRadius = 2.0
+	name = "Pebble Wand",
+	customModelData = 140005,
+	description = listOf("Nature made rocks to be weaponized"),
+	levelRequirement = 5,
+	material = Material.WOODEN_HOE,
+	baseStats = CustomItemUtils.statMap(strength = 6.0, luck = 3.0),
+	range = 15,
+	red = 140,
+	green = 140,
+	blue = 140,
+	damageRadius = 2.0
 ) {
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
 
-    override fun onHit(e: EntityDamageByEntityEvent) {
-        val player = (e.entity as Player).player ?: return
-        val item = player.inventory.itemInMainHand
-        val cusItem = CustomItemUtils.getCustomItem(item) ?: return
-        if (cusItem.levelRequirement == null) return
-        if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first ?: 0)) return
-        val victim: Entity = e.entity
-        if (victim !is LivingEntity) return
-        victim.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 10, 0))
-    }
+	override fun onHit(e: EntityDamageByEntityEvent) {
+		val player = (e.entity as Player).player ?: return
+		val item = player.inventory.itemInMainHand
+		val cusItem = CustomItemUtils.getCustomItem(item) ?: return
+		if (cusItem.levelRequirement == null) return
+		if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first ?: 0)) return
+		val victim: Entity = e.entity
+		if (victim !is LivingEntity) return
+		victim.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 10, 0))
+	}
 
 }

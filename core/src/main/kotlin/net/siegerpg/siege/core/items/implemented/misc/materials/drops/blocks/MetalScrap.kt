@@ -6,31 +6,31 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class MetalScrap() : CustomMaterial(
-    name = "Metal Scrap",
-    customModelData = 320008,
-    description = listOf("Scrapped metal found underground"),
-    levelRequirement = 0,
-    material = Material.FLINT,
-    
-) {
+	name = "Metal Scrap",
+	customModelData = 320008,
+	description = listOf("Scrapped metal found underground"),
+	levelRequirement = 0,
+	material = Material.FLINT,
 
-    constructor(quality: Int): this() {
-        this.quality = quality
-        this.rarity = Rarity.getFromInt(quality)
-        this.serialize()
-    }
+	) {
 
-    constructor(item: ItemStack): this() {
-        this.item = item
-        deserialize()
-    }
+	constructor(quality: Int) : this() {
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
+		this.serialize()
+	}
 
-    companion object {
-        fun tier(tier: Int): MetalScrap {
-            val newItem = MetalScrap(0)
-            newItem.tier = tier
-            return newItem
-        }
-    }
+	constructor(item: ItemStack) : this() {
+		this.item = item
+		deserialize()
+	}
+
+	companion object {
+		fun tier(tier: Int): MetalScrap {
+			val newItem = MetalScrap(0)
+			newItem.tier = tier
+			return newItem
+		}
+	}
 
 }
