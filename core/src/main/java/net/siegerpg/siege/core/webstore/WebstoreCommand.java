@@ -1,18 +1,13 @@
 package net.siegerpg.siege.core.webstore;
 
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
-import net.siegerpg.siege.core.utils.WebstoreDB;
-import net.siegerpg.siege.core.webstore.categories.WebstorePackage;
-import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.WebstoreDB;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;

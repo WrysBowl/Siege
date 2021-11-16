@@ -9,7 +9,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class RockSpirit extends MobDropTable {
     public RockSpirit() {

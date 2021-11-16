@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.utils
+package net.siegerpg.siege.core.miscellaneous
 
 import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.InventoryClickEvent

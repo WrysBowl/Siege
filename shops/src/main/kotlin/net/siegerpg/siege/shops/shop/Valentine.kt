@@ -8,7 +8,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.ranged.Bowba
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.IronBow
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.bowbas.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.ironBows.*
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 

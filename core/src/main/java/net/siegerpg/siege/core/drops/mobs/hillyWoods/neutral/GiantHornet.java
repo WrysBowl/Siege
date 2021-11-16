@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BeePants;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class GiantHornet extends MobDropTable {
     public GiantHornet() {

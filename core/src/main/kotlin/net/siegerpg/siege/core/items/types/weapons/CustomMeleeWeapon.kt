@@ -6,8 +6,8 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
-import net.siegerpg.siege.core.utils.lore
-import net.siegerpg.siege.core.utils.name
+import net.siegerpg.siege.core.miscellaneous.lore
+import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Material
 import org.bukkit.attribute.Attribute
 import org.bukkit.attribute.AttributeModifier

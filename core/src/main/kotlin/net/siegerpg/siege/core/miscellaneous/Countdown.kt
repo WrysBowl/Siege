@@ -1,7 +1,6 @@
-package net.siegerpg.siege.core.utils
+package net.siegerpg.siege.core.miscellaneous
 
 import net.siegerpg.siege.core.Core
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 

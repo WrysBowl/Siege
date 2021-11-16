@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.StickyStick;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Blob extends MobDropTable {
     public Blob() {

@@ -1,14 +1,7 @@
 package net.siegerpg.siege.core.drops;
 
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot;
-import net.siegerpg.siege.core.utils.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;

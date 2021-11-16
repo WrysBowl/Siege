@@ -2,10 +2,10 @@ package net.siegerpg.siege.core.listeners.NPC;
 
 import kotlin.Triple;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

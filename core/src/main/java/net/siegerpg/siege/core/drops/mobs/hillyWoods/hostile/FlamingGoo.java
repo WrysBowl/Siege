@@ -8,7 +8,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.MagmaHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.MagmaLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawStrengthGem;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class FlamingGoo extends MobDropTable {
     public FlamingGoo() {

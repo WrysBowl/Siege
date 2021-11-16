@@ -4,10 +4,8 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.RawLuckGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class GoldenGoblin extends MobDropTable {

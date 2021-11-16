@@ -4,8 +4,8 @@ import io.papermc.paper.event.player.AsyncChatEvent
 import net.kyori.adventure.text.TextComponent
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
-import net.siegerpg.siege.core.utils.HexColorCode
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.HexColorCode
+import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.entity.Player

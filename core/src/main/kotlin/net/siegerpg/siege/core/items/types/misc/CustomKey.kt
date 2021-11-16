@@ -3,11 +3,8 @@ package net.siegerpg.siege.core.items.types.misc
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.statgems.StatGem
-import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
-import net.siegerpg.siege.core.utils.lore
-import net.siegerpg.siege.core.utils.name
+import net.siegerpg.siege.core.miscellaneous.lore
+import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack

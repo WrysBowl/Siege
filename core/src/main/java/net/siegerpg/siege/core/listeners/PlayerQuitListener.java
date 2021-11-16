@@ -1,9 +1,9 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Tablist;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Tablist;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

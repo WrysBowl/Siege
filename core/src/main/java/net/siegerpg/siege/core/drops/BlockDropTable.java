@@ -1,14 +1,11 @@
 package net.siegerpg.siege.core.drops;
 
-import net.siegerpg.siege.core.utils.Utils;
-import org.bukkit.Bukkit;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class BlockDropTable implements Listener {
     int blockRegen;

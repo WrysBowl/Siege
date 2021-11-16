@@ -1,7 +1,6 @@
 package net.siegerpg.siege.core.webstore.categories.ranks;
 
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;

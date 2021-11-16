@@ -2,10 +2,9 @@ package net.siegerpg.siege.core.crates;
 
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.items.types.misc.Cosmetic;
 import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.particleEffects.Helix;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.particleEffects.Helix;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -16,9 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 public class Animation implements Runnable{

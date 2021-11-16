@@ -5,17 +5,9 @@ import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.Tridents.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Sea_Warrior extends MobDropTable {
     public Sea_Warrior() {

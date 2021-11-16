@@ -3,37 +3,23 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.boots.BoneBoots;
-import net.siegerpg.siege.core.items.implemented.armor.boots.BoneBoots;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
-import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.DavyJonesKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PolishedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PolishedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.PolishedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PolishedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.warHammers.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.Tridents.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Davy_Jones extends MobDropTable {
     public Davy_Jones() {

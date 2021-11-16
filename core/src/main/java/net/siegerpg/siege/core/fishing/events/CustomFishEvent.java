@@ -5,10 +5,9 @@ import net.siegerpg.siege.core.fishing.FishingTask;
 import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.catches.Fish;
 import net.siegerpg.siege.core.fishing.catches.FishCore;
-import net.siegerpg.siege.core.utils.DropUtils;
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Levels;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.*;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.FishHook;
@@ -21,8 +20,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 public class CustomFishEvent {
 

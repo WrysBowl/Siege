@@ -2,14 +2,12 @@ package net.siegerpg.siege.core.webstore;
 
 import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.WebstoreDB;
-import net.siegerpg.siege.core.utils.cache.GlobalMultipliers;
-import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.WebstoreDB;
+import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,8 +17,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.UUID;
 
 public class WebstoreListener implements Listener {

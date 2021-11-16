@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
-import net.siegerpg.siege.core.utils.*
+import net.siegerpg.siege.core.miscellaneous.*
 import net.siegerpg.siege.shops.*
 
 class Brown : Shop() {

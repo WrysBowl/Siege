@@ -1,18 +1,17 @@
-package net.siegerpg.siege.core.utils.cache;
+package net.siegerpg.siege.core.miscellaneous.cache;
 
 import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
-import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
 import net.siegerpg.siege.core.items.types.misc.CustomTool;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
 import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Levels;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -27,7 +26,6 @@ import org.bukkit.event.player.*;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;

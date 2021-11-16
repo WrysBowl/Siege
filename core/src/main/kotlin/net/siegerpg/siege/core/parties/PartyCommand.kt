@@ -6,7 +6,7 @@ import co.aikar.commands.annotation.*
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.kyori.adventure.text.minimessage.Template
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.entity.Player
 
 @CommandAlias("party|p")

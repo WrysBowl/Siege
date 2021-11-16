@@ -6,15 +6,12 @@ import net.siegerpg.siege.core.items.implemented.armor.boots.BoneBoots;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
-import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.NecromancerKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Ogre extends MobDropTable {
     public Ogre() {

@@ -9,7 +9,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.BeginnerLivingTwi
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.BeginnerClub;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.BeginnerTwig;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.BeginnerScrapyardBow;
-import net.siegerpg.siege.core.utils.*;
+import net.siegerpg.siege.core.miscellaneous.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -59,7 +59,7 @@ public class PlayerJoinListener implements Listener {
 
         Player player = event.getPlayer();
 
-        String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
+        String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(player);
         String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
         player.teleport(Core.plugin().getServer().getWorld("Hub").getSpawnLocation());
 

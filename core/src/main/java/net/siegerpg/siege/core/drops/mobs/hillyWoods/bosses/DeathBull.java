@@ -8,16 +8,12 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.food.Beef;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.BullSpiritKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.CrackedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.DoubleBladedAxe;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class DeathBull extends MobDropTable {
     public DeathBull() {

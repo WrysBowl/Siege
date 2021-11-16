@@ -22,7 +22,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleT
 import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernWand;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.RecurveBow;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Necromancer extends MobDropTable {
     public Necromancer() {

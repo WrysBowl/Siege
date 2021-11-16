@@ -7,7 +7,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.RawToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class RockRat extends MobDropTable {
     public RockRat() {

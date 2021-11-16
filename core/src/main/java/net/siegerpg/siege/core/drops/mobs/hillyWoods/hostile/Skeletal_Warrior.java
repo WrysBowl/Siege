@@ -16,7 +16,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.WoodenSword
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.splinteredBones.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class Skeletal_Warrior extends MobDropTable {

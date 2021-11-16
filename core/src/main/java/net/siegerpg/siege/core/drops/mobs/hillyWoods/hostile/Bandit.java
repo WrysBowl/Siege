@@ -10,7 +10,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Dagger;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Bandit extends MobDropTable {
     public Bandit() {

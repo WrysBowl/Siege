@@ -4,7 +4,7 @@ import io.lumine.xikage.mythicmobs.MythicMobs
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
-import net.siegerpg.siege.core.utils.Levels
+import net.siegerpg.siege.core.miscellaneous.Levels
 import org.bukkit.Material
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player

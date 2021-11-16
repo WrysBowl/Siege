@@ -10,11 +10,8 @@ import net.siegerpg.siege.core.items.implemented.misc.food.Beef;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.CrackedHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.CrackedToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedToughGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.DoubleBladedAxe;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Bully extends MobDropTable {
     public Bully() {

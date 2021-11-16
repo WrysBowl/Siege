@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.fishing.catches;
 
 import de.tr7zw.nbtapi.NBTItem;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

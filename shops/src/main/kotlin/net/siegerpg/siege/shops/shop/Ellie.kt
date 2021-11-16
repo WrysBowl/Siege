@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shovel
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shovels.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.ReinforcedBow
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.*
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 

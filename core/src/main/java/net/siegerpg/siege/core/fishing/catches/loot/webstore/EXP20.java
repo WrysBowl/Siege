@@ -1,9 +1,8 @@
 package net.siegerpg.siege.core.fishing.catches.loot.webstore;
 
 import net.siegerpg.siege.core.fishing.catches.Fish;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.webstore.categories.boosters.EXPBooster_20;
-import net.siegerpg.siege.core.webstore.categories.boosters.GOLDBooster_20;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

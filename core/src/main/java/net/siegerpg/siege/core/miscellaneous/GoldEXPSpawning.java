@@ -1,10 +1,7 @@
-package net.siegerpg.siege.core.utils;
+package net.siegerpg.siege.core.miscellaneous;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;

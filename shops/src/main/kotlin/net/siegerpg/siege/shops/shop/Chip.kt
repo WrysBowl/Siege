@@ -10,7 +10,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.woodenBows.*
-import net.siegerpg.siege.core.utils.*
+import net.siegerpg.siege.core.miscellaneous.*
 import net.siegerpg.siege.shops.*
 
 class Chip : Shop() {

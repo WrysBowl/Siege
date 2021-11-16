@@ -6,8 +6,7 @@ import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.RawLuckGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class Goblin extends MobDropTable {

@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.SlimeSpoofer;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Blubber extends MobDropTable {
     public Blubber() {

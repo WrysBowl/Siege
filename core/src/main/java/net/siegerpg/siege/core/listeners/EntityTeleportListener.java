@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;

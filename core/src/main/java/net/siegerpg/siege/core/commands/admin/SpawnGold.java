@@ -1,6 +1,6 @@
 package net.siegerpg.siege.core.commands.admin;
 
-import net.siegerpg.siege.core.utils.GoldEXPSpawning;
+import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

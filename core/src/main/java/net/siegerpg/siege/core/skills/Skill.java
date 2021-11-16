@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.skills;
 
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.skills.implemented.archer.CriticalShot;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.block.Action;

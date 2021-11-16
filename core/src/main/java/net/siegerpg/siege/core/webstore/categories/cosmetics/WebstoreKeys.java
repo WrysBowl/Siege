@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.webstore.categories.cosmetics;
 
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.*;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.webstore.categories.WebstorePackage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

@@ -1,9 +1,8 @@
-package net.siegerpg.siege.core.utils.particleEffects;
+package net.siegerpg.siege.core.miscellaneous.particleEffects;
 
 import net.siegerpg.siege.core.Core;
 import org.bukkit.Location;
 import org.bukkit.Particle;
-import org.bukkit.event.EventHandler;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class Waves {

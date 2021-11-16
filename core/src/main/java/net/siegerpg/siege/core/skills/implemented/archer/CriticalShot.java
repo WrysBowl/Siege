@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.skills.implemented.archer;
 
 import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Material;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;

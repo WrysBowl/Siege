@@ -1,12 +1,10 @@
 package net.siegerpg.siege.core.dungeons.dungeon;
 
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.dungeons.Dungeon;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
-import net.siegerpg.siege.core.utils.particleEffects.Helix;
-import net.siegerpg.siege.core.utils.particleEffects.Waves;
+import net.siegerpg.siege.core.miscellaneous.particleEffects.Helix;
+import net.siegerpg.siege.core.miscellaneous.particleEffects.Waves;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;

@@ -1,10 +1,10 @@
 package net.siegerpg.siege.core.commands;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.miscellaneous.Levels;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;

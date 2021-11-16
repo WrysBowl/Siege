@@ -2,17 +2,11 @@ package net.siegerpg.siege.core.drops.mobs.twilight.hostile;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.misc.food.Beetroot;
-import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.FairyDust;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.FairyWing;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.FlawedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
-import net.siegerpg.siege.core.utils.Utils;
 
 
 public class Fairy_Outlaw extends MobDropTable {

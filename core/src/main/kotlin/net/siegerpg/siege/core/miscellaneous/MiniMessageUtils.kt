@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.utils
+package net.siegerpg.siege.core.miscellaneous
 
 import org.bukkit.entity.Player
 import org.bukkit.inventory.meta.ItemMeta

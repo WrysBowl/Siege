@@ -7,11 +7,9 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.food.Beef;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.BullSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.CrackedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
@@ -20,9 +18,8 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Crac
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.CrackedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.DoubleBladedAxe;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class BullSpirit extends MobDropTable {
     public BullSpirit() {

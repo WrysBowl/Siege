@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.commands.admin;
 
-import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -6,7 +6,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feath
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
 import net.siegerpg.siege.core.items.implemented.weapons.wands.FlamingHotTorch
 import net.siegerpg.siege.core.items.implemented.weapons.wands.flamingHotTorches.*
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 

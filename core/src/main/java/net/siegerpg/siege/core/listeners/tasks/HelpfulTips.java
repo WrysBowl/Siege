@@ -1,9 +1,8 @@
 package net.siegerpg.siege.core.listeners.tasks;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.cache.PlayerData;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;

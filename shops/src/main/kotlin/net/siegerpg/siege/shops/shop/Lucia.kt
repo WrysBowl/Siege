@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernStaff
 import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernStaffs.*
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 

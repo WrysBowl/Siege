@@ -15,7 +15,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.ReinforcedBow;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class Skeletal_Archer extends MobDropTable {

@@ -8,12 +8,9 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.RawHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.RawLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class InfectedDigger extends MobDropTable {

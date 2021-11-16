@@ -6,7 +6,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PolishedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.CrystalCane;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class Moss_Lurker extends MobDropTable {

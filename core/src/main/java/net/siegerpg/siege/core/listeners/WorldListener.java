@@ -2,9 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Utils;
 import org.bukkit.*;
-import org.bukkit.block.EnderChest;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.*;
@@ -17,15 +15,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.*;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
-
-import java.util.Objects;
 
 public class WorldListener implements Listener, Runnable {
     

@@ -2,10 +2,8 @@ package net.siegerpg.siege.core.listeners;
 
 import kotlin.Pair;
 import net.kyori.adventure.text.Component;
-import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.DropUtils;
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Levels;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -15,8 +13,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
-
 public class ChatListener implements Listener {
 
     @EventHandler
@@ -24,7 +20,7 @@ public class ChatListener implements Listener {
         Player player = e.getPlayer();
         Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
         String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";
-        String prefix = net.siegerpg.siege.core.utils.VaultHook.perms.getPrimaryGroup(player);
+        String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(player);
         String message = e.getMessage().replaceAll("&k", "");
         String check = Utils.strip(message);
 

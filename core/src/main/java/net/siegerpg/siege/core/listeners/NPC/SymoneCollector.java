@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;

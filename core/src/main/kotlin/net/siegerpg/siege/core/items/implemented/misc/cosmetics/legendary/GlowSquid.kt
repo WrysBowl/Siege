@@ -1,17 +1,10 @@
 package net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent
-import io.papermc.paper.event.player.AsyncChatEvent
-import net.kyori.adventure.text.TextComponent
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
-import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent
-import net.siegerpg.siege.core.utils.HexColorCode
-import net.siegerpg.siege.core.utils.Utils
-import org.bukkit.Color
 import org.bukkit.Material
-import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType

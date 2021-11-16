@@ -1,14 +1,11 @@
 package net.siegerpg.siege.core.webstore.categories.ranks;
 
-import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey;
-import net.siegerpg.siege.core.items.types.misc.CustomKey;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import net.siegerpg.siege.core.webstore.categories.WebstorePackage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.List;
 import java.util.UUID;
 
 public class WebstoreRanks extends WebstorePackage {

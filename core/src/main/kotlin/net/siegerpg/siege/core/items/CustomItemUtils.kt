@@ -19,9 +19,9 @@ import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
-import net.siegerpg.siege.core.utils.Levels
-import net.siegerpg.siege.core.utils.Utils
-import net.siegerpg.siege.core.utils.cache.PlayerData
+import net.siegerpg.siege.core.miscellaneous.Levels
+import net.siegerpg.siege.core.miscellaneous.Utils
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
 import org.bukkit.attribute.Attribute
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack

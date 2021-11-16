@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.commands;
 
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Levels;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;

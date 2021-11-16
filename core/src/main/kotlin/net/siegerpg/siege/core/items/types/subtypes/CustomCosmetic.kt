@@ -2,15 +2,12 @@ package net.siegerpg.siege.core.items.types.subtypes
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent
 import io.papermc.paper.event.player.AsyncChatEvent
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
-import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent
-import net.siegerpg.siege.core.utils.lore
-import net.siegerpg.siege.core.utils.name
-import org.bukkit.Bukkit
+import net.siegerpg.siege.core.miscellaneous.lore
+import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.event.entity.EntityDamageByEntityEvent

@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 

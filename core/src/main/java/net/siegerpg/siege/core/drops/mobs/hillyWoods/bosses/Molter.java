@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.MatchStick;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Molter extends MobDropTable {
     public Molter() {

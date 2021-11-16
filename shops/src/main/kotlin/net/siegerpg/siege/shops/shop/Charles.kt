@@ -6,11 +6,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.Clobber
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.EarthernHammer
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.WarHammer
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.clobbers.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.earthernHammers.*
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.warHammers.*
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 

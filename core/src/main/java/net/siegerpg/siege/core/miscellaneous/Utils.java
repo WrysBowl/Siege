@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.utils;
+package net.siegerpg.siege.core.miscellaneous;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;

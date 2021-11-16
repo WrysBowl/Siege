@@ -10,7 +10,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawStrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.MatchStick;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class ScorchingBlob extends MobDropTable {
     public ScorchingBlob() {

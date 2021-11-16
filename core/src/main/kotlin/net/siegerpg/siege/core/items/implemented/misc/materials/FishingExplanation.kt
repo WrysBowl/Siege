@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.items.implemented.misc.materials
 
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 

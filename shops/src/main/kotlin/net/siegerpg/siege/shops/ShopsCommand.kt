@@ -11,13 +11,9 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane
 import com.github.stefvanschie.inventoryframework.pane.Pane
 import com.github.stefvanschie.inventoryframework.pane.StaticPane
-import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.minimessage.MiniMessage
-import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
-import net.siegerpg.siege.core.items.types.misc.CustomMaterial
-import net.siegerpg.siege.core.utils.*
-import org.bukkit.Bukkit
+import net.siegerpg.siege.core.miscellaneous.*
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.command.CommandSender

@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.commands;
 
-import net.siegerpg.siege.core.utils.cache.PlayerData;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

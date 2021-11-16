@@ -3,11 +3,9 @@ package net.siegerpg.siege.shops.shop
 import net.siegerpg.siege.core.items.implemented.misc.materials.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Dagger
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.WoodenSword
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.daggers.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shanks.*
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.*
-import net.siegerpg.siege.core.utils.*
+import net.siegerpg.siege.core.miscellaneous.*
 import net.siegerpg.siege.shops.*
 
 class Barney : Shop() {

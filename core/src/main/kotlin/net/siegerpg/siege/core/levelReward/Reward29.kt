@@ -1,12 +1,10 @@
 package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.listeners.GoldExpListener
-import net.siegerpg.siege.core.utils.Utils
-import net.siegerpg.siege.core.utils.VaultHook
+import net.siegerpg.siege.core.miscellaneous.Utils
+import net.siegerpg.siege.core.miscellaneous.VaultHook
 import net.siegerpg.siege.core.webstore.categories.boosters.EXPBooster_100
-import net.siegerpg.siege.core.webstore.categories.boosters.EXPBooster_50
 import net.siegerpg.siege.core.webstore.categories.boosters.GOLDBooster_100
-import net.siegerpg.siege.core.webstore.categories.boosters.GOLDBooster_50
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.entity.Player

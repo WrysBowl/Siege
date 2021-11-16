@@ -6,29 +6,20 @@ import net.siegerpg.siege.core.items.implemented.armor.boots.ChainBoots;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.ChainChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.ChainHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.RockSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PolishedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PristineHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PolishedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PristineLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PolishedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PristineStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PristineToughGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.ScrapShard;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.SplinteredBone;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class FoxSpirit extends MobDropTable {
     public FoxSpirit() {

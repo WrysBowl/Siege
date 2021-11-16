@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
-import net.siegerpg.siege.core.utils.*
+import net.siegerpg.siege.core.miscellaneous.*
 import net.siegerpg.siege.shops.*
 
 class Chop : Shop() {

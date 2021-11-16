@@ -1,6 +1,5 @@
-package net.siegerpg.siege.core.utils;
+package net.siegerpg.siege.core.miscellaneous;
 
-import java.awt.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

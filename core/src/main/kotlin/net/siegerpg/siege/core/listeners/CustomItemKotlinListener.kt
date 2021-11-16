@@ -1,7 +1,5 @@
 package net.siegerpg.siege.core.listeners
 
-import io.lumine.xikage.mythicmobs.MythicMobs
-import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
@@ -13,10 +11,9 @@ import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
-import net.siegerpg.siege.core.utils.Levels
-import net.siegerpg.siege.core.utils.Utils
-import net.siegerpg.siege.core.utils.cache.MobNames
-import org.bukkit.Bukkit
+import net.siegerpg.siege.core.miscellaneous.Levels
+import net.siegerpg.siege.core.miscellaneous.Utils
+import net.siegerpg.siege.core.miscellaneous.cache.MobNames
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
@@ -32,7 +29,6 @@ import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
 import java.math.BigDecimal
-import kotlin.math.ceil
 
 
 class CustomItemKotlinListener : Listener, Runnable {

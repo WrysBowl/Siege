@@ -1,13 +1,12 @@
 package net.siegerpg.siege.core.webstore;
 
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.webstore.categories.WebstorePackage;
 import net.siegerpg.siege.core.webstore.categories.boosters.*;
 import net.siegerpg.siege.core.webstore.categories.cosmetics.*;
 import net.siegerpg.siege.core.webstore.categories.ranks.*;
 import org.bukkit.Bukkit;
 
-import java.sql.Array;
 import java.util.*;
 
 public class WebstoreUtils {

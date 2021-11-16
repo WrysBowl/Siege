@@ -2,23 +2,17 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.boots.BoneBoots;
 import net.siegerpg.siege.core.items.implemented.armor.boots.ChainBoots;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.ChainChestplate;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.ChainHelmet;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Werewolf extends MobDropTable {
     public Werewolf() {

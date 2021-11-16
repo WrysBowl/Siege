@@ -1,7 +1,5 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
-import com.google.common.collect.Multimap
-import de.tr7zw.nbtapi.NBTItem
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -11,18 +9,12 @@ import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
-import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
-import net.siegerpg.siege.core.utils.lore
-import net.siegerpg.siege.core.utils.name
-import org.bukkit.Bukkit
-import org.bukkit.Material
+import net.siegerpg.siege.core.miscellaneous.lore
+import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.attribute.Attribute
-import org.bukkit.attribute.AttributeModifier
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
-import org.bukkit.inventory.meta.ItemMeta
-import org.bukkit.inventory.meta.LeatherArmorMeta
 
 interface CustomEquipment : CustomItem {
 

@@ -7,11 +7,8 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.SlimyChestplat
 import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.RawLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.StickyStick;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Goo extends MobDropTable {
     public Goo() {

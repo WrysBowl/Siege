@@ -2,8 +2,8 @@ package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.SpiritKey
 import net.siegerpg.siege.core.listeners.GoldExpListener
-import net.siegerpg.siege.core.utils.Utils
-import net.siegerpg.siege.core.utils.VaultHook
+import net.siegerpg.siege.core.miscellaneous.Utils
+import net.siegerpg.siege.core.miscellaneous.VaultHook
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.entity.Player

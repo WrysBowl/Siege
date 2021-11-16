@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.DoubleBladedAxe;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class AngryBull extends MobDropTable {
     public AngryBull() {

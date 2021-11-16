@@ -21,7 +21,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernStaff;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.HotRod;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.Clobber;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.EarthernHammer;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Broodmother extends MobDropTable {
     public Broodmother() {

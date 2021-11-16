@@ -1,13 +1,8 @@
 package net.siegerpg.siege.core.skills;
 
-import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.items.enums.StatTypes;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.cache.PlayerData;
-import org.bukkit.Bukkit;
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryType;

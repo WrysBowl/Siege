@@ -7,7 +7,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class BanditArcher extends MobDropTable {
     public BanditArcher() {

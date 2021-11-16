@@ -1,10 +1,9 @@
-package net.siegerpg.siege.core.utils;
+package net.siegerpg.siege.core.miscellaneous;
 
 import com.google.gson.Gson;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 public class Discord {

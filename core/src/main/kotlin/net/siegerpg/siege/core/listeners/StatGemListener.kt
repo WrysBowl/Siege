@@ -4,8 +4,8 @@ import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.misc.StatGemType
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
-import net.siegerpg.siege.core.utils.Levels
-import net.siegerpg.siege.core.utils.sendMiniMessage
+import net.siegerpg.siege.core.miscellaneous.Levels
+import net.siegerpg.siege.core.miscellaneous.sendMiniMessage
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

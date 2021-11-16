@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.parties
 
 import net.siegerpg.siege.core.Core
-import net.siegerpg.siege.core.utils.ConfigurationBase
+import net.siegerpg.siege.core.miscellaneous.ConfigurationBase
 import org.bukkit.configuration.ConfigurationSection
 import java.io.File
 import java.util.*

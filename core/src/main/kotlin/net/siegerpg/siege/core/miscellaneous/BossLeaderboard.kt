@@ -8,8 +8,8 @@ import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.drops.MobDropTable
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
-import net.siegerpg.siege.core.utils.*
-import net.siegerpg.siege.core.utils.cache.GlobalMultipliers
+import net.siegerpg.siege.core.miscellaneous.*
+import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers
 import org.bukkit.Bukkit
 import org.bukkit.entity.Item
 import org.bukkit.entity.LivingEntity

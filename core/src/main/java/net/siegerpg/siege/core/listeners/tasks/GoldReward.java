@@ -2,8 +2,8 @@ package net.siegerpg.siege.core.listeners.tasks;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Levels;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;

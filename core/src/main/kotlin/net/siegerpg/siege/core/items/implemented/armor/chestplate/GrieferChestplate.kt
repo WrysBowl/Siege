@@ -4,8 +4,8 @@ import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.armor.CustomChestplate
-import net.siegerpg.siege.core.utils.Levels
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Levels
+import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Color
 import org.bukkit.EntityEffect
 import org.bukkit.Material

@@ -1,7 +1,7 @@
 package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.listeners.GoldExpListener
-import net.siegerpg.siege.core.utils.Utils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 

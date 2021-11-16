@@ -2,10 +2,10 @@ package net.siegerpg.siege.core.listeners.NPC;
 
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
-import net.siegerpg.siege.core.utils.cache.PlayerData;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.VaultHook;
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -6,15 +6,12 @@ import net.siegerpg.siege.core.items.implemented.armor.boots.LeatherBoots;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.LeatherChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.CrackedStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Dagger;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Thief extends MobDropTable {
     public Thief() {

@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.utils
+package net.siegerpg.siege.core.miscellaneous
 
 import com.google.gson.Gson
 import com.google.gson.JsonArray

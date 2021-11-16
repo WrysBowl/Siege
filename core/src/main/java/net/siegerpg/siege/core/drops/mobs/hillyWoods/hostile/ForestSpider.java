@@ -4,17 +4,13 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.CrackedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.RawHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.RawLuckGem;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.SewerShooter;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.*;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class ForestSpider extends MobDropTable {
     public ForestSpider() {

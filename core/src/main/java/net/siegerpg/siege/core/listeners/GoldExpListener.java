@@ -4,14 +4,12 @@ import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.types.misc.StatGemType;
-import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Levels;
-import net.siegerpg.siege.core.utils.Utils;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Levels;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,9 +19,7 @@ import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class GoldExpListener implements Listener{
 
@@ -43,7 +39,7 @@ public class GoldExpListener implements Listener{
     }
 
     public static void giveGold(Player player, int goldAmount) {
-        net.siegerpg.siege.core.utils.VaultHook.econ.depositPlayer(player, goldAmount);
+        net.siegerpg.siege.core.miscellaneous.VaultHook.econ.depositPlayer(player, goldAmount);
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
         Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {

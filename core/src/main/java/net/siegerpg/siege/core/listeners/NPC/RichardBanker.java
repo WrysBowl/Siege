@@ -2,10 +2,10 @@ package net.siegerpg.siege.core.listeners.NPC;
 
 import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.utils.Bank;
-import net.siegerpg.siege.core.utils.Scoreboard;
-import net.siegerpg.siege.core.utils.Utils;
-import net.siegerpg.siege.core.utils.VaultHook;
+import net.siegerpg.siege.core.miscellaneous.Bank;
+import net.siegerpg.siege.core.miscellaneous.Scoreboard;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
