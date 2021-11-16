@@ -13,7 +13,7 @@ class Trident() : CustomBow(
 	levelRequirement = 34,
 	material = Material.TRIDENT,
 	baseStats = CustomItemUtils.statMap(strength = 40.0, luck = 23.0)
-) {
+                           ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

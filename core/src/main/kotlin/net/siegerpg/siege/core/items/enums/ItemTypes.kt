@@ -28,6 +28,7 @@ enum class ItemTypes(val stylizedName: String, val clazz: KClass<out CustomItem>
 	COSMETIC("COSMETIC", Cosmetic::class);
 
 	companion object {
+
 		fun getFromId(id: String?): ItemTypes? {
 			for (itemType in values()) {
 				if (itemType.stylizedName.equals(id, ignoreCase = true)) return itemType

@@ -17,9 +17,9 @@ class CursedSickle() : CustomMeleeWeapon(
 		regeneration = 15.0,
 		luck = 20.0,
 		toughness = -100.0
-	),
+	                                   ),
 	attackSpeed = 2.0
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

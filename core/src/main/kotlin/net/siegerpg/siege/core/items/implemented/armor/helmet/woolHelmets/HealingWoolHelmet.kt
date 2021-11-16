@@ -15,7 +15,7 @@ class HealingWoolHelmet() : CustomHelmet(
 	material = Material.LEATHER_HELMET,
 	baseStats = CustomItemUtils.statMap(regeneration = 5.0),
 	leatherColor = Color.WHITE
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

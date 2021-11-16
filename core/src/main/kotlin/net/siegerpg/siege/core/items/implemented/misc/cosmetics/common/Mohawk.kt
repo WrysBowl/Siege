@@ -10,7 +10,7 @@ class Mohawk() : Cosmetic(
 	customModelData = 710001,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                         ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

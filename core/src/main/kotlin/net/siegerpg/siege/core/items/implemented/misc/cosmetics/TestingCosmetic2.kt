@@ -12,7 +12,7 @@ class TestingCosmetic2() : Cosmetic(
 	description = listOf("TESTING"),
 	material = Material.LEATHER_HELMET,
 	leatherColor = Color.WHITE,
-) {
+                                   ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

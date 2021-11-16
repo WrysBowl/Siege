@@ -13,6 +13,7 @@ import org.bukkit.event.block.BlockDispenseArmorEvent
  * @since Feb 08, 2019
  */
 class DispenserArmorListener : Listener {
+
 	@EventHandler
 	fun dispenseArmorEvent(event: BlockDispenseArmorEvent) {
 		val type = ArmorType.matchType(event.item)
@@ -25,7 +26,7 @@ class DispenserArmorListener : Listener {
 					type,
 					null,
 					event.item
-				)
+				                                     )
 				Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
 				if (armorEquipEvent.isCancelled()) {
 					event.isCancelled = true

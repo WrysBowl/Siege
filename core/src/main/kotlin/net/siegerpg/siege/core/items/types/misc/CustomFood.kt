@@ -24,7 +24,7 @@ abstract class CustomFood(
 	override var item: ItemStack = ItemStack(material),
 	override val type: ItemTypes = ItemTypes.FOOD,
 	val health: Double = 0.0,
-) : CustomItem {
+                         ) : CustomItem {
 
 	override var rarity: Rarity = Rarity.COMMON
 
@@ -38,8 +38,8 @@ abstract class CustomFood(
 	open fun onEat(e: PlayerItemConsumeEvent) {
 		CustomItemUtils.addHealth(e.player, health)
 		if (e.item.type == Material.SUSPICIOUS_STEW ||
-			e.item.type == Material.MUSHROOM_STEW ||
-			e.item.type == Material.RABBIT_STEW
+		    e.item.type == Material.MUSHROOM_STEW ||
+		    e.item.type == Material.RABBIT_STEW
 		) {
 			e.player.inventory.setItemInMainHand(ItemStack(Material.AIR))
 		}

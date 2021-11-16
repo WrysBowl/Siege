@@ -10,7 +10,7 @@ class Bedridden() : Cosmetic(
 	customModelData = 1,
 	description = listOf(""),
 	material = Material.RED_BED,
-) {
+                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 80

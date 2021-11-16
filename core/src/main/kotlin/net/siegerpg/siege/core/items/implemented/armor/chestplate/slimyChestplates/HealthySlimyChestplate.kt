@@ -15,7 +15,7 @@ class HealthySlimyChestplate() : CustomChestplate(
 	material = Material.LEATHER_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(health = 20.0),
 	leatherColor = Color.LIME
-) {
+                                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -13,6 +13,7 @@ import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
 
 class StatGemListener : Listener {
+
 	@EventHandler
 	@Suppress("unused")
 	fun onInventoryClick(e: InventoryClickEvent) {

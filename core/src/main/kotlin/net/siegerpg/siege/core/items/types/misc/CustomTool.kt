@@ -25,7 +25,7 @@ abstract class CustomTool(
 	override val baseStats: HashMap<StatTypes, Double>,
 	override var statGem: StatGem? = null,
 	val enchantments: MutableMap<Enchantment, Int>
-) : CustomEquipment {
+                         ) : CustomEquipment {
 
 	override var rarity: Rarity = Rarity.COMMON
 

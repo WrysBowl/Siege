@@ -8,7 +8,8 @@ public class PristineStrength extends Fish {
 	public PristineStrength () {
 
 		super(60, 1, 12, 20,
-		      new PristineStrengthGem(0).getUpdatedItem(false));
+		      new PristineStrengthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

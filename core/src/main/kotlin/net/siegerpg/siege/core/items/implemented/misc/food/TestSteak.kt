@@ -12,7 +12,7 @@ class TestSteak() : CustomFood(
 	levelRequirement = 0,
 	material = Material.COOKED_BEEF,
 	health = 20.0
-) {
+                              ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

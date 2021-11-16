@@ -2,7 +2,12 @@ package net.siegerpg.siege.core.parties
 
 import co.aikar.commands.BaseCommand
 import co.aikar.commands.CommandCompletions
-import co.aikar.commands.annotation.*
+import co.aikar.commands.annotation.CommandAlias
+import co.aikar.commands.annotation.CommandCompletion
+import co.aikar.commands.annotation.HelpCommand
+import co.aikar.commands.annotation.Optional
+import co.aikar.commands.annotation.Subcommand
+import co.aikar.commands.annotation.Syntax
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.kyori.adventure.text.minimessage.Template
 import net.siegerpg.siege.core.Core
@@ -17,7 +22,7 @@ class PartyCommand : BaseCommand() {
 			"partymembers",
 			CommandCompletions.CommandCompletionHandler { player ->
 				val party = Party.getPlayerParty(player.player)
-					?: return@CommandCompletionHandler listOf<String>()
+				            ?: return@CommandCompletionHandler listOf<String>()
 				return@CommandCompletionHandler party.getMembers().map { p -> p.name }
 			})
 	}
@@ -149,8 +154,8 @@ class PartyCommand : BaseCommand() {
 			listOf(
 				Template.of("playerDisplayName", player.displayName()),
 				Template.of("playerName", player.name)
-			)
-		)
+			      )
+		                                           )
 		invitee.sendMessage(textComponent)
 	}
 
@@ -166,8 +171,8 @@ class PartyCommand : BaseCommand() {
 				"&6/party promote <player>: &7Makes a member the new leader!",
 				"&6/party send <message>: &7Sends a message to all the party members!",
 				"&6/party invite <player>: &7Invites a player to the party!"
-			).toTypedArray()
-		)
+			      ).toTypedArray()
+		                  )
 	}
 
 }

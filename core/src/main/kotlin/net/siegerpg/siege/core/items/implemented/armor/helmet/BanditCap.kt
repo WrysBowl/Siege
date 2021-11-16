@@ -21,7 +21,7 @@ class BanditCap() : CustomHelmet(
 	levelRequirement = 20,
 	material = Material.LEATHER_HELMET,
 	baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 20.0),
-) {
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

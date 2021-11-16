@@ -23,7 +23,7 @@ object Bank {
 	fun getBankLevelAmount(
 		player: OfflinePlayer,
 		runAfter: (Pair<Short, Int>?) -> Unit
-	): BukkitTask {
+	                      ): BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetBankLevelAmount(player))
 		})
@@ -37,7 +37,7 @@ object Bank {
 	fun getBankLevelAmount(
 		players: List<OfflinePlayer>,
 		runAfter: (HashMap<UUID, Pair<Short, Int>>?) -> Unit
-	): BukkitTask {
+	                      ): BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetBankLevelAmount(players))
 		})
@@ -83,7 +83,7 @@ object Bank {
 			val stmt = connection.prepareStatement(
 				"SELECT bankLvl,bankAmt FROM userData WHERE uuid=?",
 				ResultSet.TYPE_SCROLL_SENSITIVE
-			)
+			                                      )
 			stmt.setString(1, player.uniqueId.toString())
 			val query = stmt.executeQuery();
 			// If no rows were found don't runAfter
@@ -105,7 +105,7 @@ object Bank {
 	 */
 	fun blockingGetBankLevelAmount(
 		players: List<OfflinePlayer>
-	): HashMap<UUID, Pair<Short, Int>>? {
+	                              ): HashMap<UUID, Pair<Short, Int>>? {
 		val map = HashMap<UUID, Pair<Short, Int>>()
 		val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
 		val now = Instant.now();
@@ -129,7 +129,7 @@ object Bank {
 			val stmt = connection.prepareStatement(
 				"SELECT bankLvl,bankAmt FROM userData WHERE uuid IN ?",
 				ResultSet.TYPE_SCROLL_SENSITIVE
-			)
+			                                      )
 			stmt.setArray(1, connection.createArrayOf("VARCHAR", playerIDs.toTypedArray()))
 			val resultSet = stmt.executeQuery();
 			while (resultSet.next()) {

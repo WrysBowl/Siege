@@ -12,7 +12,7 @@ class WerewolfKey() : CustomKey(
 	levelRequirement = 1,
 	material = Material.TRIPWIRE_HOOK,
 	quality = 90
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

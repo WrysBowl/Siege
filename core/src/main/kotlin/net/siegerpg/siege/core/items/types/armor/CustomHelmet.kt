@@ -31,7 +31,7 @@ abstract class CustomHelmet(
 	var initMaterial: Material? = null,
 	var initCustomModelData: Int? = null,
 	var storedItem: ItemStack? = null
-) : CustomArmor {
+                           ) : CustomArmor {
 
 	override var rarity: Rarity = Rarity.COMMON
 
@@ -45,7 +45,7 @@ abstract class CustomHelmet(
 			"initMaterial" to initMaterial.toString(),
 			"initCustomModelData" to initCustomModelData,
 			"storedItem" to storedItem,
-		) //need to now figure out how to deserialize and create the item with a method
+		                      ) //need to now figure out how to deserialize and create the item with a method
 	}
 
 	override fun deserialize() {

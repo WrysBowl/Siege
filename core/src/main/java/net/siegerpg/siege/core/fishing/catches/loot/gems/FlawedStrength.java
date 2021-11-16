@@ -8,7 +8,8 @@ public class FlawedStrength extends Fish {
 	public FlawedStrength () {
 
 		super(45, 0.8, 16, 14,
-		      new FlawedStrengthGem(0).getUpdatedItem(false));
+		      new FlawedStrengthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

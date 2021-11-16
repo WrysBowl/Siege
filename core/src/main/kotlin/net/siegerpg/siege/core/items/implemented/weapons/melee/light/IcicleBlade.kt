@@ -17,9 +17,9 @@ class IcicleBlade() : CustomMeleeWeapon(
 		health = 40.0,
 		toughness = 50.0,
 		luck = -30.0
-	),
+	                                   ),
 	attackSpeed = 2.0
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

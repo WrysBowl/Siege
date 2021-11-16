@@ -15,7 +15,7 @@ class ToughSlimyBoots() : CustomBoots(
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(toughness = 15.0),
 	leatherColor = Color.LIME
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

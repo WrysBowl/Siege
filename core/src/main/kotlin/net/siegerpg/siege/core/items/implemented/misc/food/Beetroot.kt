@@ -17,7 +17,7 @@ class Beetroot() : CustomFood(
 	levelRequirement = 0,
 	material = Material.BEETROOT,
 	health = 20.0
-) {
+                             ) {
 
 	override fun speciality(player: Player) {
 		var countDown = 10
@@ -33,7 +33,7 @@ class Beetroot() : CustomFood(
 						Sound.BLOCK_RESPAWN_ANCHOR_CHARGE,
 						0.4.toFloat(),
 						0.8.toFloat()
-					)
+					                )
 				}
 			}
 		}.runTaskTimer(Core.plugin(), 20, 40)

@@ -15,7 +15,7 @@ class HealthyGiantCLub() : CustomMeleeWeapon(
 	baseStats = CustomItemUtils.statMap(strength = 14.0, health = 6.0),
 
 	attackSpeed = 0.7
-) {
+                                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

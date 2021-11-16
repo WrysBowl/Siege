@@ -8,7 +8,8 @@ public class CrackedHealth extends Fish {
 	public CrackedHealth () {
 
 		super(40, 0.7, 18, 12,
-		      new CrackedHealthGem(0).getUpdatedItem(false));
+		      new CrackedHealthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

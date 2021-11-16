@@ -44,7 +44,7 @@ tasks {
 		relocate(
 			"com.github.stefvanschie.inventoryframework",
 			"net.siegerpg.siege.core.inventoryframework"
-		)
+		        )
 		relocate("com.github.retrooper", "net.siegerpg.siege.core.retrooper")
 		doFirst {
 			exclude("fonts/*.csv")

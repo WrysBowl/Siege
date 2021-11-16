@@ -15,7 +15,7 @@ class StrongShank() : CustomMeleeWeapon(
 	baseStats = CustomItemUtils.statMap(strength = 23.0),
 
 	attackSpeed = 1.7
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

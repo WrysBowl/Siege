@@ -1,11 +1,29 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
-import net.siegerpg.siege.core.items.implemented.misc.tools.*
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingHammerAndChisel
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingHandsaw
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingSteelAxe
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingSteelPickaxe
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingSteelShovel
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingTitaniumAxe
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingTitaniumPickaxe
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingTitaniumShovel
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingTrowel
+import net.siegerpg.siege.core.items.implemented.misc.tools.HammerAndChisel
+import net.siegerpg.siege.core.items.implemented.misc.tools.Handsaw
+import net.siegerpg.siege.core.items.implemented.misc.tools.SteelAxe
+import net.siegerpg.siege.core.items.implemented.misc.tools.SteelPickaxe
+import net.siegerpg.siege.core.items.implemented.misc.tools.SteelShovel
+import net.siegerpg.siege.core.items.implemented.misc.tools.TitaniumAxe
+import net.siegerpg.siege.core.items.implemented.misc.tools.TitaniumPickaxe
+import net.siegerpg.siege.core.items.implemented.misc.tools.TitaniumShovel
+import net.siegerpg.siege.core.items.implemented.misc.tools.Trowel
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Clemont : Shop() {
+
 	override var name: String = "Clemont"
 	override var permission: String = "siege.shops.shop.clemont"
 	override var items: List<ShopItem> = listOf(
@@ -77,5 +95,5 @@ class Clemont : Shop() {
 		ShopItem(GlowingTitaniumAxe(0), 50000, hashMapOf(), false) {
 			GlowingTitaniumAxe(0).getUpdatedItem(false)
 		},
-	)
+	                                           )
 }

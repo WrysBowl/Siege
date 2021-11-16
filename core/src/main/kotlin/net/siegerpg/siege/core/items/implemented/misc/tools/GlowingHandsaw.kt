@@ -17,8 +17,8 @@ class GlowingHandsaw() : CustomTool(
 
 	enchantments = hashMapOf(
 		Enchantment.DIG_SPEED to 1
-	)
-) {
+	                        )
+                                   ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

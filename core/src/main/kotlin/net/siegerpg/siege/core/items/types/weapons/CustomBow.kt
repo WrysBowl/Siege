@@ -24,7 +24,7 @@ abstract class CustomBow(
 	override val baseStats: HashMap<StatTypes, Double>,
 	override val type: ItemTypes = ItemTypes.BOW,
 	override var statGem: StatGem? = null
-) : CustomWeapon {
+                        ) : CustomWeapon {
 
 	override var rarity: Rarity = Rarity.COMMON
 
@@ -59,18 +59,18 @@ abstract class CustomBow(
 						"<r><red>${baseStats[it]?.times(0.5)}. . .${
 							baseStats[it]?.times(
 								1.5
-							)
+							                    )
 						} <gray>${it.stylizedName}"
-					)
+					                                        )
 					else meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
 						"<r><green>+${baseStats[it]?.times(0.5)}. . .${
 							baseStats[it]?.times(
 								1.5
-							)
+							                    )
 						} <gray>${it.stylizedName}"
-					)
+					                                        )
 					else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 				}
 			}

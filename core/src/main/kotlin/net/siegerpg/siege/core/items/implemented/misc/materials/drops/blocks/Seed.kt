@@ -26,6 +26,7 @@ class Seed() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): Seed {
 			val newItem = Seed(0)
 			newItem.tier = tier

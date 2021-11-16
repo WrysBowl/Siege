@@ -14,11 +14,12 @@ class Noteworthy() : Cosmetic(
 	customModelData = 1,
 	description = listOf(""),
 	material = Material.NOTE_BLOCK,
-) {
+                             ) {
+
 	override fun onCosmeticDamage(e: EntityDamageByEntityEvent) {
 		val hitPlayer = e.entity as Player
 		val notePitch =
-			0.5f + Random().nextFloat() * (2.0f - 0.5f) // Random pitch between 0.5f and 2.0f
+				0.5f + Random().nextFloat() * (2.0f - 0.5f) // Random pitch between 0.5f and 2.0f
 		hitPlayer.world.playSound(hitPlayer.location, Sound.BLOCK_NOTE_BLOCK_BELL, 1.0f, notePitch)
 	}
 

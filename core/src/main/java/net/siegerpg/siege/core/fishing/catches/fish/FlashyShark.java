@@ -13,7 +13,8 @@ public class FlashyShark extends Fish {
 				0.8,
 				12,
 				11,
-				610007);
+				610007
+		     );
 	}
 
 }

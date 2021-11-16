@@ -10,7 +10,7 @@ class WiseGuy() : Cosmetic(
 	customModelData = 720005,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 50

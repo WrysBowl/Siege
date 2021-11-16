@@ -13,7 +13,7 @@ class HealingPebbleShooter() : CustomBow(
 	levelRequirement = 10,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 18.0, regeneration = 5.0),
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -15,7 +15,7 @@ class HealingWoodenSword() : CustomMeleeWeapon(
 	baseStats = CustomItemUtils.statMap(strength = 24.0, regeneration = 5.0),
 
 	attackSpeed = 1.6
-) {
+                                              ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

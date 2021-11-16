@@ -31,7 +31,7 @@ abstract class CustomWand(
 	val blue: Int = 255,
 	val damageRadius: Double = 2.5,
 	override var statGem: StatGem? = null
-) : CustomEquipment {
+                         ) : CustomEquipment {
 
 	override var rarity: Rarity = Rarity.COMMON
 
@@ -47,7 +47,7 @@ abstract class CustomWand(
 			"generic.attackSpeed",
 			(-4.0 + 0.65),
 			AttributeModifier.Operation.ADD_NUMBER
-		)
+		                                )
 		meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier)
 
 		val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
@@ -74,18 +74,18 @@ abstract class CustomWand(
 						"<r><red>${baseStats[it]?.times(0.5)}. . .${
 							baseStats[it]?.times(
 								1.5
-							)
+							                    )
 						} <gray>${it.stylizedName}"
-					)
+					                                        )
 					else meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
 						"<r><green>+${baseStats[it]?.times(0.5)}. . .${
 							baseStats[it]?.times(
 								1.5
-							)
+							                    )
 						} <gray>${it.stylizedName}"
-					)
+					                                        )
 					else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 				} // TODO: Make special items work with rarity multiplier
 			}
@@ -113,7 +113,7 @@ abstract class CustomWand(
 			"wandGreen" to green,
 			"wandBlue" to blue,
 			"wandDamageRadius" to damageRadius
-		)
+		                      )
 	}
 
 	override fun equals(other: Any?): Boolean {

@@ -13,7 +13,8 @@ public class MrKrabs extends Fish {
 				0.3,
 				24,
 				5,
-				610009);
+				610009
+		     );
 
 	}
 

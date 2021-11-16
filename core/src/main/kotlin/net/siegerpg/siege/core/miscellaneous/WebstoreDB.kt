@@ -18,7 +18,7 @@ object WebstoreDB {
 	fun getStoreCommands(
 		player: OfflinePlayer,
 		runAfter: (commands: Array<String>?) -> Unit
-	): BukkitTask {
+	                    ): BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetStoreCommands(player))
 		})
@@ -32,7 +32,7 @@ object WebstoreDB {
 	fun getStoreCommands(
 		players: List<OfflinePlayer>,
 		runAfter: (HashMap<UUID, ArrayList<String>>?) -> Unit
-	): BukkitTask {
+	                    ): BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetStoreCommands(players))
 		})
@@ -46,7 +46,7 @@ object WebstoreDB {
 	fun getAllStoreCommands(
 		limit: Int,
 		runAfter: (ArrayList<Pair<UUID, String>>?) -> Unit
-	): BukkitTask {
+	                       ): BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetAllStoreCommands(limit))
 		})
@@ -85,7 +85,7 @@ object WebstoreDB {
 			val stmt = connection.prepareStatement(
 				"SELECT command FROM webstoreData WHERE uuid=?",
 				ResultSet.TYPE_SCROLL_SENSITIVE
-			)
+			                                      )
 			stmt.setString(1, player.uniqueId.toString())
 			val query = stmt.executeQuery()
 			return if (!query.isBeforeFirst) {
@@ -108,7 +108,7 @@ object WebstoreDB {
 	 */
 	fun blockingGetStoreCommands(
 		players: List<OfflinePlayer>
-	): HashMap<UUID, ArrayList<String>>? {
+	                            ): HashMap<UUID, ArrayList<String>>? {
 		// Gets the cache data for each cached player, and gets the data of the not-yet-cached players
 		val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
 		val map = HashMap<UUID, ArrayList<String>>()
@@ -119,9 +119,9 @@ object WebstoreDB {
 		connection!!.use {
 			val stmt = connection.prepareStatement(
 				String.format("SELECT command,uuid FROM webstoreData WHERE uuid IN (%s)",
-					playerIDs.joinToString(", ") { "?" }),
+				              playerIDs.joinToString(", ") { "?" }),
 				ResultSet.TYPE_SCROLL_SENSITIVE
-			)
+			                                      )
 			var currentIndex = 0
 			playerIDs.forEach { id ->
 				stmt.setString(++currentIndex, id.toString())
@@ -153,7 +153,7 @@ object WebstoreDB {
 		}
 		connection!!.use {
 			val stmt =
-				connection.prepareStatement("SELECT command,uuid FROM webstoreData DESC $limitStr")
+					connection.prepareStatement("SELECT command,uuid FROM webstoreData DESC $limitStr")
 			val query = stmt.executeQuery()
 			if (!query.isBeforeFirst) return null
 			while (query.next()) {
@@ -162,7 +162,7 @@ object WebstoreDB {
 				val double = Pair(
 					uuid,
 					data
-				)
+				                 )
 				arrayList.add(double)
 			}
 		}
@@ -176,7 +176,7 @@ object WebstoreDB {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt =
-				connection.prepareStatement("INSERT INTO webstoreData (command,uuid) VALUES (?, ?)")
+					connection.prepareStatement("INSERT INTO webstoreData (command,uuid) VALUES (?, ?)")
 			stmt.setString(1, cmdArgs)
 			stmt.setString(2, player.uniqueId.toString())
 			stmt.executeUpdate()
@@ -190,7 +190,7 @@ object WebstoreDB {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt =
-				connection.prepareStatement("INSERT INTO webstoreData (command,uuid) VALUES (?, ?)")
+					connection.prepareStatement("INSERT INTO webstoreData (command,uuid) VALUES (?, ?)")
 			// We batch the sql queries together for speed (it will only make one request instead of multiple)
 			data.forEach { (uuid, data) ->
 				// We prepare the query
@@ -214,7 +214,7 @@ object WebstoreDB {
 			val stmt = connection.prepareStatement(
 				"DELETE FROM webstoreData WHERE uuid=?",
 				ResultSet.TYPE_SCROLL_SENSITIVE
-			)
+			                                      )
 			stmt.setString(1, player.uniqueId.toString())
 			stmt.executeUpdate()
 		}

@@ -19,9 +19,9 @@ class EssenceOfTwilight() : CustomHelmet(
 		luck = 60.0,
 		strength = -20.0,
 		toughness = -80.0
-	),
+	                                   ),
 	leatherColor = Color.PURPLE
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

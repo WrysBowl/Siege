@@ -1,20 +1,34 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.SewerShooter
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.*
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.HealingCrossbow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.HealthyCrossbow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.LuckyCrossbow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.StrongCrossbow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.ToughCrossbow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.HealingSewerShooter
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.HealthySewerShooter
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.LuckySewerShooter
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.StrongSewerShooter
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.ToughSewerShooter
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Julie : Shop() {
+
 	override var name: String = "Julie"
 	override var permission: String = "siege.shops.shop.julie"
 	override var items: List<ShopItem> = listOf(
@@ -25,8 +39,8 @@ class Julie : Shop() {
 				Magma.tier(3) to 1,
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 3
-			), true
-		) {
+			                                 ), true
+		        ) {
 			SewerShooter(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -39,8 +53,8 @@ class Julie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Feather.tier(3) to 2
-			), true
-		) {
+			                                    ), true
+		        ) {
 			LuckySewerShooter(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -50,8 +64,8 @@ class Julie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Bone.tier(3) to 1
-			), true
-		) {
+			                                     ), true
+		        ) {
 			StrongSewerShooter(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -61,8 +75,8 @@ class Julie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Pebble.tier(3) to 2
-			), true
-		) {
+			                                    ), true
+		        ) {
 			ToughSewerShooter(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -72,8 +86,8 @@ class Julie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				PlantMatter.tier(3) to 2
-			), true
-		) {
+			                                      ), true
+		        ) {
 			HealthySewerShooter(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -83,8 +97,8 @@ class Julie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Wheat.tier(3) to 3
-			), true
-		) {
+			                                      ), true
+		        ) {
 			HealingSewerShooter(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -100,8 +114,8 @@ class Julie : Shop() {
 				Vine.tier(3) to 3,
 				MetalScrap.tier(3) to 1,
 				Feather.tier(3) to 3
-			), true
-		) {
+			                                  ), true
+		        ) {
 			LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -109,8 +123,8 @@ class Julie : Shop() {
 				Vine.tier(3) to 3,
 				MetalScrap.tier(3) to 1,
 				Bone.tier(3) to 3
-			), true
-		) {
+			                                   ), true
+		        ) {
 			StrongCrossbow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -118,8 +132,8 @@ class Julie : Shop() {
 				Vine.tier(3) to 3,
 				MetalScrap.tier(3) to 1,
 				Pebble.tier(3) to 3
-			), true
-		) {
+			                                  ), true
+		        ) {
 			ToughCrossbow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -127,8 +141,8 @@ class Julie : Shop() {
 				Vine.tier(3) to 3,
 				MetalScrap.tier(3) to 1,
 				PlantMatter.tier(3) to 3
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -136,9 +150,9 @@ class Julie : Shop() {
 				Vine.tier(3) to 3,
 				MetalScrap.tier(3) to 1,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealingCrossbow(Utils.randRarity()).getUpdatedItem(false)
 		}
-	)
+	                                           )
 }

@@ -13,7 +13,7 @@ class ToughIronLeggings() : CustomLeggings(
 	levelRequirement = 35,
 	material = Material.IRON_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 100.0),
-) {
+                                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

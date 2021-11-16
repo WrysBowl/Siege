@@ -13,7 +13,7 @@ class ToughIronBoots() : CustomBoots(
 	levelRequirement = 34,
 	material = Material.IRON_BOOTS,
 	baseStats = CustomItemUtils.statMap(toughness = 80.0),
-) {
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

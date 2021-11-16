@@ -8,7 +8,8 @@ public class RawLuck extends Fish {
 	public RawLuck () {
 
 		super(30, 0.6, 20, 10,
-		      new RawLuckGem(0).getUpdatedItem(false));
+		      new RawLuckGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

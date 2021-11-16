@@ -14,7 +14,7 @@ class HealingWarHammer() : CustomMeleeWeapon(
 	material = Material.WOODEN_AXE,
 	baseStats = CustomItemUtils.statMap(strength = 46.0, regeneration = 5.0),
 	attackSpeed = 0.7
-) {
+                                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -28,9 +28,9 @@ class FishingExplanation() : CustomMaterial(
 		Utils.tacc("&eStay within the green moving"),
 		Utils.tacc("&ebar to keep up with it!"),
 		Utils.tacc("&e&lGO FISH!"),
-	),
+	                    ),
 	material = Material.WRITTEN_BOOK
-) {
+                                           ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

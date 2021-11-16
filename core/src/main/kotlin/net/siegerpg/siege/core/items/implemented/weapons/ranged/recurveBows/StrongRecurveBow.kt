@@ -13,7 +13,7 @@ class StrongRecurveBow() : CustomBow(
 	levelRequirement = 30,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 41.0, luck = 4.0),
-) {
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

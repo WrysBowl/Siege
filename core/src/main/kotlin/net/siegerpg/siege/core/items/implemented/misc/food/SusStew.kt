@@ -15,7 +15,7 @@ class SusStew() : CustomFood(
 	levelRequirement = 0,
 	material = Material.SUSPICIOUS_STEW,
 	health = 125.0,
-) {
+                            ) {
 
 	override fun speciality(player: Player) {
 		val realPotion = PotionEffect(PotionEffectType.CONFUSION, 200, 9)

@@ -16,8 +16,8 @@ class GlowingBoneAxe() : CustomTool(
 	baseStats = CustomItemUtils.statMap(luck = 10.0),
 	enchantments = hashMapOf(
 		Enchantment.DIG_SPEED to 1
-	)
-) {
+	                        )
+                                   ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -65,7 +65,7 @@
 	"unused",
 	"unused",
 	"unused"
-)
+              )
 
 package net.siegerpg.siege.core.items
 
@@ -134,7 +134,7 @@ object CustomItemUtils {
 		luck: Double? = null,
 		mana: Double? = null,
 		mana_regen: Double? = null
-	): HashMap<StatTypes, Double> {
+	           ): HashMap<StatTypes, Double> {
 		val map = hashMapOf<StatTypes, Double>()
 		strength?.let { map[StatTypes.STRENGTH] = it }
 		regeneration?.let { map[StatTypes.REGENERATION] = it }
@@ -151,7 +151,7 @@ object CustomItemUtils {
 		player: Player,
 		statType: StatTypes,
 		itemInMainHand: ItemStack? = null
-	): Double {
+	                 ): Double {
 		var output = 0.0
 		val inventory = player.inventory
 		val mainHand = itemInMainHand ?: inventory.itemInMainHand
@@ -248,7 +248,7 @@ object CustomItemUtils {
 	fun addHealth(player: Player, health: Double) {
 		val playerMaxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
 		val healthStat =
-			getPlayerStat(player, StatTypes.HEALTH) + playerMaxHealth + (player.level * 2)
+				getPlayerStat(player, StatTypes.HEALTH) + playerMaxHealth + (player.level * 2)
 		val currentCustomHealth = getCustomHealth(player)
 		val addedHealth = ((health + currentCustomHealth) / healthStat) * playerMaxHealth
 		if (addedHealth <= playerMaxHealth) player.health = addedHealth
@@ -260,7 +260,7 @@ object CustomItemUtils {
 		item: CustomEquipment,
 		addGem: Boolean,
 		addRarity: Boolean
-	): HashMap<StatTypes, Double> {
+	            ): HashMap<StatTypes, Double> {
 		val map = hashMapOf<StatTypes, Double>()
 		StatTypes.values().forEach {
 			var totalAmount = 0.0
@@ -270,7 +270,7 @@ object CustomItemUtils {
 			if (addRarity) {
 				totalAmount *= if (item.quality < 0) getRarityMultiplier(50) else getRarityMultiplier(
 					item.quality
-				)
+				                                                                                     )
 			}
 			if (addGem) {
 				item.statGem?.let { gem ->
@@ -292,7 +292,7 @@ object CustomItemUtils {
 		hashmap.forEach {
 			when (it.value) {
 				is String -> nbtItem.setString(it.key, it.value as String)
-				is Int -> nbtItem.setInteger(it.key, it.value as Int)
+				is Int    -> nbtItem.setInteger(it.key, it.value as Int)
 			}
 		}
 	}
@@ -308,23 +308,23 @@ fun ItemStack.setNbtTags(vararg pairs: Pair<String, Any?>): ItemStack {
 			entry.value?.let {
 				when (it) {
 					// Numbers
-					is Int -> nbtItem.setInteger(entry.key, it)
-					is Long -> nbtItem.setLong(entry.key, it)
-					is Short -> nbtItem.setShort(entry.key, it)
-					is Double -> nbtItem.setDouble(entry.key, it)
-					is Float -> nbtItem.setFloat(entry.key, it)
-					is IntArray -> nbtItem.setIntArray(entry.key, it)
+					is Int       -> nbtItem.setInteger(entry.key, it)
+					is Long      -> nbtItem.setLong(entry.key, it)
+					is Short     -> nbtItem.setShort(entry.key, it)
+					is Double    -> nbtItem.setDouble(entry.key, it)
+					is Float     -> nbtItem.setFloat(entry.key, it)
+					is IntArray  -> nbtItem.setIntArray(entry.key, it)
 					// Bytes
-					is Byte -> nbtItem.setByte(entry.key, it)
+					is Byte      -> nbtItem.setByte(entry.key, it)
 					is ByteArray -> nbtItem.setByteArray(entry.key, it)
 					// Other Types
-					is String -> nbtItem.setString(entry.key, it)
-					is Boolean -> nbtItem.setBoolean(entry.key, it)
+					is String    -> nbtItem.setString(entry.key, it)
+					is Boolean   -> nbtItem.setBoolean(entry.key, it)
 					// Useful Objects
 					is ItemStack -> nbtItem.setItemStack(entry.key, it)
-					is UUID -> nbtItem.setUUID(entry.key, it)
+					is UUID      -> nbtItem.setUUID(entry.key, it)
 					// Leftovers
-					else -> nbtItem.setObject(entry.key, it)
+					else         -> nbtItem.setObject(entry.key, it)
 				}
 			}
 
@@ -345,22 +345,22 @@ fun <T> ItemStack.getNbtTags(vararg pairs: Pair<String, T>): HashMap<String, Any
 	val output = hashMapOf<String, Any?>()
 	pairs.forEach {
 		val value: Any? = when (it.second!!::class.qualifiedName) {
-			"kotlin.Int.Companion" -> nbtItem.getInteger(it.first)
-			"kotlin.Long.Companion" -> nbtItem.getLong(it.first)
-			"kotlin.Short.Companion" -> nbtItem.getShort(it.first)
-			"kotlin.Double.Companion" -> nbtItem.getDouble(it.first)
-			"kotlin.Float.Companion" -> nbtItem.getFloat(it.first)
-			"kotlin.IntArray" -> nbtItem.getIntArray(it.first)
+			"kotlin.Int.Companion"           -> nbtItem.getInteger(it.first)
+			"kotlin.Long.Companion"          -> nbtItem.getLong(it.first)
+			"kotlin.Short.Companion"         -> nbtItem.getShort(it.first)
+			"kotlin.Double.Companion"        -> nbtItem.getDouble(it.first)
+			"kotlin.Float.Companion"         -> nbtItem.getFloat(it.first)
+			"kotlin.IntArray"                -> nbtItem.getIntArray(it.first)
 			// Bytes
-			"kotlin.Byte.Companion" -> nbtItem.getByte(it.first)
-			"kotlin.ByteArray" -> nbtItem.getByteArray(it.first)
+			"kotlin.Byte.Companion"          -> nbtItem.getByte(it.first)
+			"kotlin.ByteArray"               -> nbtItem.getByteArray(it.first)
 			// Other Types
-			"kotlin.String.Companion" -> nbtItem.getString(it.first)
-			"kotlin.Boolean.Companion" -> nbtItem.getBoolean(it.first)
+			"kotlin.String.Companion"        -> nbtItem.getString(it.first)
+			"kotlin.Boolean.Companion"       -> nbtItem.getBoolean(it.first)
 			// Useful Objects
 			"org.bukkit.inventory.ItemStack" -> nbtItem.getItemStack(it.first)
-			"java.util.UUID" -> nbtItem.getUUID(it.first)
-			else -> null
+			"java.util.UUID"                 -> nbtItem.getUUID(it.first)
+			else                             -> null
 		}
 		output[it.first] = value
 	}
@@ -371,21 +371,21 @@ inline fun <reified T> ItemStack.getNbtTag(key: String): T? {
 	val nbtItem = NBTItem(this)
 	return when (T::class) {
 		// Numbers
-		Int::class -> nbtItem.getInteger(key) as T?
-		Long::class -> nbtItem.getLong(key) as T?
-		Short::class -> nbtItem.getShort(key) as T?
-		Double::class -> nbtItem.getDouble(key) as T?
-		Float::class -> nbtItem.getFloat(key) as T?
-		IntArray::class -> nbtItem.getIntArray(key) as T?
+		Int::class       -> nbtItem.getInteger(key) as T?
+		Long::class      -> nbtItem.getLong(key) as T?
+		Short::class     -> nbtItem.getShort(key) as T?
+		Double::class    -> nbtItem.getDouble(key) as T?
+		Float::class     -> nbtItem.getFloat(key) as T?
+		IntArray::class  -> nbtItem.getIntArray(key) as T?
 		// Bytes
-		Byte::class -> nbtItem.getByte(key) as T?
+		Byte::class      -> nbtItem.getByte(key) as T?
 		ByteArray::class -> nbtItem.getByteArray(key) as T?
 		// Other Types
-		String::class -> nbtItem.getString(key) as T?
-		Boolean::class -> nbtItem.getBoolean(key) as T?
+		String::class    -> nbtItem.getString(key) as T?
+		Boolean::class   -> nbtItem.getBoolean(key) as T?
 		// Useful Objects
 		ItemStack::class -> nbtItem.getItemStack(key) as T?
-		UUID::class -> nbtItem.getUUID(key) as T?
-		else -> null
+		UUID::class      -> nbtItem.getUUID(key) as T?
+		else             -> null
 	}
 }

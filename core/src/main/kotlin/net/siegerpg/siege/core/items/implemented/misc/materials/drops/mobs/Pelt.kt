@@ -26,6 +26,7 @@ class Pelt() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): Pelt {
 			val newItem = Pelt(0)
 			newItem.tier = tier

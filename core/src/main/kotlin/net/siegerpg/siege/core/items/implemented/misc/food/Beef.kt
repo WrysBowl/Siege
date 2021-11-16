@@ -15,7 +15,7 @@ class Beef() : CustomFood(
 	levelRequirement = 0,
 	material = Material.BEEF,
 	health = 80.0
-) {
+                         ) {
 
 	override fun speciality(player: Player) {
 		val realPotion = PotionEffect(PotionEffectType.SATURATION, 200, 1)

@@ -26,6 +26,7 @@ class Feather() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): Feather {
 			val newItem = Feather(0)
 			newItem.tier = tier

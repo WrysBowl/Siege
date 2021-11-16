@@ -8,12 +8,17 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Whe
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.ScrapShard
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.HealingScrapShard
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.HealthyScrapShard
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.LuckyScrapShard
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.StrongScrapShard
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.ToughScrapShard
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Berta : Shop() {
+
 	override var name: String = "Berta"
 	override var permission: String = "siege.shops.shop.berta"
 	override var items: List<ShopItem> = listOf(
@@ -21,8 +26,8 @@ class Berta : Shop() {
 		ShopItem(
 			ScrapShard(-1), 2250, hashMapOf(
 				MetalScrap.tier(3) to 2
-			), true
-		) {
+			                               ), true
+		        ) {
 			ScrapShard(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -32,41 +37,41 @@ class Berta : Shop() {
 			LuckyScrapShard(-1), -1, hashMapOf(
 				MetalScrap.tier(3) to 1,
 				Feather.tier(3) to 2
-			), true
-		) {
+			                                  ), true
+		        ) {
 			LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongScrapShard(-1), -1, hashMapOf(
 				MetalScrap.tier(3) to 1,
 				Bone.tier(3) to 2
-			), true
-		) {
+			                                   ), true
+		        ) {
 			StrongScrapShard(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughScrapShard(-1), -1, hashMapOf(
 				MetalScrap.tier(3) to 1,
 				Pebble.tier(3) to 2
-			), true
-		) {
+			                                  ), true
+		        ) {
 			ToughScrapShard(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyScrapShard(-1), -1, hashMapOf(
 				MetalScrap.tier(3) to 1,
 				PlantMatter.tier(3) to 2
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealthyScrapShard(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingScrapShard(-1), -1, hashMapOf(
 				MetalScrap.tier(3) to 1,
 				Wheat.tier(3) to 3
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealingScrapShard(Utils.randRarity()).getUpdatedItem(false)
 		}
-	)
+	                                           )
 }

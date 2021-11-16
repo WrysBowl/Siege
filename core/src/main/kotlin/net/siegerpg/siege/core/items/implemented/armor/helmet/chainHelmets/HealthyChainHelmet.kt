@@ -13,7 +13,7 @@ class HealthyChainHelmet() : CustomHelmet(
 	levelRequirement = 29,
 	material = Material.CHAINMAIL_HELMET,
 	baseStats = CustomItemUtils.statMap(health = 60.0),
-) {
+                                         ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

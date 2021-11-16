@@ -15,7 +15,7 @@ class HealingDagger() : CustomMeleeWeapon(
 	baseStats = CustomItemUtils.statMap(strength = 18.0, regeneration = 6.0),
 
 	attackSpeed = 1.7
-) {
+                                         ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

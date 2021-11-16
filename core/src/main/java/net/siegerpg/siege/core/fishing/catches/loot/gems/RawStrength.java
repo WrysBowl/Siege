@@ -8,7 +8,8 @@ public class RawStrength extends Fish {
 	public RawStrength () {
 
 		super(30, 0.6, 20, 10,
-		      new RawStrengthGem(0).getUpdatedItem(false));
+		      new RawStrengthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

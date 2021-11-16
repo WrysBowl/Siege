@@ -18,8 +18,8 @@ class LuminousBow() : CustomBow(
 		health = 40.0,
 		luck = -30.0,
 		toughness = -100.0
-	)
-) {
+	                                   )
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

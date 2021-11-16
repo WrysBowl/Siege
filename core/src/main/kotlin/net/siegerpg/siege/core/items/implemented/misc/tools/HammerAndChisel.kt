@@ -15,8 +15,8 @@ class HammerAndChisel() : CustomTool(
 	baseStats = CustomItemUtils.statMap(luck = 15.0),
 
 	enchantments = hashMapOf(
-	)
-) {
+	                        )
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

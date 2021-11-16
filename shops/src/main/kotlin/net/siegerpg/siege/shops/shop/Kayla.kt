@@ -1,13 +1,29 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.armor.boots.ChainBoots
-import net.siegerpg.siege.core.items.implemented.armor.boots.chainBoots.*
+import net.siegerpg.siege.core.items.implemented.armor.boots.chainBoots.HealingChainBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.chainBoots.HealthyChainBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.chainBoots.LuckyChainBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.chainBoots.StrongChainBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.chainBoots.ToughChainBoots
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.ChainChestplate
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.chainChestplates.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.chainChestplates.HealingChainChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.chainChestplates.HealthyChainChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.chainChestplates.LuckyChainChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.chainChestplates.StrongChainChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.chainChestplates.ToughChainChestplate
 import net.siegerpg.siege.core.items.implemented.armor.helmet.ChainHelmet
-import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.HealingChainHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.HealthyChainHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.LuckyChainHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.StrongChainHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.ToughChainHelmet
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings
-import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.HealingChainLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.HealthyChainLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.LuckyChainLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.StrongChainLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.ToughChainLeggings
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
@@ -20,6 +36,7 @@ import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Kayla : Shop() {
+
 	override var name: String = "Kayla"
 	override var permission: String = "siege.shops.shop.kayla"
 	override var items: List<ShopItem> = listOf(
@@ -27,8 +44,8 @@ class Kayla : Shop() {
 		ShopItem(
 			ChainHelmet(-1), 1750, hashMapOf(
 				Chain.tier(2) to 5
-			), true
-		) {
+			                                ), true
+		        ) {
 			ChainHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -38,40 +55,40 @@ class Kayla : Shop() {
 			LuckyChainHelmet(-1), -1, hashMapOf(
 				Chain.tier(2) to 3,
 				Feather.tier(2) to 3
-			), true
-		) {
+			                                   ), true
+		        ) {
 			LuckyChainHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongChainHelmet(-1), -1, hashMapOf(
 				Chain.tier(2) to 3,
 				Bone.tier(2) to 5
-			), true
-		) {
+			                                    ), true
+		        ) {
 			StrongChainHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughChainHelmet(-1), -1, hashMapOf(
 				Chain.tier(2) to 3,
 				Pebble.tier(2) to 5
-			), true
-		) {
+			                                   ), true
+		        ) {
 			ToughChainHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyChainHelmet(-1), -1, hashMapOf(
 				Chain.tier(2) to 3,
 				PlantMatter.tier(2) to 5
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealthyChainHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingChainHelmet(-1), -1, hashMapOf(
 				Chain.tier(2) to 3,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealingChainHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -79,8 +96,8 @@ class Kayla : Shop() {
 		ShopItem(
 			ChainChestplate(-1), 3000, hashMapOf(
 				Chain.tier(2) to 8
-			), true
-		) {
+			                                    ), true
+		        ) {
 			ChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -90,40 +107,40 @@ class Kayla : Shop() {
 			LuckyChainChestplate(-1), 3250, hashMapOf(
 				Chain.tier(2) to 6,
 				Feather.tier(2) to 4
-			), true
-		) {
+			                                         ), true
+		        ) {
 			LuckyChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongChainChestplate(-1), 3250, hashMapOf(
 				Chain.tier(3) to 5,
 				Bone.tier(2) to 5
-			), true
-		) {
+			                                          ), true
+		        ) {
 			StrongChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughChainChestplate(-1), 3250, hashMapOf(
 				Chain.tier(2) to 4,
 				Pebble.tier(2) to 6
-			), true
-		) {
+			                                         ), true
+		        ) {
 			ToughChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyChainChestplate(-1), 3250, hashMapOf(
 				Chain.tier(2) to 4,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                           ), true
+		        ) {
 			HealthyChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingChainChestplate(-1), 3250, hashMapOf(
 				Chain.tier(2) to 5,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                           ), true
+		        ) {
 			HealingChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -131,8 +148,8 @@ class Kayla : Shop() {
 		ShopItem(
 			ChainLeggings(-1), 2750, hashMapOf(
 				Chain.tier(2) to 7
-			), true
-		) {
+			                                  ), true
+		        ) {
 			ChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -142,40 +159,40 @@ class Kayla : Shop() {
 			LuckyChainLeggings(-1), 3000, hashMapOf(
 				Chain.tier(2) to 5,
 				Feather.tier(2) to 4
-			), true
-		) {
+			                                       ), true
+		        ) {
 			LuckyChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongChainLeggings(-1), 3000, hashMapOf(
 				Chain.tier(2) to 5,
 				Bone.tier(2) to 3
-			), true
-		) {
+			                                        ), true
+		        ) {
 			StrongChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughChainLeggings(-1), 3000, hashMapOf(
 				Chain.tier(2) to 6,
 				Pebble.tier(2) to 4
-			), true
-		) {
+			                                       ), true
+		        ) {
 			ToughChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyChainLeggings(-1), 3000, hashMapOf(
 				Chain.tier(2) to 5,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                         ), true
+		        ) {
 			HealthyChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingChainLeggings(-1), 3000, hashMapOf(
 				Chain.tier(2) to 5,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                         ), true
+		        ) {
 			HealingChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -183,8 +200,8 @@ class Kayla : Shop() {
 		ShopItem(
 			ChainBoots(-1), 1500, hashMapOf(
 				Chain.tier(2) to 4
-			), true
-		) {
+			                               ), true
+		        ) {
 			ChainBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -194,41 +211,41 @@ class Kayla : Shop() {
 			LuckyChainBoots(-1), 1750, hashMapOf(
 				Chain.tier(2) to 3,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                    ), true
+		        ) {
 			LuckyChainBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongChainBoots(-1), 1750, hashMapOf(
 				Chain.tier(2) to 3,
 				Bone.tier(2) to 2
-			), true
-		) {
+			                                     ), true
+		        ) {
 			StrongChainBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughChainBoots(-1), 1750, hashMapOf(
 				Chain.tier(2) to 3,
 				Pebble.tier(2) to 3
-			), true
-		) {
+			                                    ), true
+		        ) {
 			ToughChainBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyChainBoots(-1), 1750, hashMapOf(
 				Chain.tier(2) to 3,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                      ), true
+		        ) {
 			HealthyChainBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingChainBoots(-1), 1750, hashMapOf(
 				Chain.tier(2) to 3,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                      ), true
+		        ) {
 			HealingChainBoots(Utils.randRarity()).getUpdatedItem(false)
 		}
-	)
+	                                           )
 }

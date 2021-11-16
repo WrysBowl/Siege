@@ -22,7 +22,7 @@ abstract class CustomChestplate(
 	override val type: ItemTypes = ItemTypes.CHESTPLATE,
 	override var statGem: StatGem? = null,
 	override var leatherColor: Color = Core.defaultLeatherColor
-) : CustomArmor {
+                               ) : CustomArmor {
 
 	override var rarity: Rarity = Rarity.COMMON
 

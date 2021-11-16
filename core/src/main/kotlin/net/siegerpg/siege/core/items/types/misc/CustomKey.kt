@@ -19,7 +19,7 @@ abstract class CustomKey(
 	final override var quality: Int = -1,
 	override var item: ItemStack = ItemStack(material),
 	override val type: ItemTypes = ItemTypes.MATERIAL,
-) : CustomItem {
+                        ) : CustomItem {
 
 	override var rarity: Rarity = Rarity.COMMON
 

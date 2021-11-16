@@ -10,7 +10,8 @@ class Crown() : Cosmetic(
 	customModelData = 740004,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                        ) {
+
 	constructor(quality: Int) : this() {
 		this.quality = 90
 		this.rarity = Rarity.EPIC

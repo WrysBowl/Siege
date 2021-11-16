@@ -11,7 +11,7 @@ class LichKey() : CustomKey(
 	description = listOf("Used to summon", "the Lich"),
 	material = Material.TRIPWIRE_HOOK,
 	quality = 50
-) {
+                           ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

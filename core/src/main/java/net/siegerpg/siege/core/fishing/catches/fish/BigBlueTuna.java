@@ -13,7 +13,8 @@ public class BigBlueTuna extends Fish {
 				0.6,
 				16,
 				9,
-				610006);
+				610006
+		     );
 	}
 
 }

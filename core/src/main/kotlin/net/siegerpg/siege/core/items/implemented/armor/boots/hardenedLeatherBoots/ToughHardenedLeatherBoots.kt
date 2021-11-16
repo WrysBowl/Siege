@@ -13,7 +13,7 @@ class ToughHardenedLeatherBoots() : CustomBoots(
 	levelRequirement = 17,
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(health = 5.0, toughness = 40.0),
-) {
+                                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

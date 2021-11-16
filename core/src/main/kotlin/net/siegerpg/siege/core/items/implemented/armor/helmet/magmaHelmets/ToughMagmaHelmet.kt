@@ -15,7 +15,7 @@ class ToughMagmaHelmet() : CustomHelmet(
 	material = Material.LEATHER_HELMET,
 	baseStats = CustomItemUtils.statMap(health = 5.0, toughness = 30.0),
 	leatherColor = Color.ORANGE
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

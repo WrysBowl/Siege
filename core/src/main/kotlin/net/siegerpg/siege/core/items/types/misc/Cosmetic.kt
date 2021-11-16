@@ -18,7 +18,7 @@ abstract class Cosmetic(
 	final override var quality: Int = -1,
 	override var item: ItemStack = ItemStack(material),
 	override var leatherColor: Color = Core.defaultLeatherColor
-) : CustomCosmetic {
+                       ) : CustomCosmetic {
 
 	override var rarity: Rarity = Rarity.COMMON
 

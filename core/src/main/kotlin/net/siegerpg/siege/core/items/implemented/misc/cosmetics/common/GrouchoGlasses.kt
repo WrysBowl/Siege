@@ -10,7 +10,7 @@ class GrouchoGlasses() : Cosmetic(
 	customModelData = 710008,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

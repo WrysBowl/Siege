@@ -10,7 +10,7 @@ class SlimeBlock() : Cosmetic(
 	customModelData = 1,
 	description = listOf(""),
 	material = Material.SLIME_BLOCK,
-) {
+                             ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 50

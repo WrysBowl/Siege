@@ -14,7 +14,7 @@ class StrongSplinteredBone() : CustomMeleeWeapon(
 	material = Material.WOODEN_SWORD,
 	baseStats = CustomItemUtils.statMap(strength = 42.0),
 	attackSpeed = 1.5
-) {
+                                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

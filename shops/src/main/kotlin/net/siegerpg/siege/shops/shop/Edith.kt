@@ -8,12 +8,17 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Whe
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.weapons.wands.RockWand
-import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.HealingRockWand
+import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.HealthyRockWand
+import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.LuckyRockWand
+import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.StrongRockWand
+import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.ToughRockWand
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Edith : Shop() {
+
 	override var name: String = "Edith"
 	override var permission: String = "siege.shops.shop.edith"
 	override var items: List<ShopItem> = listOf(
@@ -22,8 +27,8 @@ class Edith : Shop() {
 			RockWand(-1), 3500, hashMapOf(
 				Pebble.tier(3) to 1,
 				Stick.tier(3) to 2
-			), true
-		) {
+			                             ), true
+		        ) {
 			RockWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -34,8 +39,8 @@ class Edith : Shop() {
 				Pebble.tier(3) to 1,
 				Feather.tier(3) to 2,
 				Stick.tier(3) to 1
-			), true
-		) {
+			                                ), true
+		        ) {
 			LuckyRockWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -43,16 +48,16 @@ class Edith : Shop() {
 				Pebble.tier(3) to 1,
 				Feather.tier(3) to 1,
 				Bone.tier(3) to 1
-			), true
-		) {
+			                                 ), true
+		        ) {
 			StrongRockWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughRockWand(-1), -1, hashMapOf(
 				Pebble.tier(3) to 3,
 				Stick.tier(3) to 1
-			), true
-		) {
+			                                ), true
+		        ) {
 			ToughRockWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -60,8 +65,8 @@ class Edith : Shop() {
 				Pebble.tier(3) to 1,
 				PlantMatter.tier(3) to 2,
 				Stick.tier(3) to 1
-			), true
-		) {
+			                                  ), true
+		        ) {
 			HealthyRockWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -69,9 +74,9 @@ class Edith : Shop() {
 				Pebble.tier(3) to 1,
 				Wheat.tier(3) to 3,
 				Stick.tier(3) to 1
-			), true
-		) {
+			                                  ), true
+		        ) {
 			HealingRockWand(Utils.randRarity()).getUpdatedItem(false)
 		}
-	)
+	                                           )
 }

@@ -13,7 +13,7 @@ class StrongChainBoots() : CustomBoots(
 	levelRequirement = 29,
 	material = Material.CHAINMAIL_BOOTS,
 	baseStats = CustomItemUtils.statMap(health = 30.0, strength = 6.0),
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

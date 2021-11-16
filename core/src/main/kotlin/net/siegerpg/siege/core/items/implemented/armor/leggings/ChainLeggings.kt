@@ -13,7 +13,7 @@ class ChainLeggings() : CustomLeggings(
 	levelRequirement = 30,
 	material = Material.CHAINMAIL_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 60.0, toughness = 25.0, regeneration = 25.0),
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

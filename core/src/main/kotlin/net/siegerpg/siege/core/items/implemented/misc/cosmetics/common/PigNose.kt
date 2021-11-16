@@ -10,7 +10,7 @@ class PigNose() : Cosmetic(
 	customModelData = 710005,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

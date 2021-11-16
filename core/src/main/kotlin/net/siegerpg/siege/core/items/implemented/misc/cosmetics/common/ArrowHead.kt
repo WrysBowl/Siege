@@ -10,7 +10,7 @@ class ArrowHead() : Cosmetic(
 	customModelData = 710002,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

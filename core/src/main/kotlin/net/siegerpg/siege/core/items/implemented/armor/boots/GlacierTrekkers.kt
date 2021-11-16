@@ -18,9 +18,9 @@ class GlacierTrekkers() : CustomBoots(
 		regeneration = 10.0,
 		strength = 15.0,
 		toughness = -100.0
-	),
+	                                   ),
 	leatherColor = Color.AQUA
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

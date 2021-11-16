@@ -15,7 +15,7 @@ class StrongStrawOveralls() : CustomLeggings(
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 6.0, strength = 5.0),
 	leatherColor = Color.YELLOW
-) {
+                                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -17,8 +17,8 @@ class Marrow() : CustomBow(
 		regeneration = 30.0,
 		health = -30.0,
 		toughness = -100.0
-	)
-) {
+	                                   )
+                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

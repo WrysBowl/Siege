@@ -2,7 +2,46 @@
 
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.database.DatabaseManager
-import net.siegerpg.siege.core.levelReward.*
+import net.siegerpg.siege.core.levelReward.LevelReward
+import net.siegerpg.siege.core.levelReward.Reward1
+import net.siegerpg.siege.core.levelReward.Reward10
+import net.siegerpg.siege.core.levelReward.Reward11
+import net.siegerpg.siege.core.levelReward.Reward12
+import net.siegerpg.siege.core.levelReward.Reward13
+import net.siegerpg.siege.core.levelReward.Reward14
+import net.siegerpg.siege.core.levelReward.Reward15
+import net.siegerpg.siege.core.levelReward.Reward16
+import net.siegerpg.siege.core.levelReward.Reward17
+import net.siegerpg.siege.core.levelReward.Reward18
+import net.siegerpg.siege.core.levelReward.Reward19
+import net.siegerpg.siege.core.levelReward.Reward2
+import net.siegerpg.siege.core.levelReward.Reward20
+import net.siegerpg.siege.core.levelReward.Reward21
+import net.siegerpg.siege.core.levelReward.Reward22
+import net.siegerpg.siege.core.levelReward.Reward23
+import net.siegerpg.siege.core.levelReward.Reward24
+import net.siegerpg.siege.core.levelReward.Reward25
+import net.siegerpg.siege.core.levelReward.Reward26
+import net.siegerpg.siege.core.levelReward.Reward27
+import net.siegerpg.siege.core.levelReward.Reward28
+import net.siegerpg.siege.core.levelReward.Reward29
+import net.siegerpg.siege.core.levelReward.Reward3
+import net.siegerpg.siege.core.levelReward.Reward30
+import net.siegerpg.siege.core.levelReward.Reward31
+import net.siegerpg.siege.core.levelReward.Reward32
+import net.siegerpg.siege.core.levelReward.Reward33
+import net.siegerpg.siege.core.levelReward.Reward34
+import net.siegerpg.siege.core.levelReward.Reward35
+import net.siegerpg.siege.core.levelReward.Reward36
+import net.siegerpg.siege.core.levelReward.Reward37
+import net.siegerpg.siege.core.levelReward.Reward38
+import net.siegerpg.siege.core.levelReward.Reward39
+import net.siegerpg.siege.core.levelReward.Reward4
+import net.siegerpg.siege.core.levelReward.Reward5
+import net.siegerpg.siege.core.levelReward.Reward6
+import net.siegerpg.siege.core.levelReward.Reward7
+import net.siegerpg.siege.core.levelReward.Reward8
+import net.siegerpg.siege.core.levelReward.Reward9
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.parties.Party
 import org.bukkit.Bukkit
@@ -18,6 +57,7 @@ import java.util.concurrent.ConcurrentHashMap
 import kotlin.math.pow
 
 object Levels {
+
 	// How long data is cached for
 	private const val cacheDuration = 10 * 60
 	private val cachedLevelExp = ConcurrentHashMap<UUID, Triple<Short, Int, Instant>>()
@@ -31,7 +71,7 @@ object Levels {
 		Reward26(), Reward27(), Reward28(), Reward29(), Reward30(),
 		Reward31(), Reward32(), Reward33(), Reward34(), Reward35(),
 		Reward36(), Reward37(), Reward38(), Reward39()
-	)
+	                                                              )
 
 	/**
 	 * Calculates the experience required to reach a level.
@@ -73,7 +113,7 @@ object Levels {
 	fun getExpLevel(
 		player: OfflinePlayer,
 		runAfter: (levelExp: Pair<Short, Int>?) -> Unit
-	): BukkitTask {
+	               ): BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetExpLevel(player))
 		})
@@ -87,7 +127,7 @@ object Levels {
 	fun getExpLevel(
 		players: List<OfflinePlayer>,
 		runAfter: (HashMap<UUID, Pair<Short, Int>>?) -> Unit
-	): BukkitTask {
+	               ): BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetExpLevel(players))
 		})
@@ -101,7 +141,7 @@ object Levels {
 	fun getAllExpLevel(
 		limit: Int,
 		runAfter: (ArrayList<Triple<UUID, Short, Int>>?) -> Unit
-	): BukkitTask {
+	                  ): BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetAllExpLevel(limit))
 		})
@@ -122,7 +162,7 @@ object Levels {
 		player: OfflinePlayer,
 		levelExp: Pair<Short, Int>,
 		then: () -> Unit
-	): BukkitTask {
+	               ): BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			blockingSetExpLevel(player, levelExp)
 			then()
@@ -162,7 +202,7 @@ object Levels {
 				pair?.first ?: 0,
 				(pair?.second ?: 0) + expToAdd,
 				player as Player
-			)
+			                           )
 			setExpLevel(player, new, then)
 		}
 	}
@@ -186,7 +226,7 @@ object Levels {
 						data.first,
 						data.second + exp,
 						Bukkit.getOfflinePlayer(uuid)
-					)
+					                                  )
 				}
 				// Finally sets the new exp and level for all the players in question
 				setExpLevel(levelExp, then)
@@ -215,7 +255,7 @@ object Levels {
 		list.add(addExp(player, exp))
 		val teamMembers = ArrayList<OfflinePlayer>()
 		val party = Party.getPlayerParty(player)
-			?: return list
+		            ?: return list
 		// Gets all members apart from the player
 		party.getMembers().forEach { m ->
 			if (m != player) {
@@ -248,7 +288,7 @@ object Levels {
 			val stmt = connection.prepareStatement(
 				"SELECT level,experience FROM userData WHERE uuid=?",
 				ResultSet.TYPE_SCROLL_SENSITIVE
-			)
+			                                      )
 			stmt.setString(1, player.uniqueId.toString())
 			val query = stmt.executeQuery()
 			return if (!query.isBeforeFirst) {
@@ -272,7 +312,7 @@ object Levels {
 	 */
 	fun blockingGetExpLevel(
 		players: List<OfflinePlayer>
-	): HashMap<UUID, Pair<Short, Int>>? {
+	                       ): HashMap<UUID, Pair<Short, Int>>? {
 		// Gets the cache data for each cached player, and gets the data of the not-yet-cached players
 		val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
 		val map = HashMap<UUID, Pair<Short, Int>>()
@@ -294,9 +334,9 @@ object Levels {
 		connection!!.use {
 			val stmt = connection.prepareStatement(
 				String.format("SELECT level,experience,uuid FROM userData WHERE uuid IN (%s)",
-					playerIDs.joinToString(", ") { "?" }),
+				              playerIDs.joinToString(", ") { "?" }),
 				ResultSet.TYPE_SCROLL_SENSITIVE
-			)
+			                                      )
 			var currentIndex = 0
 			playerIDs.forEach { id ->
 				stmt.setString(++currentIndex, id.toString())
@@ -328,7 +368,7 @@ object Levels {
 		}
 		connection!!.use {
 			val stmt =
-				connection.prepareStatement("SELECT level,experience,uuid FROM userData ORDER BY level DESC $limitStr")
+					connection.prepareStatement("SELECT level,experience,uuid FROM userData ORDER BY level DESC $limitStr")
 			val query = stmt.executeQuery()
 			if (!query.isBeforeFirst) return null
 			while (query.next()) {
@@ -338,7 +378,7 @@ object Levels {
 					uuid,
 					data.first,
 					data.second
-				)
+				                   )
 				arrayList.add(triple)
 				// Updates the cache
 				cachedLevelExp[uuid] = Triple(data.first, data.second, Instant.now())
@@ -354,7 +394,7 @@ object Levels {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt =
-				connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?")
+					connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?")
 			stmt.setShort(1, levelExp.first)
 			stmt.setInt(2, levelExp.second)
 			stmt.setString(3, player.uniqueId.toString())
@@ -368,7 +408,7 @@ object Levels {
 				p.exp = expPercent
 				// Updates the cache
 				cachedLevelExp[player.uniqueId] =
-					Triple(levelExp.first, levelExp.second, Instant.now())
+						Triple(levelExp.first, levelExp.second, Instant.now())
 			}
 		}
 	}
@@ -380,7 +420,7 @@ object Levels {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt =
-				connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?")
+					connection.prepareStatement("UPDATE userData SET level=?,experience=? WHERE uuid=?")
 			// We batch the sql queries together for speed (it will only make one request instead of multiple)
 			data.forEach { (uuid, data) ->
 				// We prepare the query

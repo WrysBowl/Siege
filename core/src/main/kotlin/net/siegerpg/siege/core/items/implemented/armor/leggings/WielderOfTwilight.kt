@@ -19,9 +19,9 @@ class WielderOfTwilight() : CustomLeggings(
 		luck = 30.0,
 		health = -80.0,
 		toughness = -100.0
-	),
+	                                   ),
 	leatherColor = Color.SILVER
-) {
+                                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

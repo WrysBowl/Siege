@@ -28,7 +28,7 @@ object DatabaseManager {
 			"jdbc:mysql://%s/%s",
 			configuration.getString("db.endpoint"),
 			configuration.getString("db.dbname")
-		)
+		                   )
 		configuration.getString("db.username")?.let { user = it }
 		configuration.getString("db.password")?.let { password = it }
 		config.jdbcUrl = url

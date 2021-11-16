@@ -2,7 +2,12 @@ package net.siegerpg.siege.core.commands
 
 import co.aikar.commands.BaseCommand
 import co.aikar.commands.CommandCompletions
-import co.aikar.commands.annotation.*
+import co.aikar.commands.annotation.CommandAlias
+import co.aikar.commands.annotation.CommandCompletion
+import co.aikar.commands.annotation.CommandPermission
+import co.aikar.commands.annotation.HelpCommand
+import co.aikar.commands.annotation.Subcommand
+import co.aikar.commands.annotation.Syntax
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.dungeons.DungeonCommand
@@ -18,6 +23,7 @@ import java.time.Instant
 
 @CommandAlias("bossleaderboard|bosslb|blb")
 class BossLeaderboardCommand : BaseCommand() {
+
 	init {
 		Core.plugin().commandManager.commandCompletions.registerCompletion(
 			"bosses",
@@ -119,10 +125,10 @@ class BossLeaderboardCommand : BaseCommand() {
 						"<hover:show_text:'<gray>Position: <gold>${holo.location}\n<gray>Created at: <gold>${
 							Instant.ofEpochMilli(
 								holo.creationTimestamp
-							)
+							                    )
 						}'><gold>Hologram #${i + 1}<gray>"
-					)
-				)
+					           )
+				             )
 			}
 			p.sendMessage(Utils.parse("<gold>----------"))
 		}
@@ -152,8 +158,8 @@ class BossLeaderboardCommand : BaseCommand() {
 					"&6/bosslb holo spawn <boss>: &7Spawns a hologram with data for a specific boss at your location.",
 					"&6/bosslb holo list <boss>: &7Lists the holograms for a specific boss.",
 					"&6/bosslb holo removenear <boss>: &7Removes a boss hologram near (5 blocks around) you.",
-				).toTypedArray()
-			)
+				      ).toTypedArray()
+			                  )
 		}
 	}
 
@@ -165,8 +171,8 @@ class BossLeaderboardCommand : BaseCommand() {
 				"&6/bosslb me <boss>: &7Views your stats for a specific boss.",
 				"&6/bosslb top10 <boss>: &7Views the top 10 players for a specific boss.",
 				"&6/bosslb stats <player> <boss>: &7Views the boss data for a specific player!",
-			).toTypedArray()
-		)
+			      ).toTypedArray()
+		                  )
 		if (player.isOp) {
 			player.sendMessage(
 				listOf(
@@ -174,8 +180,8 @@ class BossLeaderboardCommand : BaseCommand() {
 					"&6/bosslb holo spawn <boss>: &7Spawns a hologram with data for a specific boss at your location.",
 					"&6/bosslb holo list <boss>: &7Lists the holograms for a specific boss.",
 					"&6/bosslb holo removenear <boss>: &7Removes a boss hologram near (5 blocks around) you.",
-				).toTypedArray()
-			)
+				      ).toTypedArray()
+			                  )
 		}
 	}
 

@@ -15,7 +15,7 @@ class PristineLuckGem() : StatGemType(
 
 	statType = StatTypes.LUCK,
 	statAmount = 18.0
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

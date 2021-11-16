@@ -10,7 +10,8 @@ class CarrotOnAStick() : Cosmetic(
 	customModelData = 740001,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                                 ) {
+
 	constructor(quality: Int) : this() {
 		this.quality = 90
 		this.rarity = Rarity.EPIC

@@ -17,7 +17,7 @@ class HexShifter() : Cosmetic(
 	description = listOf("1. Hold cosmetic helmet", "2. Type HEX color in chat", "Ex. #FBC84B"),
 	material = Material.LEATHER_HELMET,
 	leatherColor = Color.fromRGB(0xFBC84B),
-) {
+                             ) {
 
 	override fun onCosmeticSpeak(e: AsyncChatEvent) {
 		val player: Player = e.player

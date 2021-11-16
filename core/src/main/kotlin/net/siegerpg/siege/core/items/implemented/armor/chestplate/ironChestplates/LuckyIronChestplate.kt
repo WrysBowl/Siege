@@ -13,7 +13,7 @@ class LuckyIronChestplate() : CustomChestplate(
 	levelRequirement = 35,
 	material = Material.IRON_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 60.0, luck = 13.0),
-) {
+                                              ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

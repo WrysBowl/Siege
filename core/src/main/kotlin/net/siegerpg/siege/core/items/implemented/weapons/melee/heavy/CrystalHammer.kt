@@ -17,9 +17,9 @@ class CrystalHammer() : CustomMeleeWeapon(
 		toughness = 50.0,
 		regeneration = -30.0,
 		luck = -25.0
-	),
+	                                   ),
 	attackSpeed = 0.5
-) {
+                                         ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

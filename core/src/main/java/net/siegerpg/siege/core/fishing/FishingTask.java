@@ -80,11 +80,13 @@ public class FishingTask extends BukkitRunnable {
 		//BossBar for progress
 		double progress = data.getScore() / fish.winScore;
 		if (Bukkit.getBossBar(keyProgress) == null || e.getProgressBar() == null) {
-			BossBar bossbar = Bukkit.createBossBar(keyProgress,
-			                                       Utils.tacc("&a&lStay in the Green!"),
-			                                       BarColor.GREEN,
-			                                       BarStyle.SOLID,
-			                                       BarFlag.CREATE_FOG);
+			BossBar bossbar = Bukkit.createBossBar(
+					keyProgress,
+					Utils.tacc("&a&lStay in the Green!"),
+					BarColor.GREEN,
+					BarStyle.SOLID,
+					BarFlag.CREATE_FOG
+			                                      );
 			bossbar.setProgress(progress);
 			bossbar.setVisible(true);
 			bossbar.addPlayer(e.getPlayer());

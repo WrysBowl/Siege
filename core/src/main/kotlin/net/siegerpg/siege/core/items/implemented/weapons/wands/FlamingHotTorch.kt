@@ -12,7 +12,7 @@ class FlamingHotTorch() : CustomWand(
 	description = listOf(
 		"This weapon was said to have the ability",
 		"to generate mass amounts of electricity"
-	),
+	                    ),
 	levelRequirement = 24,
 	material = Material.WOODEN_HOE,
 	baseStats = CustomItemUtils.statMap(strength = 24.0, luck = 16.0),
@@ -21,7 +21,7 @@ class FlamingHotTorch() : CustomWand(
 	green = 0,
 	blue = 0,
 	damageRadius = 2.0
-) {
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

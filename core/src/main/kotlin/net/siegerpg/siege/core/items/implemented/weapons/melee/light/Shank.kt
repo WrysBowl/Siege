@@ -14,7 +14,7 @@ class Shank() : CustomMeleeWeapon(
 	material = Material.WOODEN_SWORD,
 	baseStats = CustomItemUtils.statMap(strength = 18.0),
 	attackSpeed = 1.7
-) {
+                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

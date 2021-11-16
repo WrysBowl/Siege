@@ -15,9 +15,9 @@ class OldRod() : CustomRod(
 	material = Material.FISHING_ROD,
 	baseStats = CustomItemUtils.statMap(),
 	enchantments = hashMapOf(
-	),
+	                        ),
 	fishDropTable = OldFishTable()
-) {
+                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

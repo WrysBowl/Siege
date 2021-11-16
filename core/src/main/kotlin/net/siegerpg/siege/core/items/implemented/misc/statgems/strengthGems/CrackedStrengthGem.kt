@@ -15,7 +15,7 @@ class CrackedStrengthGem() : StatGemType(
 
 	statType = StatTypes.STRENGTH,
 	statAmount = 6.0
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

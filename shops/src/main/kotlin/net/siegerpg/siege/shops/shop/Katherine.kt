@@ -1,16 +1,25 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Coal
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernWand
-import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernWands.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernWands.HealingEarthernWand
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernWands.HealthyEarthernWand
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernWands.LuckyEarthernWand
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernWands.StrongEarthernWand
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernWands.ToughEarthernWand
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Katherine : Shop() {
+
 	override var name: String = "Katherine"
 	override var permission: String = "siege.shops.shop.katherine"
 	override var items: List<ShopItem> = listOf(
@@ -20,8 +29,8 @@ class Katherine : Shop() {
 				Pebble.tier(3) to 1,
 				Seed.tier(3) to 2,
 				Coal.tier(3) to 2
-			), true
-		) {
+			                                 ), true
+		        ) {
 			EarthernWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -33,8 +42,8 @@ class Katherine : Shop() {
 				Seed.tier(3) to 1,
 				Coal.tier(3) to 1,
 				Feather.tier(3) to 3
-			), true
-		) {
+			                                    ), true
+		        ) {
 			LuckyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -43,8 +52,8 @@ class Katherine : Shop() {
 				Seed.tier(3) to 1,
 				Coal.tier(3) to 1,
 				Bone.tier(3) to 2
-			), true
-		) {
+			                                     ), true
+		        ) {
 			StrongEarthernWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -53,8 +62,8 @@ class Katherine : Shop() {
 				Seed.tier(3) to 1,
 				Coal.tier(3) to 1,
 				Pebble.tier(3) to 4
-			), true
-		) {
+			                                    ), true
+		        ) {
 			ToughEarthernWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -62,8 +71,8 @@ class Katherine : Shop() {
 				PlantMatter.tier(3) to 4,
 				Seed.tier(3) to 1,
 				Coal.tier(3) to 1
-			), true
-		) {
+			                                      ), true
+		        ) {
 			HealthyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -72,9 +81,9 @@ class Katherine : Shop() {
 				Seed.tier(3) to 1,
 				Coal.tier(3) to 1,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                      ), true
+		        ) {
 			HealingEarthernWand(Utils.randRarity()).getUpdatedItem(false)
 		}
-	)
+	                                           )
 }

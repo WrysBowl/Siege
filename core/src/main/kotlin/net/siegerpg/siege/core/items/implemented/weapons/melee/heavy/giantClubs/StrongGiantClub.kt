@@ -15,7 +15,7 @@ class StrongGiantClub() : CustomMeleeWeapon(
 	baseStats = CustomItemUtils.statMap(strength = 23.0),
 
 	attackSpeed = 0.7
-) {
+                                           ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

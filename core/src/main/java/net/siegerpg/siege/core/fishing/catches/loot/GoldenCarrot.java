@@ -7,7 +7,8 @@ public class GoldenCarrot extends Fish {
 	public GoldenCarrot () {
 
 		super(15, 1, 28, 8,
-		      new net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot(0).getUpdatedItem(false));
+		      new net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot(0).getUpdatedItem(false)
+		     );
 	}
 
 }

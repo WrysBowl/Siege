@@ -13,7 +13,7 @@ class ChainBoots() : CustomBoots(
 	levelRequirement = 29,
 	material = Material.CHAINMAIL_BOOTS,
 	baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 15.0),
-) {
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

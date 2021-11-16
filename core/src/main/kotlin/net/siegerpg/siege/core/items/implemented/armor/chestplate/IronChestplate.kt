@@ -17,8 +17,8 @@ class IronChestplate() : CustomChestplate(
 		toughness = 150.0,
 		strength = -12.0,
 		luck = -4.0
-	),
-) {
+	                                   ),
+                                         ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

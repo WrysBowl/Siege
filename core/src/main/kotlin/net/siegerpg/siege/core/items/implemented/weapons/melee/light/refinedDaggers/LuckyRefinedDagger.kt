@@ -14,7 +14,7 @@ class LuckyRefinedDagger() : CustomMeleeWeapon(
 	material = Material.WOODEN_SWORD,
 	baseStats = CustomItemUtils.statMap(strength = 34.0, luck = 8.0),
 	attackSpeed = 1.6
-) {
+                                              ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

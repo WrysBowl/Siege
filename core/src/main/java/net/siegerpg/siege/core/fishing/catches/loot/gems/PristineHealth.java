@@ -8,7 +8,8 @@ public class PristineHealth extends Fish {
 	public PristineHealth () {
 
 		super(60, 1, 12, 20,
-		      new PristineHealthGem(0).getUpdatedItem(false));
+		      new PristineHealthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

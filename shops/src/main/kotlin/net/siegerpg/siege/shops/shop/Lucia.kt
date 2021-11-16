@@ -1,15 +1,24 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Coal
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernStaff
-import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernStaffs.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernStaffs.HealingEarthernStaff
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernStaffs.HealthyEarthernStaff
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernStaffs.LuckyEarthernStaff
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernStaffs.StrongEarthernStaff
+import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernStaffs.ToughEarthernStaff
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Lucia : Shop() {
+
 	override var name: String = "Lucia"
 	override var permission: String = "siege.shops.shop.lucia"
 	override var items: List<ShopItem> = listOf(
@@ -19,8 +28,8 @@ class Lucia : Shop() {
 				PlantMatter.tier(3) to 1,
 				Seed.tier(4) to 2,
 				Coal.tier(4) to 2
-			), true
-		) {
+			                                  ), true
+		        ) {
 			EarthernStaff(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -32,8 +41,8 @@ class Lucia : Shop() {
 				Seed.tier(4) to 1,
 				Coal.tier(4) to 1,
 				Feather.tier(4) to 2
-			), true
-		) {
+			                                     ), true
+		        ) {
 			LuckyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -42,8 +51,8 @@ class Lucia : Shop() {
 				Seed.tier(4) to 1,
 				Coal.tier(4) to 1,
 				Pebble.tier(4) to 3
-			), true
-		) {
+			                                      ), true
+		        ) {
 			StrongEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -52,8 +61,8 @@ class Lucia : Shop() {
 				Seed.tier(3) to 1,
 				Coal.tier(3) to 1,
 				Pebble.tier(3) to 4
-			), true
-		) {
+			                                     ), true
+		        ) {
 			ToughEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -61,8 +70,8 @@ class Lucia : Shop() {
 				PlantMatter.tier(4) to 2,
 				Seed.tier(4) to 1,
 				Coal.tier(4) to 1
-			), true
-		) {
+			                                       ), true
+		        ) {
 			HealthyEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -71,9 +80,9 @@ class Lucia : Shop() {
 				Seed.tier(4) to 1,
 				Coal.tier(4) to 1,
 				Wheat.tier(5) to 1
-			), true
-		) {
+			                                       ), true
+		        ) {
 			HealingEarthernStaff(Utils.randRarity()).getUpdatedItem(false)
 		}
-	)
+	                                           )
 }

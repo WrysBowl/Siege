@@ -15,7 +15,7 @@ class ToughStrawHat() : CustomHelmet(
 	material = Material.LEATHER_HELMET,
 	baseStats = CustomItemUtils.statMap(health = 2.0, toughness = 20.0),
 	leatherColor = Color.YELLOW
-) {
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

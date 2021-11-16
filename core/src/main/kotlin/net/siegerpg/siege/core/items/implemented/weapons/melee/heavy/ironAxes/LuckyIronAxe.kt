@@ -14,7 +14,7 @@ class LuckyIronAxe() : CustomMeleeWeapon(
 	material = Material.WOODEN_AXE,
 	baseStats = CustomItemUtils.statMap(strength = 36.0, luck = 5.0),
 	attackSpeed = 1.0
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

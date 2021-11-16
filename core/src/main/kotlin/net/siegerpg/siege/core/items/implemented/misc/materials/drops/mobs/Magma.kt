@@ -26,6 +26,7 @@ class Magma() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): Magma {
 			val newItem = Magma(0)
 			newItem.tier = tier

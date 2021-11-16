@@ -10,7 +10,7 @@ class DogEars() : Cosmetic(
 	customModelData = 710013,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

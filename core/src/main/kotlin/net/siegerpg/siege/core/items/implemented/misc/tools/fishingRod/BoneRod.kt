@@ -17,9 +17,9 @@ class BoneRod() : CustomRod(
 	baseStats = CustomItemUtils.statMap(),
 	enchantments = hashMapOf(
 		Enchantment.LURE to 1
-	),
+	                        ),
 	fishDropTable = BoneFishTable()
-) {
+                           ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 50

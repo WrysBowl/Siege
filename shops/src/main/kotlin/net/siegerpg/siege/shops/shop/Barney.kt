@@ -3,13 +3,22 @@ package net.siegerpg.siege.shops.shop
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Dagger
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.daggers.*
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shanks.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.daggers.HealingDagger
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.daggers.HealthyDagger
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.daggers.LuckyDagger
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.daggers.StrongDagger
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.daggers.ToughDagger
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shanks.HealingShank
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shanks.HealthyShank
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shanks.LuckyShank
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shanks.StrongShank
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shanks.ToughShank
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Barney : Shop() {
+
 	override var name: String = "Barney"
 	override var permission: String = "siege.shops.shop.barney"
 	override var items: List<ShopItem> = listOf(
@@ -58,5 +67,5 @@ class Barney : Shop() {
 		ShopItem(HealingDagger(-1), -1, hashMapOf(), false) {
 			HealingDagger(Utils.randRarity()).getUpdatedItem(false)
 		}
-	)
+	                                           )
 }

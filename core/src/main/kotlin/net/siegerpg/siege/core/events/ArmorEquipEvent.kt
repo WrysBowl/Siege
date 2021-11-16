@@ -30,8 +30,9 @@ class ArmorEquipEvent(
 	 */
 	var oldArmorPiece: ItemStack?,
 	var newArmorPiece: ItemStack?
-) :
+                     ) :
 	PlayerEvent(player!!), Cancellable {
+
 	private var cancel = false
 
 
@@ -107,6 +108,7 @@ class ArmorEquipEvent(
 	}
 
 	companion object {
+
 		/**
 		 * Gets a list of handlers handling this event.
 		 *

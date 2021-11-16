@@ -13,7 +13,8 @@ public class StingWhip extends Fish {
 				0.5,
 				24,
 				9,
-				610003);
+				610003
+		     );
 
 	}
 

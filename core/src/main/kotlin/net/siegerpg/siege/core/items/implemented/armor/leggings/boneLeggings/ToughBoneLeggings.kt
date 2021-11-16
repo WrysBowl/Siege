@@ -15,7 +15,7 @@ class ToughBoneLeggings() : CustomLeggings(
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(toughness = 100.0),
 	leatherColor = Color.GRAY
-) {
+                                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

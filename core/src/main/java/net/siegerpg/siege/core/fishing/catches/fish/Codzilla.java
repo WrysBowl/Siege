@@ -14,7 +14,8 @@ public class Codzilla extends Fish {
 				0.5,
 				32,
 				7,
-				610001);
+				610001
+		     );
 	}
 
 }

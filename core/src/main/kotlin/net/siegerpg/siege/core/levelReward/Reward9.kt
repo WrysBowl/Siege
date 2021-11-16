@@ -9,6 +9,7 @@ import org.bukkit.Sound
 import org.bukkit.entity.Player
 
 class Reward9 : LevelReward {
+
 	override fun giveReward(player: Player) {
 		val level: Short = 10
 		Bukkit.getServer().broadcast(Utils.lore(""))
@@ -24,7 +25,7 @@ class Reward9 : LevelReward {
 			10,
 			80,
 			10
-		)
+		                )
 		player.sendMessage(Utils.lore(""))
 		player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
 		player.sendMessage(Utils.lore("<gold><bold>Level Reward"))

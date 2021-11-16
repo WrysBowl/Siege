@@ -10,7 +10,7 @@ class Chocolate() : Cosmetic(
 	customModelData = 710011,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

@@ -15,7 +15,7 @@ class HealingStrawBoots() : CustomBoots(
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(regeneration = 3.0),
 	leatherColor = Color.YELLOW
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

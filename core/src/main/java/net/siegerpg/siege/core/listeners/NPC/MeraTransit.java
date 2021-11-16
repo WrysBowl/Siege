@@ -62,10 +62,12 @@ public class MeraTransit implements Listener {
 				player.sendTitle(Utils.tacc("&aTeleporting to..."), Utils.tacc("&eLast Death Point"), 10, 30, 10);
 				player.getWorld().spawnParticle(
 						Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-						player.getLocation(), 10);
+						player.getLocation(), 10
+				                               );
 				deathLocation.getWorld().spawnParticle(
 						Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-						deathLocation, 10);
+						deathLocation, 10
+				                                      );
 				Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
 					player.teleport(deathLocation);
 					player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 0.8f);

@@ -17,9 +17,9 @@ class RefinedRod() : CustomRod(
 	baseStats = CustomItemUtils.statMap(),
 	enchantments = hashMapOf(
 		Enchantment.LURE to 2,
-	),
+	                        ),
 	fishDropTable = RefinedFishTable()
-) {
+                              ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 70

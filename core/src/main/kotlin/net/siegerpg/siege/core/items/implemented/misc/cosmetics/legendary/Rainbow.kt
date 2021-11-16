@@ -14,7 +14,7 @@ class Rainbow() : Cosmetic(
 	customModelData = 750003,
 	description = listOf("Disco ball :)"),
 	material = Material.WHITE_STAINED_GLASS
-) {
+                          ) {
 
 	override fun onCosmeticEquip(e: PlayerArmorChangeEvent) {
 		val player = e.player
@@ -31,7 +31,7 @@ class Rainbow() : Cosmetic(
 			Material.BLUE_STAINED_GLASS,
 			Material.MAGENTA_STAINED_GLASS,
 			Material.PURPLE_STAINED_GLASS
-		)
+		                                                   )
 		object : BukkitRunnable() {
 			override fun run() {
 				if (player.inventory.helmet == null || !e.player.isOnline) {

@@ -21,12 +21,12 @@ class PartyConfig : ConfigurationBase(File(Core.plugin().dataFolder, "parties.ym
 
 	fun getParties(): ConfigurationSection {
 		return configuration.getConfigurationSection("parties")
-			?: configuration.createSection("parties")
+		       ?: configuration.createSection("parties")
 	}
 
 	fun getParty(id: UUID): ConfigurationSection {
 		return getParties().getConfigurationSection(id.toString())
-			?: getParties().createSection(id.toString())
+		       ?: getParties().createSection(id.toString())
 	}
 
 	fun setParty(id: UUID, data: ConfigurationSection?) {

@@ -18,8 +18,8 @@ class TitaniumBoots() : CustomBoots(
 		regeneration = 10.0,
 		luck = -15.0,
 		strength = -20.0
-	),
-) {
+	                                   ),
+                                   ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

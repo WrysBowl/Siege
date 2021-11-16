@@ -8,7 +8,8 @@ public class SimpleStrength extends Fish {
 	public SimpleStrength () {
 
 		super(50, 0.9, 14, 16,
-		      new SimpleStrengthGem(0).getUpdatedItem(false));
+		      new SimpleStrengthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

@@ -1,21 +1,42 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes.HealingStoneAxe
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes.HealthyStoneAxe
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes.LuckyStoneAxe
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes.StrongStoneAxe
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.stoneAxes.ToughStoneAxe
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shovel
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shovels.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shovels.HealingShovel
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shovels.HealthyShovel
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shovels.LuckyShovel
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shovels.StrongShovel
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.shovels.ToughShovel
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.ReinforcedBow
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.*
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.HealingReinforcedBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.HealthyReinforcedBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.LuckyReinforcedBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.StrongReinforcedBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.reinforcedBows.ToughReinforcedBow
 import net.siegerpg.siege.core.items.implemented.weapons.wands.SlimeSpoofer
-import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.HealingSlimySpoofer
+import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.HealthySlimeSpoofer
+import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.LuckySlimeSpoofer
+import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.StrongSlimeSpoofer
+import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.ToughSlimeSpoofer
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Ellie : Shop() {
+
 	override var name: String = "Ellie"
 	override var permission: String = "siege.shops.shop.ellie"
 	override var items: List<ShopItem> = listOf(
@@ -24,8 +45,8 @@ class Ellie : Shop() {
 			Shovel(-1), 600, hashMapOf(
 				Pebble.tier(2) to 1,
 				Stick.tier(3) to 2
-			), true
-		) {
+			                          ), true
+		        ) {
 			Shovel(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -36,8 +57,8 @@ class Ellie : Shop() {
 				Pebble.tier(2) to 1,
 				Stick.tier(3) to 1,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                              ), true
+		        ) {
 			LuckyShovel(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -45,16 +66,16 @@ class Ellie : Shop() {
 				Pebble.tier(2) to 1,
 				Stick.tier(3) to 1,
 				Bone.tier(2) to 1
-			), true
-		) {
+			                               ), true
+		        ) {
 			StrongShovel(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughShovel(-1), -1, hashMapOf(
 				Pebble.tier(2) to 4,
 				Stick.tier(3) to 1
-			), true
-		) {
+			                              ), true
+		        ) {
 			ToughShovel(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -62,8 +83,8 @@ class Ellie : Shop() {
 				Pebble.tier(2) to 1,
 				Stick.tier(3) to 1,
 				PlantMatter.tier(2) to 2
-			), true
-		) {
+			                                ), true
+		        ) {
 			HealthyShovel(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -71,8 +92,8 @@ class Ellie : Shop() {
 				Pebble.tier(2) to 1,
 				Stick.tier(3) to 1,
 				Wheat.tier(3) to 1
-			), true
-		) {
+			                                ), true
+		        ) {
 			HealingShovel(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -81,8 +102,8 @@ class Ellie : Shop() {
 			ReinforcedBow(-1), 1000, hashMapOf(
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 3
-			), true
-		) {
+			                                  ), true
+		        ) {
 			ReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -93,8 +114,8 @@ class Ellie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Feather.tier(3) to 1
-			), true
-		) {
+			                                       ), true
+		        ) {
 			LuckyReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -102,8 +123,8 @@ class Ellie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Bone.tier(3) to 1
-			), true
-		) {
+			                                        ), true
+		        ) {
 			StrongReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -111,8 +132,8 @@ class Ellie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Pebble.tier(3) to 2
-			), true
-		) {
+			                                       ), true
+		        ) {
 			ToughReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -120,8 +141,8 @@ class Ellie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				PlantMatter.tier(3) to 2
-			), true
-		) {
+			                                         ), true
+		        ) {
 			HealthyReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -129,8 +150,8 @@ class Ellie : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Wheat.tier(3) to 2
-			), true
-		) {
+			                                         ), true
+		        ) {
 			HealingReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -141,9 +162,9 @@ class Ellie : Shop() {
 			hashMapOf(
 				Pebble.tier(3) to 3,
 				Stick.tier(3) to 2
-			),
+			         ),
 			true
-		) {
+		        ) {
 			net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.StoneAxe(Utils.randRarity())
 				.getUpdatedItem(false)
 		},
@@ -155,8 +176,8 @@ class Ellie : Shop() {
 				Pebble.tier(3) to 1,
 				Stick.tier(3) to 2,
 				Feather.tier(3) to 2
-			), true
-		) {
+			                                  ), true
+		        ) {
 			LuckyStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -164,16 +185,16 @@ class Ellie : Shop() {
 				Pebble.tier(3) to 1,
 				Stick.tier(3) to 2,
 				Bone.tier(3) to 2
-			), true
-		) {
+			                                   ), true
+		        ) {
 			StrongStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughStoneAxe(-1), 1200, hashMapOf(
 				Pebble.tier(3) to 5,
 				Stick.tier(3) to 2
-			), true
-		) {
+			                                  ), true
+		        ) {
 			ToughStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -181,8 +202,8 @@ class Ellie : Shop() {
 				Pebble.tier(3) to 1,
 				Stick.tier(3) to 2,
 				PlantMatter.tier(3) to 3
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealthyStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -190,8 +211,8 @@ class Ellie : Shop() {
 				Pebble.tier(3) to 1,
 				Stick.tier(3) to 2,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealingStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -217,5 +238,5 @@ class Ellie : Shop() {
 		ShopItem(HealingSlimySpoofer(-1), 1400, hashMapOf(), false) {
 			HealingSlimySpoofer(Utils.randRarity()).getUpdatedItem(false)
 		},
-	)
+	                                           )
 }

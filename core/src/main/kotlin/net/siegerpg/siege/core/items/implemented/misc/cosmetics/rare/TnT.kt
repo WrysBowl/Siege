@@ -10,7 +10,7 @@ class TnT() : Cosmetic(
 	customModelData = 1,
 	description = listOf(""),
 	material = Material.TNT,
-) {
+                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 80

@@ -27,7 +27,7 @@ abstract class CustomRod(
 	override var statGem: StatGem? = null,
 	val enchantments: MutableMap<Enchantment, Int>,
 	val fishDropTable: FishDropTable
-) : CustomEquipment {
+                        ) : CustomEquipment {
 
 	override var rarity: Rarity = Rarity.COMMON
 

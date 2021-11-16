@@ -10,7 +10,8 @@ class RedHeadphones() : Cosmetic(
 	customModelData = 740003,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                                ) {
+
 	constructor(quality: Int) : this() {
 		this.quality = 90
 		this.rarity = Rarity.EPIC

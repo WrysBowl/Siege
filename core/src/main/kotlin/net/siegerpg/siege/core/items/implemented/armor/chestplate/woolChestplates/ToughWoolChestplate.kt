@@ -15,7 +15,7 @@ class ToughWoolChestplate() : CustomChestplate(
 	material = Material.LEATHER_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(health = 5.0, toughness = 60.0),
 	leatherColor = Color.WHITE
-) {
+                                              ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -10,7 +10,7 @@ class CommonKey() : CustomKey(
 	customModelData = 630001,
 	description = listOf("Get a common cosmetic"),
 	material = Material.TRIPWIRE_HOOK,
-) {
+                             ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

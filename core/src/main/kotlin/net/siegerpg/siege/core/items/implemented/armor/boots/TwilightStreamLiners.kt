@@ -19,9 +19,9 @@ class TwilightStreamLiners() : CustomBoots(
 		luck = 20.0,
 		regeneration = 20.0,
 		toughness = -50.0
-	),
+	                                   ),
 	leatherColor = Color.PURPLE
-) {
+                                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

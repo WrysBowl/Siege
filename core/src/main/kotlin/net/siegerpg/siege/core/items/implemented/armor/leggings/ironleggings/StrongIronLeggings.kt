@@ -17,8 +17,8 @@ class StrongIronLeggings() : CustomLeggings(
 		toughness = 50.0,
 		regeneration = 10.0,
 		strength = 12.0
-	),
-) {
+	                                   ),
+                                           ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

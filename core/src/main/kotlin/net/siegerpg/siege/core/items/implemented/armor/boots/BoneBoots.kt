@@ -15,7 +15,7 @@ class BoneBoots() : CustomBoots(
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 50.0),
 	leatherColor = Color.GRAY
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

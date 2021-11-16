@@ -17,8 +17,8 @@ class SporeShot() : CustomBow(
 		luck = 50.0,
 		regeneration = -50.0,
 		toughness = -200.0
-	)
-) {
+	                                   )
+                             ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

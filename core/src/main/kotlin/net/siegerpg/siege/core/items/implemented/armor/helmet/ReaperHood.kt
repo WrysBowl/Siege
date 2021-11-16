@@ -19,9 +19,9 @@ class ReaperHood() : CustomHelmet(
 		regeneration = 10.0,
 		luck = -15.0,
 		toughness = -60.0
-	),
+	                                   ),
 	leatherColor = Color.BLACK
-) {
+                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

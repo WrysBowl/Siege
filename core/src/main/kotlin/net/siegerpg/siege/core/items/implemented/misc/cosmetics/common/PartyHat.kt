@@ -10,7 +10,7 @@ class PartyHat() : Cosmetic(
 	customModelData = 710010,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                           ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

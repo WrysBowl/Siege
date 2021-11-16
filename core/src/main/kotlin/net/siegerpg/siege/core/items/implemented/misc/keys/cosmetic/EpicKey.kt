@@ -10,7 +10,7 @@ class EpicKey() : CustomKey(
 	customModelData = 630004,
 	description = listOf("Get an epic cosmetic"),
 	material = Material.TRIPWIRE_HOOK,
-) {
+                           ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 90

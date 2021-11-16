@@ -1,18 +1,31 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.Bowba
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.IronBow
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.bowbas.*
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.ironBows.*
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.bowbas.HealingBowba
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.bowbas.HealthyBowba
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.bowbas.LuckyBowba
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.bowbas.StrongBowba
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.bowbas.ToughBowba
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ironBows.HealingIronBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ironBows.HealthyIronBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ironBows.LuckyIronBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ironBows.StrongIronBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ironBows.ToughIronBow
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Valentine : Shop() {
+
 	override var name: String = "Valentine"
 	override var permission: String = "siege.shops.shop.valentine"
 	override var items: List<ShopItem> = listOf(
@@ -21,8 +34,8 @@ class Valentine : Shop() {
 			IronBow(-1), 3200, hashMapOf(
 				Vine.tier(3) to 3,
 				RefinedMetal.tier(3) to 3
-			), true
-		) {
+			                            ), true
+		        ) {
 			IronBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -33,8 +46,8 @@ class Valentine : Shop() {
 				Vine.tier(3) to 3,
 				RefinedMetal.tier(3) to 1,
 				Feather.tier(3) to 4
-			), true
-		) {
+			                               ), true
+		        ) {
 			LuckyIronBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -42,8 +55,8 @@ class Valentine : Shop() {
 				Vine.tier(3) to 3,
 				RefinedMetal.tier(3) to 1,
 				Bone.tier(3) to 4
-			), true
-		) {
+			                                ), true
+		        ) {
 			StrongIronBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -51,8 +64,8 @@ class Valentine : Shop() {
 				Vine.tier(3) to 3,
 				RefinedMetal.tier(3) to 1,
 				Pebble.tier(3) to 4
-			), true
-		) {
+			                               ), true
+		        ) {
 			ToughIronBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -60,8 +73,8 @@ class Valentine : Shop() {
 				Vine.tier(3) to 3,
 				RefinedMetal.tier(3) to 1,
 				PlantMatter.tier(3) to 3
-			), true
-		) {
+			                                 ), true
+		        ) {
 			HealthyIronBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -69,8 +82,8 @@ class Valentine : Shop() {
 				Vine.tier(3) to 3,
 				RefinedMetal.tier(3) to 1,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                 ), true
+		        ) {
 			HealingIronBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -80,8 +93,8 @@ class Valentine : Shop() {
 				Vine.tier(3) to 3,
 				RefinedMetal.tier(4) to 1,
 				Bone.tier(4) to 2
-			), true
-		) {
+			                          ), true
+		        ) {
 			Bowba(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -93,8 +106,8 @@ class Valentine : Shop() {
 				RefinedMetal.tier(3) to 4,
 				Bone.tier(4) to 1,
 				Feather.tier(4) to 2
-			), true
-		) {
+			                               ), true
+		        ) {
 			LuckyBowba(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -102,8 +115,8 @@ class Valentine : Shop() {
 				Vine.tier(3) to 3,
 				RefinedMetal.tier(3) to 4,
 				Bone.tier(4) to 2
-			), true
-		) {
+			                                ), true
+		        ) {
 			StrongBowba(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -112,8 +125,8 @@ class Valentine : Shop() {
 				RefinedMetal.tier(3) to 4,
 				Bone.tier(4) to 1,
 				Pebble.tier(4) to 2
-			), true
-		) {
+			                               ), true
+		        ) {
 			ToughBowba(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -122,8 +135,8 @@ class Valentine : Shop() {
 				RefinedMetal.tier(3) to 4,
 				Bone.tier(4) to 1,
 				PlantMatter.tier(4) to 2
-			), true
-		) {
+			                                 ), true
+		        ) {
 			HealthyBowba(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -132,9 +145,9 @@ class Valentine : Shop() {
 				RefinedMetal.tier(3) to 4,
 				Bone.tier(4) to 1,
 				Wheat.tier(4) to 4
-			), true
-		) {
+			                                 ), true
+		        ) {
 			HealingBowba(Utils.randRarity()).getUpdatedItem(false)
 		},
-	)
+	                                           )
 }

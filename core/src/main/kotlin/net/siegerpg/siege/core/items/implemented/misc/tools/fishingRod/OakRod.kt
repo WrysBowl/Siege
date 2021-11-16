@@ -17,9 +17,9 @@ class OakRod() : CustomRod(
 	baseStats = CustomItemUtils.statMap(),
 	enchantments = hashMapOf(
 		Enchantment.LURE to 1
-	),
+	                        ),
 	fishDropTable = OakFishTable()
-) {
+                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

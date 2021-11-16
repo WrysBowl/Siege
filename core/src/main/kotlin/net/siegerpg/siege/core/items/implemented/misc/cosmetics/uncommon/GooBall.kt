@@ -10,7 +10,7 @@ class GooBall() : Cosmetic(
 	customModelData = 720004,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 50

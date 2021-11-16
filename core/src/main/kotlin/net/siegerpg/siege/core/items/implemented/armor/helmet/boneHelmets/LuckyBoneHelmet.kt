@@ -15,7 +15,7 @@ class LuckyBoneHelmet() : CustomHelmet(
 	material = Material.LEATHER_HELMET,
 	baseStats = CustomItemUtils.statMap(health = 10.0, toughness = 40.0, luck = 6.0),
 	leatherColor = Color.GRAY
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

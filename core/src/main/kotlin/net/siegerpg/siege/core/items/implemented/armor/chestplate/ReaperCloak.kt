@@ -19,9 +19,9 @@ class ReaperCloak() : CustomChestplate(
 		regeneration = 20.0,
 		luck = -25.0,
 		toughness = -90.0
-	),
+	                                   ),
 	leatherColor = Color.BLACK
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

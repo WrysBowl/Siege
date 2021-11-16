@@ -15,7 +15,7 @@ class RawRegenerationGem() : StatGemType(
 
 	statType = StatTypes.REGENERATION,
 	statAmount = 4.0
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

@@ -11,7 +11,7 @@ class BroodmotherKey() : CustomKey(
 	description = listOf("Used to summon", "the Broodmother"),
 	material = Material.TRIPWIRE_HOOK,
 	quality = 100
-) {
+                                  ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

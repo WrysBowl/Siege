@@ -12,7 +12,7 @@ class NecromancerKey() : CustomKey(
 	levelRequirement = 1,
 	material = Material.TRIPWIRE_HOOK,
 	quality = 80
-) {
+                                  ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

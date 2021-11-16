@@ -12,11 +12,11 @@ class Watermelon() : CustomFood(
 		"A large oblong fruit with",
 		"a hard green or white rind",
 		"often striped or variegated"
-	),
+	                    ),
 	levelRequirement = 0,
 	material = Material.MELON_SLICE,
 	health = 10.0,
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

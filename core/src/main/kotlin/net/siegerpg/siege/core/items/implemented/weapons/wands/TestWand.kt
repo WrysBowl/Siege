@@ -18,7 +18,7 @@ class TestWand() : CustomWand(
 	green = 100,
 	blue = 100,
 	damageRadius = 3.5
-) {
+                             ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

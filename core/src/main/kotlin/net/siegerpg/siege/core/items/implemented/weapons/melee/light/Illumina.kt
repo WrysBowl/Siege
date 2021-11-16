@@ -17,9 +17,9 @@ class Illumina() : CustomMeleeWeapon(
 		luck = 20.0,
 		regeneration = -20.0,
 		toughness = -50.0
-	),
+	                                   ),
 	attackSpeed = 1.4
-) {
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

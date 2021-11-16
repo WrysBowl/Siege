@@ -22,7 +22,7 @@ class BeePants() : CustomLeggings(
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 20.0, strength = 5.0, mana = 2.0),
 	leatherColor = Color.YELLOW
-) {
+                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

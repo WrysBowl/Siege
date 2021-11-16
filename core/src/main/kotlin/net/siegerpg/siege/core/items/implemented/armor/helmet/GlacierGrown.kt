@@ -19,9 +19,9 @@ class GlacierGrown() : CustomHelmet(
 		strength = 15.0,
 		luck = -15.0,
 		toughness = -80.0
-	),
+	                                   ),
 	leatherColor = Color.AQUA
-) {
+                                   ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

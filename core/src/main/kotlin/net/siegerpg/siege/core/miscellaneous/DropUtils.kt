@@ -54,7 +54,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
 			val item = wrappedPacket.entity as Item
 			val itemStack = item.itemStack
 			val seepickableby = itemStack.getNbtTag<String>("seepickableby")
-				?: return
+			                    ?: return
 			if (seepickableby.isEmpty()) return
 			val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
 			if (!stringUUIDs.contains(evt.player.uniqueId.toString()))
@@ -99,11 +99,11 @@ class DropUtils : Listener, PacketListenerAbstract() {
 			loc: Location,
 			item: ItemStack,
 			players: List<UUID>
-		): Item {
+		                                      ): Item {
 			return loc.world.dropItemNaturally(
 				loc,
 				itemWithSeepickableNbtTags(item, players)
-			)
+			                                  )
 		}
 	}
 }

@@ -13,7 +13,7 @@ class HealthyReinforcedBow() : CustomBow(
 	levelRequirement = 18,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 15.0, luck = 6.0, health = 8.0),
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

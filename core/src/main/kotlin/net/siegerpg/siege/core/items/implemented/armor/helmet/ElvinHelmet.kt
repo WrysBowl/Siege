@@ -18,8 +18,8 @@ class ElvinHelmet() : CustomHelmet(
 		luck = 15.0,
 		regeneration = -10.0,
 		strength = -10.0
-	)
-) {
+	                                   )
+                                  ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

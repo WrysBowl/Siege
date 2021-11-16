@@ -13,7 +13,8 @@ public class Bearacuda extends Fish {
 				1,
 				16,
 				6,
-				610005);
+				610005
+		     );
 	}
 
 }

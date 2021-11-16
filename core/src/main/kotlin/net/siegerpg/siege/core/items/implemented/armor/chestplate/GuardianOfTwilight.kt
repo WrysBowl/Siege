@@ -19,9 +19,9 @@ class GuardianOfTwilight() : CustomChestplate(
 		regeneration = 20.0,
 		strength = -50.0,
 		luck = -60.0
-	),
+	                                   ),
 	leatherColor = Color.SILVER
-) {
+                                             ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

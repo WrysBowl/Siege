@@ -50,11 +50,13 @@ public class PlayerData implements Listener {
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
 			playerHealth.put(
 					player,
-					CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + player.getMaxHealth() + player.getLevel() * 2);
+					CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + player.getMaxHealth() + player.getLevel() * 2
+			                );
 
 			playerMana.put(
 					player,
-					CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
+					CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA)
+			              );
 
 		}, 2);
 	}

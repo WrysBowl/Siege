@@ -17,13 +17,13 @@ class CrystalCane() : CustomWand(
 		toughness = -100.0,
 		health = -80.0,
 		regeneration = -20.0
-	),
+	                                   ),
 	range = 16,
 	red = 127,
 	green = 194,
 	blue = 199,
 	damageRadius = 4.0
-) {
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

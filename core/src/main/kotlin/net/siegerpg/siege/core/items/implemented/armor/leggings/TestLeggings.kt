@@ -14,7 +14,7 @@ class TestLeggings() : CustomLeggings(
 	material = Material.DIAMOND_LEGGINGS,
 
 	baseStats = CustomItemUtils.statMap(strength = 10.0)
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

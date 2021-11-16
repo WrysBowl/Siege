@@ -13,7 +13,7 @@ class LuckyIronBow() : CustomBow(
 	levelRequirement = 34,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 30.0, luck = 24.0),
-) {
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

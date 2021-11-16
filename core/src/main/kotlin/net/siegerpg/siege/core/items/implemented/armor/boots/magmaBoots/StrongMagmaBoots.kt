@@ -15,7 +15,7 @@ class StrongMagmaBoots() : CustomBoots(
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(strength = 5.0),
 	leatherColor = Color.ORANGE
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

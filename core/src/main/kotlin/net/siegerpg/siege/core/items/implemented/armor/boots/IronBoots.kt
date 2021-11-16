@@ -17,8 +17,8 @@ class IronBoots() : CustomBoots(
 		toughness = 60.0,
 		strength = -3.0,
 		luck = -5.0
-	),
-) {
+	                                   ),
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

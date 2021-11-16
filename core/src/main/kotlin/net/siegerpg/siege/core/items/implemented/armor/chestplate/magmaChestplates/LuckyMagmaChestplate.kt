@@ -15,7 +15,7 @@ class LuckyMagmaChestplate() : CustomChestplate(
 	material = Material.LEATHER_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 15.0, luck = 4.0),
 	leatherColor = Color.ORANGE
-) {
+                                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

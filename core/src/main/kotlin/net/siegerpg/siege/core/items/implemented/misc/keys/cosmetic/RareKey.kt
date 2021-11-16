@@ -10,7 +10,7 @@ class RareKey() : CustomKey(
 	customModelData = 630003,
 	description = listOf("Get a rare cosmetic"),
 	material = Material.TRIPWIRE_HOOK,
-) {
+                           ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 80

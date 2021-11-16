@@ -18,8 +18,8 @@ class TitaniumChestplate() : CustomChestplate(
 		regeneration = 15.0,
 		luck = -35.0,
 		strength = -50.0
-	),
-) {
+	                                   ),
+                                             ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -12,7 +12,7 @@ class TestPotion() : CustomFood(
 	levelRequirement = 0,
 	material = Material.APPLE,
 	health = 20.0
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

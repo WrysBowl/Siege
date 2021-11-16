@@ -18,7 +18,7 @@ class LivingTwig() : CustomWand(
 	green = 255,
 	blue = 102,
 	damageRadius = 2.5
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

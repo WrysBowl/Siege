@@ -18,9 +18,9 @@ class ReaperBoots() : CustomBoots(
 		strength = 10.0,
 		luck = -10.0,
 		toughness = -60.0
-	),
+	                                   ),
 	leatherColor = Color.BLACK
-) {
+                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

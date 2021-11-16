@@ -1,13 +1,29 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.armor.boots.StrawBoots
-import net.siegerpg.siege.core.items.implemented.armor.boots.strawBoots.*
+import net.siegerpg.siege.core.items.implemented.armor.boots.strawBoots.HealingStrawBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.strawBoots.HealthyStrawBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.strawBoots.LuckyStrawBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.strawBoots.StrongStrawBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.strawBoots.ToughStrawBoots
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.StrawChestplate
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.strawChestplates.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.strawChestplates.HealingStrawChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.strawChestplates.HealthyStrawChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.strawChestplates.LuckyStrawChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.strawChestplates.StrongStrawChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.strawChestplates.ToughStrawChestplate
 import net.siegerpg.siege.core.items.implemented.armor.helmet.StrawHelmet
-import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.HealingStrawHat
+import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.HealthyStrawHat
+import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.LuckyStrawHat
+import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.StrongStrawHat
+import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.ToughStrawHat
 import net.siegerpg.siege.core.items.implemented.armor.leggings.StrawLeggings
-import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.HealingStrawOveralls
+import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.HealthyStrawOveralls
+import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.LuckyStrawOveralls
+import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.StrongStrawOveralls
+import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.ToughStrawOveralls
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
@@ -19,6 +35,7 @@ import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Joe : Shop() {
+
 	override var name: String = "Joe"
 	override var permission: String = "siege.shops.shop.joe"
 	override var items: List<ShopItem> = listOf(
@@ -26,8 +43,8 @@ class Joe : Shop() {
 		ShopItem(
 			StrawHelmet(-1), 400, hashMapOf(
 				Wheat.tier(2) to 4
-			), true
-		) {
+			                               ), true
+		        ) {
 			StrawHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -37,39 +54,39 @@ class Joe : Shop() {
 			LuckyStrawHat(-1), -1, hashMapOf(
 				Wheat.tier(2) to 2,
 				Feather.tier(2) to 4
-			), true
-		) {
+			                                ), true
+		        ) {
 			LuckyStrawHat(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongStrawHat(-1), -1, hashMapOf(
 				Wheat.tier(2) to 2,
 				Bone.tier(2) to 4
-			), true
-		) {
+			                                 ), true
+		        ) {
 			StrongStrawHat(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughStrawHat(-1), -1, hashMapOf(
 				Wheat.tier(2) to 2,
 				Pebble.tier(2) to 4
-			), true
-		) {
+			                                ), true
+		        ) {
 			ToughStrawHat(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyStrawHat(-1), -1, hashMapOf(
 				Wheat.tier(2) to 2,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                  ), true
+		        ) {
 			HealthyStrawHat(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingStrawHat(-1), -1, hashMapOf(
 				Wheat.tier(2) to 3
-			), true
-		) {
+			                                  ), true
+		        ) {
 			HealingStrawHat(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -77,8 +94,8 @@ class Joe : Shop() {
 		ShopItem(
 			StrawChestplate(-1), 600, hashMapOf(
 				Wheat.tier(2) to 8
-			), true
-		) {
+			                                   ), true
+		        ) {
 			StrawChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -88,39 +105,39 @@ class Joe : Shop() {
 			LuckyStrawChestplate(-1), 700, hashMapOf(
 				Wheat.tier(2) to 6,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                        ), true
+		        ) {
 			LuckyStrawChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongStrawChestplate(-1), 700, hashMapOf(
 				Wheat.tier(2) to 6,
 				Bone.tier(2) to 2
-			), true
-		) {
+			                                         ), true
+		        ) {
 			StrongStrawChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughStrawChestplate(-1), 700, hashMapOf(
 				Wheat.tier(2) to 6,
 				Pebble.tier(2) to 5
-			), true
-		) {
+			                                        ), true
+		        ) {
 			ToughStrawChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyStrawChestplate(-1), 700, hashMapOf(
 				Wheat.tier(2) to 6,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                          ), true
+		        ) {
 			HealthyStrawChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingStrawChestplate(-1), 700, hashMapOf(
 				Wheat.tier(2) to 10
-			), true
-		) {
+			                                          ), true
+		        ) {
 			HealingStrawChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -128,8 +145,8 @@ class Joe : Shop() {
 		ShopItem(
 			StrawLeggings(-1), 500, hashMapOf(
 				Wheat.tier(2) to 7
-			), true
-		) {
+			                                 ), true
+		        ) {
 			StrawLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -139,39 +156,39 @@ class Joe : Shop() {
 			LuckyStrawOveralls(-1), 600, hashMapOf(
 				Wheat.tier(2) to 3,
 				Feather.tier(2) to 3
-			), true
-		) {
+			                                      ), true
+		        ) {
 			LuckyStrawOveralls(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongStrawOveralls(-1), 600, hashMapOf(
 				Wheat.tier(2) to 4,
 				Bone.tier(2) to 3
-			), true
-		) {
+			                                       ), true
+		        ) {
 			StrongStrawOveralls(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughStrawOveralls(-1), 600, hashMapOf(
 				Wheat.tier(2) to 2,
 				Pebble.tier(2) to 5
-			), true
-		) {
+			                                      ), true
+		        ) {
 			ToughStrawOveralls(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyStrawOveralls(-1), 600, hashMapOf(
 				Wheat.tier(2) to 2,
 				PlantMatter.tier(2) to 5
-			), true
-		) {
+			                                        ), true
+		        ) {
 			HealthyStrawOveralls(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingStrawOveralls(-1), 600, hashMapOf(
 				Wheat.tier(2) to 8
-			), true
-		) {
+			                                        ), true
+		        ) {
 			HealingStrawOveralls(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -179,8 +196,8 @@ class Joe : Shop() {
 		ShopItem(
 			StrawBoots(-1), 300, hashMapOf(
 				Wheat.tier(2) to 4
-			), true
-		) {
+			                              ), true
+		        ) {
 			StrawBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -190,40 +207,40 @@ class Joe : Shop() {
 			LuckyStrawBoots(-1), 400, hashMapOf(
 				Wheat.tier(2) to 2,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                   ), true
+		        ) {
 			LuckyStrawBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongStrawBoots(-1), 400, hashMapOf(
 				Wheat.tier(2) to 2,
 				Bone.tier(2) to 2
-			), true
-		) {
+			                                    ), true
+		        ) {
 			StrongStrawBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughStrawBoots(-1), 400, hashMapOf(
 				Wheat.tier(2) to 2,
 				Pebble.tier(2) to 3
-			), true
-		) {
+			                                   ), true
+		        ) {
 			ToughStrawBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyStrawBoots(-1), 400, hashMapOf(
 				Wheat.tier(2) to 2,
 				PlantMatter.tier(2) to 3
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealthyStrawBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingStrawBoots(-1), 400, hashMapOf(
 				Wheat.tier(2) to 5
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealingStrawBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
-	)
+	                                           )
 }

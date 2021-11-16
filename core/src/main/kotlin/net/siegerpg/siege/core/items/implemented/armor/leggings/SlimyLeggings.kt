@@ -15,7 +15,7 @@ class SlimyLeggings() : CustomLeggings(
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 8.0, toughness = 20.0),
 	leatherColor = Color.LIME
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -15,8 +15,8 @@ class BonePickaxe() : CustomTool(
 	baseStats = CustomItemUtils.statMap(luck = 10.0),
 
 	enchantments = hashMapOf(
-	)
-) {
+	                        )
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

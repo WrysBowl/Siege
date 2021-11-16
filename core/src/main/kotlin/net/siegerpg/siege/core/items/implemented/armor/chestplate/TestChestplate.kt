@@ -13,7 +13,7 @@ class TestChestplate() : CustomChestplate(
 	levelRequirement = 0,
 	material = Material.DIAMOND_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(strength = 10.0)
-) {
+                                         ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

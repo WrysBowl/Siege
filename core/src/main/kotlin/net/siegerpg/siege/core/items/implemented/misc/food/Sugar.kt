@@ -14,7 +14,7 @@ class Sugar() : CustomFood(
 	description = listOf("Gas GAS GASSS!!!", "Speed 3 for 30 seconds"),
 	levelRequirement = 0,
 	material = Material.TROPICAL_FISH,
-) {
+                          ) {
 
 	override fun speciality(player: Player) {
 		val realPotion = PotionEffect(PotionEffectType.SPEED, 600, 2)

@@ -15,7 +15,7 @@ class ToughDagger() : CustomMeleeWeapon(
 	baseStats = CustomItemUtils.statMap(strength = 20.0, toughness = 40.0),
 
 	attackSpeed = 1.7
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

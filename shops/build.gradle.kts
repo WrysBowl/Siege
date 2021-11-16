@@ -32,7 +32,7 @@ tasks {
 		relocate(
 			"com.github.stefvanschie.inventoryframework",
 			"net.siegerpg.siege.shops.inventoryframework"
-		)
+		        )
 		archiveFileName.set("SiegeShops.jar")
 	}
 

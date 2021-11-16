@@ -6,6 +6,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 interface CustomItem {
+
 	val name: String
 	val customModelData: Int?
 	val levelRequirement: Int?
@@ -32,7 +33,7 @@ interface CustomItem {
 			"itemType" to type.toString(),
 			"itemQuality" to quality,
 			"itemRarity" to rarity.toString()
-		)
+		                      )
 	}
 
 	fun deserialize() {

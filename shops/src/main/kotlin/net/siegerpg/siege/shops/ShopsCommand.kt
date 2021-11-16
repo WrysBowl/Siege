@@ -33,31 +33,31 @@ class ShopsCommand : BaseCommand() {
 		sender: CommandSender,
 		id: String,
 		@Optional @CommandPermission("siege.shops.open.others") target: OnlinePlayer?
-	) {
+	           ) {
 
 		// if (sender is Player && sender.name == "Sumowo") sender.inventory.addItem(Pebble.tier(1).getUpdatedItem(false))
 
 		if (target == null && sender is ConsoleCommandSender) {
 			return sender.sendMessage(
 				MiniMessage.get().parse("<red>Please specify a target player!")
-			)
+			                         )
 		}
 
 		if (target != null && !sender.hasPermission("siege.shops.open.others")) return sender.sendMessage(
 			MiniMessage.get().parse("<red>You do not have permission to open shops for others!")
-		)
+		                                                                                                 )
 
 		val player: Player = if (target?.player == null) (sender as Player) else target.player
 
 		if (!ShopsPlugin.instance?.shopRegistry?.contains(id)!!) return sender.sendMessage(
 			MiniMessage.get().parse("<red>Invalid shop name!")
-		)
+		                                                                                  )
 
 
 		val shop = ShopsPlugin.instance?.shopRegistry?.get(id)!!
 		if (sender is Player && !sender.hasPermission(shop.permission)) return sender.sendMessage(
 			MiniMessage.get().parse("<red>You do not have permission to open this shop!")
-		)
+		                                                                                         )
 
 		var gui = ChestGui(3, shop.name)
 		var outlinePane = OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST)
@@ -120,7 +120,7 @@ class ShopsCommand : BaseCommand() {
 			val guiItem = GuiItem(item)
 			guiItem.setAction { event ->
 				when {
-					event.isLeftClick -> {
+					event.isLeftClick  -> {
 						if (!it.craftable) return@setAction
 						if (event.view.bottomInventory
 								.firstEmpty() == -1
@@ -128,24 +128,24 @@ class ShopsCommand : BaseCommand() {
 							player.playSound(player.location, Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f)
 							return@setAction player.sendMessage(
 								MiniMessage.get().parse("<red>Your inventory is full!")
-							)
+							                                   )
 						}
 						for (entry in it.recipe) {
 							if (!player.inventory.containsAtLeast(
 									entry.key.getUpdatedItem(false),
 									entry.value
-								)
+							                                     )
 							) {
 								player.playSound(
 									player.location,
 									Sound.ENTITY_VILLAGER_NO,
 									1.0f,
 									1.0f
-								)
+								                )
 								return@setAction player.sendMessage(
 									MiniMessage.get()
 										.parse(if (entry.value == 1) "<red>You don't have a ${entry.key.name}!" else "<red>You don't have enough ${entry.key.name}s!")
-								)
+								                                   )
 							}
 						}
 						for (entry in it.recipe) {
@@ -159,9 +159,10 @@ class ShopsCommand : BaseCommand() {
 							Sound.ENTITY_VILLAGER_CELEBRATE,
 							1.0f,
 							1.0f
-						)
+						                )
 						player.updateInventory()
 					}
+
 					event.isRightClick -> {
 						if (it.buyPrice < 0) return@setAction
 
@@ -169,7 +170,7 @@ class ShopsCommand : BaseCommand() {
 							player.playSound(player.location, Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f)
 							return@setAction player.sendMessage(
 								MiniMessage.get().parse("<red>You don't have enough gold!")
-							)
+							                                   )
 						}
 						if (event.view.bottomInventory
 								.firstEmpty() == -1
@@ -179,10 +180,10 @@ class ShopsCommand : BaseCommand() {
 								Sound.ENTITY_VILLAGER_CELEBRATE,
 								1.0f,
 								1.0f
-							)
+							                )
 							return@setAction player.sendMessage(
 								MiniMessage.get().parse("<red>Your inventory is full!")
-							)
+							                                   )
 						}
 
 						player.inventory.addItem(it.generate())
@@ -191,7 +192,7 @@ class ShopsCommand : BaseCommand() {
 							Sound.ENTITY_VILLAGER_CELEBRATE,
 							1.0f,
 							1.0f
-						)
+						                )
 						VaultHook.econ.withdrawPlayer(player, it.buyPrice.toDouble())
 						player.updateInventory()
 						Scoreboard.updateScoreboard(event.whoClicked as Player)

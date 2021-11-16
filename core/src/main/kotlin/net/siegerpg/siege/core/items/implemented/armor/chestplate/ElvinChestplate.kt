@@ -17,8 +17,8 @@ class ElvinChestplate() : CustomChestplate(
 		luck = 60.0,
 		toughness = -200.0,
 		strength = -25.0
-	),
-) {
+	                                   ),
+                                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

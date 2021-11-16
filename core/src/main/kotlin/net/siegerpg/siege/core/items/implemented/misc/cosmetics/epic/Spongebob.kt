@@ -14,7 +14,8 @@ class Spongebob() : Cosmetic(
 	customModelData = 1,
 	description = listOf("Who lives in a pineapple under the sea..."),
 	material = Material.SPONGE,
-) {
+                            ) {
+
 	override fun onCosmeticDamage(e: EntityDamageByEntityEvent) {
 		val player = e.entity as Player
 		val playerHelmet = player.inventory.helmet ?: return

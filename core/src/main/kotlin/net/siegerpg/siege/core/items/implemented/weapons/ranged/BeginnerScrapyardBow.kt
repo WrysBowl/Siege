@@ -13,7 +13,7 @@ class BeginnerScrapyardBow() : CustomBow(
 	levelRequirement = 0,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 5.0)
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

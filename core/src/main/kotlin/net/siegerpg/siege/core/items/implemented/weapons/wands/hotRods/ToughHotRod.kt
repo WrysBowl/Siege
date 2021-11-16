@@ -19,7 +19,7 @@ class ToughHotRod() : CustomWand(
 	green = 51,
 	blue = 0,
 	damageRadius = 2.0
-) {
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

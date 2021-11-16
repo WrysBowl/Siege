@@ -26,6 +26,7 @@ class TestMaterial() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): TestMaterial {
 			val newItem = TestMaterial(0)
 			newItem.tier = tier

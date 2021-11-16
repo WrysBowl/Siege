@@ -15,7 +15,7 @@ class MagmaLeggings() : CustomLeggings(
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 20.0, regeneration = 15.0),
 	leatherColor = Color.ORANGE
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

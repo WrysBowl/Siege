@@ -15,7 +15,7 @@ class LuckyWoolLeggings() : CustomLeggings(
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 8.0, luck = 5.0, regeneration = 5.0),
 	leatherColor = Color.WHITE
-) {
+                                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

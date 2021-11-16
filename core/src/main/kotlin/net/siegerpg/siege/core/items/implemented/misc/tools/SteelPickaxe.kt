@@ -17,8 +17,8 @@ class SteelPickaxe() : CustomTool(
 
 	enchantments = hashMapOf(
 		Enchantment.DIG_SPEED to 2
-	)
-) {
+	                        )
+                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

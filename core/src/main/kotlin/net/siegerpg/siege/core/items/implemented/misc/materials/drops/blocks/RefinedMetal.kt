@@ -11,7 +11,7 @@ class RefinedMetal() : CustomMaterial(
 	description = listOf("Polished and shiny!"),
 	levelRequirement = 0,
 	material = Material.FLINT
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality
@@ -25,6 +25,7 @@ class RefinedMetal() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): RefinedMetal {
 			val newItem = RefinedMetal(0)
 			newItem.tier = tier

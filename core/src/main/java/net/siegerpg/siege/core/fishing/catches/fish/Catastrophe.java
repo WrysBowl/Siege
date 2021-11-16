@@ -13,7 +13,8 @@ public class Catastrophe extends Fish {
 				0.5,
 				32,
 				7,
-				610004);
+				610004
+		     );
 	}
 
 }

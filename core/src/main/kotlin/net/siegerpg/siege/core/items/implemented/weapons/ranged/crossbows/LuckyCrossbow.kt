@@ -13,7 +13,7 @@ class LuckyCrossbow() : CustomBow(
 	levelRequirement = 26,
 	material = Material.CROSSBOW,
 	baseStats = CustomItemUtils.statMap(strength = 24.0, luck = 15.0),
-) {
+                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

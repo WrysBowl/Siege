@@ -15,7 +15,7 @@ class PristineHealthGem() : StatGemType(
 
 	statType = StatTypes.HEALTH,
 	statAmount = 22.0
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

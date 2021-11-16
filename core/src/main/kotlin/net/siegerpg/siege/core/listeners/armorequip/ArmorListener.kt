@@ -11,7 +11,11 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.PlayerDeathEvent
-import org.bukkit.event.inventory.*
+import org.bukkit.event.inventory.ClickType
+import org.bukkit.event.inventory.InventoryAction
+import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryDragEvent
+import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemBreakEvent
 import org.bukkit.inventory.ItemStack
@@ -22,6 +26,7 @@ import org.bukkit.inventory.ItemStack
  * @since Jul 30, 2015
  */
 class ArmorListener(private val blockedMaterials: List<String>) : Listener {
+
 	//Event Priority is highest because other plugins might cancel the events before we check.
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	fun inventoryClick(e: InventoryClickEvent) {
@@ -53,13 +58,19 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
 				}
 				if (newArmorType == ArmorType.HELMET && if (equipping) isAirOrNull(e.whoClicked.inventory.helmet) else !isAirOrNull(
 						e.whoClicked.inventory.helmet
-					) || newArmorType == ArmorType.CHESTPLATE && if (equipping) isAirOrNull(e.whoClicked.inventory.chestplate) else !isAirOrNull(
+				                                                                                                                   ) || newArmorType == ArmorType.CHESTPLATE && if (equipping) isAirOrNull(
 						e.whoClicked.inventory.chestplate
-					) || newArmorType == ArmorType.LEGGINGS && if (equipping) isAirOrNull(e.whoClicked.inventory.leggings) else !isAirOrNull(
+				                                                                                                                                                                                          ) else !isAirOrNull(
+						e.whoClicked.inventory.chestplate
+				                                                                                                                                                                                                             ) || newArmorType == ArmorType.LEGGINGS && if (equipping) isAirOrNull(
 						e.whoClicked.inventory.leggings
-					) || newArmorType == ArmorType.BOOTS && if (equipping) isAirOrNull(e.whoClicked.inventory.boots) else !isAirOrNull(
+				                                                                                                                                                                                                                                                                                  ) else !isAirOrNull(
+						e.whoClicked.inventory.leggings
+				                                                                                                                                                                                                                                                                                                     ) || newArmorType == ArmorType.BOOTS && if (equipping) isAirOrNull(
 						e.whoClicked.inventory.boots
-					)
+				                                                                                                                                                                                                                                                                                                                                                                       ) else !isAirOrNull(
+						e.whoClicked.inventory.boots
+				                                                                                                                                                                                                                                                                                                                                                                                          )
 				) {
 					val armorEquipEvent = ArmorEquipEvent(
 						e.whoClicked as Player,
@@ -67,7 +78,7 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
 						newArmorType,
 						if (equipping) null else e.currentItem,
 						if (equipping) e.currentItem else null
-					)
+					                                     )
 					Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
 					if (armorEquipEvent.isCancelled()) {
 						e.isCancelled = true
@@ -90,7 +101,7 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
 						oldArmorPiece = e.clickedInventory!!.getItem(e.slot)
 					} else { // Unequipping
 						newArmorType =
-							ArmorType.matchType(if (!isAirOrNull(e.currentItem)) e.currentItem else e.cursor)
+								ArmorType.matchType(if (!isAirOrNull(e.currentItem)) e.currentItem else e.cursor)
 					}
 				}
 			} else {
@@ -104,15 +115,15 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
 			if (newArmorType != null && e.rawSlot == newArmorType.slot) {
 				var method: EquipMethod = EquipMethod.PICK_DROP
 				if (e.action == InventoryAction.HOTBAR_SWAP || numberkey) method =
-					EquipMethod.HOTBAR_SWAP
+						EquipMethod.HOTBAR_SWAP
 				val armorEquipEvent =
-					ArmorEquipEvent(
-						e.whoClicked as Player,
-						method,
-						newArmorType,
-						oldArmorPiece,
-						newArmorPiece
-					)
+						ArmorEquipEvent(
+							e.whoClicked as Player,
+							method,
+							newArmorType,
+							oldArmorPiece,
+							newArmorPiece
+						               )
 				Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
 				if (armorEquipEvent.isCancelled()) {
 					e.isCancelled = true
@@ -141,18 +152,20 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
 			if (newArmorType != null) {
 				if (newArmorType == ArmorType.HELMET && isAirOrNull(e.player.inventory.helmet) || newArmorType == ArmorType.CHESTPLATE && isAirOrNull(
 						e.player.inventory.chestplate
-					) || newArmorType == ArmorType.LEGGINGS && isAirOrNull(e.player.inventory.leggings) || newArmorType == ArmorType.BOOTS && isAirOrNull(
+				                                                                                                                                     ) || newArmorType == ArmorType.LEGGINGS && isAirOrNull(
+						e.player.inventory.leggings
+				                                                                                                                                                                                           ) || newArmorType == ArmorType.BOOTS && isAirOrNull(
 						e.player.inventory.boots
-					)
+				                                                                                                                                                                                                                                              )
 				) {
 					val armorEquipEvent =
-						ArmorEquipEvent(
-							e.player,
-							EquipMethod.HOTBAR,
-							ArmorType.matchType(e.item),
-							null,
-							e.item
-						)
+							ArmorEquipEvent(
+								e.player,
+								EquipMethod.HOTBAR,
+								ArmorType.matchType(e.item),
+								null,
+								e.item
+							               )
 					Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
 					if (armorEquipEvent.isCancelled()) {
 						e.isCancelled = true
@@ -173,13 +186,13 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
 		if (event.rawSlots.isEmpty()) return  // Idk if this will ever happen
 		if (type != null && type.slot == event.rawSlots.stream().findFirst().orElse(0)) {
 			val armorEquipEvent =
-				ArmorEquipEvent(
-					event.whoClicked as Player,
-					EquipMethod.DRAG,
-					type,
-					null,
-					event.oldCursor
-				)
+					ArmorEquipEvent(
+						event.whoClicked as Player,
+						EquipMethod.DRAG,
+						type,
+						null,
+						event.oldCursor
+					               )
 			Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
 			if (armorEquipEvent.isCancelled()) {
 				event.result = Event.Result.DENY
@@ -235,14 +248,15 @@ class ArmorListener(private val blockedMaterials: List<String>) : Listener {
 						ArmorType.matchType(i),
 						i,
 						null
-					)
-				)
+					               )
+				                                          )
 				// No way to cancel a death event.
 			}
 		}
 	}
 
 	companion object {
+
 		/**
 		 * A utility method to support versions that use null or air ItemStacks.
 		 */

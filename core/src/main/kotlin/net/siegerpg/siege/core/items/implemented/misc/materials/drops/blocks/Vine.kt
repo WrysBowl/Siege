@@ -26,6 +26,7 @@ class Vine() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): Vine {
 			val newItem = Vine(0)
 			newItem.tier = tier

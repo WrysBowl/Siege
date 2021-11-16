@@ -14,7 +14,7 @@ class Nightshade() : CustomMeleeWeapon(
 	material = Material.WOODEN_AXE,
 	baseStats = CustomItemUtils.statMap(strength = 100.0, regeneration = -20.0, luck = -25.0),
 	attackSpeed = 0.8
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -19,9 +19,9 @@ class GlacierLeggings() : CustomLeggings(
 		strength = 25.0,
 		luck = -25.0,
 		toughness = -225.0
-	),
+	                                   ),
 	leatherColor = Color.AQUA
-) {
+                                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

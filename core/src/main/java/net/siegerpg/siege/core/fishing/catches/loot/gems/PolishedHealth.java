@@ -8,7 +8,8 @@ public class PolishedHealth extends Fish {
 	public PolishedHealth () {
 
 		super(55, 1, 12, 18,
-		      new PolishedHealthGem(0).getUpdatedItem(false));
+		      new PolishedHealthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

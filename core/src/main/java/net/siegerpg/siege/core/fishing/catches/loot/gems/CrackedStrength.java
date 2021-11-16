@@ -8,7 +8,8 @@ public class CrackedStrength extends Fish {
 	public CrackedStrength () {
 
 		super(40, 0.7, 18, 12,
-		      new CrackedStrengthGem(0).getUpdatedItem(false));
+		      new CrackedStrengthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

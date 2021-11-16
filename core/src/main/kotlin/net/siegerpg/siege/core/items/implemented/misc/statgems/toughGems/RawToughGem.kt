@@ -15,7 +15,7 @@ class RawToughGem() : StatGemType(
 
 	statType = StatTypes.TOUGHNESS,
 	statAmount = 10.0
-) {
+                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

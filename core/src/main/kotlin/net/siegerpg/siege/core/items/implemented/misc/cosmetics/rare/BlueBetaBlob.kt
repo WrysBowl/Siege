@@ -10,7 +10,7 @@ class BlueBetaBlob() : Cosmetic(
 	customModelData = 730004,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 80

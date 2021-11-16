@@ -11,7 +11,7 @@ class SlimeSpiritKey() : CustomKey(
 	description = listOf("Used to summon", "the Slime spirit"),
 	material = Material.TRIPWIRE_HOOK,
 	quality = 0
-) {
+                                  ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

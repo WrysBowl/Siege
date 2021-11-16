@@ -13,7 +13,7 @@ class ToughSewerShooter() : CustomBow(
 	levelRequirement = 22,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 23.0, luck = 5.0, toughness = 60.0),
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

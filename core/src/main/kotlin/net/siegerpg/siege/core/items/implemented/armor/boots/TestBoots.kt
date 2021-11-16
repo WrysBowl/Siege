@@ -13,7 +13,7 @@ class TestBoots() : CustomBoots(
 	levelRequirement = 0,
 	material = Material.DIAMOND_BOOTS,
 	baseStats = CustomItemUtils.statMap(strength = 10.0)
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

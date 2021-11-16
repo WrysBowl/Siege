@@ -13,7 +13,7 @@ class LuckyPebbleShooter() : CustomBow(
 	levelRequirement = 10,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 18.0, luck = 6.0),
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

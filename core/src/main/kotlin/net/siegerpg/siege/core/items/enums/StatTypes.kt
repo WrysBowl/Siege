@@ -10,6 +10,7 @@ enum class StatTypes(val stylizedName: String) {
 	MANA_REGEN("Mana Regen");
 
 	companion object {
+
 		fun getFromId(id: String?): StatTypes? {
 			for (statType in values()) {
 				if (statType.stylizedName.equals(id, ignoreCase = true)) return statType

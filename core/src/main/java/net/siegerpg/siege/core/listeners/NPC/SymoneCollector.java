@@ -34,500 +34,782 @@ public class SymoneCollector implements Listener {
 
 	ArrayList<ItemStack> lightMeleeList = new ArrayList<>() {
 		{
-			add(Utils.addLore(new Twig(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A x2"),
-			                  Utils.lore("<gold>Given when you first"),
-			                  Utils.lore("<gold>join the server")));
-			add(Utils.addLore(new StickyStick(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A x2")));
-			add(Utils.addLore(new Spade(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A\u272A x1")));
-			add(Utils.addLore(new Shovel(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A\u272A x1")));
-			add(Utils.addLore(new Shank(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>Bandit drop")));
-			add(Utils.addLore(new Dagger(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>Bandit drop")));
-			add(Utils.addLore(new WoodenSword(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>Wild Fox drop")));
-			add(Utils.addLore(new ScrapShard(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2")));
-			add(Utils.addLore(new SplinteredBone(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x2"),
-			                  Utils.lore("<yellow>Bandit drop")));
-			add(Utils.addLore(new RefinedDagger(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x1")));
+			add(Utils.addLore(
+					new Twig(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A x2"),
+					Utils.lore("<gold>Given when you first"),
+					Utils.lore("<gold>join the server")
+			                 ));
+			add(Utils.addLore(
+					new StickyStick(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A x2")
+			                 ));
+			add(Utils.addLore(
+					new Spade(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Pebble \u272A\u272A x1")
+			                 ));
+			add(Utils.addLore(
+					new Shovel(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Pebble \u272A\u272A x1")
+			                 ));
+			add(Utils.addLore(
+					new Shank(50).getUpdatedItem(false),
+					Utils.lore("<yellow>Bandit drop")
+			                 ));
+			add(Utils.addLore(
+					new Dagger(50).getUpdatedItem(false),
+					Utils.lore("<yellow>Bandit drop")
+			                 ));
+			add(Utils.addLore(
+					new WoodenSword(50).getUpdatedItem(false),
+					Utils.lore("<yellow>Wild Fox drop")
+			                 ));
+			add(Utils.addLore(
+					new ScrapShard(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2")
+			                 ));
+			add(Utils.addLore(
+					new SplinteredBone(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x2"),
+					Utils.lore("<yellow>Bandit drop")
+			                 ));
+			add(Utils.addLore(
+					new RefinedDagger(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x1")
+			                 ));
 		}
 	};
 	ArrayList<ItemStack> heavyMeleeList = new ArrayList<>() {
 		{
-			add(Utils.addLore(new Club(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A x3")));
-			add(Utils.addLore(new GiantClub(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>Orc drop")));
-			add(Utils.addLore(new FemurBone(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x3")));
-			add(Utils.addLore(new StoneAxe(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x3"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-			add(Utils.addLore(new DoubleBladedAxe(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>Orc drop")));
-			add(Utils.addLore(new GreatSword(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1")));
-			add(Utils.addLore(new WarHammer(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x4"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-			add(Utils.addLore(new IronAxe(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>Orc drop")));
-			add(Utils.addLore(new Clobber(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x5")));
-			add(Utils.addLore(new EarthernHammer(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3")));
+			add(Utils.addLore(
+					new Club(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A x3")
+			                 ));
+			add(Utils.addLore(
+					new GiantClub(50).getUpdatedItem(false),
+					Utils.lore("<yellow>Orc drop")
+			                 ));
+			add(Utils.addLore(
+					new FemurBone(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x3")
+			                 ));
+			add(Utils.addLore(
+					new StoneAxe(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x3"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")
+			                 ));
+			add(Utils.addLore(
+					new DoubleBladedAxe(50).getUpdatedItem(false),
+					Utils.lore("<yellow>Orc drop")
+			                 ));
+			add(Utils.addLore(
+					new GreatSword(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1")
+			                 ));
+			add(Utils.addLore(
+					new WarHammer(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x4"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")
+			                 ));
+			add(Utils.addLore(
+					new IronAxe(50).getUpdatedItem(false),
+					Utils.lore("<yellow>Orc drop")
+			                 ));
+			add(Utils.addLore(
+					new Clobber(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x5")
+			                 ));
+			add(Utils.addLore(
+					new EarthernHammer(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3")
+			                 ));
 		}
 	};
 	ArrayList<ItemStack> armorList = new ArrayList<>() {
 		{
-			add(Utils.addLore(new SlimyHelmet(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A\u272A x5")));
-			add(Utils.addLore(new StrawHelmet(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wheat \u272A\u272A x5")));
-			add(Utils.addLore(new WoolHelmet(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wool \u272A\u272A x5")));
-			add(Utils.addLore(new MagmaHelmet(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A x5")));
-			add(Utils.addLore(new LeatherHelmet(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Leather \u272A\u272A x5")));
-			add(Utils.addLore(new BoneHelmet(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A x5")));
-			add(Utils.addLore(new ChainHelmet(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Chain \u272A\u272A x5")));
-			add(Utils.addLore(new IronHelmet(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x5")));
+			add(Utils.addLore(
+					new SlimyHelmet(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A\u272A x5")
+			                 ));
+			add(Utils.addLore(
+					new StrawHelmet(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wheat \u272A\u272A x5")
+			                 ));
+			add(Utils.addLore(
+					new WoolHelmet(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wool \u272A\u272A x5")
+			                 ));
+			add(Utils.addLore(
+					new MagmaHelmet(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A x5")
+			                 ));
+			add(Utils.addLore(
+					new LeatherHelmet(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Leather \u272A\u272A x5")
+			                 ));
+			add(Utils.addLore(
+					new BoneHelmet(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A x5")
+			                 ));
+			add(Utils.addLore(
+					new ChainHelmet(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Chain \u272A\u272A x5")
+			                 ));
+			add(Utils.addLore(
+					new IronHelmet(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x5")
+			                 ));
 			add(new ItemStack(Material.AIR));
 
-			add(Utils.addLore(new SlimyChestplate(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A\u272A x8")));
-			add(Utils.addLore(new StrawChestplate(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wheat \u272A\u272A x8")));
-			add(Utils.addLore(new WoolChestplate(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wool \u272A\u272A x8")));
-			add(Utils.addLore(new MagmaChestplate(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A x8")));
-			add(Utils.addLore(new LeatherChestplate(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Leather \u272A\u272A x8")));
-			add(Utils.addLore(new BoneChestplate(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A x8")));
-			add(Utils.addLore(new ChainChestplate(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Chain \u272A\u272A x8")));
-			add(Utils.addLore(new IronChestplate(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x8")));
+			add(Utils.addLore(
+					new SlimyChestplate(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					new StrawChestplate(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wheat \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					new WoolChestplate(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wool \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					new MagmaChestplate(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					new LeatherChestplate(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Leather \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					new BoneChestplate(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					new ChainChestplate(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Chain \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					new IronChestplate(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x8")
+			                 ));
 			add(new ItemStack(Material.AIR));
 
-			add(Utils.addLore(new SlimyLeggings(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A\u272A x7")));
-			add(Utils.addLore(new StrawLeggings(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wheat \u272A\u272A x7")));
-			add(Utils.addLore(new WoolLeggings(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wool \u272A\u272A x7")));
-			add(Utils.addLore(new MagmaLeggings(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A x7")));
-			add(Utils.addLore(new LeatherLeggings(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Leather \u272A\u272A x7")));
-			add(Utils.addLore(new BoneLeggings(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A x7")));
-			add(Utils.addLore(new ChainLeggings(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Chain \u272A\u272A x7")));
-			add(Utils.addLore(new IronLeggings(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x7")));
+			add(Utils.addLore(
+					new SlimyLeggings(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A\u272A x7")
+			                 ));
+			add(Utils.addLore(
+					new StrawLeggings(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wheat \u272A\u272A x7")
+			                 ));
+			add(Utils.addLore(
+					new WoolLeggings(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wool \u272A\u272A x7")
+			                 ));
+			add(Utils.addLore(
+					new MagmaLeggings(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A x7")
+			                 ));
+			add(Utils.addLore(
+					new LeatherLeggings(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Leather \u272A\u272A x7")
+			                 ));
+			add(Utils.addLore(
+					new BoneLeggings(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A x7")
+			                 ));
+			add(Utils.addLore(
+					new ChainLeggings(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Chain \u272A\u272A x7")
+			                 ));
+			add(Utils.addLore(
+					new IronLeggings(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x7")
+			                 ));
 			add(new ItemStack(Material.AIR));
 
-			add(Utils.addLore(new SlimyBoots(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A\u272A x4")));
-			add(Utils.addLore(new StrawBoots(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wheat \u272A\u272A x4")));
-			add(Utils.addLore(new WoolBoots(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wool \u272A\u272A x4")));
-			add(Utils.addLore(new MagmaBoots(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A x4")));
-			add(Utils.addLore(new LeatherBoots(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Leather \u272A\u272A x4")));
-			add(Utils.addLore(new BoneBoots(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A x4")));
-			add(Utils.addLore(new ChainBoots(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Chain \u272A\u272A x4")));
-			add(Utils.addLore(new IronBoots(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x4")));
+			add(Utils.addLore(
+					new SlimyBoots(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A\u272A x4")
+			                 ));
+			add(Utils.addLore(
+					new StrawBoots(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wheat \u272A\u272A x4")
+			                 ));
+			add(Utils.addLore(
+					new WoolBoots(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wool \u272A\u272A x4")
+			                 ));
+			add(Utils.addLore(
+					new MagmaBoots(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A x4")
+			                 ));
+			add(Utils.addLore(
+					new LeatherBoots(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Leather \u272A\u272A x4")
+			                 ));
+			add(Utils.addLore(
+					new BoneBoots(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A x4")
+			                 ));
+			add(Utils.addLore(
+					new ChainBoots(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Chain \u272A\u272A x4")
+			                 ));
+			add(Utils.addLore(
+					new IronBoots(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x4")
+			                 ));
 			add(new ItemStack(Material.AIR));
 		}
 	};
 	ArrayList<ItemStack> mobDropsList = new ArrayList<>() {
 		{
-			add(Utils.addLore(Slime.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A x8")));
-			add(Utils.addLore(Slime.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A\u272A x8")));
-			add(Utils.addLore(Slime.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Slime.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Slime.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Slime.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Slime.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Slime.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A\u272A x8")
+			                 ));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
-			add(Utils.addLore(Magma.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A x8")));
-			add(Utils.addLore(Magma.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A x8")));
-			add(Utils.addLore(Magma.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Magma.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Magma.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Magma.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Magma.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Magma.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A\u272A x8")
+			                 ));
 
-			add(Utils.addLore(Ectoplasm.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Ectoplasm \u272A x8")));
-			add(Utils.addLore(Ectoplasm.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A x8")));
-			add(Utils.addLore(Ectoplasm.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Ectoplasm.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Ectoplasm.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Ectoplasm \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Ectoplasm.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Ectoplasm.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Ectoplasm.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A\u272A x8")
+			                 ));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
-			add(Utils.addLore(Bone.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A x8")));
-			add(Utils.addLore(Bone.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A x8")));
-			add(Utils.addLore(Bone.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Bone.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Bone.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Bone.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Bone.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Bone.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A\u272A x8")
+			                 ));
 
-			add(Utils.addLore(Wool.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wool \u272A x8")));
-			add(Utils.addLore(Wool.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wool \u272A\u272A x8")));
-			add(Utils.addLore(Wool.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wool \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Wool.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wool \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Wool.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wool \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Wool.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wool \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Wool.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wool \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Wool.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wool \u272A\u272A\u272A\u272A x8")
+			                 ));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
-			add(Utils.addLore(Leather.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Leather \u272A x8")));
-			add(Utils.addLore(Leather.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Leather \u272A\u272A x8")));
-			add(Utils.addLore(Leather.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Leather \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Leather.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Leather \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Leather.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Leather \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Leather.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Leather \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Leather.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Leather \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Leather.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Leather \u272A\u272A\u272A\u272A x8")
+			                 ));
 
-			add(Utils.addLore(Feather.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Feather \u272A x8")));
-			add(Utils.addLore(Feather.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Feather \u272A\u272A x8")));
-			add(Utils.addLore(Feather.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Feather.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Feather \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Feather.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Feather \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Feather.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Feather \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Feather.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Ectoplasm \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Feather.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Feather \u272A\u272A\u272A\u272A x8")
+			                 ));
 		}
 	};
 	ArrayList<ItemStack> blockDropsList = new ArrayList<>() {
 		{
-			add(Utils.addLore(PlantMatter.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Plant Matter \u272A x8")));
-			add(Utils.addLore(PlantMatter.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Plant Matter \u272A\u272A x8")));
-			add(Utils.addLore(PlantMatter.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x8")));
-			add(Utils.addLore(PlantMatter.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					PlantMatter.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Plant Matter \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					PlantMatter.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Plant Matter \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					PlantMatter.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					PlantMatter.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A\u272A x8")
+			                 ));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
-			add(Utils.addLore(Seed.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Seed \u272A x8")));
-			add(Utils.addLore(Seed.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Seed \u272A\u272A x8")));
-			add(Utils.addLore(Seed.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Seed.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Seed.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Seed \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Seed.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Seed \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Seed.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Seed.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x8")
+			                 ));
 
-			add(Utils.addLore(Coal.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Coal \u272A x8")));
-			add(Utils.addLore(Coal.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Coal \u272A\u272A x8")));
-			add(Utils.addLore(Coal.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Coal.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Coal.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Coal \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Coal.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Coal \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Coal.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Coal.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A\u272A x8")
+			                 ));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
-			add(Utils.addLore(Vine.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Vine \u272A x8")));
-			add(Utils.addLore(Vine.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A x8")));
-			add(Utils.addLore(Vine.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Vine.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Vine.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Vine \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Vine.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Vine.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Vine.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A\u272A x8")
+			                 ));
 
-			add(Utils.addLore(Stick.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A x8")));
-			add(Utils.addLore(Stick.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A x8")));
-			add(Utils.addLore(Stick.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Stick.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Stick.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Stick.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Stick.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Stick.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A\u272A x8")
+			                 ));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
-			add(Utils.addLore(Pebble.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A x8")));
-			add(Utils.addLore(Pebble.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A\u272A x8")));
-			add(Utils.addLore(Pebble.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Pebble.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Pebble.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Pebble \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Pebble.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Pebble \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Pebble.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Pebble.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A\u272A x8")
+			                 ));
 
-			add(Utils.addLore(Chain.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Chain \u272A x8")));
-			add(Utils.addLore(Chain.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Chain \u272A\u272A x8")));
-			add(Utils.addLore(Chain.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Chain \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Chain.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Chain \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Chain.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Chain \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Chain.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Chain \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Chain.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Chain \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Chain.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Chain \u272A\u272A\u272A\u272A x8")
+			                 ));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
-			add(Utils.addLore(MetalScrap.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Metal Scrap \u272A x8")));
-			add(Utils.addLore(MetalScrap.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A x8")));
-			add(Utils.addLore(MetalScrap.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x8")));
-			add(Utils.addLore(MetalScrap.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					MetalScrap.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Metal Scrap \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					MetalScrap.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					MetalScrap.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					MetalScrap.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Metal Scrap \u272A\u272A\u272A\u272A x8")
+			                 ));
 
-			add(Utils.addLore(RefinedMetal.Companion.tier(1).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Metal Scrap \u272A x9")));
-			add(Utils.addLore(RefinedMetal.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A x8")));
-			add(Utils.addLore(RefinedMetal.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x8")));
-			add(Utils.addLore(RefinedMetal.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x8")));
-			add(Utils.addLore(RefinedMetal.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					RefinedMetal.Companion.tier(1).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Metal Scrap \u272A x9")
+			                 ));
+			add(Utils.addLore(
+					RefinedMetal.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					RefinedMetal.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					RefinedMetal.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					RefinedMetal.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x8")
+			                 ));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
 			add(new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
-			add(Utils.addLore(Wheat.Companion.tier(2).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wheat \u272A x8")));
-			add(Utils.addLore(Wheat.Companion.tier(3).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wheat \u272A\u272A x8")));
-			add(Utils.addLore(Wheat.Companion.tier(4).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wheat \u272A\u272A\u272A x8")));
-			add(Utils.addLore(Wheat.Companion.tier(5).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Wheat \u272A\u272A\u272A\u272A x8")));
+			add(Utils.addLore(
+					Wheat.Companion.tier(2).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wheat \u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Wheat.Companion.tier(3).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wheat \u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Wheat.Companion.tier(4).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wheat \u272A\u272A\u272A x8")
+			                 ));
+			add(Utils.addLore(
+					Wheat.Companion.tier(5).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Wheat \u272A\u272A\u272A\u272A x8")
+			                 ));
 		}
 	};
 	ArrayList<ItemStack> miscList = new ArrayList<>();
 	ArrayList<ItemStack> wandsList = new ArrayList<>() {
 		{
-			add(Utils.addLore(new LivingTwig(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Spruce Log drop")));
-			add(Utils.addLore(new GlisteningTwig(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Seed \u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Plant Matter \u272A\u272A x1")));
-			add(Utils.addLore(new GlowingTwig(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x3")));
-			add(Utils.addLore(new SlimeSpoofer(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Prince Slimy drop")));
-			add(Utils.addLore(new RockWand(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-			add(Utils.addLore(new Torch(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")));
-			add(Utils.addLore(new FlamingHotTorch(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1")));
-			add(Utils.addLore(new EarthernWand(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
-			add(Utils.addLore(new HotRod(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>UNOBTAINABLE")));
-			add(Utils.addLore(new EarthernStaff(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")));
+			add(Utils.addLore(
+					new LivingTwig(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Spruce Log drop")
+			                 ));
+			add(Utils.addLore(
+					new GlisteningTwig(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Seed \u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Plant Matter \u272A\u272A x1")
+			                 ));
+			add(Utils.addLore(
+					new GlowingTwig(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x3")
+			                 ));
+			add(Utils.addLore(
+					new SlimeSpoofer(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Prince Slimy drop")
+			                 ));
+			add(Utils.addLore(
+					new RockWand(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")
+			                 ));
+			add(Utils.addLore(
+					new Torch(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2")
+			                 ));
+			add(Utils.addLore(
+					new FlamingHotTorch(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x1")
+			                 ));
+			add(Utils.addLore(
+					new EarthernWand(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")
+			                 ));
+			add(Utils.addLore(
+					new HotRod(50).getUpdatedItem(false),
+					Utils.lore("<yellow>UNOBTAINABLE")
+			                 ));
+			add(Utils.addLore(
+					new EarthernStaff(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Coal \u272A\u272A\u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Seed \u272A\u272A\u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Plant Matter \u272A\u272A\u272A x1")
+			                 ));
 		}
 	};
 	ArrayList<ItemStack> rangedList = new ArrayList<>() {
 		{
-			add(Utils.addLore(new ScrapyardBow(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A x3"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A x3")));
-			add(Utils.addLore(new WoodenBow(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-			add(Utils.addLore(new PebbleShooter(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-			add(Utils.addLore(new ReinforcedBow(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-			add(Utils.addLore(new SewerShooter(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
-			add(Utils.addLore(new Crossbow(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>Bandit Archer drop")));
-			add(Utils.addLore(new RecurveBow(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>Bandit Archer drop")));
-			add(Utils.addLore(new IronBow(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x3")));
-			add(Utils.addLore(new Trident(50).getUpdatedItem(false),
-			                  Utils.lore("<yellow>Undead Pirate drop")));
-			add(Utils.addLore(new Bowba(50).getUpdatedItem(false),
-			                  Utils.lore("<dark_aqua>Click to Craft"),
-			                  Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A\u272A x1"),
-			                  Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x2"),
-			                  Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")));
+			add(Utils.addLore(
+					new ScrapyardBow(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A x3"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A x3")
+			                 ));
+			add(Utils.addLore(
+					new WoodenBow(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")
+			                 ));
+			add(Utils.addLore(
+					new PebbleShooter(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Pebble \u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")
+			                 ));
+			add(Utils.addLore(
+					new ReinforcedBow(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")
+			                 ));
+			add(Utils.addLore(
+					new SewerShooter(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Slime \u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Magma \u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Stick \u272A\u272A\u272A x3"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")
+			                 ));
+			add(Utils.addLore(
+					new Crossbow(50).getUpdatedItem(false),
+					Utils.lore("<yellow>Bandit Archer drop")
+			                 ));
+			add(Utils.addLore(
+					new RecurveBow(50).getUpdatedItem(false),
+					Utils.lore("<yellow>Bandit Archer drop")
+			                 ));
+			add(Utils.addLore(
+					new IronBow(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A x3")
+			                 ));
+			add(Utils.addLore(
+					new Trident(50).getUpdatedItem(false),
+					Utils.lore("<yellow>Undead Pirate drop")
+			                 ));
+			add(Utils.addLore(
+					new Bowba(50).getUpdatedItem(false),
+					Utils.lore("<dark_aqua>Click to Craft"),
+					Utils.lore("<dark_aqua>Bone \u272A\u272A\u272A\u272A x1"),
+					Utils.lore("<dark_aqua>Refined Metal \u272A\u272A\u272A\u272A x2"),
+					Utils.lore("<dark_aqua>Vine \u272A\u272A\u272A x3")
+			                 ));
 		}
 	};
 

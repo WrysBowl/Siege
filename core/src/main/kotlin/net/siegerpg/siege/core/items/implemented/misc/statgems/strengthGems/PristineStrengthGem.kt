@@ -15,7 +15,7 @@ class PristineStrengthGem() : StatGemType(
 
 	statType = StatTypes.STRENGTH,
 	statAmount = 18.0
-) {
+                                         ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

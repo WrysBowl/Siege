@@ -17,13 +17,13 @@ class FrostWarden() : CustomWand(
 		toughness = 50.0,
 		luck = -100.0,
 		regeneration = -20.0
-	),
+	                                   ),
 	range = 22,
 	red = 70,
 	green = 215,
 	blue = 230,
 	damageRadius = 2.0
-) {
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -15,7 +15,7 @@ class HealthyMagmaBoots() : CustomBoots(
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(health = 12.0),
 	leatherColor = Color.ORANGE
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

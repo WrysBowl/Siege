@@ -8,7 +8,8 @@ public class RawHealth extends Fish {
 	public RawHealth () {
 
 		super(30, 0.6, 20, 10,
-		      new RawHealthGem(0).getUpdatedItem(false));
+		      new RawHealthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

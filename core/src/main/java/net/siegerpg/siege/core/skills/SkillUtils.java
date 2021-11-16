@@ -92,7 +92,8 @@ public class SkillUtils {
 			player.sendTitle(
 					skill.DISPLAY_ITEM.getI18NDisplayName(),
 					Utils.tacc("&c&l" + PlayerData.playerCurrentMana.get(player) + "&4/" + skill.getManaCost() + " &emana needed"),
-					10, 30, 10);
+					10, 30, 10
+			                );
 			return false;
 		}
 		return true;

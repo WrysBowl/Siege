@@ -15,7 +15,7 @@ class LuckyStrawBoots() : CustomBoots(
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(luck = 3.0),
 	leatherColor = Color.YELLOW
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

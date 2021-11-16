@@ -11,7 +11,7 @@ class HillyWoodsSpirit() : CustomKey(
 	description = listOf("Allows access", "to Twilight"),
 	levelRequirement = 20,
 	material = Material.TRIPWIRE_HOOK,
-) {
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

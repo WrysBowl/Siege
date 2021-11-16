@@ -13,7 +13,7 @@ class ChainChestplate() : CustomChestplate(
 	levelRequirement = 30,
 	material = Material.CHAINMAIL_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(health = 80.0, toughness = 60.0),
-) {
+                                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

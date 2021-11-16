@@ -15,7 +15,7 @@ class HealingSlimyLeggings() : CustomLeggings(
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 8.0, regeneration = 4.0),
 	leatherColor = Color.LIME
-) {
+                                             ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

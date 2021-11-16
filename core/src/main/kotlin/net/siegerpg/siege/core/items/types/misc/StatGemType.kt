@@ -22,7 +22,7 @@ abstract class StatGemType(
 	override val type: ItemTypes = ItemTypes.STATGEM,
 	val statType: StatTypes,
 	val statAmount: Double = 0.0
-) : CustomItem {
+                          ) : CustomItem {
 
 	override var rarity: Rarity = Rarity.COMMON
 
@@ -36,7 +36,7 @@ abstract class StatGemType(
 		item = item.setNbtTags(
 			"statGemTypeStat" to statType,
 			"statGemTypeAmount" to statAmount
-		)
+		                      )
 	}
 
 	override fun updateMeta(hideRarity: Boolean): ItemStack {

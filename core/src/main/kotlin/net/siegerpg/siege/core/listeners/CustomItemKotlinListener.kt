@@ -17,15 +17,29 @@ import net.siegerpg.siege.core.miscellaneous.cache.MobNames
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
-import org.bukkit.entity.*
+import org.bukkit.entity.Arrow
+import org.bukkit.entity.Entity
+import org.bukkit.entity.LivingEntity
+import org.bukkit.entity.Mob
+import org.bukkit.entity.Player
+import org.bukkit.entity.Projectile
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
-import org.bukkit.event.entity.*
+import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.EntityRegainHealthEvent
+import org.bukkit.event.entity.EntityShootBowEvent
+import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryType
-import org.bukkit.event.player.*
+import org.bukkit.event.player.PlayerInteractEntityEvent
+import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.event.player.PlayerItemConsumeEvent
+import org.bukkit.event.player.PlayerItemHeldEvent
+import org.bukkit.event.player.PlayerQuitEvent
+import org.bukkit.event.player.PlayerSwapHandItemsEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
 import java.math.BigDecimal
@@ -69,7 +83,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 				val item: ItemStack? = player.inventory.getItem(9)
 				if (item != null) {
 					if (item.type != Material.AIR && item.type != Material.ARROW) arrowItems[player] =
-						item
+							item
 				}
 				player.inventory.setItem(9, ItemStack(Material.ARROW))
 			}
@@ -120,8 +134,8 @@ class CustomItemKotlinListener : Listener, Runnable {
 		val vicMaxHealth = victim.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
 		if (e is EntityDamageByEntityEvent) {
 			attacker =
-				if (e.damager is Player) e.damager as Player
-				else e.damager
+					if (e.damager is Player) e.damager as Player
+					else e.damager
 			if (e.damager is Projectile) {
 				if ((e.damager as Projectile).shooter is Player) {
 					attacker = (e.damager as Projectile).shooter as Player
@@ -171,7 +185,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 			if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
 				actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
 				if ((damage / maxDamage) > 1) maxDamage =
-					0.8 //less maxDamage = more damage (damage/maxDamage)
+						0.8 //less maxDamage = more damage (damage/maxDamage)
 			}
 			if (damage > 1.5 && maxDamage <= 1) {
 				maxDamage = damage
@@ -205,28 +219,28 @@ class CustomItemKotlinListener : Listener, Runnable {
 		}
 
 		val vicHealthStat =
-			if (victim is Player) CustomItemUtils.getPlayerStat(
-				victim,
-				StatTypes.HEALTH
-			) + vicMaxHealth + (victim.level * 2)
-			else vicMaxHealth
+				if (victim is Player) CustomItemUtils.getPlayerStat(
+					victim,
+					StatTypes.HEALTH
+				                                                   ) + vicMaxHealth + (victim.level * 2)
+				else vicMaxHealth
 		if (vicHealthStat < 0.0) {
 			e.damage = 9999.0
 			return
 		}
 		val vicToughness =
-			if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
-			else 0.0
+				if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
+				else 0.0
 		val attStrengthStat =
-			if (attacker is Player && actualDamage > 0)
-				(damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
-			else damage
+				if (attacker is Player && actualDamage > 0)
+					(damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
+				else damage
 		val reducedDamage =
-			attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
+				attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
 
 		setVictimName(victim, e.damage, vicMaxHealth)
 		e.damage =
-			(reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
+				(reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
 	}
 
 	private fun setVictimName(victim: LivingEntity, damage: Double, vicMaxHealth: Double) {
@@ -245,9 +259,9 @@ class CustomItemKotlinListener : Listener, Runnable {
 				Utils.round(
 					vicMaxHealth,
 					1
-				)
+				           )
 			}"
-		)
+		                              )
 	}
 
 	@EventHandler
@@ -315,7 +329,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 	@Suppress("unused")
 	fun onInteract(event: PlayerInteractEvent) {
 		if (event.action != Action.LEFT_CLICK_AIR &&
-			event.action != Action.LEFT_CLICK_BLOCK
+		    event.action != Action.LEFT_CLICK_BLOCK
 		) return
 		val player = event.player
 		val item = player.inventory.itemInMainHand
@@ -325,7 +339,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 			if (it is CustomWand) {
 
 				if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg =
-					1.0
+						1.0
 
 				//MAKE THIS EFFICIENT
 				val targetLoc = if (player.getTargetBlock(it.range) == null) {
@@ -360,11 +374,11 @@ class CustomItemKotlinListener : Listener, Runnable {
 					dmg,
 					targetLoc,
 					0.06
-				).runTaskTimer(
+				        ).runTaskTimer(
 					plugin(),
 					1,
 					0
-				)
+				                      )
 			}
 		}
 	}

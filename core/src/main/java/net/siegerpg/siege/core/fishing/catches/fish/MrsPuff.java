@@ -13,7 +13,8 @@ public class MrsPuff extends Fish {
 				0.4,
 				24,
 				7,
-				610010);
+				610010
+		     );
 
 	}
 

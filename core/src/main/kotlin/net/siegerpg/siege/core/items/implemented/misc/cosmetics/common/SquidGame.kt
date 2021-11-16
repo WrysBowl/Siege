@@ -10,7 +10,7 @@ class SquidGame() : Cosmetic(
 	customModelData = 710003,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

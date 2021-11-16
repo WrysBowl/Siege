@@ -17,8 +17,8 @@ class GlowingTitaniumShovel() : CustomTool(
 
 	enchantments = hashMapOf(
 		Enchantment.DIG_SPEED to 3
-	)
-) {
+	                        )
+                                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

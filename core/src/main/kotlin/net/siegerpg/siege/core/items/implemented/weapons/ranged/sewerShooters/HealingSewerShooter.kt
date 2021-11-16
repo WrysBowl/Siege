@@ -13,7 +13,7 @@ class HealingSewerShooter() : CustomBow(
 	levelRequirement = 22,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 23.0, luck = 5.0, regeneration = 9.0),
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

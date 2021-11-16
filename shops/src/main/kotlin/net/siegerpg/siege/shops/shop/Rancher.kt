@@ -1,13 +1,29 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.armor.boots.LeatherBoots
-import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.*
+import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.HealingHardenedLeatherBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.HealthyHardenedLeatherBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.LuckyHardenedLeatherBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.StrongHardenedLeatherBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.ToughHardenedLeatherBoots
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.LeatherChestplate
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates.HealingHardenedLeatherChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates.HealthyHardenedLeatherChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates.LuckyHardenedLeatherChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates.StrongHardenedLeatherChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates.ToughHardenedLeatherChestplate
 import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet
-import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.HealingHardenedLeatherHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.HealthyHardenedLeatherHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.LuckyHardenedLeatherHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.StrongHardenedLeatherHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.ToughHardenedLeatherHelmet
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings
-import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.HealingHardenedLeatherLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.HealthyHardenedLeatherLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.LuckyHardenedLeatherLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.StrongHardenedLeatherLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.ToughHardenedLeatherLeggings
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
@@ -20,6 +36,7 @@ import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Rancher : Shop() {
+
 	override var name: String = "Rancher"
 	override var permission: String = "siege.shops.shop.rancher"
 	override var items: List<ShopItem> = listOf(
@@ -27,8 +44,8 @@ class Rancher : Shop() {
 		ShopItem(
 			LeatherHelmet(-1), 1500, hashMapOf(
 				Leather.tier(2) to 5
-			), true
-		) {
+			                                  ), true
+		        ) {
 			LeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -38,40 +55,40 @@ class Rancher : Shop() {
 			LuckyHardenedLeatherHelmet(-1), -1, hashMapOf(
 				Leather.tier(2) to 3,
 				Feather.tier(2) to 3
-			), true
-		) {
+			                                             ), true
+		        ) {
 			LuckyHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongHardenedLeatherHelmet(-1), -1, hashMapOf(
 				Leather.tier(2) to 3,
 				Bone.tier(2) to 2
-			), true
-		) {
+			                                              ), true
+		        ) {
 			StrongHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughHardenedLeatherHelmet(-1), -1, hashMapOf(
 				Leather.tier(2) to 3,
 				Pebble.tier(2) to 3
-			), true
-		) {
+			                                             ), true
+		        ) {
 			ToughHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyHardenedLeatherHelmet(-1), -1, hashMapOf(
 				Leather.tier(2) to 3,
 				PlantMatter.tier(2) to 3
-			), true
-		) {
+			                                               ), true
+		        ) {
 			HealthyHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingHardenedLeatherHelmet(-1), -1, hashMapOf(
 				Leather.tier(2) to 3,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                               ), true
+		        ) {
 			HealingHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -79,8 +96,8 @@ class Rancher : Shop() {
 		ShopItem(
 			LeatherChestplate(-1), 2750, hashMapOf(
 				Leather.tier(2) to 8
-			), true
-		) {
+			                                      ), true
+		        ) {
 			LeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -90,40 +107,40 @@ class Rancher : Shop() {
 			LuckyHardenedLeatherChestplate(-1), 3000, hashMapOf(
 				Leather.tier(2) to 4,
 				Feather.tier(2) to 4
-			), true
-		) {
+			                                                   ), true
+		        ) {
 			LuckyHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongHardenedLeatherChestplate(-1), 3000, hashMapOf(
 				Leather.tier(2) to 5,
 				Bone.tier(2) to 3
-			), true
-		) {
+			                                                    ), true
+		        ) {
 			StrongHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughHardenedLeatherChestplate(-1), 3000, hashMapOf(
 				Leather.tier(2) to 3,
 				Pebble.tier(2) to 5
-			), true
-		) {
+			                                                   ), true
+		        ) {
 			ToughHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyHardenedLeatherChestplate(-1), 3000, hashMapOf(
 				Leather.tier(2) to 3,
 				PlantMatter.tier(2) to 5
-			), true
-		) {
+			                                                     ), true
+		        ) {
 			HealthyHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingHardenedLeatherChestplate(-1), 3000, hashMapOf(
 				Leather.tier(2) to 4,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                                     ), true
+		        ) {
 			HealingHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -131,8 +148,8 @@ class Rancher : Shop() {
 		ShopItem(
 			LeatherLeggings(-1), 2250, hashMapOf(
 				Leather.tier(2) to 7
-			), true
-		) {
+			                                    ), true
+		        ) {
 			LeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -142,40 +159,40 @@ class Rancher : Shop() {
 			LuckyHardenedLeatherLeggings(-1), 2500, hashMapOf(
 				Leather.tier(2) to 3,
 				Feather.tier(2) to 4
-			), true
-		) {
+			                                                 ), true
+		        ) {
 			LuckyHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongHardenedLeatherLeggings(-1), 2500, hashMapOf(
 				Leather.tier(2) to 4,
 				Bone.tier(2) to 3
-			), true
-		) {
+			                                                  ), true
+		        ) {
 			StrongHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughHardenedLeatherLeggings(-1), 2500, hashMapOf(
 				Leather.tier(2) to 2,
 				Pebble.tier(2) to 5
-			), true
-		) {
+			                                                 ), true
+		        ) {
 			ToughHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyHardenedLeatherLeggings(-1), 2500, hashMapOf(
 				Leather.tier(2) to 3,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                                   ), true
+		        ) {
 			HealthyHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingHardenedLeatherLeggings(-1), 2500, hashMapOf(
 				Leather.tier(2) to 3,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                                   ), true
+		        ) {
 			HealingHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -183,8 +200,8 @@ class Rancher : Shop() {
 		ShopItem(
 			LeatherBoots(-1), 1250, hashMapOf(
 				Leather.tier(2) to 4
-			), true
-		) {
+			                                 ), true
+		        ) {
 			LeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -194,41 +211,41 @@ class Rancher : Shop() {
 			LuckyHardenedLeatherBoots(-1), 1500, hashMapOf(
 				Leather.tier(2) to 2,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                              ), true
+		        ) {
 			LuckyHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongHardenedLeatherBoots(-1), 1500, hashMapOf(
 				Leather.tier(2) to 3,
 				Bone.tier(2) to 1
-			), true
-		) {
+			                                               ), true
+		        ) {
 			StrongHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughHardenedLeatherBoots(-1), 1500, hashMapOf(
 				Leather.tier(2) to 2,
 				Pebble.tier(2) to 3
-			), true
-		) {
+			                                              ), true
+		        ) {
 			ToughHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyHardenedLeatherBoots(-1), 1500, hashMapOf(
 				Leather.tier(2) to 1,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                                ), true
+		        ) {
 			HealthyHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingHardenedLeatherBoots(-1), 1500, hashMapOf(
 				Leather.tier(2) to 2,
 				Wheat.tier(3) to 4
-			), true
-		) {
+			                                                ), true
+		        ) {
 			HealingHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
-	)
+	                                           )
 }

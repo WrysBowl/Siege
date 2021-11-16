@@ -34,7 +34,8 @@ public class Animation implements Runnable {
 					location.getWorld(),
 					location.getX(),
 					location.getY() + 1.5,
-					location.getZ());
+					location.getZ()
+			);
 			int durationTicks = duration;
 			Item displayedItem;
 

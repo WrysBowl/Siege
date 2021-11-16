@@ -17,9 +17,9 @@ class TitaniumRod() : CustomRod(
 	baseStats = CustomItemUtils.statMap(),
 	enchantments = hashMapOf(
 		Enchantment.LURE to 3,
-	),
+	                        ),
 	fishDropTable = TitaniumFishTable()
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 70

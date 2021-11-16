@@ -13,7 +13,7 @@ class StrongHardenedLeatherLeggings() : CustomLeggings(
 	levelRequirement = 18,
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 15.0, toughness = 30.0, strength = 5.0),
-) {
+                                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

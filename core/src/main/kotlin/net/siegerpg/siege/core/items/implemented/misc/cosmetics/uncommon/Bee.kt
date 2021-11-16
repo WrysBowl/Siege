@@ -10,7 +10,7 @@ class Bee() : Cosmetic(
 	customModelData = 720001,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 50

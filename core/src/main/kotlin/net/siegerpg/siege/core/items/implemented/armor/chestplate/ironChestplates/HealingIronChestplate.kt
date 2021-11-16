@@ -13,7 +13,7 @@ class HealingIronChestplate() : CustomChestplate(
 	levelRequirement = 35,
 	material = Material.IRON_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 50.0, regeneration = 8.0),
-) {
+                                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

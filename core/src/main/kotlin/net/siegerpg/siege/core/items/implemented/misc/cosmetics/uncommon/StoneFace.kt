@@ -10,7 +10,7 @@ class StoneFace() : Cosmetic(
 	customModelData = 1,
 	description = listOf(""),
 	material = Material.OBSERVER,
-) {
+                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 50

@@ -17,9 +17,9 @@ class Lorekeeper() : CustomMeleeWeapon(
 		luck = 25.0,
 		toughness = -150.0,
 		health = -60.0
-	),
+	                                   ),
 	attackSpeed = 0.6
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

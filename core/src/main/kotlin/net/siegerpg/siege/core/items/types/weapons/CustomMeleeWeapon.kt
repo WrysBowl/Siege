@@ -26,7 +26,7 @@ abstract class CustomMeleeWeapon(
 	override val type: ItemTypes = ItemTypes.MELEEWEAPON,
 	val attackSpeed: Double,
 	override var statGem: StatGem? = null
-) : CustomWeapon {
+                                ) : CustomWeapon {
 
 	override var rarity: Rarity = Rarity.COMMON
 
@@ -42,7 +42,7 @@ abstract class CustomMeleeWeapon(
 			"generic.attackSpeed",
 			(-4.0 + attackSpeed),
 			AttributeModifier.Operation.ADD_NUMBER
-		)
+		                                )
 		meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier)
 
 		val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
@@ -69,18 +69,18 @@ abstract class CustomMeleeWeapon(
 						"<r><red>${baseStats[it]?.times(0.5)}. . .${
 							baseStats[it]?.times(
 								1.5
-							)
+							                    )
 						} <gray>${it.stylizedName}"
-					)
+					                                        )
 					else meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
 						"<r><green>+${baseStats[it]?.times(0.5)}. . .${
 							baseStats[it]?.times(
 								1.5
-							)
+							                    )
 						} <gray>${it.stylizedName}"
-					)
+					                                        )
 					else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 				} // TODO: Make special items work with rarity multiplier
 			}

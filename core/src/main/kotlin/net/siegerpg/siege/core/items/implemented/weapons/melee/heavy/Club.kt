@@ -14,7 +14,7 @@ class Club() : CustomMeleeWeapon(
 	material = Material.WOODEN_AXE,
 	baseStats = CustomItemUtils.statMap(strength = 14.0),
 	attackSpeed = 0.9
-) {
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

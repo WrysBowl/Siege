@@ -15,7 +15,7 @@ class FlawedHealthGem() : StatGemType(
 
 	statType = StatTypes.HEALTH,
 	statAmount = 12.0
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

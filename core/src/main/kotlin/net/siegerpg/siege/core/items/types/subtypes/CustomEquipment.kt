@@ -74,18 +74,18 @@ interface CustomEquipment : CustomItem {
 						"<r><red>${baseStats[it]?.times(0.5)}. . .${
 							baseStats[it]?.times(
 								1.5
-							)
+							                    )
 						} <gray>${it.stylizedName}"
-					)
+					                                        )
 					else meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
 						"<r><green>+${baseStats[it]?.times(0.5)}. . .${
 							baseStats[it]?.times(
 								1.5
-							)
+							                    )
 						} <gray>${it.stylizedName}"
-					)
+					                                        )
 					else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 				} // TODO: Make special items work with rarity multiplier
 			}
@@ -104,7 +104,7 @@ interface CustomEquipment : CustomItem {
 			ItemFlag.HIDE_UNBREAKABLE,
 			ItemFlag.HIDE_ENCHANTS,
 			ItemFlag.HIDE_DYE
-		)
+		                 )
 		meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
 
 		item.itemMeta = meta
@@ -115,7 +115,7 @@ interface CustomEquipment : CustomItem {
 		super.serialize()
 		item = item.setNbtTags(
 			"equipmentStatGem" to if (statGem != null) statGem.toString() else null
-		)
+		                      )
 	}
 
 	fun onHit(e: EntityDamageByEntityEvent) {

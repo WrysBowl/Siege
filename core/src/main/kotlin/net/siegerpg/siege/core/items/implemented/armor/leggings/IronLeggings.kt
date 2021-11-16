@@ -18,8 +18,8 @@ class IronLeggings() : CustomLeggings(
 		regeneration = 10.0,
 		strength = -8.0,
 		luck = -7.0
-	),
-) {
+	                                   ),
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

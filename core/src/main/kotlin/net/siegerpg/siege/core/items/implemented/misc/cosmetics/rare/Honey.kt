@@ -10,7 +10,7 @@ class Honey() : Cosmetic(
 	customModelData = 1,
 	description = listOf(""),
 	material = Material.HONEY_BLOCK,
-) {
+                        ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 80

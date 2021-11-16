@@ -1,13 +1,29 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.armor.boots.IronBoots
-import net.siegerpg.siege.core.items.implemented.armor.boots.ironBoots.*
+import net.siegerpg.siege.core.items.implemented.armor.boots.ironBoots.HealingIronBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.ironBoots.HealthyIronBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.ironBoots.LuckyIronBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.ironBoots.StrongIronBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.ironBoots.ToughIronBoots
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.IronChestplate
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.ironChestplates.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.ironChestplates.HealingIronChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.ironChestplates.HealthyIronChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.ironChestplates.LuckyIronChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.ironChestplates.StrongIronChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.ironChestplates.ToughIronChestplate
 import net.siegerpg.siege.core.items.implemented.armor.helmet.IronHelmet
-import net.siegerpg.siege.core.items.implemented.armor.helmet.ironHelmets.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.ironHelmets.HealingIronHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.ironHelmets.HealthyIronHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.ironHelmets.LuckyIronHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.ironHelmets.StrongIronHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.ironHelmets.ToughIronHelmet
 import net.siegerpg.siege.core.items.implemented.armor.leggings.IronLeggings
-import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.HealingIronLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.HealthyIronLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.LuckyIronLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.StrongIronLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.ToughIronLeggings
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
@@ -20,6 +36,7 @@ import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Edward : Shop() {
+
 	override var name: String = "Edward"
 	override var permission: String = "siege.shops.shop.edward"
 	override var items: List<ShopItem> = listOf(
@@ -27,8 +44,8 @@ class Edward : Shop() {
 		ShopItem(
 			IronHelmet(-1), 2750, hashMapOf(
 				RefinedMetal.tier(2) to 5
-			), true
-		) {
+			                               ), true
+		        ) {
 			IronHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -38,40 +55,40 @@ class Edward : Shop() {
 			LuckyIronHelmet(-1), -1, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				Feather.tier(2) to 3
-			), true
-		) {
+			                                  ), true
+		        ) {
 			LuckyIronHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongIronHelmet(-1), -1, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				Bone.tier(2) to 5
-			), true
-		) {
+			                                   ), true
+		        ) {
 			StrongIronHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughIronHelmet(-1), -1, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				Pebble.tier(2) to 5
-			), true
-		) {
+			                                  ), true
+		        ) {
 			ToughIronHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyIronHelmet(-1), -1, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				PlantMatter.tier(2) to 5
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealthyIronHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingIronHelmet(-1), -1, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealingIronHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -79,8 +96,8 @@ class Edward : Shop() {
 		ShopItem(
 			IronChestplate(-1), 4000, hashMapOf(
 				RefinedMetal.tier(2) to 8
-			), true
-		) {
+			                                   ), true
+		        ) {
 			IronChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -90,40 +107,40 @@ class Edward : Shop() {
 			LuckyIronChestplate(-1), 4250, hashMapOf(
 				RefinedMetal.tier(2) to 6,
 				Feather.tier(2) to 4
-			), true
-		) {
+			                                        ), true
+		        ) {
 			LuckyIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongIronChestplate(-1), 4250, hashMapOf(
 				RefinedMetal.tier(3) to 5,
 				Bone.tier(2) to 5
-			), true
-		) {
+			                                         ), true
+		        ) {
 			StrongIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughIronChestplate(-1), 4250, hashMapOf(
 				RefinedMetal.tier(2) to 4,
 				Pebble.tier(2) to 6
-			), true
-		) {
+			                                        ), true
+		        ) {
 			ToughIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyIronChestplate(-1), 4250, hashMapOf(
 				RefinedMetal.tier(2) to 4,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                          ), true
+		        ) {
 			HealthyIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingIronChestplate(-1), 4250, hashMapOf(
 				RefinedMetal.tier(2) to 5,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                          ), true
+		        ) {
 			HealingIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -131,8 +148,8 @@ class Edward : Shop() {
 		ShopItem(
 			IronLeggings(-1), 3750, hashMapOf(
 				RefinedMetal.tier(2) to 7
-			), true
-		) {
+			                                 ), true
+		        ) {
 			IronLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -143,40 +160,40 @@ class Edward : Shop() {
 			LuckyIronLeggings(-1), 4000, hashMapOf(
 				RefinedMetal.tier(2) to 5,
 				Feather.tier(2) to 4
-			), true
-		) {
+			                                      ), true
+		        ) {
 			LuckyIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongIronLeggings(-1), 4000, hashMapOf(
 				RefinedMetal.tier(2) to 5,
 				Bone.tier(2) to 3
-			), true
-		) {
+			                                       ), true
+		        ) {
 			StrongIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughIronLeggings(-1), 4000, hashMapOf(
 				RefinedMetal.tier(2) to 6,
 				Pebble.tier(2) to 4
-			), true
-		) {
+			                                      ), true
+		        ) {
 			ToughIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyIronLeggings(-1), 4000, hashMapOf(
 				RefinedMetal.tier(2) to 5,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                        ), true
+		        ) {
 			HealthyIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingIronLeggings(-1), 4000, hashMapOf(
 				RefinedMetal.tier(2) to 5,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                        ), true
+		        ) {
 			HealingIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -184,8 +201,8 @@ class Edward : Shop() {
 		ShopItem(
 			IronBoots(-1), 2500, hashMapOf(
 				RefinedMetal.tier(2) to 4
-			), true
-		) {
+			                              ), true
+		        ) {
 			IronBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -195,41 +212,41 @@ class Edward : Shop() {
 			LuckyIronBoots(-1), 2750, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                   ), true
+		        ) {
 			LuckyIronBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongIronBoots(-1), 2750, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				Bone.tier(2) to 2
-			), true
-		) {
+			                                    ), true
+		        ) {
 			StrongIronBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughIronBoots(-1), 2750, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				Pebble.tier(2) to 3
-			), true
-		) {
+			                                   ), true
+		        ) {
 			ToughIronBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyIronBoots(-1), 2750, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealthyIronBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingIronBoots(-1), 2750, hashMapOf(
 				RefinedMetal.tier(2) to 3,
 				Wheat.tier(4) to 1
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealingIronBoots(Utils.randRarity()).getUpdatedItem(false)
 		}
-	)
+	                                           )
 }

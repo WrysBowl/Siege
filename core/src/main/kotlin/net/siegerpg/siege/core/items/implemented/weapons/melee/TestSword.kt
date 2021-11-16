@@ -14,7 +14,7 @@ class TestSword() : CustomMeleeWeapon(
 	material = Material.DIAMOND_SWORD,
 	baseStats = CustomItemUtils.statMap(strength = 5000.0),
 	attackSpeed = 1.7
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

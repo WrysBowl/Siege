@@ -17,9 +17,9 @@ class SpiritSpearChastiefol() : CustomMeleeWeapon(
 		health = 20.0,
 		toughness = -80.0,
 		luck = -15.0
-	),
+	                                   ),
 	attackSpeed = 0.9
-) {
+                                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

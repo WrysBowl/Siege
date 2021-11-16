@@ -26,6 +26,7 @@ class Pebble() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): Pebble {
 			val newItem = Pebble(0)
 			newItem.tier = tier

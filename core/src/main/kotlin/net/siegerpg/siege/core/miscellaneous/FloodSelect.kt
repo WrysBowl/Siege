@@ -4,6 +4,7 @@ import org.bukkit.Location
 import org.bukkit.block.data.BlockData
 
 object FloodSelection {
+
 	private val cornerlessPositions = listOf(
 		Triple(.0, 1.0, .0),
 		Triple(.0, -1.0, .0),
@@ -11,14 +12,14 @@ object FloodSelection {
 		Triple(.0, .0, -1.0),
 		Triple(1.0, .0, .0),
 		Triple(-1.0, .0, .0)
-	)
+	                                        )
 
 	fun floodSelect(
 		loc: Location,
 		dat: BlockData? = null,
 		corners: Boolean = false,
 		alreadySelected: HashSet<Location> = HashSet()
-	): HashSet<Location> {
+	               ): HashSet<Location> {
 		val b = loc.block
 		val data = dat ?: b.blockData
 		if (!b.blockData.matches(data) || alreadySelected.contains(b.location)) {
@@ -32,7 +33,7 @@ object FloodSelection {
 						val newLoc = Location(loc.world, loc.x + i, loc.y + i2, loc.z + i3)
 						alreadySelected.addAll(
 							floodSelect(newLoc, data, corners, alreadySelected)
-						)
+						                      )
 					}
 		else {
 
@@ -40,7 +41,7 @@ object FloodSelection {
 				val newLoc = Location(loc.world, loc.x + i, loc.y + i2, loc.z + i3)
 				alreadySelected.addAll(
 					floodSelect(newLoc, data, corners, alreadySelected)
-				)
+				                      )
 			}
 		}
 		return alreadySelected

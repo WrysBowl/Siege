@@ -15,7 +15,7 @@ class ToughWoolBoots() : CustomBoots(
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(health = 4.0, toughness = 25.0),
 	leatherColor = Color.WHITE
-) {
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

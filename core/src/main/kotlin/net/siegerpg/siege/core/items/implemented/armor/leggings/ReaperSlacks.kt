@@ -18,9 +18,9 @@ class ReaperSlacks() : CustomLeggings(
 		strength = 20.0,
 		luck = -25.0,
 		toughness = -70.0
-	),
+	                                   ),
 	leatherColor = Color.BLACK
-) {
+                                     ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

@@ -9,7 +9,7 @@ class GRAYFILLER() : CustomMaterial(
 	name = "",
 	description = listOf(""),
 	material = Material.GRAY_STAINED_GLASS_PANE
-) {
+                                   ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

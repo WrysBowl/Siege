@@ -13,7 +13,8 @@ public class PistolWhipper extends Fish {
 				0.5,
 				28,
 				4,
-				610008);
+				610008
+		     );
 	}
 
 

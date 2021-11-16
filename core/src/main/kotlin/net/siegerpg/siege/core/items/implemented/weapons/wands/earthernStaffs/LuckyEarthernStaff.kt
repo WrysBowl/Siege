@@ -18,7 +18,7 @@ class LuckyEarthernStaff() : CustomWand(
 	green = 204,
 	blue = 0,
 	damageRadius = 2.0
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

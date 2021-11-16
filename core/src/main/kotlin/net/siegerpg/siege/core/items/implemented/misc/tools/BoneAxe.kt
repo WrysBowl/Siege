@@ -14,8 +14,8 @@ class BoneAxe() : CustomTool(
 	material = Material.WOODEN_AXE,
 	baseStats = CustomItemUtils.statMap(luck = 10.0),
 	enchantments = hashMapOf(
-	)
-) {
+	                        )
+                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

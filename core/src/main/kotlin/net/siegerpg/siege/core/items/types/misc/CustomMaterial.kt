@@ -21,7 +21,7 @@ abstract class CustomMaterial(
 	final override var quality: Int = -1,
 	override var item: ItemStack = ItemStack(material),
 	override val type: ItemTypes = ItemTypes.MATERIAL,
-) : CustomItem {
+                             ) : CustomItem {
 
 	override var rarity: Rarity = Rarity.COMMON
 
@@ -39,7 +39,7 @@ abstract class CustomMaterial(
 		super.serialize()
 		item = item.setNbtTags(
 			"materialTier" to tier
-		)
+		                      )
 	}
 
 	override fun deserialize() {

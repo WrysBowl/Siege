@@ -26,6 +26,7 @@ class Slime() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): Slime {
 			val newItem = Slime(0)
 			newItem.tier = tier

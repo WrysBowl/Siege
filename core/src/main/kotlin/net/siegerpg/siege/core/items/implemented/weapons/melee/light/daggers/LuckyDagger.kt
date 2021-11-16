@@ -15,7 +15,7 @@ class LuckyDagger() : CustomMeleeWeapon(
 	baseStats = CustomItemUtils.statMap(strength = 14.0, luck = 6.0),
 
 	attackSpeed = 1.7
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

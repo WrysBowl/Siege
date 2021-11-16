@@ -23,7 +23,7 @@ class MatchStick() : CustomWand(
 	green = 153,
 	blue = 51,
 	damageRadius = 2.0
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

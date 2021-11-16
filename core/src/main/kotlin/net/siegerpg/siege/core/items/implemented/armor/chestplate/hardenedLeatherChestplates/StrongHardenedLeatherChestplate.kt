@@ -13,7 +13,7 @@ class StrongHardenedLeatherChestplate() : CustomChestplate(
 	levelRequirement = 18,
 	material = Material.LEATHER_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(health = 20.0, toughness = 30.0, strength = 5.0),
-) {
+                                                          ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

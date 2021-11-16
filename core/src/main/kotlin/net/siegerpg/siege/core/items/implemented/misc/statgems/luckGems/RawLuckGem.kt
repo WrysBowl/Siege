@@ -15,7 +15,7 @@ class RawLuckGem() : StatGemType(
 
 	statType = StatTypes.LUCK,
 	statAmount = 4.0
-) {
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

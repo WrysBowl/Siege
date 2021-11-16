@@ -14,7 +14,7 @@ class StrongEarthernHammer() : CustomMeleeWeapon(
 	material = Material.WOODEN_AXE,
 	baseStats = CustomItemUtils.statMap(strength = 74.0),
 	attackSpeed = 0.7
-) {
+                                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

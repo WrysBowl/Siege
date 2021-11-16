@@ -17,8 +17,8 @@ class ElvinBoots() : CustomBoots(
 		luck = 25.0,
 		regeneration = -10.0,
 		strength = -15.0
-	),
-) {
+	                                   ),
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

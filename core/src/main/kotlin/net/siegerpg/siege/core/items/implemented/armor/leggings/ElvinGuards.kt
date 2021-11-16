@@ -17,8 +17,8 @@ class ElvinGuards() : CustomLeggings(
 		luck = 50.0,
 		strength = -20.0,
 		toughness = -150.0
-	),
-) {
+	                                   ),
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

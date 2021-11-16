@@ -11,7 +11,7 @@ class DavyJonesKey() : CustomKey(
 	description = listOf("Used to summon", "Davy Jones"),
 	material = Material.TRIPWIRE_HOOK,
 	quality = 50
-) {
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

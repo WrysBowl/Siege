@@ -10,7 +10,7 @@ class UncommonKey() : CustomKey(
 	customModelData = 630002,
 	description = listOf("Get an uncommon cosmetic"),
 	material = Material.TRIPWIRE_HOOK,
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 50

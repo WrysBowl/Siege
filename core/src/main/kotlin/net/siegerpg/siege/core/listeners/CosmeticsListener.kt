@@ -33,8 +33,8 @@ class CosmeticsListener : Listener {
 			if (e.action != InventoryAction.PICKUP_HALF) return
 			if (itemInteractedWith !is CustomHelmet) return //verify clicked item is a CustomHelmet
 			if (itemInteractedWith.storedItem == null ||
-				itemInteractedWith.initMaterial == null ||
-				itemInteractedWith.initCustomModelData == null
+			    itemInteractedWith.initMaterial == null ||
+			    itemInteractedWith.initCustomModelData == null
 			) return
 
 			//set clicked item's original values back
@@ -47,8 +47,8 @@ class CosmeticsListener : Listener {
 			if (itemInteractedWith !is CustomHelmet) return //verify both items are CustomHelmets
 			if (itemOnCursor !is CustomCosmetic) return
 			if (itemInteractedWith.storedItem != null ||
-				itemInteractedWith.initMaterial != null ||
-				itemInteractedWith.initCustomModelData != null
+			    itemInteractedWith.initMaterial != null ||
+			    itemInteractedWith.initCustomModelData != null
 			) {
 				player.sendMiniMessage("<red>That item is already attached to a cosmetic!")
 				return
@@ -62,7 +62,7 @@ class CosmeticsListener : Listener {
 			e.isCancelled = true
 			player.setItemOnCursor(
 				itemOnCursor.item.asQuantity(itemOnCursor.item.amount - 1)
-			)
+			                      )
 		}
 	}
 
@@ -79,15 +79,15 @@ class CosmeticsListener : Listener {
 				.asOne() //change clicked item to the new cosmetic item
 			player.inventory.setItemInMainHand(
 				player.inventory.itemInMainHand.asQuantity(player.inventory.itemInMainHand.amount - 1)
-			)
+			                                  )
 			val armorEquipEvent =
-				ArmorEquipEvent(
-					e.player,
-					ArmorEquipEvent.EquipMethod.HOTBAR,
-					ArmorType.matchType(e.item),
-					null,
-					e.item
-				)
+					ArmorEquipEvent(
+						e.player,
+						ArmorEquipEvent.EquipMethod.HOTBAR,
+						ArmorType.matchType(e.item),
+						null,
+						e.item
+					               )
 			Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
 			if (armorEquipEvent.isCancelled) {
 				e.isCancelled = true
@@ -102,7 +102,7 @@ class CosmeticsListener : Listener {
 		if (itemInteractedWith !is CustomCosmetic) return //verify both items are CustomHelmets
 		if (e.action == Action.LEFT_CLICK_AIR || e.action == Action.LEFT_CLICK_BLOCK) itemInteractedWith.onCosmeticInteract(
 			e
-		)
+		                                                                                                                   )
 	}
 
 	@EventHandler

@@ -5,7 +5,11 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.miscellaneous.Levels
 import org.bukkit.Material
-import org.bukkit.entity.*
+import org.bukkit.entity.AbstractArrow
+import org.bukkit.entity.Arrow
+import org.bukkit.entity.Entity
+import org.bukkit.entity.LivingEntity
+import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.util.Vector
@@ -17,7 +21,7 @@ class BanditDoubleShot() : CustomBow(
 	levelRequirement = 20,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 17.0)
-) {
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

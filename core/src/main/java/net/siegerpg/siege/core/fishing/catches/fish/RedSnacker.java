@@ -13,7 +13,8 @@ public class RedSnacker extends Fish {
 				0.6,
 				20,
 				7,
-				610002);
+				610002
+		     );
 
 	}
 

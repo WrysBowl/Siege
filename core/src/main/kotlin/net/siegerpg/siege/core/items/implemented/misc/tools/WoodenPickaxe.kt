@@ -15,8 +15,8 @@ class WoodenPickaxe() : CustomTool(
 	baseStats = CustomItemUtils.statMap(),
 
 	enchantments = hashMapOf(
-	)
-) {
+	                        )
+                                  ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

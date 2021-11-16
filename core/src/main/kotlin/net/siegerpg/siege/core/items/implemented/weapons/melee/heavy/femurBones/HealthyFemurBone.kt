@@ -14,7 +14,7 @@ class HealthyFemurBone() : CustomMeleeWeapon(
 	material = Material.WOODEN_AXE,
 	baseStats = CustomItemUtils.statMap(strength = 20.0, health = 6.0),
 	attackSpeed = 0.9
-) {
+                                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

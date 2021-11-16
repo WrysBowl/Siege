@@ -18,7 +18,7 @@ class FairySoulWand() : CustomWand(
 	green = 242,
 	blue = 85,
 	damageRadius = 2.0
-) {
+                                  ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

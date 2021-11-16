@@ -11,7 +11,8 @@ public class GOLD20 extends Fish {
 	public GOLD20 () {
 
 		super(40, 0.8, 15, 15,
-		      new GOLDBooster_20().getBoosterItem());
+		      new GOLDBooster_20().getBoosterItem()
+		     );
 	}
 
 	@Override

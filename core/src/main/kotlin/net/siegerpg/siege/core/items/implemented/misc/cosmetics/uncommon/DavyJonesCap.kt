@@ -10,7 +10,7 @@ class DavyJonesCap() : Cosmetic(
 	customModelData = 720002,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 50

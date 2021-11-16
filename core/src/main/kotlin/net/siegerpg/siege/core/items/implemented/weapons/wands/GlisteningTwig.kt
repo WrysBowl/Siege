@@ -18,7 +18,7 @@ class GlisteningTwig() : CustomWand(
 	green = 255,
 	blue = 153,
 	damageRadius = 2.5
-) {
+                                   ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

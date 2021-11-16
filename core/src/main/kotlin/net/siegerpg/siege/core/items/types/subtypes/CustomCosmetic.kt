@@ -29,7 +29,7 @@ interface CustomCosmetic : CustomItem {
 		super.serialize()
 		item = item.setNbtTags(
 			"leatherColor" to leatherColor.asRGB()
-		)
+		                      )
 	}
 
 	override fun deserialize() {
@@ -45,9 +45,9 @@ interface CustomCosmetic : CustomItem {
 	override fun updateMeta(hideRarity: Boolean): ItemStack {
 		item.type = this.material
 		if (item.type == Material.LEATHER_BOOTS ||
-			item.type == Material.LEATHER_LEGGINGS ||
-			item.type == Material.LEATHER_CHESTPLATE ||
-			item.type == Material.LEATHER_HELMET
+		    item.type == Material.LEATHER_LEGGINGS ||
+		    item.type == Material.LEATHER_CHESTPLATE ||
+		    item.type == Material.LEATHER_HELMET
 		) {
 			try {
 				val leatherMeta = item.itemMeta as LeatherArmorMeta

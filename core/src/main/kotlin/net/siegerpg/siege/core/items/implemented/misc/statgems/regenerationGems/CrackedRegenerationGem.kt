@@ -15,7 +15,7 @@ class CrackedRegenerationGem() : StatGemType(
 
 	statType = StatTypes.REGENERATION,
 	statAmount = 6.0
-) {
+                                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

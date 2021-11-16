@@ -10,7 +10,7 @@ class Halo() : Cosmetic(
 	customModelData = 710009,
 	description = listOf(""),
 	material = Material.KNOWLEDGE_BOOK,
-) {
+                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 0

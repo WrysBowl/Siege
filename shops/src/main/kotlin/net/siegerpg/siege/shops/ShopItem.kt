@@ -9,4 +9,4 @@ data class ShopItem(
 	val recipe: Map<CustomItem, Int>,
 	val craftable: Boolean,
 	val generate: () -> ItemStack
-)
+                   )

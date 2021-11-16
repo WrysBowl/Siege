@@ -22,7 +22,7 @@ class GrieferChestplate() : CustomChestplate(
 	material = Material.LEATHER_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(health = 10.0, luck = 10.0),
 	leatherColor = Color.BLACK
-) {
+                                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality
@@ -42,7 +42,7 @@ class GrieferChestplate() : CustomChestplate(
 			val cusItem = getCustomItem(item) ?: return
 			if (cusItem.levelRequirement == null) return
 			if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first
-					?: 0)
+			                                  ?: 0)
 			) return
 			for (entity in player.location.getNearbyLivingEntities(4.0)) {
 				if (entity is Player) continue

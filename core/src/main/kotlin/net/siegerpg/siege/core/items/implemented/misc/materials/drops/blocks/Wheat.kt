@@ -26,6 +26,7 @@ class Wheat() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): Wheat {
 			val newItem = Wheat(0)
 			newItem.tier = tier

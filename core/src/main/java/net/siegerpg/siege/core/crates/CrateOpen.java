@@ -57,7 +57,8 @@ public class CrateOpen implements Listener {
 		new Animation().openCrate(
 				targetedBlock.getLocation().toCenterLocation(),
 				dropTable.dropTable.keySet(),
-				reward, player);
+				reward, player
+		                         );
 		player.getInventory().removeItem(item.getItem().asOne());
 
 	}

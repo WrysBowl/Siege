@@ -11,7 +11,8 @@ public class GOLD50 extends Fish {
 	public GOLD50 () {
 
 		super(60, 0.9, 12, 15,
-		      new GOLDBooster_50().getBoosterItem());
+		      new GOLDBooster_50().getBoosterItem()
+		     );
 	}
 
 	@Override

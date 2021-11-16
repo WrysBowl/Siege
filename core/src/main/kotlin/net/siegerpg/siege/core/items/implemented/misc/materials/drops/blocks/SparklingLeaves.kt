@@ -26,6 +26,7 @@ class SparklingLeaves() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): SparklingLeaves {
 			val newItem = SparklingLeaves(0)
 			newItem.tier = tier

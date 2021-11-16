@@ -15,7 +15,7 @@ class ToughSlimyHelmet() : CustomHelmet(
 	material = Material.LEATHER_HELMET,
 	baseStats = CustomItemUtils.statMap(toughness = 8.0),
 	leatherColor = Color.LIME
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

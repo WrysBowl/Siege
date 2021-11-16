@@ -19,7 +19,7 @@ class ToughSlimeSpoofer() : CustomWand(
 	green = 255,
 	blue = 51,
 	damageRadius = 2.0
-) {
+                                      ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

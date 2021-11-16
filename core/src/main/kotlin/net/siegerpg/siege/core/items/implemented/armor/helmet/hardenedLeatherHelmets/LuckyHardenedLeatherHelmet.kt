@@ -13,7 +13,7 @@ class LuckyHardenedLeatherHelmet() : CustomHelmet(
 	levelRequirement = 17,
 	material = Material.LEATHER_HELMET,
 	baseStats = CustomItemUtils.statMap(health = 10.0, luck = 6.0),
-) {
+                                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

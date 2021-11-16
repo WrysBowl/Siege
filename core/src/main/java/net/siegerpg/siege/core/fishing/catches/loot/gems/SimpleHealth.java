@@ -8,7 +8,8 @@ public class SimpleHealth extends Fish {
 	public SimpleHealth () {
 
 		super(50, 0.9, 14, 16,
-		      new SimpleHealthGem(0).getUpdatedItem(false));
+		      new SimpleHealthGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

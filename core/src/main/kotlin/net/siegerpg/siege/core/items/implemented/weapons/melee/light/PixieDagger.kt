@@ -14,7 +14,7 @@ class PixieDagger() : CustomMeleeWeapon(
 	material = Material.WOODEN_SWORD,
 	baseStats = CustomItemUtils.statMap(strength = 60.0, luck = 45.0, toughness = -150.0),
 	attackSpeed = 1.7
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

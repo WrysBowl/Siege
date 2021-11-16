@@ -12,7 +12,7 @@ class GoldenCarrot() : CustomFood(
 	levelRequirement = 0,
 	material = Material.GOLDEN_CARROT, //change this to cooked chicken later
 	health = 200.0
-) {
+                                 ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 100

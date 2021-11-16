@@ -23,9 +23,9 @@ interface CustomArmor : CustomEquipment {
 		val meta = item.itemMeta
 
 		if (item.type == Material.LEATHER_BOOTS ||
-			item.type == Material.LEATHER_LEGGINGS ||
-			item.type == Material.LEATHER_CHESTPLATE ||
-			item.type == Material.LEATHER_HELMET
+		    item.type == Material.LEATHER_LEGGINGS ||
+		    item.type == Material.LEATHER_CHESTPLATE ||
+		    item.type == Material.LEATHER_HELMET
 		) {
 			try {
 				val leatherMeta = meta as LeatherArmorMeta
@@ -40,10 +40,10 @@ interface CustomArmor : CustomEquipment {
 			ItemFlag.HIDE_UNBREAKABLE,
 			ItemFlag.HIDE_ENCHANTS,
 			ItemFlag.HIDE_DYE
-		)
+		                 )
 		meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
 		val modifier =
-			AttributeModifier("generic.armor", 0.0, AttributeModifier.Operation.ADD_NUMBER)
+				AttributeModifier("generic.armor", 0.0, AttributeModifier.Operation.ADD_NUMBER)
 		meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier)
 
 		item.itemMeta = meta

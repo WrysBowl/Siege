@@ -17,9 +17,9 @@ class MetalRod() : CustomRod(
 	baseStats = CustomItemUtils.statMap(),
 	enchantments = hashMapOf(
 		Enchantment.LURE to 2,
-	),
+	                        ),
 	fishDropTable = MetalFishTable()
-) {
+                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = 50

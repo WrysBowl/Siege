@@ -17,8 +17,8 @@ class SharpShooter() : CustomBow(
 		luck = -15.0,
 		health = -20.0,
 		toughness = -150.0
-	)
-) {
+	                                   )
+                                ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

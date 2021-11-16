@@ -14,7 +14,7 @@ class StickyStick() : CustomMeleeWeapon(
 	material = Material.WOODEN_SWORD,
 	baseStats = CustomItemUtils.statMap(strength = 8.0),
 	attackSpeed = 1.6
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

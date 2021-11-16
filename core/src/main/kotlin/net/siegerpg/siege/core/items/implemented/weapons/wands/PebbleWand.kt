@@ -25,7 +25,7 @@ class PebbleWand() : CustomWand(
 	green = 140,
 	blue = 140,
 	damageRadius = 2.0
-) {
+                               ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

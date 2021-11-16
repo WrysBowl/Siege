@@ -15,7 +15,7 @@ class LuckyWoodenSword() : CustomMeleeWeapon(
 	baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 5.0),
 
 	attackSpeed = 1.6
-) {
+                                            ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

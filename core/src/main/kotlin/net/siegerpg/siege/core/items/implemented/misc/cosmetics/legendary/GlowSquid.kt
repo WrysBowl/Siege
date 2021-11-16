@@ -14,7 +14,7 @@ class GlowSquid() : Cosmetic(
 	customModelData = 750002,
 	description = listOf("Makes you glow!"),
 	material = Material.KNOWLEDGE_BOOK
-) {
+                            ) {
 
 	override fun onCosmeticEquip(e: PlayerArmorChangeEvent) {
 		val player = e.player
@@ -27,8 +27,8 @@ class GlowSquid() : Cosmetic(
 					PotionEffectType.GLOWING,
 					999999,
 					9
-				)
-			)
+				            )
+			                                                 )
 		}
 		if (oldArmor != null) {
 			if (oldArmor is GlowSquid) player.removePotionEffect(PotionEffectType.GLOWING)

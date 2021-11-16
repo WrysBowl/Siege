@@ -26,6 +26,7 @@ class FairyWing() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): FairyWing {
 			val newItem = FairyWing(0)
 			newItem.tier = tier

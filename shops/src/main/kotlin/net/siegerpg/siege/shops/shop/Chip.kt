@@ -1,26 +1,48 @@
 package net.siegerpg.siege.shops.shop
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.Club
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.GiantClub
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.giantClubs.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.giantClubs.HealingGiantClub
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.giantClubs.HealthyGiantCLub
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.giantClubs.LuckyGiantClub
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.giantClubs.StrongGiantClub
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.giantClubs.ToughGiantClub
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.StickyStick
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.*
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.HealingStickyStick
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.HealthyStickyStick
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.LuckyStickyStick
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.StrongStickyStick
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.ToughStickyStick
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.ScrapyardBow
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.WoodenBow
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.woodenBows.*
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.woodenBows.HealingWoodenBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.woodenBows.HealthyWoodenBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.woodenBows.LuckyWoodenBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.woodenBows.StrongWoodenBow
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.woodenBows.ToughWoodenBow
 import net.siegerpg.siege.core.items.implemented.weapons.wands.GlisteningTwig
 import net.siegerpg.siege.core.items.implemented.weapons.wands.LivingTwig
-import net.siegerpg.siege.core.items.implemented.weapons.wands.glisteningTwigs.*
+import net.siegerpg.siege.core.items.implemented.weapons.wands.glisteningTwigs.HealingGlisteningTwig
+import net.siegerpg.siege.core.items.implemented.weapons.wands.glisteningTwigs.HealthyGlisteningTwig
+import net.siegerpg.siege.core.items.implemented.weapons.wands.glisteningTwigs.LuckyGlisteningTwig
+import net.siegerpg.siege.core.items.implemented.weapons.wands.glisteningTwigs.StrongGlisteningTwig
+import net.siegerpg.siege.core.items.implemented.weapons.wands.glisteningTwigs.ToughGlisteningTwig
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Chip : Shop() {
+
 	override var name: String = "Chip"
 	override var permission: String = "siege.shops.shop.chip"
 	override var items: List<ShopItem> = listOf(
@@ -32,8 +54,8 @@ class Chip : Shop() {
 			StickyStick(-1), 150, hashMapOf(
 				Slime.tier(2) to 2,
 				Stick.tier(2) to 2
-			), true
-		) {
+			                               ), true
+		        ) {
 			StickyStick(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -41,8 +63,8 @@ class Chip : Shop() {
 				Slime.tier(2) to 1,
 				Stick.tier(2) to 2,
 				Feather.tier(1) to 4
-			), true
-		) {
+			                                   ), true
+		        ) {
 			LuckyStickyStick(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -50,8 +72,8 @@ class Chip : Shop() {
 				Slime.tier(2) to 1,
 				Stick.tier(2) to 2,
 				Bone.tier(1) to 1
-			), true
-		) {
+			                                    ), true
+		        ) {
 			StrongStickyStick(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -59,8 +81,8 @@ class Chip : Shop() {
 				Slime.tier(2) to 1,
 				Stick.tier(2) to 2,
 				Pebble.tier(1) to 6
-			), true
-		) {
+			                                   ), true
+		        ) {
 			ToughStickyStick(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -68,8 +90,8 @@ class Chip : Shop() {
 				Slime.tier(2) to 1,
 				Stick.tier(2) to 2,
 				PlantMatter.tier(2) to 1
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealthyStickyStick(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -77,8 +99,8 @@ class Chip : Shop() {
 				Slime.tier(2) to 1,
 				Stick.tier(2) to 2,
 				Wheat.tier(2) to 2
-			), true
-		) {
+			                                     ), true
+		        ) {
 			HealingStickyStick(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -87,16 +109,16 @@ class Chip : Shop() {
 			ScrapyardBow(-1), 100, hashMapOf(
 				Stick.tier(2) to 3,
 				Vine.tier(2) to 3
-			), true
-		) {
+			                                ), true
+		        ) {
 			ScrapyardBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			WoodenBow(-1), 250, hashMapOf(
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 3
-			), true
-		) {
+			                             ), true
+		        ) {
 			WoodenBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -104,8 +126,8 @@ class Chip : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Feather.tier(3) to 1
-			), true
-		) {
+			                                 ), true
+		        ) {
 			LuckyWoodenBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -113,8 +135,8 @@ class Chip : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Bone.tier(2) to 6
-			), true
-		) {
+			                                  ), true
+		        ) {
 			StrongWoodenBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -122,8 +144,8 @@ class Chip : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Pebble.tier(3) to 1
-			), true
-		) {
+			                                 ), true
+		        ) {
 			ToughWoodenBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -131,8 +153,8 @@ class Chip : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				PlantMatter.tier(3) to 1
-			), true
-		) {
+			                                   ), true
+		        ) {
 			HealthyWoodenBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -140,8 +162,8 @@ class Chip : Shop() {
 				Stick.tier(3) to 3,
 				Vine.tier(3) to 1,
 				Wheat.tier(3) to 1
-			), true
-		) {
+			                                   ), true
+		        ) {
 			HealingWoodenBow(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -149,8 +171,8 @@ class Chip : Shop() {
 		ShopItem(
 			Club(-1), 200, hashMapOf(
 				Stick.tier(2) to 2
-			), true
-		) {
+			                        ), true
+		        ) {
 			Club(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GiantClub(-1), 300, hashMapOf(), false) {
@@ -181,8 +203,8 @@ class Chip : Shop() {
 				Seed.tier(2) to 1,
 				Stick.tier(2) to 1,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                  ), true
+		        ) {
 			GlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -191,8 +213,8 @@ class Chip : Shop() {
 				Seed.tier(2) to 1,
 				Stick.tier(2) to 1,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                       ), true
+		        ) {
 			LuckyGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -200,8 +222,8 @@ class Chip : Shop() {
 				Seed.tier(2) to 1,
 				Stick.tier(2) to 1,
 				Bone.tier(2) to 1
-			), true
-		) {
+			                                        ), true
+		        ) {
 			StrongGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -209,8 +231,8 @@ class Chip : Shop() {
 				Seed.tier(2) to 1,
 				Stick.tier(2) to 1,
 				Pebble.tier(2) to 2
-			), true
-		) {
+			                                       ), true
+		        ) {
 			ToughGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -218,8 +240,8 @@ class Chip : Shop() {
 				Seed.tier(2) to 1,
 				Stick.tier(2) to 1,
 				PlantMatter.tier(2) to 3
-			), true
-		) {
+			                                         ), true
+		        ) {
 			HealthyGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
@@ -227,9 +249,9 @@ class Chip : Shop() {
 				Seed.tier(2) to 1,
 				Stick.tier(2) to 1,
 				Wheat.tier(2) to 2
-			), true
-		) {
+			                                         ), true
+		        ) {
 			HealingGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 		},
-	)
+	                                           )
 }

@@ -26,6 +26,7 @@ class Ectoplasm() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): Ectoplasm {
 			val newItem = Ectoplasm(0)
 			newItem.tier = tier

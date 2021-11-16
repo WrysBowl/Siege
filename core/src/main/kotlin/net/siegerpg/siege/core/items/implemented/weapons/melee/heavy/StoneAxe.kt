@@ -14,7 +14,7 @@ class StoneAxe() : CustomMeleeWeapon(
 	material = Material.WOODEN_AXE,
 	baseStats = CustomItemUtils.statMap(strength = 32.0),
 	attackSpeed = 0.8
-) {
+                                    ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

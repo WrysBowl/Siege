@@ -8,7 +8,8 @@ public class RawRegeneration extends Fish {
 	public RawRegeneration () {
 
 		super(30, 0.6, 20, 10,
-		      new RawRegenerationGem(0).getUpdatedItem(false));
+		      new RawRegenerationGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

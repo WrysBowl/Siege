@@ -26,6 +26,7 @@ class ShroomPowder() : CustomMaterial(
 	}
 
 	companion object {
+
 		fun tier(tier: Int): ShroomPowder {
 			val newItem = ShroomPowder(0)
 			newItem.tier = tier

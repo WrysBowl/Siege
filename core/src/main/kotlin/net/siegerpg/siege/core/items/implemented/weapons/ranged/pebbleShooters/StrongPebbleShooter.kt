@@ -13,7 +13,7 @@ class StrongPebbleShooter() : CustomBow(
 	levelRequirement = 10,
 	material = Material.BOW,
 	baseStats = CustomItemUtils.statMap(strength = 27.0),
-) {
+                                       ) {
 
 	constructor(quality: Int) : this() {
 		this.quality = quality

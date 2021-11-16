@@ -11,7 +11,8 @@ public class EXP20 extends Fish {
 	public EXP20 () {
 
 		super(40, 0.8, 15, 15,
-		      new EXPBooster_20().getBoosterItem());
+		      new EXPBooster_20().getBoosterItem()
+		     );
 	}
 
 	@Override

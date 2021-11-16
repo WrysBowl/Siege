@@ -8,7 +8,8 @@ public class FlawedRegeneration extends Fish {
 	public FlawedRegeneration () {
 
 		super(45, 0.8, 16, 14,
-		      new FlawedRegenerationGem(0).getUpdatedItem(false));
+		      new FlawedRegenerationGem(0).getUpdatedItem(false)
+		     );
 	}
 
 }

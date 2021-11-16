@@ -1,13 +1,29 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.armor.boots.WoolBoots
-import net.siegerpg.siege.core.items.implemented.armor.boots.woolBoots.*
+import net.siegerpg.siege.core.items.implemented.armor.boots.woolBoots.HealingWoolBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.woolBoots.HealthyWoolBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.woolBoots.LuckyWoolBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.woolBoots.StrongWoolBoots
+import net.siegerpg.siege.core.items.implemented.armor.boots.woolBoots.ToughWoolBoots
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.WoolChestplate
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplates.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplates.HealingWoolChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplates.HealthyWoolChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplates.LuckyWoolChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplates.StrongWoolChestplate
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.woolChestplates.ToughWoolChestplate
 import net.siegerpg.siege.core.items.implemented.armor.helmet.WoolHelmet
-import net.siegerpg.siege.core.items.implemented.armor.helmet.woolHelmets.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.woolHelmets.HealingWoolHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.woolHelmets.HealthyWoolHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.woolHelmets.LuckyWoolHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.woolHelmets.StrongWoolHelmet
+import net.siegerpg.siege.core.items.implemented.armor.helmet.woolHelmets.ToughWoolHelmet
 import net.siegerpg.siege.core.items.implemented.armor.leggings.WoolLeggings
-import net.siegerpg.siege.core.items.implemented.armor.leggings.woolLeggings.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.woolLeggings.HealingWoolLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.woolLeggings.HealthyWoolLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.woolLeggings.LuckyWoolLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.woolLeggings.StrongWoolLeggings
+import net.siegerpg.siege.core.items.implemented.armor.leggings.woolLeggings.ToughWoolLeggings
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
@@ -20,6 +36,7 @@ import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 
 class Steve : Shop() {
+
 	override var name: String = "Steve"
 	override var permission: String = "siege.shops.shop.steve"
 	override var items: List<ShopItem> = listOf(
@@ -27,8 +44,8 @@ class Steve : Shop() {
 		ShopItem(
 			WoolHelmet(-1), 600, hashMapOf(
 				Wool.tier(2) to 5
-			), true
-		) {
+			                              ), true
+		        ) {
 			WoolHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -38,40 +55,40 @@ class Steve : Shop() {
 			LuckyWoolHelmet(-1), -1, hashMapOf(
 				Wool.tier(2) to 3,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                  ), true
+		        ) {
 			LuckyWoolHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongWoolHelmet(-1), -1, hashMapOf(
 				Wool.tier(2) to 2,
 				Bone.tier(2) to 3
-			), true
-		) {
+			                                   ), true
+		        ) {
 			StrongWoolHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughWoolHelmet(-1), -1, hashMapOf(
 				Wool.tier(2) to 2,
 				Pebble.tier(2) to 4
-			), true
-		) {
+			                                  ), true
+		        ) {
 			ToughWoolHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyWoolHelmet(-1), -1, hashMapOf(
 				Wool.tier(2) to 2,
 				PlantMatter.tier(2) to 3
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealthyWoolHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingWoolHelmet(-1), -1, hashMapOf(
 				Wool.tier(2) to 3,
 				Wheat.tier(2) to 3
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealingWoolHelmet(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -79,8 +96,8 @@ class Steve : Shop() {
 		ShopItem(
 			WoolChestplate(-1), 800, hashMapOf(
 				Wool.tier(2) to 8
-			), true
-		) {
+			                                  ), true
+		        ) {
 			WoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -90,40 +107,40 @@ class Steve : Shop() {
 			LuckyWoolChestplate(-1), 900, hashMapOf(
 				Wool.tier(2) to 5,
 				Feather.tier(2) to 3
-			), true
-		) {
+			                                       ), true
+		        ) {
 			LuckyWoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongWoolChestplate(-1), 900, hashMapOf(
 				Wool.tier(2) to 5,
 				Bone.tier(2) to 3
-			), true
-		) {
+			                                        ), true
+		        ) {
 			StrongWoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughWoolChestplate(-1), 900, hashMapOf(
 				Wool.tier(2) to 4,
 				Pebble.tier(2) to 4
-			), true
-		) {
+			                                       ), true
+		        ) {
 			ToughWoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyWoolChestplate(-1), 900, hashMapOf(
 				Wool.tier(2) to 3,
 				PlantMatter.tier(2) to 5
-			), true
-		) {
+			                                         ), true
+		        ) {
 			HealthyWoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingWoolChestplate(-1), 900, hashMapOf(
 				Wool.tier(2) to 4,
 				Wheat.tier(2) to 4
-			), true
-		) {
+			                                         ), true
+		        ) {
 			HealingWoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -131,8 +148,8 @@ class Steve : Shop() {
 		ShopItem(
 			WoolLeggings(-1), 700, hashMapOf(
 				Wool.tier(2) to 7
-			), true
-		) {
+			                                ), true
+		        ) {
 			WoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -142,40 +159,40 @@ class Steve : Shop() {
 			LuckyWoolLeggings(-1), 800, hashMapOf(
 				Wool.tier(2) to 3,
 				Feather.tier(2) to 4
-			), true
-		) {
+			                                     ), true
+		        ) {
 			LuckyWoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongWoolLeggings(-1), 800, hashMapOf(
 				Wool.tier(2) to 3,
 				Bone.tier(2) to 3
-			), true
-		) {
+			                                      ), true
+		        ) {
 			StrongWoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughWoolLeggings(-1), 800, hashMapOf(
 				Wool.tier(2) to 2,
 				Pebble.tier(2) to 5
-			), true
-		) {
+			                                     ), true
+		        ) {
 			ToughWoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyWoolLeggings(-1), 800, hashMapOf(
 				Wool.tier(2) to 3,
 				PlantMatter.tier(2) to 4
-			), true
-		) {
+			                                       ), true
+		        ) {
 			HealthyWoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingWoolLeggings(-1), 800, hashMapOf(
 				Wool.tier(2) to 4,
 				Wheat.tier(2) to 3
-			), true
-		) {
+			                                       ), true
+		        ) {
 			HealingWoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 		},
 
@@ -183,8 +200,8 @@ class Steve : Shop() {
 		ShopItem(
 			WoolBoots(-1), 500, hashMapOf(
 				Wool.tier(2) to 4
-			), true
-		) {
+			                             ), true
+		        ) {
 			WoolBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -194,41 +211,41 @@ class Steve : Shop() {
 			LuckyWoolBoots(-1), 600, hashMapOf(
 				Wool.tier(2) to 2,
 				Feather.tier(2) to 2
-			), true
-		) {
+			                                  ), true
+		        ) {
 			LuckyWoolBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			StrongWoolBoots(-1), 600, hashMapOf(
 				Wool.tier(2) to 2,
 				Bone.tier(2) to 2
-			), true
-		) {
+			                                   ), true
+		        ) {
 			StrongWoolBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			ToughWoolBoots(-1), 600, hashMapOf(
 				Wool.tier(2) to 2,
 				Pebble.tier(2) to 3
-			), true
-		) {
+			                                  ), true
+		        ) {
 			ToughWoolBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealthyWoolBoots(-1), 600, hashMapOf(
 				Wool.tier(2) to 2,
 				PlantMatter.tier(2) to 2
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealthyWoolBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
 		ShopItem(
 			HealingWoolBoots(-1), 600, hashMapOf(
 				Wool.tier(2) to 1,
 				Wheat.tier(2) to 3
-			), true
-		) {
+			                                    ), true
+		        ) {
 			HealingWoolBoots(Utils.randRarity()).getUpdatedItem(false)
 		},
-	)
+	                                           )
 }
