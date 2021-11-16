@@ -8,11 +8,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Whe
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.weapons.wands.RockWand
-import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.HealingRockWand
-import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.HealthyRockWand
-import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.LuckyRockWand
-import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.StrongRockWand
-import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.ToughRockWand
+import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.*
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem

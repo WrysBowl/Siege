@@ -9,11 +9,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
 import net.siegerpg.siege.core.items.implemented.weapons.wands.Torch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.torches.HealingTorch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.torches.HealthyTorch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.torches.LuckyTorch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.torches.StrongTorch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.torches.ToughTorch
+import net.siegerpg.siege.core.items.implemented.weapons.wands.torches.*
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem

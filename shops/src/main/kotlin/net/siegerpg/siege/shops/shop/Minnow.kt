@@ -1,11 +1,7 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Coal
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Titanium
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 

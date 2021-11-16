@@ -2,12 +2,7 @@ package net.siegerpg.siege.core.commands
 
 import co.aikar.commands.BaseCommand
 import co.aikar.commands.CommandCompletions
-import co.aikar.commands.annotation.CommandAlias
-import co.aikar.commands.annotation.CommandCompletion
-import co.aikar.commands.annotation.CommandPermission
-import co.aikar.commands.annotation.HelpCommand
-import co.aikar.commands.annotation.Subcommand
-import co.aikar.commands.annotation.Syntax
+import co.aikar.commands.annotation.*
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.dungeons.DungeonCommand

@@ -2,11 +2,7 @@ package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.WoodenSword
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.HealingWoodenSword
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.HealthyWoodenSword
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.LuckyWoodenSword
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.StrongWoodenSword
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.ToughWoodenSword
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.*
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem

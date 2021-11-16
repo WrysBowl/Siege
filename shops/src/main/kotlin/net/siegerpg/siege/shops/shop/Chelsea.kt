@@ -1,10 +1,6 @@
 package net.siegerpg.siege.shops.shop
 
-import net.siegerpg.siege.core.items.implemented.misc.food.Apple
-import net.siegerpg.siege.core.items.implemented.misc.food.Bread
-import net.siegerpg.siege.core.items.implemented.misc.food.Carrot
-import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick
-import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot
+import net.siegerpg.siege.core.items.implemented.misc.food.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.shops.Shop

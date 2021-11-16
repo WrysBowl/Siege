@@ -7,19 +7,8 @@ import io.lumine.xikage.mythicmobs.MythicMobs
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.drops.MobDropTable
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.Broodmother
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.BullSpirit
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.Davy_Jones
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.FoxSpirit
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.Lich
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.MagmaSpirit
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.Necromancer
-import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.SlimeSpirit
-import net.siegerpg.siege.core.miscellaneous.BossLeaderboardDB
-import net.siegerpg.siege.core.miscellaneous.DropUtils
-import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning
-import net.siegerpg.siege.core.miscellaneous.Levels
-import net.siegerpg.siege.core.miscellaneous.Utils
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
+import net.siegerpg.siege.core.miscellaneous.*
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers
 import org.bukkit.Bukkit
 import org.bukkit.entity.Item
@@ -199,7 +188,6 @@ class BossLeaderboardListener : Listener {
 				BossLeaderboard.getBossHolograms(bossName).forEach { holo ->
 					BossLeaderboard.updateHologram(holo, bossName, data)
 				}
-
 			}
 		}
 	}
