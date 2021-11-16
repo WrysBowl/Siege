@@ -7,27 +7,27 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class StrongSlimeSpoofer() : CustomWand(
-	name = "Strong Slime Spoofer",
-	customModelData = 140004,
-	description = listOf("Made from the life force of slimes"),
-	levelRequirement = 11,
-	material = Material.WOODEN_HOE,
-	baseStats = CustomItemUtils.statMap(strength = 15.0, luck = 4.0),
+		name = "Strong Slime Spoofer",
+		customModelData = 140004,
+		description = listOf("Made from the life force of slimes"),
+		levelRequirement = 11,
+		material = Material.WOODEN_HOE,
+		baseStats = CustomItemUtils.statMap(strength = 15.0, luck = 4.0),
 
-	range = 10,
-	red = 153,
-	green = 255,
-	blue = 51,
-	damageRadius = 2.0
+		range = 10,
+		red = 153,
+		green = 255,
+		blue = 51,
+		damageRadius = 2.0
                                        ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

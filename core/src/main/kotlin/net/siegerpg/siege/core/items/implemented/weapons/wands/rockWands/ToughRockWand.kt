@@ -7,27 +7,31 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ToughRockWand() : CustomWand(
-	name = "Tough Rock Wand",
-	customModelData = 140005,
-	description = listOf("Nature made rocks to be weaponized"),
-	levelRequirement = 15,
-	material = Material.WOODEN_HOE,
-	baseStats = CustomItemUtils.statMap(strength = 18.0, luck = 3.0, toughness = 50.0),
+		name = "Tough Rock Wand",
+		customModelData = 140005,
+		description = listOf("Nature made rocks to be weaponized"),
+		levelRequirement = 15,
+		material = Material.WOODEN_HOE,
+		baseStats = CustomItemUtils.statMap(
+				strength = 18.0,
+				luck = 3.0,
+				toughness = 50.0
+		                                   ),
 
-	range = 19,
-	red = 140,
-	green = 140,
-	blue = 140,
-	damageRadius = 2.0
+		range = 19,
+		red = 140,
+		green = 140,
+		blue = 140,
+		damageRadius = 2.0
                                   ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

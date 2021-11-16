@@ -13,13 +13,24 @@ import org.bukkit.util.Vector;
 public class PortalEnterListener implements Listener {
 
 	@EventHandler
-	public void portalEnter (EntityPortalEnterEvent e) {
+	public void portalEnter(EntityPortalEnterEvent e) {
 
 		if (!(e.getEntity() instanceof Player)) return;
-		World world = e.getEntity().getWorld();
-		World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
-		World hub = Core.plugin().getServer().getWorld("Hub");
-		World hillyWoods = Core.plugin().getServer().getWorld("Hilly_Woods");
+		World world = e
+				.getEntity()
+				.getWorld();
+		World siegeHub = Core
+				.plugin()
+				.getServer()
+				.getWorld("SiegeHub");
+		World hub = Core
+				.plugin()
+				.getServer()
+				.getWorld("Hub");
+		World hillyWoods = Core
+				.plugin()
+				.getServer()
+				.getWorld("Hilly_Woods");
 		Player player = (Player) e.getEntity();
 
 		if (world == siegeHub || world == hub) {
@@ -29,13 +40,15 @@ public class PortalEnterListener implements Listener {
 	}
 
 
-	public void moveToward (Entity entity, Location to, double speed) {
+	public void moveToward(Entity entity, Location to, double speed) {
 
 		Location loc = entity.getLocation();
 		double x = loc.getX() - to.getX();
 		double y = loc.getY() - to.getY();
 		double z = loc.getZ() - to.getZ();
-		Vector velocity = new Vector(x, y, z).normalize().multiply(-speed);
+		Vector velocity = new Vector(x, y, z)
+				.normalize()
+				.multiply(-speed);
 		entity.setVelocity(velocity);
 	}
 

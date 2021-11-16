@@ -12,60 +12,60 @@ import net.siegerpg.siege.shops.ShopItem
 
 class Jewel : Shop() {
 
-	override var name: String = "Jewel"
-	override var permission: String = "siege.shops.shop.jewel"
-	override var items: List<ShopItem> = listOf(
-		//RECURVE BOW
-		ShopItem(RecurveBow(-1), 3000, hashMapOf(), false) {
-			RecurveBow(Utils.randRarity()).getUpdatedItem(false)
-		},
-		ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-			GRAYFILLER(-1).getUpdatedItem(false)
-		},
-		ShopItem(
-			LuckyRecurveBow(-1), -1, hashMapOf(
-				Vine.tier(3) to 3,
-				RefinedMetal.tier(3) to 1,
-				Feather.tier(4) to 1
-			                                  ), true
-		        ) {
-			LuckyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
-		},
-		ShopItem(
-			StrongRecurveBow(-1), -1, hashMapOf(
-				Vine.tier(3) to 3,
-				RefinedMetal.tier(3) to 1,
-				Bone.tier(3) to 4
-			                                   ), true
-		        ) {
-			StrongRecurveBow(Utils.randRarity()).getUpdatedItem(false)
-		},
-		ShopItem(
-			ToughRecurveBow(-1), -1, hashMapOf(
-				Vine.tier(3) to 3,
-				RefinedMetal.tier(3) to 1,
-				Pebble.tier(4) to 1
-			                                  ), true
-		        ) {
-			ToughRecurveBow(Utils.randRarity()).getUpdatedItem(false)
-		},
-		ShopItem(
-			HealthyRecurveBow(-1), -1, hashMapOf(
-				Vine.tier(3) to 3,
-				RefinedMetal.tier(3) to 1,
-				PlantMatter.tier(4) to 1
-			                                    ), true
-		        ) {
-			HealthyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
-		},
-		ShopItem(
-			HealingRecurveBow(-1), -1, hashMapOf(
-				Vine.tier(3) to 3,
-				RefinedMetal.tier(3) to 1,
-				Wheat.tier(4) to 2
-			                                    ), true
-		        ) {
-			HealingRecurveBow(Utils.randRarity()).getUpdatedItem(false)
-		},
-	                                           )
+	override var name : String = "Jewel"
+	override var permission : String = "siege.shops.shop.jewel"
+	override var items : List<ShopItem> = listOf(
+			//RECURVE BOW
+			ShopItem(RecurveBow(-1), 3000, hashMapOf(), false) {
+				RecurveBow(Utils.randRarity()).getUpdatedItem(false)
+			},
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
+			ShopItem(
+					LuckyRecurveBow(-1), -1, hashMapOf(
+					Vine.tier(3) to 3,
+					RefinedMetal.tier(3) to 1,
+					Feather.tier(4) to 1
+					                                  ), true
+			        ) {
+				LuckyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+			},
+			ShopItem(
+					StrongRecurveBow(-1), -1, hashMapOf(
+					Vine.tier(3) to 3,
+					RefinedMetal.tier(3) to 1,
+					Bone.tier(3) to 4
+					                                   ), true
+			        ) {
+				StrongRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+			},
+			ShopItem(
+					ToughRecurveBow(-1), -1, hashMapOf(
+					Vine.tier(3) to 3,
+					RefinedMetal.tier(3) to 1,
+					Pebble.tier(4) to 1
+					                                  ), true
+			        ) {
+				ToughRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+			},
+			ShopItem(
+					HealthyRecurveBow(-1), -1, hashMapOf(
+					Vine.tier(3) to 3,
+					RefinedMetal.tier(3) to 1,
+					PlantMatter.tier(4) to 1
+					                                    ), true
+			        ) {
+				HealthyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+			},
+			ShopItem(
+					HealingRecurveBow(-1), -1, hashMapOf(
+					Vine.tier(3) to 3,
+					RefinedMetal.tier(3) to 1,
+					Wheat.tier(4) to 2
+					                                    ), true
+			        ) {
+				HealingRecurveBow(Utils.randRarity()).getUpdatedItem(false)
+			},
+	                                            )
 }

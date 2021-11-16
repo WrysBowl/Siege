@@ -12,7 +12,7 @@ import org.bukkit.Sound;
 
 public class Lich extends Dungeon {
 
-	public Lich () {
+	public Lich() {
 
 		super("Lich", 8,
 		      new LichKey(0),
@@ -22,15 +22,23 @@ public class Lich extends Dungeon {
 	}
 
 	@Override
-	public void spawning () {
+	public void spawning() {
 
-		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 372, 87, 132);
+		Location loc = new Location(Core
+				                            .plugin()
+				                            .getServer()
+				                            .getWorld("Hilly_Woods"), 372, 87, 132);
 		new Helix().createHelix(loc, Particle.SOUL);
 
-		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-			new Waves().createWaves(loc);
-			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
-		}, 80);
+		Bukkit
+				.getServer()
+				.getScheduler()
+				.runTaskLater(Core.plugin(), () -> {
+					new Waves().createWaves(loc);
+					loc
+							.getWorld()
+							.playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
+				}, 80);
 	}
 
 }

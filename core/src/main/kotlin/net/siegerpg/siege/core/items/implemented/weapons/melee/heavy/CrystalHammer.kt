@@ -7,27 +7,27 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CrystalHammer() : CustomMeleeWeapon(
-	name = "Crystal Hammer",
-	customModelData = 130012,
-	description = listOf("Smash with gems"),
-	levelRequirement = 49,
-	material = Material.WOODEN_AXE,
-	baseStats = CustomItemUtils.statMap(
-		strength = 150.0,
-		toughness = 50.0,
-		regeneration = -30.0,
-		luck = -25.0
-	                                   ),
-	attackSpeed = 0.5
+		name = "Crystal Hammer",
+		customModelData = 130012,
+		description = listOf("Smash with gems"),
+		levelRequirement = 49,
+		material = Material.WOODEN_AXE,
+		baseStats = CustomItemUtils.statMap(
+				strength = 150.0,
+				toughness = 50.0,
+				regeneration = -30.0,
+				luck = -25.0
+		                                   ),
+		attackSpeed = 0.5
                                          ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

@@ -15,23 +15,30 @@ public class GetItem implements CommandExecutor {
 
 	@SneakyThrows
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			if (player.hasPermission("SiegeCore.getItem")) {
 				if (args.length == 2) {
-					CustomItem item = CustomItem.class.getDeclaredConstructor().newInstance();
-					if (Class.forName(args[0]).isInstance(item)) {
+					CustomItem item = CustomItem.class
+							.getDeclaredConstructor()
+							.newInstance();
+					if (Class
+							.forName(args[0])
+							.isInstance(item)) {
 						Gson gson = new Gson();
 						CustomItem obj = gson.fromJson(args[0], CustomItem.class);
-						player.getInventory().addItem(obj.getUpdatedItem(Boolean.getBoolean(args[1])));
+						player
+								.getInventory()
+								.addItem(obj.getUpdatedItem(Boolean.getBoolean(args[1])));
 						return true;
 					}
 					player.sendMessage(Utils.parse("<red>This is not a valid item"));
 					return false;
 				} else if (args.length == 1) {
-					player.sendMessage(Utils.parse("<red>Please add true/false for rarity display to the end of your command"));
+					player.sendMessage(Utils.parse(
+							"<red>Please add true/false for rarity display to the end of your command"));
 					return false;
 				} else if (args.length == 0) {
 					player.sendMessage(Utils.parse("<red>Get what item?"));
@@ -43,7 +50,9 @@ public class GetItem implements CommandExecutor {
 			player.sendMessage(Utils.parse("<red>You're not a developer!"));
 			return false;
 		}
-		Bukkit.getLogger().info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
+		Bukkit
+				.getLogger()
+				.info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
 		return false;
 	}
 

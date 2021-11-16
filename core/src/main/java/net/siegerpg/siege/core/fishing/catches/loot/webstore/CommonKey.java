@@ -7,17 +7,21 @@ import org.bukkit.entity.Player;
 
 public class CommonKey extends Fish {
 
-	public CommonKey () {
+	public CommonKey() {
 
 		super(40, 0.8, 15, 15,
-		      new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey(0).getUpdatedItem(false)
+		      new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey(
+				      0).getUpdatedItem(false)
 		     );
 	}
 
 	@Override
-	public void accomplishment (Player player) {
+	public void accomplishment(Player player) {
 
-		Bukkit.getServer().sendMessage(Utils.lore("<green>" + player.getName() + " has found a common key from fishing!"));
+		Bukkit
+				.getServer()
+				.sendMessage(Utils.lore(
+						"<green>" + player.getName() + " has found a common key from fishing!"));
 	}
 
 }

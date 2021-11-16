@@ -15,7 +15,7 @@ public class HelpfulTips implements Listener {
 	 * TIPS ARE SUBJECT TO CHANGE WITH NEW UPDATES
 	 */
 
-	public static ArrayList<String> tips = new ArrayList<>() {
+	public static ArrayList< String > tips = new ArrayList<>() {
 		{
 			//Food
 			add(Utils.tacc("&eFood can be farmed from all kinds of mobs!"));
@@ -26,14 +26,16 @@ public class HelpfulTips implements Listener {
 			add(Utils.tacc("&eArmor stats do not apply if you are not the appropriate level."));
 			add(Utils.tacc("&eYou can still wear armor if you are not the appropriate level."));
 			add(Utils.tacc("&eWeapon stats will not apply if you are not the appropriate level."));
-			add(Utils.tacc("&eWeapons will only deal 1 damage if you are not the appropriate level."));
+			add(Utils.tacc(
+					"&eWeapons will only deal 1 damage if you are not the appropriate level."));
 
 			//Leveling
 			add(Utils.tacc("&eYou can gain EXP from crates that fall from the sky."));
 			add(Utils.tacc("&eKill mobs and break blocks to gain experience!"));
 
 			//Gear Collecting
-			add(Utils.tacc("&eClick on weapon/armor vendors to craft stronger weapons and armor pieces."));
+			add(Utils.tacc(
+					"&eClick on weapon/armor vendors to craft stronger weapons and armor pieces."));
 			add(Utils.tacc("&eClick on material vendors to upgrade your materials."));
 			add(Utils.tacc("&eMobs can sometimes drop gear."));
 
@@ -64,10 +66,14 @@ public class HelpfulTips implements Listener {
 			add(Utils.tacc("&ePurchase vault space from the Perks slime in /hub."));
 
 			//Different types of NPCs
-			add(Utils.tacc("&eYou can put your money in the bank at the village on the opposite corner of the map."));
-			add(Utils.tacc("&eYou can buy food from the butcher at the village on the opposite corner of the map."));
-			add(Utils.tacc("&eYou can gamble for money with Bart at the village on the opposite corner of the map."));
-			add(Utils.tacc("&eHerbert the Scrapper will buy your items (but he's cheap about it)."));
+			add(Utils.tacc(
+					"&eYou can put your money in the bank at the village on the opposite corner of the map."));
+			add(Utils.tacc(
+					"&eYou can buy food from the butcher at the village on the opposite corner of the map."));
+			add(Utils.tacc(
+					"&eYou can gamble for money with Bart at the village on the opposite corner of the map."));
+			add(Utils.tacc(
+					"&eHerbert the Scrapper will buy your items (but he's cheap about it)."));
 
 			//Different types of Mobs
 			add(Utils.tacc("&eGoblins and Wild Foxes can steal your money and run away with it."));
@@ -90,20 +96,24 @@ public class HelpfulTips implements Listener {
 		}
 	};
 
-	public void broadcastTasks () {
+	public void broadcastTasks() {
 
 		tipsTask();
 	}
 
-	public void tipsTask () {
+	public void tipsTask() {
 
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
-			int randNum = (int) (Math.random() * tips.size());
-			for (Player p : Bukkit.getOnlinePlayers()) {
-				if (!PlayerData.broadcastTips.get(p)) continue;
-				p.sendMessage(Utils.tacc("\n&6&lTIP &r" + tips.get(randNum) + "&r\n&7To disable tips type /tips disable.\n\n "));
-			}
-		}, 6000, 6000);
+		Bukkit
+				.getServer()
+				.getScheduler()
+				.scheduleSyncRepeatingTask(Core.plugin(), () -> {
+					int randNum = (int) (Math.random() * tips.size());
+					for (Player p : Bukkit.getOnlinePlayers()) {
+						if (!PlayerData.broadcastTips.get(p)) continue;
+						p.sendMessage(Utils.tacc("\n&6&lTIP &r" + tips.get(randNum) +
+						                         "&r\n&7To disable tips type /tips disable.\n\n "));
+					}
+				}, 6000, 6000);
 	}
 
 }

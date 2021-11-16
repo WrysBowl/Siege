@@ -16,9 +16,9 @@ object WebstoreDB {
 	 * @return The task that will fetch the data from the database
 	 */
 	fun getStoreCommands(
-		player: OfflinePlayer,
-		runAfter: (commands: Array<String>?) -> Unit
-	                    ): BukkitTask {
+			player : OfflinePlayer,
+			runAfter : (commands : Array<String>?) -> Unit
+	                    ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetStoreCommands(player))
 		})
@@ -30,9 +30,9 @@ object WebstoreDB {
 	 * @return The task that will fetch the data from the database
 	 */
 	fun getStoreCommands(
-		players: List<OfflinePlayer>,
-		runAfter: (HashMap<UUID, ArrayList<String>>?) -> Unit
-	                    ): BukkitTask {
+			players : List<OfflinePlayer>,
+			runAfter : (HashMap<UUID, ArrayList<String>>?) -> Unit
+	                    ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetStoreCommands(players))
 		})
@@ -44,9 +44,9 @@ object WebstoreDB {
 	 * @param limit: Instead of getting store commands of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
 	 */
 	fun getAllStoreCommands(
-		limit: Int,
-		runAfter: (ArrayList<Pair<UUID, String>>?) -> Unit
-	                       ): BukkitTask {
+			limit : Int,
+			runAfter : (ArrayList<Pair<UUID, String>>?) -> Unit
+	                       ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetAllStoreCommands(limit))
 		})
@@ -56,7 +56,7 @@ object WebstoreDB {
 	/**
 	 * Sets the store commands of a player
 	 */
-	fun setStoreCommand(player: OfflinePlayer, cmdArgs: String): BukkitTask {
+	fun setStoreCommand(player : OfflinePlayer, cmdArgs : String) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			blockingSetStoreCommands(player, cmdArgs)
 		})
@@ -65,7 +65,7 @@ object WebstoreDB {
 	/**
 	 * Sets the store commands of multiple players
 	 */
-	fun setStoreCommand(data: HashMap<UUID, String>): BukkitTask {
+	fun setStoreCommand(data : HashMap<UUID, String>) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			blockingSetStoreCommands(data)
 		})
@@ -79,20 +79,20 @@ object WebstoreDB {
 	 * Gets the store commands of a player, blocking the thread.
 	 * @return The store commands
 	 */
-	fun blockingGetStoreCommands(player: OfflinePlayer): Array<String>? {
+	fun blockingGetStoreCommands(player : OfflinePlayer) : Array<String>? {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt = connection.prepareStatement(
-				"SELECT command FROM webstoreData WHERE uuid=?",
-				ResultSet.TYPE_SCROLL_SENSITIVE
+					"SELECT command FROM webstoreData WHERE uuid=?",
+					ResultSet.TYPE_SCROLL_SENSITIVE
 			                                      )
 			stmt.setString(1, player.uniqueId.toString())
 			val query = stmt.executeQuery()
 			return if (!query.isBeforeFirst) {
 				null
 			} else {
-				val data: ArrayList<String> = arrayListOf()
-				var i: Int = 0
+				val data : ArrayList<String> = arrayListOf()
+				var i : Int = 0
 				while (query.next()) {
 					data.add(query.getString("command"))
 					i++
@@ -107,8 +107,8 @@ object WebstoreDB {
 	 * @return The level and experience
 	 */
 	fun blockingGetStoreCommands(
-		players: List<OfflinePlayer>
-	                            ): HashMap<UUID, ArrayList<String>>? {
+			players : List<OfflinePlayer>
+	                            ) : HashMap<UUID, ArrayList<String>>? {
 		// Gets the cache data for each cached player, and gets the data of the not-yet-cached players
 		val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
 		val map = HashMap<UUID, ArrayList<String>>()
@@ -118,9 +118,9 @@ object WebstoreDB {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt = connection.prepareStatement(
-				String.format("SELECT command,uuid FROM webstoreData WHERE uuid IN (%s)",
-				              playerIDs.joinToString(", ") { "?" }),
-				ResultSet.TYPE_SCROLL_SENSITIVE
+					String.format("SELECT command,uuid FROM webstoreData WHERE uuid IN (%s)",
+					              playerIDs.joinToString(", ") { "?" }),
+					ResultSet.TYPE_SCROLL_SENSITIVE
 			                                      )
 			var currentIndex = 0
 			playerIDs.forEach { id ->
@@ -143,7 +143,7 @@ object WebstoreDB {
 	 * This bypasses the cache so be careful not to overuse it.
 	 * @param limit: Instead of getting exp&level of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
 	 */
-	fun blockingGetAllStoreCommands(limit: Int): ArrayList<Pair<UUID, String>>? {
+	fun blockingGetAllStoreCommands(limit : Int) : ArrayList<Pair<UUID, String>>? {
 		val connection = DatabaseManager.getConnection()
 		val arrayList = arrayListOf<Pair<UUID, String>>()
 		val limitStr = if (limit <= 0) {
@@ -160,8 +160,8 @@ object WebstoreDB {
 				val uuid = UUID.fromString(query.getString("uuid"))
 				val data = query.getString("command")
 				val double = Pair(
-					uuid,
-					data
+						uuid,
+						data
 				                 )
 				arrayList.add(double)
 			}
@@ -172,7 +172,7 @@ object WebstoreDB {
 	/**
 	 * Sets the store commands of a player, blocking the thread
 	 */
-	fun blockingSetStoreCommands(player: OfflinePlayer, cmdArgs: String) {
+	fun blockingSetStoreCommands(player : OfflinePlayer, cmdArgs : String) {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt =
@@ -186,7 +186,7 @@ object WebstoreDB {
 	/**
 	 * Sets the store commands of multiple players, blocking the thread
 	 */
-	fun blockingSetStoreCommands(data: HashMap<UUID, String>) {
+	fun blockingSetStoreCommands(data : HashMap<UUID, String>) {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt =
@@ -208,12 +208,12 @@ object WebstoreDB {
 	 * Removes the store commands of a player, blocking the thread.
 	 * @return The store commands
 	 */
-	fun blockingRemoveStoreCommands(player: OfflinePlayer) {
+	fun blockingRemoveStoreCommands(player : OfflinePlayer) {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt = connection.prepareStatement(
-				"DELETE FROM webstoreData WHERE uuid=?",
-				ResultSet.TYPE_SCROLL_SENSITIVE
+					"DELETE FROM webstoreData WHERE uuid=?",
+					ResultSet.TYPE_SCROLL_SENSITIVE
 			                                      )
 			stmt.setString(1, player.uniqueId.toString())
 			stmt.executeUpdate()

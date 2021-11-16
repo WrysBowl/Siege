@@ -30,33 +30,36 @@ class ShopsCommand : BaseCommand() {
 	@Default
 	@SuppressWarnings("unused")
 	fun default(
-		sender: CommandSender,
-		id: String,
-		@Optional @CommandPermission("siege.shops.open.others") target: OnlinePlayer?
+			sender : CommandSender,
+			id : String,
+			@Optional @CommandPermission("siege.shops.open.others") target : OnlinePlayer?
 	           ) {
 
 		// if (sender is Player && sender.name == "Sumowo") sender.inventory.addItem(Pebble.tier(1).getUpdatedItem(false))
 
 		if (target == null && sender is ConsoleCommandSender) {
 			return sender.sendMessage(
-				MiniMessage.get().parse("<red>Please specify a target player!")
+					MiniMessage.get().parse("<red>Please specify a target player!")
 			                         )
 		}
 
 		if (target != null && !sender.hasPermission("siege.shops.open.others")) return sender.sendMessage(
-			MiniMessage.get().parse("<red>You do not have permission to open shops for others!")
+				MiniMessage.get()
+						.parse("<red>You do not have permission to open shops for others!")
 		                                                                                                 )
 
-		val player: Player = if (target?.player == null) (sender as Player) else target.player
+		val player : Player =
+				if (target?.player == null) (sender as Player) else target.player
 
 		if (!ShopsPlugin.instance?.shopRegistry?.contains(id)!!) return sender.sendMessage(
-			MiniMessage.get().parse("<red>Invalid shop name!")
+				MiniMessage.get().parse("<red>Invalid shop name!")
 		                                                                                  )
 
 
 		val shop = ShopsPlugin.instance?.shopRegistry?.get(id)!!
 		if (sender is Player && !sender.hasPermission(shop.permission)) return sender.sendMessage(
-			MiniMessage.get().parse("<red>You do not have permission to open this shop!")
+				MiniMessage.get()
+						.parse("<red>You do not have permission to open this shop!")
 		                                                                                         )
 
 		var gui = ChestGui(3, shop.name)
@@ -123,28 +126,34 @@ class ShopsCommand : BaseCommand() {
 					event.isLeftClick  -> {
 						if (!it.craftable) return@setAction
 						if (event.view.bottomInventory
-								.firstEmpty() == -1
+										.firstEmpty() == -1
 						) {
-							player.playSound(player.location, Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f)
-							return@setAction player.sendMessage(
-								MiniMessage.get().parse("<red>Your inventory is full!")
-							                                   )
-						}
-						for (entry in it.recipe) {
-							if (!player.inventory.containsAtLeast(
-									entry.key.getUpdatedItem(false),
-									entry.value
-							                                     )
-							) {
-								player.playSound(
+							player.playSound(
 									player.location,
 									Sound.ENTITY_VILLAGER_NO,
 									1.0f,
 									1.0f
+							                )
+							return@setAction player.sendMessage(
+									MiniMessage.get()
+											.parse("<red>Your inventory is full!")
+							                                   )
+						}
+						for (entry in it.recipe) {
+							if (!player.inventory.containsAtLeast(
+											entry.key.getUpdatedItem(false),
+											entry.value
+							                                     )
+							) {
+								player.playSound(
+										player.location,
+										Sound.ENTITY_VILLAGER_NO,
+										1.0f,
+										1.0f
 								                )
 								return@setAction player.sendMessage(
-									MiniMessage.get()
-										.parse(if (entry.value == 1) "<red>You don't have a ${entry.key.name}!" else "<red>You don't have enough ${entry.key.name}s!")
+										MiniMessage.get()
+												.parse(if (entry.value == 1) "<red>You don't have a ${entry.key.name}!" else "<red>You don't have enough ${entry.key.name}s!")
 								                                   )
 							}
 						}
@@ -155,10 +164,10 @@ class ShopsCommand : BaseCommand() {
 						}
 						player.inventory.addItem(it.generate())
 						player.playSound(
-							player.location,
-							Sound.ENTITY_VILLAGER_CELEBRATE,
-							1.0f,
-							1.0f
+								player.location,
+								Sound.ENTITY_VILLAGER_CELEBRATE,
+								1.0f,
+								1.0f
 						                )
 						player.updateInventory()
 					}
@@ -167,31 +176,38 @@ class ShopsCommand : BaseCommand() {
 						if (it.buyPrice < 0) return@setAction
 
 						if (VaultHook.econ.getBalance(player) < it.buyPrice) {
-							player.playSound(player.location, Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f)
+							player.playSound(
+									player.location,
+									Sound.ENTITY_VILLAGER_NO,
+									1.0f,
+									1.0f
+							                )
 							return@setAction player.sendMessage(
-								MiniMessage.get().parse("<red>You don't have enough gold!")
+									MiniMessage.get()
+											.parse("<red>You don't have enough gold!")
 							                                   )
 						}
 						if (event.view.bottomInventory
-								.firstEmpty() == -1
+										.firstEmpty() == -1
 						) {
 							player.playSound(
-								player.location,
-								Sound.ENTITY_VILLAGER_CELEBRATE,
-								1.0f,
-								1.0f
+									player.location,
+									Sound.ENTITY_VILLAGER_CELEBRATE,
+									1.0f,
+									1.0f
 							                )
 							return@setAction player.sendMessage(
-								MiniMessage.get().parse("<red>Your inventory is full!")
+									MiniMessage.get()
+											.parse("<red>Your inventory is full!")
 							                                   )
 						}
 
 						player.inventory.addItem(it.generate())
 						player.playSound(
-							player.location,
-							Sound.ENTITY_VILLAGER_CELEBRATE,
-							1.0f,
-							1.0f
+								player.location,
+								Sound.ENTITY_VILLAGER_CELEBRATE,
+								1.0f,
+								1.0f
 						                )
 						VaultHook.econ.withdrawPlayer(player, it.buyPrice.toDouble())
 						player.updateInventory()

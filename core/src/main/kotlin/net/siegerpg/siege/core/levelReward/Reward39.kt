@@ -10,21 +10,21 @@ import org.bukkit.entity.Player
 
 class Reward39 : LevelReward {
 
-	override fun giveReward(player: Player) {
-		val level: Short = 39
+	override fun giveReward(player : Player) {
+		val level : Short = 39
 		Bukkit.getServer().broadcast(Utils.lore(""))
 		Bukkit.getServer()
-			.broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + level + "!"))
+				.broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + level + "!"))
 		Bukkit.getServer().broadcastMessage(Utils.tacc("&a/pv 4 &7is available"))
 		Bukkit.getServer().broadcast(Utils.lore(""))
 
 		player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 5.0f)
 		player.sendTitle(
-			Utils.tacc("&5Level Up!"),
-			Utils.tacc("&d${level - 1} &7\u21E2 &5$level"),
-			10,
-			80,
-			10
+				Utils.tacc("&5Level Up!"),
+				Utils.tacc("&d${level - 1} &7\u21E2 &5$level"),
+				10,
+				80,
+				10
 		                )
 		player.sendMessage(Utils.lore(""))
 		player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
@@ -39,7 +39,11 @@ class Reward39 : LevelReward {
 		Utils.giveItem(player, SpiritKey(0).getUpdatedItem(false).asQuantity(3))
 
 		val highestPV = Utils.getHighestPV(player)
-		VaultHook.perms.playerAdd("global", player, "cosmicvaults.amount." + (highestPV + 1))
+		VaultHook.perms.playerAdd(
+				"global",
+				player,
+				"cosmicvaults.amount." + (highestPV + 1)
+		                         )
 
 	}
 }

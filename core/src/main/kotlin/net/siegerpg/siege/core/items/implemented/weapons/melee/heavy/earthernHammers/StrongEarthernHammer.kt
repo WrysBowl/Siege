@@ -7,22 +7,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class StrongEarthernHammer() : CustomMeleeWeapon(
-	name = "Strong Earthern Hammer",
-	customModelData = 130010,
-	description = listOf("Let's go clobbing!"),
-	levelRequirement = 39,
-	material = Material.WOODEN_AXE,
-	baseStats = CustomItemUtils.statMap(strength = 74.0),
-	attackSpeed = 0.7
+		name = "Strong Earthern Hammer",
+		customModelData = 130010,
+		description = listOf("Let's go clobbing!"),
+		levelRequirement = 39,
+		material = Material.WOODEN_AXE,
+		baseStats = CustomItemUtils.statMap(strength = 74.0),
+		attackSpeed = 0.7
                                                 ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

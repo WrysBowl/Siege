@@ -11,13 +11,13 @@ import org.bukkit.inventory.meta.LeatherArmorMeta
 
 interface CustomArmor : CustomEquipment {
 
-	var leatherColor: Color
+	var leatherColor : Color
 
-	fun onHit(e: EntityDamageEvent) {
+	fun onHit(e : EntityDamageEvent) {
 
 	}
 
-	override fun updateMeta(hideRarity: Boolean): ItemStack {
+	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		super.updateMeta(hideRarity)
 		item.type = this.material
 		val meta = item.itemMeta
@@ -31,19 +31,23 @@ interface CustomArmor : CustomEquipment {
 				val leatherMeta = meta as LeatherArmorMeta
 				meta.setColor(leatherColor)
 				item.itemMeta = leatherMeta
-			} catch (e: Error) {
+			} catch (e : Error) {
 
 			}
 		}
 		meta.addItemFlags(
-			ItemFlag.HIDE_ATTRIBUTES,
-			ItemFlag.HIDE_UNBREAKABLE,
-			ItemFlag.HIDE_ENCHANTS,
-			ItemFlag.HIDE_DYE
+				ItemFlag.HIDE_ATTRIBUTES,
+				ItemFlag.HIDE_UNBREAKABLE,
+				ItemFlag.HIDE_ENCHANTS,
+				ItemFlag.HIDE_DYE
 		                 )
 		meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
 		val modifier =
-				AttributeModifier("generic.armor", 0.0, AttributeModifier.Operation.ADD_NUMBER)
+				AttributeModifier(
+						"generic.armor",
+						0.0,
+						AttributeModifier.Operation.ADD_NUMBER
+				                 )
 		meta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier)
 
 		item.itemMeta = meta

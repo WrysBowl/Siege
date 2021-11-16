@@ -14,17 +14,17 @@ class PartyCommand : BaseCommand() {
 
 	init {
 		Core.plugin().commandManager.commandCompletions.registerCompletion(
-			"partymembers",
-			CommandCompletions.CommandCompletionHandler { player ->
-				val party = Party.getPlayerParty(player.player)
-				            ?: return@CommandCompletionHandler listOf<String>()
-				return@CommandCompletionHandler party.getMembers().map { p -> p.name }
-			})
+				"partymembers",
+				CommandCompletions.CommandCompletionHandler { player ->
+					val party = Party.getPlayerParty(player.player)
+					            ?: return@CommandCompletionHandler listOf<String>()
+					return@CommandCompletionHandler party.getMembers().map { p -> p.name }
+				})
 	}
 
 	@Subcommand("create|c")
 	@CommandAlias("new")
-	fun createParty(player: Player) {
+	fun createParty(player : Player) {
 		val party = Party.getPlayerParty(player)
 		if (party != null) {
 			player.sendMessage(Utils.tacc("&7You are already in a party!"))
@@ -37,7 +37,7 @@ class PartyCommand : BaseCommand() {
 	@CommandAlias("accept")
 	@Syntax("[inviter]")
 	@CommandCompletion("@players")
-	fun joinParty(player: Player, @Optional inviter: Player?) {
+	fun joinParty(player : Player, @Optional inviter : Player?) {
 		val playerInvites = Party.getPlayerInvites(player)
 		if (playerInvites.size == 0) {
 			player.sendMessage(Utils.tacc("&7You haven't been invited to any parties!"))
@@ -66,7 +66,7 @@ class PartyCommand : BaseCommand() {
 
 	@Subcommand("leave")
 	@CommandAlias("disband")
-	fun leaveParty(player: Player) {
+	fun leaveParty(player : Player) {
 		val party = Party.getPlayerParty(player)
 		if (party == null) {
 			player.sendMessage(Utils.tacc("&cYou are not currently in a party!"))
@@ -79,7 +79,7 @@ class PartyCommand : BaseCommand() {
 	@CommandAlias("remove")
 	@Syntax("<player>")
 	@CommandCompletion("partymembers")
-	fun kickFromParty(player: Player, playerToKick: Player) {
+	fun kickFromParty(player : Player, playerToKick : Player) {
 		val party = Party.getPlayerParty(player)
 		if (party == null) {
 			player.sendMessage(Utils.tacc("&7You are currently not in a party!"))
@@ -95,7 +95,7 @@ class PartyCommand : BaseCommand() {
 	@Subcommand("promote")
 	@Syntax("<player>")
 	@CommandCompletion("partymembers")
-	fun promoteToPartyLeader(player: Player, newLeader: Player) {
+	fun promoteToPartyLeader(player : Player, newLeader : Player) {
 		val party = Party.getPlayerParty(player)
 		if (party == null) {
 			player.sendMessage(Utils.tacc("&7You are currently not in a party!"))
@@ -115,7 +115,7 @@ class PartyCommand : BaseCommand() {
 
 	@Subcommand("chat|c|send|message|m|msg")
 	@Syntax("<message>")
-	fun sendPartyMessage(player: Player, message: String) {
+	fun sendPartyMessage(player : Player, message : String) {
 		val party = Party.getPlayerParty(player)
 		if (party == null) {
 			player.sendMessage(Utils.tacc("&7You are currently not in a party!"))
@@ -127,7 +127,7 @@ class PartyCommand : BaseCommand() {
 	@Subcommand("invite|inv")
 	@Syntax("<player>")
 	@CommandCompletion("@players")
-	fun invitePlayerToParty(player: Player, invitee: Player) {
+	fun invitePlayerToParty(player : Player, invitee : Player) {
 		val party = Party.getPlayerParty(player)
 		if (party == null) {
 			player.sendMessage(Utils.tacc("&7You are currently not in a party!"))
@@ -145,28 +145,28 @@ class PartyCommand : BaseCommand() {
 
 		// Kyori component used to let them run a command by clicking on the message
 		val textComponent = MiniMessage.get().parse(
-			"<hover:show_text:\"<gold>Click here to accept <pre><playerDisplayName></pre><gold>'s invite!\"><click:run_command:/party accept <playerName>><gold>You have been invited to <pre><playerDisplayName></pre><reset><gray>'s party! Type <gold>/party accept <playerName> <gray>to join!",
-			listOf(
-				Template.of("playerDisplayName", player.displayName()),
-				Template.of("playerName", player.name)
-			      )
+				"<hover:show_text:\"<gold>Click here to accept <pre><playerDisplayName></pre><gold>'s invite!\"><click:run_command:/party accept <playerName>><gold>You have been invited to <pre><playerDisplayName></pre><reset><gray>'s party! Type <gold>/party accept <playerName> <gray>to join!",
+				listOf(
+						Template.of("playerDisplayName", player.displayName()),
+						Template.of("playerName", player.name)
+				      )
 		                                           )
 		invitee.sendMessage(textComponent)
 	}
 
 	@HelpCommand
-	fun helpWithParty(player: Player) {
+	fun helpWithParty(player : Player) {
 		player.sendMessage(
-			listOf(
-				"&6 ----- Party Commands -----",
-				"&6/party create: &7Creates a party",
-				"&6/party join [inviter]: &7Joins a party you've been invited to!",
-				"&6/party leave|disband: &7Leaves/disbands the party you're in!",
-				"&6/party kick <player>: &7Kicks a player from the party!",
-				"&6/party promote <player>: &7Makes a member the new leader!",
-				"&6/party send <message>: &7Sends a message to all the party members!",
-				"&6/party invite <player>: &7Invites a player to the party!"
-			      ).toTypedArray()
+				listOf(
+						"&6 ----- Party Commands -----",
+						"&6/party create: &7Creates a party",
+						"&6/party join [inviter]: &7Joins a party you've been invited to!",
+						"&6/party leave|disband: &7Leaves/disbands the party you're in!",
+						"&6/party kick <player>: &7Kicks a player from the party!",
+						"&6/party promote <player>: &7Makes a member the new leader!",
+						"&6/party send <message>: &7Sends a message to all the party members!",
+						"&6/party invite <player>: &7Invites a player to the party!"
+				      ).toTypedArray()
 		                  )
 	}
 

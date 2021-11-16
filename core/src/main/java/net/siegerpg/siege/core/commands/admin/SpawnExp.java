@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 public class SpawnExp implements CommandExecutor {
 
 	@Override
-	public boolean onCommand (CommandSender sender, Command cmd, String label, String[] args) {
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
@@ -27,25 +27,32 @@ public class SpawnExp implements CommandExecutor {
 								return true;
 							}
 							GoldEXPSpawning.spawnEXP(num, target.getLocation());
-							player.sendMessage(ChatColor.GREEN + "Succesfully spawned in " + args[0] + " experience at " + target.getName() + "'s location");
+							player.sendMessage(
+									ChatColor.GREEN + "Succesfully spawned in " + args[0] +
+									" experience at " + target.getName() + "'s location");
 							return true;
 						} catch (Exception exception) {
-							player.sendMessage(ChatColor.RED + "invalid syntax, please use /spawnExp <integer> <player>");
+							player.sendMessage(ChatColor.RED +
+							                   "invalid syntax, please use /spawnExp <integer> <player>");
 							return false;
 						}
 					} else {
 						try {
 							int num = Integer.getInteger(args[0]);
 							GoldEXPSpawning.spawnEXP(num, player.getLocation());
-							player.sendMessage(ChatColor.GREEN + "Succesfully spawned in " + args[0] + " experience at your location");
+							player.sendMessage(
+									ChatColor.GREEN + "Succesfully spawned in " + args[0] +
+									" experience at your location");
 							return true;
 						} catch (Exception exception) {
-							player.sendMessage(ChatColor.RED + "invalid syntax, please use /spawnExp <integer> <player>");
+							player.sendMessage(ChatColor.RED +
+							                   "invalid syntax, please use /spawnExp <integer> <player>");
 							return false;
 						}
 					}
 				} else {
-					player.sendMessage(ChatColor.RED + "invalid syntax, please use /spawnExp <integer> <player>");
+					player.sendMessage(ChatColor.RED +
+					                   "invalid syntax, please use /spawnExp <integer> <player>");
 					return false;
 				}
 			} else {

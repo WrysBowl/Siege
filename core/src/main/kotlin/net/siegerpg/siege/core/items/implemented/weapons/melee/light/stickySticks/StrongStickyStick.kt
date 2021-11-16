@@ -7,22 +7,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class StrongStickyStick() : CustomMeleeWeapon(
-	name = "Strong Sticky Stick",
-	customModelData = 110002,
-	description = listOf("Globs of slime on a stick"),
-	levelRequirement = 5,
-	material = Material.WOODEN_SWORD,
-	baseStats = CustomItemUtils.statMap(strength = 12.0),
-	attackSpeed = 1.6
+		name = "Strong Sticky Stick",
+		customModelData = 110002,
+		description = listOf("Globs of slime on a stick"),
+		levelRequirement = 5,
+		material = Material.WOODEN_SWORD,
+		baseStats = CustomItemUtils.statMap(strength = 12.0),
+		attackSpeed = 1.6
                                              ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

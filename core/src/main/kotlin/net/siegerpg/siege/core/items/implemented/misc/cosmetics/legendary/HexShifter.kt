@@ -12,16 +12,20 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 class HexShifter() : Cosmetic(
-	name = "Hex Shifter",
-	customModelData = 750001,
-	description = listOf("1. Hold cosmetic helmet", "2. Type HEX color in chat", "Ex. #FBC84B"),
-	material = Material.LEATHER_HELMET,
-	leatherColor = Color.fromRGB(0xFBC84B),
+		name = "Hex Shifter",
+		customModelData = 750001,
+		description = listOf(
+				"1. Hold cosmetic helmet",
+				"2. Type HEX color in chat",
+				"Ex. #FBC84B"
+		                    ),
+		material = Material.LEATHER_HELMET,
+		leatherColor = Color.fromRGB(0xFBC84B),
                              ) {
 
-	override fun onCosmeticSpeak(e: AsyncChatEvent) {
-		val player: Player = e.player
-		var message: String = (e.message() as TextComponent).content()
+	override fun onCosmeticSpeak(e : AsyncChatEvent) {
+		val player : Player = e.player
+		var message : String = (e.message() as TextComponent).content()
 		if (HexColorCode.isValidHexCode(message) || HexColorCode.isValidHexCode("#$message")) {
 			message = if (!message.contains("#")) "#$message" else message
 			e.isCancelled = true
@@ -35,13 +39,13 @@ class HexShifter() : Cosmetic(
 	}
 
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 100
 		this.rarity = Rarity.LEGENDARY
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

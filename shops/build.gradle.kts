@@ -2,7 +2,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 repositories {
 	mavenCentral()
-	maven { url = uri("https://mvn.intellectualsites.com/content/repositories/releases/") } // FAWE
+	maven {
+		url = uri("https://mvn.intellectualsites.com/content/repositories/releases/")
+	} // FAWE
 	maven { url = uri("https://papermc.io/repo/repository/maven-public/") }
 	mavenCentral()
 	maven { url = uri("https://repo.aikar.co/content/groups/aikar/") }
@@ -30,8 +32,8 @@ tasks {
 		relocate("co.aikar.commands", "net.siegerpg.siege.shops.acf")
 		relocate("co.aikar.locales", "net.siegerpg.siege.shops.locales")
 		relocate(
-			"com.github.stefvanschie.inventoryframework",
-			"net.siegerpg.siege.shops.inventoryframework"
+				"com.github.stefvanschie.inventoryframework",
+				"net.siegerpg.siege.shops.inventoryframework"
 		        )
 		archiveFileName.set("SiegeShops.jar")
 	}

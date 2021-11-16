@@ -18,7 +18,7 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
 	//Make sure to allow arg-1 to also be a player
 
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (sender instanceof Player) {
 			((Player) sender).performCommand("craftingstore:buy");
@@ -34,7 +34,9 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
 			player = Bukkit.getOfflinePlayer(uuid);
 		} catch (IllegalArgumentException x) {
 			String msg = Utils.tacc("&cParsing of the UUID has thrown an error.");
-			Bukkit.getLogger().info(msg);
+			Bukkit
+					.getLogger()
+					.info(msg);
 			return false;
 		}
 		if (player.isOnline()) { //if player is online then they get their item right away
@@ -51,8 +53,11 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
 			//stores the arguments under the player's UUID in a database
 			WebstoreDB.INSTANCE.setStoreCommand(player, stringArgs);
 
-			String msg = Utils.tacc("&ePlayer is not online. Webstore purchase stored in database.");
-			Bukkit.getLogger().info(msg);
+			String msg = Utils.tacc(
+					"&ePlayer is not online. Webstore purchase stored in database.");
+			Bukkit
+					.getLogger()
+					.info(msg);
 		}
 
 

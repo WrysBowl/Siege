@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.RawLuckG
 
 public class RawLuck extends Fish {
 
-	public RawLuck () {
+	public RawLuck() {
 
 		super(30, 0.6, 20, 10,
 		      new RawLuckGem(0).getUpdatedItem(false)

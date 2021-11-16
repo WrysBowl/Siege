@@ -7,17 +7,21 @@ import org.bukkit.entity.Player;
 
 public class NormalKey extends Fish {
 
-	public NormalKey () {
+	public NormalKey() {
 
 		super(50, 0.9, 12, 17,
-		      new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey(0).getUpdatedItem(false)
+		      new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey(
+				      0).getUpdatedItem(false)
 		     );
 	}
 
 	@Override
-	public void accomplishment (Player player) {
+	public void accomplishment(Player player) {
 
-		Bukkit.getServer().sendMessage(Utils.lore("<green>" + player.getName() + " has found a normal key from fishing!"));
+		Bukkit
+				.getServer()
+				.sendMessage(Utils.lore(
+						"<green>" + player.getName() + " has found a normal key from fishing!"));
 	}
 
 }

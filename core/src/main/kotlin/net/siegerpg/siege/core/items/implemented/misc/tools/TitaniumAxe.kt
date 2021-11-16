@@ -8,25 +8,25 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
 class TitaniumAxe() : CustomTool(
-	name = "Titanium Axe",
-	customModelData = 430013,
-	description = listOf("Faster than steel"),
-	levelRequirement = 45,
-	material = Material.IRON_AXE,
-	baseStats = CustomItemUtils.statMap(),
+		name = "Titanium Axe",
+		customModelData = 430013,
+		description = listOf("Faster than steel"),
+		levelRequirement = 45,
+		material = Material.IRON_AXE,
+		baseStats = CustomItemUtils.statMap(),
 
-	enchantments = hashMapOf(
-		Enchantment.DIG_SPEED to 3
-	                        )
+		enchantments = hashMapOf(
+				Enchantment.DIG_SPEED to 3
+		                        )
                                 ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

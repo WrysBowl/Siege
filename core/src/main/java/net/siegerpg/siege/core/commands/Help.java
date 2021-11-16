@@ -11,7 +11,7 @@ public class Help implements CommandExecutor {
 
 
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		Player player = (Player) sender;
 		firstLine(player, 1);
@@ -21,17 +21,17 @@ public class Help implements CommandExecutor {
 	}
 
 	//-----[HELP SIEGE]-----
-	public void firstLine (Player player, Integer firstpage) {
+	public void firstLine(Player player, Integer firstpage) {
 
 		player.sendMessage(Utils.parse("    <gold><bold>HELP Page #" + firstpage + "    "));
 	}
 
-	public void lastLine (Player player) {
+	public void lastLine(Player player) {
 
 		player.sendMessage("");
 	}
 
-	public void firstPage (Player player) {
+	public void firstPage(Player player) {
 
 		//COMMAND LIST
 		player.sendMessage(Utils.parse("   <yellow>/buy <gray>Opens the in-game webstore"));
@@ -40,9 +40,11 @@ public class Help implements CommandExecutor {
 		player.sendMessage(Utils.parse("   <yellow>/leaderboard <gray>See the leaderboard"));
 		player.sendMessage(Utils.parse("   <yellow>/level <gray>See your level"));
 		player.sendMessage(Utils.parse("   <yellow>/pay <gray>Pay a player"));
-		player.sendMessage(Utils.parse("   <yellow>/spawn <gray>Teleport to the spawn of your world"));
+		player.sendMessage(
+				Utils.parse("   <yellow>/spawn <gray>Teleport to the spawn of your world"));
 		player.sendMessage(Utils.parse("   <yellow>/stats <gray>See a player's stats"));
-		player.sendMessage(Utils.parse("   <yellow>/tips enable/disable <gray>Disable/Enable tips"));
+		player.sendMessage(
+				Utils.parse("   <yellow>/tips enable/disable <gray>Disable/Enable tips"));
 		player.sendMessage(Utils.parse("   <yellow>/webstore <gray>Sends link to the webstore"));
 		player.sendMessage(Utils.parse("   <yellow>/rules <gray>See the rules"));
 	}

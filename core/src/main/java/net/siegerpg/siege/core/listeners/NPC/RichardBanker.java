@@ -25,32 +25,47 @@ import java.util.Objects;
 public class RichardBanker implements Listener {
 
 	@EventHandler
-	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+	public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
 
-		if (e.getRightClicked().getName().contains("Richard") && e.getRightClicked().getName().contains("6")) {
+		if (e
+				    .getRightClicked()
+				    .getName()
+				    .contains("Richard") && e
+				    .getRightClicked()
+				    .getName()
+				    .contains("6")) {
 			Inventory shop = getMenu(e.getPlayer());
-			e.getPlayer().openInventory(shop);
+			e
+					.getPlayer()
+					.openInventory(shop);
 		}
 	}
 
 	@EventHandler
-	public void guiClick (InventoryClickEvent e) {
+	public void guiClick(InventoryClickEvent e) {
 
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
-		if (e.getWhoClicked().getMetadata("RichardBank").size() > 0 &&
-		    Objects.equals(e.getWhoClicked().getMetadata("RichardBank").get(0).value(), e.getInventory())) {
+		if (e
+				    .getWhoClicked()
+				    .getMetadata("RichardBank")
+				    .size() > 0 &&
+		    Objects.equals(e
+				                   .getWhoClicked()
+				                   .getMetadata("RichardBank")
+				                   .get(0)
+				                   .value(), e.getInventory())) {
 			clickMenu(e);
 			e.setCancelled(true);
 		}
 	}
 
-	private void clickMenu (InventoryClickEvent e) {
+	private void clickMenu(InventoryClickEvent e) {
 
 		Player player = (Player) e.getWhoClicked();
 		int slot = e.getSlot();
-		Pair<Short, Integer> bankLvlAmt = Bank.INSTANCE.blockingGetBankLevelAmount(player);
+		Pair< Short, Integer > bankLvlAmt = Bank.INSTANCE.blockingGetBankLevelAmount(player);
 		if (bankLvlAmt == null) bankLvlAmt = new Pair<>((short) 0, 0);
 		short bankLvl = bankLvlAmt.getFirst();
 		int bankAmt = bankLvlAmt.getSecond();
@@ -133,7 +148,7 @@ public class RichardBanker implements Listener {
 	}
 
 
-	private Inventory getMenu (Player player) {
+	private Inventory getMenu(Player player) {
 
 		Inventory gui = Bukkit.createInventory(null, 45, "Richard the Banker");
 
@@ -142,7 +157,7 @@ public class RichardBanker implements Listener {
 		for (int i = 0; i < gui.getSize(); i++) {
 			gui.setItem(i, filler);
 		}
-		Pair<Short, Integer> bankLvlAmt = Bank.INSTANCE.blockingGetBankLevelAmount(player);
+		Pair< Short, Integer > bankLvlAmt = Bank.INSTANCE.blockingGetBankLevelAmount(player);
 		if (bankLvlAmt == null) bankLvlAmt = new Pair<>((short) 0, 0);
 		short bankLvl = bankLvlAmt.getFirst();
 		int bankAmt = bankLvlAmt.getSecond();

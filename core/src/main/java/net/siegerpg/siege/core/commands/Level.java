@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 public class Level implements CommandExecutor {
 
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (!(sender instanceof Player)) {
 			return false;
@@ -34,7 +34,7 @@ public class Level implements CommandExecutor {
 
 	}
 
-	public void doTheThing (CommandSender executor, OfflinePlayer player) {
+	public void doTheThing(CommandSender executor, OfflinePlayer player) {
 
 		Levels.INSTANCE.getExpLevel(player, pair -> {
 			if (pair == null) {
@@ -58,11 +58,15 @@ public class Level implements CommandExecutor {
 			executor.sendMessage("");
 			executor.sendMessage("");
 			executor.sendMessage(Utils.lore("<gold>" + name));
-			executor.sendMessage(Utils.lore("<gray>Level         <reset><dark_purple>" + pair.getFirst()));
-			executor.sendMessage(Utils.lore("<gray>Exp %         <reset><light_purple>" + levelPercent));
-			executor.sendMessage(Utils.lore("<gray>Exp            <reset><light_purple>" + pair.getSecond()));
+			executor.sendMessage(
+					Utils.lore("<gray>Level         <reset><dark_purple>" + pair.getFirst()));
+			executor.sendMessage(
+					Utils.lore("<gray>Exp %         <reset><light_purple>" + levelPercent));
+			executor.sendMessage(
+					Utils.lore("<gray>Exp            <reset><light_purple>" + pair.getSecond()));
 			executor.sendMessage(Utils.lore("<gray>Exp to Next  <reset><light_purple>" + expLeft));
-			executor.sendMessage(Utils.lore("<gray>Total Exp     <reset><light_purple>" + totalFormat));
+			executor.sendMessage(
+					Utils.lore("<gray>Total Exp     <reset><light_purple>" + totalFormat));
 			executor.sendMessage(Utils.lore(" "));
 			return null;
 		});

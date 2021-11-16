@@ -7,18 +7,18 @@ public class Reward {
 	ItemStack item;
 	double chance;
 
-	public Reward (ItemStack item, double chance) {
+	public Reward(ItemStack item, double chance) {
 
 		this.item = item;
 		this.chance = chance;
 	}
 
-	public double getChance () {
+	public double getChance() {
 
 		return chance;
 	}
 
-	public ItemStack getItem () {
+	public ItemStack getItem() {
 
 		return item;
 	}

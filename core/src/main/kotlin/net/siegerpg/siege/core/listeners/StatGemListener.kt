@@ -16,7 +16,7 @@ class StatGemListener : Listener {
 
 	@EventHandler
 	@Suppress("unused")
-	fun onInventoryClick(e: InventoryClickEvent) {
+	fun onInventoryClick(e : InventoryClickEvent) {
 		if (e.whoClicked !is Player) return
 		if (e.action != InventoryAction.SWAP_WITH_CURSOR) return
 		val player = e.whoClicked as Player
@@ -30,11 +30,18 @@ class StatGemListener : Listener {
 			return
 		}
 
-		if (itemOnCursor.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first ?: 0)) {
+		if (itemOnCursor.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first
+		                                       ?: 0)
+		) {
 			player.sendMiniMessage("<red>You are too low level to use this gem!")
 			return
 		}
-		itemInteractedWith.addStatGem(StatGem(itemOnCursor.statType, itemOnCursor.statAmount))
+		itemInteractedWith.addStatGem(
+				StatGem(
+						itemOnCursor.statType,
+						itemOnCursor.statAmount
+				       )
+		                             )
 		itemInteractedWith.updateMeta(false)
 		e.currentItem = itemInteractedWith.item
 		e.isCancelled = true

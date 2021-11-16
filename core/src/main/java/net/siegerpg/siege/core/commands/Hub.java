@@ -12,14 +12,16 @@ import org.jetbrains.annotations.NotNull;
 public class Hub implements CommandExecutor {
 
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			player.teleport(Core.plugin().spawnLocation);
 			return true;
 		}
-		Bukkit.getLogger().info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
+		Bukkit
+				.getLogger()
+				.info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
 		return false;
 	}
 

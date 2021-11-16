@@ -6,28 +6,28 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class FairyWing() : CustomMaterial(
-	name = "Fairy Wing",
-	customModelData = 310010,
-	description = listOf("The wings of a", "fallen fairy"),
-	levelRequirement = 0,
-	material = Material.FLINT,
+		name = "Fairy Wing",
+		customModelData = 310010,
+		description = listOf("The wings of a", "fallen fairy"),
+		levelRequirement = 0,
+		material = Material.FLINT,
 
-	) {
+		) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}
 
 	companion object {
 
-		fun tier(tier: Int): FairyWing {
+		fun tier(tier : Int) : FairyWing {
 			val newItem = FairyWing(0)
 			newItem.tier = tier
 			return newItem

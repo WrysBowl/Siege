@@ -7,11 +7,15 @@ import org.bukkit.Material;
 
 public class ACACIA_LOG extends BlockDropTable {
 
-	public ACACIA_LOG () {
+	public ACACIA_LOG() {
 
 		super(100, Material.ACACIA_LOG, 1, 3, 1, 3, new Reward[] {
-				new Reward(Stick.Companion.tier(1).getUpdatedItem(false), 100.0),
-				new Reward(Stick.Companion.tier(2).getUpdatedItem(false), 10.0)
+				new Reward(Stick.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 100.0),
+				new Reward(Stick.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 10.0)
 		});
 	}
 

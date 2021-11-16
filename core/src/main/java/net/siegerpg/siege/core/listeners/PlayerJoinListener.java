@@ -29,22 +29,28 @@ import java.sql.SQLException;
 public class PlayerJoinListener implements Listener {
 
 	@EventHandler
-	public void connectEvent (AsyncPlayerPreLoginEvent e) {
+	public void connectEvent(AsyncPlayerPreLoginEvent e) {
 
 		new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 			@Override
-			public void run () {
+			public void run() {
 
-				String ip = e.getAddress().getHostAddress();
-				String uuid = e.getUniqueId().toString();
+				String ip = e
+						.getAddress()
+						.getHostAddress();
+				String uuid = e
+						.getUniqueId()
+						.toString();
 				// Add user ips to the db (So that we can in the future find all alts of an user)
 				try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
-					PreparedStatement stat = conn.prepareStatement("SELECT ip FROM ipData WHERE uuid=? AND ip=?");
+					PreparedStatement stat = conn.prepareStatement(
+							"SELECT ip FROM ipData WHERE uuid=? AND ip=?");
 					stat.setString(1, uuid);
 					stat.setString(2, ip);
 					ResultSet set = stat.executeQuery();
 					if (!set.isBeforeFirst()) {
-						PreparedStatement statement = conn.prepareStatement("INSERT INTO ipData (uuid, ip) VALUES (?, ?)");
+						PreparedStatement statement = conn.prepareStatement(
+								"INSERT INTO ipData (uuid, ip) VALUES (?, ?)");
 						statement.setString(1, uuid);
 						statement.setString(2, ip);
 						statement.executeUpdate();
@@ -57,20 +63,28 @@ public class PlayerJoinListener implements Listener {
 
 
 	@EventHandler
-	public void joinEvent (PlayerJoinEvent event) {
+	public void joinEvent(PlayerJoinEvent event) {
 
 		Player player = event.getPlayer();
 
-		String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(player);
+		String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(
+				player);
 		String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
-		player.teleport(Core.plugin().getServer().getWorld("Hub").getSpawnLocation());
+		player.teleport(Core
+				                .plugin()
+				                .getServer()
+				                .getWorld("Hub")
+				                .getSpawnLocation());
 
 		Levels.INSTANCE.getExpLevel(player, shortIntegerPair -> {
 			if (shortIntegerPair == null) {
 				try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
 					// Add the user to the db if he doesn't exist
-					PreparedStatement userData = conn.prepareStatement("INSERT INTO userData (uuid) VALUES (?)");
-					userData.setString(1, player.getUniqueId().toString());
+					PreparedStatement userData = conn.prepareStatement(
+							"INSERT INTO userData (uuid) VALUES (?)");
+					userData.setString(1, player
+							.getUniqueId()
+							.toString());
 					userData.executeUpdate();
 				} catch (SQLException ignored) {
 				}
@@ -81,11 +95,12 @@ public class PlayerJoinListener implements Listener {
 
 		if (!player.hasPlayedBefore()) {
 			newPlayerReward(player);
-			joinMessage = Utils.tacc("&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
+			joinMessage = Utils.tacc(
+					"&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
 		} else {
 			new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 				@Override
-				public void run () {
+				public void run() {
 
 					updateInventory(player);
 				}
@@ -113,33 +128,61 @@ public class PlayerJoinListener implements Listener {
         }*/
 		if (player.hasPlayedBefore()) {
 			player.teleport(new Location(
-					Core.plugin().getServer().getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
+					Core
+							.plugin()
+							.getServer()
+							.getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
 		} else {
 			player.teleport(new Location(
-					Core.plugin().getServer().getWorld("SiegeHub"), 51.5, 70, 5.5, 90, 20));
+					Core
+							.plugin()
+							.getServer()
+							.getWorld("SiegeHub"), 51.5, 70, 5.5, 90, 20));
 		}
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
 
 	}
 
-	public void updateInventory (Player player) {
+	public void updateInventory(Player player) {
 
-		for (int i = 0; i < player.getInventory().getSize(); i++) {
-			CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
+		for (
+				int i = 0; i < player
+				.getInventory()
+				.getSize(); i++
+		) {
+			CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player
+					                                                            .getInventory()
+					                                                            .getItem(i));
 			if (CusItem == null) continue;
-			player.getInventory().setItem(i, CusItem.getUpdatedItem(false));
+			player
+					.getInventory()
+					.setItem(i, CusItem.getUpdatedItem(false));
 		}
 	}
 
-	public void newPlayerReward (Player player) {
+	public void newPlayerReward(Player player) {
 
-		player.getInventory().clear();
-		player.getInventory().addItem(new BeginnerTwig(50).getUpdatedItem(false));
-		player.getInventory().addItem(new BeginnerClub(50).getUpdatedItem(false));
-		player.getInventory().addItem(new BeginnerScrapyardBow(50).getUpdatedItem(false));
-		player.getInventory().addItem(new BeginnerLivingTwig(50).getUpdatedItem(false));
-		ItemStack food = new Drumstick(0).getUpdatedItem(false).asQuantity(10);
-		player.getInventory().addItem(food);
+		player
+				.getInventory()
+				.clear();
+		player
+				.getInventory()
+				.addItem(new BeginnerTwig(50).getUpdatedItem(false));
+		player
+				.getInventory()
+				.addItem(new BeginnerClub(50).getUpdatedItem(false));
+		player
+				.getInventory()
+				.addItem(new BeginnerScrapyardBow(50).getUpdatedItem(false));
+		player
+				.getInventory()
+				.addItem(new BeginnerLivingTwig(50).getUpdatedItem(false));
+		ItemStack food = new Drumstick(0)
+				.getUpdatedItem(false)
+				.asQuantity(10);
+		player
+				.getInventory()
+				.addItem(food);
 		VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
 		VaultHook.econ.depositPlayer(player, 400.0);
 	}

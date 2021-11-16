@@ -13,13 +13,13 @@ public class WebstoreRanks extends WebstorePackage {
 	String arg2 = "rank"; //rank
 	String arg3 = "warrior"; //rank type
 
-	public WebstoreRanks (String arg2, String arg3) {
+	public WebstoreRanks(String arg2, String arg3) {
 
 		this.arg2 = arg2;
 		this.arg3 = arg3;
 	}
 
-	public WebstoreRanks (String[] args) {
+	public WebstoreRanks(String[] args) {
 
 		super(args);
 		try {
@@ -30,7 +30,7 @@ public class WebstoreRanks extends WebstorePackage {
 	}
 
 	@Override
-	public void setArgs (String[] args) {
+	public void setArgs(String[] args) {
 
 		try {
 			this.arg2 = args[0];
@@ -41,7 +41,7 @@ public class WebstoreRanks extends WebstorePackage {
 	}
 
 	@Override
-	public void completePurchase (UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
+	public void completePurchase(UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
 		Player player = Bukkit.getPlayer(uuid);
 		if (player == null) return;
 
@@ -49,7 +49,8 @@ public class WebstoreRanks extends WebstorePackage {
 
 		//send a message that they purchased a rank
 		Bukkit.broadcast(Utils.lore(""));
-		Bukkit.broadcast(Utils.lore("  <aqua>" + player.getName() + " has bought <yellow>" + arg3 + " rank!"));
+		Bukkit.broadcast(Utils.lore(
+				"  <aqua>" + player.getName() + " has bought <yellow>" + arg3 + " rank!"));
 		Bukkit.broadcast(Utils.lore("  <aqua>https://store.siegerpg.net/"));
 		Bukkit.broadcast(Utils.lore(""));
 	}

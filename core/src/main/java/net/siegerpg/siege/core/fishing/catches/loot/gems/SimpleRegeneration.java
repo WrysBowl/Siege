@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.
 
 public class SimpleRegeneration extends Fish {
 
-	public SimpleRegeneration () {
+	public SimpleRegeneration() {
 
 		super(50, 0.9, 14, 16,
 		      new SimpleRegenerationGem(0).getUpdatedItem(false)

@@ -13,14 +13,15 @@ import org.jetbrains.annotations.NotNull;
 public class GetBooster implements CommandExecutor {
 
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (sender instanceof Player) {
 			sender.sendMessage(Utils.lore("<red>Only console can use this command."));
 			return false;
 		}
 		if (args.length == 0) {
-			sender.sendMessage(Utils.lore("<red>You did not fill in the proper arguments /getBooster player amount multiplier seconds EXP/GOLD."));
+			sender.sendMessage(Utils.lore(
+					"<red>You did not fill in the proper arguments /getBooster player amount multiplier seconds EXP/GOLD."));
 			return false;
 		}
 		Player targetPlayer = Bukkit.getPlayer(args[0]);
@@ -42,10 +43,13 @@ public class GetBooster implements CommandExecutor {
 			sender.sendMessage(Utils.lore("<red>This player is null."));
 			return false;
 		}
-		ItemStack item = new WebstoreBoosters("booster", booster, multiplier, seconds, amount).getBoosterItem();
+		ItemStack item = new WebstoreBoosters(
+				"booster", booster, multiplier, seconds, amount).getBoosterItem();
 		Utils.giveItem(targetPlayer, item);
 		Bukkit.broadcastMessage(Utils.tacc(""));
-		Bukkit.broadcastMessage(Utils.tacc("  &b" + targetPlayer.getName() + " has received &e" + amount + " &a" + ((multiplier * 100) - 100.0) + "x &e" + booster + " booster(s)!"));
+		Bukkit.broadcastMessage(Utils.tacc(
+				"  &b" + targetPlayer.getName() + " has received &e" + amount + " &a" +
+				((multiplier * 100) - 100.0) + "x &e" + booster + " booster(s)!"));
 		Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
 		Bukkit.broadcastMessage(Utils.tacc(""));
 		return true;

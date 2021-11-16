@@ -12,28 +12,36 @@ import java.util.ArrayList;
 
 public class GoldReward implements Listener {
 
-	public void giveGold () {
+	public void giveGold() {
 
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
-			if (Bukkit.getOnlinePlayers().isEmpty()) return;
-			Levels.INSTANCE.getExpLevel(
-					new ArrayList<Player>(Bukkit.getOnlinePlayers()),
-					uuidPairHashMap -> {
-						uuidPairHashMap.forEach((uuid, shortIntegerPair) ->
-						                        {
-							                        Player p = Bukkit.getPlayer(uuid);
-							                        if (p == null) return;
-							                        int level = shortIntegerPair.getFirst();
-							                        int gold = (int) Math.sqrt((level * 75));
-							                        GoldExpListener.giveGold(p, gold);
-							                        p.sendMessage(Utils.parse(""));
-							                        p.sendMessage(Utils.parse("  <yellow>You received " + gold + " gold for existing!"));
-							                        p.sendMessage(Utils.parse(""));
-						                        });
-						return null;
-					}
-			                           );
-		}, 72000, 72000);
+		Bukkit
+				.getServer()
+				.getScheduler()
+				.scheduleSyncRepeatingTask(Core.plugin(), () -> {
+					if (Bukkit
+							.getOnlinePlayers()
+							.isEmpty()) return;
+					Levels.INSTANCE.getExpLevel(
+							new ArrayList< Player >(Bukkit.getOnlinePlayers()),
+							uuidPairHashMap -> {
+								uuidPairHashMap.forEach((uuid, shortIntegerPair) ->
+								                        {
+									                        Player p = Bukkit.getPlayer(uuid);
+									                        if (p == null) return;
+									                        int level = shortIntegerPair.getFirst();
+									                        int gold = (int) Math.sqrt(
+											                        (level * 75));
+									                        GoldExpListener.giveGold(p, gold);
+									                        p.sendMessage(Utils.parse(""));
+									                        p.sendMessage(Utils.parse(
+											                        "  <yellow>You received " +
+											                        gold + " gold for existing!"));
+									                        p.sendMessage(Utils.parse(""));
+								                        });
+								return null;
+							}
+					                           );
+				}, 72000, 72000);
 	}
 
 }

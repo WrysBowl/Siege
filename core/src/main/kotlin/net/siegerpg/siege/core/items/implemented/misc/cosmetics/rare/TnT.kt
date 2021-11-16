@@ -6,19 +6,19 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class TnT() : Cosmetic(
-	name = "TnT",
-	customModelData = 1,
-	description = listOf(""),
-	material = Material.TNT,
+		name = "TnT",
+		customModelData = 1,
+		description = listOf(""),
+		material = Material.TNT,
                       ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 80
 		this.rarity = Rarity.RARE
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

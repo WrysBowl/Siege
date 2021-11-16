@@ -20,22 +20,30 @@ import java.util.Map;
 
 public class CrateOpen implements Listener {
 
-	public static ArrayList<Location> currentlyUsedChests = new ArrayList<>();
+	public static ArrayList< Location > currentlyUsedChests = new ArrayList<>();
 
 	@EventHandler
-	public void onCrateOpen (PlayerInteractEvent e) {
+	public void onCrateOpen(PlayerInteractEvent e) {
 
 		//Make sure clicked block is trapped chest in the Hub
-		if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
+		if (!e
+				.getAction()
+				.equals(Action.RIGHT_CLICK_BLOCK)) return;
 		Block targetedBlock = e.getClickedBlock();
 		if (targetedBlock == null) return;
 		if (targetedBlock.getType() != Material.ENDER_CHEST) return;
-		if (!targetedBlock.getLocation().getWorld().getName().equals("Hub")) return;
+		if (!targetedBlock
+				.getLocation()
+				.getWorld()
+				.getName()
+				.equals("Hub")) return;
 		if (currentlyUsedChests.contains(targetedBlock.getLocation())) return;
 
 		//Make sure item is a cosmetic key
 		Player player = e.getPlayer();
-		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
+		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(player
+				                                                         .getInventory()
+				                                                         .getItemInMainHand());
 		if (item == null) return;
 		if (!(item instanceof CustomKey)) return;
 		if (!keyCheck(item)) return;
@@ -55,26 +63,32 @@ public class CrateOpen implements Listener {
 		Bukkit.broadcast(Utils.parse("<green>" + player.getName() + " is opening a crate!"));
 
 		new Animation().openCrate(
-				targetedBlock.getLocation().toCenterLocation(),
+				targetedBlock
+						.getLocation()
+						.toCenterLocation(),
 				dropTable.dropTable.keySet(),
 				reward, player
 		                         );
-		player.getInventory().removeItem(item.getItem().asOne());
+		player
+				.getInventory()
+				.removeItem(item
+						            .getItem()
+						            .asOne());
 
 	}
 
-	private boolean keyCheck (CustomItem item) {
+	private boolean keyCheck(CustomItem item) {
 
-		for (Map.Entry<CustomKey, CosmeticDropTable> entry : CosmeticCrate.crates.entrySet()) {
+		for (Map.Entry< CustomKey, CosmeticDropTable > entry : CosmeticCrate.crates.entrySet()) {
 			CustomKey key = entry.getKey();
 			if (item.getClass() == key.getClass()) return true;
 		}
 		return false;
 	}
 
-	private CosmeticDropTable getItem (CustomItem item) {
+	private CosmeticDropTable getItem(CustomItem item) {
 
-		for (Map.Entry<CustomKey, CosmeticDropTable> entry : CosmeticCrate.crates.entrySet()) {
+		for (Map.Entry< CustomKey, CosmeticDropTable > entry : CosmeticCrate.crates.entrySet()) {
 			CustomKey key = entry.getKey();
 			if (item.getClass() == key.getClass()) return entry.getValue();
 		}

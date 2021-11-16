@@ -8,12 +8,12 @@ import java.sql.ResultSet
 
 object Skills {
 
-	fun getSkills(player: OfflinePlayer): String {
+	fun getSkills(player : OfflinePlayer) : String {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt = connection.prepareStatement(
-				"SELECT skills FROM skillsData WHERE uuid=?",
-				ResultSet.TYPE_SCROLL_SENSITIVE
+					"SELECT skills FROM skillsData WHERE uuid=?",
+					ResultSet.TYPE_SCROLL_SENSITIVE
 			                                      )
 			stmt.setString(1, player.uniqueId.toString())
 			val query = stmt.executeQuery();
@@ -23,7 +23,7 @@ object Skills {
 		}
 	}
 
-	fun setSkills(player: OfflinePlayer, skills: String) {
+	fun setSkills(player : OfflinePlayer, skills : String) {
 		Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			val connection = DatabaseManager.getConnection()
 			connection!!.use {

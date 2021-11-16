@@ -22,11 +22,11 @@ import java.util.UUID;
 public class WebstoreListener implements Listener {
 
 	@EventHandler
-	public void onJoin (PlayerJoinEvent e) {
+	public void onJoin(PlayerJoinEvent e) {
 
 		new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 			@Override
-			public void run () {
+			public void run() {
 
 				String[] commands = WebstoreDB.INSTANCE.blockingGetStoreCommands(e.getPlayer());
 				if (commands == null) return;
@@ -36,9 +36,11 @@ public class WebstoreListener implements Listener {
 
 				new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 					@Override
-					public void run () {
+					public void run() {
 
-						UUID playerId = e.getPlayer().getUniqueId();
+						UUID playerId = e
+								.getPlayer()
+								.getUniqueId();
 
 						for (String string : commands) {
 							WebstoreUtils.packageDelivery(string.split(" "), playerId);
@@ -52,13 +54,22 @@ public class WebstoreListener implements Listener {
 	}
 
 	@EventHandler
-	public void onEXPBoosterRedeem (PlayerInteractEvent e) {
+	public void onEXPBoosterRedeem(PlayerInteractEvent e) {
 
-		if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+		if (e
+				    .getAction()
+				    .equals(Action.RIGHT_CLICK_AIR) || e
+				    .getAction()
+				    .equals(Action.RIGHT_CLICK_BLOCK)) {
 			Player player = e.getPlayer();
-			ItemStack item = player.getInventory().getItemInMainHand();
+			ItemStack item = player
+					.getInventory()
+					.getItemInMainHand();
 			if (item.getType() != Material.PAPER) return;
-			if (item.getItemMeta().getDisplayName().contains("EXP Booster")) {
+			if (item
+					.getItemMeta()
+					.getDisplayName()
+					.contains("EXP Booster")) {
 
 				//Check if the exp multiplier is already above 1, if it is then prevent the next steps by returning
 				if (GlobalMultipliers.expMultiplier > 1.0) {
@@ -74,18 +85,28 @@ public class WebstoreListener implements Listener {
 
 				//Send a message to the player saying their booster has been activated
 				player.sendMessage(Utils.lore("<green>Your EXP multiplier has been redeemed."));
-				Bukkit.getOnlinePlayers().forEach(p -> {
-					p.sendTitle(Utils.tacc("&d&l" + ((multi * 100) - 100.0) + "% EXP BOOST"), Utils.tacc("&7" + Math.floor(sec / 3600.0) + " hour(s) from &b" + player.getName()), 10, 100, 10);
-					Scoreboard.updateScoreboard(p);
-				});
+				Bukkit
+						.getOnlinePlayers()
+						.forEach(p -> {
+							p.sendTitle(
+									Utils.tacc("&d&l" + ((multi * 100) - 100.0) + "% EXP BOOST"),
+									Utils.tacc(
+											"&7" + Math.floor(sec / 3600.0) + " hour(s) from &b" +
+											player.getName()), 10, 100, 10
+							           );
+							Scoreboard.updateScoreboard(p);
+						});
 
 				//Take away global booster from player's hand
-				player.getInventory().getItemInMainHand().setAmount(item.getAmount() - 1);
+				player
+						.getInventory()
+						.getItemInMainHand()
+						.setAmount(item.getAmount() - 1);
 
 				//After the duration of the described webstore booster's item is over, return exp multiplier back to 1.0
 				new BukkitRunnable() {
 					@Override
-					public void run () {
+					public void run() {
 
 						GlobalMultipliers.expMultiplier = 1.0;
 						for (Player p : Bukkit.getOnlinePlayers()) {
@@ -98,13 +119,22 @@ public class WebstoreListener implements Listener {
 	}
 
 	@EventHandler
-	public void onGoldBoosterRedeem (PlayerInteractEvent e) {
+	public void onGoldBoosterRedeem(PlayerInteractEvent e) {
 
-		if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+		if (e
+				    .getAction()
+				    .equals(Action.RIGHT_CLICK_AIR) || e
+				    .getAction()
+				    .equals(Action.RIGHT_CLICK_BLOCK)) {
 			Player player = e.getPlayer();
-			ItemStack item = player.getInventory().getItemInMainHand();
+			ItemStack item = player
+					.getInventory()
+					.getItemInMainHand();
 			if (item.getType() != Material.PAPER) return;
-			if (item.getItemMeta().getDisplayName().contains("Gold Booster")) {
+			if (item
+					.getItemMeta()
+					.getDisplayName()
+					.contains("Gold Booster")) {
 
 				//Check if the gold multiplier is already above 1, if it is then prevent the next steps by returning
 				if (GlobalMultipliers.goldMultiplier > 1.0) {
@@ -120,18 +150,28 @@ public class WebstoreListener implements Listener {
 
 				//Send a message to the player saying their booster has been activated
 				player.sendMessage(Utils.lore("<green>Your Gold multiplier has been redeemed."));
-				Bukkit.getOnlinePlayers().forEach(p -> {
-					p.sendTitle(Utils.tacc("&e&l" + ((multi * 100) - 100.0) + "% Gold BOOST"), Utils.tacc("&7" + Math.floor(sec / 3600.0) + " hour(s) from &b" + player.getName()), 10, 60, 10);
-					Scoreboard.updateScoreboard(p);
-				});
+				Bukkit
+						.getOnlinePlayers()
+						.forEach(p -> {
+							p.sendTitle(
+									Utils.tacc("&e&l" + ((multi * 100) - 100.0) + "% Gold BOOST"),
+									Utils.tacc(
+											"&7" + Math.floor(sec / 3600.0) + " hour(s) from &b" +
+											player.getName()), 10, 60, 10
+							           );
+							Scoreboard.updateScoreboard(p);
+						});
 
 				//Take away global booster from player's hand
-				player.getInventory().getItemInMainHand().setAmount(item.getAmount() - 1);
+				player
+						.getInventory()
+						.getItemInMainHand()
+						.setAmount(item.getAmount() - 1);
 
 				//After the duration of the described webstore booster's item is over, return gold multiplier back to 1.0
 				new BukkitRunnable() {
 					@Override
-					public void run () {
+					public void run() {
 
 						GlobalMultipliers.goldMultiplier = 1.0;
 						for (Player p : Bukkit.getOnlinePlayers()) {

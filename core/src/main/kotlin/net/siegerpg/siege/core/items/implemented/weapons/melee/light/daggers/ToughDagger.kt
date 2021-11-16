@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ToughDagger() : CustomMeleeWeapon(
-	name = "Tough Dagger",
-	customModelData = 110006,
-	description = listOf("The prison shank's big brother"),
-	levelRequirement = 20,
-	material = Material.WOODEN_SWORD,
-	baseStats = CustomItemUtils.statMap(strength = 20.0, toughness = 40.0),
+		name = "Tough Dagger",
+		customModelData = 110006,
+		description = listOf("The prison shank's big brother"),
+		levelRequirement = 20,
+		material = Material.WOODEN_SWORD,
+		baseStats = CustomItemUtils.statMap(strength = 20.0, toughness = 40.0),
 
-	attackSpeed = 1.7
+		attackSpeed = 1.7
                                        ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		this.deserialize()
 	}

@@ -15,11 +15,15 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Blob extends MobDropTable {
 
-	public Blob () {
+	public Blob() {
 
 		super("Blob", 7, 10, 7, 10, new Reward[] {
-				new Reward(Slime.Companion.tier(1).getUpdatedItem(false), 100.0),
-				new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 10.0),
+				new Reward(Slime.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 100.0),
+				new Reward(Slime.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 10.0),
 
 				new Reward(new StickyStick(Utils.randRarity()).getUpdatedItem(false), 2.0),
 				new Reward(new LuckyStickyStick(Utils.randRarity()).getUpdatedItem(false), 1.0),

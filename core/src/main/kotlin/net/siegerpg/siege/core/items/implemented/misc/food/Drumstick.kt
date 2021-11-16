@@ -6,21 +6,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Drumstick() : CustomFood(
-	name = "Drumstick",
-	customModelData = 330001,
-	description = listOf("Siege fried chicken"),
-	levelRequirement = 0,
-	material = Material.COOKED_CHICKEN,
-	health = 20.0,
+		name = "Drumstick",
+		customModelData = 330001,
+		description = listOf("Siege fried chicken"),
+		levelRequirement = 0,
+		material = Material.COOKED_CHICKEN,
+		health = 20.0,
                               ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 0
 		this.rarity = Rarity.COMMON
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		this.deserialize()
 	}

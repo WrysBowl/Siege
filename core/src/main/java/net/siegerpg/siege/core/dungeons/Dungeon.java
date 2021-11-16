@@ -17,7 +17,7 @@ public class Dungeon {
 	public Entity boss = null;
 	public int currentKeyCount = 0;
 
-	public Dungeon (String bossName, int maxKeyCount, CustomKey reqKey, Location spawnLoc, String world, int bossSpawnDelay) {
+	public Dungeon(String bossName, int maxKeyCount, CustomKey reqKey, Location spawnLoc, String world, int bossSpawnDelay) {
 
 		this.bossName = bossName;
 		this.maxKeyCount = maxKeyCount;
@@ -27,7 +27,7 @@ public class Dungeon {
 		this.bossSpawnDelay = bossSpawnDelay;
 	}
 
-	public void spawning () {
+	public void spawning() {
 		//placeholder
 	}
 

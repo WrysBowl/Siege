@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class SpiritDropTable extends CosmeticDropTable {
 
-	public SpiritDropTable () {
+	public SpiritDropTable() {
 
 		dropTable = new HashMap<>() {
 			{

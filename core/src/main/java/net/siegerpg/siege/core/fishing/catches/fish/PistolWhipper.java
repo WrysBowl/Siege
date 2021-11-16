@@ -4,11 +4,11 @@ import net.siegerpg.siege.core.fishing.catches.Fish;
 
 public class PistolWhipper extends Fish {
 
-	public PistolWhipper () {
+	public PistolWhipper() {
 
 		super(
 				"Pistol Whipper",
-				new double[] {20, 30},
+				new double[] { 20, 30 },
 				24,
 				0.5,
 				28,

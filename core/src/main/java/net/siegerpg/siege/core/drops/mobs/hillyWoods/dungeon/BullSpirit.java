@@ -24,13 +24,25 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class BullSpirit extends MobDropTable {
 
-	public BullSpirit () {
+	public BullSpirit() {
 
 		super("BullSpirit", 2500, 2700, 2500, 2700, new Reward[] {
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
-				new Reward(Leather.Companion.tier(3).getUpdatedItem(false).asQuantity(2), 25.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
-				new Reward(Bone.Companion.tier(3).getUpdatedItem(false).asQuantity(2), 25.0),
+				new Reward(Leather.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 100.0),
+				new Reward(Leather.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 25.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 100.0),
+				new Reward(Bone.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 25.0),
 
 				new Reward(new LeatherHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new LeatherChestplate(100).getUpdatedItem(false), 5.5),
@@ -54,7 +66,9 @@ public class BullSpirit extends MobDropTable {
 				new Reward(new DoubleBladedAxe(100).getUpdatedItem(false), 7.5),
 				new Reward(new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 25.5),
 
-				new Reward(new Beef(100).getUpdatedItem(false).asQuantity(16), 40.0),
+				new Reward(new Beef(100)
+						           .getUpdatedItem(false)
+						           .asQuantity(16), 40.0),
 
 				new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 5.0),

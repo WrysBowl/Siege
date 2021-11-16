@@ -8,65 +8,65 @@ import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.entity.Player
 import java.util.*
 
-class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
+class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 
-	private val invited: ArrayList<Player> = ArrayList()
-	private val members: HashSet<OfflinePlayer> = HashSet()
+	private val invited : ArrayList<Player> = ArrayList()
+	private val members : HashSet<OfflinePlayer> = HashSet()
 
-	constructor(leader: OfflinePlayer) : this(UUID.randomUUID(), leader)
+	constructor(leader : OfflinePlayer) : this(UUID.randomUUID(), leader)
 
 	init {
 		save()
 		parties[partyID] = this
 	}
 
-	fun getLeader(): OfflinePlayer {
+	fun getLeader() : OfflinePlayer {
 		return leader
 	}
 
-	fun addMember(member: OfflinePlayer) {
+	fun addMember(member : OfflinePlayer) {
 		members.add(member)
 		save()
 	}
 
-	fun removeMember(member: OfflinePlayer) {
+	fun removeMember(member : OfflinePlayer) {
 		members.remove(member)
 		save()
 	}
 
-	fun getMembers(): HashSet<OfflinePlayer> {
-		val guys: HashSet<OfflinePlayer> = HashSet()
+	fun getMembers() : HashSet<OfflinePlayer> {
+		val guys : HashSet<OfflinePlayer> = HashSet()
 		guys.addAll(this.members)
 		guys.add(getLeader())
 		return guys
 	}
 
-	fun isMember(player: OfflinePlayer): Boolean {
+	fun isMember(player : OfflinePlayer) : Boolean {
 		return members.contains(player) || getLeader() == player
 	}
 
-	fun addInvite(invited: Player) {
+	fun addInvite(invited : Player) {
 		this.invited.add(invited)
 		Bukkit.getScheduler().runTaskLaterAsynchronously(
-			Core.plugin(),
-			Runnable {
-				send(Utils.tacc("&7The party invite to &6${invited.displayName()} &r&7expired!"))
-				val leader = if (getLeader().isOnline) getLeader() as Player else null
-				val leaderName = leader?.displayName() ?: getLeader().name
-				invited.sendMessage(Utils.tacc("&7Party invite from &6${leaderName} &r&7has expired!"))
-			}, (2 * 60 * 20).toLong()
+				Core.plugin(),
+				Runnable {
+					send(Utils.tacc("&7The party invite to &6${invited.displayName()} &r&7expired!"))
+					val leader = if (getLeader().isOnline) getLeader() as Player else null
+					val leaderName = leader?.displayName() ?: getLeader().name
+					invited.sendMessage(Utils.tacc("&7Party invite from &6${leaderName} &r&7has expired!"))
+				}, (2 * 60 * 20).toLong()
 		                                                )
 	}
 
-	fun removeInvite(invited: Player) {
+	fun removeInvite(invited : Player) {
 		this.invited.remove(invited)
 	}
 
-	fun isInvited(invited: Player): Boolean {
+	fun isInvited(invited : Player) : Boolean {
 		return this.invited.contains(invited)
 	}
 
-	fun setLeader(newLeader: Player) {
+	fun setLeader(newLeader : Player) {
 		if (!isMember(newLeader)) return
 		addMember(leader)
 		removeMember(newLeader)
@@ -86,7 +86,7 @@ class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
 		Core.plugin().partyConfig.setParty(partyID, null)
 	}
 
-	fun leave(player: Player) {
+	fun leave(player : Player) {
 		if (getLeader() == player) disband()
 		else if (isMember(player)) {
 			send(Utils.tacc("&6${player.displayName()} &r&7has left the party!"))
@@ -94,7 +94,7 @@ class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
 		}
 	}
 
-	fun send(message: String) {
+	fun send(message : String) {
 		for (member in members) {
 			if (member.isOnline) {
 				val onlineMember = member as Player
@@ -103,7 +103,7 @@ class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
 		}
 	}
 
-	fun kick(player: Player) {
+	fun kick(player : Player) {
 		if (player == getLeader()) {
 			send(Utils.tacc("&6${leader.name} &r&7can't be kicked from the party!"))
 			return
@@ -115,9 +115,9 @@ class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
 
 	companion object {
 
-		val parties: HashMap<UUID, Party> = HashMap()
+		val parties : HashMap<UUID, Party> = HashMap()
 
-		fun deserialize(uuid: UUID, section: ConfigurationSection): Party {
+		fun deserialize(uuid : UUID, section : ConfigurationSection) : Party {
 			val leaderID = UUID.fromString(section.getString("leader"))
 			val leader = Bukkit.getOfflinePlayer(leaderID)
 			val party = Party(uuid, leader)
@@ -129,7 +129,7 @@ class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
 			return party
 		}
 
-		fun getPlayerParty(player: OfflinePlayer): Party? {
+		fun getPlayerParty(player : OfflinePlayer) : Party? {
 			for ((_, party) in parties) {
 				if (party.isMember(player))
 					return party
@@ -137,7 +137,7 @@ class Party(public val partyID: UUID, private var leader: OfflinePlayer) {
 			return null
 		}
 
-		fun getPlayerInvites(player: Player): HashMap<UUID, Party> {
+		fun getPlayerInvites(player : Player) : HashMap<UUID, Party> {
 			val partiesWithInvites = hashMapOf<UUID, Party>()
 			for ((partyID, party) in parties) {
 				if (party.isInvited(player)) {

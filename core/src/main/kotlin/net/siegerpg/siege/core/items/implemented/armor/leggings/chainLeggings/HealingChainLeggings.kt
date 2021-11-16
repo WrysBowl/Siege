@@ -7,21 +7,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealingChainLeggings() : CustomLeggings(
-	name = "Healing Chain Leggings",
-	customModelData = 1,
-	description = listOf("Flimsy legs"),
-	levelRequirement = 30,
-	material = Material.CHAINMAIL_LEGGINGS,
-	baseStats = CustomItemUtils.statMap(health = 40.0, regeneration = 20.0),
+		name = "Healing Chain Leggings",
+		customModelData = 1,
+		description = listOf("Flimsy legs"),
+		levelRequirement = 30,
+		material = Material.CHAINMAIL_LEGGINGS,
+		baseStats = CustomItemUtils.statMap(health = 40.0, regeneration = 20.0),
                                              ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

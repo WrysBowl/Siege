@@ -13,18 +13,27 @@ import java.util.logging.Level;
 public class FishEvent implements Listener {
 
 	@EventHandler
-	public void onEnable (PluginEnableEvent e) {
+	public void onEnable(PluginEnableEvent e) {
 
-		Core.plugin().getLogger().log(Level.INFO, "Baited registering baits");
+		Core
+				.plugin()
+				.getLogger()
+				.log(Level.INFO, "Baited registering baits");
 	}
 
 	@EventHandler
-	public void onFish (PlayerFishEvent e) {
+	public void onFish(PlayerFishEvent e) {
 
-		if (FishingTask.runningTasks.containsKey(e.getPlayer().getUniqueId())) {
-			FishingTask task = FishingTask.runningTasks.get(e.getPlayer().getUniqueId());
+		if (FishingTask.runningTasks.containsKey(e
+				                                         .getPlayer()
+				                                         .getUniqueId())) {
+			FishingTask task = FishingTask.runningTasks.get(e
+					                                                .getPlayer()
+					                                                .getUniqueId());
 			CustomFishEvent ce = task.getEvent();
-			if (ce.getFishingData().isFishing()) {
+			if (ce
+					.getFishingData()
+					.isFishing()) {
 				e.setCancelled(true);
 			}
 		}

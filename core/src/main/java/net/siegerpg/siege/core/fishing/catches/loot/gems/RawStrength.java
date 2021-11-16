@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawS
 
 public class RawStrength extends Fish {
 
-	public RawStrength () {
+	public RawStrength() {
 
 		super(30, 0.6, 20, 10,
 		      new RawStrengthGem(0).getUpdatedItem(false)

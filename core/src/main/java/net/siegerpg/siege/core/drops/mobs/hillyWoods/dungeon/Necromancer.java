@@ -26,15 +26,33 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Necromancer extends MobDropTable {
 
-	public Necromancer () {
+	public Necromancer() {
 
 		super("Necromancer", 15000, 20000, 17500, 20000, new Reward[] {
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 40.0),
-				new Reward(Leather.Companion.tier(3).getUpdatedItem(false).asQuantity(2), 6.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),
-				new Reward(Bone.Companion.tier(3).getUpdatedItem(false).asQuantity(2), 6.0),
-				new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),
-				new Reward(MetalScrap.Companion.tier(3).getUpdatedItem(false).asQuantity(2), 6.0),
+				new Reward(Leather.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 40.0),
+				new Reward(Leather.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 6.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 60.0),
+				new Reward(Bone.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 6.0),
+				new Reward(MetalScrap.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 60.0),
+				new Reward(MetalScrap.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 6.0),
 
 				new Reward(new ChainHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new ChainChestplate(100).getUpdatedItem(false), 5.5),

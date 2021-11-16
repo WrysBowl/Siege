@@ -12,13 +12,15 @@ import java.util.HashMap;
 
 public class CriticalShot extends Skill {
 
-	public CriticalShot () {
+	public CriticalShot() {
 
 		this.ID = 1;
 		this.SKILL = this;
 
 		this.DISPLAY_ITEM = new ItemStack(Material.TIPPED_ARROW);
-		this.DISPLAY_ITEM.getItemMeta().displayName(Utils.lore("<blue>Critical Shot"));
+		this.DISPLAY_ITEM
+				.getItemMeta()
+				.displayName(Utils.lore("<blue>Critical Shot"));
 		this.DISPLAY_ITEM.lore(new ArrayList<>() {{
 			add(Utils.lore(""));
 			add(Utils.lore(""));
@@ -38,7 +40,7 @@ public class CriticalShot extends Skill {
 		}};
 	}
 
-	public void skillAction (PlayerInteractEvent e) {
+	public void skillAction(PlayerInteractEvent e) {
 
 	}
 

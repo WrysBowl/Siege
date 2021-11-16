@@ -15,19 +15,19 @@ import java.util.HashMap;
 
 public class SkillUtils {
 
-	static ArrayList<Skill> warriorSkills = new ArrayList<>() {
+	static ArrayList< Skill > warriorSkills = new ArrayList<>() {
 		{
 		}
 	};
-	static ArrayList<Skill> mageSkills = new ArrayList<>() {
+	static ArrayList< Skill > mageSkills = new ArrayList<>() {
 		{
 		}
 	};
-	static ArrayList<Skill> heavySkills = new ArrayList<>() {
+	static ArrayList< Skill > heavySkills = new ArrayList<>() {
 		{
 		}
 	};
-	static HashMap<Character, ArrayList<Skill>> skillTypes = new HashMap<>() {
+	static HashMap< Character, ArrayList< Skill > > skillTypes = new HashMap<>() {
 		{
 			put('A', ArcherSkills.skills);
 			put('W', warriorSkills);
@@ -37,11 +37,11 @@ public class SkillUtils {
 	};
 
 	// Takes string code i.e. "A_1_4_7" and returns hashmap of skills
-	public static HashMap<Integer, Skill> decode (String code) {
+	public static HashMap< Integer, Skill > decode(String code) {
 
-		HashMap<Integer, Skill> map = new HashMap<Integer, Skill>(); // HashMap to return
+		HashMap< Integer, Skill > map = new HashMap< Integer, Skill >(); // HashMap to return
 		if (code.equals("")) return map;
-		ArrayList<Skill> arr = skillTypes.get(code.charAt(0));
+		ArrayList< Skill > arr = skillTypes.get(code.charAt(0));
 		int indexNum = 0; // ID of skill
 		// Start loop at index 2 and iterate by twos across the string
 		for (int i = 2; i < code.length(); i += 2) {
@@ -52,9 +52,9 @@ public class SkillUtils {
 	}
 
 	// Takes hashmap from decode and returns total stat change from skills in the form of a hashmap
-	public static HashMap<StatTypes, Double> getStats (HashMap<Integer, Skill> decoded) {
+	public static HashMap< StatTypes, Double > getStats(HashMap< Integer, Skill > decoded) {
 
-		HashMap<StatTypes, Double> map; // HashMap to return
+		HashMap< StatTypes, Double > map; // HashMap to return
 		// Init with zero values
 		map = new HashMap<>() {
 			{
@@ -68,30 +68,34 @@ public class SkillUtils {
 			}
 		};
 		// Loop across every entry in the decoded map
-		for (HashMap.Entry<Integer, Skill> entry : decoded.entrySet()) {
+		for (HashMap.Entry< Integer, Skill > entry : decoded.entrySet()) {
 			Skill value = entry.getValue(); // get value of each entry
-			HashMap<StatTypes, Double> skillStats = value.STATS; // get the stat changes for each entry
+			HashMap< StatTypes, Double > skillStats = value.STATS; // get the stat changes for each entry
 			// Loop across every stat change in an entry
 			assert skillStats != null;
-			for (HashMap.Entry<StatTypes, Double> vEntry : skillStats.entrySet()) {
-				map.replace(vEntry.getKey(), value.STATS.get(vEntry.getKey()) + vEntry.getValue()); // Update return hashmap
+			for (HashMap.Entry< StatTypes, Double > vEntry : skillStats.entrySet()) {
+				map.replace(
+						vEntry.getKey(),
+						value.STATS.get(vEntry.getKey()) + vEntry.getValue()
+				           ); // Update return hashmap
 			}
 		}
 		return map;
 	}
 
-	public static boolean isSkillOrb (ItemStack item) {
+	public static boolean isSkillOrb(ItemStack item) {
 
 		NBTContainer nbt = NBTItem.convertItemtoNBT(item);
 		return nbt.getBoolean("skillItem");
 	}
 
-	public static boolean canActivate (Player player, Skill skill) {
+	public static boolean canActivate(Player player, Skill skill) {
 
 		if (PlayerData.playerCurrentMana.get(player) < skill.getManaCost()) {
 			player.sendTitle(
 					skill.DISPLAY_ITEM.getI18NDisplayName(),
-					Utils.tacc("&c&l" + PlayerData.playerCurrentMana.get(player) + "&4/" + skill.getManaCost() + " &emana needed"),
+					Utils.tacc("&c&l" + PlayerData.playerCurrentMana.get(player) + "&4/" +
+					           skill.getManaCost() + " &emana needed"),
 					10, 30, 10
 			                );
 			return false;
@@ -99,14 +103,19 @@ public class SkillUtils {
 		return true;
 	}
 
-	public static void sendTriggers (Player player, ArrayList<Action> triggers) {
+	public static void sendTriggers(Player player, ArrayList< Action > triggers) {
 
 		if (triggers.size() == 1) {
 			player.sendTitle(null, Utils.tacc("&e&l" + triggers.get(0) + "  &c&l?  ?"), 10, 30, 10);
 		} else if (triggers.size() == 2) {
-			player.sendTitle(null, Utils.tacc("&e&l" + triggers.get(0) + "  " + triggers.get(1) + "  &c&l?"), 10, 30, 10);
+			player.sendTitle(
+					null, Utils.tacc("&e&l" + triggers.get(0) + "  " + triggers.get(1) + "  &c&l?"),
+					10, 30, 10
+			                );
 		} else {
-			player.sendTitle(null, Utils.tacc("&e&l" + triggers.get(0) + "  " + triggers.get(1) + "  " + triggers.get(2)), 10, 30, 10);
+			player.sendTitle(
+					null, Utils.tacc("&e&l" + triggers.get(0) + "  " + triggers.get(1) + "  " +
+					                 triggers.get(2)), 10, 30, 10);
 		}
 	}
 

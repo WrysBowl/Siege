@@ -16,13 +16,21 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class AngryBull extends MobDropTable {
 
-	public AngryBull () {
+	public AngryBull() {
 
 		super("AngryBull", 17, 20, 26, 29, new Reward[] {
-				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 80.0),
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 8.0),
-				new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 50.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 5.0),
+				new Reward(Leather.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 80.0),
+				new Reward(Leather.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 8.0),
+				new Reward(Bone.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 50.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 5.0),
 
 				new Reward(new LeatherHelmet(50).getUpdatedItem(false), 1.5),
 				new Reward(new LeatherChestplate(50).getUpdatedItem(false), 1.5),

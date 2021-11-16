@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class LegendaryDropTable extends CosmeticDropTable {
 
-	public LegendaryDropTable () {
+	public LegendaryDropTable() {
 
 		dropTable = new HashMap<>() {
 			{

@@ -12,11 +12,15 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Goo extends MobDropTable {
 
-	public Goo () {
+	public Goo() {
 
 		super("Goo", 3, 5, 4, 7, new Reward[] {
-				new Reward(Slime.Companion.tier(1).getUpdatedItem(false), 100.0),
-				new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 10.0),
+				new Reward(Slime.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 100.0),
+				new Reward(Slime.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 10.0),
 
 				new Reward(new SlimyHelmet(30).getUpdatedItem(false), 2.0),
 				new Reward(new SlimyChestplate(30).getUpdatedItem(false), 2.0),

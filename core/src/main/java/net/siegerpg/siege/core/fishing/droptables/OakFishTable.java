@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class OakFishTable extends FishDropTable {
 
-	public OakFishTable () {
+	public OakFishTable() {
 
 		this.fishDropTable = new HashMap<>() {
 			{

@@ -7,21 +7,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealingHardenedLeatherBoots() : CustomBoots(
-	name = "Healing Hardened Leather Boots",
-	customModelData = 1,
-	description = listOf("Bootleg spurs!"),
-	levelRequirement = 17,
-	material = Material.LEATHER_BOOTS,
-	baseStats = CustomItemUtils.statMap(toughness = 20.0, regeneration = 4.0),
+		name = "Healing Hardened Leather Boots",
+		customModelData = 1,
+		description = listOf("Bootleg spurs!"),
+		levelRequirement = 17,
+		material = Material.LEATHER_BOOTS,
+		baseStats = CustomItemUtils.statMap(toughness = 20.0, regeneration = 4.0),
                                                  ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

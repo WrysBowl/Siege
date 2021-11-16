@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class BenButcher implements Listener {
 
-	ArrayList<Triple<Integer, ItemStack, Integer>> foodItems = new ArrayList<>() {
+	ArrayList< Triple< Integer, ItemStack, Integer > > foodItems = new ArrayList<>() {
 		{
 			add(new Triple<>(0, new Drumstick(0).getUpdatedItem(false), 5));
 			add(new Triple<>(1, new Drumstick(50).getUpdatedItem(false), 15));
@@ -38,7 +38,7 @@ public class BenButcher implements Listener {
 		}
 	};
 
-	ArrayList<ItemStack> foodItemCost = new ArrayList<>() {
+	ArrayList< ItemStack > foodItemCost = new ArrayList<>() {
 		{
 			add(Utils.setCost(new Drumstick(0).getUpdatedItem(false), 5));
 			add(Utils.setCost(new Drumstick(50).getUpdatedItem(false), 15));
@@ -53,44 +53,68 @@ public class BenButcher implements Listener {
 	};
 
 	@EventHandler
-	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+	public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
 
-		if (e.getRightClicked().getName().contains("Ben") && e.getRightClicked().getName().contains("6")) {
+		if (e
+				    .getRightClicked()
+				    .getName()
+				    .contains("Ben") && e
+				    .getRightClicked()
+				    .getName()
+				    .contains("6")) {
 			Inventory shop = getShopMenu(e.getPlayer());
-			e.getPlayer().openInventory(shop);
+			e
+					.getPlayer()
+					.openInventory(shop);
 		}
 	}
 
 	@EventHandler
-	public void guiClick (InventoryClickEvent e) {
+	public void guiClick(InventoryClickEvent e) {
 
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
-		if (e.getWhoClicked().getMetadata("BenButcher").size() > 0 &&
-		    Objects.equals(e.getWhoClicked().getMetadata("BenButcher").get(0).value(), e.getInventory())) {
+		if (e
+				    .getWhoClicked()
+				    .getMetadata("BenButcher")
+				    .size() > 0 &&
+		    Objects.equals(e
+				                   .getWhoClicked()
+				                   .getMetadata("BenButcher")
+				                   .get(0)
+				                   .value(), e.getInventory())) {
 			clickShop(e);
 			e.setCancelled(true);
 		}
 	}
 
-	private void clickShop (InventoryClickEvent e) {
+	private void clickShop(InventoryClickEvent e) {
 
 		Player player = (Player) e.getWhoClicked();
 		if (e.getCurrentItem() == null) {
 			return;
 		}
-		int cost = foodItems.get(e.getSlot()).component3();
-		ItemStack item = foodItems.get(e.getSlot()).component2();
+		int cost = foodItems
+				.get(e.getSlot())
+				.component3();
+		ItemStack item = foodItems
+				.get(e.getSlot())
+				.component2();
 		if (VaultHook.econ.getBalance(player) < cost) {
 			player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
 			return;
 		}
-		if (e.getView().getBottomInventory().firstEmpty() == -1) {
+		if (e
+				    .getView()
+				    .getBottomInventory()
+				    .firstEmpty() == -1) {
 			player.sendMessage(Utils.tacc("&cYour inventory is full!"));
 			return;
 		}
-		player.getInventory().addItem(item);
+		player
+				.getInventory()
+				.addItem(item);
 		VaultHook.econ.withdrawPlayer(player, cost);
 		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 		Scoreboard.updateScoreboard(player);
@@ -98,7 +122,7 @@ public class BenButcher implements Listener {
 	}
 
 
-	private Inventory getShopMenu (Player player) {
+	private Inventory getShopMenu(Player player) {
 
 		Inventory gui = Bukkit.createInventory(null, 9, "Ben the Butcher");
 

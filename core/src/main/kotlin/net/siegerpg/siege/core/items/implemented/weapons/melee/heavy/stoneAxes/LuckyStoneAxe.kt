@@ -7,22 +7,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class LuckyStoneAxe() : CustomMeleeWeapon(
-	name = "Lucky Stone Axe",
-	customModelData = 130004,
-	description = listOf("Commonly used for chopping trees"),
-	levelRequirement = 15,
-	material = Material.WOODEN_AXE,
-	baseStats = CustomItemUtils.statMap(strength = 26.0, luck = 5.0),
-	attackSpeed = 0.8
+		name = "Lucky Stone Axe",
+		customModelData = 130004,
+		description = listOf("Commonly used for chopping trees"),
+		levelRequirement = 15,
+		material = Material.WOODEN_AXE,
+		baseStats = CustomItemUtils.statMap(strength = 26.0, luck = 5.0),
+		attackSpeed = 0.8
                                          ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

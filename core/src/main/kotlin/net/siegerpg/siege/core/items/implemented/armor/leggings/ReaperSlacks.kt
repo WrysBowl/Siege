@@ -8,27 +8,27 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ReaperSlacks() : CustomLeggings(
-	name = "Reaper Slacks",
-	customModelData = 1,
-	description = listOf("Hide your", "unholy presence"),
-	levelRequirement = 40,
-	material = Material.LEATHER_LEGGINGS,
-	baseStats = CustomItemUtils.statMap(
-		health = 60.0,
-		strength = 20.0,
-		luck = -25.0,
-		toughness = -70.0
-	                                   ),
-	leatherColor = Color.BLACK
+		name = "Reaper Slacks",
+		customModelData = 1,
+		description = listOf("Hide your", "unholy presence"),
+		levelRequirement = 40,
+		material = Material.LEATHER_LEGGINGS,
+		baseStats = CustomItemUtils.statMap(
+				health = 60.0,
+				strength = 20.0,
+				luck = -25.0,
+				toughness = -70.0
+		                                   ),
+		leatherColor = Color.BLACK
                                      ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

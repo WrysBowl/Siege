@@ -20,11 +20,11 @@ class DamageIndicator : Listener {
 
 	companion object {
 
-		fun isCritical(damager: LivingEntity): Boolean {
+		fun isCritical(damager : LivingEntity) : Boolean {
 			return (
 					damager.fallDistance > 0.0f &&
 					!damager.isInWater &&
-					damager.activePotionEffects.none { o: PotionEffect -> o.type == PotionEffectType.BLINDNESS } &&
+					damager.activePotionEffects.none { o : PotionEffect -> o.type == PotionEffectType.BLINDNESS } &&
 					damager.vehicle == null && (if (damager is Player) (
 							!damager.isSprinting &&
 							damager.attackCooldown > 0.9f) else true)
@@ -33,7 +33,7 @@ class DamageIndicator : Listener {
 
 	}
 
-	fun getIndicatorText(damage: Double, critical: Boolean): String {
+	fun getIndicatorText(damage : Double, critical : Boolean) : String {
 		var formatter = when (damage) {
 			in 0.0..200.0      -> if (critical) DecimalFormat("&7-0.#&4❤") else DecimalFormat(
 					"&c-0.#&4❤"
@@ -65,7 +65,7 @@ class DamageIndicator : Listener {
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-	public fun onDamage(evt: EntityDamageByEntityEvent) {
+	public fun onDamage(evt : EntityDamageByEntityEvent) {
 		if (evt.entity !is LivingEntity) return;
 
 		val entity = evt.entity as LivingEntity

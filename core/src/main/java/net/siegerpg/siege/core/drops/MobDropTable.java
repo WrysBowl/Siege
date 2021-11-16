@@ -15,7 +15,7 @@ public class MobDropTable implements Listener {
 	int expMax;
 	Reward[] rewards;
 
-	public MobDropTable (String mobName, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
+	public MobDropTable(String mobName, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
 
 		this.mobName = mobName;
 		this.goldMin = goldMin;
@@ -25,14 +25,14 @@ public class MobDropTable implements Listener {
 		this.rewards = rewards;
 	}
 
-	public String getMobName () {
+	public String getMobName() {
 
 		return mobName;
 	}
 
-	public ArrayList<ItemStack> calculateRewards (double luckChance) {
+	public ArrayList< ItemStack > calculateRewards(double luckChance) {
 
-		ArrayList<ItemStack> itemList = new ArrayList<>();
+		ArrayList< ItemStack > itemList = new ArrayList<>();
 		for (Reward reward : rewards) {
 			if (Utils.randTest(reward.chance)) {
 				if ((Math.random() * 100) <= luckChance) {
@@ -44,7 +44,7 @@ public class MobDropTable implements Listener {
 		return itemList;
 	}
 
-	public Integer getGold (boolean rand) {
+	public Integer getGold(boolean rand) {
 
 		if (rand) {
 			return (int) Math.floor(Math.random() * (goldMax - goldMin + 1) + goldMin);
@@ -52,7 +52,7 @@ public class MobDropTable implements Listener {
 		return goldMax;
 	}
 
-	public Integer getExp (boolean rand) {
+	public Integer getExp(boolean rand) {
 
 		if (rand) {
 			return (int) Math.floor(Math.random() * (expMax - expMin + 1) + expMin);
@@ -60,7 +60,7 @@ public class MobDropTable implements Listener {
 		return expMax;
 	}
 
-	public Reward[] getRewards () {
+	public Reward[] getRewards() {
 
 		return rewards;
 	}

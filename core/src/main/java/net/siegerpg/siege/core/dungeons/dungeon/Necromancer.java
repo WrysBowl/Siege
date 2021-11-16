@@ -12,7 +12,7 @@ import org.bukkit.Sound;
 
 public class Necromancer extends Dungeon {
 
-	public Necromancer () {
+	public Necromancer() {
 
 		super("Necromancer", 10,
 		      new NecromancerKey(0),
@@ -22,15 +22,23 @@ public class Necromancer extends Dungeon {
 	}
 
 	@Override
-	public void spawning () {
+	public void spawning() {
 
-		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -265, 82, 285);
+		Location loc = new Location(Core
+				                            .plugin()
+				                            .getServer()
+				                            .getWorld("Hilly_Woods"), -265, 82, 285);
 		new Helix().createHelix(loc, Particle.SMOKE_LARGE);
 
-		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-			new Waves().createWaves(loc);
-			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
-		}, 80);
+		Bukkit
+				.getServer()
+				.getScheduler()
+				.runTaskLater(Core.plugin(), () -> {
+					new Waves().createWaves(loc);
+					loc
+							.getWorld()
+							.playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
+				}, 80);
 	}
 
 }

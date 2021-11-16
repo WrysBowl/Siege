@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class SuperiorDropTable extends CosmeticDropTable {
 
-	public SuperiorDropTable () {
+	public SuperiorDropTable() {
 
 		dropTable = new HashMap<>() {
 			{

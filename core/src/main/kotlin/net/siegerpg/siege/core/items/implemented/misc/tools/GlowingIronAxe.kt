@@ -8,25 +8,25 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
 class GlowingIronAxe() : CustomTool(
-	name = "Glowing Iron Axe",
-	customModelData = 430008,
-	description = listOf("Enchanted industrial tools"),
-	levelRequirement = 27,
-	material = Material.IRON_AXE,
-	baseStats = CustomItemUtils.statMap(),
+		name = "Glowing Iron Axe",
+		customModelData = 430008,
+		description = listOf("Enchanted industrial tools"),
+		levelRequirement = 27,
+		material = Material.IRON_AXE,
+		baseStats = CustomItemUtils.statMap(),
 
-	enchantments = hashMapOf(
-		Enchantment.DIG_SPEED to 1
-	                        )
+		enchantments = hashMapOf(
+				Enchantment.DIG_SPEED to 1
+		                        )
                                    ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

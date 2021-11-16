@@ -7,24 +7,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class StoneShovel() : CustomTool(
-	name = "Stone Shovel",
-	customModelData = 420005,
-	description = listOf("Pebble annihilator"),
-	levelRequirement = 15,
-	material = Material.STONE_SHOVEL,
-	baseStats = CustomItemUtils.statMap(),
+		name = "Stone Shovel",
+		customModelData = 420005,
+		description = listOf("Pebble annihilator"),
+		levelRequirement = 15,
+		material = Material.STONE_SHOVEL,
+		baseStats = CustomItemUtils.statMap(),
 
-	enchantments = hashMapOf(
-	                        )
+		enchantments = hashMapOf(
+		                        )
                                 ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

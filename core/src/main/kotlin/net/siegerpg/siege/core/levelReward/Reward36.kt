@@ -9,15 +9,15 @@ import org.bukkit.entity.Player
 
 class Reward36 : LevelReward {
 
-	override fun giveReward(player: Player) {
-		val level: Short = 37
+	override fun giveReward(player : Player) {
+		val level : Short = 37
 		player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 5.0f)
 		player.sendTitle(
-			Utils.tacc("&5Level Up!"),
-			Utils.tacc("&d${level - 1} &7\u21E2 &5$level"),
-			10,
-			80,
-			10
+				Utils.tacc("&5Level Up!"),
+				Utils.tacc("&d${level - 1} &7\u21E2 &5$level"),
+				10,
+				80,
+				10
 		                )
 		player.sendMessage(Utils.lore(""))
 		player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
@@ -31,6 +31,9 @@ class Reward36 : LevelReward {
 
 		GoldExpListener.giveGold(player, 4000)
 		Utils.giveItem(player, Crystal.tier(2).getUpdatedItem(false).asQuantity(16))
-		Utils.giveItem(player, CorruptCrystal.tier(2).getUpdatedItem(false).asQuantity(16))
+		Utils.giveItem(
+				player,
+				CorruptCrystal.tier(2).getUpdatedItem(false).asQuantity(16)
+		              )
 	}
 }

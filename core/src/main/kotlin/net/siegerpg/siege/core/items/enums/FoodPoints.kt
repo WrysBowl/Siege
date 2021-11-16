@@ -6,7 +6,7 @@ object FoodPoints {
 
 	//Hello this is Wrys. I copied this from here: https://bukkit.org/threads/get-nutrition-values-of-food.186559/
 	// I am too lazy to make these into and enum
-	fun getHungerRegenValue(mat: Material): Int {
+	fun getHungerRegenValue(mat : Material) : Int {
 		if (mat === Material.POTATO || mat === Material.BEETROOT || mat === Material.KELP || mat === Material.TROPICAL_FISH) return 1
 		if (mat === Material.CAKE || mat === Material.COOKIE || mat === Material.MUTTON || mat === Material.MELON || mat === Material.POISONOUS_POTATO || mat === Material.CHICKEN || mat === Material.COD || mat === Material.SPIDER_EYE || mat === Material.COOKIE || mat === Material.MELON_SLICE || mat === Material.POISONOUS_POTATO || mat === Material.SWEET_BERRIES) return 2
 		if (mat === Material.PORKCHOP || mat === Material.BEEF || mat === Material.SALMON || mat === Material.CARROT || mat === Material.RABBIT) return 3
@@ -18,7 +18,7 @@ object FoodPoints {
 		return 0
 	}
 
-	fun getSaturationValue(mat: Material): Double {
+	fun getSaturationValue(mat : Material) : Double {
 		if (mat === Material.CAKE || mat === Material.COOKIE) return 0.4
 		if (mat === Material.POTATO) return 0.6
 		if (mat === Material.ROTTEN_FLESH) return 0.8

@@ -18,12 +18,20 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class ForestSpider extends MobDropTable {
 
-	public ForestSpider () {
+	public ForestSpider() {
 
 		super("ForestSpider", 27, 30, 36, 39, new Reward[] {
-				new Reward(Vine.Companion.tier(1).getUpdatedItem(false).asQuantity(3), 100.0),
-				new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(2), 10.0),
-				new Reward(Vine.Companion.tier(3).getUpdatedItem(false), 1.0),
+				new Reward(Vine.Companion
+						           .tier(1)
+						           .getUpdatedItem(false)
+						           .asQuantity(3), 100.0),
+				new Reward(Vine.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 10.0),
+				new Reward(Vine.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 1.0),
 
 				new Reward(new SewerShooter(50).getUpdatedItem(false), 1.0),
 				new Reward(new LuckySewerShooter(50).getUpdatedItem(false), 1.0),

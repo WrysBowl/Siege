@@ -8,22 +8,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class LuckyStrawChestplate() : CustomChestplate(
-	name = "Lucky Straw Chestplate",
-	customModelData = 1,
-	description = listOf("Scarecrow..."),
-	levelRequirement = 4,
-	material = Material.LEATHER_CHESTPLATE,
-	baseStats = CustomItemUtils.statMap(health = 6.0, toughness = 10.0, luck = 5.0),
-	leatherColor = Color.YELLOW
+		name = "Lucky Straw Chestplate",
+		customModelData = 1,
+		description = listOf("Scarecrow..."),
+		levelRequirement = 4,
+		material = Material.LEATHER_CHESTPLATE,
+		baseStats = CustomItemUtils.statMap(health = 6.0, toughness = 10.0, luck = 5.0),
+		leatherColor = Color.YELLOW
                                                ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

@@ -6,26 +6,26 @@ public class WebstorePackage {
 
 	private String[] args;
 
-	public WebstorePackage (String[] args) {
+	public WebstorePackage(String[] args) {
 
 		this.args = args;
 	}
 
-	public WebstorePackage () {
+	public WebstorePackage() {
 
 	}
 
-	public String[] getArgs () {
+	public String[] getArgs() {
 
 		return args;
 	}
 
-	public void setArgs (String[] args) {
+	public void setArgs(String[] args) {
 
 		this.args = args;
 	}
 
-	public void completePurchase (UUID uuid) {
+	public void completePurchase(UUID uuid) {
 
 	}
 

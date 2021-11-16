@@ -7,7 +7,7 @@ public class CosmeticItem {
 	public int weight;
 	public CustomCosmetic cosmetic;
 
-	public void win () {
+	public void win() {
 
 	} //method to run when player wins this item
 

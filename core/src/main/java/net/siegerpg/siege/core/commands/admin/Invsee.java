@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public class Invsee implements CommandExecutor {
 
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
@@ -28,10 +28,14 @@ public class Invsee implements CommandExecutor {
 				player.sendMessage(Utils.parse("<red>Type in the player you want to invsee"));
 				return false;
 			}
-			Bukkit.getLogger().info(Utils.tacc("<red>You do not have the permission to use this command"));
+			Bukkit
+					.getLogger()
+					.info(Utils.tacc("<red>You do not have the permission to use this command"));
 			return false;
 		}
-		Bukkit.getLogger().info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
+		Bukkit
+				.getLogger()
+				.info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
 		return false;
 	}
 

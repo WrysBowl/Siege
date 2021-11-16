@@ -9,15 +9,27 @@ import org.bukkit.Material;
 
 public class POPPY extends BlockDropTable {
 
-	public POPPY () {
+	public POPPY() {
 
 		super(100, Material.POPPY, 0, 0, 0, 0, new Reward[] {
-				new Reward(Seed.Companion.tier(1).getUpdatedItem(false), 25.0),
-				new Reward(PlantMatter.Companion.tier(1).getUpdatedItem(false), 25.0),
-				new Reward(Stick.Companion.tier(1).getUpdatedItem(false), 25.0),
-				new Reward(Seed.Companion.tier(2).getUpdatedItem(false), 2.5),
-				new Reward(PlantMatter.Companion.tier(2).getUpdatedItem(false), 2.5),
-				new Reward(Stick.Companion.tier(2).getUpdatedItem(false), 2.5)
+				new Reward(Seed.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 25.0),
+				new Reward(PlantMatter.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 25.0),
+				new Reward(Stick.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 25.0),
+				new Reward(Seed.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 2.5),
+				new Reward(PlantMatter.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 2.5),
+				new Reward(Stick.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 2.5)
 		});
 	}
 

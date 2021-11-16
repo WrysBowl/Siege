@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class BoneAxe() : CustomTool(
-	name = "Bone Axe",
-	customModelData = 430003,
-	description = listOf("Caveman tools"),
-	levelRequirement = 8,
-	material = Material.WOODEN_AXE,
-	baseStats = CustomItemUtils.statMap(luck = 10.0),
-	enchantments = hashMapOf(
-	                        )
+		name = "Bone Axe",
+		customModelData = 430003,
+		description = listOf("Caveman tools"),
+		levelRequirement = 8,
+		material = Material.WOODEN_AXE,
+		baseStats = CustomItemUtils.statMap(luck = 10.0),
+		enchantments = hashMapOf(
+		                        )
                             ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

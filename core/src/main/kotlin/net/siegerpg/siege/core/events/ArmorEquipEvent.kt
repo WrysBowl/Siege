@@ -20,18 +20,18 @@ import org.bukkit.inventory.ItemStack
  * @param newArmorPiece The ItemStack of the armor added.
  */
 class ArmorEquipEvent(
-	player: Player?,
-	/**
-	 * Gets the method used to either equip or unequip an armor piece.
-	 */
-	val method: EquipMethod, val type: ArmorType?,
-	/**
-	 * Returns the last equipped armor piece, could be a piece of armor, or null
-	 */
-	var oldArmorPiece: ItemStack?,
-	var newArmorPiece: ItemStack?
+		player : Player?,
+		/**
+		 * Gets the method used to either equip or unequip an armor piece.
+		 */
+		val method : EquipMethod, val type : ArmorType?,
+		/**
+		 * Returns the last equipped armor piece, could be a piece of armor, or null
+		 */
+		var oldArmorPiece : ItemStack?,
+		var newArmorPiece : ItemStack?
                      ) :
-	PlayerEvent(player!!), Cancellable {
+		PlayerEvent(player!!), Cancellable {
 
 	private var cancel = false
 
@@ -41,7 +41,7 @@ class ArmorEquipEvent(
 	 *
 	 * @return A list of handlers handling this event.
 	 */
-	override fun getHandlers(): HandlerList {
+	override fun getHandlers() : HandlerList {
 		return handlerList
 	}
 
@@ -50,7 +50,7 @@ class ArmorEquipEvent(
 	 *
 	 * @param cancel If this event should be cancelled.
 	 */
-	override fun setCancelled(cancel: Boolean) {
+	override fun setCancelled(cancel : Boolean) {
 		this.cancel = cancel
 	}
 
@@ -59,7 +59,7 @@ class ArmorEquipEvent(
 	 *
 	 * @return If this event is cancelled
 	 */
-	override fun isCancelled(): Boolean {
+	override fun isCancelled() : Boolean {
 		return cancel
 	}
 

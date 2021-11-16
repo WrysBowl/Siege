@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.Cracked
 
 public class CrackedTough extends Fish {
 
-	public CrackedTough () {
+	public CrackedTough() {
 
 		super(40, 0.7, 18, 12,
 		      new CrackedToughGem(0).getUpdatedItem(false)

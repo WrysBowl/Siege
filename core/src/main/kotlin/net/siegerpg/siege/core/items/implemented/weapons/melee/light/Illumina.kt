@@ -7,27 +7,27 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Illumina() : CustomMeleeWeapon(
-	name = "Illumina",
-	customModelData = 110014,
-	description = listOf("It's an extremely", "sharp needle"),
-	levelRequirement = 60,
-	material = Material.WOODEN_SWORD,
-	baseStats = CustomItemUtils.statMap(
-		strength = 80.0,
-		luck = 20.0,
-		regeneration = -20.0,
-		toughness = -50.0
-	                                   ),
-	attackSpeed = 1.4
+		name = "Illumina",
+		customModelData = 110014,
+		description = listOf("It's an extremely", "sharp needle"),
+		levelRequirement = 60,
+		material = Material.WOODEN_SWORD,
+		baseStats = CustomItemUtils.statMap(
+				strength = 80.0,
+				luck = 20.0,
+				regeneration = -20.0,
+				toughness = -50.0
+		                                   ),
+		attackSpeed = 1.4
                                     ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

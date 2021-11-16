@@ -6,19 +6,19 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class SlimeBlock() : Cosmetic(
-	name = "Slime Block",
-	customModelData = 1,
-	description = listOf(""),
-	material = Material.SLIME_BLOCK,
+		name = "Slime Block",
+		customModelData = 1,
+		description = listOf(""),
+		material = Material.SLIME_BLOCK,
                              ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 50
 		this.rarity = Rarity.UNCOMMON
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

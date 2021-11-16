@@ -8,25 +8,25 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
 class GlowingTitaniumShovel() : CustomTool(
-	name = "Glowing Titanium Shovel",
-	customModelData = 420014,
-	description = listOf("Enchanted titanium"),
-	levelRequirement = 49,
-	material = Material.IRON_SHOVEL,
-	baseStats = CustomItemUtils.statMap(luck = 10.0),
+		name = "Glowing Titanium Shovel",
+		customModelData = 420014,
+		description = listOf("Enchanted titanium"),
+		levelRequirement = 49,
+		material = Material.IRON_SHOVEL,
+		baseStats = CustomItemUtils.statMap(luck = 10.0),
 
-	enchantments = hashMapOf(
-		Enchantment.DIG_SPEED to 3
-	                        )
+		enchantments = hashMapOf(
+				Enchantment.DIG_SPEED to 3
+		                        )
                                           ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

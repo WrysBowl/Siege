@@ -9,26 +9,26 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
 class Beef() : CustomFood(
-	name = "Beef",
-	customModelData = 330007,
-	description = listOf("Tastes better than raw pork..."),
-	levelRequirement = 0,
-	material = Material.BEEF,
-	health = 80.0
+		name = "Beef",
+		customModelData = 330007,
+		description = listOf("Tastes better than raw pork..."),
+		levelRequirement = 0,
+		material = Material.BEEF,
+		health = 80.0
                          ) {
 
-	override fun speciality(player: Player) {
+	override fun speciality(player : Player) {
 		val realPotion = PotionEffect(PotionEffectType.SATURATION, 200, 1)
 		player.addPotionEffect(realPotion)
 	}
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 50
 		this.rarity = Rarity.UNCOMMON
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

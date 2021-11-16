@@ -12,7 +12,7 @@ import org.bukkit.Sound;
 
 public class SlimeSpirit extends Dungeon {
 
-	public SlimeSpirit () {
+	public SlimeSpirit() {
 
 		super("SlimeSpirit", 8,
 		      new SlimeSpiritKey(0),
@@ -22,15 +22,23 @@ public class SlimeSpirit extends Dungeon {
 	}
 
 	@Override
-	public void spawning () {
+	public void spawning() {
 
-		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), -169, 70, 24);
+		Location loc = new Location(Core
+				                            .plugin()
+				                            .getServer()
+				                            .getWorld("Hilly_Woods"), -169, 70, 24);
 		new Helix().createHelix(loc, Particle.SLIME);
 
-		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-			new Waves().createWaves(loc);
-			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
-		}, 80);
+		Bukkit
+				.getServer()
+				.getScheduler()
+				.runTaskLater(Core.plugin(), () -> {
+					new Waves().createWaves(loc);
+					loc
+							.getWorld()
+							.playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
+				}, 80);
 	}
 
 }

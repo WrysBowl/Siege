@@ -15,11 +15,15 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Molter extends MobDropTable {
 
-	public Molter () {
+	public Molter() {
 
 		super("Molter", 26, 29, 31, 34, new Reward[] {
-				new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 100.0),
-				new Reward(Magma.Companion.tier(3).getUpdatedItem(false), 10.0),
+				new Reward(Magma.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 100.0),
+				new Reward(Magma.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 10.0),
 
 				new Reward(new MagmaHelmet(80).getUpdatedItem(false), 2.5),
 				new Reward(new MagmaChestplate(80).getUpdatedItem(false), 2.5),

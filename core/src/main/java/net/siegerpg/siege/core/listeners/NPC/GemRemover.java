@@ -31,7 +31,7 @@ import java.util.Objects;
 
 public class GemRemover implements Listener {
 
-	private final ArrayList<Integer> clickable = new ArrayList<Integer>() {
+	private final ArrayList< Integer > clickable = new ArrayList< Integer >() {
 		{
 			add(12);
 			add(14);
@@ -44,11 +44,16 @@ public class GemRemover implements Listener {
 	private ItemStack item = null;
 
 	@EventHandler
-	public void onRightClickOnEntity (PlayerInteractEvent e) {
+	public void onRightClickOnEntity(PlayerInteractEvent e) {
 
-		if (e.getClickedBlock() != null && e.getClickedBlock().getType().equals(Material.CHIPPED_ANVIL)) {
+		if (e.getClickedBlock() != null && e
+				.getClickedBlock()
+				.getType()
+				.equals(Material.CHIPPED_ANVIL)) {
 			Player player = e.getPlayer();
-			ItemStack item = player.getInventory().getItemInMainHand();
+			ItemStack item = player
+					.getInventory()
+					.getItemInMainHand();
 			CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 			if (customItem instanceof CustomEquipment) {
 				if (((CustomEquipment) customItem).hasGem()) {
@@ -64,13 +69,20 @@ public class GemRemover implements Listener {
 	}
 
 	@EventHandler
-	public void guiClick (InventoryClickEvent e) {
+	public void guiClick(InventoryClickEvent e) {
 
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
-		if (e.getWhoClicked().getMetadata("GemRemover").size() > 0 &&
-		    Objects.equals(e.getWhoClicked().getMetadata("GemRemover").get(0).value(), e.getInventory())) {
+		if (e
+				    .getWhoClicked()
+				    .getMetadata("GemRemover")
+				    .size() > 0 &&
+		    Objects.equals(e
+				                   .getWhoClicked()
+				                   .getMetadata("GemRemover")
+				                   .get(0)
+				                   .value(), e.getInventory())) {
 			clickMenu(e);
 			e.setCancelled(true);
 		}
@@ -84,7 +96,7 @@ public class GemRemover implements Listener {
 	 * Display the gem in the GUI
 	 */
 
-	private void clickMenu (InventoryClickEvent e) {
+	private void clickMenu(InventoryClickEvent e) {
 
 		if (!clickable.contains(e.getSlot()))
 			return; //if clicked slot is not contained in the array list
@@ -104,7 +116,8 @@ public class GemRemover implements Listener {
 		if (slot == 14) {
 			double bal = VaultHook.econ.getBalance(player);
 			if (bal < 100) {
-				player.sendMessage(Utils.tacc("&cYou do not have enough money to increase the chance!"));
+				player.sendMessage(
+						Utils.tacc("&cYou do not have enough money to increase the chance!"));
 				return;
 			} else {
 				this.cost += 100;
@@ -115,7 +128,9 @@ public class GemRemover implements Listener {
 
 		//if player wants to accept the trade
 		if (slot == 31) {
-			if (this.item == null || this.item.getType().isAir()) return;
+			if (this.item == null || this.item
+					.getType()
+					.isAir()) return;
 			CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
 			if (customItem == null) return;
 			if (!(customItem instanceof CustomEquipment)) return;
@@ -123,7 +138,12 @@ public class GemRemover implements Listener {
 			if (Utils.randTest((double) this.chance)) {
 				//How to get the stat gem from the item? Check in the stat gem listener class
 				//StatGem(itemOnCursor.statType, itemOnCursor.statAmount
-				StatGem gem = new StatGem(((CustomEquipment) customItem).getStatGem().getType(), ((CustomEquipment) customItem).getStatGem().getAmount());
+				StatGem gem = new StatGem(
+						((CustomEquipment) customItem)
+								.getStatGem()
+								.getType(), ((CustomEquipment) customItem)
+								.getStatGem()
+								.getAmount());
 				ItemStack item = new ItemStack(Material.AIR);
 				switch (gem.getType()) {
 					case HEALTH:
@@ -202,29 +222,35 @@ public class GemRemover implements Listener {
 						}
 				}
 
-				player.getInventory().addItem(item);
+				player
+						.getInventory()
+						.addItem(item);
 				player.sendMessage(Utils.tacc("&aSuccessfully removed gem!"));
-				player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+				player.playSound(
+						player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 
 			} else {
 				player.sendMessage(Utils.tacc("&cThe gem broke upon trying to remove it!"));
 				player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_BREAK, 1.0f, 1.0f);
 			}
 			player.closeInventory();
-			VaultHook.econ.withdrawPlayer(player, this.cost); //takes the cost they put in from the player
+			VaultHook.econ.withdrawPlayer(
+					player, this.cost); //takes the cost they put in from the player
 			Scoreboard.updateScoreboard(player);
 			CustomEquipment equipmentItem = (CustomEquipment) customItem;
 			equipmentItem.removeStatGem(); //removes stat gem
 			equipmentItem.updateMeta(false);
 			Utils.giveItem(player, equipmentItem.getItem());
-			player.getInventory().remove(this.item.asOne());
+			player
+					.getInventory()
+					.remove(this.item.asOne());
 			player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1.0f, 1.0f);
 			this.cost = 0;
 			this.item = null;
 		}
 	}
 
-	private double calcChance () {
+	private double calcChance() {
 
 		if (this.item == null) return 0;
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
@@ -237,7 +263,7 @@ public class GemRemover implements Listener {
 	}
 
 
-	private Inventory getMenu (Player player) {
+	private Inventory getMenu(Player player) {
 
 		Inventory gui = Bukkit.createInventory(null, 45, "Gem Remover");
 
@@ -246,7 +272,9 @@ public class GemRemover implements Listener {
 		for (int i = 0; i < gui.getSize(); i++) {
 			gui.setItem(i, filler);
 		}
-		ItemStack item = player.getInventory().getItemInMainHand();
+		ItemStack item = player
+				.getInventory()
+				.getItemInMainHand();
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 		if (customItem instanceof CustomEquipment) {
 			if (((CustomEquipment) customItem).hasGem()) {

@@ -8,22 +8,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealthyBoneChestplate() : CustomChestplate(
-	name = "Healthy Bone Chestplate",
-	customModelData = 1,
-	description = listOf("Spare ribs"),
-	levelRequirement = 24,
-	material = Material.LEATHER_CHESTPLATE,
-	baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 40.0),
-	leatherColor = Color.GRAY
+		name = "Healthy Bone Chestplate",
+		customModelData = 1,
+		description = listOf("Spare ribs"),
+		levelRequirement = 24,
+		material = Material.LEATHER_CHESTPLATE,
+		baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 40.0),
+		leatherColor = Color.GRAY
                                                 ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

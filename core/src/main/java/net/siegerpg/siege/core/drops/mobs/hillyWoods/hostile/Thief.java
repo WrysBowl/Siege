@@ -15,13 +15,21 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Thief extends MobDropTable {
 
-	public Thief () {
+	public Thief() {
 
 		super("Thief", 25, 28, 35, 38, new Reward[] {
-				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 30.0),
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 3.0),
-				new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 40.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 4.0),
+				new Reward(Leather.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 30.0),
+				new Reward(Leather.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 3.0),
+				new Reward(Bone.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 40.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 4.0),
 
 				new Reward(new LeatherHelmet(30).getUpdatedItem(false), 4.5),
 				new Reward(new LeatherChestplate(30).getUpdatedItem(false), 4.5),

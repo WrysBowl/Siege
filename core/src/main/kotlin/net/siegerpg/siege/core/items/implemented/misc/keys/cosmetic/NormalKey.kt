@@ -6,19 +6,19 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class NormalKey() : CustomKey(
-	name = "Normal Key",
-	customModelData = 630006,
-	description = listOf("High chance of a", "common cosmetic"),
-	material = Material.TRIPWIRE_HOOK,
+		name = "Normal Key",
+		customModelData = 630006,
+		description = listOf("High chance of a", "common cosmetic"),
+		material = Material.TRIPWIRE_HOOK,
                              ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 0
 		this.rarity = Rarity.COMMON
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

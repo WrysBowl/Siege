@@ -17,13 +17,21 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class InfectedDigger extends MobDropTable {
 
-	public InfectedDigger () {
+	public InfectedDigger() {
 
 		super("InfectedDigger", 50, 54, 54, 57, new Reward[] {
-				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 25.0),
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
-				new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 80.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 8.0),
+				new Reward(Leather.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 25.0),
+				new Reward(Leather.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 5.0),
+				new Reward(Bone.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 80.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 8.0),
 
 				new Reward(new BoneHelmet(50).getUpdatedItem(false), 2.5),
 				new Reward(new BoneChestplate(50).getUpdatedItem(false), 2.5),

@@ -1,6 +1,6 @@
 package net.siegerpg.siege.core.items.enums
 
-enum class Rarity(val id: String, val color: String) {
+enum class Rarity(val id : String, val color : String) {
 	COMMON("Common", "<gray>"),
 	UNCOMMON("Uncommon", "<green>"),
 	RARE("Rare", "<blue>"),
@@ -11,14 +11,14 @@ enum class Rarity(val id: String, val color: String) {
 
 	companion object {
 
-		fun getFromId(id: String?): Rarity {
+		fun getFromId(id : String?) : Rarity {
 			for (rarity in values()) {
 				if (rarity.id.equals(id, ignoreCase = true)) return rarity
 			}
 			return COMMON
 		}
 
-		fun getFromInt(int: Int): Rarity {
+		fun getFromInt(int : Int) : Rarity {
 			return when (int) {
 				in 0..49    -> COMMON
 				in 50..69   -> UNCOMMON

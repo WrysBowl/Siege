@@ -4,7 +4,7 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 
 public class CommonCosmeticKey extends WebstoreKeys {
 
-	public CommonCosmeticKey () {
+	public CommonCosmeticKey() {
 
 		super("cosmetic", "common", 1, new CommonKey(0));
 	}

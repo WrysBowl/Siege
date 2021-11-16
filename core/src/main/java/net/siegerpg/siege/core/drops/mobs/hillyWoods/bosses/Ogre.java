@@ -16,13 +16,23 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Ogre extends MobDropTable {
 
-	public Ogre () {
+	public Ogre() {
 
 		super("Ogre", 250, 300, 300, 325, new Reward[] {
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 40.0),
-				new Reward(Leather.Companion.tier(3).getUpdatedItem(false), 6.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 60.0),
-				new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 6.0),
+				new Reward(Leather.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(3), 40.0),
+				new Reward(Leather.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 6.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(3), 60.0),
+				new Reward(Bone.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 6.0),
 
 				new Reward(new BoneHelmet(100).getUpdatedItem(false), 0.5),
 				new Reward(new BoneChestplate(100).getUpdatedItem(false), 0.5),

@@ -26,10 +26,10 @@ public class Fish {
 	 * moveSpeed ex: 0,5 means it moves 0,5 character for every 2 tick(1 every 4 ticks) - 0,2 = moves 0,2 characters every 0,2 ticks (1 every 10 tick)
 	 * winScore you get 1 per second in the green and the win score is the max to win
 	 * */
-	public Fish (
+	public Fish(
 			String name, double[] size, double winScore, double moveSpeed, int length,
 			double chanceToChangeDirection, int customModelData
-	            ) {
+	           ) {
 
 		this.name = name;
 		this.chanceToChangeDirection = chanceToChangeDirection;
@@ -41,10 +41,10 @@ public class Fish {
 		this.actualSize = getRandomSize();
 	}
 
-	public Fish (
+	public Fish(
 			double winScore, double moveSpeed, int length,
 			double chanceToChangeDirection, ItemStack item
-	            ) {
+	           ) {
 
 		this.chanceToChangeDirection = chanceToChangeDirection;
 		this.length = length;
@@ -53,18 +53,18 @@ public class Fish {
 		this.item = item;
 	}
 
-	public void accomplishment (Player player) {
+	public void accomplishment(Player player) {
 
 	}
 
-	public Double getRandomSize () {
+	public Double getRandomSize() {
 
 		double min = this.size[0];
 		double max = this.size[1];
 		return min + (int) (Math.random() * (max - min));
 	}
 
-	public ItemStack getItem () {
+	public ItemStack getItem() {
 
 		if (item != null) return item;
 		ItemStack item = new ItemStack(Material.COD);

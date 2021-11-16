@@ -15,27 +15,27 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
 class BeePants() : CustomLeggings(
-	name = "Bee Stinger",
-	customModelData = 1,
-	description = listOf("Sting like a bee!"),
-	levelRequirement = 12,
-	material = Material.LEATHER_LEGGINGS,
-	baseStats = CustomItemUtils.statMap(health = 20.0, strength = 5.0, mana = 2.0),
-	leatherColor = Color.YELLOW
+		name = "Bee Stinger",
+		customModelData = 1,
+		description = listOf("Sting like a bee!"),
+		levelRequirement = 12,
+		material = Material.LEATHER_LEGGINGS,
+		baseStats = CustomItemUtils.statMap(health = 20.0, strength = 5.0, mana = 2.0),
+		leatherColor = Color.YELLOW
                                  ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}
 
-	override fun onHit(e: EntityDamageEvent) {
+	override fun onHit(e : EntityDamageEvent) {
 		if (e !is EntityDamageByEntityEvent) return
 		if (e.damager !is Player) return
 		if (e.damager is Player && e.damager.world.name == "PVP") return

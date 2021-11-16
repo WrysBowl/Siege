@@ -15,7 +15,7 @@ import java.util.Map;
 public class FishCore {
 
 
-	public static ArrayList<Fish> registeredFish = new ArrayList<>() {
+	public static ArrayList< Fish > registeredFish = new ArrayList<>() {
 		{
 			add(new Bearacuda());
 			add(new BigBlueTuna());
@@ -30,25 +30,30 @@ public class FishCore {
 		}
 	};
 
-	public static Fish chooseRandomFish (Player player) {
+	public static Fish chooseRandomFish(Player player) {
 
-		ItemStack item = player.getInventory().getItemInMainHand();
+		ItemStack item = player
+				.getInventory()
+				.getItemInMainHand();
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 		FishDropTable table = new OldFishTable();
 		if (customItem instanceof CustomRod) table = ((CustomRod) customItem).getFishDropTable();
 		double totalWeight = 0;
-		for (Map.Entry<Fish, Double> entry : table.fishDropTable.entrySet()) {
+		for (Map.Entry< Fish, Double > entry : table.fishDropTable.entrySet()) {
 			totalWeight += entry.getValue();
 		}
 
 		int weight = 0;
 		double random = Math.random() * totalWeight;
-		for (Map.Entry<Fish, Double> entry : table.fishDropTable.entrySet()) {
+		for (Map.Entry< Fish, Double > entry : table.fishDropTable.entrySet()) {
 			Fish fish = entry.getKey();
 			weight += entry.getValue();
 			if (random > weight) continue; //if the random number is above the totalWeight
 			try {
-				fish = fish.getClass().getDeclaredConstructor().newInstance();
+				fish = fish
+						.getClass()
+						.getDeclaredConstructor()
+						.newInstance();
 				return fish;
 			} catch (Exception ignored) {
 				return fish;
@@ -57,7 +62,7 @@ public class FishCore {
 		return registeredFish.get(0);
 	}
 
-	public static Fish getFish (String name) {
+	public static Fish getFish(String name) {
 
 		for (Fish fish : registeredFish) {
 			if (!fish.name.equals(name)) continue;

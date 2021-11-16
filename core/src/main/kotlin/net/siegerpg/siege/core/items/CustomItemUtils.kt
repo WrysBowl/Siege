@@ -1,70 +1,70 @@
 @file:Suppress(
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused",
-	"unused"
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused",
+		"unused"
               )
 
 package net.siegerpg.siege.core.items
@@ -90,7 +90,7 @@ import java.util.*
 
 object CustomItemUtils {
 
-	fun getCustomItem(item: ItemStack?): CustomItem? {
+	fun getCustomItem(item : ItemStack?) : CustomItem? {
 		if (item == null) {
 			return null
 		}
@@ -101,15 +101,16 @@ object CustomItemUtils {
 			try {
 				val className = nbtItem.getString("itemClass")
 				//Bukkit.getLogger().info("class name is $className")
-				val clazz: Class<*> = Class.forName(className)
+				val clazz : Class<*> = Class.forName(className)
 				//Bukkit.getLogger().info("Got the class")
-				val constructor: Constructor<out Any> = clazz.getConstructor(ItemStack::class.java)
+				val constructor : Constructor<out Any> =
+						clazz.getConstructor(ItemStack::class.java)
 				//Bukkit.getLogger().info("Got the constructor")
 				val newClass = constructor.newInstance(item)
 				//Bukkit.getLogger().info("Got the instance")
 				newClass as? CustomItem
 
-			} catch (e: Exception) {
+			} catch (e : Exception) {
 				e.printStackTrace()
 				//Bukkit.getLogger().info("Failed")
 				null
@@ -120,21 +121,21 @@ object CustomItemUtils {
 
 	}
 
-	fun isCustomItemType(item: ItemStack, className: String): Boolean {
+	fun isCustomItemType(item : ItemStack, className : String) : Boolean {
 		val nbtItem = NBTItem(item)
 		if (!nbtItem.hasKey("itemClass")) return false
 		return className == nbtItem.getString("itemClass")
 	}
 
 	fun statMap(
-		strength: Double? = null,
-		regeneration: Double? = null,
-		toughness: Double? = null,
-		health: Double? = null,
-		luck: Double? = null,
-		mana: Double? = null,
-		mana_regen: Double? = null
-	           ): HashMap<StatTypes, Double> {
+			strength : Double? = null,
+			regeneration : Double? = null,
+			toughness : Double? = null,
+			health : Double? = null,
+			luck : Double? = null,
+			mana : Double? = null,
+			mana_regen : Double? = null
+	           ) : HashMap<StatTypes, Double> {
 		val map = hashMapOf<StatTypes, Double>()
 		strength?.let { map[StatTypes.STRENGTH] = it }
 		regeneration?.let { map[StatTypes.REGENERATION] = it }
@@ -148,10 +149,10 @@ object CustomItemUtils {
 
 	@JvmOverloads
 	fun getPlayerStat(
-		player: Player,
-		statType: StatTypes,
-		itemInMainHand: ItemStack? = null
-	                 ): Double {
+			player : Player,
+			statType : StatTypes,
+			itemInMainHand : ItemStack? = null
+	                 ) : Double {
 		var output = 0.0
 		val inventory = player.inventory
 		val mainHand = itemInMainHand ?: inventory.itemInMainHand
@@ -165,7 +166,8 @@ object CustomItemUtils {
 		getCustomItem(mainHand)?.let {
 			//player.chat("You are holding a custom item")
 			if (it is CustomWeapon || it is CustomWand) {
-				val itemStats = getStats(it as CustomEquipment, addGem = true, addRarity = true)
+				val itemStats =
+						getStats(it as CustomEquipment, addGem = true, addRarity = true)
 				itemStats[statType]?.let { stat ->
 					if (it.levelRequirement == null) {
 						output += stat
@@ -239,16 +241,19 @@ object CustomItemUtils {
 		return output
 	}
 
-	fun getCustomHealth(player: Player): Double {
+	fun getCustomHealth(player : Player) : Double {
 		val healthStat = getPlayerStat(player, StatTypes.HEALTH)
 		val maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
 		return (player.health / maxHealth) * (healthStat + maxHealth + player.level * 2)
 	}
 
-	fun addHealth(player: Player, health: Double) {
+	fun addHealth(player : Player, health : Double) {
 		val playerMaxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
 		val healthStat =
-				getPlayerStat(player, StatTypes.HEALTH) + playerMaxHealth + (player.level * 2)
+				getPlayerStat(
+						player,
+						StatTypes.HEALTH
+				             ) + playerMaxHealth + (player.level * 2)
 		val currentCustomHealth = getCustomHealth(player)
 		val addedHealth = ((health + currentCustomHealth) / healthStat) * playerMaxHealth
 		if (addedHealth <= playerMaxHealth) player.health = addedHealth
@@ -257,10 +262,10 @@ object CustomItemUtils {
 	}
 
 	fun getStats(
-		item: CustomEquipment,
-		addGem: Boolean,
-		addRarity: Boolean
-	            ): HashMap<StatTypes, Double> {
+			item : CustomEquipment,
+			addGem : Boolean,
+			addRarity : Boolean
+	            ) : HashMap<StatTypes, Double> {
 		val map = hashMapOf<StatTypes, Double>()
 		StatTypes.values().forEach {
 			var totalAmount = 0.0
@@ -269,7 +274,7 @@ object CustomItemUtils {
 			}
 			if (addRarity) {
 				totalAmount *= if (item.quality < 0) getRarityMultiplier(50) else getRarityMultiplier(
-					item.quality
+						item.quality
 				                                                                                     )
 			}
 			if (addGem) {
@@ -286,9 +291,9 @@ object CustomItemUtils {
 	}
 
 	@JvmStatic
-	fun getRarityMultiplier(quality: Int): Double = quality / 100.0 + 0.5
+	fun getRarityMultiplier(quality : Int) : Double = quality / 100.0 + 0.5
 
-	fun serializeToItem(nbtItem: NBTItem, hashmap: HashMap<String, Any>) {
+	fun serializeToItem(nbtItem : NBTItem, hashmap : HashMap<String, Any>) {
 		hashmap.forEach {
 			when (it.value) {
 				is String -> nbtItem.setString(it.key, it.value as String)
@@ -298,7 +303,7 @@ object CustomItemUtils {
 	}
 }
 
-fun ItemStack.setNbtTags(vararg pairs: Pair<String, Any?>): ItemStack {
+fun ItemStack.setNbtTags(vararg pairs : Pair<String, Any?>) : ItemStack {
 	val tags = hashMapOf(*pairs)
 	val nbtItem = NBTItem(this)
 	tags.forEach { entry ->
@@ -332,7 +337,7 @@ fun ItemStack.setNbtTags(vararg pairs: Pair<String, Any?>): ItemStack {
 	return nbtItem.item
 }
 
-fun ItemStack.deleteNbtTags(vararg tags: String): ItemStack {
+fun ItemStack.deleteNbtTags(vararg tags : String) : ItemStack {
 	val nbtItem = NBTItem(this)
 	for (tag in tags) {
 		nbtItem.removeKey(tag)
@@ -340,11 +345,11 @@ fun ItemStack.deleteNbtTags(vararg tags: String): ItemStack {
 	return nbtItem.item
 }
 
-fun <T> ItemStack.getNbtTags(vararg pairs: Pair<String, T>): HashMap<String, Any?> {
+fun <T> ItemStack.getNbtTags(vararg pairs : Pair<String, T>) : HashMap<String, Any?> {
 	val nbtItem = NBTItem(this)
 	val output = hashMapOf<String, Any?>()
 	pairs.forEach {
-		val value: Any? = when (it.second!!::class.qualifiedName) {
+		val value : Any? = when (it.second!!::class.qualifiedName) {
 			"kotlin.Int.Companion"           -> nbtItem.getInteger(it.first)
 			"kotlin.Long.Companion"          -> nbtItem.getLong(it.first)
 			"kotlin.Short.Companion"         -> nbtItem.getShort(it.first)
@@ -367,7 +372,7 @@ fun <T> ItemStack.getNbtTags(vararg pairs: Pair<String, T>): HashMap<String, Any
 	return output
 }
 
-inline fun <reified T> ItemStack.getNbtTag(key: String): T? {
+inline fun <reified T> ItemStack.getNbtTag(key : String) : T? {
 	val nbtItem = NBTItem(this)
 	return when (T::class) {
 		// Numbers

@@ -21,7 +21,7 @@ public class WebstoreBoosters extends WebstorePackage {
 	Integer arg6 = 1; //amount
 
 
-	public WebstoreBoosters (String arg2, String arg3, Double arg4, Integer arg5, Integer arg6) {
+	public WebstoreBoosters(String arg2, String arg3, Double arg4, Integer arg5, Integer arg6) {
 
 		this.arg2 = arg2;
 		this.arg3 = arg3;
@@ -30,7 +30,7 @@ public class WebstoreBoosters extends WebstorePackage {
 		this.arg6 = arg6;
 	}
 
-	public WebstoreBoosters (String[] args) {
+	public WebstoreBoosters(String[] args) {
 
 		super(args);
 		try {
@@ -43,23 +43,23 @@ public class WebstoreBoosters extends WebstorePackage {
 		}
 	}
 
-	public void setMultiplier (double multi) {
+	public void setMultiplier(double multi) {
 
 		this.arg4 = multi;
 	}
 
-	public void setDuration (int duration) {
+	public void setDuration(int duration) {
 
 		this.arg5 = duration;
 	}
 
-	public void setAmount (int amount) {
+	public void setAmount(int amount) {
 
 		this.arg6 = amount;
 	}
 
 	@Override
-	public void setArgs (String[] args) {
+	public void setArgs(String[] args) {
 
 		try {
 			this.arg2 = args[0];
@@ -73,7 +73,7 @@ public class WebstoreBoosters extends WebstorePackage {
 	}
 
 	@Override
-	public void completePurchase (UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
+	public void completePurchase(UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
 		//give player the booster item
 		Player player = Bukkit.getPlayer(uuid);
 		if (player == null) return;
@@ -86,12 +86,14 @@ public class WebstoreBoosters extends WebstorePackage {
 
 		//send a message that they purchased a booster
 		Bukkit.broadcast(Utils.lore(""));
-		Bukkit.broadcast(Utils.lore("  <aqua>" + player.getName() + " has bought <yellow>" + arg6 + " " + arg3 + " <green>booster(s)!"));
+		Bukkit.broadcast(Utils.lore(
+				"  <aqua>" + player.getName() + " has bought <yellow>" + arg6 + " " + arg3 +
+				" <green>booster(s)!"));
 		Bukkit.broadcast(Utils.lore("  <aqua>https://store.siegerpg.net/"));
 		Bukkit.broadcast(Utils.lore(""));
 	}
 
-	public ItemStack getBoosterItem () {
+	public ItemStack getBoosterItem() {
 
 		ItemStack item = new ItemStack(Material.PAPER, arg6);
 		ItemMeta itemMeta = item.getItemMeta();

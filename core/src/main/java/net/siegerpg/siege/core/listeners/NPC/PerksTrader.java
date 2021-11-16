@@ -25,28 +25,43 @@ public class PerksTrader implements Listener {
 
 
 	@EventHandler
-	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+	public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
 
-		if (e.getRightClicked().getName().contains("Perks") && e.getRightClicked().getName().contains("6")) {
+		if (e
+				    .getRightClicked()
+				    .getName()
+				    .contains("Perks") && e
+				    .getRightClicked()
+				    .getName()
+				    .contains("6")) {
 			Inventory shop = getShopMenu(e.getPlayer());
-			e.getPlayer().openInventory(shop);
+			e
+					.getPlayer()
+					.openInventory(shop);
 		}
 	}
 
 	@EventHandler
-	public void guiClick (InventoryClickEvent e) {
+	public void guiClick(InventoryClickEvent e) {
 
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
-		if (e.getWhoClicked().getMetadata("PerkTrading").size() > 0 &&
-		    Objects.equals(e.getWhoClicked().getMetadata("PerkTrading").get(0).value(), e.getInventory())) {
+		if (e
+				    .getWhoClicked()
+				    .getMetadata("PerkTrading")
+				    .size() > 0 &&
+		    Objects.equals(e
+				                   .getWhoClicked()
+				                   .getMetadata("PerkTrading")
+				                   .get(0)
+				                   .value(), e.getInventory())) {
 			clickShop(e);
 			e.setCancelled(true);
 		}
 	}
 
-	private void clickShop (InventoryClickEvent e) {
+	private void clickShop(InventoryClickEvent e) {
 
 		if (e.getSlot() != 13) return;
 
@@ -65,8 +80,12 @@ public class PerksTrader implements Listener {
 			player.closeInventory();
 			return;
 		}
-		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-		String cmd = "lp user " + player.getName() + " permission set cosmicvaults.amount." + nextPV + " true global";
+		ConsoleCommandSender console = Bukkit
+				.getServer()
+				.getConsoleSender();
+		String cmd =
+				"lp user " + player.getName() + " permission set cosmicvaults.amount." + nextPV +
+				" true global";
 		Bukkit.dispatchCommand(console, cmd);
 		VaultHook.econ.withdrawPlayer(player, cost);
 		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
@@ -76,7 +95,7 @@ public class PerksTrader implements Listener {
 	}
 
 
-	private Inventory getShopMenu (Player player) {
+	private Inventory getShopMenu(Player player) {
 
 		Inventory gui = Bukkit.createInventory(null, 27, "Perk Trading");
 

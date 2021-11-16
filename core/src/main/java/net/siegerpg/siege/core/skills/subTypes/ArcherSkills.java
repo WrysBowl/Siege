@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public class ArcherSkills {
 
-	public static ArrayList<Skill> skills = new ArrayList<>() {
+	public static ArrayList< Skill > skills = new ArrayList<>() {
 		{
 			add(new CriticalShot());
 		}
 	};
 
-	public static String appendSkill (Player player, Skill skill) {
+	public static String appendSkill(Player player, Skill skill) {
 
 		int id = skill.getID();
 		String playerSkills = Skills.INSTANCE.getSkills(player);

@@ -22,21 +22,32 @@ import java.util.List;
 public class MeraTransit implements Listener {
 
 	@EventHandler
-	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+	public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
 
-		if (e.getRightClicked().getName().contains("Mera") && e.getRightClicked().getName().contains("6")) {
+		if (e
+				    .getRightClicked()
+				    .getName()
+				    .contains("Mera") && e
+				    .getRightClicked()
+				    .getName()
+				    .contains("6")) {
 			Inventory shop = getGUIWorldTransit(e.getPlayer());
-			e.getPlayer().openInventory(shop);
+			e
+					.getPlayer()
+					.openInventory(shop);
 		}
 	}
 
 	@EventHandler
-	public void guiClick (InventoryClickEvent e) {
+	public void guiClick(InventoryClickEvent e) {
 
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
-		if (e.getView().getTitle().equals("World Transit")) {
+		if (e
+				.getView()
+				.getTitle()
+				.equals("World Transit")) {
 			e.setCancelled(true);
 			Player player = (Player) e.getWhoClicked();
 			int slot = e.getSlot();
@@ -46,8 +57,12 @@ public class MeraTransit implements Listener {
 				player.playSound(player.getLocation(), Sound.ENTITY_WITCH_AMBIENT, 1.0f, 1.0f);
 				return;
 			}
-			int locationCostComputation = (int) player.getLocation().distance(deathLocation);
-			int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
+			int locationCostComputation = (int) player
+					.getLocation()
+					.distance(deathLocation);
+			int deathTeleportCost = (
+					                        player.hasPermission("siege.mera.0")
+			                        ) ? 0 : locationCostComputation;
 
 
 			if (slot == 13) {
@@ -59,24 +74,43 @@ public class MeraTransit implements Listener {
 				VaultHook.econ.withdrawPlayer(player, deathTeleportCost);
 				Scoreboard.updateScoreboard(player);
 				player.closeInventory();
-				player.sendTitle(Utils.tacc("&aTeleporting to..."), Utils.tacc("&eLast Death Point"), 10, 30, 10);
-				player.getWorld().spawnParticle(
-						Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-						player.getLocation(), 10
-				                               );
-				deathLocation.getWorld().spawnParticle(
-						Particle.DRAGON_BREATH.builder().count(50).offset(1, 1, 1).particle(),
-						deathLocation, 10
-				                                      );
-				Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-					player.teleport(deathLocation);
-					player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 0.8f);
-				}, 40L);
+				player.sendTitle(
+						Utils.tacc("&aTeleporting to..."), Utils.tacc("&eLast Death Point"), 10, 30,
+						10
+				                );
+				player
+						.getWorld()
+						.spawnParticle(
+								Particle.DRAGON_BREATH
+										.builder()
+										.count(50)
+										.offset(1, 1, 1)
+										.particle(),
+								player.getLocation(), 10
+						              );
+				deathLocation
+						.getWorld()
+						.spawnParticle(
+								Particle.DRAGON_BREATH
+										.builder()
+										.count(50)
+										.offset(1, 1, 1)
+										.particle(),
+								deathLocation, 10
+						              );
+				Bukkit
+						.getServer()
+						.getScheduler()
+						.runTaskLater(Core.plugin(), () -> {
+							player.teleport(deathLocation);
+							player.playSound(
+									player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0f, 0.8f);
+						}, 40L);
 			}
 		}
 	}
 
-	private Inventory getGUIWorldTransit (Player player) {
+	private Inventory getGUIWorldTransit(Player player) {
 
 		Inventory gui = Bukkit.createInventory(null, 27, "World Transit");
 
@@ -92,7 +126,7 @@ public class MeraTransit implements Listener {
 		deathLocationIconItemMeta.displayName(Utils.lore("<gray><bold>Last Death"));
 		if (deathLocation == null) {
 
-			List<Component> lore = new ArrayList<>() {
+			List< Component > lore = new ArrayList<>() {
 				{
 					add(Utils.lore(""));
 					add(Utils.lore("<red>Oh, you have"));
@@ -102,10 +136,14 @@ public class MeraTransit implements Listener {
 			deathLocationIconItemMeta.lore(lore);
 
 		} else {
-			int locationCostComputation = (int) player.getLocation().distance(deathLocation);
-			final int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
+			int locationCostComputation = (int) player
+					.getLocation()
+					.distance(deathLocation);
+			final int deathTeleportCost = (
+					                              player.hasPermission("siege.mera.0")
+			                              ) ? 0 : locationCostComputation;
 
-			List<Component> lore = new ArrayList<>() {
+			List< Component > lore = new ArrayList<>() {
 				{
 					add(Utils.lore(""));
 					add(Utils.lore("<green>Location"));

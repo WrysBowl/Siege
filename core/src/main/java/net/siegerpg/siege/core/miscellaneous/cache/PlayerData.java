@@ -35,34 +35,38 @@ import java.util.HashMap;
 
 public class PlayerData implements Listener {
 
-	public static HashMap<Player, Boolean> hasActionBar = new HashMap<>();
-	public static HashMap<Player, Boolean> broadcastTips = new HashMap<>();
-	public static HashMap<Player, Double> playerHealth = new HashMap<>();
-	public static HashMap<Player, Double> playerCurrentMana = new HashMap<>();
-	public static HashMap<Player, Double> playerMana = new HashMap<>();
-	public static HashMap<Player, Location> playerDeathLocations = new HashMap<>();
+	public static HashMap< Player, Boolean > hasActionBar = new HashMap<>();
+	public static HashMap< Player, Boolean > broadcastTips = new HashMap<>();
+	public static HashMap< Player, Double > playerHealth = new HashMap<>();
+	public static HashMap< Player, Double > playerCurrentMana = new HashMap<>();
+	public static HashMap< Player, Double > playerMana = new HashMap<>();
+	public static HashMap< Player, Location > playerDeathLocations = new HashMap<>();
 
-	public static HashMap<Player, HashMap<Integer, Skill>> playerSkills = new HashMap<>();
-	public static HashMap<Player, ArrayList<Action>> playerTriggers = new HashMap<>();
+	public static HashMap< Player, HashMap< Integer, Skill > > playerSkills = new HashMap<>();
+	public static HashMap< Player, ArrayList< Action > > playerTriggers = new HashMap<>();
 
-	public static void setStats (Player player) {
+	public static void setStats(Player player) {
 
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
-			playerHealth.put(
-					player,
-					CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + player.getMaxHealth() + player.getLevel() * 2
-			                );
+		Bukkit
+				.getServer()
+				.getScheduler()
+				.scheduleSyncDelayedTask(Core.plugin(), () -> {
+					playerHealth.put(
+							player,
+							CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) +
+							player.getMaxHealth() + player.getLevel() * 2
+					                );
 
-			playerMana.put(
-					player,
-					CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA)
-			              );
+					playerMana.put(
+							player,
+							CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA)
+					              );
 
-		}, 2);
+				}, 2);
 	}
 
 	@EventHandler
-	public void onEnable (PluginEnableEvent e) {
+	public void onEnable(PluginEnableEvent e) {
 
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			setStats(player);
@@ -73,7 +77,7 @@ public class PlayerData implements Listener {
 	}
 
 	@EventHandler
-	public void onJoin (PlayerJoinEvent e) {
+	public void onJoin(PlayerJoinEvent e) {
 
 		Player player = e.getPlayer();
 		hasActionBar.put(player, false);
@@ -85,7 +89,7 @@ public class PlayerData implements Listener {
 	}
 
 	@EventHandler
-	public void onLeave (PlayerQuitEvent e) {
+	public void onLeave(PlayerQuitEvent e) {
 
 		Player player = e.getPlayer();
 		playerHealth.remove(player);
@@ -94,8 +98,8 @@ public class PlayerData implements Listener {
 		playerSkills.remove(player);
 	}
 
-	@EventHandler(priority = EventPriority.LOWEST)
-	public void onEquip (ArmorEquipEvent e) {
+	@EventHandler( priority = EventPriority.LOWEST )
+	public void onEquip(ArmorEquipEvent e) {
 
 		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
 		if (item == null) {
@@ -103,10 +107,19 @@ public class PlayerData implements Listener {
 			return;
 		}
 		if (item.getLevelRequirement() == null) return;
-		Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
+		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(e.getPlayer());
 		if (item.getLevelRequirement() > (expLevel != null ? expLevel.getFirst() : 0)) {
-			e.getPlayer().sendTitle(Utils.tacc("&c&lSORRY!"), ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1);
-			e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
+			e
+					.getPlayer()
+					.sendTitle(
+							Utils.tacc("&c&lSORRY!"),
+							ChatColor.RED + "Too weak to use this armor's stats", 1, 80, 1
+					          );
+			e
+					.getPlayer()
+					.playSound(e
+							           .getPlayer()
+							           .getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
 			e.setCancelled(true);
 			return;
 		}
@@ -114,9 +127,12 @@ public class PlayerData implements Listener {
 	}
 
 	@EventHandler
-	public void toolSwitch (PlayerItemHeldEvent e) {
+	public void toolSwitch(PlayerItemHeldEvent e) {
 
-		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItem(e.getNewSlot()));
+		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e
+				                                                         .getPlayer()
+				                                                         .getInventory()
+				                                                         .getItem(e.getNewSlot()));
 		Player player = e.getPlayer();
 		player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
 
@@ -127,11 +143,14 @@ public class PlayerData implements Listener {
 	}
 
 	@EventHandler
-	public void toolUse (PlayerInteractEvent e) {
+	public void toolUse(PlayerInteractEvent e) {
 
 		if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
 
-			CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItemInMainHand());
+			CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e
+					                                                         .getPlayer()
+					                                                         .getInventory()
+					                                                         .getItemInMainHand());
 			Player player = e.getPlayer();
 			player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
 
@@ -143,11 +162,11 @@ public class PlayerData implements Listener {
 		}
 	}
 
-	private void effectUnderLeveled (CustomItem item, Player player) {
+	private void effectUnderLeveled(CustomItem item, Player player) {
 
 		if (item instanceof CustomWeapon || item instanceof CustomTool) {
 			Integer level = item.getLevelRequirement();
-			Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
+			Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
 
 			if (expLevel == null) return;
 			if (expLevel.getFirst() == null) return;
@@ -160,7 +179,7 @@ public class PlayerData implements Listener {
 	}
 
 	@EventHandler
-	public void onPlayerDeath (PlayerDeathEvent e) {
+	public void onPlayerDeath(PlayerDeathEvent e) {
 
 		Player player = e.getEntity();
 		playerDeathLocations.put(player, player.getLocation());

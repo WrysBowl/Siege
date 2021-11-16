@@ -9,25 +9,25 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 
 class TitaniumRod() : CustomRod(
-	name = "Titanium Rod",
-	customModelData = 440006,
-	description = listOf("The strongest alloy known to man"),
-	levelRequirement = 28,
-	material = Material.FISHING_ROD,
-	baseStats = CustomItemUtils.statMap(),
-	enchantments = hashMapOf(
-		Enchantment.LURE to 3,
-	                        ),
-	fishDropTable = TitaniumFishTable()
+		name = "Titanium Rod",
+		customModelData = 440006,
+		description = listOf("The strongest alloy known to man"),
+		levelRequirement = 28,
+		material = Material.FISHING_ROD,
+		baseStats = CustomItemUtils.statMap(),
+		enchantments = hashMapOf(
+				Enchantment.LURE to 3,
+		                        ),
+		fishDropTable = TitaniumFishTable()
                                ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 70
 		this.rarity = Rarity.RARE
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

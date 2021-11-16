@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.RawToug
 
 public class RawTough extends Fish {
 
-	public RawTough () {
+	public RawTough() {
 
 		super(30, 0.6, 20, 10,
 		      new RawToughGem(0).getUpdatedItem(false)

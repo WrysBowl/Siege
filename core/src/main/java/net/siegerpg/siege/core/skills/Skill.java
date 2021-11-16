@@ -22,13 +22,13 @@ public class Skill {
 	public ItemStack DISPLAY_ITEM;
 	public Integer MANA_COST;
 	public @Nullable
-	HashMap<StatTypes, Double> STATS;
+	HashMap< StatTypes, Double > STATS;
 	public @Nullable
-	HashMap<Integer, Skill> CHILDREN;
+	HashMap< Integer, Skill > CHILDREN;
 	public @Nullable
-	ArrayList<Action> TRIGGER;
+	ArrayList< Action > TRIGGER;
 
-	public Skill () {
+	public Skill() {
 
 		this.ID = 0;
 		this.SKILL = this;
@@ -46,7 +46,7 @@ public class Skill {
 		this.DISPLAY_ITEM = new ItemStack(Material.BEDROCK);
 	}
 
-	public Skill (int id, @Nullable HashMap<StatTypes, Double> stats, @Nullable HashMap<Integer, Skill> children, int manaCost, @Nullable ArrayList<Action> trigger, ItemStack displayItem) {
+	public Skill(int id, @Nullable HashMap< StatTypes, Double > stats, @Nullable HashMap< Integer, Skill > children, int manaCost, @Nullable ArrayList< Action > trigger, ItemStack displayItem) {
 
 		this.ID = id;
 		this.STATS = stats;
@@ -56,49 +56,51 @@ public class Skill {
 		this.DISPLAY_ITEM = displayItem;
 	}
 
-	public Skill (Skill skill) {
+	public Skill(Skill skill) {
 
 		this.SKILL = skill;
 	}
 
-	public HashMap<StatTypes, Double> getStats () {
+	public HashMap< StatTypes, Double > getStats() {
 
 		return this.STATS;
 	}
 
-	public int getID () {
+	public int getID() {
 
 		return this.ID;
 	}
 
-	public Skill getSkill () {
+	public Skill getSkill() {
 
 		return this;
 	}
 
-	public HashMap<Integer, Skill> getChildren () {
+	public HashMap< Integer, Skill > getChildren() {
 
 		return this.CHILDREN;
 	}
 
-	public ItemStack getDisplayItem () {
+	public ItemStack getDisplayItem() {
 
 		return this.DISPLAY_ITEM;
 	}
 
-	public Integer getManaCost () {
+	public Integer getManaCost() {
 
 		return this.MANA_COST;
 	}
 
-	public ArrayList<Action> getTrigger () {
+	public ArrayList< Action > getTrigger() {
 
 		return this.TRIGGER;
 	}
 
-	public void skillAction (PlayerInteractEvent e) {
+	public void skillAction(PlayerInteractEvent e) {
 
-		Bukkit.getLogger().info(Utils.tacc("&cPlayer tried to activate invalid skill!"));
+		Bukkit
+				.getLogger()
+				.info(Utils.tacc("&cPlayer tried to activate invalid skill!"));
 	}
 
 }

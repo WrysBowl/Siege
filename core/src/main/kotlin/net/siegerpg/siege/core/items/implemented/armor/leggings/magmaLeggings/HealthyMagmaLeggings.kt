@@ -8,22 +8,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealthyMagmaLeggings() : CustomLeggings(
-	name = "Healthy Magma Leggings",
-	customModelData = 1,
-	description = listOf("Burning fashion. Quite literally"),
-	levelRequirement = 13,
-	material = Material.LEATHER_LEGGINGS,
-	baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 20.0),
-	leatherColor = Color.ORANGE
+		name = "Healthy Magma Leggings",
+		customModelData = 1,
+		description = listOf("Burning fashion. Quite literally"),
+		levelRequirement = 13,
+		material = Material.LEATHER_LEGGINGS,
+		baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 20.0),
+		leatherColor = Color.ORANGE
                                              ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

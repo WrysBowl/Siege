@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public class Pay implements CommandExecutor {
 
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		Player player = (Player) sender;
 		Levels.INSTANCE.getExpLevel(player, pair -> {
@@ -48,18 +48,22 @@ public class Pay implements CommandExecutor {
 			}
 			double playerBal = VaultHook.econ.getBalance(player);
 			if (playerBal >= gold) {
-				player.sendMessage(Utils.lore("<yellow>You paid " + targetPlayer.getName() + " " + gold + " gold."));
+				player.sendMessage(Utils.lore(
+						"<yellow>You paid " + targetPlayer.getName() + " " + gold + " gold."));
 				if (targetPlayer.isOnline())
-					((Player) targetPlayer).sendMessage(Utils.lore("<yellow>You were paid " + gold + " gold by " + player.getName() + "."));
+					((Player) targetPlayer).sendMessage(Utils.lore(
+							"<yellow>You were paid " + gold + " gold by " + player.getName() +
+							"."));
 				VaultHook.econ.withdrawPlayer(player, gold);
 				VaultHook.econ.depositPlayer(targetPlayer, gold);
 			} else {
-				player.sendMessage(Utils.lore("<red>You don't have enough money to pay this person " + gold + " gold."));
+				player.sendMessage(Utils.lore(
+						"<red>You don't have enough money to pay this person " + gold + " gold."));
 				return null;
 			}
 			new BukkitRunnable() {
 				@Override
-				public void run () {
+				public void run() {
 
 					Scoreboard.updateScoreboard(player);
 					if (targetPlayer.isOnline()) Scoreboard.updateScoreboard((Player) targetPlayer);

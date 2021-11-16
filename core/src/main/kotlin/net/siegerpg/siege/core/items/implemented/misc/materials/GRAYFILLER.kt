@@ -6,18 +6,18 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class GRAYFILLER() : CustomMaterial(
-	name = "",
-	description = listOf(""),
-	material = Material.GRAY_STAINED_GLASS_PANE
+		name = "",
+		description = listOf(""),
+		material = Material.GRAY_STAINED_GLASS_PANE
                                    ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

@@ -27,23 +27,23 @@ import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.round
 
-data class BossFight(val startTime: Instant, val entity: ActiveMob) {
+data class BossFight(val startTime : Instant, val entity : ActiveMob) {
 
 	val fighters = HashMap<UUID, Double>()
 }
 
 object BossLeaderboard {
 
-	fun updateHologram(h: Hologram, bossName: String) {
+	fun updateHologram(h : Hologram, bossName : String) {
 		BossLeaderboardDB.getBossLeaderboardTop10Data(bossName) { data ->
 			updateHologram(h, bossName, data)
 		}
 	}
 
 	fun updateHologram(
-		h: Hologram,
-		bossName: String,
-		data: List<Pair<UUID, Pair<Byte, Int>>>?
+			h : Hologram,
+			bossName : String,
+			data : List<Pair<UUID, Pair<Byte, Int>>>?
 	                  ) {
 		h.clearLines()
 		h.appendTextLine(Utils.tacc("&6----- &7$bossName -----"))
@@ -59,7 +59,7 @@ object BossLeaderboard {
 		h.appendTextLine("&6----------")
 	}
 
-	public fun getBossHolograms(bossName: String):
+	public fun getBossHolograms(bossName : String) :
 			Collection<Hologram> {
 		val holograms = HologramsAPI.getHolograms(Core.plugin()).filter { h ->
 			(h.getLine(0) as TextLine).text.lowercase().contains(bossName.lowercase())
@@ -72,14 +72,14 @@ class BossLeaderboardListener : Listener {
 
 
 	private val dungeonBossDropTableHashMap = mutableMapOf(
-		"Broodmother" to Broodmother(),
-		"BullSpirit" to BullSpirit(),
-		"Davy_Jones" to Davy_Jones(),
-		"FoxSpirit" to FoxSpirit(),
-		"Lich" to Lich(),
-		"MagmaSpirit" to MagmaSpirit(),
-		"Necromancer" to Necromancer(),
-		"SlimeSpirit" to SlimeSpirit()
+			"Broodmother" to Broodmother(),
+			"BullSpirit" to BullSpirit(),
+			"Davy_Jones" to Davy_Jones(),
+			"FoxSpirit" to FoxSpirit(),
+			"Lich" to Lich(),
+			"MagmaSpirit" to MagmaSpirit(),
+			"Necromancer" to Necromancer(),
+			"SlimeSpirit" to SlimeSpirit()
 	                                                      ) as HashMap<String, MobDropTable>
 
 	companion object {
@@ -89,9 +89,10 @@ class BossLeaderboardListener : Listener {
 
 
 	@EventHandler
-	public fun onBossGetHit(evt: EntityDamageByEntityEvent) {
-		val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
-		                ?: return
+	public fun onBossGetHit(evt : EntityDamageByEntityEvent) {
+		val bossFight =
+				currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
+				?: return
 		var damager =
 				if (evt.damager is Player) evt.damager as Player
 				else evt.damager
@@ -104,20 +105,22 @@ class BossLeaderboardListener : Listener {
 
 		if (damager !is Player) return
 		val entity = evt.entity as LivingEntity
-		val damageDone = if (evt.finalDamage > entity.health) entity.health else evt.finalDamage
+		val damageDone =
+				if (evt.finalDamage > entity.health) entity.health else evt.finalDamage
 		bossFight.fighters[damager.uniqueId] =
 				(bossFight.fighters[damager.uniqueId] ?: 0.0) + damageDone
 
 	}
 
 	@EventHandler
-	public fun onBossUnlive(evt: EntityDeathEvent) {
+	public fun onBossUnlive(evt : EntityDeathEvent) {
 		val deathTime = Instant.now()
-		val bossFight = currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
-		                ?: return
+		val bossFight =
+				currentBossFights.find { b -> b.entity.uniqueId == evt.entity.uniqueId }
+				?: return
 
-		var dropTable: MobDropTable? = null
-		val bossName: String;
+		var dropTable : MobDropTable? = null
+		val bossName : String;
 		if (MythicMobs.inst().apiHelper.isMythicMob(evt.entity)) {
 			bossName =
 					MythicMobs.inst().apiHelper.getMythicMobInstance(evt.entity).type.internalName
@@ -127,14 +130,15 @@ class BossLeaderboardListener : Listener {
 		} else {
 			bossName = evt.entity.customName ?: evt.entity.name
 		}
-		val totalDamageDone = round(bossFight.fighters.values.reduce { acc, d -> acc + d }).toInt()
+		val totalDamageDone =
+				round(bossFight.fighters.values.reduce { acc, d -> acc + d }).toInt()
 
 		// Uploads data to the db
 		val hashMapData = HashMap<UUID, Pair<Byte, Int>>()
 		val fightDuration =
 				ceil(
-					(Duration.between(bossFight.startTime, deathTime).abs()
-						 .toMillis() + 100.0) / 1000
+						(Duration.between(bossFight.startTime, deathTime).abs()
+								 .toMillis() + 100.0) / 1000
 				    )
 		bossFight.fighters.forEach { (fighter, damageDone) ->
 			val percentageDamage = floor(damageDone / totalDamageDone * 100).toInt()
@@ -146,33 +150,33 @@ class BossLeaderboardListener : Listener {
 						if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
 
 				Bukkit.getPlayer(fighter)
-					?.sendMessage(Utils.lore("<green>You dealt <gold>$percentageDamage% <green>of the damage to the boss!"))
+						?.sendMessage(Utils.lore("<green>You dealt <gold>$percentageDamage% <green>of the damage to the boss!"))
 
 				val tableExp = dropTable.getExp(true) ?: 0
 				Levels.addExpShared(
-					Bukkit.getOfflinePlayer(fighter),
-					floor(tableExp.toDouble() * dropMultiplier).toInt()
+						Bukkit.getOfflinePlayer(fighter),
+						floor(tableExp.toDouble() * dropMultiplier).toInt()
 				                   )
 
 				val tableGoldCoinAmt = dropTable.getGold(true) ?: 0
 				val goldCoinAmt =
 						floor(tableGoldCoinAmt.toDouble() * GlobalMultipliers.goldMultiplier * dropMultiplier).toInt()
-				val gold: Item = DropUtils.dropItemNaturallyForPlayers(
-					evt.entity.location,
-					GoldEXPSpawning.getGoldCoin(1), listOf(fighter)
-				                                                      )
+				val gold : Item = DropUtils.dropItemNaturallyForPlayers(
+						evt.entity.location,
+						GoldEXPSpawning.getGoldCoin(1), listOf(fighter)
+				                                                       )
 				gold.customName = Utils.tacc("&e+$goldCoinAmt Gold")
 				gold.isCustomNameVisible = true;
 				gold.itemStack.amount = goldCoinAmt
 
 				for (drop in getRewards(
-					(percentageDamage / 100.0),
-					dropTable
+						(percentageDamage / 100.0),
+						dropTable
 				                       )) { //Loop through all drops
 					DropUtils.dropItemNaturallyForPlayers(
-						evt.entity.location,
-						drop,
-						listOf(fighter)
+							evt.entity.location,
+							drop,
+							listOf(fighter)
 					                                     )
 				}
 
@@ -188,10 +192,13 @@ class BossLeaderboardListener : Listener {
 		}
 	}
 
-	private fun getRewards(dmgPercent: Double, dropTable: MobDropTable): ArrayList<ItemStack> {
+	private fun getRewards(
+			dmgPercent : Double,
+			dropTable : MobDropTable
+	                      ) : ArrayList<ItemStack> {
 		val itemList = ArrayList<ItemStack>()
 		for (reward in dropTable.rewards) {
-			val chance: Double = (2 * dmgPercent) * reward.chance
+			val chance : Double = (2 * dmgPercent) * reward.chance
 			if (Utils.randTest(chance)) {
 				itemList.add(reward.item)
 			}

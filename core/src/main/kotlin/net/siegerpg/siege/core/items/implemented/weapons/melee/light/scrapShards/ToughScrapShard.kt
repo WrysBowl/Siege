@@ -7,22 +7,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ToughScrapShard() : CustomMeleeWeapon(
-	name = "Tough Scrap Shard",
-	customModelData = 110008,
-	description = listOf("Scrap metal put together", "to create a sharp shank"),
-	levelRequirement = 29,
-	material = Material.WOODEN_SWORD,
-	baseStats = CustomItemUtils.statMap(strength = 30.0, toughness = 50.0),
-	attackSpeed = 1.5
+		name = "Tough Scrap Shard",
+		customModelData = 110008,
+		description = listOf("Scrap metal put together", "to create a sharp shank"),
+		levelRequirement = 29,
+		material = Material.WOODEN_SWORD,
+		baseStats = CustomItemUtils.statMap(strength = 30.0, toughness = 50.0),
+		attackSpeed = 1.5
                                            ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class WebstoreKeys extends WebstorePackage {
 
-	public static HashMap<String, CustomKey> keys = new HashMap<String, CustomKey>() {
+	public static HashMap< String, CustomKey > keys = new HashMap< String, CustomKey >() {
 		{
 			this.put("normal", new NormalKey());
 			this.put("superior", new SuperiorKey());
@@ -30,7 +30,7 @@ public class WebstoreKeys extends WebstorePackage {
 	Integer arg4 = 1; //amount
 	CustomKey key = new NormalKey(0);
 
-	public WebstoreKeys (String arg2, String arg3, Integer arg4, CustomKey key) {
+	public WebstoreKeys(String arg2, String arg3, Integer arg4, CustomKey key) {
 
 		this.arg2 = arg2;
 		this.arg3 = arg3;
@@ -38,7 +38,7 @@ public class WebstoreKeys extends WebstorePackage {
 		this.key = key;
 	}
 
-	public WebstoreKeys (String[] args) {
+	public WebstoreKeys(String[] args) {
 
 		super(args);
 		try {
@@ -51,7 +51,7 @@ public class WebstoreKeys extends WebstorePackage {
 	}
 
 	@Override
-	public void setArgs (String[] args) {
+	public void setArgs(String[] args) {
 
 		try {
 			this.arg2 = args[0];
@@ -63,10 +63,12 @@ public class WebstoreKeys extends WebstorePackage {
 	}
 
 	@Override
-	public void completePurchase (UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
+	public void completePurchase(UUID uuid) { //called when a player joins the server and their name is found in the yml webstore file
 		final Player player = Bukkit.getPlayer(uuid);
 		if (null == player) return;
-		final ItemStack item = this.key.getUpdatedItem(false).asQuantity(this.arg4);
+		final ItemStack item = this.key
+				.getUpdatedItem(false)
+				.asQuantity(this.arg4);
 		if (!Utils.giveItem(player, item)) {
 			//when giveItem is run it will give the player the booster if the condition is not met
 			player.sendMessage(Utils.lore(
@@ -76,7 +78,9 @@ public class WebstoreKeys extends WebstorePackage {
 
 		//send a message that they purchased a booster
 		Bukkit.broadcast(Utils.lore(""));
-		Bukkit.broadcast(Utils.lore("  <aqua>" + player.getName() + " has bought a <yellow>" + arg4 + " " + key.getName() + "!"));
+		Bukkit.broadcast(Utils.lore(
+				"  <aqua>" + player.getName() + " has bought a <yellow>" + arg4 + " " +
+				key.getName() + "!"));
 		Bukkit.broadcast(Utils.lore("  <aqua>https://store.siegerpg.net/"));
 		Bukkit.broadcast(Utils.lore(""));
 	}

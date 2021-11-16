@@ -15,17 +15,17 @@ import org.bukkit.event.block.BlockDispenseArmorEvent
 class DispenserArmorListener : Listener {
 
 	@EventHandler
-	fun dispenseArmorEvent(event: BlockDispenseArmorEvent) {
+	fun dispenseArmorEvent(event : BlockDispenseArmorEvent) {
 		val type = ArmorType.matchType(event.item)
 		if (type != null) {
 			if (event.targetEntity is Player) {
 				val p = event.targetEntity as Player
 				val armorEquipEvent = ArmorEquipEvent(
-					p,
-					ArmorEquipEvent.EquipMethod.DISPENSER,
-					type,
-					null,
-					event.item
+						p,
+						ArmorEquipEvent.EquipMethod.DISPENSER,
+						type,
+						null,
+						event.item
 				                                     )
 				Bukkit.getServer().pluginManager.callEvent(armorEquipEvent)
 				if (armorEquipEvent.isCancelled()) {

@@ -10,19 +10,21 @@ import java.util.UUID;
 
 public class GladiatorRank extends WebstoreRanks {
 
-	public GladiatorRank () {
+	public GladiatorRank() {
 
 		super("rank", "gladiator");
 	}
 
-	@SuppressWarnings("Deprecated")
+	@SuppressWarnings( "Deprecated" )
 	@Override
-	public void completePurchase (UUID uuid) {
+	public void completePurchase(UUID uuid) {
 
 		Player player = Bukkit.getPlayer(uuid);
 		if (player == null) return;
 
-		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+		ConsoleCommandSender console = Bukkit
+				.getServer()
+				.getConsoleSender();
 		String cmd = "lp user " + player.getName() + " parent add Gladiator";
 		Bukkit.dispatchCommand(console, cmd);
 
@@ -33,19 +35,26 @@ public class GladiatorRank extends WebstoreRanks {
 		if (VaultHook.perms.playerInGroup(player, "warrior")) {
 			addPV = highestPV + 1;
 			if (diff < 1) addPV = diff;
-			ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
+			ConsoleCommandSender console4 = Bukkit
+					.getServer()
+					.getConsoleSender();
 			String cmd3 = "lp user " + player.getName() + " parent remove warrior";
 			Bukkit.dispatchCommand(console4, cmd3);
 		} else {
 			if (diff < 3) addPV = diff;
 		}
 
-		ConsoleCommandSender console2 = Bukkit.getServer().getConsoleSender();
-		String cmd2 = "lp user " + player.getName() + " permission set cosmicvaults.amount." + addPV + " true global";
+		ConsoleCommandSender console2 = Bukkit
+				.getServer()
+				.getConsoleSender();
+		String cmd2 =
+				"lp user " + player.getName() + " permission set cosmicvaults.amount." + addPV +
+				" true global";
 		Bukkit.dispatchCommand(console2, cmd2);
 
 		Bukkit.broadcastMessage(Utils.tacc(""));
-		Bukkit.broadcastMessage(Utils.tacc("  &b" + player.getName() + " has bought &2Gladiator &erank!"));
+		Bukkit.broadcastMessage(
+				Utils.tacc("  &b" + player.getName() + " has bought &2Gladiator &erank!"));
 		Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
 		Bukkit.broadcastMessage(Utils.tacc(""));
 	}

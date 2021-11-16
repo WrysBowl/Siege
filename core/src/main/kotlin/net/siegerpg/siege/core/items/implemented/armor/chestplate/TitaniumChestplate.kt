@@ -7,27 +7,27 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class TitaniumChestplate() : CustomChestplate(
-	name = "Titanium Chestplate",
-	customModelData = 1,
-	description = listOf("One of the hardest", "materials known"),
-	levelRequirement = 50,
-	material = Material.IRON_CHESTPLATE,
-	baseStats = CustomItemUtils.statMap(
-		health = 80.0,
-		toughness = 300.0,
-		regeneration = 15.0,
-		luck = -35.0,
-		strength = -50.0
-	                                   ),
+		name = "Titanium Chestplate",
+		customModelData = 1,
+		description = listOf("One of the hardest", "materials known"),
+		levelRequirement = 50,
+		material = Material.IRON_CHESTPLATE,
+		baseStats = CustomItemUtils.statMap(
+				health = 80.0,
+				toughness = 300.0,
+				regeneration = 15.0,
+				luck = -35.0,
+				strength = -50.0
+		                                   ),
                                              ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

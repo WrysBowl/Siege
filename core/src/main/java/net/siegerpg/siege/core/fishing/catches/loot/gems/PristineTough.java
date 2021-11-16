@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.Pristin
 
 public class PristineTough extends Fish {
 
-	public PristineTough () {
+	public PristineTough() {
 
 		super(60, 1, 12, 20,
 		      new PristineToughGem(0).getUpdatedItem(false)

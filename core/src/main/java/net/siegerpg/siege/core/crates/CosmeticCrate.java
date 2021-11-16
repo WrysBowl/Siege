@@ -19,7 +19,7 @@ public class CosmeticCrate {
 	 * <p>
 	 * There should be infrastructure for multiple drop tables with multiple different cosmetics and weight values
 	 */
-	public static HashMap<CustomKey, CosmeticDropTable> crates = new HashMap<>() {
+	public static HashMap< CustomKey, CosmeticDropTable > crates = new HashMap<>() {
 		{
 			put(new NormalKey(0), new NormalDropTable());
 			put(new SuperiorKey(0), new SuperiorDropTable());
@@ -32,23 +32,23 @@ public class CosmeticCrate {
 		}
 	};
 
-	public static void commonWin (Location loc) {
+	public static void commonWin(Location loc) {
 
 	}
 
-	public static void uncommonWin (Location loc) {
+	public static void uncommonWin(Location loc) {
 
 	}
 
-	public static void rareWin (Location loc) {
+	public static void rareWin(Location loc) {
 
 	}
 
-	public static void epicWin (Location loc) {
+	public static void epicWin(Location loc) {
 
 	}
 
-	public static void legendaryWIn (Location loc) {
+	public static void legendaryWIn(Location loc) {
 
 	}
 

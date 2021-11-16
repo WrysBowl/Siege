@@ -7,22 +7,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealthySpade() : CustomMeleeWeapon(
-	name = "Healthy Spade",
-	customModelData = 110003,
-	description = listOf("Not a shovel"),
-	levelRequirement = 9,
-	material = Material.WOODEN_SWORD,
-	baseStats = CustomItemUtils.statMap(strength = 10.0, health = 7.0),
-	attackSpeed = 1.5
+		name = "Healthy Spade",
+		customModelData = 110003,
+		description = listOf("Not a shovel"),
+		levelRequirement = 9,
+		material = Material.WOODEN_SWORD,
+		baseStats = CustomItemUtils.statMap(strength = 10.0, health = 7.0),
+		attackSpeed = 1.5
                                         ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

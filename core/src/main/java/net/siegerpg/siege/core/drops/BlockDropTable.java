@@ -17,7 +17,7 @@ public class BlockDropTable implements Listener {
 	int expMax;
 	Reward[] rewards;
 
-	public BlockDropTable (int blockRegen, Material material, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
+	public BlockDropTable(int blockRegen, Material material, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
 
 		this.blockRegen = blockRegen;
 		this.material = material;
@@ -28,19 +28,19 @@ public class BlockDropTable implements Listener {
 		this.rewards = rewards;
 	}
 
-	public Integer getBlockRegen () {
+	public Integer getBlockRegen() {
 
 		return blockRegen;
 	}
 
-	public Material getMaterial () {
+	public Material getMaterial() {
 
 		return material;
 	}
 
-	public ArrayList<ItemStack> calculateRewards (double luckChance) {
+	public ArrayList< ItemStack > calculateRewards(double luckChance) {
 
-		ArrayList<ItemStack> itemList = new ArrayList<>();
+		ArrayList< ItemStack > itemList = new ArrayList<>();
 		for (Reward reward : rewards) {
 			if (!Utils.randTest(reward.chance)) continue;
 			for (double i = luckChance; i >= 0; i -= 100) {
@@ -53,7 +53,7 @@ public class BlockDropTable implements Listener {
 		return itemList;
 	}
 
-	public Integer getGold (boolean rand) {
+	public Integer getGold(boolean rand) {
 
 		if (rand) {
 			return (int) Math.floor(Math.random() * (goldMax - goldMin + 1) + goldMin);
@@ -61,7 +61,7 @@ public class BlockDropTable implements Listener {
 		return goldMax;
 	}
 
-	public Integer getExp (boolean rand) {
+	public Integer getExp(boolean rand) {
 
 		if (rand) {
 			return (int) Math.floor(Math.random() * (expMax - expMin + 1) + expMin);

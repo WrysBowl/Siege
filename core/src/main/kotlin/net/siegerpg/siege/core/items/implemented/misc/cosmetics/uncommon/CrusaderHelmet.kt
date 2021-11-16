@@ -6,19 +6,19 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CrusaderHelmet() : Cosmetic(
-	name = "Crusader Helmet",
-	customModelData = 720003,
-	description = listOf(""),
-	material = Material.KNOWLEDGE_BOOK,
+		name = "Crusader Helmet",
+		customModelData = 720003,
+		description = listOf(""),
+		material = Material.KNOWLEDGE_BOOK,
                                  ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 50
 		this.rarity = Rarity.UNCOMMON
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

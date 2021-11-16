@@ -14,7 +14,7 @@ import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import kotlin.reflect.KClass
 
-enum class ItemTypes(val stylizedName: String, val clazz: KClass<out CustomItem>) {
+enum class ItemTypes(val stylizedName : String, val clazz : KClass<out CustomItem>) {
 	MELEEWEAPON("Melee Weapon", CustomMeleeWeapon::class),
 	BOW("Bow", CustomBow::class),
 	HELMET("Helmet", CustomHelmet::class),
@@ -29,7 +29,7 @@ enum class ItemTypes(val stylizedName: String, val clazz: KClass<out CustomItem>
 
 	companion object {
 
-		fun getFromId(id: String?): ItemTypes? {
+		fun getFromId(id : String?) : ItemTypes? {
 			for (itemType in values()) {
 				if (itemType.stylizedName.equals(id, ignoreCase = true)) return itemType
 			}

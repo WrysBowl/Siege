@@ -27,7 +27,7 @@ import java.util.List;
 
 public class BlockBreakListener implements Listener {
 
-	public static List<Material> keepAir = new ArrayList<>() {
+	public static List< Material > keepAir = new ArrayList<>() {
 		{
 			add(Material.WHEAT);
 			add(Material.VINE);
@@ -36,7 +36,7 @@ public class BlockBreakListener implements Listener {
 
 		}
 	};
-	public static List<Material> dependables = new ArrayList<>() {
+	public static List< Material > dependables = new ArrayList<>() {
 		{
 			add(Material.OAK_SAPLING);
 			add(Material.SPRUCE_SAPLING);
@@ -91,7 +91,7 @@ public class BlockBreakListener implements Listener {
 			add(Material.NETHER_WART);
 		}
 	};
-	public static List<Material> rewardableBlocks = new ArrayList<>() {
+	public static List< Material > rewardableBlocks = new ArrayList<>() {
 		{
 			add(Material.GRASS);
 			add(Material.DEAD_BUSH);
@@ -143,7 +143,7 @@ public class BlockBreakListener implements Listener {
 			add(Material.POTTED_WHITE_TULIP);
 		}
 	};
-	public static HashMap<Material, BlockDropTable> blockDropTableHashMap = new HashMap<>() {
+	public static HashMap< Material, BlockDropTable > blockDropTableHashMap = new HashMap<>() {
 		{
 			put(Material.ACACIA_LOG, new ACACIA_LOG());
 			put(Material.ACACIA_WOOD, new ACACIA_WOOD());
@@ -226,7 +226,7 @@ public class BlockBreakListener implements Listener {
 	};
 
 	@EventHandler
-	public void onBreak (BlockBreakEvent e) {
+	public void onBreak(BlockBreakEvent e) {
 
 		Player player = e.getPlayer();
 
@@ -237,9 +237,15 @@ public class BlockBreakListener implements Listener {
 		}
 		e.setCancelled(true);
 		e.setDropItems(false);
-		Material blockType = e.getBlock().getType();
-		final BlockState blockState = e.getBlock().getState();
-		final Location loc = e.getBlock().getLocation();
+		Material blockType = e
+				.getBlock()
+				.getType();
+		final BlockState blockState = e
+				.getBlock()
+				.getState();
+		final Location loc = e
+				.getBlock()
+				.getLocation();
 		BlockDropTable blockDrop = blockDropTableHashMap.get(blockType);
 
 		//if block broken doesn't have a drop table
@@ -252,33 +258,52 @@ public class BlockBreakListener implements Listener {
 				GoldEXPSpawning.spawnGold(1, loc);
 			}
 			//after 30 seconds, block respawns back
-			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-				public void run () {
+			Bukkit
+					.getServer()
+					.getScheduler()
+					.runTaskLater(Core.plugin(), new Runnable() {
+						public void run() {
 
-					blockState.update(true, false);
-				}
-			}, 600);
+							blockState.update(true, false);
+						}
+					}, 600);
 		}
 		if (blockDrop != null) {
 			final int blockDropRegen = blockDrop.getBlockRegen();
 			int goldCoinAmt = blockDrop.getGold(true);
 			int exp = blockDrop.getExp(true);
-			final double luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
-			final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
-			final boolean upFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
-			final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.DOWN).getType());
+			final double luck = CustomItemUtils.INSTANCE.getPlayerStat(
+					player, StatTypes.LUCK, player.getItemInHand());
+			final boolean fullInv = e
+					                        .getPlayer()
+					                        .getInventory()
+					                        .firstEmpty() == -1;
+			final boolean upFacingDependable = dependables.contains(e
+					                                                        .getBlock()
+					                                                        .getRelative(
+							                                                        BlockFace.UP)
+					                                                        .getType());
+			final boolean downFacingDependable = dependables.contains(e
+					                                                          .getBlock()
+					                                                          .getRelative(
+							                                                          BlockFace.DOWN)
+					                                                          .getType());
 
 
 			if (keepAir.contains(blockType)) {
 				e.setCancelled(false);
-			} else if (dependables.contains(blockType) || upFacingDependable || downFacingDependable) {
+			} else if (dependables.contains(blockType) || upFacingDependable ||
+			           downFacingDependable) {
 				if (!rewardableBlocks.contains(blockType)) {
 					e.setCancelled(true);
 				}
 			} else {
-				e.getBlock().setType(Material.BEDROCK);
+				e
+						.getBlock()
+						.setType(Material.BEDROCK);
 			}
-			if (!dependables.contains(blockType) && upFacingDependable || !dependables.contains(blockType) && downFacingDependable) {
+			if (!dependables.contains(blockType) && upFacingDependable ||
+			    !dependables.contains(blockType) && downFacingDependable) {
 				return;
 			}
 
@@ -302,21 +327,30 @@ public class BlockBreakListener implements Listener {
 			//Adds blocks to player's inventory
 			for (ItemStack drop : blockDrop.calculateRewards(luck)) {
 				if (!fullInv) {
-					e.getPlayer().getInventory().addItem(drop);
+					e
+							.getPlayer()
+							.getInventory()
+							.addItem(drop);
 				} else {
-					e.getBlock().getWorld().dropItemNaturally(loc, drop);
+					e
+							.getBlock()
+							.getWorld()
+							.dropItemNaturally(loc, drop);
 				}
 
 			}
 
 			//Sets block back from bedrock to original
 			if (rewardableBlocks.contains(blockType)) return;
-			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-				public void run () {
+			Bukkit
+					.getServer()
+					.getScheduler()
+					.runTaskLater(Core.plugin(), new Runnable() {
+						public void run() {
 
-					blockState.update(true, false);
-				}
-			}, blockDropRegen);
+							blockState.update(true, false);
+						}
+					}, blockDropRegen);
 		}
 
 	}

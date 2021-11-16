@@ -22,12 +22,21 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class SlimeSpirit extends MobDropTable {
 
-	public SlimeSpirit () {
+	public SlimeSpirit() {
 
 		super("SlimeSpirit", 1000, 1500, 1000, 1500, new Reward[] {
-				new Reward(Slime.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
-				new Reward(Slime.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 50.0),
-				new Reward(Slime.Companion.tier(4).getUpdatedItem(false).asQuantity(2), 10.0),
+				new Reward(Slime.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 100.0),
+				new Reward(Slime.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 50.0),
+				new Reward(Slime.Companion
+						           .tier(4)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 10.0),
 
 				new Reward(new SlimeSpoofer(100).getUpdatedItem(false), 5.0),
 				new Reward(new SlimeSpoofer(80).getUpdatedItem(false), 30.0),

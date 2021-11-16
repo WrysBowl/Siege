@@ -15,7 +15,7 @@ public enum ArmorType {
 
 	private final int slot;
 
-	ArmorType (int slot) {
+	ArmorType(int slot) {
 
 		this.slot = slot;
 	}
@@ -27,10 +27,12 @@ public enum ArmorType {
 	 *
 	 * @return The parsed ArmorType, or null if not found.
 	 */
-	public static ArmorType matchType (final ItemStack itemStack) {
+	public static ArmorType matchType(final ItemStack itemStack) {
 
 		if (ArmorListener.isAirOrNull(itemStack)) return null;
-		String type = itemStack.getType().name();
+		String type = itemStack
+				.getType()
+				.name();
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(itemStack);
 		if (customItem instanceof CustomHelmet || customItem instanceof CustomCosmetic)
 			return HELMET;
@@ -42,7 +44,7 @@ public enum ArmorType {
 		else return null;
 	}
 
-	public int getSlot () {
+	public int getSlot() {
 
 		return slot;
 	}

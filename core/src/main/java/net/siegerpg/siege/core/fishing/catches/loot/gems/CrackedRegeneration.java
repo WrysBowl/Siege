@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.
 
 public class CrackedRegeneration extends Fish {
 
-	public CrackedRegeneration () {
+	public CrackedRegeneration() {
 
 		super(40, 0.7, 18, 12,
 		      new CrackedRegenerationGem(0).getUpdatedItem(false)

@@ -7,21 +7,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class LuckyPebbleShooter() : CustomBow(
-	name = "Lucky Pebble Shooter",
-	customModelData = 120003,
-	description = listOf("Now comes with pebble", "shooting support!"),
-	levelRequirement = 10,
-	material = Material.BOW,
-	baseStats = CustomItemUtils.statMap(strength = 18.0, luck = 6.0),
+		name = "Lucky Pebble Shooter",
+		customModelData = 120003,
+		description = listOf("Now comes with pebble", "shooting support!"),
+		levelRequirement = 10,
+		material = Material.BOW,
+		baseStats = CustomItemUtils.statMap(strength = 18.0, luck = 6.0),
                                       ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

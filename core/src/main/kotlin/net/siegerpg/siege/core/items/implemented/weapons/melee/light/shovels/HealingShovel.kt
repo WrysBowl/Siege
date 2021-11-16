@@ -7,22 +7,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class HealingShovel() : CustomMeleeWeapon(
-	name = "Healing Shovel",
-	customModelData = 110004,
-	description = listOf("A true grave digger"),
-	levelRequirement = 13,
-	material = Material.WOODEN_SWORD,
-	baseStats = CustomItemUtils.statMap(strength = 13.0, regeneration = 5.0),
-	attackSpeed = 1.5
+		name = "Healing Shovel",
+		customModelData = 110004,
+		description = listOf("A true grave digger"),
+		levelRequirement = 13,
+		material = Material.WOODEN_SWORD,
+		baseStats = CustomItemUtils.statMap(strength = 13.0, regeneration = 5.0),
+		attackSpeed = 1.5
                                          ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

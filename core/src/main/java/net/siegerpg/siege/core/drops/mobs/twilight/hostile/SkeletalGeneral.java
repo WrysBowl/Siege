@@ -10,13 +10,23 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.Polishe
 
 public class SkeletalGeneral extends MobDropTable {
 
-	public SkeletalGeneral () {
+	public SkeletalGeneral() {
 
 		super("SkeletalGeneral", 200, 300, 250, 300, new Reward[] {
-				new Reward(CorruptCrystal.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 70.0),
-				new Reward(CorruptCrystal.Companion.tier(3).getUpdatedItem(false), 30.0),
-				new Reward(CursedBone.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 70.0),
-				new Reward(CursedBone.Companion.tier(3).getUpdatedItem(false), 30.0),
+				new Reward(CorruptCrystal.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 70.0),
+				new Reward(CorruptCrystal.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 30.0),
+				new Reward(CursedBone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 70.0),
+				new Reward(CursedBone.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 30.0),
 
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 10.0),
 				new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 10.0),

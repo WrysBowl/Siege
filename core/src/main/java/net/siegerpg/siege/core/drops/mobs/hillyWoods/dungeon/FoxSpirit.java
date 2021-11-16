@@ -24,13 +24,23 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class FoxSpirit extends MobDropTable {
 
-	public FoxSpirit () {
+	public FoxSpirit() {
 
 		super("FoxSpirit", 20000, 25000, 25000, 30000, new Reward[] {
-				new Reward(Chain.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),
-				new Reward(Chain.Companion.tier(3).getUpdatedItem(false), 12.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),
-				new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 12.0),
+				new Reward(Chain.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 60.0),
+				new Reward(Chain.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 12.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 60.0),
+				new Reward(Bone.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 12.0),
 
 				new Reward(new ChainHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new ChainChestplate(100).getUpdatedItem(false), 5.5),

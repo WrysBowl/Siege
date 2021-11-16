@@ -7,24 +7,24 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class StonePickaxe() : CustomTool(
-	name = "Stone Pickaxe",
-	customModelData = 410005,
-	description = listOf("Use rock to break rock"),
-	levelRequirement = 15,
-	material = Material.STONE_PICKAXE,
-	baseStats = CustomItemUtils.statMap(),
+		name = "Stone Pickaxe",
+		customModelData = 410005,
+		description = listOf("Use rock to break rock"),
+		levelRequirement = 15,
+		material = Material.STONE_PICKAXE,
+		baseStats = CustomItemUtils.statMap(),
 
-	enchantments = hashMapOf(
-	                        )
+		enchantments = hashMapOf(
+		                        )
                                  ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

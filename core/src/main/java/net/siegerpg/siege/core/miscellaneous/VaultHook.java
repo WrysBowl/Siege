@@ -15,23 +15,33 @@ public class VaultHook {
 	public static Permission perms = null;
 	public static Chat chat = null;
 
-	public void createHooks () {
+	public void createHooks() {
 
 		if (!setupEconomy()) {
-			Core.plugin().getLogger().severe("Vault was not found!");
-			getServer().getPluginManager().disablePlugin(Core.plugin());
+			Core
+					.plugin()
+					.getLogger()
+					.severe("Vault was not found!");
+			getServer()
+					.getPluginManager()
+					.disablePlugin(Core.plugin());
 			return;
 		}
 		setupPermissions();
 		setupChat();
 	}
 
-	private boolean setupEconomy () {
+	private boolean setupEconomy() {
 
-		if (Bukkit.getServer().getPluginManager().getPlugin("Vault") == null) {
+		if (Bukkit
+				    .getServer()
+				    .getPluginManager()
+				    .getPlugin("Vault") == null) {
 			return false;
 		}
-		RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+		RegisteredServiceProvider< Economy > rsp = getServer()
+				.getServicesManager()
+				.getRegistration(Economy.class);
 		if (rsp == null) {
 			return false;
 		}
@@ -39,15 +49,19 @@ public class VaultHook {
 		return econ != null;
 	}
 
-	private void setupChat () {
+	private void setupChat() {
 
-		RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
+		RegisteredServiceProvider< Chat > rsp = getServer()
+				.getServicesManager()
+				.getRegistration(Chat.class);
 		chat = rsp.getProvider();
 	}
 
-	private void setupPermissions () {
+	private void setupPermissions() {
 
-		RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+		RegisteredServiceProvider< Permission > rsp = getServer()
+				.getServicesManager()
+				.getRegistration(Permission.class);
 		perms = rsp.getProvider();
 	}
 

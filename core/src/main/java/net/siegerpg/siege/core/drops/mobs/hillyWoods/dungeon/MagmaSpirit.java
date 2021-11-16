@@ -22,12 +22,21 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class MagmaSpirit extends MobDropTable {
 
-	public MagmaSpirit () {
+	public MagmaSpirit() {
 
 		super("MagmaSpirit", 1500, 1800, 1500, 1800, new Reward[] {
-				new Reward(Magma.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
-				new Reward(Magma.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 30.0),
-				new Reward(Magma.Companion.tier(4).getUpdatedItem(false).asQuantity(2), 10.0),
+				new Reward(Magma.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 100.0),
+				new Reward(Magma.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 30.0),
+				new Reward(Magma.Companion
+						           .tier(4)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 10.0),
 
 				new Reward(new MagmaHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new MagmaChestplate(100).getUpdatedItem(false), 5.5),

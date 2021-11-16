@@ -16,15 +16,28 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Mercenary extends MobDropTable {
 
-	public Mercenary () {
+	public Mercenary() {
 
 		super("Mercenary", 55, 58, 75, 78, new Reward[] {
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 50.0),
-				new Reward(Leather.Companion.tier(3).getUpdatedItem(false), 5.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 50.0),
-				new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 5.0),
-				new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 25.0),
-				new Reward(MetalScrap.Companion.tier(3).getUpdatedItem(false), 5.0),
+				new Reward(Leather.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 50.0),
+				new Reward(Leather.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 5.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 50.0),
+				new Reward(Bone.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 5.0),
+				new Reward(MetalScrap.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(3), 25.0),
+				new Reward(MetalScrap.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 5.0),
 
 				new Reward(new IronHelmet(80).getUpdatedItem(false), 2.5),
 				new Reward(new IronChestplate(80).getUpdatedItem(false), 2.5),

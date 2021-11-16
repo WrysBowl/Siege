@@ -7,27 +7,27 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class IronLeggings() : CustomLeggings(
-	name = "Iron Leggings",
-	customModelData = 1,
-	description = listOf("Iron jenkins"),
-	levelRequirement = 35,
-	material = Material.IRON_LEGGINGS,
-	baseStats = CustomItemUtils.statMap(
-		health = 40.0,
-		toughness = 100.0,
-		regeneration = 10.0,
-		strength = -8.0,
-		luck = -7.0
-	                                   ),
+		name = "Iron Leggings",
+		customModelData = 1,
+		description = listOf("Iron jenkins"),
+		levelRequirement = 35,
+		material = Material.IRON_LEGGINGS,
+		baseStats = CustomItemUtils.statMap(
+				health = 40.0,
+				toughness = 100.0,
+				regeneration = 10.0,
+				strength = -8.0,
+				luck = -7.0
+		                                   ),
                                      ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

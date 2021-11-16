@@ -4,7 +4,7 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey;
 
 public class NormalCosmeticKey extends WebstoreKeys {
 
-	public NormalCosmeticKey () {
+	public NormalCosmeticKey() {
 
 		super("cosmetic", "normal", 1, new NormalKey(0));
 	}

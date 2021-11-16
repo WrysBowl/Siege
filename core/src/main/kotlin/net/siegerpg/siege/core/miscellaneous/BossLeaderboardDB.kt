@@ -19,19 +19,23 @@ object BossLeaderboardDB {
 	 *      player id:
 	 *          percentage, seconds it took
 	 */
-	private val cachedBossData = HashMap<String, HashMap<UUID, Triple<Byte, Int, Instant>>>()
+	private val cachedBossData =
+			HashMap<String, HashMap<UUID, Triple<Byte, Int, Instant>>>()
 
 	private fun setCacheData(
-		bossName: String,
-		player: UUID,
-		data: Pair<Byte, Int>,
-		timeSet: Instant
+			bossName : String,
+			player : UUID,
+			data : Pair<Byte, Int>,
+			timeSet : Instant
 	                        ) {
 		if (cachedBossData[bossName] == null) cachedBossData[bossName] = HashMap()
 		cachedBossData[bossName]!![player] = Triple(data.first, data.second, timeSet)
 	}
 
-	private fun getCacheData(bossName: String, player: UUID): Triple<Byte, Int, Instant>? {
+	private fun getCacheData(
+			bossName : String,
+			player : UUID
+	                        ) : Triple<Byte, Int, Instant>? {
 		return cachedBossData[bossName]?.get(player)
 	}
 
@@ -41,10 +45,10 @@ object BossLeaderboardDB {
 	 * @return The task that will fetch the data from the database
 	 */
 	fun getBossLeaderboardData(
-		player: UUID,
-		bossName: String,
-		runAfter: (Pair<Byte, Int>?) -> Unit
-	                          ): BukkitTask {
+			player : UUID,
+			bossName : String,
+			runAfter : (Pair<Byte, Int>?) -> Unit
+	                          ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetBossLeaderboardData(player, bossName))
 		})
@@ -57,10 +61,10 @@ object BossLeaderboardDB {
 	 * @return The task that will fetch the data from the database
 	 */
 	fun getBossLeaderboardData(
-		players: List<UUID>,
-		bossName: String,
-		runAfter: (HashMap<UUID, Pair<Byte, Int>>?) -> Unit
-	                          ): BukkitTask {
+			players : List<UUID>,
+			bossName : String,
+			runAfter : (HashMap<UUID, Pair<Byte, Int>>?) -> Unit
+	                          ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetBossLeaderboardData(players, bossName))
 		})
@@ -73,9 +77,9 @@ object BossLeaderboardDB {
 	 * @return The task that will fetch the data from the database
 	 */
 	fun getBossLeaderboardTop10Data(
-		bossName: String,
-		runAfter: (List<Pair<UUID, Pair<Byte, Int>>>?) -> Unit
-	                               ): BukkitTask {
+			bossName : String,
+			runAfter : (List<Pair<UUID, Pair<Byte, Int>>>?) -> Unit
+	                               ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetBossLeaderboardTop10Data(bossName))
 		})
@@ -85,7 +89,11 @@ object BossLeaderboardDB {
 	 * Sets the boss percentageDone and timeTaken for a player
 	 * @return The task that will fetch the data from the database
 	 */
-	fun setBossData(bossName: String, playerID: UUID, data: Pair<Byte, Int>): BukkitTask {
+	fun setBossData(
+			bossName : String,
+			playerID : UUID,
+			data : Pair<Byte, Int>
+	               ) : BukkitTask {
 		return setBossData(bossName, playerID, data) {}
 	}
 
@@ -94,11 +102,11 @@ object BossLeaderboardDB {
 	 * @return The task that will fetch the data from the database
 	 */
 	fun setBossData(
-		bossName: String,
-		playerID: UUID,
-		data: Pair<Byte, Int>,
-		then: () -> Unit
-	               ): BukkitTask {
+			bossName : String,
+			playerID : UUID,
+			data : Pair<Byte, Int>,
+			then : () -> Unit
+	               ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			blockingSetBossLeaderboardData(bossName, playerID, data)
 			then()
@@ -109,7 +117,10 @@ object BossLeaderboardDB {
 	 * Sets the boss percentageDone and timeTaken for multiple players
 	 * @return The task that will fetch the data from the database
 	 */
-	fun setBossData(bossName: String, data: HashMap<UUID, Pair<Byte, Int>>): BukkitTask {
+	fun setBossData(
+			bossName : String,
+			data : HashMap<UUID, Pair<Byte, Int>>
+	               ) : BukkitTask {
 		return setBossData(bossName, data) {}
 	}
 
@@ -118,10 +129,10 @@ object BossLeaderboardDB {
 	 * @return The task that will fetch the data from the database
 	 */
 	fun setBossData(
-		bossName: String,
-		data: HashMap<UUID, Pair<Byte, Int>>,
-		then: () -> Unit
-	               ): BukkitTask {
+			bossName : String,
+			data : HashMap<UUID, Pair<Byte, Int>>,
+			then : () -> Unit
+	               ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			blockingSetBossLeaderboardData(bossName, data)
 			then()
@@ -135,20 +146,25 @@ object BossLeaderboardDB {
 	 * Returns boss leaderboard data, blocking the current thread
 	 * @return A Pair of the percentage and the seconds it took
 	 */
-	fun blockingGetBossLeaderboardData(playerID: UUID, bossNam: String): Pair<Byte, Int>? {
+	fun blockingGetBossLeaderboardData(
+			playerID : UUID,
+			bossNam : String
+	                                  ) : Pair<Byte, Int>? {
 		val bossName = bossNam.lowercase()
 		val now = Instant.now()
 		val cachedData = getCacheData(bossName, playerID)
 		if (cachedData != null) {
-			if (cachedData.third.plusSeconds(cacheDuration.toLong()).isAfter(Instant.now())) {
+			if (cachedData.third.plusSeconds(cacheDuration.toLong())
+							.isAfter(Instant.now())
+			) {
 				return Pair(cachedData.first, cachedData.second)
 			}
 		}
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt = connection.prepareStatement(
-				"SELECT percentageDone,timeTaken FROM bossData WHERE playerID=? AND bossName=?",
-				ResultSet.TYPE_SCROLL_SENSITIVE
+					"SELECT percentageDone,timeTaken FROM bossData WHERE playerID=? AND bossName=?",
+					ResultSet.TYPE_SCROLL_SENSITIVE
 			                                      )
 			stmt.setString(1, playerID.toString())
 			stmt.setString(2, bossName)
@@ -169,9 +185,9 @@ object BossLeaderboardDB {
 	 * @return A hashmap of uuid and Pair of the percentage and the seconds it took
 	 */
 	fun blockingGetBossLeaderboardData(
-		playerIDs: List<UUID>,
-		bossNam: String
-	                                  ): HashMap<UUID, Pair<Byte, Int>>? {
+			playerIDs : List<UUID>,
+			bossNam : String
+	                                  ) : HashMap<UUID, Pair<Byte, Int>>? {
 		val bossName = bossNam.lowercase()
 		val now = Instant.now()
 		val mutableIDs = playerIDs.toMutableSet()
@@ -179,7 +195,7 @@ object BossLeaderboardDB {
 		mutableIDs.forEach { id ->
 			val cachedData = getCacheData(bossName, id)
 			if (cachedData != null && cachedData.third.plusSeconds(cacheDuration.toLong())
-					.isAfter(now)
+							.isAfter(now)
 			) {
 				val pair = Pair(cachedData.first, cachedData.second)
 				map[id] = pair
@@ -193,9 +209,9 @@ object BossLeaderboardDB {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt = connection.prepareStatement(
-				String.format("SELECT percentageDone,timeTaken,playerID FROM bossData WHERE bossName=? AND playerID IN (%s)",
-				              mutableIDs.joinToString(", ") { "?" }),
-				ResultSet.TYPE_SCROLL_SENSITIVE
+					String.format("SELECT percentageDone,timeTaken,playerID FROM bossData WHERE bossName=? AND playerID IN (%s)",
+					              mutableIDs.joinToString(", ") { "?" }),
+					ResultSet.TYPE_SCROLL_SENSITIVE
 			                                      )
 			var currentIndex = 0;
 			stmt.setString(++currentIndex, bossName)
@@ -205,7 +221,10 @@ object BossLeaderboardDB {
 			val resultSet = stmt.executeQuery();
 			while (resultSet.next()) {
 				val uuid = UUID.fromString(resultSet.getString("playerID"))
-				val data = Pair(resultSet.getByte("percentageDone"), resultSet.getInt("timeTaken"))
+				val data = Pair(
+						resultSet.getByte("percentageDone"),
+						resultSet.getInt("timeTaken")
+				               )
 				map[uuid] = data
 				setCacheData(bossName, uuid, data, Instant.now())
 			}
@@ -217,20 +236,23 @@ object BossLeaderboardDB {
 	 * Returns boss leaderboard data for the top 10 players of a boss, blocking the current thread
 	 * @return A hashmap of player uuid and Pair of the percentage and the seconds it took
 	 */
-	fun blockingGetBossLeaderboardTop10Data(bossNam: String): List<Pair<UUID, Pair<Byte, Int>>>? {
+	fun blockingGetBossLeaderboardTop10Data(bossNam : String) : List<Pair<UUID, Pair<Byte, Int>>>? {
 		val bossName = bossNam.lowercase()
 		val list = mutableListOf<Pair<UUID, Pair<Byte, Int>>>()
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt = connection.prepareStatement(
-				"SELECT percentageDone,timeTaken,playerID FROM bossData WHERE bossName=? ORDER BY percentageDone/timeTaken DESC LIMIT 10",
-				ResultSet.TYPE_SCROLL_SENSITIVE
+					"SELECT percentageDone,timeTaken,playerID FROM bossData WHERE bossName=? ORDER BY percentageDone/timeTaken DESC LIMIT 10",
+					ResultSet.TYPE_SCROLL_SENSITIVE
 			                                      )
 			stmt.setString(1, bossName)
 			val resultSet = stmt.executeQuery();
 			while (resultSet.next()) {
 				val uuid = UUID.fromString(resultSet.getString("playerID"))
-				val data = Pair(resultSet.getByte("percentageDone"), resultSet.getInt("timeTaken"))
+				val data = Pair(
+						resultSet.getByte("percentageDone"),
+						resultSet.getInt("timeTaken")
+				               )
 				val uuidData = Pair(uuid, data)
 				list.add(uuidData)
 				setCacheData(bossName, uuid, data, Instant.now())
@@ -242,7 +264,11 @@ object BossLeaderboardDB {
 	/**
 	 * Sets the boss percentageDone and timeTaken for a player, blocking the thread
 	 */
-	fun blockingSetBossLeaderboardData(bossNam: String, playerID: UUID, data: Pair<Byte, Int>) {
+	fun blockingSetBossLeaderboardData(
+			bossNam : String,
+			playerID : UUID,
+			data : Pair<Byte, Int>
+	                                  ) {
 		val bossName = bossNam.lowercase()
 		val dbData = blockingGetBossLeaderboardData(playerID, bossName)
 		val connection = DatabaseManager.getConnection()
@@ -273,7 +299,10 @@ object BossLeaderboardDB {
 	/**
 	 * Sets the boss percentageDone and timeTaken for a player, blocking the thread
 	 */
-	fun blockingSetBossLeaderboardData(bossNam: String, data: HashMap<UUID, Pair<Byte, Int>>) {
+	fun blockingSetBossLeaderboardData(
+			bossNam : String,
+			data : HashMap<UUID, Pair<Byte, Int>>
+	                                  ) {
 		val bossName = bossNam.lowercase()
 		val playerIDs = data.keys.toList()
 		val dbData = blockingGetBossLeaderboardData(playerIDs, bossName)

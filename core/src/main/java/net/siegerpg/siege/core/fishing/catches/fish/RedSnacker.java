@@ -4,11 +4,11 @@ import net.siegerpg.siege.core.fishing.catches.Fish;
 
 public class RedSnacker extends Fish {
 
-	public RedSnacker () {
+	public RedSnacker() {
 
 		super(
 				"Red Snacker",
-				new double[] {90, 110},
+				new double[] { 90, 110 },
 				24,
 				0.6,
 				20,

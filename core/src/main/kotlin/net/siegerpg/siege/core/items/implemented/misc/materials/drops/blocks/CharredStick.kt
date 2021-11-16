@@ -6,28 +6,28 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CharredStick() : CustomMaterial(
-	name = "Charred Stick",
-	customModelData = 320016,
-	description = listOf("A burnt stick"),
-	levelRequirement = 0,
-	material = Material.FLINT,
+		name = "Charred Stick",
+		customModelData = 320016,
+		description = listOf("A burnt stick"),
+		levelRequirement = 0,
+		material = Material.FLINT,
 
-	) {
+		) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}
 
 	companion object {
 
-		fun tier(tier: Int): CharredStick {
+		fun tier(tier : Int) : CharredStick {
 			val newItem = CharredStick(0)
 			newItem.tier = tier
 			return newItem

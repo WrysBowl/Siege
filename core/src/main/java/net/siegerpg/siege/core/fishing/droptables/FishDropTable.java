@@ -6,9 +6,9 @@ import java.util.HashMap;
 
 public class FishDropTable {
 
-	public HashMap<Fish, Double> fishDropTable;
+	public HashMap< Fish, Double > fishDropTable;
 
-	public FishDropTable () {
+	public FishDropTable() {
 
 	}
 

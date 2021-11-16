@@ -6,19 +6,19 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class SuperiorKey() : CustomKey(
-	name = "Superior Key",
-	customModelData = 630007,
-	description = listOf("High chance of a", "rare cosmetic"),
-	material = Material.TRIPWIRE_HOOK,
+		name = "Superior Key",
+		customModelData = 630007,
+		description = listOf("High chance of a", "rare cosmetic"),
+		material = Material.TRIPWIRE_HOOK,
                                ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 80
 		this.rarity = Rarity.RARE
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

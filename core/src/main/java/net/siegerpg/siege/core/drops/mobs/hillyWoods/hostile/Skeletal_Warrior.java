@@ -21,12 +21,19 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Skeletal_Warrior extends MobDropTable {
 
-	public Skeletal_Warrior () {
+	public Skeletal_Warrior() {
 
 		super("Skeletal_Warrior", 80, 90, 60, 70, new Reward[] {
-				new Reward(Bone.Companion.tier(1).getUpdatedItem(false).asQuantity(4), 100.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 10.0),
-				new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 1.0),
+				new Reward(Bone.Companion
+						           .tier(1)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 100.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 10.0),
+				new Reward(Bone.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 1.0),
 
 				new Reward(new BoneHelmet(50).getUpdatedItem(false), 2.5),
 				new Reward(new BoneChestplate(50).getUpdatedItem(false), 2.5),
@@ -53,8 +60,10 @@ public class Skeletal_Warrior extends MobDropTable {
 				new Reward(new LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false), 1.5),
 
 				new Reward(new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
-				new Reward(new HealingSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
-				new Reward(new HealthySplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(
+						new HealingSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(
+						new HealthySplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
 				new Reward(new ToughSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
 				new Reward(new StrongSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
 				new Reward(new LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),

@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class LuckyWoodenSword() : CustomMeleeWeapon(
-	name = "Lucky Wooden Sword",
-	customModelData = 110007,
-	description = listOf("A classic weapon in recruits"),
-	levelRequirement = 25,
-	material = Material.WOODEN_SWORD,
-	baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 5.0),
+		name = "Lucky Wooden Sword",
+		customModelData = 110007,
+		description = listOf("A classic weapon in recruits"),
+		levelRequirement = 25,
+		material = Material.WOODEN_SWORD,
+		baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 5.0),
 
-	attackSpeed = 1.6
+		attackSpeed = 1.6
                                             ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

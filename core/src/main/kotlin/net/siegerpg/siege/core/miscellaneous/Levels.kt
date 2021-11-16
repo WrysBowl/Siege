@@ -23,28 +23,32 @@ object Levels {
 	private const val cacheDuration = 10 * 60
 	private val cachedLevelExp = ConcurrentHashMap<UUID, Triple<Short, Int, Instant>>()
 
-	private val levelRewards: ArrayList<LevelReward> = arrayListOf(
-		Reward1(), Reward2(), Reward3(), Reward4(), Reward5(),
-		Reward6(), Reward7(), Reward8(), Reward9(), Reward10(),
-		Reward11(), Reward12(), Reward13(), Reward14(), Reward15(),
-		Reward16(), Reward17(), Reward18(), Reward19(), Reward20(),
-		Reward21(), Reward22(), Reward23(), Reward24(), Reward25(),
-		Reward26(), Reward27(), Reward28(), Reward29(), Reward30(),
-		Reward31(), Reward32(), Reward33(), Reward34(), Reward35(),
-		Reward36(), Reward37(), Reward38(), Reward39()
-	                                                              )
+	private val levelRewards : ArrayList<LevelReward> = arrayListOf(
+			Reward1(), Reward2(), Reward3(), Reward4(), Reward5(),
+			Reward6(), Reward7(), Reward8(), Reward9(), Reward10(),
+			Reward11(), Reward12(), Reward13(), Reward14(), Reward15(),
+			Reward16(), Reward17(), Reward18(), Reward19(), Reward20(),
+			Reward21(), Reward22(), Reward23(), Reward24(), Reward25(),
+			Reward26(), Reward27(), Reward28(), Reward29(), Reward30(),
+			Reward31(), Reward32(), Reward33(), Reward34(), Reward35(),
+			Reward36(), Reward37(), Reward38(), Reward39()
+	                                                               )
 
 	/**
 	 * Calculates the experience required to reach a level.
 	 */
-	fun calculateRequiredExperience(level: Short): Int {
+	fun calculateRequiredExperience(level : Short) : Int {
 		return (level + 3.0).pow(3).toInt()
 	}
 
 	/**
 	 * Returns the new user level based on a level and exp
 	 */
-	fun calculateExpLevel(level: Short, experience: Int, player: OfflinePlayer): Pair<Short, Int> {
+	fun calculateExpLevel(
+			level : Short,
+			experience : Int,
+			player : OfflinePlayer
+	                     ) : Pair<Short, Int> {
 		var exp = experience
 		var lvl = level
 		while (calculateRequiredExperience(lvl) <= exp) {
@@ -53,12 +57,22 @@ object Levels {
 			if (!player.isOnline) continue
 			if (levelRewards.size < lvl + 2) continue //ensure that the level reward is set in the array list
 
-			val reward: LevelReward = levelRewards[lvl.toInt() - 2]
+			val reward : LevelReward = levelRewards[lvl.toInt() - 2]
 			object : BukkitRunnable() {
 				override fun run() {
 					reward.giveReward(player as Player)
-					player.playSound(player.location, Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f)
-					player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 0.5f)
+					player.playSound(
+							player.location,
+							Sound.BLOCK_BEACON_POWER_SELECT,
+							1.0f,
+							2.0f
+					                )
+					player.playSound(
+							player.location,
+							Sound.ENTITY_PLAYER_LEVELUP,
+							1.0f,
+							0.5f
+					                )
 				}
 			}.runTask(Core.plugin())
 		}
@@ -72,9 +86,9 @@ object Levels {
 	 * @return The task that will fetch the data from the database
 	 */
 	fun getExpLevel(
-		player: OfflinePlayer,
-		runAfter: (levelExp: Pair<Short, Int>?) -> Unit
-	               ): BukkitTask {
+			player : OfflinePlayer,
+			runAfter : (levelExp : Pair<Short, Int>?) -> Unit
+	               ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetExpLevel(player))
 		})
@@ -86,9 +100,9 @@ object Levels {
 	 * @return The task that will fetch the data from the database
 	 */
 	fun getExpLevel(
-		players: List<OfflinePlayer>,
-		runAfter: (HashMap<UUID, Pair<Short, Int>>?) -> Unit
-	               ): BukkitTask {
+			players : List<OfflinePlayer>,
+			runAfter : (HashMap<UUID, Pair<Short, Int>>?) -> Unit
+	               ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetExpLevel(players))
 		})
@@ -100,9 +114,9 @@ object Levels {
 	 * @param limit: Instead of getting exp&level of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
 	 */
 	fun getAllExpLevel(
-		limit: Int,
-		runAfter: (ArrayList<Triple<UUID, Short, Int>>?) -> Unit
-	                  ): BukkitTask {
+			limit : Int,
+			runAfter : (ArrayList<Triple<UUID, Short, Int>>?) -> Unit
+	                  ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			runAfter(blockingGetAllExpLevel(limit))
 		})
@@ -112,7 +126,7 @@ object Levels {
 	/**
 	 * Sets the exp and level of a player
 	 */
-	fun setExpLevel(player: OfflinePlayer, levelExp: Pair<Short, Int>): BukkitTask {
+	fun setExpLevel(player : OfflinePlayer, levelExp : Pair<Short, Int>) : BukkitTask {
 		return setExpLevel(player, levelExp, {})
 	}
 
@@ -120,10 +134,10 @@ object Levels {
 	 * Sets the exp and level of a player
 	 */
 	fun setExpLevel(
-		player: OfflinePlayer,
-		levelExp: Pair<Short, Int>,
-		then: () -> Unit
-	               ): BukkitTask {
+			player : OfflinePlayer,
+			levelExp : Pair<Short, Int>,
+			then : () -> Unit
+	               ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			blockingSetExpLevel(player, levelExp)
 			then()
@@ -133,14 +147,17 @@ object Levels {
 	/**
 	 * Sets the exp and level of multiple players
 	 */
-	fun setExpLevel(data: HashMap<UUID, Pair<Short, Int>>): BukkitTask {
+	fun setExpLevel(data : HashMap<UUID, Pair<Short, Int>>) : BukkitTask {
 		return setExpLevel(data) {}
 	}
 
 	/**
 	 * Sets the exp and level of multiple players
 	 */
-	fun setExpLevel(data: HashMap<UUID, Pair<Short, Int>>, then: () -> Unit): BukkitTask {
+	fun setExpLevel(
+			data : HashMap<UUID, Pair<Short, Int>>,
+			then : () -> Unit
+	               ) : BukkitTask {
 		return Bukkit.getScheduler().runTaskAsynchronously(Core.plugin(), Runnable {
 			blockingSetExpLevel(data)
 			then()
@@ -150,19 +167,19 @@ object Levels {
 	/**
 	 * Adds experience (and levels up automatically) for one player
 	 */
-	fun addExp(player: OfflinePlayer, expToAdd: Int): BukkitTask {
+	fun addExp(player : OfflinePlayer, expToAdd : Int) : BukkitTask {
 		return addExp(player, expToAdd) {}
 	}
 
 	/**
 	 * Adds experience (and levels up automatically) for one player
 	 */
-	fun addExp(player: OfflinePlayer, expToAdd: Int, then: () -> Unit): BukkitTask {
+	fun addExp(player : OfflinePlayer, expToAdd : Int, then : () -> Unit) : BukkitTask {
 		return getExpLevel(player) { pair ->
 			val new = calculateExpLevel(
-				pair?.first ?: 0,
-				(pair?.second ?: 0) + expToAdd,
-				player as Player
+					pair?.first ?: 0,
+					(pair?.second ?: 0) + expToAdd,
+					player as Player
 			                           )
 			setExpLevel(player, new, then)
 		}
@@ -171,22 +188,26 @@ object Levels {
 	/**
 	 * Adds the same experience to multiple players
 	 */
-	fun addExp(players: ArrayList<OfflinePlayer>, exp: Int): BukkitTask {
+	fun addExp(players : ArrayList<OfflinePlayer>, exp : Int) : BukkitTask {
 		return addExp(players, exp) {}
 	}
 
 	/**
 	 * Adds the same experience to multiple players
 	 */
-	fun addExp(players: ArrayList<OfflinePlayer>, exp: Int, then: () -> Unit): BukkitTask {
+	fun addExp(
+			players : ArrayList<OfflinePlayer>,
+			exp : Int,
+			then : () -> Unit
+	          ) : BukkitTask {
 		return getExpLevel(players) { levelExp ->
 			if (levelExp != null) {
 				levelExp.forEach { (uuid, data) ->
 					// Updates the data in levelExp for each player to reflect the new exp and level
 					levelExp[uuid] = calculateExpLevel(
-						data.first,
-						data.second + exp,
-						Bukkit.getOfflinePlayer(uuid)
+							data.first,
+							data.second + exp,
+							Bukkit.getOfflinePlayer(uuid)
 					                                  )
 				}
 				// Finally sets the new exp and level for all the players in question
@@ -204,14 +225,18 @@ object Levels {
 	/**
 	 * Adds 100% of the experience to one player and 10% to all their party members
 	 */
-	fun addExpShared(player: OfflinePlayer, exp: Int): List<BukkitTask> {
+	fun addExpShared(player : OfflinePlayer, exp : Int) : List<BukkitTask> {
 		return addExpShared(player, exp) {}
 	}
 
 	/**
 	 * Adds 100% of the experience to one player and 10% to all their party members
 	 */
-	fun addExpShared(player: OfflinePlayer, exp: Int, then: () -> Unit): List<BukkitTask> {
+	fun addExpShared(
+			player : OfflinePlayer,
+			exp : Int,
+			then : () -> Unit
+	                ) : List<BukkitTask> {
 		val list = mutableListOf<BukkitTask>()
 		list.add(addExp(player, exp))
 		val teamMembers = ArrayList<OfflinePlayer>()
@@ -236,7 +261,7 @@ object Levels {
 	 * Gets the exp and level of a player, blocking the thread.
 	 * @return The level and exp
 	 */
-	fun blockingGetExpLevel(player: OfflinePlayer): Pair<Short, Int>? {
+	fun blockingGetExpLevel(player : OfflinePlayer) : Pair<Short, Int>? {
 		val cachedData = cachedLevelExp[player.uniqueId]
 		val now = Instant.now()
 		if (cachedData != null) {
@@ -247,8 +272,8 @@ object Levels {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt = connection.prepareStatement(
-				"SELECT level,experience FROM userData WHERE uuid=?",
-				ResultSet.TYPE_SCROLL_SENSITIVE
+					"SELECT level,experience FROM userData WHERE uuid=?",
+					ResultSet.TYPE_SCROLL_SENSITIVE
 			                                      )
 			stmt.setString(1, player.uniqueId.toString())
 			val query = stmt.executeQuery()
@@ -272,8 +297,8 @@ object Levels {
 	 * @return The level and experience
 	 */
 	fun blockingGetExpLevel(
-		players: List<OfflinePlayer>
-	                       ): HashMap<UUID, Pair<Short, Int>>? {
+			players : List<OfflinePlayer>
+	                       ) : HashMap<UUID, Pair<Short, Int>>? {
 		// Gets the cache data for each cached player, and gets the data of the not-yet-cached players
 		val playerIDs = players.map { p -> p.uniqueId }.toMutableSet()
 		val map = HashMap<UUID, Pair<Short, Int>>()
@@ -281,7 +306,7 @@ object Levels {
 		playerIDs.forEach { id ->
 			val cachedData = cachedLevelExp[id]
 			if (cachedData != null && cachedData.third.plusSeconds(cacheDuration.toLong())
-					.isAfter(now)
+							.isAfter(now)
 			) {
 				val pair = Pair(cachedData.first, cachedData.second)
 				map[id] = pair
@@ -294,9 +319,9 @@ object Levels {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt = connection.prepareStatement(
-				String.format("SELECT level,experience,uuid FROM userData WHERE uuid IN (%s)",
-				              playerIDs.joinToString(", ") { "?" }),
-				ResultSet.TYPE_SCROLL_SENSITIVE
+					String.format("SELECT level,experience,uuid FROM userData WHERE uuid IN (%s)",
+					              playerIDs.joinToString(", ") { "?" }),
+					ResultSet.TYPE_SCROLL_SENSITIVE
 			                                      )
 			var currentIndex = 0
 			playerIDs.forEach { id ->
@@ -305,7 +330,8 @@ object Levels {
 			val resultSet = stmt.executeQuery()
 			while (resultSet.next()) {
 				val uuid = UUID.fromString(resultSet.getString("uuid"))
-				val result = Pair(resultSet.getShort("level"), resultSet.getInt("experience"))
+				val result =
+						Pair(resultSet.getShort("level"), resultSet.getInt("experience"))
 				map[uuid] = result
 				// Save user data to cache
 				cachedLevelExp[uuid] = Triple(result.first, result.second, Instant.now())
@@ -319,7 +345,7 @@ object Levels {
 	 * This bypasses the cache so be careful not to overuse it.
 	 * @param limit: Instead of getting exp&level of each single player you can choose how many players to get it from. Choose a number <= 0 to get everyone's level.
 	 */
-	fun blockingGetAllExpLevel(limit: Int): ArrayList<Triple<UUID, Short, Int>>? {
+	fun blockingGetAllExpLevel(limit : Int) : ArrayList<Triple<UUID, Short, Int>>? {
 		val connection = DatabaseManager.getConnection()
 		val arrayList = arrayListOf<Triple<UUID, Short, Int>>()
 		val limitStr = if (limit <= 0) {
@@ -336,9 +362,9 @@ object Levels {
 				val uuid = UUID.fromString(query.getString("uuid"))
 				val data = Pair(query.getShort("level"), query.getInt("experience"))
 				val triple = Triple(
-					uuid,
-					data.first,
-					data.second
+						uuid,
+						data.first,
+						data.second
 				                   )
 				arrayList.add(triple)
 				// Updates the cache
@@ -351,7 +377,7 @@ object Levels {
 	/**
 	 * Sets the exp and level of a player, blocking the thread
 	 */
-	fun blockingSetExpLevel(player: OfflinePlayer, levelExp: Pair<Short, Int>) {
+	fun blockingSetExpLevel(player : OfflinePlayer, levelExp : Pair<Short, Int>) {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt =
@@ -364,7 +390,8 @@ object Levels {
 				val p = (player as Player)
 				val lvl = levelExp.first.toInt()
 				val exp = levelExp.second
-				val expPercent = exp / calculateRequiredExperience(levelExp.first).toFloat()
+				val expPercent =
+						exp / calculateRequiredExperience(levelExp.first).toFloat()
 				p.level = lvl
 				p.exp = expPercent
 				// Updates the cache
@@ -377,7 +404,7 @@ object Levels {
 	/**
 	 * Sets the exp and level of multiple players, blocking the thread
 	 */
-	fun blockingSetExpLevel(data: HashMap<UUID, Pair<Short, Int>>) {
+	fun blockingSetExpLevel(data : HashMap<UUID, Pair<Short, Int>>) {
 		val connection = DatabaseManager.getConnection()
 		connection!!.use {
 			val stmt =
@@ -397,11 +424,13 @@ object Levels {
 					val p = (player as Player)
 					val lvl = data.first.toInt()
 					val exp = data.second
-					val expPercent = exp / calculateRequiredExperience(data.first).toFloat()
+					val expPercent =
+							exp / calculateRequiredExperience(data.first).toFloat()
 					p.level = lvl
 					p.exp = expPercent
 					// Updates the cache
-					cachedLevelExp[player.uniqueId] = Triple(data.first, data.second, Instant.now())
+					cachedLevelExp[player.uniqueId] =
+							Triple(data.first, data.second, Instant.now())
 				}
 			}
 			// We execute the batch

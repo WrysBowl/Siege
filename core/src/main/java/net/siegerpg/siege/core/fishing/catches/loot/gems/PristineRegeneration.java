@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.
 
 public class PristineRegeneration extends Fish {
 
-	public PristineRegeneration () {
+	public PristineRegeneration() {
 
 		super(60, 1, 12, 20,
 		      new PristineRegenerationGem(0).getUpdatedItem(false)

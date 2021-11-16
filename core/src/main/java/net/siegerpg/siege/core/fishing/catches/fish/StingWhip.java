@@ -4,11 +4,11 @@ import net.siegerpg.siege.core.fishing.catches.Fish;
 
 public class StingWhip extends Fish {
 
-	public StingWhip () {
+	public StingWhip() {
 
 		super(
 				"Sting Whip",
-				new double[] {200, 230},
+				new double[] { 200, 230 },
 				50,
 				0.5,
 				24,

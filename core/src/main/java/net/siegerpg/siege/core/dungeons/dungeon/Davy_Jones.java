@@ -12,7 +12,7 @@ import org.bukkit.Sound;
 
 public class Davy_Jones extends Dungeon {
 
-	public Davy_Jones () {
+	public Davy_Jones() {
 
 		super("Davy_Jones", 8,
 		      new DavyJonesKey(0),
@@ -22,15 +22,23 @@ public class Davy_Jones extends Dungeon {
 	}
 
 	@Override
-	public void spawning () {
+	public void spawning() {
 
-		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 16, 40, 411);
+		Location loc = new Location(Core
+				                            .plugin()
+				                            .getServer()
+				                            .getWorld("Hilly_Woods"), 16, 40, 411);
 		new Helix().createHelix(loc, Particle.WATER_BUBBLE);
 
-		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
-			new Waves().createWaves(loc);
-			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
-		}, 80);
+		Bukkit
+				.getServer()
+				.getScheduler()
+				.runTaskLater(Core.plugin(), () -> {
+					new Waves().createWaves(loc);
+					loc
+							.getWorld()
+							.playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
+				}, 80);
 	}
 
 }

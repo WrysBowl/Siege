@@ -9,15 +9,27 @@ import org.bukkit.Material;
 
 public class OXEYE_DAISY extends BlockDropTable {
 
-	public OXEYE_DAISY () {
+	public OXEYE_DAISY() {
 
 		super(100, Material.OXEYE_DAISY, 0, 0, 0, 0, new Reward[] {
-				new Reward(Seed.Companion.tier(1).getUpdatedItem(false), 25.0),
-				new Reward(PlantMatter.Companion.tier(1).getUpdatedItem(false), 25.0),
-				new Reward(Stick.Companion.tier(1).getUpdatedItem(false), 25.0),
-				new Reward(Seed.Companion.tier(2).getUpdatedItem(false), 2.5),
-				new Reward(PlantMatter.Companion.tier(2).getUpdatedItem(false), 2.5),
-				new Reward(Stick.Companion.tier(2).getUpdatedItem(false), 2.5)
+				new Reward(Seed.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 25.0),
+				new Reward(PlantMatter.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 25.0),
+				new Reward(Stick.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 25.0),
+				new Reward(Seed.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 2.5),
+				new Reward(PlantMatter.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 2.5),
+				new Reward(Stick.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 2.5)
 		});
 	}
 

@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Pris
 
 public class PristineStrength extends Fish {
 
-	public PristineStrength () {
+	public PristineStrength() {
 
 		super(60, 1, 12, 20,
 		      new PristineStrengthGem(0).getUpdatedItem(false)

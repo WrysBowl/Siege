@@ -16,13 +16,23 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Werewolf extends MobDropTable {
 
-	public Werewolf () {
+	public Werewolf() {
 
 		super("Werewolf", 75, 79, 80, 84, new Reward[] {
-				new Reward(Chain.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 60.0),
-				new Reward(Chain.Companion.tier(3).getUpdatedItem(false), 6.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 30.0),
-				new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 3.0),
+				new Reward(Chain.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(3), 60.0),
+				new Reward(Chain.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 6.0),
+				new Reward(Bone.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(3), 30.0),
+				new Reward(Bone.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 3.0),
 
 				new Reward(new ChainHelmet(100).getUpdatedItem(false), 0.5),
 				new Reward(new ChainChestplate(100).getUpdatedItem(false), 0.5),

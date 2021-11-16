@@ -11,23 +11,23 @@ import org.bukkit.inventory.ItemStack
 
 //be sure to remove excess variables (quality, recipe list, etc.) same with cosmetics
 abstract class CustomKey(
-	override val name: String,
-	override val customModelData: Int? = null,
-	override val levelRequirement: Int? = null,
-	override val description: List<String>,
-	override val material: Material,
-	final override var quality: Int = -1,
-	override var item: ItemStack = ItemStack(material),
-	override val type: ItemTypes = ItemTypes.MATERIAL,
+		override val name : String,
+		override val customModelData : Int? = null,
+		override val levelRequirement : Int? = null,
+		override val description : List<String>,
+		override val material : Material,
+		final override var quality : Int = -1,
+		override var item : ItemStack = ItemStack(material),
+		override val type : ItemTypes = ItemTypes.MATERIAL,
                         ) : CustomItem {
 
-	override var rarity: Rarity = Rarity.COMMON
+	override var rarity : Rarity = Rarity.COMMON
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
 	}
 
-	override fun updateMeta(hideRarity: Boolean): ItemStack {
+	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 
 		val meta = item.itemMeta
 
@@ -45,13 +45,13 @@ abstract class CustomKey(
 		return item
 	}
 
-	override fun equals(other: Any?): Boolean {
+	override fun equals(other : Any?) : Boolean {
 		other?.let { return false }
 		if (this::class.qualifiedName != other!!::class.qualifiedName) return false
 		return true
 	}
 
-	override fun hashCode(): Int {
+	override fun hashCode() : Int {
 		var result = name.hashCode()
 		result = 31 * result + (customModelData ?: 0)
 		result = 31 * result + (levelRequirement ?: 0)

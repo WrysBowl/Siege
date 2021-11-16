@@ -12,26 +12,26 @@ import org.bukkit.util.Vector
 
 class WandCast : BukkitRunnable {
 
-	private var plugin: Plugin = Core.plugin()
-	private var customWand: CustomWand? = null
-	private var player: Player? = null
-	private var fromPlayerToTarget: Vector? = null
-	private var loc: Location = Location(Bukkit.getWorld("world"), 0.0, 0.0, 0.0)
-	private var targetLoc: Location = Location(Bukkit.getWorld("world"), 0.0, 0.0, 0.0)
-	private var increment: Double = 0.0
-	private var dmg: Double = 0.0
-	private var counter: Double = 0.0
-	private var damageRadius: Double = 0.0
+	private var plugin : Plugin = Core.plugin()
+	private var customWand : CustomWand? = null
+	private var player : Player? = null
+	private var fromPlayerToTarget : Vector? = null
+	private var loc : Location = Location(Bukkit.getWorld("world"), 0.0, 0.0, 0.0)
+	private var targetLoc : Location = Location(Bukkit.getWorld("world"), 0.0, 0.0, 0.0)
+	private var increment : Double = 0.0
+	private var dmg : Double = 0.0
+	private var counter : Double = 0.0
+	private var damageRadius : Double = 0.0
 
 	constructor(
-		plugin: JavaPlugin,
-		customWand: CustomWand,
-		player: Player,
-		vector: Vector,
-		playerLoc: Location,
-		damage: Double,
-		targetLoc: Location,
-		length: Double
+			plugin : JavaPlugin,
+			customWand : CustomWand,
+			player : Player,
+			vector : Vector,
+			playerLoc : Location,
+			damage : Double,
+			targetLoc : Location,
+			length : Double
 	           ) {
 		this.plugin = plugin
 		this.customWand = customWand
@@ -71,17 +71,17 @@ class WandCast : BukkitRunnable {
 		loc.subtract(x, y, z)
 	}
 
-	private fun drawParticle(loc: Location, r: Int, g: Int, b: Int) {
+	private fun drawParticle(loc : Location, r : Int, g : Int, b : Int) {
 		if (loc.world == null) return
 		loc.world.spawnParticle(
-			Particle.REDSTONE,
-			loc,
-			0,
-			0.0,
-			0.0,
-			0.0,
-			1.0,
-			Particle.DustOptions(Color.fromRGB(r, g, b), 1.0F)
+				Particle.REDSTONE,
+				loc,
+				0,
+				0.0,
+				0.0,
+				0.0,
+				1.0,
+				Particle.DustOptions(Color.fromRGB(r, g, b), 1.0F)
 		                       )
 	}
 

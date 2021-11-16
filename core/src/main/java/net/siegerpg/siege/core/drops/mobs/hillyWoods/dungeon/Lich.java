@@ -22,20 +22,47 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Lich extends MobDropTable {
 
-	public Lich () {
+	public Lich() {
 
 		super("Lich", 5000, 5500, 5000, 5500, new Reward[] {
-				new Reward(Seed.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
-				new Reward(Seed.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 10.0),
-				new Reward(Seed.Companion.tier(4).getUpdatedItem(false).asQuantity(2), 1.0),
+				new Reward(Seed.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 100.0),
+				new Reward(Seed.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 10.0),
+				new Reward(Seed.Companion
+						           .tier(4)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 1.0),
 
-				new Reward(Coal.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
-				new Reward(Coal.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 10.0),
-				new Reward(Coal.Companion.tier(4).getUpdatedItem(false).asQuantity(2), 1.0),
+				new Reward(Coal.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 100.0),
+				new Reward(Coal.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 10.0),
+				new Reward(Coal.Companion
+						           .tier(4)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 1.0),
 
-				new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
-				new Reward(Vine.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 10.0),
-				new Reward(Vine.Companion.tier(4).getUpdatedItem(false).asQuantity(2), 1.0),
+				new Reward(Vine.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(8), 100.0),
+				new Reward(Vine.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 10.0),
+				new Reward(Vine.Companion
+						           .tier(4)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 1.0),
 
 				new Reward(new GreatSword(Utils.randRarity()).getUpdatedItem(false), 30.0),
 				new Reward(new GreatSword(Utils.randRarity()).getUpdatedItem(false), 30.0),

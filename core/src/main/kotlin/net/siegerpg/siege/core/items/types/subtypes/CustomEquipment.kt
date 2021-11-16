@@ -18,10 +18,10 @@ import org.bukkit.inventory.ItemStack
 
 interface CustomEquipment : CustomItem {
 
-	var statGem: StatGem?
-	val baseStats: HashMap<StatTypes, Double>
+	var statGem : StatGem?
+	val baseStats : HashMap<StatTypes, Double>
 
-	fun addStatGem(newStatGem: StatGem) {
+	fun addStatGem(newStatGem : StatGem) {
 		this.statGem = newStatGem
 		this.serialize()
 	}
@@ -31,16 +31,16 @@ interface CustomEquipment : CustomItem {
 		this.serialize()
 	}
 
-	fun hasGem(): Boolean {
+	fun hasGem() : Boolean {
 		if (this.statGem == null) {
 			return false
 		}
 		return true
 	}
 
-	override fun updateMeta(hideRarity: Boolean): ItemStack {
+	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		if (this is CustomHelmet) {
-			val cosmetic: CustomItem? = CustomItemUtils.getCustomItem(this.storedItem)
+			val cosmetic : CustomItem? = CustomItemUtils.getCustomItem(this.storedItem)
 			if (cosmetic is Cosmetic) {
 				this.material = cosmetic.material
 				this.customModelData = cosmetic.customModelData
@@ -67,24 +67,25 @@ interface CustomEquipment : CustomItem {
 		}
 		if (baseStats.size != 0) {
 			meta.lore(" ")
-			val realStats = CustomItemUtils.getStats(this, addGem = false, addRarity = true)
+			val realStats =
+					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
 			baseStats.keys.forEach {
 				if (realStats[it]!! < 0.0) {
 					if (hideRarity || quality < 0) meta.lore(
-						"<r><red>${baseStats[it]?.times(0.5)}. . .${
-							baseStats[it]?.times(
-								1.5
-							                    )
-						} <gray>${it.stylizedName}"
+							"<r><red>${baseStats[it]?.times(0.5)}. . .${
+								baseStats[it]?.times(
+										1.5
+								                    )
+							} <gray>${it.stylizedName}"
 					                                        )
 					else meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
-						"<r><green>+${baseStats[it]?.times(0.5)}. . .${
-							baseStats[it]?.times(
-								1.5
-							                    )
-						} <gray>${it.stylizedName}"
+							"<r><green>+${baseStats[it]?.times(0.5)}. . .${
+								baseStats[it]?.times(
+										1.5
+								                    )
+							} <gray>${it.stylizedName}"
 					                                        )
 					else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 				} // TODO: Make special items work with rarity multiplier
@@ -100,10 +101,10 @@ interface CustomEquipment : CustomItem {
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(
-			ItemFlag.HIDE_ATTRIBUTES,
-			ItemFlag.HIDE_UNBREAKABLE,
-			ItemFlag.HIDE_ENCHANTS,
-			ItemFlag.HIDE_DYE
+				ItemFlag.HIDE_ATTRIBUTES,
+				ItemFlag.HIDE_UNBREAKABLE,
+				ItemFlag.HIDE_ENCHANTS,
+				ItemFlag.HIDE_DYE
 		                 )
 		meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
 
@@ -114,11 +115,11 @@ interface CustomEquipment : CustomItem {
 	override fun serialize() {
 		super.serialize()
 		item = item.setNbtTags(
-			"equipmentStatGem" to if (statGem != null) statGem.toString() else null
+				"equipmentStatGem" to if (statGem != null) statGem.toString() else null
 		                      )
 	}
 
-	fun onHit(e: EntityDamageByEntityEvent) {
+	fun onHit(e : EntityDamageByEntityEvent) {
 		// placeholder for optional event
 	}
 
@@ -128,7 +129,7 @@ interface CustomEquipment : CustomItem {
 			item.getNbtTag<String>("equipmentStatGem")?.let {
 				statGem = StatGem.fromString(it)
 			}
-		} catch (e: Exception) {
+		} catch (e : Exception) {
 
 		}
 

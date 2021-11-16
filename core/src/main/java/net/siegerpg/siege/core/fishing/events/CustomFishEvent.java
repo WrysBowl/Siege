@@ -30,7 +30,7 @@ public class CustomFishEvent {
 	private final FishHook hook;
 	private final State state;
 	private final FishingData data;
-	private ArrayList<ItemStack> rewards = new ArrayList<ItemStack>();
+	private ArrayList< ItemStack > rewards = new ArrayList< ItemStack >();
 	private int ticksElapsed = 0;
 	private int totalTicksElapsed = 0;
 	private int secondsElapsed = 0;
@@ -38,7 +38,7 @@ public class CustomFishEvent {
 	private BossBar progressBar;
 
 
-	public CustomFishEvent (PlayerFishEvent e) {
+	public CustomFishEvent(PlayerFishEvent e) {
 
 		this.player = e.getPlayer();
 		this.hook = e.getHook();
@@ -47,17 +47,19 @@ public class CustomFishEvent {
 
 		//Bait is null, unable to pass through params
 		Fish fish = FishCore.chooseRandomFish(player);
-		this.getFishingData().setFish(fish);
+		this
+				.getFishingData()
+				.setFish(fish);
 	}
 
-	public void trigger () {
+	public void trigger() {
 
 		data.setFishing(true);
 		new FishingTask(this).runTaskTimerAsynchronously(Core.plugin(), 0, 1);
 		player.playSound(player.getLocation(), Sound.ENTITY_FISHING_BOBBER_SPLASH, 2.0f, 2.0f);
 	}
 
-	public void win () {
+	public void win() {
 
 		this.remove();
 		Fish fish = data.getFish();
@@ -66,12 +68,17 @@ public class CustomFishEvent {
 		//win rewards should be synchronous with the thread
 		new BukkitRunnable() {
 			@Override
-			public void run () {
+			public void run() {
 				//Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(loc, fish.getItem(), List.of(player.getUniqueId()));
-				Item displayedItem = loc.getWorld().dropItemNaturally(loc, fish.getItem());
+				Item displayedItem = loc
+						.getWorld()
+						.dropItemNaturally(loc, fish.getItem());
 				displayedItem.setPickupDelay(99999);
 
-				Vector vector = Utils.getDifferentialVector(loc, player.getLocation().add(0, 2, 0));
+				Vector vector = Utils.getDifferentialVector(
+						loc, player
+								.getLocation()
+								.add(0, 2, 0));
 				vector.normalize();
 				vector.setX(vector.getX() / 1.2);
 				vector.setY(vector.getY() / 1.2);
@@ -82,22 +89,30 @@ public class CustomFishEvent {
 				//add timer
 				new BukkitRunnable() {
 					@Override
-					public void run () {
+					public void run() {
 
-						player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
+						player.playSound(
+								player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f,
+								1.0f
+						                );
 						fish.accomplishment(player);
 						displayedItem.remove();
 						Utils.giveItem(player, fish.getItem());
 
 						if (fish.actualSize > 0) {
 							Levels.INSTANCE.addExpShared(player, (int) (fish.actualSize / 2));
-							player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) (fish.actualSize / 2) + " <dark_purple>EXP"));
-							Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-								public void run () {
+							player.sendActionBar(Utils.parse(
+									"<dark_purple>+ " + (int) (fish.actualSize / 2) +
+									" <dark_purple>EXP"));
+							Bukkit
+									.getServer()
+									.getScheduler()
+									.runTaskLater(Core.plugin(), new Runnable() {
+										public void run() {
 
-									Scoreboard.updateScoreboard(player);
-								}
-							}, 20);
+											Scoreboard.updateScoreboard(player);
+										}
+									}, 20);
 						}
 					}
 				}.runTaskLater(Core.plugin(), 20);
@@ -105,96 +120,96 @@ public class CustomFishEvent {
 		}.runTask(Core.plugin());
 	}
 
-	public void lose () {
+	public void lose() {
 
 		this.remove();
 		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_NO, 1.0f, 1.0f);
 	}
 
 
-	public void remove () {
+	public void remove() {
 
 		progressBar.removeAll();
 		this.hook.remove();
 	}
 
-	public Player getPlayer () {
+	public Player getPlayer() {
 
 		return player;
 	}
 
-	public FishHook getHook () {
+	public FishHook getHook() {
 
 		return hook;
 	}
 
-	public State getState () {
+	public State getState() {
 
 		return state;
 	}
 
-	public int getTicksElapsed () {
+	public int getTicksElapsed() {
 
 		return ticksElapsed;
 	}
 
-	public void setTicksElapsed (int num) {
+	public void setTicksElapsed(int num) {
 
 		if (num >= 0 && num < 21)
 			this.ticksElapsed = num;
 	}
 
-	public int getSecondsElapsed () {
+	public int getSecondsElapsed() {
 
 		return this.secondsElapsed;
 	}
 
-	public void setSecondsElapsed (int num) {
+	public void setSecondsElapsed(int num) {
 
 		this.secondsElapsed = num;
 	}
 
-	public int getTotalTicksElapsed () {
+	public int getTotalTicksElapsed() {
 
 		return totalTicksElapsed;
 	}
 
-	public void setTotalTicksElapsed (int totalTicksElapsed) {
+	public void setTotalTicksElapsed(int totalTicksElapsed) {
 
 		this.totalTicksElapsed = totalTicksElapsed;
 	}
 
-	public FishingData getFishingData () {
+	public FishingData getFishingData() {
 
 		return this.data;
 	}
 
-	public int getTotalLength () {
+	public int getTotalLength() {
 
 		return totalLength;
 	}
 
-	public void setTotalLength (int totalLength) {
+	public void setTotalLength(int totalLength) {
 
 		this.totalLength = totalLength;
 	}
 
-	public ArrayList<ItemStack> getRewards () {
+	public ArrayList< ItemStack > getRewards() {
 
 		return rewards;
 	}
 
-	public void setRewards (ArrayList<ItemStack> rewards) {
+	public void setRewards(ArrayList< ItemStack > rewards) {
 
 		this.rewards = rewards;
 	}
 
-	public BossBar getProgressBar () {
+	public BossBar getProgressBar() {
 
 		return progressBar;
 	}
 
-	public void setProgressBar (BossBar progressBar) {
+	public void setProgressBar(BossBar progressBar) {
 
 		this.progressBar = progressBar;
 	}

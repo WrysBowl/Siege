@@ -29,12 +29,13 @@ class DropUtils : Listener, PacketListenerAbstract() {
 	 * Disables item picking up for items you shouldn't be able to pick up.
 	 */
 	@EventHandler(priority = EventPriority.LOWEST)
-	fun onItemPickup(evt: EntityPickupItemEvent) {
+	fun onItemPickup(evt : EntityPickupItemEvent) {
 		val item = evt.item.itemStack
 		val seepickableby = item.getNbtTag<String>("seepickableby") ?: return
 		if (evt.entityType != EntityType.PLAYER) return
 		val player = evt.entity as Player
-		val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java) ?: return
+		val stringUUIDs =
+				Gson().fromJson(seepickableby, Array<String>::class.java) ?: return
 		// If seepickableby does not contain the player's uuid we cancel the evt
 		if (!stringUUIDs.contains(player.uniqueId.toString()))
 			evt.isCancelled = true
@@ -46,7 +47,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
 	/**
 	 * Doesn't send the entity spawn packet for those entities
 	 */
-	override fun onPacketPlaySend(evt: PacketPlaySendEvent) {
+	override fun onPacketPlaySend(evt : PacketPlaySendEvent) {
 		if (evt.packetId == PacketType.Play.Server.SPAWN_ENTITY) {
 			val wrappedPacket = WrappedPacketOutSpawnEntity(evt.nmsPacket)
 			if (wrappedPacket.entity?.type != EntityType.DROPPED_ITEM)
@@ -68,7 +69,10 @@ class DropUtils : Listener, PacketListenerAbstract() {
 		/**
 		 * Internal method used to set the nbt tags of an item
 		 */
-		private fun itemWithSeepickableNbtTags(item: ItemStack, players: List<UUID>): ItemStack {
+		private fun itemWithSeepickableNbtTags(
+				item : ItemStack,
+				players : List<UUID>
+		                                      ) : ItemStack {
 			val jsonArray = JsonArray()
 			players.forEach { p ->
 				jsonArray.add(p.toString())
@@ -84,7 +88,11 @@ class DropUtils : Listener, PacketListenerAbstract() {
 		 * @param item The item to drop
 		 * @param players The list of player uuids that will be able to pick the item up
 		 */
-		public fun dropItemForPlayers(loc: Location, item: ItemStack, players: List<UUID>): Item {
+		public fun dropItemForPlayers(
+				loc : Location,
+				item : ItemStack,
+				players : List<UUID>
+		                             ) : Item {
 			return loc.world.dropItem(loc, itemWithSeepickableNbtTags(item, players))
 		}
 
@@ -96,13 +104,13 @@ class DropUtils : Listener, PacketListenerAbstract() {
 		 * @param players The list of player uuids that will be able to pick the item up
 		 */
 		public fun dropItemNaturallyForPlayers(
-			loc: Location,
-			item: ItemStack,
-			players: List<UUID>
-		                                      ): Item {
+				loc : Location,
+				item : ItemStack,
+				players : List<UUID>
+		                                      ) : Item {
 			return loc.world.dropItemNaturally(
-				loc,
-				itemWithSeepickableNbtTags(item, players)
+					loc,
+					itemWithSeepickableNbtTags(item, players)
 			                                  )
 		}
 	}

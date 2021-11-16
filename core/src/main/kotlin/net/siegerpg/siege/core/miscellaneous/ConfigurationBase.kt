@@ -11,10 +11,10 @@ import java.util.*
 /**
  * @param file The file the configuration will be saved to
  */
-open class ConfigurationBase(file: File) {
+open class ConfigurationBase(file : File) {
 
-	protected var configFile: File = file
-	lateinit var configuration: FileConfiguration
+	protected var configFile : File = file
+	lateinit var configuration : FileConfiguration
 
 	init {
 		this.createConfig()
@@ -30,7 +30,7 @@ open class ConfigurationBase(file: File) {
 		try {
 			configFile.createNewFile()
 			loadFile()
-		} catch (e: Exception) {
+		} catch (e : Exception) {
 			throw e
 		}
 	}
@@ -44,7 +44,7 @@ open class ConfigurationBase(file: File) {
 	fun save() { // Saves the configuration to file
 		try {
 			configuration.save(configFile)
-		} catch (e: IOException) {
+		} catch (e : IOException) {
 			throw e
 		}
 	}
@@ -65,7 +65,7 @@ open class ConfigurationBase(file: File) {
 		createConfig()
 	}
 
-	fun backup(directory: File) {
+	fun backup(directory : File) {
 		val fileName = SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss").format(Date())
 		configFile.copyTo(File(directory, fileName))
 	}

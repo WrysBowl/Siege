@@ -6,7 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable
 
 class Countdown {
 
-	fun countdown(player: Player, countDown: Int) { //A method
+	fun countdown(player : Player, countDown : Int) { //A method
 		object : BukkitRunnable() {
 			//BukkitRunnable, not Runnable
 			var countdown =
@@ -21,9 +21,9 @@ class Countdown {
 				countdown-- //decrement
 			}
 		}.runTaskTimer(
-			Core.plugin(),
-			0,
-			20
+				Core.plugin(),
+				0,
+				20
 		              ) //Repeating task with 0 ticks initial delay, run once per 20 ticks (one second). Make sure you pass a valid instance of your plugin.
 	}
 }

@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.Polishe
 
 public class PolishedTough extends Fish {
 
-	public PolishedTough () {
+	public PolishedTough() {
 
 		super(55, 1, 12, 18,
 		      new PolishedToughGem(0).getUpdatedItem(false)

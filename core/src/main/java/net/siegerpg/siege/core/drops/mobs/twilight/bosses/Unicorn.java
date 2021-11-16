@@ -12,14 +12,25 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Unicorn extends MobDropTable {
 
-	public Unicorn () {
+	public Unicorn() {
 
 		super("Unicorn", 400, 600, 900, 1000, new Reward[] {
 				new Reward(new LuminousBow(Utils.randRarity()).getUpdatedItem(false), 25.0),
-				new Reward(Bone.Companion.tier(3).getUpdatedItem(false).asQuantity(16), 50.0),
-				new Reward(Bone.Companion.tier(4).getUpdatedItem(false).asQuantity(4), 50.0),
-				new Reward(Leather.Companion.tier(3).getUpdatedItem(false).asQuantity(16), 50.0),
-				new Reward(new GoldenCarrot(100).getUpdatedItem(false).asQuantity(4), 100.0),
+				new Reward(Bone.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(16), 50.0),
+				new Reward(Bone.Companion
+						           .tier(4)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 50.0),
+				new Reward(Leather.Companion
+						           .tier(3)
+						           .getUpdatedItem(false)
+						           .asQuantity(16), 50.0),
+				new Reward(new GoldenCarrot(100)
+						           .getUpdatedItem(false)
+						           .asQuantity(4), 100.0),
 				new Reward(new PristineHealthGem(0).getUpdatedItem(false), 20.0),
 				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 20.0),
 				});

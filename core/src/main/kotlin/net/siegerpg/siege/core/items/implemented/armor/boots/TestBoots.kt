@@ -7,21 +7,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class TestBoots() : CustomBoots(
-	name = "Test Boots",
-	customModelData = 1,
-	description = listOf("Boots for testing"),
-	levelRequirement = 0,
-	material = Material.DIAMOND_BOOTS,
-	baseStats = CustomItemUtils.statMap(strength = 10.0)
+		name = "Test Boots",
+		customModelData = 1,
+		description = listOf("Boots for testing"),
+		levelRequirement = 0,
+		material = Material.DIAMOND_BOOTS,
+		baseStats = CustomItemUtils.statMap(strength = 10.0)
                                ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.RawHea
 
 public class RawHealth extends Fish {
 
-	public RawHealth () {
+	public RawHealth() {
 
 		super(30, 0.6, 20, 10,
 		      new RawHealthGem(0).getUpdatedItem(false)

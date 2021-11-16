@@ -22,14 +22,20 @@ import java.util.ArrayList;
 public class BartBeggar implements Listener {
 
 	@EventHandler
-	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+	public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
 
-		if (e.getRightClicked().getName().contains("Bart") && e.getRightClicked().getName().contains("6")) {
+		if (e
+				    .getRightClicked()
+				    .getName()
+				    .contains("Bart") && e
+				    .getRightClicked()
+				    .getName()
+				    .contains("6")) {
 			getMenu().show(e.getPlayer());
 		}
 	}
 
-	private ChestGui getMenu () {
+	private ChestGui getMenu() {
 		//Menu
 		ChestGui menu = new ChestGui(3, "Bart's Treasure Hunt");
 
@@ -85,7 +91,7 @@ public class BartBeggar implements Listener {
 		return menu;
 	}
 
-	private void clickStart (InventoryClickEvent e) {
+	private void clickStart(InventoryClickEvent e) {
 
 		if (e.getSlot() == 13) {
 			Player player = (Player) e.getWhoClicked();

@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class Tablist {
 
-	public static void tablistUpdate (Player p) {
+	public static void tablistUpdate(Player p) {
 
 		Component header = Utils.parse("\n" +
 		                               "<gold><b>SiegeRPG</b>\n" +
@@ -17,7 +17,9 @@ public class Tablist {
 		Component footer = Utils.parse("\n" +
 		                               "<gold>Discord: <gray>/discord\n" +
 		                               "<gold>Webstore: <gray>/webstore\n" +
-		                               "<gray>There are <gold><underlined>" + Bukkit.getOnlinePlayers().size() + "<reset><gray> players online!\n" +
+		                               "<gray>There are <gold><underlined>" + Bukkit
+				                               .getOnlinePlayers()
+				                               .size() + "<reset><gray> players online!\n" +
 		                               "");
 		String tabName = Utils.tacc(VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName());
 		p.setPlayerListName(tabName);

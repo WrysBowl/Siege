@@ -6,20 +6,20 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class RockSpiritKey() : CustomKey(
-	name = "Rock Spirit Key",
-	customModelData = 620001,
-	description = listOf("Used to summon", "the Rock spirit"),
-	material = Material.TRIPWIRE_HOOK,
-	quality = 0
+		name = "Rock Spirit Key",
+		customModelData = 620001,
+		description = listOf("Used to summon", "the Rock spirit"),
+		material = Material.TRIPWIRE_HOOK,
+		quality = 0
                                  ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.Pristi
 
 public class PristineHealth extends Fish {
 
-	public PristineHealth () {
+	public PristineHealth() {
 
 		super(60, 1, 12, 20,
 		      new PristineHealthGem(0).getUpdatedItem(false)

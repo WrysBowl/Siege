@@ -6,28 +6,28 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CursedBone() : CustomMaterial(
-	name = "Cursed Bone",
-	customModelData = 310014,
-	description = listOf("A bone that produces", "dark magic"),
-	levelRequirement = 0,
-	material = Material.FLINT,
+		name = "Cursed Bone",
+		customModelData = 310014,
+		description = listOf("A bone that produces", "dark magic"),
+		levelRequirement = 0,
+		material = Material.FLINT,
 
-	) {
+		) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}
 
 	companion object {
 
-		fun tier(tier: Int): CursedBone {
+		fun tier(tier : Int) : CursedBone {
 			val newItem = CursedBone(0)
 			newItem.tier = tier
 			return newItem

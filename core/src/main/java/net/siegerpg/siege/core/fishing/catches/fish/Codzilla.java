@@ -5,11 +5,11 @@ import net.siegerpg.siege.core.fishing.catches.Fish;
 
 public class Codzilla extends Fish {
 
-	public Codzilla () {
+	public Codzilla() {
 
 		super(
 				"Codzilla",
-				new double[] {75, 100},
+				new double[] { 75, 100 },
 				30,
 				0.5,
 				32,

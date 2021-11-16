@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class UncommonDropTable extends CosmeticDropTable {
 
-	public UncommonDropTable () {
+	public UncommonDropTable() {
 
 		dropTable = new HashMap<>() {
 			{

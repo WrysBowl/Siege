@@ -8,28 +8,28 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class GlacierParka() : CustomChestplate(
-	name = "Glacier Parka",
-	customModelData = 1,
-	description = listOf("Keeps you warm", "from the cold"),
-	levelRequirement = 55,
-	material = Material.LEATHER_CHESTPLATE,
-	baseStats = CustomItemUtils.statMap(
-		health = 350.0,
-		regeneration = 70.0,
-		strength = 35.0,
-		luck = -35.0,
-		toughness = -320.0
-	                                   ),
-	leatherColor = Color.AQUA
+		name = "Glacier Parka",
+		customModelData = 1,
+		description = listOf("Keeps you warm", "from the cold"),
+		levelRequirement = 55,
+		material = Material.LEATHER_CHESTPLATE,
+		baseStats = CustomItemUtils.statMap(
+				health = 350.0,
+				regeneration = 70.0,
+				strength = 35.0,
+				luck = -35.0,
+				toughness = -320.0
+		                                   ),
+		leatherColor = Color.AQUA
                                        ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

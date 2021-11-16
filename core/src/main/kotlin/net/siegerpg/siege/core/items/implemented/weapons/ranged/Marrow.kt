@@ -7,26 +7,26 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class Marrow() : CustomBow(
-	name = "Marrow",
-	customModelData = 120011,
-	description = listOf("Made from the best", "part of the bone"),
-	levelRequirement = 43,
-	material = Material.BOW,
-	baseStats = CustomItemUtils.statMap(
-		strength = 70.0,
-		regeneration = 30.0,
-		health = -30.0,
-		toughness = -100.0
-	                                   )
+		name = "Marrow",
+		customModelData = 120011,
+		description = listOf("Made from the best", "part of the bone"),
+		levelRequirement = 43,
+		material = Material.BOW,
+		baseStats = CustomItemUtils.statMap(
+				strength = 70.0,
+				regeneration = 30.0,
+				health = -30.0,
+				toughness = -100.0
+		                                   )
                           ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

@@ -42,8 +42,8 @@ tasks {
 		relocate("co.aikar.commands", "net.siegerpg.siege.core.acf")
 		relocate("co.aikar.locales", "net.siegerpg.siege.core.locales")
 		relocate(
-			"com.github.stefvanschie.inventoryframework",
-			"net.siegerpg.siege.core.inventoryframework"
+				"com.github.stefvanschie.inventoryframework",
+				"net.siegerpg.siege.core.inventoryframework"
 		        )
 		relocate("com.github.retrooper", "net.siegerpg.siege.core.retrooper")
 		doFirst {

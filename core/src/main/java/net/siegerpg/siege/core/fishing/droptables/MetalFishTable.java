@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class MetalFishTable extends FishDropTable {
 
-	public MetalFishTable () {
+	public MetalFishTable() {
 
 		this.fishDropTable = new HashMap<>() {
 			{

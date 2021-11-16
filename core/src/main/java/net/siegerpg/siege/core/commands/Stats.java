@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public class Stats implements CommandExecutor {
 
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (!(sender instanceof Player)) {
 			return false;
@@ -29,11 +29,16 @@ public class Stats implements CommandExecutor {
 			player = argPlayer;
 		}
 
-		double health = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH), 2);
-		double strength = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH), 2);
-		double toughness = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.TOUGHNESS), 2);
-		double luck = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK), 2);
-		double regeneration = Utils.round(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION), 2);
+		double health = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH), 2);
+		double strength = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH), 2);
+		double toughness = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.TOUGHNESS), 2);
+		double luck = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK), 2);
+		double regeneration = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION), 2);
 
 		sender.sendMessage(Utils.lore(" "));
 		sender.sendMessage(Utils.lore("<yellow><bold>Player Statistics"));

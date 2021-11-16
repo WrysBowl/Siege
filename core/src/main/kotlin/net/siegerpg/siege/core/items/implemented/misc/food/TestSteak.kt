@@ -6,21 +6,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class TestSteak() : CustomFood(
-	name = "Test Steak",
-	customModelData = 1,
-	description = listOf("A food for testing"),
-	levelRequirement = 0,
-	material = Material.COOKED_BEEF,
-	health = 20.0
+		name = "Test Steak",
+		customModelData = 1,
+		description = listOf("A food for testing"),
+		levelRequirement = 0,
+		material = Material.COOKED_BEEF,
+		health = 20.0
                               ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

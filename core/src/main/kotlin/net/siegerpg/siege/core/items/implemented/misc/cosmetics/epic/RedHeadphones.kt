@@ -6,19 +6,19 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class RedHeadphones() : Cosmetic(
-	name = "Red Headphones",
-	customModelData = 740003,
-	description = listOf(""),
-	material = Material.KNOWLEDGE_BOOK,
+		name = "Red Headphones",
+		customModelData = 740003,
+		description = listOf(""),
+		material = Material.KNOWLEDGE_BOOK,
                                 ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 90
 		this.rarity = Rarity.EPIC
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

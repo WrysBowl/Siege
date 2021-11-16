@@ -1,6 +1,6 @@
 package net.siegerpg.siege.core.items.enums
 
-enum class StatTypes(val stylizedName: String) {
+enum class StatTypes(val stylizedName : String) {
 	STRENGTH("Strength"),
 	TOUGHNESS("Toughness"),
 	HEALTH("Health"),
@@ -11,7 +11,7 @@ enum class StatTypes(val stylizedName: String) {
 
 	companion object {
 
-		fun getFromId(id: String?): StatTypes? {
+		fun getFromId(id : String?) : StatTypes? {
 			for (statType in values()) {
 				if (statType.stylizedName.equals(id, ignoreCase = true)) return statType
 			}

@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class PristineToughGem() : StatGemType(
-	name = "Pristine Tough Gem",
-	customModelData = 560004,
-	description = listOf("Power radiates from the core of this gem"),
-	levelRequirement = 35,
-	material = Material.POPPED_CHORUS_FRUIT,
+		name = "Pristine Tough Gem",
+		customModelData = 560004,
+		description = listOf("Power radiates from the core of this gem"),
+		levelRequirement = 35,
+		material = Material.POPPED_CHORUS_FRUIT,
 
-	statType = StatTypes.TOUGHNESS,
-	statAmount = 50.0
+		statType = StatTypes.TOUGHNESS,
+		statAmount = 50.0
                                       ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 0
 		this.rarity = Rarity.COMMON
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

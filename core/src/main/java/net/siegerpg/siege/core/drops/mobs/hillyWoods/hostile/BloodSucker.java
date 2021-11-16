@@ -19,13 +19,25 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class BloodSucker extends MobDropTable {
 
-	public BloodSucker () {
+	public BloodSucker() {
 
 		super("BloodSucker", 37, 40, 26, 29, new Reward[] {
-				new Reward(Vine.Companion.tier(1).getUpdatedItem(false).asQuantity(3), 100.0),
-				new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(2), 10.0),
-				new Reward(Seed.Companion.tier(1).getUpdatedItem(false).asQuantity(3), 100.0),
-				new Reward(Seed.Companion.tier(2).getUpdatedItem(false).asQuantity(2), 10.0),
+				new Reward(Vine.Companion
+						           .tier(1)
+						           .getUpdatedItem(false)
+						           .asQuantity(3), 100.0),
+				new Reward(Vine.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 10.0),
+				new Reward(Seed.Companion
+						           .tier(1)
+						           .getUpdatedItem(false)
+						           .asQuantity(3), 100.0),
+				new Reward(Seed.Companion
+						           .tier(2)
+						           .getUpdatedItem(false)
+						           .asQuantity(2), 10.0),
 
 				new Reward(new SewerShooter(50).getUpdatedItem(false), 1.0),
 				new Reward(new LuckySewerShooter(50).getUpdatedItem(false), 1.0),

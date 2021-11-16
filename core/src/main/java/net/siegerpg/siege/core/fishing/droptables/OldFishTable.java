@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class OldFishTable extends FishDropTable {
 
-	public OldFishTable () {
+	public OldFishTable() {
 
 		this.fishDropTable = new HashMap<>() {
 			{

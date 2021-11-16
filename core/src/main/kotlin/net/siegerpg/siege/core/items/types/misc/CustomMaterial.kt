@@ -13,19 +13,19 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
 abstract class CustomMaterial(
-	override val name: String,
-	override val customModelData: Int? = null,
-	override val levelRequirement: Int? = null,
-	override val description: List<String>,
-	override val material: Material,
-	final override var quality: Int = -1,
-	override var item: ItemStack = ItemStack(material),
-	override val type: ItemTypes = ItemTypes.MATERIAL,
+		override val name : String,
+		override val customModelData : Int? = null,
+		override val levelRequirement : Int? = null,
+		override val description : List<String>,
+		override val material : Material,
+		final override var quality : Int = -1,
+		override var item : ItemStack = ItemStack(material),
+		override val type : ItemTypes = ItemTypes.MATERIAL,
                              ) : CustomItem {
 
-	override var rarity: Rarity = Rarity.COMMON
+	override var rarity : Rarity = Rarity.COMMON
 
-	var tier: Int = 1
+	var tier : Int = 1
 		set(value) {
 			field = value
 			this.serialize()
@@ -38,7 +38,7 @@ abstract class CustomMaterial(
 	override fun serialize() {
 		super.serialize()
 		item = item.setNbtTags(
-			"materialTier" to tier
+				"materialTier" to tier
 		                      )
 	}
 
@@ -49,7 +49,7 @@ abstract class CustomMaterial(
 		}
 	}
 
-	override fun updateMeta(hideRarity: Boolean): ItemStack {
+	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 
 		val meta = item.itemMeta
 
@@ -70,12 +70,12 @@ abstract class CustomMaterial(
 		return item
 	}
 
-	fun asQuantity(amount: Int): CustomMaterial {
+	fun asQuantity(amount : Int) : CustomMaterial {
 		this.item.amount = amount
 		return this
 	}
 
-	override fun equals(other: Any?): Boolean {
+	override fun equals(other : Any?) : Boolean {
 		if (other == null) return false
 		Bukkit.getLogger().info("Other is not null")
 		if (this::class.qualifiedName != other::class.qualifiedName) return false
@@ -87,7 +87,7 @@ abstract class CustomMaterial(
 		return true
 	}
 
-	override fun hashCode(): Int {
+	override fun hashCode() : Int {
 		var result = name.hashCode()
 		result = 31 * result + (customModelData ?: 0)
 		result = 31 * result + (levelRequirement ?: 0)

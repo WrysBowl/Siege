@@ -4,11 +4,11 @@ import net.siegerpg.siege.core.fishing.catches.Fish;
 
 public class MrKrabs extends Fish {
 
-	public MrKrabs () {
+	public MrKrabs() {
 
 		super(
 				"Mr. Krabs",
-				new double[] {5, 15},
+				new double[] { 5, 15 },
 				32,
 				0.3,
 				24,

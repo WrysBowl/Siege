@@ -7,11 +7,15 @@ import org.bukkit.Material;
 
 public class DIRT extends BlockDropTable {
 
-	public DIRT () {
+	public DIRT() {
 
 		super(100, Material.DIRT, 1, 1, 0, 0, new Reward[] {
-				new Reward(Pebble.Companion.tier(1).getUpdatedItem(false), 50.0),
-				new Reward(Pebble.Companion.tier(2).getUpdatedItem(false), 5.0)
+				new Reward(Pebble.Companion
+						           .tier(1)
+						           .getUpdatedItem(false), 50.0),
+				new Reward(Pebble.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 5.0)
 		});
 	}
 

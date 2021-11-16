@@ -33,8 +33,8 @@ import java.math.BigDecimal
 
 class CustomItemKotlinListener : Listener, Runnable {
 
-	var cooldownWand: MutableList<Player> = mutableListOf()
-	var arrowItems: HashMap<Player, ItemStack> = hashMapOf()
+	var cooldownWand : MutableList<Player> = mutableListOf()
+	var arrowItems : HashMap<Player, ItemStack> = hashMapOf()
 
 
 	/*
@@ -46,13 +46,13 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 	@EventHandler
 	@Suppress("unused")
-	fun onItemSwap(e: PlayerSwapHandItemsEvent) {
+	fun onItemSwap(e : PlayerSwapHandItemsEvent) {
 		e.isCancelled = true
 	}
 
 	@EventHandler
 	@Suppress("unused")
-	fun onItemSwapClick(e: InventoryClickEvent) {
+	fun onItemSwapClick(e : InventoryClickEvent) {
 		if (e.slotType == InventoryType.SlotType.QUICKBAR && e.rawSlot == 45) {
 			if (CustomItemUtils.getCustomItem(e.cursor) is CustomWeapon) {
 				e.isCancelled = true
@@ -62,11 +62,11 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 	@EventHandler
 	@Suppress("unused")
-	fun onBowUse(e: PlayerInteractEvent) {
+	fun onBowUse(e : PlayerInteractEvent) {
 		if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK || e is PlayerInteractEntityEvent) {
-			val player: Player = e.player
+			val player : Player = e.player
 			if (player.inventory.itemInMainHand.type == Material.BOW || player.inventory.itemInMainHand.type == Material.CROSSBOW) {
-				val item: ItemStack? = player.inventory.getItem(9)
+				val item : ItemStack? = player.inventory.getItem(9)
 				if (item != null) {
 					if (item.type != Material.AIR && item.type != Material.ARROW) arrowItems[player] =
 							item
@@ -77,8 +77,8 @@ class CustomItemKotlinListener : Listener, Runnable {
 	}
 
 	@EventHandler
-	fun onBowShoot(e: EntityShootBowEvent) {
-		val entity: Entity = e.entity
+	fun onBowShoot(e : EntityShootBowEvent) {
+		val entity : Entity = e.entity
 		if (entity !is Player) return
 		if (arrowItems[entity] == null) return
 		entity.inventory.setItem(9, arrowItems[entity])
@@ -86,8 +86,8 @@ class CustomItemKotlinListener : Listener, Runnable {
 	}
 
 	@EventHandler
-	fun onLeave(e: PlayerQuitEvent) {
-		val player: Player = e.player
+	fun onLeave(e : PlayerQuitEvent) {
+		val player : Player = e.player
 		if (arrowItems[player] == null) return
 		player.inventory.setItem(9, arrowItems[player])
 	}
@@ -101,7 +101,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 		player.inventory.setItem(9, arrowItems[player])
 	}*/
 	@EventHandler
-	fun onBowUse(e: ProjectileHitEvent) {
+	fun onBowUse(e : ProjectileHitEvent) {
 		if (e.entity is Arrow) {
 			if (e.hitEntity == null) e.entity.remove()
 		}
@@ -109,14 +109,14 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	@Suppress("unused")
-	fun onHit(e: EntityDamageEvent) {
+	fun onHit(e : EntityDamageEvent) {
 		if (e.isCancelled) return
 		if (e.entity !is LivingEntity) return
 		val victim = e.entity as LivingEntity
 		val damage = e.damage
 		var actualDamage = e.damage
 		var maxDamage = damage
-		var attacker: Entity? = null
+		var attacker : Entity? = null
 		val vicMaxHealth = victim.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
 		if (e is EntityDamageByEntityEvent) {
 			attacker =
@@ -128,7 +128,8 @@ class CustomItemKotlinListener : Listener, Runnable {
 				}
 			}
 			if (attacker is Player) {
-				maxDamage = attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
+				maxDamage =
+						attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
 			}
 		}
 		if (attacker is Player) {
@@ -195,7 +196,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 			val armor = victim.inventory.armorContents
 			if (armor.isNullOrEmpty()) return
 			armor.forEach { item ->
-				val customItem: CustomItem? = CustomItemUtils.getCustomItem(item)
+				val customItem : CustomItem? = CustomItemUtils.getCustomItem(item)
 				customItem?.let {
 					if (it is CustomArmor) {
 						it.onHit(e)
@@ -206,8 +207,8 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 		val vicHealthStat =
 				if (victim is Player) CustomItemUtils.getPlayerStat(
-					victim,
-					StatTypes.HEALTH
+						victim,
+						StatTypes.HEALTH
 				                                                   ) + vicMaxHealth + (victim.level * 2)
 				else vicMaxHealth
 		if (vicHealthStat < 0.0) {
@@ -215,7 +216,10 @@ class CustomItemKotlinListener : Listener, Runnable {
 			return
 		}
 		val vicToughness =
-				if (victim is Player) CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS)
+				if (victim is Player) CustomItemUtils.getPlayerStat(
+						victim,
+						StatTypes.TOUGHNESS
+				                                                   )
 				else 0.0
 		val attStrengthStat =
 				if (attacker is Player && actualDamage > 0)
@@ -229,33 +233,37 @@ class CustomItemKotlinListener : Listener, Runnable {
 				(reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
 	}
 
-	private fun setVictimName(victim: LivingEntity, damage: Double, vicMaxHealth: Double) {
+	private fun setVictimName(
+			victim : LivingEntity,
+			damage : Double,
+			vicMaxHealth : Double
+	                         ) {
 
 		if (victim !is Mob) return
 
 		//change the mob's displayed health
-		val displayName: String = MobNames.mobNames[victim] ?: return
+		val displayName : String = MobNames.mobNames[victim] ?: return
 
 		//calculates displayed mob health
-		val mobHealth: BigDecimal = BigDecimal.valueOf(victim.health - damage)
+		val mobHealth : BigDecimal = BigDecimal.valueOf(victim.health - damage)
 
 		//sets displayed mob's health
 		victim.customName = Utils.tacc(
-			"$displayName &a${Utils.round(mobHealth.toDouble(), 2)}&2/&a${
-				Utils.round(
-					vicMaxHealth,
-					1
-				           )
-			}"
+				"$displayName &a${Utils.round(mobHealth.toDouble(), 2)}&2/&a${
+					Utils.round(
+							vicMaxHealth,
+							1
+					           )
+				}"
 		                              )
 	}
 
 	@EventHandler
 	@Suppress("unused")
-	fun onConsume(e: PlayerItemConsumeEvent) {
+	fun onConsume(e : PlayerItemConsumeEvent) {
 		object : BukkitRunnable() {
 			override fun run() {
-				val item: CustomItem = CustomItemUtils.getCustomItem(e.item) ?: return
+				val item : CustomItem = CustomItemUtils.getCustomItem(e.item) ?: return
 				if (item is CustomFood) {
 					item.onEat(e)
 				} else if (item is CustomPotion) {
@@ -292,7 +300,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 	@EventHandler
 	@Suppress("unused")
-	fun onFoodHold(e: PlayerItemHeldEvent) {
+	fun onFoodHold(e : PlayerItemHeldEvent) {
 		if (e.player.foodLevel < 19) return
 		val food = CustomItemUtils.getCustomItem(e.player.inventory.getItem(e.newSlot))
 		if (food != null) {
@@ -305,7 +313,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 	@EventHandler
 	@Suppress("unused")
-	fun onRegen(e: EntityRegainHealthEvent) {
+	fun onRegen(e : EntityRegainHealthEvent) {
 		if (e.regainReason != EntityRegainHealthEvent.RegainReason.CUSTOM || e.regainReason != EntityRegainHealthEvent.RegainReason.MAGIC_REGEN) {
 			e.isCancelled = true
 		}
@@ -313,7 +321,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 	@EventHandler
 	@Suppress("unused")
-	fun onInteract(event: PlayerInteractEvent) {
+	fun onInteract(event : PlayerInteractEvent) {
 		if (event.action != Action.LEFT_CLICK_AIR &&
 		    event.action != Action.LEFT_CLICK_BLOCK
 		) return
@@ -349,21 +357,22 @@ class CustomItemKotlinListener : Listener, Runnable {
 				}.runTaskLater(plugin(), 30)
 
 
-				val loc = player.location.add(0.0, player.eyeHeight, 0.0) //player location
+				val loc =
+						player.location.add(0.0, player.eyeHeight, 0.0) //player location
 				val fromPlayerToTarget = targetLoc.toVector().subtract(loc.toVector())
 				WandCast(
-					plugin(),
-					it,
-					player,
-					fromPlayerToTarget,
-					loc,
-					dmg,
-					targetLoc,
-					0.06
+						plugin(),
+						it,
+						player,
+						fromPlayerToTarget,
+						loc,
+						dmg,
+						targetLoc,
+						0.06
 				        ).runTaskTimer(
-					plugin(),
-					1,
-					0
+						plugin(),
+						1,
+						0
 				                      )
 			}
 		}

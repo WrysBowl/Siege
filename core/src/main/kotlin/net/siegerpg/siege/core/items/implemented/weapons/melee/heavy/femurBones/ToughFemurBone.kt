@@ -7,22 +7,22 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ToughFemurBone() : CustomMeleeWeapon(
-	name = "Tough Femur Bone",
-	customModelData = 130003,
-	description = listOf("A large animal's femur"),
-	levelRequirement = 11,
-	material = Material.WOODEN_AXE,
-	baseStats = CustomItemUtils.statMap(strength = 20.0, toughness = 50.0),
-	attackSpeed = 0.9
+		name = "Tough Femur Bone",
+		customModelData = 130003,
+		description = listOf("A large animal's femur"),
+		levelRequirement = 11,
+		material = Material.WOODEN_AXE,
+		baseStats = CustomItemUtils.statMap(strength = 20.0, toughness = 50.0),
+		attackSpeed = 0.9
                                           ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

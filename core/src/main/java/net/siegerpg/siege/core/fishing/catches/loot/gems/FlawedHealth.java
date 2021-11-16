@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.Flawed
 
 public class FlawedHealth extends Fish {
 
-	public FlawedHealth () {
+	public FlawedHealth() {
 
 		super(45, 0.8, 16, 14,
 		      new FlawedHealthGem(0).getUpdatedItem(false)

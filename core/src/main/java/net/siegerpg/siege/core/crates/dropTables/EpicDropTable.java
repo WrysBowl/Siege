@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class EpicDropTable extends CosmeticDropTable {
 
-	public EpicDropTable () {
+	public EpicDropTable() {
 
 		dropTable = new HashMap<>() {
 			{

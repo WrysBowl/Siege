@@ -10,19 +10,21 @@ import java.util.UUID;
 
 public class HeroRank extends WebstoreRanks {
 
-	public HeroRank () {
+	public HeroRank() {
 
 		super("rank", "hero");
 	}
 
-	@SuppressWarnings("Deprecated")
+	@SuppressWarnings( "Deprecated" )
 	@Override
-	public void completePurchase (UUID uuid) {
+	public void completePurchase(UUID uuid) {
 
 		Player player = Bukkit.getPlayer(uuid);
 		if (player == null) return;
 
-		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+		ConsoleCommandSender console = Bukkit
+				.getServer()
+				.getConsoleSender();
 		String cmd = "lp user " + player.getName() + " parent add Hero";
 		Bukkit.dispatchCommand(console, cmd);
 
@@ -34,25 +36,34 @@ public class HeroRank extends WebstoreRanks {
 		if (VaultHook.perms.playerInGroup(player, "warrior")) {
 			addPV = highestPV + 3;
 			if (diff < 3) addPV = diff;
-			ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
+			ConsoleCommandSender console4 = Bukkit
+					.getServer()
+					.getConsoleSender();
 			String cmd3 = "lp user " + player.getName() + " parent remove warrior";
 			Bukkit.dispatchCommand(console4, cmd3);
 		} else if (VaultHook.perms.playerInGroup(player, "gladiator")) {
 			addPV = highestPV + 2;
 			if (diff < 2) addPV = diff;
-			ConsoleCommandSender console4 = Bukkit.getServer().getConsoleSender();
+			ConsoleCommandSender console4 = Bukkit
+					.getServer()
+					.getConsoleSender();
 			String cmd3 = "lp user " + player.getName() + " parent remove gladiator";
 			Bukkit.dispatchCommand(console4, cmd3);
 		} else {
 			if (diff < 5) addPV = diff;
 		}
 
-		ConsoleCommandSender console2 = Bukkit.getServer().getConsoleSender();
-		String cmd2 = "lp user " + player.getName() + " permission set cosmicvaults.amount." + addPV + " true global";
+		ConsoleCommandSender console2 = Bukkit
+				.getServer()
+				.getConsoleSender();
+		String cmd2 =
+				"lp user " + player.getName() + " permission set cosmicvaults.amount." + addPV +
+				" true global";
 		Bukkit.dispatchCommand(console2, cmd2);
 
 		Bukkit.broadcastMessage(Utils.tacc(""));
-		Bukkit.broadcastMessage(Utils.tacc("  &b" + player.getName() + " has bought &bHero &erank!"));
+		Bukkit.broadcastMessage(
+				Utils.tacc("  &b" + player.getName() + " has bought &bHero &erank!"));
 		Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
 		Bukkit.broadcastMessage(Utils.tacc(""));
 	}

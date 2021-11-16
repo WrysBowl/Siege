@@ -7,23 +7,23 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class RawStrengthGem() : StatGemType(
-	name = "Raw Strength Gem",
-	customModelData = 510002,
-	description = listOf("A raw gem with untapped power"),
-	levelRequirement = 4,
-	material = Material.POPPED_CHORUS_FRUIT,
+		name = "Raw Strength Gem",
+		customModelData = 510002,
+		description = listOf("A raw gem with untapped power"),
+		levelRequirement = 4,
+		material = Material.POPPED_CHORUS_FRUIT,
 
-	statType = StatTypes.STRENGTH,
-	statAmount = 4.0
+		statType = StatTypes.STRENGTH,
+		statAmount = 4.0
                                     ) {
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 0
 		this.rarity = Rarity.COMMON
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}

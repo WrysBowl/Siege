@@ -13,15 +13,22 @@ import java.util.HashMap;
 
 public class SkillListener implements Listener, Runnable {
 
-	public boolean skillActivate (PlayerInteractEvent e) {
+	public boolean skillActivate(PlayerInteractEvent e) {
 
 		Player player = e.getPlayer();
-		if (player.getGameMode().equals(GameMode.CREATIVE) || player.getGameMode().equals(GameMode.SPECTATOR))
+		if (player
+				    .getGameMode()
+				    .equals(GameMode.CREATIVE) || player
+				    .getGameMode()
+				    .equals(GameMode.SPECTATOR))
 			return false;
-		if (!player.getOpenInventory().getType().equals(InventoryType.CRAFTING)) return false;
+		if (!player
+				.getOpenInventory()
+				.getType()
+				.equals(InventoryType.CRAFTING)) return false;
 		if (!SkillUtils.isSkillOrb(player.getItemInHand())) return false;
 
-		ArrayList<Action> playerTriggers = PlayerData.playerTriggers.get(player);
+		ArrayList< Action > playerTriggers = PlayerData.playerTriggers.get(player);
 		playerTriggers.add(e.getAction());
 
 		//If the player hasn't finished their trigger skill activation yet (less than three clicks)
@@ -31,8 +38,10 @@ public class SkillListener implements Listener, Runnable {
 			return false;
 
 		} else {
-			HashMap<Integer, Skill> playerSkills = PlayerData.playerSkills.get(player);
-			PlayerData.playerTriggers.get(player).clear();
+			HashMap< Integer, Skill > playerSkills = PlayerData.playerSkills.get(player);
+			PlayerData.playerTriggers
+					.get(player)
+					.clear();
 
 			//Compare the player's cached skills to the trigger they have created and activate the skill
 			for (Skill skill : playerSkills.values()) {
@@ -41,7 +50,8 @@ public class SkillListener implements Listener, Runnable {
 				//Checks if player does not have enough mana to use the skill
 				if (!SkillUtils.canActivate(player, skill)) return false;
 				//Removes the cost of the skill from the player's current mana data
-				PlayerData.playerCurrentMana.put(player, PlayerData.playerCurrentMana.get(player) - skill.getManaCost());
+				PlayerData.playerCurrentMana.put(player, PlayerData.playerCurrentMana.get(player) -
+				                                         skill.getManaCost());
 				skill.skillAction(e);
 			}
 		}
@@ -49,7 +59,7 @@ public class SkillListener implements Listener, Runnable {
 	}
 
 	@Override
-	public void run () {
+	public void run() {
 
 	}
 

@@ -15,11 +15,15 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Blubber extends MobDropTable {
 
-	public Blubber () {
+	public Blubber() {
 
 		super("Blubber", 17, 20, 17, 25, new Reward[] {
-				new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 100.0),
-				new Reward(Slime.Companion.tier(3).getUpdatedItem(false), 10.0),
+				new Reward(Slime.Companion
+						           .tier(2)
+						           .getUpdatedItem(false), 100.0),
+				new Reward(Slime.Companion
+						           .tier(3)
+						           .getUpdatedItem(false), 10.0),
 
 				new Reward(new SlimeSpoofer(80).getUpdatedItem(false), 3.0),
 				new Reward(new SlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 5.0),

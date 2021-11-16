@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class BoneFishTable extends FishDropTable {
 
-	public BoneFishTable () {
+	public BoneFishTable() {
 
 		this.fishDropTable = new HashMap<>() {
 			{

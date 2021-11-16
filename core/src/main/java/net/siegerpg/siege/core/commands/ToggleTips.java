@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public class ToggleTips implements CommandExecutor {
 
 	@Override
-	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (!(sender instanceof Player)) {
 			sender.sendMessage(Utils.lore("<red>You can not toggle tips!"));
@@ -28,10 +28,12 @@ public class ToggleTips implements CommandExecutor {
 			                               "<red>/tips disable<reset> <gray>disables tip broadcasts." +
 			                               "\n"));
 		} else if (args[0].equals("enable")) {
-			player.sendMessage(Utils.lore("\n<yellow>Tips have been enabled. To disable tips type /tips disable.\n"));
+			player.sendMessage(Utils.lore(
+					"\n<yellow>Tips have been enabled. To disable tips type /tips disable.\n"));
 			PlayerData.broadcastTips.put(player, true);
 		} else if (args[0].equals("disable")) {
-			player.sendMessage(Utils.lore("\n<yellow>Tips have been disabled. To re-enable tips type /tips enable.\n"));
+			player.sendMessage(Utils.lore(
+					"\n<yellow>Tips have been disabled. To re-enable tips type /tips enable.\n"));
 			PlayerData.broadcastTips.put(player, false);
 		}
 		return false;

@@ -39,7 +39,7 @@ import java.util.HashMap;
 
 public class DeathListener implements Listener, Runnable {
 
-	public static HashMap<String, MobDropTable> mobDropTableHashMap = new HashMap<>() {
+	public static HashMap< String, MobDropTable > mobDropTableHashMap = new HashMap<>() {
 		{
 			//BOSSES
 			put("Blubber", new Blubber());
@@ -122,54 +122,101 @@ public class DeathListener implements Listener, Runnable {
 	};
 
 	@EventHandler
-	public void damageDrops (EntityDamageByEntityEvent e) {
+	public void damageDrops(EntityDamageByEntityEvent e) {
 
 		if (!(e.getEntity() instanceof Player)) return;
 
-		ActiveMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getDamager());
+		ActiveMob mm = MythicMobs
+				.inst()
+				.getAPIHelper()
+				.getMythicMobInstance(e.getDamager());
 		if (mm == null) return;
 
 		ItemStack reward = null;
 		double chance = 0.0;
-		if (mm.getType().getInternalName().equals("Goblin")) {
+		if (mm
+				.getType()
+				.getInternalName()
+				.equals("Goblin")) {
 			reward = new GoldenCarrot(100).getUpdatedItem(false);
 			chance = 1.0;
-		} else if (mm.getType().getInternalName().equals("WildFox")) {
+		} else if (mm
+				.getType()
+				.getInternalName()
+				.equals("WildFox")) {
 			reward = new GoldenCarrot(50).getUpdatedItem(false);
 			chance = 1.0;
 		}
 		if (reward == null) return;
 
 		if (Utils.randTest(chance)) {
-			if (e.getEntity().getLocation().distance(e.getEntity().getWorld().getSpawnLocation()) > 3) {
-				e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), reward);
+			if (e
+					    .getEntity()
+					    .getLocation()
+					    .distance(e
+							              .getEntity()
+							              .getWorld()
+							              .getSpawnLocation()) > 3) {
+				e
+						.getEntity()
+						.getWorld()
+						.dropItemNaturally(e
+								                   .getEntity()
+								                   .getLocation(), reward);
 			}
 		}
 	}
 
 	@EventHandler
-	public void mobDeath (EntityDeathEvent e) throws InvalidMobTypeException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
+	public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
 
-		if (e.getEntity().getKiller() == null) return;
-		if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
+		if (e
+				    .getEntity()
+				    .getKiller() == null) return;
+		if (!(
+				MythicMobs
+						.inst()
+						.getAPIHelper()
+						.isMythicMob(e.getEntity())
+		)) return;
 
 		e.setDroppedExp(0);
-		e.getDrops().clear();
+		e
+				.getDrops()
+				.clear();
 
-		String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getType().getInternalName();
+		String mm = MythicMobs
+				.inst()
+				.getAPIHelper()
+				.getMythicMobInstance(e.getEntity())
+				.getType()
+				.getInternalName();
 		if (!(mobDropTableHashMap.containsKey(mm))) return;
-		MobDropTable mobDrop = mobDropTableHashMap.get(mm).getClass().getDeclaredConstructor().newInstance();
+		MobDropTable mobDrop = mobDropTableHashMap
+				.get(mm)
+				.getClass()
+				.getDeclaredConstructor()
+				.newInstance();
 
-		Player player = e.getEntity().getKiller();
+		Player player = e
+				.getEntity()
+				.getKiller();
 		double luck = 0.0;
 		int goldCoinAmt = mobDrop.getGold(true);
 		int exp = mobDrop.getExp(true);
-		Location loc = e.getEntity().getLocation();
+		Location loc = e
+				.getEntity()
+				.getLocation();
 
-		loc.getWorld().spawnParticle(Particle.SOUL.builder().particle(), loc, 1);
+		loc
+				.getWorld()
+				.spawnParticle(Particle.SOUL
+						               .builder()
+						               .particle(), loc, 1);
 
 		if (player != null) {
-			luck = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.LUCK, player.getItemInHand());
+			luck = CustomItemUtils.INSTANCE.getPlayerStat(
+					player, StatTypes.LUCK, player.getItemInHand());
 		}
 
 		if (exp > 0 && player != null) {
@@ -189,40 +236,60 @@ public class DeathListener implements Listener, Runnable {
 		}
 
 		for (ItemStack drop : mobDrop.calculateRewards(luck)) { //Loop through all drops
-			loc.getWorld().dropItemNaturally(loc, drop);
+			loc
+					.getWorld()
+					.dropItemNaturally(loc, drop);
 		}
 	}
 
 	@EventHandler
-	public void removePlayerGold (PlayerDeathEvent e) {
+	public void removePlayerGold(PlayerDeathEvent e) {
 
 		e.setDeathSound(Sound.ENTITY_PLAYER_DEATH);
-		EntityDamageEvent event = e.getEntity().getLastDamageCause();
+		EntityDamageEvent event = e
+				.getEntity()
+				.getLastDamageCause();
 		if (event != null) {
 			Entity entity = event.getEntity();
 			try {
-				String mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(entity).getDisplayName();
+				String mm = MythicMobs
+						.inst()
+						.getAPIHelper()
+						.getMythicMobInstance(entity)
+						.getDisplayName();
 				entity.setCustomName(mm);
 
-				e.getEntity().setLastDamageCause(
-						new EntityDamageEvent(entity, event.getCause(), event.getDamage())
-				                                );
+				e
+						.getEntity()
+						.setLastDamageCause(
+								new EntityDamageEvent(entity, event.getCause(), event.getDamage())
+						                   );
 			} catch (Exception ignored) {
 			}
 		}
 
-		Player player = e.getEntity().getPlayer();
+		Player player = e
+				.getEntity()
+				.getPlayer();
 		String deathMessage = Utils.tacc("&c" + e.getDeathMessage());
 		e.setDeathMessage(deathMessage);
 
 		if (player != null) {
 
-			String time = Utils.secondsToHHMMSS(e.getEntity().getStatistic(Statistic.TIME_SINCE_DEATH) / 20);
+			String time = Utils.secondsToHHMMSS(e
+					                                    .getEntity()
+					                                    .getStatistic(Statistic.TIME_SINCE_DEATH) /
+			                                    20);
 
 			player.sendMessage("");
 			player.sendMessage(Utils.lore("<gray>Time Since Last Death: <yellow>" + time));
 
-			if (player.getWorld().equals(Core.plugin().getServer().getWorld("SiegeHub"))) return;
+			if (player
+					.getWorld()
+					.equals(Core
+							        .plugin()
+							        .getServer()
+							        .getWorld("SiegeHub"))) return;
 			int bal = (int) Math.round(VaultHook.econ.getBalance(player));
 
 			int newBal = (int) Math.round(bal * 0.95);
@@ -234,10 +301,15 @@ public class DeathListener implements Listener, Runnable {
 			int goldLost = bal - newBal;
 			new BukkitRunnable() {
 				@Override
-				public void run () {
+				public void run() {
 
-					player.spigot().respawn();
-					player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + String.format("%,d", goldLost) + " gold &7has been lost"), 1, 60, 1);
+					player
+							.spigot()
+							.respawn();
+					player.sendTitle(
+							Utils.tacc("&c&lYou Died"), Utils.tacc(
+									"&c" + String.format("%,d", goldLost) +
+									" gold &7has been lost"), 1, 60, 1);
 					Scoreboard.updateScoreboard(player);
 				}
 			}.runTaskLater(Core.plugin(), 1);
@@ -246,11 +318,13 @@ public class DeathListener implements Listener, Runnable {
 	}
 
 	@EventHandler
-	public void onRespawn (PlayerRespawnEvent e) {
+	public void onRespawn(PlayerRespawnEvent e) {
 
 		Player player = e.getPlayer();
 		World world = player.getWorld();
-		if (world.getName().equals("Hilly_Woods")) {
+		if (world
+				.getName()
+				.equals("Hilly_Woods")) {
 			e.setRespawnLocation((player.getBedSpawnLocation() == null) ?
 			                     world.getSpawnLocation() : player.getBedSpawnLocation());
 			return;
@@ -261,14 +335,22 @@ public class DeathListener implements Listener, Runnable {
             e.setRespawnLocation(HUB.getSpawnLocation());
             return;
         }*/
-		if (player.getWorld().equals(Core.plugin().getServer().getWorld("PVP"))) {
-			World HUB = Core.plugin().getServer().getWorld("Hub");
+		if (player
+				.getWorld()
+				.equals(Core
+						        .plugin()
+						        .getServer()
+						        .getWorld("PVP"))) {
+			World HUB = Core
+					.plugin()
+					.getServer()
+					.getWorld("Hub");
 			e.setRespawnLocation(new Location(HUB, -52, 91, -8, 168, 0));
 		}
 	}
 
 	@Override
-	public void run () {
+	public void run() {
 
 	}
 

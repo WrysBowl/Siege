@@ -47,44 +47,55 @@ import java.util.Objects;
 
 public class SmokyBlacksmith implements Listener, Runnable {
 
-	public static ArrayList<ItemStack> weaponItems = new ArrayList<>();
-	public static ArrayList<ItemStack> shopWeapons = new ArrayList<>();
-	public static ArrayList<ItemStack> armorItems = new ArrayList<>();
-	public static ArrayList<ItemStack> shopArmor = new ArrayList<>();
+	public static ArrayList< ItemStack > weaponItems = new ArrayList<>();
+	public static ArrayList< ItemStack > shopWeapons = new ArrayList<>();
+	public static ArrayList< ItemStack > armorItems = new ArrayList<>();
+	public static ArrayList< ItemStack > shopArmor = new ArrayList<>();
 	private static int addVal = -10;
 
-	public static void resetItems () {
+	public static void resetItems() {
 
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
-			setShopWeapons();
-			setShopArmor();
-			weaponItems.clear();
-			armorItems.clear();
-			ArrayList<Integer> usedWeapons = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
-			ArrayList<Integer> usedArmor = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
-			for (int i = 0; i < 7; i++) { //this loops 7 times
-				int wepIndex = (int) (Math.random() * 11); //initializes a variable that is a random number from 0 - 14
-				int armIndex = (int) (Math.random() * 11); //initializes a variable that is a random number from 0 - 19
-
-
-				while (usedWeapons.contains(wepIndex)) { //if the generated integer is already contained in the used weapons list
-					wepIndex = (int) (Math.random() * 11); //we want to make a new number, then compare to the statement AGAIN
-				}
-				usedWeapons.add(wepIndex); //We have found a number that isn't contained in the list! Now we add it to the list
-				while (usedArmor.contains(armIndex)) {
-					armIndex = (int) (Math.random() * 11);
-				}
-				usedArmor.add(armIndex);
+		Bukkit
+				.getServer()
+				.getScheduler()
+				.scheduleSyncRepeatingTask(Core.plugin(), () -> {
+					setShopWeapons();
+					setShopArmor();
+					weaponItems.clear();
+					armorItems.clear();
+					ArrayList< Integer > usedWeapons = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
+					ArrayList< Integer > usedArmor = new ArrayList<>(); //initialize empty list to store all UNIQUE integers
+					for (int i = 0; i < 7; i++) { //this loops 7 times
+						int wepIndex = (int) (
+								Math.random() * 11
+						); //initializes a variable that is a random number from 0 - 14
+						int armIndex = (int) (
+								Math.random() * 11
+						); //initializes a variable that is a random number from 0 - 19
 
 
-				weaponItems.add(shopWeapons.get(wepIndex));
-				armorItems.add(shopArmor.get(wepIndex));
-			}
-			Bukkit.broadcastMessage(Utils.tacc("&aSmoky's shop has reset with new items!"));
-		}, 0, 36000);
+						while (usedWeapons.contains(
+								wepIndex)) { //if the generated integer is already contained in the used weapons list
+							wepIndex = (int) (
+									Math.random() * 11
+							); //we want to make a new number, then compare to the statement AGAIN
+						}
+						usedWeapons.add(
+								wepIndex); //We have found a number that isn't contained in the list! Now we add it to the list
+						while (usedArmor.contains(armIndex)) {
+							armIndex = (int) (Math.random() * 11);
+						}
+						usedArmor.add(armIndex);
+
+
+						weaponItems.add(shopWeapons.get(wepIndex));
+						armorItems.add(shopArmor.get(wepIndex));
+					}
+					Bukkit.broadcastMessage(Utils.tacc("&aSmoky's shop has reset with new items!"));
+				}, 0, 36000);
 	}
 
-	private static void setShopWeapons () {
+	private static void setShopWeapons() {
 
 		shopWeapons.clear();
 		shopWeapons.add(0, Utils.setLoreCost(new Twig(Utils.randRarity() + addVal)));
@@ -101,7 +112,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 		shopWeapons.add(11, Utils.setLoreCost(new GlowingTwig(Utils.randRarity() + addVal)));
 	}
 
-	private static void setShopArmor () {
+	private static void setShopArmor() {
 
 		shopArmor.clear();
 		shopArmor.add(0, Utils.setLoreCost(new SlimyHelmet(Utils.randRarity() + addVal)));
@@ -119,41 +130,70 @@ public class SmokyBlacksmith implements Listener, Runnable {
 	}
 
 	@Override
-	public void run () {
+	public void run() {
 
 	}
 
 	@EventHandler
-	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+	public void onRightClickOnEntity(PlayerInteractEntityEvent e) {
 
-		if (e.getRightClicked().getName().contains("Smoky") && e.getRightClicked().getName().contains("6")) {
+		if (e
+				    .getRightClicked()
+				    .getName()
+				    .contains("Smoky") && e
+				    .getRightClicked()
+				    .getName()
+				    .contains("6")) {
 			Inventory shop = getShopMenu(e.getPlayer());
-			e.getPlayer().openInventory(shop);
+			e
+					.getPlayer()
+					.openInventory(shop);
 		}
 	}
 
 	@EventHandler
-	public void guiClick (InventoryClickEvent e) {
+	public void guiClick(InventoryClickEvent e) {
 
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
-		if (e.getWhoClicked().getMetadata("SmokyShop").size() > 0 &&
-		    Objects.equals(e.getWhoClicked().getMetadata("SmokyShop").get(0).value(), e.getInventory())) {
+		if (e
+				    .getWhoClicked()
+				    .getMetadata("SmokyShop")
+				    .size() > 0 &&
+		    Objects.equals(e
+				                   .getWhoClicked()
+				                   .getMetadata("SmokyShop")
+				                   .get(0)
+				                   .value(), e.getInventory())) {
 			clickShopMenu(e);
 			e.setCancelled(true);
-		} else if (e.getWhoClicked().getMetadata("SmokyShopWeapons").size() > 0 &&
-		           Objects.equals(e.getWhoClicked().getMetadata("SmokyShopWeapons").get(0).value(), e.getInventory())) {
+		} else if (e
+				           .getWhoClicked()
+				           .getMetadata("SmokyShopWeapons")
+				           .size() > 0 &&
+		           Objects.equals(e
+				                          .getWhoClicked()
+				                          .getMetadata("SmokyShopWeapons")
+				                          .get(0)
+				                          .value(), e.getInventory())) {
 			clickShopWeapons(e);
 			e.setCancelled(true);
-		} else if (e.getWhoClicked().getMetadata("SmokyShopArmor").size() > 0 &&
-		           Objects.equals(e.getWhoClicked().getMetadata("SmokyShopArmor").get(0).value(), e.getInventory())) {
+		} else if (e
+				           .getWhoClicked()
+				           .getMetadata("SmokyShopArmor")
+				           .size() > 0 &&
+		           Objects.equals(e
+				                          .getWhoClicked()
+				                          .getMetadata("SmokyShopArmor")
+				                          .get(0)
+				                          .value(), e.getInventory())) {
 			clickShopArmor(e);
 			e.setCancelled(true);
 		}
 	}
 
-	private void clickShopMenu (InventoryClickEvent e) {
+	private void clickShopMenu(InventoryClickEvent e) {
 
 		int slot = e.getSlot();
 		Player player = (Player) e.getWhoClicked();
@@ -164,17 +204,25 @@ public class SmokyBlacksmith implements Listener, Runnable {
 		}
 	}
 
-	private void clickShopWeapons (InventoryClickEvent e) {
+	private void clickShopWeapons(InventoryClickEvent e) {
 
 		int slot = e.getSlot();
 		Player player = (Player) e.getWhoClicked();
 		if (slot > 9 && slot < 17 && e.getCurrentItem() != null) {
 			int cost = Utils.getCost(e.getCurrentItem());
 			if (VaultHook.econ.getBalance(player) >= cost) {
-				if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+				if (!(
+						e
+								.getView()
+								.getBottomInventory()
+								.firstEmpty() == -1
+				)) {
 					player.closeInventory();
-					player.getInventory().addItem(Utils.removeLastLore(e.getCurrentItem()));
-					player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+					player
+							.getInventory()
+							.addItem(Utils.removeLastLore(e.getCurrentItem()));
+					player.playSound(
+							player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 					VaultHook.econ.withdrawPlayer(player, cost);
 					Scoreboard.updateScoreboard((Player) e.getWhoClicked());
 					player.sendMessage(Utils.tacc("&eYou have purchased an item"));
@@ -182,22 +230,31 @@ public class SmokyBlacksmith implements Listener, Runnable {
 					player.sendMessage(Utils.tacc("&cYour inventory is full!"));
 				}
 			} else {
-				player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
+				player.sendMessage(
+						Utils.tacc("&cYou do not have enough money to purchase this item!"));
 			}
 		}
 	}
 
-	private void clickShopArmor (InventoryClickEvent e) {
+	private void clickShopArmor(InventoryClickEvent e) {
 
 		int slot = e.getSlot();
 		Player player = (Player) e.getWhoClicked();
 		if (slot > 9 && slot < 17 && e.getCurrentItem() != null) {
 			int cost = Utils.getCost(e.getCurrentItem());
 			if (VaultHook.econ.getBalance(player) >= cost) {
-				if (!(e.getView().getBottomInventory().firstEmpty() == -1)) {
+				if (!(
+						e
+								.getView()
+								.getBottomInventory()
+								.firstEmpty() == -1
+				)) {
 					player.closeInventory();
-					player.getInventory().addItem(Utils.removeLastLore(e.getCurrentItem()));
-					player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+					player
+							.getInventory()
+							.addItem(Utils.removeLastLore(e.getCurrentItem()));
+					player.playSound(
+							player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 					VaultHook.econ.withdrawPlayer(player, cost);
 					Scoreboard.updateScoreboard((Player) e.getWhoClicked());
 					player.sendMessage(Utils.tacc("&eYou have purchased an item"));
@@ -205,12 +262,13 @@ public class SmokyBlacksmith implements Listener, Runnable {
 					player.sendMessage(Utils.tacc("&cYour inventory is full!"));
 				}
 			} else {
-				player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
+				player.sendMessage(
+						Utils.tacc("&cYou do not have enough money to purchase this item!"));
 			}
 		}
 	}
 
-	private Inventory getShopMenu (Player player) {
+	private Inventory getShopMenu(Player player) {
 
 		Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
@@ -253,7 +311,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 		return gui;
 	}
 
-	private Inventory getWeaponsMenu (Player player) {
+	private Inventory getWeaponsMenu(Player player) {
 
 		Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
@@ -276,7 +334,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 		return gui;
 	}
 
-	private Inventory getArmorMenu (Player player) {
+	private Inventory getArmorMenu(Player player) {
 
 		Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 

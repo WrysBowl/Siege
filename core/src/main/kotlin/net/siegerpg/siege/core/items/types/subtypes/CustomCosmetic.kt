@@ -18,17 +18,17 @@ import org.bukkit.inventory.meta.LeatherArmorMeta
 
 interface CustomCosmetic : CustomItem {
 
-	var leatherColor: Color
+	var leatherColor : Color
 
-	fun onCosmeticInteract(e: PlayerInteractEvent) {}
-	fun onCosmeticEquip(e: PlayerArmorChangeEvent) {}
-	fun onCosmeticSpeak(e: AsyncChatEvent) {}
-	fun onCosmeticDamage(e: EntityDamageByEntityEvent) {}
+	fun onCosmeticInteract(e : PlayerInteractEvent) {}
+	fun onCosmeticEquip(e : PlayerArmorChangeEvent) {}
+	fun onCosmeticSpeak(e : AsyncChatEvent) {}
+	fun onCosmeticDamage(e : EntityDamageByEntityEvent) {}
 
 	override fun serialize() {
 		super.serialize()
 		item = item.setNbtTags(
-			"leatherColor" to leatherColor.asRGB()
+				"leatherColor" to leatherColor.asRGB()
 		                      )
 	}
 
@@ -38,11 +38,11 @@ interface CustomCosmetic : CustomItem {
 			item.getNbtTag<Int>("leatherColor")?.let {
 				leatherColor = Color.fromRGB(it)
 			}
-		} catch (e: Exception) {
+		} catch (e : Exception) {
 		}
 	}
 
-	override fun updateMeta(hideRarity: Boolean): ItemStack {
+	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		item.type = this.material
 		if (item.type == Material.LEATHER_BOOTS ||
 		    item.type == Material.LEATHER_LEGGINGS ||
@@ -53,7 +53,7 @@ interface CustomCosmetic : CustomItem {
 				val leatherMeta = item.itemMeta as LeatherArmorMeta
 				leatherMeta.setColor(leatherColor)
 				item.itemMeta = leatherMeta
-			} catch (e: Error) {
+			} catch (e : Error) {
 			}
 		}
 		val meta = item.itemMeta

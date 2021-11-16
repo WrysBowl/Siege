@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class TreasureHunter {
 
 	private final ChestGui game = new ChestGui(6, "Bart's Sandbox");
-	private final HashMap<Integer, Integer> rewardTable = new HashMap<>();
+	private final HashMap< Integer, Integer > rewardTable = new HashMap<>();
 	private final StaticPane background = new StaticPane(0, 0, 9, 6, Pane.Priority.LOWEST);
 	private final ItemStack filler = new ItemStack(Material.YELLOW_STAINED_GLASS_PANE);
 	private final ItemStack bomb = new ItemStack(Material.TNT);
@@ -35,12 +35,12 @@ public class TreasureHunter {
 	private final ItemStack gold75 = new ItemStack(Material.SUNFLOWER);
 	private final ItemStack gold50 = new ItemStack(Material.SUNFLOWER);
 	private final ItemStack exp = new ItemStack(Material.EXPERIENCE_BOTTLE);
-	public ArrayList<ItemStack> itemRewards = new ArrayList<>();
+	public ArrayList< ItemStack > itemRewards = new ArrayList<>();
 	public int goldRewards = 0;
 	public int expRewards = 0;
-	public ArrayList<Integer> dugValues = new ArrayList<>();
+	public ArrayList< Integer > dugValues = new ArrayList<>();
 
-	public TreasureHunter (Player player) {
+	public TreasureHunter(Player player) {
 
 		this.game.setOnGlobalClick(event -> {
 			event.setCancelled(true);
@@ -65,7 +65,7 @@ public class TreasureHunter {
 		this.game.show(player);
 	}
 
-	private void startGame () {
+	private void startGame() {
 
 		ItemMeta bombMeta = this.bomb.getItemMeta();
 		bombMeta.displayName(Utils.lore("<red><bold>BOOM"));
@@ -115,7 +115,7 @@ public class TreasureHunter {
 		this.rewardTable.replace((int) (Math.random() * 54), 9);
 	}
 
-	private void uncoverSlot (InventoryClickEvent e) {
+	private void uncoverSlot(InventoryClickEvent e) {
 
 		int slot = e.getSlot();
 		int getValue = rewardTable.get(slot);
@@ -131,7 +131,7 @@ public class TreasureHunter {
 			player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f);
 			new BukkitRunnable() {
 				@Override
-				public void run () {
+				public void run() {
 
 					player.closeInventory();
 				}
@@ -174,13 +174,14 @@ public class TreasureHunter {
 		this.game.update();
 	}
 
-	private void gameClose (InventoryCloseEvent e) {
+	private void gameClose(InventoryCloseEvent e) {
 
 		Player player = (Player) e.getPlayer();
 		for (int slot : this.dugValues) {
 			if (rewardTable.get(slot) == 0) {
 				player.sendTitle(Utils.tacc("&c&lYOU LOST"), "", 10, 80, 10);
-				player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, (float) 0.5, (float) 0.8);
+				player.playSound(
+						player.getLocation(), Sound.ENTITY_WITHER_SHOOT, (float) 0.5, (float) 0.8);
 				return;
 			}
 		}
@@ -191,16 +192,27 @@ public class TreasureHunter {
 			Levels.INSTANCE.addExpShared(player, this.expRewards);
 		}
 		if (this.itemRewards.size() > 0) {
-			final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
+			final boolean fullInv = e
+					                        .getPlayer()
+					                        .getInventory()
+					                        .firstEmpty() == -1;
 			for (ItemStack reward : this.itemRewards) {
 				if (!fullInv) {
-					e.getPlayer().getInventory().addItem(reward);
+					e
+							.getPlayer()
+							.getInventory()
+							.addItem(reward);
 				} else {
-					player.getWorld().dropItemNaturally(player.getLocation(), reward);
+					player
+							.getWorld()
+							.dropItemNaturally(player.getLocation(), reward);
 				}
 			}
 		}
-		player.sendTitle(Utils.tacc("&a&lYOU WIN"), Utils.tacc("&e+" + this.goldRewards + " Gold"), 10, 80, 10);
+		player.sendTitle(
+				Utils.tacc("&a&lYOU WIN"), Utils.tacc("&e+" + this.goldRewards + " Gold"), 10, 80,
+				10
+		                );
 		Scoreboard.updateScoreboard(player);
 	}
 

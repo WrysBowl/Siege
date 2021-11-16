@@ -10,13 +10,13 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
 
 class Spongebob() : Cosmetic(
-	name = "Spongebob",
-	customModelData = 1,
-	description = listOf("Who lives in a pineapple under the sea..."),
-	material = Material.SPONGE,
+		name = "Spongebob",
+		customModelData = 1,
+		description = listOf("Who lives in a pineapple under the sea..."),
+		material = Material.SPONGE,
                             ) {
 
-	override fun onCosmeticDamage(e: EntityDamageByEntityEvent) {
+	override fun onCosmeticDamage(e : EntityDamageByEntityEvent) {
 		val player = e.entity as Player
 		val playerHelmet = player.inventory.helmet ?: return
 		playerHelmet.type = Material.WET_SPONGE
@@ -33,13 +33,13 @@ class Spongebob() : Cosmetic(
 		}.runTaskLater(Core.plugin(), 40);
 	}
 
-	constructor(quality: Int) : this() {
+	constructor(quality : Int) : this() {
 		this.quality = 90
 		this.rarity = Rarity.EPIC
 		this.serialize()
 	}
 
-	constructor(item: ItemStack) : this() {
+	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
 	}
