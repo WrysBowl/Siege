@@ -11,13 +11,12 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.util.Vector;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 public class Utils {
 
@@ -42,16 +41,29 @@ public class Utils {
 		return ChatColor.stripColor(str);
 	}
 
+	@SuppressWarnings("unused")
+	static public Component parse (String[] str) {
+
+		return parse(String.join("\n", str));
+	}
+
 	static public Component parse (String str) {
 
 		return MiniMessage.get().parse(str);
 	}
 
-	static public Component lore (String str) {
+	static public Component lore (String[] str) {
 
-		return MiniMessage.get().parse(str).decoration(TextDecoration.ITALIC, false);
+		return parse(str).decoration(TextDecoration.ITALIC, false);
 	}
 
+	@SuppressWarnings("unused")
+	static public Component lore (String str) {
+
+		return parse(str).decoration(TextDecoration.ITALIC, false);
+	}
+
+	@SuppressWarnings("unused")
 	static public NamespacedKey namespacedKey (String str) {
 
 		return new NamespacedKey(Core.plugin(), str);
@@ -74,31 +86,17 @@ public class Utils {
 		return (double) Math.round(value * scale) / scale;
 	}
 
-	public static String convertSecondsToTime (int seconds) {
+	public static String secondsToHHMMSS (long seconds) {
 
-		double minutes = seconds / 60.0;
-		double hours = minutes / 60;
-		String time = "";
-
-		if (hours >= 1) {
-			time += (int) Math.floor(hours) + "h ";
-		}
-		if (minutes >= 1) {
-			if ((minutes % 60) > 0.0) {
-				time += (int) Math.floor(minutes % 60) + "m ";
-			}
-		}
-		if (seconds >= 1) {
-			if ((seconds % 60) > 0.0) {
-				time += (int) Math.floor(seconds % 60) + "s";
-			}
-		}
-		return time;
+		Duration duration = Duration.ofSeconds(seconds);
+		var HH = duration.toHours();
+		int MM = duration.toMinutesPart();
+		int SS = duration.toSecondsPart();
+		return String.format("%02d:%02d:%02d", HH, MM, SS);
 	}
 
 	public static Integer getHighestPV (Player player) {
 
-		Set<PermissionAttachmentInfo> perms = player.getEffectivePermissions();
 		int highestPV = 54;
 		while (!player.hasPermission("cosmicvaults.amount." + highestPV)) {
 			highestPV -= 1;
@@ -116,15 +114,19 @@ public class Utils {
 
 	public static ItemStack setLoreCost (CustomItem item) {
 
-		ItemStack updatedItem = item.getUpdatedItem(false);
-		int itemCost = item.getQuality() * item.getLevelRequirement() * 2;
+		Integer levelReq = item.getLevelRequirement();
+		if (levelReq == null) levelReq = 0;
 
-		List<String> lore = new ArrayList<>(updatedItem.getLore().size() + 1);
-		lore.addAll(updatedItem.getLore());
-		lore.add(Utils.tacc("&eCost " + itemCost));
+		ItemStack updatedItem = item.getUpdatedItem(false);
+		int itemCost = item.getQuality() * levelReq * 2;
+
+
+		List<Component> lore = updatedItem.lore();
+		if (lore == null) lore = new ArrayList<>();
+		lore.add(Utils.parse("<yellow>Cost " + itemCost));
 
 		ItemMeta meta = updatedItem.getItemMeta();
-		meta.setLore(lore);
+		meta.lore(lore);
 		updatedItem.setItemMeta(meta);
 		return updatedItem;
 	}

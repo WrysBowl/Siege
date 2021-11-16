@@ -52,11 +52,7 @@ object BossLeaderboard {
 			return
 		}
 		data.forEachIndexed { index, (uuid, data) ->
-			val duration = Duration.ofSeconds(data.second.toLong())
-			val HH = duration.toHours()
-			val MM = duration.toMinutesPart().toLong()
-			val SS = duration.toSecondsPart().toLong()
-			val timeInHHMMSS = String.format("%02d:%02d:%02d", HH, MM, SS)
+			val timeInHHMMSS = Utils.secondsToHHMMSS(data.second.toLong())
 			val lbPlayer = Bukkit.getOfflinePlayer(uuid)
 			h.appendTextLine(Utils.tacc("&6${index + 1}. &7${lbPlayer.name}: &6${data.first}% &7(in &6${timeInHHMMSS} &7)"))
 		}

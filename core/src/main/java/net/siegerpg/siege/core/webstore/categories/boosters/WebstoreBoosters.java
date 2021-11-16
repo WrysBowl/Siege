@@ -100,7 +100,7 @@ public class WebstoreBoosters extends WebstorePackage {
 		else return null;
 		itemMeta.lore(new ArrayList<>() {
 			{
-				add(Utils.lore("  <gray>Duration: <white>" + Utils.convertSecondsToTime(arg5)));
+				add(Utils.lore("  <gray>Duration: <white>" + Utils.secondsToHHMMSS(arg5)));
 				add(Utils.lore("  <yellow>Multiplier: +" + ((arg4 * 100) - 100.0) + "% " + arg3));
 				add(Utils.lore(""));
 				add(Utils.lore("<green><bold>CLICK TO REDEEM"));

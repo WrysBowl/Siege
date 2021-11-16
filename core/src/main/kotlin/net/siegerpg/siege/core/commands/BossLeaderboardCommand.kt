@@ -12,7 +12,6 @@ import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
-import java.time.Duration
 import java.time.Instant
 
 
@@ -40,11 +39,7 @@ class BossLeaderboardCommand : BaseCommand() {
 			}
 			player.sendMessage(Utils.parse("<gold>---- <gray>$boss <gold>----"))
 			data.forEachIndexed { index, (uuid, data) ->
-				val duration = Duration.ofSeconds(data.second.toLong())
-				val HH = duration.toHours()
-				val MM = duration.toMinutesPart().toLong()
-				val SS = duration.toSecondsPart().toLong()
-				val timeInHHMMSS = String.format("%02d:%02d:%02d", HH, MM, SS)
+				val timeInHHMMSS = Utils.secondsToHHMMSS(data.second.toLong())
 				val lbPlayer = Bukkit.getOfflinePlayer(uuid)
 				player.sendMessage(Utils.parse("<gold>${index + 1}. <gray>${lbPlayer.name}: <gold>${data.first}% <gray>(in <gold>${timeInHHMMSS} <gray>)"))
 			}
@@ -64,11 +59,7 @@ class BossLeaderboardCommand : BaseCommand() {
 			}
 			player.sendMessage(Utils.parse("<gold>---- <gray>Your stats for <gold>$boss<gray>! <gold>----"))
 			player.sendMessage("<gray>Damage dealt: <gold>${data.first}%")
-			val duration = Duration.ofSeconds(data.second.toLong())
-			val HH = duration.toHours()
-			val MM = duration.toMinutesPart().toLong()
-			val SS = duration.toSecondsPart().toLong()
-			val timeInHHMMSS = String.format("%02d:%02d:%02d", HH, MM, SS)
+			val timeInHHMMSS = Utils.secondsToHHMMSS(data.second.toLong())
 			player.sendMessage(Utils.parse("<gray>Time taken: <gold>${timeInHHMMSS}<gray>."))
 			player.sendMessage(Utils.parse("<gold>------------"))
 		}
@@ -86,11 +77,7 @@ class BossLeaderboardCommand : BaseCommand() {
 			}
 			player.sendMessage(Utils.parse("<gold>---- <gray>${otherPlayer.name}'s stats for <gold>$boss<gray>! <gold>----"))
 			player.sendMessage("<gray>Damage dealt: <gold>${data.first}%")
-			val duration = Duration.ofSeconds(data.second.toLong())
-			val HH = duration.toHours()
-			val MM = duration.toMinutesPart().toLong()
-			val SS = duration.toSecondsPart().toLong()
-			val timeInHHMMSS = String.format("%02d:%02d:%02d", HH, MM, SS)
+			val timeInHHMMSS = Utils.secondsToHHMMSS(data.second.toLong())
 			player.sendMessage(Utils.parse("<gray>Time taken: <gold>${timeInHHMMSS}<gray>."))
 			player.sendMessage(Utils.parse("<gold>------------"))
 		}

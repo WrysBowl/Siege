@@ -136,6 +136,7 @@ public class WebstoreListener implements Listener {
 						GlobalMultipliers.goldMultiplier = 1.0;
 						for (Player p : Bukkit.getOnlinePlayers()) {
 							Scoreboard.updateScoreboard(p);
+
 						}
 					}
 				}.runTaskLater(Core.plugin(), sec * 20L);

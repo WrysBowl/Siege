@@ -77,8 +77,7 @@ public final class Core extends JavaPlugin {
 		defaultLeatherColor = this.getServer().getItemFactory().getDefaultLeatherColor();
 		(new VaultHook()).createHooks();
 
-		spawnLocation = new Location(Bukkit.getWorld("Hub"), 70.5, 71, 3.5, 90, 0);
-
+		spawnLocation = Bukkit.getWorld("Hub").getSpawnLocation();
 
 		commandManager.registerCommand(new BossLeaderboardCommand());
 		commandManager.registerCommand(new PartyCommand());
@@ -103,52 +102,6 @@ public final class Core extends JavaPlugin {
 		this.getCommand("stats").setExecutor(new Stats());
 		this.getCommand("dungeon").setExecutor(new DungeonCommand());
 
-
-		//partyManager = new PartyManager();
-
-//        PaperCommandManager manager = new PaperCommandManager(this);
-//        manager.registerCommand(new PartyCommand());
-//        manager.getCommandCompletions().registerCompletion("partyMembers", c -> {
-//            Party party = partyManager.getParty(c.getPlayer().getUniqueId());
-//            List<UUID> members = party.getMembersRaw();
-//            List<String> names = new ArrayList<>();
-//            for (UUID member : members) {
-//                names.add(Bukkit.getPlayer(member).getName());
-//            }
-//            return names;
-//        });
-//
-//        manager.getCommandCompletions().registerCompletion("partyMembersExcludingSelf", c -> {
-//            Party party = partyManager.getParty(c.getPlayer().getUniqueId());
-//            List<UUID> members = party.getMembersRaw();
-//            List<String> names = new ArrayList<>();
-//            for (UUID member : members) {
-//                if (member != c.getPlayer().getUniqueId()) names.add(Bukkit.getPlayer(member).getName());
-//            }
-//            return names;
-//        });
-//
-//        manager.getCommandCompletions().registerCompletion("nonPartyMembers", c -> {
-//            Party party = partyManager.getParty(c.getPlayer().getUniqueId());
-//            List<UUID> members = party.getMembersRaw();
-//            List<String> names = new ArrayList<>();
-//            for (UUID member : members) {
-//                names.add(Bukkit.getPlayer(member).getName());
-//            }
-//            List<String> allPlayerNames = Arrays.stream(Bukkit.getOfflinePlayers()).map(OfflinePlayer::getName)
-//                    .collect(Collectors.toList());
-//
-//            return allPlayerNames.stream().filter(p -> !(names.contains(p))).collect(Collectors.toList());
-//        });
-//
-//        manager.getCommandCompletions().registerCompletion("openToInvite", c -> {
-//            List<Player> notInParty = Bukkit.getOnlinePlayers().stream()
-//                    .filter(p -> partyManager.getParty(p.getUniqueId()) == null).collect(Collectors.toList());
-//
-//            return notInParty.stream().map(Player::getName)
-//                    .collect(Collectors.toList());
-//        });
-		// TODO: uncomment this when working on party command
 
 		getServer().getPluginManager().registerEvents(new BossLeaderboardListener(), this);
 		getServer().getPluginManager().registerEvents(new DropUtils(), this);
@@ -207,11 +160,13 @@ public final class Core extends JavaPlugin {
 
 	}
 
+	/**
+	 * Plugin shutdown logic.
+	 */
 	@Override
 	public void onDisable () {
 		// Stop packetevents
 		PacketEvents.get().terminate();
-		// Plugin shutdown logic
 		INSTANCE = null;
 	}
 

@@ -217,7 +217,7 @@ public class DeathListener implements Listener, Runnable {
 
 		if (player != null) {
 
-			String time = Utils.convertSecondsToTime(e.getEntity().getStatistic(Statistic.TIME_SINCE_DEATH) / 20);
+			String time = Utils.secondsToHHMMSS(e.getEntity().getStatistic(Statistic.TIME_SINCE_DEATH) / 20);
 
 			player.sendMessage("");
 			player.sendMessage(Utils.lore("<gray>Time Since Last Death: <yellow>" + time));
