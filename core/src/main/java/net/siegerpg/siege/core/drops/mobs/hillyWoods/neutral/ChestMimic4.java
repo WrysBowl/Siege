@@ -7,7 +7,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pla
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed;
 
 public class ChestMimic4 extends MobDropTable {
+
 	public ChestMimic4 () {
+
 		super("ChestMimic4", 150, 300, 150, 300, new Reward[] {
 				new Reward(PlantMatter.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
 				new Reward(Seed.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
@@ -20,6 +22,7 @@ public class ChestMimic4 extends MobDropTable {
 
 				new Reward(new Sugar(100).getUpdatedItem(false).asQuantity(4), 50.0),
 				new Reward(new Sugar(100).getUpdatedItem(false).asQuantity(4), 50.0),
-		});
+				});
 	}
+
 }

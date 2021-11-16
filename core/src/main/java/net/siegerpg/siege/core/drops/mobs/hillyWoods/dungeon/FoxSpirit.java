@@ -23,7 +23,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.SplinteredB
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class FoxSpirit extends MobDropTable {
+
 	public FoxSpirit () {
+
 		super("FoxSpirit", 20000, 25000, 25000, 30000, new Reward[] {
 				new Reward(Chain.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 60.0),
 				new Reward(Chain.Companion.tier(3).getUpdatedItem(false), 12.0),
@@ -65,6 +67,7 @@ public class FoxSpirit extends MobDropTable {
 				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 10.0),
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 10.0),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 10.0),
-		});
+				});
 	}
+
 }

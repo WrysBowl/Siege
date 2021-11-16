@@ -14,7 +14,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.Cracked
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Bully extends MobDropTable {
+
 	public Bully () {
+
 		super("Bully", 12, 15, 20, 23, new Reward[] {
 				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 50.0),
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -34,6 +36,7 @@ public class Bully extends MobDropTable {
 				new Reward(new Beef(0).getUpdatedItem(false), 20.0),
 				new Reward(new CrackedToughGem(0).getUpdatedItem(false), 0.25),
 				new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 0.5),
-		});
+				});
 	}
+
 }

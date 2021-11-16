@@ -14,7 +14,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Shank;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Thief extends MobDropTable {
+
 	public Thief () {
+
 		super("Thief", 25, 28, 35, 38, new Reward[] {
 				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 30.0),
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 3.0),
@@ -36,6 +38,7 @@ public class Thief extends MobDropTable {
 
 				new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 1.0),
-		});
+				});
 	}
+
 }

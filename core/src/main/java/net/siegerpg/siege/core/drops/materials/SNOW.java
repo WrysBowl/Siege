@@ -7,7 +7,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Ice
 import org.bukkit.Material;
 
 public class SNOW extends BlockDropTable {
+
 	public SNOW () {
+
 		super(80, Material.SNOW, 1, 2, 1, 2, new Reward[] {
 				new Reward(IceShard.Companion.tier(1).getUpdatedItem(false), 30.0),
 				new Reward(IceShard.Companion.tier(2).getUpdatedItem(false), 3.0),
@@ -15,4 +17,5 @@ public class SNOW extends BlockDropTable {
 				new Reward(Crystal.Companion.tier(2).getUpdatedItem(false), 0.5)
 		});
 	}
+
 }

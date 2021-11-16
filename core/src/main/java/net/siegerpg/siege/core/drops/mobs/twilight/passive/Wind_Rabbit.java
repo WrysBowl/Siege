@@ -10,7 +10,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Rabbi
 
 
 public class Wind_Rabbit extends MobDropTable {
+
 	public Wind_Rabbit () {
+
 		super("Wind_Rabbit", 40, 50, 35, 45, new Reward[] {
 				new Reward(RabbitFoot.Companion.tier(1).getUpdatedItem(false), 100.0),
 				new Reward(RabbitFoot.Companion.tier(2).getUpdatedItem(false), 25.0),
@@ -21,4 +23,5 @@ public class Wind_Rabbit extends MobDropTable {
 				new Reward(new Drumstick(50).getUpdatedItem(false), 25.0)
 		});
 	}
+
 }

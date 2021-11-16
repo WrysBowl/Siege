@@ -12,6 +12,7 @@ public class Help implements CommandExecutor {
 
 	@Override
 	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
 		Player player = (Player) sender;
 		firstLine(player, 1);
 		firstPage(player);
@@ -21,10 +22,12 @@ public class Help implements CommandExecutor {
 
 	//-----[HELP SIEGE]-----
 	public void firstLine (Player player, Integer firstpage) {
+
 		player.sendMessage(Utils.parse("    <gold><bold>HELP Page #" + firstpage + "    "));
 	}
 
 	public void lastLine (Player player) {
+
 		player.sendMessage("");
 	}
 
@@ -43,4 +46,5 @@ public class Help implements CommandExecutor {
 		player.sendMessage(Utils.parse("   <yellow>/webstore <gray>Sends link to the webstore"));
 		player.sendMessage(Utils.parse("   <yellow>/rules <gray>See the rules"));
 	}
+
 }

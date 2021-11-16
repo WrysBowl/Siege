@@ -7,7 +7,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
 
 public class Porky extends MobDropTable {
+
 	public Porky () {
+
 		super("Porky", 6, 9, 8, 11, new Reward[] {
 				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 25.0),
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -16,6 +18,7 @@ public class Porky extends MobDropTable {
 
 				new Reward(new Porkchop(50).getUpdatedItem(false), 60.0),
 				new Reward(new Porkchop(100).getUpdatedItem(false), 6.0),
-		});
+				});
 	}
+
 }

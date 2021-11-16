@@ -14,6 +14,7 @@ public class Level implements CommandExecutor {
 
 	@Override
 	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
 		if (!(sender instanceof Player)) {
 			return false;
 		}
@@ -34,6 +35,7 @@ public class Level implements CommandExecutor {
 	}
 
 	public void doTheThing (CommandSender executor, OfflinePlayer player) {
+
 		Levels.INSTANCE.getExpLevel(player, pair -> {
 			if (pair == null) {
 				executor.sendMessage(Utils.lore("<red>That player could not be found."));

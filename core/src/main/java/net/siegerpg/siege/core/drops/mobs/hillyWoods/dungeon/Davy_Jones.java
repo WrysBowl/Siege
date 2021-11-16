@@ -22,7 +22,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.ranged.Trident;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Davy_Jones extends MobDropTable {
+
 	public Davy_Jones () {
+
 		super("Davy_Jones", 9000, 10000, 9000, 10000, new Reward[] {
 				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
 				new Reward(Bone.Companion.tier(3).getUpdatedItem(false).asQuantity(2), 25.0),
@@ -64,6 +66,7 @@ public class Davy_Jones extends MobDropTable {
 				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 5.0),
-		});
+				});
 	}
+
 }

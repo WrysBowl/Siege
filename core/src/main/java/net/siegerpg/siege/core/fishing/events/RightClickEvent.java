@@ -22,6 +22,7 @@ public class RightClickEvent implements Listener {
 
 	@EventHandler
 	public void onClick (PlayerInteractEvent e) {
+
 		Player player = e.getPlayer();
 		if (FishingTask.runningTasks.containsKey(player.getUniqueId())) {
 			FishingTask task = FishingTask.runningTasks.get(player.getUniqueId());

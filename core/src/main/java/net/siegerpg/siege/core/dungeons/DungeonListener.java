@@ -8,6 +8,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import java.util.Map;
 
 public class DungeonListener implements Listener {
+
 	@EventHandler
 	public void onBossDeath (EntityDeathEvent e) {
 
@@ -19,4 +20,5 @@ public class DungeonListener implements Listener {
 			if (boss.isDead()) value.boss = null;
 		}
 	}
+
 }

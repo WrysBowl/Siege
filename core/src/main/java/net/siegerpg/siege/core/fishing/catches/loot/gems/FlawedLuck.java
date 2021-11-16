@@ -6,7 +6,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLu
 public class FlawedLuck extends Fish {
 
 	public FlawedLuck () {
+
 		super(45, 0.8, 16, 14,
-				new FlawedLuckGem(0).getUpdatedItem(false));
+		      new FlawedLuckGem(0).getUpdatedItem(false));
 	}
+
 }

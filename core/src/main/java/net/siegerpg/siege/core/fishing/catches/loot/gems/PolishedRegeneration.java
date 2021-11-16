@@ -6,7 +6,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.
 public class PolishedRegeneration extends Fish {
 
 	public PolishedRegeneration () {
+
 		super(55, 1, 12, 18,
-				new PolishedRegenerationGem(0).getUpdatedItem(false));
+		      new PolishedRegenerationGem(0).getUpdatedItem(false));
 	}
+
 }

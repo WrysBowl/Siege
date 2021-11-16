@@ -23,7 +23,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.DoubleBlade
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class BullSpirit extends MobDropTable {
+
 	public BullSpirit () {
+
 		super("BullSpirit", 2500, 2700, 2500, 2700, new Reward[] {
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
 				new Reward(Leather.Companion.tier(3).getUpdatedItem(false).asQuantity(2), 25.0),
@@ -64,6 +66,7 @@ public class BullSpirit extends MobDropTable {
 				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 10.0),
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 10.0),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 10.0),
-		});
+				});
 	}
+
 }

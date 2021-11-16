@@ -8,7 +8,9 @@ import net.siegerpg.siege.core.items.implemented.misc.cosmetics.rare.*;
 import java.util.HashMap;
 
 public class SpiritDropTable extends CosmeticDropTable {
+
 	public SpiritDropTable () {
+
 		dropTable = new HashMap<>() {
 			{
 				//Rare
@@ -35,4 +37,5 @@ public class SpiritDropTable extends CosmeticDropTable {
 			}
 		};
 	}
+
 }

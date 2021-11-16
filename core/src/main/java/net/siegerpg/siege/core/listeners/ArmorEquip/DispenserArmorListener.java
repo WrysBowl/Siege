@@ -15,6 +15,7 @@ public class DispenserArmorListener implements Listener {
 
 	@EventHandler
 	public void dispenseArmorEvent (BlockDispenseArmorEvent event) {
+
 		ArmorType type = ArmorType.matchType(event.getItem());
 		if (type != null) {
 			if (event.getTargetEntity() instanceof Player) {
@@ -27,4 +28,5 @@ public class DispenserArmorListener implements Listener {
 			}
 		}
 	}
+
 }

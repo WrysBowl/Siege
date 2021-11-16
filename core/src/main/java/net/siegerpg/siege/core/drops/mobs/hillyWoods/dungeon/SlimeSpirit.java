@@ -21,7 +21,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.SlimeSpoofer;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class SlimeSpirit extends MobDropTable {
+
 	public SlimeSpirit () {
+
 		super("SlimeSpirit", 1000, 1500, 1000, 1500, new Reward[] {
 				new Reward(Slime.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
 				new Reward(Slime.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 50.0),
@@ -60,6 +62,7 @@ public class SlimeSpirit extends MobDropTable {
 				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new CrackedToughGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 5.0),
-		});
+				});
 	}
+
 }

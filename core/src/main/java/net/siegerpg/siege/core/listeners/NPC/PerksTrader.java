@@ -26,6 +26,7 @@ public class PerksTrader implements Listener {
 
 	@EventHandler
 	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+
 		if (e.getRightClicked().getName().contains("Perks") && e.getRightClicked().getName().contains("6")) {
 			Inventory shop = getShopMenu(e.getPlayer());
 			e.getPlayer().openInventory(shop);
@@ -34,17 +35,19 @@ public class PerksTrader implements Listener {
 
 	@EventHandler
 	public void guiClick (InventoryClickEvent e) {
+
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
 		if (e.getWhoClicked().getMetadata("PerkTrading").size() > 0 &&
-				Objects.equals(e.getWhoClicked().getMetadata("PerkTrading").get(0).value(), e.getInventory())) {
+		    Objects.equals(e.getWhoClicked().getMetadata("PerkTrading").get(0).value(), e.getInventory())) {
 			clickShop(e);
 			e.setCancelled(true);
 		}
 	}
 
 	private void clickShop (InventoryClickEvent e) {
+
 		if (e.getSlot() != 13) return;
 
 		Player player = (Player) e.getWhoClicked();
@@ -74,6 +77,7 @@ public class PerksTrader implements Listener {
 
 
 	private Inventory getShopMenu (Player player) {
+
 		Inventory gui = Bukkit.createInventory(null, 27, "Perk Trading");
 
 		//Fill in the GUI
@@ -100,4 +104,5 @@ public class PerksTrader implements Listener {
 		player.setMetadata("PerkTrading", new FixedMetadataValue(Core.plugin(), gui));
 		return gui;
 	}
+
 }

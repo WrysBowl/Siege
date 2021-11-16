@@ -7,7 +7,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feath
 
 
 public class Crow extends MobDropTable {
+
 	public Crow () {
+
 		super("Crow", 20, 30, 20, 30, new Reward[] {
 				new Reward(Feather.Companion.tier(1).getUpdatedItem(false), 75.0),
 				new Reward(Feather.Companion.tier(2).getUpdatedItem(false), 25.0),
@@ -15,4 +17,5 @@ public class Crow extends MobDropTable {
 				new Reward(new Drumstick(100).getUpdatedItem(false), 25.0)
 		});
 	}
+
 }

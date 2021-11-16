@@ -21,6 +21,7 @@ public class TutorialListeners implements Listener {
 
 	@EventHandler
 	public void breakRewardableBlocks (BlockBreakEvent e) {
+
 		if (!e.getBlock().getWorld().equals(SiegeHub)) return;
 		List<Material> rewardableBlocks = BlockBreakListener.rewardableBlocks;
 		if (rewardableBlocks.contains(e.getBlock().getType())) {
@@ -30,6 +31,7 @@ public class TutorialListeners implements Listener {
 
 	@EventHandler
 	public void pickUpMaterials (EntityPickupItemEvent e) {
+
 		if (!e.getEntity().getWorld().equals(SiegeHub)) return;
 		if (CustomItemUtils.INSTANCE.getCustomItem(e.getItem().getItemStack()) instanceof CustomMaterial) {
 			e.getEntity().sendActionBar(Utils.lore("<gold><bold>!!!<reset><gray> Materials can be used to craft items from Symone"));
@@ -38,9 +40,11 @@ public class TutorialListeners implements Listener {
 
 	@EventHandler
 	public void killMob (EntityDeathEvent e) {
+
 		if (!e.getEntity().getWorld().equals(SiegeHub)) return;
 		Player player = e.getEntity().getKiller();
 		if (player == null) return;
 		player.sendActionBar(Utils.lore("<gold><bold>!!!<reset><gray> Mobs drop gold, experience, and materials"));
 	}
+
 }

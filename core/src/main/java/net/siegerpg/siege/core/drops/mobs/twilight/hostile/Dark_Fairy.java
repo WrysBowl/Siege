@@ -10,7 +10,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Simp
 
 
 public class Dark_Fairy extends MobDropTable {
+
 	public Dark_Fairy () {
+
 		super("Dark_Fairy", 50, 60, 50, 60, new Reward[] {
 				new Reward(FairyDust.Companion.tier(1).getUpdatedItem(false), 25.0),
 				new Reward(FairyDust.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -20,6 +22,7 @@ public class Dark_Fairy extends MobDropTable {
 
 				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 0.5),
 				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 0.5),
-		});
+				});
 	}
+
 }

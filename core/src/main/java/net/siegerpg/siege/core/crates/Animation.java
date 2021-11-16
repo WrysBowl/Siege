@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.Set;
 
 public class Animation implements Runnable {
+
 	public void openCrate (Location location, Set<CustomCosmetic> cosmetics, CustomCosmetic cosmetic, Player player) {
+
 		new Helix().createHelix(location, Particle.FALLING_OBSIDIAN_TEAR, 3.0, 0.0, 4.0);
 		new Helix().createHelix(location, Particle.FALLING_OBSIDIAN_TEAR, 2.0, 0.0, 4.0);
 
@@ -109,4 +111,5 @@ public class Animation implements Runnable {
 	public void run () {
 
 	}
+
 }

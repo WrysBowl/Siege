@@ -54,6 +54,7 @@ public class BenButcher implements Listener {
 
 	@EventHandler
 	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+
 		if (e.getRightClicked().getName().contains("Ben") && e.getRightClicked().getName().contains("6")) {
 			Inventory shop = getShopMenu(e.getPlayer());
 			e.getPlayer().openInventory(shop);
@@ -62,17 +63,19 @@ public class BenButcher implements Listener {
 
 	@EventHandler
 	public void guiClick (InventoryClickEvent e) {
+
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
 		if (e.getWhoClicked().getMetadata("BenButcher").size() > 0 &&
-				Objects.equals(e.getWhoClicked().getMetadata("BenButcher").get(0).value(), e.getInventory())) {
+		    Objects.equals(e.getWhoClicked().getMetadata("BenButcher").get(0).value(), e.getInventory())) {
 			clickShop(e);
 			e.setCancelled(true);
 		}
 	}
 
 	private void clickShop (InventoryClickEvent e) {
+
 		Player player = (Player) e.getWhoClicked();
 		if (e.getCurrentItem() == null) {
 			return;
@@ -96,6 +99,7 @@ public class BenButcher implements Listener {
 
 
 	private Inventory getShopMenu (Player player) {
+
 		Inventory gui = Bukkit.createInventory(null, 9, "Ben the Butcher");
 
 		//Fill in the GUI
@@ -106,4 +110,5 @@ public class BenButcher implements Listener {
 		player.setMetadata("BenButcher", new FixedMetadataValue(Core.plugin(), gui));
 		return gui;
 	}
+
 }

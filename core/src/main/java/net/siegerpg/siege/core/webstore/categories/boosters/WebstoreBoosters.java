@@ -22,6 +22,7 @@ public class WebstoreBoosters extends WebstorePackage {
 
 
 	public WebstoreBoosters (String arg2, String arg3, Double arg4, Integer arg5, Integer arg6) {
+
 		this.arg2 = arg2;
 		this.arg3 = arg3;
 		this.arg4 = arg4;
@@ -30,6 +31,7 @@ public class WebstoreBoosters extends WebstorePackage {
 	}
 
 	public WebstoreBoosters (String[] args) {
+
 		super(args);
 		try {
 			this.arg2 = args[0];
@@ -42,19 +44,23 @@ public class WebstoreBoosters extends WebstorePackage {
 	}
 
 	public void setMultiplier (double multi) {
+
 		this.arg4 = multi;
 	}
 
 	public void setDuration (int duration) {
+
 		this.arg5 = duration;
 	}
 
 	public void setAmount (int amount) {
+
 		this.arg6 = amount;
 	}
 
 	@Override
 	public void setArgs (String[] args) {
+
 		try {
 			this.arg2 = args[0];
 			this.arg3 = args[1];
@@ -86,6 +92,7 @@ public class WebstoreBoosters extends WebstorePackage {
 	}
 
 	public ItemStack getBoosterItem () {
+
 		ItemStack item = new ItemStack(Material.PAPER, arg6);
 		ItemMeta itemMeta = item.getItemMeta();
 		if (this.arg3.equals("EXP")) itemMeta.displayName(Utils.lore("<light_purple>EXP Booster"));
@@ -106,4 +113,5 @@ public class WebstoreBoosters extends WebstorePackage {
 		nbtItem.setDouble("multiplier", arg4);
 		return nbtItem.getItem();
 	}
+
 }

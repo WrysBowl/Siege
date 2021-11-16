@@ -25,4 +25,5 @@ public class PlayerQuitListener implements Listener {
 			}
 		}, 20L);
 	}
+
 }

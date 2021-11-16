@@ -30,9 +30,11 @@ public class PlayerJoinListener implements Listener {
 
 	@EventHandler
 	public void connectEvent (AsyncPlayerPreLoginEvent e) {
+
 		new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 			@Override
 			public void run () {
+
 				String ip = e.getAddress().getHostAddress();
 				String uuid = e.getUniqueId().toString();
 				// Add user ips to the db (So that we can in the future find all alts of an user)
@@ -84,6 +86,7 @@ public class PlayerJoinListener implements Listener {
 			new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 				@Override
 				public void run () {
+
 					updateInventory(player);
 				}
 			}.runTaskAsynchronously(Core.plugin());
@@ -120,6 +123,7 @@ public class PlayerJoinListener implements Listener {
 	}
 
 	public void updateInventory (Player player) {
+
 		for (int i = 0; i < player.getInventory().getSize(); i++) {
 			CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
 			if (CusItem == null) continue;
@@ -128,6 +132,7 @@ public class PlayerJoinListener implements Listener {
 	}
 
 	public void newPlayerReward (Player player) {
+
 		player.getInventory().clear();
 		player.getInventory().addItem(new BeginnerTwig(50).getUpdatedItem(false));
 		player.getInventory().addItem(new BeginnerClub(50).getUpdatedItem(false));

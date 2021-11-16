@@ -31,6 +31,7 @@ public class FishCore {
 	};
 
 	public static Fish chooseRandomFish (Player player) {
+
 		ItemStack item = player.getInventory().getItemInMainHand();
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 		FishDropTable table = new OldFishTable();
@@ -57,10 +58,12 @@ public class FishCore {
 	}
 
 	public static Fish getFish (String name) {
+
 		for (Fish fish : registeredFish) {
 			if (!fish.name.equals(name)) continue;
 			return fish;
 		}
 		return null;
 	}
+
 }

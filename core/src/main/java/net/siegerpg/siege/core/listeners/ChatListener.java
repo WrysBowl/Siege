@@ -17,6 +17,7 @@ public class ChatListener implements Listener {
 
 	@EventHandler
 	public void playerChat (AsyncPlayerChatEvent e) {
+
 		Player player = e.getPlayer();
 		Pair<Short, Integer> levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
 		String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";
@@ -55,4 +56,5 @@ public class ChatListener implements Listener {
 			e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f" + message.replaceAll("%", "%%")));
 		} else e.setFormat(Utils.tacc(level + " " + prefix + " ") + Utils.tacc("&7%1$s &f%2$s"));
 	}
+
 }

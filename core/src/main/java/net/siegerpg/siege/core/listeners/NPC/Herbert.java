@@ -38,10 +38,12 @@ public class Herbert implements Listener {
 	private int total = 0; // Total scrap cash
 
 	public Herbert () {
+
 	}
 
 	// Initialize menu
 	public Herbert (Player player) {
+
 		ChestGui menu = new ChestGui(5, "Scrapper");
 
 		menu.setOnClose(this::onInvClose);
@@ -82,6 +84,7 @@ public class Herbert implements Listener {
 
 	@EventHandler
 	public void onRightClickEntity (PlayerInteractEntityEvent e) {
+
 		if (e.getRightClicked().getName().contains("Herbert") && e.getRightClicked().getName().contains("6")) {
 			new Herbert(e.getPlayer());
 		}
@@ -89,6 +92,7 @@ public class Herbert implements Listener {
 
 	// Cash in all items in the scrapper
 	private void clickCash (InventoryClickEvent e) {
+
 		scanner(e); // Update values
 		clearItems(); // Trash items
 		refresh(); // Update Gui
@@ -101,6 +105,7 @@ public class Herbert implements Listener {
 
 	// Calculate item values in the scrapper
 	private void scanner (InventoryClickEvent e) {
+
 		ArrayList<ItemStack> scraps = new ArrayList<ItemStack>(pullItems()); // Get scrapper items
 		total = 0;
 		int quality = 0;
@@ -158,6 +163,7 @@ public class Herbert implements Listener {
 
 	// Return player items still in the scrapper on close
 	public void onInvClose (InventoryCloseEvent e) {
+
 		ArrayList<ItemStack> Items = new ArrayList<ItemStack>(pullItems());
 		for (ItemStack item : Items) {
 			if (e.getPlayer().getInventory().firstEmpty() == -1) {
@@ -172,6 +178,7 @@ public class Herbert implements Listener {
 
 	// Get the coordinates of all items in the scrapper from top left to bottom right
 	private ArrayList<Integer> pullItemCoords () {
+
 		Inventory inv = menu.getInventory();
 		ArrayList<Integer> scraps = new ArrayList<Integer>();
 		int y = 0;
@@ -190,6 +197,7 @@ public class Herbert implements Listener {
 
 	// Get an ArrayList of all ItemStacks in the scrapper from top left to bottom right
 	private ArrayList<ItemStack> pullItems () {
+
 		Inventory inv = menu.getInventory();
 		ArrayList<ItemStack> scraps = new ArrayList<ItemStack>();
 		int y = 0;
@@ -208,6 +216,7 @@ public class Herbert implements Listener {
 
 	// Clear items in the scrapper
 	private void clearItems () {
+
 		Inventory inv = menu.getInventory();
 		ArrayList<Integer> coords = new ArrayList<Integer>(pullItemCoords());
 		for (Integer coord : coords) {
@@ -217,6 +226,7 @@ public class Herbert implements Listener {
 
 	// Updates the gui and reseats items
 	private void refresh () {
+
 		ArrayList<ItemStack> raws = new ArrayList<ItemStack>(pullItems());
 		ArrayList<Integer> coords = new ArrayList<Integer>(pullItemCoords());
 
@@ -227,4 +237,5 @@ public class Herbert implements Listener {
 			inv.setItem(coords.get(i), raws.get(i));
 		}
 	}
+
 }

@@ -21,7 +21,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.Torch;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class MagmaSpirit extends MobDropTable {
+
 	public MagmaSpirit () {
+
 		super("MagmaSpirit", 1500, 1800, 1500, 1800, new Reward[] {
 				new Reward(Magma.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 100.0),
 				new Reward(Magma.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 30.0),
@@ -59,6 +61,7 @@ public class MagmaSpirit extends MobDropTable {
 				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 5.0),
-		});
+				});
 	}
+
 }

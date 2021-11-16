@@ -14,11 +14,13 @@ public class WebstoreRanks extends WebstorePackage {
 	String arg3 = "warrior"; //rank type
 
 	public WebstoreRanks (String arg2, String arg3) {
+
 		this.arg2 = arg2;
 		this.arg3 = arg3;
 	}
 
 	public WebstoreRanks (String[] args) {
+
 		super(args);
 		try {
 			this.arg2 = args[0];
@@ -29,6 +31,7 @@ public class WebstoreRanks extends WebstorePackage {
 
 	@Override
 	public void setArgs (String[] args) {
+
 		try {
 			this.arg2 = args[0];
 			this.arg3 = args[1];
@@ -50,4 +53,5 @@ public class WebstoreRanks extends WebstorePackage {
 		Bukkit.broadcast(Utils.lore("  <aqua>https://store.siegerpg.net/"));
 		Bukkit.broadcast(Utils.lore(""));
 	}
+
 }

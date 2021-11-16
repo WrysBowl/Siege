@@ -15,7 +15,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Werewolf extends MobDropTable {
+
 	public Werewolf () {
+
 		super("Werewolf", 75, 79, 80, 84, new Reward[] {
 				new Reward(Chain.Companion.tier(2).getUpdatedItem(false).asQuantity(3), 60.0),
 				new Reward(Chain.Companion.tier(3).getUpdatedItem(false), 6.0),
@@ -43,6 +45,7 @@ public class Werewolf extends MobDropTable {
 				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 0.25),
 				new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new FoxSpiritKey(0).getUpdatedItem(false), 10.0),
-		});
+				});
 	}
+
 }

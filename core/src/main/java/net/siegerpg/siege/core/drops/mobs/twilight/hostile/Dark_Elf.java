@@ -10,7 +10,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedT
 
 
 public class Dark_Elf extends MobDropTable {
+
 	public Dark_Elf () {
+
 		super("Dark_Elf", 50, 60, 50, 60, new Reward[] {
 				new Reward(FairyDust.Companion.tier(1).getUpdatedItem(false), 60.0),
 				new Reward(FairyDust.Companion.tier(2).getUpdatedItem(false), 10.0),
@@ -21,6 +23,7 @@ public class Dark_Elf extends MobDropTable {
 
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 0.5),
-		});
+				});
 	}
+
 }

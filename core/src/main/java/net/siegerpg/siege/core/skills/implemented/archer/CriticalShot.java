@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class CriticalShot extends Skill {
 
 	public CriticalShot () {
+
 		this.ID = 1;
 		this.SKILL = this;
 
@@ -40,4 +41,5 @@ public class CriticalShot extends Skill {
 	public void skillAction (PlayerInteractEvent e) {
 
 	}
+
 }

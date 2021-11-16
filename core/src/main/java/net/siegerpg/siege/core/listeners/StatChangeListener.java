@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class StatChangeListener implements Listener, Runnable {
 
 	public static void statBarDisplayTask () {
+
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
 			for (Player p : Bukkit.getOnlinePlayers()) {
 				HashMap<Player, Double> playerHealth = PlayerData.playerHealth;
@@ -25,7 +26,7 @@ public class StatChangeListener implements Listener, Runnable {
 				double customHealth = Utils.round(CustomItemUtils.INSTANCE.getCustomHealth(p), 1);
 				PlayerData.hasActionBar.put(p, true);
 				p.sendActionBar(Utils.parse("<red>"
-						+ customHealth + "<dark_red>/" + health + " \u2764"));
+				                            + customHealth + "<dark_red>/" + health + " \u2764"));
 			}
 			for (Player p : Bukkit.getOnlinePlayers()) {
 				PlayerData.hasActionBar.put(p, false);
@@ -37,4 +38,5 @@ public class StatChangeListener implements Listener, Runnable {
 	public void run () {
 
 	}
+
 }

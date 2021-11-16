@@ -17,6 +17,7 @@ public class EntityTeleportListener implements Listener {
 
 	@EventHandler
 	public void onTeleport (EntityTeleportEvent e) {
+
 		if (e.getEntity() instanceof Player) return;
 		Location loc = e.getEntity().getLocation();
 		loc.getWorld().spawnParticle(Particle.CLOUD, loc, 3);
@@ -29,9 +30,11 @@ public class EntityTeleportListener implements Listener {
 
 	@EventHandler
 	public void onPlayerTeleport (PlayerTeleportEvent e) {
+
 		if (!Bukkit.getOnlinePlayers().contains(e.getPlayer())) return;
 		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
 			Scoreboard.updateScoreboard(e.getPlayer());
 		}, 2);
 	}
+
 }

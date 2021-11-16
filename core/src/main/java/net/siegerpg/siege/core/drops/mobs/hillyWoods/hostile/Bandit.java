@@ -15,7 +15,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Dagger;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Bandit extends MobDropTable {
+
 	public Bandit () {
+
 		super("Bandit", 35, 38, 55, 58, new Reward[] {
 				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 50.0),
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -38,6 +40,7 @@ public class Bandit extends MobDropTable {
 
 				new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.0),
-		});
+				});
 	}
+
 }

@@ -32,6 +32,7 @@ public class FishingTask extends BukkitRunnable {
 	private int currentWait = 0;
 
 	public FishingTask (CustomFishEvent e) {
+
 		this.e = e;
 
 		//setting the score to a fourth
@@ -44,6 +45,7 @@ public class FishingTask extends BukkitRunnable {
 
 	@Override
 	public void run () {
+
 		Fish fish = e.getFishingData().getFish();
 		FishingData data = e.getFishingData();
 		Cursor cursor = data.getCursor();
@@ -79,10 +81,10 @@ public class FishingTask extends BukkitRunnable {
 		double progress = data.getScore() / fish.winScore;
 		if (Bukkit.getBossBar(keyProgress) == null || e.getProgressBar() == null) {
 			BossBar bossbar = Bukkit.createBossBar(keyProgress,
-					Utils.tacc("&a&lStay in the Green!"),
-					BarColor.GREEN,
-					BarStyle.SOLID,
-					BarFlag.CREATE_FOG);
+			                                       Utils.tacc("&a&lStay in the Green!"),
+			                                       BarColor.GREEN,
+			                                       BarStyle.SOLID,
+			                                       BarFlag.CREATE_FOG);
 			bossbar.setProgress(progress);
 			bossbar.setVisible(true);
 			bossbar.addPlayer(e.getPlayer());
@@ -162,16 +164,19 @@ public class FishingTask extends BukkitRunnable {
 	}
 
 	public CustomFishEvent getEvent () {
+
 		return this.e;
 	}
 
 
 	public NamespacedKey getKeyProgress () {
+
 		return keyProgress;
 	}
 
 
 	public void setKeyProgress (NamespacedKey keyProgress) {
+
 		this.keyProgress = keyProgress;
 	}
 

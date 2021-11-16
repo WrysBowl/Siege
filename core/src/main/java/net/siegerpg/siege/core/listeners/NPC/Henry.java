@@ -23,6 +23,7 @@ public class Henry implements Listener {
 
 	@EventHandler
 	public void onRightClickEntity (PlayerInteractEntityEvent e) {
+
 		if (e.getRightClicked().getName().contains("Henry") && e.getRightClicked().getName().contains("6")) {
 			Player person = e.getPlayer();
 			buyFish(person);
@@ -30,6 +31,7 @@ public class Henry implements Listener {
 	}
 
 	private void buyFish (Player player) {
+
 		ItemStack hand = player.getInventory().getItemInMainHand();
 		if (hand.getType().equals(Material.AIR)) return;
 		NBTItem nbt = new NBTItem(hand);
@@ -61,10 +63,12 @@ public class Henry implements Listener {
 		player.sendMessage(Utils.parse("\n<green>You sold a <aqua>" + ((int) (goldAmount / 2)) + " cm " + fishName + " <yellow>for " + goldAmount + " coins!\n"));
 		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 			public void run () {
+
 				Scoreboard.updateScoreboard(player);
 			}
 		}, 20);
 
 		player.getInventory().removeItem(hand.asOne());
 	}
+
 }

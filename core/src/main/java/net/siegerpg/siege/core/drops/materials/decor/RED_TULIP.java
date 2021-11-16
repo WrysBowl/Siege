@@ -8,7 +8,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Sti
 import org.bukkit.Material;
 
 public class RED_TULIP extends BlockDropTable {
+
 	public RED_TULIP () {
+
 		super(100, Material.RED_TULIP, 0, 0, 0, 0, new Reward[] {
 				new Reward(Seed.Companion.tier(1).getUpdatedItem(false), 25.0),
 				new Reward(PlantMatter.Companion.tier(1).getUpdatedItem(false), 25.0),
@@ -18,4 +20,5 @@ public class RED_TULIP extends BlockDropTable {
 				new Reward(Stick.Companion.tier(2).getUpdatedItem(false), 2.5)
 		});
 	}
+
 }

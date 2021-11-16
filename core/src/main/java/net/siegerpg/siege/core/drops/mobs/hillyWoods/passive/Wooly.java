@@ -7,7 +7,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Wool;
 
 public class Wooly extends MobDropTable {
+
 	public Wooly () {
+
 		super("Wooly", 10, 13, 8, 11, new Reward[] {
 				new Reward(Wool.Companion.tier(1).getUpdatedItem(false), 100.0),
 				new Reward(Wool.Companion.tier(2).getUpdatedItem(false), 10.0),
@@ -16,6 +18,7 @@ public class Wooly extends MobDropTable {
 				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 8.0),
 
 				new Reward(new Drumstick(50).getUpdatedItem(false), 25.0),
-		});
+				});
 	}
+
 }

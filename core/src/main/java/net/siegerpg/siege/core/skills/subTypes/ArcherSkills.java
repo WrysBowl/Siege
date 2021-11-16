@@ -16,9 +16,11 @@ public class ArcherSkills {
 	};
 
 	public static String appendSkill (Player player, Skill skill) {
+
 		int id = skill.getID();
 		String playerSkills = Skills.INSTANCE.getSkills(player);
 		if (playerSkills.isEmpty()) return ("A_" + id);
 		return (playerSkills + "_" + id);
 	}
+
 }

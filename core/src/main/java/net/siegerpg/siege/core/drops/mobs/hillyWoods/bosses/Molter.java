@@ -14,7 +14,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.MatchStick;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Molter extends MobDropTable {
+
 	public Molter () {
+
 		super("Molter", 26, 29, 31, 34, new Reward[] {
 				new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 100.0),
 				new Reward(Magma.Companion.tier(3).getUpdatedItem(false), 10.0),
@@ -33,6 +35,7 @@ public class Molter extends MobDropTable {
 				new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new MagmaSpiritKey(0).getUpdatedItem(false), 10.0),
-		});
+				});
 	}
+
 }

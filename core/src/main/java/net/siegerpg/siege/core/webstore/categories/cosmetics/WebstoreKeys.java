@@ -31,6 +31,7 @@ public class WebstoreKeys extends WebstorePackage {
 	CustomKey key = new NormalKey(0);
 
 	public WebstoreKeys (String arg2, String arg3, Integer arg4, CustomKey key) {
+
 		this.arg2 = arg2;
 		this.arg3 = arg3;
 		this.arg4 = arg4;
@@ -38,6 +39,7 @@ public class WebstoreKeys extends WebstorePackage {
 	}
 
 	public WebstoreKeys (String[] args) {
+
 		super(args);
 		try {
 			this.arg2 = args[0];
@@ -50,6 +52,7 @@ public class WebstoreKeys extends WebstorePackage {
 
 	@Override
 	public void setArgs (String[] args) {
+
 		try {
 			this.arg2 = args[0];
 			this.arg3 = args[1];
@@ -77,4 +80,5 @@ public class WebstoreKeys extends WebstorePackage {
 		Bukkit.broadcast(Utils.lore("  <aqua>https://store.siegerpg.net/"));
 		Bukkit.broadcast(Utils.lore(""));
 	}
+
 }

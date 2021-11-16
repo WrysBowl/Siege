@@ -54,6 +54,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 	private static int addVal = -10;
 
 	public static void resetItems () {
+
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
 			setShopWeapons();
 			setShopArmor();
@@ -84,6 +85,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 	}
 
 	private static void setShopWeapons () {
+
 		shopWeapons.clear();
 		shopWeapons.add(0, Utils.setLoreCost(new Twig(Utils.randRarity() + addVal)));
 		shopWeapons.add(1, Utils.setLoreCost(new StickyStick(Utils.randRarity() + addVal)));
@@ -100,6 +102,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 	}
 
 	private static void setShopArmor () {
+
 		shopArmor.clear();
 		shopArmor.add(0, Utils.setLoreCost(new SlimyHelmet(Utils.randRarity() + addVal)));
 		shopArmor.add(1, Utils.setLoreCost(new SlimyChestplate(Utils.randRarity() + addVal)));
@@ -117,10 +120,12 @@ public class SmokyBlacksmith implements Listener, Runnable {
 
 	@Override
 	public void run () {
+
 	}
 
 	@EventHandler
 	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+
 		if (e.getRightClicked().getName().contains("Smoky") && e.getRightClicked().getName().contains("6")) {
 			Inventory shop = getShopMenu(e.getPlayer());
 			e.getPlayer().openInventory(shop);
@@ -129,25 +134,27 @@ public class SmokyBlacksmith implements Listener, Runnable {
 
 	@EventHandler
 	public void guiClick (InventoryClickEvent e) {
+
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
 		if (e.getWhoClicked().getMetadata("SmokyShop").size() > 0 &&
-				Objects.equals(e.getWhoClicked().getMetadata("SmokyShop").get(0).value(), e.getInventory())) {
+		    Objects.equals(e.getWhoClicked().getMetadata("SmokyShop").get(0).value(), e.getInventory())) {
 			clickShopMenu(e);
 			e.setCancelled(true);
 		} else if (e.getWhoClicked().getMetadata("SmokyShopWeapons").size() > 0 &&
-				Objects.equals(e.getWhoClicked().getMetadata("SmokyShopWeapons").get(0).value(), e.getInventory())) {
+		           Objects.equals(e.getWhoClicked().getMetadata("SmokyShopWeapons").get(0).value(), e.getInventory())) {
 			clickShopWeapons(e);
 			e.setCancelled(true);
 		} else if (e.getWhoClicked().getMetadata("SmokyShopArmor").size() > 0 &&
-				Objects.equals(e.getWhoClicked().getMetadata("SmokyShopArmor").get(0).value(), e.getInventory())) {
+		           Objects.equals(e.getWhoClicked().getMetadata("SmokyShopArmor").get(0).value(), e.getInventory())) {
 			clickShopArmor(e);
 			e.setCancelled(true);
 		}
 	}
 
 	private void clickShopMenu (InventoryClickEvent e) {
+
 		int slot = e.getSlot();
 		Player player = (Player) e.getWhoClicked();
 		if (slot == 11) {
@@ -158,6 +165,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 	}
 
 	private void clickShopWeapons (InventoryClickEvent e) {
+
 		int slot = e.getSlot();
 		Player player = (Player) e.getWhoClicked();
 		if (slot > 9 && slot < 17 && e.getCurrentItem() != null) {
@@ -180,6 +188,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 	}
 
 	private void clickShopArmor (InventoryClickEvent e) {
+
 		int slot = e.getSlot();
 		Player player = (Player) e.getWhoClicked();
 		if (slot > 9 && slot < 17 && e.getCurrentItem() != null) {
@@ -202,6 +211,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 	}
 
 	private Inventory getShopMenu (Player player) {
+
 		Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
 		//Fill in the GUI
@@ -244,6 +254,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 	}
 
 	private Inventory getWeaponsMenu (Player player) {
+
 		Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
 		//Fill in the GUI
@@ -266,6 +277,7 @@ public class SmokyBlacksmith implements Listener, Runnable {
 	}
 
 	private Inventory getArmorMenu (Player player) {
+
 		Inventory gui = Bukkit.createInventory(null, 27, "Smoky's Shop");
 
 		//Fill in the GUI
@@ -286,4 +298,5 @@ public class SmokyBlacksmith implements Listener, Runnable {
 		player.setMetadata("SmokyShopArmor", new FixedMetadataValue(Core.plugin(), gui));
 		return gui;
 	}
+
 }

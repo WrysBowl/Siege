@@ -6,7 +6,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleT
 public class SimpleTough extends Fish {
 
 	public SimpleTough () {
+
 		super(50, 0.9, 14, 16,
-				new SimpleToughGem(0).getUpdatedItem(false));
+		      new SimpleToughGem(0).getUpdatedItem(false));
 	}
+
 }

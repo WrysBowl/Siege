@@ -38,6 +38,7 @@ public class SkillUtils {
 
 	// Takes string code i.e. "A_1_4_7" and returns hashmap of skills
 	public static HashMap<Integer, Skill> decode (String code) {
+
 		HashMap<Integer, Skill> map = new HashMap<Integer, Skill>(); // HashMap to return
 		if (code.equals("")) return map;
 		ArrayList<Skill> arr = skillTypes.get(code.charAt(0));
@@ -52,6 +53,7 @@ public class SkillUtils {
 
 	// Takes hashmap from decode and returns total stat change from skills in the form of a hashmap
 	public static HashMap<StatTypes, Double> getStats (HashMap<Integer, Skill> decoded) {
+
 		HashMap<StatTypes, Double> map; // HashMap to return
 		// Init with zero values
 		map = new HashMap<>() {
@@ -79,11 +81,13 @@ public class SkillUtils {
 	}
 
 	public static boolean isSkillOrb (ItemStack item) {
+
 		NBTContainer nbt = NBTItem.convertItemtoNBT(item);
 		return nbt.getBoolean("skillItem");
 	}
 
 	public static boolean canActivate (Player player, Skill skill) {
+
 		if (PlayerData.playerCurrentMana.get(player) < skill.getManaCost()) {
 			player.sendTitle(
 					skill.DISPLAY_ITEM.getI18NDisplayName(),
@@ -95,6 +99,7 @@ public class SkillUtils {
 	}
 
 	public static void sendTriggers (Player player, ArrayList<Action> triggers) {
+
 		if (triggers.size() == 1) {
 			player.sendTitle(null, Utils.tacc("&e&l" + triggers.get(0) + "  &c&l?  ?"), 10, 30, 10);
 		} else if (triggers.size() == 2) {
@@ -103,4 +108,5 @@ public class SkillUtils {
 			player.sendTitle(null, Utils.tacc("&e&l" + triggers.get(0) + "  " + triggers.get(1) + "  " + triggers.get(2)), 10, 30, 10);
 		}
 	}
+
 }

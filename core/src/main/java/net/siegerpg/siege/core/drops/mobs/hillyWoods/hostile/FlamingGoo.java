@@ -11,7 +11,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawS
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class FlamingGoo extends MobDropTable {
+
 	public FlamingGoo () {
+
 		super("FlamingGoo", 3, 6, 5, 7, new Reward[] {
 				new Reward(Magma.Companion.tier(1).getUpdatedItem(false), 50.0),
 				new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -29,4 +31,5 @@ public class FlamingGoo extends MobDropTable {
 				new Reward(new RawStrengthGem(0).getUpdatedItem(false), 1.0)
 		});
 	}
+
 }

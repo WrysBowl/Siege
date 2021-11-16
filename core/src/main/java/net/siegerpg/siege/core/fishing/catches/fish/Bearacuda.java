@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.fishing.catches.Fish;
 public class Bearacuda extends Fish {
 
 	public Bearacuda () {
+
 		super(
 				"Bearacuda",
 				new double[] {60, 100},
@@ -14,4 +15,5 @@ public class Bearacuda extends Fish {
 				6,
 				610005);
 	}
+
 }

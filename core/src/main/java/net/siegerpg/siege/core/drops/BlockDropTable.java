@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 
 public class BlockDropTable implements Listener {
+
 	int blockRegen;
 	Material material;
 	int goldMin;
@@ -17,6 +18,7 @@ public class BlockDropTable implements Listener {
 	Reward[] rewards;
 
 	public BlockDropTable (int blockRegen, Material material, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
+
 		this.blockRegen = blockRegen;
 		this.material = material;
 		this.goldMin = goldMin;
@@ -27,14 +29,17 @@ public class BlockDropTable implements Listener {
 	}
 
 	public Integer getBlockRegen () {
+
 		return blockRegen;
 	}
 
 	public Material getMaterial () {
+
 		return material;
 	}
 
 	public ArrayList<ItemStack> calculateRewards (double luckChance) {
+
 		ArrayList<ItemStack> itemList = new ArrayList<>();
 		for (Reward reward : rewards) {
 			if (!Utils.randTest(reward.chance)) continue;
@@ -49,6 +54,7 @@ public class BlockDropTable implements Listener {
 	}
 
 	public Integer getGold (boolean rand) {
+
 		if (rand) {
 			return (int) Math.floor(Math.random() * (goldMax - goldMin + 1) + goldMin);
 		}
@@ -56,9 +62,11 @@ public class BlockDropTable implements Listener {
 	}
 
 	public Integer getExp (boolean rand) {
+
 		if (rand) {
 			return (int) Math.floor(Math.random() * (expMax - expMin + 1) + expMin);
 		}
 		return expMax;
 	}
+
 }

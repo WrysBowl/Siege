@@ -9,12 +9,15 @@ import org.bukkit.entity.Player;
 public class GOLD20 extends Fish {
 
 	public GOLD20 () {
+
 		super(40, 0.8, 15, 15,
-				new GOLDBooster_20().getBoosterItem());
+		      new GOLDBooster_20().getBoosterItem());
 	}
 
 	@Override
 	public void accomplishment (Player player) {
+
 		Bukkit.getServer().sendMessage(Utils.lore("<green>" + player.getName() + " has found a <yellow>20% GOLD Booster<green> from fishing!"));
 	}
+
 }

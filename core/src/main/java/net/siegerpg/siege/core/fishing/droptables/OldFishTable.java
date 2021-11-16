@@ -8,7 +8,9 @@ import net.siegerpg.siege.core.fishing.catches.loot.gems.*;
 import java.util.HashMap;
 
 public class OldFishTable extends FishDropTable {
+
 	public OldFishTable () {
+
 		this.fishDropTable = new HashMap<>() {
 			{
 				put(new Catastrophe(), 90.0);
@@ -29,4 +31,5 @@ public class OldFishTable extends FishDropTable {
 			}
 		};
 	}
+
 }

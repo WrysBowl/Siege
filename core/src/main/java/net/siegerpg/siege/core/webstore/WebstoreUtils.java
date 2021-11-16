@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class WebstoreUtils {
+
 	public static HashMap<String[], WebstorePackage> packages = new HashMap<>() {
 		{
 			//includes arg1+
@@ -39,6 +40,7 @@ public class WebstoreUtils {
 	};
 
 	public static void packageDelivery (String[] info, UUID uuid) {
+
 		WebstorePackage webPackage;
 		Bukkit.getLogger().info("Purchase is being delivered");
 
@@ -74,6 +76,8 @@ public class WebstoreUtils {
 	}
 
 	public static String stringify (String[] list) {
+
 		return String.join(" ", list);
 	}
+
 }

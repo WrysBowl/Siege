@@ -9,8 +9,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class SpawnGold implements CommandExecutor {
+
 	@Override
 	public boolean onCommand (CommandSender sender, Command cmd, String label, String[] args) {
+
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			if (player.hasPermission("SiegeCore.spawnGold")) {
@@ -47,4 +49,5 @@ public class SpawnGold implements CommandExecutor {
 
 		return false;
 	}
+
 }

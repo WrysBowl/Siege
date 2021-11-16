@@ -10,7 +10,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.
 
 
 public class Nightmare extends MobDropTable {
+
 	public Nightmare () {
+
 		super("Nightmare", 50, 60, 50, 60, new Reward[] {
 				new Reward(FairyDust.Companion.tier(1).getUpdatedItem(false), 30.0),
 				new Reward(FairyDust.Companion.tier(2).getUpdatedItem(false), 10.0),
@@ -21,6 +23,7 @@ public class Nightmare extends MobDropTable {
 
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 0.5),
-		});
+				});
 	}
+
 }

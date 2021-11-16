@@ -26,6 +26,7 @@ public class ArmorListener implements Listener {
 	private final List<String> blockedMaterials;
 
 	public ArmorListener (List<String> blockedMaterials) {
+
 		this.blockedMaterials = blockedMaterials;
 	}
 	//Event Priority is highest because other plugins might cancel the events before we check.
@@ -34,11 +35,13 @@ public class ArmorListener implements Listener {
 	 * A utility method to support versions that use null or air ItemStacks.
 	 */
 	public static boolean isAirOrNull (ItemStack item) {
+
 		return item == null || item.getType().equals(Material.AIR);
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public final void inventoryClick (final InventoryClickEvent e) {
+
 		boolean shift = false, numberkey = false;
 		if (e.isCancelled()) return;
 		if (e.getAction() == InventoryAction.NOTHING)
@@ -117,6 +120,7 @@ public class ArmorListener implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void playerInteractEvent (PlayerInteractEvent e) {
+
 		if (e.useItemInHand().equals(Result.DENY)) return;
 		if (e.getAction() == Action.PHYSICAL) return;
 		if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
@@ -174,6 +178,7 @@ public class ArmorListener implements Listener {
 
 	@EventHandler
 	public void itemBreakEvent (PlayerItemBreakEvent e) {
+
 		ArmorType type = ArmorType.matchType(e.getBrokenItem());
 		if (type != null) {
 			Player p = e.getPlayer();
@@ -198,6 +203,7 @@ public class ArmorListener implements Listener {
 
 	@EventHandler
 	public void playerDeathEvent (PlayerDeathEvent e) {
+
 		Player p = e.getEntity();
 		if (e.getKeepInventory()) return;
 		for (ItemStack i : p.getInventory().getArmorContents()) {
@@ -207,4 +213,5 @@ public class ArmorListener implements Listener {
 			}
 		}
 	}
+
 }

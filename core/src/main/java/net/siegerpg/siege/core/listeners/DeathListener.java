@@ -123,6 +123,7 @@ public class DeathListener implements Listener, Runnable {
 
 	@EventHandler
 	public void damageDrops (EntityDamageByEntityEvent e) {
+
 		if (!(e.getEntity() instanceof Player)) return;
 
 		ActiveMob mm = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getDamager());
@@ -194,6 +195,7 @@ public class DeathListener implements Listener, Runnable {
 
 	@EventHandler
 	public void removePlayerGold (PlayerDeathEvent e) {
+
 		e.setDeathSound(Sound.ENTITY_PLAYER_DEATH);
 		EntityDamageEvent event = e.getEntity().getLastDamageCause();
 		if (event != null) {
@@ -204,7 +206,7 @@ public class DeathListener implements Listener, Runnable {
 
 				e.getEntity().setLastDamageCause(
 						new EntityDamageEvent(entity, event.getCause(), event.getDamage())
-				);
+				                                );
 			} catch (Exception ignored) {
 			}
 		}
@@ -233,6 +235,7 @@ public class DeathListener implements Listener, Runnable {
 			new BukkitRunnable() {
 				@Override
 				public void run () {
+
 					player.spigot().respawn();
 					player.sendTitle(Utils.tacc("&c&lYou Died"), Utils.tacc("&c" + String.format("%,d", goldLost) + " gold &7has been lost"), 1, 60, 1);
 					Scoreboard.updateScoreboard(player);
@@ -244,11 +247,12 @@ public class DeathListener implements Listener, Runnable {
 
 	@EventHandler
 	public void onRespawn (PlayerRespawnEvent e) {
+
 		Player player = e.getPlayer();
 		World world = player.getWorld();
 		if (world.getName().equals("Hilly_Woods")) {
 			e.setRespawnLocation((player.getBedSpawnLocation() == null) ?
-					world.getSpawnLocation() : player.getBedSpawnLocation());
+			                     world.getSpawnLocation() : player.getBedSpawnLocation());
 			return;
 		}
         /*if (player.getWorld() == Core.plugin().getServer().getWorld("Dungeons")) { //Checks if player died in the dungeon world
@@ -267,4 +271,5 @@ public class DeathListener implements Listener, Runnable {
 	public void run () {
 
 	}
+
 }

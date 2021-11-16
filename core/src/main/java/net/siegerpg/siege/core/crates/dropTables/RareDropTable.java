@@ -7,7 +7,9 @@ import net.siegerpg.siege.core.items.implemented.misc.cosmetics.rare.*;
 import java.util.HashMap;
 
 public class RareDropTable extends CosmeticDropTable {
+
 	public RareDropTable () {
+
 		dropTable = new HashMap<>() {
 			{
 				put(new Antlers(0), 10);
@@ -24,4 +26,5 @@ public class RareDropTable extends CosmeticDropTable {
 			}
 		};
 	}
+
 }

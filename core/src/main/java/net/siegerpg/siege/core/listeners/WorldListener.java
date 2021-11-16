@@ -24,6 +24,7 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void onTrample (PlayerInteractEvent event) {
+
 		if (!event.getAction().equals(Action.PHYSICAL)) return;
 		if (event.getClickedBlock() == null || !event.getClickedBlock().getType().equals(Material.FARMLAND))
 			return;
@@ -32,12 +33,14 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void onPlace (BlockPlaceEvent event) {
+
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) return;
 		event.setCancelled(true);
 	}
 
 	@EventHandler
 	public void openDeniedBlocks (PlayerInteractEvent e) {
+
 		if (e.getClickedBlock() == null) return;
 		if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) return;
 		if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
@@ -50,6 +53,7 @@ public class WorldListener implements Listener, Runnable {
 	}
 
 	public void denyInventory (InventoryOpenEvent e) {
+
 		if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
 			if (e.getInventory().getType().equals(InventoryType.CHEST)) return;
 			if (e.getInventory().getType().equals(InventoryType.PLAYER)) return;
@@ -60,6 +64,7 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void onRodThrow (final ProjectileLaunchEvent e) {
+
 		final double v = 1.5; //velocity of the rod
 		if (e.getEntityType().equals(EntityType.FISHING_HOOK)) {
 			e.getEntity().setVelocity(e.getEntity().getVelocity().multiply(v));
@@ -68,9 +73,11 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void closeInv (InventoryCloseEvent e) {
+
 		new BukkitRunnable() {
 			@Override
 			public void run () {
+
 				Player p = (Player) e.getPlayer();
 				p.updateInventory();
 			}
@@ -79,6 +86,7 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void onEntityEnter (EntityEnterBlockEvent e) {
+
 		if (e.getEntity() instanceof Bee) {
 			e.setCancelled(true);
 		}
@@ -86,6 +94,7 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void denySpawning (ItemSpawnEvent e) {
+
 		Material type = e.getEntity().getItemStack().getType();
 		if (type == Material.ARROW) {
 			e.setCancelled(true);
@@ -96,13 +105,15 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void expMerge (ExperienceOrbMergeEvent e) {
+
 		e.setCancelled(true);
 	}
 
 	@EventHandler
 	public void preventClick (PlayerInteractEvent e) {
+
 		if (e.getAction().equals(Action.LEFT_CLICK_AIR) || e.getAction().equals(Action.LEFT_CLICK_BLOCK) ||
-				e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+		    e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 			if (e.getClickedBlock() == null) {
 				return;
 			}
@@ -117,6 +128,7 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void preventClick (PlayerInteractEntityEvent e) {
+
 		Entity entity = e.getRightClicked();
 		Player player = e.getPlayer();
 		if (entity instanceof ItemFrame) {
@@ -129,6 +141,7 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void preventDamage (EntityDamageEvent e) {
+
 		if (e instanceof EntityDamageByEntityEvent) {
 			if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
 				Player player = (Player) ((EntityDamageByEntityEvent) e).getDamager();
@@ -148,6 +161,7 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void spawnProt (EntityDamageByEntityEvent e) {
+
 		if (e.getDamager() instanceof Player) {
 			Player player = (Player) e.getDamager();
 			if (player.getGameMode().equals(GameMode.CREATIVE)) {
@@ -161,6 +175,7 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void preventTame (EntityTameEvent e) {
+
 		Player player = (Player) e.getOwner();
 		if (!player.getGameMode().equals(GameMode.CREATIVE)) {
 			e.setCancelled(true);
@@ -169,6 +184,7 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void preventBreed (EntityBreedEvent e) {
+
 		Player player = (Player) e.getBreeder();
 		if (player != null) {
 			if (player.getGameMode().equals(GameMode.CREATIVE)) {
@@ -180,41 +196,49 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void preventExplosion (BlockExplodeEvent e) {
+
 		e.setCancelled(true);
 	}
 
 	@EventHandler
 	public void preventExplosion2 (EntityExplodeEvent e) {
+
 		e.setCancelled(true);
 	}
 
 	@EventHandler
 	public void denySlimeSplit (SlimeSplitEvent e) {
+
 		e.setCancelled(true);
 	}
 
 	@EventHandler
 	public void denyLeavesDecay (LeavesDecayEvent e) {
+
 		e.setCancelled(true);
 	}
 
 	@EventHandler
 	public void denyBurn (BlockBurnEvent e) {
+
 		e.setCancelled(true);
 	}
 
 	@EventHandler
 	public void denyCraft (CraftItemEvent e) {
+
 		e.setCancelled(true);
 	}
 
 	@EventHandler
 	public void denyBlockExp (BlockExpEvent e) {
+
 		e.setExpToDrop(0);
 	}
 
 	@EventHandler
 	public void denyBlockFade (BlockFadeEvent e) {
+
 		e.setCancelled(true);
 	}
 
@@ -222,4 +246,5 @@ public class WorldListener implements Listener, Runnable {
 	public void run () {
 
 	}
+
 }

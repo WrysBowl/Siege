@@ -26,6 +26,7 @@ public class RichardBanker implements Listener {
 
 	@EventHandler
 	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+
 		if (e.getRightClicked().getName().contains("Richard") && e.getRightClicked().getName().contains("6")) {
 			Inventory shop = getMenu(e.getPlayer());
 			e.getPlayer().openInventory(shop);
@@ -34,17 +35,19 @@ public class RichardBanker implements Listener {
 
 	@EventHandler
 	public void guiClick (InventoryClickEvent e) {
+
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
 		if (e.getWhoClicked().getMetadata("RichardBank").size() > 0 &&
-				Objects.equals(e.getWhoClicked().getMetadata("RichardBank").get(0).value(), e.getInventory())) {
+		    Objects.equals(e.getWhoClicked().getMetadata("RichardBank").get(0).value(), e.getInventory())) {
 			clickMenu(e);
 			e.setCancelled(true);
 		}
 	}
 
 	private void clickMenu (InventoryClickEvent e) {
+
 		Player player = (Player) e.getWhoClicked();
 		int slot = e.getSlot();
 		Pair<Short, Integer> bankLvlAmt = Bank.INSTANCE.blockingGetBankLevelAmount(player);
@@ -131,6 +134,7 @@ public class RichardBanker implements Listener {
 
 
 	private Inventory getMenu (Player player) {
+
 		Inventory gui = Bukkit.createInventory(null, 45, "Richard the Banker");
 
 		//Fill in the GUI
@@ -257,4 +261,5 @@ public class RichardBanker implements Listener {
 		player.setMetadata("RichardBank", new FixedMetadataValue(Core.plugin(), gui));
 		return gui;
 	}
+
 }

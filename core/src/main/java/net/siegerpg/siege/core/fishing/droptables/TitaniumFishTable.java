@@ -9,7 +9,9 @@ import net.siegerpg.siege.core.fishing.catches.loot.webstore.*;
 import java.util.HashMap;
 
 public class TitaniumFishTable extends FishDropTable {
+
 	public TitaniumFishTable () {
+
 		this.fishDropTable = new HashMap<>() {
 			{
 				put(new Catastrophe(), 60.0);
@@ -48,4 +50,5 @@ public class TitaniumFishTable extends FishDropTable {
 			}
 		};
 	}
+
 }

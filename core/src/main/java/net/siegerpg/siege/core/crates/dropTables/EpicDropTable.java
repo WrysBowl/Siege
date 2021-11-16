@@ -7,7 +7,9 @@ import net.siegerpg.siege.core.items.implemented.misc.cosmetics.epic.*;
 import java.util.HashMap;
 
 public class EpicDropTable extends CosmeticDropTable {
+
 	public EpicDropTable () {
+
 		dropTable = new HashMap<>() {
 			{
 				put(new CarrotOnAStick(0), 10);
@@ -20,4 +22,5 @@ public class EpicDropTable extends CosmeticDropTable {
 			}
 		};
 	}
+
 }

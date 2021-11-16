@@ -7,7 +7,9 @@ import net.siegerpg.siege.core.items.implemented.misc.cosmetics.uncommon.*;
 import java.util.HashMap;
 
 public class UncommonDropTable extends CosmeticDropTable {
+
 	public UncommonDropTable () {
+
 		dropTable = new HashMap<>() {
 			{
 				put(new Bee(0), 10);
@@ -21,4 +23,5 @@ public class UncommonDropTable extends CosmeticDropTable {
 			}
 		};
 	}
+
 }

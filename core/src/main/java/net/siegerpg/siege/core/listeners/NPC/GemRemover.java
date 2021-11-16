@@ -45,6 +45,7 @@ public class GemRemover implements Listener {
 
 	@EventHandler
 	public void onRightClickOnEntity (PlayerInteractEvent e) {
+
 		if (e.getClickedBlock() != null && e.getClickedBlock().getType().equals(Material.CHIPPED_ANVIL)) {
 			Player player = e.getPlayer();
 			ItemStack item = player.getInventory().getItemInMainHand();
@@ -64,11 +65,12 @@ public class GemRemover implements Listener {
 
 	@EventHandler
 	public void guiClick (InventoryClickEvent e) {
+
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
 		if (e.getWhoClicked().getMetadata("GemRemover").size() > 0 &&
-				Objects.equals(e.getWhoClicked().getMetadata("GemRemover").get(0).value(), e.getInventory())) {
+		    Objects.equals(e.getWhoClicked().getMetadata("GemRemover").get(0).value(), e.getInventory())) {
 			clickMenu(e);
 			e.setCancelled(true);
 		}
@@ -83,6 +85,7 @@ public class GemRemover implements Listener {
 	 */
 
 	private void clickMenu (InventoryClickEvent e) {
+
 		if (!clickable.contains(e.getSlot()))
 			return; //if clicked slot is not contained in the array list
 		Player player = (Player) e.getWhoClicked();
@@ -222,6 +225,7 @@ public class GemRemover implements Listener {
 	}
 
 	private double calcChance () {
+
 		if (this.item == null) return 0;
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
 		if (customItem == null) return 0;
@@ -234,6 +238,7 @@ public class GemRemover implements Listener {
 
 
 	private Inventory getMenu (Player player) {
+
 		Inventory gui = Bukkit.createInventory(null, 45, "Gem Remover");
 
 		//Fill in the GUI
@@ -287,4 +292,5 @@ public class GemRemover implements Listener {
 		player.setMetadata("GemRemover", new FixedMetadataValue(Core.plugin(), gui));
 		return gui;
 	}
+
 }

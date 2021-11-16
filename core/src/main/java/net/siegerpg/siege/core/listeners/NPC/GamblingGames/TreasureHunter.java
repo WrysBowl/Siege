@@ -41,6 +41,7 @@ public class TreasureHunter {
 	public ArrayList<Integer> dugValues = new ArrayList<>();
 
 	public TreasureHunter (Player player) {
+
 		this.game.setOnGlobalClick(event -> {
 			event.setCancelled(true);
 			uncoverSlot(event);
@@ -115,6 +116,7 @@ public class TreasureHunter {
 	}
 
 	private void uncoverSlot (InventoryClickEvent e) {
+
 		int slot = e.getSlot();
 		int getValue = rewardTable.get(slot);
 		Player player = (Player) e.getWhoClicked();
@@ -130,6 +132,7 @@ public class TreasureHunter {
 			new BukkitRunnable() {
 				@Override
 				public void run () {
+
 					player.closeInventory();
 				}
 			}.runTaskLater(Core.plugin(), 20);
@@ -172,6 +175,7 @@ public class TreasureHunter {
 	}
 
 	private void gameClose (InventoryCloseEvent e) {
+
 		Player player = (Player) e.getPlayer();
 		for (int slot : this.dugValues) {
 			if (rewardTable.get(slot) == 0) {
@@ -199,4 +203,5 @@ public class TreasureHunter {
 		player.sendTitle(Utils.tacc("&a&lYOU WIN"), Utils.tacc("&e+" + this.goldRewards + " Gold"), 10, 80, 10);
 		Scoreboard.updateScoreboard(player);
 	}
+
 }

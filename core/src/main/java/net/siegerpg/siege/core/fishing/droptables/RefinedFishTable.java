@@ -9,7 +9,9 @@ import net.siegerpg.siege.core.fishing.catches.loot.webstore.*;
 import java.util.HashMap;
 
 public class RefinedFishTable extends FishDropTable {
+
 	public RefinedFishTable () {
+
 		this.fishDropTable = new HashMap<>() {
 			{
 				put(new Catastrophe(), 40.0);
@@ -48,4 +50,5 @@ public class RefinedFishTable extends FishDropTable {
 			}
 		};
 	}
+
 }

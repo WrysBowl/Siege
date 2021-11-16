@@ -16,7 +16,9 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class ZombifiedDigger extends MobDropTable {
+
 	public ZombifiedDigger () {
+
 		super("ZombifiedDigger", 50, 53, 57, 60, new Reward[] {
 				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 25.0),
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -38,6 +40,7 @@ public class ZombifiedDigger extends MobDropTable {
 				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 10.0),
 				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 2.0),
-		});
+				});
 	}
+
 }

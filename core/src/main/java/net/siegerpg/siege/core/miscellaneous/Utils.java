@@ -20,12 +20,15 @@ import java.util.List;
 import java.util.Set;
 
 public class Utils {
+
 	@SuppressWarnings("unused")
 	static public String tacc (String str) {
+
 		return ChatColor.translateAlternateColorCodes('&', str);
 	}
 
 	static public String[] tacc (String[] strs) {
+
 		String[] translatedStrings = new String[strs.length];
 		for (int i = 0; i < strs.length; i++) {
 			translatedStrings[i] = tacc(strs[i]);
@@ -35,36 +38,44 @@ public class Utils {
 
 	@SuppressWarnings("unused")
 	static public String strip (String str) {
+
 		return ChatColor.stripColor(str);
 	}
 
 	static public Component parse (String str) {
+
 		return MiniMessage.get().parse(str);
 	}
 
 	static public Component lore (String str) {
+
 		return MiniMessage.get().parse(str).decoration(TextDecoration.ITALIC, false);
 	}
 
 	static public NamespacedKey namespacedKey (String str) {
+
 		return new NamespacedKey(Core.plugin(), str);
 	}
 
 	public static boolean randTest (Double num) {
+
 		double randNumber = Math.random() * 100;
 		return randNumber <= num;
 	}
 
 	public static org.bukkit.util.Vector getDifferentialVector (Location from, Location to) {
+
 		return new Vector((to.getX() - from.getX()), to.getY() - from.getY(), (to.getZ() - from.getZ()));
 	}
 
 	public static double round (double value, int precision) {
+
 		int scale = (int) Math.pow(10, precision);
 		return (double) Math.round(value * scale) / scale;
 	}
 
 	public static String convertSecondsToTime (int seconds) {
+
 		double minutes = seconds / 60.0;
 		double hours = minutes / 60;
 		String time = "";
@@ -86,6 +97,7 @@ public class Utils {
 	}
 
 	public static Integer getHighestPV (Player player) {
+
 		Set<PermissionAttachmentInfo> perms = player.getEffectivePermissions();
 		int highestPV = 54;
 		while (!player.hasPermission("cosmicvaults.amount." + highestPV)) {
@@ -103,6 +115,7 @@ public class Utils {
 	}
 
 	public static ItemStack setLoreCost (CustomItem item) {
+
 		ItemStack updatedItem = item.getUpdatedItem(false);
 		int itemCost = item.getQuality() * item.getLevelRequirement() * 2;
 
@@ -117,12 +130,14 @@ public class Utils {
 	}
 
 	public static Integer getCost (ItemStack item) {
+
 		String cost = item.getLore().get(item.getLore().size() - 1);
 		cost = cost.replace(Utils.tacc("&eCost "), "");
 		return Integer.valueOf(cost);
 	}
 
 	public static ItemStack removeLastLore (ItemStack item) {
+
 		List<String> lore = new ArrayList<>(item.getLore().size() - 1);
 		lore.addAll(item.getLore());
 		lore.remove(item.getLore().size() - 1);
@@ -134,6 +149,7 @@ public class Utils {
 	}
 
 	public static ItemStack addLore (ItemStack item, Component... lore) {
+
 		List<Component> newLore = item.lore();
 		if (newLore == null) {
 			newLore = new ArrayList<>(lore.length);
@@ -145,6 +161,7 @@ public class Utils {
 	}
 
 	public static ItemStack setCost (ItemStack item, Integer cost) {
+
 		List<String> lore;
 		if (item.getLore() == null) {
 			lore = new ArrayList<>(1);
@@ -161,6 +178,7 @@ public class Utils {
 	}
 
 	public static boolean giveItem (Player player, ItemStack item) {
+
 		final boolean fullInv = ((Player) player).getInventory().firstEmpty() == -1;
 		final boolean fullEnderChest = ((Player) player).getEnderChest().firstEmpty() == -1;
 		if (!fullInv) {
@@ -172,4 +190,5 @@ public class Utils {
 		}
 		return true;
 	}
+
 }

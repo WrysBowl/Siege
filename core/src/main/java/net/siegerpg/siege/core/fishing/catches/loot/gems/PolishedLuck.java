@@ -6,7 +6,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.Polished
 public class PolishedLuck extends Fish {
 
 	public PolishedLuck () {
+
 		super(55, 1, 12, 18,
-				new PolishedLuckGem(0).getUpdatedItem(false));
+		      new PolishedLuckGem(0).getUpdatedItem(false));
 	}
+
 }

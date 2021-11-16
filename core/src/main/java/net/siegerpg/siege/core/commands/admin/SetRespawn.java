@@ -14,6 +14,7 @@ public class SetRespawn implements CommandExecutor {
 
 	@Override
 	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
 		Player player = Bukkit.getPlayer(args[0]);
 		if (player == null) {
 			sender.sendMessage(Utils.parse("<red>1st argument is not a player."));
@@ -32,4 +33,5 @@ public class SetRespawn implements CommandExecutor {
 
 		return true;
 	}
+
 }

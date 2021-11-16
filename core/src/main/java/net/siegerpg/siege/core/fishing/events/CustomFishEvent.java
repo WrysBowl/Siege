@@ -39,6 +39,7 @@ public class CustomFishEvent {
 
 
 	public CustomFishEvent (PlayerFishEvent e) {
+
 		this.player = e.getPlayer();
 		this.hook = e.getHook();
 		this.state = e.getState();
@@ -50,12 +51,14 @@ public class CustomFishEvent {
 	}
 
 	public void trigger () {
+
 		data.setFishing(true);
 		new FishingTask(this).runTaskTimerAsynchronously(Core.plugin(), 0, 1);
 		player.playSound(player.getLocation(), Sound.ENTITY_FISHING_BOBBER_SPLASH, 2.0f, 2.0f);
 	}
 
 	public void win () {
+
 		this.remove();
 		Fish fish = data.getFish();
 		Location loc = hook.getLocation();
@@ -80,6 +83,7 @@ public class CustomFishEvent {
 				new BukkitRunnable() {
 					@Override
 					public void run () {
+
 						player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1.0f, 1.0f);
 						fish.accomplishment(player);
 						displayedItem.remove();
@@ -90,6 +94,7 @@ public class CustomFishEvent {
 							player.sendActionBar(Utils.parse("<dark_purple>+ " + (int) (fish.actualSize / 2) + " <dark_purple>EXP"));
 							Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 								public void run () {
+
 									Scoreboard.updateScoreboard(player);
 								}
 							}, 20);
@@ -101,78 +106,96 @@ public class CustomFishEvent {
 	}
 
 	public void lose () {
+
 		this.remove();
 		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_NO, 1.0f, 1.0f);
 	}
 
 
 	public void remove () {
+
 		progressBar.removeAll();
 		this.hook.remove();
 	}
 
 	public Player getPlayer () {
+
 		return player;
 	}
 
 	public FishHook getHook () {
+
 		return hook;
 	}
 
 	public State getState () {
+
 		return state;
 	}
 
 	public int getTicksElapsed () {
+
 		return ticksElapsed;
 	}
 
 	public void setTicksElapsed (int num) {
+
 		if (num >= 0 && num < 21)
 			this.ticksElapsed = num;
 	}
 
 	public int getSecondsElapsed () {
+
 		return this.secondsElapsed;
 	}
 
 	public void setSecondsElapsed (int num) {
+
 		this.secondsElapsed = num;
 	}
 
 	public int getTotalTicksElapsed () {
+
 		return totalTicksElapsed;
 	}
 
 	public void setTotalTicksElapsed (int totalTicksElapsed) {
+
 		this.totalTicksElapsed = totalTicksElapsed;
 	}
 
 	public FishingData getFishingData () {
+
 		return this.data;
 	}
 
 	public int getTotalLength () {
+
 		return totalLength;
 	}
 
 	public void setTotalLength (int totalLength) {
+
 		this.totalLength = totalLength;
 	}
 
 	public ArrayList<ItemStack> getRewards () {
+
 		return rewards;
 	}
 
 	public void setRewards (ArrayList<ItemStack> rewards) {
+
 		this.rewards = rewards;
 	}
 
 	public BossBar getProgressBar () {
+
 		return progressBar;
 	}
 
 	public void setProgressBar (BossBar progressBar) {
+
 		this.progressBar = progressBar;
 	}
 

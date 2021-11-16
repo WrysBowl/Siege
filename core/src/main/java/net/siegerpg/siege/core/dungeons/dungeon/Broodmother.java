@@ -13,15 +13,17 @@ import org.bukkit.Sound;
 public class Broodmother extends Dungeon {
 
 	public Broodmother () {
+
 		super("Broodmother", 10,
-				new BroodmotherKey(0),
-				new Location(null, 7, 89, -416), "Hilly_Woods",
-				100
-		);
+		      new BroodmotherKey(0),
+		      new Location(null, 7, 89, -416), "Hilly_Woods",
+		      100
+		     );
 	}
 
 	@Override
 	public void spawning () {
+
 		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 27, 89, -416);
 		new Helix().createHelix(loc, Particle.SUSPENDED_DEPTH);
 
@@ -30,4 +32,5 @@ public class Broodmother extends Dungeon {
 			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
 		}, 80);
 	}
+
 }

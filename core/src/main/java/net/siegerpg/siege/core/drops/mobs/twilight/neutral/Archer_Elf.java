@@ -9,7 +9,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Steel
 
 
 public class Archer_Elf extends MobDropTable {
+
 	public Archer_Elf () {
+
 		super("Archer_Elf", 40, 50, 50, 60, new Reward[] {
 				new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 100.0),
 				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 25.0),
@@ -24,6 +26,7 @@ public class Archer_Elf extends MobDropTable {
 				new Reward(RefinedMetal.Companion.tier(1).getUpdatedItem(false), 25.0),
 				new Reward(RefinedMetal.Companion.tier(2).getUpdatedItem(false), 5.0),
 
-		});
+				});
 	}
+
 }

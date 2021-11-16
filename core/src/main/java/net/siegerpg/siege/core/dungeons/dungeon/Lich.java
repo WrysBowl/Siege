@@ -13,15 +13,17 @@ import org.bukkit.Sound;
 public class Lich extends Dungeon {
 
 	public Lich () {
+
 		super("Lich", 8,
-				new LichKey(0),
-				new Location(null, 372, 87, 132), "Hilly_Woods",
-				100
-		);
+		      new LichKey(0),
+		      new Location(null, 372, 87, 132), "Hilly_Woods",
+		      100
+		     );
 	}
 
 	@Override
 	public void spawning () {
+
 		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 372, 87, 132);
 		new Helix().createHelix(loc, Particle.SOUL);
 
@@ -30,4 +32,5 @@ public class Lich extends Dungeon {
 			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
 		}, 80);
 	}
+
 }

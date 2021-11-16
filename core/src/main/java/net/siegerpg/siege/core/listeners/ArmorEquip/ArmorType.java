@@ -16,6 +16,7 @@ public enum ArmorType {
 	private final int slot;
 
 	ArmorType (int slot) {
+
 		this.slot = slot;
 	}
 
@@ -23,9 +24,11 @@ public enum ArmorType {
 	 * Attempts to match the ArmorType for the specified ItemStack.
 	 *
 	 * @param itemStack The ItemStack to parse the type of.
+	 *
 	 * @return The parsed ArmorType, or null if not found.
 	 */
 	public static ArmorType matchType (final ItemStack itemStack) {
+
 		if (ArmorListener.isAirOrNull(itemStack)) return null;
 		String type = itemStack.getType().name();
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(itemStack);
@@ -40,6 +43,7 @@ public enum ArmorType {
 	}
 
 	public int getSlot () {
+
 		return slot;
 	}
 }

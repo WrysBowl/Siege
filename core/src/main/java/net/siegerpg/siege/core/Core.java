@@ -47,6 +47,7 @@ public final class Core extends JavaPlugin {
 	 * @return The main plugin
 	 */
 	public static Core plugin () {
+
 		return INSTANCE;
 	}
 

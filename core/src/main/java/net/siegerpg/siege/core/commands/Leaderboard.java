@@ -37,4 +37,5 @@ public class Leaderboard implements CommandExecutor {
 		});
 		return true;
 	}
+
 }

@@ -11,7 +11,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Goo extends MobDropTable {
+
 	public Goo () {
+
 		super("Goo", 3, 5, 4, 7, new Reward[] {
 				new Reward(Slime.Companion.tier(1).getUpdatedItem(false), 100.0),
 				new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 10.0),
@@ -27,6 +29,7 @@ public class Goo extends MobDropTable {
 				new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 0.3),
 
 				new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 1.0),
-		});
+				});
 	}
+
 }

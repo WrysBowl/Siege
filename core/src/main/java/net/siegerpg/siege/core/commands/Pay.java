@@ -18,6 +18,7 @@ public class Pay implements CommandExecutor {
 
 	@Override
 	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
 		Player player = (Player) sender;
 		Levels.INSTANCE.getExpLevel(player, pair -> {
 			if (pair == null || pair.getFirst() < 3) {
@@ -59,6 +60,7 @@ public class Pay implements CommandExecutor {
 			new BukkitRunnable() {
 				@Override
 				public void run () {
+
 					Scoreboard.updateScoreboard(player);
 					if (targetPlayer.isOnline()) Scoreboard.updateScoreboard((Player) targetPlayer);
 				}
@@ -68,4 +70,5 @@ public class Pay implements CommandExecutor {
 
 		return true;
 	}
+
 }

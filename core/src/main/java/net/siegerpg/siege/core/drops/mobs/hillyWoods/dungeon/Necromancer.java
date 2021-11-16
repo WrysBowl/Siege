@@ -25,7 +25,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernWand;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Necromancer extends MobDropTable {
+
 	public Necromancer () {
+
 		super("Necromancer", 15000, 20000, 17500, 20000, new Reward[] {
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 40.0),
 				new Reward(Leather.Companion.tier(3).getUpdatedItem(false).asQuantity(2), 6.0),
@@ -72,6 +74,7 @@ public class Necromancer extends MobDropTable {
 				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 10.0),
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 10.0),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 10.0),
-		});
+				});
 	}
+
 }

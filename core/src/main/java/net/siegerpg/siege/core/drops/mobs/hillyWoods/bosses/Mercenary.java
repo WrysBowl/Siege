@@ -15,7 +15,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.light.RefinedDagg
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Mercenary extends MobDropTable {
+
 	public Mercenary () {
+
 		super("Mercenary", 55, 58, 75, 78, new Reward[] {
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 50.0),
 				new Reward(Leather.Companion.tier(3).getUpdatedItem(false), 5.0),
@@ -40,6 +42,7 @@ public class Mercenary extends MobDropTable {
 				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new BroodmotherKey(0).getUpdatedItem(false), 10.0),
-		});
+				});
 	}
+
 }

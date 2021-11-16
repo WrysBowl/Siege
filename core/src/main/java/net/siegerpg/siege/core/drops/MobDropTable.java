@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 
 public class MobDropTable implements Listener {
+
 	String mobName;
 	int goldMin;
 	int goldMax;
@@ -15,6 +16,7 @@ public class MobDropTable implements Listener {
 	Reward[] rewards;
 
 	public MobDropTable (String mobName, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
+
 		this.mobName = mobName;
 		this.goldMin = goldMin;
 		this.goldMax = goldMax;
@@ -24,10 +26,12 @@ public class MobDropTable implements Listener {
 	}
 
 	public String getMobName () {
+
 		return mobName;
 	}
 
 	public ArrayList<ItemStack> calculateRewards (double luckChance) {
+
 		ArrayList<ItemStack> itemList = new ArrayList<>();
 		for (Reward reward : rewards) {
 			if (Utils.randTest(reward.chance)) {
@@ -41,6 +45,7 @@ public class MobDropTable implements Listener {
 	}
 
 	public Integer getGold (boolean rand) {
+
 		if (rand) {
 			return (int) Math.floor(Math.random() * (goldMax - goldMin + 1) + goldMin);
 		}
@@ -48,6 +53,7 @@ public class MobDropTable implements Listener {
 	}
 
 	public Integer getExp (boolean rand) {
+
 		if (rand) {
 			return (int) Math.floor(Math.random() * (expMax - expMin + 1) + expMin);
 		}
@@ -55,6 +61,7 @@ public class MobDropTable implements Listener {
 	}
 
 	public Reward[] getRewards () {
+
 		return rewards;
 	}
 

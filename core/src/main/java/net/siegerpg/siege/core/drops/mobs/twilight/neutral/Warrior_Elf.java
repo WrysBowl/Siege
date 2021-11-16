@@ -8,7 +8,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leath
 
 
 public class Warrior_Elf extends MobDropTable {
+
 	public Warrior_Elf () {
+
 		super("Warrior_Elf", 50, 60, 40, 50, new Reward[] {
 				new Reward(Bone.Companion.tier(1).getUpdatedItem(false), 100.0),
 				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 25.0),
@@ -23,4 +25,5 @@ public class Warrior_Elf extends MobDropTable {
 
 		});
 	}
+
 }

@@ -11,6 +11,7 @@ import java.util.UUID;
 public class HeroRank extends WebstoreRanks {
 
 	public HeroRank () {
+
 		super("rank", "hero");
 	}
 
@@ -55,4 +56,5 @@ public class HeroRank extends WebstoreRanks {
 		Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
 		Bukkit.broadcastMessage(Utils.tacc(""));
 	}
+
 }

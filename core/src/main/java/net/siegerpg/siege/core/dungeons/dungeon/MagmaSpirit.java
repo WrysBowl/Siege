@@ -13,15 +13,17 @@ import org.bukkit.Sound;
 public class MagmaSpirit extends Dungeon {
 
 	public MagmaSpirit () {
+
 		super("MagmaSpirit", 8,
-				new MagmaSpiritKey(0),
-				new Location(null, 307, 51, -117), "Hilly_Woods",
-				100
-		);
+		      new MagmaSpiritKey(0),
+		      new Location(null, 307, 51, -117), "Hilly_Woods",
+		      100
+		     );
 	}
 
 	@Override
 	public void spawning () {
+
 		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 307, 51, -117);
 		new Helix().createHelix(loc, Particle.LAVA);
 
@@ -30,4 +32,5 @@ public class MagmaSpirit extends Dungeon {
 			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
 		}, 80);
 	}
+
 }

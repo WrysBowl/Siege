@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.fishing.catches.Fish;
 public class Codzilla extends Fish {
 
 	public Codzilla () {
+
 		super(
 				"Codzilla",
 				new double[] {75, 100},
@@ -15,4 +16,5 @@ public class Codzilla extends Fish {
 				7,
 				610001);
 	}
+
 }

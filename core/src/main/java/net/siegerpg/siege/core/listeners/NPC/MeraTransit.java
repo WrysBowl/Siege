@@ -23,6 +23,7 @@ public class MeraTransit implements Listener {
 
 	@EventHandler
 	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+
 		if (e.getRightClicked().getName().contains("Mera") && e.getRightClicked().getName().contains("6")) {
 			Inventory shop = getGUIWorldTransit(e.getPlayer());
 			e.getPlayer().openInventory(shop);
@@ -31,6 +32,7 @@ public class MeraTransit implements Listener {
 
 	@EventHandler
 	public void guiClick (InventoryClickEvent e) {
+
 		if (!(e.getWhoClicked() instanceof Player)) {
 			return;
 		}
@@ -73,6 +75,7 @@ public class MeraTransit implements Listener {
 	}
 
 	private Inventory getGUIWorldTransit (Player player) {
+
 		Inventory gui = Bukkit.createInventory(null, 27, "World Transit");
 
 		//Fill in the GUI

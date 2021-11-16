@@ -11,6 +11,7 @@ import java.util.UUID;
 public class GladiatorRank extends WebstoreRanks {
 
 	public GladiatorRank () {
+
 		super("rank", "gladiator");
 	}
 
@@ -48,4 +49,5 @@ public class GladiatorRank extends WebstoreRanks {
 		Bukkit.broadcastMessage(Utils.tacc("  &bhttps://store.siegerpg.net/"));
 		Bukkit.broadcastMessage(Utils.tacc(""));
 	}
+
 }

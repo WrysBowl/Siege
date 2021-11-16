@@ -24,7 +24,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.HotRod;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Broodmother extends MobDropTable {
+
 	public Broodmother () {
+
 		super("Broodmother", 28000, 32000, 35000, 40000, new Reward[] {
 				new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(16), 100.0),
 				new Reward(Vine.Companion.tier(3).getUpdatedItem(false).asQuantity(8), 50.0),
@@ -72,6 +74,7 @@ public class Broodmother extends MobDropTable {
 				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 5.0),
-		});
+				});
 	}
+
 }

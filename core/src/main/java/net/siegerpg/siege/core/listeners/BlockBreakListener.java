@@ -227,6 +227,7 @@ public class BlockBreakListener implements Listener {
 
 	@EventHandler
 	public void onBreak (BlockBreakEvent e) {
+
 		Player player = e.getPlayer();
 
 		//Stop any block drops if player isn't in survival
@@ -253,6 +254,7 @@ public class BlockBreakListener implements Listener {
 			//after 30 seconds, block respawns back
 			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 				public void run () {
+
 					blockState.update(true, false);
 				}
 			}, 600);
@@ -311,10 +313,12 @@ public class BlockBreakListener implements Listener {
 			if (rewardableBlocks.contains(blockType)) return;
 			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 				public void run () {
+
 					blockState.update(true, false);
 				}
 			}, blockDropRegen);
 		}
 
 	}
+
 }

@@ -8,7 +8,9 @@ import net.siegerpg.siege.core.items.implemented.misc.cosmetics.uncommon.*;
 import java.util.HashMap;
 
 public class SuperiorDropTable extends CosmeticDropTable {
+
 	public SuperiorDropTable () {
+
 		dropTable = new HashMap<>() {
 			{
 				//Uncommon
@@ -36,4 +38,5 @@ public class SuperiorDropTable extends CosmeticDropTable {
 			}
 		};
 	}
+
 }

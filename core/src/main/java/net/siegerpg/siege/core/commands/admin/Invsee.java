@@ -12,6 +12,7 @@ public class Invsee implements CommandExecutor {
 
 	@Override
 	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			if (player.hasPermission("SiegeCore.invsee")) {
@@ -33,4 +34,5 @@ public class Invsee implements CommandExecutor {
 		Bukkit.getLogger().info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
 		return false;
 	}
+
 }

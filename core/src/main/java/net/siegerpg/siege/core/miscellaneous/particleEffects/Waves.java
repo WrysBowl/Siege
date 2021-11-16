@@ -8,10 +8,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class Waves {
 
 	public void createWaves (Location loc) {
+
 		new BukkitRunnable() {
 			double t = Math.PI / 4;
 
 			public void run () {
+
 				t = t + 0.1 * Math.PI;
 				for (double theta = 0; theta <= 2 * Math.PI; theta = theta + Math.PI / 32) {
 					double x = t * Math.cos(theta);
@@ -34,4 +36,5 @@ public class Waves {
 
 		}.runTaskTimer(Core.plugin(), 0, 1);
 	}
+
 }

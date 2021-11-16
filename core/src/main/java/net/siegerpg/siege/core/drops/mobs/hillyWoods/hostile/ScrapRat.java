@@ -10,7 +10,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.PebbleWand;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class ScrapRat extends MobDropTable {
+
 	public ScrapRat () {
+
 		super("ScrapRat", 13, 15, 12, 14, new Reward[] {
 				new Reward(Pebble.Companion.tier(2).getUpdatedItem(false), 100.0),
 				new Reward(Pebble.Companion.tier(3).getUpdatedItem(false), 10.0),
@@ -25,6 +27,7 @@ public class ScrapRat extends MobDropTable {
 				new Reward(new PebbleWand(100).getUpdatedItem(false), 1.0),
 
 				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 1.0),
-		});
+				});
 	}
+
 }

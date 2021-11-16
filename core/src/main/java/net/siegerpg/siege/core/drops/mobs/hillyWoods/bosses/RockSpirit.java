@@ -12,7 +12,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.wands.RockWand;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class RockSpirit extends MobDropTable {
+
 	public RockSpirit () {
+
 		super("RockSpirit", 67, 70, 66, 69, new Reward[] {
 				new Reward(Pebble.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 100.0),
 				new Reward(Pebble.Companion.tier(3).getUpdatedItem(false).asQuantity(4), 10.0),
@@ -36,6 +38,7 @@ public class RockSpirit extends MobDropTable {
 
 				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new LichKey(0).getUpdatedItem(false), 10.0),
-		});
+				});
 	}
+
 }

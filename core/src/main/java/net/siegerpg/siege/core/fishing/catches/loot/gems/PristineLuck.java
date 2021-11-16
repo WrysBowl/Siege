@@ -6,7 +6,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.Pristine
 public class PristineLuck extends Fish {
 
 	public PristineLuck () {
+
 		super(60, 1, 12, 20,
-				new PristineLuckGem(0).getUpdatedItem(false));
+		      new PristineLuckGem(0).getUpdatedItem(false));
 	}
+
 }

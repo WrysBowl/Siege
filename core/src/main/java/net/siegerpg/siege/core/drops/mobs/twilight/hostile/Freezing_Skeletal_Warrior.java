@@ -11,7 +11,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.Polishe
 
 
 public class Freezing_Skeletal_Warrior extends MobDropTable {
+
 	public Freezing_Skeletal_Warrior () {
+
 		super("Freezing_Skeletal_Warrior", 80, 90, 110, 120, new Reward[] {
 				new Reward(CorruptCrystal.Companion.tier(1).getUpdatedItem(false), 30.0),
 				new Reward(CorruptCrystal.Companion.tier(2).getUpdatedItem(false), 10.0),
@@ -24,6 +26,7 @@ public class Freezing_Skeletal_Warrior extends MobDropTable {
 
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 0.5),
 				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.0),
-		});
+				});
 	}
+
 }

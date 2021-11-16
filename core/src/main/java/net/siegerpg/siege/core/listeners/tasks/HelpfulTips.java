@@ -91,10 +91,12 @@ public class HelpfulTips implements Listener {
 	};
 
 	public void broadcastTasks () {
+
 		tipsTask();
 	}
 
 	public void tipsTask () {
+
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.plugin(), () -> {
 			int randNum = (int) (Math.random() * tips.size());
 			for (Player p : Bukkit.getOnlinePlayers()) {
@@ -103,4 +105,5 @@ public class HelpfulTips implements Listener {
 			}
 		}, 6000, 6000);
 	}
+
 }

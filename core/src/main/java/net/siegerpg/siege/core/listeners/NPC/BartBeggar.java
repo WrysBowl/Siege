@@ -23,6 +23,7 @@ public class BartBeggar implements Listener {
 
 	@EventHandler
 	public void onRightClickOnEntity (PlayerInteractEntityEvent e) {
+
 		if (e.getRightClicked().getName().contains("Bart") && e.getRightClicked().getName().contains("6")) {
 			getMenu().show(e.getPlayer());
 		}
@@ -85,6 +86,7 @@ public class BartBeggar implements Listener {
 	}
 
 	private void clickStart (InventoryClickEvent e) {
+
 		if (e.getSlot() == 13) {
 			Player player = (Player) e.getWhoClicked();
 			int cost = 500;
@@ -97,4 +99,5 @@ public class BartBeggar implements Listener {
 			player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
 		}
 	}
+
 }

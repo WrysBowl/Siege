@@ -11,7 +11,9 @@ import net.siegerpg.siege.core.fishing.catches.loot.webstore.UncommonKey;
 import java.util.HashMap;
 
 public class BoneFishTable extends FishDropTable {
+
 	public BoneFishTable () {
+
 		this.fishDropTable = new HashMap<>() {
 			{
 				put(new Catastrophe(), 60.0);
@@ -47,4 +49,5 @@ public class BoneFishTable extends FishDropTable {
 			}
 		};
 	}
+
 }

@@ -14,6 +14,7 @@ public class PortalEnterListener implements Listener {
 
 	@EventHandler
 	public void portalEnter (EntityPortalEnterEvent e) {
+
 		if (!(e.getEntity() instanceof Player)) return;
 		World world = e.getEntity().getWorld();
 		World siegeHub = Core.plugin().getServer().getWorld("SiegeHub");
@@ -29,6 +30,7 @@ public class PortalEnterListener implements Listener {
 
 
 	public void moveToward (Entity entity, Location to, double speed) {
+
 		Location loc = entity.getLocation();
 		double x = loc.getX() - to.getX();
 		double y = loc.getY() - to.getY();
@@ -36,4 +38,5 @@ public class PortalEnterListener implements Listener {
 		Vector velocity = new Vector(x, y, z).normalize().multiply(-speed);
 		entity.setVelocity(velocity);
 	}
+
 }

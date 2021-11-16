@@ -10,7 +10,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedT
 
 
 public class Shroomlight_Monster extends MobDropTable {
+
 	public Shroomlight_Monster () {
+
 		super("Shroomlight_Monster", 35, 45, 45, 55, new Reward[] {
 				new Reward(ShroomPowder.Companion.tier(1).getUpdatedItem(false), 25.0),
 				new Reward(ShroomPowder.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -20,6 +22,7 @@ public class Shroomlight_Monster extends MobDropTable {
 
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 0.5),
-		});
+				});
 	}
+
 }

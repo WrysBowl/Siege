@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.fishing.catches.Fish;
 public class MrsPuff extends Fish {
 
 	public MrsPuff () {
+
 		super(
 				"Mrs. Puff",
 				new double[] {30, 60},
@@ -15,4 +16,5 @@ public class MrsPuff extends Fish {
 				610010);
 
 	}
+
 }

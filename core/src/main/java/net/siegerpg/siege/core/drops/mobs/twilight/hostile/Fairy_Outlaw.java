@@ -10,7 +10,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.
 
 
 public class Fairy_Outlaw extends MobDropTable {
+
 	public Fairy_Outlaw () {
+
 		super("Fairy_Outlaw", 30, 50, 40, 60, new Reward[] {
 				new Reward(FairyDust.Companion.tier(1).getUpdatedItem(false), 25.0),
 				new Reward(FairyDust.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -20,6 +22,7 @@ public class Fairy_Outlaw extends MobDropTable {
 
 				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 1.0),
-		});
+				});
 	}
+
 }

@@ -8,14 +8,16 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 
 public class Scoreboard {
+
 	public static void updateScoreboard (Player p) {
+
 		if (p.getScoreboard().equals(Bukkit.getServer().getScoreboardManager().getMainScoreboard()))
 			p.setScoreboard(Bukkit.getServer().getScoreboardManager().getNewScoreboard()); //Per-player scoreboard, not necessary if all the same data, but we're personalizing the displayname and all
 		org.bukkit.scoreboard.Scoreboard b = Bukkit.getScoreboardManager().getNewScoreboard();
 		Objective o = b.getObjective(p.getName()) == null
-				? b.registerNewObjective(p.getName(), "Title",
-				Utils.lore("<gold>SiegeRPG <gray>(" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getMaxPlayers() + ")")
-		) : b.getObjective(p.getName()); //Per-player objectives, even though it doesn't matter what it's called since we're using per-player scoreboards.
+		              ? b.registerNewObjective(p.getName(), "Title",
+		                                       Utils.lore("<gold>SiegeRPG <gray>(" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getMaxPlayers() + ")")
+		                                      ) : b.getObjective(p.getName()); //Per-player objectives, even though it doesn't matter what it's called since we're using per-player scoreboards.
 		assert o != null;
 
 		Pair<Short, Integer> expLevel = Levels.INSTANCE.blockingGetExpLevel(p);
@@ -49,6 +51,7 @@ public class Scoreboard {
 	}
 
 	public static String getEntryFromScore (Objective o, int score) {
+
 		if (o == null) return null;
 		if (!hasScoreTaken(o, score)) return null;
 		for (String s : o.getScoreboard().getEntries()) {
@@ -58,6 +61,7 @@ public class Scoreboard {
 	}
 
 	public static boolean hasScoreTaken (Objective o, int score) {
+
 		for (String s : o.getScoreboard().getEntries()) {
 			if (o.getScore(s).getScore() == score) return true;
 		}
@@ -65,6 +69,7 @@ public class Scoreboard {
 	}
 
 	public static void replaceScore (Objective o, int score, String name) {
+
 		if (hasScoreTaken(o, score)) {
 			if (getEntryFromScore(o, score).equalsIgnoreCase(name)) return;
 			if (!(getEntryFromScore(o, score).equalsIgnoreCase(name)))
@@ -72,4 +77,5 @@ public class Scoreboard {
 		}
 		o.getScore(name).setScore(score);
 	}
+
 }

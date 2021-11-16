@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import java.util.HashMap;
 
 public class CosmeticCrate {
+
 	/**
 	 * CRATES GUIDE
 	 * <p>
@@ -32,18 +33,24 @@ public class CosmeticCrate {
 	};
 
 	public static void commonWin (Location loc) {
+
 	}
 
 	public static void uncommonWin (Location loc) {
+
 	}
 
 	public static void rareWin (Location loc) {
+
 	}
 
 	public static void epicWin (Location loc) {
+
 	}
 
 	public static void legendaryWIn (Location loc) {
+
 	}
+
 }
 

@@ -16,7 +16,9 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class InfectedDigger extends MobDropTable {
+
 	public InfectedDigger () {
+
 		super("InfectedDigger", 50, 54, 54, 57, new Reward[] {
 				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 25.0),
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -38,6 +40,7 @@ public class InfectedDigger extends MobDropTable {
 				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 5.0),
 				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 0.5),
 				new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 2.0),
-		});
+				});
 	}
+
 }

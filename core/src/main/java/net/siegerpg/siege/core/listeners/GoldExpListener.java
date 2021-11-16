@@ -26,11 +26,13 @@ public class GoldExpListener implements Listener {
 	public static ArrayList<Player> expCalculating = new ArrayList<>();
 
 	public static void giveGold (Player player, int goldAmount) {
+
 		net.siegerpg.siege.core.miscellaneous.VaultHook.econ.depositPlayer(player, goldAmount);
 		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 		player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
 		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 			public void run () {
+
 				Scoreboard.updateScoreboard(player);
 			}
 		}, 20);
@@ -38,6 +40,7 @@ public class GoldExpListener implements Listener {
 
 	@EventHandler
 	public void goldPickUp (PlayerAttemptPickupItemEvent e) {
+
 		ItemStack item = e.getItem().getItemStack();
 		if (e.isCancelled()) return;
 		if (!item.getType().equals(Material.SUNFLOWER)) return;
@@ -51,6 +54,7 @@ public class GoldExpListener implements Listener {
 
 	@EventHandler
 	public void expPickUp (PlayerPickupExperienceEvent e) {
+
 		if (e.getExperienceOrb().getName().contains("EXP")) {
 			Player player = e.getPlayer();
 
@@ -64,6 +68,7 @@ public class GoldExpListener implements Listener {
 
 			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 				public void run () {
+
 					Scoreboard.updateScoreboard(player);
 				}
 			}, 20);
@@ -73,6 +78,7 @@ public class GoldExpListener implements Listener {
 
 	@EventHandler
 	public void goldMerge (ItemMergeEvent e) {
+
 		ItemStack item = e.getEntity().getItemStack();
 		Item source = e.getEntity();
 		Item target = e.getTarget();
@@ -88,6 +94,7 @@ public class GoldExpListener implements Listener {
 
 	@EventHandler
 	public void setDroppedItemName (ItemSpawnEvent e) {
+
 		ItemStack item = e.getEntity().getItemStack();
 		CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 		if (CusItem == null) return;

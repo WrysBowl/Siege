@@ -13,6 +13,7 @@ public class SpawnExp implements CommandExecutor {
 
 	@Override
 	public boolean onCommand (CommandSender sender, Command cmd, String label, String[] args) {
+
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			if (player.hasPermission("SiegeCore.spawnExp")) {
@@ -55,4 +56,5 @@ public class SpawnExp implements CommandExecutor {
 
 		return false;
 	}
+
 }

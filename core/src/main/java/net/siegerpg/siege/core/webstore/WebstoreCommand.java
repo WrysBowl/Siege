@@ -19,6 +19,7 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
 
 	@Override
 	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
 		if (sender instanceof Player) {
 			((Player) sender).performCommand("craftingstore:buy");
 			return false;
@@ -45,7 +46,7 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
 			//converts the list into a string separated by a space
 			String stringArgs = WebstoreUtils.stringify(
 					Arrays.copyOfRange(args, 1, args.length) //remove uuid from args
-			);
+			                                           );
 
 			//stores the arguments under the player's UUID in a database
 			WebstoreDB.INSTANCE.setStoreCommand(player, stringArgs);
@@ -57,4 +58,5 @@ public class WebstoreCommand extends WebstoreUtils implements CommandExecutor {
 
 		return true;
 	}
+
 }

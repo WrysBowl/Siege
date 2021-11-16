@@ -9,7 +9,9 @@ import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.Rainbo
 import java.util.HashMap;
 
 public class LegendaryDropTable extends CosmeticDropTable {
+
 	public LegendaryDropTable () {
+
 		dropTable = new HashMap<>() {
 			{
 				put(new GlowSquid(0), 10);
@@ -18,4 +20,5 @@ public class LegendaryDropTable extends CosmeticDropTable {
 			}
 		};
 	}
+
 }

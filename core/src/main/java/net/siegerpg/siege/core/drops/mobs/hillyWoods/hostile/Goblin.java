@@ -11,7 +11,9 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class Goblin extends MobDropTable {
+
 	public Goblin () {
+
 		super("Goblin", 30, 33, 30, 33, new Reward[] {
 				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 25.0),
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 5.0),
@@ -20,6 +22,7 @@ public class Goblin extends MobDropTable {
 				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 5.0),
 				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new RawLuckGem(0).getUpdatedItem(false), 2.0),
-		});
+				});
 	}
+
 }

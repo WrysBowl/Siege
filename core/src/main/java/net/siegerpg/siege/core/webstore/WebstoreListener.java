@@ -23,9 +23,11 @@ public class WebstoreListener implements Listener {
 
 	@EventHandler
 	public void onJoin (PlayerJoinEvent e) {
+
 		new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 			@Override
 			public void run () {
+
 				String[] commands = WebstoreDB.INSTANCE.blockingGetStoreCommands(e.getPlayer());
 				if (commands == null) return;
 				if (commands.length < 1) return;
@@ -35,6 +37,7 @@ public class WebstoreListener implements Listener {
 				new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 					@Override
 					public void run () {
+
 						UUID playerId = e.getPlayer().getUniqueId();
 
 						for (String string : commands) {
@@ -50,6 +53,7 @@ public class WebstoreListener implements Listener {
 
 	@EventHandler
 	public void onEXPBoosterRedeem (PlayerInteractEvent e) {
+
 		if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 			Player player = e.getPlayer();
 			ItemStack item = player.getInventory().getItemInMainHand();
@@ -82,6 +86,7 @@ public class WebstoreListener implements Listener {
 				new BukkitRunnable() {
 					@Override
 					public void run () {
+
 						GlobalMultipliers.expMultiplier = 1.0;
 						for (Player p : Bukkit.getOnlinePlayers()) {
 							Scoreboard.updateScoreboard(p);
@@ -94,6 +99,7 @@ public class WebstoreListener implements Listener {
 
 	@EventHandler
 	public void onGoldBoosterRedeem (PlayerInteractEvent e) {
+
 		if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 			Player player = e.getPlayer();
 			ItemStack item = player.getInventory().getItemInMainHand();
@@ -126,6 +132,7 @@ public class WebstoreListener implements Listener {
 				new BukkitRunnable() {
 					@Override
 					public void run () {
+
 						GlobalMultipliers.goldMultiplier = 1.0;
 						for (Player p : Bukkit.getOnlinePlayers()) {
 							Scoreboard.updateScoreboard(p);
@@ -135,4 +142,5 @@ public class WebstoreListener implements Listener {
 			}
 		}
 	}
+
 }

@@ -20,7 +20,9 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
 public class Skeletal_Warrior extends MobDropTable {
+
 	public Skeletal_Warrior () {
+
 		super("Skeletal_Warrior", 80, 90, 60, 70, new Reward[] {
 				new Reward(Bone.Companion.tier(1).getUpdatedItem(false).asQuantity(4), 100.0),
 				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 10.0),
@@ -60,6 +62,7 @@ public class Skeletal_Warrior extends MobDropTable {
 				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 0.5),
-		});
+				});
 	}
+
 }

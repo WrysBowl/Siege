@@ -12,6 +12,7 @@ public class Discord {
 
 	/* True if successful, False if failed */
 	public static boolean sendMessage (String messageContent, int channelId) {
+
 		Gson gson = new Gson();
 
 		HttpClient client = HttpClientBuilder.create().build();
@@ -26,4 +27,5 @@ public class Discord {
 		}
 		return false;
 	}
+
 }

@@ -6,7 +6,9 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Poli
 public class PolishedStrength extends Fish {
 
 	public PolishedStrength () {
+
 		super(55, 1, 12, 18,
-				new PolishedStrengthGem(0).getUpdatedItem(false));
+		      new PolishedStrengthGem(0).getUpdatedItem(false));
 	}
+
 }

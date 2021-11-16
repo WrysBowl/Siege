@@ -13,15 +13,17 @@ import org.bukkit.Sound;
 public class Davy_Jones extends Dungeon {
 
 	public Davy_Jones () {
+
 		super("Davy_Jones", 8,
-				new DavyJonesKey(0),
-				new Location(null, 16, 40, 411), "Hilly_Woods",
-				100
-		);
+		      new DavyJonesKey(0),
+		      new Location(null, 16, 40, 411), "Hilly_Woods",
+		      100
+		     );
 	}
 
 	@Override
 	public void spawning () {
+
 		Location loc = new Location(Core.plugin().getServer().getWorld("Hilly_Woods"), 16, 40, 411);
 		new Helix().createHelix(loc, Particle.WATER_BUBBLE);
 
@@ -30,4 +32,5 @@ public class Davy_Jones extends Dungeon {
 			loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.0f, 1.0f);
 		}, 80);
 	}
+
 }

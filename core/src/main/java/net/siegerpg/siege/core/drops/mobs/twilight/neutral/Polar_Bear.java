@@ -9,7 +9,9 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leath
 
 
 public class Polar_Bear extends MobDropTable {
+
 	public Polar_Bear () {
+
 		super("Polar_Bear", 100, 120, 150, 160, new Reward[] {
 				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 50.0),
 				new Reward(Bone.Companion.tier(3).getUpdatedItem(false), 25.0),
@@ -23,4 +25,5 @@ public class Polar_Bear extends MobDropTable {
 				new Reward(new Drumstick(100).getUpdatedItem(false).asQuantity(4), 10.0)
 		});
 	}
+
 }

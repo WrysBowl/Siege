@@ -6,18 +6,22 @@ public class Cursor {
 	public boolean inGreen;
 
 	public int getLoc () {
+
 		return loc;
 	}
 
 	public void setLoc (int loc) {
+
 		this.loc = loc;
 	}
 
 	public boolean isInGreen () {
+
 		return inGreen;
 	}
 
 	public void setInGreen (boolean inGreen) {
+
 		this.inGreen = inGreen;
 	}
 

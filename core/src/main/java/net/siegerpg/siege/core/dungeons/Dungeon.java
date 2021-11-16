@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 
 public class Dungeon {
+
 	public String bossName;
 	public int maxKeyCount;
 	public CustomKey reqKey;
@@ -17,6 +18,7 @@ public class Dungeon {
 	public int currentKeyCount = 0;
 
 	public Dungeon (String bossName, int maxKeyCount, CustomKey reqKey, Location spawnLoc, String world, int bossSpawnDelay) {
+
 		this.bossName = bossName;
 		this.maxKeyCount = maxKeyCount;
 		this.reqKey = reqKey;

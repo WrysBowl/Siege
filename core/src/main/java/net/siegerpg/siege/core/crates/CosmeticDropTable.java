@@ -11,6 +11,7 @@ public class CosmeticDropTable {
 
 	//Method used to pick a random item from a drop table
 	public CustomCosmetic pickItem () {
+
 		double totalWeight = 0;
 		for (Map.Entry<CustomCosmetic, Integer> entry : dropTable.entrySet()) {
 			Integer value = entry.getValue();
@@ -29,4 +30,5 @@ public class CosmeticDropTable {
 		}
 		return dropTable.entrySet().iterator().next().getKey();
 	}
+
 }

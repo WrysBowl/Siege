@@ -28,6 +28,7 @@ public class Fish {
 	 * */
 	public Fish (String name, double[] size, double winScore, double moveSpeed, int length,
 	             double chanceToChangeDirection, int customModelData) {
+
 		this.name = name;
 		this.chanceToChangeDirection = chanceToChangeDirection;
 		this.length = length;
@@ -40,6 +41,7 @@ public class Fish {
 
 	public Fish (double winScore, double moveSpeed, int length,
 	             double chanceToChangeDirection, ItemStack item) {
+
 		this.chanceToChangeDirection = chanceToChangeDirection;
 		this.length = length;
 		this.moveSpeed = moveSpeed;
@@ -48,15 +50,18 @@ public class Fish {
 	}
 
 	public void accomplishment (Player player) {
+
 	}
 
 	public Double getRandomSize () {
+
 		double min = this.size[0];
 		double max = this.size[1];
 		return min + (int) (Math.random() * (max - min));
 	}
 
 	public ItemStack getItem () {
+
 		if (item != null) return item;
 		ItemStack item = new ItemStack(Material.COD);
 		ItemMeta meta = item.getItemMeta();
@@ -75,4 +80,5 @@ public class Fish {
 		nbtItem.setString("Name", this.name);
 		return nbtItem.getItem();
 	}
+
 }

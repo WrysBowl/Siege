@@ -21,69 +21,84 @@ public class FishingData {
 
 
 	public FishingData () {
+
 		this.cursor = new Cursor();
 	}
 
 	public static HashMap<UUID, FishingData> getList () {
+
 		return list;
 	}
 
 	public boolean isFishing () {
+
 		return fishing;
 	}
 
 	public void setFishing (boolean fishing) {
+
 		this.fishing = fishing;
 	}
 
 	public Fish getFish () {
+
 		return fish;
 	}
 
 	public void setFish (Fish fish) {
+
 		this.fish = fish;
 	}
 
 	public int getLoc () {
+
 		return loc;
 	}
 
 
 	public void setLoc (int loc) {
+
 		this.loc = loc;
 	}
 
 
 	public double getProcessToAdvance () {
+
 		return processToAdvance;
 	}
 
 
 	public void setProcessToAdvance (double processToAdvance) {
+
 		this.processToAdvance = processToAdvance;
 	}
 
 	public boolean getDirection () {
+
 		return direction;
 	}
 
 
 	public void setDirection (boolean direction) {
+
 		this.direction = direction;
 	}
 
 
 	public Cursor getCursor () {
+
 		return cursor;
 	}
 
 
 	public double getScore () {
+
 		return score;
 	}
 
 
 	public void setScore (double score) {
+
 		this.score = score;
 	}
 

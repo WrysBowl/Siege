@@ -15,7 +15,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.DoubleBlade
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class AngryBull extends MobDropTable {
+
 	public AngryBull () {
+
 		super("AngryBull", 17, 20, 26, 29, new Reward[] {
 				new Reward(Leather.Companion.tier(1).getUpdatedItem(false), 80.0),
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 8.0),
@@ -38,6 +40,7 @@ public class AngryBull extends MobDropTable {
 
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 0.25),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 0.25),
-		});
+				});
 	}
+
 }

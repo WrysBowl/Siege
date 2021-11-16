@@ -63,6 +63,7 @@ public class CrateOpen implements Listener {
 	}
 
 	private boolean keyCheck (CustomItem item) {
+
 		for (Map.Entry<CustomKey, CosmeticDropTable> entry : CosmeticCrate.crates.entrySet()) {
 			CustomKey key = entry.getKey();
 			if (item.getClass() == key.getClass()) return true;
@@ -71,10 +72,12 @@ public class CrateOpen implements Listener {
 	}
 
 	private CosmeticDropTable getItem (CustomItem item) {
+
 		for (Map.Entry<CustomKey, CosmeticDropTable> entry : CosmeticCrate.crates.entrySet()) {
 			CustomKey key = entry.getKey();
 			if (item.getClass() == key.getClass()) return entry.getValue();
 		}
 		return null;
 	}
+
 }

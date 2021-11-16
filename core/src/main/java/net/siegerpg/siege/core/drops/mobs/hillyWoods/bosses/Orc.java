@@ -15,7 +15,9 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.DoubleBlade
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Orc extends MobDropTable {
+
 	public Orc () {
+
 		super("Orc", 55, 59, 60, 64, new Reward[] {
 				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(2), 50.0),
 				new Reward(Leather.Companion.tier(3).getUpdatedItem(false), 5.0),
@@ -38,6 +40,7 @@ public class Orc extends MobDropTable {
 				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 0.25),
 				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new DavyJonesKey(0).getUpdatedItem(false), 10.0),
-		});
+				});
 	}
+
 }

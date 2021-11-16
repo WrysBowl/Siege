@@ -10,11 +10,13 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import static org.bukkit.Bukkit.getServer;
 
 public class VaultHook {
+
 	public static Economy econ = null;
 	public static Permission perms = null;
 	public static Chat chat = null;
 
 	public void createHooks () {
+
 		if (!setupEconomy()) {
 			Core.plugin().getLogger().severe("Vault was not found!");
 			getServer().getPluginManager().disablePlugin(Core.plugin());
@@ -25,6 +27,7 @@ public class VaultHook {
 	}
 
 	private boolean setupEconomy () {
+
 		if (Bukkit.getServer().getPluginManager().getPlugin("Vault") == null) {
 			return false;
 		}
@@ -37,12 +40,15 @@ public class VaultHook {
 	}
 
 	private void setupChat () {
+
 		RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
 		chat = rsp.getProvider();
 	}
 
 	private void setupPermissions () {
+
 		RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
 		perms = rsp.getProvider();
 	}
+
 }

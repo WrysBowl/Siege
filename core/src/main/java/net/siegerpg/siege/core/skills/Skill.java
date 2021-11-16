@@ -29,6 +29,7 @@ public class Skill {
 	ArrayList<Action> TRIGGER;
 
 	public Skill () {
+
 		this.ID = 0;
 		this.SKILL = this;
 		this.MANA_COST = 0;
@@ -46,6 +47,7 @@ public class Skill {
 	}
 
 	public Skill (int id, @Nullable HashMap<StatTypes, Double> stats, @Nullable HashMap<Integer, Skill> children, int manaCost, @Nullable ArrayList<Action> trigger, ItemStack displayItem) {
+
 		this.ID = id;
 		this.STATS = stats;
 		this.CHILDREN = children;
@@ -55,38 +57,48 @@ public class Skill {
 	}
 
 	public Skill (Skill skill) {
+
 		this.SKILL = skill;
 	}
 
 	public HashMap<StatTypes, Double> getStats () {
+
 		return this.STATS;
 	}
 
 	public int getID () {
+
 		return this.ID;
 	}
 
 	public Skill getSkill () {
+
 		return this;
 	}
 
 	public HashMap<Integer, Skill> getChildren () {
+
 		return this.CHILDREN;
 	}
 
 	public ItemStack getDisplayItem () {
+
 		return this.DISPLAY_ITEM;
 	}
 
 	public Integer getManaCost () {
+
 		return this.MANA_COST;
 	}
 
 	public ArrayList<Action> getTrigger () {
+
 		return this.TRIGGER;
 	}
 
 	public void skillAction (PlayerInteractEvent e) {
+
 		Bukkit.getLogger().info(Utils.tacc("&cPlayer tried to activate invalid skill!"));
 	}
+
 }

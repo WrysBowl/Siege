@@ -10,7 +10,9 @@ import net.siegerpg.siege.core.fishing.catches.loot.webstore.NormalKey;
 import java.util.HashMap;
 
 public class OakFishTable extends FishDropTable {
+
 	public OakFishTable () {
+
 		this.fishDropTable = new HashMap<>() {
 			{
 				put(new Catastrophe(), 60.0);
@@ -42,4 +44,5 @@ public class OakFishTable extends FishDropTable {
 			}
 		};
 	}
+
 }
