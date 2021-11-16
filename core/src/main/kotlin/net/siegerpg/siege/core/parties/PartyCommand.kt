@@ -2,12 +2,7 @@ package net.siegerpg.siege.core.parties
 
 import co.aikar.commands.BaseCommand
 import co.aikar.commands.CommandCompletions
-import co.aikar.commands.annotation.CommandAlias
-import co.aikar.commands.annotation.CommandCompletion
-import co.aikar.commands.annotation.HelpCommand
-import co.aikar.commands.annotation.Optional
-import co.aikar.commands.annotation.Subcommand
-import co.aikar.commands.annotation.Syntax
+import co.aikar.commands.annotation.*
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.kyori.adventure.text.minimessage.Template
 import net.siegerpg.siege.core.Core

@@ -1,19 +1,11 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.PlantMatter
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
 import net.siegerpg.siege.core.items.implemented.weapons.wands.FlamingHotTorch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.flamingHotTorches.HealingFlamingHotTorch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.flamingHotTorches.HealthyFlamingHotTorch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.flamingHotTorches.LuckyFlamingHotTorch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.flamingHotTorches.StrongFlamingHotTorch
-import net.siegerpg.siege.core.items.implemented.weapons.wands.flamingHotTorches.ToughFlamingHotTorch
+import net.siegerpg.siege.core.items.implemented.weapons.wands.flamingHotTorches.*
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
