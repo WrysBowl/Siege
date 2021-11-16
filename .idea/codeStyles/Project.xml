@@ -3,10 +3,18 @@
     <JavaCodeStyleSettings>
       <option name="ALIGN_MULTILINE_ANNOTATION_PARAMETERS" value="true" />
       <option name="ALIGN_MULTILINE_TEXT_BLOCKS" value="true" />
+      <option name="NEW_LINE_AFTER_LPAREN_IN_RECORD_HEADER" value="true" />
+      <option name="RPAREN_ON_NEW_LINE_IN_RECORD_HEADER" value="true" />
       <option name="JD_ADD_BLANK_AFTER_PARM_COMMENTS" value="true" />
       <option name="JD_ADD_BLANK_AFTER_RETURN" value="true" />
     </JavaCodeStyleSettings>
     <JetCodeStyleSettings>
+      <option name="ALIGN_IN_COLUMNS_CASE_BRANCH" value="true" />
+      <option name="NAME_COUNT_TO_USE_STAR_IMPORT" value="2147483647" />
+      <option name="NAME_COUNT_TO_USE_STAR_IMPORT_FOR_MEMBERS" value="2147483647" />
+      <option name="CONTINUATION_INDENT_FOR_EXPRESSION_BODIES" value="true" />
+      <option name="CONTINUATION_INDENT_IN_ELVIS" value="true" />
+      <option name="BLANK_LINES_AROUND_BLOCK_WHEN_BRANCHES" value="1" />
       <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
     </JetCodeStyleSettings>
     <codeStyleSettings language="JAVA">
@@ -17,6 +25,7 @@
       <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
       <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
       <option name="ALIGN_MULTILINE_BINARY_OPERATION" value="true" />
+      <option name="ALIGN_MULTILINE_ASSIGNMENT" value="true" />
       <option name="ALIGN_MULTILINE_TERNARY_OPERATION" value="true" />
       <option name="ALIGN_MULTILINE_THROWS_LIST" value="true" />
       <option name="ALIGN_MULTILINE_EXTENDS_LIST" value="true" />
@@ -24,9 +33,21 @@
       <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
       <option name="SPACE_BEFORE_METHOD_PARENTHESES" value="true" />
       <option name="SPACE_BEFORE_ARRAY_INITIALIZER_LBRACE" value="true" />
+      <option name="CALL_PARAMETERS_LPAREN_ON_NEXT_LINE" value="true" />
+      <option name="CALL_PARAMETERS_RPAREN_ON_NEXT_LINE" value="true" />
+      <option name="METHOD_PARAMETERS_LPAREN_ON_NEXT_LINE" value="true" />
+      <option name="METHOD_PARAMETERS_RPAREN_ON_NEXT_LINE" value="true" />
+      <option name="RESOURCE_LIST_LPAREN_ON_NEXT_LINE" value="true" />
+      <option name="RESOURCE_LIST_RPAREN_ON_NEXT_LINE" value="true" />
       <option name="WRAP_FIRST_METHOD_IN_CALL_CHAIN" value="true" />
+      <option name="PARENTHESES_EXPRESSION_LPAREN_WRAP" value="true" />
+      <option name="PARENTHESES_EXPRESSION_RPAREN_WRAP" value="true" />
       <option name="KEEP_SIMPLE_LAMBDAS_IN_ONE_LINE" value="true" />
       <option name="KEEP_SIMPLE_CLASSES_IN_ONE_LINE" value="true" />
+      <option name="FOR_STATEMENT_LPAREN_ON_NEXT_LINE" value="true" />
+      <option name="FOR_STATEMENT_RPAREN_ON_NEXT_LINE" value="true" />
+      <option name="ARRAY_INITIALIZER_LBRACE_ON_NEXT_LINE" value="true" />
+      <option name="ARRAY_INITIALIZER_RBRACE_ON_NEXT_LINE" value="true" />
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
         <option name="SMART_TABS" value="true" />
@@ -35,8 +56,14 @@
     <codeStyleSettings language="kotlin">
       <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
       <option name="RIGHT_MARGIN" value="100" />
+      <option name="BLANK_LINES_AFTER_CLASS_HEADER" value="1" />
+      <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
+      <option name="ALIGN_MULTILINE_BINARY_OPERATION" value="true" />
+      <option name="ALIGN_MULTILINE_EXTENDS_LIST" value="true" />
+      <option name="ALIGN_MULTILINE_METHOD_BRACKETS" value="true" />
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="SMART_TABS" value="true" />
       </indentOptions>
     </codeStyleSettings>
   </code_scheme>
