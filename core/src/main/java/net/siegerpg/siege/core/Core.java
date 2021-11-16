@@ -17,6 +17,7 @@ import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.listeners.tasks.HelpfulTips;
+import net.siegerpg.siege.core.miscellaneous.DamageIndicator;
 import net.siegerpg.siege.core.miscellaneous.DropUtils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import net.siegerpg.siege.core.miscellaneous.cache.MobNames;
@@ -144,6 +145,7 @@ public final class Core extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
 		getServer().getPluginManager().registerEvents(new StatChangeListener(), this);
 		getServer().getPluginManager().registerEvents(new CosmeticsListener(), this);
+		getServer().getPluginManager().registerEvents(new DamageIndicator(), this);
 
 
 		SmokyBlacksmith.resetItems();
