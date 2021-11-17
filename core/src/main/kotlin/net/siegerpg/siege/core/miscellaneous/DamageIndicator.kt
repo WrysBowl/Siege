@@ -34,8 +34,7 @@ class DamageIndicator : Listener {
 	}
 
 	fun getIndicatorText(damage : Double, critical : Boolean) : String {
-		var formatter = if (critical) DecimalFormat("&6-0.#&4❤") else DecimalFormat("&c-0.#&4❤")
-		/*var formatter = when (damage) {
+		val formatter = when (damage) {
 			in 0.0..200.0      -> if (critical) DecimalFormat("&7-0.#&4❤") else DecimalFormat(
 					"&c-0.#&4❤"
 			                                                                                 )
@@ -46,7 +45,7 @@ class DamageIndicator : Listener {
 					"&5-0.#&4❤"
 			                                                                                 )
 			else               -> DecimalFormat("0.#")
-		}*/
+		}
 		val format = formatter.format(damage)
 		val colourCodes = "ea231dc6"
 		val startingIndex = floor(Math.random() * (colourCodes.length)).toInt()
@@ -56,7 +55,7 @@ class DamageIndicator : Listener {
 				sb.append("&")
 
 				sb.append(
-						"&" + colourCodes[(startingIndex + index) % colourCodes.length]
+						colourCodes[(startingIndex + index) % colourCodes.length]
 				         )
 				sb.append(c)
 				return sb.toString()
