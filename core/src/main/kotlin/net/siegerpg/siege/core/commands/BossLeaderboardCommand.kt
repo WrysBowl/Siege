@@ -58,7 +58,7 @@ class BossLeaderboardCommand : BaseCommand() {
 				return@getBossLeaderboardData
 			}
 			player.sendMessage(Utils.parse("<gold>---- <gray>Your stats for <gold>$boss<gray>! <gold>----"))
-			player.sendMessage("<gray>Damage dealt: <gold>${data.first}%")
+			player.sendMessage(Utils.parse("<gray>Damage dealt: <gold>${data.first}%"))
 			val timeInHHMMSS = Utils.secondsToHHMMSS(data.second.toLong())
 			player.sendMessage(Utils.parse("<gray>Time taken: <gold>${timeInHHMMSS}<gray>."))
 			player.sendMessage(Utils.parse("<gold>------------"))
@@ -66,7 +66,7 @@ class BossLeaderboardCommand : BaseCommand() {
 	}
 
 	@Subcommand("stats")
-	@CommandCompletion("* @bosses")
+	@CommandCompletion("@players @bosses")
 	@Syntax("<player> <boss>")
 	fun bossDataPlayer(player : Player, otherPlayer : OfflinePlayer, boss : String) {
 		player.sendMessage(Utils.parse("<gray>Fetching data...."))
@@ -76,7 +76,7 @@ class BossLeaderboardCommand : BaseCommand() {
 				return@getBossLeaderboardData
 			}
 			player.sendMessage(Utils.parse("<gold>---- <gray>${otherPlayer.name}'s stats for <gold>$boss<gray>! <gold>----"))
-			player.sendMessage("<gray>Damage dealt: <gold>${data.first}%")
+			player.sendMessage(Utils.parse("<gray>Damage dealt: <gold>${data.first}%"))
 			val timeInHHMMSS = Utils.secondsToHHMMSS(data.second.toLong())
 			player.sendMessage(Utils.parse("<gray>Time taken: <gold>${timeInHHMMSS}<gray>."))
 			player.sendMessage(Utils.parse("<gold>------------"))
@@ -85,14 +85,16 @@ class BossLeaderboardCommand : BaseCommand() {
 
 	@Subcommand("holo|hologram")
 	@CommandPermission("op")
-	public class Holo : BaseCommand() {
+	public class Holo(private val root : BossLeaderboardCommand) : BaseCommand() {
 
 		@Subcommand("spawn|add|create")
 		@CommandCompletion("@bosses")
 		@Syntax("<boss>")
 		public fun spawn(p : Player, boss : String) {
-			val hologram = HologramsAPI.createHologram(Core.plugin(), p.location)
-			BossLeaderboard.updateHologram(hologram, boss)
+			Bukkit.getScheduler().runTask(Core.plugin(), Runnable {
+				val hologram = HologramsAPI.createHologram(Core.plugin(), p.location)
+				BossLeaderboard.updateHologram(hologram, boss)
+			})
 		}
 
 		@Subcommand("list|l")
@@ -104,7 +106,7 @@ class BossLeaderboardCommand : BaseCommand() {
 			holograms.forEachIndexed { i, holo ->
 				p.sendMessage(
 						Utils.parse(
-								"<hover:show_text:'<gray>Position: <gold>${holo.location}\n<gray>Created at: <gold>${
+								"<hover:show_text:'<gray>Position: <gold>x: ${holo.x}, y: ${holo.y}, z: ${holo.z}, world: ${holo.world.name} (${holo.world.uid})\n<gray>Created at: <gold>${
 									Instant.ofEpochMilli(
 											holo.creationTimestamp
 									                    )
@@ -121,7 +123,7 @@ class BossLeaderboardCommand : BaseCommand() {
 		public fun delete(p : Player, boss : String) {
 			val holograms = BossLeaderboard.getBossHolograms(boss)
 			val holo = holograms.find { holo ->
-				holo.location.distanceSquared(p.location) <= 5
+				holo.location.distanceSquared(p.location) <= 25
 			}
 			if (holo == null) {
 				p.sendMessage(Utils.parse("<red>No holograms were found within 5 blocks of you."))
@@ -131,38 +133,46 @@ class BossLeaderboardCommand : BaseCommand() {
 			holo.delete();
 		}
 
-
+		@Default
 		@HelpCommand
+		@Subcommand("help")
 		public fun help(player : Player) {
 			player.sendMessage(
-					listOf(
-							"&6 ----- Admin Boss Leaderboard Commands -----",
-							"&6/bosslb holo spawn <boss>: &7Spawns a hologram with data for a specific boss at your location.",
-							"&6/bosslb holo list <boss>: &7Lists the holograms for a specific boss.",
-							"&6/bosslb holo removenear <boss>: &7Removes a boss hologram near (5 blocks around) you.",
-					      ).toTypedArray()
+					Utils.tacc(
+							listOf(
+									"&6 ----- Admin Boss Leaderboard Commands -----",
+									"&6/bosslb holo spawn <boss>: &7Spawns a hologram with data for a specific boss at your location.",
+									"&6/bosslb holo list <boss>: &7Lists the holograms for a specific boss.",
+									"&6/bosslb holo removenear <boss>: &7Removes a boss hologram near (5 blocks around) you.",
+							      ).toTypedArray()
+					          )
 			                  )
 		}
 	}
 
 	@HelpCommand
+	@Subcommand("help")
 	fun helpWithBossLeaderboard(player : Player) {
 		player.sendMessage(
-				listOf(
-						"&6 ----- Boss Leaderboard Commands -----",
-						"&6/bosslb me <boss>: &7Views your stats for a specific boss.",
-						"&6/bosslb top10 <boss>: &7Views the top 10 players for a specific boss.",
-						"&6/bosslb stats <player> <boss>: &7Views the boss data for a specific player!",
-				      ).toTypedArray()
+				Utils.tacc(
+						listOf(
+								"&6 ----- Boss Leaderboard Commands -----",
+								"&6/bosslb me <boss>: &7Views your stats for a specific boss.",
+								"&6/bosslb top10 <boss>: &7Views the top 10 players for a specific boss.",
+								"&6/bosslb stats <player> <boss>: &7Views the boss data for a specific player!",
+						      ).toTypedArray()
+				          )
 		                  )
 		if (player.isOp) {
 			player.sendMessage(
-					listOf(
-							"&6 ----- Admin Boss Leaderboard Commands -----",
-							"&6/bosslb holo spawn <boss>: &7Spawns a hologram with data for a specific boss at your location.",
-							"&6/bosslb holo list <boss>: &7Lists the holograms for a specific boss.",
-							"&6/bosslb holo removenear <boss>: &7Removes a boss hologram near (5 blocks around) you.",
-					      ).toTypedArray()
+					Utils.tacc(
+							listOf(
+									"&6 ----- Admin Boss Leaderboard Commands -----",
+									"&6/bosslb holo spawn <boss>: &7Spawns a hologram with data for a specific boss at your location.",
+									"&6/bosslb holo list <boss>: &7Lists the holograms for a specific boss.",
+									"&6/bosslb holo removenear <boss>: &7Removes a boss hologram near (5 blocks around) you.",
+							      ).toTypedArray()
+					          )
 			                  )
 		}
 	}

@@ -1,6 +1,9 @@
 package net.siegerpg.siege.core.miscellaneous
 
+import com.gmail.filoghost.holographicdisplays.api.Hologram
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.siegerpg.siege.core.Core
 import org.bukkit.Bukkit
 import org.bukkit.Location
@@ -13,7 +16,7 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import java.text.DecimalFormat
 import java.util.concurrent.ThreadLocalRandom
-import kotlin.math.floor
+import kotlin.math.round
 
 
 class DamageIndicator : Listener {
@@ -31,37 +34,28 @@ class DamageIndicator : Listener {
 			       )
 		}
 
+
 	}
 
-	fun getIndicatorText(damage : Double, critical : Boolean) : String {
+	fun getIndicatorText(damage : Double, critical : Boolean) : Component {
 		val formatter = when (damage) {
-			in 0.0..200.0      -> if (critical) DecimalFormat("&7-0.#&4❤") else DecimalFormat(
-					"&c-0.#&4❤"
-			                                                                                 )
-			in 200.0..1000.0   -> if (critical) DecimalFormat("&8-0.#&4❤") else DecimalFormat(
-					"&4-0.#&4❤"
-			                                                                                 )
-			in 1000.0..10000.0 -> if (critical) DecimalFormat("&6-0.#&4❤") else DecimalFormat(
-					"&5-0.#&4❤"
-			                                                                                 )
-			else               -> DecimalFormat("0.#")
+			in 0.0..200.0      -> if (critical) DecimalFormat("<red>-0.#<dark_red>❤") else DecimalFormat(
+					"<gray>-0.#<dark_red>❤"
+			                                                                                            )
+			in 200.0..1000.0   -> if (critical) DecimalFormat("<dark_red>-0.#<dark_red>❤") else DecimalFormat(
+					"<dark_gray>-0.#<dark_red>❤"
+			                                                                                                 )
+			in 1000.0..10000.0 -> if (critical) DecimalFormat("<gold>-0.#<dark_red>❤") else DecimalFormat(
+					"<dark_purple>-0.#<dark_red>❤"
+			                                                                                             )
+			else               -> DecimalFormat(
+					"<rainbow:${
+						round(Math.random() * 2 - 1).toInt()
+					}>0.#</rainbow><dark_red>❤"
+			                                   )
 		}
 		val format = formatter.format(damage)
-		val colourCodes = "ea231dc6"
-		val startingIndex = floor(Math.random() * (colourCodes.length)).toInt()
-		if (damage >= 10000) {
-			format.mapIndexed { index, c ->
-				val sb = StringBuilder()
-				sb.append("&")
-
-				sb.append(
-						colourCodes[(startingIndex + index) % colourCodes.length]
-				         )
-				sb.append(c)
-				return sb.toString()
-			}
-		}
-		return format
+		return Utils.parse(format)
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -99,11 +93,17 @@ class DamageIndicator : Listener {
 
 
 		val hologram = HologramsAPI.createHologram(Core.plugin(), spawnLocation)
-		val text = getIndicatorText(evt.damage, isCritical)
-		hologram.appendTextLine(Utils.tacc(text))
-
+		Core.plugin().hologramsToBeDeleted.add(hologram)
+		val component = getIndicatorText(evt.damage, isCritical)
+		hologram.appendTextLine(
+				Utils.tacc(
+						LegacyComponentSerializer.legacySection()
+								.serialize(component)
+				          )
+		                       )
 		Bukkit.getScheduler().runTaskLater(Core.plugin(), Runnable {
 			hologram.delete()
+			Core.plugin().hologramsToBeDeleted.remove(hologram)
 		}, 3 * 20L)
 	}
 }

@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core;
 
 import co.aikar.commands.PaperCommandManager;
+import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import io.github.retrooper.packetevents.PacketEvents;
 import io.github.retrooper.packetevents.settings.PacketEventsSettings;
 import io.github.retrooper.packetevents.utils.server.ServerVersion;
@@ -34,6 +35,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -69,6 +71,8 @@ public final class Core extends JavaPlugin {
 		spawnLocation.setYaw(168);
 		return spawnLocation;
 	}
+
+	public ArrayList< Hologram > hologramsToBeDeleted = new ArrayList<>();
 
 	@Override
 	public void onLoad() {
@@ -216,6 +220,8 @@ public final class Core extends JavaPlugin {
 		PacketEvents
 				.get()
 				.terminate();
+
+		hologramsToBeDeleted.forEach(Hologram::delete);
 		INSTANCE = null;
 	}
 

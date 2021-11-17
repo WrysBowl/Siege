@@ -36,7 +36,10 @@ object BossLeaderboard {
 
 	fun updateHologram(h : Hologram, bossName : String) {
 		BossLeaderboardDB.getBossLeaderboardTop10Data(bossName) { data ->
-			updateHologram(h, bossName, data)
+			Bukkit.getScheduler().runTask(Core.plugin(), Runnable {
+				updateHologram(h, bossName, data)
+			})
+
 		}
 	}
 
@@ -46,7 +49,7 @@ object BossLeaderboard {
 			data : List<Pair<UUID, Pair<Byte, Int>>>?
 	                  ) {
 		h.clearLines()
-		h.appendTextLine(Utils.tacc("&6----- &7$bossName -----"))
+		h.appendTextLine(Utils.tacc("&6----- &7$bossName &6-----"))
 		if (data == null) {
 			h.appendTextLine(Utils.tacc("&cNo data exists for this boss!"))
 			return
@@ -56,13 +59,15 @@ object BossLeaderboard {
 			val lbPlayer = Bukkit.getOfflinePlayer(uuid)
 			h.appendTextLine(Utils.tacc("&6${index + 1}. &7${lbPlayer.name}: &6${data.first}% &7(in &6${timeInHHMMSS} &7)"))
 		}
-		h.appendTextLine("&6----------")
+		h.appendTextLine(Utils.tacc("&6----------"))
 	}
 
 	public fun getBossHolograms(bossName : String) :
 			Collection<Hologram> {
 		val holograms = HologramsAPI.getHolograms(Core.plugin()).filter { h ->
-			(h.getLine(0) as TextLine).text.lowercase().contains(bossName.lowercase())
+
+			(h.size() > 0) && (h.getLine(0) as TextLine).text.lowercase()
+					.contains(bossName.lowercase())
 		}
 		return holograms
 	}
