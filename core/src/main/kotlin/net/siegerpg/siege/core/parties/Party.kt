@@ -1,5 +1,8 @@
 package net.siegerpg.siege.core.parties
 
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.minimessage.MiniMessage
+import net.kyori.adventure.text.minimessage.Template
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Bukkit
@@ -42,7 +45,7 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 	}
 
 	fun isMember(player : OfflinePlayer) : Boolean {
-		return members.contains(player) || getLeader() == player
+		return getMembers().contains(player)
 	}
 
 	fun addInvite(invited : Player) {
@@ -50,7 +53,20 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 		Bukkit.getScheduler().runTaskLaterAsynchronously(
 				Core.plugin(),
 				Runnable {
-					send(Utils.tacc("&7The party invite to &6${invited.displayName()} &r&7expired!"))
+					if (!this.invited.contains(invited)) return@Runnable
+					send(
+							MiniMessage.get()
+									.parse(
+											"&7The party invite to &6<invitedDisplayName> &r&7expired!",
+											listOf(
+													Template.of(
+															"invitedDisplayName",
+															invited.displayName()
+													           )
+											      )
+									      ),
+
+							)
 					val leader = if (getLeader().isOnline) getLeader() as Player else null
 					val leaderName = leader?.displayName() ?: getLeader().name
 					invited.sendMessage(Utils.tacc("&7Party invite from &6${leaderName} &r&7has expired!"))
@@ -89,13 +105,29 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 	fun leave(player : Player) {
 		if (getLeader() == player) disband()
 		else if (isMember(player)) {
-			send(Utils.tacc("&6${player.displayName()} &r&7has left the party!"))
+			send(
+					MiniMessage.get().parse(
+							"<gold><displayName> <reset><gray>has left the party!",
+							listOf(
+									Template.of("displayName", player.displayName())
+							      )
+					                       )
+			    )
 			removeMember(player)
 		}
 	}
 
+	fun send(message : Component) {
+		for (member in getMembers()) {
+			if (member.isOnline) {
+				val onlineMember = member as Player
+				onlineMember.sendMessage(message)
+			}
+		}
+	}
+
 	fun send(message : String) {
-		for (member in members) {
+		for (member in getMembers()) {
 			if (member.isOnline) {
 				val onlineMember = member as Player
 				onlineMember.sendMessage(message)
@@ -108,7 +140,18 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 			send(Utils.tacc("&6${leader.name} &r&7can't be kicked from the party!"))
 			return
 		}
-		send(Utils.tacc("&6${leader.name} &r&7kicked &6${player.displayName()} &r&7from the party!"))
+		send(
+				MiniMessage.get()
+						.parse(
+								"<gold>${leader.name} <gray>kicked <gold><kickedDisplayName> <reset><gray>from the party!",
+								listOf(
+										Template.of(
+												"kickedDisplayName",
+												player.displayName()
+										           )
+								      )
+						      ),
+		    )
 		removeMember(player)
 	}
 
