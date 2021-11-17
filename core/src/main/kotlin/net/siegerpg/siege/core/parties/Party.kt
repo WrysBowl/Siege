@@ -9,6 +9,7 @@ import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.entity.Player
+import java.time.Instant
 import java.util.*
 
 class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
@@ -16,10 +17,11 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 	private val invited : ArrayList<Player> = ArrayList()
 	private val members : HashSet<OfflinePlayer> = HashSet()
 
+	private var lastJoin : Instant = Instant.now()
+
 	constructor(leader : OfflinePlayer) : this(UUID.randomUUID(), leader)
 
 	init {
-		save()
 		parties[partyID] = this
 	}
 
@@ -29,12 +31,21 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 
 	fun addMember(member : OfflinePlayer) {
 		members.add(member)
+		lastJoin = Instant.now()
 		save()
 	}
 
 	fun removeMember(member : OfflinePlayer) {
 		members.remove(member)
 		save()
+		Bukkit.getScheduler().runTaskLater(Core.plugin(), Runnable {
+			if (getMembers().size < 2 && lastJoin.plusSeconds(60L * 5)
+							.isBefore(Instant.now())
+			) {
+				send(Utils.tacc("&cThe party was disbanded because nobody was in it for 5 minutes!"))
+				disband()
+			}
+		}, 20L * 60 * 5)
 	}
 
 	fun getMembers() : HashSet<OfflinePlayer> {
@@ -95,7 +106,7 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 		delete()
 	}
 
-	private fun delete() {
+	fun delete() {
 		members.clear()
 		invited.clear()
 		parties.remove(partyID)
@@ -169,6 +180,7 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 				val memberOfflinePlayer = Bukkit.getOfflinePlayer(memberID)
 				party.addMember(memberOfflinePlayer)
 			}
+
 			return party
 		}
 
@@ -193,7 +205,10 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 
 	private fun save() {
 		val partySection = Core.plugin().partyConfig.getParty(partyID)
-		partySection.set("members", members.map { m -> m.uniqueId.toString() })
+		partySection.set(
+				"members",
+				members.map { m -> m.uniqueId.toString() }.toTypedArray()
+		                )
 		partySection.set("leader", getLeader().uniqueId.toString())
 		Core.plugin().partyConfig.save()
 	}

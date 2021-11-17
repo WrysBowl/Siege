@@ -119,7 +119,7 @@ class PartyCommand : BaseCommand() {
 		party.send(
 				MiniMessage.get()
 						.parse(
-								"&6$<oldLeaderDisplayName> &r&7transferred the party to &6<newLeaderDisplayName>&r&7!",
+								"<gold><oldLeaderDisplayName> <reset><gray>transferred the party to <gold><newLeaderDisplayName><reset><gray>!",
 								listOf(
 										Template.of(
 												"oldLeaderDisplayName",
@@ -198,7 +198,6 @@ class PartyCommand : BaseCommand() {
 			player.sendMessage(Utils.tacc("&cOnly the party leader can execute this command!"))
 			return
 		}
-		println(player.name + "invited: " + invitee.player.name)
 		if (party.getMembers().contains(invitee.player)) {
 			player.sendMessage(Utils.tacc("&cThat player is already a member of your party!"))
 			return

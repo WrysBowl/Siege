@@ -23,6 +23,7 @@ import net.siegerpg.siege.core.miscellaneous.DropUtils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import net.siegerpg.siege.core.miscellaneous.cache.MobNames;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
+import net.siegerpg.siege.core.parties.Party;
 import net.siegerpg.siege.core.parties.PartyCommand;
 import net.siegerpg.siege.core.parties.PartyConfig;
 import net.siegerpg.siege.core.skills.SkillListener;
@@ -38,6 +39,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.UUID;
 
 @SuppressWarnings( "unused" )
 public final class Core extends JavaPlugin {
@@ -208,6 +210,9 @@ public final class Core extends JavaPlugin {
 //        recipe.s1(Pebble.Companion.tier(1));
 //        CustomRecipe.Companion.registerRecipe(recipe);
 
+
+		// Deserialize all parties
+		partyConfig.initializeAllFromConfig();
 
 	}
 

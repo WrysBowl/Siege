@@ -31,5 +31,29 @@ class PartyConfig : ConfigurationBase(File(Core.plugin().dataFolder, "parties.ym
 
 	fun setParty(id : UUID, data : ConfigurationSection?) {
 		getParties().set(id.toString(), data)
+		save()
+	}
+
+	fun initializeAllFromConfig() {
+
+//        CustomRecipe recipe = new CustomRecipe();
+//        recipe.s1(Pebble.Companion.tier(1));
+//        CustomRecipe.Companion.registerRecipe(recipe);
+
+
+		// Deserialize all parties
+		getParties()
+				.getKeys(false)
+				.forEach { key ->
+					val party =
+							Party.deserialize(
+									UUID.fromString(key),
+									getParty(UUID.fromString(key))
+							                 )
+					if (party.getMembers().size < 2) {
+						party.delete()
+					}
+				}
+
 	}
 }
