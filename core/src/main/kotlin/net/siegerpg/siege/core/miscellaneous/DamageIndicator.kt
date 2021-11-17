@@ -1,43 +1,20 @@
 package net.siegerpg.siege.core.miscellaneous
 
-import com.gmail.filoghost.holographicdisplays.api.Hologram
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.siegerpg.siege.core.Core
 import org.bukkit.Bukkit
 import org.bukkit.Location
-import org.bukkit.entity.*
-import org.bukkit.event.EventHandler
-import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
-import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 import java.text.DecimalFormat
 import java.util.concurrent.ThreadLocalRandom
-import kotlin.math.round
+import kotlin.math.floor
 
 
-class DamageIndicator : Listener {
-
-	companion object {
-
-		fun isCritical(damager : LivingEntity) : Boolean {
-			return (
-					damager.fallDistance > 0.0f &&
-					!damager.isInWater &&
-					damager.activePotionEffects.none { o : PotionEffect -> o.type == PotionEffectType.BLINDNESS } &&
-					damager.vehicle == null && (if (damager is Player) (
-							!damager.isSprinting &&
-							damager.attackCooldown > 0.9f) else true)
-			       )
-		}
+object DamageIndicator {
 
 
-	}
-
-	fun getIndicatorText(damage : Double, critical : Boolean) : Component {
+	private fun getIndicatorText(damage : Double, critical : Boolean) : Component {
 		val formatter = when (damage) {
 			in 0.0..200.0      -> if (critical) DecimalFormat("<red>-0.#<dark_red>❤") else DecimalFormat(
 					"<gray>-0.#<dark_red>❤"
@@ -50,7 +27,7 @@ class DamageIndicator : Listener {
 			                                                                                             )
 			else               -> DecimalFormat(
 					"<rainbow:${
-						round(Math.random() * 2 - 1).toInt()
+						floor(Math.random() * 2).toInt()
 					}>0.#</rainbow><dark_red>❤"
 			                                   )
 		}
@@ -58,35 +35,27 @@ class DamageIndicator : Listener {
 		return Utils.parse(format)
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-	public fun onDamage(evt : EntityDamageByEntityEvent) {
-		if (evt.entity !is LivingEntity) return;
-
-		val entity = evt.entity as LivingEntity
-
-		if (entity is ArmorStand) return;
-
+	public fun showDamageIndicator(
+			damage : Double,
+			position : Location,
+			isCritical : Boolean
+	                              ) {
 
 		val random = ThreadLocalRandom.current()
 
-		val isCritical = when (evt.damager) {
-			is AbstractArrow -> (evt.damager as AbstractArrow).isCritical
-			is Projectile    -> false
-			else             -> isCritical(entity)
-		}
 
 		var spawnLocation
 				: Location
 		var attempts = 0
 		do {
 			attempts++
-			spawnLocation = entity.location.add(
+			spawnLocation = position.clone().add(
 					random.nextDouble(0.0, 2.0) - 1.0,
 					1.0,
 					random.nextDouble(0.0, 2.0) - 1.0
-			                                   )
+			                                    )
 			if (attempts > 20) {
-				spawnLocation = entity.location
+				spawnLocation = position
 				break
 			}
 		} while (!spawnLocation.block.isPassable)
@@ -94,7 +63,7 @@ class DamageIndicator : Listener {
 
 		val hologram = HologramsAPI.createHologram(Core.plugin(), spawnLocation)
 		Core.plugin().hologramsToBeDeleted.add(hologram)
-		val component = getIndicatorText(evt.damage, isCritical)
+		val component = getIndicatorText(damage, isCritical)
 		hologram.appendTextLine(
 				Utils.tacc(
 						LegacyComponentSerializer.legacySection()

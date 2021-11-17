@@ -190,7 +190,6 @@ public final class Core extends JavaPlugin {
 				new ArmorListener(getConfig().getStringList("blocked")),
 				new StatChangeListener(),
 				new CosmeticsListener(),
-				new DamageIndicator(),
 				new CustomItemKotlinListener()
 		};
 

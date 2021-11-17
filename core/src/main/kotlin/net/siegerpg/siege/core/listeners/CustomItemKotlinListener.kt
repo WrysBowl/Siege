@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
+import net.siegerpg.siege.core.miscellaneous.DamageIndicator
 import net.siegerpg.siege.core.miscellaneous.Levels
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.cache.MobNames
@@ -231,6 +232,10 @@ class CustomItemKotlinListener : Listener, Runnable {
 		setVictimName(victim, e.damage, vicMaxHealth)
 		e.damage =
 				(reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
+
+		val isCritical = damage > maxDamage
+
+		DamageIndicator.showDamageIndicator(e.damage, victim.location, isCritical)
 	}
 
 	private fun setVictimName(
