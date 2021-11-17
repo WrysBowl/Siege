@@ -8,31 +8,30 @@ import org.bukkit.Bukkit
 import org.bukkit.Location
 import java.text.DecimalFormat
 import java.util.concurrent.ThreadLocalRandom
-import kotlin.math.floor
 
 
 object DamageIndicator {
 
 
 	private fun getIndicatorText(damage : Double, critical : Boolean) : Component {
-		val formatter = when (damage) {
-			in 0.0..200.0      -> if (critical) DecimalFormat("<red>-0.#<dark_red>❤") else DecimalFormat(
-					"<gray>-0.#<dark_red>❤"
-			                                                                                            )
-			in 200.0..1000.0   -> if (critical) DecimalFormat("<dark_red>-0.#<dark_red>❤") else DecimalFormat(
-					"<dark_gray>-0.#<dark_red>❤"
-			                                                                                                 )
-			in 1000.0..10000.0 -> if (critical) DecimalFormat("<gold>-0.#<dark_red>❤") else DecimalFormat(
-					"<dark_purple>-0.#<dark_red>❤"
-			                                                                                             )
-			else               -> DecimalFormat(
-					"<rainbow:${
-						floor(Math.random() * 2).toInt()
-					}>0.#</rainbow><dark_red>❤"
-			                                   )
+		val formatted = DecimalFormat("0.#").format(damage)
+		val coloured = when (damage) {
+			in 0.0..200.0      -> if (critical) "<red>-$formatted<dark_red>❤" else
+				"<gray>-$formatted<dark_red>❤"
+
+			in 200.0..1000.0   -> if (critical) "<dark_red>-$formatted<dark_red>❤" else
+				"<dark_gray>-$formatted<dark_red>❤"
+
+			in 1000.0..10000.0 -> if (critical) "<gold>-$formatted<dark_red>❤" else
+				"<dark_purple>-$formatted<dark_red>❤"
+
+			else               ->
+				"<rainbow:${
+					(Math.random() * 31).toInt()
+				}>-$formatted</rainbow><dark_red>❤"
+
 		}
-		val format = formatter.format(damage)
-		return Utils.parse(format)
+		return Utils.parse(coloured)
 	}
 
 	public fun showDamageIndicator(

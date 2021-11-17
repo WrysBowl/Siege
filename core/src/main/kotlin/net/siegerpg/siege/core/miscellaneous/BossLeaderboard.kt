@@ -36,10 +36,7 @@ object BossLeaderboard {
 
 	fun updateHologram(h : Hologram, bossName : String) {
 		BossLeaderboardDB.getBossLeaderboardTop10Data(bossName) { data ->
-			Bukkit.getScheduler().runTask(Core.plugin(), Runnable {
-				updateHologram(h, bossName, data)
-			})
-
+			updateHologram(h, bossName, data)
 		}
 	}
 
@@ -48,18 +45,20 @@ object BossLeaderboard {
 			bossName : String,
 			data : List<Pair<UUID, Pair<Byte, Int>>>?
 	                  ) {
-		h.clearLines()
-		h.appendTextLine(Utils.tacc("&6----- &7$bossName &6-----"))
-		if (data == null) {
-			h.appendTextLine(Utils.tacc("&cNo data exists for this boss!"))
-			return
-		}
-		data.forEachIndexed { index, (uuid, data) ->
-			val timeInHHMMSS = Utils.secondsToHHMMSS(data.second.toLong())
-			val lbPlayer = Bukkit.getOfflinePlayer(uuid)
-			h.appendTextLine(Utils.tacc("&6${index + 1}. &7${lbPlayer.name}: &6${data.first}% &7(in &6${timeInHHMMSS} &7)"))
-		}
-		h.appendTextLine(Utils.tacc("&6----------"))
+		Bukkit.getScheduler().runTask(Core.plugin(), Runnable {
+			h.clearLines()
+			h.appendTextLine(Utils.tacc("&6----- &7$bossName &6-----"))
+			if (data == null) {
+				h.appendTextLine(Utils.tacc("&cNo data exists for this boss!"))
+				return@Runnable
+			}
+			data.forEachIndexed { index, (uuid, data) ->
+				val timeInHHMMSS = Utils.secondsToHHMMSS(data.second.toLong())
+				val lbPlayer = Bukkit.getOfflinePlayer(uuid)
+				h.appendTextLine(Utils.tacc("&6${index + 1}. &7${lbPlayer.name}: &6${data.first}% &7(in &6${timeInHHMMSS} &7)"))
+			}
+			h.appendTextLine(Utils.tacc("&6----------"))
+		})
 	}
 
 	public fun getBossHolograms(bossName : String) :
