@@ -345,7 +345,9 @@ public class DeathListener implements Listener, Runnable {
 					.plugin()
 					.getServer()
 					.getWorld("Hub");
-			e.setRespawnLocation(new Location(HUB, -52, 91, -8, 168, 0));
+			e.setRespawnLocation(Core
+					                     .plugin()
+					                     .getHubSpawnLocation());
 		}
 	}
 

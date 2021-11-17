@@ -30,13 +30,17 @@ import net.siegerpg.siege.core.webstore.WebstoreListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
+import java.util.Objects;
 
 @SuppressWarnings( "unused" )
 public final class Core extends JavaPlugin {
 
 	public static Color defaultLeatherColor;
-	public static Location spawnLocation;
 	private static Core INSTANCE;
 	public PaperCommandManager commandManager;
 	public PartyConfig partyConfig;
@@ -50,6 +54,20 @@ public final class Core extends JavaPlugin {
 	public static Core plugin() {
 
 		return INSTANCE;
+	}
+
+	/**
+	 * Method to get the spawn location
+	 */
+	public Location getHubSpawnLocation() {
+
+		Location spawnLocation =
+				Objects
+						.requireNonNull(Bukkit
+								                .getWorld("Hub"))
+						.getSpawnLocation();
+		spawnLocation.setYaw(168);
+		return spawnLocation;
 	}
 
 	@Override
@@ -90,199 +108,94 @@ public final class Core extends JavaPlugin {
 				.getDefaultLeatherColor();
 		(new VaultHook()).createHooks();
 
-		spawnLocation = Bukkit
-				.getWorld("Hub")
-				.getSpawnLocation();
 
 		commandManager.registerCommand(new BossLeaderboardCommand());
 		commandManager.registerCommand(new PartyCommand());
-		this
-				.getCommand("hub")
-				.setExecutor(new Hub());
-		this
-				.getCommand("setBed")
-				.setExecutor(new SetRespawn());
-		this
-				.getCommand("help")
-				.setExecutor(new Help());
-		this
-				.getCommand("discord")
-				.setExecutor(new Discord());
-		this
-				.getCommand("webstore")
-				.setExecutor(new Webstore());
-		this
-				.getCommand("getItem")
-				.setExecutor(new GetItem());
-		this
-				.getCommand("spawn")
-				.setExecutor(new Spawn());
-		this
-				.getCommand("invsee")
-				.setExecutor(new Invsee());
-		this
-				.getCommand("leaderboard")
-				.setExecutor(new Leaderboard());
-		this
-				.getCommand("level")
-				.setExecutor(new Level());
-		this
-				.getCommand("buy")
-				.setExecutor(new WebstoreCommand());
-		this
-				.getCommand("tips")
-				.setExecutor(new ToggleTips());
-		this
-				.getCommand("getBooster")
-				.setExecutor(new GetBooster());
-		this
-				.getCommand("updateScoreboard")
-				.setExecutor(new UpdateScoreboard());
-		this
-				.getCommand("spawnExp")
-				.setExecutor(new SpawnExp());
-		this
-				.getCommand("spawnGold")
-				.setExecutor(new SpawnGold());
-		this
-				.getCommand("pay")
-				.setExecutor(new Pay());
-		this
-				.getCommand("getKey")
-				.setExecutor(new GetKey());
-		this
-				.getCommand("stats")
-				.setExecutor(new Stats());
-		this
-				.getCommand("dungeon")
-				.setExecutor(new DungeonCommand());
 
 
-		getServer()
-				.getPluginManager()
-				.registerEvents(new BossLeaderboardListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new DropUtils(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new BlockBreakListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new ChatListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new DeathListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new InventoryCloseListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new GoldExpListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new PlayerJoinListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new PlayerQuitListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new StatGemListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new GemRemover(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new WorldListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new PortalEnterListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new TutorialListeners(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new FishEvent(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new RightClickEvent(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new PlayerData(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new EntityTeleportListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new HelpfulTips(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new GoldReward(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new CrateOpen(), this);
+		// The list of commands to register.
+		// This is done in order to stop repeating everything tons of times
+		HashMap< String, CommandExecutor > commandList = new HashMap<>();
+		{
+			commandList.put("hub", new Hub());
+			commandList.put("setBed", new SetRespawn());
+			commandList.put("help", new Help());
+			commandList.put("discord", new Discord());
+			commandList.put("webstore", new Webstore());
+			commandList.put("getItem", new GetItem());
+			commandList.put("spawn", new Spawn());
+			commandList.put("invsee", new Invsee());
+			commandList.put("leaderboard", new Leaderboard());
+			commandList.put("level", new Level());
+			commandList.put("buy", new WebstoreCommand());
+			commandList.put("tips", new ToggleTips());
+			commandList.put("getBooster", new GetBooster());
+			commandList.put("updateScoreboard", new UpdateScoreboard());
+			commandList.put("spawnExp", new SpawnExp());
+			commandList.put("spawnGold", new SpawnGold());
+			commandList.put("pay", new Pay());
+			commandList.put("getKey", new GetKey());
+			commandList.put("stats", new Stats());
+			commandList.put("dungeon", new DungeonCommand());
+		}
 
-		getServer()
-				.getPluginManager()
-				.registerEvents(new MobNames(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new SkillListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new DungeonListener(), this);
+		commandList.forEach((str, ex) -> this
+				.getCommand(str)
+				.setExecutor(ex));
 
 
-		getServer()
-				.getPluginManager()
-				.registerEvents(new WebstoreListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new SmokyBlacksmith(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new MeraTransit(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new SymoneCollector(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new BenButcher(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new RichardBanker(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new BartBeggar(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new Herbert(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new PerksTrader(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new Henry(), this);
+		// The list of listeners to register.
+		// This is done in order to stop repeating everything tons of times
+		Listener[] listeners = new Listener[] {
+				new BossLeaderboardListener(),
+				new DropUtils(),
+				new BlockBreakListener(),
+				new ChatListener(),
+				new DeathListener(),
+				new InventoryCloseListener(),
+				new GoldExpListener(),
+				new PlayerJoinListener(),
+				new StatGemListener(),
+				new GemRemover(),
+				new WorldListener(),
+				new PortalEnterListener(),
+				new TutorialListeners(),
+				new FishEvent(),
+				new RightClickEvent(),
+				new PlayerData(),
+				new EntityTeleportListener(),
+				new HelpfulTips(),
+				new GoldReward(),
+				new CrateOpen(),
+				new MobNames(),
+				new SkillListener(),
+				new DungeonListener(),
+				new WebstoreListener(),
+				new SmokyBlacksmith(),
+				new MeraTransit(),
+				new SymoneCollector(),
+				new MeraTransit(),
+				new BenButcher(),
+				new RichardBanker(),
+				new BartBeggar(),
+				new Herbert(),
+				new PerksTrader(),
+				new Henry(),
+				new ArmorListener(getConfig().getStringList("blocked")),
+				new StatChangeListener(),
+				new CosmeticsListener(),
+				new DamageIndicator(),
+				new CustomItemKotlinListener()
+		};
 
-		getServer()
-				.getPluginManager()
-				.registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new StatChangeListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new CosmeticsListener(), this);
-		getServer()
-				.getPluginManager()
-				.registerEvents(new DamageIndicator(), this);
-
+		for (Listener listener : listeners) {
+			getServer()
+					.getPluginManager()
+					.registerEvents(listener, this);
+		}
 
 		SmokyBlacksmith.resetItems();
 		StatChangeListener.statBarDisplayTask();
-		getServer()
-				.getPluginManager()
-				.registerEvents(new CustomItemKotlinListener(), this);
 		new RegenerationTask().startRegenTask();
 		new HelpfulTips().broadcastTasks();
 		new GoldReward().giveGold();

@@ -72,9 +72,7 @@ public class PlayerJoinListener implements Listener {
 		String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
 		player.teleport(Core
 				                .plugin()
-				                .getServer()
-				                .getWorld("Hub")
-				                .getSpawnLocation());
+				                .getHubSpawnLocation());
 
 		Levels.INSTANCE.getExpLevel(player, shortIntegerPair -> {
 			if (shortIntegerPair == null) {

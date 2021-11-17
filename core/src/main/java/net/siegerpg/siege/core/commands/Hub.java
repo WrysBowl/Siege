@@ -16,7 +16,9 @@ public class Hub implements CommandExecutor {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
-			player.teleport(Core.plugin().spawnLocation);
+			player.teleport(Core
+					                .plugin()
+					                .getHubSpawnLocation());
 			return true;
 		}
 		Bukkit

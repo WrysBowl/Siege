@@ -12,6 +12,7 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane
 import com.github.stefvanschie.inventoryframework.pane.Pane
 import com.github.stefvanschie.inventoryframework.pane.StaticPane
 import net.kyori.adventure.text.minimessage.MiniMessage
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.miscellaneous.Scoreboard
 import net.siegerpg.siege.core.miscellaneous.VaultHook
@@ -105,7 +106,10 @@ class ShopsCommand : BaseCommand() {
 				meta.lore("<gold>Required Crafting Materials:")
 				var counter = 1
 				for (entry in it.recipe) {
-					val updatedItem = entry.key.getUpdatedItem(false).itemMeta.displayName
+					val itemMeta = entry.key.getUpdatedItem(false).itemMeta
+					val updatedItem = if (itemMeta.hasDisplayName())
+						PlainTextComponentSerializer.plainText()
+								.serialize(itemMeta.displayName()!!) else itemMeta.localizedName
 					meta.lore("<gold>${counter}. <aqua>${entry.value}x <pre>${updatedItem}</pre>")
 					counter++
 				}
