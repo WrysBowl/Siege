@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.BeginnerClub;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.BeginnerTwig;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.BeginnerScrapyardBow;
@@ -160,27 +161,10 @@ public class PlayerJoinListener implements Listener {
 
 	public void newPlayerReward(Player player) {
 
-		player
-				.getInventory()
-				.clear();
-		player
-				.getInventory()
-				.addItem(new BeginnerTwig(50).getUpdatedItem(false));
-		player
-				.getInventory()
-				.addItem(new BeginnerClub(50).getUpdatedItem(false));
-		player
-				.getInventory()
-				.addItem(new BeginnerScrapyardBow(50).getUpdatedItem(false));
-		player
-				.getInventory()
-				.addItem(new BeginnerLivingTwig(50).getUpdatedItem(false));
-		ItemStack food = new Drumstick(0)
-				.getUpdatedItem(false)
-				.asQuantity(10);
-		player
-				.getInventory()
-				.addItem(food);
+		player.getInventory().clear();
+		player.getInventory().addItem(Stick.Companion.tier(1).getUpdatedItem(false).asQuantity(4));
+		ItemStack food = new Drumstick(0).getUpdatedItem(false).asQuantity(10);
+		player.getInventory().addItem(food);
 		VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
 		VaultHook.econ.depositPlayer(player, 400.0);
 	}

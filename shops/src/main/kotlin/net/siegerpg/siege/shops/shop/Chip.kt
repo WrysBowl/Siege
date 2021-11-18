@@ -26,7 +26,7 @@ class Chip : Shop() {
 	override var permission : String = "siege.shops.shop.chip"
 	override var items : List<ShopItem> = listOf(
 			//LIGHT MELEE
-			ShopItem(Twig(-1), 100, hashMapOf(Stick.tier(1) to 2), true) {
+			ShopItem(Twig(-1), -1, hashMapOf(Stick.tier(2) to 1), true) {
 				Twig(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
