@@ -204,15 +204,9 @@ public class DeathListener implements Listener, Runnable {
 		double luck = 0.0;
 		int goldCoinAmt = mobDrop.getGold(true);
 		int exp = mobDrop.getExp(true);
-		Location loc = e
-				.getEntity()
-				.getLocation();
+		Location loc = e.getEntity().getLocation();
 
-		loc
-				.getWorld()
-				.spawnParticle(Particle.SOUL
-						               .builder()
-						               .particle(), loc, 1);
+		loc.getWorld().spawnParticle(Particle.SOUL.builder().particle(), loc.add(0,1,0), 5);
 
 		if (player != null) {
 			luck = CustomItemUtils.INSTANCE.getPlayerStat(
@@ -236,9 +230,7 @@ public class DeathListener implements Listener, Runnable {
 		}
 
 		for (ItemStack drop : mobDrop.calculateRewards(luck)) { //Loop through all drops
-			loc
-					.getWorld()
-					.dropItemNaturally(loc, drop);
+			loc.getWorld().dropItemNaturally(loc, drop);
 		}
 	}
 
