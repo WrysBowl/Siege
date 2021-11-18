@@ -18,12 +18,10 @@ import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.listeners.tasks.HelpfulTips;
-import net.siegerpg.siege.core.miscellaneous.DamageIndicator;
 import net.siegerpg.siege.core.miscellaneous.DropUtils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import net.siegerpg.siege.core.miscellaneous.cache.MobNames;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
-import net.siegerpg.siege.core.parties.Party;
 import net.siegerpg.siege.core.parties.PartyCommand;
 import net.siegerpg.siege.core.parties.PartyConfig;
 import net.siegerpg.siege.core.skills.SkillListener;
@@ -161,6 +159,7 @@ public final class Core extends JavaPlugin {
 				new InventoryCloseListener(),
 				new GoldExpListener(),
 				new PlayerJoinListener(),
+				new PlayerQuitListener(),
 				new StatGemListener(),
 				new GemRemover(),
 				new WorldListener(),
