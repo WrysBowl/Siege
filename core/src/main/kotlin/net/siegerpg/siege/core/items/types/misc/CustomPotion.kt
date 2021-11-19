@@ -12,16 +12,18 @@ import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.potion.PotionType
 
 abstract class CustomPotion(
 		override val name : String,
 		override val customModelData : Int? = null,
 		override val levelRequirement : Int? = null,
 		override val description : List<String>,
-		override val material : Material,
+		override val material : Material = Material.POTION,
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.FOOD,
+		val potion : PotionType = PotionType.INSTANT_HEAL
                            ) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
