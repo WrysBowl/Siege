@@ -29,8 +29,8 @@ public class GoldReward implements Listener {
 									                        Player p = Bukkit.getPlayer(uuid);
 									                        if (p == null) return;
 									                        int level = shortIntegerPair.getFirst();
-									                        int gold = (int) Math.sqrt(
-											                        (level * 75));
+									                        int gold = (int)
+											                        (level * 10);
 									                        GoldExpListener.giveGold(p, gold);
 									                        p.sendMessage(Utils.parse(""));
 									                        p.sendMessage(Utils.parse(
