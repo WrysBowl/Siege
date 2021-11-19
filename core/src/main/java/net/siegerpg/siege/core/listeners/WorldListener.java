@@ -2,9 +2,16 @@ package net.siegerpg.siege.core.listeners;
 
 import com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.items.CustomItem;
+import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.implemented.misc.food.*;
+import net.siegerpg.siege.core.items.types.misc.CustomFood;
+import net.siegerpg.siege.core.miscellaneous.DropUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.Campfire;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.*;
@@ -18,7 +25,10 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.HashMap;
 
 public class WorldListener implements Listener, Runnable {
 
@@ -50,60 +60,43 @@ public class WorldListener implements Listener, Runnable {
 	public void openDeniedBlocks(PlayerInteractEvent e) {
 
 		if (e.getClickedBlock() == null) return;
-		if (e
-				.getPlayer()
-				.getGameMode()
-				.equals(GameMode.CREATIVE)) return;
-		if (!e
-				.getAction()
-				.equals(Action.RIGHT_CLICK_BLOCK)) return;
-		BlockData block = e
-				.getClickedBlock()
-				.getBlockData();
-		Material type = e
-				.getClickedBlock()
-				.getType();
+		if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) return;
+		if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
+
+		BlockData block = e.getClickedBlock().getBlockData();
+		Material type = e.getClickedBlock().getType();
+		Bukkit.getLogger().info(type.toString());
+
+
 		if (block instanceof Door) return;
 		else if (type.equals(Material.ENDER_CHEST)) return;
 		if (!type.isInteractable()) return;
 		e.setCancelled(true);
 	}
 
-	public void denyInventory(InventoryOpenEvent e) {
-
-		if (!e
-				.getPlayer()
-				.getGameMode()
-				.equals(GameMode.CREATIVE)) {
-			if (e
-					.getInventory()
-					.getType()
-					.equals(InventoryType.CHEST)) return;
-			if (e
-					.getInventory()
-					.getType()
-					.equals(InventoryType.PLAYER)) return;
-			if (e
-					.getInventory()
-					.getType()
-					.equals(InventoryType.ENDER_CHEST)) return;
-			e.setCancelled(true);
-		}
+	@EventHandler
+	public void campfireCook(BlockCookEvent e) {
+		if (e.isCancelled()) return;
+		ItemStack item = e.getResult();
+		HashMap<Material, CustomFood> foods = new HashMap<>(){
+			{
+				put(Material.COOKED_BEEF, new CookedBeef(0));
+				put(Material.COOKED_CHICKEN, new CookedBeef(0));
+				put(Material.COOKED_PORKCHOP, new CookedPork(0));
+			}
+		};
+		CustomFood cookedFood = foods.get(item.getType());
+		e.setResult(cookedFood == null ?
+		            new CharredFood(0).getUpdatedItem(false) :
+		            cookedFood.getUpdatedItem(false));
 	}
 
 	@EventHandler
 	public void onRodThrow(final ProjectileLaunchEvent e) {
 
-		final double v = 1.5; //velocity of the rod
-		if (e
-				.getEntityType()
-				.equals(EntityType.FISHING_HOOK)) {
-			e
-					.getEntity()
-					.setVelocity(e
-							             .getEntity()
-							             .getVelocity()
-							             .multiply(v));
+		final double v = 2.0; //velocity of the rod
+		if (e.getEntityType().equals(EntityType.FISHING_HOOK)) {
+			e.getEntity().setVelocity(e.getEntity().getVelocity().multiply(v));
 		}
 	}
 
