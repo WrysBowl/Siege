@@ -47,7 +47,10 @@ public class StatUpgrade implements CommandExecutor {
 
 		ItemStack mainItem = player.getInventory().getItemInMainHand();
 		CustomItem customMainItem = CustomItemUtils.INSTANCE.getCustomItem(mainItem);
-		if (customMainItem == null) return false;
+		if (customMainItem == null) {
+			player.sendMessage(Utils.lore("<red>You need to hold a weapon or armor to reforge."));
+			return false;
+		}
 		if (!(customMainItem instanceof CustomEquipment)) {
 			player.sendMessage(Utils.lore("<red>You need to hold a weapon or armor to reforge."));
 			return false;

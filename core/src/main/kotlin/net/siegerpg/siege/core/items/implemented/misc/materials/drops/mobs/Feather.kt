@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs
 
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
@@ -11,7 +12,10 @@ class Feather() : CustomMaterial(
 		description = listOf("Ticklish?"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		upgradeStats = hashMapOf(
+				4 to CustomItemUtils.statMap(luck = 1.0),
+				5 to CustomItemUtils.statMap(luck = 10.0)
+		                        )
 		) {
 
 	constructor(quality : Int) : this() {

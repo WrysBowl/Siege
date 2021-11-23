@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks
 
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
@@ -11,7 +12,10 @@ class Titanium() : CustomMaterial(
 		description = listOf("Even better metal"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		upgradeStats = hashMapOf(
+				4 to CustomItemUtils.statMap(toughness = 8.0, strength = 8.0),
+				5 to CustomItemUtils.statMap(toughness = 52.0, strength = 52.0)
+		                        )
 		) {
 
 	constructor(quality : Int) : this() {

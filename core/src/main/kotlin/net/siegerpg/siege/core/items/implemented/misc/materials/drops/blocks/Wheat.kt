@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks
 
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
@@ -11,7 +12,10 @@ class Wheat() : CustomMaterial(
 		description = listOf("The most important", "part of bread"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		upgradeStats = hashMapOf(
+				4 to CustomItemUtils.statMap(regeneration = 0.2),
+				5 to CustomItemUtils.statMap(regeneration = 2.0)
+		                        )
 		) {
 
 	constructor(quality : Int) : this() {
