@@ -26,7 +26,9 @@ abstract class CustomRod(
 		override val baseStats : HashMap<StatTypes, Double>,
 		override var statGem : StatGem? = null,
 		val enchantments : MutableMap<Enchantment, Int>,
-		val fishDropTable : FishDropTable
+		val fishDropTable : FishDropTable,
+		override var upgradeStats : HashMap<StatTypes, Double>? = null
+
                         ) : CustomEquipment {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -89,6 +91,7 @@ abstract class CustomRod(
 		result = 31 * result + item.hashCode()
 		result = 31 * result + type.hashCode()
 		result = 31 * result + enchantments.hashCode()
+		result = 31 * result + (upgradeStats?.hashCode() ?: 0)
 		result = 31 * result + rarity.hashCode()
 		return result
 	}

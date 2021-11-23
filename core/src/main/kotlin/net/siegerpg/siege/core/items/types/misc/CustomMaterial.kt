@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.items.types.misc
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.miscellaneous.lore
@@ -21,10 +22,10 @@ abstract class CustomMaterial(
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.MATERIAL,
+		var upgradeStats : HashMap<Int, HashMap<StatTypes, Double>>? = null
                              ) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
-
 	var tier : Int = 1
 		set(value) {
 			field = value
@@ -56,7 +57,16 @@ abstract class CustomMaterial(
 		meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
+		meta.lore(" ")
+		if (upgradeStats != null && upgradeStats!!.contains(tier)) {
+			val upgrades : HashMap<StatTypes, Double>? = upgradeStats!![tier]
+			meta.lore("<gold>Merge on Item")
+			upgrades?.keys?.forEach {
+				if (upgrades[it]!! > 0.0) meta.lore(" <green>+${upgrades[it]} <gray>${it.stylizedName}")
+				else meta.lore(" <red>-${upgrades[it]} <gray>${it.stylizedName}")
 
+			}
+		}
 		meta.lore(" ")
 		description.forEach {
 			meta.lore("<r><dark_gray>$it")
@@ -97,6 +107,7 @@ abstract class CustomMaterial(
 		result = 31 * result + item.hashCode()
 		result = 31 * result + type.hashCode()
 		result = 31 * result + rarity.hashCode()
+		result = 31 * result + (upgradeStats?.hashCode() ?: 0)
 		result = 31 * result + tier
 		return result
 	}
