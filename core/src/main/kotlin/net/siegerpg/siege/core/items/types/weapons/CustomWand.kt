@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
+import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Material
@@ -33,7 +34,7 @@ abstract class CustomWand(
 		override var statGem : StatGem? = null,
 		override var upgradeStats : HashMap<StatTypes, Double>? = null
 
-                         ) : CustomEquipment {
+                         ) : CustomWeapon {
 
 	override var rarity : Rarity = Rarity.COMMON
 

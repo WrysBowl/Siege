@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
+import de.tr7zw.nbtapi.NBTItem
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -95,7 +96,7 @@ interface CustomEquipment : CustomItem {
 								} <gray>${it.stylizedName}"
 						         )
 					else {
-						if (upgradeStats[it] == 0.0) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
+						if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
 						else meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
 					}
 				} else {
@@ -106,7 +107,7 @@ interface CustomEquipment : CustomItem {
 								                    )
 							} <gray>${it.stylizedName}"
 					                                        )
-					if (upgradeStats[it] == 0.0) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+					if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 					else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
 				}
 			}
@@ -125,7 +126,6 @@ interface CustomEquipment : CustomItem {
 				ItemFlag.HIDE_ENCHANTS,
 				ItemFlag.HIDE_DYE
 		                 )
-
 		item.itemMeta = meta
 		return item
 	}
@@ -136,6 +136,9 @@ interface CustomEquipment : CustomItem {
 				"equipmentStatGem" to if (statGem != null) statGem.toString() else null,
 				"upgrades" to if (this.upgradeStats != null) upgradeStats.toString() else null
 		                      )
+		Bukkit.getLogger().info(upgradeStats.toString())
+		val nbt = NBTItem.convertItemtoNBT(this.item)
+		Bukkit.getLogger().info(nbt.toString())
 	}
 
 	fun onHit(e : EntityDamageByEntityEvent) {
