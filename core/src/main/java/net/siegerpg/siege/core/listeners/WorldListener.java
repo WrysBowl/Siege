@@ -65,7 +65,6 @@ public class WorldListener implements Listener, Runnable {
 
 		BlockData block = e.getClickedBlock().getBlockData();
 		Material type = e.getClickedBlock().getType();
-		Bukkit.getLogger().info(type.toString());
 
 
 		if (block instanceof Door) return;
