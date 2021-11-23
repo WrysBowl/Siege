@@ -81,15 +81,18 @@ abstract class CustomMeleeWeapon(
 						else meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
 					}
 				} else {
-					if (hideRarity || quality < 0) meta.lore(
-							"<r><green>+${baseStats[it]?.times(0.5)}. . .${
-								baseStats[it]?.times(
-										1.5
-								                    )
-							} <gray>${it.stylizedName}"
-					                                        )
-					if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
-					else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
+					if (hideRarity || quality < 0) {
+						meta.lore(
+								"<r><green>+${baseStats[it]?.times(0.5)}. . .${
+									baseStats[it]?.times(
+											1.5
+									                    )
+								} <gray>${it.stylizedName}"
+						         )
+					} else {
+						if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+						else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
+					}
 				}
 			}
 		}
