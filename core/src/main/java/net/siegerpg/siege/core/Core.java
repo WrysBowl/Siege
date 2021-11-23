@@ -37,7 +37,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.UUID;
 
 @SuppressWarnings( "unused" )
 public final class Core extends JavaPlugin {
@@ -141,6 +140,8 @@ public final class Core extends JavaPlugin {
 			commandList.put("getKey", new GetKey());
 			commandList.put("stats", new Stats());
 			commandList.put("dungeon", new DungeonCommand());
+			commandList.put("statUpgrade", new StatUpgradeListener());
+
 		}
 
 		commandList.forEach((str, ex) -> this

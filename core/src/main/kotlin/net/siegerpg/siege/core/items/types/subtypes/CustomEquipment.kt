@@ -11,10 +11,11 @@ import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
-import org.bukkit.attribute.Attribute
+import org.bukkit.Bukkit
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+
 
 interface CustomEquipment : CustomItem {
 
@@ -37,6 +38,18 @@ interface CustomEquipment : CustomItem {
 			return false
 		}
 		return true
+	}
+
+	fun addUpgradeStats(upgrades : HashMap<StatTypes, Double>) {
+		for (baseStat in baseStats) {
+			//only allow upgraded stats to add if base stat for it exists
+			if (!upgrades.containsKey(baseStat.key)) continue
+			val upgradeValue : Double = upgrades[baseStat.key] ?: 0.0
+			val originalValue : Double = this.upgradeStats?.get(baseStat.key) ?: 0.0
+			if (upgradeStats == null) upgradeStats = CustomItemUtils.statMap()
+			this.upgradeStats!![baseStat.key] = upgradeValue + originalValue
+		}
+		this.serialize()
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
@@ -82,7 +95,8 @@ interface CustomEquipment : CustomItem {
 								} <gray>${it.stylizedName}"
 						         )
 					else {
-						meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
+						if (upgradeStats[it] == 0.0) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
+						else meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
 					}
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
@@ -92,7 +106,8 @@ interface CustomEquipment : CustomItem {
 								                    )
 							} <gray>${it.stylizedName}"
 					                                        )
-					meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
+					if (upgradeStats[it] == 0.0) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+					else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
 				}
 			}
 		}
@@ -119,7 +134,7 @@ interface CustomEquipment : CustomItem {
 		super.serialize()
 		item = item.setNbtTags(
 				"equipmentStatGem" to if (statGem != null) statGem.toString() else null,
-				"upgrades" to if (upgradeStats != null) upgradeStats else null
+				"upgrades" to if (this.upgradeStats != null) upgradeStats.toString() else null
 		                      )
 	}
 
@@ -133,8 +148,15 @@ interface CustomEquipment : CustomItem {
 			item.getNbtTag<String>("equipmentStatGem")?.let {
 				statGem = StatGem.fromString(it)
 			}
-			item.getNbtTag<HashMap<StatTypes, Double>>("upgrades")?.let {
-				upgradeStats = it
+			item.getNbtTag<String>("upgrades")?.let { it ->
+				if (it.isNotEmpty()) {
+					val map : Map<StatTypes, Double> = it.split(",").associate {
+						//This is ugly as heck
+						val (left, right) = it.replace("{", "").replace("}", "").split("=")
+						StatTypes.getFromId(left)!! to right.toDouble()
+					}
+					upgradeStats = HashMap(map)
+				}
 			}
 		} catch (e : Exception) { }
 

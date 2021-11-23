@@ -167,7 +167,8 @@ object CustomItemUtils {
 			//player.chat("You are holding a custom item")
 			if (it is CustomWeapon || it is CustomWand) {
 				val itemStats =
-						getStats(it as CustomEquipment, addGem = true, addRarity = true)
+						getStats(it as CustomEquipment, addGem = true, addRarity = true) +
+						getUpgradedStats(it)
 				itemStats[statType]?.let { stat ->
 					if (it.levelRequirement == null) {
 						output += stat
@@ -182,7 +183,8 @@ object CustomItemUtils {
 		inventory.helmet?.let { helmet ->
 			getCustomItem(helmet)?.let {
 				if (it is CustomHelmet) {
-					val itemStats = getStats(it, addGem = true, addRarity = true)
+					val itemStats = getStats(it, addGem = true, addRarity = true) +
+					                getUpgradedStats(it)
 					itemStats[statType]?.let { stat ->
 						if (it.levelRequirement == null) {
 							output += stat
@@ -197,7 +199,8 @@ object CustomItemUtils {
 		inventory.chestplate?.let { chestplate ->
 			getCustomItem(chestplate)?.let {
 				if (it is CustomChestplate) {
-					val itemStats = getStats(it, addGem = true, addRarity = true)
+					val itemStats = getStats(it, addGem = true, addRarity = true) +
+					                getUpgradedStats(it)
 					itemStats[statType]?.let { stat ->
 						if (it.levelRequirement == null) {
 							output += stat
@@ -212,7 +215,8 @@ object CustomItemUtils {
 		inventory.leggings?.let { leggings ->
 			getCustomItem(leggings)?.let {
 				if (it is CustomLeggings) {
-					val itemStats = getStats(it, addGem = true, addRarity = true)
+					val itemStats = getStats(it, addGem = true, addRarity = true) +
+					                getUpgradedStats(it)
 					itemStats[statType]?.let { stat ->
 						if (it.levelRequirement == null) {
 							output += stat
@@ -227,7 +231,8 @@ object CustomItemUtils {
 		inventory.boots?.let { boots ->
 			getCustomItem(boots)?.let {
 				if (it is CustomBoots) {
-					val itemStats = getStats(it, addGem = true, addRarity = true)
+					val itemStats = getStats(it, addGem = true, addRarity = true) +
+					                getUpgradedStats(it)
 					itemStats[statType]?.let { stat ->
 						if (it.levelRequirement == null) {
 							output += stat

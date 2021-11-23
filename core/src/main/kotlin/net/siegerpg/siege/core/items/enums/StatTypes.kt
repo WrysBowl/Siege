@@ -13,7 +13,7 @@ enum class StatTypes(val stylizedName : String) {
 
 		fun getFromId(id : String?) : StatTypes? {
 			for (statType in values()) {
-				if (statType.stylizedName.equals(id, ignoreCase = true)) return statType
+				if (statType.name == id) return statType
 			}
 			return null
 		}

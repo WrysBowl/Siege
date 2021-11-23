@@ -65,18 +65,20 @@ abstract class CustomMeleeWeapon(
 			meta.lore(" ")
 			val realStats =
 					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
+			val upgradeStats = CustomItemUtils.getUpgradedStats(this)
 			baseStats.keys.forEach {
 				if (realStats[it]!! < 0.0) {
-					if (hideRarity || quality < 0) meta.lore(
-							"<r><red>${baseStats[it]?.times(0.5)}. . .${
-								baseStats[it]?.times(
-										1.5
-								                    )
-							} <gray>${it.stylizedName}"
-					                                        )
+					if (hideRarity || quality < 0)
+						meta.lore(
+								"<r><red>-${baseStats[it]?.times(0.5)}. . . -${
+									baseStats[it]?.times(
+											1.5
+									                    )
+								} <gray>${it.stylizedName}"
+						         )
 					else {
-						if (upgradeStats == null) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
-						else meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats!![it]}) <gray>${it.stylizedName}")
+						if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
+						else meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
 					}
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
@@ -86,8 +88,8 @@ abstract class CustomMeleeWeapon(
 								                    )
 							} <gray>${it.stylizedName}"
 					                                        )
-					if (upgradeStats == null) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
-					else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats!![it]}) <gray>${it.stylizedName}")
+					if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+					else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
 				}
 			}
 		}
@@ -100,7 +102,12 @@ abstract class CustomMeleeWeapon(
 		meta.lore("<r><gray>Level: $levelRequirement")
 
 		meta.isUnbreakable = true
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
+		meta.addItemFlags(
+				ItemFlag.HIDE_ATTRIBUTES,
+				ItemFlag.HIDE_UNBREAKABLE,
+				ItemFlag.HIDE_ENCHANTS,
+				ItemFlag.HIDE_DYE
+		                 )
 		item.itemMeta = meta
 		return item
 	}
