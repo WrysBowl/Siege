@@ -30,7 +30,9 @@ abstract class CustomWand(
 		val green : Int = 255,
 		val blue : Int = 255,
 		val damageRadius : Double = 2.5,
-		override var statGem : StatGem? = null
+		override var statGem : StatGem? = null,
+		override var upgradeStats : HashMap<StatTypes, Double>? = null
+
                          ) : CustomEquipment {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -78,7 +80,10 @@ abstract class CustomWand(
 								                    )
 							} <gray>${it.stylizedName}"
 					                                        )
-					else meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
+					else {
+						if (upgradeStats == null) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
+						else meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats!![it]}) <gray>${it.stylizedName}")
+					}
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
 							"<r><green>+${baseStats[it]?.times(0.5)}. . .${
@@ -87,8 +92,9 @@ abstract class CustomWand(
 								                    )
 							} <gray>${it.stylizedName}"
 					                                        )
-					else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
-				} // TODO: Make special items work with rarity multiplier
+					if (upgradeStats == null) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+					else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats!![it]}) <gray>${it.stylizedName}")
+				}
 			}
 		}
 		meta.lore("<r><gray>Radius <yellow>$damageRadius")
@@ -139,6 +145,7 @@ abstract class CustomWand(
 		result = 31 * result + blue
 		result = 31 * result + damageRadius.hashCode()
 		result = 31 * result + (statGem?.hashCode() ?: 0)
+		result = 31 * result + (upgradeStats?.hashCode() ?: 0)
 		result = 31 * result + rarity.hashCode()
 		return result
 	}

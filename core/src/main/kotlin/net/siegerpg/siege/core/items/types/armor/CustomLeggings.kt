@@ -21,7 +21,9 @@ abstract class CustomLeggings(
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.LEGGINGS,
 		override var statGem : StatGem? = null,
-		override var leatherColor : Color = Core.defaultLeatherColor
+		override var leatherColor : Color = Core.defaultLeatherColor,
+		override var upgradeStats : HashMap<StatTypes, Double>? = null
+
                              ) : CustomArmor {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -45,6 +47,7 @@ abstract class CustomLeggings(
 		result = 31 * result + quality
 		result = 31 * result + item.hashCode()
 		result = 31 * result + baseStats.hashCode()
+		result = 31 * result + (upgradeStats?.hashCode() ?: 0)
 		result = 31 * result + type.hashCode()
 		result = 31 * result + (statGem?.hashCode() ?: 0)
 		result = 31 * result + leatherColor.hashCode()

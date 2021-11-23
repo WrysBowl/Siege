@@ -290,6 +290,22 @@ object CustomItemUtils {
 		return map
 	}
 
+	fun getUpgradedStats(
+			item : CustomEquipment,
+	                    ) : HashMap<StatTypes, Double> {
+		val map = hashMapOf<StatTypes, Double>()
+		if (item.upgradeStats == null) return map
+		StatTypes.values().forEach {
+			var totalAmount = 0.0
+			if (item.upgradeStats!!.containsKey(it)) {
+				totalAmount += item.upgradeStats!![it]!!
+			}
+
+			map[it] = Utils.round(totalAmount, 2)
+		}
+		return map
+	}
+
 	@JvmStatic
 	fun getRarityMultiplier(quality : Int) : Double = quality / 100.0 + 0.5
 

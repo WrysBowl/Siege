@@ -21,7 +21,8 @@ abstract class CustomChestplate(
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.CHESTPLATE,
 		override var statGem : StatGem? = null,
-		override var leatherColor : Color = Core.defaultLeatherColor
+		override var leatherColor : Color = Core.defaultLeatherColor,
+		override var upgradeStats : HashMap<StatTypes, Double>? = null
                                ) : CustomArmor {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -47,6 +48,7 @@ abstract class CustomChestplate(
 		result = 31 * result + baseStats.hashCode()
 		result = 31 * result + type.hashCode()
 		result = 31 * result + (statGem?.hashCode() ?: 0)
+		result = 31 * result + (upgradeStats?.hashCode() ?: 0)
 		result = 31 * result + leatherColor.hashCode()
 		result = 31 * result + rarity.hashCode()
 		return result

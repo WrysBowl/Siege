@@ -23,7 +23,8 @@ abstract class CustomBow(
 		override var item : ItemStack = ItemStack(material),
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.BOW,
-		override var statGem : StatGem? = null
+		override var statGem : StatGem? = null,
+		override var upgradeStats : HashMap<StatTypes, Double>? = null
                         ) : CustomWeapon {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -63,7 +64,10 @@ abstract class CustomBow(
 								                    )
 							} <gray>${it.stylizedName}"
 					                                        )
-					else meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
+					else {
+						if (upgradeStats == null) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
+						else meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats!![it]}) <gray>${it.stylizedName}")
+					}
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
 							"<r><green>+${baseStats[it]?.times(0.5)}. . .${
@@ -72,7 +76,8 @@ abstract class CustomBow(
 								                    )
 							} <gray>${it.stylizedName}"
 					                                        )
-					else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+					if (upgradeStats == null) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+					else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats!![it]}) <gray>${it.stylizedName}")
 				}
 			}
 		}
@@ -96,6 +101,22 @@ abstract class CustomBow(
 		other?.let { return false }
 		if (this::class.qualifiedName != other!!::class.qualifiedName) return false
 		return true
+	}
+
+	override fun hashCode() : Int {
+		var result = name.hashCode()
+		result = 31 * result + (customModelData ?: 0)
+		result = 31 * result + (levelRequirement ?: 0)
+		result = 31 * result + description.hashCode()
+		result = 31 * result + material.hashCode()
+		result = 31 * result + quality
+		result = 31 * result + item.hashCode()
+		result = 31 * result + baseStats.hashCode()
+		result = 31 * result + type.hashCode()
+		result = 31 * result + (statGem?.hashCode() ?: 0)
+		result = 31 * result + (upgradeStats?.hashCode() ?: 0)
+		result = 31 * result + rarity.hashCode()
+		return result
 	}
 
 

@@ -20,6 +20,7 @@ interface CustomEquipment : CustomItem {
 
 	var statGem : StatGem?
 	val baseStats : HashMap<StatTypes, Double>
+	var upgradeStats : HashMap<StatTypes, Double>?
 
 	fun addStatGem(newStatGem : StatGem) {
 		this.statGem = newStatGem
@@ -69,16 +70,20 @@ interface CustomEquipment : CustomItem {
 			meta.lore(" ")
 			val realStats =
 					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
+			val upgradeStats = CustomItemUtils.getUpgradedStats(this)
 			baseStats.keys.forEach {
 				if (realStats[it]!! < 0.0) {
-					if (hideRarity || quality < 0) meta.lore(
-							"<r><red>${baseStats[it]?.times(0.5)}. . .${
-								baseStats[it]?.times(
-										1.5
-								                    )
-							} <gray>${it.stylizedName}"
-					                                        )
-					else meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
+					if (hideRarity || quality < 0)
+						meta.lore(
+								"<r><red>-${baseStats[it]?.times(0.5)}. . . -${
+									baseStats[it]?.times(
+											1.5
+									                    )
+								} <gray>${it.stylizedName}"
+						         )
+					else {
+						meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
+					}
 				} else {
 					if (hideRarity || quality < 0) meta.lore(
 							"<r><green>+${baseStats[it]?.times(0.5)}. . .${
@@ -87,8 +92,8 @@ interface CustomEquipment : CustomItem {
 								                    )
 							} <gray>${it.stylizedName}"
 					                                        )
-					else meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
-				} // TODO: Make special items work with rarity multiplier
+					meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
+				}
 			}
 		}
 		meta.lore(" ")
@@ -97,7 +102,6 @@ interface CustomEquipment : CustomItem {
 		}
 		meta.lore(" ")
 		meta.lore("<r><gray>Level: $levelRequirement")
-		//if (hideRarity) meta.lore("<r><red>This is not the real item")
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(
@@ -106,7 +110,6 @@ interface CustomEquipment : CustomItem {
 				ItemFlag.HIDE_ENCHANTS,
 				ItemFlag.HIDE_DYE
 		                 )
-		meta.removeAttributeModifier(Attribute.GENERIC_ARMOR)
 
 		item.itemMeta = meta
 		return item
@@ -115,7 +118,8 @@ interface CustomEquipment : CustomItem {
 	override fun serialize() {
 		super.serialize()
 		item = item.setNbtTags(
-				"equipmentStatGem" to if (statGem != null) statGem.toString() else null
+				"equipmentStatGem" to if (statGem != null) statGem.toString() else null,
+				"upgrades" to if (upgradeStats != null) upgradeStats else null
 		                      )
 	}
 
@@ -129,9 +133,10 @@ interface CustomEquipment : CustomItem {
 			item.getNbtTag<String>("equipmentStatGem")?.let {
 				statGem = StatGem.fromString(it)
 			}
-		} catch (e : Exception) {
-
-		}
+			item.getNbtTag<HashMap<StatTypes, Double>>("upgrades")?.let {
+				upgradeStats = it
+			}
+		} catch (e : Exception) { }
 
 	}
 }
