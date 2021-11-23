@@ -20,9 +20,6 @@ interface CustomWeapon : CustomEquipment {
 		item = item.setNbtTags(
 				"upgrades" to if (this.upgradeStats != null) upgradeStats.toString() else null
 		                      )
-		Bukkit.getLogger().info(upgradeStats.toString())
-		val nbt = NBTItem.convertItemtoNBT(this.item)
-		Bukkit.getLogger().info(nbt.toString())
 	}
 
 	override fun deserialize() {

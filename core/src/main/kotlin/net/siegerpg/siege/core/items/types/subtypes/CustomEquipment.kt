@@ -136,9 +136,6 @@ interface CustomEquipment : CustomItem {
 				"equipmentStatGem" to if (statGem != null) statGem.toString() else null,
 				"upgrades" to if (this.upgradeStats != null) upgradeStats.toString() else null
 		                      )
-		Bukkit.getLogger().info(upgradeStats.toString())
-		val nbt = NBTItem.convertItemtoNBT(this.item)
-		Bukkit.getLogger().info(nbt.toString())
 	}
 
 	fun onHit(e : EntityDamageByEntityEvent) {

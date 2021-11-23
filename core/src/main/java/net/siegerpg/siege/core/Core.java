@@ -140,7 +140,7 @@ public final class Core extends JavaPlugin {
 			commandList.put("getKey", new GetKey());
 			commandList.put("stats", new Stats());
 			commandList.put("dungeon", new DungeonCommand());
-			commandList.put("statUpgrade", new StatUpgradeListener());
+			commandList.put("statUpgrade", new StatUpgrade());
 
 		}
 
@@ -181,7 +181,6 @@ public final class Core extends JavaPlugin {
 				new MeraTransit(),
 				new SymoneCollector(),
 				new MeraTransit(),
-				new BenButcher(),
 				new RichardBanker(),
 				new BartBeggar(),
 				new Herbert(),
