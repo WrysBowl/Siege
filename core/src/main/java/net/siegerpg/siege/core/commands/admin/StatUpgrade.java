@@ -49,13 +49,15 @@ public class StatUpgrade implements CommandExecutor {
 		CustomItem customMainItem = CustomItemUtils.INSTANCE.getCustomItem(mainItem);
 		if (customMainItem == null) {
 			player.sendMessage(Utils.lore("<red>You need to hold a weapon or armor to reforge."));
+			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
 			return false;
 		}
 		if (!(customMainItem instanceof CustomEquipment)) {
 			player.sendMessage(Utils.lore("<red>You need to hold a weapon or armor to reforge."));
+			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
 			return false;
 		}
-
+		player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1.0f, 1.0f);
 		ChestGui menu = new StatUpgrade().getMenu(player, (CustomEquipment) customMainItem);
 		menu.show(player);
 		this.menu = menu;
