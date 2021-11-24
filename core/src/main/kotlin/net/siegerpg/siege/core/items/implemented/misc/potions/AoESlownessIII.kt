@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.types.misc.CustomPotion
 import net.siegerpg.siege.core.listeners.CustomItemKotlinListener
 import org.bukkit.Material
 import org.bukkit.Sound
+import org.bukkit.entity.Mob
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
@@ -41,7 +42,7 @@ class AoESlownessIII() : CustomPotion(
 				} else {
 					countDown -= 1
 					for (e in player.location.getNearbyLivingEntities(5.0)) {
-						e.addPotionEffect(realPotion)
+						if (e is Mob) e.addPotionEffect(potion)
 					}
 				}
 			}
