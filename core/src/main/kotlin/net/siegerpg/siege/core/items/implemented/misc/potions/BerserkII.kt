@@ -27,7 +27,7 @@ class BerserkII() : CustomPotion(
 
 	constructor(quality : Int) : this() {
 		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.rarity = Rarity.RARE
 		this.serialize()
 	}
 
