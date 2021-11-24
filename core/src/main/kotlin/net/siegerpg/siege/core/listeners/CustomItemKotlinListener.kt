@@ -37,7 +37,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 	var cooldownWand : MutableList<Player> = mutableListOf()
 	var arrowItems : HashMap<Player, ItemStack> = hashMapOf()
-
+	var damageMulti : HashMap<Player, Double> = hashMapOf()
 
 	/*
 	@EventHandler()
@@ -214,18 +214,17 @@ class CustomItemKotlinListener : Listener, Runnable {
 				                                                   ) + vicMaxHealth + (victim.level * 2)
 				else vicMaxHealth
 		if (vicHealthStat < 0.0) {
-			e.damage = 9999.0
+			e.damage = 99999.0
 			return
 		}
 		val vicToughness =
-				if (victim is Player) CustomItemUtils.getPlayerStat(
-						victim,
-						StatTypes.TOUGHNESS
-				                                                   )
+				if (victim is Player)
+					CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS) / (damageMulti[attacker] ?: 1.0)
 				else 0.0
 		val attStrengthStat =
 				if (attacker is Player && actualDamage > 0)
-					(damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
+					(damageMulti[attacker]
+					 ?: 1.0) * (damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
 				else damage
 		val reducedDamage =
 				attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered

@@ -11,14 +11,14 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.potion.PotionType
 
-class HealthVial() : CustomPotion(
-		name = "Health Vial",
-		customModelData = 710001,
+class HealthPotionI() : CustomPotion(
+		name = "Health Potion I",
+		customModelData = 810001,
 		description = listOf("Heals you by a small amount"),
 		levelRequirement = 0,
 		material = Material.POTION,
 		potion = PotionType.INSTANT_HEAL
-                                 ) {
+                                    ) {
 
 	override fun speciality(player : Player) {
 		CustomItemUtils.addHealth(player, 100.0)
