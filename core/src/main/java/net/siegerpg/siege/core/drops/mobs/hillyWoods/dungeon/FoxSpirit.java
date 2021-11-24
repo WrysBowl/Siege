@@ -26,7 +26,7 @@ public class FoxSpirit extends MobDropTable {
 
 	public FoxSpirit() {
 
-		super("FoxSpirit", 20000, 25000, 25000, 30000, new Reward[] {
+		super("FoxSpirit", 20000, 25000, 75000, 90000, new Reward[] {
 				new Reward(Chain.Companion
 						           .tier(2)
 						           .getUpdatedItem(false)

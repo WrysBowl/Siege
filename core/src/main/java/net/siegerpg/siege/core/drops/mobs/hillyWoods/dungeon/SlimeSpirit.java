@@ -24,7 +24,7 @@ public class SlimeSpirit extends MobDropTable {
 
 	public SlimeSpirit() {
 
-		super("SlimeSpirit", 1000, 1500, 1000, 1500, new Reward[] {
+		super("SlimeSpirit", 1000, 1500, 3000, 4500, new Reward[] {
 				new Reward(Slime.Companion
 						           .tier(2)
 						           .getUpdatedItem(false)

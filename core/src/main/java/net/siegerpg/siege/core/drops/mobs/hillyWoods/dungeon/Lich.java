@@ -24,7 +24,7 @@ public class Lich extends MobDropTable {
 
 	public Lich() {
 
-		super("Lich", 5000, 5500, 5000, 5500, new Reward[] {
+		super("Lich", 5000, 5500, 15000, 17000, new Reward[] {
 				new Reward(Seed.Companion
 						           .tier(2)
 						           .getUpdatedItem(false)
