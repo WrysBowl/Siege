@@ -12,6 +12,8 @@ import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.PotionMeta
+import org.bukkit.potion.PotionData
 import org.bukkit.potion.PotionType
 
 abstract class CustomPotion(
@@ -48,6 +50,12 @@ abstract class CustomPotion(
 
 		val meta = item.itemMeta
 
+		if (meta is PotionMeta) {
+			item.type = material
+			meta.basePotionData = PotionData(potion, false, false)
+		}
+
+
 		val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
 
 		meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
@@ -60,7 +68,11 @@ abstract class CustomPotion(
 		}
 
 		meta.isUnbreakable = true
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
+		meta.addItemFlags(
+				ItemFlag.HIDE_ATTRIBUTES,
+				ItemFlag.HIDE_UNBREAKABLE,
+				ItemFlag.HIDE_POTION_EFFECTS
+		                 )
 		item.itemMeta = meta
 		return item
 	}

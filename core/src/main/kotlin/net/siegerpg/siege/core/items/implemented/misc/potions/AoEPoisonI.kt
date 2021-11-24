@@ -39,7 +39,7 @@ class AoEPoisonI() : CustomPotion(
 					}
 				}
 			}
-		}.runTaskTimer(Core.plugin(), 20, 0)
+		}.runTaskTimer(Core.plugin(), 20, 20)
 	}
 
 	constructor(quality : Int) : this() {
