@@ -15,25 +15,18 @@ import org.bukkit.potion.PotionEffectType
 import org.bukkit.potion.PotionType
 import org.bukkit.scheduler.BukkitRunnable
 
-class AoESlownessIII() : CustomPotion(
-		name = "Aura of Slowness III",
-		customModelData = 830003,
-		description = listOf(
-				"Effects all entities",
-				"with slowness 3",
-				"within 5 blocks"
-		                    ),
+class AoEPoisonIII() : CustomPotion(
+		name = "Aura of Poison III",
+		customModelData = 830004,
+		description = listOf("Mobs within 5 blocks", "are inflicted by poison III"),
 		levelRequirement = 0,
 		material = Material.POTION,
-		potion = PotionType.SLOWNESS
-                                     ) {
+		potion = PotionType.POISON
+                                   ) {
 
 	override fun speciality(player : Player) {
 		var countDown = 120
-		val potion = PotionEffect(PotionEffectType.SLOW, 2400, 0)
-		val realPotion = PotionEffect(PotionEffectType.SLOW, 40, 2)
-
-		player.addPotionEffect(potion)
+		val potion = PotionEffect(PotionEffectType.POISON, 40, 2)
 		object : BukkitRunnable() {
 			override fun run() {
 				if (countDown <= 0) {
@@ -41,7 +34,7 @@ class AoESlownessIII() : CustomPotion(
 				} else {
 					countDown -= 1
 					for (e in player.location.getNearbyLivingEntities(5.0)) {
-						e.addPotionEffect(realPotion)
+						e.addPotionEffect(potion)
 					}
 				}
 			}

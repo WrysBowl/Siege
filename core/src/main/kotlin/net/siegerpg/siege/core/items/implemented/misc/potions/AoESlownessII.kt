@@ -31,7 +31,7 @@ class AoESlownessII() : CustomPotion(
 	override fun speciality(player : Player) {
 		var countDown = 90
 		val potion = PotionEffect(PotionEffectType.SLOW, 1800, 0)
-		val realPotion = PotionEffect(PotionEffectType.SLOW, 1800, 1)
+		val realPotion = PotionEffect(PotionEffectType.SLOW, 40, 1)
 
 		player.addPotionEffect(potion)
 		object : BukkitRunnable() {
