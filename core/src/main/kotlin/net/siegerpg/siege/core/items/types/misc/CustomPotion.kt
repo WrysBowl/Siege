@@ -40,10 +40,10 @@ abstract class CustomPotion(
 	open fun onConsume(e : PlayerItemConsumeEvent) {
 		e.isCancelled =
 				true //cancelled to prevent player from drinking a vanilla type potion
-		e.setItem(e.item.asQuantity(e.item.amount - 1))
 		Bukkit.getScheduler().runTask(Core.plugin(), Runnable {
 			speciality(e.player)
 		})
+		e.player.inventory.setItemInMainHand(ItemStack(Material.AIR))
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
