@@ -35,6 +35,7 @@ public class DropTable implements CommandExecutor {
 	ItemStack grassBlock;
 	ItemStack llama_egg;
 	ItemStack endermite_egg;
+	ItemStack next;
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -101,6 +102,18 @@ public class DropTable implements CommandExecutor {
 			}
 		});
 		bossDrops.setItemMeta(bossDropsItemMeta);
+
+		//Creating Next Icon
+		ItemStack next = new ItemStack(Material.SPECTRAL_ARROW);
+		ItemMeta nextItemMeta = next.getItemMeta();
+		nextItemMeta.displayName(Utils.lore("<red><bold>NEXT >"));
+		nextItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Next page"));
+			}
+		});
+		next.setItemMeta(nextItemMeta);
+		this.next = next;
 
 		row.addItem(new GuiItem(blockDrops, inventoryClickEvent -> {
 			getBlockDrops(0, player).show(player);
@@ -177,7 +190,7 @@ public class DropTable implements CommandExecutor {
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
 
 		final int newPosition = endPosition;
-		nextButton.addItem(new GuiItem(this.grassBlock, inventoryClickEvent -> {
+		nextButton.addItem(new GuiItem(this.next, inventoryClickEvent -> {
 			if (newPosition >= dropTable.size()-1) getBlockDrops(0, player).show(player);
 			else getBlockDrops(newPosition, player).show(player);
 		}));
@@ -243,7 +256,7 @@ public class DropTable implements CommandExecutor {
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
 
 		final int newPosition = endPosition;
-		nextButton.addItem(new GuiItem(this.llama_egg, inventoryClickEvent -> {
+		nextButton.addItem(new GuiItem(this.next, inventoryClickEvent -> {
 			if (newPosition >= dropTable.size()-1) getMobDrops(0, player).show(player);
 			else getMobDrops(newPosition, player).show(player);
 		}));
