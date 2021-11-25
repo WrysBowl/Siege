@@ -62,7 +62,10 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"gilbert" to Gilbert(),
 						"jewel" to Jewel(),
 						"berta" to Berta(),
-						"amber" to Amber()
+						"amber" to Amber(),
+						"twig" to Twig(),
+						"stickTierTwo" to StickTierTwo()
+
 				         )
 		                   )
 
