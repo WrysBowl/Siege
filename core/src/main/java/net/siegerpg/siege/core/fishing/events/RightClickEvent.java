@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomRod;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -48,8 +49,16 @@ public class RightClickEvent implements Listener {
 			ItemStack item = player
 					.getInventory()
 					.getItemInMainHand();
-			CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 			e.setCancelled(true);
+			if (e.getClickedBlock() != null) {
+				Material type = e.getClickedBlock().getType();
+				if (e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.FISHING_ROD) &&
+				    type.isInteractable()) {
+					return;
+				}
+			}
+
+			CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 			if (!(customItem instanceof CustomRod)) return;
 			if (customItem.getLevelRequirement() == null) return;
 			Pair< Short, Integer > levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
