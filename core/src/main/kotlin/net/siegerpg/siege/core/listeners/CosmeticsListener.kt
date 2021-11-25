@@ -16,6 +16,7 @@ import org.bukkit.event.Event
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.PlayerInteractEvent
@@ -119,8 +120,9 @@ class CosmeticsListener : Listener {
 				if (customItem is CustomCosmetic) customItem.onCosmeticEquip(e)
 			}
 			return
-		} //verify both items are CustomHelmets
-		itemInteractedWith.onCosmeticEquip(e)
+		} else {
+			itemInteractedWith.onCosmeticEquip(e)
+		}
 	}
 
 	@EventHandler
@@ -129,5 +131,21 @@ class CosmeticsListener : Listener {
 				getCustomItem(e.player.inventory.itemInMainHand) ?: return //helmet
 		if (itemInteractedWith !is CustomCosmetic) return //verify both items are CustomHelmets
 		itemInteractedWith.onCosmeticSpeak(e)
+	}
+
+	@EventHandler
+	fun onCosmeticDamage(e : EntityDamageByEntityEvent) {
+		if (e.entity !is Player) return
+		val itemInteractedWith = getCustomItem((e.entity as Player).inventory.helmet) ?: return //helmet
+		if (itemInteractedWith !is CustomCosmetic) {
+			if (itemInteractedWith is CustomHelmet) {
+				val item : ItemStack = itemInteractedWith.storedItem ?: return
+				val customItem : CustomItem = getCustomItem(item) ?: return
+				if (customItem is CustomCosmetic) customItem.onCosmeticDamage(e)
+			}
+			return
+		} else {
+			itemInteractedWith.onCosmeticDamage(e)
+		}
 	}
 }
