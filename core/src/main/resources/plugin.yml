@@ -68,3 +68,5 @@ commands:
     description: Upgrades a stat on a player's item using a material
   drops:
     description: Displays all drop tables!
+  resourcePack:
+    description: Sets your resource pack correctly
