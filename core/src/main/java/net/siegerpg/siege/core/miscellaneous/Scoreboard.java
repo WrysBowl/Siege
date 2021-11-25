@@ -59,13 +59,11 @@ public class Scoreboard {
 			if (GlobalMultipliers.expMultiplier > 1.0) {
 				replaceScore(
 						o, 8,
-						Utils.tacc("&7\u2560 &7EXP &d" + GlobalMultipliers.expMultiplier) + "x"
-				            );
+						Utils.tacc("&7\u2560 &7EXP &d" + (GlobalMultipliers.expMultiplier-1)*100 + "%"));
 			}
 			if (GlobalMultipliers.goldMultiplier > 1.0) {
 				replaceScore(
-						o, 7, Utils.tacc("&7\u2560 &7Gold &e" + GlobalMultipliers.goldMultiplier) +
-						      "x");
+						o, 7, Utils.tacc("&7\u2560 &7Gold &e" + (GlobalMultipliers.goldMultiplier-1)*100 + "%"));
 			}
 		}
 		replaceScore(o, 6, "   ");
