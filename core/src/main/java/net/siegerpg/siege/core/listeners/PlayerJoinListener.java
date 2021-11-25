@@ -139,7 +139,16 @@ public class PlayerJoinListener implements Listener {
 							.getWorld("SiegeHub"), 51.5, 70, 5.5, 90, 20));
 		}
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
-		if (!player.hasResourcePack()) player.sendMessage(Utils.lore("<red><bold>Please use <yellow>/resourcePack!"));
+		if (!player.hasResourcePack()) {
+			new BukkitRunnable() {
+				@Override
+				public void run() {
+					player.sendMessage(Utils.lore(""));
+					player.sendMessage(Utils.lore("<red>Please use <yellow>/resourcePack!"));
+					player.sendMessage(Utils.lore(""));
+				}
+			}.runTaskLater(Core.plugin(), 200);
+		}
 
 	}
 
