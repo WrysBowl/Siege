@@ -123,7 +123,6 @@ public class StatUpgrade implements CommandExecutor {
 
 	private void completePurchase(InventoryClickEvent e) {
 		this.goldCost = 0;
-		e.getWhoClicked().getInventory().addItem(this.customItem);
 		e.getWhoClicked().closeInventory();
 	}
 
