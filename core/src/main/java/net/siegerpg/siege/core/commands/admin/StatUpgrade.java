@@ -72,6 +72,11 @@ public class StatUpgrade implements CommandExecutor {
 		menu.setOnBottomDrag(event -> event.setCancelled(false));
 		menu.setOnClose(event -> {
 			if (this.goldCost > 0) getMenu(player, customEquipment).show(player);
+			else {
+				this.goldCost = 0;
+				player.getInventory().addItem(this.customItem);
+				player.closeInventory();
+			}
 		});
 
 
