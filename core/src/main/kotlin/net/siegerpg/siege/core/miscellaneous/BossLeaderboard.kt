@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.events
+package net.siegerpg.siege.core.miscellaneous
 
 import com.gmail.filoghost.holographicdisplays.api.Hologram
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI
@@ -8,7 +8,6 @@ import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.drops.MobDropTable
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
-import net.siegerpg.siege.core.miscellaneous.*
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers
 import org.bukkit.Bukkit
 import org.bukkit.entity.Item
@@ -75,7 +74,7 @@ object BossLeaderboard {
 class BossLeaderboardListener : Listener {
 
 
-	private val dungeonBossDropTableHashMap = mutableMapOf(
+	val dungeonBossDropTableHashMap = mutableMapOf(
 			"Broodmother" to Broodmother(),
 			"BullSpirit" to BullSpirit(),
 			"Davy_Jones" to Davy_Jones(),
@@ -84,7 +83,7 @@ class BossLeaderboardListener : Listener {
 			"MagmaSpirit" to MagmaSpirit(),
 			"Necromancer" to Necromancer(),
 			"SlimeSpirit" to SlimeSpirit()
-	                                                      ) as HashMap<String, MobDropTable>
+	                                              ) as HashMap<String, MobDropTable>
 
 	companion object {
 

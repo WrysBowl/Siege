@@ -13,6 +13,8 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.*;
 import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
 import net.siegerpg.siege.core.listeners.BlockBreakListener;
 import net.siegerpg.siege.core.listeners.DeathListener;
+import net.siegerpg.siege.core.miscellaneous.BossLeaderboard;
+import net.siegerpg.siege.core.miscellaneous.BossLeaderboardListener;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -32,6 +34,7 @@ public class DropTable implements CommandExecutor {
 
 	ItemStack grassBlock;
 	ItemStack llama_egg;
+	ItemStack endermite_egg;
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -62,7 +65,7 @@ public class DropTable implements CommandExecutor {
 
 		menu.addPane(background);
 
-		OutlinePane row = new OutlinePane(3, 1, 3, 1);
+		OutlinePane row = new OutlinePane(2, 1, 5, 1);
 
 		//icons
 
@@ -88,6 +91,17 @@ public class DropTable implements CommandExecutor {
 		});
 		mobDrops.setItemMeta(mobDropsItemMeta);
 
+		//Creating Boss Icon
+		ItemStack bossDrops = new ItemStack(Material.ENDERMITE_SPAWN_EGG);
+		ItemMeta bossDropsItemMeta = bossDrops.getItemMeta();
+		bossDropsItemMeta.displayName(Utils.lore("<dark_red><bold>Boss Drops"));
+		bossDropsItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>View boss drops here"));
+			}
+		});
+		bossDrops.setItemMeta(bossDropsItemMeta);
+
 		row.addItem(new GuiItem(blockDrops, inventoryClickEvent -> {
 			getBlockDrops(0, player).show(player);
 		}));
@@ -95,10 +109,14 @@ public class DropTable implements CommandExecutor {
 		row.addItem(new GuiItem(mobDrops, inventoryClickEvent -> {
 			getMobDrops(0, player).show(player);
 		}));
-
+		row.addItem(new GuiItem(filler));
+		row.addItem(new GuiItem(bossDrops, inventoryClickEvent -> {
+			getBossDrops(player).show(player);
+		}));
 
 		this.grassBlock = blockDrops;
 		this.llama_egg = mobDrops;
+		this.endermite_egg = bossDrops;
 
 		menu.addPane(row);
 		return menu;
@@ -123,14 +141,14 @@ public class DropTable implements CommandExecutor {
 		OutlinePane row = new OutlinePane(1, 1, 7, 4);
 
 		//icons
-		LinkedHashMap< Material, BlockDropTable > dropTable = new LinkedHashMap<>(BlockBreakListener.blockDropTableHashMap);
+		HashMap< Material, BlockDropTable > dropTable = BlockBreakListener.blockDropTableHashMap;
 		int endPosition = startPosition + 27;
 		if (endPosition >= dropTable.size()) endPosition = dropTable.size()-1;
 		for (int i = startPosition; i < endPosition; i++) {
 
 			Material key = (Material) dropTable.keySet().toArray()[i];
 
-			ItemStack item = new ItemStack((Material) dropTable.keySet().toArray()[i]);
+			ItemStack item = new ItemStack(key);
 			BlockDropTable blockDropTable = dropTable.get(key);
 
 			ItemMeta iconMeta = item.getItemMeta();
@@ -145,6 +163,7 @@ public class DropTable implements CommandExecutor {
 					               String.format("%,d", blockDropTable.getExpMin())+
 					               " <gray>- <light_purple>"+
 					               String.format("%,d", blockDropTable.getExpMax())));
+					add(Utils.lore(""));
 					for(Reward reward : blockDropTable.getRewards()) {
 						add(Utils.lore("<gray>" + reward.getItem().getItemMeta().getDisplayName() + " <yellow>" + reward.getChance() + "%"));
 					}
@@ -157,10 +176,10 @@ public class DropTable implements CommandExecutor {
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
 
-		final int newPosition = endPosition*2;
+		final int newPosition = endPosition;
 		nextButton.addItem(new GuiItem(this.grassBlock, inventoryClickEvent -> {
-			if (newPosition < dropTable.size()) getBlockDrops(newPosition, player).show(player);
-			else getBlockDrops(0, player).show(player);
+			if (newPosition >= dropTable.size()-1) getBlockDrops(0, player).show(player);
+			else getBlockDrops(newPosition, player).show(player);
 		}));
 
 		menu.addPane(row);
@@ -188,7 +207,7 @@ public class DropTable implements CommandExecutor {
 		OutlinePane row = new OutlinePane(1, 1, 7, 4);
 
 		//icons
-		LinkedHashMap< String, MobDropTable > dropTable = new LinkedHashMap<>(DeathListener.mobDropTableHashMap);
+		HashMap< String, MobDropTable > dropTable = DeathListener.mobDropTableHashMap;
 		int endPosition = startPosition + 27;
 		if (endPosition >= dropTable.size()) endPosition = dropTable.size()-1;
 		for (int i = startPosition; i < endPosition; i++) {
@@ -210,6 +229,7 @@ public class DropTable implements CommandExecutor {
 					               String.format("%,d", mobDropTable.getExpMin())+
 					               " <gray>- <light_purple>"+
 					               String.format("%,d", mobDropTable.getExpMax())));
+					add(Utils.lore(""));
 					for(Reward reward : mobDropTable.getRewards()) {
 						add(Utils.lore("<gray>" + reward.getItem().getItemMeta().getDisplayName() + " <yellow>" + reward.getChance() + "%"));
 					}
@@ -222,10 +242,10 @@ public class DropTable implements CommandExecutor {
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
 
-		final int newPosition = endPosition*2;
+		final int newPosition = endPosition;
 		nextButton.addItem(new GuiItem(this.llama_egg, inventoryClickEvent -> {
-			if (newPosition < dropTable.size()) getMobDrops(newPosition, player).show(player);
-			else getMobDrops(0, player).show(player);
+			if (newPosition >= dropTable.size()-1) getMobDrops(0, player).show(player);
+			else getMobDrops(newPosition, player).show(player);
 		}));
 
 		menu.addPane(row);
@@ -234,4 +254,57 @@ public class DropTable implements CommandExecutor {
 		return menu;
 	}
 
+	private ChestGui getBossDrops(Player player) {
+		//Menu
+		ChestGui menu = new ChestGui(4, "Boss Drops");
+
+		menu.setOnGlobalClick(event -> event.setCancelled(true));
+
+		OutlinePane background = new OutlinePane(0, 0, 9, 4, Pane.Priority.LOWEST);
+
+		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+		ItemMeta fillerMeta = filler.getItemMeta();
+		fillerMeta.displayName(Utils.lore(""));
+		filler.setItemMeta(fillerMeta);
+		background.addItem(new GuiItem(filler));
+		background.setRepeat(true);
+		menu.addPane(background);
+
+		OutlinePane row = new OutlinePane(1, 1, 7, 2);
+
+		//icons
+		HashMap< String, MobDropTable > dropTable = new BossLeaderboardListener().getDungeonBossDropTableHashMap();
+		for (int i = 0; i < dropTable.size(); i++) {
+
+			String key = (String) dropTable.keySet().toArray()[i];
+
+			ItemStack item = new ItemStack(Material.ENDERMITE_SPAWN_EGG);
+			MobDropTable mobDropTable = dropTable.get(key);
+
+			ItemMeta iconMeta = item.getItemMeta();
+			iconMeta.displayName(Utils.lore("<green>"+key));
+			iconMeta.lore(new ArrayList<>() {
+				{
+					add(Utils.lore("<yellow>Gold "+
+					               String.format("%,d", mobDropTable.getGoldMin())+
+					               " <gray>- <yellow>"+
+					               String.format("%,d", mobDropTable.getGoldMax())));
+					add(Utils.lore("<light_purple>EXP "+
+					               String.format("%,d", mobDropTable.getExpMin())+
+					               " <gray>- <light_purple>"+
+					               String.format("%,d", mobDropTable.getExpMax())));
+					add(Utils.lore(""));
+					for(Reward reward : mobDropTable.getRewards()) {
+						add(Utils.lore("<gray>" + reward.getItem().getItemMeta().getDisplayName() + " <yellow>" + reward.getChance() + "%"));
+					}
+				}
+			});
+			item.setItemMeta(iconMeta);
+
+			row.addItem(new GuiItem(item));
+		}
+
+		menu.addPane(row);
+		return menu;
+	}
 }

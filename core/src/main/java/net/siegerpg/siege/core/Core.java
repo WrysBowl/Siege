@@ -10,7 +10,7 @@ import net.siegerpg.siege.core.commands.admin.*;
 import net.siegerpg.siege.core.crates.CrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
-import net.siegerpg.siege.core.events.BossLeaderboardListener;
+import net.siegerpg.siege.core.miscellaneous.BossLeaderboardListener;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;

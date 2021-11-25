@@ -6,7 +6,7 @@ import co.aikar.commands.annotation.*
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.dungeons.DungeonCommand
-import net.siegerpg.siege.core.events.BossLeaderboard
+import net.siegerpg.siege.core.miscellaneous.BossLeaderboard
 import net.siegerpg.siege.core.miscellaneous.BossLeaderboardDB
 import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Bukkit
