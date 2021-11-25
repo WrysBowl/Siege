@@ -124,11 +124,11 @@ public class CrateOpen implements Listener {
 
 	private ChestGui getStartMenu(Player player) {
 		//Menu
-		ChestGui menu = new ChestGui(3, "Cosmetic Keys");
+		ChestGui menu = new ChestGui(4, "Cosmetic Keys");
 
 		menu.setOnGlobalClick(event -> event.setCancelled(true));
 
-		OutlinePane background = new OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST);
+		OutlinePane background = new OutlinePane(0, 0, 9, 4, Pane.Priority.LOWEST);
 
 		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
 		ItemMeta fillerMeta = filler.getItemMeta();
@@ -140,8 +140,8 @@ public class CrateOpen implements Listener {
 
 		menu.addPane(background);
 
-		OutlinePane topRow = new OutlinePane(3, 0, 3, 1);
-		OutlinePane bottomRow = new OutlinePane(2, 1, 5, 1);
+		OutlinePane topRow = new OutlinePane(3, 1, 3, 1);
+		OutlinePane bottomRow = new OutlinePane(2, 2, 5, 1);
 
 		//icons
 		topRow.addItem(new GuiItem(new NormalKey(0).getUpdatedItem(false), inventoryClickEvent -> {
