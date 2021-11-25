@@ -141,6 +141,7 @@ public final class Core extends JavaPlugin {
 			commandList.put("stats", new Stats());
 			commandList.put("dungeon", new DungeonCommand());
 			commandList.put("statUpgrade", new StatUpgrade());
+			commandList.put("drops", new DropTable());
 
 		}
 

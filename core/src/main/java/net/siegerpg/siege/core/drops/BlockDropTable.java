@@ -68,5 +68,25 @@ public class BlockDropTable implements Listener {
 		}
 		return expMax;
 	}
+	public Reward[] getRewards() {
+		return rewards;
+	}
+	public int getGoldMin() {
+
+		return goldMin;
+	}
+	public int getGoldMax() {
+
+		return goldMax;
+	}
+	public int getExpMax() {
+
+		return expMax;
+	}
+
+	public int getExpMin() {
+
+		return expMin;
+	}
 
 }
