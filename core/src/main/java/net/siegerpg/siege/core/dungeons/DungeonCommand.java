@@ -93,9 +93,6 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 			int count = dungeon.currentKeyCount + 1; //add one to key count
 			if (count < dungeon.maxKeyCount) { //if key count + 1 is less than 8, add to key count
 				dungeon.currentKeyCount = count;
-				player.sendMessage(Utils.lore(
-						"<yellow>" + dungeon.currentKeyCount + "<yellow>/" + dungeon.maxKeyCount +
-						" keys <gray>have been used."));
 				Bukkit.getServer().sendMessage(Utils.lore(
 						"<red><bold>" + dungeon.bossName + " <r><yellow>" + dungeon.currentKeyCount + "<yellow>/" + dungeon.maxKeyCount +
 						" keys <gray>have been used."));
@@ -107,6 +104,10 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 						             .plugin()
 						             .getServer()
 						             .getWorld(dungeon.world));
+				Bukkit.getServer().sendMessage(Utils.lore(""));
+				Bukkit.getServer().sendMessage(Utils.lore("<green>"+boss+" <green>has spawned at...!"));
+				Bukkit.getServer().sendMessage(Utils.lore(""));
+
 				Bukkit
 						.getServer()
 						.getScheduler()
@@ -126,10 +127,9 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 										.add(newBossFight);
 
 								Bukkit.getServer().sendMessage(Utils.lore(""));
-								Bukkit.getServer().sendMessage(Utils.lore("<green>"+boss+" <green>has spawned at...!"));
-								Bukkit.getServer().sendMessage(Utils.lore("<gray>X "+dungeon.boss.getLocation().getX()));
-								Bukkit.getServer().sendMessage(Utils.lore("<gray>Y "+dungeon.boss.getLocation().getY()));
-								Bukkit.getServer().sendMessage(Utils.lore("<gray>Z "+dungeon.boss.getLocation().getZ()));
+								Bukkit.getServer().sendMessage(Utils.lore("<gray>X <yellow>"+dungeon.boss.getLocation().getX()));
+								Bukkit.getServer().sendMessage(Utils.lore("<gray>Y <yellow>"+dungeon.boss.getLocation().getY()));
+								Bukkit.getServer().sendMessage(Utils.lore("<gray>Z <yellow>"+dungeon.boss.getLocation().getZ()));
 								Bukkit.getServer().sendMessage(Utils.lore(""));
 
 							} catch (InvalidMobTypeException e) {
