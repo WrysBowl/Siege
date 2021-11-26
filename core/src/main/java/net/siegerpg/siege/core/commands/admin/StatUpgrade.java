@@ -152,10 +152,10 @@ public class StatUpgrade implements CommandExecutor {
 			if (entry.getValue() != 0.0 && customEquipmentMap.containsKey(entry.getKey())) {
 				Double upgradeValue = materialStatMap.get(entry.getKey());
 				Double originalValue = customEquipmentMap.get(entry.getKey());
-				sum += (int)Math.floor(100*originalValue*(1+upgradeValue));
+				sum += (int)20*originalValue*(1+upgradeValue);
 			}
 		}
-		this.goldCost = sum;
+		this.goldCost = sum * cursorItem.getAmount();
 
 		//completing purchase
 		if (VaultHook.econ.getBalance(player) >= this.goldCost) {
@@ -165,7 +165,7 @@ public class StatUpgrade implements CommandExecutor {
 			Scoreboard.updateScoreboard((Player) e.getWhoClicked());
 			customEquipment.addUpgradeStats(materialStatMap);
 			customEquipment.updateMeta(false);
-			cursorItem.setAmount(cursorItem.getAmount()-1);
+			cursorItem.setAmount(0);
 			this.customItem = customEquipment.getItem();
 			player.closeInventory();
 		} else {
