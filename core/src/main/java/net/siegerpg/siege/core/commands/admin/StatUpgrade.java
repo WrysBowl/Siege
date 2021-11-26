@@ -152,7 +152,7 @@ public class StatUpgrade implements CommandExecutor {
 			if (entry.getValue() != 0.0 && customEquipmentMap.containsKey(entry.getKey())) {
 				Double upgradeValue = materialStatMap.get(entry.getKey());
 				Double originalValue = customEquipmentMap.get(entry.getKey());
-				sum += (int)Math.floor(50*originalValue*upgradeValue);
+				sum += (int)Math.floor(100*originalValue*(1+upgradeValue));
 			}
 		}
 		this.goldCost = sum;
