@@ -137,7 +137,6 @@ public final class Core extends JavaPlugin {
 			commandList.put("spawnExp", new SpawnExp());
 			commandList.put("spawnGold", new SpawnGold());
 			commandList.put("pay", new Pay());
-			commandList.put("getKey", new GetKey());
 			commandList.put("stats", new Stats());
 			commandList.put("dungeon", new DungeonCommand());
 			commandList.put("statUpgrade", new StatUpgrade());
