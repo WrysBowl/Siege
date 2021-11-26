@@ -14,7 +14,7 @@ public class MagmaSpirit extends Dungeon {
 
 	public MagmaSpirit() {
 
-		super("MagmaSpirit", 8,
+		super("MagmaSpirit", 4,
 		      new MagmaSpiritKey(0),
 		      new Location(null, 307, 51, -117), "Hilly_Woods",
 		      100
