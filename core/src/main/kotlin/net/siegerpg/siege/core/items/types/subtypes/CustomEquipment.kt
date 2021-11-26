@@ -53,6 +53,14 @@ interface CustomEquipment : CustomItem {
 		this.serialize()
 	}
 
+	fun checkIfExistingStat(upgrades : HashMap<StatTypes, Double>) : Boolean {
+		for (baseStat in baseStats) {
+			//check if upgrades contains the base stats of the item
+			if (upgrades.containsKey(baseStat.key)) return true
+		}
+		return false
+	}
+
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		if (this is CustomHelmet) {
 			val cosmetic : CustomItem? = CustomItemUtils.getCustomItem(this.storedItem)

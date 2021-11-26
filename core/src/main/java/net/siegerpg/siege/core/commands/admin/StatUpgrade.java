@@ -144,6 +144,9 @@ public class StatUpgrade implements CommandExecutor {
 		//get singular hashmap for the material's tier
 		HashMap< StatTypes, Double> materialStatMap = tierStatMap.get(((CustomMaterial) customMaterialItem).getTier());
 
+		//check if the stats don't exist on the item base stats
+		if (!customEquipment.checkIfExistingStat(materialStatMap)) return;
+
 		//calculate gold cost
 		int sum = 0;
 		HashMap< StatTypes, Double> customEquipmentMap = customEquipment.getUpgradeStats();
