@@ -127,15 +127,12 @@ public final class Core extends JavaPlugin {
 			commandList.put("webstore", new Webstore());
 			commandList.put("getItem", new GetItem());
 			commandList.put("spawn", new Spawn());
-			commandList.put("invsee", new Invsee());
 			commandList.put("leaderboard", new Leaderboard());
 			commandList.put("level", new Level());
 			commandList.put("buy", new WebstoreCommand());
 			commandList.put("tips", new ToggleTips());
 			commandList.put("getBooster", new GetBooster());
 			commandList.put("updateScoreboard", new UpdateScoreboard());
-			commandList.put("spawnExp", new SpawnExp());
-			commandList.put("spawnGold", new SpawnGold());
 			commandList.put("pay", new Pay());
 			commandList.put("stats", new Stats());
 			commandList.put("dungeon", new DungeonCommand());

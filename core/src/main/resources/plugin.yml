@@ -17,7 +17,8 @@ commands:
     description: See the boss leaderboard of a boss or of a boss and an user or modify leaderboard holograms
     aliases: [ blb, bosslb ]
   hub:
-    description: Teleports the player to SiegeHub
+    description: Teleports the player to Hub
+    aliases: [ lobby, h ]
   discord:
     aliases: [ discord ]
     description: Sends a discord link to the sender
@@ -25,8 +26,6 @@ commands:
     description: Gets a custom item for the developer
   spawn:
     description: Teleports players to the world's spawn
-  invsee:
-    description: Opens the inventory of the target player to the command sender
   leaderboard:
     description: Sends player list of sorted top level players
     aliases: [ ltop, lblevel, leveltop, lvltop, lblvl ]
@@ -42,10 +41,6 @@ commands:
     description: Sends booster to player
   updateScoreboard:
     description: Updates the player's scoreboard
-  spawnExp:
-    description: Spawns experience on the target
-  spawnGold:
-    description: Spawns gold on the target
   pay:
     aliases: [ pay ]
     description: send payment to another player
