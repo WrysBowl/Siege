@@ -96,6 +96,9 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 				player.sendMessage(Utils.lore(
 						"<yellow>" + dungeon.currentKeyCount + "<yellow>/" + dungeon.maxKeyCount +
 						" keys <gray>have been used."));
+				Bukkit.getServer().sendMessage(Utils.lore(
+						"<red><bold>" + dungeon.bossName + " <yellow>" + dungeon.currentKeyCount + "<yellow>/" + dungeon.maxKeyCount +
+						" keys <gray>have been used."));
 			} else {
 				dungeon.currentKeyCount = 0; //reset key count
 				dungeon.spawning();
@@ -125,7 +128,12 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 								e.printStackTrace();
 							}
 						}, dungeon.bossSpawnDelay);
-				player.sendMessage(Utils.lore("<green>The boss has spawned!"));
+				Bukkit.getServer().sendMessage(Utils.lore(""));
+				Bukkit.getServer().sendMessage(Utils.lore("<green>"+boss+" <green>has spawned at...!"));
+				Bukkit.getServer().sendMessage(Utils.lore("<gray>X "+dungeon.boss.getLocation().getX()));
+				Bukkit.getServer().sendMessage(Utils.lore("<gray>Y "+dungeon.boss.getLocation().getY()));
+				Bukkit.getServer().sendMessage(Utils.lore("<gray>Z "+dungeon.boss.getLocation().getZ()));
+				Bukkit.getServer().sendMessage(Utils.lore(""));
 			}
 
 		} catch (Exception x) {
