@@ -77,7 +77,7 @@ public class GoldExpListener implements Listener {
 				.contains("EXP")) {
 			Player player = e.getPlayer();
 
-			if (expCalculating.contains(player)) {
+			if (expCalculating.contains(player.getUniqueId())) {
 				e.setCancelled(true);
 				return; //if player is processing exp calculation
 			} else expCalculating.add(player.getUniqueId()); //put player in hashmap if they are currently not calculating
