@@ -138,7 +138,7 @@ public class MeraTransit implements Listener {
 		} else {
 			int locationCostComputation = (int) player
 					.getLocation()
-					.distance(deathLocation);
+					.distance(deathLocation)/2;
 			final int deathTeleportCost = (
 					                              player.hasPermission("siege.mera.0")
 			                              ) ? 0 : locationCostComputation;
