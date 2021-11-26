@@ -76,7 +76,7 @@ object Levels {
 				}
 			}.runTask(Core.plugin())
 		}
-		GoldExpListener.expCalculating.remove(player)
+		GoldExpListener.expCalculating.remove(player.uniqueId)
 		return Pair(lvl, exp)
 	}
 

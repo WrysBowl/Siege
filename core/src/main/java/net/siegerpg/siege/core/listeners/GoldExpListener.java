@@ -20,10 +20,11 @@ import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class GoldExpListener implements Listener {
 
-	public static ArrayList< Player > expCalculating = new ArrayList<>();
+	public static ArrayList< UUID > expCalculating = new ArrayList<>();
 
 	public static void giveGold(Player player, int goldAmount) {
 
@@ -79,7 +80,7 @@ public class GoldExpListener implements Listener {
 			if (expCalculating.contains(player)) {
 				e.setCancelled(true);
 				return; //if player is processing exp calculation
-			} else expCalculating.add(player); //put player in hashmap if they are currently not calculating
+			} else expCalculating.add(player.getUniqueId()); //put player in hashmap if they are currently not calculating
 
 			int exp = e.getExperienceOrb().getExperience();
 			Levels.INSTANCE.addExpShared(player, exp);
