@@ -30,7 +30,7 @@ public class GoldReward implements Listener {
 									                        if (p == null) return;
 									                        int level = shortIntegerPair.getFirst();
 									                        int gold = (int)
-											                        (level * 10);
+											                        (level * 20);
 									                        GoldExpListener.giveGold(p, gold);
 									                        p.sendMessage(Utils.parse(""));
 									                        p.sendMessage(Utils.parse(
