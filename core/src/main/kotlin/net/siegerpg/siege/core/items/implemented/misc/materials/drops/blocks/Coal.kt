@@ -13,8 +13,10 @@ class Coal() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(luck = 2.0),
-				5 to CustomItemUtils.statMap(luck = 16.0)
+				2 to CustomItemUtils.statMap(luck = 0.2),
+				3 to CustomItemUtils.statMap(luck = 2.0),
+				4 to CustomItemUtils.statMap(luck = 8.0),
+				5 to CustomItemUtils.statMap(luck = 32.0)
 		                        )
 		) {
 

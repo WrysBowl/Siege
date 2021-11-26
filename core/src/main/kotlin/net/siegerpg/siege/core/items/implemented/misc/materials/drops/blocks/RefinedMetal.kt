@@ -13,8 +13,10 @@ class RefinedMetal() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(toughness = 4.0, strength = 4.0),
-				5 to CustomItemUtils.statMap(toughness = 24.0, strength = 24.0)
+				2 to CustomItemUtils.statMap(toughness = 0.4, strength = 0.4),
+				3 to CustomItemUtils.statMap(toughness = 2.0, strength = 2.0),
+				4 to CustomItemUtils.statMap(toughness = 8.0, strength = 8.0),
+				5 to CustomItemUtils.statMap(toughness = 32.0, strength = 32.0)
 		                        )
                                      ) {
 

@@ -13,8 +13,10 @@ class Leather() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(toughness = 1.5),
-				5 to CustomItemUtils.statMap(toughness = 12.0)
+				2 to CustomItemUtils.statMap(toughness = 0.2),
+				3 to CustomItemUtils.statMap(toughness = 1.6),
+				4 to CustomItemUtils.statMap(toughness = 8.0),
+				5 to CustomItemUtils.statMap(toughness = 24.0)
 		                        )
 		) {
 

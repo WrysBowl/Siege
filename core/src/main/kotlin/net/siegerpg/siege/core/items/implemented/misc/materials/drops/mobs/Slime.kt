@@ -13,8 +13,10 @@ class Slime() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(toughness = 0.5, health = 1.0),
-				5 to CustomItemUtils.statMap(toughness = 5.0, health = 10.0)
+				2 to CustomItemUtils.statMap(toughness = 0.1, health = 0.2),
+				3 to CustomItemUtils.statMap(toughness = 1.0, health = 1.6),
+				4 to CustomItemUtils.statMap(toughness = 6.0, health = 8.0),
+				5 to CustomItemUtils.statMap(toughness = 20.0, health = 24.0)
 		                        )
 		) {
 

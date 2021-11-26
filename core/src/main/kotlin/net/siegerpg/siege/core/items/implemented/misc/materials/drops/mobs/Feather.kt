@@ -13,8 +13,10 @@ class Feather() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(luck = 1.0),
-				5 to CustomItemUtils.statMap(luck = 10.0)
+				2 to CustomItemUtils.statMap(luck = 0.1),
+				3 to CustomItemUtils.statMap(luck = 1.0),
+				4 to CustomItemUtils.statMap(luck = 4.0),
+				5 to CustomItemUtils.statMap(luck = 16.0)
 		                        )
 		) {
 

@@ -13,8 +13,10 @@ class Magma() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(health = 1.0, strength = 1.2),
-				5 to CustomItemUtils.statMap(health = 8.0, strength = 12.0)
+				2 to CustomItemUtils.statMap(health = 0.1, strength = 0.2),
+				3 to CustomItemUtils.statMap(health = 1.0, strength = 2.0),
+				4 to CustomItemUtils.statMap(health = 4.0, strength = 8.0),
+				5 to CustomItemUtils.statMap(health = 16.0, strength = 32.0)
 		                        )
 		) {
 

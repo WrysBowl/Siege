@@ -13,8 +13,10 @@ class Stick() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(health = 0.75),
-				5 to CustomItemUtils.statMap(health = 7.0)
+				2 to CustomItemUtils.statMap(health = 0.2),
+				3 to CustomItemUtils.statMap(health = 2.0),
+				4 to CustomItemUtils.statMap(health = 4.0),
+				5 to CustomItemUtils.statMap(health = 16.0)
 		                        )
 
 		) {

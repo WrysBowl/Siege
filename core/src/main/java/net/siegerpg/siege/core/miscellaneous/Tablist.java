@@ -10,7 +10,7 @@ public class Tablist {
 
 		Component header = Utils.parse("\n" +
 		                               "<gold><b>SiegeRPG</b>\n" +
-		                               "<gold><i>play.SiegeRPG.net</i>" +
+		                               "<gold><i>SiegeRPG.minehut.gg</i>" +
 		                               "<white>\n" +
 		                               "");
 

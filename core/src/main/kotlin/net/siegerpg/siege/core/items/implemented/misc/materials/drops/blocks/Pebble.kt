@@ -13,8 +13,10 @@ class Pebble() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(toughness = 0.5),
-				5 to CustomItemUtils.statMap(toughness = 4.0)
+				2 to CustomItemUtils.statMap(toughness = 0.1),
+				3 to CustomItemUtils.statMap(toughness = 1.0),
+				4 to CustomItemUtils.statMap(toughness = 4.0),
+				5 to CustomItemUtils.statMap(toughness = 16.0)
 		                        )
 		) {
 

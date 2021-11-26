@@ -13,8 +13,9 @@ class Wheat() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(regeneration = 0.2),
-				5 to CustomItemUtils.statMap(regeneration = 2.0)
+				3 to CustomItemUtils.statMap(regeneration = 0.2),
+				4 to CustomItemUtils.statMap(regeneration = 1.0),
+				5 to CustomItemUtils.statMap(regeneration = 4.0)
 		                        )
 		) {
 

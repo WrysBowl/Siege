@@ -13,8 +13,10 @@ class Wool() : CustomMaterial(
 		levelRequirement = 0,
 		material = Material.FLINT,
 		upgradeStats = hashMapOf(
-				4 to CustomItemUtils.statMap(regeneration = 1.0),
-				5 to CustomItemUtils.statMap(regeneration = 10.0)
+				2 to CustomItemUtils.statMap(regeneration = 0.2),
+				3 to CustomItemUtils.statMap(regeneration = 2.0),
+				4 to CustomItemUtils.statMap(regeneration = 8.0),
+				5 to CustomItemUtils.statMap(regeneration = 24.0)
 		                        )
 		) {
 
