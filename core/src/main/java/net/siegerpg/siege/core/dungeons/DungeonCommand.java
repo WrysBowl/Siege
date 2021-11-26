@@ -97,7 +97,7 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 						"<yellow>" + dungeon.currentKeyCount + "<yellow>/" + dungeon.maxKeyCount +
 						" keys <gray>have been used."));
 				Bukkit.getServer().sendMessage(Utils.lore(
-						"<red><bold>" + dungeon.bossName + " <yellow>" + dungeon.currentKeyCount + "<yellow>/" + dungeon.maxKeyCount +
+						"<red><bold>" + dungeon.bossName + " <r><yellow>" + dungeon.currentKeyCount + "<yellow>/" + dungeon.maxKeyCount +
 						" keys <gray>have been used."));
 			} else {
 				dungeon.currentKeyCount = 0; //reset key count
@@ -124,16 +124,18 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 								BossLeaderboardListener.Companion
 										.getCurrentBossFights()
 										.add(newBossFight);
+
+								Bukkit.getServer().sendMessage(Utils.lore(""));
+								Bukkit.getServer().sendMessage(Utils.lore("<green>"+boss+" <green>has spawned at...!"));
+								Bukkit.getServer().sendMessage(Utils.lore("<gray>X "+dungeon.boss.getLocation().getX()));
+								Bukkit.getServer().sendMessage(Utils.lore("<gray>Y "+dungeon.boss.getLocation().getY()));
+								Bukkit.getServer().sendMessage(Utils.lore("<gray>Z "+dungeon.boss.getLocation().getZ()));
+								Bukkit.getServer().sendMessage(Utils.lore(""));
+								
 							} catch (InvalidMobTypeException e) {
 								e.printStackTrace();
 							}
 						}, dungeon.bossSpawnDelay);
-				Bukkit.getServer().sendMessage(Utils.lore(""));
-				Bukkit.getServer().sendMessage(Utils.lore("<green>"+boss+" <green>has spawned at...!"));
-				Bukkit.getServer().sendMessage(Utils.lore("<gray>X "+dungeon.boss.getLocation().getX()));
-				Bukkit.getServer().sendMessage(Utils.lore("<gray>Y "+dungeon.boss.getLocation().getY()));
-				Bukkit.getServer().sendMessage(Utils.lore("<gray>Z "+dungeon.boss.getLocation().getZ()));
-				Bukkit.getServer().sendMessage(Utils.lore(""));
 			}
 
 		} catch (Exception x) {
