@@ -64,7 +64,7 @@ abstract class CustomMeleeWeapon(
 		if (baseStats.size != 0) {
 			meta.lore(" ")
 			val realStats =
-					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
+					CustomItemUtils.getStats(this, addGem = false, addRarity = true, false)
 			val upgradeStats = CustomItemUtils.getUpgradedStats(this)
 			baseStats.keys.forEach {
 				if (realStats[it]!! < 0.0) {

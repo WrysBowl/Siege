@@ -167,8 +167,7 @@ object CustomItemUtils {
 			//player.chat("You are holding a custom item")
 			if (it is CustomWeapon || it is CustomWand) {
 				val itemStats =
-						getStats(it as CustomEquipment, addGem = true, addRarity = true) +
-						getUpgradedStats(it)
+						getStats(it as CustomEquipment, addGem = true, addRarity = true, true)
 				itemStats[statType]?.let { stat ->
 					if (it.levelRequirement == null) {
 						output += stat
@@ -183,8 +182,7 @@ object CustomItemUtils {
 		inventory.helmet?.let { helmet ->
 			getCustomItem(helmet)?.let {
 				if (it is CustomHelmet) {
-					val itemStats = getStats(it, addGem = true, addRarity = true) +
-					                getUpgradedStats(it)
+					val itemStats = getStats(it, addGem = true, addRarity = true, true)
 					itemStats[statType]?.let { stat ->
 						if (it.levelRequirement == null) {
 							output += stat
@@ -199,8 +197,7 @@ object CustomItemUtils {
 		inventory.chestplate?.let { chestplate ->
 			getCustomItem(chestplate)?.let {
 				if (it is CustomChestplate) {
-					val itemStats = getStats(it, addGem = true, addRarity = true) +
-					                getUpgradedStats(it)
+					val itemStats = getStats(it, addGem = true, addRarity = true, true)
 					itemStats[statType]?.let { stat ->
 						if (it.levelRequirement == null) {
 							output += stat
@@ -215,8 +212,7 @@ object CustomItemUtils {
 		inventory.leggings?.let { leggings ->
 			getCustomItem(leggings)?.let {
 				if (it is CustomLeggings) {
-					val itemStats = getStats(it, addGem = true, addRarity = true) +
-					                getUpgradedStats(it)
+					val itemStats = getStats(it, addGem = true, addRarity = true, true)
 					itemStats[statType]?.let { stat ->
 						if (it.levelRequirement == null) {
 							output += stat
@@ -231,8 +227,7 @@ object CustomItemUtils {
 		inventory.boots?.let { boots ->
 			getCustomItem(boots)?.let {
 				if (it is CustomBoots) {
-					val itemStats = getStats(it, addGem = true, addRarity = true) +
-					                getUpgradedStats(it)
+					val itemStats = getStats(it, addGem = true, addRarity = true, true)
 					itemStats[statType]?.let { stat ->
 						if (it.levelRequirement == null) {
 							output += stat
@@ -269,7 +264,8 @@ object CustomItemUtils {
 	fun getStats(
 			item : CustomEquipment,
 			addGem : Boolean,
-			addRarity : Boolean
+			addRarity : Boolean,
+			addUpgraded : Boolean
 	            ) : HashMap<StatTypes, Double> {
 		val map = hashMapOf<StatTypes, Double>()
 		StatTypes.values().forEach {
@@ -289,6 +285,11 @@ object CustomItemUtils {
 					}
 				}
 			}
+			if (item.upgradeStats!!.containsKey(it)) {
+				totalAmount += item.upgradeStats!![it]!!
+			}
+
+			map[it] = Utils.round(totalAmount, 2)
 
 			map[it] = Utils.round(totalAmount, 2)
 		}
@@ -305,6 +306,8 @@ object CustomItemUtils {
 			if (item.upgradeStats!!.containsKey(it)) {
 				totalAmount += item.upgradeStats!![it]!!
 			}
+
+			map[it] = Utils.round(totalAmount, 2)
 
 			map[it] = Utils.round(totalAmount, 2)
 		}

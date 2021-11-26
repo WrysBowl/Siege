@@ -131,7 +131,7 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 								Bukkit.getServer().sendMessage(Utils.lore("<gray>Y "+dungeon.boss.getLocation().getY()));
 								Bukkit.getServer().sendMessage(Utils.lore("<gray>Z "+dungeon.boss.getLocation().getZ()));
 								Bukkit.getServer().sendMessage(Utils.lore(""));
-								
+
 							} catch (InvalidMobTypeException e) {
 								e.printStackTrace();
 							}

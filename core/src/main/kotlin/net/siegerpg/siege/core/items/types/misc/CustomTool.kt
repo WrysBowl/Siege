@@ -50,7 +50,7 @@ abstract class CustomTool(
 		if (baseStats.size != 0) {
 			meta.lore(" ")
 			val realStats =
-					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
+					CustomItemUtils.getStats(this, addGem = false, addRarity = true, false)
 			baseStats.keys.forEach {
 				meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 			}
