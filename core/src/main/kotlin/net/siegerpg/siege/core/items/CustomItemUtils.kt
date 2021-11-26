@@ -286,8 +286,10 @@ object CustomItemUtils {
 				}
 			}
 			if (addUpgraded) {
-				if (item.upgradeStats!!.containsKey(it)) {
-					totalAmount += item.upgradeStats!![it]!!
+				if (item.upgradeStats != null) {
+					if (item.upgradeStats!!.containsKey(it)) {
+						totalAmount += item.upgradeStats!![it]!!
+					}
 				}
 			}
 
