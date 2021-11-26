@@ -208,7 +208,10 @@ public class Utils {
 			((Player) player)
 					.getEnderChest()
 					.addItem(item);
+			player.sendMessage(Utils.lore("<red>Your inventory was full so the item has been placed in your Ender Chest!"));
 		} else {
+			player.sendMessage(Utils.lore("<red>Your Ender Chest is full so the item was dropped on the ground!"));
+			player.getWorld().dropItemNaturally(player.getLocation(), item);
 			return false;
 		}
 		return true;
