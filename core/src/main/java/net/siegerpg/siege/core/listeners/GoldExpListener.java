@@ -76,14 +76,12 @@ public class GoldExpListener implements Listener {
 				.contains("EXP")) {
 			Player player = e.getPlayer();
 
-			if (expCalculating.contains(player)) return; //if player is processing exp calculation
-			else
-				expCalculating.add(
-						player); //put player in hashmap if they are currently not calculating
+			if (expCalculating.contains(player)) {
+				e.setCancelled(true);
+				return; //if player is processing exp calculation
+			} else expCalculating.add(player); //put player in hashmap if they are currently not calculating
 
-			int exp = e
-					.getExperienceOrb()
-					.getExperience();
+			int exp = e.getExperienceOrb().getExperience();
 			Levels.INSTANCE.addExpShared(player, exp);
 			player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
 
@@ -97,9 +95,7 @@ public class GoldExpListener implements Listener {
 						}
 					}, 20);
 		}
-		e
-				.getExperienceOrb()
-				.setExperience(0);
+		e.getExperienceOrb().setExperience(0);
 	}
 
 	@EventHandler
