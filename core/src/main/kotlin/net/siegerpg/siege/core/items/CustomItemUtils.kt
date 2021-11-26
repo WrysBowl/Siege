@@ -285,11 +285,11 @@ object CustomItemUtils {
 					}
 				}
 			}
-			if (item.upgradeStats!!.containsKey(it)) {
-				totalAmount += item.upgradeStats!![it]!!
+			if (addUpgraded) {
+				if (item.upgradeStats!!.containsKey(it)) {
+					totalAmount += item.upgradeStats!![it]!!
+				}
 			}
-
-			map[it] = Utils.round(totalAmount, 2)
 
 			map[it] = Utils.round(totalAmount, 2)
 		}
@@ -306,9 +306,6 @@ object CustomItemUtils {
 			if (item.upgradeStats!!.containsKey(it)) {
 				totalAmount += item.upgradeStats!![it]!!
 			}
-
-			map[it] = Utils.round(totalAmount, 2)
-
 			map[it] = Utils.round(totalAmount, 2)
 		}
 		return map
