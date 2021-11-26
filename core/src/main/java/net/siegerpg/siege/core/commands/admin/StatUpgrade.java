@@ -143,6 +143,7 @@ public class StatUpgrade implements CommandExecutor {
 
 		//get singular hashmap for the material's tier
 		HashMap< StatTypes, Double> materialStatMap = tierStatMap.get(((CustomMaterial) customMaterialItem).getTier());
+		if (materialStatMap == null) return;
 
 		//check if the stats don't exist on the item base stats
 		if (!customEquipment.checkIfExistingStat(materialStatMap)) return;
