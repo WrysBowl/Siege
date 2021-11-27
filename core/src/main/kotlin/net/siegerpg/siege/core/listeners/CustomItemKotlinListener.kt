@@ -158,11 +158,14 @@ class CustomItemKotlinListener : Listener, Runnable {
 				return
 			}
 			if (item is CustomBow) {
-				if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
-					e.damage = 1.0
-					setVictimName(victim, e.damage, vicMaxHealth)
-					return
+				if (!item.item.type.equals(Material.TRIDENT)) {
+					if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
+						e.damage = 1.0
+						setVictimName(victim, e.damage, vicMaxHealth)
+						return
+					}
 				}
+
 				maxDamage = 7.25
 				actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
 			} else if (item is CustomWand) {
