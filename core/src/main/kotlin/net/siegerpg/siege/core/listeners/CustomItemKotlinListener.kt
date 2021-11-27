@@ -176,7 +176,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 				actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
 
 				if ((damage / maxDamage) > 1) {
-					if (!item.item.type.equals(Material.WOODEN_AXE)) {
+					if (item.item.type.equals(Material.WOODEN_AXE)) {
 						maxDamage = 0.5
 					} else {
 						maxDamage = 0.75
