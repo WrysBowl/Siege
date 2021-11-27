@@ -215,14 +215,16 @@ class CustomItemKotlinListener : Listener, Runnable {
 			e.damage = 99999.0
 			return
 		}
+		if (damageMulti[attacker] != null) {
+			actualDamage = damageMulti[attacker]?.times(actualDamage) ?: actualDamage
+		}
 		val vicToughness =
 				if (victim is Player)
-					CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS) / (damageMulti[attacker] ?: 1.0)
+					CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS) / (damageMulti[victim] ?: 1.0)
 				else 0.0
 		val attStrengthStat =
 				if (attacker is Player && actualDamage > 0)
-					(damageMulti[attacker]
-					 ?: 1.0) * (damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
+					(damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
 				else damage
 		val reducedDamage =
 				attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered

@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.implemented.misc.potions
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.CustomFood
@@ -11,6 +12,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.potion.PotionType
+import org.bukkit.scheduler.BukkitRunnable
 
 class BerserkII() : CustomPotion(
 		name = "Berserk II",
@@ -23,6 +25,15 @@ class BerserkII() : CustomPotion(
 
 	override fun speciality(player : Player) {
 		CustomItemKotlinListener().damageMulti[player] = 1.75
+
+		val potion = PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1800, 1)
+		player.addPotionEffect(potion)
+
+		object : BukkitRunnable() {
+			override fun run() {
+				CustomItemKotlinListener().damageMulti.remove(player)
+			}
+		}.runTaskLater(Core.plugin(), 1800)
 	}
 
 	constructor(quality : Int) : this() {
