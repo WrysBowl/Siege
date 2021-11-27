@@ -174,8 +174,14 @@ class CustomItemKotlinListener : Listener, Runnable {
 			//If the item is an axe/sword and the damage cause is melee attack then set correct damage
 			if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
 				actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
-				if ((damage / maxDamage) > 1) maxDamage =
-						0.8 //less maxDamage = more damage (damage/maxDamage)
+
+				if ((damage / maxDamage) > 1) {
+					if (!item.item.type.equals(Material.WOODEN_AXE)) {
+						maxDamage = 0.5
+					} else {
+						maxDamage = 0.75
+					}
+				} //less maxDamage = more damage (damage/maxDamage)
 			}
 			if (damage > 1.5 && maxDamage <= 1) {
 				maxDamage = damage
