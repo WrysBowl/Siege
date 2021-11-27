@@ -71,16 +71,16 @@ public class GoldExpListener implements Listener {
 	@EventHandler
 	public void expPickUp(PlayerPickupExperienceEvent e) {
 
+		Player player = e.getPlayer();
+		if (expCalculating.contains(player.getUniqueId())) {
+			e.setCancelled(true);
+			return; //if player is processing exp calculation
+		} else expCalculating.add(player.getUniqueId());
+
 		if (e
 				.getExperienceOrb()
 				.getName()
 				.contains("EXP")) {
-			Player player = e.getPlayer();
-
-			if (expCalculating.contains(player.getUniqueId())) {
-				e.setCancelled(true);
-				return; //if player is processing exp calculation
-			} else expCalculating.add(player.getUniqueId()); //put player in hashmap if they are currently not calculating
 
 			int exp = e.getExperienceOrb().getExperience();
 			Levels.INSTANCE.addExpShared(player, exp);
