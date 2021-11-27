@@ -1,16 +1,17 @@
 package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.CorruptCrystal
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 
-class Reward38 : LevelReward {
+class Reward43 : LevelReward {
 
 	override fun giveReward(player : Player) {
-		val level : Short = 39
+		val level : Short = 44
 		player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 5.0f)
 		player.sendTitle(
 				Utils.tacc("&5Level Up!"),
@@ -22,17 +23,12 @@ class Reward38 : LevelReward {
 		player.sendMessage(Utils.lore(""))
 		player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
 		player.sendMessage(Utils.lore("<gold><bold>Level Reward"))
-		player.sendMessage(Utils.lore("<yellow>+ 4,000 gold"))
+		player.sendMessage(Utils.lore("<yellow>+ 6,000 gold"))
 		player.sendMessage(Utils.lore("<red>+ 2 HP"))
-		player.sendMessage(Utils.lore("<green>+ Crystal \u272a\u272a x32"))
-		player.sendMessage(Utils.lore("<green>+ Corrupted Crystal \u272a\u272a x32"))
+		player.sendMessage(Utils.lore("<green>+ Refined Metal \u272a\u272a\u272a x8"))
 		player.sendMessage(Utils.lore(""))
 
-		GoldExpListener.giveGold(player, 4000)
-		Utils.giveItem(player, Crystal.tier(2).getUpdatedItem(false).asQuantity(32))
-		Utils.giveItem(
-				player,
-				CorruptCrystal.tier(2).getUpdatedItem(false).asQuantity(32)
-		              )
+		GoldExpListener.giveGold(player, 6000)
+		Utils.giveItem(player, RefinedMetal.tier(3).getUpdatedItem(false).asQuantity(8))
 	}
 }

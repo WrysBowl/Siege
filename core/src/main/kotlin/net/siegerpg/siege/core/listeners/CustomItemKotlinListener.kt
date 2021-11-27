@@ -177,9 +177,9 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 				if ((damage / maxDamage) > 1) {
 					if (item.item.type.equals(Material.WOODEN_AXE)) {
-						maxDamage = 0.5
+						maxDamage = 0.65
 					} else {
-						maxDamage = 0.75
+						maxDamage = 0.85
 					}
 				} //less maxDamage = more damage (damage/maxDamage)
 			}
