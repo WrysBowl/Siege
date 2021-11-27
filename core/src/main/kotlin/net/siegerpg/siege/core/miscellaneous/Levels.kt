@@ -61,7 +61,6 @@ object Levels {
 			object : BukkitRunnable() {
 				override fun run() {
 					reward.giveReward(player as Player)
-					GoldExpListener.expCalculating.remove(player.uniqueId)
 					player.playSound(
 							player.location,
 							Sound.BLOCK_BEACON_POWER_SELECT,
@@ -76,9 +75,6 @@ object Levels {
 					                )
 				}
 			}.runTask(Core.plugin())
-		}
-		if (lvl == level) {
-			GoldExpListener.expCalculating.remove(player.uniqueId)
 		}
 		return Pair(lvl, exp)
 	}

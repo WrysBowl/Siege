@@ -18,13 +18,14 @@ import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class GoldExpListener implements Listener {
 
-	public static ArrayList< UUID > expCalculating = new ArrayList<>();
+	public static ArrayList< Player > expCalculating = new ArrayList<>();
 
 	public static void giveGold(Player player, int goldAmount) {
 
@@ -71,11 +72,6 @@ public class GoldExpListener implements Listener {
 	@EventHandler
 	public void expPickUp(PlayerPickupExperienceEvent e) {
 
-		Player player = e.getPlayer();
-		if (expCalculating.contains(player.getUniqueId())) {
-			e.setCancelled(true);
-			return; //if player is processing exp calculation
-		} else expCalculating.add(player.getUniqueId());
 
 		if (e
 				.getExperienceOrb()
@@ -83,6 +79,23 @@ public class GoldExpListener implements Listener {
 				.contains("EXP")) {
 
 			int exp = e.getExperienceOrb().getExperience();
+			Player player = e.getPlayer();
+			if (expCalculating.contains(player)) {
+				e.setCancelled(true);
+
+				//allow EXP to be gained 5 ticks later
+				new BukkitRunnable() {
+					@Override
+					public void run() {
+						GoldExpListener.expCalculating.remove(player);
+
+					}
+				}.runTaskLater(Core.plugin(), 5);
+
+				return; //if player is processing exp calculation
+			} else {
+				expCalculating.add(player);
+			}
 			Levels.INSTANCE.addExpShared(player, exp);
 			player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
 
