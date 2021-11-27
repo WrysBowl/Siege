@@ -61,16 +61,16 @@ public class SlimeSpirit extends MobDropTable {
 				new Reward(new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 15.0),
 				new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 15.0),
 
-				new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new RawStrengthGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new RawLuckGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new RawToughGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new RawHealthGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new CrackedToughGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new RawStrengthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new RawLuckGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new RawToughGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new RawHealthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new CrackedToughGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 2.0),
 				});
 	}
 

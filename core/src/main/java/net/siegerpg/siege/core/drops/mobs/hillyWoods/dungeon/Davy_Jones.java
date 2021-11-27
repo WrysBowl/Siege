@@ -68,16 +68,16 @@ public class Davy_Jones extends MobDropTable {
 				new Reward(new BoneLeggings(Utils.randRarity()).getUpdatedItem(false), 20.0),
 				new Reward(new BoneBoots(Utils.randRarity()).getUpdatedItem(false), 20.0),
 
-				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 2.0),
 				});
 	}
 

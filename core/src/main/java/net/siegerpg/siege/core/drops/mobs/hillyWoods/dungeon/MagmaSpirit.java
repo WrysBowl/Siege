@@ -60,16 +60,16 @@ public class MagmaSpirit extends MobDropTable {
 				new Reward(new Torch(100).getUpdatedItem(false), 20.0),
 				new Reward(new Torch(Utils.randRarity()).getUpdatedItem(false), 25.0),
 
-				new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new CrackedToughGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new CrackedToughGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 2.0),
 				});
 	}
 

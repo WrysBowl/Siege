@@ -67,16 +67,16 @@ public class FoxSpirit extends MobDropTable {
 				new Reward(new ScrapShard(100).getUpdatedItem(false), 5.5),
 				new Reward(new ScrapShard(Utils.randRarity()).getUpdatedItem(false), 20.5),
 
-				new Reward(new PristineRegenerationGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new PristineStrengthGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new PristineLuckGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new PristineToughGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new PristineHealthGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 10.0),
+				new Reward(new PristineRegenerationGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new PristineStrengthGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new PristineLuckGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new PristineToughGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new PristineHealthGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 5.0),
 				});
 	}
 

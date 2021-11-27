@@ -79,16 +79,16 @@ public class Lich extends MobDropTable {
 				new Reward(new EarthernWand(100).getUpdatedItem(false), 5.0),
 				new Reward(new EarthernWand(80).getUpdatedItem(false), 30.0),
 
-				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 5.0),
-				new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 10.0),
-				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 10.0),
+				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 2.0),
+				new Reward(new FlawedRegenerationGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 5.0),
+				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 5.0),
 				});
 	}
 
