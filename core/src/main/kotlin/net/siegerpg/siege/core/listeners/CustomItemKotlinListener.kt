@@ -56,9 +56,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 	@Suppress("unused")
 	fun onItemSwapClick(e : InventoryClickEvent) {
 		if (e.slotType == InventoryType.SlotType.QUICKBAR && e.rawSlot == 45) {
-			if (CustomItemUtils.getCustomItem(e.cursor) is CustomWeapon) {
-				e.isCancelled = true
-			}
+			e.isCancelled = true
 		}
 	}
 
@@ -105,7 +103,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 	@EventHandler
 	fun onBowUse(e : ProjectileHitEvent) {
 		if (e.entity is Arrow) {
-			if (e.hitEntity == null) e.entity.remove()
+			e.entity.remove()
 		}
 	}
 
