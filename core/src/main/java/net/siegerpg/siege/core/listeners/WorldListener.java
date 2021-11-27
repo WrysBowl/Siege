@@ -19,10 +19,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
-import org.bukkit.event.inventory.CraftItemEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -110,6 +107,13 @@ public class WorldListener implements Listener, Runnable {
 				p.updateInventory();
 			}
 		}.runTaskLater(Core.plugin(), 1);
+	}
+
+	@EventHandler
+	public void preventOffHand(InventoryClickEvent e) {
+		if (e.getRawSlot() == 45) {
+			e.setCancelled(true);
+		}
 	}
 
 	@EventHandler
