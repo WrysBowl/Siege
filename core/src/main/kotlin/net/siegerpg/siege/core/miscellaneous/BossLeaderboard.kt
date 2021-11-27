@@ -8,6 +8,7 @@ import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.drops.MobDropTable
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
+import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers
 import org.bukkit.Bukkit
 import org.bukkit.entity.Item
@@ -164,13 +165,19 @@ class BossLeaderboardListener : Listener {
 				val tableGoldCoinAmt = dropTable.getGold(true) ?: 0
 				val goldCoinAmt =
 						floor(tableGoldCoinAmt.toDouble() * GlobalMultipliers.goldMultiplier * dropMultiplier).toInt()
-				val gold : Item = DropUtils.dropItemNaturallyForPlayers(
+
+				/*val gold : Item = DropUtils.dropItemNaturallyForPlayers(
 						evt.entity.location,
 						GoldEXPSpawning.getGoldCoin(1), listOf(fighter)
 				                                                       )
 				gold.customName = Utils.tacc("&e+$goldCoinAmt Gold")
 				gold.isCustomNameVisible = true;
-				gold.itemStack.amount = goldCoinAmt
+				gold.itemStack.amount = goldCoinAmt*/
+
+				for (uuid in listOf(fighter)) {
+					val player : Player = Bukkit.getPlayer(uuid) ?: continue
+					GoldExpListener.giveGold(player, goldCoinAmt)
+				}
 
 				for (drop in getRewards(
 						(percentageDamage / 100.0),
