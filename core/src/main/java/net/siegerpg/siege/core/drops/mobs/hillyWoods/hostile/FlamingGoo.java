@@ -31,9 +31,7 @@ public class FlamingGoo extends MobDropTable {
 				new Reward(new MagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.5),
 				new Reward(new MagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.5),
 				new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.5),
-
-				new Reward(new RawStrengthGem(0).getUpdatedItem(false), 1.0)
-		});
+				});
 	}
 
 }

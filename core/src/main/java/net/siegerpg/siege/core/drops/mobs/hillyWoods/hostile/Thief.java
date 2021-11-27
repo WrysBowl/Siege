@@ -44,8 +44,6 @@ public class Thief extends MobDropTable {
 				new Reward(new Shank(50).getUpdatedItem(false), 3.0),
 				new Reward(new Shank(Utils.randRarity()).getUpdatedItem(false), 5.0),
 
-				new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 2.0),
-				new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 1.0),
 				});
 	}
 

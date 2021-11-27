@@ -52,8 +52,6 @@ public class Mercenary extends MobDropTable {
 				new Reward(new RefinedDagger(50).getUpdatedItem(false), 3.0),
 				new Reward(new RefinedDagger(Utils.randRarity()).getUpdatedItem(false), 5.0),
 
-				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 2.0),
-				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new BroodmotherKey(0).getUpdatedItem(false), 10.0),
 				});
 	}

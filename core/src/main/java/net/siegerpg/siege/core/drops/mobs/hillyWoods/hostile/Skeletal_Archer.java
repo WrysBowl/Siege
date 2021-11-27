@@ -59,10 +59,6 @@ public class Skeletal_Archer extends MobDropTable {
 				new Reward(new LuckyReinforcedBow(Utils.randRarity()).getUpdatedItem(false), 2.5),
 
 				new Reward(new FlamingHotTorch(Utils.randRarity()).getUpdatedItem(false), 2.5),
-
-				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 0.5),
 				});
 	}
 

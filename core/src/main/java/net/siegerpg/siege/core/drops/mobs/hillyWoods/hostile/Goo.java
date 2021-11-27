@@ -32,7 +32,6 @@ public class Goo extends MobDropTable {
 				new Reward(new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 0.3),
 				new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 0.3),
 
-				new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 1.0),
 				});
 	}
 

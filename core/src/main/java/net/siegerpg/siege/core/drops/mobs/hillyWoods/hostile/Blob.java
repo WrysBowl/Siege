@@ -49,8 +49,6 @@ public class Blob extends MobDropTable {
 				new Reward(new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 2.0),
 				new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 2.0),
 
-				new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new RawLuckGem(0).getUpdatedItem(false), 1.0),
 				});
 	}
 

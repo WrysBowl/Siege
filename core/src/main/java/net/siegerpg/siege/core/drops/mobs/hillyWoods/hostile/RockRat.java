@@ -23,7 +23,6 @@ public class RockRat extends MobDropTable {
 				new Reward(new JaggedTunic(Utils.randRarity()).getUpdatedItem(false), 5.0),
 				new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 1.0),
 				new Reward(new PebbleWand(Utils.randRarity()).getUpdatedItem(false), 5.0),
-				new Reward(new RawToughGem(0).getUpdatedItem(false), 1.0),
 				});
 	}
 

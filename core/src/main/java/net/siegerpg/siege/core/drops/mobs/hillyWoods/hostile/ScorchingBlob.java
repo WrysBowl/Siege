@@ -34,9 +34,6 @@ public class ScorchingBlob extends MobDropTable {
 				new Reward(new MagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 1.0),
 				new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 1.0),
 				new Reward(new MatchStick(Utils.randRarity()).getUpdatedItem(false), 2.0),
-
-				new Reward(new RawStrengthGem(0).getUpdatedItem(false), 2.0),
-				new Reward(new RawRegenerationGem(0).getUpdatedItem(false), 2.0),
 				});
 	}
 

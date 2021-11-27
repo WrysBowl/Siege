@@ -36,8 +36,6 @@ public class Molter extends MobDropTable {
 				new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 2.0),
 				new Reward(new MatchStick(Utils.randRarity()).getUpdatedItem(false), 5.0),
 
-				new Reward(new CrackedStrengthGem(0).getUpdatedItem(false), 2.0),
-				new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new MagmaSpiritKey(0).getUpdatedItem(false), 10.0),
 				});
 	}

@@ -38,8 +38,6 @@ public class Blubber extends MobDropTable {
 				new Reward(new SlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 5.0),
 				new Reward(new SlimyBoots(Utils.randRarity()).getUpdatedItem(false), 5.0),
 
-				new Reward(new CrackedRegenerationGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new SlimeSpiritKey(0).getUpdatedItem(false), 10.0),
 				});
 	}

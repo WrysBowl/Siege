@@ -30,7 +30,6 @@ public class ScrapRat extends MobDropTable {
 				new Reward(new PebbleWand(Utils.randRarity()).getUpdatedItem(false), 2.0),
 				new Reward(new PebbleWand(100).getUpdatedItem(false), 1.0),
 
-				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 1.0),
 				});
 	}
 

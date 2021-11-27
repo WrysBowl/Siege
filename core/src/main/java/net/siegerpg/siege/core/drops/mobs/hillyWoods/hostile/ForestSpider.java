@@ -54,8 +54,6 @@ public class ForestSpider extends MobDropTable {
 				new Reward(new ToughCrossbow(30).getUpdatedItem(false), 3.0),
 
 				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 1.0),
 				});
 	}
 

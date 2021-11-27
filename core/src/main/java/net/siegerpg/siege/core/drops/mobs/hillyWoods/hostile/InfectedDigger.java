@@ -46,8 +46,6 @@ public class InfectedDigger extends MobDropTable {
 				new Reward(new Beetroot(50).getUpdatedItem(false), 10.0),
 				new Reward(new Beetroot(0).getUpdatedItem(false), 50.0),
 				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 5.0),
-				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 0.5),
-				new Reward(new SimpleLuckGem(0).getUpdatedItem(false), 2.0),
 				});
 	}
 

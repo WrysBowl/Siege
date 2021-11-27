@@ -42,8 +42,6 @@ public class Bully extends MobDropTable {
 				new Reward(new LeatherBoots(Utils.randRarity()).getUpdatedItem(false), 0.5),
 
 				new Reward(new Beef(0).getUpdatedItem(false), 20.0),
-				new Reward(new CrackedToughGem(0).getUpdatedItem(false), 0.25),
-				new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 0.5),
 				});
 	}
 

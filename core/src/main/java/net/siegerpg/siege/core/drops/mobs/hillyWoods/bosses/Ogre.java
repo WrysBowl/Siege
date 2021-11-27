@@ -52,8 +52,6 @@ public class Ogre extends MobDropTable {
 				new Reward(new GreatSword(100).getUpdatedItem(false), 0.5),
 				new Reward(new GreatSword(Utils.randRarity()).getUpdatedItem(false), 2.5),
 
-				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.5),
-				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new NecromancerKey(0).getUpdatedItem(false), 10.0),
 				});
 	}

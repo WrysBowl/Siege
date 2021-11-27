@@ -32,8 +32,6 @@ public class Sea_Warrior extends MobDropTable {
 						           .asQuantity(1), 10.0),
 
 				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 1.0),
 				});
 	}
 

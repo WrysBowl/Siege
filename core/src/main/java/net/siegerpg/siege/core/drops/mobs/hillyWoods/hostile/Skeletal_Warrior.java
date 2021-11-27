@@ -68,9 +68,6 @@ public class Skeletal_Warrior extends MobDropTable {
 				new Reward(new StrongSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
 				new Reward(new LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
 
-				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 0.5),
 				});
 	}
 

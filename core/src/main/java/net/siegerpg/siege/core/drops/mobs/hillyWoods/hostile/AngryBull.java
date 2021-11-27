@@ -45,9 +45,6 @@ public class AngryBull extends MobDropTable {
 				new Reward(new DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.5),
 
 				new Reward(new Beef(50).getUpdatedItem(false), 40.0),
-
-				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 0.25),
-				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 0.25),
 				});
 	}
 
