@@ -143,26 +143,26 @@ class CustomItemKotlinListener : Listener, Runnable {
 			}
 			val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
 			if (item == null) {
-				setVictimName(victim, e.damage, vicMaxHealth)
 				e.damage = 1.0
+				setVictimName(victim, e.damage, vicMaxHealth)
 				return
 			}
 			val levelReq = item.levelRequirement
 			if (levelReq == null) {
-				setVictimName(victim, e.damage, vicMaxHealth)
 				e.damage = 1.0
+				setVictimName(victim, e.damage, vicMaxHealth)
 				return
 			}
 			if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
 				attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
-				setVictimName(victim, e.damage, vicMaxHealth)
 				e.damage = 1.0
+				setVictimName(victim, e.damage, vicMaxHealth)
 				return
 			}
 			if (item is CustomBow) {
 				if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
-					setVictimName(victim, e.damage, vicMaxHealth)
 					e.damage = 1.0
+					setVictimName(victim, e.damage, vicMaxHealth)
 					return
 				}
 				maxDamage = 7.25
@@ -229,12 +229,12 @@ class CustomItemKotlinListener : Listener, Runnable {
 		val reducedDamage =
 				attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
 
-		setVictimName(victim, e.damage, vicMaxHealth)
 		e.damage =
 				(reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
 
 		val isCritical = damage > maxDamage
 
+		setVictimName(victim, e.damage, vicMaxHealth)
 		DamageIndicator.showDamageIndicator(e.damage, victim.location, isCritical)
 	}
 
