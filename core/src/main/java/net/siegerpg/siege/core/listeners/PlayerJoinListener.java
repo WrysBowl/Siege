@@ -125,47 +125,16 @@ public class PlayerJoinListener implements Listener {
             }
             Skills.INSTANCE.setSkills(player, "A_1_3");
         }*/
-		if (player.hasPlayedBefore()) {
-			player.teleport(new Location(
-					Core
-							.plugin()
-							.getServer()
-							.getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
-		} else {
-			player.teleport(new Location(
-					Core
-							.plugin()
-							.getServer()
-							.getWorld("SiegeHub"), 51.5, 70, 5.5, 90, 20));
-		}
+		player.teleport(new Location(Core.plugin().getServer().getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
-		if (!player.hasResourcePack()) {
-			new BukkitRunnable() {
-				@Override
-				public void run() {
-					player.sendMessage(Utils.lore(""));
-					player.sendMessage(Utils.lore("<red>Please use <yellow>/resourcePack!"));
-					player.sendMessage(Utils.lore(""));
-				}
-			}.runTaskLater(Core.plugin(), 200);
-		}
 
 	}
 
 	public void updateInventory(Player player) {
-
-		for (
-				int i = 0; i < player
-				.getInventory()
-				.getSize(); i++
-		) {
-			CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player
-					                                                            .getInventory()
-					                                                            .getItem(i));
+		for (int i = 0; i < player.getInventory().getSize(); i++) {
+			CustomItem CusItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItem(i));
 			if (CusItem == null) continue;
-			player
-					.getInventory()
-					.setItem(i, CusItem.getUpdatedItem(false));
+			player.getInventory().setItem(i, CusItem.getUpdatedItem(false));
 		}
 	}
 
