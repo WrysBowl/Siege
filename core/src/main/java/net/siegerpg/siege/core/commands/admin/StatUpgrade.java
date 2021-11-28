@@ -6,11 +6,9 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.CustomItemUtilsKt;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
-import net.siegerpg.siege.core.listeners.NPC.GamblingGames.TreasureHunter;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
@@ -32,9 +30,13 @@ import java.util.Map;
 
 public class StatUpgrade implements CommandExecutor {
 
-	private ItemStack customItem;
+	private CustomEquipment oldItem;
+	private ItemStack oldItemStack;
+	private CustomEquipment newItem;
+
 	private ChestGui menu;
 	private Integer goldCost = 0;
+	private ItemStack material;
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -58,125 +60,190 @@ public class StatUpgrade implements CommandExecutor {
 			return false;
 		}
 		player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1.0f, 1.0f);
-		ChestGui menu = new StatUpgrade().getMenu(player, (CustomEquipment) customMainItem);
-		menu.show(player);
-		this.menu = menu;
+		StatUpgrade instance = new StatUpgrade();
+		instance.oldItem = (CustomEquipment) customMainItem;
+		instance.oldItemStack = customMainItem.getItem();
+		player.getInventory().removeItem(customMainItem.getItem().asOne());
+		this.menu = instance.getMenu(player);
+		this.menu.show(player);
 		return true;
 	}
 
-	private ChestGui getMenu(Player player, CustomEquipment customEquipment) {
+	private ChestGui getMenu(Player player) {
 		//Menu
 		ChestGui menu = new ChestGui(3, "Reforge");
 
 		menu.setOnTopClick(event -> event.setCancelled(true));
 		menu.setOnBottomDrag(event -> event.setCancelled(false));
 		menu.setOnClose(event -> {
-			if (this.goldCost > 0) getMenu(player, customEquipment).show(player);
+			if (this.goldCost > 0) getMenu(player).show(player);
 			else {
 				this.goldCost = 0;
-				player.getInventory().addItem(this.customItem);
+				if (this.newItem == null) {
+					Utils.giveItem(player, this.oldItemStack);
+				} else {
+					Utils.giveItem(player, this.newItem.getItem());
+				}
 				player.closeInventory();
 			}
 		});
 
 
 		OutlinePane background = new OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST);
-
 		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
 		ItemMeta fillerMeta = filler.getItemMeta();
 		fillerMeta.displayName(Utils.lore(""));
 		filler.setItemMeta(fillerMeta);
 		background.addItem(new GuiItem(filler));
-
 		background.setRepeat(true);
-
 		menu.addPane(background);
 
-		OutlinePane navigator = new OutlinePane(4, 0, 1, 2);
-
-		//Creating Start Icon
-		ItemStack startIcon = new ItemStack(Material.ENDER_EYE);
+		OutlinePane reforgeIcon = new OutlinePane(4, 0, 1, 1);
+		//Creating Reforging Purchase Icon
+		ItemStack startIcon = new ItemStack(Material.ANVIL);
 		ItemMeta startIconMeta = startIcon.getItemMeta();
 		startIconMeta.displayName(Utils.lore("<red><bold>REFORGE"));
 		startIconMeta.lore(new ArrayList<>() {
 			{
-				add(Utils.lore("<gray>Drag materials onto the"));
-				add(Utils.lore("<gray>item in the inventory!"));
+				add(Utils.lore("<gray>Drag materials into the"));
+				add(Utils.lore("<gray>the available slot!"));
 				add(Utils.lore(""));
-				add(Utils.lore("<yellow>Purchases Done Immediately"));
-				add(Utils.lore("<yellow><bold>Gold Spent "+String.format("%,d", goldCost)));
+				add(Utils.lore("<yellow>Cost "+String.format("%,d", goldCost)));
 			}
 		});
 		startIcon.setItemMeta(startIconMeta);
+		//when clicked, process transaction
+		reforgeIcon.addItem(new GuiItem(startIcon, this::completePurchase));
 
-		navigator.addItem(new GuiItem(startIcon, this::completePurchase));
-		navigator.addItem(new GuiItem(customEquipment.getItem(), event -> {
-			upgradeStat(event, customEquipment);
-		}));
 
+		OutlinePane navigator = new OutlinePane(2, 1, 5, 1);
+
+		//sets the proper material
+		ItemStack materialIcon = new ItemStack(Material.BARRIER);
+		if (this.material == null) {
+			//Creating Material Placing Icon
+			ItemMeta materialIconMeta = startIcon.getItemMeta();
+			materialIconMeta.displayName(Utils.lore("<red>Empty Slot"));
+			materialIconMeta.lore(new ArrayList<>() {
+				{
+					add(Utils.lore("<gray>Material must have"));
+					add(Utils.lore("<gray>stats that are on item"));
+					add(Utils.lore(""));
+					add(Utils.lore("<yellow>Drop Material"));
+				}
+			});
+			materialIcon.setItemMeta(materialIconMeta);
+		} else {
+			materialIcon = this.material;
+		}
+
+		navigator.addItem(new GuiItem(materialIcon, this::setMaterialUsed));
+		navigator.addItem(new GuiItem(filler));
+		navigator.addItem(new GuiItem(this.oldItemStack));
+		navigator.addItem(new GuiItem(filler));
+		if (this.newItem != null) {
+			navigator.addItem(new GuiItem(this.newItem.getItem()));
+		} else {
+			navigator.addItem(new GuiItem(this.oldItemStack));
+		}
+
+		menu.addPane(reforgeIcon);
 		menu.addPane(navigator);
 		this.menu = menu;
-		this.customItem = customEquipment.getItem();
-		player.getInventory().removeItem(customEquipment.getItem().asOne());
 		return menu;
 	}
 
-	private void completePurchase(InventoryClickEvent e) {
-		this.goldCost = 0;
-		e.getWhoClicked().closeInventory();
+	/**
+	 * Adds material into GUI and displays newItem
+	 */
+	private void setMaterialUsed(InventoryClickEvent e) {
+		Player player = (Player) e.getWhoClicked();
+
+		if (this.material != null) {
+			Utils.giveItem(player, this.material);
+			this.material = null;
+			this.newItem = null;
+			this.goldCost = 0;
+			player.closeInventory();
+			return;
+		}
+
+		ItemStack cursorItem = e.getCursor();
+		HashMap< StatTypes, Double> materialStatMap = getMaterialStatMap(cursorItem);
+		if (!materialUsable(materialStatMap)) return;
+
+		this.material = cursorItem;
+		this.newItem = getUpgradedItem(materialStatMap, this.oldItem);
+		this.goldCost = getCost(materialStatMap);
+
+		e.setCursor(null);
+		player.closeInventory();
 	}
 
-	private void upgradeStat(InventoryClickEvent e, CustomEquipment customEquipment) {
-		//get item on the player's cursor (the material)
-		Player player = (Player) e.getWhoClicked();
-		ItemStack cursorItem = e.getCursor();
-		if (cursorItem == null) return;
+	/**
+	 * @return Checks if material can be used for upgrading
+	 */
+	private boolean materialUsable(HashMap< StatTypes, Double> materialStatMap) {
+		if (materialStatMap == null) return false;
+		CustomEquipment item = this.oldItem;
+		return item.checkIfExistingStat(materialStatMap);
+	}
 
+	private HashMap< StatTypes, Double> getMaterialStatMap(ItemStack cursorItem) {
 		//make sure cursor item is a custom material
 		CustomItem customMaterialItem = CustomItemUtils.INSTANCE.getCustomItem(cursorItem);
-		if (customMaterialItem == null) return;
-		if (!(customMaterialItem instanceof CustomMaterial)) return;
+		if (customMaterialItem == null) return null;
+		if (!(customMaterialItem instanceof CustomMaterial)) return null;
 
 		//get entire hashmap of all tier upgrades for the material
 		HashMap<Integer, HashMap< StatTypes, Double>> tierStatMap = ((CustomMaterial) customMaterialItem).getUpgradeStats();
-		if (tierStatMap == null) return;
+		if (tierStatMap == null) return null;
 
 		//get singular hashmap for the material's tier
-		HashMap< StatTypes, Double> materialStatMap = tierStatMap.get(((CustomMaterial) customMaterialItem).getTier());
-		if (materialStatMap == null) return;
+		return tierStatMap.get(((CustomMaterial) customMaterialItem).getTier());
+	}
 
-		//check if the stats don't exist on the item base stats
-		if (!customEquipment.checkIfExistingStat(materialStatMap)) return;
-
+	private int getCost(HashMap< StatTypes, Double> addStats) {
 		//calculate gold cost
 		int sum = 0;
-		HashMap< StatTypes, Double> customEquipmentMap = customEquipment.getUpgradeStats();
+		HashMap< StatTypes, Double> customEquipmentMap = this.oldItem.getUpgradeStats();
 		if (customEquipmentMap == null) customEquipmentMap = CustomItemUtils.INSTANCE.statMap(0.0,0.0,0.0,0.0,0.0,0.0,0.0);
-		for (Map.Entry<StatTypes, Double> entry : materialStatMap.entrySet()) {
+		for (Map.Entry<StatTypes, Double> entry : addStats.entrySet()) {
 			if (entry.getValue() != 0.0 && customEquipmentMap.containsKey(entry.getKey())) {
-				Double upgradeValue = materialStatMap.get(entry.getKey());
+				Double upgradeValue = addStats.get(entry.getKey());
 				Double originalValue = customEquipmentMap.get(entry.getKey());
-				sum += (int) 300+((1+originalValue)*10)*((1+upgradeValue)*10);
+				sum += 300+((1+originalValue)*10)*((1+upgradeValue)*10);
 			}
 		}
-		this.goldCost = sum * cursorItem.getAmount();
+		return sum * this.material.getAmount();
+	}
+
+	private void completePurchase(InventoryClickEvent e) {
+		//get item on the player's cursor (the material)
+		Player player = (Player) e.getWhoClicked();
 
 		//completing purchase
 		if (VaultHook.econ.getBalance(player) >= this.goldCost) {
 			VaultHook.econ.withdrawPlayer(player, this.goldCost);
 			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_CELEBRATE, 1.0f, 1.0f);
 
-			materialStatMap.replaceAll((k, v) -> v * cursorItem.getAmount());
-			Scoreboard.updateScoreboard((Player) e.getWhoClicked());
-			customEquipment.addUpgradeStats(materialStatMap);
-			customEquipment.updateMeta(false);
-			cursorItem.setAmount(0);
-			this.customItem = customEquipment.getItem();
+			this.goldCost = 0;
+			Scoreboard.updateScoreboard(player);
 			player.closeInventory();
 		} else {
 			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
 			player.sendMessage(Utils.tacc("&cYou do not have enough money to purchase this item!"));
 		}
+	}
+
+	//used when getting item for display in GUI
+	private CustomEquipment getUpgradedItem(HashMap< StatTypes, Double> addStats, CustomEquipment customEquipment) {
+
+		addStats.replaceAll((k, v) -> v * this.material.getAmount());
+		customEquipment.addUpgradeStats(addStats);
+		customEquipment.updateMeta(false);
+		return customEquipment;
+
 	}
 
 }
