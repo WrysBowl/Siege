@@ -37,6 +37,7 @@ public class StatUpgrade implements CommandExecutor {
 	private ChestGui menu;
 	private Integer goldCost = 0;
 	private ItemStack material;
+	private ItemStack cursor;
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -74,6 +75,11 @@ public class StatUpgrade implements CommandExecutor {
 		ChestGui menu = new ChestGui(3, "Reforge");
 
 		menu.setOnTopClick(event -> event.setCancelled(true));
+		menu.setOnBottomClick(event -> {
+			if (event.getCurrentItem() != null) {
+				this.cursor = event.getCurrentItem().clone();
+			}
+		});
 		menu.setOnBottomDrag(event -> event.setCancelled(false));
 		menu.setOnClose(event -> {
 			if (this.goldCost > 0) getMenu(player).show(player);
@@ -160,10 +166,12 @@ public class StatUpgrade implements CommandExecutor {
 		Player player = (Player) e.getWhoClicked();
 
 		if (this.material != null) {
-			Utils.giveItem(player, this.material);
+
+			Utils.giveItem(player, cursor);
 			this.material = null;
 			this.newItem = null;
 			this.goldCost = 0;
+			this.cursor = null;
 			player.closeInventory();
 			return;
 		}
