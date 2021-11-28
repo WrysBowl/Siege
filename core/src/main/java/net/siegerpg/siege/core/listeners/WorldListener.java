@@ -97,29 +97,6 @@ public class WorldListener implements Listener, Runnable {
 	}
 
 	@EventHandler
-	public void closeInv(InventoryCloseEvent e) {
-
-		new BukkitRunnable() {
-			@Override
-			public void run() {
-
-				Player p = (Player) e.getPlayer();
-				p.updateInventory();
-			}
-		}.runTaskLater(Core.plugin(), 1);
-	}
-
-	@EventHandler
-	public void preventOffHand(InventoryClickEvent e) {
-		if (e.getInventory().getType().equals(InventoryType.PLAYER)) {
-			if (e.getRawSlot() == 45) {
-				e.setCancelled(true);
-			}
-		}
-
-	}
-
-	@EventHandler
 	public void onEntityEnter(EntityEnterBlockEvent e) {
 
 		if (e.getEntity() instanceof Bee) {

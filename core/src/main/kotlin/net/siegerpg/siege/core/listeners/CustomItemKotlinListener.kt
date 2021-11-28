@@ -39,27 +39,6 @@ class CustomItemKotlinListener : Listener, Runnable {
 	var arrowItems : HashMap<Player, ItemStack> = hashMapOf()
 	var damageMulti : HashMap<Player, Double> = hashMapOf()
 
-	/*
-	@EventHandler()
-	@Suppress("unused")
-	fun onArmorEquip(e: ArmorEquipEvent) {
-		// TODO: Permanent fadein action bar
-	}*/
-
-	@EventHandler
-	@Suppress("unused")
-	fun onItemSwap(e : PlayerSwapHandItemsEvent) {
-		e.isCancelled = true
-	}
-
-	@EventHandler
-	@Suppress("unused")
-	fun onItemSwapClick(e : InventoryClickEvent) {
-		if (e.slotType == InventoryType.SlotType.QUICKBAR && e.rawSlot == 45) {
-			e.isCancelled = true
-		}
-	}
-
 	@EventHandler
 	@Suppress("unused")
 	fun onBowUse(e : PlayerInteractEvent) {
