@@ -97,7 +97,7 @@ interface CustomEquipment : CustomItem {
 				if (realStats[it]!! < 0.0) {
 					if (hideRarity || quality < 0)
 						meta.lore(
-								"<r><red>-${baseStats[it]?.times(0.5)}. . . -${
+								"<r><red>${baseStats[it]?.times(0.5)}. . . -${
 									baseStats[it]?.times(
 											1.5
 									                    )
@@ -105,7 +105,7 @@ interface CustomEquipment : CustomItem {
 						         )
 					else {
 						if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
-						else meta.lore("<r><red>-${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
+						else meta.lore("<r><red>${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
 					}
 				} else {
 					if (hideRarity || quality < 0) {
