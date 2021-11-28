@@ -173,7 +173,8 @@ public class StatUpgrade implements CommandExecutor {
 		if (!materialUsable(materialStatMap)) return;
 
 		this.material = cursorItem;
-		this.newItem = getUpgradedItem(materialStatMap, this.oldItem);
+		CustomEquipment item = this.oldItem;
+		this.newItem = getUpgradedItem(materialStatMap, item);
 		this.goldCost = getCost(materialStatMap);
 
 		e.setCursor(null);
