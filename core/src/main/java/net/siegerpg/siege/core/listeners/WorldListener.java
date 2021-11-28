@@ -111,9 +111,12 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void preventOffHand(InventoryClickEvent e) {
-		if (e.getRawSlot() == 45) {
-			e.setCancelled(true);
+		if (e.getInventory().getType().equals(InventoryType.PLAYER)) {
+			if (e.getRawSlot() == 45) {
+				e.setCancelled(true);
+			}
 		}
+
 	}
 
 	@EventHandler
