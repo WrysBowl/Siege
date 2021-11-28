@@ -175,7 +175,6 @@ public final class Core extends JavaPlugin {
 				new SkillListener(),
 				new DungeonListener(),
 				new WebstoreListener(),
-				new SmokyBlacksmith(),
 				new MeraTransit(),
 				new SymoneCollector(),
 				new MeraTransit(),
@@ -196,7 +195,6 @@ public final class Core extends JavaPlugin {
 					.registerEvents(listener, this);
 		}
 
-		SmokyBlacksmith.resetItems();
 		StatChangeListener.statBarDisplayTask();
 		new RegenerationTask().startRegenTask();
 		new HelpfulTips().broadcastTasks();
