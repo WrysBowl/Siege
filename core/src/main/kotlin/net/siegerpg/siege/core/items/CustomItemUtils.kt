@@ -286,9 +286,9 @@ object CustomItemUtils {
 				}
 			}
 			if (addUpgraded) {
-				if (item.upgradeStats != null) {
-					if (item.upgradeStats!!.containsKey(it)) {
-						totalAmount += item.upgradeStats!![it]!!
+				item.upgradeStats?.let { upgrade ->
+					if (upgrade.containsKey(it)) {
+						totalAmount += upgrade[it] ?: 0.0
 					}
 				}
 			}
