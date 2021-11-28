@@ -2,6 +2,8 @@ package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
@@ -50,11 +52,19 @@ class Grace : Shop() {
 			        ) {
 				Wheat.tier(1).getUpdatedItem(false).asQuantity(4)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
+			ShopItem(
+					MetalScrap.tier(1).asQuantity(4) as CustomItem, -1, hashMapOf(
+					MetalScrap.tier(2) to 1
+					                                                                 ), true
+			        ) {
+				MetalScrap.tier(1).getUpdatedItem(false).asQuantity(4)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
+			ShopItem(
+					RefinedMetal.tier(1).asQuantity(4) as CustomItem, -1, hashMapOf(
+					RefinedMetal.tier(2) to 1
+					                                                                   ), true
+			        ) {
+				RefinedMetal.tier(1).getUpdatedItem(false).asQuantity(4)
 			},
 
 			//TIER 3
@@ -93,11 +103,19 @@ class Grace : Shop() {
 			        ) {
 				Wheat.tier(2).getUpdatedItem(false).asQuantity(4)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
+			ShopItem(
+					MetalScrap.tier(2).asQuantity(4) as CustomItem, -1, hashMapOf(
+					MetalScrap.tier(3) to 1
+					                                                        ), true
+			        ) {
+				MetalScrap.tier(2).getUpdatedItem(false).asQuantity(4)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
+			ShopItem(
+					RefinedMetal.tier(2).asQuantity(4) as CustomItem, -1, hashMapOf(
+					RefinedMetal.tier(3) to 1
+					                                                        ), true
+			        ) {
+				RefinedMetal.tier(2).getUpdatedItem(false).asQuantity(4)
 			},
 
 			//TIER 4
@@ -136,11 +154,19 @@ class Grace : Shop() {
 			        ) {
 				Wheat.tier(3).getUpdatedItem(false).asQuantity(4)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
+			ShopItem(
+					MetalScrap.tier(3).asQuantity(4) as CustomItem, -1, hashMapOf(
+					MetalScrap.tier(4) to 1
+					                                                        ), true
+			        ) {
+				MetalScrap.tier(3).getUpdatedItem(false).asQuantity(4)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
+			ShopItem(
+					RefinedMetal.tier(3).asQuantity(4) as CustomItem, -1, hashMapOf(
+					RefinedMetal.tier(4) to 1
+					                                                        ), true
+			        ) {
+				RefinedMetal.tier(3).getUpdatedItem(false).asQuantity(4)
 			},
 
 			//TIER 5
@@ -179,11 +205,19 @@ class Grace : Shop() {
 			        ) {
 				Wheat.tier(4).getUpdatedItem(false).asQuantity(4)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
+			ShopItem(
+					MetalScrap.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
+					MetalScrap.tier(5) to 1
+					                                                        ), true
+			        ) {
+				MetalScrap.tier(4).getUpdatedItem(false).asQuantity(4)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
+			ShopItem(
+					RefinedMetal.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
+					RefinedMetal.tier(5) to 1
+					                                                        ), true
+			        ) {
+				RefinedMetal.tier(4).getUpdatedItem(false).asQuantity(4)
 			},
 	                                            )
 }
