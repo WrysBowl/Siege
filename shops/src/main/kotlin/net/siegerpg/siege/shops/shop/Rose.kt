@@ -171,10 +171,10 @@ class Rose : Shop() {
 			//TIER 5
 			ShopItem(
 					Slime.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
-					Pebble.tier(5) to 1
+					Slime.tier(5) to 1
 					                                                        ), true
 			        ) {
-				Pebble.tier(4).getUpdatedItem(false).asQuantity(4)
+				Slime.tier(4).getUpdatedItem(false).asQuantity(4)
 			},
 			ShopItem(
 					Feather.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
