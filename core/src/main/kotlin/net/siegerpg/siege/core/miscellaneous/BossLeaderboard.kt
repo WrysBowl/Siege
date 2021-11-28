@@ -11,7 +11,7 @@ import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers
 import org.bukkit.Bukkit
-import org.bukkit.entity.Item
+import org.bukkit.Statistic
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.entity.Projectile
@@ -153,8 +153,15 @@ class BossLeaderboardListener : Listener {
 				val dropMultiplier =
 						if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
 
+				val time = Utils.secondsToHHMMSS((fightDuration.toInt() / 20).toLong())
+				Bukkit.getPlayer(fighter)
+						?.sendMessage(Utils.lore(""))
 				Bukkit.getPlayer(fighter)
 						?.sendMessage(Utils.lore("<green>You dealt <gold>$percentageDamage% <green>of the damage to the boss!"))
+				Bukkit.getPlayer(fighter)
+						?.sendMessage(Utils.lore("<yellow>Time <gray>$time"))
+				Bukkit.getPlayer(fighter)
+						?.sendMessage(Utils.lore(""))
 
 				val tableExp = dropTable.getExp(true) ?: 0
 				Levels.addExpShared(
