@@ -53,7 +53,7 @@ public class Scoreboard {
 			}
 		}
 		replaceScore(o, 7, "   ");
-		replaceScore(o, 6, Utils.tacc("&7play.SiegeRPG.net"));
+		replaceScore(o, 6, Utils.tacc("&7SiegeRPG.minehut.gg"));
 		if (o.getDisplaySlot() != DisplaySlot.SIDEBAR)
 			o.setDisplaySlot(DisplaySlot.SIDEBAR); //Vital functionality
 		p.setScoreboard(b); //Vital functionality

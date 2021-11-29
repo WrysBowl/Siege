@@ -25,6 +25,23 @@ public class CommonDropTable extends CosmeticDropTable {
 				put(new SquidGame(0), 10);
 				put(new StrawHat(0), 10);
 				put(new SurgicalMask(0), 10);
+
+				put(new BlueGlass(0), 40);
+				put(new BlackGlass(0), 40);
+				put(new BrownGlass(0), 40);
+				put(new CyanGlass(0), 40);
+				put(new GrayGlass(0), 40);
+				put(new GreenGlass(0), 40);
+				put(new LightBlueGlass(0), 40);
+				put(new LightGrayGlass(0), 40);
+				put(new LimeGlass(0), 40);
+				put(new MagentaGlass(0), 40);
+				put(new OrangeGlass(0), 40);
+				put(new PinkGlass(0), 40);
+				put(new PurpleGlass(0), 40);
+				put(new RedGlass(0), 40);
+				put(new WhiteGlass(0), 40);
+				put(new YellowGlass(0), 40);
 			}
 		};
 	}

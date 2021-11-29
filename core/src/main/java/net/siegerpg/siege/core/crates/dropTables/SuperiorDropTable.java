@@ -27,7 +27,7 @@ public class SuperiorDropTable extends CosmeticDropTable {
 				put(new Antlers(0), 10);
 				put(new AxeHead(0), 10);
 				put(new Axolotl(0), 10);
-				put(new Bedridden(0), 10);
+				put(new RedBedridden(0), 10);
 				put(new BlueBetaBlob(0), 10);
 				put(new Honey(0), 10);
 				put(new Metroid(0), 10);
