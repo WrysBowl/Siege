@@ -76,9 +76,8 @@ public class StatUpgrade implements CommandExecutor {
 
 		menu.setOnTopClick(event -> event.setCancelled(true));
 		menu.setOnBottomClick(event -> {
-			if (event.getCurrentItem() != null) {
-				this.cursor = event.getCurrentItem().clone();
-			}
+			if (event.getCurrentItem() == null) return;
+			if (this.material == null) cursor = event.getCurrentItem().clone();
 		});
 		menu.setOnBottomDrag(event -> event.setCancelled(false));
 		menu.setOnClose(event -> {
