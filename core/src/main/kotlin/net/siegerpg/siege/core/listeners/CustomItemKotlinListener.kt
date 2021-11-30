@@ -31,6 +31,7 @@ import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
 import java.math.BigDecimal
+import kotlin.math.sqrt
 
 
 class CustomItemKotlinListener : Listener, Runnable {
@@ -215,7 +216,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 					(damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
 				else damage
 		val reducedDamage =
-				attStrengthStat * (1 - (vicToughness / 1000)) //custom attack damage with toughness considered
+				attStrengthStat * (1 - (calcReducedToughness(vicToughness) / 1000)) //custom attack damage with toughness considered
 
 		e.damage =
 				(reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
@@ -224,6 +225,10 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 		setVictimName(victim, e.damage, vicMaxHealth)
 		DamageIndicator.showDamageIndicator(e.damage, victim.location, isCritical)
+	}
+
+	private fun calcReducedToughness(initToughness : Double) : Double {
+		return 10.0 * sqrt(5.0 * initToughness)
 	}
 
 	private fun setVictimName(
