@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack
 class UncommonKey() : CustomKey(
 		name = "Uncommon Key",
 		customModelData = 630002,
-		description = listOf("Get an uncommon cosmetic"),
+		description = listOf("Get an uncommon cosmetic", "Use in the hub"),
 		material = Material.TRIPWIRE_HOOK,
                                ) {
 

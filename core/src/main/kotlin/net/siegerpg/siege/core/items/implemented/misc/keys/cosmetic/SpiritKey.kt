@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack
 class SpiritKey() : CustomKey(
 		name = "Spirit Key",
 		customModelData = 630008,
-		description = listOf("High chance of a", "legendary cosmetic"),
+		description = listOf("High chance of a", "legendary cosmetic", "Use in the hub"),
 		material = Material.TRIPWIRE_HOOK,
                              ) {
 
