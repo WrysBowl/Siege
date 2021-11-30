@@ -192,7 +192,7 @@ public class CrateOpen implements Listener {
 		background.setRepeat(true);
 		menu.addPane(background);
 
-		OutlinePane row = new OutlinePane(1, 1, 7, 4);
+		OutlinePane row = new OutlinePane(1, 0, 7, 6);
 
 		//icons
 		HashMap< CustomCosmetic, Integer > dropTable = getItem(customItem).dropTable;

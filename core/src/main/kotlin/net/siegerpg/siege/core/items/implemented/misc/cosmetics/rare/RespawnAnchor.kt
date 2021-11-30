@@ -5,12 +5,12 @@ import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class FrostedIce() : Cosmetic(
-		name = "Frosted Ice",
+class RespawnAnchor() : Cosmetic(
+		name = "Respawn Anchor",
 		customModelData = 1,
 		description = listOf(""),
-		material = Material.FROSTED_ICE,
-                             ) {
+		material = Material.RESPAWN_ANCHOR,
+                                ) {
 
 	constructor(quality : Int) : this() {
 		this.quality = 80

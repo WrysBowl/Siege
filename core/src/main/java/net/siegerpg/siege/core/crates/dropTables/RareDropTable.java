@@ -38,7 +38,7 @@ public class RareDropTable extends CosmeticDropTable {
 				put(new EmeraldBlock(0), 20);
 				put(new Dispenser(0), 20);
 				put(new FireCoral(0), 20);
-				put(new FrostedIce(0), 20);
+				put(new RespawnAnchor(0), 20);
 				put(new Honeycomb(0), 20);
 				put(new TubeCoral(0), 20);
 			}
