@@ -42,12 +42,12 @@ interface CustomEquipment : CustomItem {
 	}
 
 	fun addUpgradeStats(upgrades : HashMap<StatTypes, Double>) {
+		if (this.upgradeStats == null) this.upgradeStats = CustomItemUtils.statMap()
 		for (baseStat in baseStats) {
 			//only allow upgraded stats to add if base stat for it exists
 			if (!upgrades.containsKey(baseStat.key)) continue
 			val upgradeValue : Double = upgrades[baseStat.key] ?: 0.0
 			val originalValue : Double = this.upgradeStats?.get(baseStat.key) ?: 0.0
-			if (upgradeStats == null) upgradeStats = CustomItemUtils.statMap()
 			this.upgradeStats!![baseStat.key] = upgradeValue + originalValue
 		}
 		this.serialize()
