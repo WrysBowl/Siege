@@ -196,9 +196,10 @@ public class CrateOpen implements Listener {
 
 		//icons
 		HashMap< CustomCosmetic, Integer > dropTable = getItem(customItem).dropTable;
+		double totalWeight = dropTable.values().stream().mapToInt(Integer::intValue).sum();
 		for (Map.Entry<CustomCosmetic, Integer> entry : dropTable.entrySet()) {
 			ItemStack item = entry.getKey().getUpdatedItem(false);
-			Integer chance = entry.getValue();
+			double chance = Math.floor(entry.getValue()/totalWeight);
 
 			ItemMeta iconMeta = item.getItemMeta();
 			iconMeta.lore(new ArrayList<>() {
