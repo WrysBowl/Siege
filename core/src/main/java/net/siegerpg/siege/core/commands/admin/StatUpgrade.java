@@ -166,7 +166,7 @@ public class StatUpgrade implements CommandExecutor {
 
 		if (this.material != null) {
 
-			Utils.giveItem(player, cursor);
+			Utils.giveItem(player, cursor.asQuantity(this.material.getAmount()));
 			this.material = null;
 			this.newItem = null;
 			this.goldCost = 0;
