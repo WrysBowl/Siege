@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.BeginnerClu
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.BeginnerTwig;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.BeginnerScrapyardBow;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.BeginnerLivingTwig;
+import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -127,7 +128,7 @@ public class PlayerJoinListener implements Listener {
         }*/
 		player.teleport(new Location(Core.plugin().getServer().getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
-
+		new GoldReward().addRequirement(event);
 	}
 
 	public void updateInventory(Player player) {
