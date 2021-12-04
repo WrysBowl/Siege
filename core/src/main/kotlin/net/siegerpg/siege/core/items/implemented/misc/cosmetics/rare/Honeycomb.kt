@@ -9,7 +9,7 @@ class Honeycomb() : Cosmetic(
 		name = "Honeycomb",
 		customModelData = 1,
 		description = listOf(""),
-		material = Material.HONEYCOMB,
+		material = Material.HONEYCOMB_BLOCK,
                             ) {
 
 	constructor(quality : Int) : this() {
