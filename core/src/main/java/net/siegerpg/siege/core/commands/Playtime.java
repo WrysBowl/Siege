@@ -31,7 +31,7 @@ public class Playtime implements CommandExecutor {
 		String time = Utils.secondsToHHMMSS(player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20);
 		sender.sendMessage("");
 		sender.sendMessage(Utils.parse("<gray>    <aqua><bold>PLAYTIME<reset><gray>    "));
-		sender.sendMessage(Utils.parse("   <yellow>"+time));
+		sender.sendMessage(Utils.parse("     <yellow>"+time));
 		sender.sendMessage("");
 		return false;
 	}
