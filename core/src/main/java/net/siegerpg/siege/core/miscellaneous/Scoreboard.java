@@ -45,11 +45,11 @@ public class Scoreboard {
 			if (GlobalMultipliers.expMultiplier > 1.0) {
 				replaceScore(
 						o, 9,
-						Utils.tacc("&7 &7EXP &d" + (GlobalMultipliers.expMultiplier-1)*100 + "%"));
+						Utils.tacc("&7+ &7EXP &d" + (GlobalMultipliers.expMultiplier-1)*100 + "%"));
 			}
 			if (GlobalMultipliers.goldMultiplier > 1.0) {
 				replaceScore(
-						o, 8, Utils.tacc("&7 &7Gold &e" + (GlobalMultipliers.goldMultiplier-1)*100 + "%"));
+						o, 8, Utils.tacc("&7+ &7Gold &e" + (GlobalMultipliers.goldMultiplier-1)*100 + "%"));
 			}
 		}
 		replaceScore(o, 7, "   ");
