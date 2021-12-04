@@ -14,10 +14,7 @@ class Mary : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//RODS
 			ShopItem(
-					OldRod(-1), 10000, hashMapOf(
-					Vine.tier(3) to 2,
-					Stick.tier(3) to 3
-					                            ), true
+					OldRod(-1), 1000, hashMapOf(), false
 			        ) {
 				OldRod(0).getUpdatedItem(false)
 			},
