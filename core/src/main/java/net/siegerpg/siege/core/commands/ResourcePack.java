@@ -19,10 +19,10 @@ public class ResourcePack implements CommandExecutor {
 			player.setResourcePack(
 					"https://download.mc-packs.net/pack/552e26b7c45d46050d9c643818e1e43670bec27d.zip",
 					"552e26b7c45d46050d9c643818e1e43670bec27d");
+			player.sendMessage(Utils.lore("<green><bold>RESOURCE PACK"));
+			player.sendMessage(Utils.lore("<green>https://download.mc-packs.net/pack/552e26b7c45d46050d9c643818e1e43670bec27d.zip"));
 			return true;
 		}
-		Bukkit.getLogger().info(Utils.tacc("<green><bold>RESOURCE PACK"));
-		Bukkit.getLogger().info(Utils.tacc("<green>https://download.mc-packs.net/pack/552e26b7c45d46050d9c643818e1e43670bec27d.zip"));
 		return false;
 	}
 
