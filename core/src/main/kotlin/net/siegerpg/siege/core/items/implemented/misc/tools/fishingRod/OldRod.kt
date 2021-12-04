@@ -11,7 +11,7 @@ class OldRod() : CustomRod(
 		name = "Old Rod",
 		customModelData = 440001,
 		description = listOf("Everyone starts somewhere"),
-		levelRequirement = 6,
+		levelRequirement = 1,
 		material = Material.FISHING_ROD,
 		baseStats = CustomItemUtils.statMap(),
 		enchantments = hashMapOf(
