@@ -31,6 +31,19 @@ public class Scoreboard {
 		double division = expLevel.getSecond() / reqExp;
 		double levelPercent = Utils.round(division, 3);
 		String gold = String.format("%,d", (int) VaultHook.econ.getBalance(p));
+		String levelMessage = Utils.tacc("&7 Level &5" + expLevel.getFirst() + " &d(" +
+		                                 Utils.round(levelPercent * 100, 2) + "%)");
+		String goldMessage = Utils.tacc("&7 Gold &e" + gold);
+
+		if (GlobalMultipliers.expMultiplier > 1.0 || GlobalMultipliers.goldMultiplier > 1.0) {
+			if (GlobalMultipliers.expMultiplier > 1.0) {
+				levelMessage += Utils.tacc(" &7+&d"+((int)(GlobalMultipliers.expMultiplier-1)*100) + "%x");
+			}
+			if (GlobalMultipliers.goldMultiplier > 1.0) {
+				goldMessage += Utils.tacc(" &7+&e"+((int)(GlobalMultipliers.goldMultiplier-1)*100) + "%x");
+			}
+		}
+
 
 		replaceScore(o, 15, " ");
 		replaceScore(
@@ -38,11 +51,10 @@ public class Scoreboard {
 						"&6Profile"));
 		replaceScore(o, 13, Utils.tacc("&7 "+VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName()));
 		replaceScore(
-				o, 12, Utils.tacc("&7 Level &5" + expLevel.getFirst() + " &d(" +
-				                  Utils.round(levelPercent * 100, 2) + "%)"));
-		replaceScore(o, 11, Utils.tacc("&7 Gold &e" + gold));
+				o, 12, levelMessage);
+		replaceScore(o, 11, goldMessage);
 		replaceScore(o, 10, "  ");
-		replaceScore(o, 9, Utils.tacc("&6Gold Milestone"));
+		replaceScore(o, 9, Utils.tacc("&6Global"));
 		double goldDivision = Utils.round(((double)GoldReward.serverGold / GoldReward.goldRequirement) * 100, 1);
 		if (goldDivision > 80) {
 			replaceScore(o, 8, Utils.tacc("&7 Progress &a" + goldDivision + "%"));
@@ -55,19 +67,6 @@ public class Scoreboard {
 
 		int line = 6;
 
-		if (GlobalMultipliers.expMultiplier > 1.0 || GlobalMultipliers.goldMultiplier > 1.0) {
-			if (GlobalMultipliers.expMultiplier > 1.0) {
-				replaceScore(
-						o, line,
-						Utils.tacc("&7+ &7EXP &d" + (GlobalMultipliers.expMultiplier-1)*100 + "%"));
-			}
-			line--;
-			if (GlobalMultipliers.goldMultiplier > 1.0) {
-				replaceScore(
-						o, line, Utils.tacc("&7+ &7Gold &e" + (GlobalMultipliers.goldMultiplier-1)*100 + "%"));
-			}
-			line--;
-		}
 		replaceScore(o, line, "   ");
 		line --;
 		replaceScore(o, line, Utils.tacc("&7SiegeRPG.minehut.gg"));
