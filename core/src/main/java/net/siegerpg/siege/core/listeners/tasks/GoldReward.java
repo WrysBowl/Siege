@@ -97,7 +97,7 @@ public class GoldReward implements Listener {
 			GoldExpListener.giveGold(player, serverGoldReward);
 		}
 		Bukkit.broadcast(Utils.lore(""));
-		Bukkit.broadcast(Utils.lore("<green>All players collected "+serverGoldReward+" gold!"));
+		Bukkit.broadcast(Utils.lore("<yellow>All players collected "+serverGoldReward+" gold!"));
 		Bukkit.broadcast(Utils.lore(""));
 	}
 
