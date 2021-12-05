@@ -4,6 +4,7 @@ import de.tr7zw.nbtapi.NBTItem;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.catches.Fish;
 import net.siegerpg.siege.core.fishing.catches.FishCore;
+import net.siegerpg.siege.core.listeners.GoldExpListener;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
@@ -76,7 +77,7 @@ public class Henry implements Listener {
 		}
 		if (fishName.contains("Krabs")) goldAmount *= 4;
 
-		VaultHook.econ.depositPlayer(player, goldAmount);
+		GoldExpListener.giveGold(player, goldAmount);
 		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 		player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
 		player.sendMessage(Utils.parse(

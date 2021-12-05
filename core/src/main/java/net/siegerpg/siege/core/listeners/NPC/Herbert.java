@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.items.types.misc.CustomFood;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
 import net.siegerpg.siege.core.items.types.misc.StatGemType;
+import net.siegerpg.siege.core.listeners.GoldExpListener;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
@@ -110,7 +111,7 @@ public class Herbert implements Listener {
 				((Player) e.getWhoClicked()).getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP,
 				1.0f, 1.0f
 		                                      );
-		VaultHook.econ.depositPlayer((Player) e.getWhoClicked(), total); // Award gold
+		GoldExpListener.giveGold(((Player) e.getWhoClicked()).getPlayer(), total);
 		Scoreboard.updateScoreboard((Player) e.getWhoClicked()); // Update scoreboard
 	}
 

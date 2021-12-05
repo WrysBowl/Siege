@@ -5,6 +5,7 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import com.github.stefvanschie.inventoryframework.pane.StaticPane;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.listeners.GoldExpListener;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -186,7 +187,7 @@ public class TreasureHunter {
 			}
 		}
 		if (this.goldRewards > 0) {
-			VaultHook.econ.depositPlayer(player, this.goldRewards);
+			GoldExpListener.giveGold(player, this.goldRewards);
 		}
 		if (this.expRewards > 0) {
 			Levels.INSTANCE.addExpShared(player, this.expRewards);
