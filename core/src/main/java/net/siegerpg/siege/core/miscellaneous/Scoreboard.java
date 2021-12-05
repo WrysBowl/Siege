@@ -54,22 +54,7 @@ public class Scoreboard {
 				o, 12, levelMessage);
 		replaceScore(o, 11, goldMessage);
 		replaceScore(o, 10, "  ");
-		replaceScore(o, 9, Utils.tacc("&6Global"));
-		double goldDivision = Utils.round(((double)GoldReward.serverGold / GoldReward.goldRequirement) * 100, 1);
-		if (goldDivision > 80) {
-			replaceScore(o, 8, Utils.tacc("&7 Progress &a" + goldDivision + "%"));
-		} else if (goldDivision > 40) {
-			replaceScore(o, 8, Utils.tacc("&7 Progress &e" + goldDivision + "%"));
-		} else {
-			replaceScore(o, 8, Utils.tacc("&7 Progress &c" + goldDivision + "%"));
-		}
-		replaceScore(o, 7, Utils.tacc("&7 Reward &e+" + GoldReward.serverGoldReward + " Gold"));
-
-		int line = 6;
-
-		replaceScore(o, line, "   ");
-		line --;
-		replaceScore(o, line, Utils.tacc("&7SiegeRPG.minehut.gg"));
+		replaceScore(o, 9, Utils.tacc("&7SiegeRPG.minehut.gg"));
 		if (o.getDisplaySlot() != DisplaySlot.SIDEBAR)
 			o.setDisplaySlot(DisplaySlot.SIDEBAR); //Vital functionality
 		p.setScoreboard(b); //Vital functionality

@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.commands.admin.*;
 import net.siegerpg.siege.core.crates.CrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
+import net.siegerpg.siege.core.miscellaneous.BossBars;
 import net.siegerpg.siege.core.miscellaneous.BossLeaderboardListener;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
@@ -188,7 +189,9 @@ public final class Core extends JavaPlugin {
 				new ArmorListener(getConfig().getStringList("blocked")),
 				new StatChangeListener(),
 				new CosmeticsListener(),
-				new CustomItemKotlinListener()
+				new CustomItemKotlinListener(),
+				new BossBars()
+
 		};
 
 		for (Listener listener : listeners) {

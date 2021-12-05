@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.listeners.tasks;
 import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
+import net.siegerpg.siege.core.miscellaneous.BossBars;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -14,6 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginEnableEvent;
+import org.bukkit.scoreboard.Objective;
 
 import java.util.ArrayList;
 
@@ -55,20 +57,22 @@ public class GoldReward implements Listener {
 	@EventHandler
 	public static void onEnable(PluginEnableEvent e) {
 		if (Bukkit.getOnlinePlayers().isEmpty()) return;
-		setGoldRequirement();
 		players.addAll(Bukkit.getOnlinePlayers());
+		setGoldRequirement();
 	}
 
 	public static void addPlayer(PlayerJoinEvent e) {
 		Player player = e.getPlayer();
 		players.add(player);
 		setGoldRequirement();
+		BossBars.showGoldProgress();
 	}
 
 	public static void removePlayer(PlayerQuitEvent e) {
 		Player player = e.getPlayer();
 		players.remove(player);
 		setGoldRequirement();
+		BossBars.showGoldProgress();
 	}
 
 	public static void setGoldRequirement() {
@@ -78,7 +82,7 @@ public class GoldReward implements Listener {
 			goldRequirement += (levelExp != null ? levelExp.getFirst() : 1) * 2000;
 		}
 
-		serverGoldReward = (int)Math.floor(goldRequirement*0.005);
+		serverGoldReward = (int)Math.ceil(goldRequirement*0.01);
 	}
 	public static void addServerGold(int gold) {
 		int sum = gold + serverGold;
@@ -87,9 +91,7 @@ public class GoldReward implements Listener {
 			giveGoldReward();
 		}
 		serverGold = sum;
-	}
-	public static boolean addGoldStatus() {
-		return serverGold < goldRequirement;
+		BossBars.showGoldProgress();
 	}
 	public static void giveGoldReward() {
 		for (Player player : players) {

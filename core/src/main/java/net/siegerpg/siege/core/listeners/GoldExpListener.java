@@ -37,7 +37,7 @@ public class GoldExpListener implements Listener {
 		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 					public void run() {
 
-						Scoreboard.updateScoreboard(player);
+						//Scoreboard.updateScoreboard(player);
 					}
 				}, 20);
 	}
