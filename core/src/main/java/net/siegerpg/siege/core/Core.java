@@ -140,6 +140,7 @@ public final class Core extends JavaPlugin {
 			commandList.put("drops", new DropTable());
 			commandList.put("resourcePack", new ResourcePack());
 			commandList.put("playTime", new Playtime());
+			commandList.put("menu", new Menu());
 
 		}
 

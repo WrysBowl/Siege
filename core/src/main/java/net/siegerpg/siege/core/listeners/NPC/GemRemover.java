@@ -50,22 +50,25 @@ public class GemRemover implements Listener {
 				.getClickedBlock()
 				.getType()
 				.equals(Material.CHIPPED_ANVIL)) {
-			Player player = e.getPlayer();
-			ItemStack item = player
-					.getInventory()
-					.getItemInMainHand();
-			CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
-			if (customItem instanceof CustomEquipment) {
-				if (((CustomEquipment) customItem).hasGem()) {
-					Inventory shop = new GemRemover().getMenu(e.getPlayer());
-					player.openInventory(shop);
-					this.item = null;
-					this.cost = 0;
-					this.chance = 0;
-				}
-			}
+			openInventory(e.getPlayer());
 			e.setCancelled(true);
 		}
+	}
+
+	public void openInventory(Player player) {
+		ItemStack item = player.getInventory().getItemInMainHand();
+		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+		if (customItem instanceof CustomEquipment) {
+			if (((CustomEquipment) customItem).hasGem()) {
+				Inventory shop = new GemRemover().getMenu(player);
+				player.openInventory(shop);
+				this.item = null;
+				this.cost = 0;
+				this.chance = 0;
+				return;
+			}
+		}
+		player.sendMessage(Utils.lore("<red>You must be holding an item with a gem!"));
 	}
 
 	@EventHandler

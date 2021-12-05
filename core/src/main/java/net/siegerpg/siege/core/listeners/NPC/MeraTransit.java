@@ -47,7 +47,7 @@ public class MeraTransit implements Listener {
 		if (e
 				.getView()
 				.getTitle()
-				.equals("World Transit")) {
+				.equals("Mera")) {
 			e.setCancelled(true);
 			Player player = (Player) e.getWhoClicked();
 			int slot = e.getSlot();
@@ -110,9 +110,9 @@ public class MeraTransit implements Listener {
 		}
 	}
 
-	private Inventory getGUIWorldTransit(Player player) {
+	public Inventory getGUIWorldTransit(Player player) {
 
-		Inventory gui = Bukkit.createInventory(null, 27, "World Transit");
+		Inventory gui = Bukkit.createInventory(null, 27, "Mera");
 
 		//Fill in the GUI
 		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);

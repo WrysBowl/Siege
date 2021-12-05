@@ -62,3 +62,5 @@ commands:
     description: Sets your resource pack correctly
   playTime:
     description: Displays how much time you've spent on the server
+  menu:
+    description: Displays the menu

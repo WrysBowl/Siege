@@ -27,6 +27,7 @@ import java.util.UUID;
 public class GoldExpListener implements Listener {
 
 	public static ArrayList< Player > expCalculating = new ArrayList<>();
+	public static ArrayList< Player > awaitingRemoval = new ArrayList<>();
 
 	public static void giveGold(Player player, int goldAmount) {
 		net.siegerpg.siege.core.miscellaneous.VaultHook.econ.depositPlayer(player, goldAmount);
@@ -78,17 +79,23 @@ public class GoldExpListener implements Listener {
 
 			int exp = e.getExperienceOrb().getExperience();
 			Player player = e.getPlayer();
+
+			//check if exp calculation for player is currently being processed
 			if (expCalculating.contains(player)) {
 				e.setCancelled(true);
 
-				//allow EXP to be gained 5 ticks later
+				//if exp calculation has been processed, add to rate limiter arraylist
+				if (awaitingRemoval.contains(player)) return;
+				awaitingRemoval.add(player);
+
+				//allow EXP to be gained 3 seconds later
 				new BukkitRunnable() {
 					@Override
 					public void run() {
-						GoldExpListener.expCalculating.remove(player);
-
+						expCalculating.remove(player);
+						awaitingRemoval.remove(player);
 					}
-				}.runTaskLater(Core.plugin(), 40);
+				}.runTaskLater(Core.plugin(), 60);
 
 				return; //if player is processing exp calculation
 			} else {
