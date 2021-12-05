@@ -37,7 +37,7 @@ public class GoldExpListener implements Listener {
 		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 					public void run() {
 
-						//Scoreboard.updateScoreboard(player);
+						Scoreboard.updateScoreboard(player);
 					}
 				}, 20);
 	}
@@ -95,7 +95,7 @@ public class GoldExpListener implements Listener {
 						expCalculating.remove(player);
 						awaitingRemoval.remove(player);
 					}
-				}.runTaskLater(Core.plugin(), 40);
+				}.runTaskLater(Core.plugin(), 10);
 
 				return; //if player is processing exp calculation
 			} else {

@@ -49,13 +49,13 @@ public class BossBars implements Listener {
 
 		if (goldDivision > 80) {
 			bar.setColor(BarColor.GREEN);
-			bar.setTitle(Utils.tacc("&e&lGold Party &r&e+" + GoldReward.serverGoldReward + " Gold &a" + goldDivision + "%"));
+			bar.setTitle(Utils.tacc("&e&lGold Party &r&e+" + String.format("%,d", GoldReward.serverGoldReward) + " Gold &a" + goldDivision + "%"));
 		} else if (goldDivision > 40) {
 			bar.setColor(BarColor.YELLOW);
-			bar.setTitle(Utils.tacc("&e&lGold Party &r&e+" + GoldReward.serverGoldReward + " Gold &e" + goldDivision + "%"));
+			bar.setTitle(Utils.tacc("&e&lGold Party &r&e+" + String.format("%,d", GoldReward.serverGoldReward) + " Gold &e" + goldDivision + "%"));
 		} else {
 			bar.setColor(BarColor.RED);
-			bar.setTitle(Utils.tacc("&e&lGold Party &r&e+" + GoldReward.serverGoldReward + " Gold &c" + goldDivision + "%"));
+			bar.setTitle(Utils.tacc("&e&lGold Party &r&e+" + String.format("%,d", GoldReward.serverGoldReward) + " Gold &c" + goldDivision + "%"));
 		}
 	}
 }

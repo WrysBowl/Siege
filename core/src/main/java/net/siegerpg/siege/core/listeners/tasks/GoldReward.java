@@ -3,10 +3,7 @@ package net.siegerpg.siege.core.listeners.tasks;
 import kotlin.Pair;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
-import net.siegerpg.siege.core.miscellaneous.BossBars;
-import net.siegerpg.siege.core.miscellaneous.Levels;
-import net.siegerpg.siege.core.miscellaneous.Scoreboard;
-import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -97,10 +94,16 @@ public class GoldReward implements Listener {
 	public static void giveGoldReward() {
 		for (Player player : players) {
 			player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 0.6f, 1.25f);
-			GoldExpListener.giveGold(player, serverGoldReward);
+			VaultHook.econ.depositPlayer(player, serverGoldReward);
+			player.sendActionBar(Utils.parse("<yellow>+ " + String.format("%,d", serverGoldReward) + " <yellow>Gold"));
+			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+				public void run() {
+					Scoreboard.updateScoreboard(player);
+				}
+			}, 20);
 		}
 		Bukkit.broadcast(Utils.lore(""));
-		Bukkit.broadcast(Utils.lore("<yellow>All players collected "+serverGoldReward+" gold!"));
+		Bukkit.broadcast(Utils.lore("<yellow>All players collected "+String.format("%,d", serverGoldReward)+" gold!"));
 		Bukkit.broadcast(Utils.lore(""));
 	}
 
