@@ -4,7 +4,6 @@ import io.papermc.paper.event.player.AsyncChatEvent
 import net.kyori.adventure.text.TextComponent
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
-import net.siegerpg.siege.core.miscellaneous.HexColorCode
 import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Color
 import org.bukkit.Material
@@ -26,12 +25,12 @@ class HexShifter() : Cosmetic(
 	override fun onCosmeticSpeak(e : AsyncChatEvent) {
 		val player : Player = e.player
 		var message : String = (e.message() as TextComponent).content()
-		if (HexColorCode.isValidHexCode(message) || HexColorCode.isValidHexCode("#$message")) {
+		if (Utils.isValidHexCode(message) || Utils.isValidHexCode("#$message")) {
 			message = if (!message.contains("#")) "#$message" else message
 			e.isCancelled = true
 			player.sendMessage(Utils.lore("<color:$message>Cosmetic color changed!"))
 
-			leatherColor = HexColorCode.hex2Rgb(message)
+			leatherColor = Utils.hex2Rgb(message)
 			item = this.getUpdatedItem(false)
 			this.serialize()
 			player.inventory.setItemInMainHand(item)
