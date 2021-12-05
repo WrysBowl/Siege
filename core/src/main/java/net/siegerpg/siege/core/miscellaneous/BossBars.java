@@ -32,13 +32,6 @@ public class BossBars implements Listener {
 			bar.removePlayer(player);
 		}
 	}
-	@EventHandler
-	public static void addPlayer(PluginEnableEvent e) {
-		if (Bukkit.getOnlinePlayers().isEmpty()) return;
-		for (Player player : Bukkit.getOnlinePlayers()) {
-			bar.addPlayer(player);
-		}
-	}
 
 
 	public static void showGoldProgress() {

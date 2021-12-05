@@ -59,6 +59,7 @@ public class GoldReward implements Listener {
 		if (Bukkit.getOnlinePlayers().isEmpty()) return;
 		players.addAll(Bukkit.getOnlinePlayers());
 		setGoldRequirement();
+		BossBars.showGoldProgress();
 	}
 
 	public static void addPlayer(PlayerJoinEvent e) {
