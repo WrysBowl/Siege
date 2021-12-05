@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.miscellaneous;
 
 import kotlin.Pair;
+import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -34,26 +35,42 @@ public class Scoreboard {
 		replaceScore(o, 15, " ");
 		replaceScore(
 				o, 14, Utils.tacc(
-						"&6Profile " + VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName()));
+						"&6Profile"));
+		replaceScore(o, 13, Utils.tacc("&7 "+VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName()));
 		replaceScore(
-				o, 13, Utils.tacc("&7 Level &5" + expLevel.getFirst() + " &d(" +
+				o, 12, Utils.tacc("&7 Level &5" + expLevel.getFirst() + " &d(" +
 				                  Utils.round(levelPercent * 100, 2) + "%)"));
-		replaceScore(o, 12, Utils.tacc("&7 Gold &e" + gold));
+		replaceScore(o, 11, Utils.tacc("&7 Gold &e" + gold));
+		replaceScore(o, 10, "  ");
+		replaceScore(o, 9, Utils.tacc("&6Gold Milestone"));
+		double goldDivision = Utils.round(((double)GoldReward.serverGold / GoldReward.goldRequirement) * 100, 1);
+		if (goldDivision > 80) {
+			replaceScore(o, 8, Utils.tacc("&7 Progress &a" + goldDivision + "%"));
+		} else if (goldDivision > 40) {
+			replaceScore(o, 8, Utils.tacc("&7 Progress &e" + goldDivision + "%"));
+		} else {
+			replaceScore(o, 8, Utils.tacc("&7 Progress &c" + goldDivision + "%"));
+		}
+		replaceScore(o, 7, Utils.tacc("&7 Reward &e+" + GoldReward.serverGoldReward + " Gold"));
+
+		int line = 6;
+
 		if (GlobalMultipliers.expMultiplier > 1.0 || GlobalMultipliers.goldMultiplier > 1.0) {
-			replaceScore(o, 11, "  ");
-			replaceScore(o, 10, Utils.tacc("&6Global"));
 			if (GlobalMultipliers.expMultiplier > 1.0) {
 				replaceScore(
-						o, 9,
+						o, line,
 						Utils.tacc("&7+ &7EXP &d" + (GlobalMultipliers.expMultiplier-1)*100 + "%"));
 			}
+			line--;
 			if (GlobalMultipliers.goldMultiplier > 1.0) {
 				replaceScore(
-						o, 8, Utils.tacc("&7+ &7Gold &e" + (GlobalMultipliers.goldMultiplier-1)*100 + "%"));
+						o, line, Utils.tacc("&7+ &7Gold &e" + (GlobalMultipliers.goldMultiplier-1)*100 + "%"));
 			}
+			line--;
 		}
-		replaceScore(o, 7, "   ");
-		replaceScore(o, 6, Utils.tacc("&7SiegeRPG.minehut.gg"));
+		replaceScore(o, line, "   ");
+		line --;
+		replaceScore(o, line, Utils.tacc("&7SiegeRPG.minehut.gg"));
 		if (o.getDisplaySlot() != DisplaySlot.SIDEBAR)
 			o.setDisplaySlot(DisplaySlot.SIDEBAR); //Vital functionality
 		p.setScoreboard(b); //Vital functionality

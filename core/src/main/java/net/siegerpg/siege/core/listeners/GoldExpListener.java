@@ -4,6 +4,7 @@ import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -28,14 +29,11 @@ public class GoldExpListener implements Listener {
 	public static ArrayList< Player > expCalculating = new ArrayList<>();
 
 	public static void giveGold(Player player, int goldAmount) {
-
 		net.siegerpg.siege.core.miscellaneous.VaultHook.econ.depositPlayer(player, goldAmount);
 		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
 		player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
-		Bukkit
-				.getServer()
-				.getScheduler()
-				.runTaskLater(Core.plugin(), new Runnable() {
+		if (GoldReward.addGoldStatus()) GoldReward.addServerGold(goldAmount);
+		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 					public void run() {
 
 						Scoreboard.updateScoreboard(player);
