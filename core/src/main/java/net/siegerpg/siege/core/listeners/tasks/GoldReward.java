@@ -83,8 +83,8 @@ public class GoldReward implements Listener {
 	public static void addServerGold(int gold) {
 		int sum = gold + serverGold;
 		if (sum >= goldRequirement) {
-			giveGoldReward();
 			sum -= goldRequirement;
+			giveGoldReward();
 		}
 		serverGold = sum;
 	}
@@ -92,7 +92,6 @@ public class GoldReward implements Listener {
 		return serverGold < goldRequirement;
 	}
 	public static void giveGoldReward() {
-		if (addGoldStatus()) return;
 		for (Player player : players) {
 			player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 0.6f, 1.25f);
 			GoldExpListener.giveGold(player, serverGoldReward);
@@ -100,7 +99,6 @@ public class GoldReward implements Listener {
 		Bukkit.broadcast(Utils.lore(""));
 		Bukkit.broadcast(Utils.lore("<green>All players collected "+serverGoldReward+" gold!"));
 		Bukkit.broadcast(Utils.lore(""));
-
 	}
 
 }
