@@ -4,6 +4,7 @@ import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
+import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.drops.BlockDropTable;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
@@ -25,10 +26,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class DropTable implements CommandExecutor {
 
@@ -137,6 +135,7 @@ public class DropTable implements CommandExecutor {
 
 	private ChestGui getBlockDrops(int startPosition, Player player) {
 		//Menu
+
 		ChestGui menu = new ChestGui(6, "Block Drops");
 
 		menu.setOnGlobalClick(event -> event.setCancelled(true));
@@ -177,14 +176,14 @@ public class DropTable implements CommandExecutor {
 					               " <gray>- <light_purple>"+
 					               String.format("%,d", blockDropTable.getExpMax())));
 					add(Utils.lore(""));
-					for(Reward reward : blockDropTable.getRewards()) {
-						add(Utils.lore("<gray>" + reward.getItem().getItemMeta().getDisplayName() + " <yellow>" + reward.getChance() + "%"));
-					}
+					add(Utils.lore("<yellow>Click to View Drops"));
 				}
 			});
 			item.setItemMeta(iconMeta);
 
-			row.addItem(new GuiItem(item));
+			row.addItem(new GuiItem(item, e -> {
+				createDropsGUI(blockDropTable.getRewards()).show(player);
+			}));
 		}
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
@@ -197,6 +196,42 @@ public class DropTable implements CommandExecutor {
 
 		menu.addPane(row);
 		menu.addPane(nextButton);
+
+		return menu;
+	}
+	private ChestGui createDropsGUI(Reward[] rewards) {
+		//Menu
+		int size = (int) Math.ceil(rewards.length / 9.0);
+		if (size > 6) size = 6;
+		ChestGui menu = new ChestGui(size, "Drops");
+
+		menu.setOnGlobalClick(event -> event.setCancelled(true));
+
+		OutlinePane background = new OutlinePane(0, 0, 9, size, Pane.Priority.LOWEST);
+
+		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+		ItemMeta fillerMeta = filler.getItemMeta();
+		fillerMeta.displayName(Utils.lore(""));
+		filler.setItemMeta(fillerMeta);
+		background.addItem(new GuiItem(filler));
+		background.setRepeat(true);
+		menu.addPane(background);
+
+		OutlinePane row = new OutlinePane(0, 0, 9, size);
+
+		//icons
+
+		for(Reward reward : rewards) {
+			ItemStack item = reward.getItem();
+			List< Component > lore = item.lore();
+			if (lore == null) lore = new ArrayList<>();
+			lore.add(Utils.lore("<gray>Chance <yellow>"+reward.getChance()+"%"));
+			item.lore(lore);
+
+			row.addItem(new GuiItem(item));
+		}
+
+		menu.addPane(row);
 
 		return menu;
 	}
@@ -243,14 +278,14 @@ public class DropTable implements CommandExecutor {
 					               " <gray>- <light_purple>"+
 					               String.format("%,d", mobDropTable.getExpMax())));
 					add(Utils.lore(""));
-					for(Reward reward : mobDropTable.getRewards()) {
-						add(Utils.lore("<gray>" + reward.getItem().getItemMeta().getDisplayName() + " <yellow>" + reward.getChance() + "%"));
-					}
+					add(Utils.lore("<yellow>Click to View Drops"));
 				}
 			});
 			item.setItemMeta(iconMeta);
 
-			row.addItem(new GuiItem(item));
+			row.addItem(new GuiItem(item, e -> {
+				createDropsGUI(mobDropTable.getRewards()).show(player);
+			}));
 		}
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
@@ -307,14 +342,14 @@ public class DropTable implements CommandExecutor {
 					               " <gray>- <light_purple>"+
 					               String.format("%,d", mobDropTable.getExpMax())));
 					add(Utils.lore(""));
-					for(Reward reward : mobDropTable.getRewards()) {
-						add(Utils.lore("<gray>" + reward.getItem().getItemMeta().getDisplayName() + " <yellow>" + reward.getChance() + "%"));
-					}
+					add(Utils.lore("<yellow>Click to View Drops"));
 				}
 			});
 			item.setItemMeta(iconMeta);
 
-			row.addItem(new GuiItem(item));
+			row.addItem(new GuiItem(item, e -> {
+				createDropsGUI(mobDropTable.getRewards()).show(player);
+			}));
 		}
 
 		menu.addPane(row);
