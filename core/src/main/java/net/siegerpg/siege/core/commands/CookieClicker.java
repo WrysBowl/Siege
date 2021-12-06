@@ -4,8 +4,8 @@ import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
+import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -14,6 +14,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class CookieClicker implements CommandExecutor {
 	private ChestGui menu;
 	private int cookieLevel = 1;
 	private int clicks = 0;
+	public static ArrayList< Player > clickCalculating = new ArrayList<>();
+	public static ArrayList< Player > awaitingRemoval = new ArrayList<>();
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -122,8 +125,26 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
 			this.clicks++;
-			this.menu = getMenu(player);
-			this.menu.show(player);
+			if (clickCalculating.contains(player)) {
+
+				//if calculation has been processed, add to rate limiter arraylist
+				if (!awaitingRemoval.contains(player)) {
+					awaitingRemoval.add(player);
+
+					//allow to be shown 4 ticks later
+					new BukkitRunnable() {
+						@Override
+						public void run() {
+							clickCalculating.remove(player);
+							awaitingRemoval.remove(player);
+							getMenu(player).show(player);
+						}
+					}.runTaskLater(Core.plugin(), 20);
+				}
+
+			} else {
+				clickCalculating.add(player);
+			}
 		});
 	}
 	public GuiItem get20Cookie(Player player) {
