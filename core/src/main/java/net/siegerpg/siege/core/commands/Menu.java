@@ -160,7 +160,7 @@ public class Menu implements CommandExecutor {
 		 */
 		OutlinePane games = new OutlinePane(5, 0, 3, 1);
 		//Cookie clicker game
-		statistics.addItem(new GuiItem(getCookieClickerIcon()));
+		games.addItem(new GuiItem(getCookieClickerIcon(), e -> player.performCommand("cookieclicker")));
 
 
 		menu.addPane(vault);
@@ -170,6 +170,7 @@ public class Menu implements CommandExecutor {
 		menu.addPane(hands);
 		menu.addPane(utilities);
 		menu.addPane(statistics);
+		menu.addPane(games);
 
 		this.menu = menu;
 		return menu;
