@@ -23,10 +23,7 @@ import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.Statistic;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -34,6 +31,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -46,6 +44,8 @@ import java.util.Map;
 public class Menu implements CommandExecutor {
 
 	private ChestGui menu;
+	private static final Location farmLocation = new Location(Bukkit.getWorld("Hilly_Woods"),188.5, 61, -122.5, -90, 0);
+	private static final Location villageLocation = new Location(Bukkit.getWorld("Hilly_Woods"),205.5, 93, 217.5, 180, 0);
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -70,6 +70,7 @@ public class Menu implements CommandExecutor {
 		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
 		ItemMeta fillerMeta = filler.getItemMeta();
 		fillerMeta.displayName(Utils.lore(""));
+		fillerMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		filler.setItemMeta(fillerMeta);
 		background.addItem(new GuiItem(filler));
 		background.setRepeat(true);
@@ -96,7 +97,6 @@ public class Menu implements CommandExecutor {
 		enderChest.addItem(new GuiItem(geteChestIcon(player), e -> player.performCommand("ec")));
 
 
-
 		/*
 		  Utility Icons
 		 */
@@ -117,17 +117,23 @@ public class Menu implements CommandExecutor {
 		/*
 		  Warp Icons
 		 */
-		OutlinePane warps = new OutlinePane(8, 2, 1, 3);
+		OutlinePane warps = new OutlinePane(8, 2, 1, 4);
 		//Creating hub TP
 		warps.addItem(new GuiItem(getHubTeleportIcon(), e -> player.performCommand("h")));
-		//Creating Hilly Woods TP
-		warps.addItem(new GuiItem(getHillyWoodsTP(), e -> {
-			ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-			String command = "hvtp Hilly_Woods "+player.getName();
-			Bukkit.dispatchCommand(console, command);
-		}));
 		//Creating Mera
 		warps.addItem(new GuiItem(getMeraIcon(player), e -> player.openInventory(new MeraTransit().getGUIWorldTransit(player))));
+		//Creating Farm TP
+		warps.addItem(new GuiItem(getFarmTeleportIcon(player), e -> {
+			Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
+			if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
+			if (expLevel.getFirst() >=5) player.teleport(farmLocation);
+		}));
+		//Creating Village TP
+		warps.addItem(new GuiItem(getVillageTeleportIcon(player), e -> {
+			Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
+			if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
+			if (expLevel.getFirst() >=15) player.teleport(villageLocation);
+		}));
 
 		/*
 		  Player Statistic Icons
@@ -187,8 +193,8 @@ public class Menu implements CommandExecutor {
 				{
 					add(Utils.lore("<gray>Sell items"));
 					add(Utils.lore(""));
-					add(Utils.lore("<gray><bold>See in person"));
-					add(Utils.lore("<red><bold>WARRIOR+"));
+					add(Utils.lore("<gray>See in person"));
+					add(Utils.lore("<red><bold>/buy rank access"));
 				}
 			});
 		}
@@ -217,8 +223,8 @@ public class Menu implements CommandExecutor {
 					add(Utils.lore("<gray>Click to upgrade"));
 					add(Utils.lore("<gray>your stats!"));
 					add(Utils.lore(""));
-					add(Utils.lore("<gray><bold>See in person"));
-					add(Utils.lore("<red><bold>WARRIOR+"));
+					add(Utils.lore("<gray>See in person"));
+					add(Utils.lore("<red><bold>/buy rank access"));
 				}
 			});
 		}
@@ -247,8 +253,8 @@ public class Menu implements CommandExecutor {
 					add(Utils.lore("<gray>Remove gems"));
 					add(Utils.lore("<gray>from your gear"));
 					add(Utils.lore(""));
-					add(Utils.lore("<gray><bold>See in person"));
-					add(Utils.lore("<red><bold>WARRIOR+"));
+					add(Utils.lore("<gray>See in person"));
+					add(Utils.lore("<red><bold>/buy rank access"));
 				}
 			});
 		}
@@ -290,8 +296,8 @@ public class Menu implements CommandExecutor {
 				{
 					add(Utils.lore("<gray>Teleport to last death"));
 					add(Utils.lore(""));
-					add(Utils.lore("<gray><bold>See in person"));
-					add(Utils.lore("<red><bold>WARRIOR+"));
+					add(Utils.lore("<gray>See in person"));
+					add(Utils.lore("<red><bold>/buy rank access"));
 				}
 			});
 		}
@@ -318,8 +324,8 @@ public class Menu implements CommandExecutor {
 				{
 					add(Utils.lore("<gray>Access vaults"));
 					add(Utils.lore(""));
-					add(Utils.lore("<gray><bold>See in person"));
-					add(Utils.lore("<red><bold>WARRIOR+"));
+					add(Utils.lore("<gray>See in person"));
+					add(Utils.lore("<red><bold>/buy rank access"));
 				}
 			});
 		}
@@ -347,8 +353,8 @@ public class Menu implements CommandExecutor {
 				{
 					add(Utils.lore("<gray>Access Ender Chest"));
 					add(Utils.lore(""));
-					add(Utils.lore("<gray><bold>See in person"));
-					add(Utils.lore("<red><bold>WARRIOR+"));
+					add(Utils.lore("<gray>See in person"));
+					add(Utils.lore("<red><bold>/buy rank access"));
 				}
 			});
 		}
@@ -371,18 +377,64 @@ public class Menu implements CommandExecutor {
 		return hubTPIcon;
 	}
 
-	private static ItemStack getHillyWoodsTP() {
-		ItemStack hillyWoodsTPIcon = new ItemStack(Material.OAK_SAPLING);
-		ItemMeta hubTPIconItemMeta = hillyWoodsTPIcon.getItemMeta();
-		hubTPIconItemMeta.displayName(Utils.lore("<dark_green><bold>Hilly Woods"));
-		hubTPIconItemMeta.lore(new ArrayList<>() {
-			{
-				add(Utils.lore("<gray>Teleport to Hilly Woods"));
-			}
-		});
+	private static ItemStack getFarmTeleportIcon(Player player) {
+		ItemStack farmIcon = new ItemStack(Material.WHEAT);
+		ItemMeta farmIconItemMeta = farmIcon.getItemMeta();
+		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
+		if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
 
-		hillyWoodsTPIcon.setItemMeta(hubTPIconItemMeta);
-		return hillyWoodsTPIcon;
+		if (expLevel.getFirst()>=5) {
+			farmIconItemMeta.displayName(Utils.lore("<yellow><bold>FARM"));
+			farmIconItemMeta.lore(new ArrayList<>() {
+				{
+					add(Utils.lore("<gray>Teleport to Farm"));
+				}
+			});
+		} else {
+			farmIcon = new ItemStack(Material.BARRIER);
+			farmIconItemMeta = farmIcon.getItemMeta();
+			farmIconItemMeta.displayName(Utils.lore("<red><bold>FARM"));
+			farmIconItemMeta.lore(new ArrayList<>() {
+				{
+					add(Utils.lore("<gray>Teleport to Farm"));
+					add(Utils.lore(""));
+					add(Utils.lore("<red>Level 5 Required"));
+				}
+			});
+		}
+
+		farmIcon.setItemMeta(farmIconItemMeta);
+		return farmIcon;
+	}
+
+	private static ItemStack getVillageTeleportIcon(Player player) {
+		ItemStack villageIcon = new ItemStack(Material.EMERALD);
+		ItemMeta villageIconItemMeta = villageIcon.getItemMeta();
+		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
+		if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
+
+		if (expLevel.getFirst()>=15) {
+			villageIconItemMeta.displayName(Utils.lore("<green><bold>VILLAGE"));
+			villageIconItemMeta.lore(new ArrayList<>() {
+				{
+					add(Utils.lore("<gray>Teleport to Village"));
+				}
+			});
+		} else {
+			villageIcon = new ItemStack(Material.BARRIER);
+			villageIconItemMeta = villageIcon.getItemMeta();
+			villageIconItemMeta.displayName(Utils.lore("<red><bold>VILLAGE"));
+			villageIconItemMeta.lore(new ArrayList<>() {
+				{
+					add(Utils.lore("<gray>Teleport to Village"));
+					add(Utils.lore(""));
+					add(Utils.lore("<red>Level 15 Required"));
+				}
+			});
+		}
+
+		villageIcon.setItemMeta(villageIconItemMeta);
+		return villageIcon;
 	}
 
 	private static ItemStack[] getHandIcons(Player player) {
