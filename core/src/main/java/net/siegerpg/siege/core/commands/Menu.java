@@ -4,6 +4,7 @@ import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
+import kotlin.Pair;
 import net.siegerpg.siege.core.commands.admin.StatUpgrade;
 import net.siegerpg.siege.core.fishing.catches.loot.gems.CrackedStrength;
 import net.siegerpg.siege.core.items.CustomItem;
@@ -13,9 +14,12 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Pris
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
+import net.siegerpg.siege.core.listeners.GoldExpListener;
 import net.siegerpg.siege.core.listeners.NPC.GemRemover;
 import net.siegerpg.siege.core.listeners.NPC.Herbert;
 import net.siegerpg.siege.core.listeners.NPC.MeraTransit;
+import net.siegerpg.siege.core.listeners.tasks.GoldReward;
+import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
@@ -71,7 +75,14 @@ public class Menu implements CommandExecutor {
 		background.setRepeat(true);
 		menu.addPane(background);
 
-
+		OutlinePane row = new OutlinePane(0, 1, 9, 1);
+		ItemStack rowItem = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
+		ItemMeta rowItemMeta = rowItem.getItemMeta();
+		rowItemMeta.displayName(Utils.lore(""));
+		rowItem.setItemMeta(rowItemMeta);
+		row.addItem(new GuiItem(rowItem));
+		row.setRepeat(true);
+		menu.addPane(row);
 
 		/*
 		  Storage Icons
@@ -89,7 +100,7 @@ public class Menu implements CommandExecutor {
 		/*
 		  Utility Icons
 		 */
-		OutlinePane utilities = new OutlinePane(0, 2, 1, 3);
+		OutlinePane utilities = new OutlinePane(0, 2, 1, 4);
 		//Creating scrapper
 		utilities.addItem(new GuiItem(getScrapperIcon(player), e -> new Herbert(player)));
 		//Creating Gem Remover
@@ -100,43 +111,59 @@ public class Menu implements CommandExecutor {
 			String command = "statUpgrade "+player.getName();
 			Bukkit.dispatchCommand(console, command);
 		}));
-
+		//Creating Drops
+		utilities.addItem(new GuiItem(getDropsIcon(), e -> new DropTable().getStartMenu(player).show(player)));
 
 		/*
 		  Warp Icons
 		 */
-		OutlinePane warps = new OutlinePane(8, 1, 1, 5);
+		OutlinePane warps = new OutlinePane(8, 2, 1, 3);
 		//Creating hub TP
 		warps.addItem(new GuiItem(getHubTeleportIcon(), e -> player.performCommand("h")));
-		//Creating PvP TP
 		//Creating Hilly Woods TP
-		//Creating Fishing TP
+		warps.addItem(new GuiItem(getHillyWoodsTP(), e -> {
+			ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+			String command = "hvtp Hilly_Woods "+player.getName();
+			Bukkit.dispatchCommand(console, command);
+		}));
 		//Creating Mera
 		warps.addItem(new GuiItem(getMeraIcon(player), e -> player.openInventory(new MeraTransit().getGUIWorldTransit(player))));
 
 		/*
 		  Player Statistic Icons
 		 */
+		OutlinePane statistics = new OutlinePane(4, 3, 1, 2);
+
 		//Creating main hand and offhand display
 		OutlinePane hands = new OutlinePane(2, 3, 1, 2);
 		for(ItemStack handItem : getHandIcons(player)) {
 			hands.addItem(new GuiItem(handItem));
 		}
-
 		//Creating Armor Display
 		OutlinePane armor = new OutlinePane(3, 2, 1, 4);
 		for(ItemStack armorPiece : getArmorIcons(player)) {
 			armor.addItem(new GuiItem(armorPiece));
 		}
 		//Creating level and exp display w/ click for more info
+		statistics.addItem(new GuiItem(getLevelIcon(player)));
 		//Creating gold display w/ gold milestone
+		statistics.addItem(new GuiItem(getGoldStatusIcon(player)));
+
+		/*
+		  Player Games Icons
+		 */
+		OutlinePane games = new OutlinePane(5, 0, 3, 1);
+		//Cookie clicker game
+		statistics.addItem(new GuiItem(getCookieClickerIcon()));
 
 
 		menu.addPane(vault);
 		menu.addPane(enderChest);
 		menu.addPane(warps);
 		menu.addPane(armor);
+		menu.addPane(hands);
 		menu.addPane(utilities);
+		menu.addPane(statistics);
 
 		this.menu = menu;
 		return menu;
@@ -230,6 +257,20 @@ public class Menu implements CommandExecutor {
 		return gemIcon;
 	}
 
+	private static ItemStack getDropsIcon() {
+		ItemStack dropsIcon = new ItemStack(Material.GRASS_BLOCK);
+		ItemMeta dropsIconItemMeta = dropsIcon.getItemMeta();
+		dropsIconItemMeta.displayName(Utils.lore("<red><bold>DROPS"));
+		dropsIconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>View Item Drops!"));
+			}
+		});
+
+		dropsIcon.setItemMeta(dropsIconItemMeta);
+		return dropsIcon;
+	}
+
 	private ItemStack getMeraIcon(Player player) {
 
 		ItemStack mera = new ItemStack(Material.SKELETON_SKULL);
@@ -318,16 +359,30 @@ public class Menu implements CommandExecutor {
 
 	private static ItemStack getHubTeleportIcon() {
 		ItemStack hubTPIcon = new ItemStack(Material.ENDER_PEARL);
-		ItemMeta vaultIconItemMeta = hubTPIcon.getItemMeta();
-		vaultIconItemMeta.displayName(Utils.lore("<dark_green><bold>HUB"));
-		vaultIconItemMeta.lore(new ArrayList<>() {
+		ItemMeta hubTPIconItemMeta = hubTPIcon.getItemMeta();
+		hubTPIconItemMeta.displayName(Utils.lore("<dark_green><bold>HUB"));
+		hubTPIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Teleport to Hub"));
 			}
 		});
 
-		hubTPIcon.setItemMeta(vaultIconItemMeta);
+		hubTPIcon.setItemMeta(hubTPIconItemMeta);
 		return hubTPIcon;
+	}
+
+	private static ItemStack getHillyWoodsTP() {
+		ItemStack hillyWoodsTPIcon = new ItemStack(Material.OAK_SAPLING);
+		ItemMeta hubTPIconItemMeta = hillyWoodsTPIcon.getItemMeta();
+		hubTPIconItemMeta.displayName(Utils.lore("<dark_green><bold>Hilly Woods"));
+		hubTPIconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Teleport to Hilly Woods"));
+			}
+		});
+
+		hillyWoodsTPIcon.setItemMeta(hubTPIconItemMeta);
+		return hillyWoodsTPIcon;
 	}
 
 	private static ItemStack[] getHandIcons(Player player) {
@@ -389,4 +444,75 @@ public class Menu implements CommandExecutor {
 		ItemStack[] array = new ItemStack[armorPieces.size()];
 		return armorPieces.toArray(array);
 	}
+
+	private static ItemStack getLevelIcon(Player player) {
+		ItemStack levelIcon = new ItemStack(Material.EXPERIENCE_BOTTLE);
+		ItemMeta levelIconItemMeta = levelIcon.getItemMeta();
+		Pair< Short, Integer > pair = Levels.INSTANCE.blockingGetExpLevel(player);
+		if (pair == null) pair = new Pair<>((short) 1, 0);
+
+		float reqExp = Levels.INSTANCE.calculateRequiredExperience(pair.getFirst());
+		double division = pair.getSecond() / reqExp;
+		String levelPercent = Utils.round(Utils.round(division, 3) * 100, 2) + "%";
+
+		int total = 0;
+		for (int i = 2; i < pair.getFirst(); i++) {
+			total = total + Levels.INSTANCE.calculateRequiredExperience((short) i);
+
+		}
+		total = total + pair.getSecond();
+		String totalFormat = String.format("%,d", total);
+		String expLeft = String.format("%,d", (int) (reqExp - pair.getSecond()));
+		levelIconItemMeta.displayName(Utils.lore("<dark_purple><bold>Level Stats"));
+		Pair< Short, Integer > finalPair = pair;
+		levelIconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Level <reset><dark_purple>" + finalPair.getFirst()));
+				add(Utils.lore("<gray>Exp % <reset><light_purple>" + levelPercent));
+				add(Utils.lore("<gray>Exp <reset><light_purple>" + finalPair.getSecond()));
+				add(Utils.lore("<gray>Exp to Next <reset><light_purple>" + expLeft));
+				add(Utils.lore("<gray>Total Exp <reset><light_purple>" + totalFormat));
+			}
+		});
+		levelIcon.setItemMeta(levelIconItemMeta);
+		return levelIcon;
+	}
+
+	private static ItemStack getGoldStatusIcon(Player player) {
+		ItemStack goldIcon = new ItemStack(Material.SUNFLOWER);
+		ItemMeta goldIconItemMeta = goldIcon.getItemMeta();
+		goldIconItemMeta.displayName(Utils.lore("<yellow><bold>GOLD"));
+		double goldDivision = Utils.round(((double) GoldReward.serverGold / GoldReward.goldRequirement) * 100, 1);
+
+		goldIconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Gold <yellow>"+String.format("%,d", (int) VaultHook.econ.getBalance(player))));
+				add(Utils.lore(""));
+				add(Utils.lore("<yellow>Gold Party"));
+				add(Utils.lore("<gray>Gold Reward <yellow>+" + String.format("%,d", GoldReward.serverGoldReward)));
+				add(Utils.lore("<gray>Gold Progress <yellow>" + goldDivision + "%"));
+				add(Utils.lore("<gray>Gold Milestone <yellow>" + String.format("%,d", GoldReward.goldRequirement)));
+				add(Utils.lore("<gray>Gold Collected <yellow>" + String.format("%,d", GoldReward.serverGold)));
+			}
+		});
+
+		goldIcon.setItemMeta(goldIconItemMeta);
+		return goldIcon;
+	}
+
+	private static ItemStack getCookieClickerIcon() {
+		ItemStack cookieClickerIcon = new ItemStack(Material.COOKIE);
+		ItemMeta cookieClickerIconItemMeta = cookieClickerIcon.getItemMeta();
+		cookieClickerIconItemMeta.displayName(Utils.lore("<gold><bold>Cookie Clicker"));
+		cookieClickerIconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Click to Play"));
+				add(Utils.lore("<gray>Cookie Clicker!"));
+			}
+		});
+
+		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
+		return cookieClickerIcon;
+	}
+
 }

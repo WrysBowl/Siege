@@ -46,7 +46,7 @@ public class DropTable implements CommandExecutor {
 	}
 
 
-	private ChestGui getStartMenu(Player player) {
+	public ChestGui getStartMenu(Player player) {
 		//Menu
 		ChestGui menu = new ChestGui(3, "Select Drop Type");
 

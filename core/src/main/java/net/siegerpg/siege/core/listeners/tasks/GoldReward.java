@@ -96,15 +96,14 @@ public class GoldReward implements Listener {
 			player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 0.6f, 1.25f);
 			VaultHook.econ.depositPlayer(player, serverGoldReward);
 			player.sendActionBar(Utils.parse("<yellow>+ " + String.format("%,d", serverGoldReward) + " <yellow>Gold"));
+			player.sendTitle("", Utils.tacc("&e+ " + String.format("%,d", serverGoldReward) + " &7Gold!"), 20, 100, 20);
+
 			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 				public void run() {
 					Scoreboard.updateScoreboard(player);
 				}
 			}, 20);
 		}
-		Bukkit.broadcast(Utils.lore(""));
-		Bukkit.broadcast(Utils.lore("<yellow>All players collected "+String.format("%,d", serverGoldReward)+" gold!"));
-		Bukkit.broadcast(Utils.lore(""));
 	}
 
 }

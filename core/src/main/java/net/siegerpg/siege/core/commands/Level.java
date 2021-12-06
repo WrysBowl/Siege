@@ -24,17 +24,17 @@ public class Level implements CommandExecutor {
 				sender.sendMessage(Utils.parse("<red>That player could not be found."));
 				return true;
 			}
-			doTheThing(sender, argPlayer);
+			showLevelInfo(sender, argPlayer);
 			return true;
 		}
 		Player player = (Player) sender;
-		doTheThing(sender, player);
+		showLevelInfo(sender, player);
 
 		return true;
 
 	}
 
-	public void doTheThing(CommandSender executor, OfflinePlayer player) {
+	public void showLevelInfo(CommandSender executor, OfflinePlayer player) {
 
 		Levels.INSTANCE.getExpLevel(player, pair -> {
 			if (pair == null) {
