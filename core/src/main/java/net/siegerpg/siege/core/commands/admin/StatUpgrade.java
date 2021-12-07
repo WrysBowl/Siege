@@ -213,15 +213,13 @@ public class StatUpgrade implements CommandExecutor {
 
 	private int getCost(HashMap< StatTypes, Double> addStats) {
 		//calculate gold cost
-		int sum = 0;
+		int sum = 1;
 		HashMap< StatTypes, Double> customEquipmentMap = this.oldItem.getUpgradeStats();
 		if (customEquipmentMap == null) customEquipmentMap = CustomItemUtils.INSTANCE.statMap(0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 		for (Map.Entry<StatTypes, Double> entry : addStats.entrySet()) {
-			if (entry.getValue() != 0.0 && customEquipmentMap.containsKey(entry.getKey())) {
-				Double upgradeValue = addStats.get(entry.getKey());
-				Double originalValue = customEquipmentMap.get(entry.getKey());
-				sum += 300+(((1+originalValue)*10)*((1+upgradeValue)*10)*0.75);
-			}
+			Double upgradeValue = addStats.get(entry.getKey());
+			double originalValue = (customEquipmentMap.get(entry.getKey()) == null) ? 0 : customEquipmentMap.get(entry.getKey());
+			sum += 300+(((1+originalValue)*10)*((1+upgradeValue)*10)*0.75);
 		}
 		return sum * this.material.getAmount();
 	}
