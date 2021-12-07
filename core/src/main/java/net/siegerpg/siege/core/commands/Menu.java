@@ -126,13 +126,15 @@ public class Menu implements CommandExecutor {
 		warps.addItem(new GuiItem(getFarmTeleportIcon(player), e -> {
 			Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
 			if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
-			if (expLevel.getFirst() >=5) player.teleport(farmLocation);
+			if (expLevel.getFirst() >=5) player.teleport(new Location(
+					Bukkit.getWorld("Hilly_Woods"),188.5, 61, -122.5, -90, 0));
 		}));
 		//Creating Village TP
 		warps.addItem(new GuiItem(getVillageTeleportIcon(player), e -> {
 			Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
 			if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
-			if (expLevel.getFirst() >=15) player.teleport(villageLocation);
+			if (expLevel.getFirst() >=15) player.teleport(
+					new Location(Bukkit.getWorld("Hilly_Woods"),205.5, 93, 217.5, 180, 0));
 		}));
 
 		/*
