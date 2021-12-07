@@ -36,7 +36,10 @@ public class BossBars implements Listener {
 
 	public static void showGoldProgress() {
 
-		double goldDivision = Utils.round(((double) GoldReward.serverGold / GoldReward.goldRequirement) * 100, 1);
+		double goldDivision = Utils.round(
+				Math.floor(
+				((double) GoldReward.serverGold / GoldReward.goldRequirement) * 10000) //multiply double to 10k for integer rounding
+				/100 , 2);//divide by 100 to bring back to percentage notation, with a 2 decimal precision
 
 		bar.setProgress(goldDivision/100);
 		bar.setVisible(true);

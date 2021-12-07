@@ -216,10 +216,17 @@ public class StatUpgrade implements CommandExecutor {
 		int sum = 1;
 		HashMap< StatTypes, Double> customEquipmentMap = this.oldItem.getUpgradeStats();
 		if (customEquipmentMap == null) customEquipmentMap = CustomItemUtils.INSTANCE.statMap(0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+		HashMap< StatTypes, Double> baseStats = this.oldItem.getBaseStats();
 		for (Map.Entry<StatTypes, Double> entry : addStats.entrySet()) {
 			Double upgradeValue = addStats.get(entry.getKey());
 			double originalValue = (customEquipmentMap.get(entry.getKey()) == null) ? 0 : customEquipmentMap.get(entry.getKey());
-			sum += 300+(((1+originalValue)*10)*((1+upgradeValue)*10)*0.75);
+			double baseValue = baseStats.get(entry.getKey());
+
+			//if base is 100 and added upgrade is 1, percentOver is 0.01
+			double percentOver = (originalValue+upgradeValue)/baseValue;
+
+			//100 ^ 1+(0.01*10) =
+			sum += Math.pow(baseValue, 1+(percentOver)) + ((originalValue+upgradeValue)*50);
 		}
 		return sum * this.material.getAmount();
 	}
