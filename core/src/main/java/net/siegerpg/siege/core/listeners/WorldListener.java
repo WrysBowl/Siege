@@ -66,6 +66,7 @@ public class WorldListener implements Listener, Runnable {
 
 		if (block instanceof Door) return;
 		else if (type.equals(Material.ENDER_CHEST)) return;
+		else if (type.equals(Material.CAMPFIRE)) return;
 		if (!type.isInteractable()) return;
 		e.setCancelled(true);
 	}
