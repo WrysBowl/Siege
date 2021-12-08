@@ -217,10 +217,11 @@ public class StatUpgrade implements CommandExecutor {
 		HashMap< StatTypes, Double> customEquipmentMap = this.oldItem.getUpgradeStats();
 		if (customEquipmentMap == null) customEquipmentMap = CustomItemUtils.INSTANCE.statMap(0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 		HashMap< StatTypes, Double> baseStats = this.oldItem.getBaseStats();
-		for (Map.Entry<StatTypes, Double> entry : addStats.entrySet()) {
+		for (Map.Entry<StatTypes, Double> entry : customEquipmentMap.entrySet()) {
+			if (!addStats.containsKey(entry.getKey())) continue;
 			Double upgradeValue = addStats.get(entry.getKey());
-			double originalValue = (customEquipmentMap.get(entry.getKey()) == null) ? 0 : customEquipmentMap.get(entry.getKey());
-			double baseValue = baseStats.get(entry.getKey());
+			double originalValue = entry.getValue();
+			double baseValue = (baseStats.get(entry.getKey()) == null) ? 1 : baseStats.get(entry.getKey());
 
 			//if base is 100 and added upgrade is 1, percentOver is 0.01
 			double percentOver = (originalValue+upgradeValue)/baseValue;
