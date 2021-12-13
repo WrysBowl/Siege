@@ -41,6 +41,7 @@ public class BossBars implements Listener {
 				((double) GoldReward.serverGold / GoldReward.goldRequirement) * 10000) //multiply double to 10k for integer rounding
 				/100 , 2);//divide by 100 to bring back to percentage notation, with a 2 decimal precision
 
+		if (goldDivision > 100) goldDivision = 100;
 		bar.setProgress(goldDivision/100);
 		bar.setVisible(true);
 		if (!Bukkit.getOnlinePlayers().isEmpty()) {
