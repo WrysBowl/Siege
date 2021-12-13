@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners;
 
+import com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent;
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
@@ -11,6 +12,7 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -115,6 +117,22 @@ public class GoldExpListener implements Listener {
 					}, 20);
 		}
 		e.getExperienceOrb().setExperience(0);
+	}
+
+	@EventHandler
+	public void expMerge(ExperienceOrbMergeEvent e) {
+
+		ExperienceOrb originalOrb = e.getMergeSource();
+		ExperienceOrb targetOrb = e.getMergeTarget();
+
+		e.setCancelled(false);
+		int totalEXP = targetOrb.getExperience() + originalOrb.getExperience();
+		if (totalEXP > 1000) {
+			e.setCancelled(true);
+			return;
+		}
+		targetOrb.setCustomName(Utils.tacc("&d+" + String.format("%,d", totalEXP) + " EXP"));
+		targetOrb.setCustomNameVisible(true);
 	}
 
 	@EventHandler

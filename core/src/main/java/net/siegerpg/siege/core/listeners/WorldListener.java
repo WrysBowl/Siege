@@ -120,12 +120,6 @@ public class WorldListener implements Listener, Runnable {
 	}
 
 	@EventHandler
-	public void expMerge(ExperienceOrbMergeEvent e) {
-
-		e.setCancelled(true);
-	}
-
-	@EventHandler
 	public void preventClick(PlayerInteractEvent e) {
 
 		if (e
