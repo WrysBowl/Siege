@@ -55,11 +55,6 @@ public class HelpfulTips implements Listener {
 			add(Utils.tacc("&eBoosters are sold in the webstore."));
 			add(Utils.tacc("&eBoosters give everyone a percent increase in gold or experience."));
 
-			//Ranks
-			add(Utils.tacc("&eWarrior rank gives you 9 more slots per player vault."));
-			add(Utils.tacc("&eGladiator rank gives you 18 more slots per player vault."));
-			add(Utils.tacc("&eHero rank gives you 27 more slots per player vault."));
-
 			//Inventory Storage
 			add(Utils.tacc("&eYou will gain a player vault for every 10 levels you rank up."));
 			add(Utils.tacc("&eUse your ender chest for storage."));

@@ -27,7 +27,6 @@ abstract class CustomRod(
 		override var statGem : StatGem? = null,
 		val enchantments : MutableMap<Enchantment, Int>,
 		val fishDropTable : FishDropTable,
-		override var upgradeStats : HashMap<StatTypes, Double>? = null
 
                         ) : CustomEquipment {
 
@@ -52,7 +51,7 @@ abstract class CustomRod(
 		if (baseStats.size != 0) {
 			meta.lore(" ")
 			val realStats =
-					CustomItemUtils.getStats(this, addGem = false, addRarity = true, false)
+					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
 			baseStats.keys.forEach {
 				meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 			}
@@ -91,7 +90,6 @@ abstract class CustomRod(
 		result = 31 * result + item.hashCode()
 		result = 31 * result + type.hashCode()
 		result = 31 * result + enchantments.hashCode()
-		result = 31 * result + (upgradeStats?.hashCode() ?: 0)
 		result = 31 * result + rarity.hashCode()
 		return result
 	}

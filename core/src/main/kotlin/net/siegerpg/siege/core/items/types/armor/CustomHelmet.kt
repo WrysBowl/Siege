@@ -28,7 +28,6 @@ abstract class CustomHelmet(
 		override val type : ItemTypes = ItemTypes.HELMET,
 		override var statGem : StatGem? = null,
 		override var leatherColor : Color = Core.defaultLeatherColor,
-		override var upgradeStats : HashMap<StatTypes, Double>? = null,
 		var initMaterial : Material? = null,
 		var initCustomModelData : Int? = null,
 		var storedItem : ItemStack? = null
@@ -110,7 +109,6 @@ abstract class CustomHelmet(
 		result = 31 * result + baseStats.hashCode()
 		result = 31 * result + type.hashCode()
 		result = 31 * result + (statGem?.hashCode() ?: 0)
-		result = 31 * result + (upgradeStats?.hashCode() ?: 0)
 		result = 31 * result + leatherColor.hashCode()
 		result = 31 * result + (initMaterial?.hashCode() ?: 0)
 		result = 31 * result + (initCustomModelData ?: 0)

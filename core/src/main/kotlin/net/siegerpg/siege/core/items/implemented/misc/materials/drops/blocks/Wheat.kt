@@ -11,12 +11,7 @@ class Wheat() : CustomMaterial(
 		customModelData = 320011,
 		description = listOf("The most important", "part of bread"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				3 to CustomItemUtils.statMap(regeneration = 0.2),
-				4 to CustomItemUtils.statMap(regeneration = 1.0),
-				5 to CustomItemUtils.statMap(regeneration = 4.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

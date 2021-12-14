@@ -11,13 +11,7 @@ class Feather() : CustomMaterial(
 		customModelData = 310007,
 		description = listOf("Ticklish?"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(luck = 0.1),
-				3 to CustomItemUtils.statMap(luck = 1.0),
-				4 to CustomItemUtils.statMap(luck = 4.0),
-				5 to CustomItemUtils.statMap(luck = 16.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

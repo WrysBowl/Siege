@@ -11,13 +11,7 @@ class Seed() : CustomMaterial(
 		customModelData = 320002,
 		description = listOf("Great potential"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(regeneration = 0.2),
-				3 to CustomItemUtils.statMap(regeneration = 2.0),
-				4 to CustomItemUtils.statMap(regeneration = 6.0),
-				5 to CustomItemUtils.statMap(regeneration = 20.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

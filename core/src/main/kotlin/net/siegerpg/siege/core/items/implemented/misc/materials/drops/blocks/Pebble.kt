@@ -11,13 +11,7 @@ class Pebble() : CustomMaterial(
 		customModelData = 320006,
 		description = listOf("Tiny bits of rock"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(toughness = 0.1),
-				3 to CustomItemUtils.statMap(toughness = 1.0),
-				4 to CustomItemUtils.statMap(toughness = 4.0),
-				5 to CustomItemUtils.statMap(toughness = 16.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

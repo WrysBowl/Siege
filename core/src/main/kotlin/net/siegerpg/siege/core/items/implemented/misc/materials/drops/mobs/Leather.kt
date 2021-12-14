@@ -11,13 +11,7 @@ class Leather() : CustomMaterial(
 		customModelData = 310006,
 		description = listOf("Animal hide"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(toughness = 0.2),
-				3 to CustomItemUtils.statMap(toughness = 1.6),
-				4 to CustomItemUtils.statMap(toughness = 8.0),
-				5 to CustomItemUtils.statMap(toughness = 24.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

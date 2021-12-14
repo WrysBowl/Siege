@@ -11,13 +11,7 @@ class Bone() : CustomMaterial(
 		customModelData = 310004,
 		description = listOf("Remains of a once living animal"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(health = 0.1, strength = 0.1),
-				3 to CustomItemUtils.statMap(health = 1.0, strength = 1.0),
-				4 to CustomItemUtils.statMap(health = 6.0, strength = 6.0),
-				5 to CustomItemUtils.statMap(health = 28.0, strength = 28.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

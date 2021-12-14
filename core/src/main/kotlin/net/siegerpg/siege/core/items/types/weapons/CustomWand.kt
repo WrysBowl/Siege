@@ -32,7 +32,6 @@ abstract class CustomWand(
 		val blue : Int = 255,
 		val damageRadius : Double = 2.5,
 		override var statGem : StatGem? = null,
-		override var upgradeStats : HashMap<StatTypes, Double>? = null
 
                          ) : CustomWeapon {
 
@@ -71,8 +70,7 @@ abstract class CustomWand(
 		if (baseStats.size != 0) {
 			meta.lore(" ")
 			val realStats =
-					CustomItemUtils.getStats(this, addGem = false, addRarity = true, false)
-			val upgradeStats = CustomItemUtils.getUpgradedStats(this)
+					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
 			baseStats.keys.forEach {
 				if (realStats[it]!! < 0.0) {
 					if (hideRarity || quality < 0)
@@ -84,8 +82,7 @@ abstract class CustomWand(
 								} <gray>${it.stylizedName}"
 						         )
 					else {
-						if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
-						else meta.lore("<r><red>${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
+						meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
 					}
 				} else {
 					if (hideRarity || quality < 0) {
@@ -97,8 +94,7 @@ abstract class CustomWand(
 								} <gray>${it.stylizedName}"
 						         )
 					} else {
-						if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
-						else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
+						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 					}
 				}
 			}
@@ -156,7 +152,6 @@ abstract class CustomWand(
 		result = 31 * result + blue
 		result = 31 * result + damageRadius.hashCode()
 		result = 31 * result + (statGem?.hashCode() ?: 0)
-		result = 31 * result + (upgradeStats?.hashCode() ?: 0)
 		result = 31 * result + rarity.hashCode()
 		return result
 	}

@@ -11,13 +11,7 @@ class Magma() : CustomMaterial(
 		customModelData = 310002,
 		description = listOf("Melted slime"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(health = 0.1, strength = 0.2),
-				3 to CustomItemUtils.statMap(health = 1.0, strength = 2.0),
-				4 to CustomItemUtils.statMap(health = 4.0, strength = 8.0),
-				5 to CustomItemUtils.statMap(health = 16.0, strength = 32.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

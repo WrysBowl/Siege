@@ -11,13 +11,7 @@ class Stick() : CustomMaterial(
 		customModelData = 320005,
 		description = listOf("Foundational material to any structure"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(health = 0.2),
-				3 to CustomItemUtils.statMap(health = 2.0),
-				4 to CustomItemUtils.statMap(health = 4.0),
-				5 to CustomItemUtils.statMap(health = 16.0)
-		                        )
+		material = Material.FLINT
 
 		) {
 

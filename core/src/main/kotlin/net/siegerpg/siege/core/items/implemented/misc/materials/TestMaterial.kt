@@ -12,14 +12,7 @@ class TestMaterial() : CustomMaterial(
 		customModelData = 1,
 		description = listOf("A material for testing"),
 		levelRequirement = 0,
-		material = Material.IRON_INGOT,
-		upgradeStats = hashMapOf(
-				1 to CustomItemUtils.statMap(strength = 1.0),
-				2 to CustomItemUtils.statMap(strength = 2.0),
-				3 to CustomItemUtils.statMap(strength = 3.0),
-				4 to CustomItemUtils.statMap(strength = 4.0),
-				5 to CustomItemUtils.statMap(strength = 5.0)
-		                        )
+		material = Material.IRON_INGOT
                                      ) {
 
 	constructor(quality : Int) : this() {

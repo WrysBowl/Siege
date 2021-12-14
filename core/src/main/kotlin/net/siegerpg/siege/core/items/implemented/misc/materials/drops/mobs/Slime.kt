@@ -11,13 +11,7 @@ class Slime() : CustomMaterial(
 		customModelData = 310001,
 		description = listOf("Not jello?"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(toughness = 0.1, health = 0.2),
-				3 to CustomItemUtils.statMap(toughness = 1.0, health = 1.6),
-				4 to CustomItemUtils.statMap(toughness = 6.0, health = 8.0),
-				5 to CustomItemUtils.statMap(toughness = 20.0, health = 24.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

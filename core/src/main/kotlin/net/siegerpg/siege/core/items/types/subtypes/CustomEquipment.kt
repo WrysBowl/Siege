@@ -22,7 +22,6 @@ interface CustomEquipment : CustomItem {
 
 	var statGem : StatGem?
 	val baseStats : HashMap<StatTypes, Double>
-	var upgradeStats : HashMap<StatTypes, Double>?
 
 	fun addStatGem(newStatGem : StatGem) {
 		this.statGem = newStatGem
@@ -39,26 +38,6 @@ interface CustomEquipment : CustomItem {
 			return false
 		}
 		return true
-	}
-
-	fun addUpgradeStats(upgrades : HashMap<StatTypes, Double>) {
-		if (this.upgradeStats == null) this.upgradeStats = CustomItemUtils.statMap()
-		for (baseStat in baseStats) {
-			//only allow upgraded stats to add if base stat for it exists
-			if (!upgrades.containsKey(baseStat.key)) continue
-			val upgradeValue : Double = upgrades[baseStat.key] ?: 0.0
-			val originalValue : Double = this.upgradeStats?.get(baseStat.key) ?: 0.0
-			this.upgradeStats!![baseStat.key] = upgradeValue + originalValue
-		}
-		this.serialize()
-	}
-
-	fun checkIfExistingStat(upgrades : HashMap<StatTypes, Double>) : Boolean {
-		for (baseStat in baseStats) {
-			//check if upgrades contains the base stats of the item
-			if (upgrades.containsKey(baseStat.key)) return true
-		}
-		return false
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
@@ -91,8 +70,7 @@ interface CustomEquipment : CustomItem {
 		if (baseStats.size != 0) {
 			meta.lore(" ")
 			val realStats =
-					CustomItemUtils.getStats(this, addGem = false, addRarity = true, false)
-			val upgradeStats = CustomItemUtils.getUpgradedStats(this)
+					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
 			baseStats.keys.forEach {
 				if (realStats[it]!! < 0.0) {
 					if (hideRarity || quality < 0)
@@ -104,9 +82,7 @@ interface CustomEquipment : CustomItem {
 								} <gray>${it.stylizedName}"
 						         )
 					else {
-						if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
-						else meta.lore("<r><red>${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
-					}
+						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")					}
 				} else {
 					if (hideRarity || quality < 0) {
 						meta.lore(
@@ -117,9 +93,7 @@ interface CustomEquipment : CustomItem {
 								} <gray>${it.stylizedName}"
 						         )
 					} else {
-						if (upgradeStats[it] == 0.0 || upgradeStats[it] == null) meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
-						else meta.lore("<r><green>+${realStats[it]} <yellow>(+${upgradeStats[it]}) <gray>${it.stylizedName}")
-					}
+						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")					}
 
 				}
 			}
@@ -145,9 +119,7 @@ interface CustomEquipment : CustomItem {
 	override fun serialize() {
 		super.serialize()
 		item = item.setNbtTags(
-				"equipmentStatGem" to if (statGem != null) statGem.toString() else null,
-				"upgrades" to if (this.upgradeStats != null) upgradeStats.toString() else null
-		                      )
+				"equipmentStatGem" to if (statGem != null) statGem.toString() else null)
 	}
 
 	fun onHit(e : EntityDamageByEntityEvent) {
@@ -159,16 +131,6 @@ interface CustomEquipment : CustomItem {
 		try {
 			item.getNbtTag<String>("equipmentStatGem")?.let {
 				statGem = StatGem.fromString(it)
-			}
-			item.getNbtTag<String>("upgrades")?.let { it ->
-				if (it.isNotEmpty()) {
-					val map : Map<StatTypes, Double> = it.split(",").associate {
-						//This is ugly as heck
-						val (left, right) = it.replace("{", "").replace("}", "").split("=")
-						StatTypes.getFromId(left)!! to right.toDouble()
-					}
-					upgradeStats = HashMap(map)
-				}
 			}
 		} catch (e : Exception) { }
 

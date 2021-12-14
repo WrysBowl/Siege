@@ -11,13 +11,7 @@ class Wool() : CustomMaterial(
 		customModelData = 310005,
 		description = listOf("A ball of fluff to keep you warm"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(regeneration = 0.2),
-				3 to CustomItemUtils.statMap(regeneration = 2.0),
-				4 to CustomItemUtils.statMap(regeneration = 8.0),
-				5 to CustomItemUtils.statMap(regeneration = 24.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

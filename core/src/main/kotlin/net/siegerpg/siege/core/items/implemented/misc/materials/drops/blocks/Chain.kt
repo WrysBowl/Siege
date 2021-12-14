@@ -11,13 +11,7 @@ class Chain() : CustomMaterial(
 		customModelData = 320007,
 		description = listOf("A strong metal rope"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(toughness = 0.2),
-				3 to CustomItemUtils.statMap(toughness = 2.0),
-				4 to CustomItemUtils.statMap(toughness = 8.0),
-				5 to CustomItemUtils.statMap(toughness = 32.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

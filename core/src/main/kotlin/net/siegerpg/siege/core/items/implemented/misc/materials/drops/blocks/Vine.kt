@@ -11,13 +11,7 @@ class Vine() : CustomMaterial(
 		customModelData = 320004,
 		description = listOf("Woven around trees", "and abandoned lands"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(regeneration = 0.1),
-				3 to CustomItemUtils.statMap(regeneration = 1.0),
-				4 to CustomItemUtils.statMap(regeneration = 4.0),
-				5 to CustomItemUtils.statMap(regeneration = 16.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

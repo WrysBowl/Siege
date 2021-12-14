@@ -11,13 +11,7 @@ class Titanium() : CustomMaterial(
 		customModelData = 320010,
 		description = listOf("Even better metal"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(toughness = 1.0, strength = 1.0),
-				3 to CustomItemUtils.statMap(toughness = 6.0, strength = 6.0),
-				4 to CustomItemUtils.statMap(toughness = 24.0, strength = 24.0),
-				5 to CustomItemUtils.statMap(toughness = 82.0, strength = 82.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {

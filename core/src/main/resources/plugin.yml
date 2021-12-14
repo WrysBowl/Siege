@@ -54,8 +54,6 @@ commands:
     description: Guide to Siege
   setBed:
     description: Sets the respawn point of a player
-  statUpgrade:
-    description: Upgrades a stat on a player's item using a material
   drops:
     description: Displays all drop tables!
   resourcePack:

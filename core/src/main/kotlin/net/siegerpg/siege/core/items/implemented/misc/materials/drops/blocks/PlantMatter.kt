@@ -11,13 +11,7 @@ class PlantMatter() : CustomMaterial(
 		customModelData = 320001,
 		description = listOf("Parts of a plant"),
 		levelRequirement = 0,
-		material = Material.FLINT,
-		upgradeStats = hashMapOf(
-				2 to CustomItemUtils.statMap(health = 0.2),
-				3 to CustomItemUtils.statMap(health = 2.0),
-				4 to CustomItemUtils.statMap(health = 6.0),
-				5 to CustomItemUtils.statMap(health = 24.0)
-		                        )
+		material = Material.FLINT
 		) {
 
 	constructor(quality : Int) : this() {
