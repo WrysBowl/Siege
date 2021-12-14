@@ -5,22 +5,12 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import kotlin.Pair;
-import net.siegerpg.siege.core.commands.admin.StatUpgrade;
-import net.siegerpg.siege.core.fishing.catches.loot.gems.CrackedStrength;
-import net.siegerpg.siege.core.items.CustomItem;
-import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.enums.StatTypes;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PristineStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
-import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
-import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
-import net.siegerpg.siege.core.listeners.GoldExpListener;
 import net.siegerpg.siege.core.listeners.NPC.GemRemover;
 import net.siegerpg.siege.core.listeners.NPC.Herbert;
 import net.siegerpg.siege.core.listeners.NPC.MeraTransit;
 import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.Levels;
-import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import org.bukkit.*;
@@ -28,18 +18,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Menu implements CommandExecutor {
 

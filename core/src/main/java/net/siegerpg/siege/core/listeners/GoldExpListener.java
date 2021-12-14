@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.listeners.tasks.GoldReward;
+import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -90,14 +91,14 @@ public class GoldExpListener implements Listener {
 				if (awaitingRemoval.contains(player)) return;
 				awaitingRemoval.add(player);
 
-				//allow EXP to be gained 3 seconds later
+				//allow EXP to be gained 5 ticks later
 				new BukkitRunnable() {
 					@Override
 					public void run() {
 						expCalculating.remove(player);
 						awaitingRemoval.remove(player);
 					}
-				}.runTaskLater(Core.plugin(), 10);
+				}.runTaskLater(Core.plugin(), 5);
 
 				return; //if player is processing exp calculation
 			} else {
@@ -122,17 +123,8 @@ public class GoldExpListener implements Listener {
 	@EventHandler
 	public void expMerge(ExperienceOrbMergeEvent e) {
 
-		ExperienceOrb originalOrb = e.getMergeSource();
-		ExperienceOrb targetOrb = e.getMergeTarget();
+		e.setCancelled(true);
 
-		e.setCancelled(false);
-		int totalEXP = targetOrb.getExperience() + originalOrb.getExperience();
-		if (totalEXP > 1000) {
-			e.setCancelled(true);
-			return;
-		}
-		targetOrb.setCustomName(Utils.tacc("&d+" + String.format("%,d", totalEXP) + " EXP"));
-		targetOrb.setCustomNameVisible(true);
 	}
 
 	@EventHandler
@@ -154,7 +146,7 @@ public class GoldExpListener implements Listener {
 				    .equals(Material.SUNFLOWER) && item
 				    .getItemMeta()
 				    .getDisplayName()
-				    .contains("Gold Coin")) {
+				    .contains("Gold")) {
 			e
 					.getTarget()
 					.setCustomName(Utils.tacc("&e+" + total + " Gold"));
