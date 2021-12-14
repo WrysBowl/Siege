@@ -102,19 +102,35 @@ class ShopsCommand : BaseCommand() {
 			val meta = item.itemMeta
 			if (meta.displayName() != null) meta.lore("")
 			if (it.craftable) {
-				meta.lore("<gold>Required Crafting Materials:")
-				var counter = 1
+				var counter = 0
+				meta.lore("<yellow><underlined>Required Materials")
 				for (entry in it.recipe) {
+
 					val itemMeta = entry.key.getUpdatedItem(false).itemMeta
 					val updatedItem =
 							if (itemMeta.hasDisplayName()) itemMeta.displayName else itemMeta.localizedName
-					meta.lore("<gold>${counter}. <aqua>${entry.value}x <pre>${updatedItem}</pre>")
-					counter++
+
+					if (!player.inventory.containsAtLeast(
+									entry.key.getUpdatedItem(false),
+									entry.value)) {
+						meta.lore("<red>\u2717 ${entry.value}x <pre>${updatedItem}</pre>")
+					} else {
+						meta.lore("<green>\u2713 ${entry.value}x <pre>${updatedItem}</pre>")
+						counter++
+					}
 				}
 				meta.lore("")
-				meta.lore("<yellow>Left click to craft!")
+				if (counter == it.recipe.size) meta.lore("<green>\u2713 LEFT CLICK to craft!")
+				else meta.lore("<red>\u2717 LEFT CLICK to craft!")
+
 			}
-			if (it.buyPrice > -1) meta.lore("<yellow>Right click to buy for ${it.buyPrice} gold!")
+			if (it.buyPrice > -1) {
+				if (VaultHook.econ.getBalance(player) >= it.buyPrice) {
+					meta.lore("<green>\u2713 RIGHT CLICK Cost ${String.format("%,d", it.buyPrice)} gold")
+				} else {
+					meta.lore("<red>\u2717 RIGHT CLICK Cost ${String.format("%,d", it.buyPrice)} gold")
+				}
+			}
 			item.itemMeta = meta
 			if (it.item is GRAYFILLER) {
 				item = ItemStack(Material.GRAY_STAINED_GLASS_PANE)
