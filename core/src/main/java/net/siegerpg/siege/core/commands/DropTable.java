@@ -77,7 +77,7 @@ public class DropTable implements CommandExecutor {
 				add(Utils.lore(""));
 				add(Utils.lore("<gray>View drops"));
 				add(Utils.lore("<yellow>(Right Click)"));
-				add(Utils.lore("<color:#A4CE51><underlined>              "));
+				add(Utils.lore("<color:#A4CE51><underlined>                  "));
 			}
 		});
 		blockDrops.setItemMeta(blockDropsItemMeta);
@@ -91,7 +91,7 @@ public class DropTable implements CommandExecutor {
 				add(Utils.lore(""));
 				add(Utils.lore("<gray>View drops"));
 				add(Utils.lore("<yellow>(Right Click)"));
-				add(Utils.lore("<color:#E7234A><underlined>              "));
+				add(Utils.lore("<color:#E7234A><underlined>               "));
 			}
 		});
 		mobDrops.setItemMeta(mobDropsItemMeta);
@@ -105,7 +105,7 @@ public class DropTable implements CommandExecutor {
 				add(Utils.lore(""));
 				add(Utils.lore("<gray>View drops"));
 				add(Utils.lore("<yellow>(Right Click)"));
-				add(Utils.lore("<color:#A22525><underlined>              "));
+				add(Utils.lore("<color:#A22525><underlined>                 "));
 			}
 		});
 		bossDrops.setItemMeta(bossDropsItemMeta);
@@ -223,15 +223,16 @@ public class DropTable implements CommandExecutor {
 		//Gold Display
 		ItemStack goldDisplay = new ItemStack(Material.SUNFLOWER);
 		ItemMeta goldDisplayMeta = goldDisplay.getItemMeta();
-		goldDisplayMeta.displayName(Utils.lore("<yellow><bold><underlined>GOLD   "));
+		goldDisplayMeta.displayName(Utils.lore("<yellow><bold>GOLD   "));
 		goldDisplayMeta.lore(new ArrayList<>() {
 			{
+				add(Utils.lore("<dark_gray><underlined>           "));
 				add(Utils.lore(""));
 				add(Utils.lore("<yellow>"+String.format("%,d", goldMin)+
 				               " <gray>- <yellow>"+
 				               String.format("%,d", goldMax)+
 				               " \u26C1"));
-				add(Utils.lore("<yellow><underlined>           "));
+				add(Utils.lore("<dark_gray><underlined>           "));
 			}
 		});
 		goldDisplay.setItemMeta(goldDisplayMeta);
@@ -239,14 +240,16 @@ public class DropTable implements CommandExecutor {
 
 		ItemStack expDisplay = new ItemStack(Material.EXPERIENCE_BOTTLE);
 		ItemMeta expDisplayMeta = expDisplay.getItemMeta();
-		expDisplayMeta.displayName(Utils.lore("<light_purple><bold><underlined>EXP    "));
+		expDisplayMeta.displayName(Utils.lore("<light_purple><bold>EXP    "));
 		expDisplayMeta.lore(new ArrayList<>() {
 			{
+				add(Utils.lore("<dark_gray><underlined>           "));
 				add(Utils.lore(""));
 				add(Utils.lore("<light_purple>"+String.format("%,d", expMin)+
 				               " <gray>- <light_purple>"+
-				               String.format("%,d", expMax)));
-				add(Utils.lore("<light_purple><underlined>           "));
+				               String.format("%,d", expMax)+
+				               " \u2742"));
+				add(Utils.lore("<dark_gray><underlined>           "));
 			}
 		});
 		expDisplay.setItemMeta(expDisplayMeta);
