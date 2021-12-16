@@ -16,14 +16,10 @@ public class Hub implements CommandExecutor {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
-			player.teleport(Core
-					                .plugin()
-					                .getHubSpawnLocation());
+			player.teleport(Core.plugin().getHubSpawnLocation());
 			return true;
 		}
-		Bukkit
-				.getLogger()
-				.info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
+		Bukkit.getLogger().info(Utils.tacc("<red>An entity other than the player ran the /hub command"));
 		return false;
 	}
 

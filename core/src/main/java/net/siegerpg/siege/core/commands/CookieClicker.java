@@ -38,10 +38,11 @@ public class CookieClicker implements CommandExecutor {
 		}
 		Player player = (Player) sender;
 
-		player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1.0f, 1.0f);
+		player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1.0f, 0.75f);
 		CookieClicker instance = new CookieClicker();
 		this.menu = instance.getMenu(player);
 		this.menu.show(player);
+
 		return true;
 	}
 
@@ -97,7 +98,7 @@ public class CookieClicker implements CommandExecutor {
 			if (randomType > cookieTypes.size()) randomType = cookieTypes.size()-1;
 			randoCookie.addItem(cookieTypes.get(randomType));
 			menu.addPane(randoCookie);
-			player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 1.0f, 1.5f);
+			player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 0.5f, 1.5f);
 		}
 
 		OutlinePane cookie = new OutlinePane(4, 2, 1, 1);
@@ -139,6 +140,7 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
 			this.clicks++;
+			player.playSound(player.getLocation(), Sound.ENTITY_FOX_EAT, 0.5f, 1.0f);
 			if (clickCalculating.contains(player)) {
 
 				//if calculation has been processed, add to rate limiter arraylist
