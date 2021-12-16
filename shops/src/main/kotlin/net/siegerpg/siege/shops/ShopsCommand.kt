@@ -103,7 +103,7 @@ class ShopsCommand : BaseCommand() {
 			if (meta.displayName() != null) meta.lore("")
 			if (it.craftable) {
 				var counter = 0
-				meta.lore("<yellow><underlined>Required Materials")
+				meta.lore("<gray><underlined>Crafting Ingredients")
 				for (entry in it.recipe) {
 
 					val itemMeta = entry.key.getUpdatedItem(false).itemMeta
