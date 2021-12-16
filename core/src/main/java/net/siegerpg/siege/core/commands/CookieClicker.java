@@ -5,6 +5,8 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.listeners.GoldExpListener;
+import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -154,11 +156,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +20!"));
+				add(Utils.lore("<yellow>+10 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 10);
 			this.clicks += 20;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -171,11 +175,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +50!"));
+				add(Utils.lore("<yellow>+25 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 25);
 			this.clicks += 50;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -188,11 +194,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +100!"));
+				add(Utils.lore("<yellow>+50 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 50);
 			this.clicks += 100;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -205,11 +213,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +250!"));
+				add(Utils.lore("<yellow>+125 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 125);
 			this.clicks += 250;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -222,11 +232,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +500!"));
+				add(Utils.lore("<yellow>+250 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 250);
 			this.clicks += 500;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -239,11 +251,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +1,000!"));
+				add(Utils.lore("<yellow>+500 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 500);
 			this.clicks += 1000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -256,11 +270,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +2,000!"));
+				add(Utils.lore("<yellow>+750 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 750);
 			this.clicks += 2000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -273,11 +289,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +5,000!"));
+				add(Utils.lore("<yellow>+1,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 1000);
 			this.clicks += 5000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -290,11 +308,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +10,000!"));
+				add(Utils.lore("<yellow>+1,500 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 1500);
 			this.clicks += 10000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -307,11 +327,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +20,000!"));
+				add(Utils.lore("<yellow>+2,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 2000);
 			this.clicks += 20000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -324,11 +346,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +50,000!"));
+				add(Utils.lore("<yellow>+3,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 3000);
 			this.clicks += 50000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -341,11 +365,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +100,000!"));
+				add(Utils.lore("<yellow>+5,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 5000);
 			this.clicks += 100000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -358,11 +384,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +200,000!"));
+				add(Utils.lore("<yellow>+7,500 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 7500);
 			this.clicks += 200000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -375,11 +403,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +500,000!"));
+				add(Utils.lore("<yellow>+10,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 10000);
 			this.clicks += 500000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -392,11 +422,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +1,000,000!"));
+				add(Utils.lore("<yellow>+20,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 20000);
 			this.clicks += 1000000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -409,11 +441,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +2,000,000!"));
+				add(Utils.lore("<yellow>+30,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 30000);
 			this.clicks += 2000000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -426,11 +460,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +5,000,000!"));
+				add(Utils.lore("<yellow>+40,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 40000);
 			this.clicks += 5000000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -443,11 +479,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +10,000,000!"));
+				add(Utils.lore("<yellow>+50,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 50000);
 			this.clicks += 10000000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -460,11 +498,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +20,000,000!"));
+				add(Utils.lore("<yellow>+75,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 75000);
 			this.clicks += 20000000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
@@ -477,11 +517,13 @@ public class CookieClicker implements CommandExecutor {
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click for +50,000,000!"));
+				add(Utils.lore("<yellow>+100,000 gold"));
 			}
 		});
 
 		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
 		return new GuiItem(cookieClickerIcon, e -> {
+			GoldExpListener.giveGold(player, 100000);
 			this.clicks += 50000000;
 			this.menu = getMenu(player);
 			this.menu.show(player);
