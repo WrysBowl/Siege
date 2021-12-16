@@ -14,10 +14,15 @@ public class Discord implements CommandExecutor {
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		Player player = (Player) sender;
+		player.sendMessage(Utils.parse("<gray><underlined>                                        "));
 		player.sendMessage("");
-		player.sendMessage(Utils.parse("  <aqua><bold>Join our discord here!<reset>"));
-		player.sendMessage("  https://discord.siegerpg.net");
 		player.sendMessage("");
+		player.sendMessage(Utils.parse("<color:#7289da><bold><underlined>   DISCORD   <reset>"));
+		player.sendMessage("");
+		player.sendMessage(Utils.parse("<yellow><bold>\u27B2<reset> <click:open_url:https://discord.siegerpg.net><color:#99aab5>https://discord.siegerpg.net</click>"));
+		player.sendMessage("");
+		player.sendMessage("");
+		player.sendMessage(Utils.parse("<gray><underlined>                                        "));
 		return false;
 	}
 
