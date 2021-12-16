@@ -72,7 +72,7 @@ public class CookieClicker implements CommandExecutor {
 		}};
 
 		//Menu
-		ChestGui menu = new ChestGui(5, "Cookie Clicker");
+		ChestGui menu = new ChestGui(5, "Cookie Clicker Lvl. "+this.cookieLevel);
 		menu.setOnGlobalClick(event -> event.setCancelled(true));
 
 		OutlinePane background = new OutlinePane(0, 0, 9, 5, Pane.Priority.LOWEST);
@@ -88,7 +88,7 @@ public class CookieClicker implements CommandExecutor {
 			this.cookieLevel = getNewLevel();
 		}
 
-		if(Utils.randTest(15.0)) {
+		if(Utils.randTest(30.0)) {
 			int randomX = (int) Math.floor(Math.random() * 9);
 			int randomY = (int) Math.floor(Math.random() * 5);
 
@@ -110,7 +110,7 @@ public class CookieClicker implements CommandExecutor {
 	}
 	private int getNewLevel() {
 		double calculations = this.clicks / (double)getRequiredCookies();
-		return (int) Math.floor(calculations) + 1;
+		return (int) Math.floor(calculations) + this.cookieLevel;
 	}
 	private int getRequiredCookies() {
 		return (int) Math.pow(50.0, (1 + (this.cookieLevel / 4.0)));
@@ -118,20 +118,21 @@ public class CookieClicker implements CommandExecutor {
 	private GuiItem getUpdatedCookie(Player player) {
 		ItemStack cookieClickerIcon = new ItemStack(Material.COOKIE);
 		ItemMeta cookieClickerIconItemMeta = cookieClickerIcon.getItemMeta();
-		cookieClickerIconItemMeta.displayName(Utils.lore("<gold><bold>Cookies"));
+		cookieClickerIconItemMeta.displayName(Utils.lore("<color:#6b4026><bold>Cookies"));
 		final int clicks = this.clicks;
 		final int cookieLevel = this.cookieLevel;
-
-		double levelDivision = Utils.round(
-				Math.floor(
-						(clicks / (double)getRequiredCookies()) * 10000)//multiply double to 10k for integer rounding
-				/ 100 , 2);//divide by 100 to bring back to percentage notation, with a 2 decimal precision
+		final double levelDivision = Utils.round((((double)clicks/(double)getRequiredCookies())*100), 2);
 
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
-				add(Utils.lore("<gray>Clicks "+String.format("%,d", clicks)));
-				add(Utils.lore("<gray>Level "+String.format("%,d", cookieLevel)));
-				add(Utils.lore("<gray> Progress <gold>"+levelDivision+"%"));
+
+				add(Utils.lore("<color:#847233><underlined>                   "));
+				add(Utils.lore(""));
+				add(Utils.lore("<color:#D1B249>Clicks <color:#b6986d>"+String.format("%,d", clicks)));
+				add(Utils.lore("<color:#D1B249>Level <color:#6b4026>"+String.format("%,d", cookieLevel)));
+				add(Utils.lore("<color:#D1B249>Cookie Goal <color:#875a34>"+getRequiredCookies()));
+				add(Utils.lore("<color:#D1B249>Progress <gold>"+levelDivision+"%"));
+				add(Utils.lore("<color:#847233><underlined>                   "));
 			}
 		});
 
