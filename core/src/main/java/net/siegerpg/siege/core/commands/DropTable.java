@@ -17,6 +17,7 @@ import net.siegerpg.siege.core.listeners.DeathListener;
 import net.siegerpg.siege.core.miscellaneous.BossLeaderboard;
 import net.siegerpg.siege.core.miscellaneous.BossLeaderboardListener;
 import net.siegerpg.siege.core.miscellaneous.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -141,63 +142,6 @@ public class DropTable implements CommandExecutor {
 		menu.addPane(row);
 		return menu;
 	}
-
-	private ChestGui getBlockDrops(int startPosition, Player player) {
-		//Menu
-
-		ChestGui menu = new ChestGui(6, "Block Drops");
-
-		menu.setOnGlobalClick(event -> event.setCancelled(true));
-
-		OutlinePane background = new OutlinePane(0, 0, 9, 6, Pane.Priority.LOWEST);
-
-		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
-		ItemMeta fillerMeta = filler.getItemMeta();
-		fillerMeta.displayName(Utils.lore(""));
-		filler.setItemMeta(fillerMeta);
-		background.addItem(new GuiItem(filler));
-		background.setRepeat(true);
-		menu.addPane(background);
-
-		OutlinePane row = new OutlinePane(1, 1, 7, 4);
-
-		//icons
-		HashMap< Material, BlockDropTable > dropTable = BlockBreakListener.blockDropTableHashMap;
-		int endPosition = startPosition + 27;
-		if (endPosition >= dropTable.size()) endPosition = dropTable.size()-1;
-		for (int i = startPosition; i < endPosition; i++) {
-
-			Material key = (Material) dropTable.keySet().toArray()[i];
-
-			ItemStack item = new ItemStack(key);
-			BlockDropTable blockDropTable = dropTable.get(key);
-
-			ItemMeta iconMeta = item.getItemMeta();
-			iconMeta.displayName(Utils.lore("<green>"+item.getI18NDisplayName()));
-			item.setItemMeta(iconMeta);
-
-			row.addItem(new GuiItem(item, e -> {
-				createDropsGUI(blockDropTable.getRewards(),
-				               blockDropTable.getGoldMin(),
-				               blockDropTable.getGoldMax(),
-				               blockDropTable.getExpMin(),
-				               blockDropTable.getExpMax()).show(player);
-			}));
-		}
-
-		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
-
-		final int newPosition = endPosition;
-		nextButton.addItem(new GuiItem(this.next, inventoryClickEvent -> {
-			if (newPosition >= dropTable.size()-1) getBlockDrops(0, player).show(player);
-			else getBlockDrops(newPosition, player).show(player);
-		}));
-
-		menu.addPane(row);
-		menu.addPane(nextButton);
-
-		return menu;
-	}
 	private ChestGui createDropsGUI(Reward[] rewards, int goldMin, int goldMax, int expMin, int expMax) {
 		//Menu
 		int size = (int) Math.ceil(rewards.length / 9.0);
@@ -255,10 +199,9 @@ public class DropTable implements CommandExecutor {
 		expDisplay.setItemMeta(expDisplayMeta);
 		row.addItem(new GuiItem(expDisplay));
 
-		for(Reward reward : rewards) {
-			ItemStack item = reward.getItem();
+		for(final Reward reward : rewards) {
+			ItemStack item = reward.getItem().clone();
 			List< Component > lore = item.lore();
-			if (lore == null) lore = new ArrayList<>();
 
 			lore.add(Utils.lore("<dark_gray><underlined>            "));
 			lore.add(Utils.lore(""));
@@ -266,7 +209,6 @@ public class DropTable implements CommandExecutor {
 			lore.add(Utils.lore("<dark_gray><underlined>            "));
 
 			item.lore(lore);
-
 			row.addItem(new GuiItem(item));
 		}
 
@@ -274,6 +216,63 @@ public class DropTable implements CommandExecutor {
 
 		return menu;
 	}
+	private ChestGui getBlockDrops(int startPosition, Player player) {
+		//Menu
+
+		ChestGui menu = new ChestGui(6, "Block Drops");
+
+		menu.setOnGlobalClick(event -> event.setCancelled(true));
+
+		OutlinePane background = new OutlinePane(0, 0, 9, 6, Pane.Priority.LOWEST);
+
+		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+		ItemMeta fillerMeta = filler.getItemMeta();
+		fillerMeta.displayName(Utils.lore(""));
+		filler.setItemMeta(fillerMeta);
+		background.addItem(new GuiItem(filler));
+		background.setRepeat(true);
+		menu.addPane(background);
+
+		OutlinePane row = new OutlinePane(1, 1, 7, 4);
+
+		//icons
+		HashMap< Material, BlockDropTable > dropTable = BlockBreakListener.blockDropTableHashMap;
+		int endPosition = startPosition + 27;
+		if (endPosition >= dropTable.size()) endPosition = dropTable.size()-1;
+		for (int i = startPosition; i < endPosition; i++) {
+
+			Material key = (Material) dropTable.keySet().toArray()[i];
+
+			ItemStack item = new ItemStack(key);
+			BlockDropTable blockDropTable = dropTable.get(key);
+
+			ItemMeta iconMeta = item.getItemMeta();
+			iconMeta.displayName(Utils.lore("<green>"+item.getI18NDisplayName()));
+			item.setItemMeta(iconMeta);
+
+			row.addItem(new GuiItem(item, e -> {
+				createDropsGUI(blockDropTable.getRewards(),
+				               blockDropTable.getGoldMin(),
+				               blockDropTable.getGoldMax(),
+				               blockDropTable.getExpMin(),
+				               blockDropTable.getExpMax()).show(player);
+			}));
+		}
+
+		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
+
+		final int newPosition = endPosition;
+		nextButton.addItem(new GuiItem(this.next, inventoryClickEvent -> {
+			if (newPosition >= dropTable.size()-1) getBlockDrops(0, player).show(player);
+			else getBlockDrops(newPosition, player).show(player);
+		}));
+
+		menu.addPane(row);
+		menu.addPane(nextButton);
+
+		return menu;
+	}
+
 
 	private ChestGui getMobDrops(int startPosition, Player player) {
 		//Menu
