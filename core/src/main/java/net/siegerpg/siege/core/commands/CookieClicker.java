@@ -6,6 +6,7 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
+import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Material;
@@ -83,10 +84,8 @@ public class CookieClicker implements CommandExecutor {
 		background.setRepeat(true);
 		menu.addPane(background);
 
-		double calculations = this.clicks / Math.pow(50.0, (1+(this.cookieLevel/4.0)));
-		int newLevel = (int) Math.floor(calculations) + 1;
-		if (newLevel > this.cookieLevel) {
-			this.cookieLevel = newLevel;
+		if (getNewLevel() > this.cookieLevel) {
+			this.cookieLevel = getNewLevel();
 		}
 
 		if(Utils.randTest(15.0)) {
@@ -109,6 +108,13 @@ public class CookieClicker implements CommandExecutor {
 		this.menu = menu;
 		return menu;
 	}
+	private int getNewLevel() {
+		double calculations = this.clicks / (double)getRequiredCookies();
+		return (int) Math.floor(calculations) + 1;
+	}
+	private int getRequiredCookies() {
+		return (int) Math.pow(50.0, (1 + (this.cookieLevel / 4.0)));
+	}
 	private GuiItem getUpdatedCookie(Player player) {
 		ItemStack cookieClickerIcon = new ItemStack(Material.COOKIE);
 		ItemMeta cookieClickerIconItemMeta = cookieClickerIcon.getItemMeta();
@@ -116,11 +122,16 @@ public class CookieClicker implements CommandExecutor {
 		final int clicks = this.clicks;
 		final int cookieLevel = this.cookieLevel;
 
+		double levelDivision = Utils.round(
+				Math.floor(
+						(clicks / (double)getRequiredCookies()) * 10000)//multiply double to 10k for integer rounding
+				/ 100 , 2);//divide by 100 to bring back to percentage notation, with a 2 decimal precision
+
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Clicks "+String.format("%,d", clicks)));
 				add(Utils.lore("<gray>Level "+String.format("%,d", cookieLevel)));
-
+				add(Utils.lore("<gray> Progress <gold>"+levelDivision+"%"));
 			}
 		});
 
