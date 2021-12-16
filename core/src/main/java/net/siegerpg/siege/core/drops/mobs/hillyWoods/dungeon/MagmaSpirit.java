@@ -24,7 +24,7 @@ public class MagmaSpirit extends MobDropTable {
 
 	public MagmaSpirit() {
 
-		super("MagmaSpirit", 1500, 1800, 4500, 5200, new Reward[] {
+		super("MagmaSpirit", 1500, 1800, 7500, 10000, new Reward[] {
 				new Reward(Magma.Companion
 						           .tier(2)
 						           .getUpdatedItem(false)

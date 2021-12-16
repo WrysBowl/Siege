@@ -26,7 +26,7 @@ public class BullSpirit extends MobDropTable {
 
 	public BullSpirit() {
 
-		super("BullSpirit", 2500, 2700, 7500, 9100, new Reward[] {
+		super("BullSpirit", 2500, 2700, 15000, 20000, new Reward[] {
 				new Reward(Leather.Companion
 						           .tier(2)
 						           .getUpdatedItem(false)
