@@ -52,7 +52,7 @@ public class Scoreboard {
 		replaceScore(o, 13, Utils.tacc("&7 "+VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName()));
 		replaceScore(
 				o, 12, levelMessage);
-		replaceScore(o, 11, goldMessage);
+		replaceScore(o, 11, goldMessage + " \u26C1");
 		replaceScore(o, 10, "  ");
 		replaceScore(o, 9, Utils.tacc("&7SiegeRPG.minehut.gg"));
 		if (o.getDisplaySlot() != DisplaySlot.SIDEBAR)
