@@ -51,7 +51,7 @@ public class Scoreboard {
 						"&6Profile"));
 		replaceScore(o, 13, Utils.tacc("&7 "+VaultHook.perms.getPrimaryGroup(p) + " &7" + p.getName()));
 		replaceScore(
-				o, 12, levelMessage);
+				o, 12, levelMessage + " \u2742");
 		replaceScore(o, 11, goldMessage + " \u26C1");
 		replaceScore(o, 10, "  ");
 		replaceScore(o, 9, Utils.tacc("&7SiegeRPG.minehut.gg"));
