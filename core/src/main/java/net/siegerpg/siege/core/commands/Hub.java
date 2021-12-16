@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.commands;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,6 +18,7 @@ public class Hub implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			player.teleport(Core.plugin().getHubSpawnLocation());
+			player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 0.5f, 0.75f);
 			return true;
 		}
 		Bukkit.getLogger().info(Utils.tacc("<red>An entity other than the player ran the /hub command"));

@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.commands;
 
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,6 +19,8 @@ public class ToggleTips implements CommandExecutor {
 			return false;
 		}
 		Player player = (Player) sender;
+		player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1.0f, 1.5f);
+
 		if (args.length < 1) {
 			player.sendMessage(Utils.parse("\n" +
 			                               "<gold><bold>TOGGLE TIPS<reset>" +

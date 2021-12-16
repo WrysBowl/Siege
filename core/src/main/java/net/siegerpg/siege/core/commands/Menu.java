@@ -39,7 +39,7 @@ public class Menu implements CommandExecutor {
 		}
 		Player player = (Player) sender;
 
-		player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1.0f, 1.0f);
+		player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 0.75f, 1.0f);
 		Menu instance = new Menu();
 		this.menu = instance.getMenu(player);
 		this.menu.show(player);
@@ -49,7 +49,10 @@ public class Menu implements CommandExecutor {
 	private ChestGui getMenu(Player player) {
 		//Menu
 		ChestGui menu = new ChestGui(6, "Menu");
-		menu.setOnGlobalClick(event -> event.setCancelled(true));
+		menu.setOnGlobalClick(event -> {
+			player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 0.5f, 0.75f);
+			event.setCancelled(true);
+		});
 
 		OutlinePane background = new OutlinePane(0, 0, 9, 6, Pane.Priority.LOWEST);
 		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
@@ -90,12 +93,7 @@ public class Menu implements CommandExecutor {
 		utilities.addItem(new GuiItem(getScrapperIcon(player), e -> new Herbert(player)));
 		//Creating Gem Remover
 		utilities.addItem(new GuiItem(getGemRemover(player), e -> new GemRemover().openInventory(player)));
-		//Creating Stat Upgrade
-		utilities.addItem(new GuiItem(getStatUpgradeIcon(player), e -> {
-			ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-			String command = "statUpgrade "+player.getName();
-			Bukkit.dispatchCommand(console, command);
-		}));
+
 		//Creating Drops
 		utilities.addItem(new GuiItem(getDropsIcon(), e -> new DropTable().getStartMenu(player).show(player)));
 
@@ -189,36 +187,6 @@ public class Menu implements CommandExecutor {
 
 		scrapperIcon.setItemMeta(scrapperIconItemMeta);
 		return scrapperIcon;
-	}
-
-	private ItemStack getStatUpgradeIcon(Player player) {
-		ItemStack statUpgradeIcon = new ItemStack(Material.ANVIL);
-		ItemMeta statUpgradeIconItemMeta = statUpgradeIcon.getItemMeta();
-
-		if (player.hasPermission("siege.donor")) {
-			statUpgradeIconItemMeta.displayName(Utils.lore("<aqua><bold>Stat Upgrade"));
-			statUpgradeIconItemMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Click to upgrade"));
-					add(Utils.lore("<gray>your stats!"));
-				}
-			});
-		} else {
-			statUpgradeIcon = new ItemStack(Material.BARRIER);
-			statUpgradeIconItemMeta.displayName(Utils.lore("<red><bold>Stat Upgrade"));
-			statUpgradeIconItemMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Click to upgrade"));
-					add(Utils.lore("<gray>your stats!"));
-					add(Utils.lore(""));
-					add(Utils.lore("<gray>See in person"));
-					add(Utils.lore("<red><bold>/buy rank access"));
-				}
-			});
-		}
-
-		statUpgradeIcon.setItemMeta(statUpgradeIconItemMeta);
-		return statUpgradeIcon;
 	}
 
 	private ItemStack getGemRemover(Player player) {

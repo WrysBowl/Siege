@@ -21,7 +21,7 @@ public class Discord implements CommandExecutor {
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<color:#7289da><bold><underlined>   DISCORD   <reset>"));
 		player.sendMessage("");
-		player.sendMessage(Utils.parse("<yellow><bold>\u27B2<reset> <click:open_url:https://discord.siegerpg.net><color:#99aab5>https://discord.siegerpg.net</click>"));
+		player.sendMessage(Utils.parse("<yellow><bold>\u27B2<reset> <click:open_url:https://discord.siegerpg.net><color:#88C0E3>https://discord.siegerpg.net</click>"));
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<dark_gray><underlined>                                        "));
 		player.sendMessage("");

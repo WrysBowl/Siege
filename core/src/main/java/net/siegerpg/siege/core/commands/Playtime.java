@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.commands;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
 import org.bukkit.Statistic;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,6 +29,8 @@ public class Playtime implements CommandExecutor {
 			}
 			player = argPlayer;
 		}
+		((Player)sender).playSound(((Player)sender).getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1.0f, 1.5f);
+
 		String time = Utils.secondsToHHMMSS(player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20);
 		sender.sendMessage("");
 		sender.sendMessage(Utils.parse("<gray>    <aqua><bold>PLAYTIME<reset><gray>    "));
