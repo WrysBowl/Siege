@@ -37,7 +37,7 @@ public class ChatListener implements Listener {
 
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			if (message.contains(p.getName())) {
-				p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 1.0F, 2.0F);
+				p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 2.0F);
 			}
 		}
 
