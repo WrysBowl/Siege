@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.customEvents;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.customEvents.events.Gold_Storm;
 import net.siegerpg.siege.core.customEvents.events.Thunder_Storm;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,57 +20,47 @@ public class CustomEventListener implements Listener {
 		}
 	}; //fills up on start-up
 	public static CustomEvent currentlyActive = null;
-	private static boolean rateCalculating = false;
-	private static boolean rateRemoval = false;
 	private static final long eventWaitTimer = 1800 * 20L; //wait timer for events
 	private static boolean eventDelayed = false;
 
-	@EventHandler
-	public void triggers(Event e) {
+	public CustomEventListener() {
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				triggers();
+			}
+		}.runTaskTimer(Core.plugin(), 20, 1800 * 20L);
+	}
+
+	public void triggers() {
 		if (currentlyActive != null) return; //if an event is not active then allow code to trigger a new one
 		if (eventDelayed) return;
-		if (rateCalculating) {
+		//allow to be shown 4 ticks later
 
-			//if calculation has been processed, add to rate limiter arraylist
-			if (!rateRemoval) {
-				rateRemoval = true;
+		for (CustomEvent event : events.values()) { //trigger all events
+			if (!event.triggerable()) continue;
 
-				//allow to be shown 4 ticks later
-				new BukkitRunnable() {
-					@Override
-					public void run() {
-						rateRemoval = false;
-						rateCalculating = false;
-						for (CustomEvent event : events.values()) { //trigger all events
-							if (!event.triggerable(e)) continue;
-							event.action(e);
-							startTimer(event, e);
+			event.action();
+			startTimer(event);
 
-							//delay next event
-							eventDelayed = true;
-							new BukkitRunnable() {
-								@Override
-								public void run() {
-									eventDelayed = false;
-								}
-							}.runTaskLater(Core.plugin(), eventWaitTimer);
+			//delay next event
+			eventDelayed = true;
+			new BukkitRunnable() {
+				@Override
+				public void run() {
+					eventDelayed = false;
+				}
+			}.runTaskLater(Core.plugin(), eventWaitTimer);
 
-							return;
-						}
-					}
-				}.runTaskLater(Core.plugin(), 200); //checks for event every 10 seconds
-			}
-
-		} else {
-			rateCalculating = true;
+			return;
 		}
 	}
-	private void startTimer(CustomEvent event, Event e) {
+	private void startTimer(CustomEvent event) {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
 				currentlyActive = null;
-				event.clearAction(e);
+				event.clearAction();
 			}
 		}.runTaskLater(Core.plugin(), event.duration * 20L); //checks for event every 10 seconds
 	}

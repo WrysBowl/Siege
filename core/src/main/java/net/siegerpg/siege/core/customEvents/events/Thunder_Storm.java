@@ -18,21 +18,29 @@ public class Thunder_Storm extends CustomEvent {
 	}
 
 	@Override
-	public boolean triggerable(Event e) {
-		return Utils.randTest(15.0);
+	public boolean triggerable() {
+		return Utils.randTest(25.0);
 	}
 
 	@Override
-	public void action(Event e) {
+	public void action() {
 
 		World world = Bukkit.getWorld("Hilly_Woods");
 		if (world == null) return;
 		world.setStorm(true);
 
+		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse("<color:#639DD5>A thunder storm is brewing!"));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
+		Bukkit.broadcast(Utils.parse(""));
+
 	}
 
 	@Override
-	public void clearAction(Event e) {
+	public void clearAction() {
 
 		World world = Bukkit.getWorld("Hilly_Woods");
 		if (world == null) {

@@ -10,21 +10,18 @@ public class CustomEvent {
 
 	/**
 	 * Checks the event conditions
-	 * @param e Any event
 	 * @return boolean
 	 */
-	public boolean triggerable(Event e) { return false; }
+	public boolean triggerable() { return false; }
 
 	/**
 	 * Calls the action of the event
-	 * @param e Any event
 	 */
-	public void action(Event e) {}
+	public void action() {}
 
 	/**
 	 * Clears the action of the event
-	 * @param e Any event
 	 */
-	public void clearAction(Event e) {}
+	public void clearAction() {}
 
 }
