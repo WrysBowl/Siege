@@ -64,13 +64,7 @@ public final class Core extends JavaPlugin {
 	 */
 	public Location getHubSpawnLocation() {
 
-		Location spawnLocation =
-				Objects
-						.requireNonNull(Bukkit
-								                .getWorld("Hub"))
-						.getSpawnLocation();
-		spawnLocation.setYaw(168);
-		return spawnLocation;
+		return Objects.requireNonNull(Bukkit.getWorld("Hub")).getSpawnLocation();
 	}
 
 	public ArrayList< Hologram > hologramsToBeDeleted = new ArrayList<>();
