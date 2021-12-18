@@ -30,7 +30,7 @@ public class GoldEXPSpawning {
 		gold
 				.getItemStack()
 				.setAmount(goldCoinAmt);
-		gold.setCustomName(Utils.tacc("&e+" + String.format("%,d", goldCoinAmt) + " Gold"));
+		gold.setCustomName(Utils.tacc("&e+" + String.format("%,d", goldCoinAmt) + " \u26C1"));
 		gold.setCustomNameVisible(true);
 	}
 
@@ -39,7 +39,7 @@ public class GoldEXPSpawning {
 		ExperienceOrb orb = loc
 				.getWorld()
 				.spawn(loc, ExperienceOrb.class);
-		orb.setCustomName(Utils.tacc("&d+" + String.format("%,d", exp) + " EXP"));
+		orb.setCustomName(Utils.tacc("&d+" + String.format("%,d", exp) + " \u2742"));
 		orb.setExperience(exp);
 		orb.setCustomNameVisible(true);
 	}
