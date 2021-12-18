@@ -59,7 +59,7 @@ abstract class StatGemType(
 		meta.lore("<yellow><bold>DRAG ONTO ITEM TO APPLY")
 		meta.lore("<gray>Merge these stats to your gear!")
 		meta.lore(" ")
-		meta.lore("<r><gray>Level: $levelRequirement")
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement")
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)

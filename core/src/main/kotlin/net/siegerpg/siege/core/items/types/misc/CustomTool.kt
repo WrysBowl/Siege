@@ -60,7 +60,7 @@ abstract class CustomTool(
 		}
 
 		meta.lore(" ")
-		meta.lore("<r><gray>Level: $levelRequirement")
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement")
 		//if (hideRarity) meta.lore("<r><red>This is not the real item")
 
 		meta.isUnbreakable = true

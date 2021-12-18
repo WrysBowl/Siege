@@ -103,7 +103,7 @@ interface CustomEquipment : CustomItem {
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore(" ")
-		meta.lore("<r><gray>Level: $levelRequirement")
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement")
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(
