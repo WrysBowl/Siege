@@ -121,14 +121,14 @@ class ShopsCommand : BaseCommand() {
 				}
 				meta.lore("")
 				if (counter == it.recipe.size) meta.lore("<green>\u2714 LEFT CLICK to craft!")
-				else meta.lore("<red>\u2717 LEFT CLICK to craft!")
+				else meta.lore("<red>\u2717 LEFT CLICK <gray>to craft!")
 
 			}
 			if (it.buyPrice > -1) {
 				if (VaultHook.econ.getBalance(player) >= it.buyPrice) {
-					meta.lore("<green>\u2714 RIGHT CLICK Cost ${String.format("%,d", it.buyPrice)} gold")
+					meta.lore("<green>\u2714 RIGHT CLICK <gray>Cost ${String.format("%,d", it.buyPrice)} gold")
 				} else {
-					meta.lore("<red>\u2717 RIGHT CLICK Cost ${String.format("%,d", it.buyPrice)} gold")
+					meta.lore("<red>\u2717 RIGHT CLICK <gray>Cost ${String.format("%,d", it.buyPrice)} gold")
 				}
 			}
 			item.itemMeta = meta
