@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.items.types.misc
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
+import net.siegerpg.siege.core.items.enums.FoodPoints
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.miscellaneous.lore
@@ -85,6 +86,8 @@ abstract class CustomFood(
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
 
+
+		meta.lore("<r><green>+ <gray>${FoodPoints.getHungerRegenValue(this.material)} <color:#F7D677>Hunger")
 		val realHealth = health
 		if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
 		meta.lore(" ")
