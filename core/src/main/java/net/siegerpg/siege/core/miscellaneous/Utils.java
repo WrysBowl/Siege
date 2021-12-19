@@ -270,7 +270,7 @@ public class Utils {
 			String newString = currentString + string + " ";
 			characterCounter = newString.length();
 
-			if (characterCounter >= max) {
+			if (characterCounter > max) {
 				newArray.add(string + " ");
 				characterCounter = 0;
 				currentRow += 1;

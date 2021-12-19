@@ -88,7 +88,7 @@ abstract class CustomFood(
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
 
-
+		meta.lore(" ")
 		meta.lore("<r><color:#F7D677>+ ${FoodPoints.getHungerRegenValue(this.material)} Hunger")
 		val realHealth = health
 		if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
