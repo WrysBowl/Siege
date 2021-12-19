@@ -158,7 +158,7 @@ public class Herbert implements Listener {
 		// Award value to qualifying items
 		if (cItem instanceof CustomMaterial) {
 			quality = ((CustomMaterial) (cItem)).getTier();
-			total += Math.pow(2, quality);
+			total += Math.pow(4, quality);
 		} else if (cItem instanceof StatGemType) {
 			if (cItem.getLevelRequirement() == null) {
 				total += 1;
