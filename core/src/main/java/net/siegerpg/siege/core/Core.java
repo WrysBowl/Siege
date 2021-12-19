@@ -136,6 +136,8 @@ public final class Core extends JavaPlugin {
 			commandList.put("playTime", new Playtime());
 			commandList.put("menu", new Menu());
 			commandList.put("cookieClicker", new CookieClicker());
+			commandList.put("materials", new Materials());
+
 
 		}
 

@@ -16,6 +16,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.miscellaneous.Scoreboard
 import net.siegerpg.siege.core.miscellaneous.VaultHook
 import net.siegerpg.siege.core.miscellaneous.lore
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.command.CommandSender
@@ -35,7 +36,6 @@ class ShopsCommand : BaseCommand() {
 			@Optional @CommandPermission("siege.shops.open.others") target : OnlinePlayer?
 	           ) {
 
-		// if (sender is Player && sender.name == "Sumowo") sender.inventory.addItem(Pebble.tier(1).getUpdatedItem(false))
 
 		if (target == null && sender is ConsoleCommandSender) {
 			return sender.sendMessage(
@@ -62,6 +62,7 @@ class ShopsCommand : BaseCommand() {
 						.parse("<red>You do not have permission to open this shop!")
 		                                                                                         )
 
+		//This is some ugly code that I have yet to change
 		var gui = ChestGui(3, shop.name)
 		var outlinePane = OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST)
 		var mainPane = StaticPane(1, 1, 9, 3, Pane.Priority.HIGHEST)
@@ -181,6 +182,7 @@ class ShopsCommand : BaseCommand() {
 							player.inventory.removeItem(stack)
 						}
 						player.inventory.addItem(it.generate())
+						Bukkit.dispatchCommand(sender, "shops " + id + " " + player.name)
 						player.playSound(
 								player.location,
 								Sound.ENTITY_VILLAGER_CELEBRATE,

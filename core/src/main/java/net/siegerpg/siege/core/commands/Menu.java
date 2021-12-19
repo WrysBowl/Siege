@@ -5,6 +5,7 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import kotlin.Pair;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.listeners.NPC.GemRemover;
 import net.siegerpg.siege.core.listeners.NPC.Herbert;
@@ -93,9 +94,11 @@ public class Menu implements CommandExecutor {
 		utilities.addItem(new GuiItem(getScrapperIcon(player), e -> new Herbert(player)));
 		//Creating Gem Remover
 		utilities.addItem(new GuiItem(getGemRemover(player), e -> new GemRemover().openInventory(player)));
-
 		//Creating Drops
 		utilities.addItem(new GuiItem(getDropsIcon(), e -> new DropTable().getStartMenu(player).show(player)));
+		//Creating Materials
+		utilities.addItem(new GuiItem(getMaterialsIcon(), e -> new Materials().getMenu(player).show(player)));
+
 
 		/*
 		  Warp Icons
@@ -226,6 +229,24 @@ public class Menu implements CommandExecutor {
 		dropsIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>View Item Drops!"));
+			}
+		});
+
+		dropsIcon.setItemMeta(dropsIconItemMeta);
+		return dropsIcon;
+	}
+
+	private static ItemStack getMaterialsIcon() {
+		ItemStack dropsIcon = Slime.Companion.tier(0).getItem();
+		ItemMeta dropsIconItemMeta = dropsIcon.getItemMeta();
+		dropsIconItemMeta.displayName(Utils.lore("<color:#D4DC7F><bold>Materials"));
+		dropsIconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<dark_gray><underlined>                 "));
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>View crafting"));
+				add(Utils.lore("<gray>recipes"));
+				add(Utils.lore("<dark_gray><underlined>                 "));
 			}
 		});
 
