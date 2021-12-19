@@ -5,8 +5,10 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.miscellaneous.Levels
 import org.bukkit.Material
+import org.bukkit.attribute.Attribute
 import org.bukkit.entity.*
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.util.Vector
 
@@ -30,19 +32,25 @@ class BanditDoubleShot() : CustomBow(
 		deserialize()
 	}
 
-	override fun onHit(e : EntityDamageByEntityEvent) {
-		val player = (e.entity as Player).player ?: return
-		val item = player.inventory.itemInMainHand
-		val cusItem = CustomItemUtils.getCustomItem(item) ?: return
-		if (cusItem.levelRequirement == null) return
-		if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first
-		                                  ?: 0)
-		) return
+	override fun onHit(e : EntityDamageEvent) {
 		val victim : Entity = e.entity
+		var attacker : Entity? = null
 		if (victim !is LivingEntity) return
 
+		if (e is EntityDamageByEntityEvent) {
+			attacker =
+					if (e.damager is Player) e.damager as Player
+					else e.damager
+			if (e.damager is Projectile) {
+				if ((e.damager as Projectile).shooter is Player) {
+					attacker = (e.damager as Projectile).shooter as Player
+				}
+			}
+		}
+
+		if (attacker !is LivingEntity) return;
 		val playerDirection : Vector = victim.getLocation().direction
-		val arrow : Arrow = player.launchProjectile(Arrow::class.java, playerDirection)
+		val arrow : Arrow = attacker.launchProjectile(Arrow::class.java, playerDirection)
 		arrow.pickupStatus = AbstractArrow.PickupStatus.DISALLOWED
 	}
 

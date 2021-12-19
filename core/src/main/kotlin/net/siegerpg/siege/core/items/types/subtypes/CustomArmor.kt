@@ -16,10 +16,6 @@ interface CustomArmor : CustomEquipment {
 
 	var leatherColor : Color
 
-	fun onHit(e : EntityDamageEvent) {
-
-	}
-
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		super.updateMeta(hideRarity)
 		item.type = this.material

@@ -167,26 +167,30 @@ class CustomItemKotlinListener : Listener, Runnable {
 				maxDamage = damage
 				actualDamage = damage
 			}
-			victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
-		}
 
-
-		/*if (attacker is Player) {
-			val item = attacker.inventory.itemInMainHand
-			val customItem: CustomItem? = CustomItemUtils.getCustomItem(item)
-
+			/*
+				Check for weapon skill from player's hand
+			 */
+			val weapon = attacker.inventory.itemInMainHand
+			val customItem: CustomItem? = CustomItemUtils.getCustomItem(weapon)
 			customItem?.let {
 				if (it is CustomMeleeWeapon) {
 					it.onHit(e)
 				}
 			}
-		}*/
+
+			victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
+		}
+
+		/*
+			Check for armor skill from player's armor
+		 */
 		if (victim is Player) {
 			val armor = victim.inventory.armorContents
 			if (armor.isNullOrEmpty()) return
-			armor.forEach { item ->
-				val customItem : CustomItem? = CustomItemUtils.getCustomItem(item)
-				customItem?.let {
+			armor.forEach { armorPiece ->
+				val armorCustomItem : CustomItem? = CustomItemUtils.getCustomItem(armorPiece)
+				armorCustomItem?.let {
 					if (it is CustomArmor) {
 						it.onHit(e)
 					}

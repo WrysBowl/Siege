@@ -39,13 +39,6 @@ class PebbleWand() : CustomWand(
 	}
 
 	override fun onHit(e : EntityDamageByEntityEvent) {
-		val player = (e.entity as Player).player ?: return
-		val item = player.inventory.itemInMainHand
-		val cusItem = CustomItemUtils.getCustomItem(item) ?: return
-		if (cusItem.levelRequirement == null) return
-		if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first
-		                                  ?: 0)
-		) return
 		val victim : Entity = e.entity
 		if (victim !is LivingEntity) return
 		victim.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 10, 0))

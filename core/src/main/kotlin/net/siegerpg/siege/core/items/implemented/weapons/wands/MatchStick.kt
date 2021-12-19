@@ -9,6 +9,7 @@ import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.inventory.ItemStack
 
 class MatchStick() : CustomWand(
@@ -36,14 +37,7 @@ class MatchStick() : CustomWand(
 		deserialize()
 	}
 
-	override fun onHit(e : EntityDamageByEntityEvent) {
-		val player = (e.entity as Player).player ?: return
-		val item = player.inventory.itemInMainHand
-		val cusItem = CustomItemUtils.getCustomItem(item) ?: return
-		if (cusItem.levelRequirement == null) return
-		if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first
-		                                  ?: 0)
-		) return
+	override fun onHit(e : EntityDamageEvent) {
 		val victim : Entity = e.entity
 		if (victim !is LivingEntity) return
 		victim.fireTicks = 20

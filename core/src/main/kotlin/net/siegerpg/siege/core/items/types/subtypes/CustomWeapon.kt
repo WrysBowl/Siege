@@ -11,7 +11,4 @@ import org.bukkit.event.entity.EntityDamageEvent
 
 interface CustomWeapon : CustomEquipment {
 
-	fun onHit(e : EntityDamageEvent) {
-
-	}
 }

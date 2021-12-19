@@ -16,6 +16,8 @@ import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Bukkit
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
@@ -127,6 +129,14 @@ interface CustomEquipment : CustomItem {
 	}
 
 	fun onHit(e : EntityDamageByEntityEvent) {
+		// placeholder for optional event
+	}
+
+	fun onHit(e : EntityDamageEvent) {
+		// placeholder for optional event
+	}
+
+	fun onInteract(e : PlayerInteractEvent) {
 		// placeholder for optional event
 	}
 
