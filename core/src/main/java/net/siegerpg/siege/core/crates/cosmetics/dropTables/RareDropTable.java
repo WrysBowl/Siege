@@ -1,7 +1,7 @@
-package net.siegerpg.siege.core.crates.dropTables;
+package net.siegerpg.siege.core.crates.cosmetics.dropTables;
 
 
-import net.siegerpg.siege.core.crates.CosmeticDropTable;
+import net.siegerpg.siege.core.crates.cosmetics.CosmeticDropTable;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.rare.*;
 
 import java.util.HashMap;

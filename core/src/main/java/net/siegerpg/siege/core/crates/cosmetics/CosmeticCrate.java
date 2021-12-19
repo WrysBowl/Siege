@@ -1,6 +1,6 @@
-package net.siegerpg.siege.core.crates;
+package net.siegerpg.siege.core.crates.cosmetics;
 
-import net.siegerpg.siege.core.crates.dropTables.*;
+import net.siegerpg.siege.core.crates.cosmetics.dropTables.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.*;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
 import org.bukkit.Location;

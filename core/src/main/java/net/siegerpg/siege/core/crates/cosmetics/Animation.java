@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.crates;
+package net.siegerpg.siege.core.crates.cosmetics;
 
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
@@ -127,7 +127,7 @@ public class Animation implements Runnable {
 													.sendMessage(miniMessage);
 
 											Utils.giveItem(player, cosmetic.getUpdatedItem(false));
-											CrateOpen.currentlyUsedChests.clear();
+											CosmeticCrateOpen.currentlyUsedChests.clear();
 
 										}, 20);
 							}, 20);

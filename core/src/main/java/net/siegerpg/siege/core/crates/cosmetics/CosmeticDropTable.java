@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.crates;
+package net.siegerpg.siege.core.crates.cosmetics;
 
 import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
 

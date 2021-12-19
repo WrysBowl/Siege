@@ -7,7 +7,7 @@ import io.github.retrooper.packetevents.settings.PacketEventsSettings;
 import io.github.retrooper.packetevents.utils.server.ServerVersion;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
-import net.siegerpg.siege.core.crates.CrateOpen;
+import net.siegerpg.siege.core.crates.cosmetics.CosmeticCrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
 import net.siegerpg.siege.core.customEvents.CustomEventListener;
@@ -169,7 +169,7 @@ public final class Core extends JavaPlugin {
 				new EntityTeleportListener(),
 				new HelpfulTips(),
 				new GoldReward(),
-				new CrateOpen(),
+				new CosmeticCrateOpen(),
 				new MobNames(),
 				new SkillListener(),
 				new DungeonListener(),

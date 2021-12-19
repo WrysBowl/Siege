@@ -1,10 +1,9 @@
-package net.siegerpg.siege.core.crates;
+package net.siegerpg.siege.core.crates.cosmetics;
 
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
-import net.siegerpg.siege.core.crates.dropTables.NormalDropTable;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.*;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CrateOpen implements Listener {
+public class CosmeticCrateOpen implements Listener {
 
 	public static ArrayList< Location > currentlyUsedChests = new ArrayList<>();
 
@@ -48,11 +47,11 @@ public class CrateOpen implements Listener {
 		if (!e
 				.getAction()
 				.equals(Action.RIGHT_CLICK_BLOCK)) {
-			new CrateOpen().getStartMenu(player).show(player);
+			new CosmeticCrateOpen().getStartMenu(player).show(player);
 			return;
 		}
 		if (currentlyUsedChests.contains(targetedBlock.getLocation())) {
-			new CrateOpen().getStartMenu(player).show(player);
+			new CosmeticCrateOpen().getStartMenu(player).show(player);
 			return;
 		}
 
@@ -61,15 +60,15 @@ public class CrateOpen implements Listener {
 				                                                         .getInventory()
 				                                                         .getItemInMainHand());
 		if (item == null) {
-			new CrateOpen().getStartMenu(player).show(player);
+			new CosmeticCrateOpen().getStartMenu(player).show(player);
 			return;
 		}
 		if (!(item instanceof CustomKey)) {
-			new CrateOpen().getStartMenu(player).show(player);
+			new CosmeticCrateOpen().getStartMenu(player).show(player);
 			return;
 		}
 		if (!keyCheck(item)) {
-			new CrateOpen().getStartMenu(player).show(player);
+			new CosmeticCrateOpen().getStartMenu(player).show(player);
 			return;
 		}
 
@@ -79,7 +78,7 @@ public class CrateOpen implements Listener {
 		//Pick item reward to give to player
 		CosmeticDropTable dropTable = getItem(item);
 		if (dropTable == null) {
-			new CrateOpen().getStartMenu(player).show(player);
+			new CosmeticCrateOpen().getStartMenu(player).show(player);
 			return;
 		}
 		CustomCosmetic reward = dropTable.pickItem();
