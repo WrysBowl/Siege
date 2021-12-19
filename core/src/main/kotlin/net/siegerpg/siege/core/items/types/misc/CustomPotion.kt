@@ -4,6 +4,8 @@ import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.listeners.NPC.Herbert
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Bukkit
@@ -62,10 +64,14 @@ abstract class CustomPotion(
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
 
+		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
-		description.forEach {
+		Utils.getTextArray(description, 16).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
+		meta.lore("<underlined><dark_gray>                    ")
+		meta.lore(" ")
+		meta.lore("<r><color:#E2DE5D>${Herbert.getSellValue(item)} \u26C1")
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(

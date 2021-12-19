@@ -6,6 +6,8 @@ import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
+import net.siegerpg.siege.core.listeners.NPC.Herbert
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Bukkit
@@ -55,13 +57,15 @@ abstract class CustomMaterial(
 		meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
+
+		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
-		description.forEach {
+		Utils.getTextArray(description, 16).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
+		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
-		meta.lore("<gray>Upgrade to the next \u272A")
-		meta.lore("<gray>with <yellow>Phillip <gray>or <yellow>Sylvester")
+		meta.lore("<r><color:#E2DE5D>${Herbert.getSellValue(item)} \u26C1")
 		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 		item.itemMeta = meta

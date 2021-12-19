@@ -6,6 +6,8 @@ import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.FoodPoints
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.listeners.NPC.Herbert
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Bukkit
@@ -87,13 +89,17 @@ abstract class CustomFood(
 		if (meta.hasLore()) meta.lore(mutableListOf())
 
 
-		meta.lore("<r><green>+ <gray>${FoodPoints.getHungerRegenValue(this.material)} <color:#F7D677>Hunger")
+		meta.lore("<r><color:#F7D677>+ ${FoodPoints.getHungerRegenValue(this.material)} Hunger")
 		val realHealth = health
 		if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
+		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
-		description.forEach {
+		Utils.getTextArray(description, 16).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
+		meta.lore("<underlined><dark_gray>                    ")
+		meta.lore(" ")
+		meta.lore("<r><color:#E2DE5D>${Herbert.getSellValue(item)} \u26C1")
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)

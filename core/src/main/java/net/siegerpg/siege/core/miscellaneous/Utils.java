@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -248,6 +250,35 @@ public class Utils {
 				Integer.valueOf(colorStr.substring(3, 5), 16),
 				Integer.valueOf(colorStr.substring(5, 7), 16)
 		                               );
+	}
+
+	/**
+	 * Divides the string into an array by a max character count
+	 * @param str
+	 * @param max
+	 * @return
+	 */
+	public static String[] getTextArray(List<String> str, int max) {
+		String[] splitString = String.join(" ", str).split(" ");
+
+		int characterCounter = 0;
+		ArrayList<String> newArray = new ArrayList<>(){{add("");}};
+		int currentRow = 0;
+
+		for (String string : splitString) {
+			String currentString = newArray.get(currentRow);
+			String newString = currentString + string + " ";
+			characterCounter = newString.length();
+
+			if (characterCounter >= max) {
+				newArray.add(string + " ");
+				characterCounter = 0;
+				currentRow += 1;
+			} else {
+				newArray.set(currentRow, newString);
+			}
+		}
+		return newArray.toArray(new String[0]);
 	}
 
 }

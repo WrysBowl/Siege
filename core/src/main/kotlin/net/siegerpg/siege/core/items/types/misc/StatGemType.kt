@@ -5,6 +5,8 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.setNbtTags
+import net.siegerpg.siege.core.listeners.NPC.Herbert
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Material
@@ -52,14 +54,16 @@ abstract class StatGemType(
 		meta.lore(" ")
 		meta.lore("<r><color:#FF3CFF>+${statAmount} <gray>${statType.stylizedName}")
 		meta.lore(" ")
-		description.forEach {
-			meta.lore("<r><dark_gray>$it")
-		}
-		meta.lore(" ")
 		meta.lore("<yellow><bold>DRAG ONTO ITEM TO APPLY")
 		meta.lore("<gray>Merge these stats to your gear!")
+		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
-		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement")
+		Utils.getTextArray(description, 16).forEach {
+			meta.lore("<r><dark_gray>$it")
+		}
+		meta.lore("<underlined><dark_gray>                    ")
+		meta.lore(" ")
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement     <r><color:#E2DE5D>${Herbert.getSellValue(item)} \u26C1")
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
