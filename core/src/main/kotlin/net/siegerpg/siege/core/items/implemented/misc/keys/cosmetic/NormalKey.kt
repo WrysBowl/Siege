@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack
 class NormalKey() : CustomKey(
 		name = "Normal Key",
 		customModelData = 630006,
-		description = listOf("High chance of a", "common cosmetic", "Use in the hub"),
+		description = listOf("High chance of a", "common cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
                              ) {
 

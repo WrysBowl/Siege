@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack
 class RareKey() : CustomKey(
 		name = "Rare Key",
 		customModelData = 630003,
-		description = listOf("Get a rare cosmetic", "Use in the hub"),
+		description = listOf("Get a rare cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
                            ) {
 

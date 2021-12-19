@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack
 class LegendaryKey() : CustomKey(
 		name = "Legendary Key",
 		customModelData = 630005,
-		description = listOf("Get a legendary cosmetic", "Use in the hub"),
+		description = listOf("Get a legendary cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
                                 ) {
 
