@@ -35,7 +35,7 @@ public class GoldExpListener implements Listener {
 	public static void giveGold(Player player, int goldAmount) {
 		net.siegerpg.siege.core.miscellaneous.VaultHook.econ.depositPlayer(player, goldAmount);
 		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
-		player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>Gold"));
+		player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>\u26C1"));
 		GoldReward.addServerGold(goldAmount);
 		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 					public void run() {
@@ -48,75 +48,56 @@ public class GoldExpListener implements Listener {
 	@EventHandler
 	public void goldPickUp(PlayerAttemptPickupItemEvent e) {
 
-		ItemStack item = e
-				.getItem()
-				.getItemStack();
+		ItemStack item = e.getItem().getItemStack();
 		if (e.isCancelled()) return;
-		if (!item
-				.getType()
-				.equals(Material.SUNFLOWER)) return;
-		if (!item
-				.getItemMeta()
-				.getDisplayName()
-				.contains("Gold Coin")) return;
+		if (!item.getType().equals(Material.SUNFLOWER)) return;
+		if (!item.getItemMeta().getDisplayName().contains("\u26C1")) return;
 		Player player = e.getPlayer();
 		e.setCancelled(true);
-		e
-				.getItem()
-				.remove();
-		int goldAmount = e
-				.getItem()
-				.getItemStack()
-				.getAmount();
+		e.getItem().remove();
+		int goldAmount = e.getItem().getItemStack().getAmount();
 		giveGold(player, goldAmount);
 	}
 
 	@EventHandler
 	public void expPickUp(PlayerPickupExperienceEvent e) {
 
+		int exp = e.getExperienceOrb().getExperience();
+		Player player = e.getPlayer();
 
-		if (e
-				.getExperienceOrb()
-				.getName()
-				.contains("EXP")) {
+		//check if exp calculation for player is currently being processed
+		if (expCalculating.contains(player)) {
+			e.setCancelled(true);
 
-			int exp = e.getExperienceOrb().getExperience();
-			Player player = e.getPlayer();
+			//if exp calculation has been processed, add to rate limiter arraylist
+			if (awaitingRemoval.contains(player)) return;
+			awaitingRemoval.add(player);
 
-			//check if exp calculation for player is currently being processed
-			if (expCalculating.contains(player)) {
-				e.setCancelled(true);
+			//allow EXP to be gained 5 ticks later
+			new BukkitRunnable() {
+				@Override
+				public void run() {
+					expCalculating.remove(player);
+					awaitingRemoval.remove(player);
+				}
+			}.runTaskLater(Core.plugin(), 5);
 
-				//if exp calculation has been processed, add to rate limiter arraylist
-				if (awaitingRemoval.contains(player)) return;
-				awaitingRemoval.add(player);
-
-				//allow EXP to be gained 5 ticks later
-				new BukkitRunnable() {
-					@Override
-					public void run() {
-						expCalculating.remove(player);
-						awaitingRemoval.remove(player);
-					}
-				}.runTaskLater(Core.plugin(), 5);
-
-				return; //if player is processing exp calculation
-			} else {
-				expCalculating.add(player);
-			}
-			Levels.INSTANCE.addExpShared(player, exp);
-			player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
-
-			Bukkit
-					.getServer()
-					.getScheduler()
-					.runTaskLater(Core.plugin(), new Runnable() {
-						public void run() {
-
-							Scoreboard.updateScoreboard(player);
-						}
-					}, 20);
+			return; //if player is processing exp calculation
+		} else {
+			expCalculating.add(player);
 		}
+		Levels.INSTANCE.addExpShared(player, exp);
+		player.sendActionBar(Utils.parse("<dark_purple>+ " + exp + " <dark_purple>EXP"));
+
+		Bukkit
+				.getServer()
+				.getScheduler()
+				.runTaskLater(Core.plugin(), new Runnable() {
+					public void run() {
+
+						Scoreboard.updateScoreboard(player);
+					}
+				}, 20);
 		e.getExperienceOrb().setExperience(0);
 	}
 

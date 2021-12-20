@@ -127,7 +127,36 @@ public class Herbert implements Listener {
 		int quantity = 1;
 		CustomItem cItem;
 		for (ItemStack scrap : scraps) {
-			total += getSellValue(scrap) * scrap.getAmount();
+			cItem = CustomItemUtils.INSTANCE.getCustomItem(scrap);
+			if (cItem == null) continue;
+			// Award value to qualifying items
+			quantity = cItem
+					.getItem()
+					.getAmount();
+			if (cItem instanceof CustomMaterial) {
+				quality = ((CustomMaterial) (cItem)).getTier();
+				total += quantity * Math.pow(4, quality);
+			} else if (cItem instanceof StatGemType) {
+				if (cItem.getLevelRequirement() == null) {
+					total += 1;
+					continue;
+				}
+				levelReq = cItem.getLevelRequirement();
+				total += quantity * 35 * levelReq;
+			} else if (cItem instanceof CustomKey) {
+				total += 500;
+			} else if (cItem instanceof CustomFood) {
+				quality = cItem.getQuality();
+				total += (int) (quantity * ((quality / 100) + 1));
+			} else {
+				quality = cItem.getQuality();
+				if (cItem.getLevelRequirement() == null) {
+					total += 1;
+					continue;
+				}
+				levelReq = cItem.getLevelRequirement();
+				total += (int) quantity * ((levelReq * quality) / 5);
+			}
 		}
 
 		// Refresh cash in sunflower
@@ -206,7 +235,6 @@ public class Herbert implements Listener {
 			}
 		}
 		clearItems();
-		refresh();
 	}
 
 	// Get the coordinates of all items in the scrapper from top left to bottom right

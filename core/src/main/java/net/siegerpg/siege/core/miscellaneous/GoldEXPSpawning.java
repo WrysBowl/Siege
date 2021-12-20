@@ -13,7 +13,7 @@ public class GoldEXPSpawning {
 
 		ItemStack gold = new ItemStack(Material.SUNFLOWER);
 		ItemMeta meta = gold.getItemMeta();
-		meta.setDisplayName("Gold Coin");
+		meta.setDisplayName("\u26C1");
 		if (amount > 0) {
 			gold.setAmount(amount);
 		}
@@ -30,7 +30,7 @@ public class GoldEXPSpawning {
 		gold
 				.getItemStack()
 				.setAmount(goldCoinAmt);
-		gold.setCustomName(Utils.tacc("&e+" + String.format("%,d", goldCoinAmt) + " \u26C1"));
+		gold.setCustomName(Utils.tacc("&e" + String.format("%,d", goldCoinAmt) + " \u26C1"));
 		gold.setCustomNameVisible(true);
 	}
 
