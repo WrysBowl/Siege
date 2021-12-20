@@ -34,7 +34,7 @@ public class GoldExpListener implements Listener {
 
 	public static void giveGold(Player player, int goldAmount) {
 		net.siegerpg.siege.core.miscellaneous.VaultHook.econ.depositPlayer(player, goldAmount);
-		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.3f, 1.0f);
 		player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>\u26C1"));
 		GoldReward.addServerGold(goldAmount);
 		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {

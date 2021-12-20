@@ -1,6 +1,8 @@
 package net.siegerpg.siege.core.crates.mobs;
 
 
+import com.destroystokyo.paper.profile.PlayerProfile;
+import com.destroystokyo.paper.profile.ProfileProperty;
 import kotlin.Pair;
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
@@ -16,10 +18,9 @@ import net.siegerpg.siege.core.miscellaneous.DropUtils;
 import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,10 +32,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MobCrateOpen implements Listener {
 
@@ -72,6 +70,67 @@ public class MobCrateOpen implements Listener {
 		MobDropTable dropTable = dropTablesList.get(randNumber);
 		if (dropTable == null) return;
 
+		ArmorStand stand = getArmorStand(targetedBlock.getLocation().toCenterLocation());
+		stand.setHelmet(new ItemStack(Material.BARREL));
+		new BukkitRunnable() {
+
+			int counter = 0;
+			final World world = stand.getWorld();
+			int soundCounter = 0;
+
+			@Override
+			public void run() {
+				if (counter >= 84) {
+					giveReward(player, dropTable, targetedBlock, item, stand);
+					player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
+					this.cancel();
+				} else {
+					if (counter % 6 == 0) {
+						if (soundCounter == 0) player.playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f);
+						else if (soundCounter == 1) player.playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.2f);
+						else if (soundCounter == 2) player.playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.4f);
+						else if (soundCounter == 3) {
+							soundCounter = -1;
+							player.playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.6f);
+						}
+						soundCounter++;
+					}
+
+					double x = stand.getLocation().getX();
+					double y = stand.getLocation().getY()+0.025;
+					double z = stand.getLocation().getZ();
+					float yaw = stand.getLocation().getYaw()+15;
+					float pitch = stand.getLocation().getPitch();
+					Location loc = new Location(world ,x, y, z, yaw, pitch);
+					stand.teleport(loc);
+				}
+				if (counter >= 65 && counter <= 75) {
+					final int r = 203;
+					final int g = 225;
+					final int b = 145;
+					Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(r, g, b), 2);
+					stand.getWorld().spawnParticle(Particle.REDSTONE, stand.getLocation(), 5, 3, 1, 3, dust);
+				}
+				counter++;
+			}
+
+		}.runTaskTimer(Core.plugin(), 1, 1);
+
+	}
+
+	private ArmorStand getArmorStand(Location loc) {
+		final ArmorStand stand = loc.getWorld().spawn(loc, ArmorStand.class);
+		stand.setGravity(false);
+		stand.setBasePlate(false);
+		stand.setSmall(true);
+		stand.setArms(false);
+		stand.setVisible(false);
+		stand.customName(Utils.parse("<color:#91CB56><bold>MOB CRATE"));
+		stand.setCustomNameVisible(true);
+		return stand;
+	}
+
+	public static void giveReward(Player player, MobDropTable dropTable, Block targetedBlock, CustomItem item, ArmorStand stand) {
 		ArrayList< ItemStack > rewardItems = new ArrayList<>();
 		int rewardGold = 0;
 		int rewardEXP = 0;
@@ -99,26 +158,27 @@ public class MobCrateOpen implements Listener {
 			@Override
 			public void run() {
 
-				if (rewardItemsCOPY.isEmpty()) this.cancel();
+				Bukkit.getLogger().info("Size "+rewardItems.size());
 
-				//create vector to shoot items at player
-				Vector vector = Utils.getDifferentialVector(
-						targetedBlock.getLocation(), player.getLocation().subtract(0, 2, 0));
-				vector.normalize();
+				if (rewardItems.size() < 1) {
+					stand.remove();
+					this.cancel();
+				} else {
+					//create vector to shoot items at player
+					Vector vector = Utils.getDifferentialVector(
+							targetedBlock.getLocation(), player.getLocation().subtract(0, 2, 0));
+					vector.normalize();
 
-				Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(
-						targetedBlock.getLocation().add(0,2,0), rewardItemsCOPY.get(0), List.of(player.getUniqueId()));
-				rewardItemsCOPY.remove(0);
-				displayedItem.setVelocity(vector);
-				player.playSound(player.getLocation(), Sound.ENTITY_FOX_TELEPORT, 1.0f, 1.0f);
-
-
+					Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(
+							targetedBlock.getLocation().add(0,2,0), rewardItemsCOPY.get(0), List.of(player.getUniqueId()));
+					rewardItemsCOPY.remove(0);
+					displayedItem.setVelocity(vector);
+					player.playSound(player.getLocation(), Sound.ENTITY_FOX_TELEPORT, 0.25f, 1.0f);
+				}
 			}
 		}.runTaskTimer(Core.plugin(), 5, 5);
 
-		player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
-
-		//add duplicte items together
+		//add duplicate items together
 		HashMap<ItemStack, Integer> itemCount = new HashMap<>();
 		for (ItemStack reward : rewardItems) {
 			if (!itemCount.containsKey(reward)) itemCount.put(reward.asOne(), reward.getAmount());
@@ -129,7 +189,7 @@ public class MobCrateOpen implements Listener {
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<color:#91CB56><bold><underlined>   REWARDS   <reset>"));
 		player.sendMessage("");
-		player.sendMessage(Utils.parse("<color:#91CB56><bold>"+dropTable.getMobName() + " <gray>x3"));
+		player.sendMessage(Utils.parse("<color:#91CB56><bold>"+dropTable.getMobName() + " <r><gray>x3"));
 		player.sendMessage(Utils.parse("  <yellow><bold>Gold <r><gray>+"+String.format("%,d",rewardGold)));
 		player.sendMessage(Utils.parse("  <light_purple><bold>EXP <r><gray>+"+String.format("%,d",rewardEXP)));
 		player.sendMessage("");
@@ -140,7 +200,6 @@ public class MobCrateOpen implements Listener {
 		player.sendMessage("");
 
 		player.getInventory().removeItem(item.getItem().asOne());
-
 	}
 
 	private boolean locationCheck(Location location) {

@@ -1,5 +1,7 @@
 package net.siegerpg.siege.core.miscellaneous;
 
+import io.github.retrooper.packetevents.utils.gameprofile.GameProfileUtil;
+import kotlin.coroutines.RestrictsSuspension;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -7,10 +9,12 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -19,10 +23,13 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Utils {
+
 
 	@SuppressWarnings( "unused" )
 	static public String tacc(String str) {
@@ -279,6 +286,22 @@ public class Utils {
 			}
 		}
 		return newArray.toArray(new String[0]);
+	}
+
+	@SuppressWarnings("deprecation")
+	public static ItemStack createHead(String player) {
+
+		boolean isNewVersion = Arrays.stream(Material.values()).map(Material::name).collect(
+				Collectors.toList()).contains("PLAYER_HEAD");
+		Material type = Material.matchMaterial(isNewVersion ? "PLAYER_HEAD" : "SKULL_ITEM");
+
+		ItemStack head = new ItemStack(type, 1);
+		if (!isNewVersion) head.setDurability((short) 3);
+
+		SkullMeta meta = (SkullMeta) head.getItemMeta();
+		meta.setOwner(player);
+		head.setItemMeta(meta);
+		return head;
 	}
 
 }
