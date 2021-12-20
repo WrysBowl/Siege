@@ -18,7 +18,6 @@ import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -95,7 +94,7 @@ public class Menu implements CommandExecutor {
 		//Creating Gem Remover
 		utilities.addItem(new GuiItem(getGemRemover(player), e -> new GemRemover().openInventory(player)));
 		//Creating Drops
-		utilities.addItem(new GuiItem(getDropsIcon(), e -> new DropTable().getStartMenu(player).show(player)));
+		utilities.addItem(new GuiItem(getDropsIcon(), e -> new Drops().getStartMenu(player).show(player)));
 		//Creating Materials
 		utilities.addItem(new GuiItem(getMaterialsIcon(), e -> new Materials().getMenu(player).show(player)));
 

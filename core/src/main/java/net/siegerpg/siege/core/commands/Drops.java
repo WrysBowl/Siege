@@ -6,6 +6,7 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.drops.BlockDropTable;
+import net.siegerpg.siege.core.drops.DropTable;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.listeners.BlockBreakListener;
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class DropTable implements CommandExecutor {
+public class Drops implements CommandExecutor {
 
 	ItemStack grassBlock;
 	ItemStack llama_egg;
@@ -137,15 +138,21 @@ public class DropTable implements CommandExecutor {
 		menu.addPane(row);
 		return menu;
 	}
-	private ChestGui createDropsGUI(Reward[] rewards, int goldMin, int goldMax, int expMin, int expMax) {
-		//Menu
+	private ChestGui createDropsGUI(DropTable dropTable, int startPosition, Player player) {
+
+		Reward[] rewards = dropTable.getRewards();
+		int goldMin = dropTable.getGoldMin();
+		int goldMax = dropTable.getGoldMax();
+		int expMin = dropTable.getExpMin();
+		int expMax = dropTable.getExpMax();
+
 		int size = (int) Math.ceil(rewards.length / 9.0);
 		if (size > 6) size = 6;
 		ChestGui menu = new ChestGui(size, "Drops");
 
 		menu.setOnGlobalClick(event -> event.setCancelled(true));
 
-		OutlinePane background = new OutlinePane(0, 0, 9, size, Pane.Priority.LOWEST);
+		OutlinePane background = new OutlinePane(0, 0, 9, 6, Pane.Priority.LOWEST);
 
 		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
 		ItemMeta fillerMeta = filler.getItemMeta();
@@ -155,59 +162,76 @@ public class DropTable implements CommandExecutor {
 		background.setRepeat(true);
 		menu.addPane(background);
 
-		OutlinePane row = new OutlinePane(0, 0, 9, size);
+		OutlinePane row = new OutlinePane(1, 1, 7, 4);
 
 		//icons
 
-		//Gold Display
-		ItemStack goldDisplay = new ItemStack(Material.SUNFLOWER);
-		ItemMeta goldDisplayMeta = goldDisplay.getItemMeta();
-		goldDisplayMeta.displayName(Utils.lore("<yellow><bold>GOLD   "));
-		goldDisplayMeta.lore(new ArrayList<>() {
-			{
-				add(Utils.lore("<dark_gray><underlined>           "));
-				add(Utils.lore(""));
-				add(Utils.lore("<yellow>"+String.format("%,d", goldMin)+
-				               " <gray>- <yellow>"+
-				               String.format("%,d", goldMax)+
-				               " \u26C1"));
-				add(Utils.lore("<dark_gray><underlined>           "));
-			}
-		});
-		goldDisplay.setItemMeta(goldDisplayMeta);
-		row.addItem(new GuiItem(goldDisplay));
+		if (startPosition == 0) {
+			//Gold Display
+			ItemStack goldDisplay = new ItemStack(Material.SUNFLOWER);
+			ItemMeta goldDisplayMeta = goldDisplay.getItemMeta();
+			goldDisplayMeta.displayName(Utils.lore("<yellow><bold>GOLD   "));
+			goldDisplayMeta.lore(new ArrayList<>() {
+				{
+					add(Utils.lore("<dark_gray><underlined>           "));
+					add(Utils.lore(""));
+					add(Utils.lore("<yellow>"+String.format("%,d", goldMin)+
+					               " <gray>- <yellow>"+
+					               String.format("%,d", goldMax)+
+					               " \u26C1"));
+					add(Utils.lore("<dark_gray><underlined>           "));
+				}
+			});
+			goldDisplay.setItemMeta(goldDisplayMeta);
+			row.addItem(new GuiItem(goldDisplay));
 
-		ItemStack expDisplay = new ItemStack(Material.EXPERIENCE_BOTTLE);
-		ItemMeta expDisplayMeta = expDisplay.getItemMeta();
-		expDisplayMeta.displayName(Utils.lore("<light_purple><bold>EXP    "));
-		expDisplayMeta.lore(new ArrayList<>() {
-			{
-				add(Utils.lore("<dark_gray><underlined>           "));
-				add(Utils.lore(""));
-				add(Utils.lore("<light_purple>"+String.format("%,d", expMin)+
-				               " <gray>- <light_purple>"+
-				               String.format("%,d", expMax)+
-				               " \u2742"));
-				add(Utils.lore("<dark_gray><underlined>           "));
-			}
-		});
-		expDisplay.setItemMeta(expDisplayMeta);
-		row.addItem(new GuiItem(expDisplay));
+			ItemStack expDisplay = new ItemStack(Material.EXPERIENCE_BOTTLE);
+			ItemMeta expDisplayMeta = expDisplay.getItemMeta();
+			expDisplayMeta.displayName(Utils.lore("<light_purple><bold>EXP    "));
+			expDisplayMeta.lore(new ArrayList<>() {
+				{
+					add(Utils.lore("<dark_gray><underlined>           "));
+					add(Utils.lore(""));
+					add(Utils.lore("<light_purple>"+String.format("%,d", expMin)+
+					               " <gray>- <light_purple>"+
+					               String.format("%,d", expMax)+
+					               " \u2742"));
+					add(Utils.lore("<dark_gray><underlined>           "));
+				}
+			});
+			expDisplay.setItemMeta(expDisplayMeta);
+			row.addItem(new GuiItem(expDisplay));
+		}
 
-		for(final Reward reward : rewards) {
-			ItemStack item = reward.getItem().clone();
+		int endPosition = startPosition + 27;
+		if (startPosition == 0) endPosition -= 2;
+		if (endPosition >= rewards.length) endPosition = rewards.length-1;
+		for (int i = startPosition; i < endPosition; i++) {
+
+			ItemStack item = rewards[i].getItem().clone();
 			List< Component > lore = item.lore();
 
 			lore.add(Utils.lore("<dark_gray><underlined>            "));
 			lore.add(Utils.lore(""));
-			lore.add(Utils.lore("<color:#BFD57C><bold>\u2618 <reset><color:#BFD57C>"+reward.getChance()+" %"));
+			lore.add(Utils.lore("<color:#BFD57C><bold>\u2618 <reset><color:#BFD57C>"+rewards[i].getChance()+" %"));
 			lore.add(Utils.lore("<dark_gray><underlined>            "));
-
 			item.lore(lore);
-			row.addItem(new GuiItem(item));
+
+			row.addItem(new GuiItem(item, e -> {
+				createDropsGUI(dropTable, 0, player).show(player);
+			}));
 		}
 
+		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
+
+		final int newPosition = endPosition;
+		nextButton.addItem(new GuiItem(this.next, inventoryClickEvent -> {
+			if (newPosition >= dropTable.getRewards().length-1) createDropsGUI(dropTable, 0, player).show(player);
+			else createDropsGUI(dropTable, newPosition, player).show(player);
+		}));
+
 		menu.addPane(row);
+		menu.addPane(nextButton);
 
 		return menu;
 	}
@@ -246,11 +270,7 @@ public class DropTable implements CommandExecutor {
 			item.setItemMeta(iconMeta);
 
 			row.addItem(new GuiItem(item, e -> {
-				createDropsGUI(blockDropTable.getRewards(),
-				               blockDropTable.getGoldMin(),
-				               blockDropTable.getGoldMax(),
-				               blockDropTable.getExpMin(),
-				               blockDropTable.getExpMax()).show(player);
+				createDropsGUI(blockDropTable, 0, player).show(player);
 			}));
 		}
 
@@ -303,11 +323,7 @@ public class DropTable implements CommandExecutor {
 			item.setItemMeta(iconMeta);
 
 			row.addItem(new GuiItem(item, e -> {
-				createDropsGUI(mobDropTable.getRewards(),
-				               mobDropTable.getGoldMin(),
-				               mobDropTable.getGoldMax(),
-				               mobDropTable.getExpMin(),
-				               mobDropTable.getExpMax()).show(player);
+				createDropsGUI(mobDropTable, 0, player).show(player);
 			}));
 		}
 
@@ -357,11 +373,7 @@ public class DropTable implements CommandExecutor {
 			item.setItemMeta(iconMeta);
 
 			row.addItem(new GuiItem(item, e -> {
-				createDropsGUI(mobDropTable.getRewards(),
-				               mobDropTable.getGoldMin(),
-				               mobDropTable.getGoldMax(),
-				               mobDropTable.getExpMin(),
-				               mobDropTable.getExpMax()).show(player);
+				createDropsGUI(mobDropTable, 0, player).show(player);
 			}));
 		}
 
