@@ -88,13 +88,13 @@ public class CosmeticCrateOpen implements Listener {
 		//Gives item to player
 		Bukkit.broadcast(Utils.parse("<green>" + player.getName() + " is opening a crate!"));
 
-		new Animation().openCrate(
+		new CosmeticAnimation().openCrate(
 				targetedBlock
 						.getLocation()
 						.toCenterLocation(),
 				dropTable.dropTable.keySet(),
 				reward, player
-		                         );
+		                                 );
 		player
 				.getInventory()
 				.removeItem(item

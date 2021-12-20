@@ -35,10 +35,10 @@ public enum MobStats {
 		this.dropTable = dropTable;
 
 	}
-	private int getLevel() {
+	public int getLevel() {
 		return this.level;
 	}
-	private MobDropTable getDropTable() {
+	public MobDropTable getDropTable() {
 		try {
 			//create a copy of the class
 			return this.dropTable.getClass().getDeclaredConstructor().newInstance();

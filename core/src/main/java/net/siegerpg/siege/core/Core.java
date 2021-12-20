@@ -8,6 +8,7 @@ import io.github.retrooper.packetevents.utils.server.ServerVersion;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
 import net.siegerpg.siege.core.crates.cosmetics.CosmeticCrateOpen;
+import net.siegerpg.siege.core.crates.mobs.MobCrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
 import net.siegerpg.siege.core.customEvents.CustomEventListener;
@@ -187,7 +188,9 @@ public final class Core extends JavaPlugin {
 				new CosmeticsListener(),
 				new CustomItemKotlinListener(),
 				new BossBars(),
-				new CustomEventListener()
+				new CustomEventListener(),
+				new MobCrateOpen()
+
 
 
 		};

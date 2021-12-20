@@ -18,7 +18,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class Animation implements Runnable {
+public class CosmeticAnimation implements Runnable {
 
 	public void openCrate(Location location, Set< CustomCosmetic > cosmetics, CustomCosmetic cosmetic, Player player) {
 
