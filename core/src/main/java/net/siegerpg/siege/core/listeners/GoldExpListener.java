@@ -127,16 +127,10 @@ public class GoldExpListener implements Listener {
 				    .equals(Material.SUNFLOWER) && item
 				    .getItemMeta()
 				    .getDisplayName()
-				    .contains("Gold")) {
-			e
-					.getTarget()
-					.setCustomName(Utils.tacc("&e+" + total + " Gold"));
+				    .contains("\u26C1")) {
+			e.getTarget().customName(Utils.lore("<yellow>+" + total + " \u26C1"));
 		} else if (CustomItemUtils.INSTANCE.getCustomItem(item) != null) {
-			e
-					.getTarget()
-					.setCustomName(Utils.tacc("&e" + total + "x &r" + item
-							.getItemMeta()
-							.getDisplayName()));
+			e.getTarget().customName(Utils.lore("<yellow>" + total + "x <r>" + item.getItemMeta().getDisplayName()));
 		}
 		e
 				.getTarget()
