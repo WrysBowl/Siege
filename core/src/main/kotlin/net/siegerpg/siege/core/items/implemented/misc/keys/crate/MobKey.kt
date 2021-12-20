@@ -13,7 +13,7 @@ class MobKey() : CustomKey(
                           ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
+		this.quality = 70
 		this.rarity = Rarity.RARE
 		this.serialize()
 	}

@@ -32,7 +32,9 @@ import org.bukkit.util.Vector;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MobCrateOpen implements Listener {
 
@@ -81,9 +83,7 @@ public class MobCrateOpen implements Listener {
 				rewardGold += dropTable.getGold(true);
 				rewardEXP += dropTable.getExp(true);
 
-				for (Reward reward : dropTable.getRewards()) {
-					rewardItems.add(reward.getItem());
-				}
+				rewardItems.addAll(dropTable.calculateRewards(0));
 				dropTable = dropTable.getClass().getDeclaredConstructor().newInstance();
 			}
 
@@ -99,7 +99,7 @@ public class MobCrateOpen implements Listener {
 			@Override
 			public void run() {
 
-				if (rewardItemsCOPY.size() == 0) this.cancel();
+				if (rewardItemsCOPY.isEmpty()) this.cancel();
 
 				//create vector to shoot items at player
 				Vector vector = Utils.getDifferentialVector(
@@ -107,33 +107,36 @@ public class MobCrateOpen implements Listener {
 				vector.normalize();
 
 				Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(
-						targetedBlock.getLocation(), rewardItemsCOPY.get(0), List.of(player.getUniqueId()));
+						targetedBlock.getLocation().add(0,2,0), rewardItemsCOPY.get(0), List.of(player.getUniqueId()));
 				rewardItemsCOPY.remove(0);
 				displayedItem.setVelocity(vector);
 				player.playSound(player.getLocation(), Sound.ENTITY_FOX_TELEPORT, 1.0f, 1.0f);
 
 
 			}
-		}.runTaskTimer(Core.plugin(), 20, 20);
+		}.runTaskTimer(Core.plugin(), 5, 5);
 
 		player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
 
+		//add duplicte items together
+		HashMap<ItemStack, Integer> itemCount = new HashMap<>();
+		for (ItemStack reward : rewardItems) {
+			if (!itemCount.containsKey(reward)) itemCount.put(reward.asOne(), reward.getAmount());
+			else itemCount.put(reward.asOne(), reward.getAmount()+itemCount.get(reward.asOne()));
+		}
+
 		//player rewards message
-		player.sendMessage("");
-		player.sendMessage(Utils.parse("<dark_gray><underlined>                                        "));
-		player.sendMessage("");
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<color:#91CB56><bold><underlined>   REWARDS   <reset>"));
 		player.sendMessage("");
-		player.sendMessage(Utils.parse("<yellow>Gold <gray>+"+rewardGold));
-		player.sendMessage(Utils.parse("<light_purple>EXP <gray>+"+rewardEXP));
+		player.sendMessage(Utils.parse("<color:#91CB56><bold>"+dropTable.getMobName() + " <gray>x3"));
+		player.sendMessage(Utils.parse("  <yellow><bold>Gold <r><gray>+"+String.format("%,d",rewardGold)));
+		player.sendMessage(Utils.parse("  <light_purple><bold>EXP <r><gray>+"+String.format("%,d",rewardEXP)));
 		player.sendMessage("");
-		for (ItemStack reward : rewardItems) {
-			Component miniMessage = Utils.lore("<green>+ "+reward.getItemMeta().getDisplayName()+" <gray>x"+reward.getAmount()).hoverEvent(reward);
+		for (Map.Entry<ItemStack, Integer> reward : itemCount.entrySet()) {
+			Component miniMessage = Utils.lore("<green>+ "+reward.getKey().getItemMeta().getDisplayName()+" <gray>x"+reward.getValue()).hoverEvent(reward.getKey());
 			player.sendMessage(miniMessage);
 		}
-		player.sendMessage("");
-		player.sendMessage(Utils.parse("<dark_gray><underlined>                                        "));
 		player.sendMessage("");
 
 		player.getInventory().removeItem(item.getItem().asOne());
@@ -141,9 +144,9 @@ public class MobCrateOpen implements Listener {
 	}
 
 	private boolean locationCheck(Location location) {
-		int x = 50;
-		int y = 10;
-		int z = 20;
+		double x = -26.0;
+		double y = 92.0;
+		double z = 9.0;
 		Location strippedLocation = location.toBlockLocation();
 		if (strippedLocation.getZ() != z) return false;
 		if (strippedLocation.getY() != y) return false;

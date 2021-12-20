@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.listeners.tasks.GoldReward;
@@ -123,6 +124,8 @@ public class PlayerJoinListener implements Listener {
             }
             Skills.INSTANCE.setSkills(player, "A_1_3");
         }*/
+		player.getInventory().addItem(new MobKey(0).getUpdatedItem(false).asQuantity(4));
+
 		player.teleport(new Location(Core.plugin().getServer().getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
 		GoldReward.addPlayer(event);
