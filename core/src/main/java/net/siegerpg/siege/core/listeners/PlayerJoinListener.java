@@ -7,6 +7,9 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick;
+import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
+import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
+import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.*;
@@ -141,6 +144,10 @@ public class PlayerJoinListener implements Listener {
 
 		player.getInventory().clear();
 		player.getInventory().addItem(new Twig(50).getUpdatedItem(false).asQuantity(4));
+		player.getInventory().addItem(new WoodenPickaxe(0).getUpdatedItem(false).asQuantity(4));
+		player.getInventory().addItem(new WoodenAxe(0).getUpdatedItem(false).asQuantity(4));
+		player.getInventory().addItem(new WoodenShovel(0).getUpdatedItem(false).asQuantity(4));
+
 		ItemStack food = new Drumstick(0).getUpdatedItem(false).asQuantity(10);
 		player.getInventory().addItem(food);
 		VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
