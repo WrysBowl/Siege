@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.crates.mobs;
 
 
 import kotlin.Pair;
+import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.crates.cosmetics.CosmeticAnimation;
 import net.siegerpg.siege.core.drops.MobDropTable;
@@ -17,6 +18,7 @@ import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -89,11 +91,15 @@ public class MobCrateOpen implements Listener {
 
 		GoldExpListener.giveGold(player, rewardGold);
 		Levels.INSTANCE.addExpShared(player, rewardEXP);
+		ArrayList< ItemStack > rewardItemsCOPY = rewardItems;
+
+
+
 		new BukkitRunnable() {
 			@Override
 			public void run() {
 
-				if (rewardItems.size() == 0) this.cancel();
+				if (rewardItemsCOPY.size() == 0) this.cancel();
 
 				//create vector to shoot items at player
 				Vector vector = Utils.getDifferentialVector(
@@ -101,12 +107,34 @@ public class MobCrateOpen implements Listener {
 				vector.normalize();
 
 				Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(
-						targetedBlock.getLocation(), rewardItems.get(0), List.of(player.getUniqueId()));
-				rewardItems.remove(0);
+						targetedBlock.getLocation(), rewardItemsCOPY.get(0), List.of(player.getUniqueId()));
+				rewardItemsCOPY.remove(0);
 				displayedItem.setVelocity(vector);
+				player.playSound(player.getLocation(), Sound.ENTITY_FOX_TELEPORT, 1.0f, 1.0f);
+
 
 			}
 		}.runTaskTimer(Core.plugin(), 20, 20);
+
+		player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
+
+		//player rewards message
+		player.sendMessage("");
+		player.sendMessage(Utils.parse("<dark_gray><underlined>                                        "));
+		player.sendMessage("");
+		player.sendMessage("");
+		player.sendMessage(Utils.parse("<color:#91CB56><bold><underlined>   REWARDS   <reset>"));
+		player.sendMessage("");
+		player.sendMessage(Utils.parse("<yellow>Gold <gray>+"+rewardGold));
+		player.sendMessage(Utils.parse("<light_purple>EXP <gray>+"+rewardEXP));
+		player.sendMessage("");
+		for (ItemStack reward : rewardItems) {
+			Component miniMessage = Utils.lore("<green>+ "+reward.getItemMeta().getDisplayName()+" <gray>x"+reward.getAmount()).hoverEvent(reward);
+			player.sendMessage(miniMessage);
+		}
+		player.sendMessage("");
+		player.sendMessage(Utils.parse("<dark_gray><underlined>                                        "));
+		player.sendMessage("");
 
 		player.getInventory().removeItem(item.getItem().asOne());
 
