@@ -10,11 +10,6 @@ import java.util.ArrayList;
 public class MobDropTable extends DropTable {
 
 	String mobName;
-	int goldMin;
-	int goldMax;
-	int expMin;
-	int expMax;
-	Reward[] rewards;
 
 	public MobDropTable(String mobName, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
 

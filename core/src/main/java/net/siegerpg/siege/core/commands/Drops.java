@@ -146,9 +146,7 @@ public class Drops implements CommandExecutor {
 		int expMin = dropTable.getExpMin();
 		int expMax = dropTable.getExpMax();
 
-		int size = (int) Math.ceil(rewards.length / 9.0);
-		if (size > 6) size = 6;
-		ChestGui menu = new ChestGui(size, "Drops");
+		ChestGui menu = new ChestGui(6, "Drops");
 
 		menu.setOnGlobalClick(event -> event.setCancelled(true));
 

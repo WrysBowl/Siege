@@ -11,11 +11,6 @@ public class BlockDropTable extends DropTable {
 
 	int blockRegen;
 	Material material;
-	int goldMin;
-	int goldMax;
-	int expMin;
-	int expMax;
-	Reward[] rewards;
 
 	public BlockDropTable(int blockRegen, Material material, int goldMin, int goldMax, int expMin, int expMax, Reward[] rewards) {
 

@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.SlimeSpoofer;
+import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Blubber extends MobDropTable {
@@ -25,8 +26,19 @@ public class Blubber extends MobDropTable {
 						           .tier(3)
 						           .getUpdatedItem(false), 10.0),
 
-				new Reward(new SlimeSpoofer(80).getUpdatedItem(false), 3.0),
-				new Reward(new SlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 5.0),
+				new Reward(new SlimeSpoofer(80).getUpdatedItem(false), 1.0),
+				new Reward(new LuckySlimeSpoofer(80).getUpdatedItem(false), 0.25),
+				new Reward(new ToughSlimeSpoofer(80).getUpdatedItem(false), 0.25),
+				new Reward(new StrongSlimeSpoofer(80).getUpdatedItem(false), 0.25),
+				new Reward(new HealingSlimySpoofer(80).getUpdatedItem(false), 0.25),
+				new Reward(new HealthySlimeSpoofer(80).getUpdatedItem(false), 0.25),
+
+				new Reward(new SlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 2.0),
+				new Reward(new LuckySlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new ToughSlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new StrongSlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new HealingSlimySpoofer(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new HealthySlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 0.5),
 
 				new Reward(new SlimyHelmet(80).getUpdatedItem(false), 3.0),
 				new Reward(new SlimyChestplate(80).getUpdatedItem(false), 3.0),
