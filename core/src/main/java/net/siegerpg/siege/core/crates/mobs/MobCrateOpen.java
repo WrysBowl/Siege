@@ -82,16 +82,16 @@ public class MobCrateOpen implements Listener {
 			public void run() {
 				if (counter >= 84) {
 					giveReward(player, dropTable, targetedBlock, item, stand);
-					player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
+					player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
 					this.cancel();
 				} else {
 					if (counter % 6 == 0) {
-						if (soundCounter == 0) player.playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f);
-						else if (soundCounter == 1) player.playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.2f);
-						else if (soundCounter == 2) player.playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.4f);
+						if (soundCounter == 0) player.getWorld().playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f);
+						else if (soundCounter == 1) player.getWorld().playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.2f);
+						else if (soundCounter == 2) player.getWorld().playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.4f);
 						else if (soundCounter == 3) {
 							soundCounter = -1;
-							player.playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.6f);
+							player.getWorld().playSound(stand.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.6f);
 						}
 						soundCounter++;
 					}
