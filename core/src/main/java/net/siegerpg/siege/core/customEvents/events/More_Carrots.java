@@ -1,0 +1,63 @@
+package net.siegerpg.siege.core.customEvents.events;
+
+import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.customEvents.CustomEvent;
+import net.siegerpg.siege.core.listeners.BlockBreakListener;
+import net.siegerpg.siege.core.miscellaneous.Utils;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
+
+public class More_Carrots extends CustomEvent {
+
+	BukkitTask currentTask;
+
+	public More_Carrots() {
+		this.duration = 600;
+	}
+
+	public More_Carrots(int duration) {
+		this.duration = duration;
+	}
+
+	@Override
+	public boolean triggerable() {
+		return Utils.randTest(25.0);
+	}
+
+	@Override
+	public void action() {
+
+		BlockBreakListener.addedLuck.put(Material.CARROTS, 100);
+
+		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse("<color:#ECA84C>2x Drops from carrots!"));
+		Bukkit.broadcast(Utils.parse("<color:#ECA84C>This Buff will be in effect for 10 minutes."));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
+		Bukkit.broadcast(Utils.parse(""));
+
+	}
+
+	@Override
+	public void clearAction() {
+
+		BlockBreakListener.addedLuck.remove(Material.CARROTS);
+
+		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse("<color:#ECA84C>The carrot frenzy has passed."));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
+		Bukkit.broadcast(Utils.parse(""));
+
+	}
+
+}
