@@ -106,10 +106,6 @@ public class Davy_Jones extends MobDropTable {
 				new Reward(new BoneChestplate(Utils.randRarity()).getUpdatedItem(false), 20.0),
 				new Reward(new BoneLeggings(Utils.randRarity()).getUpdatedItem(false), 20.0),
 				new Reward(new BoneBoots(Utils.randRarity()).getUpdatedItem(false), 20.0),
-				new Reward(new BoneHelmet(Utils.randRarity()).getUpdatedItem(false), 20.0),
-				new Reward(new BoneChestplate(Utils.randRarity()).getUpdatedItem(false), 20.0),
-				new Reward(new BoneLeggings(Utils.randRarity()).getUpdatedItem(false), 20.0),
-				new Reward(new BoneBoots(Utils.randRarity()).getUpdatedItem(false), 20.0),
 
 				new Reward(new ToughBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 1.0),
 				new Reward(new ToughBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 1.0),

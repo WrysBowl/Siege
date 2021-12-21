@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
@@ -32,6 +33,8 @@ public class Sea_Warrior extends MobDropTable {
 						           .asQuantity(1), 10.0),
 
 				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
+
 				});
 	}
 

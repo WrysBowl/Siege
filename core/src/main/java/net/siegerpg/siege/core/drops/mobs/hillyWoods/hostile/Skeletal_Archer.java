@@ -3,9 +3,14 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.boots.BoneBoots;
+import net.siegerpg.siege.core.items.implemented.armor.boots.boneBoots.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.boneChestplates.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.boneHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.PolishedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
@@ -44,6 +49,31 @@ public class Skeletal_Archer extends MobDropTable {
 				new Reward(new BoneLeggings(Utils.randRarity()).getUpdatedItem(false), 1.0),
 				new Reward(new BoneBoots(Utils.randRarity()).getUpdatedItem(false), 1.0),
 
+				new Reward(new ToughBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new ToughBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new ToughBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new ToughBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.1),
+
+				new Reward(new HealingBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new HealingBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new HealingBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new HealingBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.1),
+
+				new Reward(new HealthyBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new HealthyBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new HealthyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new HealthyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.1),
+
+				new Reward(new StrongBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new StrongBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new StrongBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new StrongBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.1),
+
+				new Reward(new LuckyBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new LuckyBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new LuckyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.1),
+				new Reward(new LuckyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.1),
+
 				new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.5),
 				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.5),
 				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.5),
@@ -59,6 +89,9 @@ public class Skeletal_Archer extends MobDropTable {
 				new Reward(new LuckyReinforcedBow(Utils.randRarity()).getUpdatedItem(false), 2.5),
 
 				new Reward(new FlamingHotTorch(Utils.randRarity()).getUpdatedItem(false), 2.5),
+
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
+
 				});
 	}
 
