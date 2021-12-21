@@ -28,6 +28,8 @@ import java.util.*;
 
 public class MobCrateOpen implements Listener {
 
+	public static ArrayList< Player > crateDelay = new ArrayList<>();
+	public static ArrayList< Player > awaitingRemoval = new ArrayList<>();
 
 	@EventHandler
 	public void onCrateOpen(PlayerInteractEvent e) {
@@ -45,6 +47,27 @@ public class MobCrateOpen implements Listener {
 		if (item == null) return;
 		if (!(item instanceof CustomKey)) return;
 		if (!keyCheck(item)) return;
+
+		if (crateDelay.contains(player)) {
+			e.setCancelled(true);
+
+			//if exp calculation has been processed, add to rate limiter arraylist
+			if (awaitingRemoval.contains(player)) return;
+			awaitingRemoval.add(player);
+
+			//allow EXP to be gained 5 ticks later
+			new BukkitRunnable() {
+				@Override
+				public void run() {
+					crateDelay.remove(player);
+					awaitingRemoval.remove(player);
+				}
+			}.runTaskLater(Core.plugin(), 20);
+
+			return; //if player is processing exp calculation
+		} else {
+			crateDelay.add(player);
+		}
 
 		//Pick item reward to give to player
 		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
@@ -149,8 +172,6 @@ public class MobCrateOpen implements Listener {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-
-				Bukkit.getLogger().info("Size "+rewardItems.size());
 
 				if (rewardItems.size() < 1) {
 					stand.remove();
