@@ -14,6 +14,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.IronLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
@@ -121,6 +122,8 @@ public class Mercenary extends MobDropTable {
 				new Reward(new HealthyRefinedDagger(Utils.randRarity()).getUpdatedItem(false), 0.25),
 
 				new Reward(new BroodmotherKey(0).getUpdatedItem(false), 10.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+
 				});
 	}
 

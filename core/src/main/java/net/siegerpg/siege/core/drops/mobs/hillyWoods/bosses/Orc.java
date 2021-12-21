@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.boneHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.DavyJonesKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
@@ -116,6 +117,8 @@ public class Orc extends MobDropTable {
 				new Reward(new HealthyDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.2),
 
 				new Reward(new DavyJonesKey(0).getUpdatedItem(false), 10.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+
 				});
 	}
 

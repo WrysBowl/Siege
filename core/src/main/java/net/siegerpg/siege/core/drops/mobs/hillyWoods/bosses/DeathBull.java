@@ -15,6 +15,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.food.Beef;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
@@ -108,6 +109,8 @@ public class DeathBull extends MobDropTable {
 
 				new Reward(new Beef(100).getUpdatedItem(false), 40.0),
 				new Reward(new BullSpiritKey(0).getUpdatedItem(false), 10.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+
 				});
 	}
 

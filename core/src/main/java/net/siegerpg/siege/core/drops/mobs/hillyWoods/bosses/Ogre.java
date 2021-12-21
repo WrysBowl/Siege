@@ -14,6 +14,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.magmaLeggings.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.NecromancerKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
@@ -119,6 +120,8 @@ public class Ogre extends MobDropTable {
 				new Reward(new HealthyGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.25),
 
 				new Reward(new NecromancerKey(0).getUpdatedItem(false), 10.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+
 				});
 	}
 

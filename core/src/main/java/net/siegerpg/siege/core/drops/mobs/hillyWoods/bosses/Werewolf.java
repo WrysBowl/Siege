@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.ChainHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
@@ -120,6 +121,8 @@ public class Werewolf extends MobDropTable {
 				
 
 				new Reward(new FoxSpiritKey(0).getUpdatedItem(false), 10.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+
 				});
 	}
 

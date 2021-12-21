@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.*;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
@@ -105,6 +106,8 @@ public class Blubber extends MobDropTable {
 				new Reward(new LuckySlimyBoots(Utils.randRarity()).getUpdatedItem(false), 0.2),
 
 				new Reward(new SlimeSpiritKey(0).getUpdatedItem(false), 10.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+
 				});
 	}
 

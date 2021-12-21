@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.GrieferChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.JaggedTunic;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.LichKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
@@ -69,6 +70,8 @@ public class RockSpirit extends MobDropTable {
 				new Reward(new HealthyRockWand(50).getUpdatedItem(false), 0.2),
 
 				new Reward(new LichKey(0).getUpdatedItem(false), 10.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+
 				});
 	}
 
