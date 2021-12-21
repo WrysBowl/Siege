@@ -1,10 +1,7 @@
 package net.siegerpg.siege.core.customEvents;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.customEvents.events.Gold_Storm;
-import net.siegerpg.siege.core.customEvents.events.Haste_Buff;
-import net.siegerpg.siege.core.customEvents.events.Speed_Buff;
-import net.siegerpg.siege.core.customEvents.events.Thunder_Storm;
+import net.siegerpg.siege.core.customEvents.events.*;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -20,6 +17,8 @@ public class CustomEventListener implements Listener {
 			put("THUNDER_STORM", new Thunder_Storm());
 			put("HASTE_BUFF", new Haste_Buff());
 			put("SPEED_BUFF", new Speed_Buff());
+			put("MORE_CARROTS", new More_Carrots());
+			put("MORE_WHEAT", new More_Wheat());
 
 		}
 	}; //fills up on start-up
