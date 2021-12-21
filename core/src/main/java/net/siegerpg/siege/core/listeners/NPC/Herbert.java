@@ -6,10 +6,8 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.types.misc.CustomFood;
-import net.siegerpg.siege.core.items.types.misc.CustomKey;
-import net.siegerpg.siege.core.items.types.misc.CustomMaterial;
-import net.siegerpg.siege.core.items.types.misc.StatGemType;
+import net.siegerpg.siege.core.items.enums.Rarity;
+import net.siegerpg.siege.core.items.types.misc.*;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -148,6 +146,25 @@ public class Herbert implements Listener {
 			} else if (cItem instanceof CustomFood) {
 				quality = cItem.getQuality();
 				total += (int) (quantity * ((quality / 100) + 1));
+			} else if (cItem instanceof Cosmetic) {
+				Rarity rarity = cItem.getRarity();
+				switch (rarity) {
+					case COMMON:
+						total += 500;
+						break;
+					case UNCOMMON:
+						total += 1500;
+						break;
+					case RARE:
+						total += 3000;
+						break;
+					case EPIC:
+						total += 5000;
+						break;
+					case LEGENDARY:
+						total += 10000;
+						break;
+				}
 			} else {
 				quality = cItem.getQuality();
 				if (cItem.getLevelRequirement() == null) {
