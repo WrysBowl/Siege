@@ -30,7 +30,7 @@ public class SpiritDropTable extends CosmeticDropTable {
 				put(new Crown(0), 10);
 				put(new HotHead(0), 10);
 				put(new Noteworthy(0), 10);
-				put(new RedHeadphones(0), 10);
+				put(new Headphones(0), 10);
 				put(new Spongebob(0), 10);
 				put(new SquidHead(0), 10);
 			}
