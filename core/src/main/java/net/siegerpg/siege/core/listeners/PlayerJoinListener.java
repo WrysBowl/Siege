@@ -143,10 +143,10 @@ public class PlayerJoinListener implements Listener {
 	public void newPlayerReward(Player player) {
 
 		player.getInventory().clear();
-		player.getInventory().addItem(new Twig(50).getUpdatedItem(false).asQuantity(4));
-		player.getInventory().addItem(new WoodenPickaxe(0).getUpdatedItem(false).asQuantity(4));
-		player.getInventory().addItem(new WoodenAxe(0).getUpdatedItem(false).asQuantity(4));
-		player.getInventory().addItem(new WoodenShovel(0).getUpdatedItem(false).asQuantity(4));
+		player.getInventory().addItem(new Twig(50).getUpdatedItem(false));
+		player.getInventory().addItem(new WoodenPickaxe(0).getUpdatedItem(false));
+		player.getInventory().addItem(new WoodenAxe(0).getUpdatedItem(false));
+		player.getInventory().addItem(new WoodenShovel(0).getUpdatedItem(false));
 
 		ItemStack food = new Drumstick(0).getUpdatedItem(false).asQuantity(10);
 		player.getInventory().addItem(food);
