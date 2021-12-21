@@ -2,24 +2,26 @@ package net.siegerpg.siege.core.customEvents.events;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.customEvents.CustomEvent;
-import net.siegerpg.siege.core.customEvents.CustomEventListener;
 import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
-public class Gold_Storm extends CustomEvent {
+public class Haste_Buff extends CustomEvent {
 
 	BukkitTask currentTask;
 
-	public Gold_Storm() {
-		this.duration = 900;
+	public Haste_Buff() {
+		this.duration = 1800;
 	}
 
-	public Gold_Storm(int duration) {
+	public Haste_Buff(int duration) {
 		this.duration = duration;
 	}
 
@@ -31,27 +33,21 @@ public class Gold_Storm extends CustomEvent {
 	@Override
 	public void action() {
 
-		final int r = 242;
-		final int g = 204;
-		final int b = 96;
-		Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(r, g, b), 8);
-
 		this.currentTask = new BukkitRunnable() {
 			@Override
 			public void run() {
+				PotionEffect potion = new PotionEffect(PotionEffectType.FAST_DIGGING, 100, 1);
 				for (Player player : Bukkit.getOnlinePlayers()) { //trigger all events
-					final Location location = player.getLocation().add(0,4,0);
-					location.getWorld().spawnParticle(Particle.REDSTONE, location, 20, 0.75, 0.25, 0.75, dust);
-					GoldEXPSpawning.spawnGold((int)Math.ceil(player.getLevel()/5.0), location);
+					player.addPotionEffect(potion, true);
 				}
 			}
-		}.runTaskTimer(Core.plugin(), 20, 20L); //checks for event every 10 seconds
+		}.runTaskTimer(Core.plugin(), 80, 80L); //checks for event every 10 seconds
 
 		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse(""));
-		Bukkit.broadcast(Utils.parse("<color:#F2CC60>The gold storm has begun!"));
-		Bukkit.broadcast(Utils.parse("<color:#F2CC60>Gold will rain for 15 minutes"));
+		Bukkit.broadcast(Utils.parse("<color:#F0E72E>You can mine faster!"));
+		Bukkit.broadcast(Utils.parse("<color:#F2CC60>Haste will be in effect for 30 minutes."));
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
 		Bukkit.broadcast(Utils.parse(""));
@@ -65,7 +61,7 @@ public class Gold_Storm extends CustomEvent {
 		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse(""));
-		Bukkit.broadcast(Utils.parse("<color:#F2CC60>The gold storm has passed."));
+		Bukkit.broadcast(Utils.parse("<color:#F2CC60>The haste event has passed."));
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
 		Bukkit.broadcast(Utils.parse(""));
