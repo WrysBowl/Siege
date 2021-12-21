@@ -76,7 +76,7 @@ interface CustomCosmetic : CustomItem {
 		}
 		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
-		meta.lore("<r><color:#E2DE5D>${Herbert.getSellValue(item)} \u26C1")
+		meta.lore("<r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
 		meta.lore("")
 		meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> Tier" else "<r>${shownRarity.color}${shownRarity.id} Tier")
 		meta.isUnbreakable = true

@@ -110,7 +110,7 @@ abstract class CustomWand(
 		}
 		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
-		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement     <r><color:#E2DE5D>${Herbert.getSellValue(item)} \u26C1")
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(
