@@ -4,14 +4,17 @@ import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
+import io.lumine.xikage.mythicmobs.skills.conditions.all.CustomCondition;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.Rarity;
 import net.siegerpg.siege.core.items.types.misc.*;
+import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -125,55 +128,7 @@ public class Herbert implements Listener {
 		int quantity = 1;
 		CustomItem cItem;
 		for (ItemStack scrap : scraps) {
-			cItem = CustomItemUtils.INSTANCE.getCustomItem(scrap);
-			if (cItem == null) continue;
-			// Award value to qualifying items
-			quantity = cItem
-					.getItem()
-					.getAmount();
-			if (cItem instanceof CustomMaterial) {
-				quality = ((CustomMaterial) (cItem)).getTier();
-				total += quantity * Math.pow(4, quality);
-			} else if (cItem instanceof StatGemType) {
-				if (cItem.getLevelRequirement() == null) {
-					total += 1;
-					continue;
-				}
-				levelReq = cItem.getLevelRequirement();
-				total += quantity * 35 * levelReq;
-			} else if (cItem instanceof CustomKey) {
-				total += 500;
-			} else if (cItem instanceof CustomFood) {
-				quality = cItem.getQuality();
-				total += (int) (quantity * ((quality / 100) + 1));
-			} else if (cItem instanceof Cosmetic) {
-				Rarity rarity = cItem.getRarity();
-				switch (rarity) {
-					case COMMON:
-						total += 500;
-						break;
-					case UNCOMMON:
-						total += 1500;
-						break;
-					case RARE:
-						total += 3000;
-						break;
-					case EPIC:
-						total += 5000;
-						break;
-					case LEGENDARY:
-						total += 10000;
-						break;
-				}
-			} else {
-				quality = cItem.getQuality();
-				if (cItem.getLevelRequirement() == null) {
-					total += 1;
-					continue;
-				}
-				levelReq = cItem.getLevelRequirement();
-				total += (int) quantity * ((levelReq * quality) / 5);
-			}
+			total += getSellValue(scrap);
 		}
 
 		// Refresh cash in sunflower
@@ -217,6 +172,28 @@ public class Herbert implements Listener {
 		} else if (cItem instanceof CustomFood) {
 			quality = cItem.getQuality();
 			total += (int) ((quality / 100) + 1);
+		} else if (cItem instanceof CustomCosmetic) {
+			Rarity rarity = cItem.getRarity();
+			switch (rarity) {
+				case COMMON:
+					total += 500;
+					break;
+				case UNCOMMON:
+					total += 1500;
+					break;
+				case RARE:
+					total += 3000;
+					break;
+				case EPIC:
+					total += 5000;
+					break;
+				case LEGENDARY:
+					total += 10000;
+					break;
+				default:
+					total += 500;
+					break;
+			}
 		} else {
 			quality = cItem.getQuality();
 			if (cItem.getLevelRequirement() == null) {
