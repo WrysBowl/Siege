@@ -198,7 +198,7 @@ public class CosmeticCrateOpen implements Listener {
 		double totalWeight = dropTable.values().stream().mapToInt(Integer::intValue).sum();
 		for (Map.Entry<CustomCosmetic, Integer> entry : dropTable.entrySet()) {
 			ItemStack item = entry.getKey().getUpdatedItem(false);
-			double chance = Utils.round(entry.getValue()/totalWeight, 2);
+			double chance = Utils.round(entry.getValue()*100/totalWeight, 2);
 
 			ItemMeta iconMeta = item.getItemMeta();
 			iconMeta.lore(new ArrayList<>() {
