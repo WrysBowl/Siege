@@ -80,7 +80,7 @@ public class GoldReward implements Listener {
 			goldRequirement += (levelExp != null ? levelExp.getFirst() : 1) * 2000;
 		}
 
-		serverGoldReward = (int)Math.ceil(goldRequirement*0.01);
+		serverGoldReward = (int)Math.ceil(goldRequirement*0.03);
 	}
 	public static void addServerGold(int gold) {
 		int sum = gold + serverGold;
