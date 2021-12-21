@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack
 
 class Bandana() : Cosmetic(
 		name = "Bandana",
-		customModelData = 750004,
+		customModelData = 750005,
 		description = listOf("Like a boss"),
 		material = Material.KNOWLEDGE_BOOK,
                           ) {
