@@ -36,17 +36,12 @@ public class CosmeticCrateOpen implements Listener {
 		//Make sure clicked block is trapped chest in the Hub
 		Block targetedBlock = e.getClickedBlock();
 		if (targetedBlock == null) return;
-		if (targetedBlock.getType() != Material.ENDER_CHEST) return;
-		if (!targetedBlock
-				.getLocation()
-				.getWorld()
-				.getName()
-				.equals("Hub")) return;
+		if (!targetedBlock.getLocation().getWorld().getName().equals("Hilly_Woods")) return;
+		if (!locationCheck(targetedBlock.getLocation())) return;
+
 		Player player = e.getPlayer();
 		e.setCancelled(true);
-		if (!e
-				.getAction()
-				.equals(Action.RIGHT_CLICK_BLOCK)) {
+		if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 			new CosmeticCrateOpen().getStartMenu(player).show(player);
 			return;
 		}
@@ -101,6 +96,17 @@ public class CosmeticCrateOpen implements Listener {
 						            .getItem()
 						            .asOne());
 
+	}
+
+	private boolean locationCheck(Location location) {
+		double x = -218.0;
+		double y = 62.0;
+		double z = -162.0;
+		Location strippedLocation = location.toBlockLocation();
+		if (strippedLocation.getZ() != z) return false;
+		if (strippedLocation.getY() != y) return false;
+		if (strippedLocation.getX() != x) return false;
+		return true;
 	}
 
 	private boolean keyCheck(CustomItem item) {

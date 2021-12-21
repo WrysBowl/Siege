@@ -4,6 +4,7 @@ package net.siegerpg.siege.core.crates.mobs;
 import kotlin.Pair;
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.crates.cosmetics.CosmeticCrateOpen;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
@@ -37,6 +38,7 @@ public class MobCrateOpen implements Listener {
 		//Make sure clicked block is trapped chest in the Hub
 		Block targetedBlock = e.getClickedBlock();
 		if (targetedBlock == null) return;
+		if (!targetedBlock.getLocation().getWorld().getName().equals("Hilly_Woods")) return;
 		if (!locationCheck(targetedBlock.getLocation())) return;
 		Player player = e.getPlayer();
 		e.setCancelled(true);
@@ -44,33 +46,28 @@ public class MobCrateOpen implements Listener {
 
 		//Make sure item is a cosmetic key
 		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
-		if (item == null) return;
-		if (!(item instanceof CustomKey)) return;
-		if (!keyCheck(item)) return;
-
-		if (crateDelay) {
-
-			//if exp calculation has been processed, add to rate limiter arraylist
-			if (awaitingRemoval) {
-				player.sendMessage(Utils.lore("<red>This crate is currently being used!"));
-				return;
-			}
-			awaitingRemoval = true;
-
-			//allow EXP to be gained 5 ticks later
-			new BukkitRunnable() {
-				@Override
-				public void run() {
-					crateDelay = false;
-					awaitingRemoval = false;
-				}
-			}.runTaskLater(Core.plugin(), 80);
-
-			return; //if player is processing exp calculation
-		} else {
-			crateDelay = true;
-
+		if (item == null) {
+			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
+			player.sendMessage(Utils.lore("<red>Please use a mob key!"));
+			return;
 		}
+		if (!(item instanceof CustomKey)) {
+			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
+			player.sendMessage(Utils.lore("<red>Please use a mob key!"));
+			return;
+		}
+		if (!keyCheck(item)) {
+			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
+			player.sendMessage(Utils.lore("<red>Please use a mob key!"));
+			return;
+		}
+		if (CosmeticCrateOpen.currentlyUsedChests.contains(targetedBlock.getLocation())) {
+			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
+			player.sendMessage(Utils.lore("<red>This crate is currently being used!"));
+			return;
+		}
+		CosmeticCrateOpen.currentlyUsedChests.add(targetedBlock.getLocation());
+
 
 		//Pick item reward to give to player
 		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
@@ -219,9 +216,9 @@ public class MobCrateOpen implements Listener {
 	}
 
 	private boolean locationCheck(Location location) {
-		double x = -26.0;
-		double y = 92.0;
-		double z = 9.0;
+		double x = -206.0;
+		double y = 56.0;
+		double z = -157.0;
 		Location strippedLocation = location.toBlockLocation();
 		if (strippedLocation.getZ() != z) return false;
 		if (strippedLocation.getY() != y) return false;
