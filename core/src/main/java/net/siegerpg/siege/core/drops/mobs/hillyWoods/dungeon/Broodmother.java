@@ -178,7 +178,7 @@ public class Broodmother extends MobDropTable {
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 2.0),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(16), 80.0),
+				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(16), 100.0),
 
 				});
 	}
