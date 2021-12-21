@@ -49,7 +49,6 @@ public class MobCrateOpen implements Listener {
 		if (!keyCheck(item)) return;
 
 		if (crateDelay) {
-			e.setCancelled(true);
 
 			//if exp calculation has been processed, add to rate limiter arraylist
 			if (awaitingRemoval) {
@@ -70,7 +69,6 @@ public class MobCrateOpen implements Listener {
 			return; //if player is processing exp calculation
 		} else {
 			crateDelay = true;
-			player.sendMessage(Utils.lore("<red>This crate is currently being used!"));
 
 		}
 
