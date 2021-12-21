@@ -4,6 +4,8 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.drops.BlockDropTable;
 import net.siegerpg.siege.core.drops.materials.*;
 import net.siegerpg.siege.core.drops.materials.decor.*;
+import net.siegerpg.siege.core.dungeons.Dungeon;
+import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
@@ -24,6 +26,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BlockBreakListener implements Listener {
 
@@ -225,6 +228,8 @@ public class BlockBreakListener implements Listener {
 		}
 	};
 
+	public static HashMap<Material, Integer> addedLuck = new HashMap<>();
+
 	@EventHandler
 	public void onBreak(BlockBreakEvent e) {
 
@@ -272,22 +277,15 @@ public class BlockBreakListener implements Listener {
 			final int blockDropRegen = blockDrop.getBlockRegen();
 			int goldCoinAmt = blockDrop.getGold(true);
 			int exp = blockDrop.getExp(true);
-			final double luck = CustomItemUtils.INSTANCE.getPlayerStat(
+			double luck = CustomItemUtils.INSTANCE.getPlayerStat(
 					player, StatTypes.LUCK, player.getItemInHand());
-			final boolean fullInv = e
-					                        .getPlayer()
-					                        .getInventory()
-					                        .firstEmpty() == -1;
-			final boolean upFacingDependable = dependables.contains(e
-					                                                        .getBlock()
-					                                                        .getRelative(
-							                                                        BlockFace.UP)
-					                                                        .getType());
-			final boolean downFacingDependable = dependables.contains(e
-					                                                          .getBlock()
-					                                                          .getRelative(
-							                                                          BlockFace.DOWN)
-					                                                          .getType());
+			for (Map.Entry< Material, Integer > entry : addedLuck.entrySet()) {
+				if (!blockType.equals(entry.getKey())) continue;
+				luck += entry.getValue();
+			}
+			final boolean fullInv = e.getPlayer().getInventory().firstEmpty() == -1;
+			final boolean upFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.UP).getType());
+			final boolean downFacingDependable = dependables.contains(e.getBlock().getRelative(BlockFace.DOWN).getType());
 
 
 			if (keepAir.contains(blockType)) {
@@ -298,9 +296,7 @@ public class BlockBreakListener implements Listener {
 					e.setCancelled(true);
 				}
 			} else {
-				e
-						.getBlock()
-						.setType(Material.BEDROCK);
+				e.getBlock().setType(Material.BEDROCK);
 			}
 			if (!dependables.contains(blockType) && upFacingDependable ||
 			    !dependables.contains(blockType) && downFacingDependable) {
@@ -323,19 +319,12 @@ public class BlockBreakListener implements Listener {
 				GoldEXPSpawning.spawnEXP(exp, loc);
 			}
 
-
 			//Adds blocks to player's inventory
 			for (ItemStack drop : blockDrop.calculateRewards(luck)) {
 				if (!fullInv) {
-					e
-							.getPlayer()
-							.getInventory()
-							.addItem(drop);
+					e.getPlayer().getInventory().addItem(drop);
 				} else {
-					e
-							.getBlock()
-							.getWorld()
-							.dropItemNaturally(loc, drop);
+					e.getBlock().getWorld().dropItemNaturally(loc, drop);
 				}
 
 			}
