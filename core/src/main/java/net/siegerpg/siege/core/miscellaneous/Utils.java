@@ -304,4 +304,20 @@ public class Utils {
 		return head;
 	}
 
+	public static ItemStack getMobHead(MobHeadType mobHeadType) {
+		boolean isNewVersion = Arrays.stream(Material.values()).map(Material::name).collect(
+				Collectors.toList()).contains("PLAYER_HEAD");
+		Material type = Material.matchMaterial(isNewVersion ? "PLAYER_HEAD" : "SKULL_ITEM");
+
+		ItemStack head = new ItemStack(type, 1);
+		if (!isNewVersion) head.setDurability((short) 3);
+
+		SkullMeta skullMeta = (SkullMeta) head.getItemMeta();
+		skullMeta.setOwner(mobHeadType.getMHFName());
+		skullMeta.setDisplayName(mobHeadType.getTitle());
+		head.setItemMeta(skullMeta);
+
+		return head;
+	}
+
 }

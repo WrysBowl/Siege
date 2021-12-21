@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.crates.mobs;
+package net.siegerpg.siege.core.miscellaneous;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;

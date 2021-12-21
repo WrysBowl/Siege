@@ -4,6 +4,9 @@ import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
+import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.xikage.mythicmobs.mobs.MythicMob;
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.drops.BlockDropTable;
 import net.siegerpg.siege.core.drops.DropTable;
@@ -12,17 +15,22 @@ import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.listeners.BlockBreakListener;
 import net.siegerpg.siege.core.listeners.DeathListener;
 import net.siegerpg.siege.core.miscellaneous.BossLeaderboardListener;
+import net.siegerpg.siege.core.miscellaneous.MobHeadType;
+import net.siegerpg.siege.core.miscellaneous.MobStats;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.Array;
 import java.util.*;
 
 public class Drops implements CommandExecutor {
@@ -256,9 +264,11 @@ public class Drops implements CommandExecutor {
 		HashMap< Material, BlockDropTable > dropTable = BlockBreakListener.blockDropTableHashMap;
 		int endPosition = startPosition + 27;
 		if (endPosition >= dropTable.size()) endPosition = dropTable.size()-1;
+		Object[] array = dropTable.keySet().toArray();
+
 		for (int i = startPosition; i < endPosition; i++) {
 
-			Material key = (Material) dropTable.keySet().toArray()[i];
+			Material key = (Material) array[i];
 
 			ItemStack item = new ItemStack(key);
 			BlockDropTable blockDropTable = dropTable.get(key);
@@ -309,11 +319,23 @@ public class Drops implements CommandExecutor {
 		HashMap< String, MobDropTable > dropTable = DeathListener.mobDropTableHashMap;
 		int endPosition = startPosition + 27;
 		if (endPosition >= dropTable.size()) endPosition = dropTable.size()-1;
+		Object[] array = dropTable.keySet().toArray();
 		for (int i = startPosition; i < endPosition; i++) {
 
-			String key = (String) dropTable.keySet().toArray()[i];
+			String key = (String) array[i];
+			MythicMob mob = MythicMobs.inst().getAPIHelper().getMythicMob(key);
 
 			ItemStack item = new ItemStack(Material.LLAMA_SPAWN_EGG);
+			try {
+				EntityType type = EntityType.valueOf(mob.getEntityType().toUpperCase());
+
+				for (MobHeadType mobType : MobHeadType.values()) {
+					if (!mobType.getType().equals(type)) continue;
+					item = Utils.getMobHead(mobType);
+					break;
+				}
+
+			} catch (Exception ignored) {}
 			MobDropTable mobDropTable = dropTable.get(key);
 
 			ItemMeta iconMeta = item.getItemMeta();
@@ -359,11 +381,24 @@ public class Drops implements CommandExecutor {
 
 		//icons
 		HashMap< String, MobDropTable > dropTable = new BossLeaderboardListener().getDungeonBossDropTableHashMap();
+		Object[] array = dropTable.keySet().toArray();
+
 		for (int i = 0; i < dropTable.size(); i++) {
 
-			String key = (String) dropTable.keySet().toArray()[i];
+			String key = (String) array[i];
+			MythicMob mob = MythicMobs.inst().getAPIHelper().getMythicMob(key);
 
 			ItemStack item = new ItemStack(Material.ENDERMITE_SPAWN_EGG);
+			try {
+				EntityType type = EntityType.valueOf(mob.getEntityType().toUpperCase());
+
+				for (MobHeadType mobType : MobHeadType.values()) {
+					if (!mobType.getType().equals(type)) continue;
+					item = Utils.getMobHead(mobType);
+					break;
+				}
+
+			} catch (Exception ignored) {}
 			MobDropTable mobDropTable = dropTable.get(key);
 
 			ItemMeta iconMeta = item.getItemMeta();

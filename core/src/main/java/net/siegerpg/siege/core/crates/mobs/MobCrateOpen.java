@@ -1,23 +1,16 @@
 package net.siegerpg.siege.core.crates.mobs;
 
 
-import com.destroystokyo.paper.profile.PlayerProfile;
-import com.destroystokyo.paper.profile.ProfileProperty;
 import kotlin.Pair;
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.crates.cosmetics.CosmeticAnimation;
 import net.siegerpg.siege.core.drops.MobDropTable;
-import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
-import net.siegerpg.siege.core.miscellaneous.DropUtils;
-import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
-import net.siegerpg.siege.core.miscellaneous.Levels;
-import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.*;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.ArmorStand;
@@ -31,7 +24,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.sql.Array;
 import java.util.*;
 
 public class MobCrateOpen implements Listener {
