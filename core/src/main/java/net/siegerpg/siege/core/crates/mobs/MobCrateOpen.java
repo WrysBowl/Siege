@@ -85,6 +85,8 @@ public class MobCrateOpen implements Listener {
 		MobDropTable dropTable = dropTablesList.get(randNumber);
 		if (dropTable == null) return;
 
+		player.getInventory().removeItem(item.getItem().asOne());
+
 		ArmorStand stand = getArmorStand(targetedBlock.getLocation().toCenterLocation());
 		stand.setHelmet(new ItemStack(Material.BARREL));
 		new BukkitRunnable() {
@@ -96,7 +98,7 @@ public class MobCrateOpen implements Listener {
 			@Override
 			public void run() {
 				if (counter >= 84) {
-					giveReward(player, dropTable, targetedBlock, item, stand);
+					giveReward(player, dropTable, targetedBlock, stand);
 					player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
 					CosmeticCrateOpen.currentlyUsedChests.remove(targetedBlock.getLocation());
 					this.cancel();
@@ -146,7 +148,7 @@ public class MobCrateOpen implements Listener {
 		return stand;
 	}
 
-	public static void giveReward(Player player, MobDropTable dropTable, Block targetedBlock, CustomItem item, ArmorStand stand) {
+	public static void giveReward(Player player, MobDropTable dropTable, Block targetedBlock, ArmorStand stand) {
 		ArrayList< ItemStack > rewardItems = new ArrayList<>();
 		int rewardGold = 0;
 		int rewardEXP = 0;
@@ -212,8 +214,6 @@ public class MobCrateOpen implements Listener {
 			player.sendMessage(miniMessage);
 		}
 		player.sendMessage("");
-
-		player.getInventory().removeItem(item.getItem().asOne());
 	}
 
 	private boolean locationCheck(Location location) {
