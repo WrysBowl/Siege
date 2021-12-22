@@ -61,7 +61,6 @@ public class CustomFishEvent {
 
 	public void win() {
 
-		this.remove();
 		Fish fish = data.getFish();
 		Location loc = hook.getLocation();
 
@@ -69,6 +68,8 @@ public class CustomFishEvent {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
+				remove();
+
 				//Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(loc, fish.getItem(), List.of(player.getUniqueId()));
 				Item displayedItem = loc
 						.getWorld()
@@ -130,6 +131,7 @@ public class CustomFishEvent {
 	public void remove() {
 
 		progressBar.removeAll();
+		this.hook.remove();
 	}
 
 	public Player getPlayer() {
