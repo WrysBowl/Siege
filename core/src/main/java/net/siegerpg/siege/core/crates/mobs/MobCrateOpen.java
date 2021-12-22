@@ -98,6 +98,7 @@ public class MobCrateOpen implements Listener {
 				if (counter >= 84) {
 					giveReward(player, dropTable, targetedBlock, item, stand);
 					player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
+					CosmeticCrateOpen.currentlyUsedChests.remove(targetedBlock.getLocation());
 					this.cancel();
 				} else {
 					if (counter % 6 == 0) {
