@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginEnableEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Objective;
 
 import java.util.ArrayList;
@@ -56,21 +57,21 @@ public class GoldReward implements Listener {
 		if (Bukkit.getOnlinePlayers().isEmpty()) return;
 		players.addAll(Bukkit.getOnlinePlayers());
 		setGoldRequirement();
-		BossBars.showGoldProgress();
+		
 	}
 
 	public static void addPlayer(PlayerJoinEvent e) {
 		Player player = e.getPlayer();
 		players.add(player);
 		setGoldRequirement();
-		BossBars.showGoldProgress();
+		
 	}
 
 	public static void removePlayer(PlayerQuitEvent e) {
 		Player player = e.getPlayer();
 		players.remove(player);
 		setGoldRequirement();
-		BossBars.showGoldProgress();
+		
 	}
 
 	public static void setGoldRequirement() {
@@ -89,7 +90,7 @@ public class GoldReward implements Listener {
 			giveGoldReward();
 		}
 		serverGold = sum;
-		BossBars.showGoldProgress();
+		
 	}
 	public static void giveGoldReward() {
 		for (Player player : players) {
@@ -99,6 +100,34 @@ public class GoldReward implements Listener {
 			player.sendTitle("", Utils.tacc("&e+ " + String.format("%,d", serverGoldReward) + " &7Gold!"), 20, 100, 20);
 			Scoreboard.updateScoreboard(player);
 		}
+	}
+	public GoldReward() {
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+				double goldDivision = Utils.round(
+						Math.floor(
+								((double) GoldReward.serverGold / GoldReward.goldRequirement) * 10000) //multiply double to 10k for integer rounding
+						/100 , 2);//divide by 100 to bring back to percentage notation, with a 2 decimal precision
+				if (goldDivision > 100) goldDivision = 100;
+
+				Bukkit.broadcast(Utils.lore(""));
+				Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                        "));
+				Bukkit.broadcast(Utils.lore(""));
+				Bukkit.broadcast(Utils.lore(""));
+				Bukkit.broadcast(Utils.parse("<yellow><bold><underlined>   Server Gold Progress   <reset>"));
+				Bukkit.broadcast(Utils.lore(""));
+				Bukkit.broadcast(Utils.lore("<gray>Gold Reward <yellow>+" + String.format("%,d", GoldReward.serverGoldReward)));
+				Bukkit.broadcast(Utils.lore("<gray>Gold Progress <yellow>" + goldDivision + "%"));
+				Bukkit.broadcast(Utils.lore("<gray>Gold Milestone <yellow>" + String.format("%,d", GoldReward.goldRequirement)));
+				Bukkit.broadcast(Utils.lore("<gray>Server Gold Collected <yellow>" + String.format("%,d", GoldReward.serverGold)));
+				Bukkit.broadcast(Utils.lore(""));
+				Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                        "));
+				Bukkit.broadcast(Utils.lore(""));
+			}
+
+		}.runTaskTimer(Core.plugin(), 6000, 6000);
 	}
 
 }

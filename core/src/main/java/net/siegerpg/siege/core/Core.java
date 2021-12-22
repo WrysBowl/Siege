@@ -12,7 +12,6 @@ import net.siegerpg.siege.core.crates.mobs.MobCrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
 import net.siegerpg.siege.core.customEvents.CustomEventListener;
-import net.siegerpg.siege.core.miscellaneous.BossBars;
 import net.siegerpg.siege.core.miscellaneous.BossLeaderboardListener;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
@@ -187,7 +186,6 @@ public final class Core extends JavaPlugin {
 				new StatChangeListener(),
 				new CosmeticsListener(),
 				new CustomItemKotlinListener(),
-				new BossBars(),
 				new CustomEventListener(),
 				new MobCrateOpen()
 
