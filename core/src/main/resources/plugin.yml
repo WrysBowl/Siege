@@ -16,9 +16,6 @@ commands:
   bossleaderboard:
     description: See the boss leaderboard of a boss or of a boss and an user or modify leaderboard holograms
     aliases: [ blb, bosslb ]
-  hub:
-    description: Teleports the player to Hub
-    aliases: [ lobby, h ]
   discord:
     aliases: [ discord ]
     description: Sends a discord link to the sender

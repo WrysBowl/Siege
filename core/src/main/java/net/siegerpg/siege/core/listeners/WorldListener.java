@@ -178,16 +178,6 @@ public class WorldListener implements Listener, Runnable {
 		if (e.getEntity() instanceof ItemFrame) {
 			e.setCancelled(true);
 		}
-		if (e.getEntity() instanceof Player) {
-			World hub = Core
-					.plugin()
-					.getServer()
-					.getWorld("Hub");
-			if (e
-					.getEntity()
-					.getWorld()
-					.equals(hub)) e.setCancelled(true);
-		}
 	}
 
 	@EventHandler

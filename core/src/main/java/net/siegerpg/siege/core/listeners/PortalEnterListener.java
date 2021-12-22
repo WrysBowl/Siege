@@ -23,17 +23,13 @@ public class PortalEnterListener implements Listener {
 				.plugin()
 				.getServer()
 				.getWorld("SiegeHub");
-		World hub = Core
-				.plugin()
-				.getServer()
-				.getWorld("Hub");
 		World hillyWoods = Core
 				.plugin()
 				.getServer()
 				.getWorld("Hilly_Woods");
 		Player player = (Player) e.getEntity();
 
-		if (world == siegeHub || world == hub) {
+		if (world == siegeHub) {
 			assert hillyWoods != null;
 			player.teleport(hillyWoods.getSpawnLocation());
 		}

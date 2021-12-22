@@ -62,9 +62,9 @@ public final class Core extends JavaPlugin {
 	/**
 	 * Method to get the spawn location
 	 */
-	public Location getHubSpawnLocation() {
+	public Location getSpawnLocation() {
 
-		return Objects.requireNonNull(Bukkit.getWorld("Hub")).getSpawnLocation();
+		return Objects.requireNonNull(Bukkit.getWorld("Hilly_Woods")).getSpawnLocation();
 	}
 
 	public ArrayList< Hologram > hologramsToBeDeleted = new ArrayList<>();
@@ -116,7 +116,6 @@ public final class Core extends JavaPlugin {
 		// This is done in order to stop repeating everything tons of times
 		HashMap< String, CommandExecutor > commandList = new HashMap<>();
 		{
-			commandList.put("hub", new Hub());
 			commandList.put("setBed", new SetRespawn());
 			commandList.put("help", new Help());
 			commandList.put("discord", new Discord());

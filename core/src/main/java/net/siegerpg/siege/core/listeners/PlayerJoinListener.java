@@ -5,8 +5,6 @@ import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
-import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
@@ -75,7 +73,7 @@ public class PlayerJoinListener implements Listener {
 		String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
 		player.teleport(Core
 				                .plugin()
-				                .getHubSpawnLocation());
+				                .getSpawnLocation());
 
 		Levels.INSTANCE.getExpLevel(player, shortIntegerPair -> {
 			if (shortIntegerPair == null) {
@@ -127,7 +125,7 @@ public class PlayerJoinListener implements Listener {
             }
             Skills.INSTANCE.setSkills(player, "A_1_3");
         }*/
-		player.teleport(new Location(Core.plugin().getServer().getWorld("Hub"), 0.5, 100, 0.5, 90, 0));
+		player.teleport(Core.plugin().getSpawnLocation());
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
 		GoldReward.addPlayer(event);
 	}
