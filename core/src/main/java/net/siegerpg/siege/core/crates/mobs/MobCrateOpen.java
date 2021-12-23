@@ -204,7 +204,7 @@ public class MobCrateOpen implements Listener {
 							player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 0.25f, 1.0f);
 
 						}
-					}.runTaskLater(Core.plugin(), 10);
+					}.runTaskLater(Core.plugin(), 40);
 				}
 			}
 		}.runTaskTimer(Core.plugin(), 3, 3);
