@@ -33,7 +33,7 @@ public class Davy_Jones extends MobDropTable {
 
 	public Davy_Jones() {
 
-		super("Davy_Jones", 15000, 17500, 35000, 40000, new Reward[] {
+		super("Davy_Jones", 5000, 7500, 35000, 40000, new Reward[] {
 				new Reward(Bone.Companion
 						           .tier(2)
 						           .getUpdatedItem(false)

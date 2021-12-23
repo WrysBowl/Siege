@@ -128,7 +128,7 @@ public class Herbert implements Listener {
 		int quantity = 1;
 		CustomItem cItem;
 		for (ItemStack scrap : scraps) {
-			total += getSellValue(scrap);
+			total += getSellValue(scrap) * scrap.getAmount();
 		}
 
 		// Refresh cash in sunflower
