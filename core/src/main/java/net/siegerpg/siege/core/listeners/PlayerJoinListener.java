@@ -5,12 +5,15 @@ import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.*;
+import net.siegerpg.siege.core.webstore.categories.cosmetics.CommonCosmeticKey;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -145,9 +148,10 @@ public class PlayerJoinListener implements Listener {
 		player.getInventory().addItem(new WoodenPickaxe(0).getUpdatedItem(false));
 		player.getInventory().addItem(new WoodenAxe(0).getUpdatedItem(false));
 		player.getInventory().addItem(new WoodenShovel(0).getUpdatedItem(false));
+		player.getInventory().addItem(new Drumstick(0).getUpdatedItem(false).asQuantity(10));
+		player.getInventory().addItem(new MobKey(0).getUpdatedItem(false).asQuantity(3));
+		player.getInventory().addItem(new CommonKey(0).getUpdatedItem(false).asQuantity(1));
 
-		ItemStack food = new Drumstick(0).getUpdatedItem(false).asQuantity(10);
-		player.getInventory().addItem(food);
 		VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
 		VaultHook.econ.depositPlayer(player, 400.0);
 	}
