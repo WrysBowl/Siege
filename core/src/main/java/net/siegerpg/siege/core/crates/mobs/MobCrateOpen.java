@@ -187,10 +187,9 @@ public class MobCrateOpen implements Listener {
 
 					ItemStack reward = rewardItemsCOPY.get(0);
 					Item displayedItem =
-							targetedBlock.getLocation().getWorld().dropItem(
-									targetedBlock.getLocation().add(0,2,0),
+							targetedBlock.getWorld().dropItemNaturally(
+									stand.getLocation(),
 									reward);
-					displayedItem.setGravity(false);
 					displayedItem.setPickupDelay(99999);
 					rewardItemsCOPY.remove(0);
 					displayedItem.setVelocity(vector);
@@ -204,7 +203,7 @@ public class MobCrateOpen implements Listener {
 							player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 0.25f, 1.0f);
 
 						}
-					}.runTaskLater(Core.plugin(), 40);
+					}.runTaskLater(Core.plugin(), 20);
 				}
 			}
 		}.runTaskTimer(Core.plugin(), 3, 3);
