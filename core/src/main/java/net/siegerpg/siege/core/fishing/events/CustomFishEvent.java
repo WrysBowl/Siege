@@ -131,7 +131,6 @@ public class CustomFishEvent {
 	public void remove() {
 
 		progressBar.removeAll();
-		this.hook.remove();
 	}
 
 	public Player getPlayer() {
