@@ -185,14 +185,29 @@ public class MobCrateOpen implements Listener {
 							targetedBlock.getLocation(), player.getLocation().subtract(0, 2, 0));
 					vector.normalize();
 
-					Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(
-							targetedBlock.getLocation().add(0,2,0), rewardItemsCOPY.get(0), List.of(player.getUniqueId()));
+					ItemStack reward = rewardItemsCOPY.get(0);
+					Item displayedItem =
+							targetedBlock.getLocation().getWorld().dropItem(
+									targetedBlock.getLocation().add(0,2,0),
+									reward);
+					displayedItem.setGravity(false);
+					displayedItem.setPickupDelay(99999);
 					rewardItemsCOPY.remove(0);
 					displayedItem.setVelocity(vector);
 					player.playSound(player.getLocation(), Sound.ENTITY_FOX_TELEPORT, 0.25f, 1.0f);
+					new BukkitRunnable() {
+
+						@Override
+						public void run() {
+							displayedItem.remove();
+							Utils.giveItem(player, reward);
+							player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 0.25f, 1.0f);
+
+						}
+					}.runTaskLater(Core.plugin(), 10);
 				}
 			}
-		}.runTaskTimer(Core.plugin(), 5, 5);
+		}.runTaskTimer(Core.plugin(), 3, 3);
 
 		//add duplicate items together
 		HashMap<ItemStack, Integer> itemCount = new HashMap<>();
