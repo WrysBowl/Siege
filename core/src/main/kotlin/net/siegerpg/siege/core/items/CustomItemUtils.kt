@@ -244,7 +244,7 @@ object CustomItemUtils {
 	fun getCustomHealth(player : Player) : Double {
 		val healthStat = getPlayerStat(player, StatTypes.HEALTH)
 		val maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
-		return (player.health / maxHealth) * (healthStat + maxHealth + player.level * 2)
+		return (player.health / maxHealth) * (healthStat + maxHealth)
 	}
 
 	fun addHealth(player : Player, health : Double) {
@@ -253,7 +253,7 @@ object CustomItemUtils {
 				getPlayerStat(
 						player,
 						StatTypes.HEALTH
-				             ) + playerMaxHealth + (player.level * 2)
+				             ) + playerMaxHealth
 		val currentCustomHealth = getCustomHealth(player)
 		val addedHealth = ((health + currentCustomHealth) / healthStat) * playerMaxHealth
 		if (addedHealth <= playerMaxHealth) player.health = addedHealth

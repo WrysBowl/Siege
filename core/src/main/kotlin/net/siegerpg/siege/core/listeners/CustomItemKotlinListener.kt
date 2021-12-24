@@ -202,7 +202,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 				if (victim is Player) CustomItemUtils.getPlayerStat(
 						victim,
 						StatTypes.HEALTH
-				                                                   ) + vicMaxHealth + (victim.level * 2)
+				                                                   ) + vicMaxHealth
 				else vicMaxHealth
 		if (vicHealthStat < 0.0) {
 			e.damage = 99999.0

@@ -54,7 +54,7 @@ public class PlayerData implements Listener {
 					playerHealth.put(
 							player,
 							CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) +
-							player.getMaxHealth() + player.getLevel() * 2
+							player.getMaxHealth()
 					                );
 
 					playerMana.put(
