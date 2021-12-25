@@ -77,7 +77,9 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"stick" to Sticks(),
 						"vine" to Vines(),
 						"wheat" to Wheats(),
-						"wool" to Wools()
+						"wool" to Wools(),
+						"cosmeticKey" to CosmeticKeys()
+
 				         )
 		                   )
 
