@@ -13,6 +13,7 @@ import net.siegerpg.siege.core.items.types.misc.CustomKey;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -82,14 +83,13 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 				return false;
 			}
 			if (hand.getClass() != reqKey.getClass()) {
+				player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
 				player.sendMessage(Utils.lore("<red>Please use the correct key."));
 				return false;
 			}
-			player
-					.getInventory()
-					.removeItem(hand
-							            .getItem()
-							            .asOne());
+			player.playSound(player.getLocation(), Sound.BLOCK_RESPAWN_ANCHOR_CHARGE, 0.7f, 1.2f);
+
+			player.getInventory().removeItem(hand.getItem().asOne());
 			int count = dungeon.currentKeyCount + 1; //add one to key count
 			if (count < dungeon.maxKeyCount) { //if key count + 1 is less than 8, add to key count
 				dungeon.currentKeyCount = count;

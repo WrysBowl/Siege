@@ -9,10 +9,7 @@ import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.fishing.events.CustomFishEvent;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
@@ -115,26 +112,14 @@ public class FishingTask extends BukkitRunnable {
 		BossBar progressBar = e.getProgressBar();
 		if (progress <= 1 && progress >= 0) {
 			progressBar.setProgress(progress);
-			if (data
-					    .getCursor()
-					    .getLoc() > 0 && data
-							                     .getCursor()
-							                     .getLoc() < getEvent().getTotalLength()) {
+			if (data.getCursor().getLoc() > 0 && data.getCursor().getLoc() < getEvent().getTotalLength()) {
 				//location of cursor is less than the length of the action bar
 				//location of cursor is greater than the beginning of the action bar
-				data
-						.getCursor()
-						.setLoc(data
-								        .getCursor()
-								        .getLoc() + this.direction);
+				data.getCursor().setLoc(data.getCursor().getLoc() + this.direction);
 			} else if (this.direction == -1) {
-				data
-						.getCursor()
-						.setLoc(getEvent().getTotalLength() - 1);
+				data.getCursor().setLoc(getEvent().getTotalLength() - 1);
 			} else if (this.direction == 1) {
-				data
-						.getCursor()
-						.setLoc(1);
+				data.getCursor().setLoc(1);
 			}
 		}
 
@@ -152,6 +137,8 @@ public class FishingTask extends BukkitRunnable {
 
 						data.setScore(data.getScore() + 0.1);
 
+						Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(131, 233, 50), 1);
+						e.getHook().getWorld().spawnParticle(Particle.REDSTONE, e.getHook().getLocation(), 5, 0, 0, 0, dust);
 						skip = true;
 						break;
 					} else {
@@ -168,14 +155,15 @@ public class FishingTask extends BukkitRunnable {
 				label = label + ChatColor.BLUE + Utils.tacc("&l\u2595");
 
 				data.setScore(data.getScore() - 0.1);
-				e
-						.getPlayer()
-						.playSound(e
-								           .getPlayer()
-								           .getLocation(), Sound.ENTITY_FISH_SWIM, 1.0f, 2.0f);
+				e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_FISH_SWIM, 1.0f, 2.0f);
 
-			} else
+				Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(238, 83, 83), 1);
+				e.getHook().getWorld().spawnParticle(Particle.REDSTONE, e.getHook().getLocation(), 1, 0, 0, 0, dust);
+
+			} else {
 				label = label + ChatColor.RED + Utils.tacc("&l\u2595");
+			}
+
 		}
 		if (data.getProcessToAdvance() >= 1) {
 			if (data.getLoc() + fish.length == e.getTotalLength() && data.getDirection()) {

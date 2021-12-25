@@ -8,9 +8,7 @@ import net.siegerpg.siege.core.fishing.data.FishingData;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Item;
@@ -68,6 +66,9 @@ public class CustomFishEvent {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
+				Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(131, 233, 50), 1);
+				loc.getWorld().spawnParticle(Particle.REDSTONE, loc, 5, 0, 0, 0, dust);
+
 				remove();
 
 				//Item displayedItem = DropUtils.Companion.dropItemNaturallyForPlayers(loc, fish.getItem(), List.of(player.getUniqueId()));
@@ -124,7 +125,9 @@ public class CustomFishEvent {
 	public void lose() {
 
 		this.remove();
-		player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_NO, 1.0f, 1.0f);
+		player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 1.0f, 1.2f);
+		Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(238, 83, 83), 1);
+		this.hook.getWorld().spawnParticle(Particle.REDSTONE, this.hook.getLocation(), 5, 0, 0, 0, dust);
 	}
 
 
