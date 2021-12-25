@@ -4,13 +4,17 @@ import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.types.misc.StatGemType
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
+import net.siegerpg.siege.core.listeners.NPC.Herbert
 import net.siegerpg.siege.core.miscellaneous.Levels
+import net.siegerpg.siege.core.miscellaneous.VaultHook
 import net.siegerpg.siege.core.miscellaneous.sendMiniMessage
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
+import java.lang.String
 
 class StatGemListener : Listener {
 
@@ -29,13 +33,23 @@ class StatGemListener : Listener {
 			player.sendMiniMessage("<red>That item already has a stat gem!")
 			return
 		}
-
-		if (itemOnCursor.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first
-		                                       ?: 0)
-		) {
+		if (itemOnCursor.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first ?: 0)) {
 			player.sendMiniMessage("<red>You are too low level to use this gem!")
 			return
 		}
+		val cost = Herbert.getSellValue(e.currentItem) * 5
+		if (VaultHook.econ.getBalance(player) < cost) {
+			player.sendMiniMessage("<red>You need ${String.format("%,d", cost)} \u26C1 to apply this gem!")
+			return
+		}
+		VaultHook.econ.withdrawPlayer(player, cost.toDouble())
+
+		player.playSound(
+				player.location,
+				Sound.ENTITY_ENDER_EYE_DEATH,
+				0.8f,
+				1.2f)
+
 		itemInteractedWith.addStatGem(
 				StatGem(
 						itemOnCursor.statType,
