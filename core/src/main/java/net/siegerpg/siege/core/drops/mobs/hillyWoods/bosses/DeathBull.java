@@ -108,7 +108,7 @@ public class DeathBull extends MobDropTable {
 				new Reward(new HealthyDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.25),
 
 				new Reward(new Beef(100).getUpdatedItem(false), 40.0),
-				new Reward(new BullSpiritKey(0).getUpdatedItem(false), 10.0),
+				new Reward(new BullSpiritKey(0).getUpdatedItem(false), 3.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
 
 				});

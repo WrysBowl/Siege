@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.boneHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.PolishedRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
@@ -91,6 +92,7 @@ public class Skeletal_Archer extends MobDropTable {
 				new Reward(new FlamingHotTorch(Utils.randRarity()).getUpdatedItem(false), 2.5),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
+				new Reward(new FoxSpiritKey(0).getUpdatedItem(false), 1.0),
 
 				});
 	}

@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.DavyJonesKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
@@ -50,6 +51,7 @@ public class ForestSpider extends MobDropTable {
 
 				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 1.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 1.25),
+				new Reward(new DavyJonesKey(0).getUpdatedItem(false), 1.0),
 
 				});
 	}

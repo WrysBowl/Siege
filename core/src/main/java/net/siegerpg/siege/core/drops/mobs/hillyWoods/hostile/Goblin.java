@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.NecromancerKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
@@ -31,6 +32,8 @@ public class Goblin extends MobDropTable {
 				new Reward(new RawLuckGem(0).getUpdatedItem(false), 2.0),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 5.0),
+				new Reward(new NecromancerKey(0).getUpdatedItem(false), 2.0),
+
 				});
 	}
 
