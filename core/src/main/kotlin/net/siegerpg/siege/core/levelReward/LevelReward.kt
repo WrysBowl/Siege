@@ -1,8 +1,43 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.listeners.GoldExpListener
+import net.siegerpg.siege.core.miscellaneous.Utils
+import org.bukkit.Sound
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 
 interface LevelReward {
 
-	fun giveReward(player : Player) {}
+	val level : Short
+	val gold : Int
+	val items : List<ItemStack>
+
+	fun sendMessage(player : Player) {
+		player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 5.0f)
+		player.sendTitle(
+				Utils.tacc("&5Level Up!"),
+				Utils.tacc("&d${level - 1} &7\u21E2 &5$level"),
+				10,
+				80,
+				10)
+
+		player.sendMessage("")
+		player.sendMessage(Utils.parse("<color:#BE6CD1><bold><underlined>      LEVEL UP!      <reset>"))
+		player.sendMessage(Utils.parse("<color:#CF97DD>You leveled up to level $level"))
+		player.sendMessage("")
+		if (gold > 0) {
+			player.sendMessage(Utils.parse("<yellow>+ $gold \u26C1"))
+			GoldExpListener.giveGold(player, gold)
+		}
+		for (item in items) {
+			val miniMessage = Utils.lore("<gray>\u27A5 " + item.itemMeta.displayName).hoverEvent(item)
+			player.sendMessage(miniMessage)
+			Utils.giveItem(player, item)
+		}
+		player.sendMessage("")
+		player.sendMessage(Utils.parse("<color:#BE6CD1><underlined>                                  "))
+		player.sendMessage("")
+	}
+
+	fun extraReward(player : Player) {}
 }
