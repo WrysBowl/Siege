@@ -1,36 +1,19 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Wool
+import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.CrackedHealthGem
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Sound
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 
-class Reward7 : LevelReward {
-
-	override fun giveReward(player : Player) {
-		val level : Short = 8
-		player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 5.0f)
-		player.sendTitle(
-				Utils.tacc("&5Level Up!"),
-				Utils.tacc("&d${level - 1} &7\u21E2 &5$level"),
-				10,
-				80,
-				10
-		                )
-		player.sendMessage(Utils.lore(""))
-		player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
-		player.sendMessage(Utils.lore("<gold><bold>Level Reward"))
-		player.sendMessage(Utils.lore("<yellow>+ 500 gold"))
-		player.sendMessage(Utils.lore("<red>+ 2 HP"))
-		player.sendMessage(Utils.lore("<green>+ Stick \u272a\u272a x4"))
-		player.sendMessage(Utils.lore("<green>+ Wool \u272a\u272a x24"))
-		player.sendMessage(Utils.lore(""))
-
-		GoldExpListener.giveGold(player, 500)
-		Utils.giveItem(player, Stick.tier(2).getUpdatedItem(false).asQuantity(4))
-		Utils.giveItem(player, Wool.tier(2).getUpdatedItem(false).asQuantity(24))
-
-	}
-}
+class Reward7(
+		override val level : Short = 8,
+		override val gold : Int = 200,
+		override val items : List<ItemStack> = listOf(
+				CrackedHealthGem(0).getUpdatedItem(false)
+		                                             )
+             ) : LevelReward

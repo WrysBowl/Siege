@@ -8,37 +8,18 @@ import net.siegerpg.siege.core.webstore.categories.boosters.GOLDBooster_100
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 
-class Reward29 : LevelReward {
+class Reward29(
+		override val level : Short = 30,
+		override val gold : Int = 10000,
+		override val items : List<ItemStack> = listOf()
+              ) : LevelReward {
 
-	override fun giveReward(player : Player) {
-		val level : Short = 30
-		Bukkit.getServer().broadcast(Utils.lore(""))
-		Bukkit.getServer()
-				.broadcastMessage(Utils.tacc("&b&l" + player.name + "&r &7has reached level &d" + level + "!"))
-		Bukkit.getServer().broadcastMessage(Utils.tacc("&a/pv 3 &7is available"))
-		Bukkit.getServer().broadcast(Utils.lore(""))
+	override fun extraReward(player : Player) {
+		Bukkit.getServer().broadcast(Utils.lore("<green>${player.name} has reached level $level!"))
+		player.sendMessage(Utils.lore("<green>+ 1 vault slot"))
 
-		player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 5.0f)
-		player.sendTitle(
-				Utils.tacc("&5Level Up!"),
-				Utils.tacc("&d${level - 1} &7\u21E2 &5$level"),
-				10,
-				80,
-				10
-		                )
-		player.sendMessage(Utils.lore(""))
-		player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
-		player.sendMessage(Utils.lore("<gold><bold>Level Reward"))
-		player.sendMessage(Utils.lore("<yellow>+ 20,000 gold"))
-		player.sendMessage(Utils.lore("<red>+ 2 HP"))
-		player.sendMessage(Utils.lore("<green>+ 100% GOLD and EXP Boosters"))
-		player.sendMessage(Utils.lore("<red>+ 1 Player Vault"))
-		player.sendMessage(Utils.lore(""))
-
-		GoldExpListener.giveGold(player, 20000)
-		Utils.giveItem(player, GOLDBooster_100().boosterItem)
-		Utils.giveItem(player, EXPBooster_100().boosterItem)
 		val highestPV = Utils.getHighestPV(player)
 		VaultHook.perms.playerAdd(
 				"global",

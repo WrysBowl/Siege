@@ -1,34 +1,23 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot
+import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.CorruptCrystal
+import net.siegerpg.siege.core.items.implemented.weapons.melee.light.CursedSickle
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Sound
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 
-class Reward42 : LevelReward {
-
-	override fun giveReward(player : Player) {
-		val level : Short = 43
-		player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 5.0f)
-		player.sendTitle(
-				Utils.tacc("&5Level Up!"),
-				Utils.tacc("&d${level - 1} &7\u21E2 &5$level"),
-				10,
-				80,
-				10
-		                )
-		player.sendMessage(Utils.lore(""))
-		player.sendMessage(Utils.lore("<gray>You leveled up to level $level!"))
-		player.sendMessage(Utils.lore("<gold><bold>Level Reward"))
-		player.sendMessage(Utils.lore("<yellow>+ 6,000 gold"))
-		player.sendMessage(Utils.lore("<red>+ 2 HP"))
-		player.sendMessage(Utils.lore("<green>+ Refined Metal \u272a\u272a\u272a x4"))
-		player.sendMessage(Utils.lore(""))
-
-		GoldExpListener.giveGold(player, 6000)
-		Utils.giveItem(player, RefinedMetal.tier(3).getUpdatedItem(false).asQuantity(4))
-	}
-}
+class Reward42(
+		override val level : Short = 43,
+		override val gold : Int = 3000,
+		override val items : List<ItemStack> = listOf(
+				GoldenCarrot(0).getUpdatedItem(false).asQuantity(5),
+				CursedSickle(Utils.randRarity()).getUpdatedItem(false)
+		                                             )
+              ) : LevelReward

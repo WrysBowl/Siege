@@ -3,7 +3,6 @@
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.database.DatabaseManager
 import net.siegerpg.siege.core.levelReward.*
-import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.parties.Party
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
@@ -62,7 +61,9 @@ object Levels {
 			val reward : LevelReward = levelRewards[lvl.toInt() - 2]
 			object : BukkitRunnable() {
 				override fun run() {
-					reward.giveReward(player as Player)
+					reward.sendMessage(player as Player)
+					reward.extraReward(player)
+
 					player.playSound(
 							player.location,
 							Sound.BLOCK_BEACON_POWER_SELECT,
