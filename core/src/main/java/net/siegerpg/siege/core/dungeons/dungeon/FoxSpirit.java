@@ -14,7 +14,7 @@ public class FoxSpirit extends Dungeon {
 
 	public FoxSpirit() {
 
-		super("FoxSpirit", 10,
+		super("FoxSpirit", 1,
 		      new FoxSpiritKey(0),
 		      new Location(null, -427, 59, -7), "Hilly_Woods",
 		      100

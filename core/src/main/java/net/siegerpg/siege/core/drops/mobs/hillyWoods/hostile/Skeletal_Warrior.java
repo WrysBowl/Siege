@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.boneHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PolishedStrengthGem;
@@ -99,6 +100,8 @@ public class Skeletal_Warrior extends MobDropTable {
 				new Reward(new LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.5),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+				new Reward(new FoxSpiritKey(0).getUpdatedItem(false), 1.0),
+
 				});
 	}
 

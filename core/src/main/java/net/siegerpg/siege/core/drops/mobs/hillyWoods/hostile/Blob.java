@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.RawLuckGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
@@ -80,6 +81,7 @@ public class Blob extends MobDropTable {
 				new Reward(new LuckySlimyBoots(Utils.randRarity()).getUpdatedItem(false), 0.25),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 0.5),
+				new Reward(new SlimeSpiritKey(0).getUpdatedItem(false), 1.0),
 
 				});
 	}

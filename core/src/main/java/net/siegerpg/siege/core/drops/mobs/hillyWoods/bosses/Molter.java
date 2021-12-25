@@ -95,7 +95,7 @@ public class Molter extends MobDropTable {
 
 				new Reward(new MatchStick(Utils.randRarity()).getUpdatedItem(false), 5.0),
 
-				new Reward(new MagmaSpiritKey(0).getUpdatedItem(false), 10.0),
+				new Reward(new MagmaSpiritKey(0).getUpdatedItem(false), 3.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
 
 				});

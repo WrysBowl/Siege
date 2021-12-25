@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.food.Beef;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.BullSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
@@ -82,6 +83,7 @@ public class AngryBull extends MobDropTable {
 
 				new Reward(new Beef(50).getUpdatedItem(false), 40.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
+				new Reward(new BullSpiritKey(0).getUpdatedItem(false), 1.0),
 
 				});
 	}

@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.BroodmotherKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
@@ -44,6 +45,7 @@ public class BanditArcher extends MobDropTable {
 				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 1.0),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 3.0),
+				new Reward(new BroodmotherKey(0).getUpdatedItem(false), 1.0),
 
 				});
 	}

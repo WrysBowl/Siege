@@ -14,7 +14,7 @@ public class SlimeSpirit extends Dungeon {
 
 	public SlimeSpirit() {
 
-		super("SlimeSpirit", 4,
+		super("SlimeSpirit", 1,
 		      new SlimeSpiritKey(0),
 		      new Location(null, -169, 70, 24), "Hilly_Woods",
 		      100

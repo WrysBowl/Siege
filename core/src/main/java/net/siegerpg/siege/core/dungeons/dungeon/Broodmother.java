@@ -14,7 +14,7 @@ public class Broodmother extends Dungeon {
 
 	public Broodmother() {
 
-		super("Broodmother", 10,
+		super("Broodmother", 1,
 		      new BroodmotherKey(0),
 		      new Location(null, 7, 89, -416), "Hilly_Woods",
 		      100

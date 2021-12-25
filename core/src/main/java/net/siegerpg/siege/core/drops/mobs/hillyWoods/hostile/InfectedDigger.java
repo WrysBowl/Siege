@@ -13,6 +13,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.food.Beetroot;
 import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.NecromancerKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
@@ -78,6 +79,8 @@ public class InfectedDigger extends MobDropTable {
 				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 5.0),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 3.5),
+				new Reward(new NecromancerKey(0).getUpdatedItem(false), 2.0),
+
 				});
 	}
 

@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.MagmaLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.magmaLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.MagmaSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawStrengthGem;
@@ -66,6 +67,7 @@ public class ScorchingBlob extends MobDropTable {
 				
 				new Reward(new MatchStick(Utils.randRarity()).getUpdatedItem(false), 2.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 0.75),
+				new Reward(new MagmaSpiritKey(0).getUpdatedItem(false), 1.0),
 
 				});
 	}
