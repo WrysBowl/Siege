@@ -7,6 +7,8 @@ import io.github.retrooper.packetevents.settings.PacketEventsSettings;
 import io.github.retrooper.packetevents.utils.server.ServerVersion;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
+import net.siegerpg.siege.core.commands.admin.dailyRewards.DailyReward;
+import net.siegerpg.siege.core.commands.admin.dailyRewards.DailyRewardCommand;
 import net.siegerpg.siege.core.crates.cosmetics.CosmeticCrateOpen;
 import net.siegerpg.siege.core.crates.mobs.MobCrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
@@ -136,6 +138,7 @@ public final class Core extends JavaPlugin {
 			commandList.put("menu", new Menu());
 			commandList.put("cookieClicker", new CookieClicker());
 			commandList.put("materials", new Materials());
+			commandList.put("dailyReward", new DailyRewardCommand());
 
 
 		}

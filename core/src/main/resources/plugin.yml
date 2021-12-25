@@ -62,3 +62,5 @@ commands:
   materials:
     aliases: [ mats ]
     description: Play cookie clicker
+  dailyReward:
+    description: Daily reward
