@@ -26,7 +26,7 @@ class Chop : Shop() {
 	override var items : List<ShopItem> = listOf(
 			ShopItem(
 					SlimyHelmet(-1), 250, hashMapOf(
-					Slime.tier(2) to 5
+					Slime.tier(1) to 40
 					                               ), true
 			        ) {
 				SlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
@@ -35,7 +35,7 @@ class Chop : Shop() {
 			//SLIMY CHESTPLATES
 			ShopItem(
 					SlimyChestplate(-1), 450, hashMapOf(
-					Slime.tier(2) to 8
+					Slime.tier(1) to 64
 					                                   ), true
 			        ) {
 				SlimyChestplate(Utils.randRarity()).getUpdatedItem(false)
@@ -44,7 +44,7 @@ class Chop : Shop() {
 			//SLIMY LEGGINGS
 			ShopItem(
 					SlimyLeggings(-1), 350, hashMapOf(
-					Slime.tier(2) to 7
+					Slime.tier(1) to 56
 					                                 ), true
 			        ) {
 				SlimyLeggings(Utils.randRarity()).getUpdatedItem(false)
@@ -53,7 +53,7 @@ class Chop : Shop() {
 			//SLIMY BOOTS
 			ShopItem(
 					SlimyBoots(-1), 200, hashMapOf(
-					Slime.tier(2) to 4
+					Slime.tier(1) to 32
 					                              ), true
 			        ) {
 				SlimyBoots(Utils.randRarity()).getUpdatedItem(false)

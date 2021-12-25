@@ -31,8 +31,8 @@ class Chip : Shop() {
 			},
 			ShopItem(
 					StickyStick(-1), 150, hashMapOf(
-					Slime.tier(2) to 2,
-					Stick.tier(2) to 2
+					Slime.tier(1) to 16,
+					Stick.tier(1) to 16
 					                               ), true
 			        ) {
 				StickyStick(Utils.randRarity()).getUpdatedItem(false)
@@ -86,8 +86,8 @@ class Chip : Shop() {
 			//RANGED
 			ShopItem(
 					ScrapyardBow(-1), 100, hashMapOf(
-					Stick.tier(2) to 3,
-					Vine.tier(2) to 3
+					Stick.tier(1) to 24,
+					Vine.tier(1) to 24
 					                                ), true
 			        ) {
 				ScrapyardBow(Utils.randRarity()).getUpdatedItem(false)
@@ -149,7 +149,7 @@ class Chip : Shop() {
 			//HEAVY MELEE
 			ShopItem(
 					Club(-1), 200, hashMapOf(
-					Stick.tier(2) to 2
+					Stick.tier(1) to 16
 					                        ), true
 			        ) {
 				Club(Utils.randRarity()).getUpdatedItem(false)
@@ -179,9 +179,9 @@ class Chip : Shop() {
 			},
 			ShopItem(
 					GlisteningTwig(-1), 300, hashMapOf(
-					Seed.tier(2) to 1,
-					Stick.tier(2) to 1,
-					Feather.tier(2) to 2
+					Seed.tier(1) to 8,
+					Stick.tier(1) to 8,
+					Feather.tier(1) to 16
 					                                  ), true
 			        ) {
 				GlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
