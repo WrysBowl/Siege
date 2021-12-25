@@ -32,7 +32,11 @@ object Levels {
 			Reward31(), Reward32(), Reward33(), Reward34(), Reward35(),
 			Reward36(), Reward37(), Reward38(), Reward39(), Reward40(),
 			Reward41(), Reward42(), Reward43(), Reward44(), Reward45(),
-			Reward46(), Reward47(), Reward48(), Reward49()
+			Reward46(), Reward47(), Reward48(), Reward49(), Reward50(),
+			Reward51(), Reward52(), Reward53(), Reward54(), Reward55(),
+			Reward56(), Reward57(), Reward58(), Reward59(), Reward60(),
+			Reward61(), Reward62(), Reward63(), Reward64(), Reward65(),
+			Reward66(), Reward67(), Reward68(), Reward69(),
 	                                                               )
 
 	/**
@@ -56,7 +60,7 @@ object Levels {
 			exp -= calculateRequiredExperience(lvl)
 			lvl++
 			if (!player.isOnline) continue
-			if (levelRewards.size < lvl + 2) continue //ensure that the level reward is set in the array list
+			if (levelRewards.size < lvl) continue //ensure that the level reward is set in the array list
 
 			val reward : LevelReward = levelRewards[lvl.toInt() - 2]
 			object : BukkitRunnable() {
