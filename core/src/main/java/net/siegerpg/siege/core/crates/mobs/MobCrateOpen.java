@@ -156,7 +156,7 @@ public class MobCrateOpen implements Listener {
 		//adding items to rewards
 		try {
 			//create a copy of the class
-			for (int i = 0; i<5;i++) {
+			for (int i = 0; i<3;i++) {
 				rewardGold += dropTable.getGold(true);
 				rewardEXP += dropTable.getExp(true);
 
