@@ -50,7 +50,7 @@ public class GemRemover implements Listener {
 				.getClickedBlock()
 				.getType()
 				.equals(Material.CHIPPED_ANVIL)) {
-			openInventory(e.getPlayer());
+			new GemRemover().openInventory(e.getPlayer());
 			e.setCancelled(true);
 		}
 	}
