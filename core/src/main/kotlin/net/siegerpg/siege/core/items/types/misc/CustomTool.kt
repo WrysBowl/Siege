@@ -48,6 +48,10 @@ abstract class CustomTool(
 			meta.lore(" ")
 			meta.lore("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem")
 		}
+		if (statGem == null) {
+			meta.lore(" ")
+			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
+		}
 		if (baseStats.size != 0) {
 			meta.lore(" ")
 			val realStats =

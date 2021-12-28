@@ -54,7 +54,7 @@ public class Scoreboard {
 				o, 12, levelMessage + " \u2742");
 		replaceScore(o, 11, goldMessage + " \u26C1");
 		replaceScore(o, 10, "  ");
-		replaceScore(o, 9, Utils.tacc("&7SiegeRPG.minehut.gg"));
+		replaceScore(o, 9, Utils.tacc("&7play.SiegeRPG.net"));
 		if (o.getDisplaySlot() != DisplaySlot.SIDEBAR)
 			o.setDisplaySlot(DisplaySlot.SIDEBAR); //Vital functionality
 		p.setScoreboard(b); //Vital functionality

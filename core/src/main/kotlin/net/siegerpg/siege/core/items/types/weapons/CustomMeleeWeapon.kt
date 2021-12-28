@@ -62,6 +62,10 @@ abstract class CustomMeleeWeapon(
 			meta.lore(" ")
 			meta.lore("<r><color:#F67DF6>+${it.amount} <light_purple>${it.type.stylizedName}")
 		}
+		if (statGem == null) {
+			meta.lore(" ")
+			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
+		}
 		if (baseStats.size != 0) {
 			meta.lore(" ")
 			val realStats =
