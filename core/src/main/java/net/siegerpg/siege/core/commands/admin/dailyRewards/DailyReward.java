@@ -35,12 +35,6 @@ public class DailyReward {
 
 	public void sendReward(Player player) {
 		player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_BLAST_FAR, 1.0f, 5.0f);
-		player.sendTitle(
-				Utils.tacc("&5Level Up!"),
-				Utils.tacc("&d${level - 1} &7\u21E2 &5$level"),
-				10,
-				80,
-				10);
 
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<color:#86DFC6><bold><underlined>      Daily Reward      <reset>"));
