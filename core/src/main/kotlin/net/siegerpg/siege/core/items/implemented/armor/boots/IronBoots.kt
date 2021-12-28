@@ -15,8 +15,7 @@ class IronBoots() : CustomBoots(
 		baseStats = CustomItemUtils.statMap(
 				health = 20.0,
 				toughness = 60.0,
-				strength = -3.0,
-				luck = -5.0
+				strength = 3.0
 		                                   ),
                                ) {
 

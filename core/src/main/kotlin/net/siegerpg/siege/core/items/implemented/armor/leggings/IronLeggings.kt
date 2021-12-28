@@ -15,9 +15,7 @@ class IronLeggings() : CustomLeggings(
 		baseStats = CustomItemUtils.statMap(
 				health = 40.0,
 				toughness = 100.0,
-				regeneration = 10.0,
-				strength = -8.0,
-				luck = -7.0
+				strength = 4.0,
 		                                   ),
                                      ) {
 

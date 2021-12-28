@@ -54,6 +54,7 @@ class DropUtils : Listener, PacketListenerAbstract() {
 				return
 			val item = wrappedPacket.entity as Item
 			val itemStack = item.itemStack
+			if (itemStack.type.isAir) return
 			val seepickableby = itemStack.getNbtTag<String>("seepickableby")
 			                    ?: return
 			if (seepickableby.isEmpty()) return

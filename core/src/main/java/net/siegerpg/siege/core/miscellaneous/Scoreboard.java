@@ -37,10 +37,10 @@ public class Scoreboard {
 
 		if (GlobalMultipliers.expMultiplier > 1.0 || GlobalMultipliers.goldMultiplier > 1.0) {
 			if (GlobalMultipliers.expMultiplier > 1.0) {
-				levelMessage += Utils.tacc(" &7+&d"+(int)((GlobalMultipliers.expMultiplier-1)*100) + "%x");
+				levelMessage += Utils.tacc(" &7+&d"+(int)((GlobalMultipliers.expMultiplier-1.0)*100) + "%x");
 			}
 			if (GlobalMultipliers.goldMultiplier > 1.0) {
-				goldMessage += Utils.tacc(" &7+&e"+(int)((GlobalMultipliers.goldMultiplier-1)*100) + "%x");
+				goldMessage += Utils.tacc(" &7+&e"+(int)((GlobalMultipliers.goldMultiplier-1.0)*100) + "%x");
 			}
 		}
 
