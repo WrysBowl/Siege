@@ -160,7 +160,13 @@ public class MobCrateOpen implements Listener {
 				rewardGold += dropTable.getGold(true);
 				rewardEXP += dropTable.getExp(true);
 
-				rewardItems.addAll(dropTable.calculateRewards(0));
+				final ArrayList<ItemStack> items = dropTable.calculateRewards(0);
+				ArrayList<ItemStack> copiedItems = items;
+				for (ItemStack item: items) {
+					if (item.getType().equals(Material.TRIPWIRE_HOOK)) copiedItems.remove(item);
+				}
+
+				rewardItems.addAll(copiedItems);
 				dropTable = dropTable.getClass().getDeclaredConstructor().newInstance();
 			}
 
