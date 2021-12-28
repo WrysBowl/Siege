@@ -15,7 +15,7 @@ class ChainLeggings() : CustomLeggings(
 		baseStats = CustomItemUtils.statMap(
 				health = 60.0,
 				toughness = 25.0,
-				regeneration = 25.0
+				regeneration = 10.0
 		                                   ),
                                       ) {
 
