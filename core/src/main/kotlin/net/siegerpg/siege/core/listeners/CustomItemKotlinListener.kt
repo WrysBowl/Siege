@@ -198,16 +198,6 @@ class CustomItemKotlinListener : Listener, Runnable {
 			}
 		}
 
-		val vicHealthStat =
-				if (victim is Player) CustomItemUtils.getPlayerStat(
-						victim,
-						StatTypes.HEALTH
-				                                                   ) + vicMaxHealth
-				else vicMaxHealth
-		if (vicHealthStat < 0.0) {
-			e.damage = 99999.0
-			return
-		}
 		if (damageMulti[attacker] != null) {
 			actualDamage = damageMulti[attacker]?.times(actualDamage) ?: actualDamage
 		}
@@ -222,8 +212,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 		val reducedDamage =
 				attStrengthStat * (1 - (calcReducedToughness(vicToughness) / 1000)) //custom attack damage with toughness considered
 
-		e.damage =
-				(reducedDamage * vicMaxHealth) / vicHealthStat //scaled down to damage player by vanilla damage
+		e.damage = reducedDamage //scaled down to damage player by vanilla damage
 
 		val isCritical = damage > maxDamage
 

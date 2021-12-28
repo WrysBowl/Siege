@@ -53,19 +53,13 @@ public class PlayerData implements Listener {
 				.getServer()
 				.getScheduler()
 				.scheduleSyncDelayedTask(Core.plugin(), () -> {
-					//double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH);
-					//Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(health);
-					//player.setHealthScale(health/(health/20));
-					playerHealth.put(
-							player,
-							CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) +
-							player.getMaxHealth()
-					                );
 
-					playerMana.put(
-							player,
-							CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA)
-					              );
+					double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + 20;
+					Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(health);
+					player.setHealthScale(health/(health/20));
+
+					playerHealth.put(player, player.getMaxHealth());
+					playerMana.put(player, CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
 
 				}, 2);
 	}
