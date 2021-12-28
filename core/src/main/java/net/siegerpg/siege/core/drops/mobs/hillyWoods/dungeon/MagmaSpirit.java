@@ -129,7 +129,7 @@ public class MagmaSpirit extends MobDropTable {
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 2.0),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(4), 100.0),
+				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(3), 100.0),
 
 				});
 	}

@@ -107,7 +107,7 @@ public class Lich extends MobDropTable {
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 5.0),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 5.0),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(8), 100.0),
+				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(5), 100.0),
 
 				});
 	}

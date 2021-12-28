@@ -143,7 +143,7 @@ public class Davy_Jones extends MobDropTable {
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 2.0),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 2.0),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(10), 100.0),
+				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(6), 100.0),
 
 				});
 	}
