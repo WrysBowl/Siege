@@ -16,6 +16,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -32,6 +33,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class PlayerData implements Listener {
 
@@ -51,6 +53,9 @@ public class PlayerData implements Listener {
 				.getServer()
 				.getScheduler()
 				.scheduleSyncDelayedTask(Core.plugin(), () -> {
+					//double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH);
+					//Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(health);
+					//player.setHealthScale(health/(health/20));
 					playerHealth.put(
 							player,
 							CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) +

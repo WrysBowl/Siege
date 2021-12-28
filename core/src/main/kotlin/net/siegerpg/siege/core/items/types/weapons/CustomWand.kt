@@ -84,7 +84,7 @@ abstract class CustomWand(
 								} <gray>${it.stylizedName}"
 						         )
 					else {
-						meta.lore("<r><red>-${realStats[it]} <gray>${it.stylizedName}")
+						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
 					}
 				} else {
 					if (hideRarity || quality < 0) {
