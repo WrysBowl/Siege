@@ -80,7 +80,7 @@ public class GoldExpListener implements Listener {
 					expCalculating.remove(player);
 					awaitingRemoval.remove(player);
 				}
-			}.runTaskLater(Core.plugin(), 5);
+			}.runTaskLater(Core.plugin(), 2);
 
 			return; //if player is processing exp calculation
 		} else {
