@@ -23,6 +23,6 @@ class Reward61(
 		override val level : Short = 62,
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
-				PixieDagger(0).getUpdatedItem(false)
+				PixieDagger(Utils.randRarity()).getUpdatedItem(false)
 		                                             )
               ) : LevelReward

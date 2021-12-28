@@ -24,6 +24,6 @@ class Reward66(
 		override val level : Short = 67,
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
-				TwilightStorm(0).getUpdatedItem(false)
+				TwilightStorm(Utils.randRarity()).getUpdatedItem(false)
 		                                             )
               ) : LevelReward
