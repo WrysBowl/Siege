@@ -1,5 +1,6 @@
 package net.siegerpg.siege.shops.shop.materials
 
+import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
@@ -29,5 +30,31 @@ class Pebbles : Shop() {
 			ShopItem(Pebble.tier(5), -1, hashMapOf(
 					Pebble.tier(4) to 8), true) {
 				Pebble.tier(5).getUpdatedItem(false)
+			},
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
+
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
+			ShopItem(Pebble.tier(1).asQuantity(4) as CustomItem, -1, hashMapOf(
+					Pebble.tier(2) to 1), true) {
+				Pebble.tier(1).getUpdatedItem(false).asQuantity(4)
+			},
+			ShopItem(Pebble.tier(2).asQuantity(4) as CustomItem, -1, hashMapOf(
+					Pebble.tier(3) to 1), true) {
+				Pebble.tier(2).getUpdatedItem(false).asQuantity(4)
+			},
+			ShopItem(Pebble.tier(3).asQuantity(4) as CustomItem, -1, hashMapOf(
+					Pebble.tier(4) to 1), true) {
+				Pebble.tier(3).getUpdatedItem(false).asQuantity(4)
+			},
+			ShopItem(Pebble.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
+					Pebble.tier(5) to 1), true) {
+				Pebble.tier(4).getUpdatedItem(false).asQuantity(4)
 			})
 }

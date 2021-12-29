@@ -1,5 +1,6 @@
 package net.siegerpg.siege.shops.shop.materials
 
+import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Wheat
@@ -32,5 +33,33 @@ class Bones : Shop() {
 			ShopItem(Bone.tier(5), -1, hashMapOf(
 					Bone.tier(4) to 8), true) {
 				Bone.tier(5).getUpdatedItem(false)
-			})
+			},
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
+
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
+			ShopItem(Bone.tier(1).asQuantity(4) as CustomItem, -1, hashMapOf(
+					Bone.tier(2) to 1), true) {
+				Bone.tier(1).getUpdatedItem(false).asQuantity(4)
+			},
+			ShopItem(Bone.tier(2).asQuantity(4) as CustomItem, -1, hashMapOf(
+					Bone.tier(3) to 1), true) {
+				Bone.tier(2).getUpdatedItem(false).asQuantity(4)
+			},
+			ShopItem(Bone.tier(3).asQuantity(4) as CustomItem, -1, hashMapOf(
+					Bone.tier(4) to 1), true) {
+				Bone.tier(3).getUpdatedItem(false).asQuantity(4)
+			},
+			ShopItem(Bone.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
+					Bone.tier(5) to 1), true) {
+				Bone.tier(4).getUpdatedItem(false).asQuantity(4)
+			},
+
+	                                            )
 }
