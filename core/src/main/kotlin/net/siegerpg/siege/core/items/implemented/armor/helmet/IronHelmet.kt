@@ -14,7 +14,7 @@ class IronHelmet() : CustomHelmet(
 		material = Material.IRON_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 25.0,
-				toughness = 80.0,
+				defense = 80.0,
 				strength = 5.0
 		                                   ),
                                  ) {

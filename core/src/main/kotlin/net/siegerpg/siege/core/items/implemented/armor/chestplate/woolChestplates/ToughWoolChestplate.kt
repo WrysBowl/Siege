@@ -13,7 +13,7 @@ class ToughWoolChestplate() : CustomChestplate(
 		description = listOf("A cotton jacket"),
 		levelRequirement = 9,
 		material = Material.LEATHER_CHESTPLATE,
-		baseStats = CustomItemUtils.statMap(health = 5.0, toughness = 60.0),
+		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 60.0),
 		leatherColor = Color.WHITE
                                               ) {
 

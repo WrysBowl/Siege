@@ -18,7 +18,7 @@ class ToughRecurveBow() : CustomBow(
 		baseStats = CustomItemUtils.statMap(
 				strength = 28.0,
 				luck = 8.0,
-				toughness = 80.0
+				defense = 80.0
 		                                   ),
                                    ) {
 

@@ -12,7 +12,7 @@ class ToughRefinedDagger() : CustomMeleeWeapon(
 		description = listOf("A dagger, but shinier", "and more pointy"),
 		levelRequirement = 37,
 		material = Material.WOODEN_SWORD,
-		baseStats = CustomItemUtils.statMap(strength = 34.0, toughness = 60.0),
+		baseStats = CustomItemUtils.statMap(strength = 34.0, defense = 60.0),
 		attackSpeed = 1.6
                                               ) {
 

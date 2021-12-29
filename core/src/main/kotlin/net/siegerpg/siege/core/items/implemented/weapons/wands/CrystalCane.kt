@@ -14,7 +14,7 @@ class CrystalCane() : CustomWand(
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 40.0,
-				toughness = -100.0,
+				defense = -100.0,
 				health = -80.0,
 				regeneration = -20.0
 		                                   ),

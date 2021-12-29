@@ -15,7 +15,7 @@ class ElvinChestplate() : CustomChestplate(
 		baseStats = CustomItemUtils.statMap(
 				health = 70.0,
 				luck = 60.0,
-				toughness = -200.0,
+				defense = -200.0,
 				strength = -25.0
 		                                   ),
                                           ) {

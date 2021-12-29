@@ -14,7 +14,7 @@ class CrystalHammer() : CustomMeleeWeapon(
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 150.0,
-				toughness = 50.0,
+				defense = 50.0,
 				regeneration = -30.0,
 				luck = -25.0
 		                                   ),

@@ -12,7 +12,7 @@ class HealingHardenedLeatherBoots() : CustomBoots(
 		description = listOf("Bootleg spurs!"),
 		levelRequirement = 17,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(toughness = 20.0, regeneration = 4.0),
+		baseStats = CustomItemUtils.statMap(defense = 20.0, regeneration = 4.0),
                                                  ) {
 
 	constructor(quality : Int) : this() {

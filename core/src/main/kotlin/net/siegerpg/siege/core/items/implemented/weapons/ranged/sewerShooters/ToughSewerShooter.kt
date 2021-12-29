@@ -15,7 +15,7 @@ class ToughSewerShooter() : CustomBow(
 		baseStats = CustomItemUtils.statMap(
 				strength = 23.0,
 				luck = 5.0,
-				toughness = 60.0
+				defense = 60.0
 		                                   ),
                                      ) {
 

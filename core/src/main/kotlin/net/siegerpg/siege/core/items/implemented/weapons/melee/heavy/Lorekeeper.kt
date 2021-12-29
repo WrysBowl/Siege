@@ -15,7 +15,7 @@ class Lorekeeper() : CustomMeleeWeapon(
 		baseStats = CustomItemUtils.statMap(
 				strength = 175.0,
 				luck = 25.0,
-				toughness = -150.0,
+				defense = -150.0,
 				health = -60.0
 		                                   ),
 		attackSpeed = 0.6

@@ -12,7 +12,7 @@ class ToughChainBoots() : CustomBoots(
 		description = listOf("Not the best foot wear"),
 		levelRequirement = 29,
 		material = Material.CHAINMAIL_BOOTS,
-		baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 25.0),
+		baseStats = CustomItemUtils.statMap(health = 30.0, defense = 25.0),
                                      ) {
 
 	constructor(quality : Int) : this() {

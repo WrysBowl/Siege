@@ -17,7 +17,7 @@ class ReaperBoots() : CustomBoots(
 				health = 50.0,
 				strength = 10.0,
 				luck = -10.0,
-				toughness = -60.0
+				defense = -60.0
 		                                   ),
 		leatherColor = Color.BLACK
                                  ) {

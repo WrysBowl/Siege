@@ -15,7 +15,7 @@ class GuardianOfTwilight() : CustomChestplate(
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 125.0,
-				toughness = 400.0,
+				defense = 400.0,
 				regeneration = 20.0,
 				strength = -50.0,
 				luck = -60.0

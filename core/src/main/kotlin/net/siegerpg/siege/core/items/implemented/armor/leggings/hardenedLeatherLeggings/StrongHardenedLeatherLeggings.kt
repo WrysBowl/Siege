@@ -14,7 +14,7 @@ class StrongHardenedLeatherLeggings() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 15.0,
-				toughness = 30.0,
+				defense = 30.0,
 				strength = 5.0
 		                                   ),
                                                       ) {

@@ -18,7 +18,7 @@ class ToughHotRod() : CustomWand(
 		baseStats = CustomItemUtils.statMap(
 				strength = 20.0,
 				luck = 6.0,
-				toughness = 50.0
+				defense = 50.0
 		                                   ),
 
 		range = 19,

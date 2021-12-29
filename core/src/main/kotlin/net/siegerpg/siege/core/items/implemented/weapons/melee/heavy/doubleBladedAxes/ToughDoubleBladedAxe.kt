@@ -12,7 +12,7 @@ class ToughDoubleBladedAxe() : CustomMeleeWeapon(
 		description = listOf("You're really only going to use one side"),
 		levelRequirement = 19,
 		material = Material.WOODEN_AXE,
-		baseStats = CustomItemUtils.statMap(strength = 35.0, toughness = 7.0),
+		baseStats = CustomItemUtils.statMap(strength = 35.0, defense = 7.0),
 		attackSpeed = 0.7
                                                 ) {
 

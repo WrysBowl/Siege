@@ -13,7 +13,7 @@ class PolishedToughGem() : StatGemType(
 		levelRequirement = 26,
 		material = Material.POPPED_CHORUS_FRUIT,
 
-		statType = StatTypes.TOUGHNESS,
+		statType = StatTypes.DEFENSE,
 		statAmount = 40.0
                                       ) {
 

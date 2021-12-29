@@ -16,7 +16,7 @@ class ToughSlimyBoots() : CustomBoots(
 		                    ),
 		levelRequirement = 3,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(toughness = 15.0),
+		baseStats = CustomItemUtils.statMap(defense = 15.0),
 		leatherColor = Color.LIME
                                      ) {
 

@@ -15,7 +15,7 @@ class PixieDagger() : CustomMeleeWeapon(
 		baseStats = CustomItemUtils.statMap(
 				strength = 60.0,
 				luck = 45.0,
-				toughness = -150.0
+				defense = -150.0
 		                                   ),
 		attackSpeed = 1.7
                                        ) {

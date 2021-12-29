@@ -13,7 +13,7 @@ class CrackedToughGem() : StatGemType(
 		levelRequirement = 8,
 		material = Material.POPPED_CHORUS_FRUIT,
 
-		statType = StatTypes.TOUGHNESS,
+		statType = StatTypes.DEFENSE,
 		statAmount = 15.0
                                      ) {
 

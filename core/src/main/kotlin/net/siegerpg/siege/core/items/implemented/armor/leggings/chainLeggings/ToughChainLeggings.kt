@@ -14,7 +14,7 @@ class ToughChainLeggings() : CustomLeggings(
 		material = Material.CHAINMAIL_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 50.0,
-				toughness = 80.0,
+				defense = 80.0,
 				regeneration = 5.0
 		                                   ),
                                            ) {

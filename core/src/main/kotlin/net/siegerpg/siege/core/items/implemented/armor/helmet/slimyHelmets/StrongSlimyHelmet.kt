@@ -15,7 +15,7 @@ class StrongSlimyHelmet() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 2.0,
-				toughness = 2.0,
+				defense = 2.0,
 				strength = 3.0
 		                                   ),
 		leatherColor = Color.LIME

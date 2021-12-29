@@ -18,7 +18,7 @@ class ToughEarthernWand() : CustomWand(
 		baseStats = CustomItemUtils.statMap(
 				strength = 20.0,
 				luck = 5.0,
-				toughness = 60.0
+				defense = 60.0
 		                                   ),
 
 		range = 17,

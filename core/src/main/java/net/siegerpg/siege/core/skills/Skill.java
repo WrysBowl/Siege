@@ -35,7 +35,7 @@ public class Skill {
 		this.MANA_COST = 0;
 		STATS.put(StatTypes.LUCK, 0.0);
 		STATS.put(StatTypes.STRENGTH, 0.0);
-		STATS.put(StatTypes.TOUGHNESS, 0.0);
+		STATS.put(StatTypes.DEFENSE, 0.0);
 		STATS.put(StatTypes.HEALTH, 0.0);
 		STATS.put(StatTypes.REGENERATION, 0.0);
 		STATS.put(StatTypes.MANA, 0.0);

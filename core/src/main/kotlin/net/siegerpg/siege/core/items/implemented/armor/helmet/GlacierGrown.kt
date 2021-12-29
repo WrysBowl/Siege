@@ -18,7 +18,7 @@ class GlacierGrown() : CustomHelmet(
 				regeneration = 20.0,
 				strength = 15.0,
 				luck = -15.0,
-				toughness = -80.0
+				defense = -80.0
 		                                   ),
 		leatherColor = Color.AQUA
                                    ) {

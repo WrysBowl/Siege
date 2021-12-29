@@ -16,7 +16,7 @@ class CursedSickle() : CustomMeleeWeapon(
 				strength = 40.0,
 				regeneration = 15.0,
 				luck = 20.0,
-				toughness = -100.0
+				defense = -100.0
 		                                   ),
 		attackSpeed = 2.0
                                         ) {

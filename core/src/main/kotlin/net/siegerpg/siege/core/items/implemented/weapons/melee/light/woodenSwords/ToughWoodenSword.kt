@@ -12,7 +12,7 @@ class ToughWoodenSword() : CustomMeleeWeapon(
 		description = listOf("A classic weapon in recruits"),
 		levelRequirement = 25,
 		material = Material.WOODEN_SWORD,
-		baseStats = CustomItemUtils.statMap(strength = 24.0, toughness = 50.0),
+		baseStats = CustomItemUtils.statMap(strength = 24.0, defense = 50.0),
 
 		attackSpeed = 1.6
                                             ) {

@@ -12,7 +12,7 @@ class ToughGreatSword() : CustomMeleeWeapon(
 		description = listOf("A typical medieval weapon"),
 		levelRequirement = 23,
 		material = Material.WOODEN_AXE,
-		baseStats = CustomItemUtils.statMap(strength = 30.0, toughness = 50.0),
+		baseStats = CustomItemUtils.statMap(strength = 30.0, defense = 50.0),
 		attackSpeed = 0.9
                                            ) {
 

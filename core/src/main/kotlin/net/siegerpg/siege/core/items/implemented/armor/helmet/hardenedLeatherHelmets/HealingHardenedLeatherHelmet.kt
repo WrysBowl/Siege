@@ -14,7 +14,7 @@ class HealingHardenedLeatherHelmet() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 10.0,
-				toughness = 20.0,
+				defense = 20.0,
 				regeneration = 4.0
 		                                   ),
                                                    ) {

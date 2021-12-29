@@ -12,7 +12,7 @@ class ToughShank() : CustomMeleeWeapon(
 		description = listOf("An essential tool...in prison"),
 		levelRequirement = 18,
 		material = Material.WOODEN_SWORD,
-		baseStats = CustomItemUtils.statMap(strength = 13.0, toughness = 50.0),
+		baseStats = CustomItemUtils.statMap(strength = 13.0, defense = 50.0),
 
 		attackSpeed = 1.7
                                       ) {

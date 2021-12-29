@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.items.enums
 
 enum class StatTypes(val stylizedName : String) {
 	STRENGTH("Strength"),
-	TOUGHNESS("Toughness"),
+	DEFENSE("Defense"),
 	HEALTH("Health"),
 	LUCK("Luck"),
 	REGENERATION("Regeneration"),

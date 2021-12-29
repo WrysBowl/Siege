@@ -16,7 +16,7 @@ class Illumina() : CustomMeleeWeapon(
 				strength = 80.0,
 				luck = 20.0,
 				regeneration = -20.0,
-				toughness = -50.0
+				defense = -50.0
 		                                   ),
 		attackSpeed = 1.4
                                     ) {

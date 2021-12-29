@@ -12,7 +12,7 @@ class ToughIronAxe() : CustomMeleeWeapon(
 		description = listOf("A fast tree cutter"),
 		levelRequirement = 31,
 		material = Material.WOODEN_AXE,
-		baseStats = CustomItemUtils.statMap(strength = 38.0, toughness = 40.0),
+		baseStats = CustomItemUtils.statMap(strength = 38.0, defense = 40.0),
 		attackSpeed = 1.0
                                         ) {
 

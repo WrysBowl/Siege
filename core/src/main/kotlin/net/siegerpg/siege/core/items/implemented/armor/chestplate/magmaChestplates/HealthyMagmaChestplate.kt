@@ -13,7 +13,7 @@ class HealthyMagmaChestplate() : CustomChestplate(
 		description = listOf("This really warms my heart"),
 		levelRequirement = 13,
 		material = Material.LEATHER_CHESTPLATE,
-		baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 15.0),
+		baseStats = CustomItemUtils.statMap(health = 30.0, defense = 15.0),
 		leatherColor = Color.ORANGE
                                                  ) {
 

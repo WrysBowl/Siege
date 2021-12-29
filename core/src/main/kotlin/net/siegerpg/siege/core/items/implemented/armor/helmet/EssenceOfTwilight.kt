@@ -18,7 +18,7 @@ class EssenceOfTwilight() : CustomHelmet(
 				regeneration = 20.0,
 				luck = 60.0,
 				strength = -20.0,
-				toughness = -80.0
+				defense = -80.0
 		                                   ),
 		leatherColor = Color.PURPLE
                                         ) {

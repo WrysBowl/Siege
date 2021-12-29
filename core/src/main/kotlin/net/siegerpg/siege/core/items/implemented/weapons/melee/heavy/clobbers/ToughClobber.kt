@@ -12,7 +12,7 @@ class ToughClobber() : CustomMeleeWeapon(
 		description = listOf("Let's go clobbing!"),
 		levelRequirement = 35,
 		material = Material.WOODEN_AXE,
-		baseStats = CustomItemUtils.statMap(strength = 46.0, toughness = 40.0),
+		baseStats = CustomItemUtils.statMap(strength = 46.0, defense = 40.0),
 		attackSpeed = 0.9
                                         ) {
 

@@ -16,7 +16,7 @@ class SharpShooter() : CustomBow(
 				strength = 110.0,
 				luck = -15.0,
 				health = -20.0,
-				toughness = -150.0
+				defense = -150.0
 		                                   )
                                 ) {
 

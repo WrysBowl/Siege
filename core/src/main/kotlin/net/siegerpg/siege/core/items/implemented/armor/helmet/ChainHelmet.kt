@@ -12,7 +12,7 @@ class ChainHelmet() : CustomHelmet(
 		description = listOf("Top heavy"),
 		levelRequirement = 29,
 		material = Material.CHAINMAIL_HELMET,
-		baseStats = CustomItemUtils.statMap(health = 50.0, toughness = 20.0),
+		baseStats = CustomItemUtils.statMap(health = 50.0, defense = 20.0),
                                   ) {
 
 	constructor(quality : Int) : this() {

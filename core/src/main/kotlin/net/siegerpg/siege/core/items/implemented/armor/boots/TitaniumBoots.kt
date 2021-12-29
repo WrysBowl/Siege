@@ -14,7 +14,7 @@ class TitaniumBoots() : CustomBoots(
 		material = Material.IRON_BOOTS,
 		baseStats = CustomItemUtils.statMap(
 				health = 40.0,
-				toughness = 100.0,
+				defense = 100.0,
 				regeneration = 10.0,
 				luck = -15.0,
 				strength = -20.0

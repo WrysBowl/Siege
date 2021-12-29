@@ -17,7 +17,7 @@ class ReaperSlacks() : CustomLeggings(
 				health = 60.0,
 				strength = 20.0,
 				luck = -25.0,
-				toughness = -70.0
+				defense = -70.0
 		                                   ),
 		leatherColor = Color.BLACK
                                      ) {

@@ -15,7 +15,7 @@ class SpiritSpearChastiefol() : CustomMeleeWeapon(
 		baseStats = CustomItemUtils.statMap(
 				strength = 90.0,
 				health = 20.0,
-				toughness = -80.0,
+				defense = -80.0,
 				luck = -15.0
 		                                   ),
 		attackSpeed = 0.9

@@ -13,7 +13,7 @@ class HealthyBoneChestplate() : CustomChestplate(
 		description = listOf("Spare ribs"),
 		levelRequirement = 24,
 		material = Material.LEATHER_CHESTPLATE,
-		baseStats = CustomItemUtils.statMap(health = 40.0, toughness = 40.0),
+		baseStats = CustomItemUtils.statMap(health = 40.0, defense = 40.0),
 		leatherColor = Color.GRAY
                                                 ) {
 

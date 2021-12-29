@@ -20,7 +20,7 @@ class BanditCap() : CustomHelmet(
 		description = listOf("Bandits freeze for 3", "seconds if they hit you"),
 		levelRequirement = 20,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(health = 30.0, toughness = 20.0),
+		baseStats = CustomItemUtils.statMap(health = 30.0, defense = 20.0),
                                 ) {
 
 	constructor(quality : Int) : this() {

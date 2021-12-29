@@ -12,7 +12,7 @@ class ToughShovel() : CustomMeleeWeapon(
 		description = listOf("A true grave digger"),
 		levelRequirement = 13,
 		material = Material.WOODEN_SWORD,
-		baseStats = CustomItemUtils.statMap(strength = 12.0, toughness = 40.0),
+		baseStats = CustomItemUtils.statMap(strength = 12.0, defense = 40.0),
 		attackSpeed = 1.5
                                        ) {
 

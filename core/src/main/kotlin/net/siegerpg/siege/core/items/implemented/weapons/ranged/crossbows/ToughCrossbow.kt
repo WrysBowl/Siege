@@ -15,7 +15,7 @@ class ToughCrossbow() : CustomBow(
 		baseStats = CustomItemUtils.statMap(
 				strength = 26.0,
 				luck = 6.0,
-				toughness = 80.0
+				defense = 80.0
 		                                   ),
                                  ) {
 

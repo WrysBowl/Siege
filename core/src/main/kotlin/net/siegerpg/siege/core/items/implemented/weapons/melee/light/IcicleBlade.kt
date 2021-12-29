@@ -15,7 +15,7 @@ class IcicleBlade() : CustomMeleeWeapon(
 		baseStats = CustomItemUtils.statMap(
 				strength = 50.0,
 				health = 40.0,
-				toughness = 50.0,
+				defense = 50.0,
 				luck = -30.0
 		                                   ),
 		attackSpeed = 2.0

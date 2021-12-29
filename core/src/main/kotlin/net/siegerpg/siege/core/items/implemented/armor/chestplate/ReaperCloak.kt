@@ -18,7 +18,7 @@ class ReaperCloak() : CustomChestplate(
 				strength = 20.0,
 				regeneration = 20.0,
 				luck = -25.0,
-				toughness = -90.0
+				defense = -90.0
 		                                   ),
 		leatherColor = Color.BLACK
                                       ) {

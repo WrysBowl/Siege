@@ -13,7 +13,7 @@ class FlawedToughGem() : StatGemType(
 		levelRequirement = 15,
 		material = Material.POPPED_CHORUS_FRUIT,
 
-		statType = StatTypes.TOUGHNESS,
+		statType = StatTypes.DEFENSE,
 		statAmount = 20.0
                                     ) {
 

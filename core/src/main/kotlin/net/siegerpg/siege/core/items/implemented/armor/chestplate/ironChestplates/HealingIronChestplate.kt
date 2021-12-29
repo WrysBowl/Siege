@@ -14,7 +14,7 @@ class HealingIronChestplate() : CustomChestplate(
 		material = Material.IRON_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 50.0,
-				toughness = 50.0,
+				defense = 50.0,
 				regeneration = 8.0
 		                                   ),
                                                 ) {

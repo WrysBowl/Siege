@@ -15,7 +15,7 @@ class HealingBoneHelmet() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 16.0,
-				toughness = 20.0,
+				defense = 20.0,
 				regeneration = 3.0
 		                                   ),
 		leatherColor = Color.GRAY

@@ -14,7 +14,7 @@ class TitaniumLeggings() : CustomLeggings(
 		material = Material.IRON_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 60.0,
-				toughness = 200.0,
+				defense = 200.0,
 				regeneration = 10.0,
 				luck = -25.0,
 				strength = -40.0

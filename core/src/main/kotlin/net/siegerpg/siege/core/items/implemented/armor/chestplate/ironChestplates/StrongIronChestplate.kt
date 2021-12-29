@@ -14,7 +14,7 @@ class StrongIronChestplate() : CustomChestplate(
 		material = Material.IRON_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 20.0,
-				toughness = 50.0,
+				defense = 50.0,
 				strength = 15.0
 		                                   ),
                                                ) {

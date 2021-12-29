@@ -36,7 +36,7 @@ public class Stats implements CommandExecutor {
 		double strength = Utils.round(
 				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH), 2);
 		double toughness = Utils.round(
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.TOUGHNESS), 2);
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.DEFENSE), 2);
 		double luck = Utils.round(
 				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK), 2);
 		double regeneration = Utils.round(

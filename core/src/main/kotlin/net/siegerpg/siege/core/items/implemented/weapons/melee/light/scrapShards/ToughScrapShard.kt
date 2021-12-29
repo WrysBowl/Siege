@@ -12,7 +12,7 @@ class ToughScrapShard() : CustomMeleeWeapon(
 		description = listOf("Scrap metal put together", "to create a sharp shank"),
 		levelRequirement = 29,
 		material = Material.WOODEN_SWORD,
-		baseStats = CustomItemUtils.statMap(strength = 30.0, toughness = 50.0),
+		baseStats = CustomItemUtils.statMap(strength = 30.0, defense = 50.0),
 		attackSpeed = 1.5
                                            ) {
 

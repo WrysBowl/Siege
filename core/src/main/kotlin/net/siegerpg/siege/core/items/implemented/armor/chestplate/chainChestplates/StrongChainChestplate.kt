@@ -14,7 +14,7 @@ class StrongChainChestplate() : CustomChestplate(
 		material = Material.CHAINMAIL_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 30.0,
-				toughness = 40.0,
+				defense = 40.0,
 				strength = 15.0
 		                                   ),
                                                 ) {

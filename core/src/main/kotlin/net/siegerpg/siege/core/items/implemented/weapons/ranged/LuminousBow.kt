@@ -17,7 +17,7 @@ class LuminousBow() : CustomBow(
 				regeneration = 10.0,
 				health = 40.0,
 				luck = -30.0,
-				toughness = -100.0
+				defense = -100.0
 		                                   )
                                ) {
 

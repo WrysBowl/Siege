@@ -194,7 +194,7 @@ public class GemRemover implements Listener {
 							item = new PristineLuckGem(0).getUpdatedItem(false);
 						}
 						break;
-					case TOUGHNESS:
+					case DEFENSE:
 						if (gem.getAmount() == 10.0) {
 							item = new RawToughGem(0).getUpdatedItem(false);
 						} else if (gem.getAmount() == 15.0) {

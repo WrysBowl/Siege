@@ -17,7 +17,7 @@ class GlacierTrekkers() : CustomBoots(
 				health = 100.0,
 				regeneration = 10.0,
 				strength = 15.0,
-				toughness = -100.0
+				defense = -100.0
 		                                   ),
 		leatherColor = Color.AQUA
                                      ) {

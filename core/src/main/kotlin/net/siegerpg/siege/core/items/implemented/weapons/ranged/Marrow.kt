@@ -16,7 +16,7 @@ class Marrow() : CustomBow(
 				strength = 70.0,
 				regeneration = 30.0,
 				health = -30.0,
-				toughness = -100.0
+				defense = -100.0
 		                                   )
                           ) {
 

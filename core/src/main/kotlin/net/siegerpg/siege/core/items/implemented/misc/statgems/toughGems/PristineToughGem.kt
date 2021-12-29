@@ -13,7 +13,7 @@ class PristineToughGem() : StatGemType(
 		levelRequirement = 35,
 		material = Material.POPPED_CHORUS_FRUIT,
 
-		statType = StatTypes.TOUGHNESS,
+		statType = StatTypes.DEFENSE,
 		statAmount = 50.0
                                       ) {
 

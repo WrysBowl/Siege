@@ -12,7 +12,7 @@ class ToughWoodenBow() : CustomBow(
 		description = listOf("Your standard issue ranged weapon"),
 		levelRequirement = 6,
 		material = Material.BOW,
-		baseStats = CustomItemUtils.statMap(strength = 15.0, toughness = 30.0),
+		baseStats = CustomItemUtils.statMap(strength = 15.0, defense = 30.0),
                                   ) {
 
 	constructor(quality : Int) : this() {

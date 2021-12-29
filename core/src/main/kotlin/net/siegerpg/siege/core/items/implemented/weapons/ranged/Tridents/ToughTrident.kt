@@ -15,7 +15,7 @@ class ToughTrident() : CustomBow(
 		baseStats = CustomItemUtils.statMap(
 				strength = 35.0,
 				luck = 16.0,
-				toughness = 70.0
+				defense = 70.0
 		                                   ),
 
 		) {

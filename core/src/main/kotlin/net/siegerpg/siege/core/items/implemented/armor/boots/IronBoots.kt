@@ -14,7 +14,7 @@ class IronBoots() : CustomBoots(
 		material = Material.IRON_BOOTS,
 		baseStats = CustomItemUtils.statMap(
 				health = 20.0,
-				toughness = 60.0,
+				defense = 60.0,
 				strength = 3.0
 		                                   ),
                                ) {

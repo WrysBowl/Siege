@@ -14,7 +14,7 @@ class LuckyIronLeggings() : CustomLeggings(
 		material = Material.IRON_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 20.0,
-				toughness = 50.0,
+				defense = 50.0,
 				regeneration = 10.0,
 				luck = 12.0
 		                                   ),

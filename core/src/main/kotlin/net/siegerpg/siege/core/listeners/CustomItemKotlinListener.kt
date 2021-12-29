@@ -7,7 +7,6 @@ import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomPotion
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
-import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
@@ -15,7 +14,6 @@ import net.siegerpg.siege.core.miscellaneous.DamageIndicator
 import net.siegerpg.siege.core.miscellaneous.Levels
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.cache.MobNames
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
@@ -25,8 +23,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.*
-import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
@@ -201,16 +197,16 @@ class CustomItemKotlinListener : Listener, Runnable {
 		if (damageMulti[attacker] != null) {
 			actualDamage = damageMulti[attacker]?.times(actualDamage) ?: actualDamage
 		}
-		val vicToughness =
+		val vicDefense =
 				if (victim is Player)
-					CustomItemUtils.getPlayerStat(victim, StatTypes.TOUGHNESS) / (damageMulti[victim] ?: 1.0)
+					CustomItemUtils.getPlayerStat(victim, StatTypes.DEFENSE) / (damageMulti[victim] ?: 1.0)
 				else 0.0
 		val attStrengthStat =
 				if (attacker is Player && actualDamage > 0)
 					(damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
 				else damage
 		val reducedDamage =
-				attStrengthStat * (1 - (calcReducedToughness(vicToughness) / 1000)) //custom attack damage with toughness considered
+				attStrengthStat * (1 - (calcReducedToughness(vicDefense) / 1000)) //custom attack damage with toughness considered
 
 		e.damage = reducedDamage //scaled down to damage player by vanilla damage
 

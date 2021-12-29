@@ -13,7 +13,7 @@ class RawToughGem() : StatGemType(
 		levelRequirement = 4,
 		material = Material.POPPED_CHORUS_FRUIT,
 
-		statType = StatTypes.TOUGHNESS,
+		statType = StatTypes.DEFENSE,
 		statAmount = 10.0
                                  ) {
 

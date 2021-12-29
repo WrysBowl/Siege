@@ -14,7 +14,7 @@ class FairySoulWand() : CustomWand(
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 50.0,
-				toughness = -300.0,
+				defense = -300.0,
 				luck = 60.0
 		                                   ),
 		range = 22,

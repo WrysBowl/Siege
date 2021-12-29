@@ -12,7 +12,7 @@ class ToughEarthernHammer() : CustomMeleeWeapon(
 		description = listOf("Let's go clobbing!"),
 		levelRequirement = 39,
 		material = Material.WOODEN_AXE,
-		baseStats = CustomItemUtils.statMap(strength = 65.0, toughness = 50.0),
+		baseStats = CustomItemUtils.statMap(strength = 65.0, defense = 50.0),
 		attackSpeed = 0.7
                                                ) {
 

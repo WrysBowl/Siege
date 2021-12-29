@@ -12,7 +12,7 @@ class ToughSplinteredBone() : CustomMeleeWeapon(
 		description = listOf("The shard of a", "human femur bone"),
 		levelRequirement = 34,
 		material = Material.WOODEN_SWORD,
-		baseStats = CustomItemUtils.statMap(strength = 32.0, toughness = 50.0),
+		baseStats = CustomItemUtils.statMap(strength = 32.0, defense = 50.0),
 		attackSpeed = 1.5
                                                ) {
 

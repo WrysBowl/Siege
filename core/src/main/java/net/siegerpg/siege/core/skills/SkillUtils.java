@@ -60,7 +60,7 @@ public class SkillUtils {
 			{
 				put(StatTypes.LUCK, 0.0);
 				put(StatTypes.STRENGTH, 0.0);
-				put(StatTypes.TOUGHNESS, 0.0);
+				put(StatTypes.DEFENSE, 0.0);
 				put(StatTypes.HEALTH, 0.0);
 				put(StatTypes.REGENERATION, 0.0);
 				put(StatTypes.MANA, 0.0);

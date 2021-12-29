@@ -16,7 +16,7 @@ class SporeShot() : CustomBow(
 				strength = 85.0,
 				luck = 50.0,
 				regeneration = -50.0,
-				toughness = -200.0
+				defense = -200.0
 		                                   )
                              ) {
 

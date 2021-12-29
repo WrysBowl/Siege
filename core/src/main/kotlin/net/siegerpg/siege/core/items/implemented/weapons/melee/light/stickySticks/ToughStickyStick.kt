@@ -12,7 +12,7 @@ class ToughStickyStick() : CustomMeleeWeapon(
 		description = listOf("Globs of slime on a stick"),
 		levelRequirement = 5,
 		material = Material.WOODEN_SWORD,
-		baseStats = CustomItemUtils.statMap(strength = 4.0, toughness = 20.0),
+		baseStats = CustomItemUtils.statMap(strength = 4.0, defense = 20.0),
 		attackSpeed = 1.6
                                             ) {
 

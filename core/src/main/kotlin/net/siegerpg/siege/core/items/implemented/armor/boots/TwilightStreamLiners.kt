@@ -18,7 +18,7 @@ class TwilightStreamLiners() : CustomBoots(
 				strength = 25.0,
 				luck = 20.0,
 				regeneration = 20.0,
-				toughness = -50.0
+				defense = -50.0
 		                                   ),
 		leatherColor = Color.PURPLE
                                           ) {

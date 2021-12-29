@@ -13,7 +13,7 @@ class ToughStrawChestplate() : CustomChestplate(
 		description = listOf("Scarecrow..."),
 		levelRequirement = 4,
 		material = Material.LEATHER_CHESTPLATE,
-		baseStats = CustomItemUtils.statMap(toughness = 60.0),
+		baseStats = CustomItemUtils.statMap(defense = 60.0),
 		leatherColor = Color.YELLOW
                                                ) {
 

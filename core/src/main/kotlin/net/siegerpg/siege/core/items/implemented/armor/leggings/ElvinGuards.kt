@@ -16,7 +16,7 @@ class ElvinGuards() : CustomLeggings(
 				health = 60.0,
 				luck = 50.0,
 				strength = -20.0,
-				toughness = -150.0
+				defense = -150.0
 		                                   ),
                                     ) {
 

@@ -14,7 +14,7 @@ class StrongChainHelmet() : CustomHelmet(
 		material = Material.CHAINMAIL_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 20.0,
-				toughness = 20.0,
+				defense = 20.0,
 				strength = 8.0
 		                                   ),
                                         ) {

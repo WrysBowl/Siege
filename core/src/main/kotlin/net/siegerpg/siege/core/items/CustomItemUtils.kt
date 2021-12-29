@@ -130,7 +130,7 @@ object CustomItemUtils {
 	fun statMap(
 			strength : Double? = null,
 			regeneration : Double? = null,
-			toughness : Double? = null,
+			defense : Double? = null,
 			health : Double? = null,
 			luck : Double? = null,
 			mana : Double? = null,
@@ -139,7 +139,7 @@ object CustomItemUtils {
 		val map = hashMapOf<StatTypes, Double>()
 		strength?.let { map[StatTypes.STRENGTH] = it }
 		regeneration?.let { map[StatTypes.REGENERATION] = it }
-		toughness?.let { map[StatTypes.TOUGHNESS] = it }
+		defense?.let { map[StatTypes.DEFENSE] = it }
 		health?.let { map[StatTypes.HEALTH] = it }
 		luck?.let { map[StatTypes.LUCK] = it }
 		mana?.let { map[StatTypes.MANA] = it }

@@ -12,7 +12,7 @@ class ToughGiantClub() : CustomMeleeWeapon(
 		description = listOf("Kneecap smasher"),
 		levelRequirement = 7,
 		material = Material.WOODEN_AXE,
-		baseStats = CustomItemUtils.statMap(strength = 15.0, toughness = 30.0),
+		baseStats = CustomItemUtils.statMap(strength = 15.0, defense = 30.0),
 
 		attackSpeed = 0.7
                                           ) {

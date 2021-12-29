@@ -14,7 +14,7 @@ class FrostWarden() : CustomWand(
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 90.0,
-				toughness = 50.0,
+				defense = 50.0,
 				luck = -100.0,
 				regeneration = -20.0
 		                                   ),

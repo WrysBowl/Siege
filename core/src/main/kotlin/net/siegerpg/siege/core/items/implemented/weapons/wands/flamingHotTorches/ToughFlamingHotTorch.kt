@@ -18,7 +18,7 @@ class ToughFlamingHotTorch() : CustomWand(
 		baseStats = CustomItemUtils.statMap(
 				strength = 18.0,
 				luck = 10.0,
-				toughness = 70.0
+				defense = 70.0
 		                                   ),
 
 		range = 19,

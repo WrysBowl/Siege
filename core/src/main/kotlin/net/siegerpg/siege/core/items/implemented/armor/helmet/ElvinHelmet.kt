@@ -14,7 +14,7 @@ class ElvinHelmet() : CustomHelmet(
 		material = Material.IRON_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 40.0,
-				toughness = 50.0,
+				defense = 50.0,
 				luck = 15.0,
 				regeneration = -10.0,
 				strength = -10.0

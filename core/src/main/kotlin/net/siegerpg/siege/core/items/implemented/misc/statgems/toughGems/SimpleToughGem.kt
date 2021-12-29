@@ -13,7 +13,7 @@ class SimpleToughGem() : StatGemType(
 		levelRequirement = 20,
 		material = Material.POPPED_CHORUS_FRUIT,
 
-		statType = StatTypes.TOUGHNESS,
+		statType = StatTypes.DEFENSE,
 		statAmount = 30.0
                                     ) {
 

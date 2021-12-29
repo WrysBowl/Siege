@@ -18,7 +18,7 @@ class GlacierLeggings() : CustomLeggings(
 				regeneration = 40.0,
 				strength = 25.0,
 				luck = -25.0,
-				toughness = -225.0
+				defense = -225.0
 		                                   ),
 		leatherColor = Color.AQUA
                                         ) {

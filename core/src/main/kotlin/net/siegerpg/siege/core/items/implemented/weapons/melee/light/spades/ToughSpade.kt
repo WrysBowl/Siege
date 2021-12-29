@@ -12,7 +12,7 @@ class ToughSpade() : CustomMeleeWeapon(
 		description = listOf("Not a shovel"),
 		levelRequirement = 9,
 		material = Material.WOODEN_SWORD,
-		baseStats = CustomItemUtils.statMap(strength = 9.0, toughness = 40.0),
+		baseStats = CustomItemUtils.statMap(strength = 9.0, defense = 40.0),
 		attackSpeed = 1.5
                                       ) {
 

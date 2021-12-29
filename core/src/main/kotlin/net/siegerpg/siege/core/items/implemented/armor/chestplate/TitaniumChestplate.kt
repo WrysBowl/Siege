@@ -14,7 +14,7 @@ class TitaniumChestplate() : CustomChestplate(
 		material = Material.IRON_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 80.0,
-				toughness = 300.0,
+				defense = 300.0,
 				regeneration = 15.0,
 				luck = -35.0,
 				strength = -50.0

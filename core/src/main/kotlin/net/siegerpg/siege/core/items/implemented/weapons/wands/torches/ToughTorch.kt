@@ -15,7 +15,7 @@ class ToughTorch() : CustomWand(
 		baseStats = CustomItemUtils.statMap(
 				strength = 18.0,
 				luck = 6.0,
-				toughness = 70.0
+				defense = 70.0
 		                                   ),
 
 		range = 19,

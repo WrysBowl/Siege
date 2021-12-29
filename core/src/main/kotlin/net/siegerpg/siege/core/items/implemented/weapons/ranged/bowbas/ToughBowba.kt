@@ -15,7 +15,7 @@ class ToughBowba() : CustomBow(
 		baseStats = CustomItemUtils.statMap(
 				strength = 45.0,
 				luck = 13.0,
-				toughness = 80.0
+				defense = 80.0
 		                                   ),
                               ) {
 

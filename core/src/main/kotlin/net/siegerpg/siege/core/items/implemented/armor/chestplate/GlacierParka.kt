@@ -18,7 +18,7 @@ class GlacierParka() : CustomChestplate(
 				regeneration = 70.0,
 				strength = 35.0,
 				luck = -35.0,
-				toughness = -320.0
+				defense = -320.0
 		                                   ),
 		leatherColor = Color.AQUA
                                        ) {

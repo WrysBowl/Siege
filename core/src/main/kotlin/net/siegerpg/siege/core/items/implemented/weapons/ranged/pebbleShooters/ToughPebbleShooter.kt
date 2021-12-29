@@ -12,7 +12,7 @@ class ToughPebbleShooter() : CustomBow(
 		description = listOf("Now comes with pebble", "shooting support!"),
 		levelRequirement = 10,
 		material = Material.BOW,
-		baseStats = CustomItemUtils.statMap(strength = 18.0, toughness = 40.0),
+		baseStats = CustomItemUtils.statMap(strength = 18.0, defense = 40.0),
                                       ) {
 
 	constructor(quality : Int) : this() {

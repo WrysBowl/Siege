@@ -12,7 +12,7 @@ class ToughGlowingTwig() : CustomWand(
 		description = listOf("A twig from the spirit world"),
 		levelRequirement = 8,
 		material = Material.WOODEN_HOE,
-		baseStats = CustomItemUtils.statMap(strength = 8.0, luck = 5.0, toughness = 50.0),
+		baseStats = CustomItemUtils.statMap(strength = 8.0, luck = 5.0, defense = 50.0),
 
 		range = 12,
 		red = 255,

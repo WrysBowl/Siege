@@ -15,7 +15,7 @@ class ToughSlimeSpoofer() : CustomWand(
 		baseStats = CustomItemUtils.statMap(
 				strength = 10.0,
 				luck = 6.0,
-				toughness = 40.0
+				defense = 40.0
 		                                   ),
 
 		range = 10,

@@ -12,7 +12,7 @@ class ToughGlisteningTwig() : CustomWand(
 		description = listOf("A dead twig reborn"),
 		levelRequirement = 6,
 		material = Material.WOODEN_HOE,
-		baseStats = CustomItemUtils.statMap(strength = 4.0, luck = 4.0, toughness = 40.0),
+		baseStats = CustomItemUtils.statMap(strength = 4.0, luck = 4.0, defense = 40.0),
 
 		range = 12,
 		red = 255,

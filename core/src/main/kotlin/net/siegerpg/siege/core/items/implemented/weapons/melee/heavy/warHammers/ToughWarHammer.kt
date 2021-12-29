@@ -12,7 +12,7 @@ class ToughWarHammer() : CustomMeleeWeapon(
 		description = listOf("Both ends have proven to be deadly"),
 		levelRequirement = 27,
 		material = Material.WOODEN_AXE,
-		baseStats = CustomItemUtils.statMap(strength = 46.0, toughness = 60.0),
+		baseStats = CustomItemUtils.statMap(strength = 46.0, defense = 60.0),
 		attackSpeed = 0.7
                                           ) {
 

@@ -15,7 +15,7 @@ class HealingBoneLeggings() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 16.0,
-				toughness = 20.0,
+				defense = 20.0,
 				regeneration = 7.0
 		                                   ),
 		leatherColor = Color.GRAY

@@ -14,7 +14,7 @@ class StrongHardenedLeatherChestplate() : CustomChestplate(
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 20.0,
-				toughness = 30.0,
+				defense = 30.0,
 				strength = 5.0
 		                                   ),
                                                           ) {
