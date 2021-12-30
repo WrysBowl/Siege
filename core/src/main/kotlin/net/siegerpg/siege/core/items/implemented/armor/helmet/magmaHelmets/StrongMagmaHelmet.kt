@@ -13,7 +13,7 @@ class StrongMagmaHelmet() : CustomHelmet(
 		description = listOf("Quite the hot head"),
 		levelRequirement = 12,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(health = 10.0, strength = 5.0),
+		baseStats = CustomItemUtils.statMap(health = 14.0, strength = 10.0),
 		leatherColor = Color.ORANGE
                                         ) {
 

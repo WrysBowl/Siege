@@ -13,7 +13,7 @@ class HealthyMagmaHelmet() : CustomHelmet(
 		description = listOf("Quite the hot head"),
 		levelRequirement = 12,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(health = 20.0),
+		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 12.0),
 		leatherColor = Color.ORANGE
                                          ) {
 
