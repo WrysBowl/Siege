@@ -41,20 +41,20 @@ class Vines : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(Vine.tier(1).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Vine.tier(1).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Vine.tier(2) to 1), true) {
-				Vine.tier(1).getUpdatedItem(false).asQuantity(4)
+				Vine.tier(1).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Vine.tier(2).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Vine.tier(2).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Vine.tier(3) to 1), true) {
-				Vine.tier(2).getUpdatedItem(false).asQuantity(4)
+				Vine.tier(2).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Vine.tier(3).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Vine.tier(3).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Vine.tier(4) to 1), true) {
-				Vine.tier(3).getUpdatedItem(false).asQuantity(4)
+				Vine.tier(3).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Vine.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Vine.tier(4).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Vine.tier(5) to 1), true) {
-				Vine.tier(4).getUpdatedItem(false).asQuantity(4)
+				Vine.tier(4).getUpdatedItem(false).asQuantity(8)
 			})
 }
