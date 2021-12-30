@@ -14,11 +14,11 @@ class TwilightStreamLiners() : CustomBoots(
 		levelRequirement = 59,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(
-				health = 50.0,
-				strength = 25.0,
-				luck = 20.0,
-				regeneration = 20.0,
-				defense = -50.0
+				health = 62.0,
+				strength = 70.0,
+				luck = 35.0,
+				regeneration = 40.0,
+				defense = -80.0
 		                                   ),
 		leatherColor = Color.PURPLE
                                           ) {

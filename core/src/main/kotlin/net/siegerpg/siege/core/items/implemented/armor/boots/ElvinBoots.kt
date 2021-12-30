@@ -14,9 +14,9 @@ class ElvinBoots() : CustomBoots(
 		material = Material.IRON_BOOTS,
 		baseStats = CustomItemUtils.statMap(
 				health = 50.0,
-				luck = 25.0,
+				luck = 92.0,
+				strength = -15.0,
 				regeneration = -10.0,
-				strength = -15.0
 		                                   ),
                                 ) {
 

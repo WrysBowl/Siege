@@ -14,10 +14,10 @@ class ReaperBoots() : CustomBoots(
 		levelRequirement = 39,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(
-				health = 50.0,
-				strength = 10.0,
-				luck = -10.0,
-				defense = -60.0
+				health = 80.0,
+				strength = 60.0,
+				defense = -60.0,
+				luck = -10.0
 		                                   ),
 		leatherColor = Color.BLACK
                                  ) {

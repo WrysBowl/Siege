@@ -13,11 +13,11 @@ class TitaniumBoots() : CustomBoots(
 		levelRequirement = 49,
 		material = Material.IRON_BOOTS,
 		baseStats = CustomItemUtils.statMap(
-				health = 40.0,
+				health = 80.0,
 				defense = 100.0,
-				regeneration = 10.0,
+				regeneration = 30.0,
+				strength = -20.0,
 				luck = -15.0,
-				strength = -20.0
 		                                   ),
                                    ) {
 

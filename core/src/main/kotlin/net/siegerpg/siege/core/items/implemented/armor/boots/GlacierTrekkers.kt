@@ -14,9 +14,9 @@ class GlacierTrekkers() : CustomBoots(
 		levelRequirement = 54,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(
-				health = 100.0,
+				health = 80.0,
+				strength = 115.0,
 				regeneration = 10.0,
-				strength = 15.0,
 				defense = -100.0
 		                                   ),
 		leatherColor = Color.AQUA
