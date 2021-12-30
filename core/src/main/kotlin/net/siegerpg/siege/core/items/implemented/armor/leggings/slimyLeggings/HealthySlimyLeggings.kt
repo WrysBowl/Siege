@@ -13,7 +13,7 @@ class HealthySlimyLeggings() : CustomLeggings(
 		description = listOf("Waste high in sewage"),
 		levelRequirement = 4,
 		material = Material.LEATHER_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(health = 14.0),
+		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 5.0),
 		leatherColor = Color.LIME
                                              ) {
 
