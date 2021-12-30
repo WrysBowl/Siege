@@ -13,11 +13,7 @@ class HealingSlimyChestplate() : CustomChestplate(
 		description = listOf("Jelly belly"),
 		levelRequirement = 4,
 		material = Material.LEATHER_CHESTPLATE,
-		baseStats = CustomItemUtils.statMap(
-				health = 10.0,
-				defense = 20.0,
-				regeneration = 3.0
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 4.0, regeneration = 12.0),
 		leatherColor = Color.LIME
                                                  ) {
 
