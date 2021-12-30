@@ -13,7 +13,7 @@ class HealingWoolLeggings() : CustomLeggings(
 		description = listOf("Dressed for the winter"),
 		levelRequirement = 9,
 		material = Material.LEATHER_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(health = 6.0, regeneration = 7.0),
+		baseStats = CustomItemUtils.statMap(health = 8.0, regeneration = 17.0),
 		leatherColor = Color.WHITE
                                             ) {
 

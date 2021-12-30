@@ -13,7 +13,7 @@ class LuckyWoolLeggings() : CustomLeggings(
 		description = listOf("Dressed for the winter"),
 		levelRequirement = 9,
 		material = Material.LEATHER_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(health = 8.0, luck = 5.0, regeneration = 5.0),
+		baseStats = CustomItemUtils.statMap(health = 8.0, regeneration = 5.0, luck = 15.0),
 		leatherColor = Color.WHITE
                                           ) {
 

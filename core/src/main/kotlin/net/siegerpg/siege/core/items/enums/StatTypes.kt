@@ -1,11 +1,13 @@
 package net.siegerpg.siege.core.items.enums
 
 enum class StatTypes(val stylizedName : String) {
-	STRENGTH("Strength"),
-	DEFENSE("Defense"),
 	HEALTH("Health"),
-	LUCK("Luck"),
+	DEFENSE("Defense"),
+
+	STRENGTH("Strength"),
 	REGENERATION("Regeneration"),
+	LUCK("Luck"),
+
 	MANA("Mana"),
 	MANA_REGEN("Mana Regen");
 
