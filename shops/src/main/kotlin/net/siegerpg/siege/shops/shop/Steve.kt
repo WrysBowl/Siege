@@ -88,7 +88,7 @@ class Steve : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyWoolChestplate(-1), 900, hashMapOf(
+					LuckyWoolChestplate(-1), -1, hashMapOf(
 					Wool.tier(2) to 5,
 					Feather.tier(2) to 3
 					                                       ), true
@@ -96,7 +96,7 @@ class Steve : Shop() {
 				LuckyWoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongWoolChestplate(-1), 900, hashMapOf(
+					StrongWoolChestplate(-1), -1, hashMapOf(
 					Wool.tier(2) to 5,
 					Bone.tier(2) to 3
 					                                        ), true
@@ -104,7 +104,7 @@ class Steve : Shop() {
 				StrongWoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughWoolChestplate(-1), 900, hashMapOf(
+					ToughWoolChestplate(-1), -1, hashMapOf(
 					Wool.tier(2) to 4,
 					Pebble.tier(2) to 4
 					                                       ), true
@@ -112,7 +112,7 @@ class Steve : Shop() {
 				ToughWoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyWoolChestplate(-1), 900, hashMapOf(
+					HealthyWoolChestplate(-1), -1, hashMapOf(
 					Wool.tier(2) to 3,
 					PlantMatter.tier(2) to 5
 					                                         ), true
@@ -120,7 +120,7 @@ class Steve : Shop() {
 				HealthyWoolChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingWoolChestplate(-1), 900, hashMapOf(
+					HealingWoolChestplate(-1), -1, hashMapOf(
 					Wool.tier(2) to 4,
 					Wheat.tier(2) to 4
 					                                         ), true
@@ -140,7 +140,7 @@ class Steve : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyWoolLeggings(-1), 800, hashMapOf(
+					LuckyWoolLeggings(-1), -1, hashMapOf(
 					Wool.tier(2) to 3,
 					Feather.tier(2) to 4
 					                                     ), true
@@ -148,7 +148,7 @@ class Steve : Shop() {
 				LuckyWoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongWoolLeggings(-1), 800, hashMapOf(
+					StrongWoolLeggings(-1), -1, hashMapOf(
 					Wool.tier(2) to 3,
 					Bone.tier(2) to 3
 					                                      ), true
@@ -156,7 +156,7 @@ class Steve : Shop() {
 				StrongWoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughWoolLeggings(-1), 800, hashMapOf(
+					ToughWoolLeggings(-1), -1, hashMapOf(
 					Wool.tier(2) to 2,
 					Pebble.tier(2) to 5
 					                                     ), true
@@ -164,7 +164,7 @@ class Steve : Shop() {
 				ToughWoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyWoolLeggings(-1), 800, hashMapOf(
+					HealthyWoolLeggings(-1), -1, hashMapOf(
 					Wool.tier(2) to 3,
 					PlantMatter.tier(2) to 4
 					                                       ), true
@@ -172,7 +172,7 @@ class Steve : Shop() {
 				HealthyWoolLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingWoolLeggings(-1), 800, hashMapOf(
+					HealingWoolLeggings(-1), -1, hashMapOf(
 					Wool.tier(2) to 4,
 					Wheat.tier(2) to 3
 					                                       ), true
@@ -192,7 +192,7 @@ class Steve : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyWoolBoots(-1), 600, hashMapOf(
+					LuckyWoolBoots(-1), -1, hashMapOf(
 					Wool.tier(2) to 2,
 					Feather.tier(2) to 2
 					                                  ), true
@@ -200,7 +200,7 @@ class Steve : Shop() {
 				LuckyWoolBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongWoolBoots(-1), 600, hashMapOf(
+					StrongWoolBoots(-1), -1, hashMapOf(
 					Wool.tier(2) to 2,
 					Bone.tier(2) to 2
 					                                   ), true
@@ -208,7 +208,7 @@ class Steve : Shop() {
 				StrongWoolBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughWoolBoots(-1), 600, hashMapOf(
+					ToughWoolBoots(-1), -1, hashMapOf(
 					Wool.tier(2) to 2,
 					Pebble.tier(2) to 3
 					                                  ), true
@@ -216,7 +216,7 @@ class Steve : Shop() {
 				ToughWoolBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyWoolBoots(-1), 600, hashMapOf(
+					HealthyWoolBoots(-1), -1, hashMapOf(
 					Wool.tier(2) to 2,
 					PlantMatter.tier(2) to 2
 					                                    ), true
@@ -224,7 +224,7 @@ class Steve : Shop() {
 				HealthyWoolBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingWoolBoots(-1), 600, hashMapOf(
+					HealingWoolBoots(-1), -1, hashMapOf(
 					Wool.tier(2) to 1,
 					Wheat.tier(2) to 3
 					                                    ), true

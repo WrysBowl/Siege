@@ -88,7 +88,7 @@ class Magmar : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyMagmaChestplate(-1), 2250, hashMapOf(
+					LuckyMagmaChestplate(-1), -1, hashMapOf(
 					Magma.tier(2) to 5,
 					Feather.tier(2) to 3
 					                                         ), true
@@ -96,7 +96,7 @@ class Magmar : Shop() {
 				LuckyMagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongMagmaChestplate(-1), 2250, hashMapOf(
+					StrongMagmaChestplate(-1), -1, hashMapOf(
 					Magma.tier(2) to 4,
 					Bone.tier(2) to 3
 					                                          ), true
@@ -104,7 +104,7 @@ class Magmar : Shop() {
 				StrongMagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughMagmaChestplate(-1), 2250, hashMapOf(
+					ToughMagmaChestplate(-1), -1, hashMapOf(
 					Magma.tier(2) to 3,
 					Pebble.tier(2) to 5
 					                                         ), true
@@ -112,7 +112,7 @@ class Magmar : Shop() {
 				ToughMagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyMagmaChestplate(-1), 2250, hashMapOf(
+					HealthyMagmaChestplate(-1), -1, hashMapOf(
 					Magma.tier(2) to 4,
 					PlantMatter.tier(2) to 4
 					                                           ), true
@@ -120,7 +120,7 @@ class Magmar : Shop() {
 				HealthyMagmaChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingMagmaChestplate(-1), 2250, hashMapOf(
+					HealingMagmaChestplate(-1), -1, hashMapOf(
 					Magma.tier(2) to 4,
 					Wheat.tier(3) to 2
 					                                           ), true
@@ -140,7 +140,7 @@ class Magmar : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyMagmaLeggings(-1), 2000, hashMapOf(
+					LuckyMagmaLeggings(-1), -1, hashMapOf(
 					Magma.tier(2) to 4,
 					Feather.tier(2) to 3
 					                                       ), true
@@ -148,7 +148,7 @@ class Magmar : Shop() {
 				LuckyMagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongMagmaLeggings(-1), 2000, hashMapOf(
+					StrongMagmaLeggings(-1), -1, hashMapOf(
 					Magma.tier(2) to 4,
 					Bone.tier(2) to 3
 					                                        ), true
@@ -156,7 +156,7 @@ class Magmar : Shop() {
 				StrongMagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughMagmaLeggings(-1), 2000, hashMapOf(
+					ToughMagmaLeggings(-1), -1, hashMapOf(
 					Magma.tier(2) to 3,
 					Pebble.tier(2) to 5
 					                                       ), true
@@ -164,7 +164,7 @@ class Magmar : Shop() {
 				ToughMagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyMagmaLeggings(-1), 2000, hashMapOf(
+					HealthyMagmaLeggings(-1), -1, hashMapOf(
 					Magma.tier(2) to 3,
 					PlantMatter.tier(2) to 4
 					                                         ), true
@@ -172,7 +172,7 @@ class Magmar : Shop() {
 				HealthyMagmaLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingMagmaLeggings(-1), 2000, hashMapOf(
+					HealingMagmaLeggings(-1), -1, hashMapOf(
 					Magma.tier(2) to 4,
 					Wheat.tier(3) to 1
 					                                         ), true

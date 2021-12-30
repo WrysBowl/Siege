@@ -88,7 +88,7 @@ class Kayla : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyChainChestplate(-1), 3250, hashMapOf(
+					LuckyChainChestplate(-1), -1, hashMapOf(
 					Chain.tier(2) to 6,
 					Feather.tier(2) to 4
 					                                         ), true
@@ -96,7 +96,7 @@ class Kayla : Shop() {
 				LuckyChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongChainChestplate(-1), 3250, hashMapOf(
+					StrongChainChestplate(-1), -1, hashMapOf(
 					Chain.tier(3) to 5,
 					Bone.tier(2) to 5
 					                                          ), true
@@ -104,7 +104,7 @@ class Kayla : Shop() {
 				StrongChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughChainChestplate(-1), 3250, hashMapOf(
+					ToughChainChestplate(-1), -1, hashMapOf(
 					Chain.tier(2) to 4,
 					Pebble.tier(2) to 6
 					                                         ), true
@@ -112,7 +112,7 @@ class Kayla : Shop() {
 				ToughChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyChainChestplate(-1), 3250, hashMapOf(
+					HealthyChainChestplate(-1), -1, hashMapOf(
 					Chain.tier(2) to 4,
 					PlantMatter.tier(2) to 4
 					                                           ), true
@@ -120,7 +120,7 @@ class Kayla : Shop() {
 				HealthyChainChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingChainChestplate(-1), 3250, hashMapOf(
+					HealingChainChestplate(-1), -1, hashMapOf(
 					Chain.tier(2) to 5,
 					Wheat.tier(4) to 1
 					                                           ), true
@@ -140,7 +140,7 @@ class Kayla : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyChainLeggings(-1), 3000, hashMapOf(
+					LuckyChainLeggings(-1), -1, hashMapOf(
 					Chain.tier(2) to 5,
 					Feather.tier(2) to 4
 					                                       ), true
@@ -148,7 +148,7 @@ class Kayla : Shop() {
 				LuckyChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongChainLeggings(-1), 3000, hashMapOf(
+					StrongChainLeggings(-1), -1, hashMapOf(
 					Chain.tier(2) to 5,
 					Bone.tier(2) to 3
 					                                        ), true
@@ -156,7 +156,7 @@ class Kayla : Shop() {
 				StrongChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughChainLeggings(-1), 3000, hashMapOf(
+					ToughChainLeggings(-1), -1, hashMapOf(
 					Chain.tier(2) to 6,
 					Pebble.tier(2) to 4
 					                                       ), true
@@ -164,7 +164,7 @@ class Kayla : Shop() {
 				ToughChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyChainLeggings(-1), 3000, hashMapOf(
+					HealthyChainLeggings(-1), -1, hashMapOf(
 					Chain.tier(2) to 5,
 					PlantMatter.tier(2) to 4
 					                                         ), true
@@ -172,7 +172,7 @@ class Kayla : Shop() {
 				HealthyChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingChainLeggings(-1), 3000, hashMapOf(
+					HealingChainLeggings(-1), -1, hashMapOf(
 					Chain.tier(2) to 5,
 					Wheat.tier(4) to 1
 					                                         ), true
@@ -192,7 +192,7 @@ class Kayla : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyChainBoots(-1), 1750, hashMapOf(
+					LuckyChainBoots(-1), -1, hashMapOf(
 					Chain.tier(2) to 3,
 					Feather.tier(2) to 2
 					                                    ), true
@@ -200,7 +200,7 @@ class Kayla : Shop() {
 				LuckyChainBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongChainBoots(-1), 1750, hashMapOf(
+					StrongChainBoots(-1), -1, hashMapOf(
 					Chain.tier(2) to 3,
 					Bone.tier(2) to 2
 					                                     ), true
@@ -208,7 +208,7 @@ class Kayla : Shop() {
 				StrongChainBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughChainBoots(-1), 1750, hashMapOf(
+					ToughChainBoots(-1), -1, hashMapOf(
 					Chain.tier(2) to 3,
 					Pebble.tier(2) to 3
 					                                    ), true
@@ -216,7 +216,7 @@ class Kayla : Shop() {
 				ToughChainBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyChainBoots(-1), 1750, hashMapOf(
+					HealthyChainBoots(-1), -1, hashMapOf(
 					Chain.tier(2) to 3,
 					PlantMatter.tier(2) to 4
 					                                      ), true
@@ -224,7 +224,7 @@ class Kayla : Shop() {
 				HealthyChainBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingChainBoots(-1), 1750, hashMapOf(
+					HealingChainBoots(-1), -1, hashMapOf(
 					Chain.tier(2) to 3,
 					Wheat.tier(4) to 1
 					                                      ), true

@@ -88,7 +88,7 @@ class Rancher : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyHardenedLeatherChestplate(-1), 3000, hashMapOf(
+					LuckyHardenedLeatherChestplate(-1), -1, hashMapOf(
 					Leather.tier(2) to 4,
 					Feather.tier(2) to 4
 					                                                   ), true
@@ -96,7 +96,7 @@ class Rancher : Shop() {
 				LuckyHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongHardenedLeatherChestplate(-1), 3000, hashMapOf(
+					StrongHardenedLeatherChestplate(-1), -1, hashMapOf(
 					Leather.tier(2) to 5,
 					Bone.tier(2) to 3
 					                                                    ), true
@@ -104,7 +104,7 @@ class Rancher : Shop() {
 				StrongHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughHardenedLeatherChestplate(-1), 3000, hashMapOf(
+					ToughHardenedLeatherChestplate(-1), -1, hashMapOf(
 					Leather.tier(2) to 3,
 					Pebble.tier(2) to 5
 					                                                   ), true
@@ -112,7 +112,7 @@ class Rancher : Shop() {
 				ToughHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyHardenedLeatherChestplate(-1), 3000, hashMapOf(
+					HealthyHardenedLeatherChestplate(-1), -1, hashMapOf(
 					Leather.tier(2) to 3,
 					PlantMatter.tier(2) to 5
 					                                                     ), true
@@ -120,7 +120,7 @@ class Rancher : Shop() {
 				HealthyHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingHardenedLeatherChestplate(-1), 3000, hashMapOf(
+					HealingHardenedLeatherChestplate(-1), -1, hashMapOf(
 					Leather.tier(2) to 4,
 					Wheat.tier(4) to 1
 					                                                     ), true
@@ -140,7 +140,7 @@ class Rancher : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyHardenedLeatherLeggings(-1), 2500, hashMapOf(
+					LuckyHardenedLeatherLeggings(-1), -1, hashMapOf(
 					Leather.tier(2) to 3,
 					Feather.tier(2) to 4
 					                                                 ), true
@@ -148,7 +148,7 @@ class Rancher : Shop() {
 				LuckyHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongHardenedLeatherLeggings(-1), 2500, hashMapOf(
+					StrongHardenedLeatherLeggings(-1), -1, hashMapOf(
 					Leather.tier(2) to 4,
 					Bone.tier(2) to 3
 					                                                  ), true
@@ -156,7 +156,7 @@ class Rancher : Shop() {
 				StrongHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughHardenedLeatherLeggings(-1), 2500, hashMapOf(
+					ToughHardenedLeatherLeggings(-1), -1, hashMapOf(
 					Leather.tier(2) to 2,
 					Pebble.tier(2) to 5
 					                                                 ), true
@@ -164,7 +164,7 @@ class Rancher : Shop() {
 				ToughHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyHardenedLeatherLeggings(-1), 2500, hashMapOf(
+					HealthyHardenedLeatherLeggings(-1), -1, hashMapOf(
 					Leather.tier(2) to 3,
 					PlantMatter.tier(2) to 4
 					                                                   ), true
@@ -172,7 +172,7 @@ class Rancher : Shop() {
 				HealthyHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingHardenedLeatherLeggings(-1), 2500, hashMapOf(
+					HealingHardenedLeatherLeggings(-1), -1, hashMapOf(
 					Leather.tier(2) to 3,
 					Wheat.tier(4) to 1
 					                                                   ), true
@@ -192,7 +192,7 @@ class Rancher : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyHardenedLeatherBoots(-1), 1500, hashMapOf(
+					LuckyHardenedLeatherBoots(-1), -1, hashMapOf(
 					Leather.tier(2) to 2,
 					Feather.tier(2) to 2
 					                                              ), true
@@ -200,7 +200,7 @@ class Rancher : Shop() {
 				LuckyHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongHardenedLeatherBoots(-1), 1500, hashMapOf(
+					StrongHardenedLeatherBoots(-1), -1, hashMapOf(
 					Leather.tier(2) to 3,
 					Bone.tier(2) to 1
 					                                               ), true
@@ -208,7 +208,7 @@ class Rancher : Shop() {
 				StrongHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughHardenedLeatherBoots(-1), 1500, hashMapOf(
+					ToughHardenedLeatherBoots(-1), -1, hashMapOf(
 					Leather.tier(2) to 2,
 					Pebble.tier(2) to 3
 					                                              ), true
@@ -216,7 +216,7 @@ class Rancher : Shop() {
 				ToughHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyHardenedLeatherBoots(-1), 1500, hashMapOf(
+					HealthyHardenedLeatherBoots(-1), -1, hashMapOf(
 					Leather.tier(2) to 1,
 					PlantMatter.tier(2) to 4
 					                                                ), true
@@ -224,7 +224,7 @@ class Rancher : Shop() {
 				HealthyHardenedLeatherBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingHardenedLeatherBoots(-1), 1500, hashMapOf(
+					HealingHardenedLeatherBoots(-1), -1, hashMapOf(
 					Leather.tier(2) to 2,
 					Wheat.tier(3) to 4
 					                                                ), true
