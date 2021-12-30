@@ -7,14 +7,14 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CrackedToughGem() : StatGemType(
-		name = "Cracked Tough Gem",
+		name = "Cracked Defense Gem",
 		customModelData = 520004,
 		description = listOf("Most of it's power has been leaked"),
 		levelRequirement = 8,
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.DEFENSE,
-		statAmount = 15.0
+		statAmount = 1.5
                                      ) {
 
 	constructor(quality : Int) : this() {

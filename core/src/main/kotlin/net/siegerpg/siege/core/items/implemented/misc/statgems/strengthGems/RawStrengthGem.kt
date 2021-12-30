@@ -14,7 +14,7 @@ class RawStrengthGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.STRENGTH,
-		statAmount = 4.0
+		statAmount = 2.0
                                     ) {
 
 	constructor(quality : Int) : this() {

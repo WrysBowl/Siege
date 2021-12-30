@@ -7,14 +7,14 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class PolishedToughGem() : StatGemType(
-		name = "Polished Tough Gem",
+		name = "Polished Defense Gem",
 		customModelData = 550004,
 		description = listOf("Energy primed for use!"),
 		levelRequirement = 26,
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.DEFENSE,
-		statAmount = 40.0
+		statAmount = 4.0
                                       ) {
 
 	constructor(quality : Int) : this() {

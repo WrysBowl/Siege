@@ -7,14 +7,14 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class SimpleToughGem() : StatGemType(
-		name = "Simple Tough Gem",
+		name = "Simple Defense Gem",
 		customModelData = 540004,
 		description = listOf("A simple gem"),
 		levelRequirement = 20,
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.DEFENSE,
-		statAmount = 30.0
+		statAmount = 3.0
                                     ) {
 
 	constructor(quality : Int) : this() {
