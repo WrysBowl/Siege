@@ -15,10 +15,10 @@ class GlacierGrown() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 110.0,
-				regeneration = 20.0,
-				strength = 15.0,
+				regeneration = 35.0,
+				strength = 90.0,
+				defense = -80.0,
 				luck = -15.0,
-				defense = -80.0
 		                                   ),
 		leatherColor = Color.AQUA
                                    ) {

@@ -15,10 +15,10 @@ class EssenceOfTwilight() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 60.0,
-				regeneration = 20.0,
-				luck = 60.0,
-				strength = -20.0,
-				defense = -80.0
+				regeneration = 70.0,
+				luck = 110.0,
+				defense = -80.0,
+				strength = -20.0
 		                                   ),
 		leatherColor = Color.PURPLE
                                         ) {

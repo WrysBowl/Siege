@@ -15,9 +15,9 @@ class TitaniumHelmet() : CustomHelmet(
 		baseStats = CustomItemUtils.statMap(
 				health = 50.0,
 				defense = 125.0,
-				regeneration = 10.0,
+				regeneration = 79.0,
+				strength = -20.0,
 				luck = -15.0,
-				strength = -20.0
 		                                   ),
                                      ) {
 

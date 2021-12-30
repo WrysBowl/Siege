@@ -13,11 +13,11 @@ class ElvinHelmet() : CustomHelmet(
 		levelRequirement = 44,
 		material = Material.IRON_HELMET,
 		baseStats = CustomItemUtils.statMap(
-				health = 40.0,
-				defense = 50.0,
-				luck = 15.0,
+				health = 80.0,
+				defense = 68.0,
+				luck = 79.0,
+				strength = -10.0,
 				regeneration = -10.0,
-				strength = -10.0
 		                                   )
                                   ) {
 
