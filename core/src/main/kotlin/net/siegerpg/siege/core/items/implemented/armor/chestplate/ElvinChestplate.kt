@@ -13,8 +13,8 @@ class ElvinChestplate() : CustomChestplate(
 		levelRequirement = 45,
 		material = Material.CHAINMAIL_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
-				health = 70.0,
-				luck = 60.0,
+				health = 84.0,
+				luck = 90.0,
 				defense = -200.0,
 				strength = -25.0
 		                                   ),

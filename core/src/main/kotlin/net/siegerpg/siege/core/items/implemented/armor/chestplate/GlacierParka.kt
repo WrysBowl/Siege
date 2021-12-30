@@ -16,9 +16,9 @@ class GlacierParka() : CustomChestplate(
 		baseStats = CustomItemUtils.statMap(
 				health = 350.0,
 				regeneration = 70.0,
-				strength = 35.0,
-				luck = -35.0,
-				defense = -320.0
+				strength = 90.0,
+				defense = -320.0,
+				luck = -35.0
 		                                   ),
 		leatherColor = Color.AQUA
                                        ) {

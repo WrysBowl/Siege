@@ -13,11 +13,11 @@ class TitaniumChestplate() : CustomChestplate(
 		levelRequirement = 50,
 		material = Material.IRON_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
-				health = 80.0,
 				defense = 300.0,
+				strength = 150.0,
 				regeneration = 15.0,
+				health = -80.0,
 				luck = -35.0,
-				strength = -50.0
 		                                   ),
                                              ) {
 
