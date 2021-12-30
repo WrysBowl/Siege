@@ -279,6 +279,7 @@ public class BlockBreakListener implements Listener {
 			int exp = blockDrop.getExp(true);
 			double luck = CustomItemUtils.INSTANCE.getPlayerStat(
 					player, StatTypes.LUCK, player.getItemInHand());
+			if (luck < 0) luck = 0;
 			for (Map.Entry< Material, Integer > entry : addedLuck.entrySet()) {
 				if (!blockType.equals(entry.getKey())) continue;
 				luck += entry.getValue();

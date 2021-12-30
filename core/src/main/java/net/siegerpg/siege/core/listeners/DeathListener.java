@@ -211,6 +211,8 @@ public class DeathListener implements Listener, Runnable {
 		if (player != null) {
 			luck = CustomItemUtils.INSTANCE.getPlayerStat(
 					player, StatTypes.LUCK, player.getItemInHand());
+			if (luck < 0) luck = 0;
+
 		}
 
 		if (exp > 0 && player != null) {
