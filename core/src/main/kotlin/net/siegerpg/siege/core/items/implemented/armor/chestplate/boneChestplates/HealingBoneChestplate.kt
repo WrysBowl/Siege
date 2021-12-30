@@ -13,11 +13,7 @@ class HealingBoneChestplate() : CustomChestplate(
 		description = listOf("Spare ribs"),
 		levelRequirement = 24,
 		material = Material.LEATHER_CHESTPLATE,
-		baseStats = CustomItemUtils.statMap(
-				health = 25.0,
-				defense = 20.0,
-				regeneration = 8.0
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 25.0, defense = 20.0, regeneration = 35.0),
 		leatherColor = Color.GRAY
                                                 ) {
 
