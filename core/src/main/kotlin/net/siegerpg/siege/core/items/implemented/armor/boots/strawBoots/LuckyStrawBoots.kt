@@ -13,7 +13,7 @@ class LuckyStrawBoots() : CustomBoots(
 		description = listOf("Crunch, crunch, crunch"),
 		levelRequirement = 3,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(luck = 3.0),
+		baseStats = CustomItemUtils.statMap(luck = 5.0),
 		leatherColor = Color.YELLOW
                                      ) {
 

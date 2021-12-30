@@ -13,7 +13,7 @@ class StrongStrawBoots() : CustomBoots(
 		description = listOf("Crunch, crunch, crunch"),
 		levelRequirement = 3,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(strength = 4.0),
+		baseStats = CustomItemUtils.statMap(strength = 6.0),
 		leatherColor = Color.YELLOW
                                       ) {
 
