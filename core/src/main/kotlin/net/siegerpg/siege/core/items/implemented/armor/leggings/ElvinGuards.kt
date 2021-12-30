@@ -13,10 +13,10 @@ class ElvinGuards() : CustomLeggings(
 		levelRequirement = 45,
 		material = Material.CHAINMAIL_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
-				health = 60.0,
+				health = 100.0,
 				luck = 50.0,
+				defense = -150.0,
 				strength = -20.0,
-				defense = -150.0
 		                                   ),
                                     ) {
 

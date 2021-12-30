@@ -16,8 +16,8 @@ class TitaniumLeggings() : CustomLeggings(
 				health = 60.0,
 				defense = 200.0,
 				regeneration = 10.0,
+				strength = -40.0,
 				luck = -25.0,
-				strength = -40.0
 		                                   ),
                                          ) {
 

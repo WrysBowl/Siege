@@ -14,10 +14,10 @@ class ReaperSlacks() : CustomLeggings(
 		levelRequirement = 40,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
-				health = 60.0,
-				strength = 20.0,
+				health = 75.0,
+				strength = 30.0,
+				defense = -40.0,
 				luck = -25.0,
-				defense = -70.0
 		                                   ),
 		leatherColor = Color.BLACK
                                      ) {

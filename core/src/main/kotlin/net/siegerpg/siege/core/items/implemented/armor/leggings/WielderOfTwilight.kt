@@ -15,7 +15,7 @@ class WielderOfTwilight() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				strength = 70.0,
-				regeneration = 40.0,
+				regeneration = 30.0,
 				luck = 30.0,
 				health = -80.0,
 				defense = -100.0

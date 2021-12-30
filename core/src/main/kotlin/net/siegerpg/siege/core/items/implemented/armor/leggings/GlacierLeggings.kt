@@ -15,10 +15,10 @@ class GlacierLeggings() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 200.0,
+				strength = 87.0,
 				regeneration = 40.0,
-				strength = 25.0,
+				defense = -225.0,
 				luck = -25.0,
-				defense = -225.0
 		                                   ),
 		leatherColor = Color.AQUA
                                         ) {
