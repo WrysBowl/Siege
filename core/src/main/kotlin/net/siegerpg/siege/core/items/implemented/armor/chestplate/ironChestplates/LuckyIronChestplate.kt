@@ -12,7 +12,7 @@ class LuckyIronChestplate() : CustomChestplate(
 		description = listOf("Bullet proof"),
 		levelRequirement = 35,
 		material = Material.IRON_CHESTPLATE,
-		baseStats = CustomItemUtils.statMap(health = 40.0, defense = 60.0, luck = 13.0),
+		baseStats = CustomItemUtils.statMap(health = 40.0, defense = 45.0, luck = 56.0),
                                               ) {
 
 	constructor(quality : Int) : this() {
