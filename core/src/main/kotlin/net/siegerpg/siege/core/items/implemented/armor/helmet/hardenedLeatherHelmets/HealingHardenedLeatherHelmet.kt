@@ -12,11 +12,7 @@ class HealingHardenedLeatherHelmet() : CustomHelmet(
 		description = listOf("Cow Hat"),
 		levelRequirement = 17,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(
-				health = 10.0,
-				defense = 20.0,
-				regeneration = 4.0
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 8.0, defense = 15.0, regeneration = 22.0),
                                                    ) {
 
 	constructor(quality : Int) : this() {
