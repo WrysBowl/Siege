@@ -12,7 +12,7 @@ class LuckyIronBoots() : CustomBoots(
 		description = listOf("Iron clad boots"),
 		levelRequirement = 34,
 		material = Material.IRON_BOOTS,
-		baseStats = CustomItemUtils.statMap(health = 20.0, luck = 10.0),
+		baseStats = CustomItemUtils.statMap(health = 20.0, strength = 10.0, luck = 59.0),
                                     ) {
 
 	constructor(quality : Int) : this() {

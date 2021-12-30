@@ -12,7 +12,7 @@ class HealingIronBoots() : CustomBoots(
 		description = listOf("Iron clad boots"),
 		levelRequirement = 34,
 		material = Material.IRON_BOOTS,
-		baseStats = CustomItemUtils.statMap(health = 20.0, regeneration = 8.0),
+		baseStats = CustomItemUtils.statMap(health = 20.0, regeneration = 61.0),
                                       ) {
 
 	constructor(quality : Int) : this() {
