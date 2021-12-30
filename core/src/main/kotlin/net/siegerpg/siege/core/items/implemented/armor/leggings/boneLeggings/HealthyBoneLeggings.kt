@@ -13,7 +13,7 @@ class HealthyBoneLeggings() : CustomLeggings(
 		description = listOf("Protects your bone...s"),
 		levelRequirement = 24,
 		material = Material.LEATHER_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(health = 35.0),
+		baseStats = CustomItemUtils.statMap(health = 39.0, defense = 25.0, regeneration = 2.0),
 		leatherColor = Color.GRAY
                                             ) {
 
