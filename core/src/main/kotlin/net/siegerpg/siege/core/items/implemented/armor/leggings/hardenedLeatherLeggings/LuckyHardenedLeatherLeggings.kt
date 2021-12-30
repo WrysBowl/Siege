@@ -12,7 +12,7 @@ class LuckyHardenedLeatherLeggings() : CustomLeggings(
 		description = listOf("Leather but erect"),
 		levelRequirement = 18,
 		material = Material.LEATHER_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 20.0, luck = 5.0),
+		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 20.0, luck = 29.0),
                                                      ) {
 
 	constructor(quality : Int) : this() {
