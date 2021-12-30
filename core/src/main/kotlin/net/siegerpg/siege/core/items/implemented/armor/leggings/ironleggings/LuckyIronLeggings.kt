@@ -12,12 +12,7 @@ class LuckyIronLeggings() : CustomLeggings(
 		description = listOf("Iron jenkins"),
 		levelRequirement = 35,
 		material = Material.IRON_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(
-				health = 20.0,
-				defense = 50.0,
-				regeneration = 10.0,
-				luck = 12.0
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 30.0, regeneration = 10.0, luck = 58.0),
                                           ) {
 
 	constructor(quality : Int) : this() {

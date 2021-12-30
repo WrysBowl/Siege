@@ -12,11 +12,7 @@ class IronLeggings() : CustomLeggings(
 		description = listOf("Iron jenkins"),
 		levelRequirement = 35,
 		material = Material.IRON_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(
-				health = 40.0,
-				defense = 100.0,
-				strength = 4.0,
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 40.0, defense = 54.0, strength = 10.0,),
                                      ) {
 
 	constructor(quality : Int) : this() {
