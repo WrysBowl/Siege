@@ -213,7 +213,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 		val isCritical = damage > maxDamage
 
 		setVictimName(victim, e.damage, vicMaxHealth)
-		DamageIndicator.showDamageIndicator(e.damage, victim.location, isCritical)
+		DamageIndicator.showDamageIndicator(reducedDamage, victim.location, isCritical)
 	}
 
 	private fun calcReducedToughness(initToughness : Double) : Double {
