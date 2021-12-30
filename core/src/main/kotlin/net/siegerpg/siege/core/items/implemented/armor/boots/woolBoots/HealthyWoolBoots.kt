@@ -13,7 +13,7 @@ class HealthyWoolBoots() : CustomBoots(
 		description = listOf("Moccasins?"),
 		levelRequirement = 8,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(health = 13.0),
+		baseStats = CustomItemUtils.statMap(health = 13.0, defense = 10.0),
 		leatherColor = Color.WHITE
                                       ) {
 

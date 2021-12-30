@@ -13,7 +13,7 @@ class LuckyWoolBoots() : CustomBoots(
 		description = listOf("Moccasins?"),
 		levelRequirement = 8,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(health = 6.0, luck = 4.0),
+		baseStats = CustomItemUtils.statMap(health = 6.0, luck = 17.0),
 		leatherColor = Color.WHITE
                                     ) {
 
