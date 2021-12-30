@@ -13,7 +13,7 @@ class HealingStrawChestplate() : CustomChestplate(
 		description = listOf("Scarecrow..."),
 		levelRequirement = 4,
 		material = Material.LEATHER_CHESTPLATE,
-		baseStats = CustomItemUtils.statMap(health = 6.0, regeneration = 5.0),
+		baseStats = CustomItemUtils.statMap(health = 6.0, regeneration = 10.0),
 		leatherColor = Color.YELLOW
                                                  ) {
 
