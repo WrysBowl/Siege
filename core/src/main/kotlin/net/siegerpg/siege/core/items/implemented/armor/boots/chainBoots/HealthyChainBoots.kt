@@ -12,7 +12,7 @@ class HealthyChainBoots() : CustomBoots(
 		description = listOf("Not the best foot wear"),
 		levelRequirement = 29,
 		material = Material.CHAINMAIL_BOOTS,
-		baseStats = CustomItemUtils.statMap(health = 50.0),
+		baseStats = CustomItemUtils.statMap(health = 50.0, defense = 15.0, regeneration = 15.0),
                                        ) {
 
 	constructor(quality : Int) : this() {
