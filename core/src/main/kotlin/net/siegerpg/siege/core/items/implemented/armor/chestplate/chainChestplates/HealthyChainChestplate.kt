@@ -12,7 +12,7 @@ class HealthyChainChestplate() : CustomChestplate(
 		description = listOf("Cut resistant"),
 		levelRequirement = 30,
 		material = Material.CHAINMAIL_CHESTPLATE,
-		baseStats = CustomItemUtils.statMap(health = 110.0),
+		baseStats = CustomItemUtils.statMap(health = 48.0, defense = 25.0, regeneration = 10.0),
                                                  ) {
 
 	constructor(quality : Int) : this() {
