@@ -13,11 +13,7 @@ class HealingBoneHelmet() : CustomHelmet(
 		description = listOf("A second skull"),
 		levelRequirement = 23,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(
-				health = 16.0,
-				defense = 20.0,
-				regeneration = 3.0
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 16.0, defense = 20.0, regeneration = 31.0),
 		leatherColor = Color.GRAY
                                         ) {
 
