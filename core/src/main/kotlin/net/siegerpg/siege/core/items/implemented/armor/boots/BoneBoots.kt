@@ -13,7 +13,7 @@ class BoneBoots() : CustomBoots(
 		description = listOf("Clunky footpads"),
 		levelRequirement = 23,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(health = 10.0, defense = 50.0),
+		baseStats = CustomItemUtils.statMap(health = 10.0, defense = 37.0, regeneration = 15.0),
 		leatherColor = Color.GRAY
                                ) {
 
