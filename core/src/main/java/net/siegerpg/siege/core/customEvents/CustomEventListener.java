@@ -14,7 +14,6 @@ public class CustomEventListener implements Listener {
 	public static HashMap<String, CustomEvent> events = new HashMap<>() {
 		{
 			put("GOLD_STORM", new Gold_Storm());
-			put("THUNDER_STORM", new Thunder_Storm());
 			put("HASTE_BUFF", new Haste_Buff());
 			put("SPEED_BUFF", new Speed_Buff());
 			put("MORE_CARROTS", new More_Carrots());
