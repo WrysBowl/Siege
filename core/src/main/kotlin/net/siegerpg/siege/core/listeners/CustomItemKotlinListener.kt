@@ -27,6 +27,7 @@ import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
 import java.math.BigDecimal
+import kotlin.math.abs
 import kotlin.math.sqrt
 
 
@@ -217,7 +218,9 @@ class CustomItemKotlinListener : Listener, Runnable {
 	}
 
 	private fun calcReducedToughness(initToughness : Double) : Double {
-		return 10.0 * sqrt(5.0 * initToughness)
+		var multiplier = 1
+		if (initToughness < 0.0) multiplier = -1
+		return multiplier * (10.0 * sqrt(5.0 * abs(initToughness)))
 	}
 
 	private fun setVictimName(
