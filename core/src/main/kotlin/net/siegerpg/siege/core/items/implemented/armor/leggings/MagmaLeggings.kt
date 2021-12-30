@@ -13,11 +13,7 @@ class MagmaLeggings() : CustomLeggings(
 		description = listOf("Burning fashion. Quite literally"),
 		levelRequirement = 13,
 		material = Material.LEATHER_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(
-				health = 20.0,
-				defense = 20.0,
-				regeneration = 15.0
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 20.0, regeneration = 15.0),
 		leatherColor = Color.ORANGE
                                       ) {
 
