@@ -13,7 +13,7 @@ class HealingStrawHat() : CustomHelmet(
 		description = listOf("Farmer"),
 		levelRequirement = 3,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(health = 2.0, regeneration = 3.0),
+		baseStats = CustomItemUtils.statMap(health = 2.0, regeneration = 5.0),
 		leatherColor = Color.YELLOW
                                       ) {
 

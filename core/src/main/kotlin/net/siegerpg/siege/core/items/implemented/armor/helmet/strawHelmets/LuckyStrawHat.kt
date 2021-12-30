@@ -13,7 +13,7 @@ class LuckyStrawHat() : CustomHelmet(
 		description = listOf("Farmer"),
 		levelRequirement = 3,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(health = 5.0, luck = 4.0),
+		baseStats = CustomItemUtils.statMap(health = 2.0, luck = 5.0),
 		leatherColor = Color.YELLOW
                                     ) {
 

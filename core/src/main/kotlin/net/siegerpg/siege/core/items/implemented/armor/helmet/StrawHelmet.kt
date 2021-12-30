@@ -13,7 +13,7 @@ class StrawHelmet() : CustomHelmet(
 		description = listOf("Farmer"),
 		levelRequirement = 3,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(health = 8.0, defense = 5.0),
+		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 2.0, strength = 2.0),
 		leatherColor = Color.YELLOW
                                   ) {
 

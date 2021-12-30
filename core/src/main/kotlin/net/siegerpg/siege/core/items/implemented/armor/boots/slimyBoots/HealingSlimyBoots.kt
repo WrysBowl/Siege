@@ -16,7 +16,7 @@ class HealingSlimyBoots() : CustomBoots(
 		                    ),
 		levelRequirement = 3,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(regeneration = 2.0),
+		baseStats = CustomItemUtils.statMap(regeneration = 3.0),
 		leatherColor = Color.LIME
                                        ) {
 
