@@ -9,7 +9,7 @@ class BrownMushroom() : Cosmetic(
 		name = "Brown Mushroom",
 		customModelData = 1,
 		description = listOf(""),
-		material = Material.BROWN_MUSHROOM,
+		material = Material.BROWN_MUSHROOM_BLOCK,
                                 ) {
 
 	constructor(quality : Int) : this() {
