@@ -12,7 +12,7 @@ class HealingChainLeggings() : CustomLeggings(
 		description = listOf("Flimsy legs"),
 		levelRequirement = 30,
 		material = Material.CHAINMAIL_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(health = 40.0, regeneration = 20.0),
+		baseStats = CustomItemUtils.statMap(health = 40.0, regeneration = 48.0),
                                              ) {
 
 	constructor(quality : Int) : this() {

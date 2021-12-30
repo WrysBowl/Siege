@@ -12,11 +12,7 @@ class ToughChainLeggings() : CustomLeggings(
 		description = listOf("Flimsy legs"),
 		levelRequirement = 30,
 		material = Material.CHAINMAIL_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(
-				health = 50.0,
-				defense = 80.0,
-				regeneration = 5.0
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 35.0, defense = 48.0, regeneration = 2.0),
                                            ) {
 
 	constructor(quality : Int) : this() {
