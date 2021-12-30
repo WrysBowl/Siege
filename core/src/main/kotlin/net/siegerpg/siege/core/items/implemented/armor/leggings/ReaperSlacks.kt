@@ -15,7 +15,7 @@ class ReaperSlacks() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 75.0,
-				strength = 30.0,
+				strength = 72.0,
 				defense = -40.0,
 				luck = -25.0,
 		                                   ),
