@@ -13,11 +13,7 @@ class StrawLeggings() : CustomLeggings(
 		description = listOf("The Last Straw"),
 		levelRequirement = 4,
 		material = Material.LEATHER_LEGGINGS,
-		baseStats = CustomItemUtils.statMap(
-				health = 10.0,
-				defense = 10.0,
-				regeneration = 5.0
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 10.0, defense = 10.0, regeneration = 5.0),
 		leatherColor = Color.YELLOW
                                       ) {
 
