@@ -13,7 +13,7 @@ class HealingWoolHelmet() : CustomHelmet(
 		description = listOf("Keep your ears warm"),
 		levelRequirement = 8,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(regeneration = 5.0),
+		baseStats = CustomItemUtils.statMap(defense = 8.0, regeneration = 12.0),
 		leatherColor = Color.WHITE
                                         ) {
 

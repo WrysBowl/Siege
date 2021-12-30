@@ -13,11 +13,7 @@ class StrongWoolHelmet() : CustomHelmet(
 		description = listOf("Keep your ears warm"),
 		levelRequirement = 8,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(
-				health = 4.0,
-				defense = 10.0,
-				strength = 4.0
-		                                   ),
+		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 8.0, strength = 10.0),
 		leatherColor = Color.WHITE
                                        ) {
 
