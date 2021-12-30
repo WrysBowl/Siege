@@ -13,7 +13,7 @@ class LuckyMagmaBoots() : CustomBoots(
 		description = listOf("Some lit boots"),
 		levelRequirement = 12,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(health = 5.0, luck = 4.0),
+		baseStats = CustomItemUtils.statMap(health = 15.0, luck = 19.0),
 		leatherColor = Color.ORANGE
                                      ) {
 

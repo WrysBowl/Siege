@@ -13,7 +13,7 @@ class ToughMagmaBoots() : CustomBoots(
 		description = listOf("Some lit boots"),
 		levelRequirement = 12,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(defense = 30.0),
+		baseStats = CustomItemUtils.statMap(health = 10.0, defense = 28.0, regeneration = 2.0),
 		leatherColor = Color.ORANGE
                                      ) {
 

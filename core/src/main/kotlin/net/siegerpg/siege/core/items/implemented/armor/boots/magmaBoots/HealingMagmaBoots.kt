@@ -13,7 +13,7 @@ class HealingMagmaBoots() : CustomBoots(
 		description = listOf("Some lit boots"),
 		levelRequirement = 12,
 		material = Material.LEATHER_BOOTS,
-		baseStats = CustomItemUtils.statMap(health = 4.0, regeneration = 2.0),
+		baseStats = CustomItemUtils.statMap(health = 12.0, regeneration = 20.0),
 		leatherColor = Color.ORANGE
                                        ) {
 
