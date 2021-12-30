@@ -11,7 +11,6 @@ import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import net.siegerpg.siege.core.skills.Skill;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -44,7 +43,6 @@ public class PlayerData implements Listener {
 	public static HashMap< Player, Double > playerMana = new HashMap<>();
 	public static HashMap< Player, Location > playerDeathLocations = new HashMap<>();
 
-	public static HashMap< Player, HashMap< Integer, Skill > > playerSkills = new HashMap<>();
 	public static HashMap< Player, ArrayList< Action > > playerTriggers = new HashMap<>();
 
 	public static void setStats(Player player) {
@@ -94,7 +92,6 @@ public class PlayerData implements Listener {
 		playerHealth.remove(player);
 		playerMana.remove(player);
 		playerCurrentMana.remove(player);
-		playerSkills.remove(player);
 	}
 
 	@EventHandler( priority = EventPriority.LOWEST )
