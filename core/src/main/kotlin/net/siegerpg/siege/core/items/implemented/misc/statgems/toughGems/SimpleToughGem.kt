@@ -14,7 +14,7 @@ class SimpleToughGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.DEFENSE,
-		statAmount = 3.0
+		statAmount = 30.0
                                     ) {
 
 	constructor(quality : Int) : this() {

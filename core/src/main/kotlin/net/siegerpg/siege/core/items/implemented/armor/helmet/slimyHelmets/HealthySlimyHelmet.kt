@@ -13,7 +13,7 @@ class HealthySlimyHelmet() : CustomHelmet(
 		description = listOf("So this is what it feels", "like to be a slime"),
 		levelRequirement = 3,
 		material = Material.LEATHER_HELMET,
-		baseStats = CustomItemUtils.statMap(health = 8.0),
+		baseStats = CustomItemUtils.statMap(health = 8.0, defense = 4.0),
 		leatherColor = Color.LIME
                                          ) {
 

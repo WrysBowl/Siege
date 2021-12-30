@@ -14,7 +14,7 @@ class PristineToughGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.DEFENSE,
-		statAmount = 5.0
+		statAmount = 50.0
                                       ) {
 
 	constructor(quality : Int) : this() {
