@@ -5,6 +5,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public abstract class Skill {
 
@@ -13,24 +16,55 @@ public abstract class Skill {
 	 */
 	private String name;
 
+	public String getName() {
+
+		return name;
+	}
+
 	/**
 	 * The skill's description, what will be shown to the user
 	 */
-	protected String description;
+	private String description;
 
+	public String getDescription() {
+
+		return description;
+	}
 
 	/**
 	 * The skill's parent (this skill is a child of that skill
 	 * Can be null (for the root skill)
 	 */
 	@Nullable
-	public Skill parent;
+	private Skill parent = null;
 
 	/**
 	 * The skill's children (this skill is a parent of all those skills)
 	 */
 	@NotNull
-	public Skill[] children = new Skill[] {};
+	private List< Skill > children = new ArrayList<>();
+
+	public void addChildren(List< Skill > children) {
+
+		children.forEach(child -> child.setParent(this));
+	}
+
+	public void setParent(Skill parent) {
+
+		this.parent = parent;
+	}
+
+	@Nullable
+	public Skill getParent() {
+
+		return this.parent;
+	}
+
+	@NotNull
+	public List< Skill > getChildren() {
+
+		return Collections.unmodifiableList(this.children);
+	}
 
 	/**
 	 * Based on the level, how long the skill cooldown should last
@@ -69,6 +103,17 @@ public abstract class Skill {
 	public void trigger(@NotNull Player player, int level) {
 		//TODO Here we check if the player has enough mana to run the thingy
 
+	}
+
+	/**
+	 * Gets the root of the tree
+	 *
+	 * @return
+	 */
+	public Skill getRoot() {
+
+		if (parent == null) return this;
+		return parent.getRoot();
 	}
 
 }

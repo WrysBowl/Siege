@@ -27,7 +27,7 @@ public class SkillData {
 	 *
 	 * @return The level
 	 */
-	public int getSkillLevel(OfflinePlayer player, String skillName) {
+	public static int getSkillLevel(OfflinePlayer player, String skillName) {
 
 		JsonElement data = getSkillData(player)
 				.get(skillName);
@@ -45,7 +45,7 @@ public class SkillData {
 	 * @param skillName The skill name
 	 * @param level     The skill level
 	 */
-	public void setSkillLevel(OfflinePlayer player, String skillName, int level) {
+	public static void setSkillLevel(OfflinePlayer player, String skillName, int level) {
 
 		JsonObject data = getSkillData(player);
 		data.addProperty(skillName, level);
@@ -93,7 +93,7 @@ public class SkillData {
 	 * @param player The player that owns the data
 	 * @param data   The skill data
 	 */
-	public void setSkillData(OfflinePlayer player, JsonObject data) {
+	public static void setSkillData(OfflinePlayer player, JsonObject data) {
 
 		skillCache.put(player.getUniqueId(), data);
 		if (skillCache.containsKey(player.getUniqueId()))
