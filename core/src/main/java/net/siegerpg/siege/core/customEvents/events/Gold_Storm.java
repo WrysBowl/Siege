@@ -42,7 +42,7 @@ public class Gold_Storm extends CustomEvent {
 				for (Player player : Bukkit.getOnlinePlayers()) { //trigger all events
 					final Location location = player.getLocation().add(0,4,0);
 					location.getWorld().spawnParticle(Particle.REDSTONE, location, 20, 0.75, 0.25, 0.75, dust);
-					GoldEXPSpawning.spawnGold((int)Math.ceil(player.getLevel()/5.0), location);
+					GoldEXPSpawning.spawnGold((int)Math.ceil(player.getLevel()/8.0), location);
 				}
 			}
 		}.runTaskTimer(Core.plugin(), 20, 20L); //checks for event every 10 seconds

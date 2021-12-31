@@ -44,21 +44,21 @@ class Bones : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(Bone.tier(1).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Bone.tier(1).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Bone.tier(2) to 1), true) {
-				Bone.tier(1).getUpdatedItem(false).asQuantity(4)
+				Bone.tier(1).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Bone.tier(2).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Bone.tier(2).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Bone.tier(3) to 1), true) {
-				Bone.tier(2).getUpdatedItem(false).asQuantity(4)
+				Bone.tier(2).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Bone.tier(3).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Bone.tier(3).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Bone.tier(4) to 1), true) {
-				Bone.tier(3).getUpdatedItem(false).asQuantity(4)
+				Bone.tier(3).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Bone.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Bone.tier(4).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Bone.tier(5) to 1), true) {
-				Bone.tier(4).getUpdatedItem(false).asQuantity(4)
+				Bone.tier(4).getUpdatedItem(false).asQuantity(8)
 			},
 
 	                                            )

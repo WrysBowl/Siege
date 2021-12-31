@@ -36,7 +36,7 @@ public class Haste_Buff extends CustomEvent {
 		this.currentTask = new BukkitRunnable() {
 			@Override
 			public void run() {
-				PotionEffect potion = new PotionEffect(PotionEffectType.FAST_DIGGING, 100, 1);
+				PotionEffect potion = new PotionEffect(PotionEffectType.FAST_DIGGING, 100, 1, true, false);
 				for (Player player : Bukkit.getOnlinePlayers()) { //trigger all events
 					player.addPotionEffect(potion, true);
 				}

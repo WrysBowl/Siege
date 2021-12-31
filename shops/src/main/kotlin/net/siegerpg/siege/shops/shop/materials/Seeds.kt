@@ -41,20 +41,20 @@ class Seeds : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(Seed.tier(1).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Seed.tier(1).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Seed.tier(2) to 1), true) {
-				Seed.tier(1).getUpdatedItem(false).asQuantity(4)
+				Seed.tier(1).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Seed.tier(2).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Seed.tier(2).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Seed.tier(3) to 1), true) {
-				Seed.tier(2).getUpdatedItem(false).asQuantity(4)
+				Seed.tier(2).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Seed.tier(3).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Seed.tier(3).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Seed.tier(4) to 1), true) {
-				Seed.tier(3).getUpdatedItem(false).asQuantity(4)
+				Seed.tier(3).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Seed.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Seed.tier(4).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Seed.tier(5) to 1), true) {
-				Seed.tier(4).getUpdatedItem(false).asQuantity(4)
+				Seed.tier(4).getUpdatedItem(false).asQuantity(8)
 			})
 }

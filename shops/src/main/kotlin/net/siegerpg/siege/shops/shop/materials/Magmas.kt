@@ -41,20 +41,20 @@ class Magmas : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(Magma.tier(1).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Magma.tier(1).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Magma.tier(2) to 1), true) {
-				Magma.tier(1).getUpdatedItem(false).asQuantity(4)
+				Magma.tier(1).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Magma.tier(2).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Magma.tier(2).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Magma.tier(3) to 1), true) {
-				Magma.tier(2).getUpdatedItem(false).asQuantity(4)
+				Magma.tier(2).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Magma.tier(3).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Magma.tier(3).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Magma.tier(4) to 1), true) {
-				Magma.tier(3).getUpdatedItem(false).asQuantity(4)
+				Magma.tier(3).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Magma.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Magma.tier(4).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Magma.tier(5) to 1), true) {
-				Magma.tier(4).getUpdatedItem(false).asQuantity(4)
+				Magma.tier(4).getUpdatedItem(false).asQuantity(8)
 			})
 }

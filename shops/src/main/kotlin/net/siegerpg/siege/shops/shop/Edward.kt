@@ -88,7 +88,7 @@ class Edward : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyIronChestplate(-1), 4250, hashMapOf(
+					LuckyIronChestplate(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 6,
 					Feather.tier(2) to 4
 					                                        ), true
@@ -96,7 +96,7 @@ class Edward : Shop() {
 				LuckyIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongIronChestplate(-1), 4250, hashMapOf(
+					StrongIronChestplate(-1), -1, hashMapOf(
 					RefinedMetal.tier(3) to 5,
 					Bone.tier(2) to 5
 					                                         ), true
@@ -104,7 +104,7 @@ class Edward : Shop() {
 				StrongIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughIronChestplate(-1), 4250, hashMapOf(
+					ToughIronChestplate(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 4,
 					Pebble.tier(2) to 6
 					                                        ), true
@@ -112,7 +112,7 @@ class Edward : Shop() {
 				ToughIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyIronChestplate(-1), 4250, hashMapOf(
+					HealthyIronChestplate(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 4,
 					PlantMatter.tier(2) to 4
 					                                          ), true
@@ -120,7 +120,7 @@ class Edward : Shop() {
 				HealthyIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingIronChestplate(-1), 4250, hashMapOf(
+					HealingIronChestplate(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 5,
 					Wheat.tier(4) to 1
 					                                          ), true
@@ -141,7 +141,7 @@ class Edward : Shop() {
 			},
 
 			ShopItem(
-					LuckyIronLeggings(-1), 4000, hashMapOf(
+					LuckyIronLeggings(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 5,
 					Feather.tier(2) to 4
 					                                      ), true
@@ -149,7 +149,7 @@ class Edward : Shop() {
 				LuckyIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongIronLeggings(-1), 4000, hashMapOf(
+					StrongIronLeggings(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 5,
 					Bone.tier(2) to 3
 					                                       ), true
@@ -157,7 +157,7 @@ class Edward : Shop() {
 				StrongIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughIronLeggings(-1), 4000, hashMapOf(
+					ToughIronLeggings(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 6,
 					Pebble.tier(2) to 4
 					                                      ), true
@@ -165,7 +165,7 @@ class Edward : Shop() {
 				ToughIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyIronLeggings(-1), 4000, hashMapOf(
+					HealthyIronLeggings(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 5,
 					PlantMatter.tier(2) to 4
 					                                        ), true
@@ -173,7 +173,7 @@ class Edward : Shop() {
 				HealthyIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingIronLeggings(-1), 4000, hashMapOf(
+					HealingIronLeggings(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 5,
 					Wheat.tier(4) to 1
 					                                        ), true
@@ -193,7 +193,7 @@ class Edward : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyIronBoots(-1), 2750, hashMapOf(
+					LuckyIronBoots(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 3,
 					Feather.tier(2) to 2
 					                                   ), true
@@ -201,7 +201,7 @@ class Edward : Shop() {
 				LuckyIronBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongIronBoots(-1), 2750, hashMapOf(
+					StrongIronBoots(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 3,
 					Bone.tier(2) to 2
 					                                    ), true
@@ -209,7 +209,7 @@ class Edward : Shop() {
 				StrongIronBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughIronBoots(-1), 2750, hashMapOf(
+					ToughIronBoots(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 3,
 					Pebble.tier(2) to 3
 					                                   ), true
@@ -217,7 +217,7 @@ class Edward : Shop() {
 				ToughIronBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyIronBoots(-1), 2750, hashMapOf(
+					HealthyIronBoots(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 3,
 					PlantMatter.tier(2) to 4
 					                                     ), true
@@ -225,7 +225,7 @@ class Edward : Shop() {
 				HealthyIronBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingIronBoots(-1), 2750, hashMapOf(
+					HealingIronBoots(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 3,
 					Wheat.tier(4) to 1
 					                                     ), true

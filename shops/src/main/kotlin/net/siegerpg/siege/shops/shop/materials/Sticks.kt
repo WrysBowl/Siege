@@ -41,20 +41,20 @@ class Sticks : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(Stick.tier(1).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Stick.tier(1).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Stick.tier(2) to 1), true) {
-				Stick.tier(1).getUpdatedItem(false).asQuantity(4)
+				Stick.tier(1).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Stick.tier(2).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Stick.tier(2).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Stick.tier(3) to 1), true) {
-				Stick.tier(2).getUpdatedItem(false).asQuantity(4)
+				Stick.tier(2).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Stick.tier(3).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Stick.tier(3).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Stick.tier(4) to 1), true) {
-				Stick.tier(3).getUpdatedItem(false).asQuantity(4)
+				Stick.tier(3).getUpdatedItem(false).asQuantity(8)
 			},
-			ShopItem(Stick.tier(4).asQuantity(4) as CustomItem, -1, hashMapOf(
+			ShopItem(Stick.tier(4).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Stick.tier(5) to 1), true) {
-				Stick.tier(4).getUpdatedItem(false).asQuantity(4)
+				Stick.tier(4).getUpdatedItem(false).asQuantity(8)
 			})
 }
