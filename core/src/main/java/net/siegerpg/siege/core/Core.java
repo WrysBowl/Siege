@@ -200,7 +200,6 @@ public final class Core extends JavaPlugin {
 		}
 
 		StatChangeListener.statBarDisplayTask();
-		new RegenerationTask().startRegenTask();
 		new HelpfulTips().broadcastTasks();
 		new GoldReward().giveGold();
 

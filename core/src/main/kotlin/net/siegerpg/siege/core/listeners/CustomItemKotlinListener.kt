@@ -303,14 +303,6 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 	@EventHandler
 	@Suppress("unused")
-	fun onRegen(e : EntityRegainHealthEvent) {
-		if (e.regainReason != EntityRegainHealthEvent.RegainReason.CUSTOM || e.regainReason != EntityRegainHealthEvent.RegainReason.MAGIC_REGEN) {
-			e.isCancelled = true
-		}
-	}
-
-	@EventHandler
-	@Suppress("unused")
 	fun onInteract(event : PlayerInteractEvent) {
 		if (event.action != Action.LEFT_CLICK_AIR &&
 		    event.action != Action.LEFT_CLICK_BLOCK
