@@ -22,15 +22,15 @@ public class SkillData {
 	/**
 	 * Gets the skill level of a player
 	 *
-	 * @param player    The player to get the skill of
-	 * @param skillName The name of the skill to get the level of
+	 * @param player The player to get the skill of
+	 * @param skill  The skill to get the level of
 	 *
 	 * @return The level
 	 */
-	public static int getSkillLevel(OfflinePlayer player, String skillName) {
+	public static int getSkillLevel(OfflinePlayer player, Skill skill) {
 
 		JsonElement data = getSkillData(player)
-				.get(skillName);
+				.get(skill.getIdentifier());
 		if (data == null) {
 			return 0;
 		} else {
@@ -41,14 +41,14 @@ public class SkillData {
 	/**
 	 * Sets the skill level of a player to something
 	 *
-	 * @param player    The player
-	 * @param skillName The skill name
-	 * @param level     The skill level
+	 * @param player The player
+	 * @param skill  The skill
+	 * @param level  The skill level
 	 */
-	public static void setSkillLevel(OfflinePlayer player, String skillName, int level) {
+	public static void setSkillLevel(OfflinePlayer player, Skill skill, int level) {
 
 		JsonObject data = getSkillData(player);
-		data.addProperty(skillName, level);
+		data.addProperty(skill.getIdentifier(), level);
 		setSkillData(player, data);
 	}
 
