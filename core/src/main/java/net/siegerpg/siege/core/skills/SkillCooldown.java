@@ -20,11 +20,11 @@ public class SkillCooldown {
 	 * @return The instant when the skill will be usable again
 	 */
 	@Nullable
-	public static Instant getResetTime(UUID playerID, String skillName) {
+	public static Instant getResetTime(@NotNull UUID playerID, @NotNull Skill skill) {
 
 		HashMap< String, Instant > playerData = cooldown.get(playerID);
 		if (playerData != null)
-			return playerData.get(skillName);
+			return playerData.get(skill.getIdentifier());
 		return null;
 	}
 
@@ -32,13 +32,13 @@ public class SkillCooldown {
 	 * Sets when the skill will be usable again
 	 *
 	 * @param playerID  The uuid of the player
-	 * @param skillName The name of the skill
+	 * @param skill     The skill
 	 * @param resetTime The reset time
 	 */
-	public static void setResetTime(UUID playerID, @NotNull String skillName, @NotNull Instant resetTime) {
+	public static void setResetTime(UUID playerID, @NotNull Skill skill, @NotNull Instant resetTime) {
 
 		var data = cooldown.computeIfAbsent(playerID, k -> new HashMap<>());
-		data.put(skillName, resetTime);
+		data.put(skill.getIdentifier(), resetTime);
 		cooldown.put(playerID, data);
 	}
 
