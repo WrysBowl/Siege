@@ -79,13 +79,13 @@ public class CriticalShot extends Skill {
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {
-		//check cooldown
-		//set cooldown
-		//Critical shot needs to set the arrow's damage and reset the damage multi
-		//Create a skill listener class to listen when any event is done for the skill to be used up
-		//Skills wait in a cached arraylist of skills
-		//Each skill cached will have their actionCheck method used to see if the event is valid for the skill
-		//If the skill can be used in the event, then the action method will be called and the skill will be removed within the method
+		// First we check if the cooldown and mana are respected (we run the code common to all skills)
+		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
+		if (!super.trigger(player, level)) return false;
+
+		// Handling of the skill goes here
+
+
 		return true;
 	}
 
