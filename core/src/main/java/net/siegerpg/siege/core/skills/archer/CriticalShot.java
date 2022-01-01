@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.skills.archer;
 
 import net.siegerpg.siege.core.skills.Skill;
+import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -9,6 +10,8 @@ import java.util.List;
 
 public class CriticalShot extends Skill {
 
+	private final String identifier = "criticalshot";
+	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Critical Shot";
 	private final List< String > description = List.of("+50% STR next shot");
 	private final Skill parent = null;
@@ -21,68 +24,61 @@ public class CriticalShot extends Skill {
 
 	@Override
 	public String getName(int level) {
+
 		return this.name + " Lvl. " + level;
 	}
 
 	@Override
 	public List< String > getDescription(int level) {
+
 		return List.of("+" + getDamageMulti(level) + "% STR next shot");
 	}
 
 	@Override
 	public Skill getParent() {
+
 		return this.parent;
 	}
 
 	@NotNull
 	@Override
 	public List< Skill > getChildren() {
+
 		return this.children;
 	}
 
 	@Override
-	public int getInitCooldown() {
-		return this.initCooldown;
-	}
+	public Duration getCooldown(int level) {
 
-	@Override
-	public int getInitManaCost() {
-		return this.initManaCost;
-	}
-
-	@Override
-	public int getInitGoldCost() {
-		return this.initGoldCost;
-	}
-
-	@Override
-	public int getCooldown(int level) {
 		int time = (int) (this.initCooldown - Math.ceil(this.initCooldown * level * 0.01));
-		int limit = this.initCooldown/2;
+		int limit = this.initCooldown / 2;
 		if (time < limit) time = limit;
-		return time;
+		return Duration.ofSeconds(time * 20L);
 	}
 
 	@Override
-	public int getManaCost(int level) {
+	public double getManaCost(int level) {
+
 		int mana = (int) (this.initManaCost - Math.ceil(this.initManaCost * level * 0.005));
-		int limit = this.initManaCost/2;
+		int limit = this.initManaCost / 2;
 		if (mana < limit) mana = limit;
 		return mana;
 	}
 
 	public double getDamageMulti(int level) {
-		double multi = (this.damageMulti) + (level*0.01);
+
+		double multi = (this.damageMulti) + (level * 0.01);
 		return damageMulti;
 	}
 
 	@Override
 	public int getGoldCost(int level) {
+
 		return (int) (this.initGoldCost * level * 2.5);
 	}
 
 	@Override
-	public void trigger(@NotNull Player player, int level) {
+	public boolean trigger(@NotNull Player player, int level) {
 		//check cooldown
 		//set cooldown
 		//Critical shot needs to set the arrow's damage and reset the damage multi
@@ -90,6 +86,7 @@ public class CriticalShot extends Skill {
 		//Skills wait in a cached arraylist of skills
 		//Each skill cached will have their actionCheck method used to see if the event is valid for the skill
 		//If the skill can be used in the event, then the action method will be called and the skill will be removed within the method
+		return true;
 	}
 
 }
