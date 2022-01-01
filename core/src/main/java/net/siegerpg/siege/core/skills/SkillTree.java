@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.skills;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
+import java.util.function.Predicate;
 
 public class SkillTree {
 
@@ -13,22 +13,29 @@ public class SkillTree {
 		// Remember to set the root to something, so that we can find skills with a specific name
 	}
 
+	/**
+	 * Gets a skill from a function
+	 *
+	 * @param lambda The predicate will run for each skill until it returns true. Once it returns true that skill will be returned
+	 *
+	 * @return The skill for which the lambda returned true
+	 */
 	@Nullable
-	public static Skill getSkillWithName(String skillName) {
+	public static Skill getSkillFromFunction(Predicate< Skill > lambda) {
 
-		return getSkillWithNameFromChildren(root, skillName);
+		return getSkillWithNameFromChildren(root, lambda);
 	}
 
 	@Nullable
-	private static Skill getSkillWithNameFromChildren(Skill skill, String skillName) {
+	private static Skill getSkillWithNameFromChildren(Skill skill, Predicate< Skill > lambda) {
 
-		if (Objects.equals(skill.getName(), skillName))
+		if (lambda.test(skill))
 			return skill;
 		for (
 				Skill child :
 				skill.getChildren()
 		) {
-			Skill result = getSkillWithNameFromChildren(child, skillName);
+			Skill result = getSkillWithNameFromChildren(child, lambda);
 			if (result != null)
 				return result;
 		}
