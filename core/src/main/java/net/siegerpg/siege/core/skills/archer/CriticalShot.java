@@ -16,7 +16,7 @@ public class CriticalShot extends Skill {
 	private final List< String > description = List.of("+50% STR next shot");
 	private final Skill parent = null;
 	private final List< Skill > children = null;
-	private final int initCooldown = 200;
+	private final int initCooldown = 10 * 1000;
 	private final int initManaCost = 50;
 	private final int initGoldCost = 1000;
 	private final double damageMulti = 0.5;
@@ -53,7 +53,7 @@ public class CriticalShot extends Skill {
 		int time = (int) (this.initCooldown - Math.ceil(this.initCooldown * level * 0.01));
 		int limit = this.initCooldown / 2;
 		if (time < limit) time = limit;
-		return Duration.ofSeconds(time * 20L);
+		return Duration.ofMillis(time);
 	}
 
 	@Override
