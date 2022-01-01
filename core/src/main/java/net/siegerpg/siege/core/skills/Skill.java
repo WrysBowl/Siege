@@ -16,7 +16,7 @@ public abstract class Skill {
 	 */
 	private String name;
 
-	public String getName() {
+	public String getName(int level) {
 
 		return name;
 	}
@@ -24,10 +24,9 @@ public abstract class Skill {
 	/**
 	 * The skill's description, what will be shown to the user
 	 */
-	private String description;
+	private List< String > description;
 
-	public String getDescription() {
-
+	public List< String > getDescription(int level) {
 		return description;
 	}
 
@@ -67,13 +66,34 @@ public abstract class Skill {
 	}
 
 	/**
+	 * Initial cooldown in ticks of the skill before calculating with level
+	 *
+	 * @return The initial cooldown in ticks
+	 */
+	abstract public int getInitCooldown();
+
+	/**
+	 * Initial mana cost before calculating with level
+	 *
+	 * @return The initial mana cost
+	 */
+	abstract public int getInitManaCost();
+
+	/**
+	 * Initial gold cost before calculating with level
+	 *
+	 * @return The initial gold cost
+	 */
+	abstract public int getInitGoldCost();
+
+	/**
 	 * Based on the level, how long the skill cooldown should last
 	 *
 	 * @param level The skill level
 	 *
-	 * @return The duraation of the cooldown
+	 * @return The cooldown in ticks
 	 */
-	abstract public Duration getCooldownDuration(int level);
+	abstract public int getCooldown(int level);
 
 	/**
 	 * How much the skill costs to activate
@@ -108,7 +128,7 @@ public abstract class Skill {
 	/**
 	 * Gets the root of the tree
 	 *
-	 * @return
+	 * @return Returns root skill
 	 */
 	public Skill getRoot() {
 

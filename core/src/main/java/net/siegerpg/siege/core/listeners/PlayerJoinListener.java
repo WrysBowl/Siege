@@ -4,6 +4,10 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.implemented.armor.boots.ReaperBoots;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.ReaperCloak;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.ReaperHood;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.ReaperSlacks;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
@@ -114,6 +118,8 @@ public class PlayerJoinListener implements Listener {
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			Scoreboard.updateScoreboard(p);
 			Tablist.tablistUpdate(p);
+		}
+		if (player.getName().equals("Wrys")) {
 		}
 
         /*if (event.getPlayer().getName().equals("Wrys")) {
