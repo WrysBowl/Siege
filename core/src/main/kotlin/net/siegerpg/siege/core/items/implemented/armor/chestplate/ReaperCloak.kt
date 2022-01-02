@@ -15,10 +15,10 @@ class ReaperCloak() : CustomChestplate(
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 80.0,
-				strength = 64.0,
+				strength = 82.0,
 				regeneration = 20.0,
-				defense = -90.0,
-				luck = -25.0,
+				defense = -40.0,
+				luck = -20.0,
 		                                   ),
 		leatherColor = Color.BLACK
                                       ) {

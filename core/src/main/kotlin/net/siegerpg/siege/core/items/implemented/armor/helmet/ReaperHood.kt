@@ -15,10 +15,10 @@ class ReaperHood() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 70.0,
-				strength = 70.0,
+				strength = 80.0,
 				regeneration = 20.0,
-				defense = -60.0,
-				luck = -25.0,
+				defense = -30.0,
+				luck = -20.0,
 		                                   ),
 		leatherColor = Color.BLACK
                                  ) {

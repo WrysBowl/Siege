@@ -15,8 +15,8 @@ class ReaperBoots() : CustomBoots(
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(
 				health = 80.0,
-				strength = 60.0,
-				defense = -60.0,
+				strength = 78.0,
+				defense = -10.0,
 				luck = -10.0
 		                                   ),
 		leatherColor = Color.BLACK
