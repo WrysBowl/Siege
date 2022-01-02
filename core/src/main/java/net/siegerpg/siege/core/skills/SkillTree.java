@@ -24,7 +24,7 @@ public class SkillTree {
 				.addChild(new PoisonArrow());
 		// Now if you want to add children to poisonArrow you have to do
 		// Skill someArcherSkill = poisonArrow.addChild(new SomeArcherSkill());
-		
+
 	}
 
 	/**
