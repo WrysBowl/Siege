@@ -74,11 +74,37 @@ public abstract class Skill {
 	 * The skill's children (this skill is a parent of all those skills)
 	 */
 	@NotNull
-	private List< Skill > children = new ArrayList<>();
+	private final List< Skill > children = new ArrayList<>();
 
+	/**
+	 * Adds multiple children to the children of this skill
+	 */
 	public void addChildren(List< Skill > children) {
 
 		children.forEach(child -> child.setParent(this));
+		this.children.addAll(children);
+	}
+
+
+	/**
+	 * Adds a child to the children of this skill
+	 */
+	public Skill addChild(Skill child) {
+
+		child.setParent(this);
+		this.children.add(child);
+		return child;
+	}
+
+	/**
+	 * Gets the list of children of the skill
+	 *
+	 * @return The children of this skill
+	 */
+	@NotNull
+	public List< Skill > getChildren() {
+
+		return Collections.unmodifiableList(this.children);
 	}
 
 	public void setParent(@Nullable Skill parent) {
@@ -90,12 +116,6 @@ public abstract class Skill {
 	public Skill getParent() {
 
 		return this.parent;
-	}
-
-	@NotNull
-	public List< Skill > getChildren() {
-
-		return Collections.unmodifiableList(this.children);
 	}
 
 	/**

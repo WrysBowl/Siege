@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.skills.archer;
 
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
-import net.siegerpg.siege.core.skills.SkillTree;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,9 +14,11 @@ public class PoisonArrow extends Skill {
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Poison Arrow";
 	private final List< String > description =
-			List.of("Your next arrow becomes poisonous",
-			        "and deals more damage if you",
-			        " or your target is poisoned");
+			List.of(
+					"Your next arrow becomes poisonous",
+					"and deals more damage if you",
+					" or your target is poisoned"
+			       );
 	private final Skill parent = new CriticalShot();
 	private final List< Skill > children = null;
 	final int initCooldown = 15 * 1000;
@@ -35,9 +36,11 @@ public class PoisonArrow extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Your next arrow becomes poisonous",
-		               "and deals " + getDamageMulti(level, true) + "more damage if you",
-		               " or your target is poisoned");
+		return List.of(
+				"Your next arrow becomes poisonous",
+				"and deals " + getDamageMulti(level, true) + "more damage if you",
+				" or your target is poisoned"
+		              );
 	}
 
 	@Override
@@ -66,7 +69,7 @@ public class PoisonArrow extends Skill {
 		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.05));
 	}
 
-	
+
 	public double getDamageMulti(int level, boolean poisoned) {
 
 		if (poisoned) return (this.damageMulti) + (level * 0.1);
@@ -93,7 +96,9 @@ public class PoisonArrow extends Skill {
 
 	@Override
 	public void triggerEnd(@NotNull Player player, int level) {
+
 		super.triggerEnd(player, level);
 
 	}
+
 }
