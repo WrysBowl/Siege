@@ -54,6 +54,14 @@ class CustomItemKotlinListener : Listener, Runnable {
 	}
 
 	@EventHandler
+	@Suppress("unused")
+	fun onRegen(e : EntityRegainHealthEvent) {
+		if (e.regainReason == EntityRegainHealthEvent.RegainReason.REGEN) {
+			e.amount *= 4
+		}
+	}
+
+	@EventHandler
 	fun onBowShoot(e : EntityShootBowEvent) {
 		val entity : Entity = e.entity
 		if (entity !is Player) return

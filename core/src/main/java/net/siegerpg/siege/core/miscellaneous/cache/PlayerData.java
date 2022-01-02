@@ -48,17 +48,19 @@ public class PlayerData implements Listener {
 	public static void setStats(Player player) {
 
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
-				double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + 20;
-				int regen = (int) CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.REGENERATION);
 
-				Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(health);
-				player.setHealthScale(health/(health/20));
-				player.setSaturatedRegenRate((int)Math.ceil((regen/-50.0)+10));
+			double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + 20;
+			int regen = (int) CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.REGENERATION);
+			int regenRate = (int)Math.ceil((regen/-10.0)+11);
+			if (regenRate<1) regenRate = 1;
+			Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(health);
+			player.setHealthScale(health/(health/20));
+			player.setSaturatedRegenRate(regenRate);
+			player.setUnsaturatedRegenRate((int)(regenRate*1.25));
 
-				playerHealth.put(player, player.getMaxHealth());
-				playerMana.put(player, CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
-
-			}, 2);
+			playerHealth.put(player, player.getMaxHealth());
+			playerMana.put(player, CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
+		}, 2);
 	}
 
 	@EventHandler
