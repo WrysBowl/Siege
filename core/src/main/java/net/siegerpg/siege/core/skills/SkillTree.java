@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.skills;
 
+import net.siegerpg.siege.core.skills.archer.CriticalShot;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -9,6 +10,7 @@ public class SkillTree {
 	private static Skill root;
 
 	static {
+		new CriticalShot(); //??? what do I do here
 		// Here you initialize all the skills to create the tree
 		// Remember to set the root to something, so that we can find skills with a specific name
 	}

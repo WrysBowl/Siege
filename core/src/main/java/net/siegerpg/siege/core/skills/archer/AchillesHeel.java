@@ -8,18 +8,18 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class CriticalShot extends Skill {
+public class AchillesHeel extends Skill {
 
-	private final String identifier = "1";
+	private final String identifier = "2";
 	private final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Critical Shot";
-	private final List< String > description = List.of("+50% STR next shot");
+	private final String name = "Achilles Heel";
+	private final List< String > description = List.of("Speed II for 20 seconds");
 	private final Skill parent = null;
-	private final List< Skill > children = List.of(new PoisonArrow());
-	final int initCooldown = 10 * 1000;
-	final int initManaCost = 50;
-	final int initGoldCost = 1000;
-	final double damageMulti = 0.5;
+	private final List< Skill > children = null;
+	final int initCooldown = 60 * 1000;
+	final int initManaCost = 60;
+	final int initGoldCost = 2000;
+	final int initSpeedTime = 20;
 
 
 	@Override
@@ -31,7 +31,7 @@ public class CriticalShot extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("+" + getDamageMulti(level) + "% STR next shot");
+		return List.of("Speed II for 20 seconds");
 	}
 
 	@Override
@@ -47,28 +47,29 @@ public class CriticalShot extends Skill {
 		return this.children;
 	}
 
+	//Use this method to set the duration of the speed effect
+	public int getSpeedTime(int level) {
+		return this.initSpeedTime + (int) Math.ceil(this.initSpeedTime * level * 0.1);
+	}
+
 	@Override
 	public Duration getCooldown(int level) {
 
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.01));
+		//increases by 1
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.005));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.03));
-	}
-
-	public double getDamageMulti(int level) {
-
-		return (this.damageMulti) + (level * 0.01);
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.04));
 	}
 
 	@Override
 	public int getGoldCost(int level) {
 
-		return (int) (this.initGoldCost * level * 2.5);
+		return (int) (this.initGoldCost * level * 1.5);
 	}
 
 	@Override

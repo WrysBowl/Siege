@@ -152,7 +152,7 @@ public abstract class Skill {
 		}
 		// Removes the mana from the user
 		PlayerData.playerMana.put(player, playerMana - manaCost);
-		// After here you should only put stuff that should be ran for every skill trigger
+		// After here you should only put stuff that should be run for every skill trigger
 		return true;
 	}
 
@@ -171,7 +171,7 @@ public abstract class Skill {
 		SkillCooldown.setResetTime(player.getUniqueId(), this, Instant
 				.now()
 				.plus(getCooldown(level)));
-		// After here you should only put stuff that should be ran for every skill trigger end
+		// After here you should only put stuff that should be run for every skill trigger end
 	}
 
 	/**

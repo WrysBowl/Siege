@@ -2,24 +2,28 @@ package net.siegerpg.siege.core.skills.archer;
 
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
+import net.siegerpg.siege.core.skills.SkillTree;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
 import java.util.List;
 
-public class CriticalShot extends Skill {
+public class PoisonArrow extends Skill {
 
-	private final String identifier = "1";
+	private final String identifier = "2A_1";
 	private final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Critical Shot";
-	private final List< String > description = List.of("+50% STR next shot");
-	private final Skill parent = null;
-	private final List< Skill > children = List.of(new PoisonArrow());
-	final int initCooldown = 10 * 1000;
-	final int initManaCost = 50;
+	private final String name = "Poison Arrow";
+	private final List< String > description =
+			List.of("Your next arrow becomes poisonous",
+			        "and deals more damage if you",
+			        " or your target is poisoned");
+	private final Skill parent = new CriticalShot();
+	private final List< Skill > children = null;
+	final int initCooldown = 15 * 1000;
+	final int initManaCost = 30;
 	final int initGoldCost = 1000;
-	final double damageMulti = 0.5;
+	final double damageMulti = 1.0; //poisoned multiplier base
 
 
 	@Override
@@ -31,7 +35,9 @@ public class CriticalShot extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("+" + getDamageMulti(level) + "% STR next shot");
+		return List.of("Your next arrow becomes poisonous",
+		               "and deals " + getDamageMulti(level, true) + "more damage if you",
+		               " or your target is poisoned");
 	}
 
 	@Override
@@ -50,19 +56,21 @@ public class CriticalShot extends Skill {
 	@Override
 	public Duration getCooldown(int level) {
 
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.01));
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.02));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.03));
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.05));
 	}
 
-	public double getDamageMulti(int level) {
+	
+	public double getDamageMulti(int level, boolean poisoned) {
 
-		return (this.damageMulti) + (level * 0.01);
+		if (poisoned) return (this.damageMulti) + (level * 0.1);
+		return this.damageMulti;
 	}
 
 	@Override
