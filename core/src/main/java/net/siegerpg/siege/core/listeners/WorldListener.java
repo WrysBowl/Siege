@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.types.misc.CustomFood;
 import net.siegerpg.siege.core.miscellaneous.DropUtils;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -78,14 +79,25 @@ public class WorldListener implements Listener, Runnable {
 		HashMap<Material, CustomFood> foods = new HashMap<>(){
 			{
 				put(Material.COOKED_BEEF, new CookedBeef(0));
-				put(Material.COOKED_CHICKEN, new CookedBeef(0));
+				put(Material.COOKED_CHICKEN, new CookedChicken(0));
 				put(Material.COOKED_PORKCHOP, new CookedPork(0));
+
 			}
 		};
 		CustomFood cookedFood = foods.get(item.getType());
-		e.setResult(cookedFood == null ?
-		            new CharredFood(0).getUpdatedItem(false) :
-		            cookedFood.getUpdatedItem(false));
+		if (cookedFood == null) {
+			if (Utils.randTest(15.0)) {
+				e.setResult(new BeetrootCurry(0).getUpdatedItem(false));
+			} else if (Utils.randTest(10.0)) {
+				e.setResult(new HoneyOatBread(0).getUpdatedItem(false));
+			} else if (Utils.randTest(15.0)) {
+				e.setResult(new CaramelApple(0).getUpdatedItem(false));
+			} else {
+				e.setResult(new CharredFood(0).getUpdatedItem(false));
+			}
+		} else {
+			e.setResult(cookedFood.getUpdatedItem(false));
+		}
 	}
 
 	@EventHandler
