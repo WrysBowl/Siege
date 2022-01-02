@@ -188,7 +188,7 @@ public abstract class Skill {
 		ActiveSkillData.removeFromActiveSkills(player, this);
 
 		// Sets the cooldown
-		SkillCooldown.setResetTime(player.getUniqueId(), this, Instant
+		SkillCooldown.setResetTime(player, this, Instant
 				.now()
 				.plus(getCooldown(level)));
 		// After here you should only put stuff that should be run for every skill trigger end
