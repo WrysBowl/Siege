@@ -28,6 +28,21 @@ public class ActiveSkillData {
 	}
 
 	/**
+	 * Finds if a player has a skill currently active
+	 *
+	 * @param player The player that has that skill
+	 * @param skill  The skill that should be checked
+	 *
+	 * @return Whether or not the player has the skill  active
+	 */
+	public static boolean isActive(OfflinePlayer player, Skill skill) {
+
+		return currentlyActiveSkills
+				.getOrDefault(player.getUniqueId(), new HashSet<>())
+				.contains(skill);
+	}
+
+	/**
 	 * Adds a skill to the list of currently active skills of the player
 	 *
 	 * @param player The player
