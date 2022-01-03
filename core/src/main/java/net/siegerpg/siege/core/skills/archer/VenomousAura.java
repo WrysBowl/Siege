@@ -12,15 +12,16 @@ public class VenomousAura extends Skill {
 
 	final int initCooldown = 60 * 1000;
 	final int initManaCost = 150;
-	final int initGoldCost = 5000;
-	final double damageMulti = 1.5; //amount to multiply damage by
+	final int initGoldCost = 10000;
+	final double damageMulti = 1.05; //amount to multiply damage by
 	private final String identifier = "2_A_3";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Venomous Aura";
 	private final List< String > description =
 			List.of(
-					"Increase your damage by +50% and",
-					"poison yourself for 30 seconds"
+					"Deal extra damage for every level",
+					"of poison your target is effected with",
+					"and poison yourself for 30 seconds"
 			       );
 
 	@Override
@@ -33,8 +34,9 @@ public class VenomousAura extends Skill {
 	public List< String > getDescription(int level) {
 
 		return List.of(
-				"Increase your damage by +" + ((getDamageMulti(level) - 1) * 100) + "% and",
-				"poison yourself for 30 seconds"
+				"Deal +"+((getDamageMulti(level)-1)*100)+"% damage for every level",
+				"of poison your target is effected with",
+				"and poison yourself for 30 seconds"
 		              );
 	}
 
@@ -42,27 +44,28 @@ public class VenomousAura extends Skill {
 	@Override
 	public Duration getCooldown(int level) {
 
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.03));
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * (level-1) * 0.03));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.05));
-	}
-
-
-	public double getDamageMulti(int level) {
-
-		return (this.damageMulti) + (level * 0.05);
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.05));
 	}
 
 	@Override
 	public int getGoldCost(int level) {
 
-		return (int) (this.initGoldCost * level * 5.0);
+		return (int) (this.initGoldCost * level * 3.0);
 	}
+
+	public double getDamageMulti(int level) {
+
+		return (this.damageMulti) + ((level-1) * 0.01);
+	}
+
+
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {

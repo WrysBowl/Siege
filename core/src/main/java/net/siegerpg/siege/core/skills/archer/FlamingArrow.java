@@ -13,7 +13,7 @@ public class FlamingArrow extends Skill {
 	final int initCooldown = 25 * 1000;
 	final int initManaCost = 40;
 	final int initGoldCost = 2500;
-	final double damageMulti = 1.0; //amount of time the arrow bounces around in seconds
+	final double damageMulti = 1.5; //amount of time the arrow bounces around in seconds
 	private final String identifier = "2_B_2";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Flaming Arrow";
@@ -21,7 +21,7 @@ public class FlamingArrow extends Skill {
 			List.of(
 					"Your next arrow will burn nearby",
 					"mobs where it lands. Deals +50% damage",
-					" if you or your enemy is burning."
+					"if you or your enemy is burning."
 			       );
 
 	@Override
@@ -35,30 +35,22 @@ public class FlamingArrow extends Skill {
 
 		return List.of(
 				"Your next arrow will burn nearby",
-				"mobs where it lands. Deals +" + ((getDamageMulti(level, true) - 1) * 100) +
-				"% damage",
-				" if you or your enemy is burning."
+				"mobs where it lands. Deals +" + ((getDamageMulti(level, true) - 1) * 100) + "% damage",
+				"if you or your enemy is burning."
 		              );
 	}
 
 	@Override
 	public Duration getCooldown(int level) {
 
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.03));
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * (level-1) * 0.03));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.075));
-	}
-
-
-	public double getDamageMulti(int level, boolean burning) {
-
-		if (burning) return (this.damageMulti) + (level * 0.1);
-		return this.damageMulti;
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.075));
 	}
 
 	@Override
@@ -66,6 +58,14 @@ public class FlamingArrow extends Skill {
 
 		return (int) (this.initGoldCost * level * 3.0);
 	}
+
+	public double getDamageMulti(int level, boolean burning) {
+
+		if (burning) return (this.damageMulti) + ((level-1) * 0.05);
+		return this.damageMulti;
+	}
+
+
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {

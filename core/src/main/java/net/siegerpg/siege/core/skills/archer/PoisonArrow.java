@@ -40,25 +40,17 @@ public class PoisonArrow extends Skill {
 		              );
 	}
 
-
 	@Override
 	public Duration getCooldown(int level) {
 
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.02));
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * (level-1) * 0.02));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.05));
-	}
-
-
-	public double getDamageMulti(int level, boolean poisoned) {
-
-		if (poisoned) return (this.damageMulti) + (level * 0.1);
-		return this.damageMulti;
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.05));
 	}
 
 	@Override
@@ -66,6 +58,14 @@ public class PoisonArrow extends Skill {
 
 		return (int) (this.initGoldCost * level * 2.5);
 	}
+
+	public double getDamageMulti(int level, boolean poisoned) {
+
+		if (poisoned) return (this.damageMulti) + ((level-1) * 0.1);
+		return this.damageMulti;
+	}
+
+
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {

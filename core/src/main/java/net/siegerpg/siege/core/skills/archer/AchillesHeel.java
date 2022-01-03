@@ -28,28 +28,21 @@ public class AchillesHeel extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Speed II for 20 seconds");
-	}
-
-
-	//Use this method to set the duration of the speed effect
-	public int getSpeedTime(int level) {
-
-		return this.initSpeedTime + (int) Math.ceil(this.initSpeedTime * level * 0.1);
+		return List.of("Speed II for "+getSpeedTime(level)+" seconds");
 	}
 
 	@Override
 	public Duration getCooldown(int level) {
 
 		//increases by 1
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.005));
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * (level-1) * 0.005));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.04));
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.04));
 	}
 
 	@Override
@@ -57,6 +50,14 @@ public class AchillesHeel extends Skill {
 
 		return (int) (this.initGoldCost * level * 5.0);
 	}
+
+	//Use this method to set the duration of the speed effect
+	public int getSpeedTime(int level) {
+
+		return this.initSpeedTime + (int) Math.ceil(this.initSpeedTime * (level-1) * 0.1);
+	}
+
+
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {

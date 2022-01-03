@@ -13,7 +13,7 @@ public class CriticalShot extends Skill {
 	final int initCooldown = 10 * 1000;
 	final int initManaCost = 50;
 	final int initGoldCost = 2500;
-	final double damageMulti = 0.5;
+	final double damageMulti = 1.5;
 	private final String identifier = "1_A_1";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Critical Shot";
@@ -28,26 +28,21 @@ public class CriticalShot extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("+" + getDamageMulti(level) + "% STR next shot");
+		return List.of("+" + ((getDamageMulti(level) - 1) * 100) + "% STR next shot");
 	}
 
 
 	@Override
 	public Duration getCooldown(int level) {
 
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.01));
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * (level-1) * 0.01));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.03));
-	}
-
-	public double getDamageMulti(int level) {
-
-		return (this.damageMulti) + (level * 0.01);
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.03));
 	}
 
 	@Override
@@ -55,6 +50,13 @@ public class CriticalShot extends Skill {
 
 		return (int) (this.initGoldCost * level * 2.5);
 	}
+
+	public double getDamageMulti(int level) {
+
+		return (this.damageMulti) + ((level-1) * 0.01);
+	}
+
+
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {

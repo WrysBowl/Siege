@@ -13,7 +13,7 @@ public class PiercingArrow extends Skill {
 	final int initCooldown = 25 * 1000;
 	final int initManaCost = 50;
 	final int initGoldCost = 2500;
-	final double damageMulti = 0.1; //percentage to remove health by (1-0.1)*health = newHealth
+	final double damageMulti = 1.1; //percentage to remove health by (1-0.1)*health = newHealth
 	private final String identifier = "2_A_2";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Piercing Arrow";
@@ -21,8 +21,7 @@ public class PiercingArrow extends Skill {
 			List.of(
 					"The arrow will damage the enemy for",
 					"10% of their health if you and the",
-					"target are poisoned. If neither",
-					"condition passes it becomes a poison arrow"
+					"target are poisoned, if not, cat poison arrow"
 			       );
 
 	@Override
@@ -36,9 +35,8 @@ public class PiercingArrow extends Skill {
 
 		return List.of(
 				"The arrow will damage the enemy for",
-				(getDamageMulti(level, true) * 100) + "% of their health if you and the",
-				"target are poisoned. If neither",
-				"condition passes it becomes a poison arrow"
+				((getDamageMulti(level, true)-1) * 100) + "% of their health if you and the",
+				"target are poisoned, if not, cast poison arrow"
 		              );
 	}
 
@@ -46,21 +44,14 @@ public class PiercingArrow extends Skill {
 	@Override
 	public Duration getCooldown(int level) {
 
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.04));
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * (level-1) * 0.04));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.05));
-	}
-
-
-	public double getDamageMulti(int level, boolean poisoned) {
-
-		if (poisoned) return (this.damageMulti) + (level * 0.01);
-		return this.damageMulti;
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.05));
 	}
 
 	@Override
@@ -68,6 +59,14 @@ public class PiercingArrow extends Skill {
 
 		return (int) (this.initGoldCost * level * 2.5);
 	}
+
+	public double getDamageMulti(int level, boolean poisoned) {
+
+		if (poisoned) return (this.damageMulti) + ((level-1) * 0.01);
+		return this.damageMulti;
+	}
+
+
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {
