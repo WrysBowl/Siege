@@ -147,7 +147,27 @@ public abstract class Skill {
 	abstract public int getGoldCost(int level);
 
 	/**
-	 * Triggers the skill (this may do something instantaneously or something delayed, we don't know)
+	 * Triggers the skill
+	 * This may do something as soon as it's called or delayed, it's up to the skill implementation
+	 * Note #1: This checks if the skill is unlocked.
+	 * Note #2: You should call this method externally, only use the trigger(player, level) if you want to bypass level checking
+	 * Note #3: You should only @Override the method with trigger(player, level). Only override this in case you want to modify level checking.
+	 *
+	 * @param player The player that triggered the skill
+	 *
+	 * @return Whether the skill execution succeded.
+	 */
+	public boolean trigger(@NotNull Player player) {
+
+		Integer skillLevel = SkillData.getSkillLevel(player, this);
+		if (skillLevel == null || skillLevel < 1) return false;
+		return trigger(player, skillLevel);
+	}
+
+	/**
+	 * Triggers the skill
+	 * This may do something as soon as it's called or delayed, it's up to the skill implementation
+	 * Note: This does not check if the skill is unlocked
 	 *
 	 * @param player The player that triggered the skill
 	 * @param level  The skill level the player has
