@@ -8,18 +8,23 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class AchillesHeel extends Skill {
+public class FlamingArrow extends Skill {
 
-	private final String identifier = "1_A_2";
+	private final String identifier = "2_B_2";
 	private final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Achilles Heel";
-	private final List< String > description = List.of("Speed II for 20 seconds");
-	private final Skill parent = null;
+	private final String name = "Flaming Arrow";
+	private final List< String > description =
+			List.of(
+					"Your next arrow will burn nearby",
+					"mobs where it lands. Deals +50% damage",
+					" if you or your enemy is burning."
+			       );
+	private final Skill parent = new CriticalShot();
 	private final List< Skill > children = null;
-	final int initCooldown = 60 * 1000;
-	final int initManaCost = 60;
-	final int initGoldCost = 5000;
-	final int initSpeedTime = 20;
+	final int initCooldown = 25 * 1000;
+	final int initManaCost = 40;
+	final int initGoldCost = 2500;
+	final double damageMulti = 1.0; //amount of time the arrow bounces around in seconds
 
 
 	@Override
@@ -31,7 +36,11 @@ public class AchillesHeel extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Speed II for 20 seconds");
+		return List.of(
+				"Your next arrow will burn nearby",
+				"mobs where it lands. Deals +"+((getDamageMulti(level, true)-1)*100)+"% damage",
+				" if you or your enemy is burning."
+		              );
 	}
 
 	@Override
@@ -47,29 +56,30 @@ public class AchillesHeel extends Skill {
 		return this.children;
 	}
 
-	//Use this method to set the duration of the speed effect
-	public int getSpeedTime(int level) {
-		return this.initSpeedTime + (int) Math.ceil(this.initSpeedTime * level * 0.1);
-	}
-
 	@Override
 	public Duration getCooldown(int level) {
 
-		//increases by 1
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.005));
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.03));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.04));
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.075));
+	}
+
+
+	public double getDamageMulti(int level, boolean burning) {
+
+		if (burning) return (this.damageMulti) + (level * 0.1);
+		return this.damageMulti;
 	}
 
 	@Override
 	public int getGoldCost(int level) {
 
-		return (int) (this.initGoldCost * level * 5.0);
+		return (int) (this.initGoldCost * level * 3.0);
 	}
 
 	@Override
@@ -86,7 +96,9 @@ public class AchillesHeel extends Skill {
 
 	@Override
 	public void triggerEnd(@NotNull Player player, int level) {
+
 		super.triggerEnd(player, level);
 
 	}
+
 }

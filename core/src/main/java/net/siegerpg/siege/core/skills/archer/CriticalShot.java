@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CriticalShot extends Skill {
 
-	private final String identifier = "1";
+	private final String identifier = "1_A_1";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Critical Shot";
 	private final List< String > description = List.of("+50% STR next shot");
@@ -18,7 +18,7 @@ public class CriticalShot extends Skill {
 	private final List< Skill > children = List.of(new PoisonArrow());
 	final int initCooldown = 10 * 1000;
 	final int initManaCost = 50;
-	final int initGoldCost = 1000;
+	final int initGoldCost = 2500;
 	final double damageMulti = 0.5;
 
 

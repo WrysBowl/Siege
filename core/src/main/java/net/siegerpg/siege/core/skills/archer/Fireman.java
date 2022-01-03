@@ -8,18 +8,23 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class AchillesHeel extends Skill {
+public class Fireman extends Skill {
 
-	private final String identifier = "1_A_2";
+	private final String identifier = "2_B_3";
 	private final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Achilles Heel";
-	private final List< String > description = List.of("Speed II for 20 seconds");
-	private final Skill parent = null;
+	private final String name = "Fireman";
+	private final List< String > description =
+			List.of(
+					"Effects yourself with speed III",
+					"and burns all mobs in 6 blocks",
+					"for 30 seconds"
+			       );
+	private final Skill parent = new CriticalShot();
 	private final List< Skill > children = null;
 	final int initCooldown = 60 * 1000;
-	final int initManaCost = 60;
+	final int initManaCost = 150;
 	final int initGoldCost = 5000;
-	final int initSpeedTime = 20;
+	final int duration = 30;
 
 
 	@Override
@@ -31,7 +36,11 @@ public class AchillesHeel extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Speed II for 20 seconds");
+		return List.of(
+				"Effects yourself with speed III",
+				"and burns all mobs in 6 blocks",
+				"for "+ getDuration(level) + " seconds"
+		              );
 	}
 
 	@Override
@@ -47,23 +56,22 @@ public class AchillesHeel extends Skill {
 		return this.children;
 	}
 
-	//Use this method to set the duration of the speed effect
-	public int getSpeedTime(int level) {
-		return this.initSpeedTime + (int) Math.ceil(this.initSpeedTime * level * 0.1);
-	}
-
 	@Override
 	public Duration getCooldown(int level) {
 
-		//increases by 1
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.005));
+		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * level * 0.03));
 		return Duration.ofMillis(time);
 	}
 
 	@Override
 	public double getManaCost(int level) {
 
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.04));
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * level * 0.05));
+	}
+
+
+	public double getDuration(int level) {
+		return (this.duration) + (level * 2);
 	}
 
 	@Override
@@ -86,7 +94,9 @@ public class AchillesHeel extends Skill {
 
 	@Override
 	public void triggerEnd(@NotNull Player player, int level) {
+
 		super.triggerEnd(player, level);
 
 	}
+
 }

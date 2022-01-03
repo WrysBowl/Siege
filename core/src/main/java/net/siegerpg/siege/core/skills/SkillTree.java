@@ -1,7 +1,6 @@
 package net.siegerpg.siege.core.skills;
 
-import net.siegerpg.siege.core.skills.archer.CriticalShot;
-import net.siegerpg.siege.core.skills.archer.PoisonArrow;
+import net.siegerpg.siege.core.skills.archer.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -18,10 +17,16 @@ public class SkillTree {
 	static {
 		// The CriticalShot is the first skill of the archer tree
 		Skill criticalShot = new CriticalShot();
+		Skill achillesHeel = new AchillesHeel();
 		roots.add(criticalShot);
 		// We add the poison arrow to the skill tree
-		Skill poisonArrow = criticalShot
-				.addChild(new PoisonArrow());
+		Skill poisonArrow = criticalShot.addChild(new PoisonArrow());
+		Skill piercingArrow = criticalShot.addChild(new PiercingArrow());
+		Skill venomousAura = criticalShot.addChild(new VenomousAura());
+		Skill serpentineArrow = criticalShot.addChild(new SerpentineArrow());
+		Skill flamingArrow = criticalShot.addChild(new FlamingArrow());
+		Skill fireman = criticalShot.addChild(new Fireman());
+
 		// Now if you want to add children to poisonArrow you have to do
 		// Skill someArcherSkill = poisonArrow.addChild(new SomeArcherSkill());
 

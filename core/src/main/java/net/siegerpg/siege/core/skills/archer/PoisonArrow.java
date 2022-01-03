@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PoisonArrow extends Skill {
 
-	private final String identifier = "2A_1";
+	private final String identifier = "2_A_1";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Poison Arrow";
 	private final List< String > description =
@@ -23,7 +23,7 @@ public class PoisonArrow extends Skill {
 	private final List< Skill > children = null;
 	final int initCooldown = 15 * 1000;
 	final int initManaCost = 30;
-	final int initGoldCost = 1000;
+	final int initGoldCost = 2500;
 	final double damageMulti = 1.0; //poisoned multiplier base
 
 
@@ -38,7 +38,7 @@ public class PoisonArrow extends Skill {
 
 		return List.of(
 				"Your next arrow becomes poisonous",
-				"and deals " + getDamageMulti(level, true) + "more damage if you",
+				"and deals +" + ((getDamageMulti(level, true)-1)*100) + "% more damage if you",
 				" or your target is poisoned"
 		              );
 	}
