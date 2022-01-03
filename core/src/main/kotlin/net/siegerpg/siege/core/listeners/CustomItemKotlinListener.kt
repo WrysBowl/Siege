@@ -56,8 +56,11 @@ class CustomItemKotlinListener : Listener, Runnable {
 	@EventHandler
 	@Suppress("unused")
 	fun onRegen(e : EntityRegainHealthEvent) {
-		if (e.regainReason == EntityRegainHealthEvent.RegainReason.REGEN) {
-			e.amount *= 4
+		if (e.regainReason == EntityRegainHealthEvent.RegainReason.REGEN || e.entity is Player) {
+			val player : Player = e.entity as Player
+			val regen : Double = CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION)
+
+			e.amount *= regen/5
 		}
 	}
 
@@ -177,7 +180,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 				Check for weapon skill from player's hand
 			 */
 			val weapon = attacker.inventory.itemInMainHand
-			val customItem: CustomItem? = CustomItemUtils.getCustomItem(weapon)
+			val customItem : CustomItem? = CustomItemUtils.getCustomItem(weapon)
 			customItem?.let {
 				if (it is CustomMeleeWeapon) {
 					it.onHit(e)
@@ -194,7 +197,8 @@ class CustomItemKotlinListener : Listener, Runnable {
 			val armor = victim.inventory.armorContents
 			if (armor.isNullOrEmpty()) return
 			armor.forEach { armorPiece ->
-				val armorCustomItem : CustomItem? = CustomItemUtils.getCustomItem(armorPiece)
+				val armorCustomItem : CustomItem? =
+						CustomItemUtils.getCustomItem(armorPiece)
 				armorCustomItem?.let {
 					if (it is CustomArmor) {
 						it.onHit(e)
@@ -208,7 +212,10 @@ class CustomItemKotlinListener : Listener, Runnable {
 		}
 		val vicDefense =
 				if (victim is Player)
-					CustomItemUtils.getPlayerStat(victim, StatTypes.DEFENSE) / (damageMulti[victim] ?: 1.0)
+					CustomItemUtils.getPlayerStat(
+							victim,
+							StatTypes.DEFENSE
+					                             ) / (damageMulti[victim] ?: 1.0)
 				else 0.0
 		val attStrengthStat =
 				if (attacker is Player && actualDamage > 0)
