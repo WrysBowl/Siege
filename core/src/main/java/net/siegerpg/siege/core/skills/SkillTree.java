@@ -19,6 +19,8 @@ public class SkillTree {
 		Skill criticalShot = new CriticalShot();
 		roots.add(criticalShot);
 		Skill achillesHeel = new AchillesHeel();
+		roots.add(achillesHeel);
+
 		// We add the poison arrow to the skill tree
 		Skill poisonArrow = criticalShot.addChild(new PoisonArrow());
 		Skill piercingArrow = criticalShot.addChild(new PiercingArrow());
@@ -28,6 +30,10 @@ public class SkillTree {
 		Skill fireman = criticalShot.addChild(new Fireman());
 
 		// Now if you want to add children to poisonArrow you have to do
+		Skill toxicSpores = poisonArrow.addChild(new ToxicSpores());
+		Skill undeadRevival = poisonArrow.addChild(new UndeadRevival());
+		Skill potentPoison = poisonArrow.addChild(new PotentPoison());
+
 		// Skill someArcherSkill = poisonArrow.addChild(new SomeArcherSkill());
 
 	}
