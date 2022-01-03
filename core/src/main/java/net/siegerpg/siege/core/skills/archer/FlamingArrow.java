@@ -10,6 +10,10 @@ import java.util.List;
 
 public class FlamingArrow extends Skill {
 
+	final int initCooldown = 25 * 1000;
+	final int initManaCost = 40;
+	final int initGoldCost = 2500;
+	final double damageMulti = 1.0; //amount of time the arrow bounces around in seconds
 	private final String identifier = "2_B_2";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Flaming Arrow";
@@ -19,13 +23,6 @@ public class FlamingArrow extends Skill {
 					"mobs where it lands. Deals +50% damage",
 					" if you or your enemy is burning."
 			       );
-	private final Skill parent = new CriticalShot();
-	private final List< Skill > children = null;
-	final int initCooldown = 25 * 1000;
-	final int initManaCost = 40;
-	final int initGoldCost = 2500;
-	final double damageMulti = 1.0; //amount of time the arrow bounces around in seconds
-
 
 	@Override
 	public String getName(int level) {
@@ -38,22 +35,10 @@ public class FlamingArrow extends Skill {
 
 		return List.of(
 				"Your next arrow will burn nearby",
-				"mobs where it lands. Deals +"+((getDamageMulti(level, true)-1)*100)+"% damage",
+				"mobs where it lands. Deals +" + ((getDamageMulti(level, true) - 1) * 100) +
+				"% damage",
 				" if you or your enemy is burning."
 		              );
-	}
-
-	@Override
-	public Skill getParent() {
-
-		return this.parent;
-	}
-
-	@NotNull
-	@Override
-	public List< Skill > getChildren() {
-
-		return this.children;
 	}
 
 	@Override
@@ -86,12 +71,9 @@ public class FlamingArrow extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		if (!super.trigger(player, level)) return false;
+		return super.trigger(player, level);
 
 		// Handling of the skill goes here
-
-
-		return true;
 	}
 
 	@Override

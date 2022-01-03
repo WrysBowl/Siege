@@ -10,6 +10,10 @@ import java.util.List;
 
 public class PoisonArrow extends Skill {
 
+	final int initCooldown = 15 * 1000;
+	final int initManaCost = 30;
+	final int initGoldCost = 2500;
+	final double damageMulti = 1.0; //poisoned multiplier base
 	private final String identifier = "2_A_1";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Poison Arrow";
@@ -19,13 +23,6 @@ public class PoisonArrow extends Skill {
 					"and deals more damage if you",
 					" or your target is poisoned"
 			       );
-	private final Skill parent = new CriticalShot();
-	private final List< Skill > children = null;
-	final int initCooldown = 15 * 1000;
-	final int initManaCost = 30;
-	final int initGoldCost = 2500;
-	final double damageMulti = 1.0; //poisoned multiplier base
-
 
 	@Override
 	public String getName(int level) {
@@ -38,23 +35,11 @@ public class PoisonArrow extends Skill {
 
 		return List.of(
 				"Your next arrow becomes poisonous",
-				"and deals +" + ((getDamageMulti(level, true)-1)*100) + "% more damage if you",
+				"and deals +" + ((getDamageMulti(level, true) - 1) * 100) + "% more damage if you",
 				" or your target is poisoned"
 		              );
 	}
 
-	@Override
-	public Skill getParent() {
-
-		return this.parent;
-	}
-
-	@NotNull
-	@Override
-	public List< Skill > getChildren() {
-
-		return this.children;
-	}
 
 	@Override
 	public Duration getCooldown(int level) {
@@ -86,12 +71,9 @@ public class PoisonArrow extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		if (!super.trigger(player, level)) return false;
+		return super.trigger(player, level);
 
 		// Handling of the skill goes here
-
-
-		return true;
 	}
 
 	@Override

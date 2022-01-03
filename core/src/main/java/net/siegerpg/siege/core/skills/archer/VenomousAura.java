@@ -10,6 +10,10 @@ import java.util.List;
 
 public class VenomousAura extends Skill {
 
+	final int initCooldown = 60 * 1000;
+	final int initManaCost = 150;
+	final int initGoldCost = 5000;
+	final double damageMulti = 1.5; //amount to multiply damage by
 	private final String identifier = "2_A_3";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Venomous Aura";
@@ -18,13 +22,6 @@ public class VenomousAura extends Skill {
 					"Increase your damage by +50% and",
 					"poison yourself for 30 seconds"
 			       );
-	private final Skill parent = new CriticalShot();
-	private final List< Skill > children = null;
-	final int initCooldown = 60 * 1000;
-	final int initManaCost = 150;
-	final int initGoldCost = 5000;
-	final double damageMulti = 1.5; //amount to multiply damage by
-
 
 	@Override
 	public String getName(int level) {
@@ -36,23 +33,11 @@ public class VenomousAura extends Skill {
 	public List< String > getDescription(int level) {
 
 		return List.of(
-				"Increase your damage by +"+ ((getDamageMulti(level)-1)*100)+"% and",
+				"Increase your damage by +" + ((getDamageMulti(level) - 1) * 100) + "% and",
 				"poison yourself for 30 seconds"
 		              );
 	}
 
-	@Override
-	public Skill getParent() {
-
-		return this.parent;
-	}
-
-	@NotNull
-	@Override
-	public List< Skill > getChildren() {
-
-		return this.children;
-	}
 
 	@Override
 	public Duration getCooldown(int level) {
@@ -69,6 +54,7 @@ public class VenomousAura extends Skill {
 
 
 	public double getDamageMulti(int level) {
+
 		return (this.damageMulti) + (level * 0.05);
 	}
 
@@ -82,12 +68,9 @@ public class VenomousAura extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		if (!super.trigger(player, level)) return false;
+		return super.trigger(player, level);
 
 		// Handling of the skill goes here
-
-
-		return true;
 	}
 
 	@Override

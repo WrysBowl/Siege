@@ -10,17 +10,14 @@ import java.util.List;
 
 public class AchillesHeel extends Skill {
 
-	private final String identifier = "1_A_2";
-	private final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Achilles Heel";
-	private final List< String > description = List.of("Speed II for 20 seconds");
-	private final Skill parent = null;
-	private final List< Skill > children = null;
 	final int initCooldown = 60 * 1000;
 	final int initManaCost = 60;
 	final int initGoldCost = 5000;
 	final int initSpeedTime = 20;
-
+	private final String identifier = "1_A_2";
+	private final SkillClass skillClass = SkillClass.ARCHER;
+	private final String name = "Achilles Heel";
+	private final List< String > description = List.of("Speed II for 20 seconds");
 
 	@Override
 	public String getName(int level) {
@@ -34,21 +31,10 @@ public class AchillesHeel extends Skill {
 		return List.of("Speed II for 20 seconds");
 	}
 
-	@Override
-	public Skill getParent() {
-
-		return this.parent;
-	}
-
-	@NotNull
-	@Override
-	public List< Skill > getChildren() {
-
-		return this.children;
-	}
 
 	//Use this method to set the duration of the speed effect
 	public int getSpeedTime(int level) {
+
 		return this.initSpeedTime + (int) Math.ceil(this.initSpeedTime * level * 0.1);
 	}
 
@@ -76,17 +62,16 @@ public class AchillesHeel extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		if (!super.trigger(player, level)) return false;
+		return super.trigger(player, level);
 
 		// Handling of the skill goes here
-
-
-		return true;
 	}
 
 	@Override
 	public void triggerEnd(@NotNull Player player, int level) {
+
 		super.triggerEnd(player, level);
 
 	}
+
 }

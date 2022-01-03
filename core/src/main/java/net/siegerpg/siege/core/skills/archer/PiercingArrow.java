@@ -10,6 +10,10 @@ import java.util.List;
 
 public class PiercingArrow extends Skill {
 
+	final int initCooldown = 25 * 1000;
+	final int initManaCost = 50;
+	final int initGoldCost = 2500;
+	final double damageMulti = 0.1; //percentage to remove health by (1-0.1)*health = newHealth
 	private final String identifier = "2_A_2";
 	private final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Piercing Arrow";
@@ -20,13 +24,6 @@ public class PiercingArrow extends Skill {
 					"target are poisoned. If neither",
 					"condition passes it becomes a poison arrow"
 			       );
-	private final Skill parent = new CriticalShot();
-	private final List< Skill > children = null;
-	final int initCooldown = 25 * 1000;
-	final int initManaCost = 50;
-	final int initGoldCost = 2500;
-	final double damageMulti = 0.1; //percentage to remove health by (1-0.1)*health = newHealth
-
 
 	@Override
 	public String getName(int level) {
@@ -39,24 +36,12 @@ public class PiercingArrow extends Skill {
 
 		return List.of(
 				"The arrow will damage the enemy for",
-				(getDamageMulti(level, true)*100) + "% of their health if you and the",
+				(getDamageMulti(level, true) * 100) + "% of their health if you and the",
 				"target are poisoned. If neither",
 				"condition passes it becomes a poison arrow"
 		              );
 	}
 
-	@Override
-	public Skill getParent() {
-
-		return this.parent;
-	}
-
-	@NotNull
-	@Override
-	public List< Skill > getChildren() {
-
-		return this.children;
-	}
 
 	@Override
 	public Duration getCooldown(int level) {
@@ -88,12 +73,9 @@ public class PiercingArrow extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		if (!super.trigger(player, level)) return false;
+		return super.trigger(player, level);
 
 		// Handling of the skill goes here
-
-
-		return true;
 	}
 
 	@Override

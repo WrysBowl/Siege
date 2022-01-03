@@ -17,8 +17,8 @@ public class SkillTree {
 	static {
 		// The CriticalShot is the first skill of the archer tree
 		Skill criticalShot = new CriticalShot();
-		Skill achillesHeel = new AchillesHeel();
 		roots.add(criticalShot);
+		Skill achillesHeel = new AchillesHeel();
 		// We add the poison arrow to the skill tree
 		Skill poisonArrow = criticalShot.addChild(new PoisonArrow());
 		Skill piercingArrow = criticalShot.addChild(new PiercingArrow());
