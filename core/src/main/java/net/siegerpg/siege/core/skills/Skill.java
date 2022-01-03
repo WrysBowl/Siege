@@ -157,6 +157,7 @@ public abstract class Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 
 		// Checks if the skill is still in cooldown
+
 		Instant now = Instant.now();
 		Instant resetTime = SkillCooldown.getResetTime(player.getUniqueId(), this);
 		if (resetTime != null && now.isBefore(resetTime)) {

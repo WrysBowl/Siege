@@ -7,13 +7,17 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class SkillData {
+public enum SkillData {
+
+	;
 
 	static HashMap< UUID, JsonObject > skillCache = new HashMap<>();
 
@@ -25,14 +29,15 @@ public class SkillData {
 	 * @param player The player to get the skill of
 	 * @param skill  The skill to get the level of
 	 *
-	 * @return The level
+	 * @return The level (can be null if the player doesn't have that skill)
 	 */
-	public static int getSkillLevel(OfflinePlayer player, Skill skill) {
+	@Nullable
+	public static Integer getSkillLevel(OfflinePlayer player, Skill skill) {
 
 		JsonElement data = getSkillData(player)
 				.get(skill.getIdentifier());
 		if (data == null) {
-			return 0;
+			return null;
 		} else {
 			return data.getAsInt();
 		}
@@ -128,6 +133,36 @@ public class SkillData {
 					} catch (SQLException ignored) {
 					}
 				});
+	}
+
+	/**
+	 * If a player has unlocked a skill
+	 *
+	 * @param player The player to check that on
+	 * @param skill  The skill
+	 *
+	 * @return Whether or not the skill is unlocked
+	 */
+	public static boolean hasSkillUnlocked(@NotNull Player player, @NotNull Skill skill) {
+
+		JsonObject data = getSkillData(player);
+		JsonElement elem = data.get(skill.getIdentifier());
+		return elem != null;
+	}
+
+	/**
+	 * A player can unlock a skill if the parent skill is already unlocked.
+	 *
+	 * @param player The player to check
+	 * @param skill  The skill
+	 *
+	 * @return Whether the parent is unlocked
+	 */
+	public static boolean canUnlockSkill(@NotNull Player player, @NotNull Skill skill) {
+
+		var parent = skill.getParent();
+		if (parent == null) return true;
+		return hasSkillUnlocked(player, parent);
 	}
 
 }
