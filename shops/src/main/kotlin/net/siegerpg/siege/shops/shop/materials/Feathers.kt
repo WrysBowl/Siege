@@ -15,6 +15,9 @@ class Feathers : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
 			ShopItem(Feather.tier(2), -1, hashMapOf(
 					Feather.tier(1) to 8), true) {
 				Feather.tier(2).getUpdatedItem(false)
@@ -52,10 +55,6 @@ class Feathers : Shop() {
 			ShopItem(Feather.tier(3).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Feather.tier(4) to 1), true) {
 				Feather.tier(3).getUpdatedItem(false).asQuantity(8)
-			},
-			ShopItem(Feather.tier(4).asQuantity(8) as CustomItem, -1, hashMapOf(
-					Feather.tier(5) to 1), true) {
-				Feather.tier(4).getUpdatedItem(false).asQuantity(8)
 			},
 	                                            )
 }

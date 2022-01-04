@@ -15,6 +15,9 @@ class Wools : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
 			ShopItem(Wool.tier(2), -1, hashMapOf(
 					Wool.tier(1) to 8), true) {
 				Wool.tier(2).getUpdatedItem(false)
@@ -26,10 +29,6 @@ class Wools : Shop() {
 			ShopItem(Wool.tier(4), -1, hashMapOf(
 					Wool.tier(3) to 8), true) {
 				Wool.tier(4).getUpdatedItem(false)
-			},
-			ShopItem(Wool.tier(5), -1, hashMapOf(
-					Wool.tier(4) to 8), true) {
-				Wool.tier(5).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
@@ -52,9 +51,5 @@ class Wools : Shop() {
 			ShopItem(Wool.tier(3).asQuantity(8) as CustomItem, -1, hashMapOf(
 					Wool.tier(4) to 1), true) {
 				Wool.tier(3).getUpdatedItem(false).asQuantity(8)
-			},
-			ShopItem(Wool.tier(4).asQuantity(8) as CustomItem, -1, hashMapOf(
-					Wool.tier(5) to 1), true) {
-				Wool.tier(4).getUpdatedItem(false).asQuantity(8)
 			})
 }

@@ -15,6 +15,9 @@ class PlantMatters : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
+			},
 			ShopItem(PlantMatter.tier(2), -1, hashMapOf(
 					PlantMatter.tier(1) to 8), true) {
 				PlantMatter.tier(2).getUpdatedItem(false)
@@ -26,10 +29,6 @@ class PlantMatters : Shop() {
 			ShopItem(PlantMatter.tier(4), -1, hashMapOf(
 					PlantMatter.tier(3) to 8), true) {
 				PlantMatter.tier(4).getUpdatedItem(false)
-			},
-			ShopItem(PlantMatter.tier(5), -1, hashMapOf(
-					PlantMatter.tier(4) to 8), true) {
-				PlantMatter.tier(5).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
@@ -52,9 +51,5 @@ class PlantMatters : Shop() {
 			ShopItem(PlantMatter.tier(3).asQuantity(8) as CustomItem, -1, hashMapOf(
 					PlantMatter.tier(4) to 1), true) {
 				PlantMatter.tier(3).getUpdatedItem(false).asQuantity(8)
-			},
-			ShopItem(PlantMatter.tier(4).asQuantity(8) as CustomItem, -1, hashMapOf(
-					PlantMatter.tier(5) to 1), true) {
-				PlantMatter.tier(4).getUpdatedItem(false).asQuantity(8)
 			})
 }
