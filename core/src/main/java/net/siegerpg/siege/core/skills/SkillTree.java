@@ -34,6 +34,10 @@ public class SkillTree {
 		Skill undeadRevival = poisonArrow.addChild(new UndeadRevival());
 		Skill potentPoison = poisonArrow.addChild(new PotentPoison());
 
+		Skill lavaLeak = poisonArrow.addChild(new LavaLeak());
+		Skill explodingArrow = poisonArrow.addChild(new ExplodingArrow());
+		Skill combustion = poisonArrow.addChild(new Combustion());
+
 		// Skill someArcherSkill = poisonArrow.addChild(new SomeArcherSkill());
 
 	}
