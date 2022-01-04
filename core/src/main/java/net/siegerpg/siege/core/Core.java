@@ -175,7 +175,6 @@ public final class Core extends JavaPlugin {
 				new DungeonListener(),
 				new WebstoreListener(),
 				new MeraTransit(),
-				new SymoneCollector(),
 				new MeraTransit(),
 				new RichardBanker(),
 				new BartBeggar(),

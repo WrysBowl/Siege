@@ -28,8 +28,6 @@ class ShopsPlugin : JavaPlugin(), Listener {
 				hashMapOf(
 						"chip" to Chip(),
 						"chop" to Chop(),
-						"sylvester" to Sylvester(),
-						"phillip" to Phillip(),
 						"minnow" to Minnow(),
 						"chelsea" to Chelsea(),
 						"marco" to Marco(),
@@ -51,8 +49,6 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"brown" to Brown(),
 						"kayla" to Kayla(),
 						"mary" to Mary(),
-						"rose" to Rose(),
-						"grace" to Grace(),
 						"edward" to Edward(),
 						"edith" to Edith(),
 						"lucia" to Lucia(),
