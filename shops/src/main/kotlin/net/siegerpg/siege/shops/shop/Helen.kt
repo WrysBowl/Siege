@@ -70,7 +70,7 @@ class Helen : Shop() {
 			ShopItem(
 					HealingTorch(-1), -1, hashMapOf(
 					Magma.tier(3) to 1,
-					Wheat.tier(4) to 1,
+					Wheat.tier(3) to 1,
 					Stick.tier(3) to 1
 					                               ), true
 			        ) {

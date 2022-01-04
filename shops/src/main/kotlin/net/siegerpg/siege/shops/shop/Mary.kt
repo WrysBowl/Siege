@@ -20,15 +20,15 @@ class Mary : Shop() {
 			},
 			ShopItem(
 					OakRod(-1), 20000, hashMapOf(
-					Vine.tier(4) to 2,
-					Stick.tier(5) to 1
+					Vine.tier(3) to 2,
+					Stick.tier(3) to 1
 					                            ), true
 			        ) {
 				OakRod(0).getUpdatedItem(false)
 			},
 			ShopItem(
 					BoneRod(-1), 35000, hashMapOf(
-					Vine.tier(4) to 2,
+					Vine.tier(3) to 2,
 					Bone.tier(3) to 3
 					                             ), true
 			        ) {
@@ -40,7 +40,7 @@ class Mary : Shop() {
 			ShopItem(
 					MetalRod(-1), 55000, hashMapOf(
 					Chain.tier(2) to 3,
-					MetalScrap.tier(4) to 2
+					MetalScrap.tier(3) to 2
 					                              ), true
 			        ) {
 				MetalRod(0).getUpdatedItem(false)

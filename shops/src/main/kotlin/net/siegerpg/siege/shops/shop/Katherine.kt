@@ -72,7 +72,7 @@ class Katherine : Shop() {
 					PlantMatter.tier(3) to 1,
 					Seed.tier(3) to 1,
 					Coal.tier(3) to 1,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                      ), true
 			        ) {
 				HealingEarthernWand(Utils.randRarity()).getUpdatedItem(false)

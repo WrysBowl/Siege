@@ -69,7 +69,7 @@ class Valentine : Shop() {
 					HealingIronBow(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 1,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                 ), true
 			        ) {
 				HealingIronBow(Utils.randRarity()).getUpdatedItem(false)
@@ -79,8 +79,8 @@ class Valentine : Shop() {
 			ShopItem(
 					Bowba(-1), 4000, hashMapOf(
 					Vine.tier(3) to 3,
-					RefinedMetal.tier(4) to 1,
-					Bone.tier(4) to 2
+					RefinedMetal.tier(3) to 1,
+					Bone.tier(3) to 2
 					                          ), true
 			        ) {
 				Bowba(Utils.randRarity()).getUpdatedItem(false)
@@ -92,8 +92,8 @@ class Valentine : Shop() {
 					LuckyBowba(-1), 4500, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
-					Bone.tier(4) to 1,
-					Feather.tier(4) to 2
+					Bone.tier(3) to 1,
+					Feather.tier(3) to 2
 					                               ), true
 			        ) {
 				LuckyBowba(Utils.randRarity()).getUpdatedItem(false)
@@ -102,7 +102,7 @@ class Valentine : Shop() {
 					StrongBowba(-1), 4500, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
-					Bone.tier(4) to 2
+					Bone.tier(3) to 2
 					                                ), true
 			        ) {
 				StrongBowba(Utils.randRarity()).getUpdatedItem(false)
@@ -111,8 +111,8 @@ class Valentine : Shop() {
 					ToughBowba(-1), 4500, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
-					Bone.tier(4) to 1,
-					Pebble.tier(4) to 2
+					Bone.tier(3) to 1,
+					Pebble.tier(3) to 2
 					                               ), true
 			        ) {
 				ToughBowba(Utils.randRarity()).getUpdatedItem(false)
@@ -121,8 +121,8 @@ class Valentine : Shop() {
 					HealthyBowba(-1), 4500, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
-					Bone.tier(4) to 1,
-					PlantMatter.tier(4) to 2
+					Bone.tier(3) to 1,
+					PlantMatter.tier(3) to 2
 					                                 ), true
 			        ) {
 				HealthyBowba(Utils.randRarity()).getUpdatedItem(false)
@@ -131,8 +131,8 @@ class Valentine : Shop() {
 					HealingBowba(-1), 4500, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
-					Bone.tier(4) to 1,
-					Wheat.tier(4) to 4
+					Bone.tier(3) to 1,
+					Wheat.tier(3) to 4
 					                                 ), true
 			        ) {
 				HealingBowba(Utils.randRarity()).getUpdatedItem(false)

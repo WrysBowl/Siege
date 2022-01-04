@@ -31,7 +31,7 @@ class Charles : Shop() {
 			ShopItem(
 					LuckyClobber(-1), -1, hashMapOf(
 					RefinedMetal.tier(3) to 3,
-					Feather.tier(4) to 1
+					Feather.tier(3) to 1
 					                               ), true
 			        ) {
 				LuckyClobber(Utils.randRarity()).getUpdatedItem(false)
@@ -47,7 +47,7 @@ class Charles : Shop() {
 			ShopItem(
 					ToughClobber(-1), -1, hashMapOf(
 					RefinedMetal.tier(3) to 3,
-					Pebble.tier(4) to 1
+					Pebble.tier(3) to 1
 					                               ), true
 			        ) {
 				ToughClobber(Utils.randRarity()).getUpdatedItem(false)
@@ -63,7 +63,7 @@ class Charles : Shop() {
 			ShopItem(
 					HealingClobber(-1), -1, hashMapOf(
 					RefinedMetal.tier(3) to 3,
-					Wheat.tier(4) to 2
+					Wheat.tier(3) to 2
 					                                 ), true
 			        ) {
 				HealingClobber(Utils.randRarity()).getUpdatedItem(false)
@@ -72,7 +72,7 @@ class Charles : Shop() {
 			//EARTHERN HAMMER
 			ShopItem(
 					EarthernHammer(-1), 5750, hashMapOf(
-					PlantMatter.tier(4) to 2,
+					PlantMatter.tier(3) to 2,
 					Stick.tier(3) to 3
 					                                   ), true
 			        ) {
@@ -83,7 +83,7 @@ class Charles : Shop() {
 			},
 			ShopItem(
 					LuckyEarthernHammer(-1), -1, hashMapOf(
-					PlantMatter.tier(4) to 1,
+					PlantMatter.tier(3) to 1,
 					Stick.tier(3) to 3,
 					Feather.tier(3) to 4
 					                                      ), true
@@ -92,7 +92,7 @@ class Charles : Shop() {
 			},
 			ShopItem(
 					StrongEarthernHammer(-1), -1, hashMapOf(
-					PlantMatter.tier(4) to 1,
+					PlantMatter.tier(3) to 1,
 					Stick.tier(3) to 3,
 					Bone.tier(3) to 4
 					                                       ), true
@@ -101,7 +101,7 @@ class Charles : Shop() {
 			},
 			ShopItem(
 					ToughEarthernHammer(-1), -1, hashMapOf(
-					PlantMatter.tier(4) to 1,
+					PlantMatter.tier(3) to 1,
 					Stick.tier(3) to 3,
 					Pebble.tier(3) to 4
 					                                      ), true
@@ -110,7 +110,7 @@ class Charles : Shop() {
 			},
 			ShopItem(
 					HealthyEarthernHammer(-1), -1, hashMapOf(
-					PlantMatter.tier(4) to 1,
+					PlantMatter.tier(3) to 1,
 					Stick.tier(3) to 3,
 					PlantMatter.tier(3) to 4
 					                                        ), true
@@ -119,9 +119,9 @@ class Charles : Shop() {
 			},
 			ShopItem(
 					HealingEarthernHammer(-1), -1, hashMapOf(
-					PlantMatter.tier(4) to 1,
+					PlantMatter.tier(3) to 1,
 					Stick.tier(3) to 3,
-					Wheat.tier(4) to 2
+					Wheat.tier(3) to 2
 					                                        ), true
 			        ) {
 				HealingEarthernHammer(Utils.randRarity()).getUpdatedItem(false)

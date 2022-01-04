@@ -71,7 +71,7 @@ class Gilbert : Shop() {
 					HealingIronAxe(-1), -1, hashMapOf(
 					RefinedMetal.tier(3) to 2,
 					Stick.tier(3) to 2,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                 ), true
 			        ) {
 				HealingIronAxe(Utils.randRarity()).getUpdatedItem(false)

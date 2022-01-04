@@ -51,7 +51,7 @@ class Forest : Shop() {
 			ShopItem(
 					ToughWarHammer(-1), -1, hashMapOf(
 					MetalScrap.tier(3) to 1,
-					Pebble.tier(4) to 1,
+					Pebble.tier(3) to 1,
 					Stick.tier(3) to 2
 					                                 ), true
 			        ) {
@@ -72,7 +72,7 @@ class Forest : Shop() {
 					MetalScrap.tier(3) to 1,
 					Pebble.tier(3) to 2,
 					Stick.tier(3) to 2,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                   ), true
 			        ) {
 				HealingWarHammer(Utils.randRarity()).getUpdatedItem(false)

@@ -70,7 +70,7 @@ class Kayla : Shop() {
 			ShopItem(
 					HealingChainHelmet(-1), -1, hashMapOf(
 					Chain.tier(2) to 3,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                     ), true
 			        ) {
 				HealingChainHelmet(Utils.randRarity()).getUpdatedItem(false)
@@ -122,7 +122,7 @@ class Kayla : Shop() {
 			ShopItem(
 					HealingChainChestplate(-1), -1, hashMapOf(
 					Chain.tier(2) to 5,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                           ), true
 			        ) {
 				HealingChainChestplate(Utils.randRarity()).getUpdatedItem(false)
@@ -174,7 +174,7 @@ class Kayla : Shop() {
 			ShopItem(
 					HealingChainLeggings(-1), -1, hashMapOf(
 					Chain.tier(2) to 5,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                         ), true
 			        ) {
 				HealingChainLeggings(Utils.randRarity()).getUpdatedItem(false)
@@ -226,7 +226,7 @@ class Kayla : Shop() {
 			ShopItem(
 					HealingChainBoots(-1), -1, hashMapOf(
 					Chain.tier(2) to 3,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                      ), true
 			        ) {
 				HealingChainBoots(Utils.randRarity()).getUpdatedItem(false)

@@ -194,7 +194,7 @@ class Ellie : Shop() {
 					HealingStoneAxe(-1), 1200, hashMapOf(
 					Pebble.tier(3) to 1,
 					Stick.tier(3) to 2,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                    ), true
 			        ) {
 				HealingStoneAxe(Utils.randRarity()).getUpdatedItem(false)

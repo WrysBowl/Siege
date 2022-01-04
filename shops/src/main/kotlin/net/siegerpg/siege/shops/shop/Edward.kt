@@ -70,7 +70,7 @@ class Edward : Shop() {
 			ShopItem(
 					HealingIronHelmet(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 3,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                    ), true
 			        ) {
 				HealingIronHelmet(Utils.randRarity()).getUpdatedItem(false)
@@ -122,7 +122,7 @@ class Edward : Shop() {
 			ShopItem(
 					HealingIronChestplate(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 5,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                          ), true
 			        ) {
 				HealingIronChestplate(Utils.randRarity()).getUpdatedItem(false)
@@ -175,7 +175,7 @@ class Edward : Shop() {
 			ShopItem(
 					HealingIronLeggings(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 5,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                        ), true
 			        ) {
 				HealingIronLeggings(Utils.randRarity()).getUpdatedItem(false)
@@ -227,7 +227,7 @@ class Edward : Shop() {
 			ShopItem(
 					HealingIronBoots(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 3,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                     ), true
 			        ) {
 				HealingIronBoots(Utils.randRarity()).getUpdatedItem(false)

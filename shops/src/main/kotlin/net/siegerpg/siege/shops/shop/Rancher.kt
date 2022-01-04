@@ -70,7 +70,7 @@ class Rancher : Shop() {
 			ShopItem(
 					HealingHardenedLeatherHelmet(-1), -1, hashMapOf(
 					Leather.tier(2) to 3,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                               ), true
 			        ) {
 				HealingHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false)
@@ -122,7 +122,7 @@ class Rancher : Shop() {
 			ShopItem(
 					HealingHardenedLeatherChestplate(-1), -1, hashMapOf(
 					Leather.tier(2) to 4,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                                     ), true
 			        ) {
 				HealingHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
@@ -174,7 +174,7 @@ class Rancher : Shop() {
 			ShopItem(
 					HealingHardenedLeatherLeggings(-1), -1, hashMapOf(
 					Leather.tier(2) to 3,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                                   ), true
 			        ) {
 				HealingHardenedLeatherLeggings(Utils.randRarity()).getUpdatedItem(false)

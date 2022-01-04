@@ -136,7 +136,7 @@ class Julie : Shop() {
 					HealingCrossbow(-1), 2700, hashMapOf(
 					Vine.tier(3) to 3,
 					MetalScrap.tier(3) to 1,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                    ), true
 			        ) {
 				HealingCrossbow(Utils.randRarity()).getUpdatedItem(false)

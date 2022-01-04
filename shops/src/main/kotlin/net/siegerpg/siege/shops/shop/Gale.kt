@@ -44,7 +44,7 @@ class Gale : Shop() {
 			},
 			ShopItem(
 					ToughDoubleBladedAxe(-1), -1, hashMapOf(
-					Pebble.tier(4) to 1,
+					Pebble.tier(3) to 1,
 					Stick.tier(3) to 2
 					                                       ), true
 			        ) {
@@ -63,7 +63,7 @@ class Gale : Shop() {
 					HealingDoubleBladedAxe(-1), -1, hashMapOf(
 					Pebble.tier(3) to 3,
 					Stick.tier(3) to 2,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                         ), true
 			        ) {
 				HealingDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
@@ -121,7 +121,7 @@ class Gale : Shop() {
 					HealingGreatSword(-1), 4000, hashMapOf(
 					MetalScrap.tier(3) to 1,
 					Stick.tier(3) to 1,
-					Wheat.tier(4) to 1
+					Wheat.tier(3) to 1
 					                                      ), true
 			        ) {
 				HealingGreatSword(Utils.randRarity()).getUpdatedItem(false)
