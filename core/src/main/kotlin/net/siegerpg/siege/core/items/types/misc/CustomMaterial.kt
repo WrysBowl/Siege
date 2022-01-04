@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
+import net.siegerpg.siege.core.items.implemented.misc.materials.FishingExplanation
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.listeners.NPC.Herbert
 import net.siegerpg.siege.core.miscellaneous.Utils
@@ -60,9 +61,17 @@ abstract class CustomMaterial(
 
 		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
-		Utils.getTextArray(description, 16).forEach {
-			meta.lore("<r><dark_gray>$it")
+		//lazy coding here by Wrys
+		if (this is FishingExplanation) {
+			description.forEach {
+				meta.lore("<r><dark_gray>$it")
+			}
+		} else {
+			Utils.getTextArray(description, 16).forEach {
+				meta.lore("<r><dark_gray>$it")
+			}
 		}
+
 		meta.lore("<gray>/materials to upgrade")
 		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")

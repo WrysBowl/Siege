@@ -9,10 +9,6 @@ import org.bukkit.inventory.ItemStack
 class FishingExplanation() : CustomMaterial(
 		name = Utils.tacc("&3Fishing 101"),
 		description = listOf(
-				Utils.tacc("&eFishing can be complicated"),
-				Utils.tacc("&e at first, but once you get"),
-				Utils.tacc("&ethe hang of it, it's really fun!"),
-				"",
 				Utils.tacc("&b1. Cast fishing rod as normal"),
 				Utils.tacc("&b2. Wait for your bobber to get caught"),
 				Utils.tacc("&b3. Right click to start catching the fish"),

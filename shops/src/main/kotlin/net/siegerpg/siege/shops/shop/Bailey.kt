@@ -21,12 +21,9 @@ class Bailey : Shop() {
 	override var name : String = "bailey"
 	override var permission : String = "siege.shops.shop.bailey"
 	override var items : List<ShopItem> = listOf(
-			ShopItem(
-					Spade(-1), 400, hashMapOf(
+			ShopItem(Spade(-1), 400, hashMapOf(
 					Pebble.tier(2) to 1,
-					Stick.tier(3) to 1
-					                         ), true
-			        ) {
+					Stick.tier(3) to 1), true) {
 				Spade(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
