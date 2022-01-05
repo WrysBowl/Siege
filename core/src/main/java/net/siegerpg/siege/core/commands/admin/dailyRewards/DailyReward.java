@@ -49,7 +49,7 @@ public class DailyReward {
 			GoldExpListener.giveGold(player, exp);
 		}
 		for (ItemStack item : items) {
-			final Component miniMessage = Utils.lore("<gray>\u27A5 " + item.getI18NDisplayName()).hoverEvent(item);
+			final Component miniMessage = Utils.lore("<gray>\u27A5 " + item.getItemMeta().getDisplayName()).hoverEvent(item);
 			player.sendMessage(miniMessage);
 			Utils.giveItem(player, item);
 		}
