@@ -12,12 +12,6 @@ class Seeds : Shop() {
 	override var name : String = "Seed"
 	override var permission : String = "siege.shops.shop.seed"
 	override var items : List<ShopItem> = listOf(
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
 			ShopItem(Seed.tier(2), -1, hashMapOf(
 					Seed.tier(1) to 8), true) {
 				Seed.tier(2).getUpdatedItem(false)
@@ -30,13 +24,6 @@ class Seeds : Shop() {
 					Seed.tier(3) to 8), true) {
 				Seed.tier(4).getUpdatedItem(false)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},

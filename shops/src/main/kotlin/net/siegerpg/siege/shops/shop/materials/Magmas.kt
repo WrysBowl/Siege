@@ -12,12 +12,6 @@ class Magmas : Shop() {
 	override var name : String = "Magma"
 	override var permission : String = "siege.shops.shop.magma"
 	override var items : List<ShopItem> = listOf(
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
 			ShopItem(Magma.tier(2), -1, hashMapOf(
 					Magma.tier(1) to 8), true) {
 				Magma.tier(2).getUpdatedItem(false)
@@ -30,13 +24,6 @@ class Magmas : Shop() {
 					Magma.tier(3) to 8), true) {
 				Magma.tier(4).getUpdatedItem(false)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},

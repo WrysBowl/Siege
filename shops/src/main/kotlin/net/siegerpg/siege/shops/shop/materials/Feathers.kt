@@ -12,12 +12,6 @@ class Feathers : Shop() {
 	override var name : String = "Feather"
 	override var permission : String = "siege.shops.shop.feather"
 	override var items : List<ShopItem> = listOf(
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
 			ShopItem(Feather.tier(2), -1, hashMapOf(
 					Feather.tier(1) to 8), true) {
 				Feather.tier(2).getUpdatedItem(false)
@@ -34,13 +28,6 @@ class Feathers : Shop() {
 					Feather.tier(4) to 8), true) {
 				Feather.tier(5).getUpdatedItem(false)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},

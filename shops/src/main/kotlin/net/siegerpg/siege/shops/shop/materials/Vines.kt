@@ -12,12 +12,6 @@ class Vines : Shop() {
 	override var name : String = "Vine"
 	override var permission : String = "siege.shops.shop.vine"
 	override var items : List<ShopItem> = listOf(
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
 			ShopItem(Vine.tier(2), -1, hashMapOf(
 					Vine.tier(1) to 8), true) {
 				Vine.tier(2).getUpdatedItem(false)
@@ -30,13 +24,6 @@ class Vines : Shop() {
 					Vine.tier(3) to 8), true) {
 				Vine.tier(4).getUpdatedItem(false)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},

@@ -12,12 +12,6 @@ class Slimes : Shop() {
 	override var name : String = "Slime"
 	override var permission : String = "siege.shops.shop.slime"
 	override var items : List<ShopItem> = listOf(
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
 			ShopItem(Slime.tier(2), -1, hashMapOf(
 					Slime.tier(1) to 8), true) {
 				Slime.tier(2).getUpdatedItem(false)
@@ -30,13 +24,6 @@ class Slimes : Shop() {
 					Slime.tier(3) to 8), true) {
 				Slime.tier(4).getUpdatedItem(false)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},

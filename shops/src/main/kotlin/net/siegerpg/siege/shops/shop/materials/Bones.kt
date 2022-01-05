@@ -15,12 +15,6 @@ class Bones : Shop() {
 	override var name : String = "Bone"
 	override var permission : String = "siege.shops.shop.bone"
 	override var items : List<ShopItem> = listOf(
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
 			ShopItem(Bone.tier(2), -1, hashMapOf(
 					Bone.tier(1) to 8), true) {
 				Bone.tier(2).getUpdatedItem(false)
@@ -32,12 +26,6 @@ class Bones : Shop() {
 			ShopItem(Bone.tier(4), -1, hashMapOf(
 					Bone.tier(3) to 8), true) {
 				Bone.tier(4).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)

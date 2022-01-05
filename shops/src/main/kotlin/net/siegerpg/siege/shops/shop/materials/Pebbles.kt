@@ -12,12 +12,6 @@ class Pebbles : Shop() {
 	override var name : String = "Pebble"
 	override var permission : String = "siege.shops.shop.pebble"
 	override var items : List<ShopItem> = listOf(
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
 			ShopItem(Pebble.tier(2), -1, hashMapOf(
 					Pebble.tier(1) to 8), true) {
 				Pebble.tier(2).getUpdatedItem(false)
@@ -30,13 +24,6 @@ class Pebbles : Shop() {
 					Pebble.tier(3) to 8), true) {
 				Pebble.tier(4).getUpdatedItem(false)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
-
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
