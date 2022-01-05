@@ -94,25 +94,25 @@ class Chip : Shop() {
 			},
 			ShopItem(
 					WoodenBow(-1), 250, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 3
+					Stick.tier(2) to 3,
+					Vine.tier(2) to 3
 					                             ), true
 			        ) {
 				WoodenBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					LuckyWoodenBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Feather.tier(3) to 1
+					Stick.tier(2) to 3,
+					Vine.tier(2) to 1,
+					Feather.tier(2) to 1
 					                                 ), true
 			        ) {
 				LuckyWoodenBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongWoodenBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
+					Stick.tier(2) to 3,
+					Vine.tier(2) to 1,
 					Bone.tier(2) to 6
 					                                  ), true
 			        ) {
@@ -120,56 +120,55 @@ class Chip : Shop() {
 			},
 			ShopItem(
 					ToughWoodenBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Pebble.tier(3) to 1
+					Stick.tier(2) to 3,
+					Vine.tier(2) to 1,
+					Pebble.tier(2) to 1
 					                                 ), true
 			        ) {
 				ToughWoodenBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyWoodenBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					PlantMatter.tier(3) to 1
+					Stick.tier(2) to 3,
+					Vine.tier(2) to 1,
+					PlantMatter.tier(2) to 1
 					                                   ), true
 			        ) {
 				HealthyWoodenBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingWoodenBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Wheat.tier(3) to 1
+					Stick.tier(2) to 3,
+					Vine.tier(2) to 1,
+					Wheat.tier(2) to 1
 					                                   ), true
 			        ) {
 				HealingWoodenBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 
 			//HEAVY MELEE
-			ShopItem(
-					Club(-1), 200, hashMapOf(
-					Stick.tier(1) to 16
-					                        ), true
+			ShopItem(Club(-1), -1, hashMapOf(
+					Stick.tier(1) to 16,
+					Pebble.tier(1) to 5), true
 			        ) {
 				Club(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GiantClub(-1), 300, hashMapOf(), false) {
 				GiantClub(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(LuckyGiantClub(-1), 400, hashMapOf(), false) {
+			ShopItem(LuckyGiantClub(-1), 800, hashMapOf(), false) {
 				LuckyGiantClub(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(StrongGiantClub(-1), 400, hashMapOf(), false) {
+			ShopItem(StrongGiantClub(-1), 800, hashMapOf(), false) {
 				StrongGiantClub(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(ToughGiantClub(-1), 400, hashMapOf(), false) {
+			ShopItem(ToughGiantClub(-1), 800, hashMapOf(), false) {
 				ToughGiantClub(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealthyGiantCLub(-1), 400, hashMapOf(), false) {
+			ShopItem(HealthyGiantCLub(-1), 800, hashMapOf(), false) {
 				HealthyGiantCLub(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealingGiantClub(-1), 400, hashMapOf(), false) {
+			ShopItem(HealingGiantClub(-1), 800, hashMapOf(), false) {
 				HealingGiantClub(Utils.randRarity()).getUpdatedItem(false)
 			},
 
