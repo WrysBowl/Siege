@@ -1,7 +1,6 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Tablist;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -19,7 +18,6 @@ public class PlayerQuitListener implements Listener {
 		e.quitMessage(Utils.parse("<red><bold>LEAVE <reset><gray>[<red>-<gray>] " + e
 				.getPlayer()
 				.getName()));
-		GoldReward.removePlayer(e);
 
 		Bukkit
 				.getServer()

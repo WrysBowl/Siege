@@ -5,15 +5,12 @@ import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.listeners.tasks.GoldReward;
-import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,7 +22,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class GoldExpListener implements Listener {
 
@@ -36,7 +32,6 @@ public class GoldExpListener implements Listener {
 		net.siegerpg.siege.core.miscellaneous.VaultHook.econ.depositPlayer(player, goldAmount);
 		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.3f, 1.0f);
 		player.sendActionBar(Utils.parse("<yellow>+ " + goldAmount + " <yellow>\u26C1"));
-		GoldReward.addServerGold(goldAmount);
 		Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
 					public void run() {
 

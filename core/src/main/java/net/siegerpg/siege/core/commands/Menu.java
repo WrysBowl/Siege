@@ -10,10 +10,8 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Simp
 import net.siegerpg.siege.core.listeners.NPC.GemRemover;
 import net.siegerpg.siege.core.listeners.NPC.Herbert;
 import net.siegerpg.siege.core.listeners.NPC.MeraTransit;
-import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -139,8 +137,6 @@ public class Menu implements CommandExecutor {
 		}
 		//Creating level and exp display w/ click for more info
 		statistics.addItem(new GuiItem(getLevelIcon(player)));
-		//Creating gold display w/ gold milestone
-		statistics.addItem(new GuiItem(getGoldStatusIcon(player)));
 
 		/*
 		  Player Games Icons
@@ -504,28 +500,6 @@ public class Menu implements CommandExecutor {
 		});
 		levelIcon.setItemMeta(levelIconItemMeta);
 		return levelIcon;
-	}
-
-	private static ItemStack getGoldStatusIcon(Player player) {
-		ItemStack goldIcon = new ItemStack(Material.SUNFLOWER);
-		ItemMeta goldIconItemMeta = goldIcon.getItemMeta();
-		goldIconItemMeta.displayName(Utils.lore("<yellow><bold>GOLD"));
-		double goldDivision = Utils.round(((double) GoldReward.serverGold / GoldReward.goldRequirement) * 100, 1);
-
-		goldIconItemMeta.lore(new ArrayList<>() {
-			{
-				add(Utils.lore("<gray>Gold <yellow>"+String.format("%,d", (int) VaultHook.econ.getBalance(player))));
-				add(Utils.lore(""));
-				add(Utils.lore("<yellow>Gold Party"));
-				add(Utils.lore("<gray>Gold Reward <yellow>+" + String.format("%,d", GoldReward.serverGoldReward)));
-				add(Utils.lore("<gray>Gold Progress <yellow>" + goldDivision + "%"));
-				add(Utils.lore("<gray>Gold Milestone <yellow>" + String.format("%,d", GoldReward.goldRequirement)));
-				add(Utils.lore("<gray>Gold Collected <yellow>" + String.format("%,d", GoldReward.serverGold)));
-			}
-		});
-
-		goldIcon.setItemMeta(goldIconItemMeta);
-		return goldIcon;
 	}
 
 	private static ItemStack getCookieClickerIcon() {

@@ -4,10 +4,6 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.implemented.armor.boots.ReaperBoots;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.ReaperCloak;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.ReaperHood;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.ReaperSlacks;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
@@ -15,18 +11,14 @@ import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
-import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.*;
-import net.siegerpg.siege.core.webstore.categories.cosmetics.CommonCosmeticKey;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.Connection;
@@ -136,7 +128,6 @@ public class PlayerJoinListener implements Listener {
         }*/
 		player.teleport(Core.plugin().getSpawnLocation());
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
-		GoldReward.addPlayer(event);
 	}
 
 	public void updateInventory(Player player) {

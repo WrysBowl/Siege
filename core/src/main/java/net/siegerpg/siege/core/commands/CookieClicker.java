@@ -6,8 +6,6 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
-import net.siegerpg.siege.core.listeners.tasks.GoldReward;
-import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Material;
 import org.bukkit.Sound;

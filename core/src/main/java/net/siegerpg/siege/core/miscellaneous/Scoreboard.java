@@ -1,7 +1,6 @@
 package net.siegerpg.siege.core.miscellaneous;
 
 import kotlin.Pair;
-import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

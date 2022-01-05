@@ -7,7 +7,6 @@ import io.github.retrooper.packetevents.settings.PacketEventsSettings;
 import io.github.retrooper.packetevents.utils.server.ServerVersion;
 import net.siegerpg.siege.core.commands.*;
 import net.siegerpg.siege.core.commands.admin.*;
-import net.siegerpg.siege.core.commands.admin.dailyRewards.DailyReward;
 import net.siegerpg.siege.core.commands.admin.dailyRewards.DailyRewardCommand;
 import net.siegerpg.siege.core.crates.cosmetics.CosmeticCrateOpen;
 import net.siegerpg.siege.core.crates.mobs.MobCrateOpen;
@@ -20,7 +19,6 @@ import net.siegerpg.siege.core.fishing.events.RightClickEvent;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.*;
-import net.siegerpg.siege.core.listeners.tasks.GoldReward;
 import net.siegerpg.siege.core.listeners.tasks.HelpfulTips;
 import net.siegerpg.siege.core.miscellaneous.DropUtils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
@@ -169,7 +167,6 @@ public final class Core extends JavaPlugin {
 				new PlayerData(),
 				new EntityTeleportListener(),
 				new HelpfulTips(),
-				new GoldReward(),
 				new CosmeticCrateOpen(),
 				new MobNames(),
 				new DungeonListener(),
@@ -200,7 +197,6 @@ public final class Core extends JavaPlugin {
 
 		StatChangeListener.statBarDisplayTask();
 		new HelpfulTips().broadcastTasks();
-		new GoldReward().giveGold();
 
 //        CustomRecipe recipe = new CustomRecipe();
 //        recipe.s1(Pebble.Companion.tier(1));
