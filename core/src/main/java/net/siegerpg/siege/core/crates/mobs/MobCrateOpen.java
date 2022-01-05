@@ -97,7 +97,7 @@ public class MobCrateOpen implements Listener {
 
 			@Override
 			public void run() {
-				if (counter >= 84) {
+				if (counter >= 64) {
 					giveReward(player, dropTable, targetedBlock, stand);
 					player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
 					CosmeticCrateOpen.currentlyUsedChests.remove(targetedBlock.getLocation());
@@ -122,7 +122,7 @@ public class MobCrateOpen implements Listener {
 					Location loc = new Location(world ,x, y, z, yaw, pitch);
 					stand.teleport(loc);
 				}
-				if (counter >= 65 && counter <= 75) {
+				if (counter >= 45 && counter <= 55) {
 					final int r = 203;
 					final int g = 225;
 					final int b = 145;
