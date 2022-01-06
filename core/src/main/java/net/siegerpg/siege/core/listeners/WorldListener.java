@@ -21,6 +21,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.*;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -158,6 +159,19 @@ public class WorldListener implements Listener, Runnable {
 
 	@EventHandler
 	public void preventClick(PlayerInteractEntityEvent e) {
+
+		Entity entity = e.getRightClicked();
+		Player player = e.getPlayer();
+		if (entity instanceof ItemFrame || entity instanceof ArmorStand) {
+			if (player.getGameMode().equals(GameMode.CREATIVE)) {
+				return;
+			}
+			e.setCancelled(true);
+		}
+	}
+
+	@EventHandler
+	public void preventClick(PlayerInteractAtEntityEvent e) {
 
 		Entity entity = e.getRightClicked();
 		Player player = e.getPlayer();
