@@ -147,11 +147,8 @@ public class WorldListener implements Listener, Runnable {
 			if (e.getClickedBlock() == null) {
 				return;
 			}
-			if (e.getClickedBlock() instanceof ItemFrame) {
-				if (e
-						.getPlayer()
-						.getGameMode()
-						.equals(GameMode.CREATIVE)) {
+			if (e.getClickedBlock() instanceof ItemFrame || e.getClickedBlock() instanceof ArmorStand) {
+				if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
 					return;
 				}
 				e.setCancelled(true);
@@ -164,10 +161,8 @@ public class WorldListener implements Listener, Runnable {
 
 		Entity entity = e.getRightClicked();
 		Player player = e.getPlayer();
-		if (entity instanceof ItemFrame) {
-			if (player
-					.getGameMode()
-					.equals(GameMode.CREATIVE)) {
+		if (entity instanceof ItemFrame || entity instanceof ArmorStand) {
+			if (player.getGameMode().equals(GameMode.CREATIVE)) {
 				return;
 			}
 			e.setCancelled(true);
