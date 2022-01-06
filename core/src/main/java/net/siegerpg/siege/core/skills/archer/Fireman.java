@@ -42,13 +42,11 @@ public class Fireman extends Skill {
 
 	@Override
 	public Duration getCooldown(int level) {
-
-		int time = (int) (this.initCooldown + Math.ceil(this.initCooldown * (level-1) * 0.03));
-		return Duration.ofMillis(time);
+		return Duration.ofMillis(initCooldown);
 	}
 
 	@Override
-	public double getManaCost(int level) {
+	public int getManaCost(int level) {
 
 		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.05));
 	}

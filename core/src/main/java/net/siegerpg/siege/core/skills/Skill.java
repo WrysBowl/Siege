@@ -134,7 +134,7 @@ public abstract class Skill {
 	 *
 	 * @return The mana cost
 	 */
-	abstract public double getManaCost(int level);
+	abstract public int getManaCost(int level);
 
 	/**
 	 * s
