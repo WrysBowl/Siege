@@ -135,20 +135,19 @@ public class WorldListener implements Listener, Runnable {
 	@EventHandler
 	public void preventClick(PlayerInteractEvent e) {
 
-		if (e
-				    .getAction()
+		if (e.getAction()
 				    .equals(Action.LEFT_CLICK_AIR) || e
 				    .getAction()
 				    .equals(Action.LEFT_CLICK_BLOCK) ||
-		    e
-				    .getAction()
+		    e.getAction()
 				    .equals(Action.RIGHT_CLICK_AIR) || e
 				    .getAction()
 				    .equals(Action.RIGHT_CLICK_BLOCK)) {
 			if (e.getClickedBlock() == null) {
 				return;
 			}
-			if (e.getClickedBlock() instanceof ItemFrame || e.getClickedBlock() instanceof ArmorStand) {
+			if (e.getClickedBlock() instanceof ItemFrame ||
+			    e.getClickedBlock() instanceof ArmorStand) {
 				if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
 					return;
 				}

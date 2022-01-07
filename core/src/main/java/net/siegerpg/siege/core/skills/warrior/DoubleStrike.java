@@ -9,23 +9,19 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class SelflessDefense extends Skill {
+public class DoubleStrike extends Skill {
 
-	final int initCooldown = 60 * 1000;
-	final int initManaCost = 200;
-	final int initGoldCost = 10000;
-	final double damageMulti = 0.75; //multiply to new damage
-	final double defenseMulti = 0.75; //multiply to new damage dealt to caster
+	final int initCooldown = 25 * 1000;
+	final int initManaCost = 30;
+	final int initGoldCost = 2500;
 
-	private final String identifier = "2_A_4";
+	private final String identifier = "2_B_3";
 	private final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Selfless Defense";
+	private final String name = "Double Strike";
 	private final List< String > description =
-			List.of("Absorb 25% of the damage",
-			        "that everyone within 10",
-			        "blocks takes. If weakened",
-			        "take 25% less damage.",
-			        "Lasts 10 seconds");
+			List.of("Slash your opponent twice,",
+			        "or three times if",
+			        "target is weakened");
 
 	@Override
 	public String getName(int level) {
@@ -36,11 +32,9 @@ public class SelflessDefense extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Absorb "+(1-(getDamageMulti(level)) * 100)+"% of the damage",
-		               "that everyone within 10",
-		               "blocks takes. If weakened",
-		               "take "+(1-(getDefenseMulti(level, true)) * 100)+"% less damage.",
-		               "Lasts 10 seconds.");
+		return List.of("Slash your opponent twice,",
+		               "or three times if",
+		               "target is weakened");
 	}
 
 
@@ -53,19 +47,11 @@ public class SelflessDefense extends Skill {
 	public int getManaCost(int level) {
 		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.03));
 	}
-
 	@Override
 	public int getGoldCost(int level) {
-		return (int) (this.initGoldCost * level * 2.0);
+		return (int) (this.initGoldCost * level * 3.5);
 	}
 
-	public double getDamageMulti(int level) {
-		return Utils.round(((this.damageMulti) - ((level - 1) * 0.015)), 2);
-	}
-	public double getDefenseMulti(int level, boolean weakened) {
-		if (weakened) return Utils.round(((this.defenseMulti) - ((level - 1) * 0.025)), 2);
-		return 1.0;
-	}
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {

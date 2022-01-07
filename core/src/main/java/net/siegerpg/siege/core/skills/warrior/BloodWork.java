@@ -9,23 +9,23 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class SelflessDefense extends Skill {
+public class BloodWork extends Skill {
 
-	final int initCooldown = 60 * 1000;
-	final int initManaCost = 200;
-	final int initGoldCost = 10000;
-	final double damageMulti = 0.75; //multiply to new damage
-	final double defenseMulti = 0.75; //multiply to new damage dealt to caster
+	final int initCooldown = 30 * 1000;
+	final int initManaCost = 75;
+	final int initGoldCost = 3500;
+	final double bleedPercent = 0.75;
 
-	private final String identifier = "2_A_4";
+	private final String identifier = "2_B_2";
 	private final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Selfless Defense";
+	private final String name = "Blood Work";
 	private final List< String > description =
-			List.of("Absorb 25% of the damage",
-			        "that everyone within 10",
-			        "blocks takes. If weakened",
-			        "take 25% less damage.",
-			        "Lasts 10 seconds");
+			List.of("Damage a target within",
+			        "2 meters on next hit to",
+			        "inflict bleed effect.",
+			        "Target loses 25% health,",
+			        "or 40% if weakened,",
+			        "over 10 seconds.");
 
 	@Override
 	public String getName(int level) {
@@ -36,11 +36,12 @@ public class SelflessDefense extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Absorb "+(1-(getDamageMulti(level)) * 100)+"% of the damage",
-		               "that everyone within 10",
-		               "blocks takes. If weakened",
-		               "take "+(1-(getDefenseMulti(level, true)) * 100)+"% less damage.",
-		               "Lasts 10 seconds.");
+		return List.of("Damage a target within",
+		               "2 meters on next hit to",
+		               "inflict bleed effect.",
+		               "Target loses "+(1-(getDamageMulti(level, false)) * 100)+"% health,",
+		               "or 40% if weakened,",
+		               "over 10 seconds.");
 	}
 
 
@@ -51,21 +52,19 @@ public class SelflessDefense extends Skill {
 
 	@Override
 	public int getManaCost(int level) {
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.03));
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.02));
 	}
 
 	@Override
 	public int getGoldCost(int level) {
-		return (int) (this.initGoldCost * level * 2.0);
+		return (int) (this.initGoldCost * level * 2.5);
 	}
 
-	public double getDamageMulti(int level) {
-		return Utils.round(((this.damageMulti) - ((level - 1) * 0.015)), 2);
+	public double getDamageMulti(int level, boolean weakened) {
+		if (weakened) return Utils.round(((this.bleedPercent - 0.15) - ((level - 1) * 0.025)), 2);
+		return Utils.round(((this.bleedPercent) - ((level - 1) * 0.025)), 2);
 	}
-	public double getDefenseMulti(int level, boolean weakened) {
-		if (weakened) return Utils.round(((this.defenseMulti) - ((level - 1) * 0.025)), 2);
-		return 1.0;
-	}
+
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {

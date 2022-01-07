@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.skills;
 
 import net.siegerpg.siege.core.skills.archer.*;
+import net.siegerpg.siege.core.skills.warrior.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -15,30 +16,42 @@ public class SkillTree {
 	private static final List< Skill > roots = new ArrayList<>();
 
 	static {
-		// The CriticalShot is the first skill of the archer tree
+		/*
+		ARCHER SKILLS
+		 */
 		Skill criticalShot = new CriticalShot();
 		roots.add(criticalShot);
 		Skill achillesHeel = new AchillesHeel();
 		roots.add(achillesHeel);
 
-		// We add the poison arrow to the skill tree
 		Skill poisonArrow = criticalShot.addChild(new PoisonArrow());
 		Skill piercingArrow = criticalShot.addChild(new PiercingArrow());
 		Skill venomousAura = criticalShot.addChild(new VenomousAura());
-		Skill serpentineArrow = criticalShot.addChild(new SerpentineArrow());
+
 		Skill flamingArrow = criticalShot.addChild(new FlamingArrow());
+		Skill serpentineArrow = criticalShot.addChild(new SerpentineArrow());
 		Skill fireman = criticalShot.addChild(new Fireman());
 
-		// Now if you want to add children to poisonArrow you have to do
 		Skill toxicSpores = poisonArrow.addChild(new ToxicSpores());
 		Skill undeadRevival = poisonArrow.addChild(new UndeadRevival());
 		Skill potentPoison = poisonArrow.addChild(new PotentPoison());
 
-		Skill lavaLeak = poisonArrow.addChild(new LavaLeak());
-		Skill explodingArrow = poisonArrow.addChild(new ExplodingArrow());
-		Skill combustion = poisonArrow.addChild(new Combustion());
+		Skill lavaLeak = flamingArrow.addChild(new LavaLeak());
+		Skill explodingArrow = flamingArrow.addChild(new ExplodingArrow());
+		Skill combustion = flamingArrow.addChild(new Combustion());
 
-		// Skill someArcherSkill = poisonArrow.addChild(new SomeArcherSkill());
+		/*
+		WARRIOR SKILLS
+		 */
+		Skill slash = new Slash();
+		roots.add(slash);
+		Skill lunge = new Lunge();
+		roots.add(lunge);
+
+		Skill taunt = slash.addChild(new Taunt());
+		Skill armory = taunt.addChild(new Armory());
+		Skill quakeCharge = taunt.addChild(new QuakeCharge());
+		Skill selflessDefense = taunt.addChild(new SelflessDefense());
 
 	}
 
