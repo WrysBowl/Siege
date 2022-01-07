@@ -25,20 +25,20 @@ public class SkillTree {
 		roots.add(achillesHeel);
 
 		Skill poisonArrow = criticalShot.addChild(new PoisonArrow());
-		Skill piercingArrow = criticalShot.addChild(new PiercingArrow());
-		Skill venomousAura = criticalShot.addChild(new VenomousAura());
+		Skill piercingArrow = poisonArrow.addChild(new PiercingArrow());
+		Skill venomousAura = poisonArrow.addChild(new VenomousAura());
 
 		Skill flamingArrow = criticalShot.addChild(new FlamingArrow());
-		Skill serpentineArrow = criticalShot.addChild(new SerpentineArrow());
-		Skill fireman = criticalShot.addChild(new Fireman());
+		Skill serpentineArrow = flamingArrow.addChild(new SerpentineArrow());
+		Skill fireman = flamingArrow.addChild(new Fireman());
 
-		Skill toxicSpores = poisonArrow.addChild(new ToxicSpores());
-		Skill undeadRevival = poisonArrow.addChild(new UndeadRevival());
-		Skill potentPoison = poisonArrow.addChild(new PotentPoison());
+		Skill toxicSpores = venomousAura.addChild(new ToxicSpores());
+		Skill undeadRevival = venomousAura.addChild(new UndeadRevival());
+		Skill potentPoison = venomousAura.addChild(new PotentPoison());
 
-		Skill lavaLeak = flamingArrow.addChild(new LavaLeak());
-		Skill explodingArrow = flamingArrow.addChild(new ExplodingArrow());
-		Skill combustion = flamingArrow.addChild(new Combustion());
+		Skill lavaLeak = fireman.addChild(new LavaLeak());
+		Skill explodingArrow = fireman.addChild(new ExplodingArrow());
+		Skill combustion = fireman.addChild(new Combustion());
 
 		/*
 		WARRIOR SKILLS
@@ -52,6 +52,15 @@ public class SkillTree {
 		Skill armory = taunt.addChild(new Armory());
 		Skill quakeCharge = taunt.addChild(new QuakeCharge());
 		Skill selflessDefense = taunt.addChild(new SelflessDefense());
+
+		Skill doubleStrike = slash.addChild(new DoubleStrike());
+		Skill warCry = doubleStrike.addChild(new WarCry());
+		Skill bloodWork = doubleStrike.addChild(new BloodWork());
+		Skill parry = doubleStrike.addChild(new Parry());
+
+		Skill concentratedStrike = selflessDefense.addChild(new ConcentratedStrike());
+		Skill lightField = selflessDefense.addChild(new LightField());
+		Skill divinePresence = selflessDefense.addChild(new DivinePresence());
 
 	}
 
