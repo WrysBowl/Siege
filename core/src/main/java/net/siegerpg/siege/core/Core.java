@@ -72,16 +72,9 @@ public final class Core extends JavaPlugin {
 	public void onLoad() {
 		// Set up packetevents
 		PacketEvents.create(this);
-		PacketEventsSettings settings = PacketEvents
-				.get()
-				.getSettings();
-		settings
-				.fallbackServerVersion(ServerVersion.v_1_16_5)
-				.compatInjector(true)
-				.checkForUpdates(false);
-		PacketEvents
-				.get()
-				.loadAsyncNewThread();
+		PacketEventsSettings settings = PacketEvents.get().getSettings();
+		settings.fallbackServerVersion(ServerVersion.v_1_17_1).compatInjector(true).checkForUpdates(false);
+		PacketEvents.get().loadAsyncNewThread();
 	}
 
 	@Override
@@ -90,12 +83,9 @@ public final class Core extends JavaPlugin {
 		INSTANCE = this;
 
 		// Load packetevents
-		PacketEvents
-				.get()
-				.registerListener(new DropUtils());
-		PacketEvents
-				.get()
-				.init();
+		PacketEvents.get().registerListener(new DropUtils());
+		PacketEvents.get().registerListener(new MountSteer());
+		PacketEvents.get().init();
 
 		// Other
 		partyConfig = new PartyConfig();
@@ -187,7 +177,6 @@ public final class Core extends JavaPlugin {
 				new MobCrateOpen()
 
 
-
 		};
 
 		for (Listener listener : listeners) {
@@ -215,9 +204,7 @@ public final class Core extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		// Stop packetevents
-		PacketEvents
-				.get()
-				.terminate();
+		PacketEvents.get().terminate();
 
 		hologramsToBeDeleted.forEach(Hologram::delete);
 		INSTANCE = null;
