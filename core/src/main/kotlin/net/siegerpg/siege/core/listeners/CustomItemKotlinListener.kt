@@ -56,7 +56,8 @@ class CustomItemKotlinListener : Listener, Runnable {
 	@EventHandler
 	@Suppress("unused")
 	fun onRegen(e : EntityRegainHealthEvent) {
-		if (e.regainReason == EntityRegainHealthEvent.RegainReason.REGEN || e.entity is Player) {
+
+		if (e.regainReason == EntityRegainHealthEvent.RegainReason.REGEN && e.entity is Player) {
 			val player : Player = e.entity as Player
 			val regen : Double = CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION)
 
