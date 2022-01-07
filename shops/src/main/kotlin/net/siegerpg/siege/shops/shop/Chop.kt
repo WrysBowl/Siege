@@ -25,7 +25,7 @@ class Chop : Shop() {
 	override var permission : String = "siege.shops.shop.chop"
 	override var items : List<ShopItem> = listOf(
 			ShopItem(
-					SlimyHelmet(-1), 250, hashMapOf(
+					SlimyHelmet(-1), -1, hashMapOf(
 					Slime.tier(1) to 40
 					                               ), true
 			        ) {
@@ -34,7 +34,7 @@ class Chop : Shop() {
 
 			//SLIMY CHESTPLATES
 			ShopItem(
-					SlimyChestplate(-1), 450, hashMapOf(
+					SlimyChestplate(-1), -1, hashMapOf(
 					Slime.tier(1) to 64
 					                                   ), true
 			        ) {
@@ -43,7 +43,7 @@ class Chop : Shop() {
 
 			//SLIMY LEGGINGS
 			ShopItem(
-					SlimyLeggings(-1), 350, hashMapOf(
+					SlimyLeggings(-1), -1, hashMapOf(
 					Slime.tier(1) to 56
 					                                 ), true
 			        ) {
@@ -52,7 +52,7 @@ class Chop : Shop() {
 
 			//SLIMY BOOTS
 			ShopItem(
-					SlimyBoots(-1), 200, hashMapOf(
+					SlimyBoots(-1), -1, hashMapOf(
 					Slime.tier(1) to 32
 					                              ), true
 			        ) {

@@ -17,7 +17,7 @@ class Margaret : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//HOT ROD
 			ShopItem(
-					HotRod(-1), 6500, hashMapOf(
+					HotRod(-1), -1, hashMapOf(
 					PlantMatter.tier(3) to 1,
 					Seed.tier(3) to 2,
 					Coal.tier(3) to 2

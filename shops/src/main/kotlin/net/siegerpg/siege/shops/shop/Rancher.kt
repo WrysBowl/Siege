@@ -26,7 +26,7 @@ class Rancher : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//HARDENED LEATHER HELMET
 			ShopItem(
-					LeatherHelmet(-1), 1500, hashMapOf(
+					LeatherHelmet(-1), -1, hashMapOf(
 					Leather.tier(2) to 5
 					                                  ), true
 			        ) {
@@ -78,7 +78,7 @@ class Rancher : Shop() {
 
 			//HardenedLeather CHESTPLATE
 			ShopItem(
-					LeatherChestplate(-1), 2750, hashMapOf(
+					LeatherChestplate(-1), -1, hashMapOf(
 					Leather.tier(2) to 8
 					                                      ), true
 			        ) {
@@ -130,7 +130,7 @@ class Rancher : Shop() {
 
 			//HardenedLeather LEGGINGS
 			ShopItem(
-					LeatherLeggings(-1), 2250, hashMapOf(
+					LeatherLeggings(-1), -1, hashMapOf(
 					Leather.tier(2) to 7
 					                                    ), true
 			        ) {
@@ -182,7 +182,7 @@ class Rancher : Shop() {
 
 			//HardenedLeather BOOTS
 			ShopItem(
-					LeatherBoots(-1), 1250, hashMapOf(
+					LeatherBoots(-1), -1, hashMapOf(
 					Leather.tier(2) to 4
 					                                 ), true
 			        ) {

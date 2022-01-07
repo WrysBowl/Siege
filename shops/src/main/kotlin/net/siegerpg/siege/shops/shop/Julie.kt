@@ -21,7 +21,7 @@ class Julie : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//SEWER SHOOTER
 			ShopItem(
-					SewerShooter(-1), 1750, hashMapOf(
+					SewerShooter(-1), -1, hashMapOf(
 					Slime.tier(3) to 1,
 					Magma.tier(3) to 1,
 					Stick.tier(3) to 3,
@@ -90,14 +90,14 @@ class Julie : Shop() {
 			},
 
 			//CROSSBOW
-			ShopItem(Crossbow(-1), 2750, hashMapOf(), false) {
+			ShopItem(Crossbow(-1), -1, hashMapOf(), false) {
 				Crossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyCrossbow(-1), 3000, hashMapOf(
+					LuckyCrossbow(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					MetalScrap.tier(3) to 1,
 					Feather.tier(3) to 3
@@ -106,7 +106,7 @@ class Julie : Shop() {
 				LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongCrossbow(-1), 2700, hashMapOf(
+					StrongCrossbow(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					MetalScrap.tier(3) to 1,
 					Bone.tier(3) to 3
@@ -115,7 +115,7 @@ class Julie : Shop() {
 				StrongCrossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughCrossbow(-1), 2700, hashMapOf(
+					ToughCrossbow(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					MetalScrap.tier(3) to 1,
 					Pebble.tier(3) to 3
@@ -124,7 +124,7 @@ class Julie : Shop() {
 				ToughCrossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyCrossbow(-1), 2700, hashMapOf(
+					HealthyCrossbow(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					MetalScrap.tier(3) to 1,
 					PlantMatter.tier(3) to 3
@@ -133,7 +133,7 @@ class Julie : Shop() {
 				HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingCrossbow(-1), 2700, hashMapOf(
+					HealingCrossbow(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					MetalScrap.tier(3) to 1,
 					Wheat.tier(3) to 1

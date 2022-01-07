@@ -16,7 +16,7 @@ class Jewel : Shop() {
 	override var permission : String = "siege.shops.shop.jewel"
 	override var items : List<ShopItem> = listOf(
 			//RECURVE BOW
-			ShopItem(RecurveBow(-1), 3000, hashMapOf(), false) {
+			ShopItem(RecurveBow(-1), -1, hashMapOf(), false) {
 				RecurveBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {

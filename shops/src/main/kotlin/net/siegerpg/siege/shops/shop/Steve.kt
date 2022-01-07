@@ -26,7 +26,7 @@ class Steve : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//WOOL HAT
 			ShopItem(
-					WoolHelmet(-1), 600, hashMapOf(
+					WoolHelmet(-1), -1, hashMapOf(
 					Wool.tier(2) to 5
 					                              ), true
 			        ) {
@@ -78,7 +78,7 @@ class Steve : Shop() {
 
 			//WOOL CHESTPLATE
 			ShopItem(
-					WoolChestplate(-1), 800, hashMapOf(
+					WoolChestplate(-1), -1, hashMapOf(
 					Wool.tier(2) to 8
 					                                  ), true
 			        ) {
@@ -130,7 +130,7 @@ class Steve : Shop() {
 
 			//WOOL LEGGINGS
 			ShopItem(
-					WoolLeggings(-1), 700, hashMapOf(
+					WoolLeggings(-1), -1, hashMapOf(
 					Wool.tier(2) to 7
 					                                ), true
 			        ) {
@@ -182,7 +182,7 @@ class Steve : Shop() {
 
 			//WOOL BOOTS
 			ShopItem(
-					WoolBoots(-1), 500, hashMapOf(
+					WoolBoots(-1), -1, hashMapOf(
 					Wool.tier(2) to 4
 					                             ), true
 			        ) {

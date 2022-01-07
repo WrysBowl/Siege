@@ -13,25 +13,25 @@ class Tim : Shop() {
 	override var permission : String = "siege.shops.shop.tim"
 	override var items : List<ShopItem> = listOf(
 			//WOODEN SWORDS
-			ShopItem(WoodenSword(-1), 2500, hashMapOf(), false) {
+			ShopItem(WoodenSword(-1), 4000, hashMapOf(), false) {
 				WoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(LuckyWoodenSword(-1), 3000, hashMapOf(), false) {
+			ShopItem(LuckyWoodenSword(-1), 4000, hashMapOf(), false) {
 				LuckyWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(StrongWoodenSword(-1), 3000, hashMapOf(), false) {
+			ShopItem(StrongWoodenSword(-1), 4000, hashMapOf(), false) {
 				StrongWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(ToughWoodenSword(-1), 3000, hashMapOf(), false) {
+			ShopItem(ToughWoodenSword(-1), 4000, hashMapOf(), false) {
 				ToughWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealthyWoodenSword(-1), 3000, hashMapOf(), false) {
+			ShopItem(HealthyWoodenSword(-1), 4000, hashMapOf(), false) {
 				HealthyWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealingWoodenSword(-1), 3000, hashMapOf(), false) {
+			ShopItem(HealingWoodenSword(-1), 4000, hashMapOf(), false) {
 				HealingWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			}
 	                                            )

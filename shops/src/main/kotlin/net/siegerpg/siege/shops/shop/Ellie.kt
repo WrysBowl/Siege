@@ -22,7 +22,7 @@ class Ellie : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//SHOVELS
 			ShopItem(
-					Shovel(-1), 600, hashMapOf(
+					Shovel(-1), -1, hashMapOf(
 					Pebble.tier(2) to 1,
 					Stick.tier(3) to 2
 					                          ), true
@@ -79,7 +79,7 @@ class Ellie : Shop() {
 
 			//REINFORCED BOWS
 			ShopItem(
-					ReinforcedBow(-1), 1000, hashMapOf(
+					ReinforcedBow(-1), -1, hashMapOf(
 					Stick.tier(3) to 3,
 					Vine.tier(3) to 3
 					                                  ), true
@@ -90,7 +90,7 @@ class Ellie : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyReinforcedBow(-1), 1200, hashMapOf(
+					LuckyReinforcedBow(-1), -1, hashMapOf(
 					Stick.tier(3) to 3,
 					Vine.tier(3) to 1,
 					Feather.tier(3) to 1
@@ -99,7 +99,7 @@ class Ellie : Shop() {
 				LuckyReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongReinforcedBow(-1), 1200, hashMapOf(
+					StrongReinforcedBow(-1), -1, hashMapOf(
 					Stick.tier(3) to 3,
 					Vine.tier(3) to 1,
 					Bone.tier(3) to 1
@@ -108,7 +108,7 @@ class Ellie : Shop() {
 				StrongReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughReinforcedBow(-1), 1200, hashMapOf(
+					ToughReinforcedBow(-1), -1, hashMapOf(
 					Stick.tier(3) to 3,
 					Vine.tier(3) to 1,
 					Pebble.tier(3) to 2
@@ -117,7 +117,7 @@ class Ellie : Shop() {
 				ToughReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyReinforcedBow(-1), 1200, hashMapOf(
+					HealthyReinforcedBow(-1), -1, hashMapOf(
 					Stick.tier(3) to 3,
 					Vine.tier(3) to 1,
 					PlantMatter.tier(3) to 2
@@ -126,7 +126,7 @@ class Ellie : Shop() {
 				HealthyReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingReinforcedBow(-1), 1200, hashMapOf(
+					HealingReinforcedBow(-1), -1, hashMapOf(
 					Stick.tier(3) to 3,
 					Vine.tier(3) to 1,
 					Wheat.tier(3) to 2
@@ -156,7 +156,7 @@ class Ellie : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyStoneAxe(-1), 1200, hashMapOf(
+					LuckyStoneAxe(-1), -1, hashMapOf(
 					Pebble.tier(3) to 1,
 					Stick.tier(3) to 2,
 					Feather.tier(3) to 2
@@ -165,7 +165,7 @@ class Ellie : Shop() {
 				LuckyStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongStoneAxe(-1), 1200, hashMapOf(
+					StrongStoneAxe(-1), -1, hashMapOf(
 					Pebble.tier(3) to 1,
 					Stick.tier(3) to 2,
 					Bone.tier(3) to 2
@@ -174,7 +174,7 @@ class Ellie : Shop() {
 				StrongStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughStoneAxe(-1), 1200, hashMapOf(
+					ToughStoneAxe(-1), -1, hashMapOf(
 					Pebble.tier(3) to 5,
 					Stick.tier(3) to 2
 					                                  ), true
@@ -182,7 +182,7 @@ class Ellie : Shop() {
 				ToughStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyStoneAxe(-1), 1200, hashMapOf(
+					HealthyStoneAxe(-1), -1, hashMapOf(
 					Pebble.tier(3) to 1,
 					Stick.tier(3) to 2,
 					PlantMatter.tier(3) to 3
@@ -191,7 +191,7 @@ class Ellie : Shop() {
 				HealthyStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingStoneAxe(-1), 1200, hashMapOf(
+					HealingStoneAxe(-1), -1, hashMapOf(
 					Pebble.tier(3) to 1,
 					Stick.tier(3) to 2,
 					Wheat.tier(3) to 1
@@ -201,25 +201,25 @@ class Ellie : Shop() {
 			},
 
 			//SLIME SPOOFERS
-			ShopItem(SlimeSpoofer(-1), 1300, hashMapOf(), false) {
+			ShopItem(SlimeSpoofer(-1), 2500, hashMapOf(), false) {
 				SlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(LuckySlimeSpoofer(-1), 1400, hashMapOf(), false) {
+			ShopItem(LuckySlimeSpoofer(-1), 2500, hashMapOf(), false) {
 				LuckySlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(StrongSlimeSpoofer(-1), 1400, hashMapOf(), false) {
+			ShopItem(StrongSlimeSpoofer(-1), 2500, hashMapOf(), false) {
 				StrongSlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(ToughSlimeSpoofer(-1), 1400, hashMapOf(), false) {
+			ShopItem(ToughSlimeSpoofer(-1), 2500, hashMapOf(), false) {
 				ToughSlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealthySlimeSpoofer(-1), 1400, hashMapOf(), false) {
+			ShopItem(HealthySlimeSpoofer(-1), 2500, hashMapOf(), false) {
 				HealthySlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealingSlimySpoofer(-1), 1400, hashMapOf(), false) {
+			ShopItem(HealingSlimySpoofer(-1), 2500, hashMapOf(), false) {
 				HealingSlimySpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
 	                                            )

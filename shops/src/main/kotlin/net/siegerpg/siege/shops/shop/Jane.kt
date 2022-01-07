@@ -17,7 +17,7 @@ class Jane : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//SPLINTERED BONE
 			ShopItem(
-					SplinteredBone(-1), 2500, hashMapOf(
+					SplinteredBone(-1), -1, hashMapOf(
 					Bone.tier(3) to 2
 					                                   ), true
 			        ) {
@@ -68,7 +68,7 @@ class Jane : Shop() {
 
 			//REFINED DAGGER
 			ShopItem(
-					RefinedDagger(-1), 2750, hashMapOf(
+					RefinedDagger(-1), -1, hashMapOf(
 					RefinedMetal.tier(3) to 1,
 					Stick.tier(3) to 1
 					                                  ), true
@@ -79,7 +79,7 @@ class Jane : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyRefinedDagger(-1), 3000, hashMapOf(
+					LuckyRefinedDagger(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 4,
 					Stick.tier(3) to 1,
 					Feather.tier(3) to 1
@@ -88,7 +88,7 @@ class Jane : Shop() {
 				LuckyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongRefinedDagger(-1), 3000, hashMapOf(
+					StrongRefinedDagger(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 4,
 					Stick.tier(3) to 1,
 					Bone.tier(3) to 1
@@ -97,7 +97,7 @@ class Jane : Shop() {
 				StrongRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughRefinedDagger(-1), 3000, hashMapOf(
+					ToughRefinedDagger(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 4,
 					Stick.tier(3) to 1,
 					Pebble.tier(3) to 2
@@ -106,7 +106,7 @@ class Jane : Shop() {
 				ToughRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyRefinedDagger(-1), 3000, hashMapOf(
+					HealthyRefinedDagger(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 4,
 					Stick.tier(3) to 1,
 					PlantMatter.tier(3) to 1
@@ -115,7 +115,7 @@ class Jane : Shop() {
 				HealthyRefinedDagger(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingRefinedDagger(-1), 3000, hashMapOf(
+					HealingRefinedDagger(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 4,
 					Stick.tier(3) to 1,
 					Wheat.tier(3) to 2

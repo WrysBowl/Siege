@@ -17,7 +17,7 @@ class Forest : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//WAR HAMMER
 			ShopItem(
-					WarHammer(-1), 4250, hashMapOf(
+					WarHammer(-1), -1, hashMapOf(
 					MetalScrap.tier(3) to 1,
 					Pebble.tier(3) to 4,
 					Stick.tier(3) to 2

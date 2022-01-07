@@ -16,7 +16,7 @@ class Lucia : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//EARTHERN STAFF
 			ShopItem(
-					EarthernStaff(-1), 6000, hashMapOf(
+					EarthernStaff(-1), -1, hashMapOf(
 					PlantMatter.tier(3) to 1,
 					Seed.tier(3) to 2,
 					Coal.tier(3) to 2

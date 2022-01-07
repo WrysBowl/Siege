@@ -19,7 +19,7 @@ class Charles : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//CLOBBER
 			ShopItem(
-					Clobber(-1), 5250, hashMapOf(
+					Clobber(-1), -1, hashMapOf(
 					RefinedMetal.tier(3) to 5
 					                            ), true
 			        ) {
@@ -71,7 +71,7 @@ class Charles : Shop() {
 
 			//EARTHERN HAMMER
 			ShopItem(
-					EarthernHammer(-1), 5750, hashMapOf(
+					EarthernHammer(-1), -1, hashMapOf(
 					PlantMatter.tier(3) to 2,
 					Stick.tier(3) to 3
 					                                   ), true

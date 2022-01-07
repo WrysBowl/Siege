@@ -17,7 +17,7 @@ class Katherine : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//EARTHERN WAND
 			ShopItem(
-					EarthernWand(-1), 5250, hashMapOf(
+					EarthernWand(-1), -1, hashMapOf(
 					Pebble.tier(3) to 1,
 					Seed.tier(3) to 2,
 					Coal.tier(3) to 2

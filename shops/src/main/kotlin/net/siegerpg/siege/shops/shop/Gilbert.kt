@@ -19,7 +19,7 @@ class Gilbert : Shop() {
 					net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe(
 							-1
 					                                                                     ),
-					4750,
+					-1,
 					hashMapOf(),
 					false
 			        ) {

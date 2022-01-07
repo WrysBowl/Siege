@@ -25,7 +25,7 @@ class Joe : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//STRAW HAT
 			ShopItem(
-					StrawHelmet(-1), 400, hashMapOf(
+					StrawHelmet(-1), -1, hashMapOf(
 					Wheat.tier(1) to 40
 					                               ), true
 			        ) {
@@ -34,7 +34,7 @@ class Joe : Shop() {
 
 			//STRAW CHESTPLATE
 			ShopItem(
-					StrawChestplate(-1), 600, hashMapOf(
+					StrawChestplate(-1), -1, hashMapOf(
 					Wheat.tier(1) to 64
 					                                   ), true
 			        ) {
@@ -43,7 +43,7 @@ class Joe : Shop() {
 
 			//STRAW LEGGINGS
 			ShopItem(
-					StrawLeggings(-1), 500, hashMapOf(
+					StrawLeggings(-1), -1, hashMapOf(
 					Wheat.tier(1) to 56
 					                                 ), true
 			        ) {
@@ -52,7 +52,7 @@ class Joe : Shop() {
 
 			//STRAW BOOTS
 			ShopItem(
-					StrawBoots(-1), 300, hashMapOf(
+					StrawBoots(-1), -1, hashMapOf(
 					Wheat.tier(1) to 32
 					                              ), true
 			        ) {

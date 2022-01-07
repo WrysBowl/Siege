@@ -20,7 +20,7 @@ class Edith : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//ROCK WAND
 			ShopItem(
-					RockWand(-1), 3500, hashMapOf(
+					RockWand(-1), -1, hashMapOf(
 					Pebble.tier(3) to 1,
 					Stick.tier(3) to 2
 					                             ), true

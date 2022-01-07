@@ -21,7 +21,7 @@ class Helen : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//TORCH
 			ShopItem(
-					Torch(-1), 3500, hashMapOf(
+					Torch(-1), -1, hashMapOf(
 					Magma.tier(3) to 1,
 					Stick.tier(3) to 2
 					                          ), true

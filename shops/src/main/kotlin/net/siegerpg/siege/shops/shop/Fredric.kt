@@ -17,7 +17,7 @@ class Fredric : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//FLAMING HOT TORCH
 			ShopItem(
-					FlamingHotTorch(-1), 5250, hashMapOf(
+					FlamingHotTorch(-1), -1, hashMapOf(
 					Magma.tier(3) to 1,
 					Seed.tier(3) to 1,
 					Stick.tier(3) to 1

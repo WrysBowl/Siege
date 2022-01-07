@@ -26,7 +26,7 @@ class Magmar : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//MAGMA HELMET
 			ShopItem(
-					MagmaHelmet(-1), 1000, hashMapOf(
+					MagmaHelmet(-1), -1, hashMapOf(
 					Magma.tier(2) to 5
 					                                ), true
 			        ) {
@@ -78,7 +78,7 @@ class Magmar : Shop() {
 
 			//MAGMA CHESTPLATE
 			ShopItem(
-					MagmaChestplate(-1), 2000, hashMapOf(
+					MagmaChestplate(-1), -1, hashMapOf(
 					Magma.tier(2) to 8
 					                                    ), true
 			        ) {
@@ -130,7 +130,7 @@ class Magmar : Shop() {
 
 			//MAGMA LEGGINGS
 			ShopItem(
-					MagmaLeggings(-1), 1750, hashMapOf(
+					MagmaLeggings(-1), -1, hashMapOf(
 					Magma.tier(2) to 7
 					                                  ), true
 			        ) {
@@ -182,7 +182,7 @@ class Magmar : Shop() {
 
 			//MAGMA BOOTS
 			ShopItem(
-					MagmaBoots(-1), 1000, hashMapOf(
+					MagmaBoots(-1), -1, hashMapOf(
 					Magma.tier(2) to 4
 					                               ), true
 			        ) {

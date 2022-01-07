@@ -21,7 +21,7 @@ class Bailey : Shop() {
 	override var name : String = "bailey"
 	override var permission : String = "siege.shops.shop.bailey"
 	override var items : List<ShopItem> = listOf(
-			ShopItem(Spade(-1), 400, hashMapOf(
+			ShopItem(Spade(-1), -1, hashMapOf(
 					Pebble.tier(2) to 1,
 					Stick.tier(3) to 1), true) {
 				Spade(Utils.randRarity()).getUpdatedItem(false)
@@ -76,7 +76,7 @@ class Bailey : Shop() {
 
 			//PEBBLE SHOOTERS
 			ShopItem(
-					PebbleShooter(-1), 750, hashMapOf(
+					PebbleShooter(-1), -1, hashMapOf(
 					Pebble.tier(2) to 1,
 					Stick.tier(2) to 2,
 					Vine.tier(2) to 3
@@ -139,7 +139,7 @@ class Bailey : Shop() {
 
 			//FEMUR BONES
 			ShopItem(
-					FemurBone(-1), 1000, hashMapOf(
+					FemurBone(-1), -1, hashMapOf(
 					Bone.tier(3) to 2
 					                              ), true
 			        ) {
@@ -190,7 +190,7 @@ class Bailey : Shop() {
 
 			//GLOWING TWIG
 			ShopItem(
-					GlowingTwig(-1), 1500, hashMapOf(
+					GlowingTwig(-1), -1, hashMapOf(
 					PlantMatter.tier(3) to 3
 					                                ), true
 			        ) {

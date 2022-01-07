@@ -19,7 +19,7 @@ class Valentine : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//IRON BOW
 			ShopItem(
-					IronBow(-1), 3200, hashMapOf(
+					IronBow(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 3
 					                            ), true
@@ -77,7 +77,7 @@ class Valentine : Shop() {
 
 			//BOWBA
 			ShopItem(
-					Bowba(-1), 4000, hashMapOf(
+					Bowba(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 1,
 					Bone.tier(3) to 2
@@ -89,7 +89,7 @@ class Valentine : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyBowba(-1), 4500, hashMapOf(
+					LuckyBowba(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
 					Bone.tier(3) to 1,
@@ -99,7 +99,7 @@ class Valentine : Shop() {
 				LuckyBowba(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongBowba(-1), 4500, hashMapOf(
+					StrongBowba(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
 					Bone.tier(3) to 2
@@ -108,7 +108,7 @@ class Valentine : Shop() {
 				StrongBowba(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughBowba(-1), 4500, hashMapOf(
+					ToughBowba(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
 					Bone.tier(3) to 1,
@@ -118,7 +118,7 @@ class Valentine : Shop() {
 				ToughBowba(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyBowba(-1), 4500, hashMapOf(
+					HealthyBowba(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
 					Bone.tier(3) to 1,
@@ -128,7 +128,7 @@ class Valentine : Shop() {
 				HealthyBowba(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingBowba(-1), 4500, hashMapOf(
+					HealingBowba(-1), -1, hashMapOf(
 					Vine.tier(3) to 3,
 					RefinedMetal.tier(3) to 4,
 					Bone.tier(3) to 1,

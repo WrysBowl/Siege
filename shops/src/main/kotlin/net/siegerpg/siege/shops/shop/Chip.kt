@@ -30,7 +30,7 @@ class Chip : Shop() {
 				Twig(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StickyStick(-1), 150, hashMapOf(
+					StickyStick(-1), -1, hashMapOf(
 					Slime.tier(1) to 16,
 					Stick.tier(1) to 16
 					                               ), true
@@ -85,7 +85,7 @@ class Chip : Shop() {
 
 			//RANGED
 			ShopItem(
-					ScrapyardBow(-1), 100, hashMapOf(
+					ScrapyardBow(-1), -1, hashMapOf(
 					Stick.tier(1) to 24,
 					Vine.tier(1) to 24
 					                                ), true
@@ -93,7 +93,7 @@ class Chip : Shop() {
 				ScrapyardBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					WoodenBow(-1), 250, hashMapOf(
+					WoodenBow(-1), -1, hashMapOf(
 					Stick.tier(2) to 3,
 					Vine.tier(2) to 3
 					                             ), true
@@ -177,7 +177,7 @@ class Chip : Shop() {
 				LivingTwig(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					GlisteningTwig(-1), 300, hashMapOf(
+					GlisteningTwig(-1), -1, hashMapOf(
 					Seed.tier(1) to 8,
 					Stick.tier(1) to 8,
 					Feather.tier(1) to 16
@@ -187,7 +187,7 @@ class Chip : Shop() {
 			},
 
 			ShopItem(
-					LuckyGlisteningTwig(-1), 400, hashMapOf(
+					LuckyGlisteningTwig(-1), -1, hashMapOf(
 					Seed.tier(2) to 1,
 					Stick.tier(2) to 1,
 					Feather.tier(2) to 2
@@ -196,7 +196,7 @@ class Chip : Shop() {
 				LuckyGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongGlisteningTwig(-1), 400, hashMapOf(
+					StrongGlisteningTwig(-1), -1, hashMapOf(
 					Seed.tier(2) to 1,
 					Stick.tier(2) to 1,
 					Bone.tier(2) to 1
@@ -205,7 +205,7 @@ class Chip : Shop() {
 				StrongGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughGlisteningTwig(-1), 400, hashMapOf(
+					ToughGlisteningTwig(-1), -1, hashMapOf(
 					Seed.tier(2) to 1,
 					Stick.tier(2) to 1,
 					Pebble.tier(2) to 2
@@ -214,7 +214,7 @@ class Chip : Shop() {
 				ToughGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyGlisteningTwig(-1), 400, hashMapOf(
+					HealthyGlisteningTwig(-1), -1, hashMapOf(
 					Seed.tier(2) to 1,
 					Stick.tier(2) to 1,
 					PlantMatter.tier(2) to 3
@@ -223,7 +223,7 @@ class Chip : Shop() {
 				HealthyGlisteningTwig(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingGlisteningTwig(-1), 400, hashMapOf(
+					HealingGlisteningTwig(-1), -1, hashMapOf(
 					Seed.tier(2) to 1,
 					Stick.tier(2) to 1,
 					Wheat.tier(2) to 2

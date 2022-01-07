@@ -20,7 +20,7 @@ class Berta : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//SCRAP SHARD
 			ShopItem(
-					ScrapShard(-1), 2250, hashMapOf(
+					ScrapShard(-1), -1, hashMapOf(
 					MetalScrap.tier(3) to 2
 					                               ), true
 			        ) {

@@ -25,7 +25,7 @@ class Brown : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//Bone HELMET
 			ShopItem(
-					BoneHelmet(-1), 1750, hashMapOf(
+					BoneHelmet(-1), -1, hashMapOf(
 					Bone.tier(2) to 5
 					                               ), true
 			        ) {
@@ -127,7 +127,7 @@ class Brown : Shop() {
 
 			//BONE LEGGINGS
 			ShopItem(
-					BoneLeggings(-1), 2750, hashMapOf(
+					BoneLeggings(-1), -1, hashMapOf(
 					Bone.tier(2) to 7
 					                                 ), true
 			        ) {
@@ -178,7 +178,7 @@ class Brown : Shop() {
 
 			//BONE BOOTS
 			ShopItem(
-					BoneBoots(-1), 1500, hashMapOf(
+					BoneBoots(-1), -1, hashMapOf(
 					Bone.tier(2) to 4
 					                              ), true
 			        ) {

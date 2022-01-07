@@ -26,7 +26,7 @@ class Kayla : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//Chain HELMET
 			ShopItem(
-					ChainHelmet(-1), 1750, hashMapOf(
+					ChainHelmet(-1), -1, hashMapOf(
 					Chain.tier(2) to 5
 					                                ), true
 			        ) {
@@ -78,7 +78,7 @@ class Kayla : Shop() {
 
 			//Chain CHESTPLATE
 			ShopItem(
-					ChainChestplate(-1), 3000, hashMapOf(
+					ChainChestplate(-1), -1, hashMapOf(
 					Chain.tier(2) to 8
 					                                    ), true
 			        ) {
@@ -130,7 +130,7 @@ class Kayla : Shop() {
 
 			//Chain LEGGINGS
 			ShopItem(
-					ChainLeggings(-1), 2750, hashMapOf(
+					ChainLeggings(-1), -1, hashMapOf(
 					Chain.tier(2) to 7
 					                                  ), true
 			        ) {
@@ -182,7 +182,7 @@ class Kayla : Shop() {
 
 			//Chain BOOTS
 			ShopItem(
-					ChainBoots(-1), 1500, hashMapOf(
+					ChainBoots(-1), -1, hashMapOf(
 					Chain.tier(2) to 4
 					                               ), true
 			        ) {

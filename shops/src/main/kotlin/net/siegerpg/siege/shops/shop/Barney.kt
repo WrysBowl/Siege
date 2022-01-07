@@ -15,7 +15,7 @@ class Barney : Shop() {
 	override var permission : String = "siege.shops.shop.barney"
 	override var items : List<ShopItem> = listOf(
 			//SHANK
-			ShopItem(Shank(-1), 1500, hashMapOf(), false) {
+			ShopItem(Shank(-1), 2500, hashMapOf(), false) {
 				Shank(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -38,7 +38,7 @@ class Barney : Shop() {
 			},
 
 			//DAGGERS
-			ShopItem(Dagger(-1), 2000, hashMapOf(), false) {
+			ShopItem(Dagger(-1), 4000, hashMapOf(), false) {
 				Dagger(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {

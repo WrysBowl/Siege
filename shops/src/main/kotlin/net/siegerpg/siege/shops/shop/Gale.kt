@@ -18,7 +18,7 @@ class Gale : Shop() {
 	override var permission : String = "siege.shops.shop.gale"
 	override var items : List<ShopItem> = listOf(
 			//DOUBLE BLADED AXE
-			ShopItem(DoubleBladedAxe(-1), 3000, hashMapOf(), false) {
+			ShopItem(DoubleBladedAxe(-1), -1, hashMapOf(), false) {
 				DoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -71,7 +71,7 @@ class Gale : Shop() {
 
 			//GREAT SWORD
 			ShopItem(
-					GreatSword(-1), 3750, hashMapOf(
+					GreatSword(-1), -1, hashMapOf(
 					MetalScrap.tier(3) to 2,
 					Stick.tier(3) to 1
 					                               ), true
@@ -82,7 +82,7 @@ class Gale : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyGreatSword(-1), 4000, hashMapOf(
+					LuckyGreatSword(-1), -1, hashMapOf(
 					MetalScrap.tier(3) to 1,
 					Stick.tier(3) to 1,
 					Feather.tier(3) to 2
@@ -91,7 +91,7 @@ class Gale : Shop() {
 				LuckyGreatSword(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongGreatSword(-1), 4000, hashMapOf(
+					StrongGreatSword(-1), -1, hashMapOf(
 					MetalScrap.tier(3) to 1,
 					Stick.tier(3) to 1,
 					Bone.tier(3) to 2
@@ -100,7 +100,7 @@ class Gale : Shop() {
 				StrongGreatSword(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughGreatSword(-1), 4000, hashMapOf(
+					ToughGreatSword(-1), -1, hashMapOf(
 					MetalScrap.tier(3) to 1,
 					Stick.tier(3) to 1,
 					Pebble.tier(3) to 3
@@ -109,7 +109,7 @@ class Gale : Shop() {
 				ToughGreatSword(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyGreatSword(-1), 4000, hashMapOf(
+					HealthyGreatSword(-1), -1, hashMapOf(
 					MetalScrap.tier(3) to 1,
 					Stick.tier(3) to 1,
 					PlantMatter.tier(3) to 2
@@ -118,7 +118,7 @@ class Gale : Shop() {
 				HealthyGreatSword(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingGreatSword(-1), 4000, hashMapOf(
+					HealingGreatSword(-1), -1, hashMapOf(
 					MetalScrap.tier(3) to 1,
 					Stick.tier(3) to 1,
 					Wheat.tier(3) to 1

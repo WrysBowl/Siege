@@ -26,7 +26,7 @@ class Edward : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//Iron HELMET
 			ShopItem(
-					IronHelmet(-1), 2750, hashMapOf(
+					IronHelmet(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 5
 					                               ), true
 			        ) {
@@ -78,7 +78,7 @@ class Edward : Shop() {
 
 			//Iron CHESTPLATE
 			ShopItem(
-					IronChestplate(-1), 4000, hashMapOf(
+					IronChestplate(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 8
 					                                   ), true
 			        ) {
@@ -130,7 +130,7 @@ class Edward : Shop() {
 
 			//Iron LEGGINGS
 			ShopItem(
-					IronLeggings(-1), 3750, hashMapOf(
+					IronLeggings(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 7
 					                                 ), true
 			        ) {
@@ -183,7 +183,7 @@ class Edward : Shop() {
 
 			//Iron BOOTS
 			ShopItem(
-					IronBoots(-1), 2500, hashMapOf(
+					IronBoots(-1), -1, hashMapOf(
 					RefinedMetal.tier(2) to 4
 					                              ), true
 			        ) {
