@@ -15,7 +15,6 @@ public class CustomEventListener implements Listener {
 		{
 			put("GOLD_STORM", new Gold_Storm());
 			put("HASTE_BUFF", new Haste_Buff());
-			put("SPEED_BUFF", new Speed_Buff());
 			put("MORE_CARROTS", new More_Carrots());
 			put("MORE_WHEAT", new More_Wheat());
 
