@@ -9,19 +9,21 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class DoubleStrike extends Skill {
+public class BloodLust extends Skill {
 
-	final int initCooldown = 25 * 1000;
-	final int initManaCost = 30;
-	final int initGoldCost = 2500;
+	final int initCooldown = 60 * 1000;
+	final int initManaCost = 100;
+	final int initGoldCost = 5000;
+	final double healMulti = 0.75;
 
-	private final String identifier = "2_B_3";
+	private final String identifier = "3_B_2";
 	private final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Double Strike";
+	private final String name = "Blood Lust";
 	private final List< String > description =
-			List.of("Slash your opponent twice,",
-			        "or three times if",
-			        "target is weakened");
+			List.of("Heal yourself for 25% of",
+			        "the damage you deal for",
+			        "10 seconds. If enemy is",
+			        "weakened heal for 50%.");
 
 	@Override
 	public String getName(int level) {
@@ -32,9 +34,10 @@ public class DoubleStrike extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Slash your opponent twice,",
-		               "or three times if",
-		               "target is weakened");
+		return List.of("Heal yourself for "+(1-(getHealMulti(level, false)) * 100)+"% of",
+		               "the damage you deal for",
+		               "10 seconds. If enemy is",
+		               "weakened heal for "+(1-(getHealMulti(level, true)) * 100)+"%.");
 	}
 
 
@@ -45,13 +48,18 @@ public class DoubleStrike extends Skill {
 
 	@Override
 	public int getManaCost(int level) {
-		return (int) (this.initManaCost - Math.ceil(this.initManaCost * (level-1) * 0.03));
-	}
-	@Override
-	public int getGoldCost(int level) {
-		return (int) (this.initGoldCost * level * 3.5);
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.025));
 	}
 
+	@Override
+	public int getGoldCost(int level) {
+		return (int) (this.initGoldCost * level * 5.0);
+	}
+
+	public double getHealMulti(int level, boolean weakened) {
+		if (weakened) return Utils.round(((this.healMulti - 0.25) - ((level - 1) * 0.025)), 2);
+		return Utils.round(((this.healMulti) - ((level - 1) * 0.025)), 2);
+	}
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {

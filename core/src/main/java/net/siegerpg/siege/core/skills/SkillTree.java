@@ -54,13 +54,17 @@ public class SkillTree {
 		Skill selflessDefense = taunt.addChild(new SelflessDefense());
 
 		Skill doubleStrike = slash.addChild(new DoubleStrike());
-		Skill warCry = doubleStrike.addChild(new WarCry());
 		Skill bloodWork = doubleStrike.addChild(new BloodWork());
 		Skill parry = doubleStrike.addChild(new Parry());
+		Skill warCry = doubleStrike.addChild(new WarCry());
 
 		Skill concentratedStrike = selflessDefense.addChild(new ConcentratedStrike());
 		Skill lightField = selflessDefense.addChild(new LightField());
 		Skill divinePresence = selflessDefense.addChild(new DivinePresence());
+
+		Skill woundingStrike = warCry.addChild(new WoundingStrike());
+		Skill bloodLust = warCry.addChild(new BloodLust());
+		Skill groundPound = warCry.addChild(new GroundPound());
 
 	}
 

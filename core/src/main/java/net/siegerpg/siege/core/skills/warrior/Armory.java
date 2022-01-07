@@ -57,8 +57,8 @@ public class Armory extends Skill {
 	}
 
 	public double getDamageMulti(int level, boolean weakened) {
-		if (weakened) return Utils.round(((this.damageMulti - 0.25) + ((level - 1) * 0.025)), 2);
-		return Utils.round(((this.damageMulti) + ((level - 1) * 0.025)), 2);
+		if (weakened) return Utils.round(((this.damageMulti - 0.25) - ((level - 1) * 0.025)), 2);
+		return Utils.round(((this.damageMulti) - ((level - 1) * 0.025)), 2);
 	}
 
 
