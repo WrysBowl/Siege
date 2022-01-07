@@ -34,6 +34,8 @@ commands:
     description: Toggle tips
   getBooster:
     description: Sends booster to player
+  getMobKey:
+    description: Sends booster to player
   updateScoreboard:
     description: Updates the player's scoreboard
   pay:
