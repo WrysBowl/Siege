@@ -14,7 +14,7 @@ class PristineRegenerationGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.REGENERATION,
-		statAmount = 10.0
+		statAmount = 15.0
                                              ) {
 
 	constructor(quality : Int) : this() {

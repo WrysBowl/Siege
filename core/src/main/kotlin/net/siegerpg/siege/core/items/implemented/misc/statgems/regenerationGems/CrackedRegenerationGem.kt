@@ -14,7 +14,7 @@ class CrackedRegenerationGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.REGENERATION,
-		statAmount = 3.0
+		statAmount = 7.0
                                             ) {
 
 	constructor(quality : Int) : this() {

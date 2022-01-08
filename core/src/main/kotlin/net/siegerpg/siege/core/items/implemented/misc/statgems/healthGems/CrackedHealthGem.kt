@@ -13,7 +13,7 @@ class CrackedHealthGem() : StatGemType(
 		levelRequirement = 8,
 		material = Material.POPPED_CHORUS_FRUIT,
 		statType = StatTypes.HEALTH,
-		statAmount = 10.0
+		statAmount = 14.0
                                       ) {
 
 	constructor(quality : Int) : this() {

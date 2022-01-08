@@ -14,7 +14,7 @@ class SimpleHealthGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.HEALTH,
-		statAmount = 15.0
+		statAmount = 22.0
                                      ) {
 
 	constructor(quality : Int) : this() {
