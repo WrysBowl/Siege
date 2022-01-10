@@ -10,25 +10,33 @@ import io.github.retrooper.packetevents.packetwrappers.play.in.steervehicle.Wrap
 import io.lumine.xikage.mythicmobs.volatilecode.v1_16_R3.ai.PathfinderHolder;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
+import org.bukkit.event.entity.EntityTeleportEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
 import org.bukkit.event.vehicle.VehicleDestroyEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SpawnEggMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 
@@ -39,13 +47,12 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 	@EventHandler
 	public void playerTeleport(PlayerTeleportEvent e) {
 		Player player = e.getPlayer();
-		Entity vehicle = player.getVehicle();
-		if (vehicle == null) return;
 		if (!cachedMounts.containsKey(player)) return;
 
+		Entity entity = cachedMounts.get(player);
+		entity.remove();
 		cachedMounts.remove(player);
-		vehicle.remove();
-		player.getWorld().spawnParticle(Particle.SPELL_MOB,player.getLocation(),10);
+		player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE,player.getLocation(),10);
 		player.playSound(player.getLocation(), Sound.BLOCK_LAVA_EXTINGUISH,1.0f,1.0f);
 	}
 
@@ -57,16 +64,49 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		Entity entity = cachedMounts.get(player);
 		entity.remove();
 		cachedMounts.remove(player);
+		player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE,player.getLocation(),10);
+		player.playSound(player.getLocation(), Sound.BLOCK_LAVA_EXTINGUISH,1.0f,1.0f);
 	}
+
+	@EventHandler
+	public void mountEntity(PlayerInteractEntityEvent e) {
+		Player player = e.getPlayer();
+		if (!cachedMounts.containsKey(player)) return;
+		Entity clickedEntity = e.getRightClicked();
+		Entity entity = cachedMounts.get(player);
+		if (clickedEntity != entity) return;
+		entity.addPassenger(player);
+	}
+
+	@EventHandler
+	public void preventOpenHorseInventory(InventoryOpenEvent e) {
+		Inventory inventory = e.getInventory();
+		if (inventory instanceof AbstractHorseInventory) {
+			e.setCancelled(true);
+		}
+	}
+
+	@EventHandler
+	public void preventMountTarget(EntityTargetEvent e) {
+		Entity vehicleTarget = e.getTarget();
+		Entity vehicle = e.getEntity();
+		if (vehicleTarget == null) return;
+		if (!cachedMounts.containsValue(vehicle)) return;
+
+		//prevent target if vehicle is targeting another entity
+		e.setCancelled(true);
+	}
+
 	@EventHandler
 	public void useMobEgg(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
-		if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 		ItemStack item = player.getInventory().getItemInMainHand();
+		if (cachedMounts.containsKey(player)) {
+			Entity entity = cachedMounts.get(player);
+			entity.remove();
+			cachedMounts.remove(player);
+		}
 		try {
-			//prevent player from spawning mob
-			e.setCancelled(true);
-
 			//spawns the mob and makes player mount it
 			String entityName = item.getType().toString()
 			                        .replace("_spawn_egg","")
@@ -74,15 +114,32 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 
 			EntityType type = EntityType.fromName(entityName);
 			if (type==null) return;
+
+			//prevent player from spawning mob
+			e.setCancelled(true);
+			if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
+			if (player.isSneaking()) {
+				player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE,player.getLocation(),10);
+				return;
+			}
+
+
 			Entity entity = player.getWorld().spawnEntity(player.getLocation(), type);
+			if (entity instanceof Tameable) {
+				((Tameable) entity).setOwner(player);
+				((Tameable) entity).setTamed(true);
+			}
+			if (entity instanceof AbstractHorse) {
+				((AbstractHorse) entity).getInventory().setSaddle(new ItemStack(Material.SADDLE));
+			}
 
 			entity.setCustomName(Utils.tacc("&b"+player.getName()+"'s "+type.getName()));
 			entity.setCustomNameVisible(true);
 			entity.addPassenger(player);
 
-
 			cachedMounts.put(player,entity);
 			player.sendMessage(Utils.lore("<green>Successfully mounted your "+type.getName()));
+			player.getWorld().spawnParticle(Particle.SPELL_MOB,player.getLocation(),10);
 
 		} catch (Exception ignored) {}
 	}
@@ -90,31 +147,30 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 	@EventHandler
 	public void vehicleDismount(VehicleExitEvent e) {
 		Entity vehicle = e.getVehicle();
-		Entity player = vehicle.getPassenger();
-		Bukkit.getLogger().info("1");
-		if (!(player instanceof Player)) return;
-		Bukkit.getLogger().info("2");
+		if (!cachedMounts.containsValue(vehicle)) return;
 
-		if (!cachedMounts.containsKey(player)) return;
-		Bukkit.getLogger().info("3");
-
-		cachedMounts.remove(player);
+		cachedMounts.values().removeIf(vehicle::equals);
 		vehicle.remove();
-		player.getWorld().spawnParticle(Particle.SPELL_MOB,player.getLocation(),10);
-		((Player)player).playSound(player.getLocation(), Sound.BLOCK_LAVA_EXTINGUISH,1.0f,1.0f);
+		vehicle.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE,vehicle.getLocation(),10);
 	}
 
 	@EventHandler
 	public void vehicleDamage(VehicleDamageEvent e) {
 		Entity vehicle = e.getVehicle();
-		Entity player = vehicle.getPassenger();
-		if (!(player instanceof Player)) return;
-		if (!cachedMounts.containsKey(player)) return;
+		if (!cachedMounts.containsValue(vehicle)) return;
 
-		cachedMounts.remove(player);
+		cachedMounts.values().removeIf(vehicle::equals);
 		vehicle.remove();
-		player.getWorld().spawnParticle(Particle.SPELL_MOB,player.getLocation(),10);
-		((Player)player).playSound(player.getLocation(), Sound.BLOCK_LAVA_EXTINGUISH,1.0f,1.0f);
+		vehicle.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE,vehicle.getLocation(),10);
+	}
+	@EventHandler
+	public void vehicleDamage(EntityDamageEvent e) {
+		Entity vehicle = e.getEntity();
+		if (!cachedMounts.containsValue(vehicle)) return;
+
+		cachedMounts.values().removeIf(vehicle::equals);
+		vehicle.remove();
+		vehicle.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE,vehicle.getLocation(),10);
 	}
 
 	public void onPacketPlayReceive(PacketPlayReceiveEvent e) {
@@ -128,29 +184,17 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		Player player = e.getPlayer();
 		float forward = vehiclePacket.getForwardValue();
 		boolean jump = vehiclePacket.isJump();
-		boolean dismount = vehiclePacket.isDismount();
 
 		Mob vehicle = (Mob) player.getVehicle();
 		Location vehicleLocation = vehicle.getLocation().clone();
 
-		if (dismount) {
-			cachedMounts.remove(player);
-			new BukkitRunnable() {
-				@Override
-				public void run() {
-					vehicle.remove();
-					player.getWorld().spawnParticle(Particle.SPELL_MOB,player.getLocation(),10);
-					player.playSound(player.getLocation(), Sound.BLOCK_LAVA_EXTINGUISH,1.0f,1.0f);
-				}
-			}.runTask(Core.plugin());
-
-		}
 		if (jump) {
 			vehicle.setJumping(true);
 		}
 		if (forward > 0) {
 
-			double speed  = forward*2;
+			AttributeInstance attribute = vehicle.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
+			double speed  = (attribute == null) ? forward*2 : 0.6/attribute.getBaseValue();
 			Location targetLocation = vehicleLocation.add(player.getLocation().getDirection());
 
 			new BukkitRunnable() {
