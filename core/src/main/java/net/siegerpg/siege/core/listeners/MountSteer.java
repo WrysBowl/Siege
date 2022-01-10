@@ -58,35 +58,45 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		entity.remove();
 		cachedMounts.remove(player);
 	}
-
 	@EventHandler
 	public void useMobEgg(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
 		if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 		ItemStack item = player.getInventory().getItemInMainHand();
-		ItemMeta meta = item.getItemMeta();
-		if (!(meta instanceof SpawnEggMeta)) return;
+		try {
+			//prevent player from spawning mob
+			e.setCancelled(true);
 
-		//prevent player from spawning mob
-		e.setCancelled(true);
+			//spawns the mob and makes player mount it
+			String entityName = item.getType().toString()
+			                        .replace("_spawn_egg","")
+			                        .replace("_SPAWN_EGG","");
 
-		//spawns the mob and makes player mount it
-		EntityType type = ((SpawnEggMeta)meta).getSpawnedType();
-		Entity entity = player.getWorld().spawnEntity(player.getLocation(), type);
-		entity.setCustomName(Utils.tacc("&b"+player.getName()+"'s "+type.getName()));
-		entity.setCustomNameVisible(true);
-		entity.addPassenger(player);
+			EntityType type = EntityType.fromName(entityName);
+			if (type==null) return;
+			Entity entity = player.getWorld().spawnEntity(player.getLocation(), type);
 
-		cachedMounts.put(player,entity);
-		player.sendMessage(Utils.lore("<gray>Successfully mounted your "+type.getName()));
+			entity.setCustomName(Utils.tacc("&b"+player.getName()+"'s "+type.getName()));
+			entity.setCustomNameVisible(true);
+			entity.addPassenger(player);
+
+
+			cachedMounts.put(player,entity);
+			player.sendMessage(Utils.lore("<green>Successfully mounted your "+type.getName()));
+
+		} catch (Exception ignored) {}
 	}
 
 	@EventHandler
 	public void vehicleDismount(VehicleExitEvent e) {
 		Entity vehicle = e.getVehicle();
 		Entity player = vehicle.getPassenger();
+		Bukkit.getLogger().info("1");
 		if (!(player instanceof Player)) return;
+		Bukkit.getLogger().info("2");
+
 		if (!cachedMounts.containsKey(player)) return;
+		Bukkit.getLogger().info("3");
 
 		cachedMounts.remove(player);
 		vehicle.remove();
@@ -118,10 +128,23 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		Player player = e.getPlayer();
 		float forward = vehiclePacket.getForwardValue();
 		boolean jump = vehiclePacket.isJump();
+		boolean dismount = vehiclePacket.isDismount();
 
 		Mob vehicle = (Mob) player.getVehicle();
 		Location vehicleLocation = vehicle.getLocation().clone();
 
+		if (dismount) {
+			cachedMounts.remove(player);
+			new BukkitRunnable() {
+				@Override
+				public void run() {
+					vehicle.remove();
+					player.getWorld().spawnParticle(Particle.SPELL_MOB,player.getLocation(),10);
+					player.playSound(player.getLocation(), Sound.BLOCK_LAVA_EXTINGUISH,1.0f,1.0f);
+				}
+			}.runTask(Core.plugin());
+
+		}
 		if (jump) {
 			vehicle.setJumping(true);
 		}

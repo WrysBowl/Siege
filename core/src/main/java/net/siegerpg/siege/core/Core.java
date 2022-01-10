@@ -174,7 +174,8 @@ public final class Core extends JavaPlugin {
 				new CosmeticsListener(),
 				new CustomItemKotlinListener(),
 				new CustomEventListener(),
-				new MobCrateOpen()
+				new MobCrateOpen(),
+				new MountSteer()
 
 
 		};
