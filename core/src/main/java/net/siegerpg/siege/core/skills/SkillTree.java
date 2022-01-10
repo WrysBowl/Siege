@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.skills;
 
 import net.siegerpg.siege.core.skills.archer.*;
+import net.siegerpg.siege.core.skills.mage.*;
 import net.siegerpg.siege.core.skills.warrior.*;
 import org.jetbrains.annotations.Nullable;
 
@@ -65,6 +66,34 @@ public class SkillTree {
 		Skill woundingStrike = warCry.addChild(new WoundingStrike());
 		Skill bloodLust = warCry.addChild(new BloodLust());
 		Skill groundPound = warCry.addChild(new GroundPound());
+
+		/*
+		MAGE SKILLS
+		 */
+		Skill iceBolt = new IceBolt();
+		roots.add(iceBolt);
+		Skill invigorate = new Invigorate();
+		roots.add(invigorate);
+		Skill hex = new Hex();
+		roots.add(hex);
+
+		Skill frostImplosion = iceBolt.addChild(new FrostImplosion());
+		Skill iceberg = iceBolt.addChild(new Iceberg());
+		Skill iceCube = iceBolt.addChild(new IceCube());
+		Skill hailstorm = iceBolt.addChild(new Hailstorm());
+		Skill cryogenesis = iceBolt.addChild(new Cryogenesis());
+
+		Skill rockSpike = invigorate.addChild(new RockSpike());
+		Skill revitalize = invigorate.addChild(new Revitalize());
+		Skill soulHarvester = invigorate.addChild(new SoulHarvester());
+		Skill earthquake = invigorate.addChild(new Earthquake());
+		Skill soulGiver = invigorate.addChild(new SoulGiver());
+
+		Skill zombiePuppet = hex.addChild(new ZombiePuppet());
+		Skill sacrifice = hex.addChild(new Sacrifice());
+		Skill golem = hex.addChild(new Golem());
+		Skill demonTransformation = hex.addChild(new DemonTransformation());
+		Skill spectralBeam = hex.addChild(new SpectralBeam());
 
 	}
 
