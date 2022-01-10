@@ -8,22 +8,22 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class Cryogenesis extends Skill {
+public class SoulGiver extends Skill {
 
 	final int initCooldown = 60 * 1000;
 	final int initManaCost = 200;
 	final int initGoldCost = 5000;
-	final double manaMulti = 0.05;
-	final double healthMulti = 0.05;
+	final double healthMulti = 0.25;
 
-	private final String identifier = "2_A_5";
+	private final String identifier = "2_B_5";
 	private final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Cryogenesis";
+	private final String name = "Soul Giver";
 	private final List< String > description =
-			List.of("Lose movement and eyesight",
-			        "for 10 seconds, then gain 20",
-			        "seconds of +10% mana regen/sec,",
-			        "+10% health/sec, and fill mana.");
+			List.of("Lose 50% health to heal",
+			        "+25% of your health to all",
+			        "allies within 15 meters.",
+			        "health increases to +50%",
+			        "if standing on earth material.");
 
 	@Override
 	public String getName(int level) {
@@ -34,10 +34,11 @@ public class Cryogenesis extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Lose movement and eyesight",
-		               "for 10 seconds, then gain 20",
-		               "seconds of +"+((1-getManaMulti(level)) * 100)+"% mana regen/sec,",
-		               "+"+((1-getHealthMulti(level)) * 100)+"% health/sec, and fill mana.");
+		return List.of("Lose 50% health to heal",
+		               "+"+((getHealthMulti(level, false) + 1) * 100)+"% of your health to all",
+		               "allies within 15 meters.",
+		               "health increases to +"+((getHealthMulti(level, true) + 1) * 100)+"%",
+		               "if standing on earth material.");
 	}
 
 
@@ -48,21 +49,18 @@ public class Cryogenesis extends Skill {
 
 	@Override
 	public int getManaCost(int level) {
-		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.02));
+		return (int) (this.initManaCost + Math.ceil(this.initManaCost * (level-1) * 0.025));
 	}
 
 	@Override
 	public int getGoldCost(int level) {
-		return (int) (this.initGoldCost * level * 2.0);
+		return (int) (this.initGoldCost * level * 3.0);
 	}
 
-	public double getHealthMulti(int level) {
-		return this.healthMulti + ((level-1) * 0.015);
+	public double getHealthMulti(int level, boolean onEarth) {
+		if (onEarth) return (this.healthMulti + 0.25) + ((level-1) * 0.02);
+		return this.healthMulti + ((level-1) * 0.02);
 	}
-	public double getManaMulti(int level) {
-		return this.manaMulti + ((level-1) * 0.015);
-	}
-
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)

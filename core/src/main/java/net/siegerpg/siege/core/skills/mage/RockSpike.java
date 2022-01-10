@@ -8,22 +8,22 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class Cryogenesis extends Skill {
+public class RockSpike extends Skill {
 
-	final int initCooldown = 60 * 1000;
-	final int initManaCost = 200;
-	final int initGoldCost = 5000;
-	final double manaMulti = 0.05;
-	final double healthMulti = 0.05;
+	final int initCooldown = 20 * 1000;
+	final int initManaCost = 100;
+	final int initGoldCost = 3000;
+	final double damageMulti = 2.0;
 
-	private final String identifier = "2_A_5";
+	private final String identifier = "2_B_1";
 	private final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Cryogenesis";
+	private final String name = "Rock Spike";
 	private final List< String > description =
-			List.of("Lose movement and eyesight",
-			        "for 10 seconds, then gain 20",
-			        "seconds of +10% mana regen/sec,",
-			        "+10% health/sec, and fill mana.");
+			List.of("Erupt a spike from the ground,",
+			        "immobilizing the targets inside",
+			        "the spike for 3 seconds and",
+			        "dealing +100% damage. Deals +200%",
+			        "if the spike is made from earth.");
 
 	@Override
 	public String getName(int level) {
@@ -34,10 +34,11 @@ public class Cryogenesis extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Lose movement and eyesight",
-		               "for 10 seconds, then gain 20",
-		               "seconds of +"+((1-getManaMulti(level)) * 100)+"% mana regen/sec,",
-		               "+"+((1-getHealthMulti(level)) * 100)+"% health/sec, and fill mana.");
+		return List.of("Erupt a spike from the ground,",
+		               "immobilizing the targets inside",
+		               "the spike for 3 seconds and",
+		               "dealing +"+((getDamageMulti(level, false) - 1) * 100)+"% damage. Deals +"+((getDamageMulti(level, true) - 1) * 100)+"%",
+		               "if the spike is made from earth.");
 	}
 
 
@@ -53,14 +54,12 @@ public class Cryogenesis extends Skill {
 
 	@Override
 	public int getGoldCost(int level) {
-		return (int) (this.initGoldCost * level * 2.0);
+		return (int) (this.initGoldCost * level * 5.0);
 	}
 
-	public double getHealthMulti(int level) {
-		return this.healthMulti + ((level-1) * 0.015);
-	}
-	public double getManaMulti(int level) {
-		return this.manaMulti + ((level-1) * 0.015);
+	public double getDamageMulti(int level, boolean onEarth) {
+		if (onEarth) return (this.damageMulti + 1.0) + ((level-1) * 0.025);
+		return this.damageMulti + ((level-1) * 0.05);
 	}
 
 	@Override

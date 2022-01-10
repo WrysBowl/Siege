@@ -8,22 +8,21 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class Cryogenesis extends Skill {
+public class SoulHarvester extends Skill {
 
-	final int initCooldown = 60 * 1000;
-	final int initManaCost = 200;
+	final int initCooldown = 30 * 1000;
+	final int initManaCost = 150;
 	final int initGoldCost = 5000;
-	final double manaMulti = 0.05;
-	final double healthMulti = 0.05;
+	final double manaHealthMulti = 0.25;
 
-	private final String identifier = "2_A_5";
+	private final String identifier = "2_B_3";
 	private final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Cryogenesis";
+	private final String name = "Soul Harvester";
 	private final List< String > description =
-			List.of("Lose movement and eyesight",
-			        "for 10 seconds, then gain 20",
-			        "seconds of +10% mana regen/sec,",
-			        "+10% health/sec, and fill mana.");
+			List.of("Create a circle that saps",
+			        "the soul of all enemies and",
+			        "allies that died in it. Heals",
+			        "for +25% HP and mana each soul.");
 
 	@Override
 	public String getName(int level) {
@@ -34,10 +33,10 @@ public class Cryogenesis extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Lose movement and eyesight",
-		               "for 10 seconds, then gain 20",
-		               "seconds of +"+((1-getManaMulti(level)) * 100)+"% mana regen/sec,",
-		               "+"+((1-getHealthMulti(level)) * 100)+"% health/sec, and fill mana.");
+		return List.of("Create a circle that saps",
+		               "the soul of all enemies and",
+		               "allies that died in it. Heals",
+		               "for +"+((getHealthManaMulti(level) + 1) * 100)+"% HP and mana each soul.");
 	}
 
 
@@ -53,14 +52,11 @@ public class Cryogenesis extends Skill {
 
 	@Override
 	public int getGoldCost(int level) {
-		return (int) (this.initGoldCost * level * 2.0);
+		return (int) (this.initGoldCost * level * 5.0);
 	}
 
-	public double getHealthMulti(int level) {
-		return this.healthMulti + ((level-1) * 0.015);
-	}
-	public double getManaMulti(int level) {
-		return this.manaMulti + ((level-1) * 0.015);
+	public double getHealthManaMulti(int level) {
+		return this.manaHealthMulti + ((level-1) * 0.015);
 	}
 
 	@Override

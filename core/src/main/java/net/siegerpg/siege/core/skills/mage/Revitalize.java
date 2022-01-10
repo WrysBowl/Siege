@@ -8,22 +8,23 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class Cryogenesis extends Skill {
+public class Revitalize extends Skill {
 
-	final int initCooldown = 60 * 1000;
-	final int initManaCost = 200;
+	final int initCooldown = 30 * 1000;
+	final int initManaCost = 150;
 	final int initGoldCost = 5000;
 	final double manaMulti = 0.05;
 	final double healthMulti = 0.05;
 
-	private final String identifier = "2_A_5";
+	private final String identifier = "2_B_2";
 	private final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Cryogenesis";
+	private final String name = "Rock Spike";
 	private final List< String > description =
-			List.of("Lose movement and eyesight",
-			        "for 10 seconds, then gain 20",
-			        "seconds of +10% mana regen/sec,",
-			        "+10% health/sec, and fill mana.");
+			List.of("Create a circle for allies",
+			        "that heal +5% HP/sec and",
+			        "+5% Mana/sec for 10 seconds.",
+			        "If circle is on earth material,",
+			        "increase duration to 20 seconds.");
 
 	@Override
 	public String getName(int level) {
@@ -34,10 +35,11 @@ public class Cryogenesis extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("Lose movement and eyesight",
-		               "for 10 seconds, then gain 20",
-		               "seconds of +"+((1-getManaMulti(level)) * 100)+"% mana regen/sec,",
-		               "+"+((1-getHealthMulti(level)) * 100)+"% health/sec, and fill mana.");
+		return List.of("Create a circle for allies",
+		               "that heal +"+((getHealthMulti(level) + 1) * 100)+"% HP/sec and",
+		               "+"+((getManaMulti(level) + 1) * 100)+"% Mana/sec for 10 seconds.",
+		               "If circle is on earth material,",
+		               "increase duration to 20 seconds.");
 	}
 
 
@@ -53,7 +55,7 @@ public class Cryogenesis extends Skill {
 
 	@Override
 	public int getGoldCost(int level) {
-		return (int) (this.initGoldCost * level * 2.0);
+		return (int) (this.initGoldCost * level * 3.0);
 	}
 
 	public double getHealthMulti(int level) {
