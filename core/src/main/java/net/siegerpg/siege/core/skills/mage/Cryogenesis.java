@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.skills.mage;
 
-import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.entity.Player;
@@ -9,20 +8,22 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class FrostImplosion extends Skill {
+public class Cryogenesis extends Skill {
 
-	final int initCooldown = 30 * 1000;
-	final int initManaCost = 120;
+	final int initCooldown = 60 * 1000;
+	final int initManaCost = 200;
 	final int initGoldCost = 5000;
-	final double damageMulti = 0.1;
+	final double manaMulti = 0.05;
+	final double healthMulti = 0.05;
 
-	private final String identifier = "2_A_1";
+	private final String identifier = "2_A_5";
 	private final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Frost Implosion";
+	private final String name = "Cryogenesis";
 	private final List< String > description =
-			List.of("All enemies within 5 meters",
-			        "are slowed by 20% and take 10%",
-			        "damage/sec for 5 seconds.");
+			List.of("Lose movement and eyesight",
+			        "for 10 seconds, then gain 20",
+			        "seconds of +5% mana regen/sec,",
+			        "+5% health/sec, and fill mana.");
 
 	@Override
 	public String getName(int level) {
@@ -33,9 +34,10 @@ public class FrostImplosion extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("All enemies within 5 meters",
-		               "are slowed and take "+((getDamageMulti(level)-1) * 100)+"%",
-		               "damage/sec for 5 seconds.");
+		return List.of("Lose movement and eyesight",
+		               "for 10 seconds, then gain 20",
+		               "seconds of +"+((1-getManaMulti(level)) * 100)+"% mana regen/sec,",
+		               "+"+((1-getHealthMulti(level)) * 100)+"% health/sec, and fill mana.");
 	}
 
 
@@ -54,10 +56,12 @@ public class FrostImplosion extends Skill {
 		return (int) (this.initGoldCost * level * 2.0);
 	}
 
-	public double getDamageMulti(int level) {
-		return Utils.round(((this.damageMulti) + ((level - 1) * 0.015)), 2);
+	public double getHealthMulti(int level) {
+		return this.healthMulti + ((level-1) * 0.015);
 	}
-
+	public double getManaMulti(int level) {
+		return this.manaMulti + ((level-1) * 0.015);
+	}
 
 	@Override
 	public boolean trigger(@NotNull Player player, int level) {

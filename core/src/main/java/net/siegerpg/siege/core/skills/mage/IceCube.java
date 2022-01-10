@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.skills.mage;
 
-import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.entity.Player;
@@ -9,20 +8,20 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
-public class FrostImplosion extends Skill {
+public class IceCube extends Skill {
 
 	final int initCooldown = 30 * 1000;
-	final int initManaCost = 120;
-	final int initGoldCost = 5000;
-	final double damageMulti = 0.1;
+	final int initManaCost = 150;
+	final int initGoldCost = 2500;
+	final int duration = 5;
 
-	private final String identifier = "2_A_1";
+	private final String identifier = "2_A_3";
 	private final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Frost Implosion";
+	private final String name = "Ice Cube";
 	private final List< String > description =
-			List.of("All enemies within 5 meters",
-			        "are slowed by 20% and take 10%",
-			        "damage/sec for 5 seconds.");
+			List.of("Raise an ice prison",
+			        "in front of you that",
+			        "lasts 5 seconds");
 
 	@Override
 	public String getName(int level) {
@@ -33,9 +32,9 @@ public class FrostImplosion extends Skill {
 	@Override
 	public List< String > getDescription(int level) {
 
-		return List.of("All enemies within 5 meters",
-		               "are slowed and take "+((getDamageMulti(level)-1) * 100)+"%",
-		               "damage/sec for 5 seconds.");
+		return List.of("Raise an ice prison",
+		               "in front of you that",
+		               "lasts "+getDuration(level)+" seconds");
 	}
 
 
@@ -51,12 +50,13 @@ public class FrostImplosion extends Skill {
 
 	@Override
 	public int getGoldCost(int level) {
-		return (int) (this.initGoldCost * level * 2.0);
+		return (int) (this.initGoldCost * level * 2.5);
 	}
 
-	public double getDamageMulti(int level) {
-		return Utils.round(((this.damageMulti) + ((level - 1) * 0.015)), 2);
+	public double getDuration(int level) {
+		return (this.duration) + (level-1);
 	}
+
 
 
 	@Override

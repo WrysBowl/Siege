@@ -35,9 +35,9 @@ public class Iceberg extends Skill {
 	public List< String > getDescription(int level) {
 
 		return List.of("Throws a block of ice",
-		               "at a target for +"+getDamageMulti(level, false)+"%",
+		               "at a target for +"+((getDamageMulti(level, false)-1) * 100)+"%",
 		               "of your strength. Deals",
-		               "+"+getDamageMulti(level, true)+"% if enemy is slowed.");
+		               "+"+((getDamageMulti(level, true)-1) * 100)+"% if enemy is slowed.");
 	}
 
 

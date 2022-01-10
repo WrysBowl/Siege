@@ -39,7 +39,7 @@ public class IceBolt extends Skill {
 		               "towards an enemy that",
 		               "slows them by 20% for",
 		               "3 seconds and deals",
-		               "+"+getDamageMulti(level)+"% strength damage.");
+		               "+"+((getDamageMulti(level)-1) * 100)+"% strength damage.");
 	}
 
 
