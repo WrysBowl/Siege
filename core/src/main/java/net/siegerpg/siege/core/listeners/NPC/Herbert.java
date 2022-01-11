@@ -172,7 +172,7 @@ public class Herbert implements Listener {
 		} else if (cItem instanceof CustomFood) {
 			quality = cItem.getQuality();
 			total += (int) ((quality / 100) + 1);
-		} else if (cItem instanceof CustomCosmetic) {
+		} else if (cItem instanceof CustomCosmetic || cItem instanceof CustomMount) {
 			Rarity rarity = cItem.getRarity();
 			switch (rarity) {
 				case COMMON:
