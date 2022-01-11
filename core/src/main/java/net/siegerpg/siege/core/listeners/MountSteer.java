@@ -123,6 +123,15 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		e.setCancelled(true);
 	}
 
+	public boolean isSpawnEgg(ItemStack item) {
+		boolean containsSpawnEgg = false;
+
+		if (item.getType().toString().contains("_spawn_egg")) containsSpawnEgg = true;
+		if (item.getType().toString().contains("_SPAWN_EGG")) containsSpawnEgg = true;
+
+		return containsSpawnEgg;
+	}
+
 	@Nullable
 	public EntityType getSpawnEggType(ItemStack item) {
 		String entityName = item.getType().toString()
@@ -136,17 +145,19 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 	public void useMobEgg(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
 		ItemStack item = player.getInventory().getItemInMainHand();
+
+		if(!isSpawnEgg(item)) return;
+		EntityType type = getSpawnEggType(item);
+		if (type==null) return;
+
 		if (cachedMounts.containsKey(player)) {
 			Entity entity = cachedMounts.get(player);
 			entity.remove();
 			cachedMounts.remove(player);
 			return;
 		}
-		try {
-			//spawns the mob and makes player mount it
-			EntityType type = getSpawnEggType(item);
-			if (type==null) return;
 
+		try {
 			//prevent player from spawning mob
 			e.setCancelled(true);
 			if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
@@ -226,13 +237,15 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		if (forward > 0) {
 
 			AttributeInstance attribute = vehicle.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
-			double speed  = (attribute == null) ? forward*2 : 0.5/attribute.getBaseValue();
-			Location targetLocation = vehicleLocation.add(player.getLocation().getDirection());
+			double speed  = (attribute == null) ? forward*2 : 0.6/attribute.getBaseValue();
+			if (speed < 1) speed = 1;
+			Location targetLocation = vehicleLocation.add(player.getLocation().getDirection().multiply(vehicle.getWidth()*2));
 
+			double finalSpeed = speed;
 			new BukkitRunnable() {
 				@Override
 				public void run() {
-					vehicle.getPathfinder().moveTo(targetLocation, speed);
+					vehicle.getPathfinder().moveTo(targetLocation, finalSpeed);
 				}
 			}.runTask(Core.plugin());
 
