@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.PigMount;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
@@ -112,6 +113,8 @@ public class PlayerJoinListener implements Listener {
 			Tablist.tablistUpdate(p);
 		}
 		if (player.getName().equals("Wrys")) {
+			player.getInventory().addItem(new PigMount(0).getUpdatedItem(false));
+
 		}
 
         /*if (event.getPlayer().getName().equals("Wrys")) {

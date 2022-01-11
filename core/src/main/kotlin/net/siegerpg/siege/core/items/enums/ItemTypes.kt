@@ -5,10 +5,7 @@ import net.siegerpg.siege.core.items.types.armor.CustomBoots
 import net.siegerpg.siege.core.items.types.armor.CustomChestplate
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.armor.CustomLeggings
-import net.siegerpg.siege.core.items.types.misc.Cosmetic
-import net.siegerpg.siege.core.items.types.misc.CustomFood
-import net.siegerpg.siege.core.items.types.misc.CustomMaterial
-import net.siegerpg.siege.core.items.types.misc.StatGemType
+import net.siegerpg.siege.core.items.types.misc.*
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
@@ -25,7 +22,8 @@ enum class ItemTypes(val stylizedName : String, val clazz : KClass<out CustomIte
 	FOOD("Food", CustomFood::class),
 	STATGEM("Stat Gem", StatGemType::class),
 	MATERIAL("Material", CustomMaterial::class),
-	COSMETIC("COSMETIC", Cosmetic::class);
+	COSMETIC("Cosmetic", Cosmetic::class),
+	MOUNT("Mount", CustomMount::class);
 
 	companion object {
 
