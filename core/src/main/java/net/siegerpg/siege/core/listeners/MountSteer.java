@@ -226,7 +226,7 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		if (forward > 0) {
 
 			AttributeInstance attribute = vehicle.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
-			double speed  = (attribute == null) ? forward*2 : 0.6/attribute.getBaseValue();
+			double speed  = (attribute == null) ? forward*2 : 0.5/attribute.getBaseValue();
 			Location targetLocation = vehicleLocation.add(player.getLocation().getDirection());
 
 			new BukkitRunnable() {

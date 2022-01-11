@@ -19,7 +19,6 @@ import net.siegerpg.siege.core.fishing.events.RightClickEvent;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorListener;
 import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.*;
-import net.siegerpg.siege.core.listeners.tasks.HelpfulTips;
 import net.siegerpg.siege.core.miscellaneous.DropUtils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import net.siegerpg.siege.core.miscellaneous.cache.MobNames;
@@ -157,7 +156,6 @@ public final class Core extends JavaPlugin {
 				new RightClickEvent(),
 				new PlayerData(),
 				new EntityTeleportListener(),
-				new HelpfulTips(),
 				new CosmeticCrateOpen(),
 				new MobNames(),
 				new DungeonListener(),
@@ -187,7 +185,6 @@ public final class Core extends JavaPlugin {
 		}
 
 		StatChangeListener.statBarDisplayTask();
-		new HelpfulTips().broadcastTasks();
 
 //        CustomRecipe recipe = new CustomRecipe();
 //        recipe.s1(Pebble.Companion.tier(1));
