@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.items.types.misc
 
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
+import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
@@ -10,27 +11,30 @@ import net.siegerpg.siege.core.skills.SkillClass
 import net.siegerpg.siege.core.skills.SkillData
 import org.bukkit.Material
 import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
 //be sure to remove excess variables (quality, recipe list, etc.) same with cosmetics
 abstract class CustomSkill(
-		override val name : String,
+		override val name : String = "",
 		override val customModelData : Int? = null,
-		override val description : List<String>,
+		override val levelRequirement : Int? = null,
+		override var rarity : Rarity = Rarity.RARE,
+		override val description : List<String> = listOf(),
 		override val material : Material = Material.BOOK,
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.SKILL,
-		private val skill : Skill,
+		val skill : Skill,
+		var level : Int = 1,
+
 
 		) : CustomItem {
 
-	fun updateMeta(player : Player) : ItemStack {
-
+	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		val meta = item.itemMeta
-
-		val level : Int = SkillData.getSkillLevel(player, skill) ?: 1
 
 		if (skill.skillClass.equals(SkillClass.WARRIOR)) meta.name("<color:#E35D73>$name")
 		else if (skill.skillClass.equals(SkillClass.ARCHER)) meta.name("<color:#97CEEC>$name")
@@ -58,6 +62,10 @@ abstract class CustomSkill(
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 		item.itemMeta = meta
 		return item
+	}
+
+	fun skillUse(e : PlayerInteractEvent) {
+		skill.trigger(e.player)
 	}
 
 	override fun equals(other : Any?) : Boolean {

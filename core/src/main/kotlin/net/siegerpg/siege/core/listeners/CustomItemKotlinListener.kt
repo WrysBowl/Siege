@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomPotion
+import net.siegerpg.siege.core.items.types.misc.CustomSkill
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
@@ -94,6 +95,15 @@ class CustomItemKotlinListener : Listener, Runnable {
 		if (e.entity is Arrow) {
 			e.entity.remove()
 		}
+	}
+
+	@EventHandler
+	fun onSkillUse(e : PlayerInteractEvent) {
+		val player : Player = e.player
+		val item : ItemStack = player.inventory.itemInMainHand
+		val customItem : CustomItem = CustomItemUtils.getCustomItem(item) ?: return
+		if (customItem !is CustomSkill) return;
+		customItem.skillUse(e)
 	}
 
 	@EventHandler(priority = EventPriority.LOWEST)
