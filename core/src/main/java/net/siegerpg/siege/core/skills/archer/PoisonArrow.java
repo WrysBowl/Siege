@@ -21,7 +21,7 @@ public class PoisonArrow extends Skill {
 			List.of(
 					"Your next arrow becomes poisonous",
 					"and deals more damage if you",
-					" or your target is poisoned"
+					"or your target is poisoned"
 			       );
 
 	@Override

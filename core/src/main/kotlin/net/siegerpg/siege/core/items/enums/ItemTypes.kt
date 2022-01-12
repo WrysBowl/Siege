@@ -23,6 +23,7 @@ enum class ItemTypes(val stylizedName : String, val clazz : KClass<out CustomIte
 	STATGEM("Stat Gem", StatGemType::class),
 	MATERIAL("Material", CustomMaterial::class),
 	COSMETIC("Cosmetic", Cosmetic::class),
+	SKILL("Skill", CustomSkill::class),
 	MOUNT("Mount", CustomMount::class);
 
 	companion object {
