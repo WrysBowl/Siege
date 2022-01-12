@@ -31,13 +31,15 @@ import org.bukkit.inventory.*;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.Nullable;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class MountSteer extends PacketListenerAbstract implements Listener {
 
 	public static HashMap<Player, Entity> cachedMounts = new HashMap<>();
-	public static ArrayList<Player> currentCooldown = new ArrayList<>();
+	public static HashMap<Player, Long > currentCooldown = new HashMap<>();
 
 	@EventHandler
 	public void playerTeleport(PlayerTeleportEvent e) {
@@ -159,17 +161,19 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 				player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE,player.getLocation(),10);
 				return;
 			}
-			if (currentCooldown.contains(player)) {
 
-				new BukkitRunnable() {
-					@Override
-					public void run() {
-						currentCooldown.remove(player);
-					}
-				}.runTaskLater(Core.plugin(), 20);
-				return;
+			//cooldown
+			if (currentCooldown.containsKey(player)) {
+				Bukkit.getLogger().info("Current Millis "+ System.currentTimeMillis());
+				Bukkit.getLogger().info("Player Millis "+ currentCooldown.get(player));
+
+				if ((System.currentTimeMillis() - currentCooldown.get(player)) >= 1000) {
+					currentCooldown.put(player, System.currentTimeMillis());
+				} else {
+					return;
+				}
 			} else {
-				currentCooldown.add(player);
+				currentCooldown.put(player, System.currentTimeMillis());
 			}
 
 			String entityName = item.getItemMeta().getDisplayName();
@@ -187,7 +191,6 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 			entity.addPassenger(player);
 
 			cachedMounts.put(player,entity);
-			currentCooldown.add(player);
 			player.sendMessage(Utils.lore("<green>Successfully mounted your "+entityName));
 			player.getWorld().spawnParticle(Particle.SPELL_MOB,player.getLocation(),10);
 
