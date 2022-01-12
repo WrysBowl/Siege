@@ -28,10 +28,7 @@ public class Invigorate extends Skill {
 			        "on earth type blocks",
 			        "regeneration is given",
 			        "for 10 seconds.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

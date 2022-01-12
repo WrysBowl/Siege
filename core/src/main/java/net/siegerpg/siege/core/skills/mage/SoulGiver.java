@@ -24,10 +24,7 @@ public class SoulGiver extends Skill {
 			        "allies within 15 meters.",
 			        "health increases to +50%",
 			        "if standing on earth material.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

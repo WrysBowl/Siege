@@ -25,10 +25,7 @@ public class LightField extends Skill {
 			        "damage every second.",
 			        "Allies gain +5% mana/second.",
 			        "Lasts 5 seconds.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

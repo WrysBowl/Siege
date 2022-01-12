@@ -23,10 +23,7 @@ public class SoulHarvester extends Skill {
 			        "the soul of all enemies and",
 			        "allies that died in it. Heals",
 			        "for +25% HP and mana each soul.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

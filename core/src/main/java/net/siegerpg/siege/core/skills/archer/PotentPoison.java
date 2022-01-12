@@ -25,10 +25,7 @@ public class PotentPoison extends Skill {
 					"effecting targets with poison III.",
 					"Sphere lasts 5 seconds"
 			       );
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

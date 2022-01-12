@@ -23,10 +23,7 @@ public class Earthquake extends Skill {
 			        "If hit, mobs will be damaged",
 			        "for +100% strength. Leaves",
 			        "dirt material for 30 seconds.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

@@ -23,10 +23,7 @@ public class VenomousAura extends Skill {
 					"of poison your target is effected with",
 					"and poison yourself for 30 seconds"
 			       );
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

@@ -18,10 +18,7 @@ public class AchillesHeel extends Skill {
 	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Achilles Heel";
 	private final List< String > description = List.of("Speed II for 20 seconds");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 
 	@Override

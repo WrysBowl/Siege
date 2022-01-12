@@ -23,10 +23,7 @@ public class ConcentratedStrike extends Skill {
 			List.of("Hit the enemy for +100% damage",
 			        "and give +20% mana to allies, or",
 			        "30% if weakened within 10 meters.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

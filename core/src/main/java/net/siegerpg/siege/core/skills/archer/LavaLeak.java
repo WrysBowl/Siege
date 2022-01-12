@@ -28,10 +28,7 @@ public class LavaLeak extends Skill {
 					"for +5 HP/sec for each mob inside",
 					"lasts for 60 seconds"
 			       );
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

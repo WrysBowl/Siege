@@ -24,10 +24,7 @@ public class Combustion extends Skill {
 					"If player has Fireman skill active",
 					"explosion damage increases by 50%"
 			       );
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

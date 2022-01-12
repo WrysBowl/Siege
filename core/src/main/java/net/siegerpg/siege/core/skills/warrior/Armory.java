@@ -24,10 +24,7 @@ public class Armory extends Skill {
 			        "damage for 5 seconds.",
 			        "If weakened your damage",
 			        "reduction is 50%.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

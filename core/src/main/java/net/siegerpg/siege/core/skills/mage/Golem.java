@@ -25,10 +25,7 @@ public class Golem extends Skill {
 			        "that knocks enemies backwards",
 			        "and has 500% of your health,",
 			        "and 100% of your strength");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

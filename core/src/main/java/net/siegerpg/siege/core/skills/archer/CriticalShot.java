@@ -18,10 +18,7 @@ public class CriticalShot extends Skill {
 	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Critical Shot";
 	private final List< String > description = List.of("+50% STR next shot");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

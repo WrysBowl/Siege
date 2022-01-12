@@ -24,10 +24,7 @@ public class ZombiePuppet extends Skill {
 			List.of("Summon a zombie that fights for",
 			        "you. Has 100% of your strength,",
 			        "and 100% of your health.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {
