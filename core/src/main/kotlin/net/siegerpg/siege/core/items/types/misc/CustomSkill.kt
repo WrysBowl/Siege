@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.getNbtTag
+import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
@@ -11,10 +12,8 @@ import net.siegerpg.siege.core.skills.Skill
 import net.siegerpg.siege.core.skills.SkillClass
 import net.siegerpg.siege.core.skills.SkillData
 import net.siegerpg.siege.core.skills.warrior.Slash
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.Player
-import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -30,7 +29,7 @@ abstract class CustomSkill(
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.SKILL,
-		var skill : Skill = Slash(),
+		val skill : Skill = Slash(),
 		var level : Int = 1,
 
 
@@ -63,7 +62,35 @@ abstract class CustomSkill(
 	}
 
 	fun skillUse(e : PlayerInteractEvent) {
-		skill.trigger(e.player)
+		val player : Player = e.player
+
+		/* Remove when player can set skill level
+		val skillLevel = SkillData.getSkillLevel(player, skill)
+		if (skillLevel == null || skillLevel < 1) {
+			player.sendMessage(Utils.lore("<red>You have not unlocked this skill."))
+			return
+		}
+		this.level = skillLevel*/
+		this.serialize()
+		val item : ItemStack = this.getUpdatedItem(false)
+
+		player.inventory.setItemInMainHand(item)
+		skill.trigger(player, this.level)
+
+	}
+
+	override fun serialize() {
+		super.serialize()
+		item = item.setNbtTags(
+				"skillLevel" to level,
+		                      )
+	}
+
+	override fun deserialize() {
+		super.deserialize()
+		item.getNbtTag<Int>("skillLevel")?.let {
+			level = it
+		}
 	}
 
 	override fun equals(other : Any?) : Boolean {
