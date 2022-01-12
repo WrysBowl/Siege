@@ -23,7 +23,18 @@ public class FrostImplosion extends Skill {
 			List.of("All enemies within 5 meters",
 			        "are slowed by 20% and take 10%",
 			        "damage/sec for 5 seconds.");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

@@ -23,7 +23,18 @@ public class PiercingArrow extends Skill {
 					"10% of their health if you and the",
 					"target are poisoned, if not, cat poison arrow"
 			       );
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

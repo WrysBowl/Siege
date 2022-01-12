@@ -24,7 +24,18 @@ public class Iceberg extends Skill {
 			        "at a target for +200%",
 			        "of your strength. Deals",
 			        "+250% if enemy is slowed.");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

@@ -22,7 +22,18 @@ public class DoubleStrike extends Skill {
 			List.of("Slash your opponent twice,",
 			        "or three times if",
 			        "target is weakened");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

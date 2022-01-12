@@ -22,7 +22,18 @@ public class SerpentineArrow extends Skill {
 					"Your next arrow will bounce",
 					"to a new enemy for 5 seconds"
 			       );
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

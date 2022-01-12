@@ -26,6 +26,19 @@ public class Slash extends Skill {
 			        "for 3 seconds");
 
 	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
+
+	@Override
 	public String getName(int level) {
 
 		return this.name + " Lvl. " + level;
@@ -38,7 +51,6 @@ public class Slash extends Skill {
 		               "with chance of "+getWeakenChance(level)+"% to weaken",
 		               "for 3 seconds");
 	}
-
 
 	@Override
 	public Duration getCooldown(int level) {

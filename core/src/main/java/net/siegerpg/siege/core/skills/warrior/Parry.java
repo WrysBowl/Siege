@@ -22,7 +22,18 @@ public class Parry extends Skill {
 			List.of("If hit within 3 seconds,",
 			        "block attack and weaken",
 			        "attacker for 3 seconds.");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

@@ -25,7 +25,18 @@ public class Revitalize extends Skill {
 			        "+5% Mana/sec for 10 seconds.",
 			        "If circle is on earth material,",
 			        "increase duration to 20 seconds.");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

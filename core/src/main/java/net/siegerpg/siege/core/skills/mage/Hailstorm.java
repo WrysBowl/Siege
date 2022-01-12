@@ -24,7 +24,18 @@ public class Hailstorm extends Skill {
 			        "a concentrated area. If",
 			        "damaged targets are slowed,",
 			        "deal +50% more damage.");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

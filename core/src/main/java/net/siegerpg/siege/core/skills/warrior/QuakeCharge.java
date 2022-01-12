@@ -25,7 +25,18 @@ public class QuakeCharge extends Skill {
 			        "5 seconds. Inflicts +50% damage",
 			        "to any mobs in the way.",
 			        "Weakens you for 5 seconds");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

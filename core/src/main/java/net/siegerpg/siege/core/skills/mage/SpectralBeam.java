@@ -24,7 +24,18 @@ public class SpectralBeam extends Skill {
 			        "mobs in it's way for 3 seconds.",
 			        "Deals +100% strength and",
 			        "summon a zombie puppet.");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

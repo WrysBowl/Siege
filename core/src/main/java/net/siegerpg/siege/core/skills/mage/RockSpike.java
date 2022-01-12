@@ -24,7 +24,18 @@ public class RockSpike extends Skill {
 			        "the spike for 3 seconds and",
 			        "dealing +100% damage. Deals +200%",
 			        "if the spike is made from earth.");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

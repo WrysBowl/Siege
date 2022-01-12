@@ -25,7 +25,18 @@ public class GroundPound extends Skill {
 			        "Shockwave pushes enemies backwards,",
 			        "weakens them for 3 seconds, and",
 			        "deals +100% damage within 4 meters.");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

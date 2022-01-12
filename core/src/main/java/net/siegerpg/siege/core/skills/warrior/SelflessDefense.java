@@ -26,7 +26,18 @@ public class SelflessDefense extends Skill {
 			        "blocks takes. If weakened",
 			        "take 25% less damage.",
 			        "Lasts 10 seconds");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

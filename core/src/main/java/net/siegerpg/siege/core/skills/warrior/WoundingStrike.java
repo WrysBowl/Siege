@@ -24,7 +24,18 @@ public class WoundingStrike extends Skill {
 			        "reduces enemy healing by 50%",
 			        "for 3 seconds. If enemy is",
 			        "weakened reduce for 6 seconds");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

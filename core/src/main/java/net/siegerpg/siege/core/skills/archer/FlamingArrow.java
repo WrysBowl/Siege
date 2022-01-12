@@ -23,7 +23,18 @@ public class FlamingArrow extends Skill {
 					"mobs where it lands. Deals +50% damage",
 					"if you or your enemy is burning."
 			       );
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

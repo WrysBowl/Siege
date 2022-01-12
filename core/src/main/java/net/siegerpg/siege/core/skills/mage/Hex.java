@@ -23,7 +23,18 @@ public class Hex extends Skill {
 	private final List< String > description =
 			List.of("Increase damage dealt",
 			        "by +75% for next hit");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 

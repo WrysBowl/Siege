@@ -24,7 +24,18 @@ public class WarCry extends Skill {
 			        "or 40% if weakened, and",
 			        "restore 25% of your mana.",
 			        "Lasts 10 seconds");
-
+	@Override
+	public String getIdentifier() {
+		return this.identifier;
+	}
+	@Override
+	public SkillClass getSkillClass() {
+		return this.skillClass;
+	}
+	@Override
+	public List< String > getDescription() {
+		return this.description;
+	}
 	@Override
 	public String getName(int level) {
 
