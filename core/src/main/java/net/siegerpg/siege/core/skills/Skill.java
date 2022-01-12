@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.skills;
 
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -160,7 +161,10 @@ public abstract class Skill {
 	public boolean trigger(@NotNull Player player) {
 
 		Integer skillLevel = SkillData.getSkillLevel(player, this);
-		if (skillLevel == null || skillLevel < 1) return false;
+		if (skillLevel == null || skillLevel < 1) {
+			player.sendMessage(Utils.lore("<red>You have not unlocked this skill."));
+			return false;
+		}
 		return trigger(player, skillLevel);
 	}
 
