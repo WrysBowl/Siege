@@ -167,8 +167,10 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 						currentCooldown.remove(player);
 					}
 				}.runTaskLater(Core.plugin(), 20);
-
-			} else currentCooldown.add(player);
+				return;
+			} else {
+				currentCooldown.add(player);
+			}
 
 			String entityName = item.getItemMeta().getDisplayName();
 			Entity entity = player.getWorld().spawnEntity(player.getLocation(), type);
