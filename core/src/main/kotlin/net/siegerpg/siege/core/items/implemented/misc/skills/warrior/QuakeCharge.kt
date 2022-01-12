@@ -1,13 +1,14 @@
-package net.siegerpg.siege.core.items.implemented.misc.skills
+package net.siegerpg.siege.core.items.implemented.misc.skills.warrior
 
 import net.siegerpg.siege.core.items.types.misc.CustomSkill
+import net.siegerpg.siege.core.skills.warrior.QuakeCharge
 import net.siegerpg.siege.core.skills.warrior.Slash
 import org.bukkit.inventory.ItemStack
 
-class Slash() : CustomSkill(
-		customModelData = 910001,
-		skill = Slash(),
-                           ) {
+class QuakeCharge() : CustomSkill(
+		customModelData = 910005,
+		skill = QuakeCharge(),
+                                 ) {
 
 
 	constructor(level : Int) : this() {
