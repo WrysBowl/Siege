@@ -4,11 +4,14 @@ import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.getNbtTag
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
 import net.siegerpg.siege.core.skills.Skill
 import net.siegerpg.siege.core.skills.SkillClass
 import net.siegerpg.siege.core.skills.SkillData
+import net.siegerpg.siege.core.skills.warrior.Slash
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
@@ -27,7 +30,7 @@ abstract class CustomSkill(
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.SKILL,
-		val skill : Skill,
+		var skill : Skill = Slash(),
 		var level : Int = 1,
 
 
@@ -36,16 +39,11 @@ abstract class CustomSkill(
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		val meta = item.itemMeta
 
-		if (skill.skillClass.equals(SkillClass.WARRIOR)) meta.name("<color:#E35D73>$name")
-		else if (skill.skillClass.equals(SkillClass.ARCHER)) meta.name("<color:#97CEEC>$name")
-		else meta.name("<color:#DA97EC>$name")
+		if (skill.skillClass == SkillClass.WARRIOR) meta.name("<color:#E35D73>${skill.getName(level)}")
+		else if (skill.skillClass == SkillClass.ARCHER) meta.name("<color:#97CEEC>${skill.getName(level)}")
+		else meta.name("<color:#DA97EC>${skill.getName(level)}")
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
-
-		meta.lore(" ")
-		meta.lore("<yellow>Right Click to")
-		meta.lore("<yellow>Activate Skill")
-		meta.lore("<underlined><dark_gray>                    ")
 
 		meta.lore(" ")
 		meta.lore(" <gray>Cooldown <aqua>${skill.getCooldown(level).seconds}s")
@@ -53,7 +51,7 @@ abstract class CustomSkill(
 		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
 
-		description.forEach {
+		Utils.getTextArray(skill.getDescription(level), 16).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore("<underlined><dark_gray>                    ")
