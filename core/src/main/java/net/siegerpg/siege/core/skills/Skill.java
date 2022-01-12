@@ -62,6 +62,10 @@ public abstract class Skill {
 
 		return description;
 	}
+	public List< String > getDescription() {
+
+		return description;
+	}
 
 	/**
 	 * The skill's parent (this skill is a child of that skill
