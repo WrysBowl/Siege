@@ -25,10 +25,7 @@ public class DemonTransformation extends Skill {
 			        "+300% strength on each hit.",
 			        "Each mob killed becomes",
 			        "a zombie puppet.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

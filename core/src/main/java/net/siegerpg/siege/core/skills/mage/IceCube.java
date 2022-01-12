@@ -22,10 +22,7 @@ public class IceCube extends Skill {
 			List.of("Raise an ice prison",
 			        "in front of you that",
 			        "lasts 5 seconds");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

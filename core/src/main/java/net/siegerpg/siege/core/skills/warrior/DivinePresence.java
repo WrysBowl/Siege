@@ -24,10 +24,7 @@ public class DivinePresence extends Skill {
 			        "allies by +25% and weaken",
 			        "enemies by 20% for 10 seconds",
 			        "within 8 meters.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

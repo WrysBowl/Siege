@@ -25,10 +25,7 @@ public class Slash extends Skill {
 			        "with chance of 5% to weaken",
 			        "for 3 seconds");
 
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

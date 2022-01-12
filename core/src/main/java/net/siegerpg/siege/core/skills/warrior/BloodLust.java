@@ -24,10 +24,7 @@ public class BloodLust extends Skill {
 			        "the damage you deal for",
 			        "10 seconds. If enemy is",
 			        "weakened heal for 50%.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

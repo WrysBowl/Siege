@@ -25,10 +25,7 @@ public class IceBolt extends Skill {
 			        "slows them by 20% for",
 			        "3 seconds and deals",
 			        "+25% strength damage.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

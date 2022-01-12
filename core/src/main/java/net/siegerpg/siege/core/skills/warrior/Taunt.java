@@ -25,10 +25,7 @@ public class Taunt extends Skill {
 			        "5 blocks to attack you.",
 			        "Weaken your attacks by 20%",
 			        "for 10 seconds");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

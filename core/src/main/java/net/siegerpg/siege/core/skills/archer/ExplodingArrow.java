@@ -25,10 +25,7 @@ public class ExplodingArrow extends Skill {
 					"if affected targets are burning.",
 					"Explosive radius reaches 2 blocks"
 			       );
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

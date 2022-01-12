@@ -23,10 +23,7 @@ public class Fireman extends Skill {
 					"and burns all mobs in 6 blocks",
 					"for 30 seconds"
 			       );
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

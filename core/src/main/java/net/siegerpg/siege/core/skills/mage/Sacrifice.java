@@ -25,10 +25,7 @@ public class Sacrifice extends Skill {
 			        "you for 15 seconds. If a",
 			        "puppet is killed, gain +25%",
 			        "of your mana and health.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

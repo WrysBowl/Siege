@@ -24,10 +24,7 @@ public class Cryogenesis extends Skill {
 			        "for 10 seconds, then gain 20",
 			        "seconds of +10% mana regen/sec,",
 			        "+10% health/sec, and fill mana.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

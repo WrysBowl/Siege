@@ -23,10 +23,7 @@ public class Lunge extends Skill {
 			List.of("Leap forwards dealing +50%",
 			        "damage to enemies in the way.",
 			        "If enemy is weakened deal +75%");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

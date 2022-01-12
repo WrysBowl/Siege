@@ -23,10 +23,7 @@ public class PoisonArrow extends Skill {
 					"and deals more damage if you",
 					"or your target is poisoned"
 			       );
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

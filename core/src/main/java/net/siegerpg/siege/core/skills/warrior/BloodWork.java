@@ -26,10 +26,7 @@ public class BloodWork extends Skill {
 			        "Target loses 25% health,",
 			        "or 40% if weakened,",
 			        "over 10 seconds.");
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {

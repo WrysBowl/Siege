@@ -23,10 +23,7 @@ public class UndeadRevival extends Skill {
 					"an additional 10 HP/sec for every",
 					"tier you are effected by for 30 seconds"
 			       );
-	@Override
-	public String getIdentifier() {
-		return this.identifier;
-	}
+
 
 	@Override
 	public List< String > getDescription() {
