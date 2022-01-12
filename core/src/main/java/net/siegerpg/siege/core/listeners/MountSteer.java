@@ -1,15 +1,13 @@
 package net.siegerpg.siege.core.listeners;
 
-import com.destroystokyo.paper.entity.Pathfinder;
+import de.tr7zw.nbtapi.NBTEntity;
+import de.tr7zw.nbtapi.NBTFloatList;
+import de.tr7zw.nbtapi.NBTList;
+import de.tr7zw.nbtapi.NBTListCompound;
 import io.github.retrooper.packetevents.event.PacketListenerAbstract;
 import io.github.retrooper.packetevents.event.impl.PacketPlayReceiveEvent;
-import io.github.retrooper.packetevents.event.impl.PacketPlaySendEvent;
-import io.github.retrooper.packetevents.event.impl.PostPacketPlaySendEvent;
 import io.github.retrooper.packetevents.packettype.PacketType;
 import io.github.retrooper.packetevents.packetwrappers.play.in.steervehicle.WrappedPacketInSteerVehicle;
-import io.lumine.xikage.mythicmobs.volatilecode.v1_16_R3.ai.PathfinderHolder;
-import io.papermc.paper.event.player.AsyncChatEvent;
-import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
@@ -22,30 +20,24 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
-import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
-import org.bukkit.event.entity.EntityTeleportEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.*;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
-import org.bukkit.event.vehicle.VehicleDestroyEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.inventory.*;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SpawnEggMeta;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MountSteer extends PacketListenerAbstract implements Listener {
 
-	HashMap<Player, Entity> cachedMounts = new HashMap<>();
+	public static HashMap<Player, Entity> cachedMounts = new HashMap<>();
+	public static ArrayList<Player> currentCooldown = new ArrayList<>();
 
 	@EventHandler
 	public void playerTeleport(PlayerTeleportEvent e) {
@@ -150,6 +142,9 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		EntityType type = getSpawnEggType(item);
 		if (type==null) return;
 
+		//prevent player from spawning mob
+		e.setCancelled(true);
+
 		if (cachedMounts.containsKey(player)) {
 			Entity entity = cachedMounts.get(player);
 			entity.remove();
@@ -158,13 +153,22 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		}
 
 		try {
-			//prevent player from spawning mob
-			e.setCancelled(true);
+
 			if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 			if (player.isSneaking()) {
 				player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE,player.getLocation(),10);
 				return;
 			}
+			if (currentCooldown.contains(player)) {
+
+				new BukkitRunnable() {
+					@Override
+					public void run() {
+						currentCooldown.remove(player);
+					}
+				}.runTaskLater(Core.plugin(), 20);
+
+			} else currentCooldown.add(player);
 
 			String entityName = item.getItemMeta().getDisplayName();
 			Entity entity = player.getWorld().spawnEntity(player.getLocation(), type);
@@ -181,6 +185,7 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 			entity.addPassenger(player);
 
 			cachedMounts.put(player,entity);
+			currentCooldown.add(player);
 			player.sendMessage(Utils.lore("<green>Successfully mounted your "+entityName));
 			player.getWorld().spawnParticle(Particle.SPELL_MOB,player.getLocation(),10);
 
@@ -209,6 +214,11 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 	@EventHandler
 	public void vehicleDamage(EntityDamageEvent e) {
 		Entity vehicle = e.getEntity();
+		if (e instanceof EntityDamageByEntityEvent) {
+
+			//prevent mount from damaging any entity
+			if (((EntityDamageByEntityEvent) e).getDamager().equals(vehicle)) e.setCancelled(true);
+		}
 		if (!cachedMounts.containsValue(vehicle)) return;
 
 		cachedMounts.values().removeIf(vehicle::equals);
@@ -228,6 +238,9 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		float forward = vehiclePacket.getForwardValue();
 		boolean jump = vehiclePacket.isJump();
 
+		Entity entity = player.getVehicle();
+		if (entity == null) return;
+
 		Mob vehicle = (Mob) player.getVehicle();
 		Location vehicleLocation = vehicle.getLocation().clone();
 
@@ -242,9 +255,16 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 			Location targetLocation = vehicleLocation.add(player.getLocation().getDirection().multiply(vehicle.getWidth()*2));
 
 			double finalSpeed = speed;
+
 			new BukkitRunnable() {
 				@Override
 				public void run() {
+					if (!vehicle.getPathfinder().hasPath() || vehicle instanceof Slime) {
+						vehicle.setVelocity(player.getLocation().getDirection().setY(-1).multiply(0.5));
+						NBTEntity nbt = new NBTEntity(entity);
+						NBTList< Float > nbtList = nbt.getFloatList("Rotation");
+						nbtList.set(0, (float)player.getLocation().getYaw());
+					}
 					vehicle.getPathfinder().moveTo(targetLocation, finalSpeed);
 				}
 			}.runTask(Core.plugin());
