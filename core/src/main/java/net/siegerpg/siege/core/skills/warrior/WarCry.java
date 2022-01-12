@@ -17,7 +17,7 @@ public class WarCry extends Skill {
 	final double manaRestoreAmt = 0.75;
 
 	private final String identifier = "2_B_1";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "War Cry";
 	private final List< String > description =
 			List.of("Increase speed by 20%,",
@@ -28,10 +28,7 @@ public class WarCry extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

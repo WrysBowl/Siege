@@ -15,7 +15,7 @@ public class UndeadRevival extends Skill {
 	final int initGoldCost = 5000;
 	final int healAmt = 10; //amount to multiply damage by
 	private final String identifier = "3_A_2";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Undead Revival";
 	private final List< String > description =
 			List.of(
@@ -27,10 +27,7 @@ public class UndeadRevival extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

@@ -15,7 +15,7 @@ public class VenomousAura extends Skill {
 	final int initGoldCost = 10000;
 	final double damageMulti = 1.05; //amount to multiply damage by
 	private final String identifier = "2_A_3";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Venomous Aura";
 	private final List< String > description =
 			List.of(
@@ -27,10 +27,7 @@ public class VenomousAura extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

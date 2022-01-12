@@ -16,7 +16,7 @@ public class RockSpike extends Skill {
 	final double damageMulti = 2.0;
 
 	private final String identifier = "2_B_1";
-	private final SkillClass skillClass = SkillClass.MAGE;
+	public final SkillClass skillClass = SkillClass.MAGE;
 	private final String name = "Rock Spike";
 	private final List< String > description =
 			List.of("Erupt a spike from the ground,",
@@ -28,10 +28,7 @@ public class RockSpike extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

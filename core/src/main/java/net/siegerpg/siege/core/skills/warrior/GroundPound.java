@@ -17,7 +17,7 @@ public class GroundPound extends Skill {
 	final double damageMulti = 2.0;
 
 	private final String identifier = "3_B_3";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Ground Pound";
 	private final List< String > description =
 			List.of("Leap upwards, delivering a shockwave,",
@@ -29,10 +29,7 @@ public class GroundPound extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

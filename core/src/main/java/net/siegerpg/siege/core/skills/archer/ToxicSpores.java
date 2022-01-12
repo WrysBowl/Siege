@@ -16,7 +16,7 @@ public class ToxicSpores extends Skill {
 	final int poisonTier = 1; //tier of poison effect
 	final int duration = 30; //duration of effect
 	private final String identifier = "3_A_1";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Toxic Spores";
 	private final List< String > description =
 			List.of(
@@ -28,10 +28,7 @@ public class ToxicSpores extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

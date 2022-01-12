@@ -17,7 +17,7 @@ public class WoundingStrike extends Skill {
 	final int duration = 3;
 
 	private final String identifier = "3_B_1";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Wounding Strike";
 	private final List< String > description =
 			List.of("Deals +75% damage and",
@@ -28,10 +28,7 @@ public class WoundingStrike extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

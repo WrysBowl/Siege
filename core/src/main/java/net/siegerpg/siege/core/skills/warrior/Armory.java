@@ -17,7 +17,7 @@ public class Armory extends Skill {
 	final double damageMulti = 0.75;
 
 	private final String identifier = "2_A_1";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Armory";
 	private final List< String > description =
 			List.of("You take 25% less",
@@ -28,10 +28,7 @@ public class Armory extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

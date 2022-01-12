@@ -17,7 +17,7 @@ public class IceBolt extends Skill {
 	final double damageMulti = 1.25;
 
 	private final String identifier = "1_A_1";
-	private final SkillClass skillClass = SkillClass.MAGE;
+	public final SkillClass skillClass = SkillClass.MAGE;
 	private final String name = "Ice Bolt";
 	private final List< String > description =
 			List.of("Fires an ice missile",
@@ -29,10 +29,7 @@ public class IceBolt extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

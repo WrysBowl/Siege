@@ -17,7 +17,7 @@ public class DivinePresence extends Skill {
 	final double healthMulti = 1.25;
 
 	private final String identifier = "3_A_3";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Divine Presence";
 	private final List< String > description =
 			List.of("Summon lightning to heal",
@@ -28,10 +28,7 @@ public class DivinePresence extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

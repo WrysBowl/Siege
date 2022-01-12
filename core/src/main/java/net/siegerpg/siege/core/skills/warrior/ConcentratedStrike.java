@@ -17,7 +17,7 @@ public class ConcentratedStrike extends Skill {
 	final double manaMulti = 1.2;
 
 	private final String identifier = "3_A_1";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Concentrated Strike";
 	private final List< String > description =
 			List.of("Hit the enemy for +100% damage",
@@ -27,10 +27,7 @@ public class ConcentratedStrike extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

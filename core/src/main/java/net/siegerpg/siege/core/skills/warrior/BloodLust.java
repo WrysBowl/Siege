@@ -17,7 +17,7 @@ public class BloodLust extends Skill {
 	final double healMulti = 0.75;
 
 	private final String identifier = "3_B_2";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Blood Lust";
 	private final List< String > description =
 			List.of("Heal yourself for 25% of",
@@ -28,10 +28,7 @@ public class BloodLust extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

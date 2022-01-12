@@ -18,7 +18,7 @@ public class LavaLeak extends Skill {
 	final int duration = 60; //time the sphere lasts for
 
 	private final String identifier = "3_B_1";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Lava Leak";
 	private final List< String > description =
 			List.of(
@@ -32,10 +32,7 @@ public class LavaLeak extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

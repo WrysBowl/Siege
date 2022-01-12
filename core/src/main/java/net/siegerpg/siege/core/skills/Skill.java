@@ -18,12 +18,8 @@ public abstract class Skill {
 	 */
 	private String identifier;
 
-	private SkillClass skillClass;
+	public SkillClass skillClass;
 
-	public SkillClass getSkillClass() {
-
-		return this.skillClass;
-	}
 
 	/**
 	 * The identifier used to serialize/deserialize the skill status

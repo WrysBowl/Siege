@@ -16,7 +16,7 @@ public class DoubleStrike extends Skill {
 	final int initGoldCost = 2500;
 
 	private final String identifier = "2_B_3";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Double Strike";
 	private final List< String > description =
 			List.of("Slash your opponent twice,",
@@ -26,10 +26,7 @@ public class DoubleStrike extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

@@ -18,7 +18,7 @@ public class Slash extends Skill {
 	final double weakenChance = 5.0;
 
 	private final String identifier = "1_A_1";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Slash";
 	private final List< String > description =
 			List.of("Deal +50% damage to target",
@@ -29,10 +29,7 @@ public class Slash extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

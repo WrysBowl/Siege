@@ -17,7 +17,7 @@ public class Lunge extends Skill {
 	final double damageMulti = 1.5;
 
 	private final String identifier = "1_A_2";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Slash";
 	private final List< String > description =
 			List.of("Leap forwards dealing +50%",
@@ -27,10 +27,7 @@ public class Lunge extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

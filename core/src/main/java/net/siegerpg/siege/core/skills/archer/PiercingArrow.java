@@ -15,7 +15,7 @@ public class PiercingArrow extends Skill {
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.1; //percentage to remove health by (1-0.1)*health = newHealth
 	private final String identifier = "2_A_2";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Piercing Arrow";
 	private final List< String > description =
 			List.of(
@@ -27,10 +27,7 @@ public class PiercingArrow extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

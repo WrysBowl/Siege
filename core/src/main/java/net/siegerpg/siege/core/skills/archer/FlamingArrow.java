@@ -15,7 +15,7 @@ public class FlamingArrow extends Skill {
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.5; //amount of time the arrow bounces around in seconds
 	private final String identifier = "2_B_2";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Flaming Arrow";
 	private final List< String > description =
 			List.of(
@@ -27,10 +27,7 @@ public class FlamingArrow extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

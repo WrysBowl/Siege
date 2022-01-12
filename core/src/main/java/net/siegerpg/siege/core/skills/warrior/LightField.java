@@ -17,7 +17,7 @@ public class LightField extends Skill {
 	final double manaMulti = 1.05;
 
 	private final String identifier = "3_A_2";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Light Field";
 	private final List< String > description =
 			List.of("Enemies standing in this",
@@ -29,10 +29,7 @@ public class LightField extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

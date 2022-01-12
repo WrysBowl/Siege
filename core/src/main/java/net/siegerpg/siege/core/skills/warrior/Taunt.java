@@ -18,7 +18,7 @@ public class Taunt extends Skill {
 	final int range = 5;
 
 	private final String identifier = "2_A_2";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Taunt";
 	private final List< String > description =
 			List.of("Force all mobs within",
@@ -29,10 +29,7 @@ public class Taunt extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

@@ -15,7 +15,7 @@ public class Fireman extends Skill {
 	final int initGoldCost = 5000;
 	final int duration = 30;
 	private final String identifier = "2_B_3";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Fireman";
 	private final List< String > description =
 			List.of(
@@ -27,10 +27,7 @@ public class Fireman extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

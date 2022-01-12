@@ -16,7 +16,7 @@ public class PotentPoison extends Skill {
 	final int poisonTier = 3; //tier of poison to effect targets by
 	final int duration = 5; //time the sphere lasts for
 	private final String identifier = "3_A_3";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Potent Poison";
 	private final List< String > description =
 			List.of(
@@ -29,10 +29,7 @@ public class PotentPoison extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

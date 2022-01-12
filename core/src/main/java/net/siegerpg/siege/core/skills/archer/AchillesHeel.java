@@ -15,17 +15,15 @@ public class AchillesHeel extends Skill {
 	final int initGoldCost = 5000;
 	final int initSpeedTime = 20;
 	private final String identifier = "1_A_2";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Achilles Heel";
 	private final List< String > description = List.of("Speed II for 20 seconds");
 	@Override
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

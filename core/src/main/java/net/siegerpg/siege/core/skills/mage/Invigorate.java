@@ -18,7 +18,7 @@ public class Invigorate extends Skill {
 	final int duration = 10;
 
 	private final String identifier = "1_A_2";
-	private final SkillClass skillClass = SkillClass.MAGE;
+	public final SkillClass skillClass = SkillClass.MAGE;
 	private final String name = "Invigorate";
 	private final List< String > description =
 			List.of("Allies in 10 meters are",
@@ -32,10 +32,7 @@ public class Invigorate extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

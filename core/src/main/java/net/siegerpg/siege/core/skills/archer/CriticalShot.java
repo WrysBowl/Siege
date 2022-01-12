@@ -15,17 +15,14 @@ public class CriticalShot extends Skill {
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.5;
 	private final String identifier = "1_A_1";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Critical Shot";
 	private final List< String > description = List.of("+50% STR next shot");
 	@Override
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

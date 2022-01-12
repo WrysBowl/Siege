@@ -16,7 +16,7 @@ public class ExplodingArrow extends Skill {
 	final double damageMulti = 1.25; //percentage to remove health by (1-0.1)*health = newHealth
 	final double radius = 2.0; //percentage to remove health by (1-0.1)*health = newHealth
 	private final String identifier = "3_B_2";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Exploding Arrow";
 	private final List< String > description =
 			List.of(
@@ -29,10 +29,7 @@ public class ExplodingArrow extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

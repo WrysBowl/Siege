@@ -17,7 +17,7 @@ public class Sacrifice extends Skill {
 	final double healthManaMulti = 0.25;
 
 	private final String identifier = "2_C_2";
-	private final SkillClass skillClass = SkillClass.MAGE;
+	public final SkillClass skillClass = SkillClass.MAGE;
 	private final String name = "Sacrifice";
 	private final List< String > description =
 			List.of("All of your puppets will",
@@ -29,10 +29,7 @@ public class Sacrifice extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

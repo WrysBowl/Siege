@@ -17,7 +17,7 @@ public class FrostImplosion extends Skill {
 	final double damageMulti = 0.1;
 
 	private final String identifier = "2_A_1";
-	private final SkillClass skillClass = SkillClass.MAGE;
+	public final SkillClass skillClass = SkillClass.MAGE;
 	private final String name = "Frost Implosion";
 	private final List< String > description =
 			List.of("All enemies within 5 meters",
@@ -27,10 +27,7 @@ public class FrostImplosion extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

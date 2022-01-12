@@ -16,7 +16,7 @@ public class Parry extends Skill {
 	final int duration = 3;
 
 	private final String identifier = "2_B_4";
-	private final SkillClass skillClass = SkillClass.WARRIOR;
+	public final SkillClass skillClass = SkillClass.WARRIOR;
 	private final String name = "Parry";
 	private final List< String > description =
 			List.of("If hit within 3 seconds,",
@@ -26,10 +26,7 @@ public class Parry extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

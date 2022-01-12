@@ -15,7 +15,7 @@ public class Combustion extends Skill {
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.5; //percentage to remove health by (1-0.1)*health = newHealth
 	private final String identifier = "3_B_3";
-	private final SkillClass skillClass = SkillClass.ARCHER;
+	public final SkillClass skillClass = SkillClass.ARCHER;
 	private final String name = "Combustion";
 	private final List< String > description =
 			List.of(
@@ -28,10 +28,7 @@ public class Combustion extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

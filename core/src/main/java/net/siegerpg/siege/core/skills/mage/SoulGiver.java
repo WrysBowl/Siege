@@ -16,7 +16,7 @@ public class SoulGiver extends Skill {
 	final double healthMulti = 0.25;
 
 	private final String identifier = "2_B_5";
-	private final SkillClass skillClass = SkillClass.MAGE;
+	public final SkillClass skillClass = SkillClass.MAGE;
 	private final String name = "Soul Giver";
 	private final List< String > description =
 			List.of("Lose 50% health to heal",
@@ -28,10 +28,7 @@ public class SoulGiver extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;

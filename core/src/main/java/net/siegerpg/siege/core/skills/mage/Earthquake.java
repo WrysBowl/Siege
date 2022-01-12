@@ -16,7 +16,7 @@ public class Earthquake extends Skill {
 	final double damageMulti = 2.0;
 
 	private final String identifier = "2_B_4";
-	private final SkillClass skillClass = SkillClass.MAGE;
+	public final SkillClass skillClass = SkillClass.MAGE;
 	private final String name = "Earthquake";
 	private final List< String > description =
 			List.of("Erupt the ground with spikes.",
@@ -27,10 +27,7 @@ public class Earthquake extends Skill {
 	public String getIdentifier() {
 		return this.identifier;
 	}
-	@Override
-	public SkillClass getSkillClass() {
-		return this.skillClass;
-	}
+
 	@Override
 	public List< String > getDescription() {
 		return this.description;
