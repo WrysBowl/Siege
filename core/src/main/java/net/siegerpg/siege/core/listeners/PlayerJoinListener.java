@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.mounts.PigMount;
+import net.siegerpg.siege.core.items.implemented.misc.skills.Slash;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
@@ -96,6 +97,8 @@ public class PlayerJoinListener implements Listener {
 			newPlayerReward(player);
 			joinMessage = Utils.tacc(
 					"&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
+			player.teleport(Core.plugin().getNewSpawnLocation());
+			player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
 		} else {
 			new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 				@Override
@@ -113,7 +116,7 @@ public class PlayerJoinListener implements Listener {
 			Tablist.tablistUpdate(p);
 		}
 		if (player.getName().equals("Wrys")) {
-			player.getInventory().addItem(new PigMount(0).getUpdatedItem(false));
+			player.getInventory().addItem(new Slash(1).getUpdatedItem(false));
 
 		}
 
