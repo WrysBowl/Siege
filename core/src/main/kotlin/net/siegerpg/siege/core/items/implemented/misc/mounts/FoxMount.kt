@@ -7,11 +7,11 @@ import net.siegerpg.siege.core.items.types.misc.CustomTool
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class PigMount() : CustomMount(
-		name = "Pig Mount",
-		customModelData = 330001,
-		description = listOf("A tamed pig"),
-		material = Material.PIG_SPAWN_EGG,
+class FoxMount() : CustomMount(
+		name = "Fox Mount",
+		customModelData = 330004,
+		description = listOf("Baby Fox Spirit"),
+		material = Material.FOX_SPAWN_EGG,
                               ) {
 
 	constructor(quality : Int) : this() {
