@@ -45,14 +45,19 @@ public class PlayerData implements Listener {
 
 	public static HashMap< Player, ArrayList< Action > > playerTriggers = new HashMap<>();
 
+	public static int getRegenRate(int regen) {
+		int regenRate = (int)Math.ceil((regen/-10.0)+11);
+		if (regenRate<1) regenRate = 1;
+		return regenRate;
+	}
+
 	public static void setStats(Player player) {
 
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
 
 			double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + 20;
 			int regen = (int) CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.REGENERATION);
-			int regenRate = (int)Math.ceil((regen/-10.0)+11);
-			if (regenRate<1) regenRate = 1;
+			int regenRate = getRegenRate(regen);
 			Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(health);
 			player.setHealthScale(health/(health/20));
 			player.setSaturatedRegenRate(regenRate);

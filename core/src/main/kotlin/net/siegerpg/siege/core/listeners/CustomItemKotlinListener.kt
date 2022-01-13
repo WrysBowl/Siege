@@ -34,6 +34,15 @@ import kotlin.math.sqrt
 
 class CustomItemKotlinListener : Listener, Runnable {
 
+	companion object {
+
+		fun calcReducedToughness(initToughness : Double) : Double {
+			var multiplier = 1
+			if (initToughness < 0.0) multiplier = -1
+			return multiplier * (10.0 * sqrt(5.0 * abs(initToughness)))
+		}
+	}
+
 	var cooldownWand : MutableList<Player> = mutableListOf()
 	var arrowItems : HashMap<Player, ItemStack> = hashMapOf()
 	var damageMulti : HashMap<Player, Double> = hashMapOf()
@@ -60,9 +69,10 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 		if (e.regainReason == EntityRegainHealthEvent.RegainReason.REGEN && e.entity is Player) {
 			val player : Player = e.entity as Player
-			val regen : Double = CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION)
+			val regen : Double =
+					CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION)
 
-			e.amount *= regen/5
+			e.amount *= regen / 5
 		}
 	}
 
@@ -241,12 +251,6 @@ class CustomItemKotlinListener : Listener, Runnable {
 
 		setVictimName(victim, e.damage, vicMaxHealth)
 		DamageIndicator.showDamageIndicator(reducedDamage, victim.location, isCritical)
-	}
-
-	private fun calcReducedToughness(initToughness : Double) : Double {
-		var multiplier = 1
-		if (initToughness < 0.0) multiplier = -1
-		return multiplier * (10.0 * sqrt(5.0 * abs(initToughness)))
 	}
 
 	private fun setVictimName(
