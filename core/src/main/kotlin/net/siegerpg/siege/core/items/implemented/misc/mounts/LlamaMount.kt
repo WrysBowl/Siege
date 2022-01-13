@@ -15,8 +15,8 @@ class LlamaMount() : CustomMount(
                                 ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 70
-		this.rarity = Rarity.RARE
+		this.quality = 50
+		this.rarity = Rarity.UNCOMMON
 		this.serialize()
 	}
 

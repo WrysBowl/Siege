@@ -15,8 +15,8 @@ class BeeMount() : CustomMount(
                               ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 70
-		this.rarity = Rarity.RARE
+		this.quality = 100
+		this.rarity = Rarity.LEGENDARY
 		this.serialize()
 	}
 

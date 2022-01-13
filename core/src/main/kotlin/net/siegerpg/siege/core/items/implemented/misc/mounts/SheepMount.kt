@@ -15,8 +15,8 @@ class SheepMount() : CustomMount(
                                 ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 70
-		this.rarity = Rarity.RARE
+		this.quality = 30
+		this.rarity = Rarity.COMMON
 		this.serialize()
 	}
 
