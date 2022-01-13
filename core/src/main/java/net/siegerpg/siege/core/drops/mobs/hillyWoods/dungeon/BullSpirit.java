@@ -33,22 +33,10 @@ public class BullSpirit extends MobDropTable {
 	public BullSpirit() {
 
 		super("BullSpirit", 2500, 2700, 15000, 20000, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 100.0),
-				new Reward(Leather.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 25.0),
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 100.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 25.0),
+				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 100.0),
+				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 100.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
 
 				new Reward(new LeatherHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new LeatherChestplate(100).getUpdatedItem(false), 5.5),

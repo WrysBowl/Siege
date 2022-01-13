@@ -7,8 +7,6 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.JaggedTunic;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.LichKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.doubleBladedAxes.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.pebbleShooters.*;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.RockWand;
@@ -20,18 +18,8 @@ public class RockSpirit extends MobDropTable {
 	public RockSpirit() {
 
 		super("RockSpirit", 67, 70, 66, 69, new Reward[] {
-				new Reward(Pebble.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(4), 100.0),
-				new Reward(Pebble.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(4), 10.0),
-				new Reward(Pebble.Companion
-						           .tier(4)
-						           .getUpdatedItem(false)
-						           .asQuantity(4), 1.0),
+				new Reward(Pebble.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 100.0),
+				new Reward(Pebble.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 10.0),
 
 				new Reward(new GrieferChestplate(Utils.randRarity()).getUpdatedItem(false), 4.0),
 				new Reward(new GrieferChestplate(100).getUpdatedItem(false), 1.0),

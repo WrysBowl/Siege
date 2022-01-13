@@ -3,8 +3,6 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Coal;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Seed;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
@@ -18,7 +16,6 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedT
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.GreatSword;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.greatSwords.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.*;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernWand;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.FlamingHotTorch;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernWands.*;
@@ -30,44 +27,9 @@ public class Lich extends MobDropTable {
 	public Lich() {
 
 		super("Lich", 3000, 5500, 25000, 30000, new Reward[] {
-				new Reward(Seed.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 100.0),
-				new Reward(Seed.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(4), 10.0),
-				new Reward(Seed.Companion
-						           .tier(4)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 1.0),
 
-				new Reward(Coal.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 100.0),
-				new Reward(Coal.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(4), 10.0),
-				new Reward(Coal.Companion
-						           .tier(4)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 1.0),
-
-				new Reward(Vine.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 100.0),
-				new Reward(Vine.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(4), 10.0),
-				new Reward(Vine.Companion
-						           .tier(4)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 1.0),
+				new Reward(Vine.Companion.tier(2).getUpdatedItem(false), 100.0),
+				new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 10.0),
 
 				new Reward(new GreatSword(Utils.randRarity()).getUpdatedItem(false), 30.0),
 				new Reward(new GreatSword(100).getUpdatedItem(false), 5.0),

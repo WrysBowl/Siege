@@ -12,13 +12,8 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.doubleBladedAxes.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Werewolf extends MobDropTable {
@@ -26,20 +21,9 @@ public class Werewolf extends MobDropTable {
 	public Werewolf() {
 
 		super("Werewolf", 75, 79, 80, 84, new Reward[] {
-				new Reward(Chain.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(3), 60.0),
-				new Reward(Chain.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 6.0),
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(3), 30.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 3.0),
+
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 100.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 10.0),
 
 				new Reward(new ChainHelmet(100).getUpdatedItem(false), 0.5),
 				new Reward(new ChainChestplate(100).getUpdatedItem(false), 0.5),

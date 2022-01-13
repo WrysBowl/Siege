@@ -23,7 +23,6 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Flaw
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.CrackedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.FlawedToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.Torch;
-import net.siegerpg.siege.core.items.implemented.weapons.wands.flamingHotTorches.*;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.torches.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
@@ -32,18 +31,8 @@ public class MagmaSpirit extends MobDropTable {
 	public MagmaSpirit() {
 
 		super("MagmaSpirit", 1500, 1800, 7500, 10000, new Reward[] {
-				new Reward(Magma.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 100.0),
-				new Reward(Magma.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(4), 30.0),
-				new Reward(Magma.Companion
-						           .tier(4)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 10.0),
+				new Reward(Magma.Companion.tier(2).getUpdatedItem(false), 100.0),
+				new Reward(Magma.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 10.0),
 
 				new Reward(new MagmaHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new MagmaChestplate(100).getUpdatedItem(false), 5.5),

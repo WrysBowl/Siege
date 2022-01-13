@@ -11,7 +11,6 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Chain;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PolishedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PristineHealthGem;
@@ -23,7 +22,6 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Poli
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PristineStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PristineToughGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.ScrapShard;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.SplinteredBone;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.scrapShards.*;
@@ -35,20 +33,9 @@ public class FoxSpirit extends MobDropTable {
 	public FoxSpirit() {
 
 		super("FoxSpirit", 7500, 12500, 65000, 90000, new Reward[] {
-				new Reward(Chain.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 60.0),
-				new Reward(Chain.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 12.0),
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 60.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 12.0),
+
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 60.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 12.0),
 
 				new Reward(new ChainHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new ChainChestplate(100).getUpdatedItem(false), 5.5),

@@ -23,7 +23,6 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Simp
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.WarHammer;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.greatSwords.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.warHammers.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.Trident;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.Tridents.*;
@@ -34,22 +33,8 @@ public class Davy_Jones extends MobDropTable {
 	public Davy_Jones() {
 
 		super("Davy_Jones", 5000, 7500, 35000, 40000, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 100.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 25.0),
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 100.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 25.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 100.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
 
 				new Reward(new Trident(100).getUpdatedItem(false), 5.0),
 				new Reward(new Trident(80).getUpdatedItem(false), 20.0),

@@ -4,21 +4,18 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.boots.LeatherBoots;
 import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.LeatherChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.*;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.*;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.food.Beef;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.*;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.BullSpiritKey;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.DoubleBladedAxe;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.doubleBladedAxes.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
@@ -27,18 +24,10 @@ public class DeathBull extends MobDropTable {
 	public DeathBull() {
 
 		super("DeathBull", 37, 40, 46, 49, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(2)
-						           .getUpdatedItem(false), 80.0),
-				new Reward(Leather.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 8.0),
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false), 50.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 5.0),
+				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 100.0),
+				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 10.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 50.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 5.0),
 
 				new Reward(new LeatherHelmet(80).getUpdatedItem(false), 1.5),
 				new Reward(new LeatherChestplate(80).getUpdatedItem(false), 1.5),

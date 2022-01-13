@@ -14,12 +14,8 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.DavyJonesKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.DoubleBladedAxe;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.GreatSword;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.doubleBladedAxes.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.greatSwords.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Orc extends MobDropTable {
@@ -27,20 +23,10 @@ public class Orc extends MobDropTable {
 	public Orc() {
 
 		super("Orc", 55, 59, 60, 64, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 50.0),
-				new Reward(Leather.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 5.0),
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 40.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 5.0),
+				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 50.0),
+				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 5.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 50.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 5.0),
 
 				new Reward(new BoneHelmet(50).getUpdatedItem(false), 0.5),
 				new Reward(new BoneChestplate(50).getUpdatedItem(false), 0.5),

@@ -2,25 +2,19 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.boots.*;
+import net.siegerpg.siege.core.items.implemented.armor.boots.IronBoots;
 import net.siegerpg.siege.core.items.implemented.armor.boots.ironBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.IronChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.ironChestplates.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.IronHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.ironHelmets.*;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.IronLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.*;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.*;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.BroodmotherKey;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
-import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Mercenary extends MobDropTable {
@@ -28,25 +22,10 @@ public class Mercenary extends MobDropTable {
 	public Mercenary() {
 
 		super("Mercenary", 55, 58, 75, 78, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(2)
-						           .getUpdatedItem(false), 50.0),
-				new Reward(Leather.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 5.0),
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false), 50.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 5.0),
-				new Reward(MetalScrap.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(3), 25.0),
-				new Reward(MetalScrap.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 5.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 100.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 10.0),
+				new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false), 50.0),
+				new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 5.0),
 
 				new Reward(new IronHelmet(80).getUpdatedItem(false), 2.5),
 				new Reward(new IronChestplate(80).getUpdatedItem(false), 2.5),

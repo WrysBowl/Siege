@@ -4,25 +4,18 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.boots.BoneBoots;
 import net.siegerpg.siege.core.items.implemented.armor.boots.boneBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.boots.magmaBoots.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.boneChestplates.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.magmaChestplates.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.boneHelmets.*;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.magmaLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.NecromancerKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.GreatSword;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.greatSwords.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class Ogre extends MobDropTable {
@@ -30,20 +23,10 @@ public class Ogre extends MobDropTable {
 	public Ogre() {
 
 		super("Ogre", 250, 300, 300, 325, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(3), 40.0),
-				new Reward(Leather.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 6.0),
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(3), 60.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 6.0),
+				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(2), 100.0),
+				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 10.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(2), 60.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 6.0),
 
 				new Reward(new BoneHelmet(80).getUpdatedItem(false), 2.5),
 				new Reward(new BoneChestplate(80).getUpdatedItem(false), 2.5),

@@ -4,17 +4,15 @@ import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.boots.SlimyBoots;
 import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.SlimyChestplate;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.*;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.CrackedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.CrackedRegenerationGem;
+import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.SlimeSpoofer;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.slimeSpoofers.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -24,12 +22,8 @@ public class Blubber extends MobDropTable {
 	public Blubber() {
 
 		super("Blubber", 17, 20, 17, 25, new Reward[] {
-				new Reward(Slime.Companion
-						           .tier(2)
-						           .getUpdatedItem(false), 100.0),
-				new Reward(Slime.Companion
-						           .tier(3)
-						           .getUpdatedItem(false), 10.0),
+				new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 100.0),
+				new Reward(Slime.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 10.0),
 
 				new Reward(new SlimeSpoofer(80).getUpdatedItem(false), 1.0),
 				new Reward(new LuckySlimeSpoofer(80).getUpdatedItem(false), 0.25),

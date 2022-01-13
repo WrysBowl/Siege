@@ -11,18 +11,21 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.ironHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.IronLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PolishedHealthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PristineHealthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PolishedLuckGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PristineLuckGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.PolishedRegenerationGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.PristineRegenerationGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PolishedStrengthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.PristineStrengthGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PristineToughGem;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.Clobber;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.EarthernHammer;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.clobbers.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.earthernHammers.*;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.*;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.EarthernStaff;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.HotRod;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.earthernStaffs.*;
@@ -34,21 +37,8 @@ public class Broodmother extends MobDropTable {
 	public Broodmother() {
 
 		super("Broodmother", 10000, 15000, 100000, 150000, new Reward[] {
-				new Reward(Vine.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(16), 100.0),
-				new Reward(Vine.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 50.0),
-				new Reward(Vine.Companion
-						           .tier(4)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 25.0),
-				new Reward(Vine.Companion
-						           .tier(5)
-						           .getUpdatedItem(false), 5.0),
+				new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 100.0),
+				new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 50.0),
 
 				new Reward(new IronHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new IronChestplate(100).getUpdatedItem(false), 5.5),

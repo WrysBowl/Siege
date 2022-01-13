@@ -13,7 +13,6 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.PolishedHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.SimpleHealthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PolishedLuckGem;
@@ -24,7 +23,6 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.Poli
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PolishedToughGem;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.IronAxe;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.RecurveBow;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.recurveBows.*;
@@ -37,30 +35,11 @@ public class Necromancer extends MobDropTable {
 	public Necromancer() {
 
 		super("Necromancer", 5000, 10000, 45000, 50000, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 40.0),
-				new Reward(Leather.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 6.0),
-				new Reward(Bone.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 60.0),
-				new Reward(Bone.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 6.0),
-				new Reward(MetalScrap.Companion
-						           .tier(2)
-						           .getUpdatedItem(false)
-						           .asQuantity(8), 60.0),
-				new Reward(MetalScrap.Companion
-						           .tier(3)
-						           .getUpdatedItem(false)
-						           .asQuantity(2), 6.0),
+
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 60.0),
+				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 6.0),
+				new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false), 60.0),
+				new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 6.0),
 
 				new Reward(new ChainHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new ChainChestplate(100).getUpdatedItem(false), 5.5),

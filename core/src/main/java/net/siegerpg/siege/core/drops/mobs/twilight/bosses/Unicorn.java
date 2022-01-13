@@ -21,7 +21,7 @@ public class Unicorn extends MobDropTable {
 						           .getUpdatedItem(false)
 						           .asQuantity(16), 50.0),
 				new Reward(Bone.Companion
-						           .tier(4)
+						           .tier(2)
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 50.0),
 				new Reward(Leather.Companion
