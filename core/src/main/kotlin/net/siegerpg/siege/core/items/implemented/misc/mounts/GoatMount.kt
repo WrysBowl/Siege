@@ -11,7 +11,7 @@ class GoatMount() : CustomMount(
 		name = "Goat Mount",
 		customModelData = 330014,
 		description = listOf("Sheep with horns"),
-		material = Material.SHEEP_SPAWN_EGG,
+		material = Material.GOAT_SPAWN_EGG,
                                ) {
 
 	constructor(quality : Int) : this() {

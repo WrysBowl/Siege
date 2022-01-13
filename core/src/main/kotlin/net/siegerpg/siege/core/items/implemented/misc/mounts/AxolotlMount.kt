@@ -11,7 +11,7 @@ class AxolotlMount() : CustomMount(
 		name = "Axolotl Mount",
 		customModelData = 330008,
 		description = listOf("Cute axolotl!"),
-		material = Material.CAT_SPAWN_EGG,
+		material = Material.AXOLOTL_SPAWN_EGG,
                                   ) {
 
 	constructor(quality : Int) : this() {
