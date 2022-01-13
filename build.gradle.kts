@@ -1,7 +1,7 @@
 plugins {
 	java
-	kotlin("jvm") version "1.5.30"
-	id("com.github.johnrengelman.shadow") version "7.1.0"
+	kotlin("jvm") version "1.6.10"
+	id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 repositories {
@@ -17,11 +17,11 @@ subprojects {
 	apply(plugin = "com.github.johnrengelman.shadow")
 
 	dependencies {
-		compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+		compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
 	}
 
 	java {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
 	}
 }

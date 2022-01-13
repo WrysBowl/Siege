@@ -1,7 +1,5 @@
 package net.siegerpg.siege.core.miscellaneous;
 
-import io.github.retrooper.packetevents.utils.gameprofile.GameProfileUtil;
-import kotlin.coroutines.RestrictsSuspension;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -16,14 +14,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.util.Vector;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -33,16 +28,17 @@ public class Utils {
 
 	@SuppressWarnings( "unused" )
 	static public String tacc(String str) {
+
 		return ChatColor.translateAlternateColorCodes('&', str);
 	}
 
-	static public String[] tacc(String[] strs) {
+	static public String tacc(String[] strs) {
 
 		String[] translatedStrings = new String[strs.length];
 		for (int i = 0; i < strs.length; i++) {
 			translatedStrings[i] = tacc(strs[i]);
 		}
-		return translatedStrings;
+		return String.join("\n", translatedStrings);
 	}
 
 	@SuppressWarnings( "unused" )
@@ -218,10 +214,14 @@ public class Utils {
 			((Player) player)
 					.getEnderChest()
 					.addItem(item);
-			player.sendMessage(Utils.lore("<red>Your inventory was full so the item has been placed in your Ender Chest!"));
+			player.sendMessage(Utils.lore(
+					"<red>Your inventory was full so the item has been placed in your Ender Chest!"));
 		} else {
-			player.sendMessage(Utils.lore("<red>Your Ender Chest is full so the item was dropped on the ground!"));
-			player.getWorld().dropItemNaturally(player.getLocation(), item);
+			player.sendMessage(Utils.lore(
+					"<red>Your Ender Chest is full so the item was dropped on the ground!"));
+			player
+					.getWorld()
+					.dropItemNaturally(player.getLocation(), item);
 			return false;
 		}
 		return true;
@@ -261,15 +261,22 @@ public class Utils {
 
 	/**
 	 * Divides the string into an array by a max character count
+	 *
 	 * @param str
 	 * @param max
+	 *
 	 * @return
 	 */
-	public static String[] getTextArray(List<String> str, int max) {
-		String[] splitString = String.join(" ", str).split(" ");
+	public static String[] getTextArray(List< String > str, int max) {
+
+		String[] splitString = String
+				.join(" ", str)
+				.split(" ");
 
 		int characterCounter = 0;
-		ArrayList<String> newArray = new ArrayList<>(){{add("");}};
+		ArrayList< String > newArray = new ArrayList<>() {{
+			add("");
+		}};
 		int currentRow = 0;
 
 		for (String string : splitString) {
@@ -288,11 +295,15 @@ public class Utils {
 		return newArray.toArray(new String[0]);
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings( "deprecation" )
 	public static ItemStack createHead(String player) {
 
-		boolean isNewVersion = Arrays.stream(Material.values()).map(Material::name).collect(
-				Collectors.toList()).contains("PLAYER_HEAD");
+		boolean isNewVersion = Arrays
+				.stream(Material.values())
+				.map(Material::name)
+				.collect(
+						Collectors.toList())
+				.contains("PLAYER_HEAD");
 		Material type = Material.matchMaterial(isNewVersion ? "PLAYER_HEAD" : "SKULL_ITEM");
 
 		ItemStack head = new ItemStack(type, 1);
@@ -305,8 +316,13 @@ public class Utils {
 	}
 
 	public static ItemStack getMobHead(MobHeadType mobHeadType) {
-		boolean isNewVersion = Arrays.stream(Material.values()).map(Material::name).collect(
-				Collectors.toList()).contains("PLAYER_HEAD");
+
+		boolean isNewVersion = Arrays
+				.stream(Material.values())
+				.map(Material::name)
+				.collect(
+						Collectors.toList())
+				.contains("PLAYER_HEAD");
 		Material type = Material.matchMaterial(isNewVersion ? "PLAYER_HEAD" : "SKULL_ITEM");
 
 		ItemStack head = new ItemStack(type, 1);

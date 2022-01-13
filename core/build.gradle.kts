@@ -15,7 +15,6 @@ repositories {
 }
 
 dependencies {
-	testImplementation("junit:junit:4.13.2")
 	compileOnly("org.projectlombok:lombok:1.18.22")
 	compileOnly("io.lumine.xikage:MythicMobs:4.11.2") // MythicMobs API
 	/*
@@ -31,7 +30,7 @@ dependencies {
 	compileOnly("com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.0")
 	compileOnly("de.tr7zw:item-nbt-api-plugin:2.7.1")
 	implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
-	implementation("com.zaxxer:HikariCP:5.0.0")
+	implementation("com.zaxxer:HikariCP:5.0.1")
 	annotationProcessor("org.projectlombok:lombok:1.18.22")
 	implementation("com.github.retrooper:packetevents:v1.8-pre-18")
 	//compile(fileTree(include(["*.jar"]), dir("libs")))
@@ -58,7 +57,7 @@ tasks {
 		dependsOn(shadowJar)
 	}
 	withType<KotlinCompile> {
-		kotlinOptions.jvmTarget = "11"
+		kotlinOptions.jvmTarget = "17"
 	}
 //    withType<KotlinCompile> {
 //        kotlinOptions.jvmTarget = "1.8"
