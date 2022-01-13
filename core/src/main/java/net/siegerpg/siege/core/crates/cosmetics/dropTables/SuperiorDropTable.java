@@ -15,9 +15,9 @@ public class SuperiorDropTable extends CosmeticDropTable {
 			{
 				//Uncommon
 				put(new Bee(0), 20);
-				put(new CrusaderHelmet(0), 20);
+				//put(new CrusaderHelmet(0), 20);
 				put(new DavyJonesCap(0), 20);
-				put(new GooBall(0), 20);
+				//put(new GooBall(0), 20);
 				put(new SlimeBlock(0), 20);
 				put(new StoneFace(0), 20);
 				put(new WiseGuy(0), 20);
