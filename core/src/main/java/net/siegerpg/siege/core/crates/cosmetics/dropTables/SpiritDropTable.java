@@ -4,6 +4,7 @@ package net.siegerpg.siege.core.crates.cosmetics.dropTables;
 import net.siegerpg.siege.core.crates.cosmetics.CosmeticDropTable;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.epic.*;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.rare.*;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.*;
 
 import java.util.HashMap;
 
@@ -24,6 +25,10 @@ public class SpiritDropTable extends CosmeticDropTable {
 				//put(new Pyromancer(0), 20);
 				put(new TnT(0), 20);
 				put(new Unirod(0), 20);
+				put(new FoxMount(0), 15);
+				put(new HorseMount(0), 15);
+				put(new PolarBearMount(0), 15);
+				put(new HorseMount(0), 15);
 
 				//Epic
 				put(new CarrotOnAStick(0), 10);
@@ -33,6 +38,9 @@ public class SpiritDropTable extends CosmeticDropTable {
 				put(new Headphones(0), 10);
 				put(new Spongebob(0), 10);
 				put(new SquidHead(0), 10);
+				put(new GoatMount(0), 15);
+				put(new HoglinMount(0), 15);
+				put(new PandaMount(0), 15);
 			}
 		};
 	}

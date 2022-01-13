@@ -2,7 +2,7 @@ package net.siegerpg.siege.core.crates.cosmetics;
 
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
+import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.particleEffects.Helix;
 import org.bukkit.Bukkit;
@@ -20,7 +20,7 @@ import java.util.Set;
 
 public class CosmeticAnimation implements Runnable {
 
-	public void openCrate(Location location, Set< CustomCosmetic > cosmetics, CustomCosmetic cosmetic, Player player) {
+	public void openCrate(Location location, Set< CustomItem > cosmetics, CustomItem cosmetic, Player player) {
 
 		new Helix().createHelix(location, Particle.FALLING_OBSIDIAN_TEAR, 3.0, 0.0, 4.0);
 		new Helix().createHelix(location, Particle.FALLING_OBSIDIAN_TEAR, 2.0, 0.0, 4.0);
@@ -29,7 +29,7 @@ public class CosmeticAnimation implements Runnable {
 
 			final int ticker = 5;
 			final int duration = 100;
-			final ArrayList< CustomCosmetic > cosmeticArray = new ArrayList<>(cosmetics);
+			final ArrayList< CustomItem > cosmeticArray = new ArrayList<>(cosmetics);
 			final Location loc = new Location(
 					location.getWorld(),
 					location.getX(),

@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.crates.cosmetics.dropTables;
 
 import net.siegerpg.siege.core.crates.cosmetics.CosmeticDropTable;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.epic.*;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.*;
 
 import java.util.HashMap;
 
@@ -17,6 +18,9 @@ public class EpicDropTable extends CosmeticDropTable {
 				put(new HotHead(0), 10);
 				put(new Headphones(0), 10);
 				put(new SquidHead(0), 10);
+				put(new GoatMount(0), 15);
+				put(new HoglinMount(0), 15);
+				put(new PandaMount(0), 15);
 
 				put(new Noteworthy(0), 10);
 				put(new Spongebob(0), 10);

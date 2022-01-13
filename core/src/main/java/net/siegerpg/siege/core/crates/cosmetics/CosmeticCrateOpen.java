@@ -8,7 +8,6 @@ import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.*;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
-import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -25,6 +24,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class CosmeticCrateOpen implements Listener {
 
@@ -76,7 +76,7 @@ public class CosmeticCrateOpen implements Listener {
 			new CosmeticCrateOpen().getStartMenu(player).show(player);
 			return;
 		}
-		CustomCosmetic reward = dropTable.pickItem();
+		CustomItem reward = dropTable.pickItem();
 
 		//Play item getting animation
 		//Plays item win effect
@@ -200,9 +200,9 @@ public class CosmeticCrateOpen implements Listener {
 		OutlinePane row = new OutlinePane(1, 0, 7, 6);
 
 		//icons
-		HashMap< CustomCosmetic, Integer > dropTable = getItem(customItem).dropTable;
+		HashMap< CustomItem, Integer > dropTable = Objects.requireNonNull(getItem(customItem)).dropTable;
 		double totalWeight = dropTable.values().stream().mapToInt(Integer::intValue).sum();
-		for (Map.Entry<CustomCosmetic, Integer> entry : dropTable.entrySet()) {
+		for (Map.Entry<CustomItem, Integer> entry : dropTable.entrySet()) {
 			ItemStack item = entry.getKey().getUpdatedItem(false);
 			double chance = Utils.round(entry.getValue()*100/totalWeight, 2);
 

@@ -3,6 +3,9 @@ package net.siegerpg.siege.core.crates.cosmetics.dropTables;
 
 import net.siegerpg.siege.core.crates.cosmetics.CosmeticDropTable;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.common.*;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.CowMount;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.PigMount;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.SheepMount;
 
 import java.util.HashMap;
 
@@ -25,6 +28,9 @@ public class CommonDropTable extends CosmeticDropTable {
 				//put(new SquidGame(0), 10);
 				put(new StrawHat(0), 10);
 				put(new SurgicalMask(0), 10);
+				put(new CowMount(0), 15);
+				put(new PigMount(0), 15);
+				put(new SheepMount(0), 15);
 
 				put(new BlueGlass(0), 40);
 				put(new BlackGlass(0), 40);

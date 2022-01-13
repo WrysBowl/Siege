@@ -3,6 +3,10 @@ package net.siegerpg.siege.core.crates.cosmetics.dropTables;
 
 import net.siegerpg.siege.core.crates.cosmetics.CosmeticDropTable;
 import net.siegerpg.siege.core.items.implemented.misc.cosmetics.uncommon.*;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.CatMount;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.LlamaMount;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.MooshroomMount;
+import net.siegerpg.siege.core.items.implemented.misc.mounts.SpiderMount;
 
 import java.util.HashMap;
 
@@ -18,6 +22,10 @@ public class UncommonDropTable extends CosmeticDropTable {
 				//put(new GooBall(0), 10);
 				put(new WiseGuy(0), 10);
 				put(new WitchHat(0), 10);
+				put(new CatMount(0), 15);
+				put(new MooshroomMount(0), 15);
+				put(new SpiderMount(0), 15);
+				put(new LlamaMount(0), 15);
 
 				put(new SlimeBlock(0), 20);
 				put(new StoneFace(0), 20);
