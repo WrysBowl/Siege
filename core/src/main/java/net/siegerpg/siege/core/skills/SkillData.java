@@ -21,7 +21,71 @@ public enum SkillData {
 
 	static HashMap< UUID, JsonObject > skillCache = new HashMap<>();
 
+	static HashMap< UUID, Integer > skillPointCache = new HashMap<>();
+
 	static JsonParser jsonParser = new JsonParser();
+
+	/**
+	 * Gets the skill points of a player
+	 *
+	 * @param player The player to get the info of
+	 *
+	 * @return Returns the skill points
+	 */
+	@NotNull
+	public static Integer getSkillPoints(OfflinePlayer player) {
+
+		if (skillPointCache.containsKey(player.getUniqueId())) {
+			return skillPointCache.get(player.getUniqueId());
+		}
+		try (var conn = DatabaseManager.INSTANCE.getConnection()) {
+			assert conn != null;
+			var stmt = conn.prepareStatement("SELECT skill_points FROM userData WHERE uuid=?");
+			stmt.setString(1, player
+					.getUniqueId()
+					.toString());
+			var result = stmt.executeQuery();
+			if (result.isBeforeFirst()) {
+				// There are no rows so we return 0
+				return 0;
+			}
+			result.next();
+			Integer skillData = result.getInt("skill_points");
+			result.close();
+			skillPointCache.put(player.getUniqueId(), skillData);
+			return skillData;
+		} catch (SQLException e) {
+			return 0;
+		}
+	}
+
+
+	/**
+	 * Gets the skill points of a player
+	 *
+	 * @param player The player to get the info of
+	 *
+	 * @return Returns the skill points
+	 */
+	public static void setSkillPoints(OfflinePlayer player, Integer data) {
+
+		skillPointCache.put(player.getUniqueId(), data);
+		try (
+				var conn = DatabaseManager.INSTANCE.getConnection()
+		) {
+			assert conn != null;
+			var stmt = conn.prepareStatement("UPDATE userData SET skill_points=? WHERE uuid=?");
+			stmt.setInt(1, data);
+			stmt.setString(2, player
+					.getUniqueId()
+					.toString());
+			stmt.executeUpdate();
+
+		} catch (
+				SQLException ignored) {
+		}
+
+	}
 
 	/**
 	 * Gets the skill level of a player
@@ -66,7 +130,7 @@ public enum SkillData {
 
 		try (var conn = DatabaseManager.INSTANCE.getConnection()) {
 			assert conn != null;
-			var stmt = conn.prepareStatement("SELECT skills FROM skillsData WHERE uuid=?");
+			var stmt = conn.prepareStatement("SELECT skill_data FROM userData WHERE uuid=?");
 			stmt.setString(1, player
 					.getUniqueId()
 					.toString());
@@ -78,7 +142,7 @@ public enum SkillData {
 						.getAsJsonObject();
 			}
 			result.next();
-			String rawSkills = result.getString("skills");
+			String rawSkills = result.getString("skill_data");
 			result.close();
 			JsonObject jsonObject = jsonParser
 					.parse(rawSkills)
@@ -101,35 +165,19 @@ public enum SkillData {
 	public static void setSkillData(OfflinePlayer player, JsonObject data) {
 
 		skillCache.put(player.getUniqueId(), data);
-		if (skillCache.containsKey(player.getUniqueId()))
-			Bukkit
-					.getScheduler()
-					.runTaskAsynchronously(Core.plugin(), () -> {
-						try (var conn = DatabaseManager.INSTANCE.getConnection()) {
-							assert conn != null;
-							var stmt = conn.prepareStatement(
-									"UPDATE skillsData SET skills=? WHERE uuid=?");
-							stmt.setString(1, data.getAsString());
-							stmt.setString(2, player
-									.getUniqueId()
-									.toString());
-							stmt.executeUpdate();
-
-						} catch (SQLException ignored) {
-						}
-					});
-		else Bukkit
+		Bukkit
 				.getScheduler()
 				.runTaskAsynchronously(Core.plugin(), () -> {
 					try (var conn = DatabaseManager.INSTANCE.getConnection()) {
 						assert conn != null;
 						var stmt = conn.prepareStatement(
-								"INSERT INTO skillsData (uuid, skills) VALUES (?, ?)");
-						stmt.setString(1, player
+								"UPDATE userData SET skill_data=? WHERE uuid=?");
+						stmt.setString(1, data.getAsString());
+						stmt.setString(2, player
 								.getUniqueId()
 								.toString());
-						stmt.setString(2, data.getAsString());
 						stmt.executeUpdate();
+
 					} catch (SQLException ignored) {
 					}
 				});
