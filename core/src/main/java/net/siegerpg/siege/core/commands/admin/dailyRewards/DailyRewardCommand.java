@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.commands.admin.dailyRewards;
 
-import net.siegerpg.siege.core.commands.admin.dailyRewards.Rewards.*;
+import net.siegerpg.siege.core.commands.admin.dailyRewards.rewards.*;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -59,6 +60,11 @@ public class DailyRewardCommand implements CommandExecutor {
 			if (player == null) return false;
 			if (day < 1 || day > 30) return false;
 		} catch (Exception ignored) {return false;}
+
+		if (sender instanceof Player) {
+			sender.sendMessage(Utils.lore("<red>Only console can use this command."));
+			return false;
+		}
 
 		DailyReward reward = dailyRewards.get(day);
 		reward.sendReward(player);

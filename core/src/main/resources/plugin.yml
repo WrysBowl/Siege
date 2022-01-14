@@ -66,3 +66,5 @@ commands:
     description: Play cookie clicker
   dailyReward:
     description: Daily reward
+  questReward:
+    description: Quest reward
