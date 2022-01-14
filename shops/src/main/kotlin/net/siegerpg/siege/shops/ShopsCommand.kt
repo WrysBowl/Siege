@@ -17,6 +17,7 @@ import net.siegerpg.siege.core.miscellaneous.Scoreboard
 import net.siegerpg.siege.core.miscellaneous.VaultHook
 import net.siegerpg.siege.core.miscellaneous.lore
 import org.bukkit.Bukkit
+import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.command.CommandSender
@@ -113,7 +114,9 @@ class ShopsCommand : BaseCommand() {
 
 					if (!player.inventory.containsAtLeast(
 									entry.key.getUpdatedItem(false),
-									entry.value)) {
+									entry.value
+					                                     )
+					) {
 						meta.lore("<red>\u2717 ${entry.value}x <pre>${updatedItem}</pre>")
 					} else {
 						meta.lore("<green>\u2714 ${entry.value}x <pre>${updatedItem}</pre>")
@@ -127,9 +130,23 @@ class ShopsCommand : BaseCommand() {
 			}
 			if (it.buyPrice > -1) {
 				if (VaultHook.econ.getBalance(player) >= it.buyPrice) {
-					meta.lore("<green>\u2714 RIGHT CLICK <gray>Cost ${String.format("%,d", it.buyPrice)} gold")
+					meta.lore(
+							"<green>\u2714 RIGHT CLICK <gray>Cost ${
+								String.format(
+										"%,d",
+										it.buyPrice
+								             )
+							} gold"
+					         )
 				} else {
-					meta.lore("<red>\u2717 RIGHT CLICK <gray>Cost ${String.format("%,d", it.buyPrice)} gold")
+					meta.lore(
+							"<red>\u2717 RIGHT CLICK <gray>Cost ${
+								String.format(
+										"%,d",
+										it.buyPrice
+								             )
+							} gold"
+					         )
 				}
 			}
 			item.itemMeta = meta
@@ -142,7 +159,13 @@ class ShopsCommand : BaseCommand() {
 			val guiItem = GuiItem(item)
 			guiItem.setAction { event ->
 				when {
-					event.isLeftClick  -> {
+					player.gameMode == GameMode.CREATIVE -> {
+						player.inventory.addItem(it.generate())
+						player.updateInventory()
+						return@setAction
+					}
+
+					event.isLeftClick                    -> {
 						if (!it.craftable) return@setAction
 						if (event.view.bottomInventory
 										.firstEmpty() == -1
@@ -192,7 +215,7 @@ class ShopsCommand : BaseCommand() {
 						player.updateInventory()
 					}
 
-					event.isRightClick -> {
+					event.isRightClick                   -> {
 						if (it.buyPrice < 0) return@setAction
 
 						if (VaultHook.econ.getBalance(player) < it.buyPrice) {
