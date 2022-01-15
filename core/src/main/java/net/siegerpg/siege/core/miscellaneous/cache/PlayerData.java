@@ -61,20 +61,20 @@ public class PlayerData implements Listener {
 	public static void setStats(Player player) {
 
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
-			AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
-			if (attribute == null) return;
+			AttributeInstance maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
 
-			double oldMaxHealth = attribute.getBaseValue();
+			if (maxHealth == null) return;
+
+			double oldMaxHealth = maxHealth.getBaseValue();
 			double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + 20 + getHealthMultiplier(player);
+			player.setHealthScale(health/(health/20));
+			maxHealth.setBaseValue(health);
+			player.setHealth(getNewHealth(player.getHealth(), health, oldMaxHealth));
+
 			int regen = (int) CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.REGENERATION);
 			int regenRate = getRegenRate(regen);
-			attribute.setBaseValue(health);
-			player.setHealthScale(health/(health/20));
 			player.setSaturatedRegenRate(regenRate);
 			player.setUnsaturatedRegenRate((int)(regenRate*1.25));
-
-
-			player.setHealth(getNewHealth(player.getHealth(), health, oldMaxHealth));
 
 			playerHealth.put(player, player.getMaxHealth());
 			playerMana.put(player, CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));

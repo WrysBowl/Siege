@@ -58,10 +58,8 @@ class WandCast : BukkitRunnable {
 		}
 		for (e in loc.getNearbyLivingEntities(1.0)) {
 			if (e.equals(player)) continue
-			if (e is Player) continue
 			for (en in loc.getNearbyLivingEntities(damageRadius)) {
 				if (e.equals(player)) continue
-				if (en is Player) continue
 				en.damage(dmg, player)
 				en.world.spawnParticle(Particle.SWEEP_ATTACK, en.location, 3)
 			}

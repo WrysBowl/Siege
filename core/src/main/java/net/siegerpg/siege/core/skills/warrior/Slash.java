@@ -1,9 +1,17 @@
 package net.siegerpg.siege.core.skills.warrior;
 
+import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
@@ -73,9 +81,31 @@ public class Slash extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
+		if(!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
+		//used to calculate slash damage radius
+		Vector vector = player.getLocation().getDirection();
+
+		//location of particle effect
+		Location location = player.getLocation().add(vector);
+
+		//damage to deal
+		double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH)*1.5;
+
+		//spawn slash particle effect
+		player.getWorld().spawnParticle(Particle.SWEEP_ATTACK, location, 1);
+
+		//create weakness potion
+		PotionEffect potion = new PotionEffect(PotionEffectType.WEAKNESS, 60, 0);
+
+		for (LivingEntity entity : location.getNearbyLivingEntities(1.5, 1.5, 1.5)) {
+			if (entity.equals(player)) continue;
+			entity.damage(damage, entity);
+			if (Utils.randTest(getWeakenChance(level))) {
+				entity.addPotionEffect(potion);
+			}
+		}
+		return true;
 	}
 
 	@Override

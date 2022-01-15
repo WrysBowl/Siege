@@ -185,14 +185,14 @@ public abstract class Skill {
 		Instant now = Instant.now();
 		Instant resetTime = SkillCooldown.getResetTime(player.getUniqueId(), this);
 		if (resetTime != null && now.isBefore(resetTime)) {
-			//TODO: Tell them the skill is on cooldown.
+			player.sendMessage(Utils.lore("<red>This skill is on cooldown."));
 			return false;
 		}
 		// Checks if the player has enough mana
 		double manaCost = getManaCost(level);
 		Double playerMana = PlayerData.playerMana.get(player);
 		if (playerMana == null || playerMana < manaCost) {
-			//TODO: Tell them they don't have enough mana.
+			player.sendMessage(Utils.lore("<red>You do not have enough mana to activate this skill."));
 			return false;
 		}
 		// Removes the mana from the user
