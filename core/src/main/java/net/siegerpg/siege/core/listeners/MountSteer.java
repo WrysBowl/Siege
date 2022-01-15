@@ -1,9 +1,7 @@
 package net.siegerpg.siege.core.listeners;
 
 import de.tr7zw.nbtapi.NBTEntity;
-import de.tr7zw.nbtapi.NBTFloatList;
 import de.tr7zw.nbtapi.NBTList;
-import de.tr7zw.nbtapi.NBTListCompound;
 import io.github.retrooper.packetevents.event.PacketListenerAbstract;
 import io.github.retrooper.packetevents.event.impl.PacketPlayReceiveEvent;
 import io.github.retrooper.packetevents.packettype.PacketType;
@@ -13,7 +11,10 @@ import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomMount;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.*;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.*;
@@ -27,13 +28,12 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
-import org.bukkit.inventory.*;
+import org.bukkit.inventory.AbstractHorseInventory;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class MountSteer extends PacketListenerAbstract implements Listener {
@@ -164,8 +164,6 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 
 			//cooldown
 			if (currentCooldown.containsKey(player)) {
-				Bukkit.getLogger().info("Current Millis "+ System.currentTimeMillis());
-				Bukkit.getLogger().info("Player Millis "+ currentCooldown.get(player));
 
 				if ((System.currentTimeMillis() - currentCooldown.get(player)) >= 1000) {
 					currentCooldown.put(player, System.currentTimeMillis());
