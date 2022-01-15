@@ -51,6 +51,12 @@ public class PlayerData implements Listener {
 	public static double getNewHealth(Double health, Double maxHealth, Double oldMaxHealth) {
 		return (health/oldMaxHealth)*maxHealth;
 	}
+	public static double getHealthMultiplier(Player player) {
+		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
+		if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
+
+		return (expLevel.getFirst()-1)*5;
+	}
 
 	public static void setStats(Player player) {
 
@@ -59,7 +65,7 @@ public class PlayerData implements Listener {
 			if (attribute == null) return;
 
 			double oldMaxHealth = attribute.getBaseValue();
-			double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + 20;
+			double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + 20 + getHealthMultiplier(player);
 			int regen = (int) CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.REGENERATION);
 			int regenRate = getRegenRate(regen);
 			attribute.setBaseValue(health);
