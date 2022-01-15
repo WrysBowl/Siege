@@ -336,4 +336,10 @@ public class Utils {
 		return head;
 	}
 
+	public static void faceDirection(Player player, Location target) {
+		Vector dir = target.clone().subtract(player.getEyeLocation()).toVector();
+		Location loc = player.getLocation().setDirection(dir);
+		player.teleport(loc);
+	}
+
 }

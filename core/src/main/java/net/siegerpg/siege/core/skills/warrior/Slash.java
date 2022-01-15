@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.Location;
 import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -90,10 +91,11 @@ public class Slash extends Skill {
 		Location location = player.getLocation().add(vector);
 
 		//damage to deal
-		double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH)*1.5;
+		double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH)*getDamageMulti(level);
 
 		//spawn slash particle effect
 		player.getWorld().spawnParticle(Particle.SWEEP_ATTACK, location, 1);
+		player.getWorld().playSound(location, Sound.ENTITY_PLAYER_ATTACK_SWEEP, 1.0f, 1.0f);
 
 		//create weakness potion
 		PotionEffect potion = new PotionEffect(PotionEffectType.WEAKNESS, 60, 0);
