@@ -16,6 +16,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -30,9 +31,7 @@ import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class PlayerData implements Listener {
 
@@ -43,25 +42,33 @@ public class PlayerData implements Listener {
 	public static HashMap< Player, Double > playerMana = new HashMap<>();
 	public static HashMap< Player, Location > playerDeathLocations = new HashMap<>();
 
-	public static HashMap< Player, ArrayList< Action > > playerTriggers = new HashMap<>();
-
 	public static int getRegenRate(int regen) {
 		int regenRate = (int)Math.ceil((regen/-10.0)+11);
 		if (regenRate<1) regenRate = 1;
 		return regenRate;
 	}
 
+	public static double getNewHealth(Double health, Double maxHealth, Double oldMaxHealth) {
+		return (health/oldMaxHealth)*maxHealth;
+	}
+
 	public static void setStats(Player player) {
 
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
+			AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+			if (attribute == null) return;
 
+			double oldMaxHealth = attribute.getBaseValue();
 			double health = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.HEALTH) + 20;
 			int regen = (int) CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.REGENERATION);
 			int regenRate = getRegenRate(regen);
-			Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(health);
+			attribute.setBaseValue(health);
 			player.setHealthScale(health/(health/20));
 			player.setSaturatedRegenRate(regenRate);
 			player.setUnsaturatedRegenRate((int)(regenRate*1.25));
+
+
+			player.setHealth(getNewHealth(player.getHealth(), health, oldMaxHealth));
 
 			playerHealth.put(player, player.getMaxHealth());
 			playerMana.put(player, CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
