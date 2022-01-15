@@ -240,9 +240,7 @@ public class DeathListener implements Listener, Runnable {
 	public void removePlayerGold(PlayerDeathEvent e) {
 
 		e.setDeathSound(Sound.ENTITY_PLAYER_DEATH);
-		EntityDamageEvent event = e
-				.getEntity()
-				.getLastDamageCause();
+		EntityDamageEvent event = e.getEntity().getLastDamageCause();
 		if (event != null) {
 			Entity entity = event.getEntity();
 			try {
@@ -252,27 +250,17 @@ public class DeathListener implements Listener, Runnable {
 						.getMythicMobInstance(entity)
 						.getDisplayName();
 				entity.setCustomName(mm);
-
-				e
-						.getEntity()
-						.setLastDamageCause(
-								new EntityDamageEvent(entity, event.getCause(), event.getDamage())
-						                   );
+				e.getEntity().setLastDamageCause(new EntityDamageEvent(entity, event.getCause(), event.getDamage()));
 			} catch (Exception ignored) {
 			}
 		}
-
-		Player player = e
-				.getEntity()
-				.getPlayer();
+		Player player = e.getEntity().getPlayer();
 		String deathMessage = Utils.tacc("&c" + e.getDeathMessage());
 		e.setDeathMessage(deathMessage);
 
 		if (player != null) {
-
-			String time = Utils.secondsToHHMMSS(e
-					                                    .getEntity()
-					                                    .getStatistic(Statistic.TIME_SINCE_DEATH) /
+			Player killer = player.getKiller();
+			String time = Utils.secondsToHHMMSS(e.getEntity().getStatistic(Statistic.TIME_SINCE_DEATH) /
 			                                    20);
 
 			player.sendMessage("");
@@ -293,6 +281,10 @@ public class DeathListener implements Listener, Runnable {
 			VaultHook.econ.withdrawPlayer(player, bal);
 			VaultHook.econ.depositPlayer(player, newBal);
 			int goldLost = bal - newBal;
+			if (killer != null) {
+				GoldExpListener.giveGold(killer, goldLost);
+			}
+
 			new BukkitRunnable() {
 				@Override
 				public void run() {
@@ -321,10 +313,6 @@ public class DeathListener implements Listener, Runnable {
 				.equals("Hilly_Woods")) {
 			e.setRespawnLocation((player.getBedSpawnLocation() == null) ?
 			                     world.getSpawnLocation() : player.getBedSpawnLocation());
-			return;
-		}
-		if (player.getWorld().equals(Core.plugin().getServer().getWorld("PVP"))) {
-			e.setRespawnLocation(Core.plugin().getSpawnLocation());
 		}
 	}
 
