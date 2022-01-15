@@ -49,6 +49,19 @@ public class Stats implements CommandExecutor {
 		sender.sendMessage("");
 
 		sender.sendMessage("");
+		sender.sendMessage(Utils.lore("<color:#EECB66><bold>Specifics"));
+		sender.sendMessage(Utils.lore(" "));
+		sender.sendMessage(Utils.lore("  <dark_red>Strength <reset><gray>You deal "+strength+" to target's health points."));
+		sender.sendMessage(Utils.lore("  <blue>Toughness <reset><gray>You prevent " +
+		                              Utils.round((1 - (CustomItemKotlinListener.Companion.calcReducedToughness(toughness) / 1000)), 2) +
+		                              " % damage."));
+		sender.sendMessage(Utils.lore("  <red>Health <reset><gray>You have "+health+"."));
+		sender.sendMessage(Utils.lore("  <gold>Regeneration <reset><gray>You heal " + (int)(regeneration/5) + " health every " +
+		                              Utils.round((PlayerData.getRegenRate((int) regeneration))/20.0,2) + " second(s) on full hunger"));
+		sender.sendMessage(Utils.lore("  <green>Luck <reset><gray>You have a "+luck+"% chance to get double the drops, EXP, and gold. For every 100 luck, you get a higher drops multiplier."));
+		sender.sendMessage("");
+
+		sender.sendMessage("");
 		sender.sendMessage(Utils.lore("<color:#EECB66>Player Statistics"));
 		sender.sendMessage(Utils.lore(" "));
 		sender.sendMessage(Utils.lore("<color:#DED153>" + player.getName()));
@@ -59,18 +72,7 @@ public class Stats implements CommandExecutor {
 		sender.sendMessage(Utils.lore("  <gray>Luck             <reset><green>" + luck));
 		sender.sendMessage("");
 
-		sender.sendMessage("");
-		sender.sendMessage(Utils.lore("<color:#EECB66><bold>Specifics"));
-		sender.sendMessage(Utils.lore(" "));
-		sender.sendMessage(Utils.lore("  <dark_red>Strength <reset><gray>You deal "+strength+" to target's health points."));
-		sender.sendMessage(Utils.lore("  <blue>Toughness <reset><gray>You prevent " +
-		                              CustomItemKotlinListener.Companion.calcReducedToughness(toughness) +
-		                              " damage from attackers."));
-		sender.sendMessage(Utils.lore("  <red>Health <reset><gray>You have "+health+" health to be able to take more damage."));
-		sender.sendMessage(Utils.lore("  <gold>Regeneration <reset><gray>You heal " + (int)(regeneration/5) + " health every " +
-		                              Utils.round((PlayerData.getRegenRate((int) regeneration))/20.0,2) + "seconds on full hunger"));
-		sender.sendMessage(Utils.lore("  <green>Luck <reset><gray>You have a "+luck+"% chance to get double the drops, EXP, and gold. For every 100 luck, you get a higher drops multiplier."));
-		sender.sendMessage("");
+
 
 		sender.sendMessage(Utils.parse("<dark_gray><underlined>                                        "));
 		sender.sendMessage("");
