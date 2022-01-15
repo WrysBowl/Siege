@@ -16,7 +16,7 @@ public class SlimeSpirit extends Dungeon {
 
 		super("SlimeSpirit", 1,
 		      new SlimeSpiritKey(0),
-		      new Location(null, -169, 70, 24), "Hilly_Woods",
+		      new Location(null, -515, 88, 234), "Hilly_Woods",
 		      100
 		     );
 	}
@@ -27,7 +27,7 @@ public class SlimeSpirit extends Dungeon {
 		Location loc = new Location(Core
 				                            .plugin()
 				                            .getServer()
-				                            .getWorld("Hilly_Woods"), -169, 70, 24);
+				                            .getWorld("Hilly_Woods"), -515, 88, 234);
 		new Helix().createHelix(loc, Particle.SLIME);
 
 		Bukkit

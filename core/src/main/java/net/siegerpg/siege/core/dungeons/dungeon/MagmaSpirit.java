@@ -16,7 +16,7 @@ public class MagmaSpirit extends Dungeon {
 
 		super("MagmaSpirit", 1,
 		      new MagmaSpiritKey(0),
-		      new Location(null, 307, 51, -117), "Hilly_Woods",
+		      new Location(null, 491.5, 95, -158.5), "Hilly_Woods",
 		      100
 		     );
 	}
@@ -27,7 +27,7 @@ public class MagmaSpirit extends Dungeon {
 		Location loc = new Location(Core
 				                            .plugin()
 				                            .getServer()
-				                            .getWorld("Hilly_Woods"), 307, 51, -117);
+				                            .getWorld("Hilly_Woods"), 491.5, 95, -158.5);
 		new Helix().createHelix(loc, Particle.LAVA);
 
 		Bukkit

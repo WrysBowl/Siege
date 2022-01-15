@@ -142,12 +142,6 @@ class CustomItemKotlinListener : Listener, Runnable {
 			}
 		}
 		if (attacker is Player) {
-			if (victim is Player) {
-				if (victim.world != plugin().server.getWorld("PVP")) {
-					e.isCancelled = true
-					return
-				}
-			}
 			val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
 			if (item == null) {
 				e.damage = 1.0
