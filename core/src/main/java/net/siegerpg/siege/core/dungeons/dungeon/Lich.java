@@ -16,7 +16,7 @@ public class Lich extends Dungeon {
 
 		super("Lich", 1,
 		      new LichKey(0),
-		      new Location(null, 372, 87, 132), "Hilly_Woods",
+		      new Location(null, 597, 71, 132), "Hilly_Woods",
 		      100
 		     );
 	}
@@ -27,7 +27,7 @@ public class Lich extends Dungeon {
 		Location loc = new Location(Core
 				                            .plugin()
 				                            .getServer()
-				                            .getWorld("Hilly_Woods"), 372, 87, 132);
+				                            .getWorld("Hilly_Woods"), 597, 71, 132);
 		new Helix().createHelix(loc, Particle.SOUL);
 
 		Bukkit
