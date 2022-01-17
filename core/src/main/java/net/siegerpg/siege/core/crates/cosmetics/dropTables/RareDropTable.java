@@ -17,7 +17,7 @@ public class RareDropTable extends CosmeticDropTable {
 				//put(new AxeHead(0), 10);
 				//put(new Axolotl(0), 10);
 				//put(new BlueBetaBlob(0), 10);
-				//put(new Metroid(0), 10);
+				put(new Metroid(0), 10);
 				put(new Panda(0), 10);
 				//put(new Pyromancer(0), 10);
 				put(new DonkeyMount(0), 15);

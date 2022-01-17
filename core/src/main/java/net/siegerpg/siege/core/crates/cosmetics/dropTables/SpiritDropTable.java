@@ -20,7 +20,7 @@ public class SpiritDropTable extends CosmeticDropTable {
 				//put(new Axolotl(0), 20);
 				//put(new BlueBetaBlob(0), 20);
 				put(new Honey(0), 20);
-				//put(new Metroid(0), 20);
+				put(new Metroid(0), 20);
 				put(new Panda(0), 20);
 				//put(new Pyromancer(0), 20);
 				put(new TnT(0), 20);

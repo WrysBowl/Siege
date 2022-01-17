@@ -17,7 +17,6 @@ public class UncommonDropTable extends CosmeticDropTable {
 		dropTable = new HashMap<>() {
 			{
 				put(new Bee(0), 10);
-				//put(new CrusaderHelmet(0), 10);
 				put(new DavyJonesCap(0), 10);
 				//put(new GooBall(0), 10);
 				put(new WiseGuy(0), 10);
