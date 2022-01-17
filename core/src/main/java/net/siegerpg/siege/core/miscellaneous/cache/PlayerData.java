@@ -39,7 +39,7 @@ public class PlayerData implements Listener {
 	public static HashMap< Player, Boolean > broadcastTips = new HashMap<>();
 	public static HashMap< Player, Double > playerHealth = new HashMap<>();
 	public static HashMap< Player, Double > playerCurrentMana = new HashMap<>();
-	public static HashMap< Player, Double > playerMana = new HashMap<>();
+	public static HashMap< Player, Integer > playerMana = new HashMap<>();
 	public static HashMap< Player, Location > playerDeathLocations = new HashMap<>();
 
 	public static int getRegenRate(int regen) {
@@ -56,6 +56,13 @@ public class PlayerData implements Listener {
 		if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
 
 		return (expLevel.getFirst()-1)*5;
+	}
+
+	public static double getManaMultiplier(Player player) {
+		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
+		if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
+
+		return (expLevel.getFirst()-1)*10;
 	}
 
 	public static void setStats(Player player) {
@@ -76,8 +83,10 @@ public class PlayerData implements Listener {
 			player.setSaturatedRegenRate(regenRate);
 			player.setUnsaturatedRegenRate((int)(regenRate*1.25));
 
+			int mana = (int) (CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA) + 100 * getManaMultiplier(player));
+
 			playerHealth.put(player, player.getMaxHealth());
-			playerMana.put(player, CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA));
+			playerMana.put(player, mana);
 		}, 2);
 	}
 

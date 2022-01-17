@@ -189,8 +189,8 @@ public abstract class Skill {
 			return false;
 		}
 		// Checks if the player has enough mana
-		double manaCost = getManaCost(level);
-		Double playerMana = PlayerData.playerMana.get(player);
+		int manaCost = getManaCost(level);
+		Integer playerMana = PlayerData.playerMana.get(player);
 		if (playerMana == null || playerMana < manaCost) {
 			player.sendMessage(Utils.lore("<red>You do not have enough mana to activate this skill."));
 			return false;
