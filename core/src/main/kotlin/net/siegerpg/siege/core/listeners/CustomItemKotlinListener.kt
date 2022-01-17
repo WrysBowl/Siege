@@ -32,7 +32,7 @@ import kotlin.math.abs
 import kotlin.math.sqrt
 
 
-class CustomItemKotlinListener : Listener, Runnable {
+class CustomItemKotlinListener : Listener {
 
 	companion object {
 
@@ -48,7 +48,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 	var damageMulti : HashMap<Player, Double> = hashMapOf()
 
 	@EventHandler
-	@Suppress("unused")
+	@Suppress("UNUSED_PARAMETER")
 	fun onBowUse(e : PlayerInteractEvent) {
 		if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK || e is PlayerInteractEntityEvent) {
 			val player : Player = e.player
@@ -64,7 +64,7 @@ class CustomItemKotlinListener : Listener, Runnable {
 	}
 
 	@EventHandler
-	@Suppress("unused")
+	@Suppress("UNUSED_PARAMETER")
 	fun onRegen(e : EntityRegainHealthEvent) {
 
 		if (e.regainReason == EntityRegainHealthEvent.RegainReason.REGEN && e.entity is Player) {
@@ -92,14 +92,6 @@ class CustomItemKotlinListener : Listener, Runnable {
 		player.inventory.setItem(9, arrowItems[player])
 	}
 
-	/*
-	@EventHandler
-	fun onInvOpen(e: InventoryOpenEvent) {
-		val player: Player = e.player as Player
-		if (arrowItems[player] == null) return
-		if (arrowItems[player]?.type == Material.ARROW) player.inventory.setItem(9, null)
-		player.inventory.setItem(9, arrowItems[player])
-	}*/
 	@EventHandler
 	fun onBowUse(e : ProjectileHitEvent) {
 		if (e.entity is Arrow) {
@@ -287,30 +279,6 @@ class CustomItemKotlinListener : Listener, Runnable {
 		}.runTaskAsynchronously(plugin())
 	}
 
-	/*
-	fun onFoodClick(e: PlayerInteractEvent) {
-		if (e.action != Action.RIGHT_CLICK_AIR &&
-			e.action != Action.RIGHT_CLICK_BLOCK
-		) return
-		CustomItemUtils.getCustomItem(e.player.inventory.itemInMainHand)?.let {
-			if (it is CustomFood) {
-				val player: Player = e.player
-				if (cooldownFood.contains(player)) {
-					player.sendActionBar(Utils.parse("<red>You're too full!"))
-					return
-				}
-				cooldownFood.add(player)
-				it.onEat(e)
-				e.player.inventory.itemInMainHand.amount = e.player.inventory.itemInMainHand.amount - 1
-				object : BukkitRunnable() {
-					override fun run() {
-						cooldownFood.remove(player)
-					}
-				}.runTaskLater(plugin(), 50)
-			}
-		}
-	}*/
-
 
 	@EventHandler
 	@Suppress("unused")
@@ -382,9 +350,5 @@ class CustomItemKotlinListener : Listener, Runnable {
 				                      )
 			}
 		}
-	}
-
-	override fun run() {
-		TODO("Not yet implemented")
 	}
 }

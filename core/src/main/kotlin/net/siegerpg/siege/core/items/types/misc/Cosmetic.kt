@@ -1,3 +1,5 @@
+@file:Suppress("LeakingThis", "LeakingThis")
+
 package net.siegerpg.siege.core.items.types.misc
 
 import net.siegerpg.siege.core.Core
