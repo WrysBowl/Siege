@@ -8,10 +8,10 @@ import io.lumine.xikage.mythicmobs.mobs.ActiveMob
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.drops.MobDropTable
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
+import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers
 import org.bukkit.Bukkit
-import org.bukkit.Statistic
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.entity.Projectile
@@ -186,15 +186,27 @@ class BossLeaderboardListener : Listener {
 					GoldExpListener.giveGold(player, goldCoinAmt)
 				}
 
-				for (drop in getRewards(
-						(percentageDamage / 100.0),
-						dropTable
-				                       )) { //Loop through all drops
+				for (drop in getRewards((percentageDamage / 100.0), dropTable)) { //Loop through all drops
 					DropUtils.dropItemNaturallyForPlayers(
 							evt.entity.location,
 							drop,
-							listOf(fighter)
-					                                     )
+							listOf(fighter))
+
+					for (uuid in listOf(fighter)) {
+						val player : Player = Bukkit.getPlayer(uuid) ?: continue
+						val customItem = getCustomItem(drop) ?: continue
+						if (customItem.quality < 85) continue
+
+						//broadcast 80%+ drops
+						val displayName =
+								MythicMobs.inst().apiHelper.getMythicMobInstance(evt.entity).displayName
+						val miniMessage = Utils.lore(
+								"<color:#5DD5B5>" + player.name +
+								"<color:#ACD55D> has found a " + drop.itemMeta.displayName +
+								" <color:#ACD55D>from a " + displayName
+						                            ).hoverEvent(drop)
+						Bukkit.broadcast(miniMessage)
+					}
 				}
 
 			}

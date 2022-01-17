@@ -23,7 +23,7 @@ interface LevelReward {
 				10)
 
 		player.sendMessage("")
-		player.sendMessage(Utils.parse("<color:#BE6CD1><bold><underlined>      LEVEL UP!      <reset>"))
+		player.sendMessage(Utils.parse("<color:#BE6CD1><bold><underlined>        LEVEL UP!        <reset>"))
 		player.sendMessage(Utils.parse("<color:#CF97DD>You leveled up to level $level"))
 		player.sendMessage("")
 		if (gold > 0) {

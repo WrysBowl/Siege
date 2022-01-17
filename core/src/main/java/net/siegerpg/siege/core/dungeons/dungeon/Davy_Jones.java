@@ -14,7 +14,7 @@ public class Davy_Jones extends Dungeon {
 
 	public Davy_Jones() {
 
-		super("Davy_Jones", 1,
+		super("Davy Jones", 1,
 		      new DavyJonesKey(0),
 		      new Location(null, 16, 40, 411), "Hilly_Woods",
 		      100

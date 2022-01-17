@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.listeners;
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;
@@ -13,6 +14,7 @@ import net.siegerpg.siege.core.drops.mobs.twilight.bosses.Unicorn;
 import net.siegerpg.siege.core.drops.mobs.twilight.hostile.*;
 import net.siegerpg.siege.core.drops.mobs.twilight.neutral.*;
 import net.siegerpg.siege.core.drops.mobs.twilight.passive.*;
+import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot;
@@ -170,20 +172,11 @@ public class DeathListener implements Listener, Runnable {
 	@EventHandler
 	public void mobDeath(EntityDeathEvent e) throws InvalidMobTypeException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
 
-		if (e
-				    .getEntity()
-				    .getKiller() == null) return;
-		if (!(
-				MythicMobs
-						.inst()
-						.getAPIHelper()
-						.isMythicMob(e.getEntity())
-		)) return;
+		if (e.getEntity().getKiller() == null) return;
+		if (!(MythicMobs.inst().getAPIHelper().isMythicMob(e.getEntity()))) return;
 
 		e.setDroppedExp(0);
-		e
-				.getDrops()
-				.clear();
+		e.getDrops().clear();
 
 		String mm = MythicMobs
 				.inst()
@@ -198,9 +191,7 @@ public class DeathListener implements Listener, Runnable {
 				.getDeclaredConstructor()
 				.newInstance();
 
-		Player player = e
-				.getEntity()
-				.getKiller();
+		Player player = e.getEntity().getKiller();
 		double luck = 0.0;
 		int goldCoinAmt = mobDrop.getGold(true);
 		int exp = mobDrop.getExp(true);
@@ -229,10 +220,22 @@ public class DeathListener implements Listener, Runnable {
 				goldCoinAmt *= 2;
 			}
 			GoldEXPSpawning.spawnGold(goldCoinAmt, loc);
-		}
+		} //give gold reward
 
 		for (ItemStack drop : mobDrop.calculateRewards(luck)) { //Loop through all drops
 			loc.getWorld().dropItemNaturally(loc, drop);
+			if (player == null) continue;
+			CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(drop);
+			if (customItem == null) continue;
+			if (customItem.getQuality() < 85) continue;
+
+			//broadcast 80%+ drops
+			String displayName = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getDisplayName();
+			Component miniMessage = Utils.lore(
+					"<color:#5DD5B5>"+player.getName()+
+					"<color:#ACD55D> has found a " + drop.getItemMeta().getDisplayName() +
+					" <color:#ACD55D>from a "+displayName).hoverEvent(drop);
+			Bukkit.broadcast(miniMessage);
 		}
 	}
 
@@ -240,6 +243,8 @@ public class DeathListener implements Listener, Runnable {
 	public void removePlayerGold(PlayerDeathEvent e) {
 
 		e.setDeathSound(Sound.ENTITY_PLAYER_DEATH);
+
+		//set last death
 		EntityDamageEvent event = e.getEntity().getLastDamageCause();
 		if (event != null) {
 			Entity entity = event.getEntity();
@@ -254,53 +259,47 @@ public class DeathListener implements Listener, Runnable {
 			} catch (Exception ignored) {
 			}
 		}
+		//set death message
 		Player player = e.getEntity().getPlayer();
 		String deathMessage = Utils.tacc("&c" + e.getDeathMessage());
 		e.setDeathMessage(deathMessage);
 
-		if (player != null) {
-			Player killer = player.getKiller();
-			String time = Utils.secondsToHHMMSS(e.getEntity().getStatistic(Statistic.TIME_SINCE_DEATH) /
-			                                    20);
+		if (player == null) return;
 
-			player.sendMessage("");
-			player.sendMessage(Utils.lore("<gray>Time Since Last Death: <yellow>" + time));
+		//display last death time
+		Player killer = player.getKiller();
+		String time = Utils.secondsToHHMMSS(e.getEntity().getStatistic(Statistic.TIME_SINCE_DEATH) / 20);
+		player.sendMessage("");
+		player.sendMessage(Utils.lore("<gray>Time Since Last Death: <yellow>" + time));
 
-			if (player
-					.getWorld()
-					.equals(Core
-							        .plugin()
-							        .getServer()
-							        .getWorld("SiegeHub"))) return;
-			int bal = (int) Math.round(VaultHook.econ.getBalance(player));
+		//remove money from player's balance
+		int bal = (int) Math.round(VaultHook.econ.getBalance(player));
+		int newBal = (int) Math.round(bal * 0.95);
+		if (newBal < 1) newBal = 0;
+		VaultHook.econ.withdrawPlayer(player, bal);
+		VaultHook.econ.depositPlayer(player, newBal);
+		int goldLost = bal - newBal;
 
-			int newBal = (int) Math.round(bal * 0.95);
-
-
-			if (newBal < 1) newBal = 0;
-			VaultHook.econ.withdrawPlayer(player, bal);
-			VaultHook.econ.depositPlayer(player, newBal);
-			int goldLost = bal - newBal;
-			if (killer != null) {
-				GoldExpListener.giveGold(killer, goldLost);
-			}
-
-			new BukkitRunnable() {
-				@Override
-				public void run() {
-
-					player
-							.spigot()
-							.respawn();
-					player.sendTitle(
-							Utils.tacc("&c&lYou Died"), Utils.tacc(
-									"&c" + String.format("%,d", goldLost) +
-									" gold &7has been lost"), 1, 60, 1);
-					Scoreboard.updateScoreboard(player);
-				}
-			}.runTaskLater(Core.plugin(), 1);
-
+		//give killer gold
+		if (killer != null) {
+			GoldExpListener.giveGold(killer, goldLost);
 		}
+
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+
+				player
+						.spigot()
+						.respawn();
+				player.sendTitle(
+						Utils.tacc("&c&lYou Died"), Utils.tacc(
+								"&c" + String.format("%,d", goldLost) +
+								" gold &7has been lost"), 1, 60, 1);
+				Scoreboard.updateScoreboard(player);
+			}
+		}.runTaskLater(Core.plugin(), 1);
+
 	}
 
 	@EventHandler

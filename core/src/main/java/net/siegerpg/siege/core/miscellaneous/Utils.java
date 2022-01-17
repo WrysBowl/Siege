@@ -4,14 +4,12 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.items.CustomItem;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.util.Vector;
 
@@ -119,83 +117,6 @@ public class Utils {
 		double rand1 = ((Math.random() * 75) + 1);
 		double rand2 = (((Math.random() * 75) + 1));
 		return (int) ((Math.sqrt(rand1 * rand2)) + 24);
-	}
-
-	public static ItemStack setLoreCost(CustomItem item) {
-
-		Integer levelReq = item.getLevelRequirement();
-		if (levelReq == null) levelReq = 0;
-
-		ItemStack updatedItem = item.getUpdatedItem(false);
-		int itemCost = item.getQuality() * levelReq * 2;
-
-
-		List< Component > lore = updatedItem.lore();
-		if (lore == null) lore = new ArrayList<>();
-		lore.add(Utils.parse("<yellow>Cost " + itemCost));
-
-		ItemMeta meta = updatedItem.getItemMeta();
-		meta.lore(lore);
-		updatedItem.setItemMeta(meta);
-		return updatedItem;
-	}
-
-	public static Integer getCost(ItemStack item) {
-
-		String cost = item
-				.getLore()
-				.get(item
-						     .getLore()
-						     .size() - 1);
-		cost = cost.replace(Utils.tacc("&eCost "), "");
-		return Integer.valueOf(cost);
-	}
-
-	public static ItemStack removeLastLore(ItemStack item) {
-
-		List< String > lore = new ArrayList<>(item
-				                                      .getLore()
-				                                      .size() - 1);
-		lore.addAll(item.getLore());
-		lore.remove(item
-				            .getLore()
-				            .size() - 1);
-
-		ItemMeta meta = item.getItemMeta();
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
-	}
-
-	public static ItemStack addLore(ItemStack item, Component... lore) {
-
-		List< Component > newLore = item.lore();
-		if (newLore == null) {
-			newLore = new ArrayList<>(lore.length);
-		}
-		newLore.add(lore(" "));
-		newLore.addAll(Arrays.asList(lore));
-		item.lore(newLore);
-		return item;
-	}
-
-	public static ItemStack setCost(ItemStack item, Integer cost) {
-
-		List< String > lore;
-		if (item.getLore() == null) {
-			lore = new ArrayList<>(1);
-		} else {
-			lore = new ArrayList<>(item
-					                       .getLore()
-					                       .size() + 1);
-			lore.addAll(item.getLore());
-		}
-		lore.add(Utils.tacc("&eCost " + cost));
-
-		ItemMeta meta = item.getItemMeta();
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
 	}
 
 	public static boolean giveItem(Player player, ItemStack item) {
