@@ -41,7 +41,9 @@ class BossLeaderboardCommand : BaseCommand() {
 			data.forEachIndexed { index, (uuid, data) ->
 				val timeInHHMMSS = Utils.secondsToHHMMSS(data.second.toLong())
 				val lbPlayer = Bukkit.getOfflinePlayer(uuid)
-				player.sendMessage(Utils.parse("<gold>${index + 1}. <gray>${lbPlayer.name}: <gold>${data.first}% <gray>(in <gold>${timeInHHMMSS} <gray>)"))
+				var name = lbPlayer.name
+				if (name == null) name = "Unknown"
+				player.sendMessage(Utils.parse("<gold>${index + 1}. <gray>${name}: <gold>${data.first}% <gray>(in <gold>${timeInHHMMSS} <gray>)"))
 			}
 			player.sendMessage(Utils.parse("<gold>------------"))
 		}
