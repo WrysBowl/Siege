@@ -104,9 +104,6 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 						             .plugin()
 						             .getServer()
 						             .getWorld(dungeon.world));
-				Bukkit.getServer().sendMessage(Utils.lore(""));
-				Bukkit.getServer().sendMessage(Utils.lore("<green>"+boss+" <green>has spawned at...!"));
-				Bukkit.getServer().sendMessage(Utils.lore(""));
 
 				Bukkit
 						.getServer()
@@ -127,6 +124,7 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 										.add(newBossFight);
 
 								Bukkit.getServer().sendMessage(Utils.lore(""));
+								Bukkit.getServer().sendMessage(Utils.lore("<green>"+dungeon.bossName+" <green>has spawned at"));
 								Bukkit.getServer().sendMessage(Utils.lore("<gray>X <yellow>"+dungeon.boss.getLocation().getX()));
 								Bukkit.getServer().sendMessage(Utils.lore("<gray>Y <yellow>"+dungeon.boss.getLocation().getY()));
 								Bukkit.getServer().sendMessage(Utils.lore("<gray>Z <yellow>"+dungeon.boss.getLocation().getZ()));
