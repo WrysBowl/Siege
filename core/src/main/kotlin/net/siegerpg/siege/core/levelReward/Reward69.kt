@@ -25,7 +25,7 @@ class Reward69(
 		override val items : List<ItemStack> = listOf()
               ) : LevelReward {
 
-	override fun sendMessage(player : Player) {
+	override fun extraReward(player : Player) {
 		Bukkit.getServer()
 				.broadcast(Utils.lore("<green>${player.name} has reached level $level!"))
 		player.sendMessage(Utils.lore("<green>+ 1 vault slot"))
