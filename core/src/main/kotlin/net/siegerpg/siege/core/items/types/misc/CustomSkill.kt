@@ -64,13 +64,12 @@ abstract class CustomSkill(
 	fun skillUse(e : PlayerInteractEvent) {
 		val player : Player = e.player
 
-		/* Remove when player can set skill level
 		val skillLevel = SkillData.getSkillLevel(player, skill)
 		if (skillLevel == null || skillLevel < 1) {
 			player.sendMessage(Utils.lore("<red>You have not unlocked this skill."))
 			return
 		}
-		this.level = skillLevel*/
+		this.level = skillLevel
 		this.serialize()
 		val item : ItemStack = this.getUpdatedItem(false)
 
