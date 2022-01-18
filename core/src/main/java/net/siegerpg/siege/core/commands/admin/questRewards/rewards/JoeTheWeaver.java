@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 public class JoeTheWeaver extends QuestReward {
 
 	public JoeTheWeaver() {
-		super(new ItemStack[]{ new StrawHelmet(50).getItem() }, "joeTheWeaver", 50, 20);
+		super(new ItemStack[]{ new StrawHelmet(50).getUpdatedItem(false) }, "joeTheWeaver", 50, 20);
 	}
 
 }

@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 public class MovingUp extends QuestReward {
 
 	public MovingUp() {
-		super(new ItemStack[]{ new Club(50).getItem() }, "movingUp", 50, 25);
+		super(new ItemStack[]{ new Club(50).getUpdatedItem(false) }, "movingUp", 50, 25);
 	}
 
 }
