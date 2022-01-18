@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.skills;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class Skill {
+public abstract class Skill implements Listener {
 
 	/**
 	 * The skill's identifier, should never change (unless you want people to lose skill progress)
