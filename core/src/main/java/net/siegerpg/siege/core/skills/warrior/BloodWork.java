@@ -16,17 +16,17 @@ public class BloodWork extends Skill {
 	final int initGoldCost = 3500;
 	final double bleedPercent = 0.75;
 
-	private final String identifier = "2_B_2";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Blood Work";
-	private final List< String > description =
-			List.of("Damage a target within",
-			        "2 meters on next hit to",
-			        "inflict bleed effect.",
-			        "Target loses 25% health,",
-			        "or 40% if weakened,",
-			        "over 10 seconds.");
-
+	public BloodWork() {
+		this.identifier = "2_B_2";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Blood Work";
+		this.description = List.of("Damage a target within",
+		                           "2 meters on next hit to",
+		                           "inflict bleed effect.",
+		                           "Target loses 25% health,",
+		                           "or 40% if weakened,",
+		                           "over 10 seconds.");
+	}
 
 	@Override
 	public List< String > getDescription() {

@@ -16,15 +16,15 @@ public class DivinePresence extends Skill {
 	final int initGoldCost = 2500;
 	final double healthMulti = 1.25;
 
-	private final String identifier = "3_A_3";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Divine Presence";
-	private final List< String > description =
-			List.of("Summon lightning to heal",
-			        "allies by +25% and weaken",
-			        "enemies by 20% for 10 seconds",
-			        "within 8 meters.");
-
+	public DivinePresence() {
+		this.identifier = "3_A_3";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Divine Presence";
+		this.description = List.of("Summon lightning to heal",
+		                           "allies by +25% and weaken",
+		                           "enemies by 20% for 10 seconds",
+		                           "within 8 meters.");
+	}
 
 	@Override
 	public List< String > getDescription() {

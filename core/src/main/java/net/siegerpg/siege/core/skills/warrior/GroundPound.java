@@ -16,16 +16,16 @@ public class GroundPound extends Skill {
 	final int initGoldCost = 3500;
 	final double damageMulti = 2.0;
 
-	private final String identifier = "3_B_3";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Ground Pound";
-	private final List< String > description =
-			List.of("Leap upwards, delivering a shockwave,",
-			        "and fall back down, delivering another.",
-			        "Shockwave pushes enemies backwards,",
-			        "weakens them for 3 seconds, and",
-			        "deals +100% damage within 4 meters.");
-
+	public GroundPound() {
+		this.identifier = "3_B_3";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Ground Pound";
+		this.description = List.of("Leap upwards, delivering a shockwave,",
+		                           "and fall back down, delivering another.",
+		                           "Shockwave pushes enemies backwards,",
+		                           "weakens them for 3 seconds, and",
+		                           "deals +100% damage within 4 meters.");
+	}
 
 	@Override
 	public List< String > getDescription() {

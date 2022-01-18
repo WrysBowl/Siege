@@ -17,15 +17,15 @@ public class QuakeCharge extends Skill {
 	final int duration = 5;
 	final double damageMulti = 1.5;
 
-	private final String identifier = "2_A_3";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Quake Charge";
-	private final List< String > description =
-			List.of("Charge in any direction for",
-			        "5 seconds. Inflicts +50% damage",
-			        "to any mobs in the way.",
-			        "Weakens you for 5 seconds");
-
+	public QuakeCharge() {
+		this.identifier = "2_A_3";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Quake Charge";
+		this.description = List.of("Charge in any direction for",
+		                           "5 seconds. Inflicts +50% damage",
+		                           "to any mobs in the way.",
+		                           "Weakens you for 5 seconds");
+	}
 
 	@Override
 	public List< String > getDescription() {

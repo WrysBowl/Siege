@@ -16,15 +16,15 @@ public class WarCry extends Skill {
 	final int duration = 10;
 	final double manaRestoreAmt = 0.75;
 
-	private final String identifier = "2_B_1";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "War Cry";
-	private final List< String > description =
-			List.of("Increase speed by 20%,",
-			        "or 40% if weakened, and",
-			        "restore 25% of your mana.",
-			        "Lasts 10 seconds");
-
+	public WarCry() {
+		this.identifier = "2_B_1";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "War Cry";
+		this.description = List.of("Increase speed by 20%,",
+		                           "or 40% if weakened, and",
+		                           "restore 25% of your mana.",
+		                           "Lasts 10 seconds");
+	}
 
 	@Override
 	public List< String > getDescription() {

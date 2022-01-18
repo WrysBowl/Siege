@@ -16,16 +16,16 @@ public class LightField extends Skill {
 	final int initGoldCost = 5000;
 	final double manaMulti = 1.05;
 
-	private final String identifier = "3_A_2";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Light Field";
-	private final List< String > description =
-			List.of("Enemies standing in this",
-			        "circle take 10% of your",
-			        "damage every second.",
-			        "Allies gain +5% mana/second.",
-			        "Lasts 5 seconds.");
-
+	public LightField() {
+		this.identifier = "3_A_2";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Light Field";
+		this.description = List.of("Enemies standing in this",
+		                           "circle take 10% of your",
+		                           "damage every second.",
+		                           "Allies gain +5% mana/second.",
+		                           "Lasts 5 seconds.");
+	}
 
 	@Override
 	public List< String > getDescription() {

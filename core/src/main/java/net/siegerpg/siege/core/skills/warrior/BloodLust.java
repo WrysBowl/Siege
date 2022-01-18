@@ -16,15 +16,15 @@ public class BloodLust extends Skill {
 	final int initGoldCost = 5000;
 	final double healMulti = 0.75;
 
-	private final String identifier = "3_B_2";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Blood Lust";
-	private final List< String > description =
-			List.of("Heal yourself for 25% of",
-			        "the damage you deal for",
-			        "10 seconds. If enemy is",
-			        "weakened heal for 50%.");
-
+	public BloodLust() {
+		this.identifier = "3_B_2";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Blood Lust";
+		this.description = List.of("Heal yourself for 25% of",
+		                           "the damage you deal for",
+		                           "10 seconds. If enemy is",
+		                           "weakened heal for 50%.");
+	}
 
 	@Override
 	public List< String > getDescription() {

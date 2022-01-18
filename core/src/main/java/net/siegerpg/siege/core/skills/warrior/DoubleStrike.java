@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.skills.warrior;
 
-import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.entity.Player;
@@ -15,14 +14,14 @@ public class DoubleStrike extends Skill {
 	final int initManaCost = 30;
 	final int initGoldCost = 2500;
 
-	private final String identifier = "2_B_3";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Double Strike";
-	private final List< String > description =
-			List.of("Slash your opponent twice,",
-			        "or three times if",
-			        "target is weakened");
-
+	public DoubleStrike() {
+		this.identifier = "2_B_3";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Double Strike";
+		this.description = List.of("Slash your opponent twice,",
+		                           "or three times if",
+		                           "target is weakened");
+	}
 
 	@Override
 	public List< String > getDescription() {

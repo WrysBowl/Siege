@@ -16,15 +16,15 @@ public class WoundingStrike extends Skill {
 	final int initGoldCost = 5000;
 	final int duration = 3;
 
-	private final String identifier = "3_B_1";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Wounding Strike";
-	private final List< String > description =
-			List.of("Deals +75% damage and",
-			        "reduces enemy healing by 50%",
-			        "for 3 seconds. If enemy is",
-			        "weakened reduce for 6 seconds");
-
+	public WoundingStrike() {
+		this.identifier = "3_B_1";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Wounding Strike";
+		this.description = List.of("Deals +75% damage and",
+		                           "reduces enemy healing by 50%",
+		                           "for 3 seconds. If enemy is",
+		                           "weakened reduce for 6 seconds");
+	}
 
 	@Override
 	public List< String > getDescription() {

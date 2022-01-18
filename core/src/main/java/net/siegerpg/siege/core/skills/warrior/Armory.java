@@ -24,15 +24,15 @@ public class Armory extends Skill {
 	final int initGoldCost = 5000;
 	final double damageMulti = 0.75;
 
-	private final String identifier = "2_A_1";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Armory";
-	private final List< String > description =
-			List.of("You take 25% less",
-			        "damage for 5 seconds.",
-			        "If weakened your damage",
-			        "reduction is 50%.");
-
+	public Armory() {
+		this.identifier = "2_A_1";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Armory";
+		this.description = List.of("You take 25% less",
+		                           "damage for 5 seconds.",
+		                           "If weakened your damage",
+		                           "reduction is 50%.");
+	}
 
 	@Override
 	public List< String > getDescription() {

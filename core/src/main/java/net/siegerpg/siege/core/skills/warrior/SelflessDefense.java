@@ -17,16 +17,16 @@ public class SelflessDefense extends Skill {
 	final double damageMulti = 0.75; //multiply to new damage
 	final double defenseMulti = 0.75; //multiply to new damage dealt to caster
 
-	private final String identifier = "2_A_4";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Selfless Defense";
-	private final List< String > description =
-			List.of("Absorb 25% of the damage",
-			        "that everyone within 10",
-			        "blocks takes. If weakened",
-			        "take 25% less damage.",
-			        "Lasts 10 seconds");
-
+	public SelflessDefense() {
+		this.identifier = "2_A_4";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Selfless Defense";
+		this.description = List.of("Absorb 25% of the damage",
+		                           "that everyone within 10",
+		                           "blocks takes. If weakened",
+		                           "take 25% less damage.",
+		                           "Lasts 10 seconds");
+	}
 
 	@Override
 	public List< String > getDescription() {

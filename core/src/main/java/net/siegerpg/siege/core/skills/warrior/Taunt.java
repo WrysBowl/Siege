@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.skills.warrior;
 
-import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.entity.Player;
@@ -17,15 +16,15 @@ public class Taunt extends Skill {
 	final int duration = 10;
 	final int range = 5;
 
-	private final String identifier = "2_A_2";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Taunt";
-	private final List< String > description =
-			List.of("Force all mobs within",
-			        "5 blocks to attack you.",
-			        "Weaken your attacks by 20%",
-			        "for 10 seconds");
-
+	public Taunt() {
+		this.identifier = "2_A_2";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Taunt";
+		this.description = List.of("Force all mobs within",
+		                           "5 blocks to attack you.",
+		                           "Weaken your attacks by 20%",
+		                           "for 10 seconds");
+	}
 
 	@Override
 	public List< String > getDescription() {

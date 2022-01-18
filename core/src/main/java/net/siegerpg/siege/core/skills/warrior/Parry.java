@@ -15,14 +15,14 @@ public class Parry extends Skill {
 	final int initGoldCost = 5000;
 	final int duration = 3;
 
-	private final String identifier = "2_B_4";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Parry";
-	private final List< String > description =
-			List.of("If hit within 3 seconds,",
-			        "block attack and weaken",
-			        "attacker for 3 seconds.");
-
+	public Parry() {
+		this.identifier = "2_B_4";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Parry";
+		this.description = List.of("If hit within 3 seconds,",
+		                           "block attack and weaken",
+		                           "attacker for 3 seconds.");
+	}
 
 	@Override
 	public List< String > getDescription() {

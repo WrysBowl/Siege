@@ -26,15 +26,14 @@ public class Slash extends Skill {
 	final double damageMulti = 1.5;
 	final double weakenChance = 5.0;
 
-	private final String identifier = "1_A_1";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Slash";
-	private final List< String > description =
-			List.of("Deal +50% damage to target",
-			        "with chance of 5% to weaken",
-			        "for 3 seconds");
-
-
+	public Slash() {
+		this.identifier = "1_A_1";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Slash";
+		this.description = List.of("Deal +50% damage to target",
+		                           "with chance of 5% to weaken",
+		                           "for 3 seconds");
+	}
 
 	@Override
 	public List< String > getDescription() {

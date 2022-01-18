@@ -18,9 +18,10 @@ public abstract class Skill implements Listener {
 	/**
 	 * The skill's identifier, should never change (unless you want people to lose skill progress)
 	 */
-	private String identifier;
-
+	public String identifier;
 	public SkillClass skillClass;
+	public String name;
+	public List< String > description;
 
 
 	/**
@@ -33,18 +34,18 @@ public abstract class Skill implements Listener {
 		return String.format("%s.%s", skillClass.getId(), identifier);
 	}
 
-
 	/**
-	 * The skill's name
+	 *
+	 * @return Name of the skill
 	 */
-	private String name;
+	public String getName() {
+
+		return name;
+	}
 
 	/**
-	 * The skill returned to the player (should not be used to identify the skill, use getName() instead)
 	 *
-	 * @param level
-	 *
-	 * @return
+	 * @return Formatted name of the skill
 	 */
 	public String getName(int level) {
 
@@ -52,18 +53,24 @@ public abstract class Skill implements Listener {
 	}
 
 	/**
-	 * The skill's description, what will be shown to the user
+	 *
+	 * @return Description of the skill
 	 */
-	private List< String > description;
-
-	public List< String > getDescription(int level) {
-
-		return description;
-	}
 	public List< String > getDescription() {
 
 		return description;
 	}
+
+	/**
+	 *
+	 * @return Formatted description of the skill
+	 */
+	public List< String > getDescription(int level) {
+
+		return description;
+	}
+
+
 
 	/**
 	 * The skill's parent (this skill is a child of that skill

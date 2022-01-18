@@ -26,14 +26,14 @@ public class Lunge extends Skill {
 	final int initGoldCost = 3000;
 	final double damageMulti = 1.5;
 
-	private final String identifier = "1_A_2";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Slash";
-	private final List< String > description =
-			List.of("Leap forwards dealing +50%",
-			        "damage to enemies in the way.",
-			        "If enemy is weakened deal +75%");
-
+	public Lunge() {
+		this.identifier = "1_A_2";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Lunge";
+		this.description = List.of("Leap forwards dealing +50%",
+		                           "damage to enemies in the way.",
+		                           "If enemy is weakened deal +75%");
+	}
 
 	@Override
 	public List< String > getDescription() {

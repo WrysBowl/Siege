@@ -16,14 +16,14 @@ public class ConcentratedStrike extends Skill {
 	final int initGoldCost = 3000;
 	final double manaMulti = 1.2;
 
-	private final String identifier = "3_A_1";
-	public final SkillClass skillClass = SkillClass.WARRIOR;
-	private final String name = "Concentrated Strike";
-	private final List< String > description =
-			List.of("Hit the enemy for +100% damage",
-			        "and gives +20% mana to allies, or",
-			        "30% if weakened within 10 meters.");
-
+	public ConcentratedStrike() {
+		this.identifier = "3_A_1";
+		this.skillClass = SkillClass.WARRIOR;
+		this.name = "Concentrated Strike";
+		this.description = List.of("Hit the enemy for +100% damage",
+		                           "and gives +20% mana to allies, or",
+		                           "30% if weakened within 10 meters.");
+	}
 
 	@Override
 	public List< String > getDescription() {
