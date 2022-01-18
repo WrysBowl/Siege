@@ -30,6 +30,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
@@ -38,9 +39,31 @@ public class PlayerData implements Listener {
 	public static HashMap< Player, Boolean > hasActionBar = new HashMap<>();
 	public static HashMap< Player, Boolean > broadcastTips = new HashMap<>();
 	public static HashMap< Player, Double > playerHealth = new HashMap<>();
-	public static HashMap< Player, Double > playerCurrentMana = new HashMap<>();
+	public static HashMap< Player, Double > playerRegeneration = new HashMap<>();
+
+	public static HashMap< Player, Integer > playerCurrentMana = new HashMap<>();
 	public static HashMap< Player, Integer > playerMana = new HashMap<>();
 	public static HashMap< Player, Location > playerDeathLocations = new HashMap<>();
+
+	//runnable to regenerate mana
+	public PlayerData() {
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+				for (Player player : Bukkit.getOnlinePlayers()) {
+
+					int maxMana = playerMana.get(player);
+					int currentMana = playerCurrentMana.get(player);
+					double regeneration = playerRegeneration.get(player)/2;
+					int newCurrentMana = currentMana + (int)regeneration;
+
+					if (newCurrentMana > maxMana) newCurrentMana = maxMana;
+					playerCurrentMana.put(player, newCurrentMana);
+				}
+			}
+		}.runTaskTimer(Core.plugin(), 20, 20);
+	}
 
 	public static int getRegenRate(int regen) {
 		int regenRate = (int)Math.ceil((regen/-10.0)+11);
@@ -65,6 +88,7 @@ public class PlayerData implements Listener {
 		return (expLevel.getFirst()-1)*10;
 	}
 
+
 	public static void setStats(Player player) {
 
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Core.plugin(), () -> {
@@ -83,9 +107,11 @@ public class PlayerData implements Listener {
 			player.setSaturatedRegenRate(regenRate);
 			player.setUnsaturatedRegenRate((int)(regenRate*1.25));
 
-			int mana = (int) (CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA) + 100 * getManaMultiplier(player));
+			int mana = (int) (CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA) + 100 + getManaMultiplier(player));
 
+			if (!playerCurrentMana.containsKey(player)) playerCurrentMana.put(player, mana);
 			playerHealth.put(player, player.getMaxHealth());
+			playerRegeneration.put(player, (double)regen);
 			playerMana.put(player, mana);
 		}, 2);
 	}
@@ -96,7 +122,7 @@ public class PlayerData implements Listener {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			setStats(player);
 			hasActionBar.put(player, false);
-			PlayerData.broadcastTips.put(player, true);
+			broadcastTips.put(player, true);
 			//playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
 		}
 	}
@@ -108,8 +134,8 @@ public class PlayerData implements Listener {
 		hasActionBar.put(player, false);
 		setStats(player);
 		//playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
-		if (!PlayerData.broadcastTips.containsKey(player)) {
-			PlayerData.broadcastTips.put(player, true);
+		if (!broadcastTips.containsKey(player)) {
+			broadcastTips.put(player, true);
 		}
 	}
 
@@ -117,6 +143,7 @@ public class PlayerData implements Listener {
 	public void onLeave(PlayerQuitEvent e) {
 
 		Player player = e.getPlayer();
+		playerRegeneration.remove(player);
 		playerHealth.remove(player);
 		playerMana.remove(player);
 		playerCurrentMana.remove(player);

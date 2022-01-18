@@ -24,12 +24,12 @@ public class StatChangeListener implements Listener, Runnable {
 					int mana = playerMana.get(p);
 
 					double currentHealth = Utils.round(p.getHealth(), 1);
-					double currentMana = Utils.round(PlayerData.playerCurrentMana.get(p), 1);
+					int currentMana = PlayerData.playerCurrentMana.get(p);
 
 					PlayerData.hasActionBar.put(p, true);
 					p.sendActionBar(Utils.parse(
 							"<red>" + currentHealth + "<dark_red>/" + health + " \u2764"+
-							"<aqua>" + currentMana + "<cyan>/" + mana + " \u2764"));
+							"    <aqua>" + currentMana + "<dark_aqua>/" + mana + " \u2740"));
 				}
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					PlayerData.hasActionBar.put(p, false);
