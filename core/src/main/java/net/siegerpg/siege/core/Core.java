@@ -26,6 +26,7 @@ import net.siegerpg.siege.core.miscellaneous.cache.MobNames;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import net.siegerpg.siege.core.parties.PartyCommand;
 import net.siegerpg.siege.core.parties.PartyConfig;
+import net.siegerpg.siege.core.skills.warrior.Armory;
 import net.siegerpg.siege.core.webstore.WebstoreCommand;
 import net.siegerpg.siege.core.webstore.WebstoreListener;
 import org.bukkit.Bukkit;
@@ -180,7 +181,13 @@ public final class Core extends JavaPlugin {
 				new CustomItemKotlinListener(),
 				new CustomEventListener(),
 				new MobCrateOpen(),
-				new MountSteer()
+				new MountSteer(),
+
+				/*
+				All Skills
+				 */
+				new Armory(),
+
 
 
 		};
