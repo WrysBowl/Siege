@@ -21,7 +21,7 @@ public class ConcentratedStrike extends Skill {
 	private final String name = "Concentrated Strike";
 	private final List< String > description =
 			List.of("Hit the enemy for +100% damage",
-			        "and give +20% mana to allies, or",
+			        "and gives +20% mana to allies, or",
 			        "30% if weakened within 10 meters.");
 
 
@@ -39,7 +39,7 @@ public class ConcentratedStrike extends Skill {
 	public List< String > getDescription(int level) {
 
 		return List.of("Hit the enemy for +100% damage",
-		               "and give +"+((getManaMulti(level, false) - 1) * 100)+"% mana to allies, or",
+		               "and gives +"+((getManaMulti(level, false) - 1) * 100)+"% mana to allies, or",
 		               ((getManaMulti(level, true) - 1) * 100)+"% if weakened within 10 meters.");
 	}
 
