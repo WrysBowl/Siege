@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
 //be sure to remove excess variables (quality, recipe list, etc.) same with cosmetics
+@Suppress("UNUSED_PARAMETER")
 abstract class CustomMount(
 		override var name : String,
 		override val customModelData : Int? = null,

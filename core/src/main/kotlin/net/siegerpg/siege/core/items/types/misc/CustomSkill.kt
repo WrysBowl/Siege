@@ -23,6 +23,7 @@ import org.bukkit.scheduler.BukkitRunnable
 
 
 //be sure to remove excess variables (quality, recipe list, etc.) same with cosmetics
+@Suppress("UNUSED_PARAMETER")
 abstract class CustomSkill(
 		override val name : String = "",
 		override val customModelData : Int? = null,

@@ -16,6 +16,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
+@Suppress("UNUSED_PARAMETER")
 abstract class CustomMaterial(
 		override val name : String,
 		override val customModelData : Int? = null,
