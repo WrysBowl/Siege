@@ -1,5 +1,7 @@
 package net.siegerpg.siege.core.items.types.misc
 
+import io.lumine.xikage.mythicmobs.MythicMobs.p
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -17,6 +19,8 @@ import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.scheduler.BukkitRunnable
+
 
 //be sure to remove excess variables (quality, recipe list, etc.) same with cosmetics
 abstract class CustomSkill(
@@ -64,6 +68,11 @@ abstract class CustomSkill(
 	fun skillUse(e : PlayerInteractEvent) {
 		val player : Player = e.player
 
+		//give player updated version of skill book
+		val itemGiven : ItemStack = this.getUpdatedItem(false)
+		player.inventory.setItemInMainHand(itemGiven)
+
+		//check if player has skill unlocked
 		val skillLevel = SkillData.getSkillLevel(player, skill)
 		if (skillLevel == null || skillLevel < 1) {
 			player.sendMessage(Utils.lore("<red>You have not unlocked this skill."))
@@ -71,11 +80,9 @@ abstract class CustomSkill(
 		}
 		this.level = skillLevel
 		this.serialize()
-		val item : ItemStack = this.getUpdatedItem(false)
 
-		player.inventory.setItemInMainHand(item)
+		//check if skill passes conditions
 		skill.trigger(player, this.level)
-
 	}
 
 	override fun serialize() {
