@@ -18,7 +18,7 @@ import org.bukkit.inventory.meta.PotionMeta
 import org.bukkit.potion.PotionData
 import org.bukkit.potion.PotionType
 
-@Suppress("UNUSED_PARAMETER")
+@Suppress("unused")
 abstract class CustomPotion(
 		override val name : String,
 		override val customModelData : Int? = null,

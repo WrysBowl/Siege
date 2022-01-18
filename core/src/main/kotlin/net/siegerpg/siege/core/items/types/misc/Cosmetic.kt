@@ -10,7 +10,7 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-@Suppress("UNUSED_PARAMETER")
+@Suppress("unused")
 abstract class Cosmetic(
 		override val name : String,
 		override var customModelData : Int? = null,

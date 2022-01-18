@@ -17,7 +17,7 @@ import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
-@Suppress("UNUSED_PARAMETER")
+@Suppress("unused")
 abstract class CustomFood(
 		override val name : String,
 		override val customModelData : Int? = null,

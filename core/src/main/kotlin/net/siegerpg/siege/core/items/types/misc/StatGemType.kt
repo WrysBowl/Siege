@@ -13,7 +13,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
-@Suppress("UNUSED_PARAMETER")
+@Suppress("unused")
 abstract class StatGemType(
 		override val name : String,
 		override val customModelData : Int? = null,
