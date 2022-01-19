@@ -15,15 +15,15 @@ public class Earthquake extends Skill {
 	final int initGoldCost = 5000;
 	final double damageMulti = 2.0;
 
-	private final String identifier = "2_B_4";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Earthquake";
-	private final List< String > description =
-			List.of("Erupt the ground with spikes.",
-			        "If hit, mobs will be damaged",
-			        "for +100% strength. Leaves",
-			        "dirt material for 30 seconds.");
-
+	public Earthquake() {
+		this.identifier = "2_B_4";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Earthquake";
+		this.description = List.of("Erupt the ground with spikes.",
+		                           "If hit, mobs will be damaged",
+		                           "for +100% strength. Leaves",
+		                           "dirt material for 30 seconds.");
+	}
 
 	@Override
 	public List< String > getDescription() {

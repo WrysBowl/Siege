@@ -16,16 +16,16 @@ public class Revitalize extends Skill {
 	final double manaMulti = 0.05;
 	final double healthMulti = 0.05;
 
-	private final String identifier = "2_B_2";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Rock Spike";
-	private final List< String > description =
-			List.of("Create a circle for allies",
-			        "that heal +5% HP/sec and",
-			        "+5% Mana/sec for 10 seconds.",
-			        "If circle is on earth material,",
-			        "increase duration to 20 seconds.");
-
+	public Revitalize() {
+		this.identifier = "2_B_2";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Revitalize";
+		this.description = List.of("Create a circle for allies",
+		                           "that heal +5% HP/sec and",
+		                           "+5% Mana/sec for 10 seconds.",
+		                           "If circle is on earth material,",
+		                           "increase duration to 20 seconds.");
+	}
 
 	@Override
 	public List< String > getDescription() {

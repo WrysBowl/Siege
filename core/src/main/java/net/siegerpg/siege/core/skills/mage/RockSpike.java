@@ -15,16 +15,16 @@ public class RockSpike extends Skill {
 	final int initGoldCost = 3000;
 	final double damageMulti = 2.0;
 
-	private final String identifier = "2_B_1";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Rock Spike";
-	private final List< String > description =
-			List.of("Erupt a spike from the ground,",
-			        "immobilizing the targets inside",
-			        "the spike for 3 seconds and",
-			        "dealing +100% damage. Deals +200%",
-			        "if the spike is made from earth.");
-
+	public RockSpike() {
+		this.identifier = "2_B_1";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Rock Spike";
+		this.description = List.of("Erupt a spike from the ground,",
+		                           "immobilizing the targets inside",
+		                           "the spike for 3 seconds and",
+		                           "dealing +100% damage. Deals +200%",
+		                           "if the spike is made from earth.");
+	}
 
 	@Override
 	public List< String > getDescription() {

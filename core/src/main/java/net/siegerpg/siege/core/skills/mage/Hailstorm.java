@@ -15,16 +15,16 @@ public class Hailstorm extends Skill {
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.0;
 
-	private final String identifier = "2_A_4";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Hailstorm";
-	private final List< String > description =
-			List.of("Ice bolts rain from the",
-			        "sky, striking enemies in",
-			        "a concentrated area. If",
-			        "damaged targets are slowed,",
-			        "deal +50% more damage.");
-
+	public Hailstorm() {
+		this.identifier = "2_A_4";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Hailstorm";
+		this.description = List.of("Ice bolts rain from the",
+		                           "sky, striking enemies in",
+		                           "a concentrated area. If",
+		                           "damaged targets are slowed,",
+		                           "deal +50% more damage.");
+	}
 
 	@Override
 	public List< String > getDescription() {

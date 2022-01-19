@@ -15,15 +15,15 @@ public class SoulHarvester extends Skill {
 	final int initGoldCost = 5000;
 	final double manaHealthMulti = 0.25;
 
-	private final String identifier = "2_B_3";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Soul Harvester";
-	private final List< String > description =
-			List.of("Create a circle that saps",
-			        "the soul of all enemies and",
-			        "allies that died in it. Heals",
-			        "for +25% HP and mana each soul.");
-
+	public SoulHarvester() {
+		this.identifier = "2_B_3";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Soul Harvester";
+		this.description = List.of("Create a circle that saps",
+		                           "the soul of all enemies and",
+		                           "allies that died in it. Heals",
+		                           "for +25% HP and mana each soul.");
+	}
 
 	@Override
 	public List< String > getDescription() {

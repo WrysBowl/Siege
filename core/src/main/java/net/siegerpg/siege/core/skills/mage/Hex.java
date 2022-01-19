@@ -16,14 +16,13 @@ public class Hex extends Skill {
 	final int initGoldCost = 5000;
 	final double damageMulti = 1.75;
 
-
-	private final String identifier = "1_A_3";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Hex";
-	private final List< String > description =
-			List.of("Increase damage dealt",
-			        "by +75% for next hit");
-
+	public Hex() {
+		this.identifier = "1_A_3";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Hex";
+		this.description = List.of("Increase damage dealt",
+		                           "by +75% for next hit");
+	}
 
 	@Override
 	public List< String > getDescription() {

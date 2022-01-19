@@ -16,16 +16,16 @@ public class Sacrifice extends Skill {
 	final int initGoldCost = 5000;
 	final double healthManaMulti = 0.25;
 
-	private final String identifier = "2_C_2";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Sacrifice";
-	private final List< String > description =
-			List.of("All of your puppets will",
-			        "take the damage dealt to",
-			        "you for 15 seconds. If a",
-			        "puppet is killed, gain +25%",
-			        "of your mana and health.");
-
+	public Sacrifice() {
+		this.identifier = "2_C_2";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Sacrifice";
+		this.description = List.of("All of your puppets will",
+		                           "take the damage dealt to",
+		                           "you for 15 seconds. If a",
+		                           "puppet is killed, gain +25%",
+		                           "of your mana and health.");
+	}
 
 	@Override
 	public List< String > getDescription() {

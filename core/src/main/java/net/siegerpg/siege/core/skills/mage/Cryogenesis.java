@@ -16,15 +16,15 @@ public class Cryogenesis extends Skill {
 	final double manaMulti = 0.05;
 	final double healthMulti = 0.05;
 
-	private final String identifier = "2_A_5";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Cryogenesis";
-	private final List< String > description =
-			List.of("Lose movement and eyesight",
-			        "for 10 seconds, then gain 20",
-			        "seconds of +10% mana regen/sec,",
-			        "+10% health/sec, and fill mana.");
-
+	public Cryogenesis() {
+		this.identifier = "2_A_5";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Cryogenesis";
+		this.description = List.of("Lose movement and eyesight",
+		                           "for 10 seconds, then gain 20",
+		                           "seconds of +10% mana regen/sec,",
+		                           "+10% health/sec, and fill mana.");
+	}
 
 	@Override
 	public List< String > getDescription() {

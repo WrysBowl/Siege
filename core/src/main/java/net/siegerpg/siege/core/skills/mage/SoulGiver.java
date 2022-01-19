@@ -15,16 +15,16 @@ public class SoulGiver extends Skill {
 	final int initGoldCost = 5000;
 	final double healthMulti = 0.25;
 
-	private final String identifier = "2_B_5";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Soul Giver";
-	private final List< String > description =
-			List.of("Lose 50% health to heal",
-			        "+25% of your health to all",
-			        "allies within 15 meters.",
-			        "health increases to +50%",
-			        "if standing on earth material.");
-
+	public SoulGiver() {
+		this.identifier = "2_B_5";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Soul Giver";
+		this.description = List.of("Lose 50% health to heal",
+		                           "+25% of your health to all",
+		                           "allies within 15 meters.",
+		                           "health increases to +50%",
+		                           "if standing on earth material.");
+	}
 
 	@Override
 	public List< String > getDescription() {

@@ -17,15 +17,15 @@ public class Golem extends Skill {
 	final double healthMulti = 5.00;
 	final double damageMulti = 1.00;
 
-	private final String identifier = "2_C_3";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Golem";
-	private final List< String > description =
-			List.of("Ride and control a golem",
-			        "that knocks enemies backwards",
-			        "and has 500% of your health,",
-			        "and 100% of your strength");
-
+	public Golem() {
+		this.identifier = "2_C_3";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Golem";
+		this.description = List.of("Ride and control a golem",
+		                           "that knocks enemies backwards",
+		                           "and has 500% of your health,",
+		                           "and 100% of your strength");
+	}
 
 	@Override
 	public List< String > getDescription() {

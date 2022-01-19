@@ -17,14 +17,14 @@ public class ZombiePuppet extends Skill {
 	final double healthMulti = 1.00;
 	final double damageMulti = 1.00;
 
-	private final String identifier = "2_C_1";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Zombie Puppet";
-	private final List< String > description =
-			List.of("Summon a zombie that fights for",
-			        "you. Has 100% of your strength,",
-			        "and 100% of your health.");
-
+	public ZombiePuppet() {
+		this.identifier = "2_C_1";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Zombie Puppet";
+		this.description = List.of("Summon a zombie that fights for",
+		                           "you. Has 100% of your strength,",
+		                           "and 100% of your health.");
+	}
 
 	@Override
 	public List< String > getDescription() {

@@ -16,16 +16,16 @@ public class DemonTransformation extends Skill {
 	final int initGoldCost = 10000;
 	final double damageMulti = 4.00;
 
-	private final String identifier = "2_C_4";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Demon Transformation";
-	private final List< String > description =
-			List.of("Transform into a demon",
-			        "for 30 seconds, and deal",
-			        "+300% strength on each hit.",
-			        "Each mob killed becomes",
-			        "a zombie puppet.");
-
+	public DemonTransformation() {
+		this.identifier = "2_C_4";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Demon Transformation";
+		this.description = List.of("Transform into a demon",
+		                           "for 30 seconds, and deal",
+		                           "+300% strength on each hit.",
+		                           "Each mob killed becomes",
+		                           "a zombie puppet.");
+	}
 
 	@Override
 	public List< String > getDescription() {

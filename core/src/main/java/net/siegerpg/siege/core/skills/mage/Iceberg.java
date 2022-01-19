@@ -1,6 +1,5 @@
 package net.siegerpg.siege.core.skills.mage;
 
-import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.entity.Player;
@@ -16,15 +15,15 @@ public class Iceberg extends Skill {
 	final int initGoldCost = 5000;
 	final double damageMulti = 2.0;
 
-	private final String identifier = "2_A_2";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Iceberg";
-	private final List< String > description =
-			List.of("Throws a block of ice",
-			        "at a target for +200%",
-			        "of your strength. Deals",
-			        "+250% if enemy is slowed.");
-
+	public Iceberg() {
+		this.identifier = "2_A_2";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Iceberg";
+		this.description = List.of("Throws a block of ice",
+		                           "at a target for +200%",
+		                           "of your strength. Deals",
+		                           "+250% if enemy is slowed.");
+	}
 
 	@Override
 	public List< String > getDescription() {

@@ -17,18 +17,18 @@ public class Invigorate extends Skill {
 	final double manaMulti = 1.2;
 	final int duration = 10;
 
-	private final String identifier = "1_A_2";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Invigorate";
-	private final List< String > description =
-			List.of("Allies in 10 meters are",
-			        "effected with haste for",
-			        "10 seconds and increased",
-			        "+20% of mana. If standing",
-			        "on earth type blocks",
-			        "regeneration is given",
-			        "for 10 seconds.");
-
+	public Invigorate() {
+		this.identifier = "1_A_2";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Invigorate";
+		this.description = List.of("Allies in 10 meters are",
+		                           "effected with haste for",
+		                           "10 seconds and increased",
+		                           "+20% of mana. If standing",
+		                           "on earth type blocks",
+		                           "regeneration is given",
+		                           "for 10 seconds.");
+	}
 
 	@Override
 	public List< String > getDescription() {

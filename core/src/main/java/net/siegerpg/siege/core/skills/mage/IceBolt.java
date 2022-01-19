@@ -16,16 +16,16 @@ public class IceBolt extends Skill {
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.25;
 
-	private final String identifier = "1_A_1";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Ice Bolt";
-	private final List< String > description =
-			List.of("Fires an ice missile",
-			        "towards an enemy that",
-			        "slows them by 20% for",
-			        "3 seconds and deals",
-			        "+25% strength damage.");
-
+	public IceBolt() {
+		this.identifier = "1_A_1";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Ice Bolt";
+		this.description = List.of("Fires an ice missile",
+		                           "towards an enemy that",
+		                           "slows them by 20% for",
+		                           "3 seconds and deals",
+		                           "+25% strength damage.");
+	}
 
 	@Override
 	public List< String > getDescription() {

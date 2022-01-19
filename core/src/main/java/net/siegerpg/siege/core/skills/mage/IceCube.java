@@ -15,14 +15,14 @@ public class IceCube extends Skill {
 	final int initGoldCost = 2500;
 	final int duration = 5;
 
-	private final String identifier = "2_A_3";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Ice Cube";
-	private final List< String > description =
-			List.of("Raise an ice prison",
-			        "in front of you that",
-			        "lasts 5 seconds");
-
+	public IceCube() {
+		this.identifier = "2_A_3";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Ice Cube";
+		this.description = List.of("Raise an ice prison",
+		                           "in front of you that",
+		                           "lasts 5 seconds");
+	}
 
 	@Override
 	public List< String > getDescription() {

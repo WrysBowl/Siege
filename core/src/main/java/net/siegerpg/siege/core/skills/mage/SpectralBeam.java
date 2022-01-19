@@ -16,15 +16,15 @@ public class SpectralBeam extends Skill {
 	final int initGoldCost = 5000;
 	final double damageMulti = 2.00;
 
-	private final String identifier = "2_C_5";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Spectral Beam";
-	private final List< String > description =
-			List.of("Shoot a beam, stunning all",
-			        "mobs in it's way for 3 seconds.",
-			        "Deals +100% strength and",
-			        "summon a zombie puppet.");
-
+	public SpectralBeam() {
+		this.identifier = "2_C_5";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Spectral Beam";
+		this.description = List.of("Shoot a beam, stunning all",
+		                           "mobs in it's way for 3 seconds.",
+		                           "Deals +100% strength and",
+		                           "summon a zombie puppet.");
+	}
 
 	@Override
 	public List< String > getDescription() {

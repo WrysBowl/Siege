@@ -16,14 +16,14 @@ public class FrostImplosion extends Skill {
 	final int initGoldCost = 5000;
 	final double damageMulti = 0.1;
 
-	private final String identifier = "2_A_1";
-	public final SkillClass skillClass = SkillClass.MAGE;
-	private final String name = "Frost Implosion";
-	private final List< String > description =
-			List.of("All enemies within 5 meters",
-			        "are slowed by 20% and take 10%",
-			        "damage/sec for 5 seconds.");
-
+	public FrostImplosion() {
+		this.identifier = "2_A_1";
+		this.skillClass = SkillClass.MAGE;
+		this.name = "Frost Implosion";
+		this.description = List.of("All enemies within 5 meters",
+		                           "are slowed by 20% and take 10%",
+		                           "damage/sec for 5 seconds.");
+	}
 
 	@Override
 	public List< String > getDescription() {
