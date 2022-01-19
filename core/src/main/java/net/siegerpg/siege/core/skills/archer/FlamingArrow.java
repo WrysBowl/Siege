@@ -14,16 +14,17 @@ public class FlamingArrow extends Skill {
 	final int initManaCost = 40;
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.5; //amount of time the arrow bounces around in seconds
-	private final String identifier = "2_B_2";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Flaming Arrow";
-	private final List< String > description =
-			List.of(
-					"Your next arrow will burn nearby",
-					"mobs where it lands. Deals +50% damage",
-					"if you or your enemy is burning."
-			       );
 
+	public FlamingArrow() {
+		this.identifier = "2_B_2";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Flaming Arrow";
+		this.description = List.of(
+				"Your next arrow will burn nearby",
+				"mobs where it lands. Deals +50% damage",
+				"if you or your enemy is burning."
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

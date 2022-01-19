@@ -14,16 +14,17 @@ public class Fireman extends Skill {
 	final int initManaCost = 150;
 	final int initGoldCost = 5000;
 	final int duration = 30;
-	private final String identifier = "2_B_3";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Fireman";
-	private final List< String > description =
-			List.of(
-					"Effects yourself with speed III",
-					"and burns all mobs in 6 blocks",
-					"for 30 seconds"
-			       );
 
+	public Fireman() {
+		this.identifier = "2_B_3";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Fireman";
+		this.description = List.of(
+				"Effects yourself with speed III",
+				"and burns all mobs in 6 blocks",
+				"for 30 seconds"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

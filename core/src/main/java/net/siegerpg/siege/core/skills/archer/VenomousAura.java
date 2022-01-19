@@ -14,16 +14,17 @@ public class VenomousAura extends Skill {
 	final int initManaCost = 150;
 	final int initGoldCost = 10000;
 	final double damageMulti = 1.05; //amount to multiply damage by
-	private final String identifier = "2_A_3";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Venomous Aura";
-	private final List< String > description =
-			List.of(
-					"Deal extra damage for every level",
-					"of poison your target is effected with",
-					"and poison yourself for 30 seconds"
-			       );
 
+	public VenomousAura() {
+		this.identifier = "2_A_3";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Venomous Aura";
+		this.description = List.of(
+				"Deal extra damage for every level",
+				"of poison your target is effected with",
+				"and poison yourself for 30 seconds"
+		                         );
+	}
 
 	@Override
 	public List< String > getDescription() {

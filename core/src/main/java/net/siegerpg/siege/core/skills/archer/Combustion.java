@@ -14,17 +14,18 @@ public class Combustion extends Skill {
 	final int initManaCost = 50;
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.5; //percentage to remove health by (1-0.1)*health = newHealth
-	private final String identifier = "3_B_3";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Combustion";
-	private final List< String > description =
-			List.of(
-					"This arrow will light the ground",
-					"on fire and explode on impact.",
-					"If player has Fireman skill active",
-					"explosion damage increases by 50%"
-			       );
 
+	public Combustion() {
+		this.identifier = "3_B_3";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Combustion";
+		this.description = List.of(
+				"This arrow will light the ground",
+				"on fire and explode on impact.",
+				"If player has Fireman skill active",
+				"explosion damage increases by 50%"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

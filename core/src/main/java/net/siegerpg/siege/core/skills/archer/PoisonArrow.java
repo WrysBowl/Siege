@@ -14,16 +14,17 @@ public class PoisonArrow extends Skill {
 	final int initManaCost = 30;
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.0; //poisoned multiplier base
-	private final String identifier = "2_A_1";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Poison Arrow";
-	private final List< String > description =
-			List.of(
-					"Your next arrow becomes poisonous",
-					"and deals more damage if you",
-					"or your target is poisoned"
-			       );
 
+	public PoisonArrow() {
+		this.identifier = "2_A_1";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Poison Arrow";
+		this.description = List.of(
+				"Your next arrow becomes poisonous",
+				"and deals more damage if you",
+				"or your target is poisoned"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

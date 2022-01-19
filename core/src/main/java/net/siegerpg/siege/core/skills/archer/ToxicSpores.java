@@ -15,16 +15,17 @@ public class ToxicSpores extends Skill {
 	final int initGoldCost = 5000;
 	final int poisonTier = 1; //tier of poison effect
 	final int duration = 30; //duration of effect
-	private final String identifier = "3_A_1";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Toxic Spores";
-	private final List< String > description =
-			List.of(
-					"The hit target is effected with",
-					"poison I and spreads the effect to",
-					"other mobs for 30 seconds"
-			       );
 
+	public ToxicSpores() {
+		this.identifier = "3_A_1";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Toxic Spores";
+		this.description = List.of(
+				"The hit target is effected with",
+				"poison I and spreads the effect to",
+				"other mobs for 30 seconds"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

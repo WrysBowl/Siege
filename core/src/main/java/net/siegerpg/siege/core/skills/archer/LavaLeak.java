@@ -17,18 +17,18 @@ public class LavaLeak extends Skill {
 	final int bubbleSize = 10; //time the sphere lasts for
 	final int duration = 60; //time the sphere lasts for
 
-	private final String identifier = "3_B_1";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Lava Leak";
-	private final List< String > description =
-			List.of(
-					"A 10 block diameter sphere of flames",
-					"form where your next arrow lands,",
-					"burning all mobs and healing you",
-					"for +5 HP/sec for each mob inside",
-					"lasts for 60 seconds"
-			       );
-
+	public LavaLeak() {
+		this.identifier = "3_B_1";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Lava Leak";
+		this.description = List.of(
+				"A 10 block diameter sphere of flames",
+				"form where your next arrow lands,",
+				"burning all mobs and healing you",
+				"for +5 HP/sec for each mob inside",
+				"lasts for 60 seconds"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

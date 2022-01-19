@@ -15,17 +15,18 @@ public class ExplodingArrow extends Skill {
 	final int initGoldCost = 3500;
 	final double damageMulti = 1.25; //percentage to remove health by (1-0.1)*health = newHealth
 	final double radius = 2.0; //percentage to remove health by (1-0.1)*health = newHealth
-	private final String identifier = "3_B_2";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Exploding Arrow";
-	private final List< String > description =
-			List.of(
-					"Shoots an explosive arrow.",
-					"Deals +25% of strength, or +50%",
-					"if affected targets are burning.",
-					"Explosive radius reaches 2 blocks"
-			       );
 
+	public ExplodingArrow() {
+		this.identifier = "3_B_2";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Exploding Arrow";
+		this.description = List.of(
+				"Shoots an explosive arrow.",
+				"Deals +25% of strength, or +50%",
+				"if affected targets are burning.",
+				"Explosive radius reaches 2 blocks"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

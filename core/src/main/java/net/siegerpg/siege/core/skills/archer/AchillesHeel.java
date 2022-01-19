@@ -14,11 +14,13 @@ public class AchillesHeel extends Skill {
 	final int initManaCost = 60;
 	final int initGoldCost = 5000;
 	final int initSpeedTime = 20;
-	private final String identifier = "1_A_2";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Achilles Heel";
-	private final List< String > description = List.of("Speed II for 20 seconds");
 
+	public AchillesHeel() {
+		this.identifier = "1_A_2";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Achilles Heel";
+		this.description = List.of("Speed II for 20 seconds");
+	}
 
 
 	@Override

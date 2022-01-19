@@ -14,11 +14,13 @@ public class CriticalShot extends Skill {
 	final int initManaCost = 50;
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.5;
-	private final String identifier = "1_A_1";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Critical Shot";
-	private final List< String > description = List.of("+50% STR next shot");
 
+	public CriticalShot() {
+		this.identifier = "1_A_1";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Critical Shot";
+		this.description = List.of("+50% STR next shot");
+	}
 
 	@Override
 	public List< String > getDescription() {

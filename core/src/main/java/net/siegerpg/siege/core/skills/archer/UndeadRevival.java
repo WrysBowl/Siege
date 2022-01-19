@@ -14,16 +14,17 @@ public class UndeadRevival extends Skill {
 	final int initManaCost = 100;
 	final int initGoldCost = 5000;
 	final int healAmt = 10; //amount to multiply damage by
-	private final String identifier = "3_A_2";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Undead Revival";
-	private final List< String > description =
-			List.of(
-					"Heals 10 HP/sec, but poison heals",
-					"an additional 10 HP/sec for every",
-					"tier you are effected by for 30 seconds"
-			       );
 
+	public UndeadRevival() {
+		this.identifier = "3_A_2";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Undead Revival";
+		this.description = List.of(
+				"Heals 10 HP/sec, but poison heals",
+				"an additional 10 HP/sec for every",
+				"tier you are effected by for 30 seconds"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

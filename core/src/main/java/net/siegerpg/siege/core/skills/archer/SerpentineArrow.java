@@ -14,15 +14,16 @@ public class SerpentineArrow extends Skill {
 	final int initManaCost = 50;
 	final int initGoldCost = 2500;
 	final int bounceDuration = 5; //amount of time the arrow bounces around in seconds
-	private final String identifier = "2_B_1";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Serpentine Arrow";
-	private final List< String > description =
-			List.of(
-					"Your next arrow will bounce",
-					"to a new enemy for 5 seconds"
-			       );
 
+	public SerpentineArrow() {
+		this.identifier = "2_B_1";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Serpentine Arrow";
+		this.description = List.of(
+				"Your next arrow will bounce",
+				"to a new enemy for 5 seconds"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

@@ -14,16 +14,17 @@ public class PiercingArrow extends Skill {
 	final int initManaCost = 50;
 	final int initGoldCost = 2500;
 	final double damageMulti = 1.1; //percentage to remove health by (1-0.1)*health = newHealth
-	private final String identifier = "2_A_2";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Piercing Arrow";
-	private final List< String > description =
-			List.of(
-					"The arrow will damage the enemy for",
-					"10% of their health if you and the",
-					"target are poisoned, if not, cat poison arrow"
-			       );
 
+	public PiercingArrow() {
+		this.identifier = "2_A_2";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Piercing Arrow";
+		this.description = List.of(
+				"The arrow will damage the enemy for",
+				"10% of their health if you and the",
+				"target are poisoned, if not, cat poison arrow"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {

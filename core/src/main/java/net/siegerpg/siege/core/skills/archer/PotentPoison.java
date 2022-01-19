@@ -15,17 +15,18 @@ public class PotentPoison extends Skill {
 	final int initGoldCost = 3000;
 	final int poisonTier = 3; //tier of poison to effect targets by
 	final int duration = 5; //time the sphere lasts for
-	private final String identifier = "3_A_3";
-	public final SkillClass skillClass = SkillClass.ARCHER;
-	private final String name = "Potent Poison";
-	private final List< String > description =
-			List.of(
-					"A sphere of poison forms",
-					"where your next arrow lands,",
-					"effecting targets with poison III.",
-					"Sphere lasts 5 seconds"
-			       );
 
+	public PotentPoison() {
+		this.identifier = "3_A_3";
+		this.skillClass = SkillClass.ARCHER;
+		this.name = "Potent Poison";
+		this.description = List.of(
+				"A sphere of poison forms",
+				"where your next arrow lands,",
+				"effecting targets with poison III.",
+				"Sphere lasts 5 seconds"
+		                          );
+	}
 
 	@Override
 	public List< String > getDescription() {
