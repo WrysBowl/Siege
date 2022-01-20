@@ -1,11 +1,10 @@
-<p align="center">
-    SiegeRPG
-</p>
+#SiegeRPG
 
 *Arrive to the land of Hilly Woods to aid settlers in their battles for home, and uncover the secrets of the spirits.*
 
 
 ##Beta Release Goals
+
 - [ ] Functions of all skills
 - [ ] GUI for skill unlocking and browsing
 - [ ] Area 1 quests and rewards implementation
