@@ -1,18 +1,11 @@
 package net.siegerpg.siege.core.listeners;
 
-import com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.items.CustomItem;
-import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.types.misc.CustomFood;
-import net.siegerpg.siege.core.miscellaneous.DropUtils;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.block.Campfire;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.*;
@@ -20,7 +13,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
-import org.bukkit.event.inventory.*;
+import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -161,7 +155,7 @@ public class WorldListener implements Listener, Runnable {
 
 		Entity entity = e.getRightClicked();
 		Player player = e.getPlayer();
-		if (entity instanceof ItemFrame || entity instanceof ArmorStand) {
+		if (entity instanceof ItemFrame) {
 			if (player.getGameMode().equals(GameMode.CREATIVE)) {
 				return;
 			}
@@ -174,7 +168,7 @@ public class WorldListener implements Listener, Runnable {
 
 		Entity entity = e.getRightClicked();
 		Player player = e.getPlayer();
-		if (entity instanceof ItemFrame || entity instanceof ArmorStand) {
+		if (entity instanceof ItemFrame) {
 			if (player.getGameMode().equals(GameMode.CREATIVE)) {
 				return;
 			}
