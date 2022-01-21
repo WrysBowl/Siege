@@ -36,7 +36,10 @@ abstract class CustomBow(
 		super.updateMeta(hideRarity)
 		val meta = item.itemMeta
 
-		if (material == Material.CROSSBOW) meta.addEnchant(Enchantment.PIERCING, 3, true)
+		if (material == Material.CROSSBOW) {
+			meta.addEnchant(Enchantment.PIERCING, 4, true)
+			meta.addEnchant(Enchantment.QUICK_CHARGE, 3, true)
+		}
 		if (material == Material.TRIDENT) meta.addEnchant(Enchantment.LOYALTY, 3, true)
 
 		meta.addItemFlags(
