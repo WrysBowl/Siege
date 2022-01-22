@@ -198,13 +198,13 @@ public abstract class Skill implements Listener {
 		}
 		// Checks if the player has enough mana
 		int manaCost = getManaCost(level);
-		Integer playerMana = PlayerData.playerMana.get(player);
+		Integer playerMana = PlayerData.playerCurrentMana.get(player);
 		if (playerMana == null || playerMana < manaCost) {
 			player.sendMessage(Utils.lore("<red>You do not have enough mana to activate this skill."));
 			return false;
 		}
 		// Removes the mana from the user
-		PlayerData.playerMana.put(player, playerMana - manaCost);
+		PlayerData.playerCurrentMana.put(player, playerMana - manaCost);
 		// After here you should only put stuff that should be run for every skill trigger
 		return true;
 	}
