@@ -140,12 +140,7 @@ class CustomItemKotlinListener : Listener {
 				setVictimName(victim, e.damage, vicMaxHealth)
 				return
 			}
-			val levelReq = item.levelRequirement
-			if (levelReq == null) {
-				e.damage = 1.0
-				setVictimName(victim, e.damage, vicMaxHealth)
-				return
-			}
+			val levelReq = item.levelRequirement ?: -1
 			if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
 				attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
 				e.damage = 1.0
@@ -163,7 +158,7 @@ class CustomItemKotlinListener : Listener {
 
 				maxDamage = 7.25
 				actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
-			} else if (item is CustomWand) {
+			} else if (item is CustomWand || item is CustomSkill) {
 				maxDamage = damage
 			}
 			//If the item is an axe/sword and the damage cause is melee attack then set correct damage

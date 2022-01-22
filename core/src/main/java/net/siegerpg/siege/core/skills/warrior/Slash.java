@@ -87,7 +87,7 @@ public class Slash extends Skill {
 		Vector vector = player.getLocation().getDirection();
 
 		//location of particle effect
-		Location location = player.getEyeLocation().add(vector).multiply(2);
+		Location location = player.getEyeLocation().add(vector.multiply(2));
 
 		//damage to deal
 		double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH)*getDamageMulti(level);
