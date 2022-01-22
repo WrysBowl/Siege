@@ -113,6 +113,7 @@ public class Lunge extends Skill {
 			public void run() {
 				//stop checking for enemies
 				if (counter >= 12) {
+					triggerEnd(player, level);
 					this.cancel();
 				}
 

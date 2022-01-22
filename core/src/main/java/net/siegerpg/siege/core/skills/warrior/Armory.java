@@ -82,12 +82,10 @@ public class Armory extends Skill {
 		if(!super.trigger(player, level)) return false;
 
 		//add skill to active skills and remove 5 seconds later
-		ActiveSkillData.addToActiveSkills(player, this);
-		Skill skill = this;
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				ActiveSkillData.removeFromActiveSkills(player, skill);
+				triggerEnd(player, level);
 			}
 		}.runTaskLater(Core.plugin(), 100);
 

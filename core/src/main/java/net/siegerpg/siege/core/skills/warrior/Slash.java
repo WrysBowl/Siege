@@ -106,6 +106,7 @@ public class Slash extends Skill {
 				entity.addPotionEffect(potion);
 			}
 		}
+		triggerEnd(player, level);
 		return true;
 	}
 
