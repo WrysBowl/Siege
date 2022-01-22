@@ -87,7 +87,7 @@ public class Slash extends Skill {
 		Vector vector = player.getLocation().getDirection();
 
 		//location of particle effect
-		Location location = player.getLocation().add(vector);
+		Location location = player.getEyeLocation().add(vector).multiply(2);
 
 		//damage to deal
 		double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH)*getDamageMulti(level);
@@ -99,9 +99,9 @@ public class Slash extends Skill {
 		//create weakness potion
 		PotionEffect potion = new PotionEffect(PotionEffectType.WEAKNESS, 60, 0);
 
-		for (LivingEntity entity : location.getNearbyLivingEntities(1.5, 1.5, 1.5)) {
+		for (LivingEntity entity : location.getNearbyLivingEntities(2, 2, 2)) {
 			if (entity.equals(player)) continue;
-			entity.damage(damage, entity);
+			entity.damage(damage, player);
 			if (Utils.randTest(getWeakenChance(level))) {
 				entity.addPotionEffect(potion);
 			}
