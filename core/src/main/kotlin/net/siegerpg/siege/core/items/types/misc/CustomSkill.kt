@@ -12,14 +12,20 @@ import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
 import net.siegerpg.siege.core.skills.Skill
 import net.siegerpg.siege.core.skills.SkillClass
+import net.siegerpg.siege.core.skills.SkillCooldown
 import net.siegerpg.siege.core.skills.SkillData
 import net.siegerpg.siege.core.skills.warrior.Slash
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.Damageable
 import org.bukkit.scheduler.BukkitRunnable
+import java.time.Instant
+import kotlin.math.ceil
+import kotlin.math.max
 
 
 //be sure to remove excess variables (quality, recipe list, etc.) same with cosmetics
@@ -30,7 +36,7 @@ abstract class CustomSkill(
 		override val levelRequirement : Int? = null,
 		override var rarity : Rarity = Rarity.RARE,
 		override val description : List<String> = listOf(),
-		override val material : Material = Material.BOOK,
+		override val material : Material = Material.NETHERITE_SHOVEL,
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.SKILL,
@@ -60,7 +66,6 @@ abstract class CustomSkill(
 		}
 		meta.lore("<underlined><dark_gray>                    ")
 
-		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 		item.itemMeta = meta
 		return item
@@ -87,7 +92,44 @@ abstract class CustomSkill(
 
 
 		//check if skill passes conditions
-		skill.trigger(player, this.level)
+		if(!skill.trigger(player, this.level)) return
+
+		val initTime : Instant = Instant.now()
+		val endTime : Instant = SkillCooldown.getResetTime(player.uniqueId, skill) ?: initTime.plusSeconds(3)
+		val differenceInTicks : Long = (endTime.epochSecond - initTime.epochSecond) * 20
+
+		val maxDurability = this.material.maxDurability
+		val durabilityPerTick = maxDurability / differenceInTicks
+		val inventorySlot : Int = player.inventory.heldItemSlot //inventory slot of item
+		val meta : Damageable = itemGiven.itemMeta as Damageable
+		meta.damage = maxDurability.toInt()
+
+		//change the durability to match cooldown
+		object : BukkitRunnable() {
+			override fun run() {
+				val itemInSlot : ItemStack? = player.inventory.getItem(inventorySlot)
+				if (itemInSlot == null) {
+					itemGiven.durability = maxDurability
+					this.cancel()
+					return
+				}
+				if (itemInSlot.itemMeta?.displayName != itemGiven.itemMeta.displayName) {
+					itemGiven.durability = maxDurability
+					this.cancel()
+					return
+				}
+				if (meta.damage <= 0) {
+					itemGiven.durability = maxDurability
+					this.cancel()
+					return
+				}
+
+				meta.damage = (meta.damage - (durabilityPerTick * 10)).toInt()
+				itemGiven.itemMeta = meta
+				player.inventory.setItem(inventorySlot, itemGiven)
+			}
+
+		}.runTaskTimer(Core.plugin(), 10, 10)
 	}
 
 	override fun serialize() {
