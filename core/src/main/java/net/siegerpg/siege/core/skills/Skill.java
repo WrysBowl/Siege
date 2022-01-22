@@ -205,6 +205,8 @@ public abstract class Skill implements Listener {
 		}
 		// Removes the mana from the user
 		PlayerData.playerCurrentMana.put(player, playerMana - manaCost);
+		ActiveSkillData.addToActiveSkills(player, this);
+
 		// After here you should only put stuff that should be run for every skill trigger
 		return true;
 	}
