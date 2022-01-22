@@ -1,10 +1,9 @@
 package net.siegerpg.siege.core.customEvents;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.customEvents.events.*;
-import org.bukkit.Bukkit;
-import org.bukkit.event.Event;
-import org.bukkit.event.EventHandler;
+import net.siegerpg.siege.core.customEvents.events.Haste_Buff;
+import net.siegerpg.siege.core.customEvents.events.More_Carrots;
+import net.siegerpg.siege.core.customEvents.events.More_Wheat;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -13,7 +12,6 @@ import java.util.HashMap;
 public class CustomEventListener implements Listener {
 	public static HashMap<String, CustomEvent> events = new HashMap<>() {
 		{
-			put("GOLD_STORM", new Gold_Storm());
 			put("HASTE_BUFF", new Haste_Buff());
 			put("MORE_CARROTS", new More_Carrots());
 			put("MORE_WHEAT", new More_Wheat());
