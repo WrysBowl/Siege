@@ -73,14 +73,18 @@ abstract class CustomSkill(
 		val itemGiven : ItemStack = this.getUpdatedItem(false)
 		player.inventory.setItemInMainHand(itemGiven)
 
+
 		//check if player has skill unlocked
-		val skillLevel = SkillData.getSkillLevel(player, skill)
+		val skillLevel = SkillData.getSkillLevel(player, skill) ?: 1
+		/*
 		if (skillLevel == null || skillLevel < 1) {
 			player.sendMessage(Utils.lore("<red>You have not unlocked this skill."))
 			return
 		}
+		*/
 		this.level = skillLevel
 		this.serialize()
+
 
 		//check if skill passes conditions
 		skill.trigger(player, this.level)
