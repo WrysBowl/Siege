@@ -99,7 +99,7 @@ public class Slash extends Skill {
 		//create weakness potion
 		PotionEffect potion = new PotionEffect(PotionEffectType.WEAKNESS, 60, 0);
 
-		for (LivingEntity entity : location.getNearbyLivingEntities(2, 2, 2)) {
+		for (LivingEntity entity : location.getNearbyLivingEntities(3, 3, 3)) {
 			if (entity.equals(player)) continue;
 			entity.damage(damage, player);
 			if (Utils.randTest(getWeakenChance(level))) {
