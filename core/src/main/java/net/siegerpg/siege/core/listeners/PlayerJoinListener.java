@@ -71,9 +71,7 @@ public class PlayerJoinListener implements Listener {
 		String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(
 				player);
 		String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
-		player.teleport(Core
-				                .plugin()
-				                .getSpawnLocation());
+		player.teleport(Core.plugin().getSpawnLocation());
 
 		Levels.INSTANCE.getExpLevel(player, shortIntegerPair -> {
 			if (shortIntegerPair == null) {
@@ -131,7 +129,6 @@ public class PlayerJoinListener implements Listener {
             }
             Skills.INSTANCE.setSkills(player, "A_1_3");
         }*/
-		player.teleport(Core.plugin().getSpawnLocation());
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
 	}
 
