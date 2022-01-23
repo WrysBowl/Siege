@@ -52,7 +52,7 @@ public class PlayerData implements Listener {
 			@Override
 			public void run() {
 				for (Player player : Bukkit.getOnlinePlayers()) {
-
+					if (!playerMana.containsKey(player)) continue;
 					int maxMana = playerMana.get(player);
 					int currentMana = playerCurrentMana.get(player);
 					double regeneration = playerRegeneration.get(player)/2;
@@ -171,7 +171,6 @@ public class PlayerData implements Listener {
 					.playSound(e
 							           .getPlayer()
 							           .getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
-			e.setCancelled(true);
 			return;
 		}
 		setStats(e.getPlayer());
