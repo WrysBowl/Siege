@@ -31,7 +31,7 @@ interface LevelReward {
 			GoldExpListener.giveGold(player, gold)
 		}
 		for (item in items) {
-			val miniMessage = Utils.lore("<gray>\u27A5 " + item.itemMeta.displayName).hoverEvent(item)
+			val miniMessage = Utils.lore("<gray>\u27A5 " + item.itemMeta.displayName + " <yellow>x" + item.amount).hoverEvent(item)
 			player.sendMessage(miniMessage)
 			Utils.giveItem(player, item)
 		}
