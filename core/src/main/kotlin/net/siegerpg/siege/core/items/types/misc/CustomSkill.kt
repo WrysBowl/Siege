@@ -103,6 +103,7 @@ abstract class CustomSkill(
 		val inventorySlot : Int = player.inventory.heldItemSlot //inventory slot of item
 		val meta : Damageable = itemGiven.itemMeta as Damageable
 		meta.damage = maxDurability.toInt()
+		var currentDamage : Double = meta.damage.toDouble()
 
 		//change the durability to match cooldown
 		object : BukkitRunnable() {
@@ -120,14 +121,14 @@ abstract class CustomSkill(
 					this.cancel()
 					return
 				}
-
-				meta.damage = (meta.damage - (durabilityPerTick * 10)).toInt()
+				currentDamage -= (durabilityPerTick * 4)
+				meta.damage = currentDamage.toInt()
 				itemGiven.itemMeta = meta
 
 				player.inventory.setItem(inventorySlot, itemGiven)
 			}
 
-		}.runTaskTimer(Core.plugin(), 10, 10)
+		}.runTaskTimer(Core.plugin(), 4, 4)
 	}
 
 	override fun serialize() {
