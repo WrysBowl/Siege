@@ -109,23 +109,21 @@ abstract class CustomSkill(
 			override fun run() {
 				val itemInSlot : ItemStack? = player.inventory.getItem(inventorySlot)
 				if (itemInSlot == null) {
-					itemGiven.durability = maxDurability
 					this.cancel()
 					return
 				}
 				if (itemInSlot.itemMeta?.displayName != itemGiven.itemMeta.displayName) {
-					itemGiven.durability = maxDurability
 					this.cancel()
 					return
 				}
 				if (meta.damage <= 0) {
-					itemGiven.durability = maxDurability
 					this.cancel()
 					return
 				}
 
 				meta.damage = (meta.damage - (durabilityPerTick * 10)).toInt()
 				itemGiven.itemMeta = meta
+
 				player.inventory.setItem(inventorySlot, itemGiven)
 			}
 
