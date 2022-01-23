@@ -158,8 +158,10 @@ class CustomItemKotlinListener : Listener {
 
 				maxDamage = 7.25
 				actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
-			} else if (item is CustomWand || item is CustomSkill) {
+			} else if (item is CustomWand) {
 				maxDamage = damage
+			} else if (item is CustomSkill) {
+				maxDamage = 1.0
 			}
 			//If the item is an axe/sword and the damage cause is melee attack then set correct damage
 			if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
