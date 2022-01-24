@@ -73,7 +73,9 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"wheat" to Wheats(),
 						"wool" to Wools(),
 						"mobKey" to MobKey(),
-
+						"refinedMetal" to RefinedMetals(),
+						"coal" to Coals(),
+						"metalScrap" to MetalScraps()
 						)
 		                   )
 

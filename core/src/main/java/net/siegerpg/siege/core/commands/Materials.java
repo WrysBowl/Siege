@@ -34,11 +34,11 @@ public class Materials implements CommandExecutor {
 
 	public ChestGui getMenu(Player player) {
 		//Menu
-		ChestGui menu = new ChestGui(4, "Materials Crafting");
+		ChestGui menu = new ChestGui(5, "Materials Crafting");
 
 		menu.setOnGlobalClick(event -> event.setCancelled(true));
 
-		OutlinePane background = new OutlinePane(0, 0, 9, 4, Pane.Priority.LOWEST);
+		OutlinePane background = new OutlinePane(0, 0, 9, 5, Pane.Priority.LOWEST);
 
 		ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
 		ItemMeta fillerMeta = filler.getItemMeta();
@@ -48,7 +48,7 @@ public class Materials implements CommandExecutor {
 		background.setRepeat(true);
 		menu.addPane(background);
 
-		OutlinePane row = new OutlinePane(1, 1, 7, 4);
+		OutlinePane row = new OutlinePane(1, 1, 7, 5);
 
 		//icons
 		row.addItem(getBoneIcon(player));
@@ -63,6 +63,9 @@ public class Materials implements CommandExecutor {
 		row.addItem(getVineIcon(player));
 		row.addItem(getWheatIcon(player));
 		row.addItem(getWoolIcon(player));
+		row.addItem(getCoalIcon(player));
+		row.addItem(getMetalScrapIcon(player));
+		row.addItem(getRefinedMetalIcon(player));
 
 		menu.addPane(row);
 
@@ -184,7 +187,7 @@ public class Materials implements CommandExecutor {
 	}
 
 	private static GuiItem getSeedIcon(Player player) {
-		ItemStack icon = Pebble.Companion.tier(0).getItem();
+		ItemStack icon = Seed.Companion.tier(0).getItem();
 		ItemMeta iconItemMeta = icon.getItemMeta();
 		iconItemMeta.displayName(Utils.lore("<color:#D4DC7F>Seed"));
 		iconItemMeta.lore(new ArrayList<>() {
@@ -294,6 +297,63 @@ public class Materials implements CommandExecutor {
 		icon.setItemMeta(iconItemMeta);
 		return new GuiItem(icon, e -> {
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shops wool " + player.getName());
+		});
+	}
+
+	private static GuiItem getCoalIcon(Player player) {
+		ItemStack icon = Coal.Companion.tier(0).getItem();
+		ItemMeta iconItemMeta = icon.getItemMeta();
+		iconItemMeta.displayName(Utils.lore("<color:#D4DC7F>Coal"));
+		iconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<dark_gray><underlined>              "));
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>View recipe"));
+				add(Utils.lore("<dark_gray><underlined>              "));
+			}
+		});
+
+		icon.setItemMeta(iconItemMeta);
+		return new GuiItem(icon, e -> {
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shops coal " + player.getName());
+		});
+	}
+
+	private static GuiItem getMetalScrapIcon(Player player) {
+		ItemStack icon = MetalScrap.Companion.tier(0).getItem();
+		ItemMeta iconItemMeta = icon.getItemMeta();
+		iconItemMeta.displayName(Utils.lore("<color:#D4DC7F>Metal Scrap"));
+		iconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<dark_gray><underlined>              "));
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>View recipe"));
+				add(Utils.lore("<dark_gray><underlined>              "));
+			}
+		});
+
+		icon.setItemMeta(iconItemMeta);
+		return new GuiItem(icon, e -> {
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shops metalScrap " + player.getName());
+		});
+	}
+
+	private static GuiItem getRefinedMetalIcon(Player player) {
+		ItemStack icon = RefinedMetal.Companion.tier(0).getItem();
+		ItemMeta iconItemMeta = icon.getItemMeta();
+		iconItemMeta.displayName(Utils.lore("<color:#D4DC7F>Refined Metal"));
+		iconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<dark_gray><underlined>              "));
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>View recipe"));
+				add(Utils.lore("<dark_gray><underlined>              "));
+			}
+		});
+
+		icon.setItemMeta(iconItemMeta);
+		return new GuiItem(icon, e -> {
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shops refinedMetal " + player.getName());
 		});
 	}
 }
