@@ -38,14 +38,13 @@ class JaggedTunic() : CustomChestplate(
 
 	override fun onHit(e : EntityDamageEvent) {
 		val player = (e.entity as Player).player ?: return
-		val item = player.inventory.chestplate
-		val cusItem = CustomItemUtils.getCustomItem(item) ?: return
 		if (e !is EntityDamageByEntityEvent) return
 		val attacker : Entity = e.damager
 		if (attacker !is LivingEntity) return
-		if (cusItem.levelRequirement == null) return
-		if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first
-		                                  ?: 0)
+		if (attacker.equals(player)) return
+		if (this.levelRequirement == null) return
+		if (this.levelRequirement > (Levels.blockingGetExpLevel(player)?.first
+		                             ?: 0)
 		) return
 
 		attacker.damage(5.0, player)
