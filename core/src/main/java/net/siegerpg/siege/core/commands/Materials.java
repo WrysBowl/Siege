@@ -63,9 +63,11 @@ public class Materials implements CommandExecutor {
 		row.addItem(getVineIcon(player));
 		row.addItem(getWheatIcon(player));
 		row.addItem(getWoolIcon(player));
+		row.addItem(getChainIcon(player));
 		row.addItem(getCoalIcon(player));
 		row.addItem(getMetalScrapIcon(player));
 		row.addItem(getRefinedMetalIcon(player));
+		row.addItem(getTitaniumIcon(player));
 
 		menu.addPane(row);
 
@@ -299,6 +301,24 @@ public class Materials implements CommandExecutor {
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shops wool " + player.getName());
 		});
 	}
+	private static GuiItem getChainIcon(Player player) {
+		ItemStack icon = Chain.Companion.tier(0).getItem();
+		ItemMeta iconItemMeta = icon.getItemMeta();
+		iconItemMeta.displayName(Utils.lore("<color:#D4DC7F>Chain"));
+		iconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<dark_gray><underlined>              "));
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>View recipe"));
+				add(Utils.lore("<dark_gray><underlined>              "));
+			}
+		});
+
+		icon.setItemMeta(iconItemMeta);
+		return new GuiItem(icon, e -> {
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shops chain " + player.getName());
+		});
+	}
 
 	private static GuiItem getCoalIcon(Player player) {
 		ItemStack icon = Coal.Companion.tier(0).getItem();
@@ -354,6 +374,24 @@ public class Materials implements CommandExecutor {
 		icon.setItemMeta(iconItemMeta);
 		return new GuiItem(icon, e -> {
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shops refinedMetal " + player.getName());
+		});
+	}
+	private static GuiItem getTitaniumIcon(Player player) {
+		ItemStack icon = Titanium.Companion.tier(0).getItem();
+		ItemMeta iconItemMeta = icon.getItemMeta();
+		iconItemMeta.displayName(Utils.lore("<color:#D4DC7F>Titanium"));
+		iconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<dark_gray><underlined>              "));
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>View recipe"));
+				add(Utils.lore("<dark_gray><underlined>              "));
+			}
+		});
+
+		icon.setItemMeta(iconItemMeta);
+		return new GuiItem(icon, e -> {
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shops titanium " + player.getName());
 		});
 	}
 }

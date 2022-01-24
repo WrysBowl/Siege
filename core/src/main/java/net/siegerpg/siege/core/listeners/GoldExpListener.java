@@ -63,7 +63,7 @@ public class GoldExpListener implements Listener {
 		//check if exp calculation for player is currently being processed
 		if (expCalculating.contains(player)) {
 			e.setCancelled(true);
-			e.getExperienceOrb().setVelocity(player.getLocation().getDirection().multiply(2));
+			e.getExperienceOrb().setVelocity(player.getLocation().getDirection().multiply(0.5));
 			//if exp calculation has been processed, add to rate limiter arraylist
 			if (awaitingRemoval.contains(player)) return;
 			awaitingRemoval.add(player);

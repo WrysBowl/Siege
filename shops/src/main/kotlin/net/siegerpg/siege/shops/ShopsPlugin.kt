@@ -75,8 +75,12 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"mobKey" to MobKey(),
 						"refinedMetal" to RefinedMetals(),
 						"coal" to Coals(),
-						"metalScrap" to MetalScraps()
-						)
+						"metalScrap" to MetalScraps(),
+						"titanium" to Titaniums(),
+						"chain" to Chains()
+
+
+				         )
 		                   )
 
 	}
