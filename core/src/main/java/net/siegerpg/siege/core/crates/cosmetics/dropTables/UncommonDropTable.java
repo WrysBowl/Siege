@@ -18,7 +18,7 @@ public class UncommonDropTable extends CosmeticDropTable {
 			{
 				put(new Bee(0), 10);
 				put(new DavyJonesCap(0), 10);
-				//put(new GooBall(0), 10);
+				put(new GooBall(0), 10);
 				put(new WiseGuy(0), 10);
 				put(new WitchHat(0), 10);
 				put(new CatMount(0), 15);

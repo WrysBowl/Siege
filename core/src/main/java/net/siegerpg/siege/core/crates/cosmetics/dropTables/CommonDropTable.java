@@ -15,8 +15,8 @@ public class CommonDropTable extends CosmeticDropTable {
 
 		dropTable = new HashMap<>() {
 			{
-				//put(new AnonMask(0), 10);
-				//put(new ArrowHead(0), 10);
+				put(new AnonMask(0), 10);
+				put(new ArrowHead(0), 10);
 				put(new BunnyEars(0), 10);
 				put(new Chocolate(0), 10);
 				put(new DogEars(0), 10);
@@ -25,7 +25,7 @@ public class CommonDropTable extends CosmeticDropTable {
 				put(new Mohawk(0), 10);
 				put(new PartyHat(0), 10);
 				put(new PigNose(0), 10);
-				//put(new SquidGame(0), 10);
+				put(new SquidGame(0), 10);
 				put(new StrawHat(0), 10);
 				put(new SurgicalMask(0), 10);
 				put(new CowMount(0), 15);
