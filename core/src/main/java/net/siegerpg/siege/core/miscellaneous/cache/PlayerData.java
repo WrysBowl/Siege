@@ -55,7 +55,7 @@ public class PlayerData implements Listener {
 					if (!playerMana.containsKey(player)) continue;
 					int maxMana = playerMana.get(player);
 					int currentMana = playerCurrentMana.get(player);
-					double regeneration = playerRegeneration.get(player)/2;
+					double regeneration = (playerRegeneration.get(player)/2)+5;
 					int newCurrentMana = currentMana + (int)regeneration;
 
 					if (newCurrentMana > maxMana) newCurrentMana = maxMana;
