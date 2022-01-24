@@ -72,8 +72,9 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"vine" to Vines(),
 						"wheat" to Wheats(),
 						"wool" to Wools(),
+						"mobKey" to MobKey(),
 
-				         )
+						)
 		                   )
 
 	}

@@ -2,7 +2,6 @@ package net.siegerpg.siege.core.commands.admin;
 
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import net.siegerpg.siege.core.webstore.categories.boosters.WebstoreBoosters;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
