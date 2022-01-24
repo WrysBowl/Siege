@@ -68,3 +68,5 @@ commands:
     description: Daily reward
   questReward:
     description: Quest reward
+  meraChat:
+    description: Pay to teleport back to death

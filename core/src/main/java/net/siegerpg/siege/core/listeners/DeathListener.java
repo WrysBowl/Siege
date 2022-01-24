@@ -23,6 +23,7 @@ import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers;
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -314,6 +315,16 @@ public class DeathListener implements Listener, Runnable {
 			e.setRespawnLocation((player.getBedSpawnLocation() == null) ?
 			                     world.getSpawnLocation() : player.getBedSpawnLocation());
 		}
+
+		final Location deathLocation = PlayerData.playerDeathLocations.get(player);
+		if (deathLocation == null) return;
+		int locationCostComputation = (int) player.getLocation().distance(deathLocation)*2;
+		int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
+
+		player.sendMessage("");
+		player.sendMessage(Utils.parse("<color:#E94545><underlined>   Teleport Back?   <reset>"));
+		player.sendMessage(Utils.parse(" <color:#E94545><click:run_command:/meraChat>Click</click> to teleport back for <yellow> "+deathTeleportCost+" \u26C1"));
+		player.sendMessage("");
 	}
 
 	@Override

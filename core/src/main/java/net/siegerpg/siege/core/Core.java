@@ -136,6 +136,7 @@ public final class Core extends JavaPlugin {
 			commandList.put("materials", new Materials());
 			commandList.put("dailyReward", new DailyRewardCommand());
 			commandList.put("questReward", new QuestRewardCommand());
+			commandList.put("meraChat", new MeraChat());
 
 
 		}
