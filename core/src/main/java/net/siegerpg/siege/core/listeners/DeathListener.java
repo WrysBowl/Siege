@@ -231,6 +231,7 @@ public class DeathListener implements Listener, Runnable {
 
 			//broadcast 80%+ drops
 			String displayName = MythicMobs.inst().getAPIHelper().getMythicMobInstance(e.getEntity()).getDisplayName();
+			if (displayName == null) continue;
 			Component miniMessage = Utils.lore(
 					"<color:#5DD5B5>"+player.getName()+
 					"<color:#ACD55D> has found a " + drop.getItemMeta().getDisplayName() +
