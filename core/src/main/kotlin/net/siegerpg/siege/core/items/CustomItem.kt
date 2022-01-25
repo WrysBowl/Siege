@@ -30,11 +30,7 @@ interface CustomItem {
 				"itemClass" to this::class.qualifiedName,
 				"itemName" to name,
 				"CustomModelData" to customModelData,
-				"itemLevelRequirement" to levelRequirement,
-				"itemType" to type.toString(),
-				"itemQuality" to quality,
-				"itemRarity" to rarity.toString(),
-				"sellCost" to getSellValue()
+				"itemQuality" to quality
 		                      )
 	}
 
