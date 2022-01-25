@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.items
 
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.types.misc.CustomMaterial
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
@@ -42,6 +43,11 @@ interface CustomItem {
 			rarity = Rarity.getFromInt(quality)
 		}
 
+	}
+
+	fun asQuantity(amount : Int) : CustomItem {
+		this.item.amount = amount
+		return this
 	}
 
 }

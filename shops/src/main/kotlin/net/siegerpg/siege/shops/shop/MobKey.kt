@@ -20,10 +20,14 @@ class MobKey : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
-				GRAYFILLER(-1).getUpdatedItem(false)
-			},
 			ShopItem(MobKey(-1), 2000, hashMapOf(), false) {
 				MobKey(0).getUpdatedItem(false)
-			})
+			},
+			ShopItem(MobKey(-1).asQuantity(4), 7000, hashMapOf(), false) {
+				MobKey(0).getUpdatedItem(false).asQuantity(4)
+			},
+			ShopItem(MobKey(-1).asQuantity(12), 20000, hashMapOf(), false) {
+				MobKey(0).getUpdatedItem(false).asQuantity(12)
+			},
+	                                            )
 }
