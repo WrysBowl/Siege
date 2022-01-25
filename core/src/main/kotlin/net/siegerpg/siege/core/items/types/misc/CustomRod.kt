@@ -30,8 +30,9 @@ abstract class CustomRod(
 		override var statGem : StatGem? = null,
 		val enchantments : MutableMap<Enchantment, Int>,
 		val fishDropTable : FishDropTable,
+		override var sellCost : Int? = 10 * quality,
 
-                        ) : CustomEquipment {
+		) : CustomEquipment {
 
 	override var rarity : Rarity = Rarity.COMMON
 
@@ -59,12 +60,13 @@ abstract class CustomRod(
 				meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 			}
 		}
-		meta.lore("<underlined><dark_gray>                    ")
+		val length =
+				if (name.length > 16) name.length
+				else 16
 		meta.lore(" ")
-		Utils.getTextArray(description, 16).forEach {
+		Utils.getTextArray(description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
-		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
 		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
 		//if (hideRarity) meta.lore("<r><red>This is not the real item")

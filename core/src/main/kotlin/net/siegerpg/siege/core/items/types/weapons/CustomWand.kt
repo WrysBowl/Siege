@@ -34,8 +34,9 @@ abstract class CustomWand(
 		val blue : Int = 255,
 		val damageRadius : Double = 2.5,
 		override var statGem : StatGem? = null,
+		override var sellCost : Int? = (levelRequirement?.times(quality))?.div(5),
 
-                         ) : CustomWeapon {
+		) : CustomWeapon {
 
 	override var rarity : Rarity = Rarity.COMMON
 
@@ -107,12 +108,13 @@ abstract class CustomWand(
 		}
 		meta.lore("<r><gray>Radius <yellow>$damageRadius")
 		meta.lore("<r><gray>Range <yellow>$range")
-		meta.lore("<underlined><dark_gray>                    ")
+		val length =
+				if (name.length > 16) name.length
+				else 16
 		meta.lore(" ")
-		Utils.getTextArray(description, 16).forEach {
+		Utils.getTextArray(description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
-		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
 		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
 

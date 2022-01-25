@@ -24,8 +24,10 @@ abstract class StatGemType(
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.STATGEM,
 		val statType : StatTypes,
-		val statAmount : Double = 0.0
-                          ) : CustomItem {
+		val statAmount : Double = 0.0,
+		override var sellCost : Int? = 100 * statAmount.toInt(),
+
+		) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
 
@@ -57,12 +59,13 @@ abstract class StatGemType(
 		meta.lore(" ")
 		meta.lore("<yellow><bold>DRAG ONTO ITEM TO APPLY")
 		meta.lore("<gray>Merge these stats to your gear!")
-		meta.lore("<underlined><dark_gray>                    ")
+		val length =
+				if (name.length > 16) name.length
+				else 16
 		meta.lore(" ")
-		Utils.getTextArray(description, 16).forEach {
+		Utils.getTextArray(description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
-		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
 		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
 

@@ -158,14 +158,11 @@ object CustomItemUtils {
 		val inventory = player.inventory
 		val mainHand = itemInMainHand ?: inventory.itemInMainHand
 
-		//val skills = SkillUtils.decode("A_1_4_7")
-		//output += SkillUtils.getStats(skills)[statType]!!
 		if (statType == StatTypes.MANA) {
 			output += Levels.blockingGetExpLevel(player)?.first?.times(2) ?: 0
 		}
 
 		getCustomItem(mainHand)?.let {
-			//player.chat("You are holding a custom item")
 			if (it is CustomWeapon || it is CustomWand) {
 				val itemStats =
 						getStats(it as CustomEquipment, addGem = true, addRarity = true)

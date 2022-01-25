@@ -28,6 +28,7 @@ abstract class CustomPotion(
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.FOOD,
+		override var sellCost : Int? = 5 * quality,
 		val potion : PotionType = PotionType.INSTANT_HEAL
                            ) : CustomItem {
 
@@ -65,12 +66,13 @@ abstract class CustomPotion(
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
 
-		meta.lore("<underlined><dark_gray>                    ")
+		val length =
+				if (name.length > 16) name.length
+				else 16
 		meta.lore(" ")
-		Utils.getTextArray(description, 16).forEach {
+		Utils.getTextArray(description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
-		meta.lore("<underlined><dark_gray>                    ")
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(

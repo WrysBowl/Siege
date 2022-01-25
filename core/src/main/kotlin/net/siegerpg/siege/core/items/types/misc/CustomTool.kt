@@ -27,6 +27,7 @@ abstract class CustomTool(
 		override val type : ItemTypes = ItemTypes.MATERIAL,
 		override val baseStats : HashMap<StatTypes, Double>,
 		override var statGem : StatGem? = null,
+		override var sellCost : Int? = quality,
 		val enchantments : MutableMap<Enchantment, Int>,
 
                          ) : CustomEquipment {
@@ -61,12 +62,13 @@ abstract class CustomTool(
 				meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 			}
 		}
-		meta.lore("<underlined><dark_gray>                    ")
+		val length =
+				if (name.length > 16) name.length
+				else 16
 		meta.lore(" ")
-		Utils.getTextArray(description, 16).forEach {
+		Utils.getTextArray(description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
-		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
 		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
 

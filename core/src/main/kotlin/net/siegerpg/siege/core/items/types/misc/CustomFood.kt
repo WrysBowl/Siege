@@ -28,6 +28,8 @@ abstract class CustomFood(
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.FOOD,
 		val health : Double = 0.0,
+		override var sellCost : Int? = quality/10
+
                          ) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -52,32 +54,6 @@ abstract class CustomFood(
 		})
 
 	}
-/*
-    @Suppress("deprecated")
-    open fun onEat(e: PlayerInteractEvent) {
-        pseudoEat(e.player)
-        CustomItemUtils.addHealth(e.player, health)
-
-        if (e.player.inventory.itemInMainHand.type == Material.SUSPICIOUS_STEW ||
-            e.player.inventory.itemInMainHand.type == Material.MUSHROOM_STEW ||
-            e.player.inventory.itemInMainHand.type == Material.RABBIT_STEW) {
-            e.player.inventory.setItemInMainHand(ItemStack(Material.AIR))
-        }
-        speciality(e.player)
-    }
-
-    private fun pseudoEat(player: Player) {
-        val foodRegenVal: Int = FoodPoints.getHungerRegenValue(player.inventory.itemInMainHand.type)
-        val satRegenVal: Double = FoodPoints.getSaturationValue(player.inventory.itemInMainHand.type)
-        var newFoodLevel = player.foodLevel+foodRegenVal
-        var newSatLevel = player.saturation+satRegenVal
-        if (newFoodLevel > 20) newFoodLevel = 20
-        if (newSatLevel > player.foodLevel) newSatLevel = player.foodLevel.toDouble()
-        player.foodLevel = newFoodLevel
-        player.saturation = newSatLevel.toFloat()
-        player.playSound(player.location, Sound.ENTITY_GENERIC_EAT, 0.8.toFloat(), 0.8.toFloat())
-        player.playSound(player.location, Sound.ENTITY_FOX_EAT, 0.4.toFloat(), 0.8.toFloat())
-    }*/
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 
@@ -93,12 +69,15 @@ abstract class CustomFood(
 		meta.lore("<r><color:#F7D677>+ ${FoodPoints.getHungerRegenValue(this.material)} Hunger")
 		val realHealth = health
 		if (realHealth > 0) meta.lore("<r><red>+ $realHealth Health")
-		meta.lore("<underlined><dark_gray>                    ")
+
+		val length =
+				if (name.length > 16) name.length
+				else 16
 		meta.lore(" ")
-		Utils.getTextArray(description, 16).forEach {
+		Utils.getTextArray(description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
-		meta.lore("<underlined><dark_gray>                    ")
+
 		meta.lore(" ")
 		meta.lore("<r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
 

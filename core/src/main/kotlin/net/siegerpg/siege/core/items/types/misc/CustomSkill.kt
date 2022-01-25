@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
+import net.siegerpg.siege.core.listeners.NPC.Herbert
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
@@ -42,6 +43,7 @@ abstract class CustomSkill(
 		override val type : ItemTypes = ItemTypes.SKILL,
 		val skill : Skill = Slash(),
 		var level : Int = 1,
+		override var sellCost : Int? = 1500 * level,
 
 
 		) : CustomItem {
@@ -58,13 +60,16 @@ abstract class CustomSkill(
 		meta.lore(" ")
 		meta.lore(" <gray>Cooldown <aqua>${skill.getCooldown(level).seconds}s")
 		meta.lore(" <gray>Mana <red>-${skill.getManaCost(level)}")
-		meta.lore("<underlined><dark_gray>                    ")
-		meta.lore(" ")
 
-		Utils.getTextArray(skill.getDescription(level), 16).forEach {
+		val length =
+				if (skill.getName(level).length > 16) skill.getName(level).length
+				else 16
+		meta.lore(" ")
+		Utils.getTextArray(skill.description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
-		meta.lore("<underlined><dark_gray>                    ")
+		meta.lore(" ")
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d", Herbert.getSellValue(item))} \u26C1")
 
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 		item.itemMeta = meta

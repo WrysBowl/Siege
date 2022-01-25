@@ -22,6 +22,8 @@ abstract class CustomKey(
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.MATERIAL,
+		override var sellCost : Int? = 10 * quality
+
                         ) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -38,12 +40,13 @@ abstract class CustomKey(
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
 
-		meta.lore("<underlined><dark_gray>                    ")
+		val length =
+				if (name.length > 16) name.length
+				else 16
 		meta.lore(" ")
-		Utils.getTextArray(description, 16).forEach {
+		Utils.getTextArray(description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
-		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
 		meta.lore("<r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
 

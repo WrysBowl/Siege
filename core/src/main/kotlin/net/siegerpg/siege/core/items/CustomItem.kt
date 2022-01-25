@@ -17,6 +17,7 @@ interface CustomItem {
 	var quality : Int
 	var rarity : Rarity
 	var item : ItemStack
+	var sellCost : Int?
 
 	fun updateMeta(hideRarity : Boolean) : ItemStack
 
@@ -33,7 +34,8 @@ interface CustomItem {
 				"itemLevelRequirement" to levelRequirement,
 				"itemType" to type.toString(),
 				"itemQuality" to quality,
-				"itemRarity" to rarity.toString()
+				"itemRarity" to rarity.toString(),
+				"sellCost" to sellCost
 		                      )
 	}
 

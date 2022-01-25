@@ -25,6 +25,7 @@ abstract class CustomMaterial(
 		override val material : Material,
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
+		override var sellCost : Int? = quality/10,
 		override val type : ItemTypes = ItemTypes.MATERIAL) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -60,7 +61,9 @@ abstract class CustomMaterial(
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
 
-		meta.lore("<underlined><dark_gray>                    ")
+		val length =
+				if (name.length > 16) name.length
+				else 16
 		meta.lore(" ")
 		//lazy coding here by Wrys
 		if (this is FishingExplanation) {
@@ -68,13 +71,11 @@ abstract class CustomMaterial(
 				meta.lore("<r><dark_gray>$it")
 			}
 		} else {
-			Utils.getTextArray(description, 16).forEach {
+			Utils.getTextArray(description, length).forEach {
 				meta.lore("<r><dark_gray>$it")
 			}
 		}
 
-		meta.lore("<gray>/materials to upgrade")
-		meta.lore("<underlined><dark_gray>                    ")
 		meta.lore(" ")
 		meta.lore("<r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
 		meta.isUnbreakable = true
