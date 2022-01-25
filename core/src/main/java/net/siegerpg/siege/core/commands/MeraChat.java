@@ -22,6 +22,7 @@ public class MeraChat implements CommandExecutor {
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (!(sender instanceof Player player)) return false;
+
 		player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1.0f, 1.5f);
 
 		final Location deathLocation = PlayerData.playerDeathLocations.get(player);

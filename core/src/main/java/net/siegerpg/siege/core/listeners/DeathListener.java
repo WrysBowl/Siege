@@ -323,7 +323,7 @@ public class DeathListener implements Listener, Runnable {
 
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<color:#E94545><underlined>   Teleport Back?   <reset>"));
-		player.sendMessage(Utils.parse(" <color:#E94545><click:run_command:/meraChat>Click</click> to teleport back for <yellow> "+deathTeleportCost+" \u26C1"));
+		player.sendMessage(Utils.parse(" <green>\u27B2<reset> <color:#A6E945><click:run_command:/meraChat>Click to teleport back for <yellow> "+deathTeleportCost+" \u26C1</click>"));
 		player.sendMessage("");
 	}
 
