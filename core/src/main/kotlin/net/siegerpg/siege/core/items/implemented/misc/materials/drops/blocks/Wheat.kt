@@ -12,9 +12,10 @@ class Wheat() : CustomMaterial(
 		description = listOf("The most important", "part of bread"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 1
 		) {
-
+	override fun getSellValue() : Int {
+		return 1
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

@@ -10,9 +10,12 @@ class BroodmotherKey() : CustomKey(
 		customModelData = 620010,
 		description = listOf("Used to summon", "the Broodmother"),
 		material = Material.TRIPWIRE_HOOK,
-		quality = 100,
-		sellCost = 15000
+		quality = 100
                                   ) {
+
+	override fun getSellValue() : Int {
+		return 15000
+	}
 
 	constructor(quality : Int) : this() {
 		this.quality = quality

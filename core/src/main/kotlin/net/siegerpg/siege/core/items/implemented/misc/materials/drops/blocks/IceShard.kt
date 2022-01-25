@@ -11,9 +11,10 @@ class IceShard() : CustomMaterial(
 		description = listOf("An ice shard", "from snowy peaks"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 10
 		) {
-
+	override fun getSellValue() : Int {
+		return 10
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

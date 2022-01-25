@@ -11,9 +11,10 @@ class LichKey() : CustomKey(
 		description = listOf("Used to summon", "the Lich"),
 		material = Material.TRIPWIRE_HOOK,
 		quality = 50,
-		sellCost = 4000
                            ) {
-
+	override fun getSellValue() : Int {
+		return 4000
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

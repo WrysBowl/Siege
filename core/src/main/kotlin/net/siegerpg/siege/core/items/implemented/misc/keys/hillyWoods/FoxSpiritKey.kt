@@ -11,10 +11,11 @@ class FoxSpiritKey() : CustomKey(
 		description = listOf("Used to summon", "the Fox spirit"),
 		material = Material.TRIPWIRE_HOOK,
 		quality = 90,
-		sellCost = 10000
 
                                 ) {
-
+	override fun getSellValue() : Int {
+		return 10000
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

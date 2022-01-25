@@ -10,8 +10,11 @@ class CommonKey() : CustomKey(
 		customModelData = 630001,
 		description = listOf("Get a common cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
-		sellCost = 1500
                              ) {
+
+	override fun getSellValue() : Int {
+		return 1500
+	}
 
 	constructor(quality : Int) : this() {
 		this.quality = 0

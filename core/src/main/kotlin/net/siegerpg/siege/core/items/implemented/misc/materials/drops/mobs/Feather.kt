@@ -12,9 +12,10 @@ class Feather() : CustomMaterial(
 		description = listOf("Ticklish?"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 3
 		) {
-
+	override fun getSellValue() : Int {
+		return 3
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

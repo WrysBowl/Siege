@@ -11,9 +11,10 @@ class RabbitFoot() : CustomMaterial(
 		description = listOf("Are you lucky?"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 15
 		) {
-
+	override fun getSellValue() : Int {
+		return 15
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

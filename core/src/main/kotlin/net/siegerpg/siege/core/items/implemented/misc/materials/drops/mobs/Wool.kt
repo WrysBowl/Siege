@@ -12,9 +12,10 @@ class Wool() : CustomMaterial(
 		description = listOf("A ball of fluff to keep you warm"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 6
 		) {
-
+	override fun getSellValue() : Int {
+		return 6
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

@@ -27,7 +27,6 @@ abstract class CustomTool(
 		override val type : ItemTypes = ItemTypes.MATERIAL,
 		override val baseStats : HashMap<StatTypes, Double>,
 		override var statGem : StatGem? = null,
-		override var sellCost : Int = quality * (levelRequirement ?: 1),
 		val enchantments : MutableMap<Enchantment, Int>,
 
                          ) : CustomEquipment {
@@ -36,6 +35,10 @@ abstract class CustomTool(
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
+	}
+
+	override fun getSellValue() : Int {
+		return quality * (levelRequirement ?: 1)
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
@@ -70,7 +73,7 @@ abstract class CustomTool(
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore(" ")
-		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
 
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES)
 		enchantments.forEach { (key, value) ->

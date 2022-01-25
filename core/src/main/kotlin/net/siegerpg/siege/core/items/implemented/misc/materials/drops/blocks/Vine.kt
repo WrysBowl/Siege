@@ -12,9 +12,10 @@ class Vine() : CustomMaterial(
 		description = listOf("Woven around trees", "and abandoned lands"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 2
 		) {
-
+	override fun getSellValue() : Int {
+		return 2
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

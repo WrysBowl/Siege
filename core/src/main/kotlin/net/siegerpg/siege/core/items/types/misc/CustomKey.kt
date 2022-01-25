@@ -21,8 +21,7 @@ abstract class CustomKey(
 		override val material : Material,
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
-		override val type : ItemTypes = ItemTypes.MATERIAL,
-		override var sellCost : Int = 10 * quality
+		override val type : ItemTypes = ItemTypes.MATERIAL
 
                         ) : CustomItem {
 
@@ -30,6 +29,10 @@ abstract class CustomKey(
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
+	}
+
+	override fun getSellValue() : Int {
+		return quality * 10
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
@@ -48,7 +51,7 @@ abstract class CustomKey(
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore(" ")
-		meta.lore("<r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
+		meta.lore("<r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
 
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES)
 		item.itemMeta = meta

@@ -30,7 +30,6 @@ abstract class CustomRod(
 		override var statGem : StatGem? = null,
 		val enchantments : MutableMap<Enchantment, Int>,
 		val fishDropTable : FishDropTable,
-		override var sellCost : Int = 10 * quality,
 
 		) : CustomEquipment {
 
@@ -38,6 +37,10 @@ abstract class CustomRod(
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
+	}
+
+	override fun getSellValue() : Int {
+		return 10 * quality
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
@@ -68,7 +71,7 @@ abstract class CustomRod(
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore(" ")
-		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
 		//if (hideRarity) meta.lore("<r><red>This is not the real item")
 
 		meta.isUnbreakable = true

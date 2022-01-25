@@ -21,7 +21,6 @@ abstract class CustomLeggings(
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.LEGGINGS,
 		override var statGem : StatGem? = null,
-		override var sellCost : Int = ((levelRequirement ?: 1) * quality)/5,
 		override var leatherColor : Color = Core.defaultLeatherColor,
                              ) : CustomArmor {
 

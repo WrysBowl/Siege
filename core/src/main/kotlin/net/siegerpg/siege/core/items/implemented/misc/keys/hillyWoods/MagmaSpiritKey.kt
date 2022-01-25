@@ -11,9 +11,10 @@ class MagmaSpiritKey() : CustomKey(
 		description = listOf("Used to summon", "the Magma spirit"),
 		material = Material.TRIPWIRE_HOOK,
 		quality = 0,
-		sellCost = 2000
                                   ) {
-
+	override fun getSellValue() : Int {
+		return 2000
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

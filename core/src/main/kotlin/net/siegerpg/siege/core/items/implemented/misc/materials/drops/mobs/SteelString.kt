@@ -11,9 +11,10 @@ class SteelString() : CustomMaterial(
 		description = listOf("The sound of a bow", "with this string", "is very loud"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 45
 		) {
-
+	override fun getSellValue() : Int {
+		return 45
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

@@ -10,9 +10,10 @@ class MobKey() : CustomKey(
 		customModelData = 640001,
 		description = listOf("Drops a random mob's loot table"),
 		material = Material.TRIPWIRE_HOOK,
-		sellCost = 500
                           ) {
-
+	override fun getSellValue() : Int {
+		return 500
+	}
 	constructor(quality : Int) : this() {
 		this.quality = 70
 		this.rarity = Rarity.RARE

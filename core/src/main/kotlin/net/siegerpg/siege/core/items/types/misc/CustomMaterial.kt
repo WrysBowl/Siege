@@ -25,7 +25,6 @@ abstract class CustomMaterial(
 		override val material : Material,
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
-		override var sellCost : Int = quality/10,
 		override val type : ItemTypes = ItemTypes.MATERIAL) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -37,6 +36,10 @@ abstract class CustomMaterial(
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
+	}
+
+	override fun getSellValue() : Int {
+		return quality/10
 	}
 
 	override fun serialize() {
@@ -77,7 +80,7 @@ abstract class CustomMaterial(
 		}
 
 		meta.lore(" ")
-		meta.lore("<r><color:#E2DE5D>${String.format("%,d",Herbert.getSellValue(item))} \u26C1")
+		meta.lore("<r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
 		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 		item.itemMeta = meta
@@ -86,13 +89,9 @@ abstract class CustomMaterial(
 
 	override fun equals(other : Any?) : Boolean {
 		if (other == null) return false
-		Bukkit.getLogger().info("Other is not null")
 		if (this::class.qualifiedName != other::class.qualifiedName) return false
-		Bukkit.getLogger().info("Qualified names match")
 		val castedOther = other as CustomMaterial
-
 		if (this.tier != castedOther.tier) return false
-		Bukkit.getLogger().info("Tiers match")
 		return true
 	}
 

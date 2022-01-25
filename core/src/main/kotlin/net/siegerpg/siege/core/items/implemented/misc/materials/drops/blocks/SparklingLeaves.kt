@@ -11,9 +11,10 @@ class SparklingLeaves() : CustomMaterial(
 		description = listOf("A glowing leaf", "with magical properties"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 25
 		) {
-
+	override fun getSellValue() : Int {
+		return 25
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

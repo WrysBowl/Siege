@@ -11,9 +11,10 @@ class FairyDust() : CustomMaterial(
 		description = listOf("A bright powder that", "has magical properties"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 10
 		) {
-
+	override fun getSellValue() : Int {
+		return 10
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

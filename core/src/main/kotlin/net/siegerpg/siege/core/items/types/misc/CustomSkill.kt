@@ -43,10 +43,11 @@ abstract class CustomSkill(
 		override val type : ItemTypes = ItemTypes.SKILL,
 		val skill : Skill = Slash(),
 		var level : Int = 1,
-		override var sellCost : Int = 1500 * level,
+                          ) : CustomItem {
 
-
-		) : CustomItem {
+	override fun getSellValue() : Int {
+		return 1500 * level
+	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		val meta = item.itemMeta
@@ -69,7 +70,7 @@ abstract class CustomSkill(
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore(" ")
-		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d", Herbert.getSellValue(item))} \u26C1")
+		meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
 
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 		item.itemMeta = meta

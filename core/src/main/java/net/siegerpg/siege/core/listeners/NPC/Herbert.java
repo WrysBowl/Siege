@@ -143,7 +143,7 @@ public class Herbert implements Listener {
 		int total = 1;
 		CustomItem cItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 		if (cItem == null) return total;
-		return cItem.getSellCost();
+		return cItem.getSellValue();
 	}
 
 	// Return player items still in the scrapper on close

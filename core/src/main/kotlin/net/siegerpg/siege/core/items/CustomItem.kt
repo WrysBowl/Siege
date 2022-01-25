@@ -17,7 +17,6 @@ interface CustomItem {
 	var quality : Int
 	var rarity : Rarity
 	var item : ItemStack
-	var sellCost : Int
 
 	fun updateMeta(hideRarity : Boolean) : ItemStack
 
@@ -35,7 +34,7 @@ interface CustomItem {
 				"itemType" to type.toString(),
 				"itemQuality" to quality,
 				"itemRarity" to rarity.toString(),
-				"sellCost" to sellCost
+				"sellCost" to getSellValue()
 		                      )
 	}
 
@@ -44,12 +43,15 @@ interface CustomItem {
 			quality = it
 			rarity = Rarity.getFromInt(quality)
 		}
-
 	}
 
 	fun asQuantity(amount : Int) : CustomItem {
 		this.item.amount = amount
 		return this
+	}
+
+	fun getSellValue() : Int {
+		return 1
 	}
 
 }

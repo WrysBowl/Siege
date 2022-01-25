@@ -12,9 +12,10 @@ class Titanium() : CustomMaterial(
 		description = listOf("Even better metal"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 500
 		) {
-
+	override fun getSellValue() : Int {
+		return 500
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

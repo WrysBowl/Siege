@@ -23,7 +23,6 @@ abstract class CustomBow(
 		override var item : ItemStack = ItemStack(material),
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.BOW,
-		override var sellCost : Int = ((levelRequirement ?: 1) * quality)/5,
 		override var statGem : StatGem? = null,
                         ) : CustomWeapon {
 

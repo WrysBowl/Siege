@@ -11,9 +11,10 @@ class MagicVine() : CustomMaterial(
 		description = listOf("A vine that grows", "in the Twilight Forests"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 30
 		) {
-
+	override fun getSellValue() : Int {
+		return 30
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

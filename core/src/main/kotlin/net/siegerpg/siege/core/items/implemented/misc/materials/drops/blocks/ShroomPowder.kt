@@ -11,9 +11,10 @@ class ShroomPowder() : CustomMaterial(
 		description = listOf("Crushed shroomlights"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 5
 		) {
-
+	override fun getSellValue() : Int {
+		return 5
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

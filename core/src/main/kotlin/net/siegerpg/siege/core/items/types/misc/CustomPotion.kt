@@ -28,7 +28,6 @@ abstract class CustomPotion(
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.FOOD,
-		override var sellCost : Int = 5 * quality,
 		val potion : PotionType = PotionType.INSTANT_HEAL
                            ) : CustomItem {
 
@@ -36,6 +35,10 @@ abstract class CustomPotion(
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
+	}
+
+	override fun getSellValue() : Int {
+		return 5 * quality
 	}
 
 	open fun speciality(player : Player) {}

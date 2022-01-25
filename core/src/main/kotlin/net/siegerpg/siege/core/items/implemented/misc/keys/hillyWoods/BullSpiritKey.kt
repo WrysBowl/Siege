@@ -11,9 +11,10 @@ class BullSpiritKey() : CustomKey(
 		description = listOf("Used to summon", "the Bull spirit"),
 		material = Material.TRIPWIRE_HOOK,
 		quality = 0,
-		sellCost = 3000
                                  ) {
-
+	override fun getSellValue() : Int {
+		return 3000
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

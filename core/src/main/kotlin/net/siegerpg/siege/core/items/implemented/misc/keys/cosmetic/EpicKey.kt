@@ -10,9 +10,10 @@ class EpicKey() : CustomKey(
 		customModelData = 630004,
 		description = listOf("Get an epic cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
-		sellCost = 25000
                            ) {
-
+	override fun getSellValue() : Int {
+		return 25000
+	}
 	constructor(quality : Int) : this() {
 		this.quality = 90
 		this.rarity = Rarity.EPIC

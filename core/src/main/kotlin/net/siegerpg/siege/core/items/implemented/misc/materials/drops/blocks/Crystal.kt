@@ -11,9 +11,10 @@ class Crystal() : CustomMaterial(
 		description = listOf("A pure crystal", "from Twilight"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 25
 		) {
-
+	override fun getSellValue() : Int {
+		return 25
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)

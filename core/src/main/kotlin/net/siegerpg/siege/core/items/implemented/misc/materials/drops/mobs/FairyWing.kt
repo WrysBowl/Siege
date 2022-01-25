@@ -11,9 +11,10 @@ class FairyWing() : CustomMaterial(
 		description = listOf("The wings of a", "fallen fairy"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-		sellCost = 35
 		) {
-
+	override fun getSellValue() : Int {
+		return 35
+	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
