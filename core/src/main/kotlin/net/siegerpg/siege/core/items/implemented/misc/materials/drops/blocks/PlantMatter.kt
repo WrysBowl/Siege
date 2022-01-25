@@ -11,7 +11,8 @@ class PlantMatter() : CustomMaterial(
 		customModelData = 320001,
 		description = listOf("Parts of a plant"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 1
 		) {
 
 	constructor(quality : Int) : this() {

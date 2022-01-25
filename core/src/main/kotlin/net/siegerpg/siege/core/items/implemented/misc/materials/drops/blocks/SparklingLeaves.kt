@@ -11,7 +11,7 @@ class SparklingLeaves() : CustomMaterial(
 		description = listOf("A glowing leaf", "with magical properties"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 25
 		) {
 
 	constructor(quality : Int) : this() {

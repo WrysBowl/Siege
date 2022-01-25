@@ -11,7 +11,7 @@ class FairyDust() : CustomMaterial(
 		description = listOf("A bright powder that", "has magical properties"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 10
 		) {
 
 	constructor(quality : Int) : this() {

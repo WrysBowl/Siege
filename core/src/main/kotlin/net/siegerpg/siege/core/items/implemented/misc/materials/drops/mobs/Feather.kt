@@ -11,7 +11,8 @@ class Feather() : CustomMaterial(
 		customModelData = 310007,
 		description = listOf("Ticklish?"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 3
 		) {
 
 	constructor(quality : Int) : this() {

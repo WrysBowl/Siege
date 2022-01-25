@@ -11,7 +11,7 @@ class CharredStick() : CustomMaterial(
 		description = listOf("A burnt stick"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 15
 		) {
 
 	constructor(quality : Int) : this() {

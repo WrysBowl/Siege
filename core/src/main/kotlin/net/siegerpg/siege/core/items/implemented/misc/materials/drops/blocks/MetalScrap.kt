@@ -11,7 +11,8 @@ class MetalScrap() : CustomMaterial(
 		customModelData = 320008,
 		description = listOf("Scrapped metal found underground"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 25
 		) {
 
 	constructor(quality : Int) : this() {

@@ -11,7 +11,8 @@ class RefinedMetal() : CustomMaterial(
 		customModelData = 320009,
 		description = listOf("Polished and shiny!"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 100
                                      ) {
 
 	constructor(quality : Int) : this() {

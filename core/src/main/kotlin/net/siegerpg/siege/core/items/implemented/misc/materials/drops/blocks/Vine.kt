@@ -11,7 +11,8 @@ class Vine() : CustomMaterial(
 		customModelData = 320004,
 		description = listOf("Woven around trees", "and abandoned lands"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 2
 		) {
 
 	constructor(quality : Int) : this() {

@@ -11,7 +11,7 @@ class FairyWing() : CustomMaterial(
 		description = listOf("The wings of a", "fallen fairy"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 35
 		) {
 
 	constructor(quality : Int) : this() {

@@ -11,7 +11,8 @@ class Pebble() : CustomMaterial(
 		customModelData = 320006,
 		description = listOf("Tiny bits of rock"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 1
 		) {
 
 	constructor(quality : Int) : this() {

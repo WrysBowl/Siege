@@ -11,7 +11,7 @@ class CursedBone() : CustomMaterial(
 		description = listOf("A bone that produces", "dark magic"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 25
 		) {
 
 	constructor(quality : Int) : this() {

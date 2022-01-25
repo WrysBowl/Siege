@@ -11,8 +11,9 @@ class Chain() : CustomMaterial(
 		customModelData = 320007,
 		description = listOf("A strong metal rope"),
 		levelRequirement = 0,
-		material = Material.FLINT
-		) {
+		material = Material.FLINT,
+		sellCost = 5
+                              ) {
 
 	constructor(quality : Int) : this() {
 		this.quality = quality

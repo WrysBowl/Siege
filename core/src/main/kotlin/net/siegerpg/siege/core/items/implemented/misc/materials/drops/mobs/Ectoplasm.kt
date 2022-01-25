@@ -11,7 +11,7 @@ class Ectoplasm() : CustomMaterial(
 		description = listOf("Undead residue"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 15
 		) {
 
 	constructor(quality : Int) : this() {

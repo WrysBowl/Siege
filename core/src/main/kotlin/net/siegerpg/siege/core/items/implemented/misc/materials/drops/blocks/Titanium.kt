@@ -11,7 +11,8 @@ class Titanium() : CustomMaterial(
 		customModelData = 320010,
 		description = listOf("Even better metal"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 500
 		) {
 
 	constructor(quality : Int) : this() {

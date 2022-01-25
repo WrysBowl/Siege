@@ -11,7 +11,7 @@ class IceShard() : CustomMaterial(
 		description = listOf("An ice shard", "from snowy peaks"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 10
 		) {
 
 	constructor(quality : Int) : this() {

@@ -11,8 +11,8 @@ class Stick() : CustomMaterial(
 		customModelData = 320005,
 		description = listOf("Foundational material to any structure"),
 		levelRequirement = 0,
-		material = Material.FLINT
-
+		material = Material.FLINT,
+		sellCost = 1
 		) {
 
 	constructor(quality : Int) : this() {

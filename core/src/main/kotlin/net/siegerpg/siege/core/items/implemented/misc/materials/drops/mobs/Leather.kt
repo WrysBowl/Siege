@@ -11,7 +11,8 @@ class Leather() : CustomMaterial(
 		customModelData = 310006,
 		description = listOf("Animal hide"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 3
 		) {
 
 	constructor(quality : Int) : this() {

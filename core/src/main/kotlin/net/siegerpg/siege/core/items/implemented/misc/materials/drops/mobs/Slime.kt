@@ -11,7 +11,8 @@ class Slime() : CustomMaterial(
 		customModelData = 310001,
 		description = listOf("Not jello?"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 5
 		) {
 
 	constructor(quality : Int) : this() {

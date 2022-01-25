@@ -11,7 +11,8 @@ class Magma() : CustomMaterial(
 		customModelData = 310002,
 		description = listOf("Melted slime"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 5
 		) {
 
 	constructor(quality : Int) : this() {

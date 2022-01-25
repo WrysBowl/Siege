@@ -11,7 +11,7 @@ class ShroomPowder() : CustomMaterial(
 		description = listOf("Crushed shroomlights"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 5
 		) {
 
 	constructor(quality : Int) : this() {

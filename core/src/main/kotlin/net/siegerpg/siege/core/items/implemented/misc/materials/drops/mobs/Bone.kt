@@ -11,7 +11,8 @@ class Bone() : CustomMaterial(
 		customModelData = 310004,
 		description = listOf("Remains of a once living animal"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 3
 		) {
 
 	constructor(quality : Int) : this() {

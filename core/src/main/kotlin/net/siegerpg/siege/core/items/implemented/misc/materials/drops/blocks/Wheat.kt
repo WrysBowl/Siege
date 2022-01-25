@@ -11,7 +11,8 @@ class Wheat() : CustomMaterial(
 		customModelData = 320011,
 		description = listOf("The most important", "part of bread"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 1
 		) {
 
 	constructor(quality : Int) : this() {

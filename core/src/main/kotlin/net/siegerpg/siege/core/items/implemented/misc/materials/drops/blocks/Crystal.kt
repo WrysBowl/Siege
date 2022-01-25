@@ -11,7 +11,7 @@ class Crystal() : CustomMaterial(
 		description = listOf("A pure crystal", "from Twilight"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 25
 		) {
 
 	constructor(quality : Int) : this() {

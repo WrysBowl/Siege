@@ -11,7 +11,8 @@ class Seed() : CustomMaterial(
 		customModelData = 320002,
 		description = listOf("Great potential"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 1
 		) {
 
 	constructor(quality : Int) : this() {

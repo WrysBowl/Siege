@@ -11,7 +11,8 @@ class Coal() : CustomMaterial(
 		customModelData = 320003,
 		description = listOf("Burned to gain energy resource"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 10
 		) {
 
 	constructor(quality : Int) : this() {

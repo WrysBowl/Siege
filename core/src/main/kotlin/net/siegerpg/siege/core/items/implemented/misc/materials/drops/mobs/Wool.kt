@@ -11,7 +11,8 @@ class Wool() : CustomMaterial(
 		customModelData = 310005,
 		description = listOf("A ball of fluff to keep you warm"),
 		levelRequirement = 0,
-		material = Material.FLINT
+		material = Material.FLINT,
+		sellCost = 6
 		) {
 
 	constructor(quality : Int) : this() {

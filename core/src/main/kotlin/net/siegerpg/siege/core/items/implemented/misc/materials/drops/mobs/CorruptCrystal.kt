@@ -11,7 +11,7 @@ class CorruptCrystal() : CustomMaterial(
 		description = listOf("A crystal overwhelmed", "by corruption"),
 		levelRequirement = 0,
 		material = Material.FLINT,
-
+		sellCost = 15
 		) {
 
 	constructor(quality : Int) : this() {
