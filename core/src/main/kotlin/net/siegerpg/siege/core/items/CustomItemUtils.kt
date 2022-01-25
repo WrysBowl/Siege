@@ -86,6 +86,7 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import java.lang.reflect.Constructor
 import java.util.*
+import kotlin.math.ceil
 
 
 object CustomItemUtils {
@@ -273,7 +274,7 @@ object CustomItemUtils {
 				}
 			}
 
-			map[it] = Utils.round(totalAmount, 2)
+			map[it] = ceil(totalAmount)
 		}
 		return map
 	}
