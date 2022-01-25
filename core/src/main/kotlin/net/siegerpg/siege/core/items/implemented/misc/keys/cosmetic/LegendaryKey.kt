@@ -10,6 +10,7 @@ class LegendaryKey() : CustomKey(
 		customModelData = 630005,
 		description = listOf("Get a legendary cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
+		sellCost = 50000
                                 ) {
 
 	constructor(quality : Int) : this() {

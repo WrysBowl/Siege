@@ -10,6 +10,7 @@ class NormalKey() : CustomKey(
 		customModelData = 630006,
 		description = listOf("High chance of a", "common cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
+		sellCost = 3000
                              ) {
 
 	constructor(quality : Int) : this() {

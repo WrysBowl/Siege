@@ -10,7 +10,8 @@ class LichKey() : CustomKey(
 		customModelData = 620009,
 		description = listOf("Used to summon", "the Lich"),
 		material = Material.TRIPWIRE_HOOK,
-		quality = 50
+		quality = 50,
+		sellCost = 4000
                            ) {
 
 	constructor(quality : Int) : this() {

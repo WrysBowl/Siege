@@ -4,17 +4,11 @@ import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
-import io.lumine.xikage.mythicmobs.skills.conditions.all.CustomCondition;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.enums.Rarity;
-import net.siegerpg.siege.core.items.types.misc.*;
-import net.siegerpg.siege.core.items.types.subtypes.CustomCosmetic;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import net.siegerpg.siege.core.miscellaneous.VaultHook;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -107,7 +101,7 @@ public class Herbert implements Listener {
 		e
 				.getWhoClicked()
 				.sendMessage(Utils.parse(
-						"<yellow>You earned " + String.format("%,d", total) + " coins"));
+						"<color:#E4EC5E>You earned " + String.format("%,d", total) + " \u26C1!"));
 		((Player) e.getWhoClicked()).playSound(
 				((Player) e.getWhoClicked()).getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP,
 				1.0f, 1.0f
@@ -123,10 +117,6 @@ public class Herbert implements Listener {
 		ArrayList< ItemStack > scraps = new ArrayList< ItemStack >(
 				pullItems()); // Get scrapper items
 		total = 0;
-		int quality = 0;
-		int levelReq = 0;
-		int quantity = 1;
-		CustomItem cItem;
 		for (ItemStack scrap : scraps) {
 			total += getSellValue(scrap) * scrap.getAmount();
 		}
@@ -150,60 +140,10 @@ public class Herbert implements Listener {
 	}
 
 	public static int getSellValue(ItemStack item) {
-		int total = 0;
-		int quality = 0;
-		int levelReq = 0;
-		CustomItem cItem;
-		cItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+		int total = 1;
+		CustomItem cItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 		if (cItem == null) return total;
-		// Award value to qualifying items
-		if (cItem instanceof CustomMaterial) {
-			quality = ((CustomMaterial) (cItem)).getTier();
-			total += Math.pow(4, quality);
-		} else if (cItem instanceof StatGemType) {
-			if (cItem.getLevelRequirement() == null) {
-				total += 1;
-				return total;
-			}
-			levelReq = cItem.getLevelRequirement();
-			total += 35 * levelReq;
-		} else if (cItem instanceof CustomKey) {
-			total += 500;
-		} else if (cItem instanceof CustomFood) {
-			quality = cItem.getQuality();
-			total += (int) ((quality / 100) + 1);
-		} else if (cItem instanceof CustomCosmetic || cItem instanceof CustomMount) {
-			Rarity rarity = cItem.getRarity();
-			switch (rarity) {
-				case COMMON:
-					total += 500;
-					break;
-				case UNCOMMON:
-					total += 1500;
-					break;
-				case RARE:
-					total += 3000;
-					break;
-				case EPIC:
-					total += 5000;
-					break;
-				case LEGENDARY:
-					total += 10000;
-					break;
-				default:
-					total += 500;
-					break;
-			}
-		} else {
-			quality = cItem.getQuality();
-			if (cItem.getLevelRequirement() == null) {
-				total += 1;
-				return total;
-			}
-			levelReq = cItem.getLevelRequirement();
-			total += ((levelReq * quality) / 5);
-		}
-		return total;
+		return cItem.getSellCost();
 	}
 
 	// Return player items still in the scrapper on close

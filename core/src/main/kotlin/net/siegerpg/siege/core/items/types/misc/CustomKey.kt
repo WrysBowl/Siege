@@ -22,7 +22,7 @@ abstract class CustomKey(
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.MATERIAL,
-		override var sellCost : Int? = 10 * quality
+		override var sellCost : Int = 10 * quality
 
                         ) : CustomItem {
 

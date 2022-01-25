@@ -30,7 +30,7 @@ abstract class CustomRod(
 		override var statGem : StatGem? = null,
 		val enchantments : MutableMap<Enchantment, Int>,
 		val fishDropTable : FishDropTable,
-		override var sellCost : Int? = 10 * quality,
+		override var sellCost : Int = 10 * quality,
 
 		) : CustomEquipment {
 

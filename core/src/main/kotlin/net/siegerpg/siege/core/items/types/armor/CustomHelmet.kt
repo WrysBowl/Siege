@@ -28,6 +28,7 @@ abstract class CustomHelmet(
 		override val type : ItemTypes = ItemTypes.HELMET,
 		override var statGem : StatGem? = null,
 		override var leatherColor : Color = Core.defaultLeatherColor,
+		override var sellCost : Int = ((levelRequirement ?: 1) * quality)/5,
 		var initMaterial : Material? = null,
 		var initCustomModelData : Int? = null,
 		var storedItem : ItemStack? = null

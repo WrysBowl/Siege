@@ -27,7 +27,7 @@ abstract class CustomMeleeWeapon(
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.MELEEWEAPON,
 		val attackSpeed : Double,
-		override var sellCost : Int? = (levelRequirement?.times(quality))?.div(5),
+		override var sellCost : Int = ((levelRequirement ?: 1) * quality)/5,
 		override var statGem : StatGem? = null,
                                 ) : CustomWeapon {
 

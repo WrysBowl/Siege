@@ -10,7 +10,8 @@ class SlimeSpiritKey() : CustomKey(
 		customModelData = 620002,
 		description = listOf("Used to summon", "the Slime spirit"),
 		material = Material.TRIPWIRE_HOOK,
-		quality = 0
+		quality = 0,
+		sellCost = 1000
                                   ) {
 
 	constructor(quality : Int) : this() {

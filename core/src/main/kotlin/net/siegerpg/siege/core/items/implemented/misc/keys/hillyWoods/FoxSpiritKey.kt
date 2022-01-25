@@ -10,7 +10,9 @@ class FoxSpiritKey() : CustomKey(
 		customModelData = 620004,
 		description = listOf("Used to summon", "the Fox spirit"),
 		material = Material.TRIPWIRE_HOOK,
-		quality = 90
+		quality = 90,
+		sellCost = 10000
+
                                 ) {
 
 	constructor(quality : Int) : this() {

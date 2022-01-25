@@ -11,7 +11,8 @@ class NecromancerKey() : CustomKey(
 		description = listOf("Used to summon", "the Necromancer"),
 		levelRequirement = 1,
 		material = Material.TRIPWIRE_HOOK,
-		quality = 80
+		quality = 80,
+		sellCost = 8000
                                   ) {
 
 	constructor(quality : Int) : this() {

@@ -17,7 +17,7 @@ interface CustomItem {
 	var quality : Int
 	var rarity : Rarity
 	var item : ItemStack
-	var sellCost : Int?
+	var sellCost : Int
 
 	fun updateMeta(hideRarity : Boolean) : ItemStack
 

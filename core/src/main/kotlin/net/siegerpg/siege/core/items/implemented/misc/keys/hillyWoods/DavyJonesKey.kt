@@ -10,7 +10,8 @@ class DavyJonesKey() : CustomKey(
 		customModelData = 620007,
 		description = listOf("Used to summon", "Davy Jones"),
 		material = Material.TRIPWIRE_HOOK,
-		quality = 50
+		quality = 50,
+		sellCost = 6000
                                 ) {
 
 	constructor(quality : Int) : this() {

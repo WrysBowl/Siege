@@ -10,6 +10,7 @@ class SpiritKey() : CustomKey(
 		customModelData = 630008,
 		description = listOf("High chance of an", "epic cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
+		sellCost = 20000
                              ) {
 
 	constructor(quality : Int) : this() {

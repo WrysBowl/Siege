@@ -23,7 +23,7 @@ abstract class CustomMount(
 		override val material : Material,
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
-		override var sellCost : Int? = 150 * quality,
+		override var sellCost : Int = 150 * quality,
 		override val type : ItemTypes = ItemTypes.MOUNT,
                           ) : CustomItem {
 

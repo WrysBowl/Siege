@@ -34,7 +34,7 @@ abstract class CustomWand(
 		val blue : Int = 255,
 		val damageRadius : Double = 2.5,
 		override var statGem : StatGem? = null,
-		override var sellCost : Int? = (levelRequirement?.times(quality))?.div(5),
+		override var sellCost : Int = ((levelRequirement ?: 1) * quality)/5,
 
 		) : CustomWeapon {
 

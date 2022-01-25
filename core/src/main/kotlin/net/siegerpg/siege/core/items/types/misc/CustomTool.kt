@@ -27,7 +27,7 @@ abstract class CustomTool(
 		override val type : ItemTypes = ItemTypes.MATERIAL,
 		override val baseStats : HashMap<StatTypes, Double>,
 		override var statGem : StatGem? = null,
-		override var sellCost : Int? = quality,
+		override var sellCost : Int = quality * (levelRequirement ?: 1),
 		val enchantments : MutableMap<Enchantment, Int>,
 
                          ) : CustomEquipment {

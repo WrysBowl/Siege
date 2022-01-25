@@ -25,7 +25,7 @@ abstract class CustomMaterial(
 		override val material : Material,
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
-		override var sellCost : Int? = quality/10,
+		override var sellCost : Int = quality/10,
 		override val type : ItemTypes = ItemTypes.MATERIAL) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON

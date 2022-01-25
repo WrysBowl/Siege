@@ -10,7 +10,8 @@ class MagmaSpiritKey() : CustomKey(
 		customModelData = 620003,
 		description = listOf("Used to summon", "the Magma spirit"),
 		material = Material.TRIPWIRE_HOOK,
-		quality = 0
+		quality = 0,
+		sellCost = 2000
                                   ) {
 
 	constructor(quality : Int) : this() {

@@ -10,7 +10,8 @@ class BullSpiritKey() : CustomKey(
 		customModelData = 620006,
 		description = listOf("Used to summon", "the Bull spirit"),
 		material = Material.TRIPWIRE_HOOK,
-		quality = 0
+		quality = 0,
+		sellCost = 3000
                                  ) {
 
 	constructor(quality : Int) : this() {

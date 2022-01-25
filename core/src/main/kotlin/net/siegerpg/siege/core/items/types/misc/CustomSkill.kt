@@ -43,7 +43,7 @@ abstract class CustomSkill(
 		override val type : ItemTypes = ItemTypes.SKILL,
 		val skill : Skill = Slash(),
 		var level : Int = 1,
-		override var sellCost : Int? = 1500 * level,
+		override var sellCost : Int = 1500 * level,
 
 
 		) : CustomItem {

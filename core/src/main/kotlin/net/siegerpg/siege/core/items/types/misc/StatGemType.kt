@@ -25,7 +25,7 @@ abstract class StatGemType(
 		override val type : ItemTypes = ItemTypes.STATGEM,
 		val statType : StatTypes,
 		val statAmount : Double = 0.0,
-		override var sellCost : Int? = 100 * statAmount.toInt(),
+		override var sellCost : Int = 100 * statAmount.toInt(),
 
 		) : CustomItem {
 

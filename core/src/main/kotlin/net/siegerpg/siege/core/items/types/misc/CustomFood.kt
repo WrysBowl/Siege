@@ -28,7 +28,7 @@ abstract class CustomFood(
 		override var item : ItemStack = ItemStack(material),
 		override val type : ItemTypes = ItemTypes.FOOD,
 		val health : Double = 0.0,
-		override var sellCost : Int? = quality/10
+		override var sellCost : Int = quality/10
 
                          ) : CustomItem {
 
