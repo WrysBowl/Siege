@@ -6,7 +6,7 @@ public class LegendaryCosmeticKey extends WebstoreKeys {
 
 	public LegendaryCosmeticKey() {
 
-		super("cosmetic", "legendary", 1, new LegendaryKey(0));
+		super("cosmetic", "legendary", 1, new LegendaryKey());
 	}
 
 }

@@ -6,7 +6,7 @@ public class RareCosmeticKey extends WebstoreKeys {
 
 	public RareCosmeticKey() {
 
-		super("cosmetic", "rare", 1, new RareKey(0));
+		super("cosmetic", "rare", 1, new RareKey());
 	}
 
 }

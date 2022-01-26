@@ -11,7 +11,7 @@ public class DailyReward20 extends DailyReward {
 		super(
 				new ItemStack[]{
 						new MobKey(0).getUpdatedItem(false).asQuantity(6),
-						new SuperiorKey(0).getUpdatedItem(false).asQuantity(3)
+						new SuperiorKey().getUpdatedItem(false).asQuantity(3)
 				},
 				20,
 				2800,

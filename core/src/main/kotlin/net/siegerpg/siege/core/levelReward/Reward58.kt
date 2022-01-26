@@ -21,7 +21,7 @@ class Reward58(
 		override val level : Short = 59,
 		override val gold : Int = 3000,
 		override val items : List<ItemStack> = listOf(
-				RareKey(0).getUpdatedItem(false).asQuantity(3),
+				RareKey().getUpdatedItem(false).asQuantity(3),
 				MobKey(0).getUpdatedItem(false).asQuantity(10)
 		                                             )
               ) : LevelReward

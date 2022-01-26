@@ -10,8 +10,7 @@ public class UncommonKey extends Fish {
 	public UncommonKey() {
 
 		super(50, 1, 12, 20,
-		      new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey(
-				      0).getUpdatedItem(false)
+		      new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey().getUpdatedItem(false)
 		     );
 	}
 

@@ -6,7 +6,7 @@ public class EpicCosmeticKey extends WebstoreKeys {
 
 	public EpicCosmeticKey() {
 
-		super("cosmetic", "epic", 1, new EpicKey(0));
+		super("cosmetic", "epic", 1, new EpicKey());
 	}
 
 }

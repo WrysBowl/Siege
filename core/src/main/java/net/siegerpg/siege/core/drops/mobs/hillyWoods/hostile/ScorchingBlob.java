@@ -67,7 +67,7 @@ public class ScorchingBlob extends MobDropTable {
 				
 				new Reward(new MatchStick(Utils.randRarity()).getUpdatedItem(false), 2.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 0.75),
-				new Reward(new MagmaSpiritKey(0).getUpdatedItem(false), 1.0),
+				new Reward(new MagmaSpiritKey().getUpdatedItem(false), 1.0),
 
 				});
 	}

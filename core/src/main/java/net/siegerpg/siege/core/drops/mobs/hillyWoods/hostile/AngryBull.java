@@ -83,7 +83,7 @@ public class AngryBull extends MobDropTable {
 
 				new Reward(new Beef().getUpdatedItem(false), 40.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
-				new Reward(new BullSpiritKey(0).getUpdatedItem(false), 1.0),
+				new Reward(new BullSpiritKey().getUpdatedItem(false), 1.0),
 
 				});
 	}

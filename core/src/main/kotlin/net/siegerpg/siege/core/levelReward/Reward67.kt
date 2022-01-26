@@ -25,6 +25,6 @@ class Reward67(
 		override val level : Short = 67,
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
-				SpiritKey(0).getUpdatedItem(false).asQuantity(3)
+				SpiritKey().getUpdatedItem(false).asQuantity(3)
 		                                             )
               ) : LevelReward

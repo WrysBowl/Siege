@@ -6,7 +6,7 @@ public class UncommonCosmeticKey extends WebstoreKeys {
 
 	public UncommonCosmeticKey() {
 
-		super("cosmetic", "uncommon", 1, new UncommonKey(0));
+		super("cosmetic", "uncommon", 1, new UncommonKey());
 	}
 
 }

@@ -6,7 +6,7 @@ public class NormalCosmeticKey extends WebstoreKeys {
 
 	public NormalCosmeticKey() {
 
-		super("cosmetic", "normal", 1, new NormalKey(0));
+		super("cosmetic", "normal", 1, new NormalKey());
 	}
 
 }

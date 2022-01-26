@@ -14,6 +14,6 @@ class Reward21(
 		override val level : Short = 22,
 		override val gold : Int = 3000,
 		override val items : List<ItemStack> = listOf(
-				RareKey(0).getUpdatedItem(false)
+				RareKey().getUpdatedItem(false)
 		                                             )
               ) : LevelReward

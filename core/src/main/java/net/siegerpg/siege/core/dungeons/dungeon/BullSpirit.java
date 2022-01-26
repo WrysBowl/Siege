@@ -15,7 +15,7 @@ public class BullSpirit extends Dungeon {
 	public BullSpirit() {
 
 		super("Bull Spirit", 1,
-		      new BullSpiritKey(0),
+		      new BullSpiritKey(),
 		      new Location(null, 272, 70, 20), "Hilly_Woods",
 		      100
 		     );

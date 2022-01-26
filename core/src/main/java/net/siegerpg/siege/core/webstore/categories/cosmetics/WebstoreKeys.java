@@ -28,7 +28,7 @@ public class WebstoreKeys extends WebstorePackage {
 	String arg2 = "cosmetic";
 	String arg3 = "normal"; //key type
 	Integer arg4 = 1; //amount
-	CustomKey key = new NormalKey(0);
+	CustomKey key = new NormalKey();
 
 	public WebstoreKeys(String arg2, String arg3, Integer arg4, CustomKey key) {
 

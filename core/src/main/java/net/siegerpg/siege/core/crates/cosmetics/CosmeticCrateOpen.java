@@ -149,32 +149,32 @@ public class CosmeticCrateOpen implements Listener {
 		OutlinePane bottomRow = new OutlinePane(2, 2, 5, 1);
 
 		//icons
-		topRow.addItem(new GuiItem(new NormalKey(0).getUpdatedItem(false), inventoryClickEvent -> {
-			getGUI(new NormalKey(0)).show(player);
+		topRow.addItem(new GuiItem(new NormalKey().getUpdatedItem(false), inventoryClickEvent -> {
+			getGUI(new NormalKey()).show(player);
 		}));
-		topRow.addItem(new GuiItem(new SuperiorKey(0).getUpdatedItem(false), inventoryClickEvent -> {
-			getGUI(new SuperiorKey(0)).show(player);
+		topRow.addItem(new GuiItem(new SuperiorKey().getUpdatedItem(false), inventoryClickEvent -> {
+			getGUI(new SuperiorKey()).show(player);
 		}));
-		topRow.addItem(new GuiItem(new SpiritKey(0).getUpdatedItem(false), inventoryClickEvent -> {
-			getGUI(new SpiritKey(0)).show(player);
+		topRow.addItem(new GuiItem(new SpiritKey().getUpdatedItem(false), inventoryClickEvent -> {
+			getGUI(new SpiritKey()).show(player);
 		}));
 		menu.addPane(topRow);
 
 		//icons
-		bottomRow.addItem(new GuiItem(new CommonKey(0).getUpdatedItem(false), inventoryClickEvent -> {
-			getGUI(new CommonKey(0)).show(player);
+		bottomRow.addItem(new GuiItem(new CommonKey().getUpdatedItem(false), inventoryClickEvent -> {
+			getGUI(new CommonKey()).show(player);
 		}));
-		bottomRow.addItem(new GuiItem(new UncommonKey(0).getUpdatedItem(false), inventoryClickEvent -> {
-			getGUI(new UncommonKey(0)).show(player);
+		bottomRow.addItem(new GuiItem(new UncommonKey().getUpdatedItem(false), inventoryClickEvent -> {
+			getGUI(new UncommonKey()).show(player);
 		}));
-		bottomRow.addItem(new GuiItem(new RareKey(0).getUpdatedItem(false), inventoryClickEvent -> {
-			getGUI(new RareKey(0)).show(player);
+		bottomRow.addItem(new GuiItem(new RareKey().getUpdatedItem(false), inventoryClickEvent -> {
+			getGUI(new RareKey()).show(player);
 		}));
-		bottomRow.addItem(new GuiItem(new EpicKey(0).getUpdatedItem(false), inventoryClickEvent -> {
-			getGUI(new EpicKey(0)).show(player);
+		bottomRow.addItem(new GuiItem(new EpicKey().getUpdatedItem(false), inventoryClickEvent -> {
+			getGUI(new EpicKey()).show(player);
 		}));
-		bottomRow.addItem(new GuiItem(new LegendaryKey(0).getUpdatedItem(false), inventoryClickEvent -> {
-			getGUI(new LegendaryKey(0)).show(player);
+		bottomRow.addItem(new GuiItem(new LegendaryKey().getUpdatedItem(false), inventoryClickEvent -> {
+			getGUI(new LegendaryKey()).show(player);
 		}));
 		menu.addPane(bottomRow);
 

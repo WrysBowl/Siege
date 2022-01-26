@@ -10,8 +10,7 @@ public class CommonKey extends Fish {
 	public CommonKey() {
 
 		super(40, 0.8, 15, 15,
-		      new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey(
-				      0).getUpdatedItem(false)
+		      new net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey().getUpdatedItem(false)
 		     );
 	}
 

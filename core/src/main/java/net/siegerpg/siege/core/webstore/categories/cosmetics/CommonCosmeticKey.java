@@ -6,7 +6,7 @@ public class CommonCosmeticKey extends WebstoreKeys {
 
 	public CommonCosmeticKey() {
 
-		super("cosmetic", "common", 1, new CommonKey(0));
+		super("cosmetic", "common", 1, new CommonKey());
 	}
 
 }

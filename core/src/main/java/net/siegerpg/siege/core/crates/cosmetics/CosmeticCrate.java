@@ -21,14 +21,14 @@ public class CosmeticCrate {
 	 */
 	public static HashMap< CustomKey, CosmeticDropTable > crates = new HashMap<>() {
 		{
-			put(new NormalKey(0), new NormalDropTable());
-			put(new SuperiorKey(0), new SuperiorDropTable());
-			put(new SpiritKey(0), new SpiritDropTable());
-			put(new CommonKey(0), new CommonDropTable());
-			put(new UncommonKey(0), new UncommonDropTable());
-			put(new RareKey(0), new RareDropTable());
-			put(new EpicKey(0), new EpicDropTable());
-			put(new LegendaryKey(0), new LegendaryDropTable());
+			put(new NormalKey(), new NormalDropTable());
+			put(new SuperiorKey(), new SuperiorDropTable());
+			put(new SpiritKey(), new SpiritDropTable());
+			put(new CommonKey(), new CommonDropTable());
+			put(new UncommonKey(), new UncommonDropTable());
+			put(new RareKey(), new RareDropTable());
+			put(new EpicKey(), new EpicDropTable());
+			put(new LegendaryKey(), new LegendaryDropTable());
 		}
 	};
 

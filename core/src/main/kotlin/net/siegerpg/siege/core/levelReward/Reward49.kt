@@ -18,7 +18,7 @@ class Reward49(
 		override val level : Short = 50,
 		override val gold : Int = 25000,
 		override val items : List<ItemStack> = listOf(
-				EpicKey(0).getUpdatedItem(false).asQuantity(2)
+				EpicKey().getUpdatedItem(false).asQuantity(2)
 		                                             )
               ) : LevelReward {
 

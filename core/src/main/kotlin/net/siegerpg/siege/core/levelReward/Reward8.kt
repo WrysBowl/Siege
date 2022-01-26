@@ -12,6 +12,6 @@ class Reward8(
 		override val level : Short = 9,
 		override val gold : Int = 500,
 		override val items : List<ItemStack> = listOf(
-				CommonKey(0).getUpdatedItem(false).asQuantity(2)
+				CommonKey().getUpdatedItem(false).asQuantity(2)
 		                                             )
              ) : LevelReward

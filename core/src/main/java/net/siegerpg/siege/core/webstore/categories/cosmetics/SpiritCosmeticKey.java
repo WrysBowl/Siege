@@ -6,7 +6,7 @@ public class SpiritCosmeticKey extends WebstoreKeys {
 
 	public SpiritCosmeticKey() {
 
-		super("cosmetic", "spirit", 1, new SpiritKey(0));
+		super("cosmetic", "spirit", 1, new SpiritKey());
 	}
 
 }

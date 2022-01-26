@@ -92,7 +92,7 @@ public class Skeletal_Archer extends MobDropTable {
 				new Reward(new FlamingHotTorch(Utils.randRarity()).getUpdatedItem(false), 2.5),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
-				new Reward(new FoxSpiritKey(0).getUpdatedItem(false), 1.0),
+				new Reward(new FoxSpiritKey().getUpdatedItem(false), 1.0),
 
 				});
 	}

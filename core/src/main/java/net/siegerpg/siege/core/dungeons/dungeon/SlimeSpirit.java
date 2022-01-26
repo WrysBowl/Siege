@@ -15,7 +15,7 @@ public class SlimeSpirit extends Dungeon {
 	public SlimeSpirit() {
 
 		super("Slime Spirit", 1,
-		      new SlimeSpiritKey(0),
+		      new SlimeSpiritKey(),
 		      new Location(null, -515, 88, 234), "Hilly_Woods",
 		      100
 		     );

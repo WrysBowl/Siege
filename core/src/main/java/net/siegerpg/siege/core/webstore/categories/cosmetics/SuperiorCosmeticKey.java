@@ -6,7 +6,7 @@ public class SuperiorCosmeticKey extends WebstoreKeys {
 
 	public SuperiorCosmeticKey() {
 
-		super("cosmetic", "superior", 1, new SuperiorKey(0));
+		super("cosmetic", "superior", 1, new SuperiorKey());
 	}
 
 }
