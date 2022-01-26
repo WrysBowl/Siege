@@ -218,7 +218,7 @@ public final class Core extends JavaPlugin {
 	public void onDisable() {
 		// Stop packetevents
 		PacketEvents.get().terminate();
-
+		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "mm m killall");
 		hologramsToBeDeleted.forEach(Hologram::delete);
 		INSTANCE = null;
 	}
