@@ -14,12 +14,13 @@ class FlawedHealthGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.HEALTH,
-		statAmount = 18.0
+		statAmount = 18.0,
+		quality = 70
                                      ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

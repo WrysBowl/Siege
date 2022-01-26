@@ -14,12 +14,13 @@ class CrackedToughGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.DEFENSE,
-		statAmount = 15.0
+		statAmount = 15.0,
+		quality = 50
                                      ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

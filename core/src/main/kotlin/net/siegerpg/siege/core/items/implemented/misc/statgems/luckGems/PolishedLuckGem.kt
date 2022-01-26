@@ -14,7 +14,8 @@ class PolishedLuckGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.LUCK,
-		statAmount = 14.0
+		statAmount = 14.0,
+		quality = 100
                                      ) {
 
 	constructor(quality : Int) : this() {

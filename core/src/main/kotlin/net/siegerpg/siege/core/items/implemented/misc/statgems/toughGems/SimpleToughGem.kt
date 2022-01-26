@@ -14,12 +14,13 @@ class SimpleToughGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.DEFENSE,
-		statAmount = 30.0
+		statAmount = 30.0,
+		quality = 90
                                     ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

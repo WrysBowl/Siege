@@ -14,12 +14,13 @@ class RawRegenerationGem() : StatGemType(
 		material = Material.POPPED_CHORUS_FRUIT,
 
 		statType = StatTypes.REGENERATION,
-		statAmount = 5.0
+		statAmount = 5.0,
+		quality = 0
                                         ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
