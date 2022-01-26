@@ -10,11 +10,12 @@ class BrownGlass() : Cosmetic(
 		customModelData = 1,
 		description = listOf(""),
 		material = Material.BROWN_STAINED_GLASS,
+		quality = 0
                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

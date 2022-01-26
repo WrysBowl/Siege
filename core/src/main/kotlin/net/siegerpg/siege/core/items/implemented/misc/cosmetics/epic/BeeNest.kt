@@ -14,11 +14,12 @@ class BeeNest() : Cosmetic(
 		customModelData = 1,
 		description = listOf(""),
 		material = Material.BEE_NEST,
-                          ) {
+		quality = 90
+                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 90
-		this.rarity = Rarity.EPIC
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

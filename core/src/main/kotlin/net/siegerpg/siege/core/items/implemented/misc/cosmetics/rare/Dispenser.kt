@@ -10,11 +10,12 @@ class Dispenser() : Cosmetic(
 		customModelData = 1,
 		description = listOf(""),
 		material = Material.DISPENSER,
-                            ) {
+		quality = 80
+                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 80
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

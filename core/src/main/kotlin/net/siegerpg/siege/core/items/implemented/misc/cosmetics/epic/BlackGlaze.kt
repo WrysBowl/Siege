@@ -14,11 +14,12 @@ class BlackGlaze() : Cosmetic(
 		customModelData = 1,
 		description = listOf(""),
 		material = Material.BLACK_GLAZED_TERRACOTTA,
-                             ) {
+		quality = 90
+                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 90
-		this.rarity = Rarity.EPIC
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

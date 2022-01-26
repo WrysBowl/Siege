@@ -10,11 +10,12 @@ class SilverTiara() : Cosmetic(
 		customModelData = 750004,
 		description = listOf("Pretty princess"),
 		material = Material.KNOWLEDGE_BOOK,
+		quality = 100
                               ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

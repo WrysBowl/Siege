@@ -10,11 +10,12 @@ class Crown() : Cosmetic(
 		customModelData = 740004,
 		description = listOf(""),
 		material = Material.KNOWLEDGE_BOOK,
-                        ) {
+		quality = 90
+                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 90
-		this.rarity = Rarity.EPIC
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

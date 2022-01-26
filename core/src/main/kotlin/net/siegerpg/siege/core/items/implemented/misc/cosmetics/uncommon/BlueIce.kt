@@ -10,11 +10,12 @@ class BlueIce() : Cosmetic(
 		customModelData = 1,
 		description = listOf(""),
 		material = Material.BLUE_ICE,
-                          ) {
+		quality = 50
+                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 50
-		this.rarity = Rarity.UNCOMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

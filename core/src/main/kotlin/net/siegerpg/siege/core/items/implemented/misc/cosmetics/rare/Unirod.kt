@@ -10,11 +10,12 @@ class Unirod() : Cosmetic(
 		customModelData = 1,
 		description = listOf(""),
 		material = Material.END_ROD,
-                         ) {
+		quality = 80
+                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 80
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

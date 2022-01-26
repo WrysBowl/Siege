@@ -13,7 +13,8 @@ class GlowSquid() : Cosmetic(
 		name = "Glow Squid",
 		customModelData = 750002,
 		description = listOf("Makes you glow!"),
-		material = Material.KNOWLEDGE_BOOK
+		material = Material.KNOWLEDGE_BOOK,
+		quality = 100
                             ) {
 
 	override fun onCosmeticEquip(e : PlayerArmorChangeEvent) {
@@ -37,8 +38,8 @@ class GlowSquid() : Cosmetic(
 
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

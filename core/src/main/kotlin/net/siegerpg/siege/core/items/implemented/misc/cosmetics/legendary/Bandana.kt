@@ -10,11 +10,12 @@ class Bandana() : Cosmetic(
 		customModelData = 750005,
 		description = listOf("Like a boss"),
 		material = Material.KNOWLEDGE_BOOK,
+		quality = 100
                           ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

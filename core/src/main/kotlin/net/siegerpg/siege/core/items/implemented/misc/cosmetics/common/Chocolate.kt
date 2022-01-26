@@ -10,11 +10,12 @@ class Chocolate() : Cosmetic(
 		customModelData = 710011,
 		description = listOf(""),
 		material = Material.KNOWLEDGE_BOOK,
+		quality = 0
                             ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

@@ -10,11 +10,12 @@ class WiseGuy() : Cosmetic(
 		customModelData = 720005,
 		description = listOf(""),
 		material = Material.KNOWLEDGE_BOOK,
-                          ) {
+		quality = 50
+                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 50
-		this.rarity = Rarity.UNCOMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

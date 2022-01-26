@@ -13,7 +13,8 @@ class Rainbow() : Cosmetic(
 		name = "Rainbow",
 		customModelData = 750003,
 		description = listOf("Disco ball :)"),
-		material = Material.WHITE_STAINED_GLASS
+		material = Material.WHITE_STAINED_GLASS,
+		quality = 100
                           ) {
 
 	override fun onCosmeticEquip(e : PlayerArmorChangeEvent) {
@@ -47,8 +48,8 @@ class Rainbow() : Cosmetic(
 
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

@@ -14,6 +14,7 @@ class Spongebob() : Cosmetic(
 		customModelData = 1,
 		description = listOf("Who lives in a pineapple under the sea..."),
 		material = Material.SPONGE,
+		quality = 90
                             ) {
 
 	override fun onCosmeticDamage(e : EntityDamageByEntityEvent) {
@@ -34,8 +35,8 @@ class Spongebob() : Cosmetic(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 90
-		this.rarity = Rarity.EPIC
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

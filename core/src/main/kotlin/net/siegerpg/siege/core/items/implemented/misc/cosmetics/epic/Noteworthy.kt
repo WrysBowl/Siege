@@ -14,6 +14,7 @@ class Noteworthy() : Cosmetic(
 		customModelData = 1,
 		description = listOf(""),
 		material = Material.NOTE_BLOCK,
+		quality = 90
                              ) {
 
 	override fun onCosmeticDamage(e : EntityDamageByEntityEvent) {
@@ -29,8 +30,8 @@ class Noteworthy() : Cosmetic(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 90
-		this.rarity = Rarity.EPIC
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

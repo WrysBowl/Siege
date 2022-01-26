@@ -10,11 +10,12 @@ class Antlers() : Cosmetic(
 		customModelData = 730005,
 		description = listOf(""),
 		material = Material.KNOWLEDGE_BOOK,
-                          ) {
+		quality = 80
+                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 80
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

@@ -10,11 +10,12 @@ class LilUziDiamond() : Cosmetic(
 		customModelData = 750003,
 		description = listOf("Strong forehead"),
 		material = Material.KNOWLEDGE_BOOK,
+		quality = 100
                                 ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
