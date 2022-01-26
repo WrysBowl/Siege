@@ -51,7 +51,7 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 		}
 
 		//cooldown
-		int cooldownTime = 2;
+		int cooldownTime = 10;
 		if (coolDowns.containsKey(sender.getName())) {
 			long secondsLeft = ((coolDowns.get(sender.getName()) / 1000) + cooldownTime) -
 			                   (System.currentTimeMillis() / 1000);
