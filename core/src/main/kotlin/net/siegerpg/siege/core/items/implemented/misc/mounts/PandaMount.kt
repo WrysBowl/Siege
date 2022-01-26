@@ -12,11 +12,12 @@ class PandaMount() : CustomMount(
 		customModelData = 330015,
 		description = listOf("Cute bear"),
 		material = Material.PANDA_SPAWN_EGG,
+		quality = 90
                                 ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 90
-		this.rarity = Rarity.EPIC
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

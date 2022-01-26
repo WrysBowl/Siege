@@ -12,11 +12,12 @@ class MooshroomMount() : CustomMount(
 		customModelData = 330007,
 		description = listOf("Infected cow"),
 		material = Material.MOOSHROOM_SPAWN_EGG,
+		quality = 50
                                     ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 50
-		this.rarity = Rarity.UNCOMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

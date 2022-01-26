@@ -12,11 +12,12 @@ class AxolotlMount() : CustomMount(
 		customModelData = 330008,
 		description = listOf("Cute axolotl!"),
 		material = Material.AXOLOTL_SPAWN_EGG,
+		quality = 100
                                   ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

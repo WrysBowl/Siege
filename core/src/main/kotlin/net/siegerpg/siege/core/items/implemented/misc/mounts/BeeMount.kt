@@ -12,11 +12,12 @@ class BeeMount() : CustomMount(
 		customModelData = 330011,
 		description = listOf("Fly around!"),
 		material = Material.BEE_SPAWN_EGG,
+		quality = 100
                               ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

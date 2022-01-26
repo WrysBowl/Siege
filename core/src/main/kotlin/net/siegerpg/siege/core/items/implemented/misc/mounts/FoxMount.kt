@@ -12,11 +12,12 @@ class FoxMount() : CustomMount(
 		customModelData = 330004,
 		description = listOf("Baby Fox Spirit"),
 		material = Material.FOX_SPAWN_EGG,
+		quality = 70
                               ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 70
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

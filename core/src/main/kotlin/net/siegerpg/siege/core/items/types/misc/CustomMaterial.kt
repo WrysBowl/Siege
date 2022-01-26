@@ -28,7 +28,7 @@ abstract class CustomMaterial(
 		override val type : ItemTypes = ItemTypes.MATERIAL) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
-	var tier : Int = 1
+	var tier : Int = 0
 		set(value) {
 			field = value
 			this.serialize()
