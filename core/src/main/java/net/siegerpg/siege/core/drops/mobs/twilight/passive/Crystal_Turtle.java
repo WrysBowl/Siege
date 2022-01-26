@@ -32,7 +32,7 @@ public class Crystal_Turtle extends MobDropTable {
 						           .tier(3)
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 5.0),
-				new Reward(new Drumstick(50)
+				new Reward(new Drumstick()
 						           .getUpdatedItem(false)
 						           .asQuantity(2), 25.0)
 

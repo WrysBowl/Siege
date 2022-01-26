@@ -13,39 +13,39 @@ public class EpicDropTable extends CosmeticDropTable {
 
 		dropTable = new HashMap<>() {
 			{
-				put(new CarrotOnAStick(0), 10);
-				put(new Crown(0), 10);
-				put(new HotHead(0), 10);
-				put(new Headphones(0), 10);
-				put(new SquidHead(0), 10);
-				put(new GoatMount(0), 15);
-				put(new HoglinMount(0), 15);
-				put(new PandaMount(0), 15);
+				put(new CarrotOnAStick(), 10);
+				put(new Crown(), 10);
+				put(new HotHead(), 10);
+				put(new Headphones(), 10);
+				put(new SquidHead(), 10);
+				put(new GoatMount(), 15);
+				put(new HoglinMount(), 15);
+				put(new PandaMount(), 15);
 
-				put(new Noteworthy(0), 10);
-				put(new Spongebob(0), 10);
-				put(new AncientDebris(0), 20);
-				put(new WhiteGlaze(0), 20);
-				put(new OrangeGlaze(0), 20);
-				put(new PurpleGlaze(0), 20);
-				put(new RedGlaze(0), 20);
-				put(new BlackGlaze(0), 20);
-				put(new BlueGlaze(0), 20);
-				put(new LightBlueGlaze(0), 20);
-				put(new GrayGlaze(0), 20);
-				put(new BrownGlaze(0), 20);
-				put(new YellowGlaze(0), 20);
-				put(new GreenGlaze(0), 20);
-				put(new LimeGlaze(0), 20);
-				put(new MagentaGlaze(0), 20);
-				put(new PinkGlaze(0), 20);
-				put(new CyanGlaze(0), 20);
-				put(new MagmaBlock(0), 20);
-				put(new Cactus(0), 20);
-				put(new Bedrock(0), 20);
-				put(new BeeNest(0), 20);
-				put(new Shroomlight(0), 20);
-				put(new CryingObsidian(0), 20);
+				put(new Noteworthy(), 10);
+				put(new Spongebob(), 10);
+				put(new AncientDebris(), 20);
+				put(new WhiteGlaze(), 20);
+				put(new OrangeGlaze(), 20);
+				put(new PurpleGlaze(), 20);
+				put(new RedGlaze(), 20);
+				put(new BlackGlaze(), 20);
+				put(new BlueGlaze(), 20);
+				put(new LightBlueGlaze(), 20);
+				put(new GrayGlaze(), 20);
+				put(new BrownGlaze(), 20);
+				put(new YellowGlaze(), 20);
+				put(new GreenGlaze(), 20);
+				put(new LimeGlaze(), 20);
+				put(new MagentaGlaze(), 20);
+				put(new PinkGlaze(), 20);
+				put(new CyanGlaze(), 20);
+				put(new MagmaBlock(), 20);
+				put(new Cactus(), 20);
+				put(new Bedrock(), 20);
+				put(new BeeNest(), 20);
+				put(new Shroomlight(), 20);
+				put(new CryingObsidian(), 20);
 
 			}
 		};

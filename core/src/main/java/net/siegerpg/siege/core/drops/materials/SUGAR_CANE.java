@@ -10,7 +10,7 @@ public class SUGAR_CANE extends BlockDropTable {
 	public SUGAR_CANE() {
 
 		super(20, Material.SUGAR_CANE, 0, 0, 0, 0, new Reward[] {
-				new Reward(new Sugar(0).getUpdatedItem(false), 2.5)
+				new Reward(new Sugar().getUpdatedItem(false), 2.5)
 		});
 	}
 

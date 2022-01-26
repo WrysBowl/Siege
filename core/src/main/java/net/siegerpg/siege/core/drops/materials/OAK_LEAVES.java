@@ -11,8 +11,8 @@ public class OAK_LEAVES extends BlockDropTable {
 	public OAK_LEAVES() {
 
 		super(200, Material.OAK_LEAVES, 0, 0, 1, 1, new Reward[] {
-				new Reward(new Apple(100).getUpdatedItem(false), 5.0),
-				new Reward(new Apple(50).getUpdatedItem(false), 10.0),
+				new Reward(new Apple().getUpdatedItem(false), 5.0),
+				new Reward(new Apple().getUpdatedItem(false), 10.0),
 				new Reward(Stick.Companion
 						           .tier(1)
 						           .getUpdatedItem(false), 25)

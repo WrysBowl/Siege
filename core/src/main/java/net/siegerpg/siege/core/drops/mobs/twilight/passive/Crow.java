@@ -17,10 +17,10 @@ public class Crow extends MobDropTable {
 				new Reward(Feather.Companion
 						           .tier(2)
 						           .getUpdatedItem(false), 25.0),
-				new Reward(new Drumstick(50)
+				new Reward(new Drumstick()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 75.0),
-				new Reward(new Drumstick(100).getUpdatedItem(false), 25.0)
+				new Reward(new Drumstick().getUpdatedItem(false), 25.0)
 		});
 	}
 

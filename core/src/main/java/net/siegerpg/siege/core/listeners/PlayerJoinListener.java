@@ -157,7 +157,7 @@ public class PlayerJoinListener implements Listener {
 		player.getInventory().addItem(new WoodenPickaxe(0).getUpdatedItem(false));
 		player.getInventory().addItem(new WoodenAxe(0).getUpdatedItem(false));
 		player.getInventory().addItem(new WoodenShovel(0).getUpdatedItem(false));
-		player.getInventory().addItem(new Drumstick(0).getUpdatedItem(false).asQuantity(10));
+		player.getInventory().addItem(new Drumstick().getUpdatedItem(false).asQuantity(10));
 		player.getInventory().addItem(new MobKey(0).getUpdatedItem(false).asQuantity(3));
 		player.getInventory().addItem(new CommonKey(0).getUpdatedItem(false).asQuantity(1));
 

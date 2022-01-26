@@ -15,32 +15,32 @@ public class SpiritDropTable extends CosmeticDropTable {
 		dropTable = new HashMap<>() {
 			{
 				//Rare
-				put(new Antlers(0), 20);
-				//put(new AxeHead(0), 20);
-				//put(new Axolotl(0), 20);
-				//put(new BlueBetaBlob(0), 20);
-				put(new Honey(0), 20);
-				put(new Metroid(0), 20);
-				put(new Panda(0), 20);
-				//put(new Pyromancer(0), 20);
-				put(new TnT(0), 20);
-				put(new Unirod(0), 20);
-				put(new FoxMount(0), 15);
-				put(new HorseMount(0), 15);
-				put(new PolarBearMount(0), 15);
-				put(new HorseMount(0), 15);
+				put(new Antlers(), 20);
+				//put(new AxeHead(), 20);
+				//put(new Axolotl(), 20);
+				//put(new BlueBetaBlob(), 20);
+				put(new Honey(), 20);
+				put(new Metroid(), 20);
+				put(new Panda(), 20);
+				//put(new Pyromancer(), 20);
+				put(new TnT(), 20);
+				put(new Unirod(), 20);
+				put(new FoxMount(), 15);
+				put(new HorseMount(), 15);
+				put(new PolarBearMount(), 15);
+				put(new HorseMount(), 15);
 
 				//Epic
-				put(new CarrotOnAStick(0), 10);
-				put(new Crown(0), 10);
-				put(new HotHead(0), 10);
-				put(new Noteworthy(0), 10);
-				put(new Headphones(0), 10);
-				put(new Spongebob(0), 10);
-				put(new SquidHead(0), 10);
-				put(new GoatMount(0), 15);
-				put(new HoglinMount(0), 15);
-				put(new PandaMount(0), 15);
+				put(new CarrotOnAStick(), 10);
+				put(new Crown(), 10);
+				put(new HotHead(), 10);
+				put(new Noteworthy(), 10);
+				put(new Headphones(), 10);
+				put(new Spongebob(), 10);
+				put(new SquidHead(), 10);
+				put(new GoatMount(), 15);
+				put(new HoglinMount(), 15);
+				put(new PandaMount(), 15);
 			}
 		};
 	}

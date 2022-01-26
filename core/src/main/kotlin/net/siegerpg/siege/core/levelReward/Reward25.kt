@@ -14,7 +14,7 @@ class Reward25(
 		override val level : Short = 26,
 		override val gold : Int = 3000,
 		override val items : List<ItemStack> = listOf(
-				Sugar(0).getUpdatedItem(false).asQuantity(10),
+				Sugar().getUpdatedItem(false).asQuantity(10),
 				Crossbow(Utils.randRarity()).getUpdatedItem(false)
 		                                             )
               ) : LevelReward

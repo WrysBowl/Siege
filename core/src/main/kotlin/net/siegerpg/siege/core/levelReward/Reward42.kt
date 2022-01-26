@@ -17,7 +17,7 @@ class Reward42(
 		override val level : Short = 43,
 		override val gold : Int = 3000,
 		override val items : List<ItemStack> = listOf(
-				GoldenCarrot(0).getUpdatedItem(false).asQuantity(5),
+				GoldenCarrot().getUpdatedItem(false).asQuantity(5),
 				CursedSickle(Utils.randRarity()).getUpdatedItem(false)
 		                                             )
               ) : LevelReward

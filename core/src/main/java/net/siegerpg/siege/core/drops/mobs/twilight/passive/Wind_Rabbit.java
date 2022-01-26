@@ -34,7 +34,7 @@ public class Wind_Rabbit extends MobDropTable {
 						           .tier(2)
 						           .getUpdatedItem(false)
 						           .asQuantity(6), 25.0),
-				new Reward(new Drumstick(50).getUpdatedItem(false), 25.0)
+				new Reward(new Drumstick().getUpdatedItem(false), 25.0)
 		});
 	}
 

@@ -51,7 +51,7 @@ public class ChestMimic2 extends MobDropTable {
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 15.0),
 
-				new Reward(new Sugar(100)
+				new Reward(new Sugar()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 50.0),
 				});

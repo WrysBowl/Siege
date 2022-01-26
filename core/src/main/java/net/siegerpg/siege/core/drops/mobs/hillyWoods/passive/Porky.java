@@ -25,8 +25,8 @@ public class Porky extends MobDropTable {
 						           .tier(2)
 						           .getUpdatedItem(false), 7.0),
 
-				new Reward(new Porkchop(50).getUpdatedItem(false), 60.0),
-				new Reward(new Porkchop(100).getUpdatedItem(false), 6.0),
+				new Reward(new Porkchop().getUpdatedItem(false), 60.0),
+				new Reward(new Porkchop().getUpdatedItem(false), 6.0),
 				});
 	}
 

@@ -21,7 +21,7 @@ class Reward53(
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
 				PristineToughGem(0).getUpdatedItem(false),
-				Sugar(0).getUpdatedItem(false).asQuantity(8),
+				Sugar().getUpdatedItem(false).asQuantity(8),
 				MobKey(0).getUpdatedItem(false).asQuantity(16)
 		                                             )
               ) : LevelReward

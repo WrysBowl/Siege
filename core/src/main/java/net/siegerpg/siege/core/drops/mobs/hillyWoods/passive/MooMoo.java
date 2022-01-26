@@ -25,7 +25,7 @@ public class MooMoo extends MobDropTable {
 				new Reward(Leather.Companion
 						           .tier(2)
 						           .getUpdatedItem(false), 8.0),
-				new Reward(new Beef(50).getUpdatedItem(false), 100.0),
+				new Reward(new Beef().getUpdatedItem(false), 100.0),
 				});
 	}
 

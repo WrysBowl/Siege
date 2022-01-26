@@ -14,7 +14,7 @@ class Reward30(
 		override val level : Short = 31,
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
-				Sugar(0).getUpdatedItem(false).asQuantity(20),
+				Sugar().getUpdatedItem(false).asQuantity(20),
 				ChainLeggings(Utils.randRarity()).getUpdatedItem(false)
 		                                             )
               ) : LevelReward

@@ -20,7 +20,7 @@ public class Pigeon extends MobDropTable {
 				new Reward(Bone.Companion
 						           .tier(1)
 						           .getUpdatedItem(false), 10.0),
-				new Reward(new Drumstick(0).getUpdatedItem(false), 50.0),
+				new Reward(new Drumstick().getUpdatedItem(false), 50.0),
 				});
 	}
 

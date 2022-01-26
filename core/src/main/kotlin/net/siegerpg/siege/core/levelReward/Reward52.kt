@@ -20,6 +20,6 @@ class Reward52(
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
 				PolishedLuckGem(0).getUpdatedItem(false),
-				Sugar(0).getUpdatedItem(false).asQuantity(32)
+				Sugar().getUpdatedItem(false).asQuantity(32)
 		                                             )
               ) : LevelReward

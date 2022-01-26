@@ -20,8 +20,8 @@ public class FeatheredMeat extends MobDropTable {
 				new Reward(Bone.Companion
 						           .tier(1)
 						           .getUpdatedItem(false), 30.0),
-				new Reward(new Drumstick(50).getUpdatedItem(false), 25.0),
-				new Reward(new Drumstick(0).getUpdatedItem(false), 75.0),
+				new Reward(new Drumstick().getUpdatedItem(false), 25.0),
+				new Reward(new Drumstick().getUpdatedItem(false), 75.0),
 				});
 	}
 

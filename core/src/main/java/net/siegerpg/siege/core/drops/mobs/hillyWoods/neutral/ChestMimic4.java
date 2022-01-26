@@ -10,10 +10,10 @@ public class ChestMimic4 extends MobDropTable {
 
 		super("ChestMimic4", 150, 300, 150, 300, new Reward[] {
 
-				new Reward(new Sugar(100)
+				new Reward(new Sugar()
 						           .getUpdatedItem(false)
 						           .asQuantity(12), 50.0),
-				new Reward(new Sugar(100)
+				new Reward(new Sugar()
 						           .getUpdatedItem(false)
 						           .asQuantity(12), 50.0),
 				});

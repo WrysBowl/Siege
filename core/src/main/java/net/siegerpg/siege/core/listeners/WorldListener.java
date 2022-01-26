@@ -73,22 +73,22 @@ public class WorldListener implements Listener, Runnable {
 		ItemStack item = e.getResult();
 		HashMap<Material, CustomFood> foods = new HashMap<>(){
 			{
-				put(Material.COOKED_BEEF, new CookedBeef(0));
-				put(Material.COOKED_CHICKEN, new CookedChicken(0));
-				put(Material.COOKED_PORKCHOP, new CookedPork(0));
+				put(Material.COOKED_BEEF, new CookedBeef());
+				put(Material.COOKED_CHICKEN, new CookedChicken());
+				put(Material.COOKED_PORKCHOP, new CookedPork());
 
 			}
 		};
 		CustomFood cookedFood = foods.get(item.getType());
 		if (cookedFood == null) {
 			if (Utils.randTest(15.0)) {
-				e.setResult(new BeetrootCurry(0).getUpdatedItem(false));
+				e.setResult(new BeetrootCurry().getUpdatedItem(false));
 			} else if (Utils.randTest(10.0)) {
-				e.setResult(new HoneyOatBread(0).getUpdatedItem(false));
+				e.setResult(new HoneyOatBread().getUpdatedItem(false));
 			} else if (Utils.randTest(15.0)) {
-				e.setResult(new CaramelApple(0).getUpdatedItem(false));
+				e.setResult(new CaramelApple().getUpdatedItem(false));
 			} else {
-				e.setResult(new CharredFood(0).getUpdatedItem(false));
+				e.setResult(new CharredFood().getUpdatedItem(false));
 			}
 		} else {
 			e.setResult(cookedFood.getUpdatedItem(false));

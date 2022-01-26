@@ -16,6 +16,6 @@ class Reward18(
 		override val gold : Int = 0,
 		override val items : List<ItemStack> = listOf(
 				ReinforcedBow(Utils.randRarity()).getUpdatedItem(false),
-				GoldenCarrot(0).getUpdatedItem(false).asQuantity(5)
+				GoldenCarrot().getUpdatedItem(false).asQuantity(5)
 		                                             )
               ) : LevelReward

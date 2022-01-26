@@ -28,7 +28,7 @@ public class Wooly extends MobDropTable {
 						           .tier(2)
 						           .getUpdatedItem(false), 8.0),
 
-				new Reward(new Drumstick(50).getUpdatedItem(false), 25.0),
+				new Reward(new Drumstick().getUpdatedItem(false), 25.0),
 				});
 	}
 

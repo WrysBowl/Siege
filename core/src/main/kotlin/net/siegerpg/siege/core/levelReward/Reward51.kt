@@ -19,6 +19,6 @@ class Reward51(
 		override val gold : Int = 3000,
 		override val items : List<ItemStack> = listOf(
 				MobKey(0).getUpdatedItem(false).asQuantity(15),
-				GoldenCarrot(0).getUpdatedItem(false).asQuantity(10)
+				GoldenCarrot().getUpdatedItem(false).asQuantity(10)
 		                                             )
               ) : LevelReward

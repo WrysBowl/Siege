@@ -13,15 +13,15 @@ public class LegendaryDropTable extends CosmeticDropTable {
 
 		dropTable = new HashMap<>() {
 			{
-				put(new GlowSquid(0), 10);
-				put(new HexShifter(0), 10);
-				put(new Rainbow(0), 10);
-				put(new Bandana(0), 10);
-				put(new SilverTiara(0), 10);
-				put(new LilUziDiamond(0), 10);
-				put(new AxolotlMount(0), 15);
-				put(new BeeMount(0), 15);
-				put(new SkeletonHorseMount(0), 15);
+				put(new GlowSquid(), 10);
+				put(new HexShifter(), 10);
+				put(new Rainbow(), 10);
+				put(new Bandana(), 10);
+				put(new SilverTiara(), 10);
+				put(new LilUziDiamond(), 10);
+				put(new AxolotlMount(), 15);
+				put(new BeeMount(), 15);
+				put(new SkeletonHorseMount(), 15);
 			}
 		};
 	}

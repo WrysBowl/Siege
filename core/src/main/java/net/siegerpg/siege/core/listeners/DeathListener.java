@@ -141,13 +141,13 @@ public class DeathListener implements Listener, Runnable {
 				.getType()
 				.getInternalName()
 				.equals("Goblin")) {
-			reward = new GoldenCarrot(100).getUpdatedItem(false);
+			reward = new GoldenCarrot().getUpdatedItem(false);
 			chance = 1.0;
 		} else if (mm
 				.getType()
 				.getInternalName()
 				.equals("WildFox")) {
-			reward = new GoldenCarrot(50).getUpdatedItem(false);
+			reward = new GoldenCarrot().getUpdatedItem(false);
 			chance = 1.0;
 		}
 		if (reward == null) return;

@@ -30,7 +30,7 @@ public class Crystal_Rat extends MobDropTable {
 				new Reward(FairyDust.Companion
 						           .tier(3)
 						           .getUpdatedItem(false), 5.0),
-				new Reward(new Drumstick(50).getUpdatedItem(false), 25.0)
+				new Reward(new Drumstick().getUpdatedItem(false), 25.0)
 
 		});
 	}

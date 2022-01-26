@@ -81,7 +81,7 @@ public class AngryBull extends MobDropTable {
 				new Reward(new HealingDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.1),
 				new Reward(new HealthyDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.1),
 
-				new Reward(new Beef(50).getUpdatedItem(false), 40.0),
+				new Reward(new Beef().getUpdatedItem(false), 40.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
 				new Reward(new BullSpiritKey(0).getUpdatedItem(false), 1.0),
 

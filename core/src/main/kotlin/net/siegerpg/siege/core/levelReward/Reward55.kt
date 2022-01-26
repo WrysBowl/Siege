@@ -21,7 +21,7 @@ class Reward55(
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
 				Nightshade(Utils.randRarity()).getUpdatedItem(false),
-				Sugar(0).getUpdatedItem(false).asQuantity(16),
+				Sugar().getUpdatedItem(false).asQuantity(16),
 				MobKey(0).getUpdatedItem(false).asQuantity(10)
 		                                             )
               ) : LevelReward

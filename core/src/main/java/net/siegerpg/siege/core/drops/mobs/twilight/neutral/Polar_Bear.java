@@ -36,10 +36,10 @@ public class Polar_Bear extends MobDropTable {
 				new Reward(IceShard.Companion
 						           .tier(2)
 						           .getUpdatedItem(false), 5.0),
-				new Reward(new Drumstick(50)
+				new Reward(new Drumstick()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 25.0),
-				new Reward(new Drumstick(100)
+				new Reward(new Drumstick()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 10.0)
 		});

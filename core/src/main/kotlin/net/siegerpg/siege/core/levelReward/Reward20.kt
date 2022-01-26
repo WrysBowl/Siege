@@ -15,6 +15,6 @@ class Reward20(
 		override val gold : Int = 500,
 		override val items : List<ItemStack> = listOf(
 				FlawedStrengthGem(0).getUpdatedItem(false),
-				GoldenCarrot(0).getUpdatedItem(false).asQuantity(5)
+				GoldenCarrot().getUpdatedItem(false).asQuantity(5)
 		                                             )
               ) : LevelReward

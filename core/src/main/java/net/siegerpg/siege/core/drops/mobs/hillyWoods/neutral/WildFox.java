@@ -23,8 +23,8 @@ public class WildFox extends MobDropTable {
 				new Reward(Leather.Companion
 						           .tier(2)
 						           .getUpdatedItem(false), 5.0),
-				new Reward(new Drumstick(100).getUpdatedItem(false), 5.0),
-				new Reward(new Drumstick(50).getUpdatedItem(false), 25.0),
+				new Reward(new Drumstick().getUpdatedItem(false), 5.0),
+				new Reward(new Drumstick().getUpdatedItem(false), 25.0),
 				});
 	}
 

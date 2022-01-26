@@ -28,7 +28,7 @@ public class Unicorn extends MobDropTable {
 						           .tier(3)
 						           .getUpdatedItem(false)
 						           .asQuantity(16), 50.0),
-				new Reward(new GoldenCarrot(100)
+				new Reward(new GoldenCarrot()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 100.0),
 				new Reward(new PristineHealthGem(0).getUpdatedItem(false), 20.0),

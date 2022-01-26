@@ -13,12 +13,9 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.food.Beetroot;
 import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
-import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.NecromancerKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.SimpleRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 
@@ -75,9 +72,9 @@ public class ZombifiedDigger extends MobDropTable {
 				new Reward(new LuckyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.05),
 				new Reward(new LuckyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.05),
 
-				new Reward(new Beetroot(50).getUpdatedItem(false), 10.0),
-				new Reward(new Beetroot(0).getUpdatedItem(false), 50.0),
-				new Reward(new SusStew(Utils.randRarity()).getUpdatedItem(false), 10.0),
+				new Reward(new Beetroot().getUpdatedItem(false), 10.0),
+				new Reward(new Beetroot().getUpdatedItem(false), 50.0),
+				new Reward(new SusStew().getUpdatedItem(false), 10.0),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 2.5),
 				new Reward(new NecromancerKey(0).getUpdatedItem(false), 1.0),

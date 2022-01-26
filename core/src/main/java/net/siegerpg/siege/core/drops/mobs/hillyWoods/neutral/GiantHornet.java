@@ -13,9 +13,9 @@ public class GiantHornet extends MobDropTable {
 	public GiantHornet() {
 
 		super("GiantHornet", 4, 7, 10, 13, new Reward[] {
-				new Reward(new CaramelApple(0).getUpdatedItem(false), 5.0),
-				new Reward(new BeetrootCurry(0).getUpdatedItem(false), 5.0),
-				new Reward(new HoneyOatBread(0).getUpdatedItem(false), 5.0),
+				new Reward(new CaramelApple().getUpdatedItem(false), 5.0),
+				new Reward(new BeetrootCurry().getUpdatedItem(false), 5.0),
+				new Reward(new HoneyOatBread().getUpdatedItem(false), 5.0),
 
 				new Reward(new BeePants(Utils.randRarity()).getUpdatedItem(false), 2.5),
 				});
