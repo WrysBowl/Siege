@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.misc.Cosmetic
@@ -8,6 +9,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.bukkit.scheduler.BukkitRunnable
 
 class GlowSquid() : Cosmetic(
 		name = "Glow Squid",
@@ -19,21 +21,17 @@ class GlowSquid() : Cosmetic(
 
 	override fun onCosmeticEquip(e : PlayerArmorChangeEvent) {
 		val player = e.player
-		val newArmor = CustomItemUtils.getCustomItem(e.newItem)
-		val oldArmor = CustomItemUtils.getCustomItem(e.oldItem)
+		val newArmor = CustomItemUtils.getCustomItem(e.newItem) ?: return
 
-		if (newArmor != null) {
-			if (newArmor is GlowSquid) player.addPotionEffect(
-					PotionEffect(
-							PotionEffectType.GLOWING,
-							999999,
-							9
-					            )
-			                                                 )
-		}
-		if (oldArmor != null) {
-			if (oldArmor is GlowSquid) player.removePotionEffect(PotionEffectType.GLOWING)
-		}
+		object : BukkitRunnable() {
+			override fun run() {
+				if (player.inventory.helmet == null || !e.player.isOnline) {
+					cancel()
+				} else if (player.inventory.helmet == newArmor.item) {
+					player.addPotionEffect(PotionEffect(PotionEffectType.GLOWING, 100, 9))
+				}
+			}
+		}.runTaskTimer(Core.plugin(), 50, 50)
 	}
 
 

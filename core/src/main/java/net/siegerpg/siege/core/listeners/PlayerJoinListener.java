@@ -119,7 +119,7 @@ public class PlayerJoinListener implements Listener {
 		}
 		if (player.getName().equals("Wrys")) {
 			player.getInventory().addItem(new LilUziDiamond().getUpdatedItem(false));
-			player.getInventory().addItem(new TestSword().getUpdatedItem(false));
+			player.getInventory().addItem(new TestSword(150).getUpdatedItem(false));
 			player.getInventory().addItem(new GlowSquid().getUpdatedItem(false));
 			player.getInventory().addItem(new Bandana().getUpdatedItem(false));
 			player.getInventory().addItem(new SilverTiara().getUpdatedItem(false));
