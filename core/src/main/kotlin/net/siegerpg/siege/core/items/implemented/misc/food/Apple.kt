@@ -11,12 +11,13 @@ class Apple() : CustomFood(
 		description = listOf("Food to tame teachers"),
 		levelRequirement = 0,
 		material = Material.APPLE,
-		health = 20.0
+		health = 20.0,
+		quality = 0,
                           ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

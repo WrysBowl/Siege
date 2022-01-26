@@ -28,6 +28,7 @@ abstract class Cosmetic(
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
+		this.serialize()
 	}
 
 

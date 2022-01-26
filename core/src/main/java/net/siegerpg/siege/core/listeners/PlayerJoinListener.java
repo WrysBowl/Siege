@@ -4,13 +4,18 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.Bandana;
+import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.GlowSquid;
+import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.LilUziDiamond;
+import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.SilverTiara;
+import net.siegerpg.siege.core.items.implemented.misc.food.Apple;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
-import net.siegerpg.siege.core.items.implemented.misc.skills.warrior.Slash;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
+import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.miscellaneous.*;
 import org.bukkit.Bukkit;
@@ -113,7 +118,12 @@ public class PlayerJoinListener implements Listener {
 			Tablist.tablistUpdate(p);
 		}
 		if (player.getName().equals("Wrys")) {
-			player.getInventory().addItem(new Slash(1).getUpdatedItem(false));
+			player.getInventory().addItem(new LilUziDiamond().getUpdatedItem(false));
+			player.getInventory().addItem(new TestSword().getUpdatedItem(false));
+			player.getInventory().addItem(new GlowSquid().getUpdatedItem(false));
+			player.getInventory().addItem(new Bandana().getUpdatedItem(false));
+			player.getInventory().addItem(new SilverTiara().getUpdatedItem(false));
+			player.getInventory().addItem(new Apple().getUpdatedItem(false));
 
 		}
 

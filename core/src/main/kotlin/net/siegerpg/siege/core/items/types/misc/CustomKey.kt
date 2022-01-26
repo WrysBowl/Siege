@@ -29,6 +29,7 @@ abstract class CustomKey(
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
+		this.serialize()
 	}
 
 	override fun getSellValue() : Int {
