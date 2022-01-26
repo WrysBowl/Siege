@@ -23,10 +23,10 @@ public class Ogre extends MobDropTable {
 	public Ogre() {
 
 		super("Ogre", 250, 300, 300, 325, new Reward[] {
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(2), 100.0),
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 10.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(2), 60.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 6.0),
+				new Reward(new Leather().getUpdatedItem(false).asQuantity(2), 100.0),
+				new Reward(new Leather().getUpdatedItem(false).asQuantity(8), 10.0),
+				new Reward(new Bone().getUpdatedItem(false).asQuantity(2), 60.0),
+				new Reward(new Bone().getUpdatedItem(false).asQuantity(8), 6.0),
 
 				new Reward(new BoneHelmet(80).getUpdatedItem(false), 2.5),
 				new Reward(new BoneChestplate(80).getUpdatedItem(false), 2.5),

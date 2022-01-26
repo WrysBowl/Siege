@@ -13,37 +13,27 @@ public class Archer_Elf extends MobDropTable {
 	public Archer_Elf() {
 
 		super("Archer_Elf", 40, 50, 50, 60, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(Bone.Companion
-						           .tier(3)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 5.0),
 
-				new Reward(Leather.Companion
-						           .tier(1)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 60.0),
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 12.0),
-				new Reward(Leather.Companion
-						           .tier(3)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 2.0),
 
-				new Reward(SteelString.Companion
-						           .tier(1)
+				new Reward(new SteelString()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(SteelString.Companion
-						           .tier(2)
+				new Reward(new SteelString()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(RefinedMetal.Companion
-						           .tier(1)
+				new Reward(new RefinedMetal()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(RefinedMetal.Companion
-						           .tier(2)
+				new Reward(new RefinedMetal()
 						           .getUpdatedItem(false), 5.0),
 
 				});

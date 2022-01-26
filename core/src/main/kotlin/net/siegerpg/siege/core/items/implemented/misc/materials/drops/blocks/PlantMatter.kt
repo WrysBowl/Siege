@@ -26,14 +26,4 @@ class PlantMatter() : CustomMaterial(
 		this.item = item
 		deserialize()
 	}
-
-
-	companion object {
-
-		fun tier(tier : Int) : PlantMatter {
-			val newItem = PlantMatter(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
 }

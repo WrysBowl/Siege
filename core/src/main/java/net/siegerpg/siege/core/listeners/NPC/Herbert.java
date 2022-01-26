@@ -101,7 +101,7 @@ public class Herbert implements Listener {
 		e
 				.getWhoClicked()
 				.sendMessage(Utils.parse(
-						"<color:#E4EC5E>You earned " + String.format("%,d", total) + " \u26C1!"));
+						"<color:#E4EC5E>You earned " + String.format("%,d", total) + " \u26C1"));
 		((Player) e.getWhoClicked()).playSound(
 				((Player) e.getWhoClicked()).getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP,
 				1.0f, 1.0f

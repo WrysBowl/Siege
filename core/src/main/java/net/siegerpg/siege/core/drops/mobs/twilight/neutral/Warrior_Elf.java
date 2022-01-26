@@ -12,31 +12,23 @@ public class Warrior_Elf extends MobDropTable {
 	public Warrior_Elf() {
 
 		super("Warrior_Elf", 50, 60, 40, 50, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(Bone.Companion
-						           .tier(3)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 5.0),
 
-				new Reward(Leather.Companion
-						           .tier(1)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 60.0),
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 12.0),
-				new Reward(Leather.Companion
-						           .tier(3)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 2.0),
 
-				new Reward(RefinedMetal.Companion
-						           .tier(1)
+				new Reward(new RefinedMetal()
 						           .getUpdatedItem(false), 75.0),
-				new Reward(RefinedMetal.Companion
-						           .tier(2)
+				new Reward(new RefinedMetal()
 						           .getUpdatedItem(false), 25.0)
 
 		});

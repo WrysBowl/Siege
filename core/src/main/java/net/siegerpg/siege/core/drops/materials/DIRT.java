@@ -10,11 +10,9 @@ public class DIRT extends BlockDropTable {
 	public DIRT() {
 
 		super(100, Material.DIRT, 1, 1, 0, 0, new Reward[] {
-				new Reward(Pebble.Companion
-						           .tier(1)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(Pebble.Companion
-						           .tier(2)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 5.0)
 		});
 	}

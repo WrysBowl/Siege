@@ -17,11 +17,9 @@ public class RockRat extends MobDropTable {
 	public RockRat() {
 
 		super("RockRat", 3, 5, 2, 4, new Reward[] {
-				new Reward(Pebble.Companion
-						           .tier(1)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Pebble.Companion
-						           .tier(2)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 10.0),
 				new Reward(new JaggedTunic(Utils.randRarity()).getUpdatedItem(false), 5.0),
 				new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 1.0),

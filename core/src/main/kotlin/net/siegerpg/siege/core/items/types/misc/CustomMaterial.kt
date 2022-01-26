@@ -28,11 +28,6 @@ abstract class CustomMaterial(
 		override val type : ItemTypes = ItemTypes.MATERIAL) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
-	var tier : Int = 0
-		set(value) {
-			field = value
-			this.serialize()
-		}
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
@@ -43,25 +38,11 @@ abstract class CustomMaterial(
 		return quality/10
 	}
 
-	override fun serialize() {
-		super.serialize()
-		item = item.setNbtTags(
-				"materialTier" to tier
-		                      )
-	}
-
-	override fun deserialize() {
-		super.deserialize()
-		item.getNbtTag<Int>("materialTier")?.let {
-			tier = it
-		}
-	}
-
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 
 		val meta = item.itemMeta
 
-		meta.name("<r><gray>$name <yellow>${"\u272A".repeat(tier)}")
+		meta.name("<r><gray>$name")
 
 		if (meta.hasLore()) meta.lore(mutableListOf())
 
@@ -91,8 +72,6 @@ abstract class CustomMaterial(
 	override fun equals(other : Any?) : Boolean {
 		if (other == null) return false
 		if (this::class.qualifiedName != other::class.qualifiedName) return false
-		val castedOther = other as CustomMaterial
-		if (this.tier != castedOther.tier) return false
 		return true
 	}
 
@@ -106,7 +85,6 @@ abstract class CustomMaterial(
 		result = 31 * result + item.hashCode()
 		result = 31 * result + type.hashCode()
 		result = 31 * result + rarity.hashCode()
-		result = 31 * result + tier
 		return result
 	}
 

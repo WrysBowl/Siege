@@ -13,28 +13,22 @@ public class Polar_Bear extends MobDropTable {
 	public Polar_Bear() {
 
 		super("Polar_Bear", 100, 120, 150, 160, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 50.0),
-				new Reward(Bone.Companion
-						           .tier(3)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 25.0),
 
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 60.0),
-				new Reward(Leather.Companion
-						           .tier(3)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 15.0),
 
-				new Reward(IceShard.Companion
-						           .tier(1)
+				new Reward(new IceShard()
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 25.0),
-				new Reward(IceShard.Companion
-						           .tier(2)
+				new Reward(new IceShard()
 						           .getUpdatedItem(false), 5.0),
 				new Reward(new Drumstick()
 						           .getUpdatedItem(false)

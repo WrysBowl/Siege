@@ -10,15 +10,12 @@ public class IRON_ORE extends BlockDropTable {
 	public IRON_ORE() {
 
 		super(300, Material.IRON_ORE, 8, 10, 3, 5, new Reward[] {
-				new Reward(MetalScrap.Companion
-						           .tier(1)
+				new Reward(new MetalScrap()
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 100.0),
-				new Reward(MetalScrap.Companion
-						           .tier(2)
+				new Reward(new MetalScrap()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(MetalScrap.Companion
-						           .tier(3)
+				new Reward(new MetalScrap()
 						           .getUpdatedItem(false), 1.0)
 		});
 	}

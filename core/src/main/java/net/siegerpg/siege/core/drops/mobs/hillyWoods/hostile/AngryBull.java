@@ -26,17 +26,13 @@ public class AngryBull extends MobDropTable {
 	public AngryBull() {
 
 		super("AngryBull", 17, 20, 26, 29, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(1)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 80.0),
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 8.0),
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 5.0),
 
 				new Reward(new LeatherHelmet(50).getUpdatedItem(false), 1.5),

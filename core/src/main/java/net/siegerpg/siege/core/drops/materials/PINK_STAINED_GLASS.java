@@ -12,20 +12,15 @@ public class PINK_STAINED_GLASS extends BlockDropTable {
 	public PINK_STAINED_GLASS() {
 
 		super(60, Material.PINK_STAINED_GLASS, 2, 4, 3, 5, new Reward[] {
-				new Reward(Crystal.Companion
-						           .tier(1)
+				new Reward(new Crystal()
 						           .getUpdatedItem(false), 80.0),
-				new Reward(Crystal.Companion
-						           .tier(2)
+				new Reward(new Crystal()
 						           .getUpdatedItem(false), 8.0),
-				new Reward(FairyDust.Companion
-						           .tier(1)
+				new Reward(new FairyDust()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(FairyDust.Companion
-						           .tier(2)
+				new Reward(new FairyDust()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(CorruptCrystal.Companion
-						           .tier(1)
+				new Reward(new CorruptCrystal()
 						           .getUpdatedItem(false), 5.0),
 				});
 	}

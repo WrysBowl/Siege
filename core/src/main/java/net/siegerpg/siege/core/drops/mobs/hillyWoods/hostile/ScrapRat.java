@@ -16,11 +16,9 @@ public class ScrapRat extends MobDropTable {
 	public ScrapRat() {
 
 		super("ScrapRat", 13, 15, 12, 14, new Reward[] {
-				new Reward(Pebble.Companion
-						           .tier(2)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Pebble.Companion
-						           .tier(3)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 10.0),
 
 				new Reward(new JaggedTunic(Utils.randRarity()).getUpdatedItem(false), 2.0),

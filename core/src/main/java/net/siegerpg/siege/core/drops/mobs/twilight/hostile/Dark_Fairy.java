@@ -14,20 +14,11 @@ public class Dark_Fairy extends MobDropTable {
 	public Dark_Fairy() {
 
 		super("Dark_Fairy", 50, 60, 50, 60, new Reward[] {
-				new Reward(FairyDust.Companion
-						           .tier(1)
-						           .getUpdatedItem(false), 25.0),
-				new Reward(FairyDust.Companion
-						           .tier(2)
-						           .getUpdatedItem(false), 5.0),
-				new Reward(FairyWing.Companion
-						           .tier(1)
-						           .getUpdatedItem(false), 50.0),
-				new Reward(FairyWing.Companion
-						           .tier(2)
-						           .getUpdatedItem(false), 10.0),
-				new Reward(CorruptCrystal.Companion
-						           .tier(1)
+				new Reward(new FairyDust().getUpdatedItem(false), 25.0),
+				new Reward(new FairyDust().getUpdatedItem(false), 5.0),
+				new Reward(new FairyWing().getUpdatedItem(false), 50.0),
+				new Reward(new FairyWing().getUpdatedItem(false), 10.0),
+				new Reward(new CorruptCrystal()
 						           .getUpdatedItem(false), 25.0),
 
 				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 0.5),

@@ -15,12 +15,10 @@ public class BloodSucker extends MobDropTable {
 	public BloodSucker() {
 
 		super("BloodSucker", 37, 40, 26, 29, new Reward[] {
-				new Reward(Vine.Companion
-						           .tier(1)
+				new Reward(new Vine()
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 100.0),
-				new Reward(Vine.Companion
-						           .tier(2)
+				new Reward(new Vine()
 						           .getUpdatedItem(false)
 						           .asQuantity(2), 10.0),
 

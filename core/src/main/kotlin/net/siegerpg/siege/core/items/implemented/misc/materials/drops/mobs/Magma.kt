@@ -26,13 +26,4 @@ class Magma() : CustomMaterial(
 		this.item = item
 		deserialize()
 	}
-
-	companion object {
-
-		fun tier(tier : Int) : Magma {
-			val newItem = Magma(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
 }

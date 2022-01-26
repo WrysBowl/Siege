@@ -12,42 +12,33 @@ public class ChestMimic2 extends MobDropTable {
 	public ChestMimic2() {
 
 		super("ChestMimic2", 850, 900, 150, 200, new Reward[] {
-				new Reward(Magma.Companion
-						           .tier(2)
+				new Reward(new Magma()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 25.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 25.0),
-				new Reward(Pebble.Companion
-						           .tier(2)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 25.0),
 
-				new Reward(Magma.Companion
-						           .tier(2)
+				new Reward(new Magma()
 						           .getUpdatedItem(false)
 						           .asQuantity(12), 15.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(12), 15.0),
-				new Reward(Pebble.Companion
-						           .tier(2)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false)
 						           .asQuantity(12), 15.0),
 
-				new Reward(Magma.Companion
-						           .tier(3)
+				new Reward(new Magma()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 15.0),
-				new Reward(Bone.Companion
-						           .tier(3)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 15.0),
-				new Reward(Pebble.Companion
-						           .tier(3)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 15.0),
 

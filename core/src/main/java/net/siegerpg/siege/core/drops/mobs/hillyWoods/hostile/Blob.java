@@ -13,8 +13,6 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.SlimeSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.RawLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.StickyStick;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.stickySticks.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -24,11 +22,9 @@ public class Blob extends MobDropTable {
 	public Blob() {
 
 		super("Blob", 7, 10, 7, 10, new Reward[] {
-				new Reward(Slime.Companion
-						           .tier(1)
+				new Reward(new Slime()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Slime.Companion
-						           .tier(2)
+				new Reward(new Slime()
 						           .getUpdatedItem(false), 10.0),
 
 				new Reward(new StickyStick(Utils.randRarity()).getUpdatedItem(false), 2.0),

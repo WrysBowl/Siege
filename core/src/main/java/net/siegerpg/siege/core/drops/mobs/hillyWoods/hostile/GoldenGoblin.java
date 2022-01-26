@@ -15,11 +15,9 @@ public class GoldenGoblin extends MobDropTable {
 	public GoldenGoblin() {
 
 		super("GoldenGoblin", 300, 400, 60, 69, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 100.0),
 				new Reward(new Twig(Utils.randRarity()).getUpdatedItem(false), 100.0),
 				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(2), 100.0),

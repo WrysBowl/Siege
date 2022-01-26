@@ -22,8 +22,8 @@ public class Werewolf extends MobDropTable {
 
 		super("Werewolf", 75, 79, 80, 84, new Reward[] {
 
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 100.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 10.0),
+				new Reward(new Bone().getUpdatedItem(false), 100.0),
+				new Reward(new Bone().getUpdatedItem(false).asQuantity(8), 10.0),
 
 				new Reward(new ChainHelmet(100).getUpdatedItem(false), 0.5),
 				new Reward(new ChainChestplate(100).getUpdatedItem(false), 0.5),

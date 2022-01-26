@@ -10,11 +10,9 @@ public class OAK_WOOD extends BlockDropTable {
 	public OAK_WOOD() {
 
 		super(100, Material.OAK_WOOD, 1, 3, 1, 3, new Reward[] {
-				new Reward(Stick.Companion
-						           .tier(1)
+				new Reward(new Stick()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Stick.Companion
-						           .tier(2)
+				new Reward(new Stick()
 						           .getUpdatedItem(false), 10.0)
 		});
 	}

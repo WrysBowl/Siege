@@ -30,15 +30,12 @@ public class Skeletal_Warrior extends MobDropTable {
 	public Skeletal_Warrior() {
 
 		super("Skeletal_Warrior", 80, 90, 60, 70, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 100.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(Bone.Companion
-						           .tier(3)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 1.0),
 
 				new Reward(new BoneHelmet(50).getUpdatedItem(false), 2.5),

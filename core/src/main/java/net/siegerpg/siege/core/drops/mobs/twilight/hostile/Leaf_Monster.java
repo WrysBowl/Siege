@@ -14,20 +14,13 @@ public class Leaf_Monster extends MobDropTable {
 	public Leaf_Monster() {
 
 		super("Leaf_Monster", 40, 50, 35, 45, new Reward[] {
-				new Reward(SparklingLeaves.Companion
-						           .tier(2)
+				new Reward(new SparklingLeaves()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(SparklingLeaves.Companion
-						           .tier(3)
+				new Reward(new SparklingLeaves()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(FairyDust.Companion
-						           .tier(1)
-						           .getUpdatedItem(false), 50.0),
-				new Reward(FairyDust.Companion
-						           .tier(2)
-						           .getUpdatedItem(false), 10.0),
-				new Reward(PlantMatter.Companion
-						           .tier(2)
+				new Reward(new FairyDust().getUpdatedItem(false), 50.0),
+				new Reward(new FairyDust().getUpdatedItem(false), 10.0),
+				new Reward(new PlantMatter()
 						           .getUpdatedItem(false), 50.0),
 
 				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 1.0),

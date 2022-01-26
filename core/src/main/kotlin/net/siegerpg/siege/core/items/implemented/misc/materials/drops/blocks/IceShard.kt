@@ -26,13 +26,6 @@ class IceShard() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : IceShard {
-			val newItem = IceShard(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
+	
 
 }

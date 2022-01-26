@@ -11,11 +11,9 @@ public class Bat extends MobDropTable {
 	public Bat() {
 
 		super("Bat", 10, 20, 10, 20, new Reward[] {
-				new Reward(FairyWing.Companion
-						           .tier(1)
+				new Reward(new FairyWing()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(FairyWing.Companion
-						           .tier(2)
+				new Reward(new FairyWing()
 						           .getUpdatedItem(false), 20.0),
 				new Reward(new Drumstick()
 						           .getUpdatedItem(false)

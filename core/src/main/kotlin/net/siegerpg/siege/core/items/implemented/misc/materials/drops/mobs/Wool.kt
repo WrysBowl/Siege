@@ -27,13 +27,4 @@ class Wool() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : Wool {
-			val newItem = Wool(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

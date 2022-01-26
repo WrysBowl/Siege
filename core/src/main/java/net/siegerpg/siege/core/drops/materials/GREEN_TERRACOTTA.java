@@ -11,17 +11,13 @@ public class GREEN_TERRACOTTA extends BlockDropTable {
 	public GREEN_TERRACOTTA() {
 
 		super(100, Material.GREEN_TERRACOTTA, 1, 1, 0, 0, new Reward[] {
-				new Reward(PlantMatter.Companion
-						           .tier(1)
+				new Reward(new PlantMatter()
 						           .getUpdatedItem(false), 65.0),
-				new Reward(Seed.Companion
-						           .tier(1)
+				new Reward(new Seed()
 						           .getUpdatedItem(false), 35.0),
-				new Reward(PlantMatter.Companion
-						           .tier(2)
+				new Reward(new PlantMatter()
 						           .getUpdatedItem(false), 6.5),
-				new Reward(Seed.Companion
-						           .tier(2)
+				new Reward(new Seed()
 						           .getUpdatedItem(false), 3.5)
 		});
 	}

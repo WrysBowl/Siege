@@ -15,19 +15,15 @@ public class Corrupted_Skeleton extends MobDropTable {
 	public Corrupted_Skeleton() {
 
 		super("Corrupted_Skeleton", 200, 300, 250, 350, new Reward[] {
-				new Reward(CorruptCrystal.Companion
-						           .tier(1)
+				new Reward(new CorruptCrystal()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 25.0),
-				new Reward(CorruptCrystal.Companion
-						           .tier(2)
+				new Reward(new CorruptCrystal()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(CursedBone.Companion
-						           .tier(1)
+				new Reward(new CursedBone()
 						           .getUpdatedItem(false)
 						           .asQuantity(16), 25.0),
-				new Reward(CursedBone.Companion
-						           .tier(2)
+				new Reward(new CursedBone()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 5.0),
 

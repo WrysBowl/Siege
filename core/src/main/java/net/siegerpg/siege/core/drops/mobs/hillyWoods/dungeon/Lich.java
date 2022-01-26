@@ -28,8 +28,8 @@ public class Lich extends MobDropTable {
 
 		super("Lich", 3000, 5500, 25000, 30000, new Reward[] {
 
-				new Reward(Vine.Companion.tier(2).getUpdatedItem(false), 100.0),
-				new Reward(Vine.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 10.0),
+				new Reward(new Vine().getUpdatedItem(false), 100.0),
+				new Reward(new Vine().getUpdatedItem(false).asQuantity(8), 10.0),
 
 				new Reward(new GreatSword(Utils.randRarity()).getUpdatedItem(false), 30.0),
 				new Reward(new GreatSword(100).getUpdatedItem(false), 5.0),

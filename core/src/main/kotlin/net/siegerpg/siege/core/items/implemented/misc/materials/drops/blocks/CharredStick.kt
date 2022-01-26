@@ -26,13 +26,4 @@ class CharredStick() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : CharredStick {
-			val newItem = CharredStick(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

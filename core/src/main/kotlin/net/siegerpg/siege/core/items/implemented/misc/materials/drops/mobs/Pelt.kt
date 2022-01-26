@@ -26,13 +26,4 @@ class Pelt() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : Pelt {
-			val newItem = Pelt(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

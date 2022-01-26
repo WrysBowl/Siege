@@ -10,14 +10,11 @@ public class VINE extends BlockDropTable {
 	public VINE() {
 
 		super(40, Material.VINE, 0, 0, 0, 0, new Reward[] {
-				new Reward(Vine.Companion
-						           .tier(1)
+				new Reward(new Vine()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Vine.Companion
-						           .tier(2)
+				new Reward(new Vine()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(Vine.Companion
-						           .tier(3)
+				new Reward(new Vine()
 						           .getUpdatedItem(false), 0.1)
 		});
 	}

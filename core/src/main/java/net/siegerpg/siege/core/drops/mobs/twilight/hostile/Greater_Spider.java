@@ -13,19 +13,15 @@ public class Greater_Spider extends MobDropTable {
 	public Greater_Spider() {
 
 		super("Greater_Spider", 100, 120, 200, 240, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 30.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(SteelString.Companion
-						           .tier(1)
+				new Reward(new SteelString()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 60.0),
-				new Reward(SteelString.Companion
-						           .tier(2)
+				new Reward(new SteelString()
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 15.0),
 

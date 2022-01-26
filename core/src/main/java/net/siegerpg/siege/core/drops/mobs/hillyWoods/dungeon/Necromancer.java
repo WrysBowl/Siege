@@ -36,10 +36,10 @@ public class Necromancer extends MobDropTable {
 
 		super("Necromancer", 5000, 10000, 45000, 50000, new Reward[] {
 
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 60.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 6.0),
-				new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false), 60.0),
-				new Reward(MetalScrap.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 6.0),
+				new Reward(new Bone().getUpdatedItem(false), 60.0),
+				new Reward(new Bone().getUpdatedItem(false).asQuantity(8), 6.0),
+				new Reward(new MetalScrap().getUpdatedItem(false), 60.0),
+				new Reward(new MetalScrap().getUpdatedItem(false).asQuantity(8), 6.0),
 
 				new Reward(new ChainHelmet(100).getUpdatedItem(false), 5.5),
 				new Reward(new ChainChestplate(100).getUpdatedItem(false), 5.5),

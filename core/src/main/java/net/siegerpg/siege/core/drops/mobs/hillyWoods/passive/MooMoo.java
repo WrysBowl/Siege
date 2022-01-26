@@ -11,19 +11,15 @@ public class MooMoo extends MobDropTable {
 	public MooMoo() {
 
 		super("MooMoo", 10, 13, 8, 11, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 100.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 10.0),
 
-				new Reward(Leather.Companion
-						           .tier(1)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 80.0),
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 8.0),
 				new Reward(new Beef().getUpdatedItem(false), 100.0),
 				});

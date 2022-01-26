@@ -14,20 +14,13 @@ public class Shroomlight_Monster extends MobDropTable {
 	public Shroomlight_Monster() {
 
 		super("Shroomlight_Monster", 35, 45, 45, 55, new Reward[] {
-				new Reward(ShroomPowder.Companion
-						           .tier(1)
+				new Reward(new ShroomPowder()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(ShroomPowder.Companion
-						           .tier(2)
+				new Reward(new ShroomPowder()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(FairyDust.Companion
-						           .tier(1)
-						           .getUpdatedItem(false), 50.0),
-				new Reward(FairyDust.Companion
-						           .tier(2)
-						           .getUpdatedItem(false), 10.0),
-				new Reward(PlantMatter.Companion
-						           .tier(2)
+				new Reward(new FairyDust().getUpdatedItem(false), 50.0),
+				new Reward(new FairyDust().getUpdatedItem(false), 10.0),
+				new Reward(new PlantMatter()
 						           .getUpdatedItem(false), 50.0),
 
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 1.0),

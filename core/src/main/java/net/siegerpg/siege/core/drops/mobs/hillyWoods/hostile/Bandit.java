@@ -27,20 +27,15 @@ public class Bandit extends MobDropTable {
 	public Bandit() {
 
 		super("Bandit", 35, 38, 55, 58, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(1)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(MetalScrap.Companion
-						           .tier(1)
+				new Reward(new MetalScrap()
 						           .getUpdatedItem(false), 25.0),
 
 				new Reward(new LeatherHelmet(50).getUpdatedItem(false), 4.5),

@@ -10,11 +10,9 @@ public class STRIPPED_ACACIA_LOG extends BlockDropTable {
 	public STRIPPED_ACACIA_LOG() {
 
 		super(100, Material.STRIPPED_ACACIA_LOG, 1, 3, 1, 3, new Reward[] {
-				new Reward(Stick.Companion
-						           .tier(1)
+				new Reward(new Stick()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Stick.Companion
-						           .tier(2)
+				new Reward(new Stick()
 						           .getUpdatedItem(false), 10.0)
 		});
 	}

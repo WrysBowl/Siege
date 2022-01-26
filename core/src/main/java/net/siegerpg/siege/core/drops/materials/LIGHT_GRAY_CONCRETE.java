@@ -10,14 +10,11 @@ public class LIGHT_GRAY_CONCRETE extends BlockDropTable {
 	public LIGHT_GRAY_CONCRETE() {
 
 		super(100, Material.LIGHT_GRAY_CONCRETE, 1, 1, 0, 0, new Reward[] {
-				new Reward(Pebble.Companion
-						           .tier(1)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Pebble.Companion
-						           .tier(2)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(Pebble.Companion
-						           .tier(3)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 0.1)
 		});
 	}

@@ -37,7 +37,7 @@ class PartyConfig : ConfigurationBase(File(Core.plugin().dataFolder, "parties.ym
 	fun initializeAllFromConfig() {
 
 //        CustomRecipe recipe = new CustomRecipe();
-//        recipe.s1(Pebble.Companion.tier(1));
+//        recipe.s1(new Pebble());
 //        CustomRecipe.Companion.registerRecipe(recipe);
 
 

@@ -13,9 +13,6 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.PolishedRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.SimpleToughGem;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.ReinforcedBow;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*;
@@ -29,15 +26,12 @@ public class Skeletal_Archer extends MobDropTable {
 	public Skeletal_Archer() {
 
 		super("Skeletal_Archer", 60, 70, 80, 90, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 100.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(Bone.Companion
-						           .tier(3)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 1.0),
 
 				new Reward(new BoneHelmet(50).getUpdatedItem(false), 2.5),

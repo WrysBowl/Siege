@@ -14,24 +14,18 @@ public class Wind_Rabbit extends MobDropTable {
 	public Wind_Rabbit() {
 
 		super("Wind_Rabbit", 40, 50, 35, 45, new Reward[] {
-				new Reward(RabbitFoot.Companion
-						           .tier(1)
+				new Reward(new RabbitFoot()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(RabbitFoot.Companion
-						           .tier(2)
+				new Reward(new RabbitFoot()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(Pelt.Companion
-						           .tier(1)
+				new Reward(new Pelt()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(Pelt.Companion
-						           .tier(2)
+				new Reward(new Pelt()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 25.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(6), 25.0),
 				new Reward(new Drumstick().getUpdatedItem(false), 25.0)

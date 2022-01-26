@@ -93,8 +93,6 @@ public class Menu implements CommandExecutor {
 		utilities.addItem(new GuiItem(getGemRemover(player), e -> new GemRemover().openInventory(player)));
 		//Creating Drops
 		utilities.addItem(new GuiItem(getDropsIcon(), e -> new Drops().getStartMenu(player).show(player)));
-		//Creating Materials
-		utilities.addItem(new GuiItem(getMaterialsIcon(), e -> new Materials().getMenu(player).show(player)));
 
 
 		/*
@@ -232,7 +230,7 @@ public class Menu implements CommandExecutor {
 	}
 
 	private static ItemStack getMaterialsIcon() {
-		ItemStack dropsIcon = Slime.Companion.tier(0).getItem();
+		ItemStack dropsIcon = new Slime().getItem();
 		ItemMeta dropsIconItemMeta = dropsIcon.getItemMeta();
 		dropsIconItemMeta.displayName(Utils.lore("<color:#D4DC7F><bold>Materials"));
 		dropsIconItemMeta.lore(new ArrayList<>() {

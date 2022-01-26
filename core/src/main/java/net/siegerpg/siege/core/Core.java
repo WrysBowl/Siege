@@ -133,7 +133,6 @@ public final class Core extends JavaPlugin {
 			commandList.put("playTime", new Playtime());
 			commandList.put("menu", new Menu());
 			commandList.put("cookieClicker", new CookieClicker());
-			commandList.put("materials", new Materials());
 			commandList.put("dailyReward", new DailyRewardCommand());
 			commandList.put("questReward", new QuestRewardCommand());
 			commandList.put("meraChat", new MeraChat());
@@ -202,7 +201,7 @@ public final class Core extends JavaPlugin {
 		StatChangeListener.statBarDisplayTask();
 
 //        CustomRecipe recipe = new CustomRecipe();
-//        recipe.s1(Pebble.Companion.tier(1));
+//        recipe.s1(new Pebble());
 //        CustomRecipe.Companion.registerRecipe(recipe);
 
 

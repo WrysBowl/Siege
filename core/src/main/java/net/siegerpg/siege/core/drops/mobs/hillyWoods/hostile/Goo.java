@@ -20,11 +20,9 @@ public class Goo extends MobDropTable {
 	public Goo() {
 
 		super("Goo", 3, 5, 4, 7, new Reward[] {
-				new Reward(Slime.Companion
-						           .tier(1)
+				new Reward(new Slime()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Slime.Companion
-						           .tier(2)
+				new Reward(new Slime()
 						           .getUpdatedItem(false), 10.0),
 
 				new Reward(new SlimyHelmet(30).getUpdatedItem(false), 2.0),

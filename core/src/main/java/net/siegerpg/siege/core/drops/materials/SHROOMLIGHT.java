@@ -12,20 +12,15 @@ public class SHROOMLIGHT extends BlockDropTable {
 	public SHROOMLIGHT() {
 
 		super(200, Material.SHROOMLIGHT, 3, 5, 2, 4, new Reward[] {
-				new Reward(ShroomPowder.Companion
-						           .tier(1)
+				new Reward(new ShroomPowder()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(ShroomPowder.Companion
-						           .tier(2)
+				new Reward(new ShroomPowder()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(FairyDust.Companion
-						           .tier(1)
+				new Reward(new FairyDust()
 						           .getUpdatedItem(false), 20.0),
-				new Reward(FairyDust.Companion
-						           .tier(2)
+				new Reward(new FairyDust()
 						           .getUpdatedItem(false), 2.0),
-				new Reward(SparklingLeaves.Companion
-						           .tier(1)
+				new Reward(new SparklingLeaves()
 						           .getUpdatedItem(false), 5.0),
 				});
 	}

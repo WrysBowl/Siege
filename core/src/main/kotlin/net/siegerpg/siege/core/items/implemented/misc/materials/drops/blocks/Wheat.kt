@@ -27,13 +27,4 @@ class Wheat() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : Wheat {
-			val newItem = Wheat(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

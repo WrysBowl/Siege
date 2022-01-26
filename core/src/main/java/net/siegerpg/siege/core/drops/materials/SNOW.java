@@ -11,17 +11,13 @@ public class SNOW extends BlockDropTable {
 	public SNOW() {
 
 		super(80, Material.SNOW, 1, 2, 1, 2, new Reward[] {
-				new Reward(IceShard.Companion
-						           .tier(1)
+				new Reward(new IceShard()
 						           .getUpdatedItem(false), 30.0),
-				new Reward(IceShard.Companion
-						           .tier(2)
+				new Reward(new IceShard()
 						           .getUpdatedItem(false), 3.0),
-				new Reward(Crystal.Companion
-						           .tier(1)
+				new Reward(new Crystal()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(Crystal.Companion
-						           .tier(2)
+				new Reward(new Crystal()
 						           .getUpdatedItem(false), 0.5)
 		});
 	}

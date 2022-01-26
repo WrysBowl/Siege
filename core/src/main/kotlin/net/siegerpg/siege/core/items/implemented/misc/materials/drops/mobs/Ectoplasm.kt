@@ -26,13 +26,4 @@ class Ectoplasm() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : Ectoplasm {
-			val newItem = Ectoplasm(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

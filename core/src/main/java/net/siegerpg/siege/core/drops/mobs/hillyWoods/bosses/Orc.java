@@ -23,10 +23,10 @@ public class Orc extends MobDropTable {
 	public Orc() {
 
 		super("Orc", 55, 59, 60, 64, new Reward[] {
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 50.0),
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 5.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 50.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 5.0),
+				new Reward(new Leather().getUpdatedItem(false), 50.0),
+				new Reward(new Leather().getUpdatedItem(false).asQuantity(4), 5.0),
+				new Reward(new Bone().getUpdatedItem(false), 50.0),
+				new Reward(new Bone().getUpdatedItem(false).asQuantity(4), 5.0),
 
 				new Reward(new BoneHelmet(50).getUpdatedItem(false), 0.5),
 				new Reward(new BoneChestplate(50).getUpdatedItem(false), 0.5),

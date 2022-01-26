@@ -6,14 +6,8 @@ import net.siegerpg.siege.core.items.implemented.misc.food.SusStew;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.DavyJonesKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.SewerShooter;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.HealingSewerShooter;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.LuckySewerShooter;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.sewerShooters.StrongSewerShooter;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
 public class ForestSpider extends MobDropTable {
@@ -21,16 +15,13 @@ public class ForestSpider extends MobDropTable {
 	public ForestSpider() {
 
 		super("ForestSpider", 27, 30, 36, 39, new Reward[] {
-				new Reward(Vine.Companion
-						           .tier(1)
+				new Reward(new Vine()
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 100.0),
-				new Reward(Vine.Companion
-						           .tier(2)
+				new Reward(new Vine()
 						           .getUpdatedItem(false)
 						           .asQuantity(2), 10.0),
-				new Reward(Vine.Companion
-						           .tier(3)
+				new Reward(new Vine()
 						           .getUpdatedItem(false), 1.0),
 
 				new Reward(new Crossbow(50).getUpdatedItem(false), 1.0),

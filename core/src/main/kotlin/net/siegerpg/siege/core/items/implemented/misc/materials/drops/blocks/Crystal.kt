@@ -26,13 +26,4 @@ class Crystal() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : Crystal {
-			val newItem = Crystal(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

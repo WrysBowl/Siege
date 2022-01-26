@@ -18,8 +18,8 @@ public class RockSpirit extends MobDropTable {
 	public RockSpirit() {
 
 		super("RockSpirit", 67, 70, 66, 69, new Reward[] {
-				new Reward(Pebble.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 100.0),
-				new Reward(Pebble.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 10.0),
+				new Reward(new Pebble().getUpdatedItem(false).asQuantity(4), 100.0),
+				new Reward(new Pebble().getUpdatedItem(false).asQuantity(8), 10.0),
 
 				new Reward(new GrieferChestplate(Utils.randRarity()).getUpdatedItem(false), 4.0),
 				new Reward(new GrieferChestplate(100).getUpdatedItem(false), 1.0),

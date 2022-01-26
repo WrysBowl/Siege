@@ -27,13 +27,4 @@ class Leather() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : Leather {
-			val newItem = Leather(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

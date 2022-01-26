@@ -11,14 +11,11 @@ public class FeatheredMeat extends MobDropTable {
 	public FeatheredMeat() {
 
 		super("FeatheredMeat", 4, 7, 5, 8, new Reward[] {
-				new Reward(Feather.Companion
-						           .tier(1)
+				new Reward(new Feather()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Feather.Companion
-						           .tier(2)
+				new Reward(new Feather()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 30.0),
 				new Reward(new Drumstick().getUpdatedItem(false), 25.0),
 				new Reward(new Drumstick().getUpdatedItem(false), 75.0),

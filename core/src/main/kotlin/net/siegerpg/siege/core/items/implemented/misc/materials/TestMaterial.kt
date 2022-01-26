@@ -26,13 +26,4 @@ class TestMaterial() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : TestMaterial {
-			val newItem = TestMaterial(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

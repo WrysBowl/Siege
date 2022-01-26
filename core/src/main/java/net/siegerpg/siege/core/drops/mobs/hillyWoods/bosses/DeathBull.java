@@ -24,10 +24,10 @@ public class DeathBull extends MobDropTable {
 	public DeathBull() {
 
 		super("DeathBull", 37, 40, 46, 49, new Reward[] {
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false), 100.0),
-				new Reward(Leather.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 10.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 50.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 5.0),
+				new Reward(new Leather().getUpdatedItem(false), 100.0),
+				new Reward(new Leather().getUpdatedItem(false).asQuantity(4), 10.0),
+				new Reward(new Bone().getUpdatedItem(false), 50.0),
+				new Reward(new Bone().getUpdatedItem(false).asQuantity(4), 5.0),
 
 				new Reward(new LeatherHelmet(80).getUpdatedItem(false), 1.5),
 				new Reward(new LeatherChestplate(80).getUpdatedItem(false), 1.5),

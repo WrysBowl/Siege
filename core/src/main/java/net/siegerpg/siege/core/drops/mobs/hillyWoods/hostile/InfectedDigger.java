@@ -24,17 +24,13 @@ public class InfectedDigger extends MobDropTable {
 	public InfectedDigger() {
 
 		super("InfectedDigger", 50, 54, 54, 57, new Reward[] {
-				new Reward(Leather.Companion
-						           .tier(1)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 80.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 8.0),
 
 				new Reward(new BoneHelmet(50).getUpdatedItem(false), 2.5),

@@ -12,20 +12,15 @@ public class PINK_CONCRETE_POWDER extends BlockDropTable {
 	public PINK_CONCRETE_POWDER() {
 
 		super(80, Material.PINK_CONCRETE_POWDER, 1, 2, 1, 2, new Reward[] {
-				new Reward(Crystal.Companion
-						           .tier(1)
+				new Reward(new Crystal()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(Crystal.Companion
-						           .tier(2)
+				new Reward(new Crystal()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(FairyDust.Companion
-						           .tier(1)
+				new Reward(new FairyDust()
 						           .getUpdatedItem(false), 75.0),
-				new Reward(FairyDust.Companion
-						           .tier(2)
+				new Reward(new FairyDust()
 						           .getUpdatedItem(false), 7.5),
-				new Reward(CorruptCrystal.Companion
-						           .tier(1)
+				new Reward(new CorruptCrystal()
 						           .getUpdatedItem(false), 5.0),
 				});
 	}

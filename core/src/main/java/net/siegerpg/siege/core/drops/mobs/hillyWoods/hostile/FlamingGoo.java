@@ -20,11 +20,9 @@ public class FlamingGoo extends MobDropTable {
 	public FlamingGoo() {
 
 		super("FlamingGoo", 3, 6, 5, 7, new Reward[] {
-				new Reward(Magma.Companion
-						           .tier(1)
+				new Reward(new Magma()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(Magma.Companion
-						           .tier(2)
+				new Reward(new Magma()
 						           .getUpdatedItem(false), 5.0),
 
 				new Reward(new MagmaHelmet(30).getUpdatedItem(false), 1.0),

@@ -27,13 +27,4 @@ class Titanium() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : Titanium {
-			val newItem = Titanium(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

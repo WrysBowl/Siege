@@ -12,23 +12,17 @@ public class STRIPPED_WARPED_HYPHAE extends BlockDropTable {
 	public STRIPPED_WARPED_HYPHAE() {
 
 		super(180, Material.STRIPPED_WARPED_HYPHAE, 3, 5, 2, 4, new Reward[] {
-				new Reward(MagicVine.Companion
-						           .tier(1)
+				new Reward(new MagicVine()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(MagicVine.Companion
-						           .tier(2)
+				new Reward(new MagicVine()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(SparklingLeaves.Companion
-						           .tier(1)
+				new Reward(new SparklingLeaves()
 						           .getUpdatedItem(false), 60.0),
-				new Reward(SparklingLeaves.Companion
-						           .tier(2)
+				new Reward(new SparklingLeaves()
 						           .getUpdatedItem(false), 6.0),
-				new Reward(Stick.Companion
-						           .tier(1)
+				new Reward(new Stick()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Stick.Companion
-						           .tier(2)
+				new Reward(new Stick()
 						           .getUpdatedItem(false), 10.0),
 				});
 	}

@@ -26,13 +26,4 @@ class CorruptCrystal() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : CorruptCrystal {
-			val newItem = CorruptCrystal(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

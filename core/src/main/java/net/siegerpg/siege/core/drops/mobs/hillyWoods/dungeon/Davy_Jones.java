@@ -33,8 +33,8 @@ public class Davy_Jones extends MobDropTable {
 	public Davy_Jones() {
 
 		super("Davy_Jones", 5000, 7500, 35000, 40000, new Reward[] {
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false), 100.0),
-				new Reward(Bone.Companion.tier(2).getUpdatedItem(false).asQuantity(8), 25.0),
+				new Reward(new Bone().getUpdatedItem(false), 100.0),
+				new Reward(new Bone().getUpdatedItem(false).asQuantity(8), 25.0),
 
 				new Reward(new Trident(100).getUpdatedItem(false), 5.0),
 				new Reward(new Trident(80).getUpdatedItem(false), 20.0),

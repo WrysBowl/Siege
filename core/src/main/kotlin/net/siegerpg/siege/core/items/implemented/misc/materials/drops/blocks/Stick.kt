@@ -27,13 +27,4 @@ class Stick() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : Stick {
-			val newItem = Stick(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

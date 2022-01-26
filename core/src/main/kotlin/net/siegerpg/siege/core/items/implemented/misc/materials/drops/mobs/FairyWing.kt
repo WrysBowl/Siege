@@ -26,13 +26,4 @@ class FairyWing() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : FairyWing {
-			val newItem = FairyWing(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

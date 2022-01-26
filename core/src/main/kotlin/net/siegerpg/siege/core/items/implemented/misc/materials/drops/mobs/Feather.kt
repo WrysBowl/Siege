@@ -27,13 +27,4 @@ class Feather() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : Feather {
-			val newItem = Feather(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

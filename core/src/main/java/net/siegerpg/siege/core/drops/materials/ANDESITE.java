@@ -10,14 +10,11 @@ public class ANDESITE extends BlockDropTable {
 	public ANDESITE() {
 
 		super(100, Material.ANDESITE, 1, 1, 0, 0, new Reward[] {
-				new Reward(Pebble.Companion
-						           .tier(1)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Pebble.Companion
-						           .tier(2)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(Pebble.Companion
-						           .tier(3)
+				new Reward(new Pebble()
 						           .getUpdatedItem(false), 0.1)
 		});
 	}

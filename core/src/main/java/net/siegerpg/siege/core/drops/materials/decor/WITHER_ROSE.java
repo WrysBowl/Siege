@@ -12,23 +12,17 @@ public class WITHER_ROSE extends BlockDropTable {
 	public WITHER_ROSE() {
 
 		super(100, Material.WITHER_ROSE, 0, 0, 0, 0, new Reward[] {
-				new Reward(Seed.Companion
-						           .tier(1)
+				new Reward(new Seed()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(PlantMatter.Companion
-						           .tier(1)
+				new Reward(new PlantMatter()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(Stick.Companion
-						           .tier(1)
+				new Reward(new Stick()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(Seed.Companion
-						           .tier(2)
+				new Reward(new Seed()
 						           .getUpdatedItem(false), 2.5),
-				new Reward(PlantMatter.Companion
-						           .tier(2)
+				new Reward(new PlantMatter()
 						           .getUpdatedItem(false), 2.5),
-				new Reward(Stick.Companion
-						           .tier(2)
+				new Reward(new Stick()
 						           .getUpdatedItem(false), 2.5)
 		});
 	}

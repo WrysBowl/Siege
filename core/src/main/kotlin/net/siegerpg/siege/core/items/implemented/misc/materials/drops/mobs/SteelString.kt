@@ -26,13 +26,4 @@ class SteelString() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : SteelString {
-			val newItem = SteelString(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

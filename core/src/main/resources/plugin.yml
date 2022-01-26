@@ -61,9 +61,6 @@ commands:
     description: Displays the menu
   cookieClicker:
     description: Play cookie clicker
-  materials:
-    aliases: [ mats ]
-    description: Play cookie clicker
   dailyReward:
     description: Daily reward
   questReward:

@@ -11,17 +11,13 @@ public class WildFox extends MobDropTable {
 	public WildFox() {
 
 		super("WildFox", 14, 17, 20, 23, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 5.0),
-				new Reward(Leather.Companion
-						           .tier(1)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 50.0),
-				new Reward(Leather.Companion
-						           .tier(2)
+				new Reward(new Leather()
 						           .getUpdatedItem(false), 5.0),
 				new Reward(new Drumstick().getUpdatedItem(false), 5.0),
 				new Reward(new Drumstick().getUpdatedItem(false), 25.0),

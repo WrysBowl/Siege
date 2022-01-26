@@ -11,14 +11,11 @@ public class Pigeon extends MobDropTable {
 	public Pigeon() {
 
 		super("Pigeon", 2, 5, 3, 6, new Reward[] {
-				new Reward(Feather.Companion
-						           .tier(1)
+				new Reward(new Feather()
 						           .getUpdatedItem(false), 60.0),
-				new Reward(Feather.Companion
-						           .tier(2)
+				new Reward(new Feather()
 						           .getUpdatedItem(false), 6.0),
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 10.0),
 				new Reward(new Drumstick().getUpdatedItem(false), 50.0),
 				});

@@ -11,11 +11,9 @@ public class Crow extends MobDropTable {
 	public Crow() {
 
 		super("Crow", 20, 30, 20, 30, new Reward[] {
-				new Reward(Feather.Companion
-						           .tier(1)
+				new Reward(new Feather()
 						           .getUpdatedItem(false), 75.0),
-				new Reward(Feather.Companion
-						           .tier(2)
+				new Reward(new Feather()
 						           .getUpdatedItem(false), 25.0),
 				new Reward(new Drumstick()
 						           .getUpdatedItem(false)

@@ -22,8 +22,8 @@ public class Blubber extends MobDropTable {
 	public Blubber() {
 
 		super("Blubber", 17, 20, 17, 25, new Reward[] {
-				new Reward(Slime.Companion.tier(2).getUpdatedItem(false), 100.0),
-				new Reward(Slime.Companion.tier(2).getUpdatedItem(false).asQuantity(4), 10.0),
+				new Reward(new Slime().getUpdatedItem(false), 100.0),
+				new Reward(new Slime().getUpdatedItem(false).asQuantity(4), 10.0),
 
 				new Reward(new SlimeSpoofer(80).getUpdatedItem(false), 1.0),
 				new Reward(new LuckySlimeSpoofer(80).getUpdatedItem(false), 0.25),

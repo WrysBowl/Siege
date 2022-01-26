@@ -27,13 +27,4 @@ class MetalScrap() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : MetalScrap {
-			val newItem = MetalScrap(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

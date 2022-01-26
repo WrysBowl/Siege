@@ -10,11 +10,9 @@ public class WHEAT extends BlockDropTable {
 	public WHEAT() {
 
 		super(400, Material.WHEAT, 0, 0, 0, 1, new Reward[] {
-				new Reward(Wheat.Companion
-						           .tier(1)
+				new Reward(new Wheat()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Wheat.Companion
-						           .tier(2)
+				new Reward(new Wheat()
 						           .getUpdatedItem(false), 10.0)
 		});
 	}

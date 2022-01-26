@@ -26,13 +26,4 @@ class RabbitFoot() : CustomMaterial(
 		deserialize()
 	}
 
-	companion object {
-
-		fun tier(tier : Int) : RabbitFoot {
-			val newItem = RabbitFoot(0)
-			newItem.tier = tier
-			return newItem
-		}
-	}
-
 }

@@ -11,20 +11,15 @@ public class Twilight_Wolf extends MobDropTable {
 	public Twilight_Wolf() {
 
 		super("Twilight_Wolf", 30, 40, 30, 40, new Reward[] {
-				new Reward(Bone.Companion
-						           .tier(1)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 100.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 25.0),
-				new Reward(Pelt.Companion
-						           .tier(1)
+				new Reward(new Pelt()
 						           .getUpdatedItem(false), 60.0),
-				new Reward(Pelt.Companion
-						           .tier(2)
+				new Reward(new Pelt()
 						           .getUpdatedItem(false), 12.0),
-				new Reward(Bone.Companion
-						           .tier(3)
+				new Reward(new Bone()
 						           .getUpdatedItem(false), 5.0)
 		});
 	}

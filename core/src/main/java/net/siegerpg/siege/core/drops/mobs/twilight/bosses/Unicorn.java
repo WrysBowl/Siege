@@ -16,16 +16,13 @@ public class Unicorn extends MobDropTable {
 
 		super("Unicorn", 400, 600, 900, 1000, new Reward[] {
 				new Reward(new LuminousBow(Utils.randRarity()).getUpdatedItem(false), 25.0),
-				new Reward(Bone.Companion
-						           .tier(3)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(16), 50.0),
-				new Reward(Bone.Companion
-						           .tier(2)
+				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 50.0),
-				new Reward(Leather.Companion
-						           .tier(3)
+				new Reward(new Leather()
 						           .getUpdatedItem(false)
 						           .asQuantity(16), 50.0),
 				new Reward(new GoldenCarrot()
