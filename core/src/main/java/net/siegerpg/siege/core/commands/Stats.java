@@ -53,7 +53,7 @@ public class Stats implements CommandExecutor {
 		sender.sendMessage(Utils.lore(" "));
 		sender.sendMessage(Utils.lore("  <dark_red>Strength <reset><gray>You deal "+strength+" to target's health points."));
 		sender.sendMessage(Utils.lore("  <blue>Toughness <reset><gray>You prevent " +
-		                              Utils.round((1 - (CustomItemKotlinListener.Companion.calcReducedToughness(toughness) / 1000)), 2) +
+		                              Utils.round((CustomItemKotlinListener.Companion.calcReducedToughness(toughness) / 1000), 2)*100 +
 		                              " % damage."));
 		sender.sendMessage(Utils.lore("  <red>Health <reset><gray>You have "+health+"."));
 		sender.sendMessage(Utils.lore("  <gold>Regeneration <reset><gray>You heal " + (int)(regeneration/5) + " health every " +
