@@ -18,6 +18,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Instant;
@@ -98,6 +99,7 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 						" keys <gray>have been used."));
 			} else {
 				dungeon.currentKeyCount = 0; //reset key count
+
 				dungeon.spawning();
 				Location loc = dungeon.spawnLoc;
 				loc.setWorld(Core
@@ -105,35 +107,45 @@ public class DungeonCommand implements CommandExecutor, Runnable {
 						             .getServer()
 						             .getWorld(dungeon.world));
 
-				Bukkit
-						.getServer()
-						.getScheduler()
-						.runTaskLater(Core.plugin(), () -> {
-							try {
-								dungeon.boss = MythicMobs
-										.inst()
-										.getAPIHelper()
-										.spawnMythicMob(boss, loc);
-								ActiveMob mythicMob = MythicMobs
-										.inst()
-										.getAPIHelper()
-										.getMythicMobInstance(dungeon.boss);
-								BossFight newBossFight = new BossFight(Instant.now(), mythicMob);
-								BossLeaderboardListener.Companion
-										.getCurrentBossFights()
-										.add(newBossFight);
+				Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> {
+					try {
+						dungeon.boss = MythicMobs
+								.inst()
+								.getAPIHelper()
+								.spawnMythicMob(boss, loc);
+						ActiveMob mythicMob = MythicMobs
+								.inst()
+								.getAPIHelper()
+								.getMythicMobInstance(dungeon.boss);
+						BossFight newBossFight = new BossFight(Instant.now(), mythicMob);
+						BossLeaderboardListener.Companion.getCurrentBossFights().add(newBossFight);
 
-								Bukkit.getServer().sendMessage(Utils.lore(""));
-								Bukkit.getServer().sendMessage(Utils.lore("<green>"+dungeon.bossName+" <green>has spawned at"));
-								Bukkit.getServer().sendMessage(Utils.lore("<gray>X <yellow>"+dungeon.boss.getLocation().getX()));
-								Bukkit.getServer().sendMessage(Utils.lore("<gray>Y <yellow>"+dungeon.boss.getLocation().getY()));
-								Bukkit.getServer().sendMessage(Utils.lore("<gray>Z <yellow>"+dungeon.boss.getLocation().getZ()));
-								Bukkit.getServer().sendMessage(Utils.lore(""));
 
-							} catch (InvalidMobTypeException e) {
-								e.printStackTrace();
+						Bukkit.getServer().sendMessage(Utils.lore(""));
+						Bukkit.getServer().sendMessage(Utils.lore("<green>"+dungeon.bossName+" <green>has spawned at"));
+						Bukkit.getServer().sendMessage(Utils.lore("<gray>X <yellow>"+dungeon.boss.getLocation().getX()));
+						Bukkit.getServer().sendMessage(Utils.lore("<gray>Y <yellow>"+dungeon.boss.getLocation().getY()));
+						Bukkit.getServer().sendMessage(Utils.lore("<gray>Z <yellow>"+dungeon.boss.getLocation().getZ()));
+						Bukkit.getServer().sendMessage(Utils.lore(""));
+
+						new BukkitRunnable() {
+
+							@Override
+							public void run() {
+								for (Player person : Bukkit.getOnlinePlayers()) {
+									if (person == player) continue;
+									person.sendMessage(Utils.lore(""));
+									person.sendMessage(Utils.parse(" <green>\u27B2<reset> <color:#A6E945><click:run_command:/tpa "+player.getName()+">Click here to request to teleport to "+player.getName()+"!</click>"));
+									person.sendMessage(Utils.lore(""));
+									person.playSound(person.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1.0f, 1.0f);
+								}
 							}
-						}, dungeon.bossSpawnDelay);
+						}.runTaskLater(Core.plugin(), 40);
+
+					} catch (InvalidMobTypeException e) {
+						e.printStackTrace();
+					}
+				}, dungeon.bossSpawnDelay);
 			}
 
 		} catch (Exception x) {
