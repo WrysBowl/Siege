@@ -15,6 +15,7 @@ class BeetrootCurry() : CustomFood(
 		levelRequirement = 0,
 		material = Material.BEETROOT_SOUP,
 		health = 250.0,
+		quality = 80
                                   ) {
 
 	override fun speciality(player : Player) {
@@ -23,8 +24,8 @@ class BeetrootCurry() : CustomFood(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 80
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

@@ -12,11 +12,12 @@ class Porkchop() : CustomFood(
 		levelRequirement = 0,
 		material = Material.PORKCHOP,
 		health = 65.0,
+		quality = 59
                              ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 50
-		this.rarity = Rarity.UNCOMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

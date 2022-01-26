@@ -16,11 +16,12 @@ class Watermelon() : CustomFood(
 		levelRequirement = 0,
 		material = Material.MELON_SLICE,
 		health = 10.0,
+		quality = 0
                                ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

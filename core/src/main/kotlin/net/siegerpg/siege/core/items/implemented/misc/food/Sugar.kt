@@ -14,6 +14,7 @@ class Sugar() : CustomFood(
 		description = listOf("Gas GAS GASSS!!!", "Speed 3 for 30 seconds"),
 		levelRequirement = 0,
 		material = Material.TROPICAL_FISH,
+		quality = 100
                           ) {
 
 	override fun speciality(player : Player) {
@@ -22,8 +23,8 @@ class Sugar() : CustomFood(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

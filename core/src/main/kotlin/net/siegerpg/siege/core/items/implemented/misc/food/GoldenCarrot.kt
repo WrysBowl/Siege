@@ -11,12 +11,13 @@ class GoldenCarrot() : CustomFood(
 		description = listOf("Mercy on your soul"),
 		levelRequirement = 0,
 		material = Material.GOLDEN_CARROT, //change this to cooked chicken later
-		health = 200.0
+		health = 200.0,
+		quality = 100
                                  ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

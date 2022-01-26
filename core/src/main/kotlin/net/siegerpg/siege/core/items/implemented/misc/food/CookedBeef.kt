@@ -14,7 +14,8 @@ class CookedBeef() : CustomFood(
 		description = listOf("Nice sear on this steak"),
 		levelRequirement = 0,
 		material = Material.COOKED_BEEF,
-		health = 240.0
+		health = 240.0,
+		quality = 70
                                ) {
 
 	override fun speciality(player : Player) {
@@ -22,9 +23,10 @@ class CookedBeef() : CustomFood(
 		player.addPotionEffect(realPotion)
 	}
 
+
 	constructor(quality : Int) : this() {
-		this.quality = 70
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

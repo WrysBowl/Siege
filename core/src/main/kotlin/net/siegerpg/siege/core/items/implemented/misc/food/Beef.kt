@@ -14,7 +14,8 @@ class Beef() : CustomFood(
 		description = listOf("Tastes better than raw pork..."),
 		levelRequirement = 0,
 		material = Material.BEEF,
-		health = 80.0
+		health = 80.0,
+		quality = 50
                          ) {
 
 	override fun speciality(player : Player) {
@@ -23,8 +24,8 @@ class Beef() : CustomFood(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 50
-		this.rarity = Rarity.UNCOMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

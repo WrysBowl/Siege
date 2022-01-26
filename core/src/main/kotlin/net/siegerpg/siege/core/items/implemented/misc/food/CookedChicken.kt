@@ -12,11 +12,12 @@ class CookedChicken() : CustomFood(
 		levelRequirement = 0,
 		material = Material.COOKED_CHICKEN,
 		health = 60.0,
+		quality = 70
                                   ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 70
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

@@ -12,11 +12,12 @@ class CharredFood() : CustomFood(
 		levelRequirement = 0,
 		material = Material.DRIED_KELP,
 		health = 10.0,
+		quality = 0,
                                 ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
