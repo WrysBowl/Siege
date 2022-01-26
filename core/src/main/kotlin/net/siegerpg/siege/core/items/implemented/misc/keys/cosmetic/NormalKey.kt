@@ -10,13 +10,14 @@ class NormalKey() : CustomKey(
 		customModelData = 630006,
 		description = listOf("High chance of a", "common cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
+		quality = 0
                              ) {
 	override fun getSellValue() : Int {
 		return 3000
 	}
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

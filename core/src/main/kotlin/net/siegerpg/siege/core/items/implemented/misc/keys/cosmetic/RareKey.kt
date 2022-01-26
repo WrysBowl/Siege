@@ -10,13 +10,14 @@ class RareKey() : CustomKey(
 		customModelData = 630003,
 		description = listOf("Get a rare cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
+		quality = 80
                            ) {
 	override fun getSellValue() : Int {
 		return 12500
 	}
 	constructor(quality : Int) : this() {
-		this.quality = 80
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

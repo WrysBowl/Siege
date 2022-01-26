@@ -10,13 +10,14 @@ class SpiritKey() : CustomKey(
 		customModelData = 630008,
 		description = listOf("High chance of an", "epic cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
+		quality = 100
                              ) {
 	override fun getSellValue() : Int {
 		return 20000
 	}
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

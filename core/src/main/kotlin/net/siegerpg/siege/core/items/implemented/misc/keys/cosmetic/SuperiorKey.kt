@@ -10,13 +10,14 @@ class SuperiorKey() : CustomKey(
 		customModelData = 630007,
 		description = listOf("High chance of a", "rare cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
+		quality = 80
                                ) {
 	override fun getSellValue() : Int {
 		return 7500
 	}
 	constructor(quality : Int) : this() {
-		this.quality = 80
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

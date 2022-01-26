@@ -10,6 +10,7 @@ class CommonKey() : CustomKey(
 		customModelData = 630001,
 		description = listOf("Get a common cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
+		quality = 0
                              ) {
 
 	override fun getSellValue() : Int {
@@ -17,8 +18,8 @@ class CommonKey() : CustomKey(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
