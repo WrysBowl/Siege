@@ -22,7 +22,8 @@ class BurnII() : CustomPotion(
 		description = listOf("Fire aura deals damage+", "to enemies within 5 blocks"),
 		levelRequirement = 0,
 		material = Material.POTION,
-		potion = PotionType.FIRE_RESISTANCE
+		potion = PotionType.FIRE_RESISTANCE,
+		quality = 80
                              ) {
 
 	override fun speciality(player : Player) {
@@ -44,8 +45,8 @@ class BurnII() : CustomPotion(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

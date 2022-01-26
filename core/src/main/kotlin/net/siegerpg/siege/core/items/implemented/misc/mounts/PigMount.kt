@@ -12,11 +12,12 @@ class PigMount() : CustomMount(
 		customModelData = 330001,
 		description = listOf("A tamed pig"),
 		material = Material.PIG_SPAWN_EGG,
+		quality = 0
                               ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 30
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

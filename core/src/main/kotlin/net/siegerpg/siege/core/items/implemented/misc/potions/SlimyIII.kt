@@ -21,7 +21,8 @@ class SlimyIII() : CustomPotion(
 		description = listOf("Jump III potion effect"),
 		levelRequirement = 0,
 		material = Material.POTION,
-		potion = PotionType.JUMP
+		potion = PotionType.JUMP,
+		quality = 70
                                ) {
 
 	override fun speciality(player : Player) {
@@ -30,8 +31,8 @@ class SlimyIII() : CustomPotion(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

@@ -26,7 +26,8 @@ class AoESlownessII() : CustomPotion(
 		                    ),
 		levelRequirement = 0,
 		material = Material.POTION,
-		potion = PotionType.SLOWNESS
+		potion = PotionType.SLOWNESS,
+		quality = 50
                                     ) {
 
 	override fun speciality(player : Player) {
@@ -50,8 +51,8 @@ class AoESlownessII() : CustomPotion(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.UNCOMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

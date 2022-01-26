@@ -12,11 +12,12 @@ class GoatMount() : CustomMount(
 		customModelData = 330014,
 		description = listOf("Sheep with horns"),
 		material = Material.GOAT_SPAWN_EGG,
+		quality = 90
                                ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 90
-		this.rarity = Rarity.EPIC
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

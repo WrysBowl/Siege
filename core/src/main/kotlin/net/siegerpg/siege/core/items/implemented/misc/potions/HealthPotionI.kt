@@ -17,7 +17,8 @@ class HealthPotionI() : CustomPotion(
 		description = listOf("Heals you by a small amount"),
 		levelRequirement = 0,
 		material = Material.POTION,
-		potion = PotionType.INSTANT_HEAL
+		potion = PotionType.INSTANT_HEAL,
+		quality = 0
                                     ) {
 
 	override fun speciality(player : Player) {
@@ -25,8 +26,8 @@ class HealthPotionI() : CustomPotion(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

@@ -12,11 +12,12 @@ class SpiderMount() : CustomMount(
 		customModelData = 330012,
 		description = listOf("Climbs walls"),
 		material = Material.SPIDER_SPAWN_EGG,
+		quality = 50
                                  ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 50
-		this.rarity = Rarity.UNCOMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

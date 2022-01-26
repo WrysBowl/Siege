@@ -22,7 +22,8 @@ class AoEPoisonIII() : CustomPotion(
 		description = listOf("Mobs within 5 blocks", "are inflicted by poison III"),
 		levelRequirement = 0,
 		material = Material.POTION,
-		potion = PotionType.POISON
+		potion = PotionType.POISON,
+		quality = 70
                                    ) {
 
 	override fun speciality(player : Player) {
@@ -43,8 +44,8 @@ class AoEPoisonIII() : CustomPotion(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.RARE
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

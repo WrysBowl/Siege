@@ -12,11 +12,12 @@ class SkeletonHorseMount() : CustomMount(
 		customModelData = 330010,
 		description = listOf("Spooky scary skeleton"),
 		material = Material.SKELETON_HORSE_SPAWN_EGG,
+		quality = 100
                                         ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 100
-		this.rarity = Rarity.LEGENDARY
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

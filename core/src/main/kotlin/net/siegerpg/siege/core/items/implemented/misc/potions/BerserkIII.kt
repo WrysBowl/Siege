@@ -20,7 +20,8 @@ class BerserkIII() : CustomPotion(
 		description = listOf("Deal 100% more damage", "but take 100% more"),
 		levelRequirement = 0,
 		material = Material.POTION,
-		potion = PotionType.STRENGTH
+		potion = PotionType.STRENGTH,
+		quality = 90
                                  ) {
 
 	override fun speciality(player : Player) {
@@ -37,8 +38,8 @@ class BerserkIII() : CustomPotion(
 	}
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.EPIC
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
