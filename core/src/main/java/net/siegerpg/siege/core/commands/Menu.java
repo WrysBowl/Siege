@@ -5,14 +5,17 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import kotlin.Pair;
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.listeners.NPC.GemRemover;
 import net.siegerpg.siege.core.listeners.NPC.Herbert;
 import net.siegerpg.siege.core.listeners.NPC.MeraTransit;
+import net.siegerpg.siege.core.listeners.NPC.RarityRoll;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -93,6 +96,8 @@ public class Menu implements CommandExecutor {
 		utilities.addItem(new GuiItem(getGemRemover(player), e -> new GemRemover().openInventory(player)));
 		//Creating Drops
 		utilities.addItem(new GuiItem(getDropsIcon(), e -> new Drops().getStartMenu(player).show(player)));
+		//Creating ReRoll Icon
+		utilities.addItem(new GuiItem(getReRollIcon(), e -> new RarityRoll().openInventory(player)));
 
 
 		/*
@@ -229,17 +234,13 @@ public class Menu implements CommandExecutor {
 		return dropsIcon;
 	}
 
-	private static ItemStack getMaterialsIcon() {
-		ItemStack dropsIcon = new Slime().getItem();
+	private static ItemStack getReRollIcon() {
+		ItemStack dropsIcon = new ItemStack(Material.RESPAWN_ANCHOR);
 		ItemMeta dropsIconItemMeta = dropsIcon.getItemMeta();
-		dropsIconItemMeta.displayName(Utils.lore("<color:#D4DC7F><bold>Materials"));
+		dropsIconItemMeta.displayName(Utils.lore("<color:#B5EB5A><bold>RE-ROLL"));
 		dropsIconItemMeta.lore(new ArrayList<>() {
 			{
-				add(Utils.lore("<dark_gray><underlined>                 "));
-				add(Utils.lore(""));
-				add(Utils.lore("<gray>View crafting"));
-				add(Utils.lore("<gray>recipes"));
-				add(Utils.lore("<dark_gray><underlined>                 "));
+				add(Utils.lore("<gray>Re-roll your item's quality!"));
 			}
 		});
 
