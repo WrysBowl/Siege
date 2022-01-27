@@ -98,7 +98,12 @@ abstract class CustomMeleeWeapon(
 				}
 			}
 		}
-		meta.lore("<r><gray>${attackSpeed} Atk Speed")
+		val speed =
+				if (attackSpeed > 1.5) "<color:#C0EB5A>Fast"
+				else if (attackSpeed > 1.0) "<color:#E5EB5A>Medium"
+				else "<color:#EBA55A>Slow"
+
+		meta.lore("<r>$speed <gray>Atk Speed")
 		val length =
 				if (name.length > 16) name.length
 				else 16
