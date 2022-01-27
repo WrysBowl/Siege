@@ -2,7 +2,6 @@ package net.siegerpg.siege.shops
 
 import co.aikar.commands.PaperCommandManager
 import net.siegerpg.siege.shops.shop.*
-import net.siegerpg.siege.shops.shop.materials.*
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -60,24 +59,7 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"jewel" to Jewel(),
 						"berta" to Berta(),
 						"amber" to Amber(),
-						"bone" to Bones(),
-						"feather" to Feathers(),
-						"leather" to Leathers(),
-						"magma" to Magmas(),
-						"pebble" to Pebbles(),
-						"plantMatter" to PlantMatters(),
-						"seed" to Seeds(),
-						"slime" to Slimes(),
-						"stick" to Sticks(),
-						"vine" to Vines(),
-						"wheat" to Wheats(),
-						"wool" to Wools(),
-						"mobKey" to MobKey(),
-						"refinedMetal" to RefinedMetals(),
-						"coal" to Coals(),
-						"metalScrap" to MetalScraps(),
-						"titanium" to Titaniums(),
-						"chain" to Chains()
+						"mobKey" to MobKey()
 
 
 				         )
