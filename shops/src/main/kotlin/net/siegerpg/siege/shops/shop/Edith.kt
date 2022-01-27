@@ -21,8 +21,8 @@ class Edith : Shop() {
 			//ROCK WAND
 			ShopItem(
 					RockWand(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					Stick.tier(3) to 2
+					Pebble() to 64,
+					Stick() to 128
 					                             ), true
 			        ) {
 				RockWand(Utils.randRarity()).getUpdatedItem(false)
@@ -32,44 +32,44 @@ class Edith : Shop() {
 			},
 			ShopItem(
 					LuckyRockWand(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					Feather.tier(3) to 2,
-					Stick.tier(3) to 1
+					Pebble() to 64,
+					Feather() to 128,
+					Stick() to 128
 					                                ), true
 			        ) {
 				LuckyRockWand(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongRockWand(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					Feather.tier(3) to 1,
-					Bone.tier(3) to 1
+					Pebble() to 64,
+					Feather() to 64,
+					Bone() to 64
 					                                 ), true
 			        ) {
 				StrongRockWand(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughRockWand(-1), -1, hashMapOf(
-					Pebble.tier(3) to 3,
-					Stick.tier(3) to 1
+					Pebble() to 196,
+					Stick() to 64
 					                                ), true
 			        ) {
 				ToughRockWand(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyRockWand(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					PlantMatter.tier(3) to 2,
-					Stick.tier(3) to 1
+					Pebble() to 64,
+					PlantMatter() to 128,
+					Stick() to 64
 					                                  ), true
 			        ) {
 				HealthyRockWand(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingRockWand(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					Wheat.tier(3) to 3,
-					Stick.tier(3) to 1
+					Pebble() to 64,
+					Wheat() to 196,
+					Stick() to 64
 					                                  ), true
 			        ) {
 				HealingRockWand(Utils.randRarity()).getUpdatedItem(false)

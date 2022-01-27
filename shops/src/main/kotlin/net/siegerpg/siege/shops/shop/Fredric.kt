@@ -2,6 +2,7 @@ package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
 import net.siegerpg.siege.core.items.implemented.weapons.wands.FlamingHotTorch
@@ -18,9 +19,9 @@ class Fredric : Shop() {
 			//FLAMING HOT TORCH
 			ShopItem(
 					FlamingHotTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Stick.tier(3) to 1
+					Magma() to 96,
+					Seed() to 128,
+					Stick() to 64
 					                                    ), true
 			        ) {
 				FlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)
@@ -30,50 +31,50 @@ class Fredric : Shop() {
 			},
 			ShopItem(
 					LuckyFlamingHotTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Seed.tier(3) to 4,
-					Stick.tier(3) to 1,
-					Feather.tier(3) to 3
+					Magma() to 64,
+					Seed() to 128,
+					Stick() to 64,
+					Feather() to 32
 					                                       ), true
 			        ) {
 				LuckyFlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongFlamingHotTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Seed.tier(3) to 4,
-					Stick.tier(3) to 1,
-					Feather.tier(3) to 2
+					Magma() to 64,
+					Seed() to 128,
+					Stick() to 64,
+					Bone() to 32
 					                                        ), true
 			        ) {
 				StrongFlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughFlamingHotTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Seed.tier(3) to 4,
-					Stick.tier(3) to 1,
-					Pebble.tier(3) to 3
+					Magma() to 64,
+					Seed() to 128,
+					Stick() to 64,
+					Pebble() to 32
 					                                       ), true
 			        ) {
 				ToughFlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyFlamingHotTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Seed.tier(3) to 4,
-					Stick.tier(3) to 1,
-					PlantMatter.tier(3) to 3
+					Magma() to 64,
+					Seed() to 128,
+					Stick() to 64,
+					PlantMatter() to 32
 					                                         ), true
 			        ) {
 				HealthyFlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingFlamingHotTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Stick.tier(3) to 1,
-					Wheat.tier(3) to 4
+					Magma() to 64,
+					Seed() to 128,
+					Stick() to 64,
+					Wheat() to 256
 					                                         ), true
 			        ) {
 				HealingFlamingHotTorch(Utils.randRarity()).getUpdatedItem(false)

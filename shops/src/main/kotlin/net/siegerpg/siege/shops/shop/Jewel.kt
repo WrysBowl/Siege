@@ -16,7 +16,10 @@ class Jewel : Shop() {
 	override var permission : String = "siege.shops.shop.jewel"
 	override var items : List<ShopItem> = listOf(
 			//RECURVE BOW
-			ShopItem(RecurveBow(-1), -1, hashMapOf(), false) {
+			ShopItem(RecurveBow(-1), -1, hashMapOf(
+					Vine() to 128,
+					RefinedMetal() to 128
+													 ), false) {
 				RecurveBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -24,45 +27,45 @@ class Jewel : Shop() {
 			},
 			ShopItem(
 					LuckyRecurveBow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					RefinedMetal.tier(3) to 1,
-					Feather.tier(3) to 1
+					Vine() to 128,
+					RefinedMetal() to 96,
+					Feather() to 64
 					                                  ), true
 			        ) {
 				LuckyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongRecurveBow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					RefinedMetal.tier(3) to 1,
-					Bone.tier(3) to 4
+					Vine() to 128,
+					RefinedMetal() to 96,
+					Bone() to 48
 					                                   ), true
 			        ) {
 				StrongRecurveBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughRecurveBow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					RefinedMetal.tier(3) to 1,
-					Pebble.tier(3) to 1
+					Vine() to 128,
+					RefinedMetal() to 96,
+					Pebble() to 64
 					                                  ), true
 			        ) {
 				ToughRecurveBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyRecurveBow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					RefinedMetal.tier(3) to 1,
-					PlantMatter.tier(3) to 1
+					Vine() to 128,
+					RefinedMetal() to 96,
+					PlantMatter() to 64
 					                                    ), true
 			        ) {
 				HealthyRecurveBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingRecurveBow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					RefinedMetal.tier(3) to 1,
-					Wheat.tier(3) to 2
+					Vine() to 128,
+					RefinedMetal() to 96,
+					Wheat() to 384
 					                                    ), true
 			        ) {
 				HealingRecurveBow(Utils.randRarity()).getUpdatedItem(false)

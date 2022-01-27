@@ -18,9 +18,9 @@ class Forest : Shop() {
 			//WAR HAMMER
 			ShopItem(
 					WarHammer(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Pebble.tier(3) to 4,
-					Stick.tier(3) to 2
+					MetalScrap() to 96,
+					Pebble() to 128,
+					Stick() to 128
 					                              ), true
 			        ) {
 				WarHammer(Utils.randRarity()).getUpdatedItem(false)
@@ -30,49 +30,49 @@ class Forest : Shop() {
 			},
 			ShopItem(
 					LuckyWarHammer(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Pebble.tier(3) to 2,
-					Stick.tier(3) to 2,
-					Feather.tier(3) to 2
+					MetalScrap() to 64,
+					Pebble() to 128,
+					Stick() to 128,
+					Feather() to 64
 					                                 ), true
 			        ) {
 				LuckyWarHammer(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongWarHammer(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Pebble.tier(3) to 2,
-					Stick.tier(3) to 2,
-					Bone.tier(3) to 4
+					MetalScrap() to 64,
+					Pebble() to 128,
+					Stick() to 128,
+					Bone() to 48
 					                                  ), true
 			        ) {
 				StrongWarHammer(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughWarHammer(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Pebble.tier(3) to 1,
-					Stick.tier(3) to 2
+					MetalScrap() to 64,
+					Pebble() to 196,
+					Stick() to 128
 					                                 ), true
 			        ) {
 				ToughWarHammer(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyWarHammer(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Pebble.tier(3) to 2,
-					Stick.tier(3) to 2,
-					PlantMatter.tier(3) to 2
+					MetalScrap() to 64,
+					Pebble() to 128,
+					Stick() to 128,
+					PlantMatter() to 64
 					                                   ), true
 			        ) {
 				HealthyWarHammer(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingWarHammer(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Pebble.tier(3) to 2,
-					Stick.tier(3) to 2,
-					Wheat.tier(3) to 1
+					MetalScrap() to 64,
+					Pebble() to 128,
+					Stick() to 128,
+					Wheat() to 256
 					                                   ), true
 			        ) {
 				HealingWarHammer(Utils.randRarity()).getUpdatedItem(false)

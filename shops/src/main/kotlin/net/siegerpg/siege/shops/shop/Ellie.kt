@@ -23,9 +23,9 @@ class Ellie : Shop() {
 			//SHOVELS
 			ShopItem(
 					Shovel(-1), -1, hashMapOf(
-					Pebble.tier(2) to 1,
-					Stick.tier(3) to 2
-					                          ), true
+					Pebble() to 24,
+					Stick() to 128
+					                         ), true
 			        ) {
 				Shovel(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -34,44 +34,44 @@ class Ellie : Shop() {
 			},
 			ShopItem(
 					LuckyShovel(-1), -1, hashMapOf(
-					Pebble.tier(2) to 1,
-					Stick.tier(3) to 1,
-					Feather.tier(2) to 2
+					Pebble() to 24,
+					Stick() to 96,
+					Feather() to 32
 					                              ), true
 			        ) {
 				LuckyShovel(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongShovel(-1), -1, hashMapOf(
-					Pebble.tier(2) to 1,
-					Stick.tier(3) to 1,
-					Bone.tier(2) to 1
+					Pebble() to 24,
+					Stick() to 96,
+					Bone() to 24
 					                               ), true
 			        ) {
 				StrongShovel(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughShovel(-1), -1, hashMapOf(
-					Pebble.tier(2) to 4,
-					Stick.tier(3) to 1
+					Pebble() to 64,
+					Stick() to 96
 					                              ), true
 			        ) {
 				ToughShovel(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyShovel(-1), -1, hashMapOf(
-					Pebble.tier(2) to 1,
-					Stick.tier(3) to 1,
-					PlantMatter.tier(2) to 2
+					Pebble() to 24,
+					Stick() to 96,
+					PlantMatter() to 32
 					                                ), true
 			        ) {
 				HealthyShovel(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingShovel(-1), -1, hashMapOf(
-					Pebble.tier(2) to 1,
-					Stick.tier(3) to 1,
-					Wheat.tier(3) to 1
+					Pebble() to 24,
+					Stick() to 96,
+					Wheat() to 128
 					                                ), true
 			        ) {
 				HealingShovel(Utils.randRarity()).getUpdatedItem(false)
@@ -80,9 +80,9 @@ class Ellie : Shop() {
 			//REINFORCED BOWS
 			ShopItem(
 					ReinforcedBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 3
-					                                  ), true
+					Stick() to 128,
+					Vine() to 96
+					                                ), true
 			        ) {
 				ReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -91,59 +91,54 @@ class Ellie : Shop() {
 			},
 			ShopItem(
 					LuckyReinforcedBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Feather.tier(3) to 1
-					                                       ), true
+					Stick() to 128,
+					Vine() to 64,
+					Feather() to 32
+					                                     ), true
 			        ) {
 				LuckyReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongReinforcedBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Bone.tier(3) to 1
-					                                        ), true
+					Stick() to 128,
+					Vine() to 64,
+					Bone() to 24
+					                                      ), true
 			        ) {
 				StrongReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughReinforcedBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Pebble.tier(3) to 2
-					                                       ), true
+					Stick() to 128,
+					Vine() to 64,
+					Pebble() to 32
+					                                     ), true
 			        ) {
 				ToughReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyReinforcedBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					PlantMatter.tier(3) to 2
-					                                         ), true
+					Stick() to 128,
+					Vine() to 64,
+					PlantMatter() to 32
+					                                       ), true
 			        ) {
 				HealthyReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingReinforcedBow(-1), -1, hashMapOf(
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Wheat.tier(3) to 2
-					                                         ), true
+					Stick() to 128,
+					Vine() to 64,
+					Wheat() to 128
+					                                       ), true
 			        ) {
 				HealingReinforcedBow(Utils.randRarity()).getUpdatedItem(false)
 			},
 
 			//STONE AXES
-			ShopItem(
-					net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.StoneAxe(
-							-1
-					                                                                      ),
-					1000,
-					hashMapOf(
-							Pebble.tier(3) to 3,
-							Stick.tier(3) to 2
+			ShopItem(net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.StoneAxe(-1), -1, hashMapOf(
+							Pebble() to 256,
+							Stick() to 128
 					         ),
 					true
 			        ) {
@@ -157,69 +152,69 @@ class Ellie : Shop() {
 			},
 			ShopItem(
 					LuckyStoneAxe(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					Stick.tier(3) to 2,
-					Feather.tier(3) to 2
-					                                  ), true
+					Pebble() to 196,
+					Stick() to 128,
+					Feather() to 64
+					                                ), true
 			        ) {
 				LuckyStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongStoneAxe(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					Stick.tier(3) to 2,
-					Bone.tier(3) to 2
-					                                   ), true
+					Pebble() to 196,
+					Stick() to 128,
+					Bone() to 48
+					                                 ), true
 			        ) {
 				StrongStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughStoneAxe(-1), -1, hashMapOf(
-					Pebble.tier(3) to 5,
-					Stick.tier(3) to 2
-					                                  ), true
+					Pebble() to 312,
+					Stick() to 98
+					                                ), true
 			        ) {
 				ToughStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyStoneAxe(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					Stick.tier(3) to 2,
-					PlantMatter.tier(3) to 3
-					                                    ), true
+					Pebble() to 196,
+					Stick() to 128,
+					PlantMatter() to 64
+					                                  ), true
 			        ) {
 				HealthyStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingStoneAxe(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					Stick.tier(3) to 2,
-					Wheat.tier(3) to 1
-					                                    ), true
+					Pebble() to 196,
+					Stick() to 128,
+					Wheat() to 256
+					                                  ), true
 			        ) {
 				HealingStoneAxe(Utils.randRarity()).getUpdatedItem(false)
 			},
 
 			//SLIME SPOOFERS
-			ShopItem(SlimeSpoofer(-1), 2500, hashMapOf(), false) {
+			ShopItem(SlimeSpoofer(-1), 7500, hashMapOf(), false) {
 				SlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(LuckySlimeSpoofer(-1), 2500, hashMapOf(), false) {
+			ShopItem(LuckySlimeSpoofer(-1), 7500, hashMapOf(), false) {
 				LuckySlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(StrongSlimeSpoofer(-1), 2500, hashMapOf(), false) {
+			ShopItem(StrongSlimeSpoofer(-1), 7500, hashMapOf(), false) {
 				StrongSlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(ToughSlimeSpoofer(-1), 2500, hashMapOf(), false) {
+			ShopItem(ToughSlimeSpoofer(-1), 7500, hashMapOf(), false) {
 				ToughSlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealthySlimeSpoofer(-1), 2500, hashMapOf(), false) {
+			ShopItem(HealthySlimeSpoofer(-1), 7500, hashMapOf(), false) {
 				HealthySlimeSpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealingSlimySpoofer(-1), 2500, hashMapOf(), false) {
+			ShopItem(HealingSlimySpoofer(-1), 7500, hashMapOf(), false) {
 				HealingSlimySpoofer(Utils.randRarity()).getUpdatedItem(false)
 			},
 	                                            )

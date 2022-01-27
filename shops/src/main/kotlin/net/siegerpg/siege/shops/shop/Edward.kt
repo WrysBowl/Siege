@@ -27,8 +27,8 @@ class Edward : Shop() {
 			//Iron HELMET
 			ShopItem(
 					IronHelmet(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 5
-					                               ), true
+					RefinedMetal() to 40
+					                             ), true
 			        ) {
 				IronHelmet(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -37,40 +37,40 @@ class Edward : Shop() {
 			},
 			ShopItem(
 					LuckyIronHelmet(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					Feather.tier(2) to 3
+					RefinedMetal() to 32,
+					Feather() to 40
 					                                  ), true
 			        ) {
 				LuckyIronHelmet(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongIronHelmet(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					Bone.tier(2) to 5
+					RefinedMetal() to 32,
+					Bone() to 20
 					                                   ), true
 			        ) {
 				StrongIronHelmet(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughIronHelmet(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					Pebble.tier(2) to 5
+					RefinedMetal() to 32,
+					Pebble() to 40
 					                                  ), true
 			        ) {
 				ToughIronHelmet(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyIronHelmet(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					PlantMatter.tier(2) to 5
+					RefinedMetal() to 32,
+					PlantMatter() to 40
 					                                    ), true
 			        ) {
 				HealthyIronHelmet(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingIronHelmet(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					Wheat.tier(3) to 1
+					RefinedMetal() to 32,
+					Wheat() to 128
 					                                    ), true
 			        ) {
 				HealingIronHelmet(Utils.randRarity()).getUpdatedItem(false)
@@ -79,8 +79,8 @@ class Edward : Shop() {
 			//Iron CHESTPLATE
 			ShopItem(
 					IronChestplate(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 8
-					                                   ), true
+					RefinedMetal() to 64
+					                                 ), true
 			        ) {
 				IronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -89,41 +89,41 @@ class Edward : Shop() {
 			},
 			ShopItem(
 					LuckyIronChestplate(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 6,
-					Feather.tier(2) to 4
-					                                        ), true
+					RefinedMetal() to 48,
+					Feather() to 64
+					                                      ), true
 			        ) {
 				LuckyIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongIronChestplate(-1), -1, hashMapOf(
-					RefinedMetal.tier(3) to 5,
-					Bone.tier(2) to 5
-					                                         ), true
+					RefinedMetal() to 48,
+					Bone() to 48
+					                                       ), true
 			        ) {
 				StrongIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughIronChestplate(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 4,
-					Pebble.tier(2) to 6
-					                                        ), true
+					RefinedMetal() to 48,
+					Pebble() to 64
+					                                      ), true
 			        ) {
 				ToughIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyIronChestplate(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 4,
-					PlantMatter.tier(2) to 4
-					                                          ), true
+					RefinedMetal() to 48,
+					PlantMatter() to 64
+					                                        ), true
 			        ) {
 				HealthyIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingIronChestplate(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 5,
-					Wheat.tier(3) to 1
-					                                          ), true
+					RefinedMetal() to 64,
+					Wheat() to 256
+					                                        ), true
 			        ) {
 				HealingIronChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -131,8 +131,8 @@ class Edward : Shop() {
 			//Iron LEGGINGS
 			ShopItem(
 					IronLeggings(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 7
-					                                 ), true
+					RefinedMetal() to 56
+					                               ), true
 			        ) {
 				IronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -142,41 +142,41 @@ class Edward : Shop() {
 
 			ShopItem(
 					LuckyIronLeggings(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 5,
-					Feather.tier(2) to 4
-					                                      ), true
+					RefinedMetal() to 48,
+					Feather() to 48
+					                                    ), true
 			        ) {
 				LuckyIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongIronLeggings(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 5,
-					Bone.tier(2) to 3
-					                                       ), true
+					RefinedMetal() to 48,
+					Bone() to 32
+					                                     ), true
 			        ) {
 				StrongIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughIronLeggings(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 6,
-					Pebble.tier(2) to 4
-					                                      ), true
+					RefinedMetal() to 48,
+					Pebble() to 48
+					                                    ), true
 			        ) {
 				ToughIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyIronLeggings(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 5,
-					PlantMatter.tier(2) to 4
-					                                        ), true
+					RefinedMetal() to 48,
+					PlantMatter() to 48
+					                                      ), true
 			        ) {
 				HealthyIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingIronLeggings(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 5,
-					Wheat.tier(3) to 1
-					                                        ), true
+					RefinedMetal() to 48,
+					Wheat() to 196
+					                                      ), true
 			        ) {
 				HealingIronLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -184,8 +184,8 @@ class Edward : Shop() {
 			//Iron BOOTS
 			ShopItem(
 					IronBoots(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 4
-					                              ), true
+					RefinedMetal() to 24
+					                            ), true
 			        ) {
 				IronBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -194,41 +194,41 @@ class Edward : Shop() {
 			},
 			ShopItem(
 					LuckyIronBoots(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					Feather.tier(2) to 2
-					                                   ), true
+					RefinedMetal() to 16,
+					Feather() to 32
+					                                 ), true
 			        ) {
 				LuckyIronBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongIronBoots(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					Bone.tier(2) to 2
-					                                    ), true
+					RefinedMetal() to 16,
+					Bone() to 24
+					                                  ), true
 			        ) {
 				StrongIronBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughIronBoots(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					Pebble.tier(2) to 3
-					                                   ), true
+					RefinedMetal() to 16,
+					Pebble() to 32
+					                                 ), true
 			        ) {
 				ToughIronBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyIronBoots(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					PlantMatter.tier(2) to 4
-					                                     ), true
+					RefinedMetal() to 16,
+					PlantMatter() to 32
+					                                   ), true
 			        ) {
 				HealthyIronBoots(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingIronBoots(-1), -1, hashMapOf(
-					RefinedMetal.tier(2) to 3,
-					Wheat.tier(3) to 1
-					                                     ), true
+					RefinedMetal() to 16,
+					Wheat() to 64
+					                                   ), true
 			        ) {
 				HealingIronBoots(Utils.randRarity()).getUpdatedItem(false)
 			}

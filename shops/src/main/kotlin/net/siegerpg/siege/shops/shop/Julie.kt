@@ -22,11 +22,11 @@ class Julie : Shop() {
 			//SEWER SHOOTER
 			ShopItem(
 					SewerShooter(-1), -1, hashMapOf(
-					Slime.tier(3) to 1,
-					Magma.tier(3) to 1,
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 3
-					                                 ), true
+					Slime() to 32,
+					Magma() to 32,
+					Stick() to 196,
+					Vine() to 64
+					                               ), true
 			        ) {
 				SewerShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -35,62 +35,65 @@ class Julie : Shop() {
 			},
 			ShopItem(
 					LuckySewerShooter(-1), -1, hashMapOf(
-					Slime.tier(3) to 1,
-					Magma.tier(3) to 1,
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Feather.tier(3) to 2
+					Slime() to 32,
+					Magma() to 32,
+					Stick() to 128,
+					Vine() to 64,
+					Feather() to 64
 					                                    ), true
 			        ) {
 				LuckySewerShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongSewerShooter(-1), -1, hashMapOf(
-					Slime.tier(3) to 1,
-					Magma.tier(3) to 1,
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Bone.tier(3) to 1
+					Slime() to 32,
+					Magma() to 32,
+					Stick() to 128,
+					Vine() to 64,
+					Bone() to 48
 					                                     ), true
 			        ) {
 				StrongSewerShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughSewerShooter(-1), -1, hashMapOf(
-					Slime.tier(3) to 1,
-					Magma.tier(3) to 1,
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Pebble.tier(3) to 2
+					Slime() to 32,
+					Magma() to 32,
+					Stick() to 128,
+					Vine() to 64,
+					Pebble() to 64
 					                                    ), true
 			        ) {
 				ToughSewerShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthySewerShooter(-1), -1, hashMapOf(
-					Slime.tier(3) to 1,
-					Magma.tier(3) to 1,
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					PlantMatter.tier(3) to 2
+					Slime() to 32,
+					Magma() to 32,
+					Stick() to 128,
+					Vine() to 64,
+					PlantMatter() to 64
 					                                      ), true
 			        ) {
 				HealthySewerShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingSewerShooter(-1), -1, hashMapOf(
-					Slime.tier(3) to 1,
-					Magma.tier(3) to 1,
-					Stick.tier(3) to 3,
-					Vine.tier(3) to 1,
-					Wheat.tier(3) to 3
+					Slime() to 32,
+					Magma() to 32,
+					Stick() to 196,
+					Vine() to 64,
+					Wheat() to 384
 					                                      ), true
 			        ) {
 				HealingSewerShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 
 			//CROSSBOW
-			ShopItem(Crossbow(-1), -1, hashMapOf(), false) {
+			ShopItem(Crossbow(-1), -1, hashMapOf(
+					Vine() to 64,
+					MetalScrap() to 128
+												), false) {
 				Crossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
@@ -98,46 +101,46 @@ class Julie : Shop() {
 			},
 			ShopItem(
 					LuckyCrossbow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					MetalScrap.tier(3) to 1,
-					Feather.tier(3) to 3
-					                                  ), true
+					Vine() to 64,
+					MetalScrap() to 96,
+					Feather() to 64
+					                                ), true
 			        ) {
 				LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongCrossbow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					MetalScrap.tier(3) to 1,
-					Bone.tier(3) to 3
-					                                   ), true
+					Vine() to 64,
+					MetalScrap() to 96,
+					Bone() to 48
+					                                 ), true
 			        ) {
 				StrongCrossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughCrossbow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					MetalScrap.tier(3) to 1,
-					Pebble.tier(3) to 3
-					                                  ), true
+					Vine() to 64,
+					MetalScrap() to 96,
+					Pebble() to 64
+					                                ), true
 			        ) {
 				ToughCrossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyCrossbow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					MetalScrap.tier(3) to 1,
-					PlantMatter.tier(3) to 3
-					                                    ), true
+					Vine() to 64,
+					MetalScrap() to 96,
+					PlantMatter() to 64
+					                                  ), true
 			        ) {
 				HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingCrossbow(-1), -1, hashMapOf(
-					Vine.tier(3) to 3,
-					MetalScrap.tier(3) to 1,
-					Wheat.tier(3) to 1
-					                                    ), true
+					Vine() to 64,
+					MetalScrap() to 96,
+					Wheat() to 256
+					                                  ), true
 			        ) {
 				HealingCrossbow(Utils.randRarity()).getUpdatedItem(false)
 			}

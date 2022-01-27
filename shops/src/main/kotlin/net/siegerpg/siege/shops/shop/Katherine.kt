@@ -18,10 +18,10 @@ class Katherine : Shop() {
 			//EARTHERN WAND
 			ShopItem(
 					EarthernWand(-1), -1, hashMapOf(
-					Pebble.tier(3) to 1,
-					Seed.tier(3) to 2,
-					Coal.tier(3) to 2
-					                                 ), true
+					PlantMatter() to 64,
+					Seed() to 128,
+					Coal() to 128
+					                               ), true
 			        ) {
 				EarthernWand(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -30,49 +30,49 @@ class Katherine : Shop() {
 			},
 			ShopItem(
 					LuckyEarthernWand(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1,
-					Feather.tier(3) to 3
+					PlantMatter() to 64,
+					Seed() to 96,
+					Coal() to 96,
+					Feather() to 64
 					                                    ), true
 			        ) {
 				LuckyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongEarthernWand(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1,
-					Bone.tier(3) to 2
+					PlantMatter() to 64,
+					Seed() to 96,
+					Coal() to 96,
+					Bone() to 48
 					                                     ), true
 			        ) {
 				StrongEarthernWand(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughEarthernWand(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1,
-					Pebble.tier(3) to 4
+					PlantMatter() to 64,
+					Seed() to 96,
+					Coal() to 96,
+					Pebble() to 64
 					                                    ), true
 			        ) {
 				ToughEarthernWand(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyEarthernWand(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 4,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1
+					PlantMatter() to 128,
+					Seed() to 96,
+					Coal() to 96
 					                                      ), true
 			        ) {
 				HealthyEarthernWand(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingEarthernWand(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1,
-					Wheat.tier(3) to 1
+					PlantMatter() to 64,
+					Seed() to 96,
+					Coal() to 96,
+					Wheat() to 256
 					                                      ), true
 			        ) {
 				HealingEarthernWand(Utils.randRarity()).getUpdatedItem(false)

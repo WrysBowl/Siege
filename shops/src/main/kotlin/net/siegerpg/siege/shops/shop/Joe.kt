@@ -26,8 +26,8 @@ class Joe : Shop() {
 			//STRAW HAT
 			ShopItem(
 					StrawHelmet(-1), -1, hashMapOf(
-					Wheat.tier(1) to 40
-					                               ), true
+					Wheat() to 40
+					                              ), true
 			        ) {
 				StrawHelmet(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -35,8 +35,8 @@ class Joe : Shop() {
 			//STRAW CHESTPLATE
 			ShopItem(
 					StrawChestplate(-1), -1, hashMapOf(
-					Wheat.tier(1) to 64
-					                                   ), true
+					Wheat() to 64
+					                                  ), true
 			        ) {
 				StrawChestplate(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -44,8 +44,8 @@ class Joe : Shop() {
 			//STRAW LEGGINGS
 			ShopItem(
 					StrawLeggings(-1), -1, hashMapOf(
-					Wheat.tier(1) to 56
-					                                 ), true
+					Wheat() to 56
+					                                ), true
 			        ) {
 				StrawLeggings(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -53,8 +53,8 @@ class Joe : Shop() {
 			//STRAW BOOTS
 			ShopItem(
 					StrawBoots(-1), -1, hashMapOf(
-					Wheat.tier(1) to 32
-					                              ), true
+					Wheat() to 32
+					                             ), true
 			        ) {
 				StrawBoots(Utils.randRarity()).getUpdatedItem(false)
 			})

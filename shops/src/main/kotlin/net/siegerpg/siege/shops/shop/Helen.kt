@@ -20,11 +20,10 @@ class Helen : Shop() {
 	override var permission : String = "siege.shops.shop.helen"
 	override var items : List<ShopItem> = listOf(
 			//TORCH
-			ShopItem(
-					Torch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Stick.tier(3) to 2
-					                          ), true
+			ShopItem(Torch(-1), -1, hashMapOf(
+					Magma() to 128,
+					Stick() to 96
+					                        ), true
 			        ) {
 				Torch(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -33,45 +32,45 @@ class Helen : Shop() {
 			},
 			ShopItem(
 					LuckyTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Feather.tier(3) to 1,
-					Stick.tier(3) to 1
+					Magma() to 128,
+					Feather() to 32,
+					Stick() to 64
 					                             ), true
 			        ) {
 				LuckyTorch(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Bone.tier(3) to 1,
-					Stick.tier(3) to 1
+					Magma() to 128,
+					Bone() to 24,
+					Stick() to 64
 					                              ), true
 			        ) {
 				StrongTorch(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Pebble.tier(3) to 2,
-					Stick.tier(3) to 1
+					Magma() to 128,
+					Pebble() to 32,
+					Stick() to 64
 					                             ), true
 			        ) {
 				ToughTorch(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					PlantMatter.tier(3) to 2,
-					Stick.tier(3) to 1
+					Magma() to 128,
+					PlantMatter() to 32,
+					Stick() to 64
 					                               ), true
 			        ) {
 				HealthyTorch(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingTorch(-1), -1, hashMapOf(
-					Magma.tier(3) to 1,
-					Wheat.tier(3) to 1,
-					Stick.tier(3) to 1
+					Magma() to 128,
+					Wheat() to 196,
+					Stick() to 64
 					                               ), true
 			        ) {
 				HealingTorch(Utils.randRarity()).getUpdatedItem(false)
