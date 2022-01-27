@@ -29,8 +29,8 @@ import java.util.*;
 
 public class MobCrateOpen implements Listener {
 
-	public static boolean crateDelay = false;
-	public static boolean awaitingRemoval = false;
+	public static ArrayList< Location > currentlyUsedChests = new ArrayList<>();
+
 
 	@EventHandler
 	public void onCrateOpen(PlayerInteractEvent e) {
@@ -61,12 +61,12 @@ public class MobCrateOpen implements Listener {
 			player.sendMessage(Utils.lore("<red>Please use a mob key!"));
 			return;
 		}
-		if (CosmeticCrateOpen.currentlyUsedChests.contains(targetedBlock.getLocation())) {
+		if (currentlyUsedChests.contains(targetedBlock.getLocation())) {
 			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
 			player.sendMessage(Utils.lore("<red>This crate is currently being used!"));
 			return;
 		}
-		CosmeticCrateOpen.currentlyUsedChests.add(targetedBlock.getLocation());
+		currentlyUsedChests.add(targetedBlock.getLocation());
 
 
 		//Pick item reward to give to player
@@ -74,6 +74,7 @@ public class MobCrateOpen implements Listener {
 		if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
 		short level = expLevel.getFirst();
 		ArrayList<MobDropTable> dropTablesList = new ArrayList<>();
+		ArrayList<MobDropTable> dropTablesPicked = new ArrayList<>();
 
 		//get the drop tables of all mobs below level+3
 		for (MobStats mob : MobStats.values()) {
@@ -81,11 +82,15 @@ public class MobCrateOpen implements Listener {
 			dropTablesList.add(mob.getDropTable());
 		}
 
-		int randNumber = (int) Math.floor(Math.random() * dropTablesList.size());
-		MobDropTable dropTable = dropTablesList.get(randNumber);
-		if (dropTable == null) return;
+		int rolls = item.getItem().getAmount();
+		for (int i = 0; i<rolls; i++) {
+			int randNumber = (int) Math.floor(Math.random() * dropTablesList.size());
+			MobDropTable dropTable = dropTablesList.get(randNumber);
+			if (dropTable == null) return;
+			dropTablesPicked.add(dropTable);
+		}
 
-		player.getInventory().removeItem(item.getItem().asOne());
+		player.getInventory().removeItem(item.getItem());
 
 		ArmorStand stand = getArmorStand(targetedBlock.getLocation().toCenterLocation());
 		stand.setHelmet(new ItemStack(Material.BARREL));
@@ -98,7 +103,9 @@ public class MobCrateOpen implements Listener {
 			@Override
 			public void run() {
 				if (counter >= 64) {
-					giveReward(player, dropTable, targetedBlock, stand);
+					for (MobDropTable dropTable : dropTablesPicked) {
+						giveReward(player, dropTable, targetedBlock, stand);
+					}
 					player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
 					CosmeticCrateOpen.currentlyUsedChests.remove(targetedBlock.getLocation());
 					this.cancel();
