@@ -68,7 +68,7 @@ class Party(public val partyID : UUID, private var leader : OfflinePlayer) {
 					send(
 							MiniMessage.get()
 									.parse(
-											"&7The party invite to &6<invitedDisplayName> &r&7expired!",
+											Utils.tacc("&7The party invite to &6<invitedDisplayName> &r&7expired!"),
 											listOf(
 													Template.of(
 															"invitedDisplayName",
