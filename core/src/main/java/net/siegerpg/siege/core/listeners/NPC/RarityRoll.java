@@ -131,7 +131,11 @@ public class RarityRoll implements Listener {
 		player.getInventory().remove(this.item.getItem().asOne());
 
 		//change quality of copied item
-		copiedItem.setQuality(Utils.randRarity());
+		int rarity = Utils.randRarity();
+		while (rarity > 80) {
+			rarity = Utils.randRarity();
+		}
+		copiedItem.setQuality(rarity);
 		copiedItem.serialize();
 
 		//remove old item from player

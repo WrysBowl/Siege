@@ -21,7 +21,7 @@ class Berta : Shop() {
 			//SCRAP SHARD
 			ShopItem(
 					ScrapShard(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 2
+					MetalScrap() to 96
 					                               ), true
 			        ) {
 				ScrapShard(Utils.randRarity()).getUpdatedItem(false)
@@ -31,40 +31,40 @@ class Berta : Shop() {
 			},
 			ShopItem(
 					LuckyScrapShard(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Feather.tier(3) to 2
+					MetalScrap() to 64,
+					Feather() to 32
 					                                  ), true
 			        ) {
 				LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongScrapShard(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Bone.tier(3) to 2
+					MetalScrap() to 64,
+					Bone() to 32
 					                                   ), true
 			        ) {
 				StrongScrapShard(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughScrapShard(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Pebble.tier(3) to 2
+					MetalScrap() to 64,
+					Pebble() to 32
 					                                  ), true
 			        ) {
 				ToughScrapShard(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyScrapShard(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					PlantMatter.tier(3) to 2
+					MetalScrap() to 64,
+					PlantMatter() to 32
 					                                    ), true
 			        ) {
 				HealthyScrapShard(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingScrapShard(-1), -1, hashMapOf(
-					MetalScrap.tier(3) to 1,
-					Wheat.tier(3) to 3
+					MetalScrap() to 64,
+					Wheat() to 128
 					                                    ), true
 			        ) {
 				HealingScrapShard(Utils.randRarity()).getUpdatedItem(false)
