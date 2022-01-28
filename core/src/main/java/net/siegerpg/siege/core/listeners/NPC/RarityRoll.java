@@ -28,13 +28,15 @@ public class RarityRoll implements Listener {
 	public RarityRoll() {
 		item = null;
 	}
+	public RarityRoll(CustomItem item) {
+		this.item = item;
+	}
 
 	public void openInventory(Player player) {
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
 		if (customItem instanceof CustomArmor || customItem instanceof CustomWeapon) {
-			RarityRoll instance = new RarityRoll();
+			RarityRoll instance = new RarityRoll(customItem);
 			instance.getMenu(player).show(player);
-			instance.item = customItem;
 			return;
 		}
 		player.sendMessage(Utils.lore("<red>You must be holding a weapon!"));

@@ -4,18 +4,12 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.Bandana;
-import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.GlowSquid;
-import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.LilUziDiamond;
-import net.siegerpg.siege.core.items.implemented.misc.cosmetics.legendary.SilverTiara;
-import net.siegerpg.siege.core.items.implemented.misc.food.Apple;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.TestSword;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.miscellaneous.*;
 import org.bukkit.Bukkit;
@@ -73,11 +67,10 @@ public class PlayerJoinListener implements Listener {
 
 		Player player = event.getPlayer();
 
-		String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(
-				player);
+		String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(player);
 		String joinMessage = Utils.tacc("&a&lJOIN &7[&a+&7] " + prefix + " &7" + player.getName());
-		player.teleport(Core.plugin().getSpawnLocation());
 
+		//Sets level into database
 		Levels.INSTANCE.getExpLevel(player, shortIntegerPair -> {
 			if (shortIntegerPair == null) {
 				try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
@@ -100,45 +93,24 @@ public class PlayerJoinListener implements Listener {
 			joinMessage = Utils.tacc(
 					"&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
 			player.teleport(Core.plugin().getNewSpawnLocation());
-			player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
 		} else {
+			player.teleport(Core.plugin().getSpawnLocation());
 			new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 				@Override
 				public void run() {
-
 					updateInventory(player);
 				}
 			}.runTaskAsynchronously(Core.plugin());
 		}
 		event.setJoinMessage(joinMessage);
-		player.setWalkSpeed(0.3f);
 
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			Scoreboard.updateScoreboard(p);
 			Tablist.tablistUpdate(p);
 		}
 		if (player.getName().equals("Wrys")) {
-			player.getInventory().addItem(new LilUziDiamond().getUpdatedItem(false));
-			player.getInventory().addItem(new TestSword(150).getUpdatedItem(false));
-			player.getInventory().addItem(new GlowSquid().getUpdatedItem(false));
-			player.getInventory().addItem(new Bandana().getUpdatedItem(false));
-			player.getInventory().addItem(new SilverTiara().getUpdatedItem(false));
-			player.getInventory().addItem(new Apple().getUpdatedItem(false));
 
 		}
-
-        /*if (event.getPlayer().getName().equals("Wrys")) {
-            player.getInventory().addItem(new TestSword(150).getUpdatedItem(false));
-            if (Skills.INSTANCE.getSkills(player).equals("")) {
-                try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
-                    PreparedStatement skillsData = conn.prepareStatement("INSERT INTO skillsData (uuid) VALUES (?)");
-                    skillsData.setString(1, player.getUniqueId().toString());
-                    skillsData.executeUpdate();
-                } catch (SQLException ignored) {
-                }
-            }
-            Skills.INSTANCE.setSkills(player, "A_1_3");
-        }*/
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
 	}
 

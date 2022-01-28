@@ -4,14 +4,15 @@ package net.siegerpg.siege.core.crates.mobs;
 import kotlin.Pair;
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.crates.cosmetics.CosmeticCrateOpen;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.types.misc.CustomKey;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
-import net.siegerpg.siege.core.miscellaneous.*;
+import net.siegerpg.siege.core.miscellaneous.Levels;
+import net.siegerpg.siege.core.miscellaneous.MobStats;
+import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.ArmorStand;
@@ -21,11 +22,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MobCrateOpen implements Listener {
 
@@ -90,7 +94,7 @@ public class MobCrateOpen implements Listener {
 			dropTablesPicked.add(dropTable);
 		}
 
-		player.getInventory().removeItem(item.getItem());
+		player.getInventory().setItemInMainHand(null);
 
 		ArmorStand stand = getArmorStand(targetedBlock.getLocation().toCenterLocation());
 		stand.setHelmet(new ItemStack(Material.BARREL));
@@ -103,11 +107,30 @@ public class MobCrateOpen implements Listener {
 			@Override
 			public void run() {
 				if (counter >= 64) {
-					for (MobDropTable dropTable : dropTablesPicked) {
-						giveReward(player, dropTable, targetedBlock, stand);
-					}
-					player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
-					CosmeticCrateOpen.currentlyUsedChests.remove(targetedBlock.getLocation());
+
+					//give rewards periodically
+					new BukkitRunnable() {
+
+						int counter = 0;
+						@Override
+						public void run() {
+							Bukkit.getLogger().info("Size"+dropTablesPicked.size());
+							if (dropTablesPicked.size() < counter) {
+								stand.remove();
+								currentlyUsedChests.remove(targetedBlock.getLocation());
+								this.cancel();
+							}
+							try {
+								giveReward(player, dropTablesPicked.get(counter), targetedBlock, stand);
+								counter++;
+							} catch (Exception ignored) {
+								stand.remove();
+								currentlyUsedChests.remove(targetedBlock.getLocation());
+								this.cancel();
+							}
+							player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
+						}
+					}.runTaskTimer(Core.plugin(), 20, 20);
 					this.cancel();
 				} else {
 					if (counter % 6 == 0) {
@@ -150,6 +173,7 @@ public class MobCrateOpen implements Listener {
 		stand.setSmall(true);
 		stand.setArms(false);
 		stand.setVisible(false);
+		stand.addDisabledSlots(EquipmentSlot.values());
 		stand.customName(Utils.parse("<color:#91CB56><bold>MOB CRATE"));
 		stand.setCustomNameVisible(true);
 		return stand;
@@ -190,7 +214,6 @@ public class MobCrateOpen implements Listener {
 			public void run() {
 
 				if (rewardItems.size() < 1) {
-					stand.remove();
 					this.cancel();
 				} else {
 					//create vector to shoot items at player
