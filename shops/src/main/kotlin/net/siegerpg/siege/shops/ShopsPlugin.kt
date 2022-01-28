@@ -27,7 +27,6 @@ class ShopsPlugin : JavaPlugin(), Listener {
 				hashMapOf(
 						"chip" to Chip(),
 						"chop" to Chop(),
-						"minnow" to Minnow(),
 						"chelsea" to Chelsea(),
 						"marco" to Marco(),
 						"clemont" to Clemont(),

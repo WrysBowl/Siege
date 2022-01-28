@@ -1,6 +1,8 @@
 package net.siegerpg.siege.shops.shop
 
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.WoodenSword
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.woodenSwords.*
 import net.siegerpg.siege.core.miscellaneous.Utils
@@ -13,25 +15,60 @@ class Tim : Shop() {
 	override var permission : String = "siege.shops.shop.tim"
 	override var items : List<ShopItem> = listOf(
 			//WOODEN SWORDS
-			ShopItem(WoodenSword(-1), 4000, hashMapOf(), false) {
+			ShopItem(
+					WoodenSword(-1), -1, hashMapOf(
+					Stick() to 320,
+					Coal() to 48
+					                              ), false
+			        ) {
 				WoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			ShopItem(LuckyWoodenSword(-1), 4000, hashMapOf(), false) {
+			ShopItem(
+					LuckyWoodenSword(-1), -1, hashMapOf(
+					Stick() to 288,
+					Coal() to 48,
+					Feather() to 64
+					                                   ), false
+			        ) {
 				LuckyWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(StrongWoodenSword(-1), 4000, hashMapOf(), false) {
+			ShopItem(
+					StrongWoodenSword(-1), -1, hashMapOf(
+					Stick() to 288,
+					Coal() to 48,
+					Bone() to 48
+					                                    ), false
+			        ) {
 				StrongWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(ToughWoodenSword(-1), 4000, hashMapOf(), false) {
+			ShopItem(
+					ToughWoodenSword(-1), -1, hashMapOf(
+					Stick() to 288,
+					Coal() to 48,
+					Pebble() to 64
+					                                   ), false
+			        ) {
 				ToughWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealthyWoodenSword(-1), 4000, hashMapOf(), false) {
+			ShopItem(
+					HealthyWoodenSword(-1), -1, hashMapOf(
+					Stick() to 288,
+					Coal() to 48,
+					PlantMatter() to 64
+					                                     ), false
+			        ) {
 				HealthyWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
-			ShopItem(HealingWoodenSword(-1), 4000, hashMapOf(), false) {
+			ShopItem(
+					HealingWoodenSword(-1), -1, hashMapOf(
+					Stick() to 288,
+					Coal() to 48,
+					Wheat() to 256
+					                                     ), false
+			        ) {
 				HealingWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			}
 	                                            )

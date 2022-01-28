@@ -18,12 +18,13 @@ class OakRod() : CustomRod(
 		enchantments = hashMapOf(
 				Enchantment.LURE to 1
 		                        ),
-		fishDropTable = OakFishTable()
+		fishDropTable = OakFishTable(),
+		quality = 50
                           ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

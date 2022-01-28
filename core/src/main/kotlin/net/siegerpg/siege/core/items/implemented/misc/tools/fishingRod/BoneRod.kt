@@ -18,12 +18,13 @@ class BoneRod() : CustomRod(
 		enchantments = hashMapOf(
 				Enchantment.LURE to 1
 		                        ),
-		fishDropTable = BoneFishTable()
+		fishDropTable = BoneFishTable(),
+		quality = 50
                            ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 50
-		this.rarity = Rarity.UNCOMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 

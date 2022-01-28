@@ -18,10 +18,10 @@ class Margaret : Shop() {
 			//HOT ROD
 			ShopItem(
 					HotRod(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 1,
-					Seed.tier(3) to 2,
-					Coal.tier(3) to 2
-					                           ), true
+					PlantMatter() to 196,
+					Seed() to 256,
+					Coal() to 64
+					                         ), true
 			        ) {
 				HotRod(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -30,49 +30,49 @@ class Margaret : Shop() {
 			},
 			ShopItem(
 					LuckyHotRod(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1,
-					Feather.tier(3) to 2
+					PlantMatter() to 196,
+					Seed() to 196,
+					Coal() to 64,
+					Feather() to 64
 					                              ), true
 			        ) {
 				LuckyHotRod(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					StrongHotRod(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1,
-					Bone.tier(3) to 1
+					PlantMatter() to 196,
+					Seed() to 196,
+					Coal() to 64,
+					Bone() to 48
 					                               ), true
 			        ) {
 				StrongHotRod(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					ToughHotRod(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1,
-					Pebble.tier(3) to 3
+					PlantMatter() to 196,
+					Seed() to 196,
+					Coal() to 64,
+					Pebble() to 64
 					                              ), true
 			        ) {
 				ToughHotRod(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealthyHotRod(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 2,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1
+					PlantMatter() to 384,
+					Seed() to 128,
+					Coal() to 64
 					                                ), true
 			        ) {
 				HealthyHotRod(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
 					HealingHotRod(-1), -1, hashMapOf(
-					PlantMatter.tier(3) to 1,
-					Seed.tier(3) to 1,
-					Coal.tier(3) to 1,
-					Wheat.tier(3) to 3
+					PlantMatter() to 196,
+					Seed() to 196,
+					Coal() to 64,
+					Wheat() to 512
 					                                ), true
 			        ) {
 				HealingHotRod(Utils.randRarity()).getUpdatedItem(false)

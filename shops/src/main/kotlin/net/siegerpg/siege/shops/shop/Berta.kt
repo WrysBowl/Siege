@@ -22,7 +22,7 @@ class Berta : Shop() {
 			ShopItem(
 					ScrapShard(-1), -1, hashMapOf(
 					MetalScrap() to 96
-					                               ), true
+					                             ), true
 			        ) {
 				ScrapShard(Utils.randRarity()).getUpdatedItem(false)
 			},

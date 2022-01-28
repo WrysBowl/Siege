@@ -16,12 +16,13 @@ class OldRod() : CustomRod(
 		baseStats = CustomItemUtils.statMap(),
 		enchantments = hashMapOf(
 		                        ),
-		fishDropTable = OldFishTable()
+		fishDropTable = OldFishTable(),
+		quality = 0
                           ) {
 
 	constructor(quality : Int) : this() {
-		this.quality = 0
-		this.rarity = Rarity.COMMON
+		this.quality = quality
+		this.rarity = Rarity.getFromInt(quality)
 		this.serialize()
 	}
 
