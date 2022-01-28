@@ -105,7 +105,7 @@ public class RarityRoll implements Listener {
 	private int getCost() {
 		try {
 			int levelReq = this.item.getLevelRequirement();
-			return (levelReq^2)*10;
+			return (levelReq^2)*100;
 		} catch (Exception ignored) {}
 		return 0;
 	}
@@ -134,9 +134,6 @@ public class RarityRoll implements Listener {
 
 		//change quality of copied item
 		int rarity = Utils.randRarity();
-		while (rarity > 80) {
-			rarity = Utils.randRarity();
-		}
 		copiedItem.setQuality(rarity);
 		copiedItem.serialize();
 
@@ -148,6 +145,7 @@ public class RarityRoll implements Listener {
 
 		//give player copied item
 		Utils.giveItem(player, copiedItem.getUpdatedItem(false));
+		openInventory(player);
 	}
 
 }

@@ -64,11 +64,6 @@ class CustomItemKotlinListener : Listener {
 	}
 
 	@EventHandler
-	fun onHandSwap(e: PlayerSwapHandItemsEvent) {
-		e.isCancelled = true
-	}
-
-	@EventHandler
 	@Suppress("UNUSED_PARAMETER")
 	fun onRegen(e : EntityRegainHealthEvent) {
 
