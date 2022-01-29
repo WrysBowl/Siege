@@ -4,10 +4,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.siegerpg.siege.core.Core;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -128,21 +125,16 @@ public class Utils {
 				                               .getEnderChest()
 				                               .firstEmpty() == -1;
 		if (!fullInv) {
-			((Player) player)
-					.getInventory()
-					.addItem(item);
+			((Player) player).getInventory().addItem(item);
 		} else if (!fullEnderChest) {
-			((Player) player)
-					.getEnderChest()
-					.addItem(item);
-			player.sendMessage(Utils.lore(
-					"<red>Your inventory was full so the item has been placed in your Ender Chest!"));
+			((Player) player).getEnderChest().addItem(item);
+			player.sendActionBar(Utils.parse("<red>Your inventory was full so the item has been placed in your Ender Chest!"));
+			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 0.5f, 0.75f);
+
 		} else {
-			player.sendMessage(Utils.lore(
-					"<red>Your Ender Chest is full so the item was dropped on the ground!"));
-			player
-					.getWorld()
-					.dropItemNaturally(player.getLocation(), item);
+			player.sendActionBar(Utils.parse("<red>Your ender chest was full so the item was dropped on the ground!"));
+			player.getWorld().dropItemNaturally(player.getLocation(), item);
+			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 0.5f, 0.75f);
 			return false;
 		}
 		return true;
