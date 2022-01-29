@@ -1,6 +1,9 @@
 package net.siegerpg.siege.core.listeners;
 
-import net.siegerpg.siege.core.Core;
+import io.github.retrooper.packetevents.event.PacketListenerAbstract;
+import io.github.retrooper.packetevents.event.impl.PacketPlaySendEvent;
+import io.github.retrooper.packetevents.packettype.PacketType;
+import io.github.retrooper.packetevents.packetwrappers.play.out.worldparticles.WrappedPacketOutWorldParticles;
 import net.siegerpg.siege.core.items.implemented.misc.food.*;
 import net.siegerpg.siege.core.items.types.misc.CustomFood;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -15,16 +18,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.CraftItemEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
-public class WorldListener implements Listener, Runnable {
+public class WorldListener extends PacketListenerAbstract implements Listener, Runnable {
 
 	@EventHandler
 	public void onTrample(PlayerInteractEvent event) {
@@ -231,19 +232,6 @@ public class WorldListener implements Listener, Runnable {
 	}
 
 	@EventHandler
-	public void closeInv(InventoryCloseEvent e) {
-
-		new BukkitRunnable() {
-			@Override
-			public void run() {
-
-				Player p = (Player) e.getPlayer();
-				p.updateInventory();
-			}
-		}.runTaskLater(Core.plugin(), 1);
-	}
-
-	@EventHandler
 	public void preventBreed(EntityBreedEvent e) {
 
 		Player player = (Player) e.getBreeder();
@@ -308,6 +296,13 @@ public class WorldListener implements Listener, Runnable {
 	@Override
 	public void run() {
 
+	}
+
+	public void onPacketPlaySend(PacketPlaySendEvent e) {
+		if (e.getPacketId() != PacketType.Play.Server.WORLD_PARTICLES) return;
+		WrappedPacketOutWorldParticles packet = new WrappedPacketOutWorldParticles(e.getNMSPacket());
+		byte[] data = new byte[]{0};
+		packet.writeByteArray(0, data);
 	}
 
 }
