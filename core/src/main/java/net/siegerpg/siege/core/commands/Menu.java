@@ -105,7 +105,7 @@ public class Menu implements CommandExecutor {
 		 */
 		OutlinePane warps = new OutlinePane(8, 2, 1, 4);
 		//Creating hub TP
-		warps.addItem(new GuiItem(getHubTeleportIcon(), e -> player.performCommand("h")));
+		warps.addItem(new GuiItem(getSpawnTeleportIcon(), e -> player.performCommand("spawn")));
 		//Creating Mera
 		warps.addItem(new GuiItem(getMeraIcon(player), e -> player.openInventory(new MeraTransit().getGUIWorldTransit(player))));
 		//Creating Farm TP
@@ -334,13 +334,13 @@ public class Menu implements CommandExecutor {
 		return enderChestIcon;
 	}
 
-	private static ItemStack getHubTeleportIcon() {
+	private static ItemStack getSpawnTeleportIcon() {
 		ItemStack hubTPIcon = new ItemStack(Material.ENDER_PEARL);
 		ItemMeta hubTPIconItemMeta = hubTPIcon.getItemMeta();
-		hubTPIconItemMeta.displayName(Utils.lore("<dark_green><bold>HUB"));
+		hubTPIconItemMeta.displayName(Utils.lore("<dark_green><bold>SPAWN"));
 		hubTPIconItemMeta.lore(new ArrayList<>() {
 			{
-				add(Utils.lore("<gray>Teleport to Hub"));
+				add(Utils.lore("<gray>Teleport to Spawn"));
 			}
 		});
 
