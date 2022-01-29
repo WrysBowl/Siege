@@ -94,7 +94,6 @@ public class PlayerJoinListener implements Listener {
 					"&a&lWELCOME&r &7[&a+&7] " + prefix + " &7" + player.getName());
 			player.teleport(Core.plugin().getNewSpawnLocation());
 		} else {
-			player.teleport(Core.plugin().getSpawnLocation());
 			new BukkitRunnable() { // We create a runnable to run asynchronously (on another thread, not the main one, so that the server won't lag if this one does)
 				@Override
 				public void run() {

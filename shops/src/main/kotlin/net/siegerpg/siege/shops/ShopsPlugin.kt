@@ -58,7 +58,9 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"jewel" to Jewel(),
 						"berta" to Berta(),
 						"amber" to Amber(),
-						"mobKey" to MobKey()
+						"mobKey" to MobKey(),
+						"tutorial" to Tutorial()
+
 
 
 				         )
