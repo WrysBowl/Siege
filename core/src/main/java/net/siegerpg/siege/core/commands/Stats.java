@@ -51,14 +51,14 @@ public class Stats implements CommandExecutor {
 		sender.sendMessage("");
 		sender.sendMessage(Utils.lore("<color:#EECB66><bold>Specifics"));
 		sender.sendMessage(Utils.lore(" "));
-		sender.sendMessage(Utils.lore("  <dark_red>Strength <reset><gray>You deal "+strength+" damage to your target's health points."));
-		sender.sendMessage(Utils.lore("  <blue>Toughness <reset><gray>You prevent " +
+		sender.sendMessage(Utils.lore("  <dark_red>Strength <reset><gray>You deal <bold>"+strength+"<r><gray> damage to your target's health points."));
+		sender.sendMessage(Utils.lore("  <blue>Toughness <reset><gray>You prevent <bold>" +
 		                              Utils.round((CustomItemKotlinListener.Companion.calcReducedToughness(toughness) / 1000), 2)*100 +
-		                              "% incoming damage."));
-		sender.sendMessage(Utils.lore("  <red>Health <reset><gray>You have "+health+" extra health."));
-		sender.sendMessage(Utils.lore("  <gold>Regeneration <reset><gray>You heal " + (int)(regeneration/5) + " health every " +
-		                              Utils.round((PlayerData.getRegenRate((int) regeneration))/20.0,2) + " second(s) on full hunger"));
-		sender.sendMessage(Utils.lore("  <green>Luck <reset><gray>You have a "+luck+"% chance to get double the drops, EXP, and gold. For every 100 luck, you get a higher drops multiplier."));
+		                              "<r><gray>% incoming damage."));
+		sender.sendMessage(Utils.lore("  <red>Health <reset><gray>You have <bold>"+health+" <r><gray>extra health."));
+		sender.sendMessage(Utils.lore("  <gold>Regeneration <reset><gray>You heal <bold>" + (int)(regeneration/5) + "<r><gray> health every <bold>" +
+		                              Utils.round((PlayerData.getRegenRate((int) regeneration))/20.0,2) + " <r><gray>second(s) on full hunger"));
+		sender.sendMessage(Utils.lore("  <green>Luck <reset><gray>You have a <bold>"+luck+"<r><gray>% chance to get double the drops, EXP, and gold. For every 100 luck, you get a higher drops multiplier."));
 		sender.sendMessage("");
 
 
