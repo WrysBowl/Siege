@@ -105,7 +105,7 @@ public class RarityRoll implements Listener {
 	private int getCost() {
 		try {
 			int levelReq = this.item.getLevelRequirement();
-			return (levelReq^2)*100;
+			return (levelReq * levelReq) * 5;
 		} catch (Exception ignored) {}
 		return 0;
 	}
