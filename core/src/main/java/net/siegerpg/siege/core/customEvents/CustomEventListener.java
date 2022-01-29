@@ -1,10 +1,7 @@
 package net.siegerpg.siege.core.customEvents;
 
 import net.siegerpg.siege.core.Core;
-import net.siegerpg.siege.core.customEvents.events.Fishing;
-import net.siegerpg.siege.core.customEvents.events.Haste_Buff;
-import net.siegerpg.siege.core.customEvents.events.More_Carrots;
-import net.siegerpg.siege.core.customEvents.events.More_Wheat;
+import net.siegerpg.siege.core.customEvents.events.*;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 

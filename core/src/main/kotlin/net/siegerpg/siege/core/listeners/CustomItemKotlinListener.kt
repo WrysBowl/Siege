@@ -148,7 +148,7 @@ class CustomItemKotlinListener : Listener {
 				return
 			}
 			if (item is CustomBow) {
-				if (!item.item.type.equals(Material.TRIDENT)) {
+				if (item.item.type != Material.TRIDENT) {
 					if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
 						e.damage = 1.0
 						setVictimName(victim, e.damage, vicMaxHealth)

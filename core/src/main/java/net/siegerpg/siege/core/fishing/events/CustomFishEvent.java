@@ -66,12 +66,18 @@ public class CustomFishEvent {
 
 		//Check if fishing event is currently active
 		if (CustomEventListener.currentlyActive instanceof Fishing) {
-			Fishing.playerScores.put(player, (int) (fish.winScore * fish.moveSpeed)); //((int)(winScore*speed))
+			int score = Fishing.getFishScore(fish);
+			int currentScore = 0;
+
+			if (Fishing.playerScores.containsKey(player)) currentScore = Fishing.playerScores.get(player);
+			Fishing.playerScores.put(player, score + currentScore); //((int)(winScore*speed))
 
 			//keep track of player's fishing history
 			ArrayList<Fish> fishList = Fishing.playerFishingHistory.get(player);
+			if (fishList == null) fishList = new ArrayList<Fish>();
 			fishList.add(fish);
 			Fishing.playerFishingHistory.put(player, fishList);
+			player.sendMessage(Utils.lore("<gold>You received "+score+" pts!"));
 		}
 
 		//win rewards should be synchronous with the thread
