@@ -37,7 +37,6 @@ import java.util.HashMap;
 public class PlayerData implements Listener {
 
 	public static HashMap< Player, Boolean > hasActionBar = new HashMap<>();
-	public static HashMap< Player, Boolean > broadcastTips = new HashMap<>();
 	public static HashMap< Player, Double > playerHealth = new HashMap<>();
 	public static HashMap< Player, Double > playerRegeneration = new HashMap<>();
 
@@ -122,8 +121,6 @@ public class PlayerData implements Listener {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			setStats(player);
 			hasActionBar.put(player, false);
-			broadcastTips.put(player, true);
-			//playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
 		}
 	}
 
@@ -131,12 +128,9 @@ public class PlayerData implements Listener {
 	public void onJoin(PlayerJoinEvent e) {
 
 		Player player = e.getPlayer();
+		player.setHealth(player.getMaxHealth());
 		hasActionBar.put(player, false);
 		setStats(player);
-		//playerSkills.put(player, SkillUtils.decode(Skills.INSTANCE.getSkills(player)));
-		if (!broadcastTips.containsKey(player)) {
-			broadcastTips.put(player, true);
-		}
 	}
 
 	@EventHandler

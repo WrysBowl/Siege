@@ -121,7 +121,6 @@ public final class Core extends JavaPlugin {
 			commandList.put("leaderboard", new Leaderboard());
 			commandList.put("level", new Level());
 			commandList.put("buy", new WebstoreCommand());
-			commandList.put("tips", new ToggleTips());
 			commandList.put("getBooster", new GetBooster());
 			commandList.put("getMobKey", new GetMobKey());
 			commandList.put("updateScoreboard", new UpdateScoreboard());

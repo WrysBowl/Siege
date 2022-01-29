@@ -17,7 +17,7 @@ class Tutorial : Shop() {
 	override var name : String = "Shop"
 	override var permission : String = "siege.shops.shop.tutorial"
 	override var items : List<ShopItem> = listOf(
-			
+
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
