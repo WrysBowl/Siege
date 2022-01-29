@@ -35,7 +35,7 @@ public class Fishing extends CustomEvent {
 
 	@Override
 	public boolean triggerable() {
-		return Utils.randTest(100.0);
+		return Utils.randTest(30.0);
 	}
 
 	@Override
@@ -123,7 +123,7 @@ public class Fishing extends CustomEvent {
 
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("<color:#5AEBA2><bold>Fishing Leaderboard"));
-		Bukkit.broadcast(Utils.parse("  <gold>Prize Pool "+getTotalPoints()+" \u26C1"));
+		Bukkit.broadcast(Utils.parse("  <gold>Prize Pool <color:#E1CE55>"+getTotalPoints()+" \u26C1"));
 		Bukkit.broadcast(Utils.parse(""));
 		for (Map.Entry<Player, Integer> entry : topPlayersLimit) {
 			Bukkit.broadcast(Utils.parse("  <aqua>"+counter+" <color:#7ADDAB>"+entry.getKey().getName()+" <gray>scored <color:#E1CE55>"+entry.getValue()+" pts."));
@@ -142,7 +142,7 @@ public class Fishing extends CustomEvent {
 	}
 
 	public static int getFishScore(Fish fish) {
-		return (int) ((60 * fish.winScore * fish.moveSpeed)/fish.length);
+		return (int) ((100 * fish.winScore * fish.moveSpeed)/fish.length);
 	}
 
 	public static void sendFishingHistory(Player target) {
@@ -154,7 +154,7 @@ public class Fishing extends CustomEvent {
 		target.sendMessage(Utils.parse(""));
 		for (Fish fish : playerFishingHistory.get(target)) {
 			target.sendMessage(Utils.parse("  <yellow>"+counter+" <color:#E1CE55>"+fish.name+" " +
-			                             "<gray>size <color:#F1E236>"+fish.actualSize+" gave "+getFishScore(fish)+" pts."));
+			                             "<gray>size <color:#F1E236>"+fish.actualSize+" <gray>gave <color:#F1E236>"+getFishScore(fish)+" <gray>pts."));
 			counter++;
 		}
 		target.sendMessage(Utils.parse(""));
