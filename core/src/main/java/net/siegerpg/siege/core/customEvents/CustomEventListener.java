@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.customEvents;
 
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.customEvents.events.Fishing;
 import net.siegerpg.siege.core.customEvents.events.Haste_Buff;
 import net.siegerpg.siege.core.customEvents.events.More_Carrots;
 import net.siegerpg.siege.core.customEvents.events.More_Wheat;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 public class CustomEventListener implements Listener {
 	public static HashMap<String, CustomEvent> events = new HashMap<>() {
 		{
+			put("FISHING", new Fishing());
 			put("HASTE_BUFF", new Haste_Buff());
 			put("MORE_CARROTS", new More_Carrots());
 			put("MORE_WHEAT", new More_Wheat());
@@ -41,6 +43,7 @@ public class CustomEventListener implements Listener {
 
 			event.action();
 			startTimer(event);
+			currentlyActive = event;
 
 			//delay next event
 			eventDelayed = true;

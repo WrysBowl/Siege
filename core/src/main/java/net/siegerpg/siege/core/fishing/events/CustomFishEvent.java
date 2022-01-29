@@ -1,6 +1,8 @@
 package net.siegerpg.siege.core.fishing.events;
 
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.customEvents.CustomEventListener;
+import net.siegerpg.siege.core.customEvents.events.Fishing;
 import net.siegerpg.siege.core.fishing.FishingTask;
 import net.siegerpg.siege.core.fishing.catches.Fish;
 import net.siegerpg.siege.core.fishing.catches.FishCore;
@@ -61,6 +63,16 @@ public class CustomFishEvent {
 
 		Fish fish = data.getFish();
 		Location loc = hook.getLocation();
+
+		//Check if fishing event is currently active
+		if (CustomEventListener.currentlyActive instanceof Fishing) {
+			Fishing.playerScores.put(player, (int) (fish.winScore * fish.moveSpeed)); //((int)(winScore*speed))
+
+			//keep track of player's fishing history
+			ArrayList<Fish> fishList = Fishing.playerFishingHistory.get(player);
+			fishList.add(fish);
+			Fishing.playerFishingHistory.put(player, fishList);
+		}
 
 		//win rewards should be synchronous with the thread
 		new BukkitRunnable() {
