@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.type.Campfire;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -62,7 +63,9 @@ public class WorldListener implements Listener, Runnable {
 
 		if (block instanceof Door) return;
 		else if (type.equals(Material.ENDER_CHEST)) return;
-		else if (type.equals(Material.CAMPFIRE)) return;
+		else if (type.equals(Material.CAMPFIRE)) {
+			if(((Campfire)block).isLit()) return;
+		}
 		if (!type.isInteractable()) return;
 		e.setCancelled(true);
 	}

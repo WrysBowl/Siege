@@ -114,7 +114,6 @@ public class MobCrateOpen implements Listener {
 						int counter = 0;
 						@Override
 						public void run() {
-							Bukkit.getLogger().info("Size"+dropTablesPicked.size());
 							if (dropTablesPicked.size() < counter) {
 								stand.remove();
 								currentlyUsedChests.remove(targetedBlock.getLocation());
