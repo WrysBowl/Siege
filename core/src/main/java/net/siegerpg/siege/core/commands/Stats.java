@@ -33,16 +33,16 @@ public class Stats implements CommandExecutor {
 		}
 		((Player)sender).playSound(((Player)sender).getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1.0f, 1.5f);
 
-		double health = Utils.round(
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH), 2);
-		double strength = Utils.round(
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH), 2);
-		double toughness = Utils.round(
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.DEFENSE), 2);
-		double luck = Utils.round(
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK), 2);
-		double regeneration = Utils.round(
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION), 2);
+		double health =
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH);
+		double strength =
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH);
+		double toughness =
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.DEFENSE);
+		double luck =
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK);
+		double regeneration =
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION);
 
 		sender.sendMessage("");
 		sender.sendMessage(Utils.parse("<dark_gray><underlined>                                        "));
@@ -51,25 +51,14 @@ public class Stats implements CommandExecutor {
 		sender.sendMessage("");
 		sender.sendMessage(Utils.lore("<color:#EECB66><bold>Specifics"));
 		sender.sendMessage(Utils.lore(" "));
-		sender.sendMessage(Utils.lore("  <dark_red>Strength <reset><gray>You deal "+strength+" to target's health points."));
+		sender.sendMessage(Utils.lore("  <dark_red>Strength <reset><gray>You deal "+strength+" damage to your target's health points."));
 		sender.sendMessage(Utils.lore("  <blue>Toughness <reset><gray>You prevent " +
 		                              Utils.round((CustomItemKotlinListener.Companion.calcReducedToughness(toughness) / 1000), 2)*100 +
-		                              " % damage."));
-		sender.sendMessage(Utils.lore("  <red>Health <reset><gray>You have "+health+"."));
+		                              "% incoming damage."));
+		sender.sendMessage(Utils.lore("  <red>Health <reset><gray>You have "+health+" extra health."));
 		sender.sendMessage(Utils.lore("  <gold>Regeneration <reset><gray>You heal " + (int)(regeneration/5) + " health every " +
 		                              Utils.round((PlayerData.getRegenRate((int) regeneration))/20.0,2) + " second(s) on full hunger"));
 		sender.sendMessage(Utils.lore("  <green>Luck <reset><gray>You have a "+luck+"% chance to get double the drops, EXP, and gold. For every 100 luck, you get a higher drops multiplier."));
-		sender.sendMessage("");
-
-		sender.sendMessage("");
-		sender.sendMessage(Utils.lore("<color:#EECB66>Player Statistics"));
-		sender.sendMessage(Utils.lore(" "));
-		sender.sendMessage(Utils.lore("<color:#DED153>" + player.getName()));
-		sender.sendMessage(Utils.lore("  <gray>Strength        <reset><dark_red>" + strength));
-		sender.sendMessage(Utils.lore("  <gray>Toughness     <reset><blue>" + toughness));
-		sender.sendMessage(Utils.lore("  <gray>Health           <reset><red>" + health));
-		sender.sendMessage(Utils.lore("  <gray>Regeneration  <reset><gold>" + regeneration));
-		sender.sendMessage(Utils.lore("  <gray>Luck             <reset><green>" + luck));
 		sender.sendMessage("");
 
 
