@@ -12,15 +12,15 @@ public class WildFox extends MobDropTable {
 
 		super("WildFox", 14, 17, 20, 23, new Reward[] {
 				new Reward(new Bone()
-						           .getUpdatedItem(false), 25.0),
+						           .getUpdatedItem(false), 22.5),
 				new Reward(new Bone()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 2.5),
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 50.0),
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 5.0),
-				new Reward(new Drumstick().getUpdatedItem(false), 5.0),
-				new Reward(new Drumstick().getUpdatedItem(false), 25.0),
+						           .getUpdatedItem(false), 2.5),
+				new Reward(new Drumstick().getUpdatedItem(false), 2.5),
+				new Reward(new Drumstick().getUpdatedItem(false), 22.5),
 				});
 	}
 

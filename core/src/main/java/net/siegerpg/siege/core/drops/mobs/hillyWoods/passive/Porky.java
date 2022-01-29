@@ -12,9 +12,9 @@ public class Porky extends MobDropTable {
 
 		super("Porky", 6, 9, 8, 11, new Reward[] {
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 25.0),
+						           .getUpdatedItem(false), 22.5),
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 2.5),
 				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(2), 70.0),

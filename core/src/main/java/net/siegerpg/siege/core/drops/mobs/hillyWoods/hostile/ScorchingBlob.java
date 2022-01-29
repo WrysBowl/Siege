@@ -13,8 +13,6 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.magmaLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.MagmaSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.regenerationGems.RawRegenerationGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.RawStrengthGem;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.MatchStick;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 
@@ -28,44 +26,44 @@ public class ScorchingBlob extends MobDropTable {
 				new Reward(new Magma()
 						           .getUpdatedItem(false), 10.0),
 
-				new Reward(new MagmaHelmet(50).getUpdatedItem(false), 2.0),
-				new Reward(new MagmaChestplate(50).getUpdatedItem(false), 2.0),
-				new Reward(new MagmaLeggings(50).getUpdatedItem(false), 2.0),
-				new Reward(new MagmaBoots(50).getUpdatedItem(false), 2.0),
+				new Reward(new MagmaHelmet(50).getUpdatedItem(false), 0.75),
+				new Reward(new MagmaChestplate(50).getUpdatedItem(false), 0.75),
+				new Reward(new MagmaLeggings(50).getUpdatedItem(false), 0.75),
+				new Reward(new MagmaBoots(50).getUpdatedItem(false), 0.75),
 
-				new Reward(new MagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new MagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new MagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 1.0),
+				new Reward(new MagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new MagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new MagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.30),
 
-				new Reward(new ToughMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new ToughMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new ToughMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new ToughMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.2),
+				new Reward(new ToughMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new ToughMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new ToughMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new ToughMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
-				new Reward(new HealingMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new HealingMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new HealingMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new HealingMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.2),
+				new Reward(new HealingMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
-				new Reward(new HealthyMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new HealthyMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new HealthyMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new HealthyMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.2),
+				new Reward(new HealthyMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
-				new Reward(new StrongMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new StrongMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new StrongMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new StrongMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.2),
+				new Reward(new StrongMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
-				new Reward(new LuckyMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new LuckyMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new LuckyMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.2),
-				new Reward(new LuckyMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.2),
+				new Reward(new LuckyMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.10),
 				
-				new Reward(new MatchStick(Utils.randRarity()).getUpdatedItem(false), 2.0),
+				new Reward(new MatchStick(Utils.randRarity()).getUpdatedItem(false), 0.75),
 				new Reward(new MobKey(0).getUpdatedItem(false), 0.75),
-				new Reward(new MagmaSpiritKey().getUpdatedItem(false), 1.0),
+				new Reward(new MagmaSpiritKey().getUpdatedItem(false), 0.30),
 
 				});
 	}

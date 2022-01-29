@@ -16,14 +16,14 @@ public class Wooly extends MobDropTable {
 				new Reward(new Wool()
 						           .getUpdatedItem(false), 10.0),
 				new Reward(new Wool()
-						           .getUpdatedItem(false), 1.0),
+						           .getUpdatedItem(false), 0.30),
 				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(2), 80.0),
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 8.0),
 
-				new Reward(new Drumstick().getUpdatedItem(false), 25.0),
+				new Reward(new Drumstick().getUpdatedItem(false), 22.5),
 				});
 	}
 

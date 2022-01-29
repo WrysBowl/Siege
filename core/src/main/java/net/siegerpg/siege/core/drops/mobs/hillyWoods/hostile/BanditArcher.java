@@ -7,10 +7,6 @@ import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.Broodmothe
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.FlawedLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.doubleBladedAxes.*;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -23,24 +19,24 @@ public class BanditArcher extends MobDropTable {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 50.0),
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 2.5),
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 50.0),
 				new Reward(new Bone()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 2.5),
 				new Reward(new MetalScrap()
-						           .getUpdatedItem(false), 25.0),
+						           .getUpdatedItem(false), 22.5),
 
-				new Reward(new Crossbow(100).getUpdatedItem(false), 0.5),
-				new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 2.5),
-				new Reward(new ToughCrossbow(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new StrongCrossbow(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 1.0),
+				new Reward(new Crossbow(100).getUpdatedItem(false), 0.25),
+				new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 1.0),
+				new Reward(new ToughCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new StrongCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 3.0),
-				new Reward(new BroodmotherKey(0).getUpdatedItem(false), 1.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
+				new Reward(new BroodmotherKey(0).getUpdatedItem(false), 0.30),
 
 				});
 	}

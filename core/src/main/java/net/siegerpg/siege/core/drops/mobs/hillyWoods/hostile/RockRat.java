@@ -21,16 +21,16 @@ public class RockRat extends MobDropTable {
 						           .getUpdatedItem(false), 100.0),
 				new Reward(new Pebble()
 						           .getUpdatedItem(false), 10.0),
-				new Reward(new JaggedTunic(Utils.randRarity()).getUpdatedItem(false), 5.0),
-				new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new ToughPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.25),
-				new Reward(new LuckyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.25),
-				new Reward(new StrongPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.25),
-				new Reward(new HealingPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.25),
-				new Reward(new HealthyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.25),
-				new Reward(new PebbleWand(Utils.randRarity()).getUpdatedItem(false), 5.0),
+				new Reward(new JaggedTunic(Utils.randRarity()).getUpdatedItem(false), 2.5),
+				new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new ToughPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.15),
+				new Reward(new LuckyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.15),
+				new Reward(new StrongPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.15),
+				new Reward(new HealingPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.15),
+				new Reward(new HealthyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.15),
+				new Reward(new PebbleWand(Utils.randRarity()).getUpdatedItem(false), 2.5),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 0.25),
+				new Reward(new MobKey(0).getUpdatedItem(false), 0.15),
 
 				});
 	}
