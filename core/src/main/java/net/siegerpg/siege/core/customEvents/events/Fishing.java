@@ -90,13 +90,14 @@ public class Fishing extends CustomEvent {
 
 		List< Map.Entry<Player, Integer> > top3 = playerScores.entrySet().stream().sorted(
 				Map.Entry.comparingByValue(reverseOrder())).limit(3).collect(toList());
-		int counter = 1;
-		int totalPoints = 0;
-		Player winner = top3.get(0).getKey();
-		if (winner==null) {
+		if (top3.size() != 3) {
 			Bukkit.broadcast(Utils.parse("<red>No one participated in the fishing tournament."));
 			return;
 		}
+
+		int counter = 1;
+		int totalPoints = 0;
+		Player winner = top3.get(0).getKey();
 
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("<color:#5AEBA2><bold>Fishing Tournament END"));
