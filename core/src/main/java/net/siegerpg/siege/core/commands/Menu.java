@@ -367,7 +367,7 @@ public class Menu implements CommandExecutor {
 			{
 				add(Utils.lore(""));
 				add(Utils.lore("<gray>Purchase home "+homeNumber));
-				add(Utils.lore("<gray>Costs <yellow>"+cost+" \u26C1"));
+				add(Utils.lore("<gray>Costs <yellow>"+String.format("%,d", cost)+" \u26C1"));
 				add(Utils.lore(""));
 				add(Utils.lore("<dark_gray>Allows you to save a"));
 				add(Utils.lore("<dark_gray>location to teleport to"));
