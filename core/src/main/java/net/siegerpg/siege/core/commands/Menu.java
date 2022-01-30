@@ -8,10 +8,10 @@ import kotlin.Pair;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.SimpleStrengthGem;
 import net.siegerpg.siege.core.listeners.NPC.GemRemover;
 import net.siegerpg.siege.core.listeners.NPC.Herbert;
-import net.siegerpg.siege.core.listeners.NPC.MeraTransit;
 import net.siegerpg.siege.core.listeners.NPC.RarityRoll;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.VaultHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -91,9 +91,21 @@ public class Menu implements CommandExecutor {
 		 */
 		OutlinePane utilities = new OutlinePane(0, 2, 1, 4);
 		//Creating scrapper
-		utilities.addItem(new GuiItem(getScrapperIcon(player), e -> new Herbert(player)));
+		utilities.addItem(new GuiItem(getScrapperIcon(player), e -> {
+			if (player.hasPermission("siege.donor")) {
+				new Herbert(player);
+			} else {
+				player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 0.5f, 0.75f);
+			}
+		}));
 		//Creating Gem Remover
-		utilities.addItem(new GuiItem(getGemRemover(player), e -> new GemRemover().openInventory(player)));
+		utilities.addItem(new GuiItem(getGemRemover(player), e -> {
+			if (player.hasPermission("siege.donor")) {
+				new GemRemover().openInventory(player);
+			} else {
+				player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 0.5f, 0.75f);
+			}
+		}));
 		//Creating Drops
 		utilities.addItem(new GuiItem(getDropsIcon(), e -> new Drops().getStartMenu(player).show(player)));
 		//Creating ReRoll Icon
@@ -104,23 +116,28 @@ public class Menu implements CommandExecutor {
 		  Warp Icons
 		 */
 		OutlinePane warps = new OutlinePane(8, 2, 1, 4);
-		//Creating hub TP
-		warps.addItem(new GuiItem(getSpawnTeleportIcon(), e -> player.performCommand("spawn")));
-		//Creating Mera
-		warps.addItem(new GuiItem(getMeraIcon(player), e -> player.openInventory(new MeraTransit().getGUIWorldTransit(player))));
-		//Creating Farm TP
-		warps.addItem(new GuiItem(getFarmTeleportIcon(player), e -> {
-			Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
-			if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
-			if (expLevel.getFirst() >=5) player.teleport(new Location(
-					Bukkit.getWorld("Hilly_Woods"),188.5, 61, -122.5, -90, 0));
-		}));
-		//Creating Village TP
-		warps.addItem(new GuiItem(getVillageTeleportIcon(player), e -> {
-			Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
-			if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
-			if (expLevel.getFirst() >=15) player.teleport(
-					new Location(Bukkit.getWorld("Hilly_Woods"),205.5, 93, 217.5, 180, 0));
+		//Creating set home icon
+		warps.addItem(new GuiItem(getIconHome(player), e -> {
+			int homeNumber = getHomePermissionNumber(player);
+			int bal = (int) VaultHook.econ.getBalance(player);
+			int cost = (int) (Math.pow(homeNumber + 4, 3) * 1000);
+			String homeString = getNextHome(player);
+
+
+			//check if player has enough to purchase the new home
+			if (cost > bal || homeNumber == 4 || homeString.equals("")) {
+				player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 0.5f, 0.75f);
+				return;
+			} else {
+				player.sendMessage(Utils.lore("<yellow>Purchased a new home slot! Use /sethome /home /delhome"));
+				player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 0.5f, 0.75f);
+				VaultHook.econ.withdrawPlayer(player, cost);
+			}
+
+			//set new home permission node
+			VaultHook.perms.playerAdd(null, player, "essentials.sethome.multiple."+homeString);
+
+			player.performCommand("menu");
 		}));
 
 		/*
@@ -162,7 +179,41 @@ public class Menu implements CommandExecutor {
 		return menu;
 	}
 
-	private ItemStack getScrapperIcon(Player player) {
+	private static int getHomePermissionNumber(Player player) {
+		int permission = 0;
+		if (player.hasPermission("essentials.sethome.multiple.one")) {
+			permission = 1;
+		}
+		if (player.hasPermission("essentials.sethome.multiple.two")) {
+			permission = 2;
+		}
+		if (player.hasPermission("essentials.sethome.multiple.three")) {
+			permission = 3;
+		}
+		if (player.hasPermission("essentials.sethome.multiple.four")) {
+			permission = 4;
+		}
+		return permission;
+	}
+
+	private static String getNextHome(Player player) {
+		String permission = "one";
+		if (player.hasPermission("essentials.sethome.multiple.one")) {
+			permission = "two";
+		}
+		if (player.hasPermission("essentials.sethome.multiple.two")) {
+			permission = "three";
+		}
+		if (player.hasPermission("essentials.sethome.multiple.three")) {
+			permission = "four";
+		}
+		if (player.hasPermission("essentials.sethome.multiple.four")) {
+			permission = "";
+		}
+		return permission;
+	}
+
+	private static ItemStack getScrapperIcon(Player player) {
 		ItemStack scrapperIcon = new ItemStack(Material.GOLD_BLOCK);
 		ItemMeta scrapperIconItemMeta = scrapperIcon.getItemMeta();
 
@@ -180,7 +231,6 @@ public class Menu implements CommandExecutor {
 				{
 					add(Utils.lore("<gray>Sell items"));
 					add(Utils.lore(""));
-					add(Utils.lore("<gray>See in person"));
 					add(Utils.lore("<red><bold>/buy rank access"));
 				}
 			});
@@ -190,7 +240,7 @@ public class Menu implements CommandExecutor {
 		return scrapperIcon;
 	}
 
-	private ItemStack getGemRemover(Player player) {
+	private static ItemStack getGemRemover(Player player) {
 		ItemStack gemIcon = new SimpleStrengthGem().getItem();
 		ItemMeta gemIconItemMeta = gemIcon.getItemMeta();
 
@@ -246,35 +296,6 @@ public class Menu implements CommandExecutor {
 
 		dropsIcon.setItemMeta(dropsIconItemMeta);
 		return dropsIcon;
-	}
-
-	private ItemStack getMeraIcon(Player player) {
-
-		ItemStack mera = new ItemStack(Material.SKELETON_SKULL);
-		ItemMeta meraMeta = mera.getItemMeta();
-		meraMeta.displayName(Utils.lore("<gray><bold>Last Death"));
-
-		if (player.hasPermission("siege.donor")) {
-			meraMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Teleport to last death"));
-				}
-			});
-		} else {
-			mera = new ItemStack(Material.BARRIER);
-			meraMeta.displayName(Utils.lore("<red><bold>Last Death"));
-			meraMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Teleport to last death"));
-					add(Utils.lore(""));
-					add(Utils.lore("<gray>See in person"));
-					add(Utils.lore("<red><bold>/buy rank access"));
-				}
-			});
-		}
-
-		mera.setItemMeta(meraMeta);
-		return mera;
 	}
 
 	private static ItemStack getVaultIcon(Player player) {
@@ -334,78 +355,30 @@ public class Menu implements CommandExecutor {
 		return enderChestIcon;
 	}
 
-	private static ItemStack getSpawnTeleportIcon() {
-		ItemStack hubTPIcon = new ItemStack(Material.ENDER_PEARL);
-		ItemMeta hubTPIconItemMeta = hubTPIcon.getItemMeta();
-		hubTPIconItemMeta.displayName(Utils.lore("<dark_green><bold>SPAWN"));
-		hubTPIconItemMeta.lore(new ArrayList<>() {
+	private static ItemStack getIconHome(Player player) {
+		ItemStack icon = new ItemStack(Material.RED_BED);
+		ItemMeta iconMeta = icon.getItemMeta();
+		String homeNumber = getNextHome(player);
+		int num = getHomePermissionNumber(player);
+		int cost = (int) (Math.pow(num + 4, 3) * 1000);
+
+		iconMeta.displayName(Utils.lore("<color:#E7C261><bold>Purchase Home"));
+		iconMeta.lore(new ArrayList<>() {
 			{
-				add(Utils.lore("<gray>Teleport to Spawn"));
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>Purchase home "+homeNumber));
+				add(Utils.lore("<gray>Costs <yellow>"+cost+" \u26C1"));
+				add(Utils.lore(""));
+				add(Utils.lore("<dark_gray>Allows you to save a"));
+				add(Utils.lore("<dark_gray>location to teleport to"));
+				add(Utils.lore(""));
+				add(Utils.lore("<dark_gray>Usage: /sethome, /home"));
 			}
+
 		});
 
-		hubTPIcon.setItemMeta(hubTPIconItemMeta);
-		return hubTPIcon;
-	}
-
-	private static ItemStack getFarmTeleportIcon(Player player) {
-		ItemStack farmIcon = new ItemStack(Material.WHEAT);
-		ItemMeta farmIconItemMeta = farmIcon.getItemMeta();
-		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
-		if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
-
-		if (expLevel.getFirst()>=5) {
-			farmIconItemMeta.displayName(Utils.lore("<yellow><bold>FARM"));
-			farmIconItemMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Teleport to Farm"));
-				}
-			});
-		} else {
-			farmIcon = new ItemStack(Material.BARRIER);
-			farmIconItemMeta = farmIcon.getItemMeta();
-			farmIconItemMeta.displayName(Utils.lore("<red><bold>FARM"));
-			farmIconItemMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Teleport to Farm"));
-					add(Utils.lore(""));
-					add(Utils.lore("<red>Level 5 Required"));
-				}
-			});
-		}
-
-		farmIcon.setItemMeta(farmIconItemMeta);
-		return farmIcon;
-	}
-
-	private static ItemStack getVillageTeleportIcon(Player player) {
-		ItemStack villageIcon = new ItemStack(Material.EMERALD);
-		ItemMeta villageIconItemMeta = villageIcon.getItemMeta();
-		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
-		if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
-
-		if (expLevel.getFirst()>=15) {
-			villageIconItemMeta.displayName(Utils.lore("<green><bold>VILLAGE"));
-			villageIconItemMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Teleport to Village"));
-				}
-			});
-		} else {
-			villageIcon = new ItemStack(Material.BARRIER);
-			villageIconItemMeta = villageIcon.getItemMeta();
-			villageIconItemMeta.displayName(Utils.lore("<red><bold>VILLAGE"));
-			villageIconItemMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Teleport to Village"));
-					add(Utils.lore(""));
-					add(Utils.lore("<red>Level 15 Required"));
-				}
-			});
-		}
-
-		villageIcon.setItemMeta(villageIconItemMeta);
-		return villageIcon;
+		icon.setItemMeta(iconMeta);
+		return icon;
 	}
 
 	private static ItemStack[] getHandIcons(Player player) {
