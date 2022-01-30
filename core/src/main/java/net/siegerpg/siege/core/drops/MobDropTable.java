@@ -1,11 +1,6 @@
 package net.siegerpg.siege.core.drops;
 
-import io.lumine.xikage.mythicmobs.drops.Drop;
-import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.ArrayList;
+import net.siegerpg.siege.core.listeners.DeathListener;
 
 public class MobDropTable extends DropTable {
 
@@ -19,6 +14,8 @@ public class MobDropTable extends DropTable {
 		this.expMin = expMin;
 		this.expMax = expMax;
 		this.rewards = rewards;
+
+		DeathListener.mobDropTableHashMap.put(mobName, this);
 	}
 
 	public String getMobName() {

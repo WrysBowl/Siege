@@ -12,6 +12,7 @@ public class CustomEventListener implements Listener {
 		{
 			add(new Fishing());
 			add(new Mobs());
+			add(new BlockBreak());
 			add(new Haste_Buff());
 			add(new More_Carrots());
 			add(new More_Wheat());

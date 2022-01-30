@@ -1,11 +1,9 @@
 package net.siegerpg.siege.core.listeners;
 
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.customEvents.CustomEventListener;
+import net.siegerpg.siege.core.customEvents.events.BlockBreak;
 import net.siegerpg.siege.core.drops.BlockDropTable;
-import net.siegerpg.siege.core.drops.materials.*;
-import net.siegerpg.siege.core.drops.materials.decor.*;
-import net.siegerpg.siege.core.dungeons.Dungeon;
-import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
@@ -146,7 +144,7 @@ public class BlockBreakListener implements Listener {
 			add(Material.POTTED_WHITE_TULIP);
 		}
 	};
-	public static HashMap< Material, BlockDropTable > blockDropTableHashMap = new HashMap<>() {
+	public static HashMap< Material, BlockDropTable > blockDropTableHashMap = new HashMap<>(); /*{
 		{
 			put(Material.ACACIA_LOG, new ACACIA_LOG());
 			put(Material.ACACIA_WOOD, new ACACIA_WOOD());
@@ -226,7 +224,7 @@ public class BlockBreakListener implements Listener {
 			put(Material.WHITE_TULIP, new WHITE_TULIP());
 			put(Material.WITHER_ROSE, new WITHER_ROSE());
 		}
-	};
+	};*/
 
 	public static HashMap<Material, Integer> addedLuck = new HashMap<>();
 
@@ -263,15 +261,12 @@ public class BlockBreakListener implements Listener {
 				GoldEXPSpawning.spawnGold(1, loc);
 			}
 			//after 30 seconds, block respawns back
-			Bukkit
-					.getServer()
-					.getScheduler()
-					.runTaskLater(Core.plugin(), new Runnable() {
-						public void run() {
+			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+				public void run() {
 
-							blockState.update(true, false);
-						}
-					}, 600);
+					blockState.update(true, false);
+				}
+			}, 600);
 		}
 		if (blockDrop != null) {
 			final int blockDropRegen = blockDrop.getBlockRegen();
@@ -332,15 +327,21 @@ public class BlockBreakListener implements Listener {
 
 			//Sets block back from bedrock to original
 			if (rewardableBlocks.contains(blockType)) return;
-			Bukkit
-					.getServer()
-					.getScheduler()
-					.runTaskLater(Core.plugin(), new Runnable() {
-						public void run() {
+			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
+				public void run() {
 
-							blockState.update(true, false);
-						}
-					}, blockDropRegen);
+					blockState.update(true, false);
+				}
+			}, blockDropRegen);
+
+			//gives block points to player
+			if (CustomEventListener.currentlyActive instanceof BlockBreak) {
+				int score = (goldCoinAmt * exp) + 1;
+				int currentScore = 0;
+
+				if (BlockBreak.playerScores.containsKey(player)) currentScore = BlockBreak.playerScores.get(player);
+				BlockBreak.playerScores.put(player, score + currentScore); //((int)(winScore*speed))
+			}
 		}
 
 	}
