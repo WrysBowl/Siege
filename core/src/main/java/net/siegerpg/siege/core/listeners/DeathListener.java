@@ -5,6 +5,8 @@ import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 import net.kyori.adventure.text.Component;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.customEvents.CustomEventListener;
+import net.siegerpg.siege.core.customEvents.events.Mobs;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile.*;
@@ -239,6 +241,19 @@ public class DeathListener implements Listener, Runnable {
 					" <color:#ACD55D>from a "+displayName).hoverEvent(drop);
 			Bukkit.broadcast(miniMessage);
 		}
+
+		//adds score to mob
+		if (player == null) return;
+		if (CustomEventListener.currentlyActive instanceof Mobs) {
+			int score = goldCoinAmt * exp;
+			int currentScore = 0;
+
+			if (Mobs.playerScores.containsKey(player)) currentScore = Mobs.playerScores.get(player);
+			Mobs.playerScores.put(player, score + currentScore); //((int)(winScore*speed))
+
+			player.sendMessage(Utils.lore("<gold>You earned "+score+" pts!"));
+		}
+
 	}
 
 	@EventHandler

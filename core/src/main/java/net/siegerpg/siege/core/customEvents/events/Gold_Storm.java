@@ -2,12 +2,13 @@ package net.siegerpg.siege.core.customEvents.events;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.customEvents.CustomEvent;
-import net.siegerpg.siege.core.customEvents.CustomEventListener;
 import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -51,7 +52,9 @@ public class Gold_Storm extends CustomEvent {
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("<color:#F2CC60>The gold storm has begun!"));
-		Bukkit.broadcast(Utils.parse("<color:#F2CC60>Gold will rain for 15 minutes"));
+		Bukkit.broadcast(Utils.parse("<gray>Duration (<aqua>"+Utils.secondsToHHMMSS(this.duration)+"<gray>)"));
+		Bukkit.broadcast(Utils.parse(""));
+		Bukkit.broadcast(Utils.parse("<color:#F2CC60>Gold will rain."));
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
 		Bukkit.broadcast(Utils.parse(""));

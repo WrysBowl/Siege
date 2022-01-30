@@ -33,7 +33,7 @@ public class More_Wheat extends CustomEvent {
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("<color:#ECDA6B>2x Drops from wheat!"));
-		Bukkit.broadcast(Utils.parse("<color:#ECDA6B>This buff will be in effect for 10 minutes."));
+		Bukkit.broadcast(Utils.parse("<gray>Duration (<aqua>"+Utils.secondsToHHMMSS(this.duration)+"<gray>)"));
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("<dark_gray><underlined>                                   "));
 		Bukkit.broadcast(Utils.parse(""));

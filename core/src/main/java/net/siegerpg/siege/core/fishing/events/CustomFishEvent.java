@@ -77,7 +77,7 @@ public class CustomFishEvent {
 			if (fishList == null) fishList = new ArrayList<Fish>();
 			fishList.add(fish);
 			Fishing.playerFishingHistory.put(player, fishList);
-			player.sendMessage(Utils.lore("<gold>You received "+score+" pts!"));
+			player.sendMessage(Utils.lore("<gold>You earned "+score+" pts!"));
 		}
 
 		//win rewards should be synchronous with the thread

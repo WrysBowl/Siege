@@ -5,15 +5,16 @@ import net.siegerpg.siege.core.customEvents.events.*;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class CustomEventListener implements Listener {
-	public static HashMap<String, CustomEvent> events = new HashMap<>() {
+	public static ArrayList<CustomEvent> events = new ArrayList<>() {
 		{
-			put("FISHING", new Fishing());
-			put("HASTE_BUFF", new Haste_Buff());
-			put("MORE_CARROTS", new More_Carrots());
-			put("MORE_WHEAT", new More_Wheat());
+			add(new Fishing());
+			add(new Mobs());
+			add(new Haste_Buff());
+			add(new More_Carrots());
+			add(new More_Wheat());
 
 		}
 	}; //fills up on start-up
@@ -35,7 +36,7 @@ public class CustomEventListener implements Listener {
 		if (eventDelayed) return;
 		//allow to be shown 4 ticks later
 
-		for (CustomEvent event : events.values()) { //trigger all events
+		for (CustomEvent event : events) { //trigger all events
 			if (!event.triggerable()) continue;
 
 			event.action();
