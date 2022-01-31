@@ -19,6 +19,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
@@ -27,6 +28,7 @@ class CosmeticsListener : Listener {
 	@EventHandler
 	fun onFuseAttempt(e : InventoryClickEvent) {
 		if (e.whoClicked !is Player) return
+		if (!e.inventory.type.equals(InventoryType.PLAYER)) return;
 		val player = e.whoClicked as Player
 		val itemOnCursor = getCustomItem(e.cursor) //cosmetic helmet
 		val itemInteractedWith = getCustomItem(e.currentItem) //helmet
