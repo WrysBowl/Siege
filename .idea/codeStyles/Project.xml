@@ -8,6 +8,7 @@
       <option name="SPACES_WITHIN_ANGLE_BRACKETS" value="true" />
       <option name="ALIGN_MULTILINE_ANNOTATION_PARAMETERS" value="true" />
       <option name="ALIGN_MULTILINE_TEXT_BLOCKS" value="true" />
+      <option name="USE_SINGLE_CLASS_IMPORTS" value="false" />
       <option name="NEW_LINE_AFTER_LPAREN_IN_RECORD_HEADER" value="true" />
       <option name="RPAREN_ON_NEW_LINE_IN_RECORD_HEADER" value="true" />
       <option name="JD_ADD_BLANK_AFTER_PARM_COMMENTS" value="true" />

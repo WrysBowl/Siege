@@ -4,6 +4,8 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.customEvents.CustomEventListener;
 import net.siegerpg.siege.core.customEvents.events.BlockBreak;
 import net.siegerpg.siege.core.drops.BlockDropTable;
+import net.siegerpg.siege.core.drops.materials.*;
+import net.siegerpg.siege.core.drops.materials.decor.*;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
@@ -25,6 +27,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static javax.swing.UIManager.put;
 
 public class BlockBreakListener implements Listener {
 
@@ -144,7 +148,7 @@ public class BlockBreakListener implements Listener {
 			add(Material.POTTED_WHITE_TULIP);
 		}
 	};
-	public static HashMap< Material, BlockDropTable > blockDropTableHashMap = new HashMap<>(); /*{
+	public static HashMap< Material, BlockDropTable > blockDropTableHashMap = new HashMap<>(); {
 		{
 			put(Material.ACACIA_LOG, new ACACIA_LOG());
 			put(Material.ACACIA_WOOD, new ACACIA_WOOD());
@@ -224,7 +228,7 @@ public class BlockBreakListener implements Listener {
 			put(Material.WHITE_TULIP, new WHITE_TULIP());
 			put(Material.WITHER_ROSE, new WITHER_ROSE());
 		}
-	};*/
+	};
 
 	public static HashMap<Material, Integer> addedLuck = new HashMap<>();
 
@@ -250,6 +254,7 @@ public class BlockBreakListener implements Listener {
 				.getBlock()
 				.getLocation();
 		BlockDropTable blockDrop = blockDropTableHashMap.get(blockType);
+		if (blockDrop != null) Bukkit.getLogger().info("Material" + blockDrop.getMaterial());
 
 		//if block broken doesn't have a drop table
 		if (rewardableBlocks.contains(blockType)) {
