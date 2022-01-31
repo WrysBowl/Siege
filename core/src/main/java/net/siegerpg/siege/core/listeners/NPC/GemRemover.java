@@ -20,6 +20,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemFlag;
@@ -40,7 +41,7 @@ public class GemRemover implements Listener {
 		item = null;
 	}
 
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onRightClickOnEntity(PlayerInteractEvent e) {
 
 		if (e.getClickedBlock() != null && e
@@ -126,9 +127,7 @@ public class GemRemover implements Listener {
 				getMenu(player).show(player);
 				player.updateInventory();
 			}));
-			removeAdd.addItem(new GuiItem(getIcon(), e -> {
-
-			}));
+			removeAdd.addItem(new GuiItem(getIcon()));
 			removeAdd.addItem(new GuiItem(getIconAdd100(), e -> {
 				double bal = VaultHook.econ.getBalance(player);
 				if (bal < 100) {
@@ -231,9 +230,7 @@ public class GemRemover implements Listener {
 	}
 
 	private void getGem(Player player) {
-		if (this.item == null || this.item
-				.getType()
-				.isAir()) return;
+		if (this.item == null || this.item.getType().isAir()) return;
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(this.item);
 		if (customItem == null) return;
 		if (!(customItem instanceof CustomEquipment)) return;
