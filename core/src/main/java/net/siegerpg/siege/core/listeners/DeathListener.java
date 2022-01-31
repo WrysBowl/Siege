@@ -8,7 +8,6 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.customEvents.CustomEventListener;
 import net.siegerpg.siege.core.customEvents.events.Mobs;
 import net.siegerpg.siege.core.drops.MobDropTable;
-import net.siegerpg.siege.core.drops.mobs.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile.*;
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.neutral.*;

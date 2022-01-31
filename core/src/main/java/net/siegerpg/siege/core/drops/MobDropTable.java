@@ -14,8 +14,6 @@ public class MobDropTable extends DropTable {
 		this.expMin = expMin;
 		this.expMax = expMax;
 		this.rewards = rewards;
-
-		DeathListener.mobDropTableHashMap.put(mobName, this);
 	}
 
 	public String getMobName() {

@@ -18,8 +18,6 @@ public class BlockDropTable extends DropTable {
 		this.expMin = expMin;
 		this.expMax = expMax;
 		this.rewards = rewards;
-
-		BlockBreakListener.blockDropTableHashMap.put(material, this);
 	}
 
 	public Integer getBlockRegen() {
