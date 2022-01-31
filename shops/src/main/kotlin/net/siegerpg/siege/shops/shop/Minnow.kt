@@ -25,7 +25,7 @@ class Minnow : Shop() {
 			ShopItem(RefinedMetal(), -1, hashMapOf(
 					MetalScrap() to 8), true
 			        ) {
-				HotRod(Utils.randRarity()).getUpdatedItem(false)
+				RefinedMetal().getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
@@ -33,7 +33,7 @@ class Minnow : Shop() {
 			ShopItem(Titanium(), -1, hashMapOf(
 					RefinedMetal() to 8), true
 			        ) {
-				LuckyHotRod(Utils.randRarity()).getUpdatedItem(false)
+				Titanium().getUpdatedItem(false)
 			},
 	                                            )
 }
