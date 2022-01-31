@@ -6,6 +6,7 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
+import net.siegerpg.siege.core.items.enums.Rarity;
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor;
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
@@ -135,6 +136,7 @@ public class RarityRoll implements Listener {
 		//change quality of copied item
 		int rarity = Utils.randRarity();
 		copiedItem.setQuality(rarity);
+		copiedItem.setRarity(Rarity.Companion.getFromInt(rarity));
 		copiedItem.serialize();
 
 		//remove old item from player
