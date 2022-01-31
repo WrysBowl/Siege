@@ -28,7 +28,6 @@ class CosmeticsListener : Listener {
 	@EventHandler
 	fun onFuseAttempt(e : InventoryClickEvent) {
 		if (e.whoClicked !is Player) return
-		if (!e.inventory.type.equals(InventoryType.PLAYER)) return;
 		val player = e.whoClicked as Player
 		val itemOnCursor = getCustomItem(e.cursor) //cosmetic helmet
 		val itemInteractedWith = getCustomItem(e.currentItem) //helmet
@@ -39,6 +38,7 @@ class CosmeticsListener : Listener {
 			    itemInteractedWith.initMaterial == null ||
 			    itemInteractedWith.initCustomModelData == null
 			) return
+			if (!e.inventory.type.equals(InventoryType.CRAFTING)) return
 
 			//set clicked item's original values back
 			player.setItemOnCursor(itemInteractedWith.unFuseCosmetic(false))
