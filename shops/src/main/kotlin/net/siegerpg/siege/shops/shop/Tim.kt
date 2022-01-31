@@ -19,7 +19,7 @@ class Tim : Shop() {
 					WoodenSword(-1), -1, hashMapOf(
 					Stick() to 320,
 					Coal() to 48
-					                              ), false
+					                              ), true
 			        ) {
 				WoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -31,7 +31,7 @@ class Tim : Shop() {
 					Stick() to 288,
 					Coal() to 48,
 					Feather() to 64
-					                                   ), false
+					                                   ), true
 			        ) {
 				LuckyWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -40,7 +40,7 @@ class Tim : Shop() {
 					Stick() to 288,
 					Coal() to 48,
 					Bone() to 48
-					                                    ), false
+					                                    ), true
 			        ) {
 				StrongWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -49,7 +49,7 @@ class Tim : Shop() {
 					Stick() to 288,
 					Coal() to 48,
 					Pebble() to 64
-					                                   ), false
+					                                   ), true
 			        ) {
 				ToughWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -58,7 +58,7 @@ class Tim : Shop() {
 					Stick() to 288,
 					Coal() to 48,
 					PlantMatter() to 64
-					                                     ), false
+					                                     ), true
 			        ) {
 				HealthyWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			},
@@ -67,7 +67,7 @@ class Tim : Shop() {
 					Stick() to 288,
 					Coal() to 48,
 					Wheat() to 256
-					                                     ), false
+					                                     ), true
 			        ) {
 				HealingWoodenSword(Utils.randRarity()).getUpdatedItem(false)
 			}
