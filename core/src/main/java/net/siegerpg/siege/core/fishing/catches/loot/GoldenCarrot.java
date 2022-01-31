@@ -8,7 +8,7 @@ public class GoldenCarrot extends Fish {
 
 		super(15, 1, 28, 8,
 		      new net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot(
-				      0).getUpdatedItem(false)
+				      0).getUpdatedItem(false).asQuantity(4)
 		     );
 	}
 
