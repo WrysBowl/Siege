@@ -60,18 +60,15 @@ public class MeraTransit implements Listener {
 			int locationCostComputation = (int) player
 					.getLocation()
 					.distance(deathLocation)*2;
-			int deathTeleportCost = (
-					                        player.hasPermission("siege.mera.0")
-			                        ) ? 0 : locationCostComputation;
 
 
 			if (slot == 13) {
-				if (bal < deathTeleportCost) {
+				if (bal < locationCostComputation) {
 					player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
 					player.playSound(player.getLocation(), Sound.ENTITY_WITCH_AMBIENT, 1.0f, 1.0f);
 					return;
 				}
-				VaultHook.econ.withdrawPlayer(player, deathTeleportCost);
+				VaultHook.econ.withdrawPlayer(player, locationCostComputation);
 				Scoreboard.updateScoreboard(player);
 				player.closeInventory();
 				player.sendTitle(
@@ -136,12 +133,9 @@ public class MeraTransit implements Listener {
 			deathLocationIconItemMeta.lore(lore);
 
 		} else {
-			int locationCostComputation = (int) player
+			final int deathTeleportCost = (int) player
 					.getLocation()
-					.distance(deathLocation)/2;
-			final int deathTeleportCost = (
-					                              player.hasPermission("siege.mera.0")
-			                              ) ? 0 : locationCostComputation;
+					.distance(deathLocation) * 2;
 
 			List< Component > lore = new ArrayList<>() {
 				{

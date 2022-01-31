@@ -28,15 +28,14 @@ public class MeraChat implements CommandExecutor {
 		final Location deathLocation = PlayerData.playerDeathLocations.get(player);
 		if (deathLocation == null) return false;
 		int locationCostComputation = (int) player.getLocation().distance(deathLocation)*2;
-		int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
 		int bal = (int) VaultHook.econ.getBalance(player);
 
-		if (bal < deathTeleportCost) {
+		if (bal < locationCostComputation) {
 			player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
 			player.playSound(player.getLocation(), Sound.ENTITY_WITCH_AMBIENT, 1.0f, 1.0f);
 			return false;
 		}
-		VaultHook.econ.withdrawPlayer(player, deathTeleportCost);
+		VaultHook.econ.withdrawPlayer(player, locationCostComputation);
 		Scoreboard.updateScoreboard(player);
 		player.closeInventory();
 		player.sendTitle(

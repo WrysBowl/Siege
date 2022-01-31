@@ -326,11 +326,11 @@ public class DeathListener implements Listener, Runnable {
 		final Location deathLocation = PlayerData.playerDeathLocations.get(player);
 		if (deathLocation == null) return;
 		int locationCostComputation = (int) player.getLocation().distance(deathLocation)*2;
-		int deathTeleportCost = (player.hasPermission("siege.mera.0")) ? 0 : locationCostComputation;
 
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<color:#E94545><underlined>   Teleport Back?   <reset>"));
-		player.sendMessage(Utils.parse(" <green>\u27B2<reset> <color:#A6E945><click:run_command:/meraChat>Click to teleport back for <yellow> "+deathTeleportCost+" \u26C1</click>"));
+		player.sendMessage(Utils.parse(" <green>\u27B2<reset> <color:#A6E945><click:run_command:/meraChat>Click to teleport back for <yellow> " +
+		                               locationCostComputation + " \u26C1</click>"));
 		player.sendMessage("");
 	}
 
