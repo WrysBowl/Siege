@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.drops;
 
 import net.siegerpg.siege.core.listeners.BlockBreakListener;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 
 public class BlockDropTable extends DropTable {
@@ -17,8 +18,6 @@ public class BlockDropTable extends DropTable {
 		this.expMin = expMin;
 		this.expMax = expMax;
 		this.rewards = rewards;
-
-		BlockBreakListener.blockDropTableHashMap.put(material, this);
 	}
 
 	public Integer getBlockRegen() {

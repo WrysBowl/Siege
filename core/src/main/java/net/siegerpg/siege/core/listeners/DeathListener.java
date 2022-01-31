@@ -8,6 +8,14 @@ import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.customEvents.CustomEventListener;
 import net.siegerpg.siege.core.customEvents.events.Mobs;
 import net.siegerpg.siege.core.drops.MobDropTable;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.bosses.*;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.hostile.*;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.neutral.*;
+import net.siegerpg.siege.core.drops.mobs.hillyWoods.passive.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.bosses.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.hostile.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.neutral.*;
+import net.siegerpg.siege.core.drops.mobs.twilight.passive.*;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
@@ -36,7 +44,7 @@ import java.util.HashMap;
 
 public class DeathListener implements Listener, Runnable {
 
-	public static HashMap< String, MobDropTable > mobDropTableHashMap = new HashMap<>(); /*{
+	public static HashMap< String, MobDropTable > mobDropTableHashMap = new HashMap<>() {
 		{
 			//BOSSES
 			put("Blubber", new Blubber());
@@ -116,7 +124,7 @@ public class DeathListener implements Listener, Runnable {
 			put("Warrior_Dwarf", new Warrior_Dwarf());
 			put("Wind_Rabbit", new Wind_Rabbit());
 		}
-	};*/
+	};
 
 	@EventHandler
 	public void damageDrops(EntityDamageByEntityEvent e) {
