@@ -108,6 +108,7 @@ public class Herbert implements Listener {
 		                                      );
 		GoldExpListener.giveGold(((Player) e.getWhoClicked()).getPlayer(), total);
 		Scoreboard.updateScoreboard((Player) e.getWhoClicked()); // Update scoreboard
+		e.getWhoClicked().closeInventory();
 	}
 
 
