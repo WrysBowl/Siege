@@ -233,7 +233,7 @@ class CustomItemKotlinListener : Listener {
 		val isCritical = damage > maxDamage
 
 		setVictimName(victim, e.damage, vicMaxHealth)
-		DamageIndicator.showDamageIndicator(reducedDamage, victim.location, isCritical)
+		if (victim is Mob) DamageIndicator.showDamageIndicator(reducedDamage, victim.location, isCritical)
 	}
 
 	private fun setVictimName(
