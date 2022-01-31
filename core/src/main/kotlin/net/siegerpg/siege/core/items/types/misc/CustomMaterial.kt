@@ -3,15 +3,9 @@ package net.siegerpg.siege.core.items.types.misc
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
-import net.siegerpg.siege.core.items.enums.StatTypes
-import net.siegerpg.siege.core.items.getNbtTag
-import net.siegerpg.siege.core.items.implemented.misc.materials.FishingExplanation
-import net.siegerpg.siege.core.items.setNbtTags
-import net.siegerpg.siege.core.listeners.NPC.Herbert
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -50,15 +44,8 @@ abstract class CustomMaterial(
 				if (name.length > 16) name.length
 				else 16
 		meta.lore(" ")
-		//lazy coding here by Wrys
-		if (this is FishingExplanation) {
-			description.forEach {
-				meta.lore("<r><dark_gray>$it")
-			}
-		} else {
-			Utils.getTextArray(description, length).forEach {
-				meta.lore("<r><dark_gray>$it")
-			}
+		Utils.getTextArray(description, length).forEach {
+			meta.lore("<r><dark_gray>$it")
 		}
 
 		meta.lore(" ")

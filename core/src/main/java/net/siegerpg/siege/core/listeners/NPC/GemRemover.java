@@ -51,14 +51,6 @@ public class GemRemover implements Listener {
 		}
 	}
 
-	@EventHandler
-	public void onInventoryClose(InventoryCloseEvent e) {
-		if (this.item != null) {
-			e.getPlayer().getInventory().addItem(this.item);
-			this.item = null;
-		}
-	}
-
 	public void openInventory(Player player) {
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
 		if (customItem instanceof CustomEquipment) {
@@ -100,6 +92,12 @@ public class GemRemover implements Listener {
 		menu.setOnGlobalClick(event -> {
 			player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 0.5f, 0.75f);
 			event.setCancelled(true);
+		});
+		menu.setOnClose(e -> {
+			if (this.item != null) {
+				e.getPlayer().getInventory().addItem(this.item);
+				this.item = null;
+			}
 		});
 
 		OutlinePane background = new OutlinePane(0, 0, 9, 5, Pane.Priority.LOWEST);

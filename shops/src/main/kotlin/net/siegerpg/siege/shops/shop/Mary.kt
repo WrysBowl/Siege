@@ -1,6 +1,6 @@
 package net.siegerpg.siege.shops.shop
 
-import net.siegerpg.siege.core.items.implemented.misc.materials.FishingExplanation
+import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.tools.fishingRod.*
@@ -32,8 +32,8 @@ class Mary : Shop() {
 			        ) {
 				BoneRod(0).getUpdatedItem(false)
 			},
-			ShopItem(FishingExplanation(-1), -1, hashMapOf(), false) {
-				FishingExplanation(-1).getUpdatedItem(false)
+			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
+				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
 					MetalRod(-1), 110000, hashMapOf(
