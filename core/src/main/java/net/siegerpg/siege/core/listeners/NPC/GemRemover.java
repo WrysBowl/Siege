@@ -22,6 +22,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -41,15 +42,20 @@ public class GemRemover implements Listener {
 		item = null;
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST)
+	@EventHandler
 	public void onRightClickOnEntity(PlayerInteractEvent e) {
 
-		if (e.getClickedBlock() != null && e
-				.getClickedBlock()
-				.getType()
-				.equals(Material.CHIPPED_ANVIL)) {
-			openInventory(e.getPlayer());
+		if (e.getClickedBlock() != null && e.getClickedBlock().getType().equals(Material.CHIPPED_ANVIL)) {
 			e.setCancelled(true);
+			openInventory(e.getPlayer());
+		}
+	}
+
+	@EventHandler
+	public void onInventoryClose(InventoryCloseEvent e) {
+		if (this.item != null) {
+			e.getPlayer().getInventory().addItem(this.item);
+			this.item = null;
 		}
 	}
 
