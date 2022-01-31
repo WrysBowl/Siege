@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.listeners
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import org.bukkit.*
+import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -60,6 +61,7 @@ class WandCast : BukkitRunnable {
 			if (e.equals(player)) continue
 			for (en in loc.getNearbyLivingEntities(damageRadius)) {
 				if (e.equals(player)) continue
+				if (e is ArmorStand) continue
 				en.damage(dmg, player)
 				en.world.spawnParticle(Particle.SWEEP_ATTACK, en.location, 3)
 			}
