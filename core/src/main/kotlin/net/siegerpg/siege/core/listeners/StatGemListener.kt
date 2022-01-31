@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.items.types.misc.StatGemType
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.listeners.NPC.Herbert
 import net.siegerpg.siege.core.miscellaneous.Levels
+import net.siegerpg.siege.core.miscellaneous.Scoreboard
 import net.siegerpg.siege.core.miscellaneous.VaultHook
 import net.siegerpg.siege.core.miscellaneous.sendMiniMessage
 import org.bukkit.Sound
@@ -37,12 +38,13 @@ class StatGemListener : Listener {
 			player.sendMiniMessage("<red>You are too low level to use this gem!")
 			return
 		}
-		val cost = Herbert.getSellValue(e.currentItem) * 5
+		val cost = (Herbert.getSellValue(e.currentItem) * 5).toInt()
 		if (VaultHook.econ.getBalance(player) < cost) {
 			player.sendMiniMessage("<red>You need ${String.format("%,d", cost)} \u26C1 to apply this gem!")
 			return
 		}
 		VaultHook.econ.withdrawPlayer(player, cost.toDouble())
+		Scoreboard.updateScoreboard(player)
 
 		player.playSound(
 				player.location,
