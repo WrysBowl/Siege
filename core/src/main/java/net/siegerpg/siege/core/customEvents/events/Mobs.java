@@ -60,7 +60,6 @@ public class Mobs extends CustomEvent {
 			@Override
 			public void run() {
 				if (!(CustomEventListener.currentlyActive instanceof Mobs)) this.cancel();
-				if (playerScores.isEmpty()) this.cancel();
 				sendLeaderboardTopLimit(10);
 			}
 
@@ -73,7 +72,7 @@ public class Mobs extends CustomEvent {
 		List< Map.Entry<Player, Integer> > top3 = playerScores.entrySet().stream().sorted(
 				Map.Entry.comparingByValue(reverseOrder())).limit(3).collect(toList());
 		if (top3.size() != 3) {
-			Bukkit.broadcast(Utils.parse("<red>No one participated in the mob tournament."));
+			Bukkit.broadcast(Utils.parse("<red>No one participated in the fishing tournament."));
 			return;
 		}
 

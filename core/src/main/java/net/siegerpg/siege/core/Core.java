@@ -173,6 +173,7 @@ public final class Core extends JavaPlugin {
 				new BartBeggar(),
 				new Herbert(),
 				new PerksTrader(),
+				new Henry(),
 				new ArmorListener(getConfig().getStringList("blocked")),
 				new StatChangeListener(),
 				new CosmeticsListener(),
