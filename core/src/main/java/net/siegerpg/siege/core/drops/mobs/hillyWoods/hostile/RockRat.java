@@ -30,7 +30,7 @@ public class RockRat extends MobDropTable {
 				new Reward(new HealthyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.05),
 				new Reward(new PebbleWand(Utils.randRarity()).getUpdatedItem(false), 1.0),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 0.05),
+				new Reward(new MobKey(0).getUpdatedItem(false), 0.5),
 
 				});
 	}

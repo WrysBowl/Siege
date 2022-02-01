@@ -10,6 +10,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.*;
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.FoxSpiritKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather;
@@ -73,7 +74,9 @@ public class Thief extends MobDropTable {
 				new Reward(new StrongShank(Utils.randRarity()).getUpdatedItem(false), 0.05),
 				new Reward(new HealingShank(Utils.randRarity()).getUpdatedItem(false), 0.05),
 				new Reward(new HealthyShank(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new FoxSpiritKey().getUpdatedItem(false), 0.10),
+
+				new Reward(new MobKey(0).getUpdatedItem(false), 4.0),
+				new Reward(new FoxSpiritKey().getUpdatedItem(false), 1.0),
 
 				});
 	}

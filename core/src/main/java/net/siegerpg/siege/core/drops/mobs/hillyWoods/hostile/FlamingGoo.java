@@ -59,7 +59,7 @@ public class FlamingGoo extends MobDropTable {
 				new Reward(new LuckyMagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 				new Reward(new LuckyMagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 0.10),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
 
 				});
 	}

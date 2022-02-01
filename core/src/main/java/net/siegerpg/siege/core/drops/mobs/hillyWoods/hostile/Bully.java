@@ -67,7 +67,7 @@ public class Bully extends MobDropTable {
 
 				new Reward(new Beef().getUpdatedItem(false), 20.0),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 0.10),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
 
 				});
 	}

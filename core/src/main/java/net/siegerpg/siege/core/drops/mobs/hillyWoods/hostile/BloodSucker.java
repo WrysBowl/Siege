@@ -39,8 +39,8 @@ public class BloodSucker extends MobDropTable {
 				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
 				new Reward(new SusStew().getUpdatedItem(false), 0.10),
-				new Reward(new MobKey(0).getUpdatedItem(false), 0.10),
-				new Reward(new DavyJonesKey(0).getUpdatedItem(false), 0.10),
+				new Reward(new MobKey(0).getUpdatedItem(false), 2.5),
+				new Reward(new DavyJonesKey(0).getUpdatedItem(false), 1.0),
 
 				});
 	}
