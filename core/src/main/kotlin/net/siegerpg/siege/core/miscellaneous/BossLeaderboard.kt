@@ -9,6 +9,8 @@ import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.drops.MobDropTable
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
+import net.siegerpg.siege.core.items.CustomItemUtils.getPlayerStat
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers
 import org.bukkit.Bukkit
@@ -149,66 +151,69 @@ class BossLeaderboardListener : Listener {
 		bossFight.fighters.forEach { (fighter, damageDone) ->
 			val percentageDamage = floor(damageDone / totalDamageDone * 100).toInt()
 			hashMapData[fighter] = Pair(percentageDamage.toByte(), fightDuration.toInt())
+			val player : Player = Bukkit.getPlayer(fighter) ?: return
 
 			if (dropTable != null) {
 
-				val dropMultiplier =
-						if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
-
+				val dropMultiplier = if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
 				val time = Utils.secondsToHHMMSS((fightDuration.toInt() / 20).toLong())
-				Bukkit.getPlayer(fighter)
-						?.sendMessage(Utils.lore(""))
-				Bukkit.getPlayer(fighter)
-						?.sendMessage(Utils.lore("<green>You dealt <gold>$percentageDamage% <green>of the damage to the boss!"))
-				Bukkit.getPlayer(fighter)
-						?.sendMessage(Utils.lore("<yellow>Time <gray>$time"))
-				Bukkit.getPlayer(fighter)
-						?.sendMessage(Utils.lore(""))
 
-				val tableExp = dropTable.getExp(true) ?: 0
+				player.sendMessage(Utils.lore(""))
+				player.sendMessage(Utils.lore("<green>You dealt <gold>$percentageDamage% <green>of the damage to the boss!"))
+				player.sendMessage(Utils.lore("<yellow>Time <gray>$time"))
+				player.sendMessage(Utils.lore(""))
+
+				var luck = 0.0
+				luck = getPlayerStat(player, StatTypes.LUCK, player.getItemInHand())
+				if (luck < 0) luck = 0.0
+
+				var tableExp = dropTable.getExp(true) ?: 0
+				if (Math.random() * 100 <= luck) {
+					tableExp *= 2
+				}
 				Levels.addExpShared(
 						Bukkit.getOfflinePlayer(fighter),
 						floor(tableExp.toDouble() * dropMultiplier).toInt()
 				                   )
 
-				val tableGoldCoinAmt = dropTable.getGold(true) ?: 0
+				var tableGoldCoinAmt = dropTable.getGold(true) ?: 0
+				if (Math.random() * 100 <= luck) {
+					tableGoldCoinAmt *= 2
+				}
 				val goldCoinAmt =
 						floor(tableGoldCoinAmt.toDouble() * GlobalMultipliers.goldMultiplier * dropMultiplier).toInt()
 
-				/*val gold : Item = DropUtils.dropItemNaturallyForPlayers(
-						evt.entity.location,
-						GoldEXPSpawning.getGoldCoin(1), listOf(fighter)
-				                                                       )
-				gold.customName = Utils.tacc("&e+$goldCoinAmt Gold")
-				gold.isCustomNameVisible = true;
-				gold.itemStack.amount = goldCoinAmt*/
-
-				for (uuid in listOf(fighter)) {
-					val player : Player = Bukkit.getPlayer(uuid) ?: continue
-					GoldExpListener.giveGold(player, goldCoinAmt)
-				}
+				GoldExpListener.giveGold(player, goldCoinAmt)
 
 				for (drop in getRewards((percentageDamage / 100.0), dropTable)) { //Loop through all drops
-					DropUtils.dropItemNaturallyForPlayers(
-							evt.entity.location,
-							drop,
-							listOf(fighter))
 
-					for (uuid in listOf(fighter)) {
-						val player : Player = Bukkit.getPlayer(uuid) ?: continue
-						val customItem = getCustomItem(drop) ?: continue
-						if (customItem.quality < 85) continue
-
-						//broadcast 80%+ drops
-						val displayName =
-								MythicMobs.inst().apiHelper.getMythicMobInstance(evt.entity).displayName
-						val miniMessage = Utils.lore(
-								"<color:#5DD5B5>" + player.name +
-								"<color:#ACD55D> has found a " + drop.itemMeta.displayName +
-								" <color:#ACD55D>from a " + displayName
-						                            ).hoverEvent(drop)
-						Bukkit.broadcast(miniMessage)
+					val itemList = ArrayList<ItemStack>()
+					var i : Double = luck
+					while (i >= 0) {
+						itemList.add(drop.clone())
+						if (i <= 100 && Utils.randTest(i)) {
+							itemList.add(drop.clone())
+						}
+						i -= 100.0
 					}
+
+					//gets proper amount of items using luck
+					for (items in itemList) {
+						DropUtils.dropItemNaturallyForPlayers(evt.entity.location, items, listOf(fighter))
+					}
+
+					val customItem = getCustomItem(drop) ?: continue
+					if (customItem.quality < 85) continue
+
+					//broadcast 80%+ drops
+					val displayName =
+							MythicMobs.inst().apiHelper.getMythicMobInstance(evt.entity).displayName
+					val miniMessage = Utils.lore(
+							"<color:#5DD5B5>" + player.name +
+							"<color:#ACD55D> has found a " + drop.itemMeta.displayName +
+							" <color:#ACD55D>from a " + displayName
+					                            ).hoverEvent(drop)
+					Bukkit.broadcast(miniMessage)
 				}
 
 			}
