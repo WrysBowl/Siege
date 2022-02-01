@@ -25,55 +25,55 @@ public class ZombifiedDigger extends MobDropTable {
 
 		super("ZombifiedDigger", 50, 53, 57, 60, new Reward[] {
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 22.5),
+						           .getUpdatedItem(false), 21.0),
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 2.5),
+						           .getUpdatedItem(false), 1.0),
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 60.0),
 				new Reward(new Bone()
-						           .getUpdatedItem(false), 6.0),
+						           .getUpdatedItem(false), 1.5),
 
-				new Reward(new BoneHelmet(50).getUpdatedItem(false), 1.0),
-				new Reward(new BoneChestplate(50).getUpdatedItem(false), 1.0),
-				new Reward(new BoneLeggings(50).getUpdatedItem(false), 1.0),
-				new Reward(new BoneBoots(50).getUpdatedItem(false), 1.0),
+				new Reward(new BoneHelmet(50).getUpdatedItem(false), 0.25),
+				new Reward(new BoneChestplate(50).getUpdatedItem(false), 0.25),
+				new Reward(new BoneLeggings(50).getUpdatedItem(false), 0.25),
+				new Reward(new BoneBoots(50).getUpdatedItem(false), 0.25),
 
-				new Reward(new BoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new BoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new BoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new BoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new BoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new BoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new BoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new BoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
-				new Reward(new ToughBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new ToughBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new ToughBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new ToughBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new ToughBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new ToughBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new ToughBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new ToughBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 
-				new Reward(new HealingBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new HealingBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new HealingBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new HealingBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new HealingBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new HealingBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new HealingBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new HealingBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 
-				new Reward(new HealthyBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new HealthyBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new HealthyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new HealthyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new HealthyBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new HealthyBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new HealthyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new HealthyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 
-				new Reward(new StrongBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new StrongBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new StrongBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new StrongBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new StrongBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new StrongBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new StrongBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new StrongBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 
-				new Reward(new LuckyBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new LuckyBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new LuckyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new LuckyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new LuckyBoneHelmet(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new LuckyBoneChestplate(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new LuckyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.0025),
+				new Reward(new LuckyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 
 				new Reward(new Beetroot().getUpdatedItem(false), 10.0),
 				new Reward(new Beetroot().getUpdatedItem(false), 50.0),
 				new Reward(new SusStew().getUpdatedItem(false), 10.0),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
-				new Reward(new NecromancerKey(0).getUpdatedItem(false), 0.30),
+				new Reward(new MobKey(0).getUpdatedItem(false), 0.25),
+				new Reward(new NecromancerKey(0).getUpdatedItem(false), 0.10),
 
 				});
 	}

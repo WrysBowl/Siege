@@ -14,33 +14,33 @@ public class ChestMimic1 extends MobDropTable {
 		super("ChestMimic1", 150, 200, 250, 300, new Reward[] {
 				new Reward(new Slime()
 						           .getUpdatedItem(false)
-						           .asQuantity(8), 22.5),
+						           .asQuantity(8), 21.0),
 				new Reward(new Stick()
 						           .getUpdatedItem(false)
-						           .asQuantity(8), 22.5),
+						           .asQuantity(8), 21.0),
 				new Reward(new Vine()
 						           .getUpdatedItem(false)
-						           .asQuantity(8), 22.5),
+						           .asQuantity(8), 21.0),
 
 				new Reward(new Slime()
 						           .getUpdatedItem(false)
-						           .asQuantity(12), 12.5),
+						           .asQuantity(12), 11.0),
 				new Reward(new Stick()
 						           .getUpdatedItem(false)
-						           .asQuantity(12), 12.5),
+						           .asQuantity(12), 11.0),
 				new Reward(new Vine()
 						           .getUpdatedItem(false)
-						           .asQuantity(12), 12.5),
+						           .asQuantity(12), 11.0),
 
 				new Reward(new Slime()
 						           .getUpdatedItem(false)
-						           .asQuantity(8), 12.5),
+						           .asQuantity(8), 11.0),
 				new Reward(new Stick()
 						           .getUpdatedItem(false)
-						           .asQuantity(8), 12.5),
+						           .asQuantity(8), 11.0),
 				new Reward(new Vine()
 						           .getUpdatedItem(false)
-						           .asQuantity(8), 12.5),
+						           .asQuantity(8), 11.0),
 
 				new Reward(new Sugar()
 						           .getUpdatedItem(false)

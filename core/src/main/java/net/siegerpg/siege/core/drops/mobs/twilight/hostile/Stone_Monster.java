@@ -17,13 +17,13 @@ public class Stone_Monster extends MobDropTable {
 				new Reward(new Pebble()
 						           .getUpdatedItem(false), 25.0),
 				new Reward(new Pebble()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 				new Reward(new FairyDust().getUpdatedItem(false), 50.0),
 				new Reward(new FairyDust().getUpdatedItem(false), 10.0),
 				new Reward(new PlantMatter().getUpdatedItem(false), 50.0),
 
-				new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 0.5),
+				new Reward(new FlawedStrengthGem(0).getUpdatedItem(false), 0.25),
+				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 0.10),
 				});
 	}
 

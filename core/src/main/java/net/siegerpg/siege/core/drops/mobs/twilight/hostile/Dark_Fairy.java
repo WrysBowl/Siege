@@ -15,14 +15,14 @@ public class Dark_Fairy extends MobDropTable {
 
 		super("Dark_Fairy", 50, 60, 50, 60, new Reward[] {
 				new Reward(new FairyDust().getUpdatedItem(false), 25.0),
-				new Reward(new FairyDust().getUpdatedItem(false), 5.0),
+				new Reward(new FairyDust().getUpdatedItem(false), 1.5),
 				new Reward(new FairyWing().getUpdatedItem(false), 50.0),
 				new Reward(new FairyWing().getUpdatedItem(false), 10.0),
 				new Reward(new CorruptCrystal()
 						           .getUpdatedItem(false), 25.0),
 
-				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 0.5),
-				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 0.5),
+				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 0.10),
+				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 0.10),
 				});
 	}
 

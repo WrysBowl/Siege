@@ -19,17 +19,17 @@ public class Corrupted_Skeleton extends MobDropTable {
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 25.0),
 				new Reward(new CorruptCrystal()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 				new Reward(new CursedBone()
 						           .getUpdatedItem(false)
 						           .asQuantity(16), 25.0),
 				new Reward(new CursedBone()
 						           .getUpdatedItem(false)
-						           .asQuantity(4), 5.0),
+						           .asQuantity(4), 1.5),
 
-				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 0.5),
-				new Reward(new CursedSickle(Utils.randRarity()).getUpdatedItem(false), 5.0),
+				new Reward(new SimpleHealthGem(0).getUpdatedItem(false), 0.25),
+				new Reward(new SimpleToughGem(0).getUpdatedItem(false), 0.10),
+				new Reward(new CursedSickle(Utils.randRarity()).getUpdatedItem(false), 1.5),
 				});
 	}
 

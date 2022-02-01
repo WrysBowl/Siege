@@ -19,12 +19,12 @@ public class Crystal_Rat extends MobDropTable {
 						           .getUpdatedItem(false)
 						           .asQuantity(2), 25.0),
 				new Reward(new Crystal()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 				new Reward(new FairyDust()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 35.0),
 				new Reward(new FairyDust()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 				new Reward(new Drumstick().getUpdatedItem(false), 25.0)
 
 		});

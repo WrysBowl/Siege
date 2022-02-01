@@ -29,8 +29,8 @@ public class Digger_Overseer extends MobDropTable {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 10.0),
 
-				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 0.5),
-				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 1.0),
+				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 0.10),
+				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 0.25),
 				});
 	}
 

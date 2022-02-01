@@ -29,13 +29,13 @@ public class Warrior_Dwarf extends MobDropTable {
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 25.0),
 				new Reward(new RefinedMetal()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 				new Reward(new MetalScrap()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 25.0),
 				new Reward(new MetalScrap()
 						           .getUpdatedItem(false)
-						           .asQuantity(2), 5.0),
+						           .asQuantity(2), 1.5),
 
 				});
 	}

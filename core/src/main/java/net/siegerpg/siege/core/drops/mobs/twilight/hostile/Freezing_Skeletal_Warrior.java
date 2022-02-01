@@ -32,8 +32,8 @@ public class Freezing_Skeletal_Warrior extends MobDropTable {
 						           .asQuantity(4), 30.0),
 				new Reward(new IceShard().getUpdatedItem(false), 10.0),
 
-				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 0.5),
-				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 1.0),
+				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 0.10),
+				new Reward(new SimpleStrengthGem(0).getUpdatedItem(false), 0.25),
 				});
 	}
 

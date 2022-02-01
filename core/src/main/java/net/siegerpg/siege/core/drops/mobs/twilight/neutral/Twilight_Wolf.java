@@ -18,9 +18,9 @@ public class Twilight_Wolf extends MobDropTable {
 				new Reward(new Pelt()
 						           .getUpdatedItem(false), 60.0),
 				new Reward(new Pelt()
-						           .getUpdatedItem(false), 12.0),
+						           .getUpdatedItem(false), 5.0),
 				new Reward(new Bone()
-						           .getUpdatedItem(false), 5.0)
+						           .getUpdatedItem(false), 1.5)
 		});
 	}
 

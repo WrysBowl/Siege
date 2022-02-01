@@ -20,13 +20,13 @@ public class Crystal_Turtle extends MobDropTable {
 						           .asQuantity(8), 25.0),
 				new Reward(new Crystal()
 						           .getUpdatedItem(false)
-						           .asQuantity(4), 5.0),
+						           .asQuantity(4), 1.5),
 				new Reward(new FairyDust()
 						           .getUpdatedItem(false)
 						           .asQuantity(16), 35.0),
 				new Reward(new FairyDust()
 						           .getUpdatedItem(false)
-						           .asQuantity(4), 5.0),
+						           .asQuantity(4), 1.5),
 				new Reward(new Drumstick()
 						           .getUpdatedItem(false)
 						           .asQuantity(2), 25.0)

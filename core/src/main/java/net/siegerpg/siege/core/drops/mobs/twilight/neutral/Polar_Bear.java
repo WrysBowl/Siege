@@ -29,7 +29,7 @@ public class Polar_Bear extends MobDropTable {
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 25.0),
 				new Reward(new IceShard()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 				new Reward(new Drumstick()
 						           .getUpdatedItem(false)
 						           .asQuantity(8), 25.0),

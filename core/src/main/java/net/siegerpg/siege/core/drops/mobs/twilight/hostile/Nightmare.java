@@ -19,12 +19,12 @@ public class Nightmare extends MobDropTable {
 				new Reward(new CorruptCrystal()
 						           .getUpdatedItem(false), 25.0),
 				new Reward(new CorruptCrystal()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 				new Reward(new FairyWing().getUpdatedItem(false), 25.0),
-				new Reward(new FairyWing().getUpdatedItem(false), 5.0),
+				new Reward(new FairyWing().getUpdatedItem(false), 1.5),
 
-				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 0.5),
+				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 0.25),
+				new Reward(new SimpleRegenerationGem(0).getUpdatedItem(false), 0.10),
 				});
 	}
 

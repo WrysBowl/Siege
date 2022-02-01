@@ -18,18 +18,18 @@ public class Goblin extends MobDropTable {
 
 		super("Goblin", 30, 33, 30, 33, new Reward[] {
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 22.5),
+						           .getUpdatedItem(false), 21.0),
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 2.5),
+						           .getUpdatedItem(false), 1.0),
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 100.0),
 
-				new Reward(new SusStew().getUpdatedItem(false), 2.5),
-				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 0.30),
-				new Reward(new RawLuckGem(0).getUpdatedItem(false), 0.75),
+				new Reward(new SusStew().getUpdatedItem(false), 1.0),
+				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 0.10),
+				new Reward(new RawLuckGem(0).getUpdatedItem(false), 0.20),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 2.5),
-				new Reward(new NecromancerKey(0).getUpdatedItem(false), 0.75),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+				new Reward(new NecromancerKey(0).getUpdatedItem(false), 0.20),
 
 				});
 	}

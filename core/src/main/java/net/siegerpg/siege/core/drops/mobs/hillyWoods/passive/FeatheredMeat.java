@@ -14,11 +14,11 @@ public class FeatheredMeat extends MobDropTable {
 				new Reward(new Feather()
 						           .getUpdatedItem(false), 100.0),
 				new Reward(new Feather()
-						           .getUpdatedItem(false), 22.5),
+						           .getUpdatedItem(false), 21.0),
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 30.0),
-				new Reward(new Drumstick().getUpdatedItem(false), 22.5),
-				new Reward(new Drumstick().getUpdatedItem(false), 72.5),
+				new Reward(new Drumstick().getUpdatedItem(false), 21.0),
+				new Reward(new Drumstick().getUpdatedItem(false), 71.0),
 				});
 	}
 

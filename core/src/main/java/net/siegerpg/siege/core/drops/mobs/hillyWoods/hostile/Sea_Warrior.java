@@ -25,8 +25,8 @@ public class Sea_Warrior extends MobDropTable {
 						           .getUpdatedItem(false)
 						           .asQuantity(1), 10.0),
 
-				new Reward(new SusStew().getUpdatedItem(false), 0.30),
-				new Reward(new MobKey(0).getUpdatedItem(false), 0.50),
+				new Reward(new SusStew().getUpdatedItem(false), 0.10),
+				new Reward(new MobKey(0).getUpdatedItem(false), 0.10),
 
 				});
 	}

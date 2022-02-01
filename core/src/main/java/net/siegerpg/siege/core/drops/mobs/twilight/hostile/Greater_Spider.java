@@ -25,8 +25,8 @@ public class Greater_Spider extends MobDropTable {
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 15.0),
 
-				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 0.5),
-				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 1.0),
+				new Reward(new PolishedRegenerationGem(0).getUpdatedItem(false), 0.10),
+				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 0.25),
 				});
 	}
 

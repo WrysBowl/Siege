@@ -18,23 +18,23 @@ public class Archer_Elf extends MobDropTable {
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 25.0),
 				new Reward(new Bone()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 60.0),
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 12.0),
+						           .getUpdatedItem(false), 5.0),
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 2.0),
+						           .getUpdatedItem(false), 0.75),
 
 				new Reward(new SteelString()
 						           .getUpdatedItem(false), 25.0),
 				new Reward(new SteelString()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 				new Reward(new RefinedMetal()
 						           .getUpdatedItem(false), 25.0),
 				new Reward(new RefinedMetal()
-						           .getUpdatedItem(false), 5.0),
+						           .getUpdatedItem(false), 1.5),
 
 				});
 	}

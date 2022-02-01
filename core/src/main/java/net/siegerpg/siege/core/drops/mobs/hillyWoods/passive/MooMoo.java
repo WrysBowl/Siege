@@ -20,7 +20,7 @@ public class MooMoo extends MobDropTable {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 80.0),
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 8.0),
+						           .getUpdatedItem(false), 2.0),
 				new Reward(new Beef().getUpdatedItem(false), 100.0),
 				});
 	}

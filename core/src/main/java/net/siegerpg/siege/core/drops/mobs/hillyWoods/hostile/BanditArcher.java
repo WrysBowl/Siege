@@ -19,24 +19,24 @@ public class BanditArcher extends MobDropTable {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 50.0),
 				new Reward(new Leather()
-						           .getUpdatedItem(false), 2.5),
+						           .getUpdatedItem(false), 1.0),
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 50.0),
 				new Reward(new Bone()
-						           .getUpdatedItem(false), 2.5),
+						           .getUpdatedItem(false), 1.0),
 				new Reward(new MetalScrap()
-						           .getUpdatedItem(false), 22.5),
+						           .getUpdatedItem(false), 21.0),
 
-				new Reward(new Crossbow(100).getUpdatedItem(false), 0.25),
-				new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new ToughCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new StrongCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new Crossbow(100).getUpdatedItem(false), 0.05),
+				new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.25),
+				new Reward(new ToughCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 1.5),
-				new Reward(new BroodmotherKey(0).getUpdatedItem(false), 0.30),
+				new Reward(new MobKey(0).getUpdatedItem(false), 0.50),
+				new Reward(new BroodmotherKey(0).getUpdatedItem(false), 0.10),
 
 				});
 	}

@@ -17,15 +17,15 @@ public class Moss_Lurker extends MobDropTable {
 		super("Moss_Lurker", 200, 300, 250, 350, new Reward[] {
 				new Reward(new Ectoplasm().getUpdatedItem(false)
 				                          .asQuantity(4), 25.0),
-				new Reward(new Ectoplasm().getUpdatedItem(false), 5.0),
+				new Reward(new Ectoplasm().getUpdatedItem(false), 1.5),
 				new Reward(new FairyDust().getUpdatedItem(false)
 						           .asQuantity(16), 25.0),
 				new Reward(new FairyDust().getUpdatedItem(false)
-						           .asQuantity(4), 5.0),
+						           .asQuantity(4), 1.5),
 
-				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 2.0),
-				new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 1.0),
-				new Reward(new CrystalCane(Utils.randRarity()).getUpdatedItem(false), 2.5),
+				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 0.75),
+				new Reward(new PolishedStrengthGem(0).getUpdatedItem(false), 0.25),
+				new Reward(new CrystalCane(Utils.randRarity()).getUpdatedItem(false), 1.0),
 				});
 	}
 

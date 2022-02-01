@@ -14,7 +14,7 @@ public class Pigeon extends MobDropTable {
 				new Reward(new Feather()
 						           .getUpdatedItem(false), 60.0),
 				new Reward(new Feather()
-						           .getUpdatedItem(false), 6.0),
+						           .getUpdatedItem(false), 1.5),
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 10.0),
 				new Reward(new Drumstick().getUpdatedItem(false), 50.0),

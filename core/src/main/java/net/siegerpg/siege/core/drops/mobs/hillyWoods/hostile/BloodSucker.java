@@ -22,25 +22,25 @@ public class BloodSucker extends MobDropTable {
 						           .getUpdatedItem(false)
 						           .asQuantity(2), 10.0),
 
-				new Reward(new Crossbow(50).getUpdatedItem(false), 0.30),
-				new Reward(new LuckyCrossbow(50).getUpdatedItem(false), 0.30),
-				new Reward(new StrongCrossbow(50).getUpdatedItem(false), 0.30),
-				new Reward(new HealingCrossbow(50).getUpdatedItem(false), 0.30),
+				new Reward(new Crossbow(50).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyCrossbow(50).getUpdatedItem(false), 0.10),
+				new Reward(new StrongCrossbow(50).getUpdatedItem(false), 0.10),
+				new Reward(new HealingCrossbow(50).getUpdatedItem(false), 0.10),
 
-				new Reward(new Crossbow(30).getUpdatedItem(false), 1.5),
-				new Reward(new LuckyCrossbow(30).getUpdatedItem(false), 1.5),
-				new Reward(new StrongCrossbow(30).getUpdatedItem(false), 1.5),
-				new Reward(new HealingCrossbow(30).getUpdatedItem(false), 1.5),
+				new Reward(new Crossbow(30).getUpdatedItem(false), 0.50),
+				new Reward(new LuckyCrossbow(30).getUpdatedItem(false), 0.50),
+				new Reward(new StrongCrossbow(30).getUpdatedItem(false), 0.50),
+				new Reward(new HealingCrossbow(30).getUpdatedItem(false), 0.50),
 
-				new Reward(new ToughCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new StrongCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
-				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.30),
+				new Reward(new ToughCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
-				new Reward(new SusStew().getUpdatedItem(false), 0.30),
-				new Reward(new MobKey(0).getUpdatedItem(false), 0.30),
-				new Reward(new DavyJonesKey(0).getUpdatedItem(false), 0.30),
+				new Reward(new SusStew().getUpdatedItem(false), 0.10),
+				new Reward(new MobKey(0).getUpdatedItem(false), 0.10),
+				new Reward(new DavyJonesKey(0).getUpdatedItem(false), 0.10),
 
 				});
 	}
