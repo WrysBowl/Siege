@@ -10,7 +10,7 @@ class StrongGlisteningTwig() : CustomWand(
 		name = "Strong Glistening Twig",
 		customModelData = 140002,
 		description = listOf("A dead twig reborn"),
-		levelRequirement = 6,
+		levelRequirement = 8,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 13.0, luck = 2.0),
 

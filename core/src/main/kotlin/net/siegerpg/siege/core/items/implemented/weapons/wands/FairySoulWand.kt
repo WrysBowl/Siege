@@ -10,7 +10,7 @@ class FairySoulWand() : CustomWand(
 		name = "Fairy Soul Wand",
 		customModelData = 140013,
 		description = listOf("Use the power", "of fairy souls"),
-		levelRequirement = 52,
+		levelRequirement = 79,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 50.0,

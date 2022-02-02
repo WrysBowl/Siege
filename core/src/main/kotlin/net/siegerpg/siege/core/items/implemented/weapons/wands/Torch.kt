@@ -10,7 +10,7 @@ class Torch() : CustomWand(
 		name = "Torch",
 		customModelData = 140006,
 		description = listOf("Ancient magic of the ancestors"),
-		levelRequirement = 19,
+		levelRequirement = 30,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 22.0, luck = 10.0),
 		range = 19,

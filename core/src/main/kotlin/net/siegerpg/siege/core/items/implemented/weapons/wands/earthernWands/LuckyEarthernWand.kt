@@ -13,7 +13,7 @@ class LuckyEarthernWand() : CustomWand(
 				"Life forces from earthern materials",
 				"glow around this object"
 		                    ),
-		levelRequirement = 28,
+		levelRequirement = 44,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 15.0),
 

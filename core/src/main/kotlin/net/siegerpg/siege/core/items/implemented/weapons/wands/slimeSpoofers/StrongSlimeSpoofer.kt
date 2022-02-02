@@ -10,7 +10,7 @@ class StrongSlimeSpoofer() : CustomWand(
 		name = "Strong Slime Spoofer",
 		customModelData = 140004,
 		description = listOf("Made from the life force of slimes"),
-		levelRequirement = 11,
+		levelRequirement = 18,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 15.0, luck = 4.0),
 

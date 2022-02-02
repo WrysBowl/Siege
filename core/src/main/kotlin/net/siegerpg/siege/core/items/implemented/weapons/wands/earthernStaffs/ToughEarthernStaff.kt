@@ -10,7 +10,7 @@ class ToughEarthernStaff() : CustomWand(
 		name = "Tough Earthern Staff",
 		customModelData = 140010,
 		description = listOf("More powerful than it's", "puny wand counterpart"),
-		levelRequirement = 37,
+		levelRequirement = 58,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 25.0,

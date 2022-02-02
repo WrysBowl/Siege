@@ -10,7 +10,7 @@ class CrystalCane() : CustomWand(
 		name = "Crystal Cane",
 		customModelData = 140012,
 		description = listOf("Old person reference"),
-		levelRequirement = 47,
+		levelRequirement = 72,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 40.0,

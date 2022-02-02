@@ -10,7 +10,7 @@ class HealthyTorch() : CustomWand(
 		name = "Healthy Torch",
 		customModelData = 140006,
 		description = listOf("Ancient magic of the ancestors"),
-		levelRequirement = 19,
+		levelRequirement = 30,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 15.0, luck = 7.0, health = 10.0),
 

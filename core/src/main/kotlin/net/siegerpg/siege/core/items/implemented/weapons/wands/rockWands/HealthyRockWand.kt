@@ -10,7 +10,7 @@ class HealthyRockWand() : CustomWand(
 		name = "Healthy Rock Wand",
 		customModelData = 140005,
 		description = listOf("Nature made rocks to be weaponized"),
-		levelRequirement = 15,
+		levelRequirement = 24,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 17.0, luck = 3.0, health = 7.0),
 

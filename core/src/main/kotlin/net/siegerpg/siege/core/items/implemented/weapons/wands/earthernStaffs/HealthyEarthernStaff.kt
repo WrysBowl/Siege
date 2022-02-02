@@ -10,7 +10,7 @@ class HealthyEarthernStaff() : CustomWand(
 		name = "Healthy Earthern Staff",
 		customModelData = 140010,
 		description = listOf("More powerful than it's", "puny wand counterpart"),
-		levelRequirement = 37,
+		levelRequirement = 58,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 30.0, luck = 6.0, health = 12.0),
 		range = 17,

@@ -10,7 +10,7 @@ class Malice() : CustomWand(
 		name = "Malice",
 		customModelData = 140011,
 		description = listOf("Cast your anger", "as a spell"),
-		levelRequirement = 42,
+		levelRequirement = 65,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 60.0, health = -20.0),
 		range = 32,

@@ -13,7 +13,7 @@ class FlamingHotTorch() : CustomWand(
 				"This weapon was said to have the ability",
 				"to generate mass amounts of electricity"
 		                    ),
-		levelRequirement = 24,
+		levelRequirement = 37,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 24.0, luck = 16.0),
 		range = 19,

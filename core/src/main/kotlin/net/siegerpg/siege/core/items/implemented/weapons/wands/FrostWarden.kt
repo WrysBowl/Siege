@@ -10,7 +10,7 @@ class FrostWarden() : CustomWand(
 		name = "Frost Warden",
 		customModelData = 140014,
 		description = listOf("Command the ice", "and shoot it!"),
-		levelRequirement = 60,
+		levelRequirement = 86,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 90.0,

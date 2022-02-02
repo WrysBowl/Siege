@@ -13,7 +13,7 @@ class HealthyHotRod() : CustomWand(
 				"A super heated rod of iron which",
 				"can be directed to attackers!"
 		                    ),
-		levelRequirement = 33,
+		levelRequirement = 51,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 25.0, luck = 5.0, health = 7.0),
 

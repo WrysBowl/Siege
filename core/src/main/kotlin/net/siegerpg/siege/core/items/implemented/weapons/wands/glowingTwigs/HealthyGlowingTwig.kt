@@ -10,7 +10,7 @@ class HealthyGlowingTwig() : CustomWand(
 		name = "Healthy Glowing Twig",
 		customModelData = 140003,
 		description = listOf("A twig from the spirit world"),
-		levelRequirement = 8,
+		levelRequirement = 12,
 		material = Material.WOODEN_HOE,
 		baseStats = CustomItemUtils.statMap(strength = 7.0, luck = 5.0, health = 5.0),
 
