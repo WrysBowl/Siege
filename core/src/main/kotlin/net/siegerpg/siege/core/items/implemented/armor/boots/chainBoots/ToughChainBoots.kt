@@ -10,7 +10,7 @@ class ToughChainBoots() : CustomBoots(
 		name = "Tough Chain Boots",
 		customModelData = 1,
 		description = listOf("Not the best foot wear"),
-		levelRequirement = 29,
+		levelRequirement = 40,
 		material = Material.CHAINMAIL_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 30.0, defense = 50.0, regeneration = 10.0),
                                      ) {

@@ -11,7 +11,7 @@ class GlacierTrekkers() : CustomBoots(
 		name = "Glacier Trekkers",
 		customModelData = 1,
 		description = listOf("Tennis racket boots"),
-		levelRequirement = 54,
+		levelRequirement = 88,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(
 				health = 80.0,

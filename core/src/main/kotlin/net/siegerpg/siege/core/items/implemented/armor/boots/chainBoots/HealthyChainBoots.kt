@@ -10,7 +10,7 @@ class HealthyChainBoots() : CustomBoots(
 		name = "Healthy Chain Boots",
 		customModelData = 1,
 		description = listOf("Not the best foot wear"),
-		levelRequirement = 29,
+		levelRequirement = 40,
 		material = Material.CHAINMAIL_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 50.0, defense = 15.0, regeneration = 15.0),
                                        ) {

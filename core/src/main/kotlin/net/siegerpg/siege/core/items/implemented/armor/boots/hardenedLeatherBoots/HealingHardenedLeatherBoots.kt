@@ -10,7 +10,7 @@ class HealingHardenedLeatherBoots() : CustomBoots(
 		name = "Healing Hardened Leather Boots",
 		customModelData = 1,
 		description = listOf("Bootleg spurs!"),
-		levelRequirement = 17,
+		levelRequirement = 24,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(defense = 20.0, regeneration = 29.0),
                                                  ) {

@@ -11,7 +11,7 @@ class ReaperBoots() : CustomBoots(
 		name = "Reaper Boots",
 		customModelData = 1,
 		description = listOf("A step in the", "wrong direction"),
-		levelRequirement = 39,
+		levelRequirement = 59,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(
 				health = 80.0,

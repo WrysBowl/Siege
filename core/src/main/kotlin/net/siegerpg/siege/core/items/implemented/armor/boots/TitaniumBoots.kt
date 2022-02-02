@@ -10,7 +10,7 @@ class TitaniumBoots() : CustomBoots(
 		name = "Titanium Boots",
 		customModelData = 1,
 		description = listOf("Twinkle toes"),
-		levelRequirement = 49,
+		levelRequirement = 78,
 		material = Material.IRON_BOOTS,
 		baseStats = CustomItemUtils.statMap(
 				health = 80.0,

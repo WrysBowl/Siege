@@ -11,7 +11,7 @@ class TwilightStreamLiners() : CustomBoots(
 		name = "Twilight Stream Liners",
 		customModelData = 1,
 		description = listOf("Evade attacks quickly", "in these trekkers"),
-		levelRequirement = 59,
+		levelRequirement = 98,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(
 				health = 62.0,

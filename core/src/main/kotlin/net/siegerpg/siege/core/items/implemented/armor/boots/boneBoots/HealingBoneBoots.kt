@@ -11,7 +11,7 @@ class HealingBoneBoots() : CustomBoots(
 		name = "Healing Bone Boots",
 		customModelData = 1,
 		description = listOf("Clunky footpads"),
-		levelRequirement = 23,
+		levelRequirement = 32,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 25.0, regeneration = 39.0),
 		leatherColor = Color.GRAY

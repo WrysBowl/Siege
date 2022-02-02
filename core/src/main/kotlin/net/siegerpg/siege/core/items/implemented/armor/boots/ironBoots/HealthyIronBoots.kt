@@ -10,7 +10,7 @@ class HealthyIronBoots() : CustomBoots(
 		name = "Healthy Iron Boots",
 		customModelData = 1,
 		description = listOf("Iron clad boots"),
-		levelRequirement = 34,
+		levelRequirement = 50,
 		material = Material.IRON_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 62.0, defense = 40.0),
                                       ) {

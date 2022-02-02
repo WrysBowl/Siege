@@ -10,7 +10,7 @@ class ElvinBoots() : CustomBoots(
 		name = "Elvin Boots",
 		customModelData = 1,
 		description = listOf("Click clack", "guess who's back"),
-		levelRequirement = 44,
+		levelRequirement = 68,
 		material = Material.IRON_BOOTS,
 		baseStats = CustomItemUtils.statMap(
 				health = 50.0,

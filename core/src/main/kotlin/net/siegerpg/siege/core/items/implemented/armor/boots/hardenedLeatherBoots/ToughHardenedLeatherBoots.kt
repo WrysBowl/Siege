@@ -10,7 +10,7 @@ class ToughHardenedLeatherBoots() : CustomBoots(
 		name = "Tough Hardened Leather Boots",
 		customModelData = 1,
 		description = listOf("Bootleg spurs!"),
-		levelRequirement = 17,
+		levelRequirement = 24,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 30.0, strength = 2.0),
                                                ) {

@@ -14,7 +14,7 @@ class SlimyBoots() : CustomBoots(
 				"Contrary to popular belief,",
 				"slime boots don't make you jump high"
 		                    ),
-		levelRequirement = 3,
+		levelRequirement = 7,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 5.0),
 		leatherColor = Color.LIME
