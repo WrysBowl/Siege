@@ -10,7 +10,7 @@ class HealthyWarHammer() : CustomMeleeWeapon(
 		name = "Healthy War Hammer",
 		customModelData = 130007,
 		description = listOf("Both ends have proven to be deadly"),
-		levelRequirement = 27,
+		levelRequirement = 36,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 45.0, health = 10.0),
 		attackSpeed = 0.7

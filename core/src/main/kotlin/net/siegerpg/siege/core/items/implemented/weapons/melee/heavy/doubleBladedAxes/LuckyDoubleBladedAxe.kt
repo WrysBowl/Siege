@@ -10,7 +10,7 @@ class LuckyDoubleBladedAxe() : CustomMeleeWeapon(
 		name = "Lucky Double Bladed Axe",
 		customModelData = 130005,
 		description = listOf("You're really only going to use one side"),
-		levelRequirement = 19,
+		levelRequirement = 23,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 33.0, luck = 5.0),
 		attackSpeed = 0.7

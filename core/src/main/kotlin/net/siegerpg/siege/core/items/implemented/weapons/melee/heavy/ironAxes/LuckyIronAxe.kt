@@ -10,7 +10,7 @@ class LuckyIronAxe() : CustomMeleeWeapon(
 		name = "Lucky Iron Axe",
 		customModelData = 130008,
 		description = listOf("A fast tree cutter"),
-		levelRequirement = 31,
+		levelRequirement = 43,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 36.0, luck = 5.0),
 		attackSpeed = 1.0

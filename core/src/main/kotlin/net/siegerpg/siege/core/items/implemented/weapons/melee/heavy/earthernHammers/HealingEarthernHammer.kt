@@ -10,7 +10,7 @@ class HealingEarthernHammer() : CustomMeleeWeapon(
 		name = "Healing Earthern Hammer",
 		customModelData = 130010,
 		description = listOf("Let's go clobbing!"),
-		levelRequirement = 39,
+		levelRequirement = 57,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 64.0, regeneration = 9.0),
 		attackSpeed = 0.7

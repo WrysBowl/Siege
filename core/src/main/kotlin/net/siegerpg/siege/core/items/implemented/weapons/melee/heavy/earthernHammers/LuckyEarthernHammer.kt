@@ -10,7 +10,7 @@ class LuckyEarthernHammer() : CustomMeleeWeapon(
 		name = "Lucky Earthern Hammer",
 		customModelData = 130010,
 		description = listOf("Let's go clobbing!"),
-		levelRequirement = 39,
+		levelRequirement = 57,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 65.0, luck = 6.0),
 		attackSpeed = 0.7

@@ -10,7 +10,7 @@ class HealthyDoubleBladedAxe() : CustomMeleeWeapon(
 		name = "Healthy Double Bladed Axe",
 		customModelData = 130005,
 		description = listOf("You're really only going to use one side"),
-		levelRequirement = 19,
+		levelRequirement = 23,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 34.0, health = 6.0),
 		attackSpeed = 0.7

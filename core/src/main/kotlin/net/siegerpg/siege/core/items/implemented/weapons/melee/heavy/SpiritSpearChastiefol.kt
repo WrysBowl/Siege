@@ -10,7 +10,7 @@ class SpiritSpearChastiefol() : CustomMeleeWeapon(
 		name = "Spirit Spear Chastiefol",
 		customModelData = 130013,
 		description = listOf("Do ya get", "the reference?"),
-		levelRequirement = 54,
+		levelRequirement = 78,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 90.0,

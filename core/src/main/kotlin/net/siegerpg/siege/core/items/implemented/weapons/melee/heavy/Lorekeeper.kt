@@ -10,7 +10,7 @@ class Lorekeeper() : CustomMeleeWeapon(
 		name = "Lorekeeper",
 		customModelData = 130013,
 		description = listOf("Knowledge is the", "strongest weapon"),
-		levelRequirement = 60,
+		levelRequirement = 85,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 175.0,

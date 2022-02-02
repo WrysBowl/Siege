@@ -10,7 +10,7 @@ class LuckyClobber() : CustomMeleeWeapon(
 		name = "Lucky Clobber",
 		customModelData = 130009,
 		description = listOf("Let's go clobbing!"),
-		levelRequirement = 35,
+		levelRequirement = 50,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 45.0, luck = 6.0),
 		attackSpeed = 0.9

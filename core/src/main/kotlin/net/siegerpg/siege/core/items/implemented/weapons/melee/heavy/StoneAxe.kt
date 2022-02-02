@@ -10,7 +10,7 @@ class StoneAxe() : CustomMeleeWeapon(
 		name = "Stone Axe",
 		customModelData = 130004,
 		description = listOf("Commonly used for chopping trees"),
-		levelRequirement = 15,
+		levelRequirement = 17,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 32.0),
 		attackSpeed = 0.8

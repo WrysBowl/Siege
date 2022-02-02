@@ -10,7 +10,7 @@ class HealingStoneAxe() : CustomMeleeWeapon(
 		name = "Healing Stone Axe",
 		customModelData = 130004,
 		description = listOf("Commonly used for chopping trees"),
-		levelRequirement = 15,
+		levelRequirement = 17,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 27.0, regeneration = 5.0),
 		attackSpeed = 0.8

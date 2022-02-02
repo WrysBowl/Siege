@@ -10,7 +10,7 @@ class IronAxe() : CustomMeleeWeapon(
 		name = "Iron Axe",
 		customModelData = 130008,
 		description = listOf("A fast tree cutter"),
-		levelRequirement = 31,
+		levelRequirement = 43,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 40.0),
 		attackSpeed = 1.0

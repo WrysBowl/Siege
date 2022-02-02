@@ -10,7 +10,7 @@ class GreatSword() : CustomMeleeWeapon(
 		name = "Great Sword",
 		customModelData = 130006,
 		description = listOf("A typical medieval weapon"),
-		levelRequirement = 23,
+		levelRequirement = 29,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 36.0),
 		attackSpeed = 0.9

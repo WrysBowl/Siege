@@ -10,7 +10,7 @@ class LuckyWarHammer() : CustomMeleeWeapon(
 		name = "Lucky War Hammer",
 		customModelData = 130007,
 		description = listOf("Both ends have proven to be deadly"),
-		levelRequirement = 27,
+		levelRequirement = 36,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 43.0, luck = 8.0),
 		attackSpeed = 0.7

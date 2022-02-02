@@ -10,7 +10,7 @@ class HealingGreatSword() : CustomMeleeWeapon(
 		name = "Healing Great Sword",
 		customModelData = 130006,
 		description = listOf("A typical medieval weapon"),
-		levelRequirement = 23,
+		levelRequirement = 29,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 32.0, regeneration = 5.0),
 		attackSpeed = 0.9

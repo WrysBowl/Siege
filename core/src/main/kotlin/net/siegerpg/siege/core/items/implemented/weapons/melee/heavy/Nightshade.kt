@@ -10,7 +10,7 @@ class Nightshade() : CustomMeleeWeapon(
 		name = "Nightshade",
 		customModelData = 130011,
 		description = listOf("Strike with the", "might of the night"),
-		levelRequirement = 44,
+		levelRequirement = 64,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 100.0,

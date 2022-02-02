@@ -10,7 +10,7 @@ class HealingWarHammer() : CustomMeleeWeapon(
 		name = "Healing War Hammer",
 		customModelData = 130007,
 		description = listOf("Both ends have proven to be deadly"),
-		levelRequirement = 27,
+		levelRequirement = 36,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(strength = 46.0, regeneration = 5.0),
 		attackSpeed = 0.7

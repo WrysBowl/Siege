@@ -10,7 +10,7 @@ class CrystalHammer() : CustomMeleeWeapon(
 		name = "Crystal Hammer",
 		customModelData = 130012,
 		description = listOf("Smash with gems"),
-		levelRequirement = 49,
+		levelRequirement = 71,
 		material = Material.WOODEN_AXE,
 		baseStats = CustomItemUtils.statMap(
 				strength = 150.0,
