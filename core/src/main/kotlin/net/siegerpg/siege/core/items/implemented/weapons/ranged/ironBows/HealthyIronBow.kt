@@ -10,7 +10,7 @@ class HealthyIronBow() : CustomBow(
 		name = "Healthy Iron Bow",
 		customModelData = 120008,
 		description = listOf("Heavy and durable"),
-		levelRequirement = 34,
+		levelRequirement = 42,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(strength = 30.0, luck = 12.0, health = 20.0),
                                   ) {

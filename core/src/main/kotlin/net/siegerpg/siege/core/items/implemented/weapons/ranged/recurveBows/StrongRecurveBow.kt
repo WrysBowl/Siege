@@ -13,7 +13,7 @@ class StrongRecurveBow() : CustomBow(
 				"Slight curves at the ends",
 				"give the bow a bit more power"
 		                    ),
-		levelRequirement = 30,
+		levelRequirement = 35,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(strength = 41.0, luck = 4.0),
                                     ) {

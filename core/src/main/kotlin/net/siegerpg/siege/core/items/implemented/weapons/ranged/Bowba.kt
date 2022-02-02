@@ -10,7 +10,7 @@ class Bowba() : CustomBow(
 		name = "Bowba",
 		customModelData = 120010,
 		description = listOf("You put bowba in your drink", "Bowba will get ruined"),
-		levelRequirement = 38,
+		levelRequirement = 56,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(strength = 60.0, luck = 13.0)
                          ) {

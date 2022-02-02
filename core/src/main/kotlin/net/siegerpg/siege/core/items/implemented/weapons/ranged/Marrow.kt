@@ -10,7 +10,7 @@ class Marrow() : CustomBow(
 		name = "Marrow",
 		customModelData = 120011,
 		description = listOf("Made from the best", "part of the bone"),
-		levelRequirement = 43,
+		levelRequirement = 63,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(
 				strength = 70.0,

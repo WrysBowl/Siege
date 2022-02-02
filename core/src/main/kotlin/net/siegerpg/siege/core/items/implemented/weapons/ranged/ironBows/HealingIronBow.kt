@@ -10,7 +10,7 @@ class HealingIronBow() : CustomBow(
 		name = "Healing Iron Bow",
 		customModelData = 120008,
 		description = listOf("Heavy and durable"),
-		levelRequirement = 34,
+		levelRequirement = 42,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(
 				strength = 32.0,

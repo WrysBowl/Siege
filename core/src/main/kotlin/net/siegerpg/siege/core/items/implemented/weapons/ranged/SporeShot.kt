@@ -10,7 +10,7 @@ class SporeShot() : CustomBow(
 		name = "Spore Shot",
 		customModelData = 120013,
 		description = listOf("Shoot mushrooms", "at your foes"),
-		levelRequirement = 53,
+		levelRequirement = 77,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(
 				strength = 85.0,

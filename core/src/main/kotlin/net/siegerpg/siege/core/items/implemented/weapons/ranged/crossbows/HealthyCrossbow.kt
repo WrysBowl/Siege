@@ -10,7 +10,7 @@ class HealthyCrossbow() : CustomBow(
 		name = "Healthy Crossbow",
 		customModelData = 0,
 		description = listOf("The OG pistol"),
-		levelRequirement = 26,
+		levelRequirement = 28,
 		material = Material.CROSSBOW,
 		baseStats = CustomItemUtils.statMap(strength = 27.0, luck = 7.0, health = 15.0),
                                    ) {

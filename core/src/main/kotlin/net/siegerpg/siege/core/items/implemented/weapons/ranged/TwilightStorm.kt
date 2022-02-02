@@ -10,7 +10,7 @@ class TwilightStorm() : CustomBow(
 		name = "Twilight Storm",
 		customModelData = 120014,
 		description = listOf("Never misses if you", "are skilled enough"),
-		levelRequirement = 59,
+		levelRequirement = 84,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(
 				strength = 110.0,

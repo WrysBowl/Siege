@@ -10,7 +10,7 @@ class ToughBowba() : CustomBow(
 		name = "Tough Bowba",
 		customModelData = 120010,
 		description = listOf("Bones fused with metal in the shape of a bow"),
-		levelRequirement = 38,
+		levelRequirement = 56,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(
 				strength = 45.0,

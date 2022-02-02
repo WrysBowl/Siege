@@ -10,7 +10,7 @@ class Trident() : CustomBow(
 		name = "Trident",
 		customModelData = 0,
 		description = listOf("Poesiden's fork"),
-		levelRequirement = 34,
+		levelRequirement = 49,
 		material = Material.TRIDENT,
 		baseStats = CustomItemUtils.statMap(strength = 40.0, luck = 23.0)
                            ) {

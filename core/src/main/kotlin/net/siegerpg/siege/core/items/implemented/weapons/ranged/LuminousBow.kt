@@ -10,7 +10,7 @@ class LuminousBow() : CustomBow(
 		name = "Luminous Bow",
 		customModelData = 120012,
 		description = listOf("A glowy bow"),
-		levelRequirement = 48,
+		levelRequirement = 70,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(
 				strength = 75.0,

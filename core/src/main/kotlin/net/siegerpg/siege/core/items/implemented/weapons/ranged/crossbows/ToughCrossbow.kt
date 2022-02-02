@@ -10,7 +10,7 @@ class ToughCrossbow() : CustomBow(
 		name = "Tough Crossbow",
 		customModelData = 0,
 		description = listOf("The OG pistol"),
-		levelRequirement = 26,
+		levelRequirement = 28,
 		material = Material.CROSSBOW,
 		baseStats = CustomItemUtils.statMap(
 				strength = 26.0,
