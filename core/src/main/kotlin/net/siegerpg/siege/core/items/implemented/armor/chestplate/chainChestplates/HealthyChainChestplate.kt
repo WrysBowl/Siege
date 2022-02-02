@@ -10,7 +10,7 @@ class HealthyChainChestplate() : CustomChestplate(
 		name = "Healthy Chain Chestplate",
 		customModelData = 1,
 		description = listOf("Cut resistant"),
-		levelRequirement = 30,
+		levelRequirement = 40,
 		material = Material.CHAINMAIL_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 48.0, defense = 25.0, regeneration = 10.0),
                                                  ) {

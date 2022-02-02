@@ -11,7 +11,7 @@ class HealingWoolChestplate() : CustomChestplate(
 		name = "Healing Wool Chestplate",
 		customModelData = 1,
 		description = listOf("A cotton jacket"),
-		levelRequirement = 9,
+		levelRequirement = 11,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 8.0, regeneration = 14.0),
 		leatherColor = Color.WHITE

@@ -11,7 +11,7 @@ class GlacierParka() : CustomChestplate(
 		name = "Glacier Parka",
 		customModelData = 1,
 		description = listOf("Keeps you warm", "from the cold"),
-		levelRequirement = 55,
+		levelRequirement = 90,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 350.0,

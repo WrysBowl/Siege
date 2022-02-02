@@ -11,7 +11,7 @@ class StrongWoolChestplate() : CustomChestplate(
 		name = "Strong Wool Chestplate",
 		customModelData = 1,
 		description = listOf("A cotton jacket"),
-		levelRequirement = 9,
+		levelRequirement = 11,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(defense = 5.0, strength = 10.0),
 		leatherColor = Color.WHITE

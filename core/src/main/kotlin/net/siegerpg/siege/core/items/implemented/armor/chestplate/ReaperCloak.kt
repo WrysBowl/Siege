@@ -11,7 +11,7 @@ class ReaperCloak() : CustomChestplate(
 		name = "Reaper Cloak",
 		customModelData = 1,
 		description = listOf("As dark as", "the night"),
-		levelRequirement = 40,
+		levelRequirement = 60,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 80.0,

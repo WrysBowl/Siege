@@ -10,7 +10,7 @@ class TitaniumChestplate() : CustomChestplate(
 		name = "Titanium Chestplate",
 		customModelData = 1,
 		description = listOf("One of the hardest", "materials known"),
-		levelRequirement = 50,
+		levelRequirement = 80,
 		material = Material.IRON_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				defense = 300.0,

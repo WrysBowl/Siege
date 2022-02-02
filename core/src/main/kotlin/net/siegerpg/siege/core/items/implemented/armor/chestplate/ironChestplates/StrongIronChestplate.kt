@@ -10,7 +10,7 @@ class StrongIronChestplate() : CustomChestplate(
 		name = "Strong Iron Chestplate",
 		customModelData = 1,
 		description = listOf("Bullet proof"),
-		levelRequirement = 35,
+		levelRequirement = 50,
 		material = Material.IRON_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 30.0, strength = 55.0),
                                                ) {

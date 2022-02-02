@@ -10,7 +10,7 @@ class ToughHardenedLeatherChestplate() : CustomChestplate(
 		name = "Tough Hardened Leather Chestplate",
 		customModelData = 1,
 		description = listOf("Skin tight. Literally."),
-		levelRequirement = 18,
+		levelRequirement = 24,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 40.0),) {
 

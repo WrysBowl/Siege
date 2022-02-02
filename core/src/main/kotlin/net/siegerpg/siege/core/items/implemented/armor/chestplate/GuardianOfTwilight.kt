@@ -11,7 +11,7 @@ class GuardianOfTwilight() : CustomChestplate(
 		name = "Guardian Of Twilight",
 		customModelData = 1,
 		description = listOf("Protector of the", "Twilight Forests"),
-		levelRequirement = 60,
+		levelRequirement = 100,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 125.0,

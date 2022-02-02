@@ -11,7 +11,7 @@ class HealthyStrawChestplate() : CustomChestplate(
 		name = "Healthy Straw Chestplate",
 		customModelData = 1,
 		description = listOf("Scarecrow..."),
-		levelRequirement = 4,
+		levelRequirement = 3,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 17.0),
 		leatherColor = Color.YELLOW

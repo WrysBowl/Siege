@@ -11,7 +11,7 @@ class HealingSlimyChestplate() : CustomChestplate(
 		name = "Healing Slimy Chestplate",
 		customModelData = 1,
 		description = listOf("Jelly belly"),
-		levelRequirement = 4,
+		levelRequirement = 7,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 4.0, regeneration = 12.0),
 		leatherColor = Color.LIME

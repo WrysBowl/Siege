@@ -10,7 +10,7 @@ class ElvinChestplate() : CustomChestplate(
 		name = "Elvin Chestplate",
 		customModelData = 1,
 		description = listOf("Beat the evil away!"),
-		levelRequirement = 45,
+		levelRequirement = 70,
 		material = Material.CHAINMAIL_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(
 				health = 84.0,

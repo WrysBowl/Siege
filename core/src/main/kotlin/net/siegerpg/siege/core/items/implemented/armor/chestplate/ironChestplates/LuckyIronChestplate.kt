@@ -10,7 +10,7 @@ class LuckyIronChestplate() : CustomChestplate(
 		name = "Lucky Iron Chestplate",
 		customModelData = 1,
 		description = listOf("Bullet proof"),
-		levelRequirement = 35,
+		levelRequirement = 50,
 		material = Material.IRON_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 40.0, defense = 45.0, luck = 56.0),
                                               ) {
