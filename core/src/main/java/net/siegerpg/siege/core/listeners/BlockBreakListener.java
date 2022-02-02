@@ -148,7 +148,7 @@ public class BlockBreakListener implements Listener {
 			add(Material.POTTED_WHITE_TULIP);
 		}
 	};
-	public static HashMap< Material, BlockDropTable > blockDropTableHashMap = new HashMap<>(); {
+	public static HashMap< Material, BlockDropTable > blockDropTableHashMap = new HashMap<>() {
 		{
 			put(Material.ACACIA_LOG, new ACACIA_LOG());
 			put(Material.ACACIA_WOOD, new ACACIA_WOOD());

@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.drops.BlockDropTable;
 import net.siegerpg.siege.core.drops.DropTable;
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
+import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
 import net.siegerpg.siege.core.listeners.BlockBreakListener;
 import net.siegerpg.siege.core.listeners.DeathListener;
 import net.siegerpg.siege.core.miscellaneous.BossLeaderboardListener;
@@ -71,77 +72,24 @@ public class Drops implements CommandExecutor {
 
 		OutlinePane row = new OutlinePane(2, 1, 5, 1);
 
-		//icons
+		this.next = getIconNext();
+		this.grassBlock = getIconBlockDrops();
+		this.llama_egg = getIconMobDrops();
+		this.endermite_egg = getIconBossDrops();
 
-		//Creating Blocks Icon
-		ItemStack blockDrops = new ItemStack(Material.GRASS_BLOCK);
-		ItemMeta blockDropsItemMeta = blockDrops.getItemMeta();
-		blockDropsItemMeta.displayName(Utils.lore("<color:#A4CE51><bold><underlined>Block Drops"));
-		blockDropsItemMeta.lore(new ArrayList<>() {
-			{
-				add(Utils.lore(""));
-				add(Utils.lore("<gray>View drops"));
-				add(Utils.lore("<yellow>(Right Click)"));
-				add(Utils.lore("<color:#A4CE51><underlined>                  "));
-			}
-		});
-		blockDrops.setItemMeta(blockDropsItemMeta);
-
-		//Creating Mob Icon
-		ItemStack mobDrops = new ItemStack(Material.SKELETON_SKULL);
-		ItemMeta mobDropsItemMeta = mobDrops.getItemMeta();
-		mobDropsItemMeta.displayName(Utils.lore("<color:#E7234A><bold><underlined>Mob Drops"));
-		mobDropsItemMeta.lore(new ArrayList<>() {
-			{
-				add(Utils.lore(""));
-				add(Utils.lore("<gray>View drops"));
-				add(Utils.lore("<yellow>(Right Click)"));
-				add(Utils.lore("<color:#E7234A><underlined>               "));
-			}
-		});
-		mobDrops.setItemMeta(mobDropsItemMeta);
-
-		//Creating Boss Icon
-		ItemStack bossDrops = new ItemStack(Material.WITHER_SKELETON_SKULL);
-		ItemMeta bossDropsItemMeta = bossDrops.getItemMeta();
-		bossDropsItemMeta.displayName(Utils.lore("<color:#A22525><bold><underlined>Boss Drops"));
-		bossDropsItemMeta.lore(new ArrayList<>() {
-			{
-				add(Utils.lore(""));
-				add(Utils.lore("<gray>View drops"));
-				add(Utils.lore("<yellow>(Right Click)"));
-				add(Utils.lore("<color:#A22525><underlined>                 "));
-			}
-		});
-		bossDrops.setItemMeta(bossDropsItemMeta);
-
-		//Creating Next Icon
-		ItemStack next = new ItemStack(Material.SPECTRAL_ARROW);
-		ItemMeta nextItemMeta = next.getItemMeta();
-		nextItemMeta.displayName(Utils.lore("<red><bold>NEXT >"));
-		nextItemMeta.lore(new ArrayList<>() {
-			{
-				add(Utils.lore("<gray>Next page"));
-			}
-		});
-		next.setItemMeta(nextItemMeta);
-		this.next = next;
-
-		row.addItem(new GuiItem(blockDrops, inventoryClickEvent -> {
+		row.addItem(new GuiItem(this.grassBlock, inventoryClickEvent -> {
 			getBlockDrops(0, player).show(player);
 		}));
 		row.addItem(new GuiItem(filler));
-		row.addItem(new GuiItem(mobDrops, inventoryClickEvent -> {
+		row.addItem(new GuiItem(this.llama_egg, inventoryClickEvent -> {
 			getMobDrops(0, player).show(player);
 		}));
 		row.addItem(new GuiItem(filler));
-		row.addItem(new GuiItem(bossDrops, inventoryClickEvent -> {
+		row.addItem(new GuiItem(this.endermite_egg, inventoryClickEvent -> {
 			getBossDrops(player).show(player);
 		}));
 
-		this.grassBlock = blockDrops;
-		this.llama_egg = mobDrops;
-		this.endermite_egg = bossDrops;
+
 
 		menu.addPane(row);
 		return menu;
@@ -229,6 +177,7 @@ public class Drops implements CommandExecutor {
 		}
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
+		OutlinePane menuButton = new OutlinePane(0, 5, 1, 1);
 
 		final int newPosition = endPosition;
 		nextButton.addItem(new GuiItem(this.next, inventoryClickEvent -> {
@@ -236,8 +185,13 @@ public class Drops implements CommandExecutor {
 			else createDropsGUI(dropTable, newPosition, player).show(player);
 		}));
 
+		menuButton.addItem(new GuiItem(getIconBack(), inventoryClickEvent -> {
+			getStartMenu(player).show(player);
+		}));
+
 		menu.addPane(row);
 		menu.addPane(nextButton);
+		menu.addPane(menuButton);
 
 		return menu;
 	}
@@ -283,15 +237,20 @@ public class Drops implements CommandExecutor {
 		}
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
+		OutlinePane menuButton = new OutlinePane(0, 5, 1, 1);
 
 		final int newPosition = endPosition;
 		nextButton.addItem(new GuiItem(this.next, inventoryClickEvent -> {
 			if (newPosition >= dropTable.size()-1) getBlockDrops(0, player).show(player);
 			else getBlockDrops(newPosition, player).show(player);
 		}));
+		menuButton.addItem(new GuiItem(getIconBack(), inventoryClickEvent -> {
+			getStartMenu(player).show(player);
+		}));
 
 		menu.addPane(row);
 		menu.addPane(nextButton);
+		menu.addPane(menuButton);
 
 		return menu;
 	}
@@ -348,13 +307,18 @@ public class Drops implements CommandExecutor {
 		}
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
+		OutlinePane menuButton = new OutlinePane(0, 5, 1, 1);
 
+		menuButton.addItem(new GuiItem(getIconBack(), inventoryClickEvent -> {
+			getStartMenu(player).show(player);
+		}));
 		final int newPosition = endPosition;
 		nextButton.addItem(new GuiItem(this.next, inventoryClickEvent -> {
 			if (newPosition >= dropTable.size()-1) getMobDrops(0, player).show(player);
 			else getMobDrops(newPosition, player).show(player);
 		}));
 
+		menu.addPane(menuButton);
 		menu.addPane(row);
 		menu.addPane(nextButton);
 
@@ -378,6 +342,12 @@ public class Drops implements CommandExecutor {
 		menu.addPane(background);
 
 		OutlinePane row = new OutlinePane(1, 1, 7, 2);
+		OutlinePane menuButton = new OutlinePane(0, 5, 1, 1);
+
+
+		menuButton.addItem(new GuiItem(getIconBack(), inventoryClickEvent -> {
+			getStartMenu(player).show(player);
+		}));
 
 		//icons
 		HashMap< String, MobDropTable > dropTable = new BossLeaderboardListener().getDungeonBossDropTableHashMap();
@@ -410,7 +380,93 @@ public class Drops implements CommandExecutor {
 			}));
 		}
 
+		menu.addPane(menuButton);
 		menu.addPane(row);
 		return menu;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	/*
+	ICONS
+	 */
+	private static ItemStack getIconBlockDrops() {
+		ItemStack icon = new ItemStack(Material.GRASS_BLOCK);
+		ItemMeta iconMeta = icon.getItemMeta();
+		iconMeta.displayName(Utils.lore("<color:#A4CE51><bold><underlined>Block Drops"));
+		iconMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>View drops"));
+				add(Utils.lore("<yellow>(Right Click)"));
+				add(Utils.lore("<color:#A4CE51><underlined>                  "));
+			}
+		});
+		icon.setItemMeta(iconMeta);
+		return icon;
+	}
+	private static ItemStack getIconMobDrops() {
+		ItemStack icon = new ItemStack(Material.SKELETON_SKULL);
+		ItemMeta iconMeta = icon.getItemMeta();
+		iconMeta.displayName(Utils.lore("<color:#E7234A><bold><underlined>Mob Drops"));
+		iconMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>View drops"));
+				add(Utils.lore("<yellow>(Right Click)"));
+				add(Utils.lore("<color:#E7234A><underlined>               "));
+			}
+		});
+		icon.setItemMeta(iconMeta);
+		return icon;
+	}
+	private static ItemStack getIconBossDrops() {
+		ItemStack icon = new ItemStack(Material.WITHER_SKELETON_SKULL);
+		ItemMeta iconMeta = icon.getItemMeta();
+		iconMeta.displayName(Utils.lore("<color:#A22525><bold><underlined>Boss Drops"));
+		iconMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore(""));
+				add(Utils.lore("<gray>View drops"));
+				add(Utils.lore("<yellow>(Right Click)"));
+				add(Utils.lore("<color:#A22525><underlined>                 "));
+			}
+		});
+		icon.setItemMeta(iconMeta);
+		return icon;
+	}
+	private static ItemStack getIconNext() {
+		//Creating Next Icon
+		ItemStack icon = new ItemStack(Material.SPECTRAL_ARROW);
+		ItemMeta iconMeta = icon.getItemMeta();
+		iconMeta.displayName(Utils.lore("<red><bold>NEXT"));
+		iconMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Next page"));
+			}
+		});
+		icon.setItemMeta(iconMeta);
+		return icon;
+	}
+	private static ItemStack getIconBack() {
+		//Creating Next Icon
+		ItemStack icon = new ItemStack(Material.NETHER_STAR);
+		ItemMeta iconMeta = icon.getItemMeta();
+		iconMeta.displayName(Utils.lore("<gold><bold>MENU"));
+		iconMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Back to menu"));
+			}
+		});
+		icon.setItemMeta(iconMeta);
+		return icon;
 	}
 }
