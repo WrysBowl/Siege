@@ -11,7 +11,7 @@ class HealingWoolHelmet() : CustomHelmet(
 		name = "Healing Wool Helmet",
 		customModelData = 1,
 		description = listOf("Keep your ears warm"),
-		levelRequirement = 8,
+		levelRequirement = 11,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(defense = 8.0, regeneration = 12.0),
 		leatherColor = Color.WHITE

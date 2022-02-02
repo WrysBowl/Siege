@@ -11,7 +11,7 @@ class EssenceOfTwilight() : CustomHelmet(
 		name = "Essence Of Twilight",
 		customModelData = 1,
 		description = listOf("A well fought battle", "requires a clear mind"),
-		levelRequirement = 59,
+		levelRequirement = 97,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 60.0,

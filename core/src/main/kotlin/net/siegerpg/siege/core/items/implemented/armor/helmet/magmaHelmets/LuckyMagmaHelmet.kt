@@ -11,7 +11,7 @@ class LuckyMagmaHelmet() : CustomHelmet(
 		name = "Lucky Magma Helmet",
 		customModelData = 1,
 		description = listOf("Quite the hot head"),
-		levelRequirement = 12,
+		levelRequirement = 17,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 12.0, luck = 20.0),
 		leatherColor = Color.ORANGE

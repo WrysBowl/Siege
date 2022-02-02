@@ -10,7 +10,7 @@ class ElvinHelmet() : CustomHelmet(
 		name = "Elvin Helmet",
 		customModelData = 1,
 		description = listOf("Donned by elvin warriors"),
-		levelRequirement = 44,
+		levelRequirement = 67,
 		material = Material.IRON_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 80.0,

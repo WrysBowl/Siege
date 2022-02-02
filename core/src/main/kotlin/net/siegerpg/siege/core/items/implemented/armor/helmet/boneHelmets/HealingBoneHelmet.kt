@@ -11,7 +11,7 @@ class HealingBoneHelmet() : CustomHelmet(
 		name = "Healing Bone Helmet",
 		customModelData = 1,
 		description = listOf("A second skull"),
-		levelRequirement = 23,
+		levelRequirement = 32,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 16.0, defense = 20.0, regeneration = 31.0),
 		leatherColor = Color.GRAY

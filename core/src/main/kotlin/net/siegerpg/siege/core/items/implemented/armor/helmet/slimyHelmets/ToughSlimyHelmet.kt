@@ -11,7 +11,7 @@ class ToughSlimyHelmet() : CustomHelmet(
 		name = "Tough Slimy Helmet",
 		customModelData = 1,
 		description = listOf("So this is what it feels", "like to be a slime"),
-		levelRequirement = 3,
+		levelRequirement = 7,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 4.0, defense = 8.0),
 		leatherColor = Color.LIME

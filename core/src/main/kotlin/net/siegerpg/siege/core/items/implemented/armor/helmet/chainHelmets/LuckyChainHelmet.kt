@@ -10,7 +10,7 @@ class LuckyChainHelmet() : CustomHelmet(
 		name = "Lucky Chain Helmet",
 		customModelData = 1,
 		description = listOf("Top heavy"),
-		levelRequirement = 29,
+		levelRequirement = 40,
 		material = Material.CHAINMAIL_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 30.0, defense = 20.0, luck = 43.0),
                                        ) {

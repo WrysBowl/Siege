@@ -11,7 +11,7 @@ class ReaperHood() : CustomHelmet(
 		name = "Reaper Hood",
 		customModelData = 1,
 		description = listOf("Allow yourself to be", "shrouded in darkness"),
-		levelRequirement = 39,
+		levelRequirement = 57,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 70.0,

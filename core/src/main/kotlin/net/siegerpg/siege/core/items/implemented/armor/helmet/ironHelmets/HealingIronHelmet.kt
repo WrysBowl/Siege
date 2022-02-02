@@ -10,7 +10,7 @@ class HealingIronHelmet() : CustomHelmet(
 		name = "Healing Iron Helmet",
 		customModelData = 1,
 		description = listOf("Thick skull"),
-		levelRequirement = 34,
+		levelRequirement = 50,
 		material = Material.IRON_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 30.0, regeneration = 54.0),
                                         ) {

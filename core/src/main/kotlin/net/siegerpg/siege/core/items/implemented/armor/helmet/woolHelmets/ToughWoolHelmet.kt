@@ -11,7 +11,7 @@ class ToughWoolHelmet() : CustomHelmet(
 		name = "Tough Wool Helmet",
 		customModelData = 1,
 		description = listOf("Keep your ears warm"),
-		levelRequirement = 8,
+		levelRequirement = 11,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 6.0, defense = 18.0),
 		leatherColor = Color.WHITE

@@ -10,7 +10,7 @@ class LeatherHelmet() : CustomHelmet(
 		name = "Hardened Leather Helmet",
 		customModelData = 1,
 		description = listOf("Cow Hat"),
-		levelRequirement = 17,
+		levelRequirement = 24,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 25.0, strength = 5.0),
                                     ) {

@@ -11,7 +11,7 @@ class LuckyWoolHelmet() : CustomHelmet(
 		name = "Lucky Wool Helmet",
 		customModelData = 1,
 		description = listOf("Keep your ears warm"),
-		levelRequirement = 8,
+		levelRequirement = 11,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 8.0, luck = 13.0),
 		leatherColor = Color.WHITE

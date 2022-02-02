@@ -10,7 +10,7 @@ class TitaniumHelmet() : CustomHelmet(
 		name = "Titanium Helmet",
 		customModelData = 1,
 		description = listOf("Safety first!"),
-		levelRequirement = 49,
+		levelRequirement = 77,
 		material = Material.IRON_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 50.0,

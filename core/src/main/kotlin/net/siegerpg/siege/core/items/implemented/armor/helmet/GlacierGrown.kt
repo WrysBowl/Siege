@@ -11,7 +11,7 @@ class GlacierGrown() : CustomHelmet(
 		name = "Glacier Crown",
 		customModelData = 1,
 		description = listOf("Ice Queen"),
-		levelRequirement = 54,
+		levelRequirement = 87,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(
 				health = 110.0,
