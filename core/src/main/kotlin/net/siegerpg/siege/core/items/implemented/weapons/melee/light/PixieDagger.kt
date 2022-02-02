@@ -10,7 +10,7 @@ class PixieDagger() : CustomMeleeWeapon(
 		name = "Pixie Dagger",
 		customModelData = 110013,
 		description = listOf("It's an extremely", "sharp needle"),
-		levelRequirement = 54,
+		levelRequirement = 76,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(
 				strength = 60.0,

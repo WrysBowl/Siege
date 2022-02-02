@@ -10,7 +10,7 @@ class LuckyWoodenSword() : CustomMeleeWeapon(
 		name = "Lucky Wooden Sword",
 		customModelData = 110007,
 		description = listOf("A classic weapon in recruits"),
-		levelRequirement = 25,
+		levelRequirement = 34,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(strength = 20.0, luck = 5.0),
 

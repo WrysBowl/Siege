@@ -10,7 +10,7 @@ class IcicleBlade() : CustomMeleeWeapon(
 		name = "Icicle Blade",
 		customModelData = 110012,
 		description = listOf("Long", "hard", "and icy"),
-		levelRequirement = 48,
+		levelRequirement = 69,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(
 				strength = 50.0,

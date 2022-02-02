@@ -10,7 +10,7 @@ class HealthyScrapShard() : CustomMeleeWeapon(
 		name = "Healthy Scrap Shard",
 		customModelData = 110008,
 		description = listOf("Scrap metal put together", "to create a sharp shank"),
-		levelRequirement = 29,
+		levelRequirement = 41,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(strength = 28.0, health = 10.0),
 		attackSpeed = 1.5

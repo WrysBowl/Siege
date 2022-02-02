@@ -10,7 +10,7 @@ class CursedSickle() : CustomMeleeWeapon(
 		name = "Cursed Sickle",
 		customModelData = 110011,
 		description = listOf("For harvesting...", "souls!"),
-		levelRequirement = 43,
+		levelRequirement = 62,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(
 				strength = 40.0,

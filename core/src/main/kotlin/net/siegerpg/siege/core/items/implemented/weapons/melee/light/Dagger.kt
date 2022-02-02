@@ -10,7 +10,7 @@ class Dagger() : CustomMeleeWeapon(
 		name = "Dagger",
 		customModelData = 110006,
 		description = listOf("The prison shank's big brother"),
-		levelRequirement = 20,
+		levelRequirement = 27,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(strength = 23.0),
 		attackSpeed = 1.6

@@ -10,7 +10,7 @@ class HealingShovel() : CustomMeleeWeapon(
 		name = "Healing Shovel",
 		customModelData = 110004,
 		description = listOf("A true grave digger"),
-		levelRequirement = 13,
+		levelRequirement = 15,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(strength = 13.0, regeneration = 5.0),
 		attackSpeed = 1.5

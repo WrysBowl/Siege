@@ -10,7 +10,7 @@ class Illumina() : CustomMeleeWeapon(
 		name = "Illumina",
 		customModelData = 110014,
 		description = listOf("It's an extremely", "sharp needle"),
-		levelRequirement = 60,
+		levelRequirement = 83,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(
 				strength = 80.0,

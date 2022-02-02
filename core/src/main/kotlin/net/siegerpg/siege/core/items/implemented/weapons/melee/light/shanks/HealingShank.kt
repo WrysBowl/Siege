@@ -10,7 +10,7 @@ class HealingShank() : CustomMeleeWeapon(
 		name = "Healing Shank",
 		customModelData = 110005,
 		description = listOf("An essential tool...in prison"),
-		levelRequirement = 18,
+		levelRequirement = 21,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(strength = 14.0, regeneration = 5.0),
 

@@ -10,7 +10,7 @@ class HealingWoodenSword() : CustomMeleeWeapon(
 		name = "Healing Wooden Sword",
 		customModelData = 110007,
 		description = listOf("A classic weapon in recruits"),
-		levelRequirement = 25,
+		levelRequirement = 34,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(strength = 24.0, regeneration = 5.0),
 

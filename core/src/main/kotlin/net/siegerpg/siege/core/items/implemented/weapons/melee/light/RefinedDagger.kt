@@ -10,7 +10,7 @@ class RefinedDagger() : CustomMeleeWeapon(
 		name = "Refined Dagger",
 		customModelData = 110010,
 		description = listOf("A dagger, but shinier", "and more pointy"),
-		levelRequirement = 37,
+		levelRequirement = 55,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(strength = 40.0),
 		attackSpeed = 1.6

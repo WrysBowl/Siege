@@ -10,7 +10,7 @@ class HealthySplinteredBone() : CustomMeleeWeapon(
 		name = "Healthy Splintered Bone",
 		customModelData = 110009,
 		description = listOf("The shard of a", "human femur bone"),
-		levelRequirement = 34,
+		levelRequirement = 48,
 		material = Material.WOODEN_SWORD,
 		baseStats = CustomItemUtils.statMap(strength = 32.0, health = 10.0),
 		attackSpeed = 1.5
