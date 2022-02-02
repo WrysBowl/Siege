@@ -15,6 +15,7 @@ import net.siegerpg.siege.core.miscellaneous.DamageIndicator
 import net.siegerpg.siege.core.miscellaneous.Levels
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.cache.MobNames
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
@@ -118,6 +119,7 @@ class CustomItemKotlinListener : Listener {
 		var actualDamage = e.damage
 		var maxDamage = damage
 		var attacker : Entity? = null
+		var item : CustomItem? = null
 		val vicMaxHealth = victim.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
 		if (e is EntityDamageByEntityEvent) {
 			attacker =
@@ -129,12 +131,19 @@ class CustomItemKotlinListener : Listener {
 				}
 			}
 			if (attacker is Player) {
-				maxDamage =
-						attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
+				maxDamage = attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
+
+				//Check for if player is using a trident to attack
+				var itemStack : ItemStack = attacker.inventory.itemInMainHand
+				if (e.damager is Trident) {
+					itemStack = (e.damager as Trident).item
+				}
+				item = CustomItemUtils.getCustomItem(itemStack)
+
+
 			}
 		}
 		if (attacker is Player) {
-			val item = CustomItemUtils.getCustomItem(attacker.inventory.itemInMainHand)
 			if (item == null) {
 				e.damage = 1.0
 				setVictimName(victim, e.damage, vicMaxHealth)
@@ -148,6 +157,7 @@ class CustomItemKotlinListener : Listener {
 				return
 			}
 			if (item is CustomBow) {
+
 				if (item.item.type != Material.TRIDENT) {
 					if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
 						e.damage = 1.0
@@ -183,9 +193,7 @@ class CustomItemKotlinListener : Listener {
 			/*
 				Check for weapon skill from player's hand
 			 */
-			val weapon = attacker.inventory.itemInMainHand
-			val customItem : CustomItem? = CustomItemUtils.getCustomItem(weapon)
-			customItem?.let {
+			item.let {
 				if (it is CustomMeleeWeapon) {
 					it.onHit(e)
 				}
