@@ -158,10 +158,6 @@ object CustomItemUtils {
 		val inventory = player.inventory
 		val mainHand = itemInMainHand ?: inventory.itemInMainHand
 
-		if (statType == StatTypes.MANA) {
-			output += Levels.blockingGetExpLevel(player)?.first?.times(2) ?: 0
-		}
-
 		getCustomItem(mainHand)?.let {
 			if (it is CustomWeapon || it is CustomWand) {
 				val itemStats =

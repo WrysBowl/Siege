@@ -109,7 +109,7 @@ public class PlayerData implements Listener {
 			int mana = (int) (CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA) + 100 + getManaMultiplier(player));
 
 			if (!playerCurrentMana.containsKey(player)) playerCurrentMana.put(player, mana);
-			playerHealth.put(player, player.getMaxHealth());
+			playerHealth.put(player, health);
 			playerRegeneration.put(player, (double)regen);
 			playerMana.put(player, mana);
 		}, 2);
@@ -173,10 +173,7 @@ public class PlayerData implements Listener {
 	@EventHandler
 	public void toolSwitch(PlayerItemHeldEvent e) {
 
-		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e
-				                                                         .getPlayer()
-				                                                         .getInventory()
-				                                                         .getItem(e.getNewSlot()));
+		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getPlayer().getInventory().getItem(e.getNewSlot()));
 		Player player = e.getPlayer();
 		player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
 
