@@ -11,7 +11,7 @@ class ReaperSlacks() : CustomLeggings(
 		name = "Reaper Slacks",
 		customModelData = 1,
 		description = listOf("Hide your", "unholy presence"),
-		levelRequirement = 40,
+		levelRequirement = 59,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 75.0,

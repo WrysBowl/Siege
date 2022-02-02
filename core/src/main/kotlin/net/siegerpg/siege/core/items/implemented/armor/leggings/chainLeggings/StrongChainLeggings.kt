@@ -10,7 +10,7 @@ class StrongChainLeggings() : CustomLeggings(
 		name = "Strong Chain Leggings",
 		customModelData = 1,
 		description = listOf("Flimsy legs"),
-		levelRequirement = 30,
+		levelRequirement = 40,
 		material = Material.CHAINMAIL_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 35.0, defense = 25.0, strength = 48.0),
                                             ) {

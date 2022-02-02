@@ -11,7 +11,7 @@ class HealingSlimyLeggings() : CustomLeggings(
 		name = "Healing Slimy Leggings",
 		customModelData = 1,
 		description = listOf("Waste high in sewage"),
-		levelRequirement = 4,
+		levelRequirement = 7,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 6.0, defense = 6.0, regeneration = 15.0),
 		leatherColor = Color.LIME

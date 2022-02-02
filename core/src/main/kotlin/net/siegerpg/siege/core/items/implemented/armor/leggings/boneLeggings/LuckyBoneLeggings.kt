@@ -11,7 +11,7 @@ class LuckyBoneLeggings() : CustomLeggings(
 		name = "Lucky Bone Leggings",
 		customModelData = 1,
 		description = listOf("Protects your bone...s"),
-		levelRequirement = 24,
+		levelRequirement = 32,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 25.0, luck = 35.0),
 		leatherColor = Color.GRAY

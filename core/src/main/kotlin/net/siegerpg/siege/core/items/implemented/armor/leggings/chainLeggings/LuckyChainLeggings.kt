@@ -10,7 +10,7 @@ class LuckyChainLeggings() : CustomLeggings(
 		name = "Lucky Chain Leggings",
 		customModelData = 1,
 		description = listOf("Flimsy legs"),
-		levelRequirement = 30,
+		levelRequirement = 40,
 		material = Material.CHAINMAIL_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 38.0, regeneration = 5.0, luck = 47.0),
                                            ) {

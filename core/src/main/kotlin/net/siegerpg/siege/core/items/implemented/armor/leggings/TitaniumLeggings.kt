@@ -10,7 +10,7 @@ class TitaniumLeggings() : CustomLeggings(
 		name = "Titanium Leggings",
 		customModelData = 1,
 		description = listOf("Made of hard titanium"),
-		levelRequirement = 50,
+		levelRequirement = 79,
 		material = Material.IRON_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 60.0,

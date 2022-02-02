@@ -10,7 +10,7 @@ class HealingChainLeggings() : CustomLeggings(
 		name = "Healing Chain Leggings",
 		customModelData = 1,
 		description = listOf("Flimsy legs"),
-		levelRequirement = 30,
+		levelRequirement = 40,
 		material = Material.CHAINMAIL_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 40.0, regeneration = 48.0),
                                              ) {

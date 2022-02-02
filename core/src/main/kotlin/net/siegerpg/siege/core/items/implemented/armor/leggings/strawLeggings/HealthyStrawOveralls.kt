@@ -11,7 +11,7 @@ class HealthyStrawOveralls() : CustomLeggings(
 		name = "Healthy Straw Overalls",
 		customModelData = 1,
 		description = listOf("The Last Straw"),
-		levelRequirement = 4,
+		levelRequirement = 3,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 16.0),
 		leatherColor = Color.YELLOW

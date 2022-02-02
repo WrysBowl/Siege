@@ -11,7 +11,7 @@ class ToughMagmaLeggings() : CustomLeggings(
 		name = "Tough Magma Leggings",
 		customModelData = 1,
 		description = listOf("Burning fashion. Quite literally"),
-		levelRequirement = 13,
+		levelRequirement = 17,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 28.0, regeneration = 5.0),
 		leatherColor = Color.ORANGE

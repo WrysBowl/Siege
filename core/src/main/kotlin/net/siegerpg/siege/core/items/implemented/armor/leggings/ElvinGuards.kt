@@ -10,7 +10,7 @@ class ElvinGuards() : CustomLeggings(
 		name = "Elvin Guards",
 		customModelData = 1,
 		description = listOf("Magical protection"),
-		levelRequirement = 45,
+		levelRequirement = 69,
 		material = Material.CHAINMAIL_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 100.0,

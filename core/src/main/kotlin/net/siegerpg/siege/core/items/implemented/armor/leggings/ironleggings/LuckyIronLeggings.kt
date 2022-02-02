@@ -10,7 +10,7 @@ class LuckyIronLeggings() : CustomLeggings(
 		name = "Lucky Iron Leggings",
 		customModelData = 1,
 		description = listOf("Iron jenkins"),
-		levelRequirement = 35,
+		levelRequirement = 50,
 		material = Material.IRON_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 30.0, regeneration = 10.0, luck = 58.0),
                                           ) {

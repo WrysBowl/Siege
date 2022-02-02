@@ -11,7 +11,7 @@ class LuckyWoolLeggings() : CustomLeggings(
 		name = "Lucky Wool Leggings",
 		customModelData = 1,
 		description = listOf("Dressed for the winter"),
-		levelRequirement = 9,
+		levelRequirement = 11,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 8.0, regeneration = 5.0, luck = 15.0),
 		leatherColor = Color.WHITE

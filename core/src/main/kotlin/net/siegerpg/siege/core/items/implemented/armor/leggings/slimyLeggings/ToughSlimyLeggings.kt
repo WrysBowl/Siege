@@ -11,7 +11,7 @@ class ToughSlimyLeggings() : CustomLeggings(
 		name = "Tough Slimy Leggings",
 		customModelData = 1,
 		description = listOf("Waste high in sewage"),
-		levelRequirement = 4,
+		levelRequirement = 7,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 15.0),
 		leatherColor = Color.LIME

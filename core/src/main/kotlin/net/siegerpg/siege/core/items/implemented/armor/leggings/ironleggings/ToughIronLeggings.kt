@@ -10,7 +10,7 @@ class ToughIronLeggings() : CustomLeggings(
 		name = "Tough Iron Leggings",
 		customModelData = 1,
 		description = listOf("Iron jenkins"),
-		levelRequirement = 35,
+		levelRequirement = 50,
 		material = Material.IRON_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 40.0, defense = 68.0, strength = 24.0),
                                           ) {

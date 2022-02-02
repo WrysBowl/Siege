@@ -10,7 +10,7 @@ class ToughHardenedLeatherLeggings() : CustomLeggings(
 		name = "Tough Hardened Leather Leggings",
 		customModelData = 1,
 		description = listOf("Leather but erect"),
-		levelRequirement = 18,
+		levelRequirement = 24,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 28.0),
                                                      ) {

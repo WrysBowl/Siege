@@ -11,7 +11,7 @@ class GlacierLeggings() : CustomLeggings(
 		name = "Glacier Leggings",
 		customModelData = 1,
 		description = listOf("Don't want to freeze", "anything important"),
-		levelRequirement = 55,
+		levelRequirement = 89,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				health = 200.0,

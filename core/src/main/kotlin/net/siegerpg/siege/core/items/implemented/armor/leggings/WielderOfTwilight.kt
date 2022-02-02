@@ -11,7 +11,7 @@ class WielderOfTwilight() : CustomLeggings(
 		name = "Wielder Of Twilight",
 		customModelData = 1,
 		description = listOf("Harness the", "world's power"),
-		levelRequirement = 60,
+		levelRequirement = 99,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(
 				strength = 70.0,
