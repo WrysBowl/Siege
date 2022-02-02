@@ -36,7 +36,7 @@ abstract class StatGemType(
 	}
 
 	override fun getSellValue() : Int {
-		return 100 * statAmount.toInt()
+		return 50 * statAmount.toInt() * (levelRequirement ?: 1)
 	}
 
 	override fun serialize() {
@@ -60,8 +60,7 @@ abstract class StatGemType(
 		meta.lore(" ")
 		meta.lore("<r><color:#FF3CFF>+${statAmount} <gray>${statType.stylizedName}")
 		meta.lore(" ")
-		meta.lore("<yellow><bold>DRAG ONTO ITEM TO APPLY")
-		meta.lore("<gray>Merge these stats to your gear!")
+		meta.lore("<color:#BBE56C><bold>Drag to Apply")
 		val length =
 				if (name.length > 16) name.length
 				else 16

@@ -36,12 +36,15 @@ import java.util.ArrayList;
 public class GemRemover implements Listener {
 
 	private CustomItem item;
+	private StatGemType gem;
 
 	public GemRemover() {
 		this.item = null;
+		this.gem = null;
 	}
-	public GemRemover(CustomItem item) {
+	public GemRemover(CustomItem item, StatGemType gem) {
 		this.item = item;
+		this.gem = gem;
 	}
 
 	@EventHandler
@@ -57,8 +60,11 @@ public class GemRemover implements Listener {
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
 		if (customItem instanceof CustomEquipment) {
 			if (((CustomEquipment) customItem).hasGem()) {
-				GemRemover instance = new GemRemover(customItem);
+
+				StatGem gem = new StatGem(((CustomEquipment) customItem).getStatGem().getType(), ((CustomEquipment) customItem).getStatGem().getAmount());
+				GemRemover instance = new GemRemover(customItem, getStatGem(gem));
 				instance.getMenu(player).show(player);
+
 				return;
 			}
 		}
@@ -73,12 +79,6 @@ public class GemRemover implements Listener {
 		menu.setOnGlobalClick(event -> {
 			player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 0.5f, 0.75f);
 			event.setCancelled(true);
-		});
-		menu.setOnClose(e -> {
-			if (this.item != null) {
-				player.getInventory().addItem(this.item.getUpdatedItem(false));
-				this.item = null;
-			}
 		});
 
 		OutlinePane background = new OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST);
@@ -136,114 +136,108 @@ public class GemRemover implements Listener {
 	}
 
 	private int getCost() {
-		return this.item.getSellValue();
+		return this.gem.getSellValue();
 	}
 
 	private void getGem(Player player) {
-		if (this.item == null || this.item.getItem().getType().isAir()) return;
-		if (this.item == null) return;
-		if (!(this.item instanceof CustomEquipment equipmentItem)) return;
-		if (!((CustomEquipment) this.item).hasGem()) return;
 
-		StatGem gem = new StatGem(
-				((CustomEquipment) this.item)
-						.getStatGem()
-						.getType(), ((CustomEquipment) this.item)
-						.getStatGem()
-						.getAmount());
+		CustomEquipment equipmentItem = ((CustomEquipment)this.item);
 
-		player.getInventory().addItem(getStatGem(gem));
-		player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+		player.getInventory().remove(equipmentItem.getItem().asOne());
+
 
 		VaultHook.econ.withdrawPlayer(player, getCost()); //takes the cost they put in from the player
 		Scoreboard.updateScoreboard(player);
 
 		equipmentItem.removeStatGem();
-		equipmentItem.updateMeta(false);
-		player.getInventory().remove(this.item.getItem().asOne());
+		equipmentItem.serialize();
+
+		player.getInventory().addItem(this.gem.getUpdatedItem(false));
 		Utils.giveItem(player, equipmentItem.getUpdatedItem(false));
 
 		player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1.0f, 1.0f);
+		player.closeInventory();
+
 		this.item = null;
 	}
 
 
-	private ItemStack getStatGem(StatGem gem) {
-		ItemStack item = new ItemStack(Material.AIR);
+	private StatGemType getStatGem(StatGem gem) {
+		StatGemType item = null;
 		switch (gem.getType()) {
 			case HEALTH:
 				if (gem.getAmount() == 10.0) {
-					item = new RawHealthGem(0).getUpdatedItem(false);
+					item = new RawHealthGem(0);
 				} else if (gem.getAmount() == 14.0) {
-					item = new CrackedHealthGem(0).getUpdatedItem(false);
+					item = new CrackedHealthGem(0);
 				} else if (gem.getAmount() == 18.0) {
-					item = new FlawedHealthGem(0).getUpdatedItem(false);
+					item = new FlawedHealthGem(0);
 				} else if (gem.getAmount() == 22.0) {
-					item = new SimpleHealthGem(0).getUpdatedItem(false);
+					item = new SimpleHealthGem(0);
 				} else if (gem.getAmount() == 26.0) {
-					item = new PolishedHealthGem(0).getUpdatedItem(false);
+					item = new PolishedHealthGem(0);
 				} else if (gem.getAmount() == 30.0) {
-					item = new PristineHealthGem(0).getUpdatedItem(false);
+					item = new PristineHealthGem(0);
 				}
 				break;
 			case STRENGTH:
 				if (gem.getAmount() == 2.0) {
-					item = new RawStrengthGem(0).getUpdatedItem(false);
+					item = new RawStrengthGem(0);
 				} else if (gem.getAmount() == 3.0) {
-					item = new CrackedStrengthGem(0).getUpdatedItem(false);
+					item = new CrackedStrengthGem(0);
 				} else if (gem.getAmount() == 4.0) {
-					item = new FlawedStrengthGem(0).getUpdatedItem(false);
+					item = new FlawedStrengthGem(0);
 				} else if (gem.getAmount() == 6.0) {
-					item = new SimpleStrengthGem(0).getUpdatedItem(false);
+					item = new SimpleStrengthGem(0);
 				} else if (gem.getAmount() == 8.0) {
-					item = new PolishedStrengthGem(0).getUpdatedItem(false);
+					item = new PolishedStrengthGem(0);
 				} else if (gem.getAmount() == 10.0) {
-					item = new PristineStrengthGem(0).getUpdatedItem(false);
+					item = new PristineStrengthGem(0);
 				}
 				break;
 			case LUCK:
 				if (gem.getAmount() == 4.0) {
-					item = new RawLuckGem(0).getUpdatedItem(false);
+					item = new RawLuckGem(0);
 				} else if (gem.getAmount() == 6.0) {
-					item = new CrackedLuckGem(0).getUpdatedItem(false);
+					item = new CrackedLuckGem(0);
 				} else if (gem.getAmount() == 8.0) {
-					item = new FlawedLuckGem(0).getUpdatedItem(false);
+					item = new FlawedLuckGem(0);
 				} else if (gem.getAmount() == 11.0) {
-					item = new SimpleLuckGem(0).getUpdatedItem(false);
+					item = new SimpleLuckGem(0);
 				} else if (gem.getAmount() == 14.0) {
-					item = new PolishedLuckGem(0).getUpdatedItem(false);
+					item = new PolishedLuckGem(0);
 				} else if (gem.getAmount() == 18.0) {
-					item = new PristineLuckGem(0).getUpdatedItem(false);
+					item = new PristineLuckGem(0);
 				}
 				break;
 			case DEFENSE:
 				if (gem.getAmount() == 10.0) {
-					item = new RawToughGem(0).getUpdatedItem(false);
+					item = new RawToughGem(0);
 				} else if (gem.getAmount() == 15.0) {
-					item = new CrackedToughGem(0).getUpdatedItem(false);
+					item = new CrackedToughGem(0);
 				} else if (gem.getAmount() == 20.0) {
-					item = new FlawedToughGem(0).getUpdatedItem(false);
+					item = new FlawedToughGem(0);
 				} else if (gem.getAmount() == 30.0) {
-					item = new SimpleToughGem(0).getUpdatedItem(false);
+					item = new SimpleToughGem(0);
 				} else if (gem.getAmount() == 40.0) {
-					item = new PolishedToughGem(0).getUpdatedItem(false);
+					item = new PolishedToughGem(0);
 				} else if (gem.getAmount() == 50.0) {
-					item = new PristineToughGem(0).getUpdatedItem(false);
+					item = new PristineToughGem(0);
 				}
 				break;
 			case REGENERATION:
 				if (gem.getAmount() == 5.0) {
-					item = new RawRegenerationGem(0).getUpdatedItem(false);
+					item = new RawRegenerationGem(0);
 				} else if (gem.getAmount() == 7.0) {
-					item = new CrackedRegenerationGem(0).getUpdatedItem(false);
+					item = new CrackedRegenerationGem(0);
 				} else if (gem.getAmount() == 9.0) {
-					item = new FlawedRegenerationGem(0).getUpdatedItem(false);
+					item = new FlawedRegenerationGem(0);
 				} else if (gem.getAmount() == 11.0) {
-					item = new SimpleRegenerationGem(0).getUpdatedItem(false);
+					item = new SimpleRegenerationGem(0);
 				} else if (gem.getAmount() == 13.0) {
-					item = new PolishedRegenerationGem(0).getUpdatedItem(false);
+					item = new PolishedRegenerationGem(0);
 				} else if (gem.getAmount() == 15.0) {
-					item = new PristineRegenerationGem(0).getUpdatedItem(false);
+					item = new PristineRegenerationGem(0);
 				}
 		}
 		return item;
