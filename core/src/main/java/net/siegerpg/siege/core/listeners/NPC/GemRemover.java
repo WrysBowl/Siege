@@ -14,6 +14,7 @@ import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.*;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.*;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.*;
 import net.siegerpg.siege.core.items.statgems.StatGem;
+import net.siegerpg.siege.core.items.types.armor.*;
 import net.siegerpg.siege.core.items.types.misc.*;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
@@ -47,7 +48,7 @@ public class GemRemover implements Listener {
 		this.gem = gem;
 	}
 
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onRightClickOnEntity(PlayerInteractEvent e) {
 
 		if (e.getClickedBlock() != null && e.getClickedBlock().getType().equals(Material.CHIPPED_ANVIL)) {
@@ -57,7 +58,9 @@ public class GemRemover implements Listener {
 	}
 
 	public void openInventory(Player player) {
-		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(player.getInventory().getItemInMainHand());
+		ItemStack item = player.getInventory().getItemInMainHand();
+		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+
 		if (customItem instanceof CustomEquipment) {
 			if (((CustomEquipment) customItem).hasGem()) {
 
@@ -97,7 +100,6 @@ public class GemRemover implements Listener {
 
 		//Creating rows
 		exitIcon.addItem(new GuiItem(getIconExit(), e -> {
-			player.getInventory().addItem(this.item.getUpdatedItem(false));
 			player.getInventory().close();
 		}));
 		gemRemoveIcon.addItem(new GuiItem(getIconSpeedUp(), e -> {
