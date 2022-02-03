@@ -245,13 +245,12 @@ public class DeathListener implements Listener, Runnable {
 		//adds score to mob
 		if (player == null) return;
 		if (CustomEventListener.currentlyActive instanceof Mobs) {
-			int score = (goldCoinAmt * exp) + 1;
 			int currentScore = 0;
 
 			if (Mobs.playerScores.containsKey(player)) currentScore = Mobs.playerScores.get(player);
-			Mobs.playerScores.put(player, score + currentScore); //((int)(winScore*speed))
+			Mobs.playerScores.put(player, goldCoinAmt + currentScore); //((int)(winScore*speed))
 
-			player.sendMessage(Utils.lore("<gold>You earned "+score+" pts!"));
+			player.sendMessage(Utils.lore("<gold>You earned " + goldCoinAmt + " pts!"));
 		}
 
 	}
