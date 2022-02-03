@@ -28,9 +28,7 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
-import org.bukkit.inventory.AbstractHorseInventory;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.*;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.Nullable;
 
@@ -120,6 +118,7 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 	public boolean isSpawnEgg(ItemStack item) {
 		boolean containsSpawnEgg = false;
 
+		if (item == null) return false;
 		if (item.getType().toString().contains("_spawn_egg")) containsSpawnEgg = true;
 		if (item.getType().toString().contains("_SPAWN_EGG")) containsSpawnEgg = true;
 
@@ -138,7 +137,7 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 	@EventHandler
 	public void useMobEgg(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
-		ItemStack item = player.getInventory().getItemInMainHand();
+		ItemStack item = e.getItem();
 
 		if(!isSpawnEgg(item)) return;
 		EntityType type = getSpawnEggType(item);
