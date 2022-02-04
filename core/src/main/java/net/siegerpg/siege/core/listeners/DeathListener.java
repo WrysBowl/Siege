@@ -332,7 +332,7 @@ public class DeathListener implements Listener, Runnable {
 
 		final Location deathLocation = PlayerData.playerDeathLocations.get(player);
 		if (deathLocation == null) return;
-		int locationCostComputation = (int) player.getLocation().distance(deathLocation)*2;
+		int locationCostComputation = (int) e.getRespawnLocation().distance(deathLocation)*2;
 
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<color:#E94545><underlined>   Teleport Back?   <reset>"));
