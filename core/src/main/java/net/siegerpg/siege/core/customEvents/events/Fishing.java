@@ -156,8 +156,11 @@ public class Fishing extends CustomEvent {
 		target.sendMessage(Utils.parse("<gold>Total Points: "+playerScores.get(target)));
 		target.sendMessage(Utils.parse(""));
 		for (Fish fish : playerFishingHistory.get(target)) {
-			target.sendMessage(Utils.parse("  <yellow>"+counter+" <color:#E1CE55>"+fish.name+" " +
-			                             "<gray>size <color:#F1E236>"+fish.actualSize+" <gray>gave <color:#F1E236>"+getFishScore(fish)+" <gray>pts."));
+			String name = fish.name;
+			if (name == null) {
+				name = fish.item.getItemMeta().getDisplayName();
+			}
+			target.sendMessage(Utils.parse("  <yellow>"+counter+" <color:#E1CE55>"+name+" <gray>gave <color:#F1E236>"+getFishScore(fish)+" <gray>pts."));
 			counter++;
 		}
 		target.sendMessage(Utils.parse(""));

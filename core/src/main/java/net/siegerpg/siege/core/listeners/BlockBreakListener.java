@@ -254,7 +254,6 @@ public class BlockBreakListener implements Listener {
 				.getBlock()
 				.getLocation();
 		BlockDropTable blockDrop = blockDropTableHashMap.get(blockType);
-		if (blockDrop != null) Bukkit.getLogger().info("Material" + blockDrop.getMaterial());
 
 		//if block broken doesn't have a drop table
 		if (rewardableBlocks.contains(blockType)) {
