@@ -43,7 +43,7 @@ class Chelsea : Shop() {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(GoldenCarrot(), 1000, hashMapOf(Carrot() to 512), false) {
-				Bread().getUpdatedItem(false)
+				GoldenCarrot().getUpdatedItem(false)
 			},
 
 
