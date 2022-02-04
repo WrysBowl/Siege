@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.MetalScrap
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.GreatSword
@@ -11,8 +12,8 @@ import org.bukkit.inventory.ItemStack
 
 class Reward22(
 		override val level : Short = 23,
-		override val gold : Int = 3000,
+		override val gold : Int = 1000,
 		override val items : List<ItemStack> = listOf(
-				GreatSword(Utils.randRarity()).getUpdatedItem(false)
+				Sugar().getUpdatedItem(false).asQuantity(16)
 		                                             )
               ) : LevelReward

@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem
 import net.siegerpg.siege.core.listeners.GoldExpListener
@@ -13,6 +14,6 @@ class Reward23(
 		override val level : Short = 24,
 		override val gold : Int = 1000,
 		override val items : List<ItemStack> = listOf(
-				BoneHelmet(Utils.randRarity()).getUpdatedItem(false)
-		                                             )
+				MobKey().getUpdatedItem(false).asQuantity(6)
+													 )
               ) : LevelReward

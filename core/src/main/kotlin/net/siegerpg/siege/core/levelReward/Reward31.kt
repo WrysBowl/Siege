@@ -1,6 +1,8 @@
 package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.CursedBone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.FairyDust
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.SimpleLuckGem
@@ -13,8 +15,9 @@ import org.bukkit.inventory.ItemStack
 
 class Reward31(
 		override val level : Short = 32,
-		override val gold : Int = 5000,
+		override val gold : Int = 1000,
 		override val items : List<ItemStack> = listOf(
-				SimpleLuckGem(0).getUpdatedItem(false).asQuantity(2)
+			MobKey().getUpdatedItem(false).asQuantity(5),
+			UncommonKey().getUpdatedItem(false).asQuantity(2)
 		                                             )
               ) : LevelReward

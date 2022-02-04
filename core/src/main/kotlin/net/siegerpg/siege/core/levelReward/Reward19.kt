@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 
 class Reward19(
 		override val level : Short = 20,
-		override val gold : Int = 10000,
+		override val gold : Int = 7500,
 		override val items : List<ItemStack> = listOf()
               ) : LevelReward {
 

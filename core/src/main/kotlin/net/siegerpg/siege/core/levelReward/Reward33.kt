@@ -13,8 +13,8 @@ import org.bukkit.inventory.ItemStack
 
 class Reward33(
 		override val level : Short = 34,
-		override val gold : Int = 5000,
+		override val gold : Int = 2000,
 		override val items : List<ItemStack> = listOf(
-				Trident(Utils.randRarity()).getUpdatedItem(false)
+				Sugar().getUpdatedItem(false).asQuantity(40)
 		                                             )
               ) : LevelReward

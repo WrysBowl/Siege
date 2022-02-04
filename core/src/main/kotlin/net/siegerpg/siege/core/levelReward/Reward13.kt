@@ -11,7 +11,6 @@ import org.bukkit.inventory.ItemStack
 
 class Reward13(
 		override val level : Short = 14,
-		override val gold : Int = 500,
-		override val items : List<ItemStack> = listOf(
-				MagmaChestplate(Utils.randRarity()).getUpdatedItem(false))
+		override val gold : Int = 3000,
+		override val items : List<ItemStack> = listOf()
               ) : LevelReward

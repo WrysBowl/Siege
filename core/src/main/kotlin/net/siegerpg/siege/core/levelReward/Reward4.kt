@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.NormalKey
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey
 import net.siegerpg.siege.core.listeners.GoldExpListener
@@ -12,6 +13,6 @@ class Reward4(
 		override val level : Short = 5,
 		override val gold : Int = 750,
 		override val items : List<ItemStack> = listOf(
-				MobKey(0).getUpdatedItem(false).asQuantity(2)
+				CommonKey().getUpdatedItem(false).asQuantity(1)
 		                                             )
              ) : LevelReward

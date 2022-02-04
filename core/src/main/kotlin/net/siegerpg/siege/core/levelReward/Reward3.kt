@@ -11,9 +11,6 @@ import org.bukkit.inventory.ItemStack
 
 class Reward3(
 		override val level : Short = 4,
-		override val gold : Int = 0,
-		override val items : List<ItemStack> = listOf(
-				LivingTwig(Utils.randRarity()).getUpdatedItem(false),
-				SlimyHelmet(Utils.randRarity()).getUpdatedItem(false)
-		                                             )
+		override val gold : Int = 500,
+		override val items : List<ItemStack> = listOf()
              ) : LevelReward

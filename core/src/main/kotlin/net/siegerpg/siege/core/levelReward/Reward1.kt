@@ -7,8 +7,6 @@ import org.bukkit.inventory.ItemStack
 
 class Reward1(
 		override val level : Short = 2,
-		override val gold : Int = 250,
-		override val items : List<ItemStack> = listOf(
-				ScrapyardBow(Utils.randRarity()).getUpdatedItem(false)
-		                                             )
+		override val gold : Int = 200,
+		override val items : List<ItemStack> = listOf()
              ) : LevelReward

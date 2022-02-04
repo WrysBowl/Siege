@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.LeatherChestplate
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.RareKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Leather
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.FemurBone
 import net.siegerpg.siege.core.listeners.GoldExpListener
@@ -13,6 +14,6 @@ class Reward16(
 		override val level : Short = 17,
 		override val gold : Int = 500,
 		override val items : List<ItemStack> = listOf(
-				LeatherChestplate(Utils.randRarity()).getUpdatedItem(false)
+				RareKey().getUpdatedItem(false).asQuantity(1)
 		                                             )
               ) : LevelReward

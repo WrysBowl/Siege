@@ -12,9 +12,8 @@ import org.bukkit.inventory.ItemStack
 
 class Reward25(
 		override val level : Short = 26,
-		override val gold : Int = 3000,
+		override val gold : Int = 1000,
 		override val items : List<ItemStack> = listOf(
-				Sugar().getUpdatedItem(false).asQuantity(10),
-				Crossbow(Utils.randRarity()).getUpdatedItem(false)
+				Sugar().getUpdatedItem(false).asQuantity(32),
 		                                             )
               ) : LevelReward

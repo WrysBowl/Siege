@@ -10,8 +10,6 @@ import org.bukkit.inventory.ItemStack
 
 class Reward10(
 		override val level : Short = 11,
-		override val gold : Int = 1000,
-		override val items : List<ItemStack> = listOf(
-				FemurBone(Utils.randRarity()).getUpdatedItem(false)
-		                                             )
+		override val gold : Int = 2000,
+		override val items : List<ItemStack> = listOf()
               ) : LevelReward
