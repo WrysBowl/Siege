@@ -46,6 +46,7 @@ public class Fishing extends CustomEvent {
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("<color:#5AEBA2><bold>Fishing Tournament"));
 		Bukkit.broadcast(Utils.parse("<gray>Duration (<aqua>"+Utils.secondsToHHMMSS(this.duration)+"<gray>)"));
+		Bukkit.broadcast(Utils.parse("<color:#e6a05e>3 Players Required"));
 		Bukkit.broadcast(Utils.parse(""));
 		Bukkit.broadcast(Utils.parse("  <color:#5AEBA2>The harder the fish you catch,"));
 		Bukkit.broadcast(Utils.parse("  <color:#5AEBA2>the higher your score becomes!"));
@@ -91,8 +92,10 @@ public class Fishing extends CustomEvent {
 
 		List< Map.Entry<Player, Integer> > top3 = playerScores.entrySet().stream().sorted(
 				Map.Entry.comparingByValue(reverseOrder())).limit(3).collect(toList());
-		if (top3.size() != 3) {
-			Bukkit.broadcast(Utils.parse("<red>No one participated in the fishing tournament."));
+		playerScores = null;
+		playerFishingHistory = null;
+		if (top3.size() < 3) {
+			Bukkit.broadcast(Utils.parse("<red>Not enough people participated in this tournament."));
 			return;
 		}
 
@@ -113,8 +116,6 @@ public class Fishing extends CustomEvent {
 		Bukkit.broadcast(Utils.parse(""));
 
 		GoldExpListener.giveGold(winner, totalPoints);
-		playerScores = null;
-		playerFishingHistory = null;
 	}
 
 	public static void sendLeaderboardTopLimit(int limit) {
