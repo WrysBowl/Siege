@@ -342,7 +342,7 @@ public class Drops implements CommandExecutor {
 		menu.addPane(background);
 
 		OutlinePane row = new OutlinePane(1, 1, 7, 2);
-		OutlinePane menuButton = new OutlinePane(0, 5, 1, 1);
+		OutlinePane menuButton = new OutlinePane(0, 4, 1, 1);
 
 
 		menuButton.addItem(new GuiItem(getIconBack(), inventoryClickEvent -> {
