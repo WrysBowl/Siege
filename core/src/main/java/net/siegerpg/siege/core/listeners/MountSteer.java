@@ -108,6 +108,8 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 		if (!(customItem instanceof CustomMount)) return;
 
+		if (message.contains("[item]")) return;
+
 		CustomMount mount = ((CustomMount)customItem);
 		mount.setName(message);
 		mount.serialize();
