@@ -144,8 +144,12 @@ public class GemRemover implements Listener {
 	private void getGem(Player player) {
 
 		CustomEquipment equipmentItem = ((CustomEquipment)this.item);
-
-		player.getInventory().remove(equipmentItem.getItem().asOne());
+		try {
+			player.getInventory().remove(equipmentItem.getItem().asOne());
+		} catch (Exception ignored) {
+			player.sendMessage(Utils.lore("<red>Couldn't find the item in your inventory."));
+			return;
+		}
 
 
 		VaultHook.econ.withdrawPlayer(player, getCost()); //takes the cost they put in from the player
