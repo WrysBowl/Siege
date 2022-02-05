@@ -16,7 +16,7 @@ public class Necromancer extends Dungeon {
 
 		super("Necromancer", 1,
 		      new NecromancerKey(0),
-		      new Location(null, -265, 82, 285), "Hilly_Woods",
+		      new Location(null, -367, 85, 463), "Hilly_Woods",
 		      100
 		     );
 	}
