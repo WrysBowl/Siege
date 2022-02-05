@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.fishing.catches;
 
 import de.tr7zw.nbtapi.NBTItem;
+import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -73,9 +74,6 @@ public class Fish {
 		meta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<yellow>Size <gray>" + actualSize + " cm"));
-				add(Utils.lore(""));
-				add(Utils.lore("<gray>Right click <gold>Henry Fisher"));
-				add(Utils.lore("<gray>to sell the fish in your hand!"));
 			}
 		});
 		item.setItemMeta(meta);

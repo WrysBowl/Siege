@@ -149,14 +149,14 @@ public class Herbert implements Listener {
 
 	public static int getSellValue(ItemStack item) {
 		int total = 1;
-		CustomItem cItem = CustomItemUtils.INSTANCE.getCustomItem(item);
-		if (cItem == null) return total;
 		int fishPossibility = getFishSellValue(item);
 		if (fishPossibility > 0) return fishPossibility;
+		CustomItem cItem = CustomItemUtils.INSTANCE.getCustomItem(item);
+		if (cItem == null) return total;
 		return cItem.getSellValue();
 	}
 
-	private static int getFishSellValue(ItemStack item) {
+	public static int getFishSellValue(ItemStack item) {
 		int total = 0;
 
 		NBTItem nbt = new NBTItem(item);
