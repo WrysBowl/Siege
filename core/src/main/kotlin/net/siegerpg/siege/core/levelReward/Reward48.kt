@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.EpicKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.CorruptCrystal
@@ -17,6 +18,6 @@ class Reward48(
 		override val level : Short = 49,
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
-				LuminousBow(Utils.randRarity()).getUpdatedItem(false)
+				EpicKey().getUpdatedItem(false)
 		                                             )
               ) : LevelReward

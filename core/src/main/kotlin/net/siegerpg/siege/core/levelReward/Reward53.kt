@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.Nightshade
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.LuminousBow
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.Utils
+import net.siegerpg.siege.core.webstore.categories.boosters.EXPBooster_20
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -20,8 +21,6 @@ class Reward53(
 		override val level : Short = 54,
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
-				PristineToughGem(0).getUpdatedItem(false),
-				Sugar().getUpdatedItem(false).asQuantity(8),
-				MobKey(0).getUpdatedItem(false).asQuantity(16)
+				EXPBooster_20().boosterItem.asQuantity(3)
 		                                             )
               ) : LevelReward

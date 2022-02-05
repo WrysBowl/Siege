@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack
 
 class Reward49(
 		override val level : Short = 50,
-		override val gold : Int = 25000,
+		override val gold : Int = 15000,
 		override val items : List<ItemStack> = listOf(
 				EpicKey().getUpdatedItem(false).asQuantity(2)
 		                                             )

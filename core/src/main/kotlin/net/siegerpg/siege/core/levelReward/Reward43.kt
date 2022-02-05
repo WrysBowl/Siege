@@ -17,8 +17,7 @@ class Reward43(
 		override val level : Short = 44,
 		override val gold : Int = 1000,
 		override val items : List<ItemStack> = listOf(
-				GoldenCarrot().getUpdatedItem(false).asQuantity(5),
-				Sugar().getUpdatedItem(false).asQuantity(10),
-				Nightshade(Utils.randRarity()).getUpdatedItem(false)
+				GoldenCarrot().getUpdatedItem(false).asQuantity(15),
+				Sugar().getUpdatedItem(false).asQuantity(20)
 		                                             )
               ) : LevelReward

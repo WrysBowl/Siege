@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.CorruptCrystal
@@ -15,9 +16,9 @@ import org.bukkit.inventory.ItemStack
 
 class Reward42(
 		override val level : Short = 43,
-		override val gold : Int = 3000,
+		override val gold : Int = 0,
 		override val items : List<ItemStack> = listOf(
 				GoldenCarrot().getUpdatedItem(false).asQuantity(5),
-				CursedSickle(Utils.randRarity()).getUpdatedItem(false)
+				UncommonKey().getUpdatedItem(false).asQuantity(5)
 		                                             )
               ) : LevelReward

@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Ref
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.CorruptCrystal
 import net.siegerpg.siege.core.items.implemented.misc.statgems.luckGems.PolishedLuckGem
 import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.PristineToughGem
+import net.siegerpg.siege.core.items.implemented.misc.tools.GlowingSteelPickaxe
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.Nightshade
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.LuminousBow
 import net.siegerpg.siege.core.listeners.GoldExpListener
@@ -20,8 +21,7 @@ class Reward55(
 		override val level : Short = 56,
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
-				Nightshade(Utils.randRarity()).getUpdatedItem(false),
-				Sugar().getUpdatedItem(false).asQuantity(16),
+				GlowingSteelPickaxe().getUpdatedItem(false),
 				MobKey(0).getUpdatedItem(false).asQuantity(10)
 		                                             )
               ) : LevelReward

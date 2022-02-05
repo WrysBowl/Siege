@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
+import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.RefinedMetal
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.CorruptCrystal
@@ -14,8 +15,8 @@ import org.bukkit.inventory.ItemStack
 
 class Reward40(
 		override val level : Short = 41,
-		override val gold : Int = 5000,
+		override val gold : Int = 0,
 		override val items : List<ItemStack> = listOf(
-				SimpleStrengthGem(0).getUpdatedItem(false)
+				MobKey().getUpdatedItem(false).asQuantity(12)
 		                                             )
               ) : LevelReward
