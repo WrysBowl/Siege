@@ -13,9 +13,6 @@ import org.bukkit.inventory.ItemStack
 
 class Reward35(
 		override val level : Short = 36,
-		override val gold : Int = 4000,
-		override val items : List<ItemStack> = listOf(
-				SimpleToughGem(Utils.randRarity()).getUpdatedItem(false),
-				IronChestplate(Utils.randRarity()).getUpdatedItem(false)
-		                                             )
+		override val gold : Int = 10000,
+		override val items : List<ItemStack> = listOf()
               ) : LevelReward

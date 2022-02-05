@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack
 
 class Reward34(
 		override val level : Short = 35,
-		override val gold : Int = 5000,
+		override val gold : Int = 0,
 		override val items : List<ItemStack> = listOf(
 				MobKey().getUpdatedItem(false).asQuantity(10)
 		                                             )
