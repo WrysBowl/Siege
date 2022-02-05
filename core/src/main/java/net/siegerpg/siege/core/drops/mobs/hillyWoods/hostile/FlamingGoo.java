@@ -18,7 +18,7 @@ public class FlamingGoo extends MobDropTable {
 
 	public FlamingGoo() {
 
-		super("FlamingGoo", 3, 6, 5, 7, new Reward[] {
+		super("FlamingGoo", 3, 6, 10, 14, new Reward[] {
 				new Reward(new Magma()
 						           .getUpdatedItem(false), 50.0),
 				new Reward(new Magma()

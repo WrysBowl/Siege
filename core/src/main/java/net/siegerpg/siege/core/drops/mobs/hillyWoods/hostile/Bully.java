@@ -20,7 +20,7 @@ public class Bully extends MobDropTable {
 
 	public Bully() {
 
-		super("Bully", 12, 15, 20, 23, new Reward[] {
+		super("Bully", 12, 15, 30, 33, new Reward[] {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 50.0),
 				new Reward(new Leather()

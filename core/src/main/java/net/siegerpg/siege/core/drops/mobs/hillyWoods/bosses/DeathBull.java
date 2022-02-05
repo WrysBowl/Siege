@@ -23,7 +23,7 @@ public class DeathBull extends MobDropTable {
 
 	public DeathBull() {
 
-		super("DeathBull", 37, 40, 46, 49, new Reward[] {
+		super("DeathBull", 37, 40, 56, 59, new Reward[] {
 				new Reward(new Leather().getUpdatedItem(false), 100.0),
 				new Reward(new Leather().getUpdatedItem(false).asQuantity(4), 10.0),
 				new Reward(new Bone().getUpdatedItem(false), 50.0),

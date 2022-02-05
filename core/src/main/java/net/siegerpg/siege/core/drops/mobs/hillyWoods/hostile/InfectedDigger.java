@@ -23,7 +23,7 @@ public class InfectedDigger extends MobDropTable {
 
 	public InfectedDigger() {
 
-		super("InfectedDigger", 50, 54, 54, 57, new Reward[] {
+		super("InfectedDigger", 50, 54, 64, 67, new Reward[] {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 21.0),
 				new Reward(new Leather()

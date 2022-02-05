@@ -25,7 +25,7 @@ public class AngryBull extends MobDropTable {
 
 	public AngryBull() {
 
-		super("AngryBull", 17, 20, 26, 29, new Reward[] {
+		super("AngryBull", 17, 20, 36, 39, new Reward[] {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 80.0),
 				new Reward(new Leather()

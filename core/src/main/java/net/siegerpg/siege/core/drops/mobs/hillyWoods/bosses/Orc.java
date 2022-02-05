@@ -22,7 +22,7 @@ public class Orc extends MobDropTable {
 
 	public Orc() {
 
-		super("Orc", 55, 59, 60, 64, new Reward[] {
+		super("Orc", 55, 59, 80, 84, new Reward[] {
 				new Reward(new Leather().getUpdatedItem(false), 50.0),
 				new Reward(new Leather().getUpdatedItem(false).asQuantity(4), 1.0),
 				new Reward(new Bone().getUpdatedItem(false), 50.0),

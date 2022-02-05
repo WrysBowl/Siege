@@ -25,7 +25,7 @@ public class Skeletal_Archer extends MobDropTable {
 
 	public Skeletal_Archer() {
 
-		super("Skeletal_Archer", 60, 70, 80, 90, new Reward[] {
+		super("Skeletal_Archer", 60, 70, 90, 100, new Reward[] {
 				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 100.0),

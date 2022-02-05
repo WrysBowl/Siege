@@ -21,7 +21,7 @@ public class Mercenary extends MobDropTable {
 
 	public Mercenary() {
 
-		super("Mercenary", 55, 58, 75, 78, new Reward[] {
+		super("Mercenary", 55, 58, 105, 108, new Reward[] {
 				new Reward(new Bone().getUpdatedItem(false), 100.0),
 				new Reward(new Bone().getUpdatedItem(false).asQuantity(4), 10.0),
 				new Reward(new MetalScrap().getUpdatedItem(false), 50.0),

@@ -17,7 +17,7 @@ public class RockSpirit extends MobDropTable {
 
 	public RockSpirit() {
 
-		super("RockSpirit", 67, 70, 66, 69, new Reward[] {
+		super("RockSpirit", 67, 70, 126, 129, new Reward[] {
 				new Reward(new Pebble().getUpdatedItem(false).asQuantity(4), 100.0),
 				new Reward(new Pebble().getUpdatedItem(false).asQuantity(8), 10.0),
 

@@ -11,7 +11,7 @@ public class Sea_Warrior extends MobDropTable {
 
 	public Sea_Warrior() {
 
-		super("Sea_Warrior", 47, 50, 56, 59, new Reward[] {
+		super("Sea_Warrior", 47, 50, 66, 69, new Reward[] {
 				new Reward(new MetalScrap()
 						           .getUpdatedItem(false)
 						           .asQuantity(2), 100.0),

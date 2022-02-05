@@ -29,7 +29,7 @@ public class Skeletal_Warrior extends MobDropTable {
 
 	public Skeletal_Warrior() {
 
-		super("Skeletal_Warrior", 80, 90, 60, 70, new Reward[] {
+		super("Skeletal_Warrior", 80, 90, 70, 80, new Reward[] {
 				new Reward(new Bone()
 						           .getUpdatedItem(false)
 						           .asQuantity(4), 100.0),

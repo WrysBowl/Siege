@@ -15,7 +15,7 @@ public class ScrapRat extends MobDropTable {
 
 	public ScrapRat() {
 
-		super("ScrapRat", 13, 15, 12, 14, new Reward[] {
+		super("ScrapRat", 13, 15, 22, 24, new Reward[] {
 				new Reward(new Pebble()
 						           .getUpdatedItem(false), 100.0),
 				new Reward(new Pebble()

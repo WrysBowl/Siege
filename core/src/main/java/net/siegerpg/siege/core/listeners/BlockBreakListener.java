@@ -8,8 +8,7 @@ import net.siegerpg.siege.core.drops.materials.*;
 import net.siegerpg.siege.core.drops.materials.decor.*;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
-import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
-import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.*;
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -259,10 +258,10 @@ public class BlockBreakListener implements Listener {
 		if (rewardableBlocks.contains(blockType)) {
 			e.setCancelled(false);
 			if (Utils.randTest(20.0)) {
-				GoldEXPSpawning.spawnEXP(1, loc);
+				Levels.INSTANCE.addExpShared(player, 1);
 			}
 			if (Utils.randTest(20.0)) {
-				GoldEXPSpawning.spawnGold(1, loc);
+				GoldExpListener.giveGold(player, 1);
 			}
 			//after 30 seconds, block respawns back
 			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {

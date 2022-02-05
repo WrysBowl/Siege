@@ -16,7 +16,7 @@ public class Goblin extends MobDropTable {
 
 	public Goblin() {
 
-		super("Goblin", 30, 33, 30, 33, new Reward[] {
+		super("Goblin", 30, 33, 40, 43, new Reward[] {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 21.0),
 				new Reward(new Leather()
