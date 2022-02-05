@@ -64,6 +64,7 @@ public class Fishing extends CustomEvent {
 			@Override
 			public void run() {
 				if (!(CustomEventListener.currentlyActive instanceof Fishing)) this.cancel();
+				if (playerScores == null) this.cancel();
 				if (playerScores.isEmpty()) this.cancel();
 				sendLeaderboardTopLimit(10);
 			}

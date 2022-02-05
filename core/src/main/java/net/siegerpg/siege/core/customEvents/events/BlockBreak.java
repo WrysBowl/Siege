@@ -60,6 +60,7 @@ public class BlockBreak extends CustomEvent {
 			@Override
 			public void run() {
 				if (!(CustomEventListener.currentlyActive instanceof BlockBreak)) this.cancel();
+				if (playerScores == null) this.cancel();
 				if (playerScores.isEmpty()) this.cancel();
 				sendLeaderboardTopLimit(10);
 			}

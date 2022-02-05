@@ -61,6 +61,7 @@ public class Mobs extends CustomEvent {
 			@Override
 			public void run() {
 				if (!(CustomEventListener.currentlyActive instanceof Mobs)) this.cancel();
+				if (playerScores == null) this.cancel();
 				if (playerScores.isEmpty()) this.cancel();
 				sendLeaderboardTopLimit(10);
 			}
