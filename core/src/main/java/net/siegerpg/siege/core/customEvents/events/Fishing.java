@@ -93,8 +93,8 @@ public class Fishing extends CustomEvent {
 
 		List< Map.Entry<Player, Integer> > top3 = playerScores.entrySet().stream().sorted(
 				Map.Entry.comparingByValue(reverseOrder())).limit(3).collect(toList());
-		playerScores = null;
-		playerFishingHistory = null;
+		playerScores.clear();
+		playerFishingHistory.clear();
 		if (top3.size() < 3) {
 			Bukkit.broadcast(Utils.parse("<red>Not enough people participated in this tournament."));
 			return;
@@ -120,6 +120,12 @@ public class Fishing extends CustomEvent {
 	}
 
 	public static void sendLeaderboardTopLimit(int limit) {
+
+		if (playerScores == null) {
+			Bukkit.broadcast(Utils.parse("<red>Not enough people participated in this tournament."));
+			return;
+		}
+
 		List< Map.Entry<Player, Integer> > topPlayersLimit = playerScores.entrySet().stream().sorted(
 				Map.Entry.comparingByValue(reverseOrder())).limit(limit).collect(toList());
 
