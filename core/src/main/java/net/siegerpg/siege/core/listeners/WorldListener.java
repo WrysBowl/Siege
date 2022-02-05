@@ -100,15 +100,6 @@ public class WorldListener extends PacketListenerAbstract implements Listener, R
 	}
 
 	@EventHandler
-	public void onRodThrow(final ProjectileLaunchEvent e) {
-
-		final double v = 2.0; //velocity of the rod
-		if (e.getEntityType().equals(EntityType.FISHING_HOOK)) {
-			e.getEntity().setVelocity(e.getEntity().getVelocity().multiply(v));
-		}
-	}
-
-	@EventHandler
 	public void onEntityEnter(EntityEnterBlockEvent e) {
 
 		if (e.getEntity() instanceof Bee) {
