@@ -80,7 +80,6 @@ public class BlockBreak extends CustomEvent {
 		}
 
 		int counter = 1;
-		int totalPoints = 0;
 		Player winner = top3.get(0).getKey();
 
 		Bukkit.broadcast(Utils.parse(""));
@@ -91,11 +90,10 @@ public class BlockBreak extends CustomEvent {
 		for (Map.Entry<Player, Integer> entry : top3) {
 			Bukkit.broadcast(Utils.parse("  <aqua>"+counter+" <yellow>"+entry.getKey().getName()+" <gray>scored <color:#E1CE55>"+entry.getValue()+" pts."));
 			counter++;
-			totalPoints += entry.getValue();
 		}
 		Bukkit.broadcast(Utils.parse(""));
 
-		GoldExpListener.giveGold(winner, totalPoints);
+		GoldExpListener.giveGold(winner, getTotalPoints());
 	}
 
 	public static void sendLeaderboardTopLimit(int limit) {
