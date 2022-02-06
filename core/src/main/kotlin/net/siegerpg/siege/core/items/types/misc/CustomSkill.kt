@@ -98,7 +98,7 @@ abstract class CustomSkill(
 
 
 		//check if skill passes conditions
-		if(!skill.trigger(player, this.level)) return
+		//if(!skill.trigger(player, this.level)) return
 
 		val initTime : Instant = Instant.now()
 		val endTime : Instant = SkillCooldown.getResetTime(player.uniqueId, skill) ?: initTime.plusSeconds(3)

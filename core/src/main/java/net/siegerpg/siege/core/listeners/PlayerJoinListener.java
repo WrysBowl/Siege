@@ -7,13 +7,14 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.skills.warrior.Slash;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.miscellaneous.*;
-import org.bukkit.Bukkit;
-import org.bukkit.Sound;
+import net.siegerpg.siege.core.skills.warrior.*;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -107,7 +108,12 @@ public class PlayerJoinListener implements Listener {
 			Scoreboard.updateScoreboard(p);
 			Tablist.tablistUpdate(p);
 		}
-		if (player.getName().equals("Wrys")) {
+		if (player.getName().equals("MyBrother")) {
+
+			event.getPlayer().sendMessage(ChatColor.GOLD + "EYO UR BACK");
+			event.getPlayer().spawnParticle(Particle.TOTEM, player.getLocation(), 2);
+			event.getPlayer().playSound(player.getLocation(), Sound.BLOCK_END_PORTAL_SPAWN, 1f, 0.5f);
+			event.getPlayer().getInventory().addItem(new Slash().getUpdatedItem(false));
 
 		}
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
