@@ -42,6 +42,12 @@ public class RarityRoll implements Listener {
 		}
 		player.sendMessage(Utils.lore("<red>You must be holding a weapon!"));
 	}
+	public void openInventory(Player player, CustomItem customItem) {
+		if (customItem instanceof CustomArmor || customItem instanceof CustomWeapon) {
+			RarityRoll instance = new RarityRoll(customItem);
+			instance.getMenu(player).show(player);
+		}
+	}
 
 
 	private ChestGui getMenu(Player player) {
@@ -97,7 +103,7 @@ public class RarityRoll implements Listener {
 			{
 				add(Utils.lore("<gray>Click to roll a"));
 				add(Utils.lore("<gray>new rarity for"));
-				add(Utils.lore("<yellow>"+getCost()+" \u26C1"));
+				add(Utils.lore("<yellow>"+String.format("%,d", getCost())+" \u26C1"));
 			}
 		});
 		icon.setItemMeta(iconMeta);
@@ -125,7 +131,6 @@ public class RarityRoll implements Listener {
 		}
 
 		//removes cost of re-roll from player's balance
-		player.sendMessage(Utils.tacc("&eYou re-rolled your item's quality!"));
 		player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1.0f, 1.0f);
 		VaultHook.econ.withdrawPlayer(player, getCost());
 		Scoreboard.updateScoreboard(player);
@@ -147,7 +152,9 @@ public class RarityRoll implements Listener {
 
 		//give player copied item
 		Utils.giveItem(player, copiedItem.getUpdatedItem(false));
-		openInventory(player);
+		openInventory(player, this.item);
+
+		player.sendMessage(Utils.tacc("&eYou rolled "+rarity+" on your item!"));
 	}
 
 }
