@@ -79,35 +79,53 @@ public class DoubleStrike extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		if(!super.trigger(player, level)) return false;
+		if (!super.trigger(player, level)) return false;
 
 		//used to calculate slash damage radius
-		Vector vector = player.getLocation().getDirection();
+		Vector vector = player
+				.getLocation()
+				.getDirection();
 
 		//location of particle effect
-		Location location = player.getEyeLocation().add(vector.multiply(2));
+		Location location = player
+				.getEyeLocation()
+				.add(vector.multiply(2));
 
 		//damage to deal
 		double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH);
 
 		//actually damage entity
-		for (LivingEntity entity : location.getNearbyLivingEntities(2, 2, 2)) {
-			if (entity.equals(player)) continue;
 
-			//bukkit runnable to run when hit
-			new BukkitRunnable() {
-				int counter = 1;
-				final int repeatingTimes = entity.hasPotionEffect(PotionEffectType.WEAKNESS) ? 3 : 2;
-				@Override public void run() {
+		//bukkit runnable to run when hit
+		new BukkitRunnable() {
+			int counter = 1;
+			int max = 2; //max amount of slashes to do
+
+			@Override
+			public void run() {
+				if(counter > max){
+					triggerEnd(player, level);
+					this.cancel();
+				}
+
+				for (LivingEntity entity : location.getNearbyLivingEntities(2, 2, 2)) {
+					if (entity.equals(player)) continue;
 
 					damage(player, location, damage, entity);
-					if(counter == repeatingTimes){
-						triggerEnd(player, level);
+
+					if (counter != 3) continue; //if the counter is on the third slash iteration
+
+					if (entity.hasPotionEffect(PotionEffectType.WEAKNESS)) {
+						max = 3; //increase the max amount by one, dealing one more slash
 					}
-					counter++;
 				}
-			}.runTaskTimer(Core.plugin(),20L, entity.hasPotionEffect(PotionEffectType.WEAKNESS)? 3:2);
-		}
+				counter++;
+			}
+
+		}.runTaskTimer(Core.plugin(), 20L, 10L);
+
+		return true;
+
 	}
 
 	@Override
