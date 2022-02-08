@@ -90,53 +90,24 @@ public class DoubleStrike extends Skill {
 		//damage to deal
 		double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH);
 
-		boolean isNoEntityWeakened = true;
-
 		//actually damage entity
 		for (LivingEntity entity : location.getNearbyLivingEntities(2, 2, 2)) {
 			if (entity.equals(player)) continue;
 
 			//bukkit runnable to run when hit
-			BukkitRunnable runnable = new BukkitRunnable()
-			{
-				@Override public void run() {damage(player, location, damage, entity);}
-			};
-
-			// first damage
-			damage(player, location, damage, entity);
-
-			// second damage
-			runnable.runTaskLater(Core.plugin(),20L);
-
-
-			if (entity.hasPotionEffect(PotionEffectType.WEAKNESS)) {
-
-				isNoEntityWeakened = false;
-
-				// third damage if entity is weakened
-				runnable.runTaskLater(Core.plugin(), 40L);
-			}
-		}
-
-		//trigger end
-		if(isNoEntityWeakened){
 			new BukkitRunnable() {
-				@Override
-				public void run() {
-					triggerEnd(player, level);
-				}
-			}.runTaskLater(Core.plugin(), 20);
-		} else{
-			new BukkitRunnable() {
-				@Override
-				public void run() {
-					triggerEnd(player, level);
-				}
-			}.runTaskLater(Core.plugin(), 40);
-		}
+				int counter = 1;
+				final int repeatingTimes = entity.hasPotionEffect(PotionEffectType.WEAKNESS) ? 3 : 2;
+				@Override public void run() {
 
-		return true;
-		// Handling of the skill goes here
+					damage(player, location, damage, entity);
+					if(counter == repeatingTimes){
+						triggerEnd(player, level);
+					}
+					counter++;
+				}
+			}.runTaskTimer(Core.plugin(),20L, entity.hasPotionEffect(PotionEffectType.WEAKNESS)? 3:2);
+		}
 	}
 
 	@Override
