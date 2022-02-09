@@ -48,15 +48,6 @@ public class GemRemover implements Listener {
 		this.gem = gem;
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onRightClickOnEntity(PlayerInteractEvent e) {
-
-		if (e.getClickedBlock() != null && e.getClickedBlock().getType().equals(Material.CHIPPED_ANVIL)) {
-			e.setCancelled(true);
-			openInventory(e.getPlayer());
-		}
-	}
-
 	public void openInventory(Player player) {
 		ItemStack item = player.getInventory().getItemInMainHand();
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
@@ -145,8 +136,10 @@ public class GemRemover implements Listener {
 
 		CustomEquipment equipmentItem = ((CustomEquipment)this.item);
 		try {
-			player.getInventory().remove(equipmentItem.getItem().asOne());
+			ItemStack removedItem = equipmentItem.getItem().asOne();
+			player.getInventory().remove(removedItem);
 		} catch (Exception ignored) {
+			player.closeInventory();
 			player.sendMessage(Utils.lore("<red>Couldn't find the item in your inventory."));
 			return;
 		}

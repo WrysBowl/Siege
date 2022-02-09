@@ -14,7 +14,7 @@ public class PlayerQuitListener implements Listener {
 
 	@EventHandler
 	public void quitEvent(PlayerQuitEvent e) {
-
+		e.getPlayer().closeInventory();
 		e.quitMessage(Utils.parse("<red><bold>LEAVE <reset><gray>[<red>-<gray>] " + e
 				.getPlayer()
 				.getName()));
