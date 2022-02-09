@@ -2,8 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import kotlin.Pair;
 import net.kyori.adventure.text.Component;
-import net.siegerpg.siege.core.miscellaneous.Levels;
-import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -20,7 +19,9 @@ public class ChatListener implements Listener {
 
 		Player player = e.getPlayer();
 		Pair< Short, Integer > levelExp = Levels.INSTANCE.blockingGetExpLevel(player);
-		String level = "&8[&d" + (levelExp != null ? levelExp.getFirst() : 0) + "&8]";
+		int lvl = (levelExp != null ? levelExp.getFirst() : 0);
+		String lvlColor = LevelColor.Companion.getFromInt(lvl).getColor();
+		String level = "&8["+ lvlColor + lvl + "&8]";
 		String prefix = net.siegerpg.siege.core.miscellaneous.VaultHook.perms.getPrimaryGroup(player);
 		String message = e
 				.getMessage()
