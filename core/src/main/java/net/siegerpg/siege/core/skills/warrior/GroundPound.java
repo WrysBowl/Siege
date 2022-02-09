@@ -76,7 +76,7 @@ public class GroundPound extends Skill {
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
 
 		Vector vector = new Vector(0,2,0);
-		Vector fallVector = new Vector(0,-5,0); //TODO: test vector strength!
+		Vector fallVector = new Vector(0,-5,0); //TO-DO: test vector strength!
 		Location location = player.getLocation();
 
 
