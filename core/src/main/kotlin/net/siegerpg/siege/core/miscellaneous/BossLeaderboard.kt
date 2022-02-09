@@ -104,7 +104,6 @@ class BossLeaderboardListener : Listener {
 		var damager =
 				if (evt.damager is Player) evt.damager as Player
 				else evt.damager
-
 		if (evt.damager is Projectile) {
 			if ((evt.damager as Projectile).shooter is Player) {
 				damager = (evt.damager as Projectile).shooter as Player
@@ -145,8 +144,7 @@ class BossLeaderboardListener : Listener {
 		val hashMapData = HashMap<UUID, Pair<Byte, Int>>()
 		val fightDuration =
 				ceil(
-						(Duration.between(bossFight.startTime, deathTime).abs()
-								 .toMillis() + 100.0) / 1000
+						(Duration.between(bossFight.startTime, deathTime).toSeconds().toDouble())
 				    )
 		bossFight.fighters.forEach { (fighter, damageDone) ->
 			val percentageDamage = floor(damageDone / totalDamageDone * 100).toInt()
@@ -155,8 +153,9 @@ class BossLeaderboardListener : Listener {
 
 			if (dropTable != null) {
 
-				val dropMultiplier = if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
-				val time = Utils.secondsToHHMMSS((fightDuration.toInt() / 20).toLong())
+				val dropMultiplier =
+						if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
+				val time = Utils.secondsToHHMMSS((fightDuration.toInt()).toLong())
 
 				player.sendMessage(Utils.lore(""))
 				player.sendMessage(Utils.lore("<green>You dealt <gold>$percentageDamage% <green>of the damage to the boss!"))
@@ -185,7 +184,10 @@ class BossLeaderboardListener : Listener {
 
 				GoldExpListener.giveGold(player, goldCoinAmt)
 
-				for (drop in getRewards((percentageDamage / 100.0), dropTable)) { //Loop through all drops
+				for (drop in getRewards(
+						(percentageDamage / 100.0),
+						dropTable
+				                       )) { //Loop through all drops
 
 					val itemList = ArrayList<ItemStack>()
 					var i : Double = luck
@@ -199,7 +201,11 @@ class BossLeaderboardListener : Listener {
 
 					//gets proper amount of items using luck
 					for (items in itemList) {
-						DropUtils.dropItemNaturallyForPlayers(evt.entity.location, items, listOf(fighter))
+						DropUtils.dropItemNaturallyForPlayers(
+								evt.entity.location,
+								items,
+								listOf(fighter)
+						                                     )
 					}
 
 					val customItem = getCustomItem(drop) ?: continue
