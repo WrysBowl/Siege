@@ -99,12 +99,8 @@ public class Menu implements CommandExecutor {
 			}
 		}));
 		//Creating Gem Remover
-		utilities.addItem(new GuiItem(getGemRemover(player), e -> {
-			if (player.hasPermission("siege.donor")) {
-				new GemRemover().openInventory(player);
-			} else {
-				player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 0.5f, 0.75f);
-			}
+		utilities.addItem(new GuiItem(getGemRemover(), e -> {
+			new GemRemover().openInventory(player);
 		}));
 		//Creating Drops
 		utilities.addItem(new GuiItem(getDropsIcon(), e -> new Drops().getStartMenu(player).show(player)));
@@ -218,7 +214,7 @@ public class Menu implements CommandExecutor {
 		ItemMeta scrapperIconItemMeta = scrapperIcon.getItemMeta();
 
 		if (player.hasPermission("siege.donor")) {
-			scrapperIconItemMeta.displayName(Utils.lore("<yellow><bold>SCRAPPER"));
+			scrapperIconItemMeta.displayName(Utils.lore("<yellow>SCRAPPER"));
 			scrapperIconItemMeta.lore(new ArrayList<>() {
 				{
 					add(Utils.lore("<gray>Sell items"));
@@ -226,12 +222,12 @@ public class Menu implements CommandExecutor {
 			});
 		} else {
 			scrapperIcon = new ItemStack(Material.BARRIER);
-			scrapperIconItemMeta.displayName(Utils.lore("<red><bold>SCRAPPER"));
+			scrapperIconItemMeta.displayName(Utils.lore("<red>SCRAPPER"));
 			scrapperIconItemMeta.lore(new ArrayList<>() {
 				{
 					add(Utils.lore("<gray>Sell items"));
 					add(Utils.lore(""));
-					add(Utils.lore("<red><bold>/buy rank access"));
+					add(Utils.lore("<red>/buy rank access"));
 				}
 			});
 		}
@@ -240,31 +236,17 @@ public class Menu implements CommandExecutor {
 		return scrapperIcon;
 	}
 
-	private static ItemStack getGemRemover(Player player) {
+	private static ItemStack getGemRemover() {
 		ItemStack gemIcon = new SimpleStrengthGem().getItem();
 		ItemMeta gemIconItemMeta = gemIcon.getItemMeta();
 
-		if (player.hasPermission("siege.donor")) {
-			gemIconItemMeta.displayName(Utils.lore("<light_purple><bold>Gem Remover"));
-			gemIconItemMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Remover gems"));
-					add(Utils.lore("<gray>from your gear"));
-				}
-			});
-		} else {
-			gemIcon = new ItemStack(Material.BARRIER);
-			gemIconItemMeta.displayName(Utils.lore("<red><bold>Gem Remover"));
-			gemIconItemMeta.lore(new ArrayList<>() {
-				{
-					add(Utils.lore("<gray>Remove gems"));
-					add(Utils.lore("<gray>from your gear"));
-					add(Utils.lore(""));
-					add(Utils.lore("<gray>See in person"));
-					add(Utils.lore("<red><bold>/buy rank access"));
-				}
-			});
-		}
+		gemIconItemMeta.displayName(Utils.lore("<color:#ba72b2>Gem Remover"));
+		gemIconItemMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Remover gems"));
+				add(Utils.lore("<gray>from your gear"));
+			}
+		});
 
 		gemIcon.setItemMeta(gemIconItemMeta);
 		return gemIcon;
@@ -273,7 +255,7 @@ public class Menu implements CommandExecutor {
 	private static ItemStack getDropsIcon() {
 		ItemStack dropsIcon = new ItemStack(Material.GRASS_BLOCK);
 		ItemMeta dropsIconItemMeta = dropsIcon.getItemMeta();
-		dropsIconItemMeta.displayName(Utils.lore("<red><bold>DROPS"));
+		dropsIconItemMeta.displayName(Utils.lore("<red>Drops"));
 		dropsIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>View Item Drops!"));
@@ -287,7 +269,7 @@ public class Menu implements CommandExecutor {
 	private static ItemStack getReRollIcon() {
 		ItemStack dropsIcon = new ItemStack(Material.RESPAWN_ANCHOR);
 		ItemMeta dropsIconItemMeta = dropsIcon.getItemMeta();
-		dropsIconItemMeta.displayName(Utils.lore("<color:#B5EB5A><bold>RE-ROLL"));
+		dropsIconItemMeta.displayName(Utils.lore("<color:#B5EB5A>RE-ROLL"));
 		dropsIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Re-roll your item's quality!"));
@@ -303,7 +285,7 @@ public class Menu implements CommandExecutor {
 		ItemMeta vaultIconItemMeta = vaultIcon.getItemMeta();
 
 		if (player.hasPermission("siege.donor")) {
-			vaultIconItemMeta.displayName(Utils.lore("<green><bold>VAULT"));
+			vaultIconItemMeta.displayName(Utils.lore("<green>VAULT"));
 			vaultIconItemMeta.lore(new ArrayList<>() {
 				{
 					add(Utils.lore("<gray>Access vaults"));
@@ -311,13 +293,13 @@ public class Menu implements CommandExecutor {
 			});
 		} else {
 			vaultIcon = new ItemStack(Material.BARRIER);
-			vaultIconItemMeta.displayName(Utils.lore("<red><bold>VAULT"));
+			vaultIconItemMeta.displayName(Utils.lore("<red>VAULT"));
 			vaultIconItemMeta.lore(new ArrayList<>() {
 				{
 					add(Utils.lore("<gray>Access vaults"));
 					add(Utils.lore(""));
 					add(Utils.lore("<gray>See in person"));
-					add(Utils.lore("<red><bold>/buy rank access"));
+					add(Utils.lore("<red>/buy rank access"));
 				}
 			});
 		}
@@ -331,7 +313,7 @@ public class Menu implements CommandExecutor {
 		ItemMeta enderChestIconItemMeta = enderChestIcon.getItemMeta();
 
 		if (player.hasPermission("essentials.enderchest")) {
-			enderChestIconItemMeta.displayName(Utils.lore("<light_purple><bold>ENDER CHEST"));
+			enderChestIconItemMeta.displayName(Utils.lore("<light_purple>ENDER CHEST"));
 			enderChestIconItemMeta.lore(new ArrayList<>() {
 				{
 					add(Utils.lore("<gray>Access Ender Chest"));
@@ -340,13 +322,13 @@ public class Menu implements CommandExecutor {
 		} else {
 			enderChestIcon = new ItemStack(Material.BARRIER);
 			enderChestIconItemMeta = enderChestIcon.getItemMeta();
-			enderChestIconItemMeta.displayName(Utils.lore("<red><bold>ENDER CHEST"));
+			enderChestIconItemMeta.displayName(Utils.lore("<red>ENDER CHEST"));
 			enderChestIconItemMeta.lore(new ArrayList<>() {
 				{
 					add(Utils.lore("<gray>Access Ender Chest"));
 					add(Utils.lore(""));
 					add(Utils.lore("<gray>See in person"));
-					add(Utils.lore("<red><bold>/buy rank access"));
+					add(Utils.lore("<red>/buy rank access"));
 				}
 			});
 		}
@@ -362,7 +344,7 @@ public class Menu implements CommandExecutor {
 		int num = getHomePermissionNumber(player);
 		int cost = (int) (Math.pow(num + 4, 3) * 1000);
 
-		iconMeta.displayName(Utils.lore("<color:#E7C261><bold>Purchase Home"));
+		iconMeta.displayName(Utils.lore("<color:#E7C261>Purchase Home"));
 		iconMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore(""));
@@ -384,7 +366,7 @@ public class Menu implements CommandExecutor {
 	private static ItemStack[] getHandIcons(Player player) {
 		ItemStack armorIcon = new ItemStack(Material.BARRIER);
 		ItemMeta armorIconItemMeta = armorIcon.getItemMeta();
-		armorIconItemMeta.displayName(Utils.lore("<red><bold>EMPTY HAND"));
+		armorIconItemMeta.displayName(Utils.lore("<red>EMPTY HAND"));
 		armorIcon.setItemMeta(armorIconItemMeta);
 
 		ArrayList<ItemStack> armorPieces = new ArrayList<>();
@@ -408,7 +390,7 @@ public class Menu implements CommandExecutor {
 	private static ItemStack[] getArmorIcons(Player player) {
 		ItemStack armorIcon = new ItemStack(Material.BARRIER);
 		ItemMeta armorIconItemMeta = armorIcon.getItemMeta();
-		armorIconItemMeta.displayName(Utils.lore("<red><bold>EMPTY"));
+		armorIconItemMeta.displayName(Utils.lore("<red>EMPTY"));
 		armorIcon.setItemMeta(armorIconItemMeta);
 
 		ArrayList<ItemStack> armorPieces = new ArrayList<>();
@@ -459,7 +441,7 @@ public class Menu implements CommandExecutor {
 		total = total + pair.getSecond();
 		String totalFormat = String.format("%,d", total);
 		String expLeft = String.format("%,d", (int) (reqExp - pair.getSecond()));
-		levelIconItemMeta.displayName(Utils.lore("<dark_purple><bold>Level Stats"));
+		levelIconItemMeta.displayName(Utils.lore("<dark_purple>Level Stats"));
 		Pair< Short, Integer > finalPair = pair;
 		levelIconItemMeta.lore(new ArrayList<>() {
 			{
@@ -477,7 +459,7 @@ public class Menu implements CommandExecutor {
 	private static ItemStack getCookieClickerIcon() {
 		ItemStack cookieClickerIcon = new ItemStack(Material.COOKIE);
 		ItemMeta cookieClickerIconItemMeta = cookieClickerIcon.getItemMeta();
-		cookieClickerIconItemMeta.displayName(Utils.lore("<gold><bold>Cookie Clicker"));
+		cookieClickerIconItemMeta.displayName(Utils.lore("<gold>Cookie Clicker"));
 		cookieClickerIconItemMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click to Play"));

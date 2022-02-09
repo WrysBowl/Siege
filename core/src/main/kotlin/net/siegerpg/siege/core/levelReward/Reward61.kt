@@ -21,8 +21,6 @@ import org.bukkit.inventory.ItemStack
 
 class Reward61(
 		override val level : Short = 62,
-		override val gold : Int = 5000,
-		override val items : List<ItemStack> = listOf(
-				PixieDagger(Utils.randRarity()).getUpdatedItem(false)
-		                                             )
+		override val gold : Int = 20000,
+		override val items : List<ItemStack> = listOf()
               ) : LevelReward

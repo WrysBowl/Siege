@@ -19,8 +19,10 @@ import org.bukkit.inventory.ItemStack
 
 class Reward57(
 		override val level : Short = 58,
-		override val gold : Int = 3000,
+		override val gold : Int = 0,
 		override val items : List<ItemStack> = listOf(
-				SporeShot(Utils.randRarity()).getUpdatedItem(false)
+				GoldenCarrot().getUpdatedItem(false).asQuantity(20),
+				Sugar().getUpdatedItem(false).asQuantity(20),
+				MobKey().getUpdatedItem(false),
 		                                             )
               ) : LevelReward

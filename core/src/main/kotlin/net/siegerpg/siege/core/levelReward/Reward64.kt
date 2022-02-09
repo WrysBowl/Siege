@@ -22,7 +22,7 @@ class Reward64(
 		override val level : Short = 65,
 		override val gold : Int = 10000,
 		override val items : List<ItemStack> = listOf(
-				PristineRegenerationGem(0).getUpdatedItem(false).asQuantity(2),
-				MobKey(0).getUpdatedItem(false).asQuantity(3)
+				Sugar().getUpdatedItem(false).asQuantity(10),
+				MobKey().getUpdatedItem(false).asQuantity(8)
 		                                             )
               ) : LevelReward

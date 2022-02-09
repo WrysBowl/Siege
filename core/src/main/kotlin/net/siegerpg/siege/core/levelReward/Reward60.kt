@@ -22,6 +22,6 @@ class Reward60(
 		override val level : Short = 61,
 		override val gold : Int = 10000,
 		override val items : List<ItemStack> = listOf(
-				GlowingTitaniumAxe(0).getUpdatedItem(false)
+				GlowingTitaniumAxe().getUpdatedItem(false)
 		                                             )
               ) : LevelReward
