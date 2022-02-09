@@ -137,7 +137,7 @@ public class GroundPound extends Skill {
 					this.cancel();
 				}
 			}
-		}.runTaskLaterAsynchronously(Core.plugin(), 1L);
+		}.runTaskTimer(Core.plugin(), 1L);
 
 
 
