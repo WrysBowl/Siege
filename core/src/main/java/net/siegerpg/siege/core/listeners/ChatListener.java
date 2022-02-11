@@ -73,15 +73,6 @@ public class ChatListener implements Listener, ChatRenderer {
 					                .append(Utils.lore(" "))
 					                .append(msg));
 		}
-
-		/*
-		e.renderer().render(
-				player,
-				Utils.lore(lvlFormatted + " " + Utils.tacc(prefix) + " " +"<gray>"+player.getName()),
-				message,
-				Audience.audience(e.viewers()));
-
-		 */
 	}
 
 	private boolean saidItem(Component msg) {

@@ -22,7 +22,7 @@ import net.siegerpg.siege.core.listeners.*;
 import net.siegerpg.siege.core.listeners.NPC.*;
 import net.siegerpg.siege.core.miscellaneous.DropUtils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
-import net.siegerpg.siege.core.miscellaneous.cache.MobNames;
+import net.siegerpg.siege.core.miscellaneous.cache.ActiveMobs;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import net.siegerpg.siege.core.parties.PartyCommand;
 import net.siegerpg.siege.core.parties.PartyConfig;
@@ -165,7 +165,7 @@ public final class Core extends JavaPlugin {
 				new PlayerData(),
 				new EntityTeleportListener(),
 				new CosmeticCrateOpen(),
-				new MobNames(),
+				new ActiveMobs(),
 				new DungeonListener(),
 				new WebstoreListener(),
 				new MeraTransit(),

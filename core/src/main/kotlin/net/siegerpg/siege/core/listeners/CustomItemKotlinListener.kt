@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.listeners
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
+import net.siegerpg.siege.core.items.CustomItemUtils.getPlayerStat
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomPotion
@@ -14,8 +15,7 @@ import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import net.siegerpg.siege.core.miscellaneous.DamageIndicator
 import net.siegerpg.siege.core.miscellaneous.Levels
 import net.siegerpg.siege.core.miscellaneous.Utils
-import net.siegerpg.siege.core.miscellaneous.cache.MobNames
-import org.bukkit.Bukkit
+import net.siegerpg.siege.core.miscellaneous.cache.ActiveMobs
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
@@ -241,6 +241,10 @@ class CustomItemKotlinListener : Listener {
 		val isCritical = damage > maxDamage
 
 		setVictimName(victim, e.damage, vicMaxHealth)
+		if (attacker is Player) {
+			val luck = getPlayerStat(attacker, StatTypes.LUCK, attacker.inventory.itemInMainHand)
+			ActiveMobs.addLuck(victim, reducedDamage, luck)
+		}
 		if (victim is Mob) DamageIndicator.showDamageIndicator(reducedDamage, victim.location, isCritical)
 	}
 
@@ -253,7 +257,7 @@ class CustomItemKotlinListener : Listener {
 		if (victim !is Mob) return
 
 		//change the mob's displayed health
-		val displayName : String = MobNames.mobNames[victim] ?: return
+		val displayName : String = ActiveMobs.mobNames[victim] ?: return
 
 		//calculates displayed mob health
 		val mobHealth : BigDecimal = BigDecimal.valueOf(victim.health - damage)

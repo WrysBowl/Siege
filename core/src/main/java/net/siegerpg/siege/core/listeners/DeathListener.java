@@ -24,8 +24,7 @@ import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
-import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers;
-import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
+import net.siegerpg.siege.core.miscellaneous.cache.*;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -195,20 +194,18 @@ public class DeathListener implements Listener, Runnable {
 				.newInstance();
 
 		Player player = e.getEntity().getKiller();
-		double luck = 0.0;
+		Entity victim = e.getEntity();
 		int goldCoinAmt = mobDrop.getGold(true);
 		int exp = mobDrop.getExp(true);
 		Location loc = e.getEntity().getLocation();
 
-		loc.getWorld().spawnParticle(Particle.SOUL.builder().particle(), loc.add(0,1,0), 5);
-
-		if (player != null) {
-			luck = CustomItemUtils.INSTANCE.getPlayerStat(
-					player, StatTypes.LUCK, player.getItemInHand());
-			if (luck < 0) luck = 0;
-
+		//gets the stacked luck of the mob
+		int luck = 0;
+		if (ActiveMobs.luckStacked.containsKey(victim)) {
+			luck = ActiveMobs.luckStacked.get(victim);
 		}
 
+		//gives EXP
 		if (exp > 0 && player != null) {
 			exp = (int) Math.floor(exp * GlobalMultipliers.expMultiplier);
 			if ((Math.random() * 100) <= luck) {
@@ -241,6 +238,8 @@ public class DeathListener implements Listener, Runnable {
 					" <color:#ACD55D>from a "+displayName).hoverEvent(drop);
 			Bukkit.broadcast(miniMessage);
 		}
+
+		loc.getWorld().spawnParticle(Particle.SOUL.builder().particle(), loc.add(0,1,0), 5);
 
 		//adds score to mob
 		if (player == null) return;

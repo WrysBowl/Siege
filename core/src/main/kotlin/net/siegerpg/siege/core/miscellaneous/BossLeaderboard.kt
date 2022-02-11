@@ -9,9 +9,8 @@ import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.drops.MobDropTable
 import net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon.*
 import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
-import net.siegerpg.siege.core.items.CustomItemUtils.getPlayerStat
-import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.listeners.GoldExpListener
+import net.siegerpg.siege.core.miscellaneous.cache.ActiveMobs
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers
 import org.bukkit.Bukkit
 import org.bukkit.entity.LivingEntity
@@ -162,9 +161,13 @@ class BossLeaderboardListener : Listener {
 				player.sendMessage(Utils.lore("<yellow>Time <gray>$time"))
 				player.sendMessage(Utils.lore(""))
 
-				var luck = 0.0
-				luck = getPlayerStat(player, StatTypes.LUCK, player.getItemInHand())
-				if (luck < 0) luck = 0.0
+				//gets the stacked luck of the mob
+
+				//gets the stacked luck of the mob
+				var luck = 0
+				if (ActiveMobs.luckStacked.containsKey(evt.entity)) {
+					luck = ActiveMobs.luckStacked[evt.entity]!!
+				}
 
 				var tableExp = dropTable.getExp(true) ?: 0
 				if (Math.random() * 100 <= luck) {
@@ -190,13 +193,13 @@ class BossLeaderboardListener : Listener {
 				                       )) { //Loop through all drops
 
 					val itemList = ArrayList<ItemStack>()
-					var i : Double = luck
+					var i : Int = luck
 					while (i >= 0) {
 						itemList.add(drop.clone())
-						if (i <= 100 && Utils.randTest(i)) {
+						if (i <= 100 && Utils.randTest(i.toDouble())) {
 							itemList.add(drop.clone())
 						}
-						i -= 100.0
+						i -= 100
 					}
 
 					//gets proper amount of items using luck
