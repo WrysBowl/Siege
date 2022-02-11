@@ -167,8 +167,6 @@ class BossLeaderboardListener : Listener {
 				var luck = 0.0
 				if (ActiveMobs.luckStacked.containsKey(evt.entity)) {
 					luck = ActiveMobs.luckStacked[evt.entity]!!
-					Bukkit.getLogger().info("Luck Total " + ActiveMobs.luckStacked[evt.entity])
-
 				}
 
 				var tableExp = dropTable.getExp(true) ?: 0

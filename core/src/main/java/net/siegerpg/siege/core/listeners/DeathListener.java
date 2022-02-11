@@ -203,8 +203,6 @@ public class DeathListener implements Listener, Runnable {
 		double luck = 0;
 		if (ActiveMobs.luckStacked.containsKey(victim)) {
 			luck = ActiveMobs.luckStacked.get(victim);
-			Bukkit.getLogger().info("Luck Total " + ActiveMobs.luckStacked.get(victim));
-
 		}
 
 		//gives EXP

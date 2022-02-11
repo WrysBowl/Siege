@@ -42,8 +42,6 @@ public class ActiveMobs implements Listener {
 		}
 		luckStacked.put(mob, addedLuck + currentLuck);
 
-		Bukkit.getLogger().info("Luck Total " + luckStacked.get(mob));
-
 	}
 
 }
