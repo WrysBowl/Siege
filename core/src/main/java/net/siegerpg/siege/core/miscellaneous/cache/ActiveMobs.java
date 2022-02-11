@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.miscellaneous.cache;
 
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobSpawnEvent;
+import org.bukkit.*;
 import org.bukkit.attribute.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 public class ActiveMobs implements Listener {
 
 	public static HashMap< Entity, String > mobNames = new HashMap<>();
-	public static HashMap< Entity, Integer > luckStacked = new HashMap<>();
+	public static HashMap< Entity, Double > luckStacked = new HashMap<>();
 
 	@EventHandler
 	public void onSpawn(MythicMobSpawnEvent e) {
@@ -30,10 +31,19 @@ public class ActiveMobs implements Listener {
 		if (genericMaxHealth == null) return;
 
 		double maxHealth = genericMaxHealth.getValue();
+		double currentHealth = mob.getHealth();
 		double percentDamage = damage/maxHealth;
-		int addedLuck = (int)Math.floor(percentDamage * luck);
+		if (damage > currentHealth) percentDamage = currentHealth/maxHealth;
+		double addedLuck = percentDamage * luck;
+		double currentLuck = 0.0;
 
-		luckStacked.put(mob, addedLuck);
+		if (luckStacked.containsKey(mob)) {
+			currentLuck = luckStacked.get(mob);
+		}
+		luckStacked.put(mob, addedLuck + currentLuck);
+
+		Bukkit.getLogger().info("Luck Total " + luckStacked.get(mob));
+
 	}
 
 }

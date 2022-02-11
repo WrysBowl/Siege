@@ -200,9 +200,11 @@ public class DeathListener implements Listener, Runnable {
 		Location loc = e.getEntity().getLocation();
 
 		//gets the stacked luck of the mob
-		int luck = 0;
+		double luck = 0;
 		if (ActiveMobs.luckStacked.containsKey(victim)) {
 			luck = ActiveMobs.luckStacked.get(victim);
+			Bukkit.getLogger().info("Luck Total " + ActiveMobs.luckStacked.get(victim));
+
 		}
 
 		//gives EXP

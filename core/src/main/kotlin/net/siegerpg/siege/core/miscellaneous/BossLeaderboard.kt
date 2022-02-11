@@ -146,7 +146,7 @@ class BossLeaderboardListener : Listener {
 						(Duration.between(bossFight.startTime, deathTime).toSeconds().toDouble())
 				    )
 		bossFight.fighters.forEach { (fighter, damageDone) ->
-			val percentageDamage = floor(damageDone / totalDamageDone * 100).toInt()
+			val percentageDamage : Int = ceil((damageDone * 100) / totalDamageDone ).toInt()
 			hashMapData[fighter] = Pair(percentageDamage.toByte(), fightDuration.toInt())
 			val player : Player = Bukkit.getPlayer(fighter) ?: return
 
@@ -164,9 +164,11 @@ class BossLeaderboardListener : Listener {
 				//gets the stacked luck of the mob
 
 				//gets the stacked luck of the mob
-				var luck = 0
+				var luck = 0.0
 				if (ActiveMobs.luckStacked.containsKey(evt.entity)) {
 					luck = ActiveMobs.luckStacked[evt.entity]!!
+					Bukkit.getLogger().info("Luck Total " + ActiveMobs.luckStacked[evt.entity])
+
 				}
 
 				var tableExp = dropTable.getExp(true) ?: 0
@@ -193,13 +195,13 @@ class BossLeaderboardListener : Listener {
 				                       )) { //Loop through all drops
 
 					val itemList = ArrayList<ItemStack>()
-					var i : Int = luck
+					var i : Double = luck
 					while (i >= 0) {
 						itemList.add(drop.clone())
-						if (i <= 100 && Utils.randTest(i.toDouble())) {
+						if (i <= 100 && Utils.randTest(i)) {
 							itemList.add(drop.clone())
 						}
-						i -= 100
+						i -= 100.0
 					}
 
 					//gets proper amount of items using luck

@@ -236,15 +236,15 @@ class CustomItemKotlinListener : Listener {
 		val reducedDamage =
 				attStrengthStat * (1 - (calcReducedToughness(vicDefense) / 1000)) //custom attack damage with toughness considered
 
-		e.damage = reducedDamage //scaled down to damage player by vanilla damage
-
-		val isCritical = damage > maxDamage
-
-		setVictimName(victim, e.damage, vicMaxHealth)
+		//add luck
 		if (attacker is Player) {
 			val luck = getPlayerStat(attacker, StatTypes.LUCK, attacker.inventory.itemInMainHand)
 			ActiveMobs.addLuck(victim, reducedDamage, luck)
 		}
+
+		e.damage = reducedDamage //scaled down to damage player by vanilla damage
+		val isCritical = damage > maxDamage
+		setVictimName(victim, e.damage, vicMaxHealth)
 		if (victim is Mob) DamageIndicator.showDamageIndicator(reducedDamage, victim.location, isCritical)
 	}
 
