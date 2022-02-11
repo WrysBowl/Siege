@@ -15,6 +15,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.miscellaneous.Scoreboard
 import net.siegerpg.siege.core.miscellaneous.VaultHook
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
 import net.siegerpg.siege.core.miscellaneous.lore
 import org.bukkit.Bukkit
 import org.bukkit.GameMode
@@ -62,6 +63,7 @@ class ShopsCommand : BaseCommand() {
 				MiniMessage.get()
 						.parse("<red>You do not have permission to open this shop!")
 		                                                                                         )
+
 
 		//This is some ugly code that I have yet to change
 		var gui = ChestGui(3, shop.name)
@@ -157,11 +159,17 @@ class ShopsCommand : BaseCommand() {
 				item.itemMeta = itemMeta
 			}
 			val guiItem = GuiItem(item)
+
 			guiItem.setAction { event ->
 				when {
 					player.gameMode == GameMode.CREATIVE -> {
 						player.inventory.addItem(it.generate())
 						player.updateInventory()
+						return@setAction
+					}
+
+					//adds to cooldown
+					PlayerData.onCooldown(player) -> {
 						return@setAction
 					}
 
@@ -181,6 +189,8 @@ class ShopsCommand : BaseCommand() {
 											.parse("<red>Your inventory is full!")
 							                                   )
 						}
+						PlayerData.addCooldown(player, 4)
+
 						for (entry in it.recipe) {
 							if (!player.inventory.containsAtLeast(
 											entry.key.getUpdatedItem(false),
@@ -244,6 +254,7 @@ class ShopsCommand : BaseCommand() {
 											.parse("<red>Your inventory is full!")
 							                                   )
 						}
+						PlayerData.addCooldown(player, 4)
 
 						player.inventory.addItem(it.generate())
 						player.playSound(

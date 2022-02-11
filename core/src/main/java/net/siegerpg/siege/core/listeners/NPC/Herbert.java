@@ -98,7 +98,7 @@ public class Herbert implements Listener {
 
 			//adds to cooldown
 			if (PlayerData.onCooldown(player)) return;
-			PlayerData.addCooldown(player, 2);
+			PlayerData.addCooldown(player);
 			new Herbert(player);
 		}
 	}

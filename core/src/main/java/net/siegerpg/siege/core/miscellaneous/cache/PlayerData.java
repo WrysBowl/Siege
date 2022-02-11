@@ -45,9 +45,19 @@ public class PlayerData implements Listener {
 	public static HashMap< Player, Location > playerDeathLocations = new HashMap<>();
 
 	public static ArrayList< Player > commandCooldown = new ArrayList<>();
+	public static HashMap< Player, Integer > playerCooldownStrikes = new HashMap<>();
 
 	//runnable to regenerate mana
 	public PlayerData() {
+
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+				playerCooldownStrikes.clear();
+			}
+		}.runTaskTimer(Core.plugin(), 100, 100);
+
 		new BukkitRunnable() {
 
 			@Override
@@ -69,10 +79,19 @@ public class PlayerData implements Listener {
 	public static boolean onCooldown(Player player) {
 		if (commandCooldown.contains(player)) {
 			player.sendMessage(Utils.lore("<red>You are on cooldown!"));
+
+			int currentStrikes = 0;
+			if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
+
+			if (overStrikeLimit(currentStrikes)) player.kick(Utils.lore("<red>You got kicked for packet overload!"));
+			playerCooldownStrikes.put(player, currentStrikes);
 			return true;
 		} else {
 			return false;
 		}
+	}
+	private static boolean overStrikeLimit(int strikes) {
+		return strikes > 20;
 	}
 
 	public static void addCooldown(Player player) {
@@ -86,7 +105,7 @@ public class PlayerData implements Listener {
 
 		}.runTaskLater(Core.plugin(), 20L);
 	}
-	public static void addCooldown(Player player, int seconds) {
+	public static void addCooldown(Player player, int ticks) {
 		commandCooldown.add(player);
 		new BukkitRunnable() {
 
@@ -95,7 +114,7 @@ public class PlayerData implements Listener {
 				commandCooldown.remove(player);
 			}
 
-		}.runTaskLater(Core.plugin(), 20L * seconds);
+		}.runTaskLater(Core.plugin(), ticks);
 	}
 
 	public static int getRegenRate(int regen) {

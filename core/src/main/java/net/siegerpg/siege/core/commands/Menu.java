@@ -131,8 +131,8 @@ public class Menu implements CommandExecutor {
 			} else {
 				player.sendMessage(Utils.lore("<yellow>Purchased a new home slot! Use /sethome /home /delhome"));
 				player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 0.5f, 0.75f);
-				VaultHook.econ.withdrawPlayer(player, cost);
 			}
+			VaultHook.econ.withdrawPlayer(player, cost);
 
 			//set new home permission node
 			VaultHook.perms.playerAdd(null, player, "essentials.sethome.multiple."+homeString);
