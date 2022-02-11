@@ -5,7 +5,6 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import de.tr7zw.nbtapi.NBTItem;
-import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.fishing.catches.Fish;
 import net.siegerpg.siege.core.fishing.catches.FishCore;
 import net.siegerpg.siege.core.items.CustomItem;
@@ -13,7 +12,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.listeners.GoldExpListener;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.Bukkit;
+import net.siegerpg.siege.core.miscellaneous.cache.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -95,7 +94,12 @@ public class Herbert implements Listener {
 				    .getRightClicked()
 				    .getName()
 				    .contains("6")) {
-			new Herbert(e.getPlayer());
+			Player player = e.getPlayer();
+
+			//adds to cooldown
+			if (PlayerData.onCooldown(player)) return;
+			PlayerData.addCooldown(player, 2);
+			new Herbert(player);
 		}
 	}
 

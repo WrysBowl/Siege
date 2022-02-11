@@ -12,6 +12,7 @@ import net.siegerpg.siege.core.listeners.NPC.RarityRoll;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.miscellaneous.VaultHook;
+import net.siegerpg.siege.core.miscellaneous.cache.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -35,10 +36,13 @@ public class Menu implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-		if (!(sender instanceof Player)) {
+		if (!(sender instanceof Player player)) {
 			return false;
 		}
-		Player player = (Player) sender;
+
+		//adds to cooldown
+		if (PlayerData.onCooldown(player)) return false;
+		PlayerData.addCooldown(player);
 
 		player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 0.75f, 1.0f);
 		Menu instance = new Menu();

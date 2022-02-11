@@ -32,7 +32,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class PlayerData implements Listener {
 
@@ -43,6 +43,8 @@ public class PlayerData implements Listener {
 	public static HashMap< Player, Integer > playerCurrentMana = new HashMap<>();
 	public static HashMap< Player, Integer > playerMana = new HashMap<>();
 	public static HashMap< Player, Location > playerDeathLocations = new HashMap<>();
+
+	public static ArrayList< Player > commandCooldown = new ArrayList<>();
 
 	//runnable to regenerate mana
 	public PlayerData() {
@@ -62,6 +64,38 @@ public class PlayerData implements Listener {
 				}
 			}
 		}.runTaskTimer(Core.plugin(), 20, 20);
+	}
+
+	public static boolean onCooldown(Player player) {
+		if (commandCooldown.contains(player)) {
+			player.sendMessage(Utils.lore("<red>You are on cooldown!"));
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static void addCooldown(Player player) {
+		commandCooldown.add(player);
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+				commandCooldown.remove(player);
+			}
+
+		}.runTaskLater(Core.plugin(), 20L);
+	}
+	public static void addCooldown(Player player, int seconds) {
+		commandCooldown.add(player);
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+				commandCooldown.remove(player);
+			}
+
+		}.runTaskLater(Core.plugin(), 20L * seconds);
 	}
 
 	public static int getRegenRate(int regen) {
