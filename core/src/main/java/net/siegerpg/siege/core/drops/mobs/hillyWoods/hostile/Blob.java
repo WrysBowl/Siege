@@ -21,7 +21,7 @@ public class Blob extends MobDropTable {
 
 	public Blob() {
 
-		super("Blob", 7, 10, 17, 20, new Reward[] {
+		super("Blob", 7, 10, 27, 30, new Reward[] {
 				new Reward(new Slime()
 						           .getUpdatedItem(false), 100.0),
 				new Reward(new Slime()

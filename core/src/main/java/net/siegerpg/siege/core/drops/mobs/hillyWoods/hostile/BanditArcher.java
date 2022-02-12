@@ -15,7 +15,7 @@ public class BanditArcher extends MobDropTable {
 
 	public BanditArcher() {
 
-		super("BanditArcher", 30, 34, 82, 86, new Reward[] {
+		super("BanditArcher", 30, 34, 220, 230, new Reward[] {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 50.0),
 				new Reward(new Leather()

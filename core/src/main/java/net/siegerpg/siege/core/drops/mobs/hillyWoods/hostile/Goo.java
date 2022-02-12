@@ -18,7 +18,7 @@ public class Goo extends MobDropTable {
 
 	public Goo() {
 
-		super("Goo", 3, 5, 8, 14, new Reward[] {
+		super("Goo", 3, 5, 14, 18, new Reward[] {
 				new Reward(new Slime()
 						           .getUpdatedItem(false), 100.0),
 				new Reward(new Slime()

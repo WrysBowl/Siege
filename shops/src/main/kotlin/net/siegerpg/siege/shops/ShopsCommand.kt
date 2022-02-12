@@ -64,6 +64,9 @@ class ShopsCommand : BaseCommand() {
 						.parse("<red>You do not have permission to open this shop!")
 		                                                                                         )
 
+		//adds to cooldown
+		if (PlayerData.onCooldown(player)) return
+		PlayerData.addCooldown(player, 15)
 
 		//This is some ugly code that I have yet to change
 		var gui = ChestGui(3, shop.name)
@@ -168,11 +171,6 @@ class ShopsCommand : BaseCommand() {
 						return@setAction
 					}
 
-					//adds to cooldown
-					PlayerData.onCooldown(player) -> {
-						return@setAction
-					}
-
 					event.isLeftClick                    -> {
 						if (!it.craftable) return@setAction
 						if (event.view.bottomInventory
@@ -189,7 +187,6 @@ class ShopsCommand : BaseCommand() {
 											.parse("<red>Your inventory is full!")
 							                                   )
 						}
-						PlayerData.addCooldown(player, 4)
 
 						for (entry in it.recipe) {
 							if (!player.inventory.containsAtLeast(
@@ -254,7 +251,6 @@ class ShopsCommand : BaseCommand() {
 											.parse("<red>Your inventory is full!")
 							                                   )
 						}
-						PlayerData.addCooldown(player, 4)
 
 						player.inventory.addItem(it.generate())
 						player.playSound(

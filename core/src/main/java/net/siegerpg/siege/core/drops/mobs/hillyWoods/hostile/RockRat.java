@@ -16,7 +16,7 @@ public class RockRat extends MobDropTable {
 
 	public RockRat() {
 
-		super("RockRat", 3, 5, 4, 8, new Reward[] {
+		super("RockRat", 3, 5, 8, 10, new Reward[] {
 				new Reward(new Pebble()
 						           .getUpdatedItem(false), 100.0),
 				new Reward(new Pebble()

@@ -20,7 +20,7 @@ public class ScorchingBlob extends MobDropTable {
 
 	public ScorchingBlob() {
 
-		super("ScorchingBlob", 6, 9, 21, 24, new Reward[] {
+		super("ScorchingBlob", 6, 9, 35, 40, new Reward[] {
 				new Reward(new Magma()
 						           .getUpdatedItem(false), 100.0),
 				new Reward(new Magma()
