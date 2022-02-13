@@ -98,7 +98,7 @@ public class Lunge extends Skill {
 		vector.normalize();
 
 		//pushes the player in the direction of the vector
-		player.setVelocity(vector.multiply(6));
+		player.setVelocity(vector.multiply(2));
 
 		//damage to deal UNMODIFIED
 		final double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH);

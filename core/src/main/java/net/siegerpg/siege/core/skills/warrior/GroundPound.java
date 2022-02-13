@@ -74,6 +74,7 @@ public class GroundPound extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
+		if(!super.trigger(player, level)) return false;
 
 		Vector vector = new Vector(0,2,0);
 		Vector fallVector = new Vector(0,-5,0); //TO-DO: test vector strength!
