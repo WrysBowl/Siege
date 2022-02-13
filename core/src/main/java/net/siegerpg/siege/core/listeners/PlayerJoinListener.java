@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.skills.warrior.DivinePresence;
 import net.siegerpg.siege.core.items.implemented.misc.skills.warrior.Slash;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
@@ -113,7 +114,7 @@ public class PlayerJoinListener implements Listener {
 			event.getPlayer().sendMessage(ChatColor.GOLD + "EYO UR BACK");
 			event.getPlayer().spawnParticle(Particle.TOTEM, player.getLocation(), 2);
 			event.getPlayer().playSound(player.getLocation(), Sound.BLOCK_END_PORTAL_SPAWN, 1f, 0.5f);
-			event.getPlayer().getInventory().addItem(new Slash().getUpdatedItem(false));
+			event.getPlayer().getInventory().addItem(new DivinePresence().getUpdatedItem(false));
 
 		}
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
