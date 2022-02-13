@@ -56,7 +56,7 @@ public class PlayerData implements Listener {
 			public void run() {
 				playerCooldownStrikes.clear();
 			}
-		}.runTaskTimer(Core.plugin(), 100, 100);
+		}.runTaskTimer(Core.plugin(), 40, 40);
 
 		new BukkitRunnable() {
 
@@ -83,7 +83,7 @@ public class PlayerData implements Listener {
 			int currentStrikes = 0;
 			if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
 
-			if (overStrikeLimit(currentStrikes)) player.kick(Utils.lore("<red>You got kicked for packet overload!"));
+			if (overStrikeLimit(currentStrikes)) player.kick(Utils.lore("<red>You were kicked for packet overload!"));
 			playerCooldownStrikes.put(player, currentStrikes);
 			return true;
 		} else {
@@ -91,7 +91,7 @@ public class PlayerData implements Listener {
 		}
 	}
 	private static boolean overStrikeLimit(int strikes) {
-		return strikes > 20;
+		return strikes > 10;
 	}
 
 	public static void addCooldown(Player player) {
