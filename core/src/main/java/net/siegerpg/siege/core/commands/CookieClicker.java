@@ -112,7 +112,7 @@ public class CookieClicker implements CommandExecutor {
 		return (int) Math.floor(calculations) + this.cookieLevel;
 	}
 	private int getRequiredCookies() {
-		return (int) Math.pow(50.0, (1 + (this.cookieLevel / 4.0)));
+		return (int) Math.pow(50.0, (1 + (this.cookieLevel / 10.0)));
 	}
 	private GuiItem getUpdatedCookie(Player player) {
 		ItemStack cookieClickerIcon = new ItemStack(Material.COOKIE);
