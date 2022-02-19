@@ -94,14 +94,14 @@ public class ChatListener implements Listener, ChatRenderer {
 		return check.equalsIgnoreCase("") || check.equalsIgnoreCase(" ");
 	}
 
-	private Component replaceText(Component message, @RegExp String match, String replacement) {
+	private static Component replaceText(Component message, @RegExp String match, String replacement) {
 		return message.replaceText(
 				TextReplacementConfig.builder()
 				                     .match(match)
 				                     .replacement(replacement).build());
 	}
 
-	private Component replaceText(Component message, @RegExp String match, Component replacement) {
+	private static Component replaceText(Component message, @RegExp String match, Component replacement) {
 		return message.replaceText(
 				TextReplacementConfig.builder()
 				                     .match(match)
