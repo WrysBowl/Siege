@@ -66,11 +66,6 @@ public class DoubleStrike extends Skill {
 
 	// This is made because damage is repeated.
 	public void damage(Player player, Location location, double damage, LivingEntity entity) {
-
-		//spawn double slash particle effect
-		player.getWorld().spawnParticle(Particle.SWEEP_ATTACK, location, 1);
-		player.getWorld().playSound(location, Sound.ENTITY_PLAYER_ATTACK_SWEEP, 1.0f, 1.0f);
-
 		entity.damage(damage, player);
 
 	}
@@ -107,6 +102,8 @@ public class DoubleStrike extends Skill {
 					triggerEnd(player, level);
 					this.cancel();
 				}
+
+				player.getWorld().spawnParticle(Particle.SWEEP_ATTACK, location, 1);
 
 				for (LivingEntity entity : location.getNearbyLivingEntities(2, 2, 2)) {
 					if (entity.equals(player)) continue;

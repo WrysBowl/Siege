@@ -270,6 +270,7 @@ public class BlockBreakListener implements Listener {
 					blockState.update(true, false);
 				}
 			}, 600);
+			return;
 		}
 		if (blockDrop != null) {
 			final int blockDropRegen = blockDrop.getBlockRegen();

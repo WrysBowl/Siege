@@ -1,15 +1,19 @@
 package net.siegerpg.siege.core.skills.warrior;
 
+import net.siegerpg.siege.core.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.skills.SkillClass;
-import org.bukkit.entity.Player;
+import net.siegerpg.siege.core.skills.*;
+import org.bukkit.entity.*;
+import org.bukkit.event.*;
+import org.bukkit.event.entity.*;
+import org.bukkit.potion.*;
+import org.bukkit.scheduler.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
 import java.util.List;
 
-public class SelflessDefense extends Skill {
+public class SelflessDefense extends Skill implements Listener {
 
 	final int initCooldown = 60 * 1000;
 	final int initManaCost = 200;
@@ -76,9 +80,17 @@ public class SelflessDefense extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
+		if(!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
+		//trigger end after 10 seconds
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				triggerEnd(player, level);
+			}
+		}.runTaskLater(Core.plugin(), 200);
+
+		return true;
 	}
 
 	@Override
@@ -86,6 +98,35 @@ public class SelflessDefense extends Skill {
 
 		super.triggerEnd(player, level);
 
+	}
+
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onDamage(EntityDamageEvent e){
+
+		if (!(e.getEntity() instanceof Player p)) return;
+
+		Player temp = null;
+		for(Entity entity: e.getEntity().getNearbyEntities(10, 10, 10)){
+			if(entity instanceof Player){
+				if(entity == p){
+					continue;
+				}
+				if(ActiveSkillData.isActive((Player)entity, this)){
+					temp = (Player) entity;
+				}
+			}
+		}
+
+		//If skill user exists
+		if (temp != null) {
+			e.setDamage(e.getDamage() * getDamageMulti(temp.getLevel()));
+
+			if(temp.hasPotionEffect(PotionEffectType.WEAKNESS)){
+				temp.damage(1-(getDamageMulti(temp.getLevel())) * 75);
+			} else {
+				temp.damage((1-(getDamageMulti(temp.getLevel())) * 100));
+			}
+		}
 	}
 
 }
