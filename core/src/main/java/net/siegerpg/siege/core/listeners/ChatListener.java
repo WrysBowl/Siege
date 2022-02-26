@@ -56,7 +56,9 @@ public class ChatListener implements Listener, ChatRenderer {
 			}
 
 			//replace [item] with the displayed item
-			message = replaceText(message, "[item]", itemMessage(item));
+			Component msg = message;
+			message = replaceText(msg, "[item]", itemMessage(item));
+			Bukkit.getLogger().info("Message w/ [item] "+((TextComponent)message).content());
 		}
 		e.message(message);
 
@@ -79,7 +81,7 @@ public class ChatListener implements Listener, ChatRenderer {
 		String message = ((TextComponent)msg).content();
 		return message.contains("[item]");
 	}
-
+	
 	private Component itemMessage(ItemStack item) {
 		String name = item.getItemMeta().getDisplayName();
 		if (name.equals("")) name = item.getI18NDisplayName();

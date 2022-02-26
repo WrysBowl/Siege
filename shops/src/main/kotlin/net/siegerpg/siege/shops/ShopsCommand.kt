@@ -66,7 +66,7 @@ class ShopsCommand : BaseCommand() {
 
 		//adds to cooldown
 		if (PlayerData.onCooldown(player)) return
-		PlayerData.addCooldown(player, 15)
+		PlayerData.addCooldown(player)
 
 		//This is some ugly code that I have yet to change
 		var gui = ChestGui(3, shop.name)
@@ -172,6 +172,10 @@ class ShopsCommand : BaseCommand() {
 					}
 
 					event.isLeftClick                    -> {
+						//adds to cooldown
+						if (PlayerData.onCooldown(player)) return@setAction
+						PlayerData.addCooldown(player)
+
 						if (!it.craftable) return@setAction
 						if (event.view.bottomInventory
 										.firstEmpty() == -1
@@ -223,8 +227,11 @@ class ShopsCommand : BaseCommand() {
 					}
 
 					event.isRightClick                   -> {
-						if (it.buyPrice < 0) return@setAction
+						//adds to cooldown
+						if (PlayerData.onCooldown(player)) return@setAction
+						PlayerData.addCooldown(player)
 
+						if (it.buyPrice < 0) return@setAction
 						if (VaultHook.econ.getBalance(player) < it.buyPrice) {
 							player.playSound(
 									player.location,
@@ -253,6 +260,7 @@ class ShopsCommand : BaseCommand() {
 						}
 
 						player.inventory.addItem(it.generate())
+						Bukkit.dispatchCommand(sender, "shops " + id + " " + player.name)
 						player.playSound(
 								player.location,
 								Sound.ENTITY_VILLAGER_CELEBRATE,
