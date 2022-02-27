@@ -72,6 +72,7 @@ abstract class CustomSkill(
 		meta.lore(" ")
 		meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
 
+		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 		item.itemMeta = meta
 		return item
@@ -100,6 +101,7 @@ abstract class CustomSkill(
 		//check if skill passes conditions
 		if(!skill.trigger(player, this.level)) return
 
+
 		val initTime : Instant = Instant.now()
 		val endTime : Instant = SkillCooldown.getResetTime(player.uniqueId, skill) ?: initTime.plusSeconds(3)
 		val differenceInTicks : Long = (endTime.epochSecond - initTime.epochSecond) * 20
@@ -108,6 +110,8 @@ abstract class CustomSkill(
 		val durabilityPerTick = maxDurability / differenceInTicks
 		val inventorySlot : Int = player.inventory.heldItemSlot //inventory slot of item
 		val meta : Damageable = itemGiven.itemMeta as Damageable
+		meta.isUnbreakable = false
+
 		meta.damage = maxDurability.toInt()
 		var currentDamage : Double = meta.damage.toDouble()
 
@@ -116,14 +120,20 @@ abstract class CustomSkill(
 			override fun run() {
 				val itemInSlot : ItemStack? = player.inventory.getItem(inventorySlot)
 				if (itemInSlot == null) {
+					meta.isUnbreakable = true
+					meta.damage = 0
 					this.cancel()
 					return
 				}
 				if (itemInSlot.itemMeta?.displayName != itemGiven.itemMeta.displayName) {
+					meta.isUnbreakable = true
+					meta.damage = 0
 					this.cancel()
 					return
 				}
 				if (meta.damage <= 0) {
+					meta.isUnbreakable = true
+					meta.damage = 0
 					this.cancel()
 					return
 				}
