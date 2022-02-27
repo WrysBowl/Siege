@@ -44,6 +44,9 @@ public class ChatListener implements Listener, ChatRenderer {
 		//notify players if a player has typed their name
 		notifyName(message);
 
+		//formats message to be used for donors
+		Component formattedMessage = Utils.lore(((TextComponent)message).content());
+
 		if (saidItem(message)) {
 
 			ItemStack item = player.getInventory().getItemInMainHand();
@@ -56,18 +59,18 @@ public class ChatListener implements Listener, ChatRenderer {
 			}
 
 			//replace [item] with the displayed item
-			Component msg = message;
-			message = replaceText(msg, "[item]", itemMessage(item));
-			Bukkit.getLogger().info("Message w/ [item] "+((TextComponent)message).content());
+			formattedMessage = replaceText(formattedMessage, "[item]", itemMessage(item));
+			message = replaceText(message, "[item]", itemMessage(item));
 		}
 		e.message(message);
 
 		if (player.hasPermission("siege.text.format")) {
+			Component finalFormattedMessage = formattedMessage;
 			e.renderer((source, sourceDisplayName, msg, viewer) ->
 					           Utils.lore(lvlFormatted + " " + Utils.tacc(prefix) + " " +"<gray>"+
 					                      ((TextComponent)sourceDisplayName).content())
 					                .append(Utils.lore(" "))
-					                .append(Utils.lore(((TextComponent)msg).content())));
+					                .append(finalFormattedMessage));
 		} else {
 			e.renderer((source, sourceDisplayName, msg, viewer) ->
 					           Utils.lore(lvlFormatted + " " + Utils.tacc(prefix) + " " +"<gray>"+
@@ -86,7 +89,7 @@ public class ChatListener implements Listener, ChatRenderer {
 		String name = item.getItemMeta().getDisplayName();
 		if (name.equals("")) name = item.getI18NDisplayName();
 
-		return Utils.lore("<yellow>" + item.getAmount() + "x " + name)
+		return Utils.lore("<yellow> x" + item.getAmount() + " " + name)
 		            .hoverEvent(item);
 	}
 
@@ -99,14 +102,14 @@ public class ChatListener implements Listener, ChatRenderer {
 	private static Component replaceText(Component message, @RegExp String match, String replacement) {
 		return message.replaceText(
 				TextReplacementConfig.builder()
-				                     .match(match)
+				                     .matchLiteral(match)
 				                     .replacement(replacement).build());
 	}
 
 	private static Component replaceText(Component message, @RegExp String match, Component replacement) {
 		return message.replaceText(
 				TextReplacementConfig.builder()
-				                     .match(match)
+				                     .matchLiteral(match)
 				                     .replacement(replacement).build());
 	}
 
