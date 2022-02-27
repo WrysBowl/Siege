@@ -5,7 +5,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.siegerpg.siege.core.Core;
 import org.bukkit.*;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.util.Vector;
@@ -253,6 +253,11 @@ public class Utils {
 		Vector dir = target.clone().subtract(player.getEyeLocation()).toVector();
 		Location loc = player.getLocation().setDirection(dir);
 		player.teleport(loc);
+	}
+
+	public static boolean isOnlinePlayer(Entity player) {
+		if (!(player instanceof Player)) return false;
+		return Bukkit.getOnlinePlayers().contains(player);
 	}
 
 }

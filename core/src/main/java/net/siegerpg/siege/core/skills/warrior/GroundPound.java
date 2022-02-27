@@ -93,6 +93,7 @@ public class GroundPound extends Skill {
 		//shockwave
 		for (LivingEntity entity : location.getNearbyLivingEntities(4, 4, 4)) {
 			if (entity.equals(player)) continue;
+			if (Utils.isOnlinePlayer(entity)) continue;
 
 			//push
 			entity.setVelocity(new Vector(entity.getLocation().getX()-location.getX(), entity.getLocation().getY()-location.getY(), entity.getLocation().getZ()-location.getZ()).normalize().multiply(1.5));
