@@ -74,9 +74,8 @@ public class GroundPound extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		if(!super.trigger(player, level)) return false;
 
-		Vector vector = new Vector(0,0.6,0);
+		Vector vector = new Vector(0,0.9,0);
 		Vector fallVector = new Vector(0,-2,0);
 		Location location = player.getLocation();
 
@@ -93,7 +92,7 @@ public class GroundPound extends Skill {
 		//shockwave
 		for (LivingEntity entity : location.getNearbyLivingEntities(4, 4, 4)) {
 			if (entity.equals(player)) continue;
-			if (Utils.isOnlinePlayer(entity)) continue;
+			if (entity instanceof Player && !Utils.isOnlinePlayer(entity)) continue;
 
 			//push
 			entity.setVelocity(new Vector(entity.getLocation().getX()-location.getX(), entity.getLocation().getY()-location.getY(), entity.getLocation().getZ()-location.getZ()).normalize().multiply(1.5));
@@ -111,7 +110,7 @@ public class GroundPound extends Skill {
 				//make players fall fast
 				player.setVelocity(fallVector);
 			}
-		}.runTaskLater(Core.plugin(), 40L);
+		}.runTaskLater(Core.plugin(), 15L);
 
 
 		//check if player is on ground
@@ -139,7 +138,7 @@ public class GroundPound extends Skill {
 					this.cancel();
 				}
 			}
-		}.runTaskTimer(Core.plugin(), 20L, 2L);
+		}.runTaskTimer(Core.plugin(), 7L, 2L);
 
 
 
