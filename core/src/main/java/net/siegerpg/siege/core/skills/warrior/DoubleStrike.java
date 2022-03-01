@@ -3,7 +3,6 @@ package net.siegerpg.siege.core.skills.warrior;
 import net.siegerpg.siege.core.*;
 import net.siegerpg.siege.core.items.*;
 import net.siegerpg.siege.core.items.enums.*;
-import net.siegerpg.siege.core.miscellaneous.*;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.*;
@@ -65,7 +64,7 @@ public class DoubleStrike extends Skill {
 	}
 
 	// This is made because damage is repeated.
-	public void damage(Player player, Location location, double damage, LivingEntity entity) {
+	public void damage(Player player, double damage, LivingEntity entity) {
 		entity.damage(damage, player);
 
 	}
@@ -108,7 +107,7 @@ public class DoubleStrike extends Skill {
 				for (LivingEntity entity : location.getNearbyLivingEntities(2, 2, 2)) {
 					if (entity.equals(player)) continue;
 
-					damage(player, location, damage, entity);
+					damage(player, damage, entity);
 
 					if (counter != 3) continue; //if the counter is on the third slash iteration
 
@@ -133,3 +132,4 @@ public class DoubleStrike extends Skill {
 	}
 
 }
+
