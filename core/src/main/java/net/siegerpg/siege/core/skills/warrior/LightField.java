@@ -111,8 +111,9 @@ public class LightField extends Skill {
 				for (LivingEntity entity : location.getNearbyLivingEntities(5, 5, 5)) {
 					if (entity.equals(player)) continue;
 
-					if(entity instanceof Player ally){
+					if(entity instanceof Player){
 						//Ally
+						Player ally = (Player) entity;
 
 						if (!Utils.isOnlinePlayer(entity)) continue;
 

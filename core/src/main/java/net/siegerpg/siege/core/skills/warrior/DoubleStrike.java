@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DoubleStrike extends Skill {
 
-	final int initCooldown = 25 * 1000;
+	final int initCooldown = 10 * 1000;
 	final int initManaCost = 30;
 	final int initGoldCost = 2500;
 
