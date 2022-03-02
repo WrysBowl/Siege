@@ -1,15 +1,15 @@
 package net.siegerpg.siege.core.items.enums
 
-enum class StatTypes(val stylizedName : String) {
-	HEALTH("Health"),
-	DEFENSE("Defense"),
+enum class StatTypes(val stylizedName : String, val color : String) {
+	HEALTH("Health", "<red>"),
+	DEFENSE("Defense", "<blue>"),
 
-	STRENGTH("Strength"),
-	REGENERATION("Regeneration"),
-	LUCK("Luck"),
+	STRENGTH("Strength", "<dark_red>"),
+	REGENERATION("Regeneration", "<gold>"),
+	LUCK("Luck", "<green>"),
 
-	MANA("Mana"),
-	MANA_REGEN("Mana Regen");
+	MANA("Mana", "<dark_aqua>"),
+	MANA_REGEN("Mana Regen", "<light_blue>");
 
 	companion object {
 

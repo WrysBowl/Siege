@@ -43,4 +43,7 @@ interface LevelReward {
 	}
 
 	fun extraReward(player : Player) {}
+	fun statMessage(player : Player, stat : StatTypes, amount : Int) {
+		player.sendMessage("+ $amount ${stat.color}$stat")
+	}
 }

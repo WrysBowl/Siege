@@ -52,7 +52,7 @@ public class Stats implements CommandExecutor {
 		sender.sendMessage(Utils.lore("<color:#EECB66><bold>Specifics"));
 		sender.sendMessage(Utils.lore(" "));
 		sender.sendMessage(Utils.lore("  <dark_red>Strength <reset><gray>You deal <bold>"+strength+"<r><gray> damage to your target's health points."));
-		sender.sendMessage(Utils.lore("  <blue>Toughness <reset><gray>You prevent <bold>" +
+		sender.sendMessage(Utils.lore("  <blue>Defense <reset><gray>You prevent <bold>" +
 		                              Utils.round((CustomItemKotlinListener.Companion.calcReducedToughness(toughness) / 1000), 2)*100 +
 		                              "<r><gray>% incoming damage."));
 		sender.sendMessage(Utils.lore("  <red>Health <reset><gray>You have <bold>"+health+" <r><gray>extra health."));
