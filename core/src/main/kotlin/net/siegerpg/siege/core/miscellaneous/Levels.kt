@@ -66,8 +66,8 @@ object Levels {
 			object : BukkitRunnable() {
 				override fun run() {
 					reward.sendMessage(player as Player)
-					reward.extraReward(player)
-
+					Bukkit.getServer()
+							.broadcast(Utils.lore("<color:#ade079>${player.name} has reached level <color:#9774cc>$level!"))
 					player.playSound(
 							player.location,
 							Sound.BLOCK_BEACON_POWER_SELECT,

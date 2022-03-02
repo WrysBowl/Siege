@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Sound
@@ -35,6 +36,7 @@ interface LevelReward {
 			player.sendMessage(miniMessage)
 			Utils.giveItem(player, item)
 		}
+		extraReward(player)
 		player.sendMessage("")
 		player.sendMessage(Utils.parse("<color:#BE6CD1><underlined>                                  "))
 		player.sendMessage("")
