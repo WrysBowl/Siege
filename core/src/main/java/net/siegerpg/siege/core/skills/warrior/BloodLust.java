@@ -72,18 +72,10 @@ public class BloodLust extends Skill {
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
 		if (!super.trigger(player, level)) return false;
     
-    	return true;
+    	// Handling of the skill goes here
+		
+		return true;
 	}
-
-   // @EventHandler(priority = EventPriority.HIGHEST)
-	//public void onDamage(EntityDamageByEntityEvent e) {
-//
-//		if (!(e.getEntity() instanceof Player player)) return;
-//		if(!ActiveSkillData.isActive(player, this)) return;
-//
-//		
-//
-//	} *\
 
 	@Override
 	public void triggerEnd(@NotNull Player player, int level) {
