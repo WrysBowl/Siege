@@ -9,8 +9,7 @@ import net.siegerpg.siege.core.items.types.misc.CustomTool;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
-import net.siegerpg.siege.core.miscellaneous.Levels;
-import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -138,6 +137,15 @@ public class PlayerData implements Listener {
 		if (expLevel == null) expLevel = new Pair<>((short) 1, 0);
 
 		return (expLevel.getFirst()-1)*10;
+	}
+
+	public static void addHealth(Player player, int health) {
+		boolean critical = isCriticalHealth(player, health);
+		DamageIndicator.INSTANCE.showDamageIndicator((health * -1), player.getLocation(), critical);
+		player.setHealth(health);
+	}
+	private static boolean isCriticalHealth(Player player, int health) {
+		return (health > player.getHealth());
 	}
 
 
