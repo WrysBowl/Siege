@@ -74,9 +74,11 @@ public class QuakeCharge extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
-
-		// Handling of the skill goes here
+		if (!super.trigger(player, level)) return false;
+    
+    	// Handling of the skill goes here
+		
+		return true;
 	}
 
 	@Override
