@@ -27,7 +27,7 @@ public class DivinePresence extends Skill {
 		this.skillClass = SkillClass.WARRIOR;
 		this.name = "Divine Presence";
 		this.description = List.of("Summon lightning to heal",
-		                           "allies by +25% and weaken",
+		                           "allies by +10% and weaken",
 		                           "enemies by 20% for 10 seconds",
 		                           "within 8 meters.");
 	}
@@ -101,16 +101,15 @@ public class DivinePresence extends Skill {
 
 						if (!Utils.isOnlinePlayer(entity)) continue;
 
+						//heal allies by +10% health
 						double playerMaxHealth = Objects
 								.requireNonNull(ally.getAttribute(Attribute.GENERIC_MAX_HEALTH))
 								.getValue();
-						Double playerHealth = PlayerData.playerHealth.get(ally);
+						if (playerMaxHealth < 1) continue;
 
-						if (playerHealth != null) {
+						int addedHealth = (int) (playerMaxHealth * 0.1) +1; //get 10% of max health to add on
 
-							PlayerData.playerHealth.put(ally, Math.min(playerMaxHealth, (playerHealth * getHealthMulti(level))));
-
-						}
+						PlayerData.addHealth(player, addedHealth);
 					}
 
 				}
