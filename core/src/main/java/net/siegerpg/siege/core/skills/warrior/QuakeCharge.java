@@ -94,7 +94,7 @@ public class QuakeCharge extends Skill {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
 
 					triggerEnd(player, level);
-					
+
 					this.cancel();
 				}
 
