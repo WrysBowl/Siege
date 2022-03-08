@@ -1,13 +1,18 @@
 package net.siegerpg.siege.core.skills.warrior;
 
+import net.siegerpg.siege.core.items.*;
+import net.siegerpg.siege.core.items.enums.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.cache.*;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
-import org.bukkit.entity.Player;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import org.bukkit.potion.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
-import java.util.List;
+import java.util.*;
 
 public class ConcentratedStrike extends Skill {
 
@@ -68,9 +73,42 @@ public class ConcentratedStrike extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
+		if (!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
+		Location location = player.getLocation();
+
+		//damage
+
+		Collection< LivingEntity > nearby = location.getNearbyLivingEntities(5, 5, 5);
+
+		nearby.remove(player);
+
+		Random rnd = new Random();
+		int i = rnd.nextInt(nearby.size());
+		Entity target = (Entity) nearby.toArray()[i];
+
+		double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH);
+
+		((LivingEntity)target).damage(damage);
+
+		//give mana
+		for (LivingEntity entity : nearby) {
+			Player ally = (Player) entity;
+
+			if(entity == player) continue;
+			if (!Utils.isOnlinePlayer(entity)) continue;
+
+			Integer playerMaxMana = PlayerData.playerMana.get(ally);
+			Integer playerMana = PlayerData.playerCurrentMana.get(ally);
+
+			if (playerMana != null && playerMaxMana != null) {
+
+				PlayerData.playerCurrentMana.put(ally, Math.min( playerMaxMana, (int) ( playerMana * getManaMulti( level , ally.hasPotionEffect( PotionEffectType.WEAKNESS ) ) ) ) );
+
+			}
+		}
+
+		return true;
 	}
 
 	@Override

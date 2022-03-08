@@ -1,13 +1,19 @@
 package net.siegerpg.siege.core.skills.warrior;
 
+import net.siegerpg.siege.core.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.skills.SkillClass;
-import org.bukkit.entity.Player;
+import net.siegerpg.siege.core.miscellaneous.cache.*;
+import net.siegerpg.siege.core.skills.*;
+import org.bukkit.attribute.*;
+import org.bukkit.entity.*;
+import org.bukkit.event.*;
+import org.bukkit.event.entity.*;
+import org.bukkit.potion.*;
+import org.bukkit.scheduler.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
-import java.util.List;
+import java.util.*;
 
 public class BloodLust extends Skill {
 
@@ -70,9 +76,33 @@ public class BloodLust extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
+		if (!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				triggerEnd(player, level);
+			}
+		}.runTaskLater(Core.plugin(), 200);
+		
+		return true;
+	}
+
+	@EventHandler
+	public void onHit(EntityDamageByEntityEvent e){
+		if (!(e.getDamager() instanceof Player p)) return;
+		if(!ActiveSkillData.isActive(p, this)) return;
+
+		if (Objects.requireNonNull(p.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue() < 1) return;
+
+		Integer skillLevel = SkillData.getSkillLevel(p, this);
+
+		//this will never be null because the skill is currently active, which has gone through these same checks already
+		if (skillLevel == null || skillLevel < 1) return;
+
+		int addedHealth = (int) (e.getFinalDamage() * 1 - getHealMulti(skillLevel, ((LivingEntity)e.getEntity()).hasPotionEffect(PotionEffectType.WEAKNESS) )); //get 10% of max health to add on
+
+		PlayerData.addHealth(p, addedHealth);
 	}
 
 	@Override

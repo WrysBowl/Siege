@@ -1,13 +1,21 @@
 package net.siegerpg.siege.core.skills.warrior;
 
-import net.siegerpg.siege.core.miscellaneous.Utils;
-import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.skills.SkillClass;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+import net.siegerpg.siege.core.*;
+import net.siegerpg.siege.core.items.*;
+import net.siegerpg.siege.core.items.enums.*;
+import net.siegerpg.siege.core.miscellaneous.*;
+import net.siegerpg.siege.core.skills.*;
+import org.bukkit.entity.*;
+import org.bukkit.event.*;
+import org.bukkit.event.entity.*;
+import org.bukkit.scheduler.*;
+import org.jetbrains.annotations.*;
 
-import java.time.Duration;
-import java.util.List;
+import java.time.*;
+import java.util.*;
+
+import static java.util.Objects.requireNonNull;
+import static net.siegerpg.siege.core.skills.SkillData.*;
 
 public class WoundingStrike extends Skill {
 
@@ -70,9 +78,29 @@ public class WoundingStrike extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
+		if (!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				triggerEnd(player, level);
+			}
+		}.runTaskLater(Core.plugin(), 200); //If it pasts 10 seconds, the skill timeouts.
+		
+		return true;
+	}
+
+	@EventHandler
+	public void onHit(EntityDamageByEntityEvent e){
+		if (!(e.getDamager() instanceof Player p)) return;
+		if(!ActiveSkillData.isActive(p, this)) return;
+
+		triggerEnd(p, requireNonNull(getSkillLevel(p, this))); //ends the skill
+
+		((LivingEntity)e.getEntity()).damage(CustomItemUtils.INSTANCE.getPlayerStat(p, StatTypes.STRENGTH) * 0.75);
+
+		//Reduce regen WIP!
+
 	}
 
 	@Override
@@ -83,3 +111,16 @@ public class WoundingStrike extends Skill {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

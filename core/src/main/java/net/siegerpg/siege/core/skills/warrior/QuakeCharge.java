@@ -1,9 +1,15 @@
 package net.siegerpg.siege.core.skills.warrior;
 
+import net.siegerpg.siege.core.*;
+import net.siegerpg.siege.core.items.*;
+import net.siegerpg.siege.core.items.enums.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
+import org.bukkit.potion.*;
+import org.bukkit.scheduler.*;
+import org.bukkit.util.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
@@ -74,9 +80,38 @@ public class QuakeCharge extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
+		if (!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
+		new BukkitRunnable() {
+
+			int counter = 0;
+
+			@Override
+			public void run() {
+
+				if(counter > 20 * getDuration(level)){
+
+					player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
+
+					triggerEnd(player, level);
+					
+					this.cancel();
+				}
+
+				for(Entity entity: player.getNearbyEntities(1.5, 1.5, 1.5)){
+					if(entity instanceof Player || !(entity instanceof LivingEntity e)) continue;
+
+					e.damage(getDamageMulti(level) * CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH));
+				}
+
+				player.setVelocity(player.getLocation().getDirection().setY(0).normalize().multiply(0.1));
+
+				counter++;
+
+			}
+		}.runTaskTimer(Core.plugin(), 0L, 1L);
+		
+		return true;
 	}
 
 	@Override
