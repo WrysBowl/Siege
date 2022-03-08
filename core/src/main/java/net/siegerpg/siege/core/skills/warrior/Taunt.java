@@ -5,7 +5,6 @@ import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.*;
 import org.bukkit.entity.*;
-import org.bukkit.potion.*;
 import org.bukkit.scheduler.*;
 import org.jetbrains.annotations.NotNull;
 
