@@ -38,6 +38,7 @@ public class PlayerData implements Listener {
 	public static HashMap< Player, Boolean > hasActionBar = new HashMap<>();
 	public static HashMap< Player, Double > playerHealth = new HashMap<>();
 	public static HashMap< Player, Double > playerRegeneration = new HashMap<>();
+	public static HashMap< Player, Integer > playerExtraRegeneration = new HashMap<>();
 
 	public static HashMap< Player, Integer > playerCurrentMana = new HashMap<>();
 	public static HashMap< Player, Integer > playerMana = new HashMap<>();
@@ -163,6 +164,7 @@ public class PlayerData implements Listener {
 			player.setHealth(getNewHealth(player.getHealth(), health, oldMaxHealth));
 
 			int regen = (int) CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.REGENERATION);
+			regen += playerExtraRegeneration.get(player);
 			int regenRate = getRegenRate(regen);
 			player.setSaturatedRegenRate(regenRate);
 			player.setUnsaturatedRegenRate((int)(regenRate*1.25));
