@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.*;
 import net.siegerpg.siege.core.items.*;
 import net.siegerpg.siege.core.items.enums.*;
 import net.siegerpg.siege.core.miscellaneous.*;
+import net.siegerpg.siege.core.miscellaneous.cache.*;
 import net.siegerpg.siege.core.skills.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.*;
@@ -100,6 +101,9 @@ public class WoundingStrike extends Skill {
 		((LivingEntity)e.getEntity()).damage(CustomItemUtils.INSTANCE.getPlayerStat(p, StatTypes.STRENGTH) * 0.75);
 
 		//Reduce regen WIP!
+		int regen = (int) CustomItemUtils.INSTANCE.getPlayerStat(p, StatTypes.REGENERATION);
+		PlayerData.playerExtraRegeneration.put(p, (int)(regen * -0.5)); //adds negative of half the player's regen
+
 
 	}
 
