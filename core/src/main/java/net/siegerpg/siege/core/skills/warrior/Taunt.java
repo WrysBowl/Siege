@@ -1,8 +1,12 @@
 package net.siegerpg.siege.core.skills.warrior;
 
+import net.siegerpg.siege.core.*;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
-import org.bukkit.entity.Player;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import org.bukkit.potion.*;
+import org.bukkit.scheduler.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
@@ -75,7 +79,32 @@ public class Taunt extends Skill {
 		if (!super.trigger(player, level)) return false;
     
     	// Handling of the skill goes here
-		
+		Location location = player.getLocation();
+		player.playSound(location, Sound.ENTITY_PHANTOM_AMBIENT, 1.0f, 0.8f);
+
+		//taunt mobs for this duration
+		new BukkitRunnable() {
+
+			int counter = 0;
+			@Override
+			public void run() {
+				//stop checking for enemies
+				if (counter >= 10) {
+					triggerEnd(player, level);
+					this.cancel();
+				}
+
+				for (LivingEntity mob : location.getNearbyLivingEntities(getRange(level))) {
+					if (!(mob instanceof Mob)) continue;
+					mob.getWorld().spawnParticle(Particle.HEART, mob.getLocation(), 2);
+					((Mob)mob).setTarget(player);
+
+				}
+
+				counter +=1;
+			}
+		}.runTaskTimer(Core.plugin(), 20, 20);
+
 		return true;
 	}
 
