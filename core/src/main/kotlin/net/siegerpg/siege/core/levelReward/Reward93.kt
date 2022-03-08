@@ -4,15 +4,17 @@ import net.siegerpg.siege.core.dungeons.Dungeon
 import net.siegerpg.siege.core.dungeons.DungeonCommand
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.RareKey
+import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.SpiritKey
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
-class Reward70(
-		override val level : Short = 71,
+class Reward93(
+		override val level : Short = 94,
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
-				CommonKey().getUpdatedItem(false).asQuantity(5)),
-		override val stats : HashMap<StatTypes, Int> = hashMapOf(StatTypes.HEALTH to 10)
+				SpiritKey().getUpdatedItem(false).asQuantity(1)),
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(StatTypes.LUCK to 8)
               ) : StatReward {
 
 	override fun extraReward(player : Player) {
