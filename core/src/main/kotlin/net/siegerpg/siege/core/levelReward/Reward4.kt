@@ -16,7 +16,7 @@ class Reward4(
 		override val items : List<ItemStack> = listOf(
 				CommonKey().getUpdatedItem(false).asQuantity(1)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 1
              ) : LevelReward {
 

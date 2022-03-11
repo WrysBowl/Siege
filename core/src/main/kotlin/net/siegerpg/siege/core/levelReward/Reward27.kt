@@ -19,6 +19,6 @@ class Reward27(
 				UncommonKey().getUpdatedItem(false).asQuantity(1),
 				RareKey().getUpdatedItem(false).asQuantity(2)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

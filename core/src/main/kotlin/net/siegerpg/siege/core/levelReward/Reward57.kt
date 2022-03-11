@@ -26,6 +26,6 @@ class Reward57(
 				Sugar().getUpdatedItem(false).asQuantity(20),
 				MobKey().getUpdatedItem(false),
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

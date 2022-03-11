@@ -22,6 +22,6 @@ class Reward51(
 				MobKey(0).getUpdatedItem(false).asQuantity(15),
 				GoldenCarrot().getUpdatedItem(false).asQuantity(20)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 1
               ) : LevelReward

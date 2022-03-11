@@ -26,7 +26,7 @@ class Reward59(
 		override val items : List<ItemStack> = listOf(
 				MobKey().getUpdatedItem(false).asQuantity(32)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 1
               ) : LevelReward {
 

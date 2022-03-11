@@ -18,6 +18,6 @@ class Reward26(
 				Sugar().getUpdatedItem(false).asQuantity(15),
 				GoldenCarrot().getUpdatedItem(false).asQuantity(10)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

@@ -25,6 +25,6 @@ class Reward55(
 				GlowingSteelPickaxe().getUpdatedItem(false),
 				MobKey(0).getUpdatedItem(false).asQuantity(10)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 1
               ) : LevelReward

@@ -28,6 +28,6 @@ class Reward63(
 		override val items : List<ItemStack> = listOf(
 				EpicKey().getUpdatedItem(false).asQuantity(3)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 1
               ) : LevelReward

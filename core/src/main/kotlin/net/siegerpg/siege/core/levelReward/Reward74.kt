@@ -14,7 +14,7 @@ class Reward74(
 		override val gold : Int = 0,
 		override val items : List<ItemStack> = listOf(),
 		override val skillPoints : Int = 1,
-		override val stats : HashMap<StatTypes, Int>
+		override val stats : HashMap<StatTypes, Int> = hashMapOf()
               ) : LevelReward {
 
 	override fun extraReward(player : Player) {

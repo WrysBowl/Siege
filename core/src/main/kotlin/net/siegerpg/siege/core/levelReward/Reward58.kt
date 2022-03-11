@@ -25,6 +25,6 @@ class Reward58(
 				RareKey().getUpdatedItem(false).asQuantity(3),
 				MobKey().getUpdatedItem(false).asQuantity(10)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

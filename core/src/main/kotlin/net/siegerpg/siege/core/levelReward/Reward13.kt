@@ -14,6 +14,6 @@ class Reward13(
 		override val level : Short = 14,
 		override val gold : Int = 3000,
 		override val items : List<ItemStack> = listOf(),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

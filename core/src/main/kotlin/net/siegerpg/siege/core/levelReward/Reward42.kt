@@ -22,6 +22,6 @@ class Reward42(
 				GoldenCarrot().getUpdatedItem(false).asQuantity(5),
 				UncommonKey().getUpdatedItem(false).asQuantity(5)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

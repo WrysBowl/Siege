@@ -26,6 +26,6 @@ class Reward56(
 				EXPBooster_50().boosterItem,
 				GOLDBooster_50().boosterItem
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

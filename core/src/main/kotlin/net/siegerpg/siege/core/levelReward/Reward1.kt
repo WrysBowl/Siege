@@ -10,6 +10,6 @@ class Reward1(
 		override val level : Short = 2,
 		override val gold : Int = 200,
 		override val items : List<ItemStack> = listOf(),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
              ) : LevelReward

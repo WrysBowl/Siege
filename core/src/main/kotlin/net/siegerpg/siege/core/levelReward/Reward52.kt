@@ -24,6 +24,6 @@ class Reward52(
 				CommonKey().getUpdatedItem(false).asQuantity(10),
 				Sugar().getUpdatedItem(false).asQuantity(32)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

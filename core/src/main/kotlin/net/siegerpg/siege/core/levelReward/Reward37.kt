@@ -19,6 +19,6 @@ class Reward37(
 				Sugar().getUpdatedItem(false).asQuantity(32),
 				GoldenCarrot().getUpdatedItem(false).asQuantity(16)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

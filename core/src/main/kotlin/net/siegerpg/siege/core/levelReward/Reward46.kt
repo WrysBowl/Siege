@@ -21,6 +21,6 @@ class Reward46(
 		override val items : List<ItemStack> = listOf(
 				EXPBooster_20().boosterItem.asQuantity(2)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

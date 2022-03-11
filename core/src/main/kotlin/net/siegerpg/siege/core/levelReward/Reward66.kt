@@ -27,6 +27,6 @@ class Reward66(
 		override val items : List<ItemStack> = listOf(
 			Sugar().getUpdatedItem(false).asQuantity(64)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward

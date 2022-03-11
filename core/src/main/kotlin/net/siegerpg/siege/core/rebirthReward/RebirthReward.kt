@@ -12,7 +12,6 @@ import java.lang.String
 interface RebirthReward {
 
 	val level : Short
-	val gold : Int
 	val items : List<ItemStack>
 	val stats : HashMap<StatTypes, Int>
 	val skillPoints : Int
@@ -31,10 +30,6 @@ interface RebirthReward {
 		player.sendMessage(Utils.parse("<color:#BE6CD1><bold><underlined>        LEVEL UP!        <reset>"))
 		player.sendMessage(Utils.parse("<color:#CF97DD>You leveled up to level $level"))
 		player.sendMessage("")
-		if (gold > 0) {
-			player.sendMessage(Utils.parse("<yellow>+ ${String.format("%,d", gold)} \u26C1"))
-			GoldExpListener.giveGold(player, gold)
-		}
 		if (skillPoints > 0) {
 			player.sendMessage(Utils.parse("<light_blue>+ ${String.format("%,d", skillPoints)} SP"))
 			val currentPoints : Int = SkillData.getSkillPoints(player)

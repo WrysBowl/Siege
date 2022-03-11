@@ -22,6 +22,6 @@ class Reward45(
 		override val items : List<ItemStack> = listOf(
 				GlowingHammerAndChisel().getUpdatedItem(false)
 		                                             ),
-		override val stats : HashMap<StatTypes, Int>,
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
               ) : LevelReward
