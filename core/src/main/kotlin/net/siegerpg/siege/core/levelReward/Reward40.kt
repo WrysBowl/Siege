@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal
@@ -18,5 +19,7 @@ class Reward40(
 		override val gold : Int = 0,
 		override val items : List<ItemStack> = listOf(
 				MobKey().getUpdatedItem(false).asQuantity(12)
-		                                             )
+		                                             ),
+		override val stats : HashMap<StatTypes, Int>,
+		override val skillPoints : Int = 0
               ) : LevelReward

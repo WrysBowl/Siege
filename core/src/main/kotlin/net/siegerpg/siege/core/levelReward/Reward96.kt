@@ -14,8 +14,9 @@ class Reward96(
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
 				SpiritKey().getUpdatedItem(false).asQuantity(1)),
-		override val stats : HashMap<StatTypes, Int> = hashMapOf(StatTypes.STRENGTH to 4)
-              ) : StatReward {
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(StatTypes.STRENGTH to 4),
+		override val skillPoints : Int = 0
+              ) : LevelReward {
 
 	override fun extraReward(player : Player) {
 

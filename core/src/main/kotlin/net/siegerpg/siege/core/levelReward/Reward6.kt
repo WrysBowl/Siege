@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Wool
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.CrackedHealthGem
@@ -15,5 +16,7 @@ class Reward6(
 		override val gold : Int = 500,
 		override val items : List<ItemStack> = listOf(
 				MobKey().getUpdatedItem(false).asQuantity(1)
-		                                             )
+		                                             ),
+		override val stats : HashMap<StatTypes, Int>,
+		override val skillPoints : Int = 0
              ) : LevelReward

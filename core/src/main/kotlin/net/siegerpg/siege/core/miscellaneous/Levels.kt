@@ -71,7 +71,7 @@ object Levels {
 			val reward : LevelReward = levelRewards[lvl.toInt() - 2]
 			object : BukkitRunnable() {
 				override fun run() {
-					reward.sendMessage(player as Player)
+					reward.sendReward(player as Player)
 					Bukkit.getServer()
 							.broadcast(Utils.lore("<color:#ade079>${player.name} has reached level <color:#9774cc>$level!"))
 					player.playSound(

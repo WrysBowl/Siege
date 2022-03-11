@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Sound
@@ -9,5 +10,7 @@ import org.bukkit.inventory.ItemStack
 class Reward5(
 		override val level : Short = 6,
 		override val gold : Int = 800,
-		override val items : List<ItemStack> = listOf()
+		override val items : List<ItemStack> = listOf(),
+		override val stats : HashMap<StatTypes, Int>,
+		override val skillPoints : Int = 0
              ) : LevelReward

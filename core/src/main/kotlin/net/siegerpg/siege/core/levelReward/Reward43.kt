@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Crystal
@@ -19,5 +20,7 @@ class Reward43(
 		override val items : List<ItemStack> = listOf(
 				GoldenCarrot().getUpdatedItem(false).asQuantity(15),
 				Sugar().getUpdatedItem(false).asQuantity(20)
-		                                             )
+		                                             ),
+		override val stats : HashMap<StatTypes, Int>,
+		override val skillPoints : Int = 1
               ) : LevelReward

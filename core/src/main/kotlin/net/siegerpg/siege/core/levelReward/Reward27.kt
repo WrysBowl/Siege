@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.RareKey
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey
@@ -17,5 +18,7 @@ class Reward27(
 		override val items : List<ItemStack> = listOf(
 				UncommonKey().getUpdatedItem(false).asQuantity(1),
 				RareKey().getUpdatedItem(false).asQuantity(2)
-		                                             )
+		                                             ),
+		override val stats : HashMap<StatTypes, Int>,
+		override val skillPoints : Int = 0
               ) : LevelReward

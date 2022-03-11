@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.levelReward
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.listeners.GoldExpListener
 import net.siegerpg.siege.core.miscellaneous.Utils
+import net.siegerpg.siege.core.skills.SkillData
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -13,8 +14,11 @@ interface LevelReward {
 	val level : Short
 	val gold : Int
 	val items : List<ItemStack>
+	val stats : HashMap<StatTypes, Int>
+	val skillPoints : Int
 
-	fun sendMessage(player : Player) {
+
+	fun sendReward(player : Player) {
 		player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f)
 		player.sendTitle(
 				Utils.tacc("&5Level Up!"),
@@ -30,6 +34,11 @@ interface LevelReward {
 		if (gold > 0) {
 			player.sendMessage(Utils.parse("<yellow>+ ${String.format("%,d", gold)} \u26C1"))
 			GoldExpListener.giveGold(player, gold)
+		}
+		if (skillPoints > 0) {
+			player.sendMessage(Utils.parse("<light_blue>+ ${String.format("%,d", skillPoints)} SP"))
+			val currentPoints : Int = SkillData.getSkillPoints(player)
+			SkillData.setSkillPoints(player, currentPoints+skillPoints)
 		}
 		for (item in items) {
 			val miniMessage = Utils.lore("<gray>\u27A5 " + item.itemMeta.displayName + " <yellow>x" + item.amount).hoverEvent(item)
