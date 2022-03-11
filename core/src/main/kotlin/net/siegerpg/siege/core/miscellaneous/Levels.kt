@@ -22,7 +22,7 @@ object Levels {
 	private const val cacheDuration = 10 * 60
 	private val cachedLevelExp = ConcurrentHashMap<UUID, Triple<Short, Int, Instant>>()
 
-	private val levelRewards : ArrayList<LevelReward> = arrayListOf(
+	val levelRewards : ArrayList<LevelReward> = arrayListOf(
 			Reward1(), Reward2(), Reward3(), Reward4(), Reward5(),
 			Reward6(), Reward7(), Reward8(), Reward9(), Reward10(),
 			Reward11(), Reward12(), Reward13(), Reward14(), Reward15(),
