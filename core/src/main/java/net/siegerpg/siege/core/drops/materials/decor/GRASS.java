@@ -13,13 +13,13 @@ public class GRASS extends BlockDropTable {
 
 		super(100, Material.GRASS, 0, 0, 0, 0, new Reward[] {
 				new Reward(new Seed()
-						           .getUpdatedItem(false), 25.0),
+						           .getUpdatedItem(false), 50.0),
 				new Reward(new PlantMatter()
 						           .getUpdatedItem(false), 25.0),
 				new Reward(new Stick()
 						           .getUpdatedItem(false), 25.0),
 				new Reward(new Seed()
-						           .getUpdatedItem(false), 2.5),
+						           .getUpdatedItem(false), 25.0),
 				new Reward(new PlantMatter()
 						           .getUpdatedItem(false), 2.5),
 				new Reward(new Stick()
