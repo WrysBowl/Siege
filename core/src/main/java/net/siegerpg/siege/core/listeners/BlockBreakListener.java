@@ -10,10 +10,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.miscellaneous.*;
 import net.siegerpg.siege.core.miscellaneous.cache.GlobalMultipliers;
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
@@ -257,6 +254,10 @@ public class BlockBreakListener implements Listener {
 		//if block broken doesn't have a drop table
 		if (rewardableBlocks.contains(blockType)) {
 			e.setCancelled(false);
+
+			final int minedAmount = player.getStatistic(Statistic.MINE_BLOCK, blockType);
+			player.setStatistic(Statistic.MINE_BLOCK, blockType, minedAmount+1);
+			
 			if (Utils.randTest(20.0)) {
 				Levels.INSTANCE.addExpShared(player, 1);
 			}
@@ -273,6 +274,10 @@ public class BlockBreakListener implements Listener {
 			return;
 		}
 		if (blockDrop != null) {
+
+			final int minedAmount = player.getStatistic(Statistic.MINE_BLOCK, blockType);
+			player.setStatistic(Statistic.MINE_BLOCK, blockType, minedAmount+1);
+
 			final int blockDropRegen = blockDrop.getBlockRegen();
 			int goldCoinAmt = blockDrop.getGold(true);
 			int exp = blockDrop.getExp(true);
