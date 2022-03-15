@@ -17,7 +17,9 @@ import net.siegerpg.siege.core.miscellaneous.name
 import org.bukkit.Bukkit
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.event.player.PlayerToggleSneakEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
@@ -142,6 +144,10 @@ interface CustomEquipment : CustomItem {
 	}
 
 	fun onInteract(e : PlayerInteractEvent) {
+		// placeholder for optional event
+	}
+
+	fun onSneak(e : PlayerToggleSneakEvent) {
 		// placeholder for optional event
 	}
 
