@@ -16,6 +16,7 @@ import net.siegerpg.siege.core.miscellaneous.DamageIndicator
 import net.siegerpg.siege.core.miscellaneous.Levels
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.cache.ActiveMobs
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
@@ -288,6 +289,16 @@ class CustomItemKotlinListener : Listener {
 					block.location
 				}
 
+				// Checks if the player has enough mana
+				val manaCost : Int = it.getManaCost()
+				val playerMana = PlayerData.playerCurrentMana[player]
+				if (playerMana == null || playerMana < manaCost) {
+					player.sendMessage(Utils.lore("<red>You do not have enough mana to cast this wand."))
+					return
+				}
+				// Removes the mana from the user
+				PlayerData.playerCurrentMana[player] =
+						playerMana - manaCost
 
 				if (cooldownWand.contains(player)) {
 					player.sendActionBar(Utils.parse("<red>You are on cooldown"))
