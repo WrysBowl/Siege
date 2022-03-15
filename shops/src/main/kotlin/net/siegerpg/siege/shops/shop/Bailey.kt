@@ -18,7 +18,7 @@ import net.siegerpg.siege.shops.ShopItem
 
 class Bailey : Shop() {
 
-	override var name : String = "bailey"
+	override var name : String = "Bailey"
 	override var permission : String = "siege.shops.shop.bailey"
 	override var items : List<ShopItem> = listOf(
 			ShopItem(
