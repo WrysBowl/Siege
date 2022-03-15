@@ -107,7 +107,7 @@ abstract class CustomWand(
 		}
 		meta.lore("<r><gray>Radius <yellow>$damageRadius")
 		meta.lore("<r><gray>Range <yellow>$range")
-		meta.lore("<r><gray>Mana <red>-${getManaCost()}")
+		meta.lore("<r><gray>Mana <color:#72E5D3>${getManaCost()}")
 
 		val length =
 				if (name.length > 16) name.length
