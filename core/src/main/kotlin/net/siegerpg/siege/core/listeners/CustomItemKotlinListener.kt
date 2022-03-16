@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
+import com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
@@ -9,6 +10,8 @@ import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomPotion
 import net.siegerpg.siege.core.items.types.misc.CustomSkill
 import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
+import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
+import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
 import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
@@ -66,6 +69,43 @@ class CustomItemKotlinListener : Listener {
 	fun onBowUse(e : ProjectileHitEvent) {
 		if (e.entity is Arrow) {
 			e.entity.remove()
+		}
+	}
+
+	@EventHandler
+	fun onShootEvent(e : PlayerLaunchProjectileEvent) {
+		e.player.inventory.itemInMainHand.let {
+			if (it is CustomWeapon) {
+				it.onShoot(e)
+			}
+		}
+	}
+
+	@EventHandler
+	fun onInteractEvent(e : PlayerInteractEvent) {
+		e.player.inventory.armorContents.forEach {
+			if (it is CustomEquipment) {
+				it.onInteract(e)
+			}
+		}
+		e.player.inventory.itemInMainHand.let {
+			if (it is CustomEquipment) {
+				it.onInteract(e)
+			}
+		}
+	}
+
+	@EventHandler
+	fun onSneakEvent(e : PlayerToggleSneakEvent) {
+		e.player.inventory.armorContents.forEach {
+			if (it is CustomEquipment) {
+				it.onSneak(e)
+			}
+		}
+		e.player.inventory.itemInMainHand.let {
+			if (it is CustomEquipment) {
+				it.onSneak(e)
+			}
 		}
 	}
 
@@ -163,7 +203,7 @@ class CustomItemKotlinListener : Listener {
 				Check for weapon skill from player's hand
 			 */
 			item.let {
-				if (it is CustomMeleeWeapon) {
+				if (it is CustomEquipment) {
 					it.onHit(e)
 				}
 			}
@@ -181,7 +221,7 @@ class CustomItemKotlinListener : Listener {
 				val armorCustomItem : CustomItem? =
 						CustomItemUtils.getCustomItem(armorPiece)
 				armorCustomItem?.let {
-					if (it is CustomArmor) {
+					if (it is CustomEquipment) {
 						it.onHit(e)
 					}
 				}
@@ -313,6 +353,13 @@ class CustomItemKotlinListener : Listener {
 					player.sendMessage(Utils.lore("<red>You do not have enough mana to cast this wand."))
 					return
 				}
+
+				item.let {
+					if (it is CustomWeapon) {
+						it.onWandCast()
+					}
+				}
+
 				// Removes the mana from the user
 				PlayerData.playerCurrentMana[player] =
 						playerMana - manaCost

@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
+import com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent
 import de.tr7zw.nbtapi.NBTItem
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
@@ -12,7 +13,7 @@ import org.bukkit.event.entity.EntityShootBowEvent
 
 interface CustomWeapon : CustomGear {
 
-	fun onShoot(e : EntityShootBowEvent) {
+	fun onShoot(e : PlayerLaunchProjectileEvent) {
 		// placeholder for optional event
 	}
 
