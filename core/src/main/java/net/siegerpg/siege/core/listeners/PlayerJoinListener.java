@@ -109,7 +109,6 @@ public class PlayerJoinListener implements Listener {
 			Tablist.tablistUpdate(p);
 		}
 		if (player.getName().equals("Wrys")) {
-			player.getInventory().addItem(new SelflessDefense().getUpdatedItem(false));
 
 		}
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);

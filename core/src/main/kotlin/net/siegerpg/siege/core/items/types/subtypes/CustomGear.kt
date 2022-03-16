@@ -1,17 +1,20 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
 import de.tr7zw.nbtapi.NBTItem
+import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.miscellaneous.Utils
+import net.siegerpg.siege.core.miscellaneous.lore
 import org.bukkit.Bukkit
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.ItemMeta
 import kotlin.random.Random
 
 interface CustomGear : CustomEquipment {
@@ -73,19 +76,19 @@ interface CustomGear : CustomEquipment {
 		var chosenStats : HashMap<StatTypes, Double> = hashMapOf()
 
 		//get sum of all stats added
-		var statSum  = 0.0
+		var statSum = 0.0
 		for (stat in baseStats) {
-			if (stat.value < 0) statSum += stat.value/2
+			if (stat.value < 0) statSum += stat.value / 2
 			else statSum += stat.value
 		}
 
-		repeat (rolls) {
+		repeat(rolls) {
 			val randIndex : Int = Random.nextInt(0, getStatPool().size - 1)
 			val chosenStat : StatTypes = getStatPool()[randIndex]
 
 			//if there are duplicates, add to previous value
 			val currentValue : Double = chosenStats[chosenStat] ?: 0.0
-			chosenStats[chosenStat] = currentValue + statSum/5
+			chosenStats[chosenStat] = currentValue + statSum / 5
 		}
 		return chosenStats
 	}
@@ -140,6 +143,55 @@ interface CustomGear : CustomEquipment {
 			}
 		} catch (e : Exception) {
 		}
+	}
+
+	override fun statFormat(meta : ItemMeta, hideRarity : Boolean) : ItemMeta {
+		meta.lore(" ")
+		val realStats =
+				CustomItemUtils.getStats(this, addGem = false, addRarity = true)
+		//TODO Check what stat has been added, and make the value a different color
+		baseStats.keys.forEach {
+			when {
+				(realStats[it]!! < 0.0) -> {
+					(hideRarity || quality < 0)
+				}
+			}
+			if (realStats[it]!! < 0.0) {
+				if (hideRarity || quality < 0)
+					meta.lore(
+							"<r><red>${baseStats[it]?.times(0.5)}. . . -${
+								baseStats[it]?.times(
+										1.5
+								                    )
+							} <gray>${it.stylizedName}"
+					         )
+				else {
+					if (addedStats?.containsKey(it) == true) {
+						meta.lore("<r><color:#de7464>${realStats[it]} <gray>${it.stylizedName} <color:#de7464>\u2728")
+					} else {
+						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
+					}
+				}
+			} else {
+				if (hideRarity || quality < 0) {
+					meta.lore(
+							"<r><green>+${baseStats[it]?.times(0.5)}. . .${
+								baseStats[it]?.times(
+										1.5
+								                    )
+							} <gray>${it.stylizedName}"
+					         )
+				} else {
+					if (addedStats?.containsKey(it) == true) {
+						meta.lore("<r><color:#52d1a0>+${realStats[it]} <gray>${it.stylizedName} <color:#de7464>\u2728")
+					} else {
+						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+					}
+				}
+
+			}
+		}
+		return meta
 	}
 
 }

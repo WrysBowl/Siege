@@ -76,36 +76,10 @@ abstract class CustomWand(
 			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
 		}
 		if (baseStats.size != 0) {
-			meta.lore(" ")
-			val realStats =
-					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
 			baseStats.keys.forEach {
-				if (realStats[it]!! < 0.0) {
-					if (hideRarity || quality < 0)
-						meta.lore(
-								"<r><red>${baseStats[it]?.times(0.5)}. . . -${
-									baseStats[it]?.times(
-											1.5
-									                    )
-								} <gray>${it.stylizedName}"
-						         )
-					else {
-						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
-					}
-				} else {
-					if (hideRarity || quality < 0) {
-						meta.lore(
-								"<r><green>+${baseStats[it]?.times(0.5)}. . .${
-									baseStats[it]?.times(
-											1.5
-									                    )
-								} <gray>${it.stylizedName}"
-						         )
-					} else {
-						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
-					}
-				}
+				item.itemMeta = statFormat(meta, hideRarity)
 			}
+			meta.lore("")
 		}
 		meta.lore("<r><gray>Radius <yellow>$damageRadius")
 		meta.lore("<r><gray>Range <yellow>$range")

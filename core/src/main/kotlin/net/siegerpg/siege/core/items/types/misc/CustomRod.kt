@@ -57,11 +57,8 @@ abstract class CustomRod(
 			meta.lore("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem")
 		}
 		if (baseStats.size != 0) {
-			meta.lore(" ")
-			val realStats =
-					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
 			baseStats.keys.forEach {
-				meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+				item.itemMeta = statFormat(meta, hideRarity)
 			}
 		}
 		val length =

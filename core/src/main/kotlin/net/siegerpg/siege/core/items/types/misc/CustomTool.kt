@@ -59,11 +59,8 @@ abstract class CustomTool(
 			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
 		}
 		if (baseStats.size != 0) {
-			meta.lore(" ")
-			val realStats =
-					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
 			baseStats.keys.forEach {
-				meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+				item.itemMeta = statFormat(meta, hideRarity)
 			}
 		}
 		val length =

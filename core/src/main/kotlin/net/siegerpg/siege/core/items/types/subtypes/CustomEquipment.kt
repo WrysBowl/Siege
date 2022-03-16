@@ -22,6 +22,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerToggleSneakEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.ItemMeta
 
 
 interface CustomEquipment : CustomItem {
@@ -78,35 +79,7 @@ interface CustomEquipment : CustomItem {
 			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
 		}
 		if (baseStats.size != 0) {
-			meta.lore(" ")
-			val realStats =
-					CustomItemUtils.getStats(this, addGem = false, addRarity = true)
-			baseStats.keys.forEach {
-				if (realStats[it]!! < 0.0) {
-					if (hideRarity || quality < 0)
-						meta.lore(
-								"<r><red>${baseStats[it]?.times(0.5)}. . . -${
-									baseStats[it]?.times(
-											1.5
-									                    )
-								} <gray>${it.stylizedName}"
-						         )
-					else {
-						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")					}
-				} else {
-					if (hideRarity || quality < 0) {
-						meta.lore(
-								"<r><green>+${baseStats[it]?.times(0.5)}. . .${
-									baseStats[it]?.times(
-											1.5
-									                    )
-								} <gray>${it.stylizedName}"
-						         )
-					} else {
-						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")					}
-
-				}
-			}
+			item.itemMeta = statFormat(meta, hideRarity)
 		}
 		val length =
 				if (name.length > 16) name.length
@@ -127,6 +100,39 @@ interface CustomEquipment : CustomItem {
 		                 )
 		item.itemMeta = meta
 		return item
+	}
+
+	fun statFormat(meta : ItemMeta, hideRarity : Boolean) : ItemMeta{
+		meta.lore(" ")
+		val realStats =
+				CustomItemUtils.getStats(this, addGem = false, addRarity = true)
+		baseStats.keys.forEach {
+			if (realStats[it]!! < 0.0) {
+				if (hideRarity || quality < 0)
+					meta.lore(
+							"<r><red>${baseStats[it]?.times(0.5)}. . . -${
+								baseStats[it]?.times(
+										1.5
+								                    )
+							} <gray>${it.stylizedName}"
+					         )
+				else {
+					meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")					}
+			} else {
+				if (hideRarity || quality < 0) {
+					meta.lore(
+							"<r><green>+${baseStats[it]?.times(0.5)}. . .${
+								baseStats[it]?.times(
+										1.5
+								                    )
+							} <gray>${it.stylizedName}"
+					         )
+				} else {
+					meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")					}
+
+			}
+		}
+		return meta
 	}
 
 	override fun serialize() {
