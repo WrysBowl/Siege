@@ -28,6 +28,7 @@ abstract class CustomMeleeWeapon(
 		override val type : ItemTypes = ItemTypes.MELEEWEAPON,
 		val attackSpeed : Double,
 		override var statGem : StatGem? = null,
+		override var addedStats : HashMap<StatTypes, Double>? = null,
                                 ) : CustomWeapon {
 
 	override var rarity : Rarity = Rarity.COMMON

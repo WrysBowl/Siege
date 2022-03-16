@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityShootBowEvent
 
-interface CustomWeapon : CustomEquipment {
+interface CustomWeapon : CustomGear {
 
 	fun onShoot(e : EntityShootBowEvent) {
 		// placeholder for optional event

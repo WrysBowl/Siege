@@ -34,6 +34,7 @@ abstract class CustomWand(
 		val blue : Int = 255,
 		val damageRadius : Double = 2.5,
 		override var statGem : StatGem? = null,
+		override var addedStats : HashMap<StatTypes, Double>? = null,
 
 		) : CustomWeapon {
 

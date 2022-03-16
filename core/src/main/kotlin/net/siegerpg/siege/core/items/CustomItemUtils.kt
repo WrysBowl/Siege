@@ -76,6 +76,7 @@ import net.siegerpg.siege.core.items.types.armor.CustomChestplate
 import net.siegerpg.siege.core.items.types.armor.CustomHelmet
 import net.siegerpg.siege.core.items.types.armor.CustomLeggings
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
+import net.siegerpg.siege.core.items.types.subtypes.CustomGear
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import net.siegerpg.siege.core.miscellaneous.Levels
@@ -272,9 +273,18 @@ object CustomItemUtils {
 					}
 				}
 			}
-
 			map[it] = ceil(totalAmount)
 		}
+
+		/*
+		Adds extra stats from rolls
+		 */
+		if (item is CustomGear) {
+			item.addedStats!!.forEach { (k, v) ->
+				map.merge(k, v) { a : Double, b : Double -> a + b }
+			}
+		}
+
 		return map
 	}
 

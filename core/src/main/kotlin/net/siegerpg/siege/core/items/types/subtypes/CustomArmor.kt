@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.LeatherArmorMeta
 
-interface CustomArmor : CustomEquipment {
+interface CustomArmor : CustomGear {
 
 	var leatherColor : Color
 
