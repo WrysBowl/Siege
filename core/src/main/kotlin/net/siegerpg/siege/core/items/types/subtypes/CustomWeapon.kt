@@ -13,7 +13,7 @@ import org.bukkit.event.entity.EntityShootBowEvent
 
 interface CustomWeapon : CustomGear {
 
-	fun onShoot(e : PlayerLaunchProjectileEvent) {
+	fun onShoot(e : EntityShootBowEvent) {
 		// placeholder for optional event
 	}
 

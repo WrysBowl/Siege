@@ -1,15 +1,17 @@
 package net.siegerpg.siege.core.listeners
 
 import com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent
+import de.tr7zw.nbtapi.NBTEntity
+import de.tr7zw.nbtapi.NBTItem
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.CustomItemUtils.getPlayerStat
 import net.siegerpg.siege.core.items.enums.StatTypes
+import net.siegerpg.siege.core.items.types.misc.CustomArrow
 import net.siegerpg.siege.core.items.types.misc.CustomFood
 import net.siegerpg.siege.core.items.types.misc.CustomPotion
 import net.siegerpg.siege.core.items.types.misc.CustomSkill
-import net.siegerpg.siege.core.items.types.subtypes.CustomArmor
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomBow
@@ -20,6 +22,7 @@ import net.siegerpg.siege.core.miscellaneous.Levels
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.cache.ActiveMobs
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
@@ -67,18 +70,41 @@ class CustomItemKotlinListener : Listener {
 
 	@EventHandler
 	fun onBowUse(e : ProjectileHitEvent) {
-		if (e.entity is Arrow) {
-			e.entity.remove()
+		if (e.entity !is Arrow) return
+
+		e.entity.remove()
+		val projectile : Arrow = e.entity as Arrow
+		projectile.itemStack.let {
+			val item : CustomItem = CustomItemUtils.getCustomItem(it) ?: return@let
+			if (item is CustomArrow) {
+				item.onShoot(e)
+			}
 		}
 	}
 
 	@EventHandler
-	fun onShootEvent(e : PlayerLaunchProjectileEvent) {
-		e.player.inventory.itemInMainHand.let {
+	fun onShootEvent(e : EntityShootBowEvent) {
+		if (e.entity !is Player) return
+		val player : Player = e.entity as Player
+
+		player.inventory.itemInMainHand.let {
 			if (it is CustomWeapon) {
 				it.onShoot(e)
 			}
 		}
+
+		if (e.projectile !is Arrow) return
+		val projectile : Arrow = e.projectile as Arrow
+
+		//TODO Find out how to get the arrow consumed in a bow shoot event
+
+		projectile.itemStack.let {
+			val item : CustomItem = CustomItemUtils.getCustomItem(it) ?: return@let
+			if (item is CustomArrow) {
+				item.onShoot(e)
+			}
+		}
+
 	}
 
 	@EventHandler

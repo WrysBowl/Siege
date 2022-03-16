@@ -281,7 +281,7 @@ object CustomItemUtils {
 					}
 				}
 			}
-			map[it] = ceil(totalAmount)
+			map[it] = totalAmount
 		}
 
 		return map

@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.items.types.misc
 
+import com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.enums.ItemTypes
@@ -13,6 +14,7 @@ import org.bukkit.entity.Arrow
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
 import org.bukkit.entity.Projectile
+import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
@@ -33,7 +35,8 @@ abstract class CustomArrow(
 		final override var quality : Int = -1,
 		override var item : ItemStack = ItemStack(material),
 		val potion : PotionType? = null,
-		override val type : ItemTypes = ItemTypes.MATERIAL) : CustomItem {
+		override val type : ItemTypes = ItemTypes.MATERIAL
+                          ) : CustomItem {
 
 	override var rarity : Rarity = Rarity.COMMON
 
@@ -43,31 +46,15 @@ abstract class CustomArrow(
 	}
 
 	override fun getSellValue() : Int {
-		return quality/10
+		return quality / 10
 	}
-	open fun playerEffect(player : Player) {}
-	open fun targetEffect(entity : Entity) {}
-	open fun hitEffect(entity : Projectile) {}
-	open fun arrowEffect(arrow : Entity) {}
 
 	@Suppress("deprecated")
 	open fun onShoot(e : EntityShootBowEvent) {
-
-		Bukkit.getScheduler().runTask(Core.plugin(), Runnable {
-			if (e.entity is Player) {
-				playerEffect(e.entity as Player)
-			}
-			arrowEffect(e.projectile)
-		})
 	}
 
 	@Suppress("deprecated")
 	open fun onShoot(e : ProjectileHitEvent) {
-
-		Bukkit.getScheduler().runTask(Core.plugin(), Runnable {
-			if (e.hitEntity != null) targetEffect(e.hitEntity!!)
-			hitEffect(e.entity)
-		})
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
@@ -87,7 +74,7 @@ abstract class CustomArrow(
 		}
 
 		meta.lore(" ")
-		meta.lore("<r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
+		meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
 
 		if (potion != null) (meta as PotionMeta).basePotionData = PotionData(potion)
 		meta.isUnbreakable = true

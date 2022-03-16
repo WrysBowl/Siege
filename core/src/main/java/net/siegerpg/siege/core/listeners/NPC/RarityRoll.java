@@ -135,26 +135,18 @@ public class RarityRoll implements Listener {
 		VaultHook.econ.withdrawPlayer(player, getCost());
 		Scoreboard.updateScoreboard(player);
 
-		//remove item from player's inventory
-		player.getInventory().remove(this.item.getItem().asOne());
-
 		//change quality of copied item
 		int rarity = Utils.randRarity();
 		copiedItem.setQuality(rarity);
 		copiedItem.setRarity(Rarity.Companion.getFromInt(rarity));
 		copiedItem.serialize();
 
-		//remove old item from player
-		player.getInventory().remove(this.item.getItem().asOne());
-
 		//set this.item to copied item
 		this.item = copiedItem;
 
 		//give player copied item
-		Utils.giveItem(player, copiedItem.getUpdatedItem(false));
+		player.getInventory().setItemInMainHand(copiedItem.getUpdatedItem(false));
 		openInventory(player, this.item);
-
-		player.sendMessage(Utils.tacc("&eYou rolled "+rarity+" on your item!"));
 	}
 
 }

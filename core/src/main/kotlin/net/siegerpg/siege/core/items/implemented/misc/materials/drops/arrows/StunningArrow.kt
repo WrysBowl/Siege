@@ -8,6 +8,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Projectile
+import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
@@ -20,15 +21,16 @@ class StunningArrow() : CustomArrow(
 		levelRequirement = 0,
 		material = Material.TIPPED_ARROW,
                                    ) {
+
 	override fun getSellValue() : Int {
 		return 60
 	}
 
-	override fun targetEffect(entity : Entity) {
-		super.targetEffect(entity)
-		if (entity !is LivingEntity) return
-		val mob : LivingEntity = entity as LivingEntity
-		mob.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 100, 9))
+	override fun onShoot(e : ProjectileHitEvent) {
+		super.onShoot(e)
+		if (e.hitEntity !is LivingEntity) return
+		val mob : LivingEntity = e.hitEntity as LivingEntity
+		mob.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 100, 9, false, false))
 	}
 
 	constructor(quality : Int) : this() {
