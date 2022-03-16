@@ -72,7 +72,7 @@ abstract class CustomArrow(
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 
-		val meta = item.itemMeta as PotionMeta
+		val meta = item.itemMeta
 
 		meta.name("<r><gray>$name")
 
@@ -89,7 +89,7 @@ abstract class CustomArrow(
 		meta.lore(" ")
 		meta.lore("<r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
 
-		if (potion != null) meta.basePotionData = PotionData(potion)
+		if (potion != null) (meta as PotionMeta).basePotionData = PotionData(potion)
 		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 

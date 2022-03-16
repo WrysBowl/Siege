@@ -63,6 +63,13 @@ class CustomItemKotlinListener : Listener {
 	}
 
 	@EventHandler
+	fun onBowUse(e : ProjectileHitEvent) {
+		if (e.entity is Arrow) {
+			e.entity.remove()
+		}
+	}
+
+	@EventHandler
 	fun onSkillUse(e : PlayerInteractEvent) {
 		val player : Player = e.player
 		val item : ItemStack = player.inventory.itemInMainHand
@@ -272,10 +279,10 @@ class CustomItemKotlinListener : Listener {
 		) return
 		val player = event.player
 		val item = player.inventory.itemInMainHand
-		var dmg = CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH, item)
 
 		CustomItemUtils.getCustomItem(item)?.let {
 			if (it is CustomWand) {
+				var dmg = CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH, item)
 
 				if (player.level < CustomItemUtils.getCustomItem(item)?.levelRequirement!!) dmg =
 						1.0
@@ -289,6 +296,16 @@ class CustomItemKotlinListener : Listener {
 					block.location
 				}
 
+				if (cooldownWand.contains(player)) {
+					return
+				}
+				cooldownWand.add(player)
+				object : BukkitRunnable() {
+					override fun run() {
+						cooldownWand.remove(player)
+					}
+				}.runTaskLater(plugin(), 30)
+
 				// Checks if the player has enough mana
 				val manaCost : Int = it.getManaCost()
 				val playerMana = PlayerData.playerCurrentMana[player]
@@ -299,18 +316,6 @@ class CustomItemKotlinListener : Listener {
 				// Removes the mana from the user
 				PlayerData.playerCurrentMana[player] =
 						playerMana - manaCost
-
-				if (cooldownWand.contains(player)) {
-					player.sendActionBar(Utils.parse("<red>You are on cooldown"))
-					return
-				}
-				cooldownWand.add(player)
-				object : BukkitRunnable() {
-					override fun run() {
-						cooldownWand.remove(player)
-					}
-				}.runTaskLater(plugin(), 30)
-
 
 				val loc =
 						player.location.add(0.0, player.eyeHeight, 0.0) //player location

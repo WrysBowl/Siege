@@ -45,6 +45,7 @@ abstract class CustomWand(
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
+		super.updateMeta(hideRarity)
 		val meta = item.itemMeta
 
 		meta.removeAttributeModifier(Attribute.GENERIC_ATTACK_SPEED)
@@ -132,9 +133,9 @@ abstract class CustomWand(
 	}
 
 	fun getManaCost() : Int {
-		var statSum : Int = 0
+		var statSum : Int = 5
 		for (stat in baseStats) {
-			statSum += (stat.value/5).toInt()
+			statSum += (stat.value/2).toInt()
 		}
 		return statSum
 	}

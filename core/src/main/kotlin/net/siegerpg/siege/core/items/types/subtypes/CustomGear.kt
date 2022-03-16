@@ -21,6 +21,9 @@ interface CustomGear : CustomEquipment {
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		super.updateMeta(hideRarity)
 		setStats() //sets random stat if able to
+		addedStats?.forEach { (k, v) ->
+			baseStats.merge(k, v) { a : Double, b : Double -> a }
+		}
 		return this.item
 	}
 
@@ -91,19 +94,10 @@ interface CustomGear : CustomEquipment {
 	 * To be called each time the item gets updated
 	 */
 	fun setStats() {
-		if (!checkStatus()) return //if item has been checked for random stats, returns false
+		if (checkStatus()) return //if item has been checked for random stats, returns false
 		item = item.setNbtTags("addedStatus" to true) //item has had its stats rolled
 		addedStats = getRandomStats()
 		this.serialize()
-	}
-
-	fun getTotalStats() : HashMap<StatTypes, Double>? {
-		val base = baseStats
-		val added = addedStats
-		added?.forEach { (k, v) ->
-			base.merge(k, v) { a : Double, b : Double -> a + b }
-		}
-		return base
 	}
 
 	/**
@@ -112,9 +106,11 @@ interface CustomGear : CustomEquipment {
 	fun checkStatus() : Boolean {
 		try {
 			item.getNbtTag<Boolean>("addedStatus")?.let { it ->
-				return true
+				return it
 			}
-		} catch (e : Exception) { }
+		} catch (e : Exception) {
+			return false
+		}
 		return false
 	}
 

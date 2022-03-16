@@ -83,6 +83,7 @@ import net.siegerpg.siege.core.miscellaneous.Levels
 import net.siegerpg.siege.core.miscellaneous.StatRewards
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
+import org.bukkit.Bukkit
 import org.bukkit.attribute.Attribute
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -258,13 +259,20 @@ object CustomItemUtils {
 		val map = hashMapOf<StatTypes, Double>()
 		StatTypes.values().forEach {
 			var totalAmount = 0.0
+
+			if (item is CustomGear) {
+				if (item.addedStats != null) {
+					if (item.addedStats!!.containsKey(it)) {
+						totalAmount += item.addedStats!![it]!!
+					}
+				}
+			}
 			if (item.baseStats.containsKey(it)) {
 				totalAmount += item.baseStats[it]!!
 			}
 			if (addRarity) {
-				totalAmount *= if (item.quality < 0) getRarityMultiplier(50) else getRarityMultiplier(
-						item.quality
-				                                                                                     )
+				totalAmount *= if (item.quality < 0) getRarityMultiplier(50) else getRarityMultiplier(item.quality)
+
 			}
 			if (addGem) {
 				item.statGem?.let { gem ->
@@ -274,15 +282,6 @@ object CustomItemUtils {
 				}
 			}
 			map[it] = ceil(totalAmount)
-		}
-
-		/*
-		Adds extra stats from rolls
-		 */
-		if (item is CustomGear) {
-			item.addedStats!!.forEach { (k, v) ->
-				map.merge(k, v) { a : Double, b : Double -> a + b }
-			}
 		}
 
 		return map

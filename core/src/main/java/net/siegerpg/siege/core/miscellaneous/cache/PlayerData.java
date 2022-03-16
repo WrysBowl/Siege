@@ -66,8 +66,8 @@ public class PlayerData implements Listener {
 					if (!playerMana.containsKey(player)) continue;
 					int maxMana = playerMana.get(player);
 					int currentMana = playerCurrentMana.get(player);
-					double regeneration = (playerRegeneration.get(player)/2)+5;
-					int newCurrentMana = currentMana + (int)regeneration;
+					double manaRegen = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA_REGEN);
+					int newCurrentMana = currentMana + (int)manaRegen + 1;
 
 					if (newCurrentMana > maxMana) newCurrentMana = maxMana;
 					playerCurrentMana.put(player, newCurrentMana);
@@ -78,7 +78,6 @@ public class PlayerData implements Listener {
 
 	public static boolean onCooldown(Player player) {
 		if (commandCooldown.contains(player)) {
-			player.sendMessage(Utils.lore("<red>You are on cooldown!"));
 
 			int currentStrikes = 0;
 			if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
@@ -164,7 +163,7 @@ public class PlayerData implements Listener {
 			player.setHealth(getNewHealth(player.getHealth(), health, oldMaxHealth));
 
 			int regen = (int) CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.REGENERATION);
-			regen += playerExtraRegeneration.get(player);
+			regen += (playerExtraRegeneration.get(player) != null) ? playerExtraRegeneration.get(player) : 0;
 			int regenRate = getRegenRate(regen);
 			player.setSaturatedRegenRate(regenRate);
 			player.setUnsaturatedRegenRate((int)(regenRate*1.25));
@@ -204,6 +203,7 @@ public class PlayerData implements Listener {
 		playerHealth.remove(player);
 		playerMana.remove(player);
 		playerCurrentMana.remove(player);
+		playerExtraRegeneration.remove(player);
 	}
 
 	@EventHandler( priority = EventPriority.LOWEST )

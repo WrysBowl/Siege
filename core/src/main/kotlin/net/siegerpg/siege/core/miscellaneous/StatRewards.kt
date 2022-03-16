@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.levelReward.LevelReward
 import net.siegerpg.siege.core.miscellaneous.Levels.blockingGetExpLevel
 import org.bukkit.entity.Player
+import kotlin.math.exp
 
 class StatRewards {
 
@@ -12,7 +13,7 @@ class StatRewards {
 
 			val statMap : HashMap<StatTypes, Int> = hashMapOf()
 
-			var expLevel : Pair<Short, Int>? = blockingGetExpLevel(player)
+			var expLevel : Pair<Short, Int>? = blockingGetExpLevel(player) ?: return statMap
 			if (expLevel == null) expLevel = Pair(1.toShort(), 0)
 			val level = expLevel.first.toInt()
 
@@ -37,7 +38,7 @@ class StatRewards {
 		 */
 		fun getLevelRewards(level : Int) : HashMap<StatTypes, Int> {
 			//get all previous stat rewards
-			val rewards : ArrayList<LevelReward> = Levels.levelRewards.subList(0, level - 2) as ArrayList<LevelReward>
+			val rewards : MutableList<LevelReward> = Levels.levelRewards.subList(0, level - 2)
 
 			val statMap : HashMap<StatTypes, Int> = hashMapOf()
 			val statRewards : ArrayList<LevelReward> = arrayListOf()
