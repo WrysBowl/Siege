@@ -68,9 +68,7 @@ abstract class CustomMeleeWeapon(
 			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
 		}
 		if (baseStats.size != 0) {
-			baseStats.keys.forEach {
-				item.itemMeta = statFormat(meta, hideRarity)
-			}
+			item.itemMeta = statFormat(meta, hideRarity)
 		}
 		val speed =
 				if (attackSpeed > 1.5) "<color:#C0EB5A>Fast"

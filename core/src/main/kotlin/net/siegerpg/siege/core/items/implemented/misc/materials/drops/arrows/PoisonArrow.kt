@@ -17,7 +17,7 @@ class PoisonArrow() : CustomArrow(
 		potion = PotionType.POISON
                                  ) {
 	override fun getSellValue() : Int {
-		return 4
+		return 20
 	}
 	constructor(quality : Int) : this() {
 		this.quality = quality

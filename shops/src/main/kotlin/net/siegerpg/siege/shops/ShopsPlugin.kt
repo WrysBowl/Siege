@@ -63,6 +63,8 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"minnow" to Minnow(),
 						"arrowI" to ArrowI(),
 						"arrowII" to ArrowII(),
+						"arrowIII" to ArrowIII(),
+
 						"warriorSkills" to WarriorSkills()
 
 

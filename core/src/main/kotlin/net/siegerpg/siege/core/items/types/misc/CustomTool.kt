@@ -59,9 +59,7 @@ abstract class CustomTool(
 			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
 		}
 		if (baseStats.size != 0) {
-			baseStats.keys.forEach {
-				item.itemMeta = statFormat(meta, hideRarity)
-			}
+			item.itemMeta = statFormat(meta, hideRarity)
 		}
 		val length =
 				if (name.length > 16) name.length

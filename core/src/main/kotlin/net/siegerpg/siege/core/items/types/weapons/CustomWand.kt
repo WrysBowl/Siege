@@ -76,14 +76,12 @@ abstract class CustomWand(
 			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
 		}
 		if (baseStats.size != 0) {
-			baseStats.keys.forEach {
-				item.itemMeta = statFormat(meta, hideRarity)
-			}
+			item.itemMeta = statFormat(meta, hideRarity)
 			meta.lore("")
 		}
-		meta.lore("<r><gray>Radius <yellow>$damageRadius")
-		meta.lore("<r><gray>Range <yellow>$range")
-		meta.lore("<r><gray>Mana <color:#72E5D3>${getManaCost()}")
+		meta.lore("<r><yellow>$damageRadius <gray>Radius")
+		meta.lore("<r><yellow>$range <gray>Range")
+		meta.lore("<r><color:#72E5D3>${getManaCost()} <gray>Mana")
 
 		val length =
 				if (name.length > 16) name.length

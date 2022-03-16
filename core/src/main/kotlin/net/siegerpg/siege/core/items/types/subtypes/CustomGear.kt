@@ -43,10 +43,13 @@ interface CustomGear : CustomEquipment {
 			}
 
 			Rarity.RARE      -> 1
-			Rarity.EPIC      -> 1
+			Rarity.EPIC      -> {
+				if (quality < 100 && Utils.randTest(25.0)) 2
+				else 1
+			}
 
 			Rarity.LEGENDARY -> {
-				if (quality < 100 && Utils.randTest(30.0)) 2
+				if (quality < 100 && Utils.randTest(75.0)) 2
 				else 1
 			}
 
@@ -151,11 +154,6 @@ interface CustomGear : CustomEquipment {
 				CustomItemUtils.getStats(this, addGem = false, addRarity = true)
 		//TODO Check what stat has been added, and make the value a different color
 		baseStats.keys.forEach {
-			when {
-				(realStats[it]!! < 0.0) -> {
-					(hideRarity || quality < 0)
-				}
-			}
 			if (realStats[it]!! < 0.0) {
 				if (hideRarity || quality < 0)
 					meta.lore(
@@ -167,7 +165,7 @@ interface CustomGear : CustomEquipment {
 					         )
 				else {
 					if (addedStats?.containsKey(it) == true) {
-						meta.lore("<r><color:#de7464>${realStats[it]} <gray>${it.stylizedName} <color:#de7464>\u2728")
+						meta.lore("<r><color:#de7464>${realStats[it]} <gray>${it.stylizedName} <color:#de7464>\u269D")
 					} else {
 						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
 					}
@@ -183,7 +181,7 @@ interface CustomGear : CustomEquipment {
 					         )
 				} else {
 					if (addedStats?.containsKey(it) == true) {
-						meta.lore("<r><color:#52d1a0>+${realStats[it]} <gray>${it.stylizedName} <color:#de7464>\u2728")
+						meta.lore("<r><color:#52d1a0>+${realStats[it]} <gray>${it.stylizedName} <color:#52d1a0>\u269D")
 					} else {
 						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 					}

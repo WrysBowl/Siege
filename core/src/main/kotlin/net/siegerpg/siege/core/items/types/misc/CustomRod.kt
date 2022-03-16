@@ -57,9 +57,7 @@ abstract class CustomRod(
 			meta.lore("<r><color:#FF3CFF>+${it.amount} <light_purple>${it.type.stylizedName} Gem")
 		}
 		if (baseStats.size != 0) {
-			baseStats.keys.forEach {
-				item.itemMeta = statFormat(meta, hideRarity)
-			}
+			item.itemMeta = statFormat(meta, hideRarity)
 		}
 		val length =
 				if (name.length > 16) name.length

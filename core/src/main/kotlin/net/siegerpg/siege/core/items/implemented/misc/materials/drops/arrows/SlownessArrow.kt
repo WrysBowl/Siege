@@ -17,7 +17,7 @@ class SlownessArrow() : CustomArrow(
 		potion = PotionType.SLOWNESS
                                    ) {
 	override fun getSellValue() : Int {
-		return 4
+		return 10
 	}
 	constructor(quality : Int) : this() {
 		this.quality = quality

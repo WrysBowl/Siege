@@ -21,7 +21,7 @@ class StunningArrow() : CustomArrow(
 		material = Material.TIPPED_ARROW,
                                    ) {
 	override fun getSellValue() : Int {
-		return 40
+		return 60
 	}
 
 	override fun targetEffect(entity : Entity) {
