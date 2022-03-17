@@ -183,6 +183,10 @@ public class PlayerData implements Listener {
 
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			setStats(player);
+			for(GearSet set : GearSet.Companion.getSets()) {
+				set.removeEffect(player);
+				set.setEffect(player);
+			}
 			hasActionBar.put(player, false);
 		}
 	}
@@ -194,6 +198,10 @@ public class PlayerData implements Listener {
 		player.setHealth(player.getMaxHealth());
 		hasActionBar.put(player, false);
 		setStats(player);
+		for(GearSet set : GearSet.Companion.getSets()) {
+			set.removeEffect(e.getPlayer());
+			set.setEffect(e.getPlayer());
+		}
 	}
 
 	@EventHandler
@@ -211,13 +219,19 @@ public class PlayerData implements Listener {
 	public void onEquip(ArmorEquipEvent e) {
 
 		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				//gear set effects
+				for(GearSet set : GearSet.Companion.getSets()) {
+					set.removeEffect(e.getPlayer());
+					set.setEffect(e.getPlayer());
+				}
+			}
+		}.runTaskLater(Core.plugin(), 2);
+
 		if (item == null) {
 			setStats(e.getPlayer());
-
-			//gear set effects
-			for(GearSet set : GearSet.Companion.getSets()) {
-				set.removeEffect(e.getPlayer());
-			}
 			return;
 		}
 		if (item.getLevelRequirement() == null) return;
@@ -237,12 +251,6 @@ public class PlayerData implements Listener {
 			return;
 		}
 		setStats(e.getPlayer());
-
-		//gear set effects
-		for(GearSet set : GearSet.Companion.getSets()) {
-			set.setEffect(e.getPlayer());
-		}
-
 	}
 
 	@EventHandler

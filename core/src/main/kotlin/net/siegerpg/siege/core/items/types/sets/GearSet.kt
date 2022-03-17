@@ -22,8 +22,9 @@ abstract class GearSet(
 	companion object {
 
 		val sets : List<GearSet> = listOf(
-				SlimeSet()
+				SlimeSet(), StrawSet()
 		                                 )
+		var currentSets : HashMap<Player, List<GearSet>> = hashMapOf()
 	}
 
 	private fun getPlayerItems(player : Player) : ArrayList<CustomItem> {
@@ -61,30 +62,60 @@ abstract class GearSet(
 		var points = 0
 
 		customArmor.forEach {
-			if (hand == it) points++
-			if (offHand == it) points++
-			if (helmets.contains(it)) points++
-			if (chestplates.contains(it)) points++
-			if (leggings.contains(it)) points++
-			if (boots.contains(it)) points++
+			if (it.javaClass == hand?.javaClass) points++
+			if (it.javaClass == offHand?.javaClass) points++
+			if (containsItem(it, helmets)) points++
+			if (containsItem(it, chestplates)) points++
+			if (containsItem(it, leggings)) points++
+			if (containsItem(it, boots)) points++
 		}
 
+		Bukkit.getLogger().info("Armor Points $points")
+		Bukkit.getLogger().info("Required Points ${getRequiredPoints()}")
+
 		return points >= getRequiredPoints()
+	}
+
+	open fun containsItem(item : CustomItem, list : List<CustomItem>) : Boolean {
+		for (customItem in list) {
+			if (item.javaClass == customItem.javaClass) {
+				return true
+			}
+		}
+		return false
 	}
 
 	/**
 	 * Do the special effect of the set
 	 */
-	open fun setEffect(player : Player) {
-		if (!hasSet(player)) return
+	open fun setEffect(player : Player) : Boolean {
+		if (!hasSet(player)) return false
+		val list : List<GearSet> = currentSets[player] ?: listOf()
+		if (list.contains(this)) return false
+
+		val set : List<GearSet> = currentSets[player]?.plus(this) ?: listOf(this)
+
+		currentSets[player] = set
+		return true
 
 	}
 
 	/**
 	 * Remove the special effect of the set
 	 */
-	open fun removeEffect(player : Player) {
-		if (hasSet(player)) return
+	open fun removeEffect(player : Player) : Boolean {
+		if (hasSet(player)) return false
+		val list : List<GearSet> = currentSets[player] ?: listOf()
+		if (!list.contains(this)) return false
+
+		val set : List<GearSet> = currentSets[player]?.minus(this) ?: listOf()
+
+		if (set.isEmpty()) {
+			currentSets.remove(player)
+		} else {
+			currentSets[player] = set
+		}
+		return true
 	}
 
 }
