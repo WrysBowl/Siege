@@ -78,7 +78,7 @@ abstract class CustomArrow(
 
 		if (potion != null) (meta as PotionMeta).basePotionData = PotionData(potion)
 		meta.isUnbreakable = true
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_POTION_EFFECTS)
 
 		item.itemMeta = meta
 		return item
