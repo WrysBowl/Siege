@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.types.misc.CustomTool;
+import net.siegerpg.siege.core.items.types.sets.*;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;
@@ -231,6 +232,13 @@ public class PlayerData implements Listener {
 			return;
 		}
 		setStats(e.getPlayer());
+
+		//gear set effects
+		for(GearSet set : GearSet.Companion.getSets()) {
+			set.setEffect(e.getPlayer());
+			set.removeEffect(e.getPlayer());
+		}
+
 	}
 
 	@EventHandler
