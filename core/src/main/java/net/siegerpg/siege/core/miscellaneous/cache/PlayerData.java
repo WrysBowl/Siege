@@ -213,6 +213,11 @@ public class PlayerData implements Listener {
 		CustomItem item = CustomItemUtils.INSTANCE.getCustomItem(e.getNewArmorPiece());
 		if (item == null) {
 			setStats(e.getPlayer());
+
+			//gear set effects
+			for(GearSet set : GearSet.Companion.getSets()) {
+				set.removeEffect(e.getPlayer());
+			}
 			return;
 		}
 		if (item.getLevelRequirement() == null) return;
@@ -236,7 +241,6 @@ public class PlayerData implements Listener {
 		//gear set effects
 		for(GearSet set : GearSet.Companion.getSets()) {
 			set.setEffect(e.getPlayer());
-			set.removeEffect(e.getPlayer());
 		}
 
 	}

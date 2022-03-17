@@ -33,7 +33,7 @@ public class StatChangeListener implements Listener, Runnable {
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					PlayerData.hasActionBar.put(p, false);
 				}
-			}, 0, 40);
+			}, 0, 20);
 	}
 
 	@Override

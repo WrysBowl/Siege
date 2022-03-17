@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.items.types.sets
 
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
+import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
@@ -13,7 +14,7 @@ abstract class GearSet(
 		val hand : CustomItem? = null,
 		val offHand : CustomItem? = null
 
-		) {
+                      ) {
 
 	/*
 	Sets are gear pieces that give special effects when worn at the same time
@@ -76,6 +77,7 @@ abstract class GearSet(
 	 */
 	open fun setEffect(player : Player) {
 		if (!hasSet(player)) return
+
 	}
 
 	/**

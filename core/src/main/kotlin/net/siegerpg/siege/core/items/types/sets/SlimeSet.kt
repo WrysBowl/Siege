@@ -8,6 +8,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
+import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
@@ -33,11 +34,19 @@ class SlimeSet : GearSet(
 				StrongSlimyBoots(), ToughSlimyBoots(),
 				HealthySlimyBoots(), HealingSlimyBoots()
 		              )
-                          ) {
+                        ) {
 
 	override fun setEffect(player : Player) {
 		super.setEffect(player)
-		player.addPotionEffect(PotionEffect(PotionEffectType.JUMP, 999999, 1, false, false))
+		player.addPotionEffect(
+				PotionEffect(
+						PotionEffectType.JUMP,
+						999999,
+						1,
+						false,
+						false
+				            )
+		                      )
 
 	}
 
