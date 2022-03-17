@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot
 import net.siegerpg.siege.core.items.implemented.misc.statgems.strengthGems.FlawedStrengthGem
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.daggers.StrongDagger
@@ -15,5 +16,7 @@ class Reward20(
 		override val gold : Int = 500,
 		override val items : List<ItemStack> = listOf(
 				GoldenCarrot().getUpdatedItem(false).asQuantity(16)
-		                                             )
+		                                             ),
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
+		override val skillPoints : Int = 0
               ) : LevelReward

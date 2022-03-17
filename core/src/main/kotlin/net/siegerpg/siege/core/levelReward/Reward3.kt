@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Slime
 import net.siegerpg.siege.core.items.implemented.weapons.wands.LivingTwig
@@ -12,5 +13,7 @@ import org.bukkit.inventory.ItemStack
 class Reward3(
 		override val level : Short = 4,
 		override val gold : Int = 500,
-		override val items : List<ItemStack> = listOf()
+		override val items : List<ItemStack> = listOf(),
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
+		override val skillPoints : Int = 0
              ) : LevelReward

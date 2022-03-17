@@ -24,8 +24,8 @@ enum class Rarity(val id : String, val color : String) {
 				in 50..69   -> UNCOMMON
 				in 70..84   -> RARE
 				in 85..94   -> EPIC
-				in 95..101  -> LEGENDARY
-				in 100..150 -> SPECIAL
+				in 95..100  -> LEGENDARY
+				in 101..150 -> SPECIAL
 				else        -> DEBUG
 			}
 		}

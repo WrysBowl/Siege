@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.levelReward
 
 import net.siegerpg.siege.core.items.enums.Rarity
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.SpiritKey
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.Crossbow
@@ -15,7 +16,9 @@ import org.bukkit.inventory.ItemStack
 class Reward39(
 		override val level : Short = 40,
 		override val gold : Int = 10000,
-		override val items : List<ItemStack> = listOf()
+		override val items : List<ItemStack> = listOf(),
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
+		override val skillPoints : Int = 1
               ) : LevelReward {
 
 	override fun extraReward(player : Player) {

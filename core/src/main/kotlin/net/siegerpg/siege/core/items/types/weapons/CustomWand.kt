@@ -107,6 +107,8 @@ abstract class CustomWand(
 		}
 		meta.lore("<r><gray>Radius <yellow>$damageRadius")
 		meta.lore("<r><gray>Range <yellow>$range")
+		meta.lore("<r><gray>Mana <color:#72E5D3>${getManaCost()}")
+
 		val length =
 				if (name.length > 16) name.length
 				else 16
@@ -126,6 +128,14 @@ abstract class CustomWand(
 		                 )
 		item.itemMeta = meta
 		return item
+	}
+
+	fun getManaCost() : Int {
+		var statSum : Int = 0
+		for (stat in baseStats) {
+			statSum += (stat.value/5).toInt()
+		}
+		return statSum
 	}
 
 	override fun serialize() {

@@ -60,7 +60,10 @@ class ShopsPlugin : JavaPlugin(), Listener {
 						"amber" to Amber(),
 						"mobKey" to MobKey(),
 						"tutorial" to Tutorial(),
-						"minnow" to Minnow()
+						"minnow" to Minnow(),
+						"arrowI" to ArrowI(),
+						"arrowII" to ArrowII()
+
 
 
 

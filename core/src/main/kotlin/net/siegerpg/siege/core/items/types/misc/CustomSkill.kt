@@ -60,7 +60,7 @@ abstract class CustomSkill(
 
 		meta.lore(" ")
 		meta.lore(" <gray>Cooldown <aqua>${skill.getCooldown(level).seconds}s")
-		meta.lore(" <gray>Mana <red>-${skill.getManaCost(level)}")
+		meta.lore(" <gray>Mana <color:#72E5D3>${skill.getManaCost(level)}")
 
 		val length =
 				if (skill.getName(level).length > 16) skill.getName(level).length

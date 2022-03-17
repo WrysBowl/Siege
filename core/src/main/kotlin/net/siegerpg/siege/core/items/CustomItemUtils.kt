@@ -79,6 +79,7 @@ import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import net.siegerpg.siege.core.miscellaneous.Levels
+import net.siegerpg.siege.core.miscellaneous.StatRewards
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
 import org.bukkit.attribute.Attribute
@@ -157,6 +158,11 @@ object CustomItemUtils {
 		var output = 0.0
 		val inventory = player.inventory
 		val mainHand = itemInMainHand ?: inventory.itemInMainHand
+
+		//get stats added from player's level and rebirth amount
+		StatRewards.getRewardedStats(player)[statType]?.let { stat ->
+			output += stat
+		}
 
 		getCustomItem(mainHand)?.let {
 			if (it is CustomWeapon || it is CustomWand) {

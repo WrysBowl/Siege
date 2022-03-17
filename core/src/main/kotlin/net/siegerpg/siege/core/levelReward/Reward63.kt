@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.EpicKey
@@ -26,5 +27,7 @@ class Reward63(
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
 				EpicKey().getUpdatedItem(false).asQuantity(3)
-		                                             )
+		                                             ),
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
+		override val skillPoints : Int = 1
               ) : LevelReward

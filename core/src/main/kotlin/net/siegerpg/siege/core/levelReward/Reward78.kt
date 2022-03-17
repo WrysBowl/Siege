@@ -13,8 +13,9 @@ class Reward78(
 		override val gold : Int = 5000,
 		override val items : List<ItemStack> = listOf(
 				UncommonKey().getUpdatedItem(false).asQuantity(5)),
-		override val stats : HashMap<StatTypes, Int> = hashMapOf(StatTypes.LUCK to 5)
-              ) : StatReward {
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(StatTypes.LUCK to 5),
+		override val skillPoints : Int = 0
+              ) : LevelReward {
 
 	override fun extraReward(player : Player) {
 

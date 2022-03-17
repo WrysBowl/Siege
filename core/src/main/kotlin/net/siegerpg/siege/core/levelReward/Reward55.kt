@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot
 import net.siegerpg.siege.core.items.implemented.misc.food.Sugar
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey
@@ -23,5 +24,7 @@ class Reward55(
 		override val items : List<ItemStack> = listOf(
 				GlowingSteelPickaxe().getUpdatedItem(false),
 				MobKey(0).getUpdatedItem(false).asQuantity(10)
-		                                             )
+		                                             ),
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
+		override val skillPoints : Int = 1
               ) : LevelReward

@@ -12,7 +12,9 @@ import org.bukkit.inventory.ItemStack
 class Reward94(
 		override val level : Short = 95,
 		override val gold : Int = 0,
-		override val items : List<ItemStack> = listOf()
+		override val items : List<ItemStack> = listOf(),
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
+		override val skillPoints : Int = 1
               ) : LevelReward {
 
 	override fun extraReward(player : Player) {

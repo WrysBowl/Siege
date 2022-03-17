@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.levelReward
 
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.UncommonKey
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Stick
 import net.siegerpg.siege.core.listeners.GoldExpListener
@@ -13,5 +14,7 @@ class Reward11(
 		override val gold : Int = 1500,
 		override val items : List<ItemStack> = listOf(
 				UncommonKey().getUpdatedItem(false).asQuantity(1)
-													 )
+													 ),
+		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
+		override val skillPoints : Int = 0
               ) : LevelReward

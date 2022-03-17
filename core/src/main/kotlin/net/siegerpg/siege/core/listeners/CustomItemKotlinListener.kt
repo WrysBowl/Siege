@@ -16,6 +16,7 @@ import net.siegerpg.siege.core.miscellaneous.DamageIndicator
 import net.siegerpg.siege.core.miscellaneous.Levels
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.cache.ActiveMobs
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
@@ -45,24 +46,8 @@ class CustomItemKotlinListener : Listener {
 	}
 
 	var cooldownWand : MutableList<Player> = mutableListOf()
-	var arrowItems : HashMap<Player, ItemStack> = hashMapOf()
 	var damageMulti : HashMap<Player, Double> = hashMapOf()
 
-	@EventHandler
-	@Suppress("UNUSED_PARAMETER")
-	fun onBowUse(e : PlayerInteractEvent) {
-		if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK || e is PlayerInteractEntityEvent) {
-			val player : Player = e.player
-			if (player.inventory.itemInMainHand.type == Material.BOW || player.inventory.itemInMainHand.type == Material.CROSSBOW) {
-				val item : ItemStack? = player.inventory.getItem(9)
-				if (item != null) {
-					if (item.type != Material.AIR && item.type != Material.ARROW) arrowItems[player] =
-							item
-				}
-				player.inventory.setItem(9, ItemStack(Material.ARROW))
-			}
-		}
-	}
 
 	@EventHandler
 	@Suppress("UNUSED_PARAMETER")
@@ -74,29 +59,6 @@ class CustomItemKotlinListener : Listener {
 					CustomItemUtils.getPlayerStat(player, StatTypes.REGENERATION)
 
 			e.amount *= regen / 5
-		}
-	}
-
-	@EventHandler
-	fun onBowShoot(e : EntityShootBowEvent) {
-		val entity : Entity = e.entity
-		if (entity !is Player) return
-		if (arrowItems[entity] == null) return
-		entity.inventory.setItem(9, arrowItems[entity])
-		arrowItems.remove(entity)
-	}
-
-	@EventHandler
-	fun onLeave(e : PlayerQuitEvent) {
-		val player : Player = e.player
-		if (arrowItems[player] == null) return
-		player.inventory.setItem(9, arrowItems[player])
-	}
-
-	@EventHandler
-	fun onBowUse(e : ProjectileHitEvent) {
-		if (e.entity is Arrow) {
-			e.entity.remove()
 		}
 	}
 
@@ -327,6 +289,16 @@ class CustomItemKotlinListener : Listener {
 					block.location
 				}
 
+				// Checks if the player has enough mana
+				val manaCost : Int = it.getManaCost()
+				val playerMana = PlayerData.playerCurrentMana[player]
+				if (playerMana == null || playerMana < manaCost) {
+					player.sendMessage(Utils.lore("<red>You do not have enough mana to cast this wand."))
+					return
+				}
+				// Removes the mana from the user
+				PlayerData.playerCurrentMana[player] =
+						playerMana - manaCost
 
 				if (cooldownWand.contains(player)) {
 					player.sendActionBar(Utils.parse("<red>You are on cooldown"))
