@@ -53,6 +53,7 @@ class CustomItemKotlinListener : Listener {
 
 	var cooldownWand : MutableList<Player> = mutableListOf()
 	var damageMulti : HashMap<Player, Double> = hashMapOf()
+	var lastShotArrow : HashMap<Player, ItemStack> = hashMapOf()
 
 
 	@EventHandler
@@ -71,10 +72,12 @@ class CustomItemKotlinListener : Listener {
 	@EventHandler
 	fun onBowUse(e : ProjectileHitEvent) {
 		if (e.entity !is Arrow) return
-
 		e.entity.remove()
-		val projectile : Arrow = e.entity as Arrow
-		projectile.itemStack.let {
+
+		if (e.entity.shooter !is Player) return
+		val player : Player = e.entity.shooter as Player
+
+		lastShotArrow[player]?.let {
 			val item : CustomItem = CustomItemUtils.getCustomItem(it) ?: return@let
 			if (item is CustomArrow) {
 				item.onShoot(e)
@@ -93,15 +96,11 @@ class CustomItemKotlinListener : Listener {
 			}
 		}
 
-		if (e.projectile !is Arrow) return
-		val projectile : Arrow = e.projectile as Arrow
-
-		//TODO Find out how to get the arrow consumed in a bow shoot event
-
-		projectile.itemStack.let {
+		Utils.getArrowStack(player).let {
 			val item : CustomItem = CustomItemUtils.getCustomItem(it) ?: return@let
 			if (item is CustomArrow) {
 				item.onShoot(e)
+				lastShotArrow[player] = it
 			}
 		}
 

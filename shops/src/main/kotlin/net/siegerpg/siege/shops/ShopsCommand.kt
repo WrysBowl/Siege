@@ -136,21 +136,21 @@ class ShopsCommand : BaseCommand() {
 			if (it.buyPrice > -1) {
 				if (VaultHook.econ.getBalance(player) >= it.buyPrice) {
 					meta.lore(
-							"<green>\u2714 RIGHT CLICK <gray>Cost ${
+							"<green>\u2714 RIGHT CLICK <gray>${
 								String.format(
 										"%,d",
 										it.buyPrice
 								             )
-							} gold"
+							} \u26C1"
 					         )
 				} else {
 					meta.lore(
-							"<red>\u2717 RIGHT CLICK <gray>Cost ${
+							"<red>\u2717 RIGHT CLICK <gray>${
 								String.format(
 										"%,d",
 										it.buyPrice
 								             )
-							} gold"
+							} \u26C1"
 					         )
 				}
 			}

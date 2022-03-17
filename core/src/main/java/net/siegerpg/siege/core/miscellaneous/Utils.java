@@ -260,4 +260,27 @@ public class Utils {
 		return Bukkit.getOnlinePlayers().contains(player);
 	}
 
+	/**
+	 * Gets the stack of arrows that will be used in a shoot event
+	 * @param player
+	 * @return ItemStack
+	 */
+	public static ItemStack getArrowStack(Player player) {
+		Material type = player.getInventory().getItemInOffHand().getType();
+		if (type.equals(Material.ARROW) ||
+		    type.equals(Material.TIPPED_ARROW) ||
+		    type.equals(Material.SPECTRAL_ARROW)) {
+			return player.getInventory().getItemInOffHand();
+		}
+		for (ItemStack stack : player.getInventory().getContents()) {
+			if (stack != null) {
+				if (stack.getType() == Material.ARROW ||
+				    stack.getType() == Material.TIPPED_ARROW ||
+				    stack.getType() == Material.SPECTRAL_ARROW)
+				return stack;
+			}
+		}
+		return null;
+	}
+
 }

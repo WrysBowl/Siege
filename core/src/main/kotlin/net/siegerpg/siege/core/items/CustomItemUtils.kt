@@ -281,7 +281,7 @@ object CustomItemUtils {
 					}
 				}
 			}
-			map[it] = totalAmount
+			map[it] = Utils.round(totalAmount, 1)
 		}
 
 		return map
