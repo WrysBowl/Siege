@@ -165,7 +165,7 @@ interface CustomGear : CustomEquipment {
 					         )
 				else {
 					if (addedStats?.containsKey(it) == true) {
-						meta.lore("<r><color:#de7464>${realStats[it]} <gray>${it.stylizedName} <color:#de7464>\u269D")
+						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName} <color:#de7464>\u269D")
 					} else {
 						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
 					}
@@ -181,7 +181,7 @@ interface CustomGear : CustomEquipment {
 					         )
 				} else {
 					if (addedStats?.containsKey(it) == true) {
-						meta.lore("<r><color:#52d1a0>+${realStats[it]} <gray>${it.stylizedName} <color:#52d1a0>\u269D")
+						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName} <color:#52d1a0>\u269D")
 					} else {
 						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
 					}

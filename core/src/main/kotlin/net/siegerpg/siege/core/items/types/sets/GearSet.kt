@@ -70,9 +70,6 @@ abstract class GearSet(
 			if (containsItem(it, boots)) points++
 		}
 
-		Bukkit.getLogger().info("Armor Points $points")
-		Bukkit.getLogger().info("Required Points ${getRequiredPoints()}")
-
 		return points >= getRequiredPoints()
 	}
 
