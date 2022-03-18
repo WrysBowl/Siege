@@ -42,7 +42,6 @@ class MagmarsSet : GearSet(
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return
 
-		//TODO [BELOW] If player double jumps they should be launched forwards in the direction they're looking at
-		//Make a cooldown of 5 seconds
+		//TODO [BELOW] Send a heat wave of particles outwards, burning anything that touches it
 	}
 }

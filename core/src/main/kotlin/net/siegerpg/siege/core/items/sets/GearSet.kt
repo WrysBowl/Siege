@@ -1,11 +1,15 @@
 package net.siegerpg.siege.core.items.sets
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.miscellaneous.Utils
+import org.bukkit.Particle
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.inventory.ItemStack
+import org.bukkit.scheduler.BukkitRunnable
 
 abstract class GearSet(
 		val helmets : HashSet<CustomItem> = hashSetOf(),
@@ -86,6 +90,26 @@ abstract class GearSet(
 		val set : List<GearSet> = currentSets[player]?.plus(this) ?: listOf(this)
 
 		currentSets[player] = set
+
+		object : BukkitRunnable() {
+			override fun run() {
+				player.spawnParticle(
+						Particle.CRIMSON_SPORE,
+						player.location.x,
+						player.location.y,
+						player.location.z, 10, 0.0, 0.0, 0.0, 0.1
+				                    )
+				player.playSound(
+						player.location,
+						Sound.BLOCK_ENCHANTMENT_TABLE_USE,
+						1.0f,
+						1.3f
+				                )
+			}
+
+		}.runTaskLater(Core.plugin(), 10)
+
+
 		return true
 
 	}
@@ -105,6 +129,25 @@ abstract class GearSet(
 		} else {
 			currentSets[player] = set
 		}
+
+		object : BukkitRunnable() {
+			override fun run() {
+				player.spawnParticle(
+						Particle.WARPED_SPORE,
+						player.location.x,
+						player.location.y,
+						player.location.z, 10, 0.0, 0.0, 0.0, 0.1
+				                    )
+				player.playSound(
+						player.location,
+						Sound.BLOCK_GRINDSTONE_USE,
+						1.0f,
+						0.9f
+				                )
+			}
+
+		}.runTaskLater(Core.plugin(), 10)
+
 		return true
 	}
 
