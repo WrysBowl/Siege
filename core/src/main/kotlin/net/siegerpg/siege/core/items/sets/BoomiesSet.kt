@@ -105,7 +105,7 @@ class BoomiesSet : GearSet(
 					player.damage(dmg, player)
 				}
 			}
-		}.runTaskLater(Core.plugin(), 200)
+		}.runTaskLater(Core.plugin(), 20)
 
 	}
 }
