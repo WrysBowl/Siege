@@ -13,6 +13,7 @@ class HealingHardenedLeatherChestplate() : CustomChestplate(
 		levelRequirement = 24,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 20.0, regeneration = 25.0),
+		gearSetInfo = listOf(listOf("Deal more knock back"))
                                                            ) {
 
 	constructor(quality : Int) : this() {

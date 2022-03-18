@@ -13,6 +13,7 @@ class LuckyHardenedLeatherBoots() : CustomBoots(
 		levelRequirement = 24,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 10.0, luck = 32.0),
+		gearSetInfo = listOf(listOf("Deal more knock back"))
                                                ) {
 
 	constructor(quality : Int) : this() {

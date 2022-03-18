@@ -13,6 +13,7 @@ class StrongHardenedLeatherHelmet() : CustomHelmet(
 		levelRequirement = 24,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(defense = 15.0, strength = 20.0),
+		gearSetInfo = listOf(listOf("Deal more knock back"))
                                                   ) {
 
 	constructor(quality : Int) : this() {

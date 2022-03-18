@@ -13,6 +13,7 @@ class StrongHardenedLeatherLeggings() : CustomLeggings(
 		levelRequirement = 24,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 8.0, strength = 25.0),
+		gearSetInfo = listOf(listOf("Deal more knock back"))
                                                       ) {
 
 	constructor(quality : Int) : this() {
