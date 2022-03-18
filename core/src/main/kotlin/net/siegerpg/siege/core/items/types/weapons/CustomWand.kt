@@ -1,14 +1,12 @@
 package net.siegerpg.siege.core.items.types.weapons
 
-import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
-import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment
+import net.siegerpg.siege.core.items.sets.GearSet
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
-import net.siegerpg.siege.core.listeners.NPC.Herbert
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
@@ -35,6 +33,7 @@ abstract class CustomWand(
 		val damageRadius : Double = 2.5,
 		override var statGem : StatGem? = null,
 		override var addedStats : HashMap<StatTypes, Double>? = null,
+		override val gearSetInfo : List<List<String>>? = null
 
 		) : CustomWeapon {
 
@@ -87,6 +86,13 @@ abstract class CustomWand(
 				if (name.length > 16) name.length
 				else 16
 		meta.lore(" ")
+		gearSetInfo?.forEach{
+			meta.lore("<r><color:#87d4a0>Set Bonus")
+			Utils.getTextArray(it, length).forEach {
+				meta.lore(" <r><color:#82a18c>$it")
+			}
+			meta.lore(" ")
+		}
 		Utils.getTextArray(description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}

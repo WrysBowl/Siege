@@ -14,7 +14,8 @@ class HealthyStrawBoots() : CustomBoots(
 		levelRequirement = 3,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 7.0),
-		leatherColor = Color.YELLOW
+		leatherColor = Color.YELLOW,
+		gearSetInfo = listOf(listOf("Regenerates health quickly"))
                                        ) {
 
 	constructor(quality : Int) : this() {

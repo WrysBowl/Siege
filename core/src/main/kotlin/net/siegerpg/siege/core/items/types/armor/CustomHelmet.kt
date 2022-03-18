@@ -29,6 +29,7 @@ abstract class CustomHelmet(
 		override var statGem : StatGem? = null,
 		override var addedStats : HashMap<StatTypes, Double>? = null,
 		override var leatherColor : Color = Core.defaultLeatherColor,
+		override val gearSetInfo : List<List<String>>? = null,
 		var initMaterial : Material? = null,
 		var initCustomModelData : Int? = null,
 		var storedItem : ItemStack? = null

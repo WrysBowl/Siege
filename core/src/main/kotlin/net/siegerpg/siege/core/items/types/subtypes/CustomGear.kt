@@ -1,18 +1,18 @@
 package net.siegerpg.siege.core.items.types.subtypes
 
-import de.tr7zw.nbtapi.NBTItem
+import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.getNbtTag
 import net.siegerpg.siege.core.items.setNbtTags
-import net.siegerpg.siege.core.items.statgems.StatGem
+import net.siegerpg.siege.core.items.sets.GearSet
+import net.siegerpg.siege.core.items.types.armor.CustomHelmet
+import net.siegerpg.siege.core.items.types.misc.Cosmetic
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
-import org.bukkit.Bukkit
-import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.event.entity.EntityDamageEvent
-import org.bukkit.event.entity.EntityShootBowEvent
+import net.siegerpg.siege.core.miscellaneous.name
+import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 import kotlin.random.Random
@@ -20,6 +20,7 @@ import kotlin.random.Random
 interface CustomGear : CustomEquipment {
 
 	var addedStats : HashMap<StatTypes, Double>?
+	val gearSetInfo : List<List<String>>?
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		super.updateMeta(hideRarity)
@@ -27,6 +28,50 @@ interface CustomGear : CustomEquipment {
 		addedStats?.forEach { (k, v) ->
 			baseStats.merge(k, v) { a : Double, b : Double -> a }
 		}
+
+		val meta = item.itemMeta
+
+		val shownRarity = if (hideRarity) Rarity.UNCOMMON else rarity
+
+		meta.name(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>$name</b></rainbow>" else "<r>${shownRarity.color}$name")
+
+		if (meta.hasLore()) meta.lore(mutableListOf())
+
+		if (hideRarity || quality < 0) {
+			meta.lore("<r><yellow>Rarity <gray>1-100%")
+		} else {
+			meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> <gray>${quality}%" else "<r>${shownRarity.color}${shownRarity.id} <gray>${quality}%")
+		}
+
+		statGem?.let {
+			meta.lore(" ")
+			meta.lore("<r><color:#F67DF6>+${it.amount} <light_purple>${it.type.stylizedName}")
+		}
+		if (statGem == null) {
+			meta.lore(" ")
+			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
+		}
+		if (baseStats.size != 0) {
+			item.itemMeta = statFormat(meta, hideRarity)
+		}
+		val length =
+				if (name.length > 16) name.length
+				else 16
+		meta.lore(" ")
+		gearSetInfo?.forEach{
+			meta.lore("<r><color:#87d4a0>Set Bonus")
+			Utils.getTextArray(it, length).forEach {
+				meta.lore(" <r><color:#82a18c>$it")
+			}
+			meta.lore(" ")
+		}
+		Utils.getTextArray(description, length).forEach {
+			meta.lore("<r><dark_gray>$it")
+		}
+		meta.lore(" ")
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
+
+		item.itemMeta = meta
 		return this.item
 	}
 
@@ -146,50 +191,6 @@ interface CustomGear : CustomEquipment {
 			}
 		} catch (e : Exception) {
 		}
-	}
-
-	override fun statFormat(meta : ItemMeta, hideRarity : Boolean) : ItemMeta {
-		meta.lore(" ")
-		val realStats =
-				CustomItemUtils.getStats(this, addGem = false, addRarity = true)
-		//TODO Check what stat has been added, and make the value a different color
-		baseStats.keys.forEach {
-			if (realStats[it]!! < 0.0) {
-				if (hideRarity || quality < 0)
-					meta.lore(
-							"<r><red>${baseStats[it]?.times(0.5)}. . . -${
-								baseStats[it]?.times(
-										1.5
-								                    )
-							} <gray>${it.stylizedName}"
-					         )
-				else {
-					if (addedStats?.containsKey(it) == true) {
-						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName} <color:#de7464>\u269D")
-					} else {
-						meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
-					}
-				}
-			} else {
-				if (hideRarity || quality < 0) {
-					meta.lore(
-							"<r><green>+${baseStats[it]?.times(0.5)}. . .${
-								baseStats[it]?.times(
-										1.5
-								                    )
-							} <gray>${it.stylizedName}"
-					         )
-				} else {
-					if (addedStats?.containsKey(it) == true) {
-						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName} <color:#52d1a0>\u269D")
-					} else {
-						meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
-					}
-				}
-
-			}
-		}
-		return meta
 	}
 
 }

@@ -25,7 +25,8 @@ abstract class CustomBow(
 		override val type : ItemTypes = ItemTypes.BOW,
 		override var statGem : StatGem? = null,
 		override var addedStats : HashMap<StatTypes, Double>? = null,
-                        ) : CustomWeapon {
+		override val gearSetInfo : List<List<String>>? = null,
+		) : CustomWeapon {
 
 	override var rarity : Rarity = Rarity.COMMON
 

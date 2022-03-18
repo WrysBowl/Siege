@@ -14,7 +14,8 @@ class StrawChestplate() : CustomChestplate(
 		levelRequirement = 3,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 14.0, defense = 8.0, strength = 6.0),
-		leatherColor = Color.YELLOW
+		leatherColor = Color.YELLOW,
+		gearSetInfo = listOf(listOf("Regenerates health quickly"))
                                           ) {
 
 	constructor(quality : Int) : this() {

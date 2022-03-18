@@ -5,7 +5,7 @@ enum class StatTypes(val stylizedName : String, val color : String) {
 	DEFENSE("Defense", "<blue>"),
 
 	STRENGTH("Strength", "<dark_red>"),
-	REGENERATION("Regeneration", "<gold>"),
+	REGENERATION("HP Regen", "<gold>"),
 	LUCK("Luck", "<green>"),
 
 	MANA("Mana", "<dark_aqua>"),

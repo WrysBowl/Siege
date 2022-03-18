@@ -14,7 +14,8 @@ class StrawHelmet() : CustomHelmet(
 		levelRequirement = 3,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 2.0, strength = 2.0),
-		leatherColor = Color.YELLOW
+		leatherColor = Color.YELLOW,
+		gearSetInfo = listOf(listOf("Regenerates health quickly"))
                                   ) {
 
 	constructor(quality : Int) : this() {

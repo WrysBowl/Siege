@@ -14,7 +14,8 @@ class LuckySlimyLeggings() : CustomLeggings(
 		levelRequirement = 7,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 6.0, defense = 6.0, luck = 15.0),
-		leatherColor = Color.LIME
+		leatherColor = Color.LIME,
+		gearSetInfo = listOf(listOf("Jump high like a slime!"))
                                            ) {
 
 	constructor(quality : Int) : this() {

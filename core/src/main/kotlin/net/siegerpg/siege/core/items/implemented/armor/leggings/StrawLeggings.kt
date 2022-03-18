@@ -14,7 +14,8 @@ class StrawLeggings() : CustomLeggings(
 		levelRequirement = 3,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 10.0, defense = 10.0, regeneration = 5.0),
-		leatherColor = Color.YELLOW
+		leatherColor = Color.YELLOW,
+		gearSetInfo = listOf(listOf("Regenerates health quickly"))
                                       ) {
 
 	constructor(quality : Int) : this() {

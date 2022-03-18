@@ -19,6 +19,7 @@ abstract class GearSet(
 	Sets are gear pieces that give special effects when worn at the same time
 	 */
 	companion object {
+		//in updateMeta check if item is contained in a gear set
 
 		val sets : List<GearSet> = listOf(
 				SlimeSet(), StrawSet()
@@ -88,6 +89,7 @@ abstract class GearSet(
 		if (!hasSet(player)) return false
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (list.contains(this)) return false
+
 
 		val set : List<GearSet> = currentSets[player]?.plus(this) ?: listOf(this)
 
