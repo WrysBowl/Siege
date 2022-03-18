@@ -2,13 +2,13 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.boots.LeatherBoots;
+import net.siegerpg.siege.core.items.implemented.armor.boots.*;
 import net.siegerpg.siege.core.items.implemented.armor.boots.hardenedLeatherBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.LeatherChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.hardenedLeatherChestplates.*;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.LeatherHelmet;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.hardenedLeatherHelmets.*;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.LeatherLeggings;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.hardenedLeatherLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.food.Beef;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
@@ -127,6 +127,11 @@ public class BullSpirit extends MobDropTable {
 				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 1.0),
+
+				new Reward(new BoomiesHorns().getUpdatedItem(false), 0.50),
+				new Reward(new BoomiesChestplate().getUpdatedItem(false), 0.50),
+				new Reward(new BoomiesLeggings().getUpdatedItem(false), 0.50),
+				new Reward(new BoomiesHooves().getUpdatedItem(false), 0.50),
 
 				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(4), 100.0),
 				});

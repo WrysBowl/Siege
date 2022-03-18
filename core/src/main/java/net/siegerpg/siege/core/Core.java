@@ -181,6 +181,9 @@ public final class Core extends JavaPlugin {
 				new MobCrateOpen(),
 				new MountSteer(),
 				new MagmaSet(),
+				new SlimsSet(),
+				new MagmarsSet(),
+				new BoomiesSet(),
 
 				/*
 				All Skills

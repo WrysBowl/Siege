@@ -37,7 +37,7 @@ class MagmarsSet : GearSet(
                           ) {
 
 	@EventHandler
-	fun onDamage(e : PlayerToggleSneakEvent) {
+	fun onSneak(e : PlayerToggleSneakEvent) {
 		val player : Player = e.player
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return

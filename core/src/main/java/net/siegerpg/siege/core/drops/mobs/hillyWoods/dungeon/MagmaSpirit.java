@@ -2,13 +2,13 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.boots.MagmaBoots;
+import net.siegerpg.siege.core.items.implemented.armor.boots.*;
 import net.siegerpg.siege.core.items.implemented.armor.boots.magmaBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.MagmaChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.magmaChestplates.*;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.MagmaHelmet;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.magmaHelmets.*;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.MagmaLeggings;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.magmaLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma;
@@ -117,6 +117,11 @@ public class MagmaSpirit extends MobDropTable {
 				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 0.20),
+
+				new Reward(new MagmarsCrown().getUpdatedItem(false), 0.50),
+				new Reward(new MagmarsChestplate().getUpdatedItem(false), 0.50),
+				new Reward(new MagmarsLeggings().getUpdatedItem(false), 0.50),
+				new Reward(new MagmarsTrekkers().getUpdatedItem(false), 0.50),
 
 				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(3), 100.0),
 
