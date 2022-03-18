@@ -38,8 +38,8 @@ class BoomiesSet : GearSet(
 		val player : Player = e.player
 
 		if (cooldown.contains(player)) return
-		//val list : List<GearSet> = currentSets[player] ?: listOf()
-		//if (!Utils.contains(this, list)) return
+		val list : List<GearSet> = currentSets[player] ?: listOf()
+		if (!Utils.contains(this, list)) return
 
 		/*
 		Check if player is holding down sneak for more than 2 seconds

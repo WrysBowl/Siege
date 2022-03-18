@@ -28,7 +28,7 @@ abstract class GearSet(
 		//in updateMeta check if item is contained in a gear set
 
 		val sets : List<GearSet> = listOf(
-				SlimeSet(), StrawSet(), MagmaSet(), SlimsSet()
+				SlimeSet(), StrawSet(), MagmaSet(), SlimsSet(), MagmarsSet(), BoomiesSet()
 		                                 )
 		var currentSets : HashMap<Player, List<GearSet>> = hashMapOf()
 	}
@@ -96,8 +96,8 @@ abstract class GearSet(
 				player.spawnParticle(
 						Particle.CRIMSON_SPORE,
 						player.location.x,
-						player.location.y,
-						player.location.z, 10, 0.0, 0.0, 0.0, 0.1
+						player.location.y+1,
+						player.location.z, 20, 0.0, 0.0, 0.0, 0.05
 				                    )
 				player.playSound(
 						player.location,
@@ -107,7 +107,7 @@ abstract class GearSet(
 				                )
 			}
 
-		}.runTaskLater(Core.plugin(), 10)
+		}.runTaskLater(Core.plugin(), 5)
 
 
 		return true
@@ -135,18 +135,18 @@ abstract class GearSet(
 				player.spawnParticle(
 						Particle.WARPED_SPORE,
 						player.location.x,
-						player.location.y,
-						player.location.z, 10, 0.0, 0.0, 0.0, 0.1
+						player.location.y+1,
+						player.location.z, 20, 0.0, 0.0, 0.0, 0.05
 				                    )
 				player.playSound(
 						player.location,
 						Sound.BLOCK_GRINDSTONE_USE,
-						1.0f,
-						0.9f
+						0.8f,
+						1.1f
 				                )
 			}
 
-		}.runTaskLater(Core.plugin(), 10)
+		}.runTaskLater(Core.plugin(), 5)
 
 		return true
 	}
