@@ -17,26 +17,26 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 
 class MagmaSet : GearSet(
-		helmets = listOf(
+		helmets = hashSetOf(
 				MagmaHelmet(), LuckyMagmaHelmet(),
 				StrongMagmaHelmet(), ToughMagmaHelmet(),
 				HealthyMagmaHelmet(), HealingMagmaHelmet()
-		                ),
-		chestplates = listOf(
+		                   ),
+		chestplates = hashSetOf(
 				MagmaChestplate(), LuckyMagmaChestplate(),
 				StrongMagmaChestplate(), ToughMagmaChestplate(),
 				HealthyMagmaChestplate(), HealingMagmaChestplate()
-		                    ),
-		leggings = listOf(
+		                       ),
+		leggings = hashSetOf(
 				MagmaLeggings(), LuckyMagmaLeggings(),
 				StrongMagmaLeggings(), ToughMagmaLeggings(),
 				HealthyMagmaLeggings(), HealingMagmaLeggings()
-		                 ),
-		boots = listOf(
+		                    ),
+		boots = hashSetOf(
 				MagmaBoots(), LuckyMagmaBoots(),
 				StrongMagmaBoots(), ToughMagmaBoots(),
 				HealthyMagmaBoots(), HealingMagmaBoots()
-		              )
+		                 )
                         ) {
 
 	@EventHandler(priority = EventPriority.LOW)

@@ -15,22 +15,22 @@ import org.bukkit.potion.PotionEffectType
 import org.bukkit.scheduler.BukkitRunnable
 
 class StrawSet : GearSet(
-		helmets = listOf(
+		helmets = hashSetOf(
 				StrawHelmet(), LuckyStrawHat(),
 				StrongStrawHat(), ToughStrawHat(),
 				HealthyStrawHat(), HealingStrawHat()
 		                ),
-		chestplates = listOf(
+		chestplates = hashSetOf(
 				StrawChestplate(), LuckyStrawChestplate(),
 				StrongStrawChestplate(), ToughStrawChestplate(),
 				HealthyStrawChestplate(), HealingStrawChestplate()
 		                    ),
-		leggings = listOf(
+		leggings = hashSetOf(
 				StrawLeggings(), LuckyStrawOveralls(),
 				StrongStrawOveralls(), ToughStrawOveralls(),
 				HealthyStrawOveralls(), HealingStrawOveralls()
 		                 ),
-		boots = listOf(
+		boots = hashSetOf(
 				StrawBoots(), LuckyStrawBoots(),
 				StrongStrawBoots(), ToughStrawBoots(),
 				HealthyStrawBoots(), HealingStrawBoots()

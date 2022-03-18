@@ -15,22 +15,22 @@ import org.bukkit.potion.PotionEffectType
 import org.bukkit.scheduler.BukkitRunnable
 
 class SlimeSet : GearSet(
-		helmets = listOf(
+		helmets = hashSetOf(
 				SlimyHelmet(), LuckySlimyHelmet(),
 				StrongSlimyHelmet(), ToughSlimyHelmet(),
 				HealthySlimyHelmet(), HealingSlimyHelmet()
 		                ),
-		chestplates = listOf(
+		chestplates = hashSetOf(
 				SlimyChestplate(), LuckySlimyChestplate(),
 				StrongSlimyChestplate(), ToughSlimyChestplate(),
 				HealthySlimyChestplate(), HealingSlimyChestplate()
 		                    ),
-		leggings = listOf(
+		leggings = hashSetOf(
 				SlimyLeggings(), LuckySlimyLeggings(),
 				StrongSlimyLeggings(), ToughSlimyLeggings(),
 				HealthySlimyLeggings(), HealingSlimyLeggings()
 		                 ),
-		boots = listOf(
+		boots = hashSetOf(
 				SlimyBoots(), LuckySlimyBoots(),
 				StrongSlimyBoots(), ToughSlimyBoots(),
 				HealthySlimyBoots(), HealingSlimyBoots()

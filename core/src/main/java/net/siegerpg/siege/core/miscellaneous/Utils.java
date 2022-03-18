@@ -4,16 +4,16 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.siegerpg.siege.core.Core;
+import net.siegerpg.siege.core.items.*;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.*;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -284,6 +284,14 @@ public class Utils {
 	}
 
 	public static boolean contains(Object item, List<Object> list) {
+		for (Object object : list) {
+			if (item.getClass() == object.getClass()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public static boolean contains(@NotNull CustomItem item, @NotNull HashSet<CustomItem> list) {
 		for (Object object : list) {
 			if (item.getClass() == object.getClass()) {
 				return true;

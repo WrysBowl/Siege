@@ -8,10 +8,10 @@ import org.bukkit.event.Listener
 import org.bukkit.inventory.ItemStack
 
 abstract class GearSet(
-		val helmets : List<CustomItem> = listOf(),
-		val chestplates : List<CustomItem> = listOf(),
-		val leggings : List<CustomItem> = listOf(),
-		val boots : List<CustomItem> = listOf(),
+		val helmets : HashSet<CustomItem> = hashSetOf(),
+		val chestplates : HashSet<CustomItem> = hashSetOf(),
+		val leggings : HashSet<CustomItem> = hashSetOf(),
+		val boots : HashSet<CustomItem> = hashSetOf(),
 		val hand : CustomItem? = null,
 		val offHand : CustomItem? = null
 
@@ -24,7 +24,7 @@ abstract class GearSet(
 		//in updateMeta check if item is contained in a gear set
 
 		val sets : List<GearSet> = listOf(
-				SlimeSet(), StrawSet(), MagmaSet()
+				SlimeSet(), StrawSet(), MagmaSet(), SlimsSet()
 		                                 )
 		var currentSets : HashMap<Player, List<GearSet>> = hashMapOf()
 	}
