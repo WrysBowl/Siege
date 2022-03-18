@@ -14,7 +14,8 @@ class HealingMagmaHelmet() : CustomHelmet(
 		levelRequirement = 17,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 10.0, regeneration = 16.0),
-		leatherColor = Color.ORANGE
+		leatherColor = Color.ORANGE,
+		gearSetInfo = listOf(listOf("Have a 30% chance to burn attackers"))
                                          ) {
 
 	constructor(quality : Int) : this() {

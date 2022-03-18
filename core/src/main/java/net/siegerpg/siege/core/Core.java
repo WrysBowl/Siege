@@ -14,6 +14,7 @@ import net.siegerpg.siege.core.crates.mobs.MobCrateOpen;
 import net.siegerpg.siege.core.dungeons.DungeonCommand;
 import net.siegerpg.siege.core.dungeons.DungeonListener;
 import net.siegerpg.siege.core.customEvents.CustomEventListener;
+import net.siegerpg.siege.core.items.sets.*;
 import net.siegerpg.siege.core.miscellaneous.BossLeaderboardListener;
 import net.siegerpg.siege.core.fishing.events.FishEvent;
 import net.siegerpg.siege.core.fishing.events.RightClickEvent;
@@ -179,6 +180,7 @@ public final class Core extends JavaPlugin {
 				new CustomEventListener(),
 				new MobCrateOpen(),
 				new MountSteer(),
+				new MagmaSet(),
 
 				/*
 				All Skills

@@ -2,7 +2,9 @@ package net.siegerpg.siege.core.items.sets
 
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
+import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.entity.Player
+import org.bukkit.event.Listener
 import org.bukkit.inventory.ItemStack
 
 abstract class GearSet(
@@ -13,7 +15,7 @@ abstract class GearSet(
 		val hand : CustomItem? = null,
 		val offHand : CustomItem? = null
 
-                      ) {
+                      ) : Listener {
 
 	/*
 	Sets are gear pieces that give special effects when worn at the same time
@@ -22,7 +24,7 @@ abstract class GearSet(
 		//in updateMeta check if item is contained in a gear set
 
 		val sets : List<GearSet> = listOf(
-				SlimeSet(), StrawSet()
+				SlimeSet(), StrawSet(), MagmaSet()
 		                                 )
 		var currentSets : HashMap<Player, List<GearSet>> = hashMapOf()
 	}
@@ -64,22 +66,13 @@ abstract class GearSet(
 		customArmor.forEach {
 			if (it.javaClass == hand?.javaClass) points++
 			if (it.javaClass == offHand?.javaClass) points++
-			if (containsItem(it, helmets)) points++
-			if (containsItem(it, chestplates)) points++
-			if (containsItem(it, leggings)) points++
-			if (containsItem(it, boots)) points++
+			if (Utils.contains(it, helmets)) points++
+			if (Utils.contains(it, chestplates)) points++
+			if (Utils.contains(it, leggings)) points++
+			if (Utils.contains(it, boots)) points++
 		}
 
 		return points >= getRequiredPoints()
-	}
-
-	open fun containsItem(item : CustomItem, list : List<CustomItem>) : Boolean {
-		for (customItem in list) {
-			if (item.javaClass == customItem.javaClass) {
-				return true
-			}
-		}
-		return false
 	}
 
 	/**
@@ -89,7 +82,6 @@ abstract class GearSet(
 		if (!hasSet(player)) return false
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (list.contains(this)) return false
-
 
 		val set : List<GearSet> = currentSets[player]?.plus(this) ?: listOf(this)
 

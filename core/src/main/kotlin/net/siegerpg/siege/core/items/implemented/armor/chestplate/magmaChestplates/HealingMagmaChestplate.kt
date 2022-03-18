@@ -14,7 +14,8 @@ class HealingMagmaChestplate() : CustomChestplate(
 		levelRequirement = 17,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 16.0, regeneration = 17.0),
-		leatherColor = Color.ORANGE
+		leatherColor = Color.ORANGE,
+		gearSetInfo = listOf(listOf("Have a 30% chance to burn attackers"))
                                                  ) {
 
 	constructor(quality : Int) : this() {

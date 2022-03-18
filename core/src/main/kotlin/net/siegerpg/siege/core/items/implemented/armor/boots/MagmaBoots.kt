@@ -14,7 +14,8 @@ class MagmaBoots() : CustomBoots(
 		levelRequirement = 17,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 10.0, defense = 8.0, strength = 10.0),
-		leatherColor = Color.ORANGE
+		leatherColor = Color.ORANGE,
+		gearSetInfo = listOf(listOf("Have a 30% chance to burn attackers"))
                                 ) {
 
 	constructor(quality : Int) : this() {

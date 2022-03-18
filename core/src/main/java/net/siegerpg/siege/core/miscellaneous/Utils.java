@@ -283,4 +283,13 @@ public class Utils {
 		return null;
 	}
 
+	public static boolean contains(Object item, List<Object> list) {
+		for (Object object : list) {
+			if (item.getClass() == object.getClass()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

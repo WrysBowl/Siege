@@ -14,7 +14,8 @@ class LuckyMagmaLeggings() : CustomLeggings(
 		levelRequirement = 17,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 15.0, luck = 18.0),
-		leatherColor = Color.ORANGE
+		leatherColor = Color.ORANGE,
+		gearSetInfo = listOf(listOf("Have a 30% chance to burn attackers"))
                                            ) {
 
 	constructor(quality : Int) : this() {

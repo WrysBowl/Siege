@@ -83,7 +83,7 @@ abstract class CustomMeleeWeapon(
 		gearSetInfo?.forEach{
 			meta.lore("<r><color:#87d4a0>Set Bonus")
 			Utils.getTextArray(it, length).forEach {
-				meta.lore(" <r><color:#82a18c>$it")
+				meta.lore("<r><color:#82a18c>$it")
 			}
 			meta.lore(" ")
 		}
