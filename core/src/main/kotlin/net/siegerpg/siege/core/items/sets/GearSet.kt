@@ -1,8 +1,7 @@
-package net.siegerpg.siege.core.items.types.sets
+package net.siegerpg.siege.core.items.sets
 
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
-import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 

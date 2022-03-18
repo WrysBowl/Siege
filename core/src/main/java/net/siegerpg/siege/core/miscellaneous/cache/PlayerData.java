@@ -6,7 +6,7 @@ import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.types.misc.CustomTool;
-import net.siegerpg.siege.core.items.types.sets.*;
+import net.siegerpg.siege.core.items.sets.*;
 import net.siegerpg.siege.core.items.types.subtypes.CustomEquipment;
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon;
 import net.siegerpg.siege.core.listeners.ArmorEquip.ArmorEquipEvent;

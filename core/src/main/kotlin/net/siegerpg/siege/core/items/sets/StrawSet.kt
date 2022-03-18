@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.types.sets
+package net.siegerpg.siege.core.items.sets
 
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.implemented.armor.boots.StrawBoots
@@ -9,7 +9,6 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.StrawHelmet
 import net.siegerpg.siege.core.items.implemented.armor.helmet.strawHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.StrawLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.strawLeggings.*
-import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
