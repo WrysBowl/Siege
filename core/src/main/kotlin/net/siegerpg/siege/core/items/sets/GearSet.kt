@@ -28,7 +28,8 @@ abstract class GearSet(
 		//in updateMeta check if item is contained in a gear set
 
 		val sets : List<GearSet> = listOf(
-				SlimeSet(), StrawSet(), MagmaSet(), SlimsSet(), MagmarsSet(), BoomiesSet()
+				SlimeSet(), StrawSet(), MagmaSet(), SlimsSet(), MagmarsSet(),
+				BoomiesSet(), BoneSet()
 		                                 )
 		var currentSets : HashMap<Player, List<GearSet>> = hashMapOf()
 	}

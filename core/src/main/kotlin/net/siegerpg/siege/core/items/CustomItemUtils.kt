@@ -94,6 +94,8 @@ import kotlin.math.ceil
 
 object CustomItemUtils {
 
+	var statAdditions : HashMap<Player, HashMap<StatTypes, Double>> = hashMapOf()
+
 	fun getCustomItem(item : ItemStack?) : CustomItem? {
 		if (item == null) {
 			return null
@@ -165,6 +167,9 @@ object CustomItemUtils {
 		StatRewards.getRewardedStats(player)[statType]?.let { stat ->
 			output += stat
 		}
+
+		//added stats
+		output += statAdditions[player]?.get(statType) ?: 0.0
 
 		getCustomItem(mainHand)?.let {
 			if (it is CustomWeapon || it is CustomWand) {

@@ -14,7 +14,8 @@ class BoneBoots() : CustomBoots(
 		levelRequirement = 32,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 10.0, defense = 37.0, regeneration = 15.0),
-		leatherColor = Color.GRAY
+		leatherColor = Color.GRAY,
+		gearSetInfo = listOf(listOf("Deal +40 more strength"))
                                ) {
 
 	constructor(quality : Int) : this() {
