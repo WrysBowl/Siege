@@ -2,6 +2,8 @@ package net.siegerpg.siege.core.items.sets
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent
 import net.siegerpg.siege.core.Core
+import net.siegerpg.siege.core.items.CustomItemUtils
+import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.armor.boots.MagmarsTrekkers
 import net.siegerpg.siege.core.items.implemented.armor.boots.SlimsBoots
 import net.siegerpg.siege.core.items.implemented.armor.boots.SlimyBoots
@@ -19,6 +21,9 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimsLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
 import net.siegerpg.siege.core.miscellaneous.Utils
+import net.siegerpg.siege.core.miscellaneous.particleEffects.Waves
+import org.bukkit.Bukkit
+import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -42,6 +47,22 @@ class MagmarsSet : GearSet(
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return
 
-		//TODO [BELOW] Send a heat wave of particles outwards, burning anything that touches it
+		Waves().createWaves(player.getLocation(), Particle.FLAME)
+		object : BukkitRunnable() {
+			var counter : Double = 0.0
+			val dmg : Double = CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH)
+			override fun run() {
+				counter += 0.5
+				for(entity in player.getLocation().getNearbyLivingEntities(counter)) {
+					if (entity.equals(player)) continue
+					entity.damage(dmg/4, player)
+					entity.fireTicks = 200
+				}
+				if (counter >= 10) {
+					this.cancel()
+					return
+				}
+			}
+		}.runTaskTimer(Core.plugin(), 0, 10)
 	}
 }

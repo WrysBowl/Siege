@@ -43,4 +43,40 @@ public class Waves {
 		}.runTaskTimer(Core.plugin(), 0, 1);
 	}
 
+	public void createWaves(Location loc, Particle particle) {
+
+		new BukkitRunnable() {
+			double t = Math.PI / 4;
+
+			public void run() {
+
+				t = t + 0.1 * Math.PI;
+				for (double theta = 0; theta <= 2 * Math.PI; theta = theta + Math.PI / 32) {
+					double x = t * Math.cos(theta);
+					double y = 2 * Math.exp(-0.1 * t) * Math.sin(t) + 1.5;
+					double z = t * Math.sin(theta);
+					loc.add(x, y, z);
+					loc.subtract(x, y, z);
+					theta = theta + Math.PI / 64;
+					x = t * Math.cos(theta);
+					y = 2 * Math.exp(-0.1 * t) * Math.sin(t) + 1.5;
+					z = t * Math.sin(theta);
+					loc.add(x, y, z);
+					loc
+							.getWorld()
+							.spawnParticle(particle
+									               .builder()
+									               .count(1)
+									               .offset(0, 0, 0)
+									               .particle(), loc, 5);
+					loc.subtract(x, y, z);
+				}
+				if (t > 8) {
+					this.cancel();
+				}
+			}
+
+		}.runTaskTimer(Core.plugin(), 0, 1);
+	}
+
 }
