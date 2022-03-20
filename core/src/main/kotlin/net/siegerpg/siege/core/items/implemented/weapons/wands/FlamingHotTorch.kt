@@ -3,8 +3,18 @@ package net.siegerpg.siege.core.items.implemented.weapons.wands
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
+import net.siegerpg.siege.core.miscellaneous.Levels
+import net.siegerpg.siege.core.miscellaneous.Utils
+import org.bukkit.EntityEffect
 import org.bukkit.Material
+import org.bukkit.Sound
+import org.bukkit.entity.Entity
+import org.bukkit.entity.LivingEntity
+import org.bukkit.entity.Player
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemStack
+import org.bukkit.potion.PotionEffect
+import org.bukkit.potion.PotionEffectType
 
 class FlamingHotTorch() : CustomWand(
 		name = "Flaming Hot Torch",
@@ -32,6 +42,36 @@ class FlamingHotTorch() : CustomWand(
 	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
+	}
+
+	override fun onHit(e : EntityDamageByEntityEvent) {
+		super.onHit(e)
+		val player = (e.damager as Player).player ?: return
+		val victim : Entity = e.entity
+		if (victim !is LivingEntity) return
+		if (this.levelRequirement == null) return
+		if (this.levelRequirement > (Levels.blockingGetExpLevel(player)?.first
+		                             ?: 0)
+		) return
+
+		victim.fireTicks = 200
+
+		if (Utils.randTest(25.0)) {
+			victim.addPotionEffect(
+					PotionEffect(
+							PotionEffectType.SLOW,
+							40,
+							9,
+							false,
+							false
+					            )
+			                      )
+			victim.playEffect(EntityEffect.RAVAGER_STUNNED)
+			player.playSound(victim.location, Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 1.2f)
+
+		} else {
+			player.playSound(victim.location, Sound.BLOCK_CAMPFIRE_CRACKLE, 1.0f, 1.2f)
+		}
 	}
 
 }

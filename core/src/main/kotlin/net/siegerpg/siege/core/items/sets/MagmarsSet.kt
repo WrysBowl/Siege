@@ -47,13 +47,13 @@ class MagmarsSet : GearSet(
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return
 
-		Waves().createWaves(player.getLocation(), Particle.FLAME)
+		Waves().createWaves(player.location, Particle.FLAME)
 		object : BukkitRunnable() {
 			var counter : Double = 0.0
 			val dmg : Double = CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH)
 			override fun run() {
 				counter += 0.5
-				for(entity in player.getLocation().getNearbyLivingEntities(counter)) {
+				for(entity in player.location.getNearbyLivingEntities(counter)) {
 					if (entity.equals(player)) continue
 					entity.damage(dmg/4, player)
 					entity.fireTicks = 200

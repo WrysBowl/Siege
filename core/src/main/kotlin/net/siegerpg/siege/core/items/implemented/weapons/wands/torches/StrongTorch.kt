@@ -3,7 +3,14 @@ package net.siegerpg.siege.core.items.implemented.weapons.wands.torches
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
+import net.siegerpg.siege.core.miscellaneous.Levels
+import org.bukkit.EntityEffect
 import org.bukkit.Material
+import org.bukkit.Sound
+import org.bukkit.entity.Entity
+import org.bukkit.entity.LivingEntity
+import org.bukkit.entity.Player
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemStack
 
 class StrongTorch() : CustomWand(
@@ -30,6 +37,21 @@ class StrongTorch() : CustomWand(
 	constructor(item : ItemStack) : this() {
 		this.item = item
 		deserialize()
+	}
+
+	override fun onHit(e : EntityDamageByEntityEvent) {
+		super.onHit(e)
+		val player = (e.damager as Player).player ?: return
+		val victim : Entity = e.entity
+		if (victim !is LivingEntity) return
+		if (this.levelRequirement == null) return
+		if (this.levelRequirement > (Levels.blockingGetExpLevel(player)?.first
+		                             ?: 0)
+		) return
+
+		victim.fireTicks = 200
+		victim.playEffect(EntityEffect.VILLAGER_ANGRY)
+		player.playSound(victim.location, Sound.BLOCK_CAMPFIRE_CRACKLE, 1.0f, 1.0f)
 	}
 
 }
