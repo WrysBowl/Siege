@@ -2,6 +2,10 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
+import net.siegerpg.siege.core.items.implemented.armor.boots.*;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine;
 import net.siegerpg.siege.core.items.implemented.misc.statgems.healthGems.FlawedHealthGem;
@@ -68,6 +72,11 @@ public class Lich extends MobDropTable {
 				new Reward(new FlawedLuckGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 1.0),
+
+				new Reward(new LichHood().getUpdatedItem(false), 0.50),
+				new Reward(new LichCloak().getUpdatedItem(false), 0.50),
+				new Reward(new LichLeggings().getUpdatedItem(false), 0.50),
+				new Reward(new LichBoots().getUpdatedItem(false), 0.50),
 
 				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(5), 100.0),
 
