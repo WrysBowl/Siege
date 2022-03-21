@@ -29,7 +29,7 @@ abstract class GearSet(
 
 		val sets : List<GearSet> = listOf(
 				SlimeSet(), StrawSet(), MagmaSet(), SlimsSet(), MagmarsSet(),
-				BoomiesSet(), BoneSet()
+				BoomiesSet(), BoneSet(), LichSet(), DavySet()
 		                                 )
 		var currentSets : HashMap<Player, List<GearSet>> = hashMapOf()
 	}
