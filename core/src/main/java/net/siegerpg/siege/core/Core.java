@@ -184,6 +184,8 @@ public final class Core extends JavaPlugin {
 				new SlimsSet(),
 				new MagmarsSet(),
 				new BoomiesSet(),
+				new LichSet(),
+				new NecromancerSet(),
 
 				/*
 				All Skills
