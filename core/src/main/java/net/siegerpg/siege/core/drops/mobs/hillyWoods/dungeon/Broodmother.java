@@ -2,13 +2,13 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.boots.IronBoots;
+import net.siegerpg.siege.core.items.implemented.armor.boots.*;
 import net.siegerpg.siege.core.items.implemented.armor.boots.ironBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.IronChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.ironChestplates.*;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.IronHelmet;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.ironHelmets.*;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.IronLeggings;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.ironleggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Vine;
@@ -167,6 +167,11 @@ public class Broodmother extends MobDropTable {
 				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 0.20),
+
+				new Reward(new BroodMotherCap().getUpdatedItem(false), 0.50),
+				new Reward(new BroodMotherCloak().getUpdatedItem(false), 0.50),
+				new Reward(new BroodMotherLegs().getUpdatedItem(false), 0.50),
+				new Reward(new BroodMotherClaws().getUpdatedItem(false), 0.50),
 
 				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(10), 100.0),
 

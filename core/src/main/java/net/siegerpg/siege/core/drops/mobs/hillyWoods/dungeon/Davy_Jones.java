@@ -2,13 +2,13 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.boots.BoneBoots;
+import net.siegerpg.siege.core.items.implemented.armor.boots.*;
 import net.siegerpg.siege.core.items.implemented.armor.boots.boneBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.BoneChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.boneChestplates.*;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.BoneHelmet;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.boneHelmets.*;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.BoneLeggings;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.boneLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
@@ -127,6 +127,11 @@ public class Davy_Jones extends MobDropTable {
 				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 0.20),
+
+				new Reward(new DavyCap().getUpdatedItem(false), 0.50),
+				new Reward(new DavyTunic().getUpdatedItem(false), 0.50),
+				new Reward(new DavyLeggings().getUpdatedItem(false), 0.50),
+				new Reward(new DavyBoots().getUpdatedItem(false), 0.50),
 
 				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(6), 100.0),
 
