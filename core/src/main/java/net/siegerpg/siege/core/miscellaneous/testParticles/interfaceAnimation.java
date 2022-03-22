@@ -2,7 +2,8 @@ package net.siegerpg.siege.core.miscellaneous.testParticles;
 
 import org.bukkit.*;
 
-public interface interfaceParticle {
+public interface interfaceAnimation {
+
 	//https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html :)
 
 	/**
@@ -10,6 +11,5 @@ public interface interfaceParticle {
 	 * @param p   Particle type (class Particle)
 	 * @param data Data, see spigot doc.
 	 */
-	abstract void createParticle(Location loc, Particle p, Class<?> data);
-
+	abstract void createAnimation(Location loc, Particle p, Class<?> data);
 }

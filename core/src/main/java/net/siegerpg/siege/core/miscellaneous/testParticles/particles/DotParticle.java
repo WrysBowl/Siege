@@ -5,10 +5,15 @@ import org.bukkit.*;
 
 public class DotParticle implements interfaceParticle {
 
+	int count = 5;
+
 	@Override
-	public void createDotParticle(Location loc, Particle p, Class<?> data, int amount){
-		loc.getWorld().spawnParticle(p, loc, amount, data);
+	public void createParticle(Location loc, Particle p, Class< ? > data) {
+
+		loc.getWorld().spawnParticle(p, loc, count);
+
 	}
+
 }
 
 
