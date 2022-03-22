@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.LichCloak
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.SlimyChestplate
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*
+import net.siegerpg.siege.core.items.implemented.armor.helmet.DavyCap
 import net.siegerpg.siege.core.items.implemented.armor.helmet.LichHood
 import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*
@@ -19,7 +20,7 @@ import org.bukkit.potion.PotionEffectType
 import org.bukkit.scheduler.BukkitRunnable
 
 class DavySet : GearSet(
-		helmets = hashSetOf(LichHood()),
+		helmets = hashSetOf(DavyCap()),
 		chestplates = hashSetOf(LichCloak()),
 		leggings = hashSetOf(LichLeggings()),
 		boots = hashSetOf(LichBoots())

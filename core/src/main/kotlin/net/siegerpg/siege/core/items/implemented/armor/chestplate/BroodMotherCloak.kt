@@ -7,10 +7,10 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class BroodMotherCloak() : CustomHelmet(
+class BroodMotherCloak() : CustomChestplate(
 		name = "Brood Mother's Cloak",
 		customModelData = 1,
-		description = listOf("The Brood Mother is the eigth guardian"),
+		description = listOf("The Brood Mother is the eighth guardian"),
 		levelRequirement = 50,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 170.0, defense = 85.0, strength = -70.0, regeneration = 55.0),
