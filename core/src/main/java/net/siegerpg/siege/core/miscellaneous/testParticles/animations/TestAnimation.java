@@ -11,7 +11,7 @@ public class TestAnimation implements interfaceAnimation {
 	public void createAnimation(Location loc, Particle p, Class< ? > data) {
 		interfaceParticle part = new DotParticle();
 		for(int i = 0; i < 10; i++) {
-			part.createParticle(loc.add(new Vector(0, i, 0)), p, data);
+			part.createParticle(loc.add(new Vector(0, i, 0)), null, p, data);
 		}
 	}
 

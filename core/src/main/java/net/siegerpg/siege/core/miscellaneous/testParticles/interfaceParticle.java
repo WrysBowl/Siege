@@ -6,10 +6,12 @@ public interface interfaceParticle {
 	//https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html :)
 
 	/**
-	 * @param loc center location
-	 * @param p   Particle type (class Particle)
+	 * @param loc1 center location
+	 * @param loc2 next location
+	 * @param p    Particle type (class Particle)
 	 * @param data Data, see spigot doc.
 	 */
-	abstract void createParticle(Location loc, Particle p, Class<?> data);
+	abstract void createParticle(Location loc1, Location loc2, Particle p, Class< ? > data);
+
 
 }
