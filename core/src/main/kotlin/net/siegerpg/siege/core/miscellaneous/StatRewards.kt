@@ -17,6 +17,11 @@ class StatRewards {
 			if (expLevel == null) expLevel = Pair(1.toShort(), 0)
 			val level = expLevel.first.toInt()
 
+			val levelRewards : HashMap<StatTypes, Int> = getLevelRewards(level)
+
+			if (levelRewards.size > 0) return statMap
+
+
 			getLevelRewards(level).forEach { k, v ->
 				statMap.merge(k, v) { a : Int, b : Int ->
 					Integer.sum(
@@ -37,10 +42,13 @@ class StatRewards {
 		 * Get all stats rewarded to the player
 		 */
 		fun getLevelRewards(level : Int) : HashMap<StatTypes, Int> {
+			val statMap : HashMap<StatTypes, Int> = hashMapOf()
+
+			if (level < 3) return statMap
+
 			//get all previous stat rewards
 			val rewards : MutableList<LevelReward> = Levels.levelRewards.subList(0, level - 2)
 
-			val statMap : HashMap<StatTypes, Int> = hashMapOf()
 			val statRewards : ArrayList<LevelReward> = arrayListOf()
 
 			if (Levels.levelRewards.size + 2 < level) return statMap//ensure that the level reward is set in the array list
