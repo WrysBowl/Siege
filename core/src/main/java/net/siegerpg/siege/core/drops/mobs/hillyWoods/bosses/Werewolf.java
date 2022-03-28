@@ -104,7 +104,7 @@ public class Werewolf extends MobDropTable {
 				new Reward(new HealthyIronAxe(Utils.randRarity()).getUpdatedItem(false), 0.01),
 				
 
-				new Reward(new FoxSpiritKey().getUpdatedItem(false), 5.0),
+				new Reward(new FoxSpiritKey().getUpdatedItem(false), 10.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 4.0),
 
 				});

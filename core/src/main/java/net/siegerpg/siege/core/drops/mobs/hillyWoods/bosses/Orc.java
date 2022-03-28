@@ -102,7 +102,7 @@ public class Orc extends MobDropTable {
 				new Reward(new HealingDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.025),
 				new Reward(new HealthyDoubleBladedAxe(Utils.randRarity()).getUpdatedItem(false), 0.025),
 
-				new Reward(new DavyJonesKey(0).getUpdatedItem(false), 5.0),
+				new Reward(new DavyJonesKey(0).getUpdatedItem(false), 10.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 5.0),
 
 				});

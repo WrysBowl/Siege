@@ -99,7 +99,7 @@ public class Blubber extends MobDropTable {
 				new Reward(new LuckySlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 0.025),
 				new Reward(new LuckySlimyBoots(Utils.randRarity()).getUpdatedItem(false), 0.025),
 
-				new Reward(new SlimeSpiritKey().getUpdatedItem(false), 5.0),
+				new Reward(new SlimeSpiritKey().getUpdatedItem(false), 10.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 2.5),
 
 				});
