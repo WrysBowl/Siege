@@ -10,11 +10,11 @@ import org.bukkit.inventory.ItemStack
 class BroodMotherCap() : CustomHelmet(
 		name = "Brood Mother's Cap",
 		customModelData = 1,
-		description = listOf("The Brood Mother is the eigth guardian"),
+		description = listOf("The Brood Mother is the eighth guardian"),
 		levelRequirement = 50,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 150.0, defense = 75.0, strength = 25.0, regeneration = -30.0),
-		gearSetInfo = listOf(listOf("Sneak to set a trap that spawns a poison cloud when stepped on (and slows mob/player)")),
+		gearSetInfo = listOf(listOf("Sneak to shoot a beam of energy")),
 		leatherColor = Color.fromRGB(50, 125, 50)
                               ) {
 

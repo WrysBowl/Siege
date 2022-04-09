@@ -10,11 +10,11 @@ import org.bukkit.inventory.ItemStack
 class BroodMotherLegs() : CustomLeggings(
 	name = "Brood Mother's Cloak",
 	customModelData = 1,
-	description = listOf("The Brood Mother is the eigth guardian"),
+	description = listOf("The Brood Mother is the eighth guardian"),
 	levelRequirement = 50,
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = -100.0, defense = 170.0, strength = 65.0, regeneration = 50.0, luck = 35.0),
-	gearSetInfo = listOf(listOf("Sneak to set a trap that spawns a poison cloud when stepped on (and slows mob/player)")),
+	gearSetInfo = listOf(listOf("Sneak to shoot a beam of energy")),
 	leatherColor = Color.GREEN
 						  ) {
 
