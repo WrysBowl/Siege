@@ -27,7 +27,7 @@ dependencies {
 	compileOnly("com.github.MilkBowl:VaultAPI:1.7") // Vault API
 	implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
 	implementation("com.github.stefvanschie.inventoryframework:IF:0.10.3")
-	compileOnly("com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.0")
+	compileOnly("com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.9")
 	compileOnly("de.tr7zw:item-nbt-api-plugin:2.7.1")
 	implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
 	implementation("com.zaxxer:HikariCP:5.0.1")
