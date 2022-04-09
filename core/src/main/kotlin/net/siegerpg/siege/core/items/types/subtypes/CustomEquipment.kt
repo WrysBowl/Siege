@@ -89,7 +89,14 @@ interface CustomEquipment : CustomItem {
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore(" ")
-		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
+		meta.lore(
+				"<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${
+					String.format(
+							"%,d",
+							getSellValue()
+					             )
+				} \u26C1"
+		         )
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(
@@ -102,33 +109,36 @@ interface CustomEquipment : CustomItem {
 		return item
 	}
 
-	fun statFormat(meta : ItemMeta, hideRarity : Boolean) : ItemMeta{
+	fun statFormat(meta : ItemMeta, hideRarity : Boolean) : ItemMeta {
 		meta.lore(" ")
 		val realStats =
 				CustomItemUtils.getStats(this, addGem = false, addRarity = true)
-		baseStats.keys.forEach {
+		val stats : HashMap<StatTypes, Double> = Utils.sortByValue(baseStats)
+		stats.keys.forEach {
 			if (realStats[it]!! < 0.0) {
 				if (hideRarity || quality < 0)
 					meta.lore(
-							"<r><red>${baseStats[it]?.times(0.5)}. . . -${
-								baseStats[it]?.times(
+							"<r><red>${stats[it]?.times(0.5)}. . . -${
+								stats[it]?.times(
 										1.5
-								                    )
+								                )
 							} <gray>${it.stylizedName}"
 					         )
 				else {
-					meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")					}
+					meta.lore("<r><red>${realStats[it]} <gray>${it.stylizedName}")
+				}
 			} else {
 				if (hideRarity || quality < 0) {
 					meta.lore(
-							"<r><green>+${baseStats[it]?.times(0.5)}. . .${
-								baseStats[it]?.times(
+							"<r><green>+${stats[it]?.times(0.5)}. . .${
+								stats[it]?.times(
 										1.5
-								                    )
+								                )
 							} <gray>${it.stylizedName}"
 					         )
 				} else {
-					meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")					}
+					meta.lore("<r><green>+${realStats[it]} <gray>${it.stylizedName}")
+				}
 
 			}
 		}
@@ -138,7 +148,8 @@ interface CustomEquipment : CustomItem {
 	override fun serialize() {
 		super.serialize()
 		item = item.setNbtTags(
-				"equipmentStatGem" to if (statGem != null) statGem.toString() else null)
+				"equipmentStatGem" to if (statGem != null) statGem.toString() else null
+		                      )
 	}
 
 	fun onHit(e : EntityDamageByEntityEvent) {
@@ -158,7 +169,7 @@ interface CustomEquipment : CustomItem {
 	}
 
 	override fun getSellValue() : Int {
-		return ((levelRequirement ?: 1) * quality)/5
+		return ((levelRequirement ?: 1) * quality) / 5
 	}
 
 	override fun deserialize() {
@@ -167,7 +178,8 @@ interface CustomEquipment : CustomItem {
 			item.getNbtTag<String>("equipmentStatGem")?.let {
 				statGem = StatGem.fromString(it)
 			}
-		} catch (e : Exception) { }
+		} catch (e : Exception) {
+		}
 
 	}
 }

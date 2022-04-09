@@ -5,6 +5,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.*;
+import net.siegerpg.siege.core.items.enums.*;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
@@ -298,6 +299,29 @@ public class Utils {
 			}
 		}
 		return false;
+	}
+
+	public static HashMap<StatTypes, Double> sortByValue(HashMap< StatTypes, Double> hm)
+	{
+		// Create a list from elements of HashMap
+		List<Map.Entry<StatTypes, Double> > list =
+				new LinkedList<Map.Entry<StatTypes, Double> >(hm.entrySet());
+
+		// Sort the list
+		Collections.sort(list, new Comparator<Map.Entry<StatTypes, Double> >() {
+			public int compare(Map.Entry<StatTypes, Double> o1,
+			                   Map.Entry<StatTypes, Double> o2)
+			{
+				return (o1.getValue()).compareTo(o2.getValue());
+			}
+		});
+
+		// put data from sorted list to hashmap
+		HashMap<StatTypes, Double> temp = new LinkedHashMap<StatTypes, Double>();
+		for (Map.Entry<StatTypes, Double> aa : list) {
+			temp.put(aa.getKey(), aa.getValue());
+		}
+		return temp;
 	}
 
 }
