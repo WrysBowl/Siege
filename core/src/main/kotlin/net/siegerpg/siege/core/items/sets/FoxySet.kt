@@ -34,9 +34,7 @@ class FoxySet : GearSet(
                        ) {
 
 	companion object {
-
 		val cooldown : ArrayList<Player> = arrayListOf()
-		val traps : ArrayList<Location> = arrayListOf()
 	}
 
 	@EventHandler
@@ -56,7 +54,6 @@ class FoxySet : GearSet(
 
 		//adds location to trap
 		val loc : Location = player.location
-		traps.add(loc)
 
 		object : BukkitRunnable() {
 			var counter : Int = 0
