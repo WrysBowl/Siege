@@ -13,7 +13,7 @@ class FoxyBoots() : CustomBoots(
 	levelRequirement = 44,
 	material = Material.CHAINMAIL_BOOTS,
 	baseStats = CustomItemUtils.statMap(health = 150.0, defense = 50.0, luck = -10.0, strength = 25.0, regeneration = -15.0),
-	gearSetInfo = listOf(listOf("Sneak to set a snare trap")),
+	gearSetInfo = listOf("Sneak to set a snare trap"),
                                  ) {
 
 	constructor(quality : Int) : this() {

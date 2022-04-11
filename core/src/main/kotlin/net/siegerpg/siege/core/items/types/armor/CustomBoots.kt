@@ -24,7 +24,7 @@ abstract class CustomBoots(
 		override val type : ItemTypes = ItemTypes.BOOTS,
 		override var statGem : StatGem? = null,
 		override var addedStats : HashMap<StatTypes, Double>? = null,
-		override val gearSetInfo : List<List<String>>? = null,
+		override val gearSetInfo : List<String>? = null,
 		override var leatherColor : Color = Core.defaultLeatherColor) : CustomArmor {
 
 	override var rarity : Rarity = Rarity.COMMON

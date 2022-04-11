@@ -14,7 +14,7 @@ class BroodMotherClaws() : CustomBoots(
 	levelRequirement = 50,
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(health = 120.0, defense = 75.0, strength = 25.0),
-	gearSetInfo = listOf(listOf("Sneak to shoot a beam of energy")),
+	gearSetInfo = listOf("Sneak to shoot a beam of energy"),
 	leatherColor = Color.fromRGB(50, 125, 50)
 						  ) {
 

@@ -20,7 +20,7 @@ import kotlin.random.Random
 interface CustomGear : CustomEquipment {
 
 	var addedStats : HashMap<StatTypes, Double>?
-	val gearSetInfo : List<List<String>>?
+	val gearSetInfo : List<String>?
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
 		super.updateMeta(hideRarity)
@@ -58,9 +58,9 @@ interface CustomGear : CustomEquipment {
 				if (name.length > 16) name.length
 				else 16
 		meta.lore(" ")
-		gearSetInfo?.forEach{
+		if (gearSetInfo != null) {
 			meta.lore("<r><color:#87d4a0>Set Bonus")
-			Utils.getTextArray(it, length).forEach {
+			Utils.getTextArray(gearSetInfo, length).forEach {
 				meta.lore("<r><color:#82a18c>$it")
 			}
 			meta.lore(" ")

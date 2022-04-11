@@ -14,7 +14,7 @@ class DavyBoots() : CustomBoots(
 	levelRequirement = 33,
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 90.0, strength = 25.0, regeneration = 35.0),
-	gearSetInfo = listOf(listOf("Dolphin's Grace II, Speed I, Water breathing II")),
+	gearSetInfo = listOf("Dolphin's Grace II, Speed I, Water breathing II"),
 	leatherColor = Color.fromRGB(74, 104, 150)
                                 ) {
 

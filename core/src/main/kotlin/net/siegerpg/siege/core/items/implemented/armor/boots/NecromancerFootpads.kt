@@ -14,7 +14,7 @@ class NecromancerFootpads() : CustomBoots(
 	levelRequirement = 38,
 	material = Material.LEATHER_BOOTS,
 	baseStats = CustomItemUtils.statMap(health = 150.0, regeneration = 10.0, luck = 20.0),
-	gearSetInfo = listOf(listOf("Life steal and speed")),
+	gearSetInfo = listOf("Life steal and speed"),
 	leatherColor = Color.BLACK
                                 ) {
 

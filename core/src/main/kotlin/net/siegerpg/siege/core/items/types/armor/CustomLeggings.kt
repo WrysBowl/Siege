@@ -22,7 +22,7 @@ abstract class CustomLeggings(
 		override val type : ItemTypes = ItemTypes.LEGGINGS,
 		override var statGem : StatGem? = null,
 		override var addedStats : HashMap<StatTypes, Double>? = null,
-		override val gearSetInfo : List<List<String>>? = null,
+		override val gearSetInfo : List<String>? = null,
 		override var leatherColor : Color = Core.defaultLeatherColor,
                              ) : CustomArmor {
 
