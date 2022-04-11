@@ -15,7 +15,7 @@ class HealingBoneChestplate() : CustomChestplate(
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 25.0, defense = 20.0, regeneration = 35.0),
 		leatherColor = Color.GRAY,
-		gearSetInfo = listOf(listOf("Deal +40 more strength"))
+		gearSetInfo = listOf("Deal +40 more strength")
                                                 ) {
 
 	constructor(quality : Int) : this() {

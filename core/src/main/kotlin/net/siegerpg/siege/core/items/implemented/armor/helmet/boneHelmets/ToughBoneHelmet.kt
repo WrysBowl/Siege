@@ -15,7 +15,7 @@ class ToughBoneHelmet() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 35.0),
 		leatherColor = Color.GRAY,
-		gearSetInfo = listOf(listOf("Deal +40 more strength"))
+		gearSetInfo = listOf("Deal +40 more strength")
                                       ) {
 
 	constructor(quality : Int) : this() {

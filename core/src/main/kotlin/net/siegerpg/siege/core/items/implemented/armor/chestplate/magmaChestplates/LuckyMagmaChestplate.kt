@@ -15,7 +15,7 @@ class LuckyMagmaChestplate() : CustomChestplate(
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 10.0, luck = 15.0),
 		leatherColor = Color.ORANGE,
-		gearSetInfo = listOf(listOf("Have a 30% chance to burn attackers"))
+		gearSetInfo = listOf("Sneak to send a heatwave outwards")
                                                ) {
 
 	constructor(quality : Int) : this() {
