@@ -15,7 +15,7 @@ class SlimyChestplate() : CustomChestplate(
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 10.0, defense = 10.0, strength = 6.0),
 		leatherColor = Color.LIME,
-		gearSetInfo = listOf(listOf("Jump high like a slime!"))
+		gearSetInfo = listOf("Jump high like a slime!")
                                           ) {
 
 	constructor(quality : Int) : this() {

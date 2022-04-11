@@ -15,7 +15,7 @@ class MagmarsChestplate() : CustomChestplate(
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 35.0, defense = 25.0, strength = 15.0, luck = -15.0),
 		leatherColor = Color.ORANGE,
-		gearSetInfo = listOf(listOf("Sneak to send a heatwave outwards"))
+		gearSetInfo = listOf("Sneak to send a heatwave outwards")
                                             ) {
 
 	constructor(quality : Int) : this() {

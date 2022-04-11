@@ -13,7 +13,7 @@ class StrongHardenedLeatherChestplate() : CustomChestplate(
 		levelRequirement = 24,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 8.0, defense = 12.0, strength = 23.0),
-		gearSetInfo = listOf(listOf("Deal more knock back"))
+		gearSetInfo = listOf("Deal more knock back")
                                                           ) {
 
 	constructor(quality : Int) : this() {
