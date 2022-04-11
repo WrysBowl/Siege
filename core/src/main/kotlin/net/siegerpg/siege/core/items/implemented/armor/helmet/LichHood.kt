@@ -14,7 +14,7 @@ class LichHood() : CustomHelmet(
 		levelRequirement = 28,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 75.0, defense = 40.0, luck = 35.0, regeneration = -20.0),
-		gearSetInfo = listOf(listOf("Sneak to teleport to nearest mob and back")),
+		gearSetInfo = listOf("Sneak to teleport to nearest mob and back"),
 		leatherColor = Color.fromRGB(70, 70, 70)
                                ) {
 

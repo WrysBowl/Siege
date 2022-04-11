@@ -14,7 +14,7 @@ class BoomiesHorns() : CustomHelmet(
 		levelRequirement = 24,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 40.0, defense = 60.0, strength = 10.0, luck = -10.0),
-		gearSetInfo = listOf(listOf("Sneak to charge forwards"))
+		gearSetInfo = listOf("Sneak to charge forwards")
                                    ) {
 
 	constructor(quality : Int) : this() {

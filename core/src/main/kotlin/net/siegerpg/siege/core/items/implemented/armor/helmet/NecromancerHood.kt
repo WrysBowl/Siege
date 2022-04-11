@@ -14,7 +14,7 @@ class NecromancerHood() : CustomHelmet(
 		levelRequirement = 38,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 140.0, strength = 25.0, regeneration = 35.0, luck = -20.0),
-		gearSetInfo = listOf(listOf("Life steal and speed")),
+		gearSetInfo = listOf("Life steal and speed"),
 		leatherColor = Color.BLACK
                               ) {
 

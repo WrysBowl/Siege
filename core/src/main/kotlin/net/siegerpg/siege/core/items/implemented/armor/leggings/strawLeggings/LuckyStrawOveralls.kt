@@ -15,7 +15,7 @@ class LuckyStrawOveralls() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 5.0, luck = 5.0),
 		leatherColor = Color.YELLOW,
-		gearSetInfo = listOf(listOf("Regenerates health quickly"))
+		gearSetInfo = listOf("Regenerates health quickly")
                                            ) {
 
 	constructor(quality : Int) : this() {

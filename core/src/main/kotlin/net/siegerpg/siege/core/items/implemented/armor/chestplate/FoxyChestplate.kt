@@ -13,7 +13,7 @@ class FoxyChestplate() : CustomChestplate(
 	levelRequirement = 44,
 	material = Material.CHAINMAIL_CHESTPLATE,
 	baseStats = CustomItemUtils.statMap(health = 180.0, defense = 60.0, regeneration = -40.0),
-	gearSetInfo = listOf(listOf("Sneak to set a snare trap")),
+	gearSetInfo = listOf("Sneak to set a snare trap"),
 							  ) {
 
 	constructor(quality : Int) : this() {

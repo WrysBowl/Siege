@@ -14,7 +14,7 @@ class BoomiesLeggings() : CustomLeggings(
 		levelRequirement = 17,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 40.0, defense = 70.0, luck = -10.0),
-		gearSetInfo = listOf(listOf("Sneak to charge forwards"))
+		gearSetInfo = listOf("Sneak to charge forwards")
                                         ) {
 
 	constructor(quality : Int) : this() {

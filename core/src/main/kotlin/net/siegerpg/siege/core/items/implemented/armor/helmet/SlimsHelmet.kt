@@ -15,7 +15,7 @@ class SlimsHelmet() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 12.0, defense = -10.0, strength = 12.0, luck = 6.0),
 		leatherColor = Color.LIME,
-		gearSetInfo = listOf(listOf("Double jump to jump forwards"))
+		gearSetInfo = listOf("Double jump to jump forwards")
                                   ) {
 
 	constructor(quality : Int) : this() {

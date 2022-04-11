@@ -13,7 +13,7 @@ class FoxyLeggings() : CustomLeggings(
 	levelRequirement = 44,
 	material = Material.CHAINMAIL_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 170.0, defense = 40.0, luck = 10.0, strength = -20.0),
-	gearSetInfo = listOf(listOf("Sneak to set a snare trap")),
+	gearSetInfo = listOf("Sneak to set a snare trap"),
                                  ) {
 
 	constructor(quality : Int) : this() {

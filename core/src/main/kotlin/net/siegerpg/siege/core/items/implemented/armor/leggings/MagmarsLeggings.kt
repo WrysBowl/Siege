@@ -15,7 +15,7 @@ class MagmarsLeggings() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 30.0, defense = 25.0, strength = 20.0, regeneration = -15.0),
 		leatherColor = Color.ORANGE,
-		gearSetInfo = listOf(listOf("Sneak to send a heatwave outwards"))
+		gearSetInfo = listOf("Sneak to send a heatwave outwards")
                                         ) {
 
 	constructor(quality : Int) : this() {

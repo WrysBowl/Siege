@@ -13,7 +13,7 @@ class FoxyHelmet() : CustomHelmet(
 		levelRequirement = 44,
 		material = Material.CHAINMAIL_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 160.0, defense = 50.0, strength = 30.0, luck = -40.0),
-		gearSetInfo = listOf(listOf("Sneak to set a snare trap")),
+		gearSetInfo = listOf("Sneak to set a snare trap"),
                                   ) {
 
 	constructor(quality : Int) : this() {

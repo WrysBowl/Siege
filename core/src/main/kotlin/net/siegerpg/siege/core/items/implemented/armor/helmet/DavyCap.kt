@@ -14,7 +14,7 @@ class DavyCap() : CustomHelmet(
 		levelRequirement = 33,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 100.0, strength = 30.0, regeneration = 20.0),
-		gearSetInfo = listOf(listOf("Dolphin's Grace II, Speed I, Water breathing II")),
+		gearSetInfo = listOf("Dolphin's Grace II, Speed I, Water breathing II"),
 		leatherColor = Color.fromRGB(74, 104, 150)
                               ) {
 

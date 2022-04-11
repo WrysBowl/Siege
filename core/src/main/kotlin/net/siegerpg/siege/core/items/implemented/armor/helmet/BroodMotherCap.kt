@@ -14,7 +14,7 @@ class BroodMotherCap() : CustomHelmet(
 		levelRequirement = 50,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 150.0, defense = 75.0, strength = 25.0, regeneration = -30.0),
-		gearSetInfo = listOf(listOf("Sneak to shoot a beam of energy")),
+		gearSetInfo = listOf("Sneak to shoot a beam of energy"),
 		leatherColor = Color.fromRGB(50, 125, 50)
                               ) {
 

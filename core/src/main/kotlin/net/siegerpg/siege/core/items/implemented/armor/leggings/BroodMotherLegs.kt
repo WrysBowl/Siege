@@ -14,7 +14,7 @@ class BroodMotherLegs() : CustomLeggings(
 	levelRequirement = 50,
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = -100.0, defense = 170.0, strength = 65.0, regeneration = 50.0, luck = 35.0),
-	gearSetInfo = listOf(listOf("Sneak to shoot a beam of energy")),
+	gearSetInfo = listOf("Sneak to shoot a beam of energy"),
 	leatherColor = Color.GREEN
 						  ) {
 

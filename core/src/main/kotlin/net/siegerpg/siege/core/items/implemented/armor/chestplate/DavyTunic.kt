@@ -14,7 +14,7 @@ class DavyTunic() : CustomChestplate(
 		levelRequirement = 33,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 150.0, strength = 40.0, defense = -40.0),
-		gearSetInfo = listOf(listOf("Dolphin's Grace II, Speed I, Water breathing II")),
+		gearSetInfo = listOf("Dolphin's Grace II, Speed I, Water breathing II"),
 		leatherColor = Color.fromRGB(74, 104, 150)
                                          ) {
 
