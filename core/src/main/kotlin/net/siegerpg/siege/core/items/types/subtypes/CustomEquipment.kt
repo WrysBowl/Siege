@@ -78,6 +78,11 @@ interface CustomEquipment : CustomItem {
 			meta.lore(" ")
 			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
 		}
+
+		if (this is CustomWeapon) {
+			item.itemMeta = displaySkillText(meta)
+		}
+
 		if (baseStats.size != 0) {
 			item.itemMeta = statFormat(meta, hideRarity)
 		}

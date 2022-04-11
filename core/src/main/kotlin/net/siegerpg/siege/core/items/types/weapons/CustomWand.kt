@@ -6,6 +6,7 @@ import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.setNbtTags
 import net.siegerpg.siege.core.items.statgems.StatGem
 import net.siegerpg.siege.core.items.sets.GearSet
+import net.siegerpg.siege.core.items.types.misc.CustomSkill
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.lore
@@ -32,8 +33,9 @@ abstract class CustomWand(
 		val blue : Int = 255,
 		val damageRadius : Double = 2.5,
 		override var statGem : StatGem? = null,
+		override var skillBooks : List<CustomSkill?> = listOf(),
 		override var addedStats : HashMap<StatTypes, Double>? = null,
-		override val gearSetInfo : List<List<String>>? = null
+		override val gearSetInfo : List<String>? = null
 
 		) : CustomWeapon {
 
@@ -74,6 +76,9 @@ abstract class CustomWand(
 			meta.lore(" ")
 			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
 		}
+
+		item.itemMeta = displaySkillText(meta)
+
 		if (baseStats.size != 0) {
 			item.itemMeta = statFormat(meta, hideRarity)
 			meta.lore("")
@@ -86,9 +91,9 @@ abstract class CustomWand(
 				if (name.length > 16) name.length
 				else 16
 		meta.lore(" ")
-		gearSetInfo?.forEach{
+		if (gearSetInfo != null) {
 			meta.lore("<r><color:#87d4a0>Set Bonus")
-			Utils.getTextArray(it, length).forEach {
+			Utils.getTextArray(gearSetInfo, length).forEach {
 				meta.lore("<r><color:#82a18c>$it")
 			}
 			meta.lore(" ")

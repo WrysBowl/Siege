@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.statgems.StatGem
+import net.siegerpg.siege.core.items.types.misc.CustomSkill
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
@@ -24,8 +25,9 @@ abstract class CustomBow(
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.BOW,
 		override var statGem : StatGem? = null,
+		override var skillBooks : List<CustomSkill?> = listOf(),
 		override var addedStats : HashMap<StatTypes, Double>? = null,
-		override val gearSetInfo : List<List<String>>? = null,
+		override val gearSetInfo : List<String>? = null,
 		) : CustomWeapon {
 
 	override var rarity : Rarity = Rarity.COMMON
