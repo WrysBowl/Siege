@@ -68,13 +68,13 @@ public class PlayerData implements Listener {
 					int maxMana = playerMana.get(player);
 					int currentMana = playerCurrentMana.get(player);
 					double manaRegen = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA_REGEN);
-					int newCurrentMana = currentMana + (int)manaRegen + 1;
+					int newCurrentMana = currentMana + (int)manaRegen + 5;
 
 					if (newCurrentMana > maxMana) newCurrentMana = maxMana;
 					playerCurrentMana.put(player, newCurrentMana);
 				}
 			}
-		}.runTaskTimer(Core.plugin(), 20, 20);
+		}.runTaskTimer(Core.plugin(), 50, 50);
 	}
 
 	public static boolean onCooldown(Player player) {
