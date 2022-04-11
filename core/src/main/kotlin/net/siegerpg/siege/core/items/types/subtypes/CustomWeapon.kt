@@ -59,13 +59,14 @@ interface CustomWeapon : CustomGear {
 	}
 
 	fun displaySkillText(meta : ItemMeta) : ItemMeta {
-		for(i in 0..(skillBooks.size)) {
-			meta.lore(" ")
-			meta.lore("<r><color:#7fd4a4>[${SkillTriggers.getFromInt(i).display}] <color:#5c9976>${skillBooks.get(i)}")
-		}
-		for(i in 0..(skillBooks.size)) {
-			meta.lore(" ")
-			meta.lore("<dark_gray>\u25C7 <italic>Skill Slot")
+		var count : Int = 0
+		meta.lore(" ")
+		for(skill in skillBooks) {
+			count++
+			meta.lore("<r><color:#7fd4a4>[${SkillTriggers.getFromInt(count).display}] <color:#5c9976>${skillBooks.get(count)}")
+			if (skill == null) {
+				meta.lore("<dark_gray>\u25C7 <italic>Skill Slot")
+			}
 		}
 		return meta
 	}
