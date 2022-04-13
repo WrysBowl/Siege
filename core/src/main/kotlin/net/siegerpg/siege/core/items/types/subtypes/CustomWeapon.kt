@@ -58,6 +58,10 @@ interface CustomWeapon : CustomGear {
 		return true
 	}
 
+	fun hasSkill(skill : CustomSkill) : Boolean {
+		return this.skillBooks.contains(skill)
+	}
+
 	fun displaySkillText(meta : ItemMeta) : ItemMeta {
 		var count : Int = 0
 		meta.lore(" ")

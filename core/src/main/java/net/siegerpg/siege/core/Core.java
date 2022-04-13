@@ -158,6 +158,7 @@ public final class Core extends JavaPlugin {
 				new PlayerJoinListener(),
 				new PlayerQuitListener(),
 				new StatGemListener(),
+				new SkillListener(),
 				new GemRemover(),
 				new WorldListener(),
 				new PortalEnterListener(),
