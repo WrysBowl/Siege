@@ -161,6 +161,8 @@ public class BlockBreakListener implements Listener {
 			put(Material.DARK_OAK_LOG, new DARK_OAK_LOG());
 			put(Material.DARK_OAK_WOOD, new DARK_OAK_WOOD());
 			put(Material.DIRT, new DIRT());
+			put(Material.GOLD_BLOCK, new GOLD_BLOCK());
+			put(Material.GOLD_ORE, new GOLD_ORE());
 			put(Material.GRASS_BLOCK, new GRASS_BLOCK());
 			put(Material.GREEN_CONCRETE, new GREEN_CONCRETE());
 			put(Material.GREEN_TERRACOTTA, new GREEN_TERRACOTTA());
