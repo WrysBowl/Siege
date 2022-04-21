@@ -15,6 +15,7 @@ import org.bukkit.attribute.Attribute
 import org.bukkit.attribute.AttributeModifier
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.ItemMeta
 
 abstract class CustomMeleeWeapon(
 		override val name : String,
@@ -27,7 +28,7 @@ abstract class CustomMeleeWeapon(
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.MELEEWEAPON,
 		val attackSpeed : Double,
-		override var skillBooks : List<CustomSkill?> = listOf(),
+		override var skillBooks : List<CustomSkill?> = listOf(null),
 		override var statGem : StatGem? = null,
 		override var addedStats : HashMap<StatTypes, Double>? = null,
 		override val gearSetInfo : List<String>? = null

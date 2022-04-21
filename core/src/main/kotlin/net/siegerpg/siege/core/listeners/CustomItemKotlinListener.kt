@@ -114,7 +114,7 @@ class CustomItemKotlinListener : Listener {
 			}
 		}
 		e.player.inventory.itemInMainHand.let {
-			if (it is CustomEquipment) {
+			if (it is CustomWeapon) {
 				it.onInteract(e)
 			}
 		}
