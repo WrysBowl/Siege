@@ -33,16 +33,16 @@ public class Stats implements CommandExecutor {
 		}
 		((Player)sender).playSound(((Player)sender).getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1.0f, 1.5f);
 
-		double health =
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH);
-		double strength =
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH);
-		double toughness =
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.DEFENSE);
-		double luck =
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK);
-		double regeneration =
-				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION);
+		double health = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH), 2);
+		double strength = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH), 2);
+		double toughness = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.DEFENSE), 2);
+		double luck = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK), 2);
+		double regeneration = Utils.round(
+				CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION), 2);
 
 		sender.sendMessage("");
 		sender.sendMessage("");
