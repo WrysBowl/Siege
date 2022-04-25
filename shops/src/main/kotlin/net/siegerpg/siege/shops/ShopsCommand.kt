@@ -64,10 +64,6 @@ class ShopsCommand : BaseCommand() {
 						.parse("<red>You do not have permission to open this shop!")
 		                                                                                         )
 
-		//adds to cooldown
-		if (PlayerData.onCooldown(player)) return
-		PlayerData.addCooldown(player)
-
 		//This is some ugly code that I have yet to change
 		var gui = ChestGui(3, shop.name)
 		var outlinePane = OutlinePane(0, 0, 9, 3, Pane.Priority.LOWEST)
@@ -172,9 +168,6 @@ class ShopsCommand : BaseCommand() {
 					}
 
 					event.isLeftClick                    -> {
-						//adds to cooldown
-						if (PlayerData.onCooldown(player)) return@setAction
-						PlayerData.addCooldown(player)
 
 						if (!it.craftable) return@setAction
 						if (event.view.bottomInventory
@@ -227,9 +220,6 @@ class ShopsCommand : BaseCommand() {
 					}
 
 					event.isRightClick                   -> {
-						//adds to cooldown
-						if (PlayerData.onCooldown(player)) return@setAction
-						PlayerData.addCooldown(player)
 
 						if (it.buyPrice < 0) return@setAction
 						if (VaultHook.econ.getBalance(player) < it.buyPrice) {

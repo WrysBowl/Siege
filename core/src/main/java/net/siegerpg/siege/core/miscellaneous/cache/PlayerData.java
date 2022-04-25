@@ -23,10 +23,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -176,6 +173,12 @@ public class PlayerData implements Listener {
 			playerRegeneration.put(player, (double)regen);
 			playerMana.put(player, mana);
 		}, 2);
+	}
+
+	@EventHandler
+	public void onCommand(PlayerCommandPreprocessEvent e) {
+		if (PlayerData.onCooldown(e.getPlayer())) return;
+		PlayerData.addCooldown(e.getPlayer());
 	}
 
 	@EventHandler
