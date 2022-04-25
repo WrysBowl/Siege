@@ -78,19 +78,19 @@ object BossLeaderboard {
 class BossLeaderboardListener : Listener {
 
 
-	val dungeonBossDropTableHashMap = mutableMapOf(
-			"Broodmother" to Broodmother(),
-			"BullSpirit" to BullSpirit(),
-			"Davy_Jones" to Davy_Jones(),
-			"FoxSpirit" to FoxSpirit(),
-			"Lich" to Lich(),
-			"MagmaSpirit" to MagmaSpirit(),
-			"Necromancer" to Necromancer(),
-			"SlimeSpirit" to SlimeSpirit()
-	                                              ) as HashMap<String, MobDropTable>
+
 
 	companion object {
-
+		val dungeonBossDropTableHashMap = mutableMapOf(
+				"Broodmother" to Broodmother(),
+				"BullSpirit" to BullSpirit(),
+				"Davy_Jones" to Davy_Jones(),
+				"FoxSpirit" to FoxSpirit(),
+				"Lich" to Lich(),
+				"MagmaSpirit" to MagmaSpirit(),
+				"Necromancer" to Necromancer(),
+				"SlimeSpirit" to SlimeSpirit()
+		                                              ) as HashMap<String, MobDropTable>
 		val currentBossFights = ArrayList<BossFight>()
 	}
 

@@ -123,7 +123,7 @@ interface CustomEquipment : CustomItem {
 			if (realStats[it]!! < 0.0) {
 				if (hideRarity || quality < 0)
 					meta.lore(
-							"<r><red>${stats[it]?.times(0.5)}. . . -${
+							"<r><red>${stats[it]?.times(0.5)}. . . ${
 								stats[it]?.times(
 										1.5
 								                )
