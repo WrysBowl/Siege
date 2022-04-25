@@ -174,6 +174,7 @@ interface CustomEquipment : CustomItem {
 	}
 
 	override fun getSellValue() : Int {
+		if (quality < 1) quality = 50
 		return ((levelRequirement ?: 1) * quality) / 5
 	}
 

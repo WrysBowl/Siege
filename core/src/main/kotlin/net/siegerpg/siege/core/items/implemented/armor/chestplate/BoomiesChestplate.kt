@@ -8,7 +8,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class BoomiesChestplate() : CustomChestplate(
-		name = "Magmar's Chestplate",
+		name = "Boomie's Chestplate",
 		customModelData = 1,
 		description = listOf("The Bull Spirit is the third guardian"),
 		levelRequirement = 24,
