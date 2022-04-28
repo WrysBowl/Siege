@@ -96,9 +96,6 @@ public class Herbert implements Listener {
 				    .contains("6")) {
 			Player player = e.getPlayer();
 
-			//adds to cooldown
-			if (PlayerData.onCooldown(player)) return;
-			PlayerData.addCooldown(player);
 			new Herbert(player);
 		}
 	}

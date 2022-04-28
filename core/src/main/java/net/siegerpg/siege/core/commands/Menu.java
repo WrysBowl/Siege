@@ -40,10 +40,6 @@ public class Menu implements CommandExecutor {
 			return false;
 		}
 
-		//adds to cooldown
-		if (PlayerData.onCooldown(player)) return false;
-		PlayerData.addCooldown(player);
-
 		player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 0.75f, 1.0f);
 		Menu instance = new Menu();
 		this.menu = instance.getMenu(player);
