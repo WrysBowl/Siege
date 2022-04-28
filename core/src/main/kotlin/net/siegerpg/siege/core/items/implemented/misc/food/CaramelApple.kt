@@ -6,7 +6,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CaramelApple() : CustomFood(
-		name = "Caramel Aply",
+		name = "Caramel Apple",
 		customModelData = 330013,
 		description = listOf("A sweeter apple"),
 		levelRequirement = 0,
