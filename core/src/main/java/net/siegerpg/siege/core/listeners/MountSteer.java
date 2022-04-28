@@ -98,7 +98,6 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		ItemStack item = player.getInventory().getItemInMainHand();
 
 		String message = e.getMessage();
-		if (message.length() > 20) return;
 
 		//if player is holding spawn egg when talking
 		EntityType type = getSpawnEggType(item);
@@ -107,6 +106,11 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		//check if held spawn egg is a mount
 		CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(item);
 		if (!(customItem instanceof CustomMount)) return;
+
+		if (message.length() > 20) {
+			player.sendMessage(Utils.lore("<red>That name is longer than 20 characters! Try 'Wrys' :)"));
+			return;
+		}
 
 		if (message.contains("[item]")) return;
 
