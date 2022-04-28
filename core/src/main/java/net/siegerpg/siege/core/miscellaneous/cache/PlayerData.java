@@ -54,7 +54,7 @@ public class PlayerData implements Listener {
 			public void run() {
 				playerCooldownStrikes.clear();
 			}
-		}.runTaskTimer(Core.plugin(), 40, 40);
+		}.runTaskTimer(Core.plugin(), 30, 30);
 
 		new BukkitRunnable() {
 
@@ -92,6 +92,10 @@ public class PlayerData implements Listener {
 	}
 
 	public static void addCooldown(Player player) {
+		int currentStrikes = 0;
+		if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
+		playerCooldownStrikes.put(player, currentStrikes+1);
+
 		commandCooldown.add(player);
 		new BukkitRunnable() {
 
@@ -103,6 +107,10 @@ public class PlayerData implements Listener {
 		}.runTaskLater(Core.plugin(), 20L);
 	}
 	public static void addCooldown(Player player, int ticks) {
+		int currentStrikes = 0;
+		if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
+		playerCooldownStrikes.put(player, currentStrikes+1);
+
 		commandCooldown.add(player);
 		new BukkitRunnable() {
 
