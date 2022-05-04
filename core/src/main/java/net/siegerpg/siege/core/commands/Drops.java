@@ -26,7 +26,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Array;
@@ -470,8 +470,9 @@ public class Drops implements CommandExecutor {
 	}
 	private static ItemStack getIconNext() {
 		//Creating Next Icon
-		ItemStack icon = new ItemStack(Material.SPECTRAL_ARROW);
-		ItemMeta iconMeta = icon.getItemMeta();
+		ItemStack icon = new ItemStack(Material.SKELETON_SKULL);
+		SkullMeta iconMeta = (SkullMeta) icon.getItemMeta();
+		iconMeta.setOwner("MHF_ArrowRight");
 		iconMeta.displayName(Utils.lore("<green>Next"));
 		iconMeta.lore(new ArrayList<>() {
 			{

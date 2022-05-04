@@ -98,13 +98,12 @@ public enum SkillData {
 	 *
 	 * @return The level (can be null if the player doesn't have that skill)
 	 */
-	@Nullable
 	public static Integer getSkillLevel(OfflinePlayer player, Skill skill) {
 
 		JsonElement data = getSkillData(player)
 				.get(skill.getIdentifier());
 		if (data == null) {
-			return null;
+			return 0;
 		} else {
 			return data.getAsInt();
 		}
