@@ -198,10 +198,6 @@ public class Drops implements CommandExecutor {
 			lore.add(Utils.lore("<color:#BFD57C><bold>\u2618 <reset><color:#BFD57C>"+rewards[i].getChance()+" %"));
 			lore.add(Utils.lore("<dark_gray><underlined>            "));
 			item.lore(lore);
-
-			row.addItem(new GuiItem(item, e -> {
-				createDropsGUI(dropTable, 0, player).show(player);
-			}));
 		}
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
