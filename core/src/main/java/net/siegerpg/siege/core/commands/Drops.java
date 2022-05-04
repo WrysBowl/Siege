@@ -472,7 +472,7 @@ public class Drops implements CommandExecutor {
 		//Creating Next Icon
 		ItemStack icon = new ItemStack(Material.SPECTRAL_ARROW);
 		ItemMeta iconMeta = icon.getItemMeta();
-		iconMeta.displayName(Utils.lore("<red><bold>NEXT"));
+		iconMeta.displayName(Utils.lore("<green>Next"));
 		iconMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Next page"));
@@ -485,7 +485,7 @@ public class Drops implements CommandExecutor {
 		//Creating Next Icon
 		ItemStack icon = new ItemStack(Material.NETHER_STAR);
 		ItemMeta iconMeta = icon.getItemMeta();
-		iconMeta.displayName(Utils.lore("<gold><bold>MENU"));
+		iconMeta.displayName(Utils.lore("<gold>Menu"));
 		iconMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Back to menu"));
