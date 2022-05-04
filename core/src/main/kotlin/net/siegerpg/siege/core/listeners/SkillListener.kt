@@ -86,20 +86,22 @@ class SkillListener : Listener {
 				return
 			}
 			if (it is CustomBow) {
-				if (!(action.equals(Action.LEFT_CLICK_BLOCK) || action.equals(Action.LEFT_CLICK_AIR))) {
-					return
+				if (action.equals(Action.LEFT_CLICK_BLOCK) || action.equals(Action.LEFT_CLICK_AIR)) {
+					it.skillBooks.forEach {
+						if (it != null) {
+							it.skill.trigger(e.player)
+						}
+					}
 				}
 			}
 
 			if (it is CustomWand || it is CustomMeleeWeapon) {
-				if (!(action.equals(Action.RIGHT_CLICK_BLOCK) || action.equals(Action.RIGHT_CLICK_AIR))) {
-					return
-				}
-			}
-
-			it.skillBooks.forEach {
-				if (it != null) {
-					it.skill.trigger(e.player)
+				if (action.equals(Action.RIGHT_CLICK_BLOCK) || action.equals(Action.RIGHT_CLICK_AIR)) {
+					it.skillBooks.forEach {
+						if (it != null) {
+							it.skill.trigger(e.player)
+						}
+					}
 				}
 			}
 		}
