@@ -5,6 +5,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
+import net.siegerpg.siege.core.skills.archer.*;
+import net.siegerpg.siege.core.skills.mage.*;
+import net.siegerpg.siege.core.skills.warrior.*;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -196,6 +199,17 @@ public enum SkillData {
 		JsonObject data = getSkillData(player);
 		JsonElement elem = data.get(skill.getIdentifier());
 		return elem != null;
+	}
+
+	public static SkillClass getSkillClass(Player player) {
+		if (hasSkillUnlocked(player, new CriticalShot()) || hasSkillUnlocked(player, new AchillesHeel())) {
+			return SkillClass.ARCHER;
+		} else if (hasSkillUnlocked(player, new Slash()) || hasSkillUnlocked(player, new Lunge())) {
+			return SkillClass.WARRIOR;
+		} else if (hasSkillUnlocked(player, new IceBolt()) || hasSkillUnlocked(player, new Hex()) || hasSkillUnlocked(player, new Invigorate())) {
+			return SkillClass.MAGE;
+		}
+		return null;
 	}
 
 	/**
