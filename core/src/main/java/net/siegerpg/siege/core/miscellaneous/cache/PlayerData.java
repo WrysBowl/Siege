@@ -129,7 +129,7 @@ public class PlayerData implements Listener {
 	}
 
 	public static double getNewHealth(Double health, Double maxHealth, Double oldMaxHealth) {
-		return (health/oldMaxHealth)*maxHealth;
+		return Math.floor((health/oldMaxHealth)*maxHealth);
 	}
 	public static double getHealthMultiplier(Player player) {
 		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
