@@ -177,6 +177,11 @@ class CustomItemKotlinListener : Listener {
 
 			}
 		}
+		//check if player is attacking NPC
+		if (victim.hasMetadata("NPC")) {
+			return
+		}
+
 		if (attacker is Player) {
 			if (item == null) {
 				e.damage = 1.0
@@ -233,7 +238,8 @@ class CustomItemKotlinListener : Listener {
 				}
 			}
 
-			victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
+			//for NPCs
+		    victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
 		}
 
 		/*

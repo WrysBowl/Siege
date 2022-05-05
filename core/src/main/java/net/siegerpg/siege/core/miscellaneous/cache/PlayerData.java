@@ -81,7 +81,6 @@ public class PlayerData implements Listener {
 
 			if (overStrikeLimit(currentStrikes)) player.kick(Utils.lore("<red>You were kicked for packet overload!"));
 			playerCooldownStrikes.put(player, currentStrikes);
-			Bukkit.getLogger().info(player.getName()+" Strikes: "+currentStrikes);
 			return true;
 		} else {
 			return false;
