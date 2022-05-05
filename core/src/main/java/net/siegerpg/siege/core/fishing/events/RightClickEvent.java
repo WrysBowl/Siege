@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.types.misc.CustomRod;
 import net.siegerpg.siege.core.miscellaneous.Levels;
 import net.siegerpg.siege.core.miscellaneous.Utils;
+import net.siegerpg.siege.core.miscellaneous.cache.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -46,6 +47,7 @@ public class RightClickEvent implements Listener {
 				.getItemInMainHand()
 				.getType()
 				.equals(Material.FISHING_ROD)) {
+			PlayerData.addCooldown(e.getPlayer());
 			ItemStack item = player
 					.getInventory()
 					.getItemInMainHand();

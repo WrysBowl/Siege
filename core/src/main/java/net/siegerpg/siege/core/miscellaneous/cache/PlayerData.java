@@ -42,7 +42,6 @@ public class PlayerData implements Listener {
 	public static HashMap< Player, Integer > playerMana = new HashMap<>();
 	public static HashMap< Player, Location > playerDeathLocations = new HashMap<>();
 
-	public static ArrayList< Player > commandCooldown = new ArrayList<>();
 	public static HashMap< Player, Integer > playerCooldownStrikes = new HashMap<>();
 
 	//runnable to regenerate mana
@@ -75,13 +74,14 @@ public class PlayerData implements Listener {
 	}
 
 	public static boolean onCooldown(Player player) {
-		if (commandCooldown.contains(player)) {
+		if (playerCooldownStrikes.containsKey(player)) {
 
 			int currentStrikes = 0;
 			if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
 
 			if (overStrikeLimit(currentStrikes)) player.kick(Utils.lore("<red>You were kicked for packet overload!"));
 			playerCooldownStrikes.put(player, currentStrikes);
+			Bukkit.getLogger().info(player.getName()+" Strikes: "+currentStrikes);
 			return true;
 		} else {
 			return false;
@@ -96,30 +96,30 @@ public class PlayerData implements Listener {
 		if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
 		playerCooldownStrikes.put(player, currentStrikes+1);
 
-		commandCooldown.add(player);
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
-				commandCooldown.remove(player);
+				playerCooldownStrikes.put(player, 0);
 			}
 
 		}.runTaskLater(Core.plugin(), 20L);
+		onCooldown(player);
 	}
 	public static void addCooldown(Player player, int ticks) {
 		int currentStrikes = 0;
 		if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
 		playerCooldownStrikes.put(player, currentStrikes+1);
 
-		commandCooldown.add(player);
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
-				commandCooldown.remove(player);
+				playerCooldownStrikes.put(player, 0);
 			}
 
 		}.runTaskLater(Core.plugin(), ticks);
+		onCooldown(player);
 	}
 
 	public static int getRegenRate(int regen) {
@@ -185,7 +185,6 @@ public class PlayerData implements Listener {
 
 	@EventHandler
 	public void onCommand(PlayerCommandPreprocessEvent e) {
-		if (PlayerData.onCooldown(e.getPlayer())) return;
 		PlayerData.addCooldown(e.getPlayer());
 	}
 
