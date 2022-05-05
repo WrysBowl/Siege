@@ -19,10 +19,10 @@ public class ResourcePack implements CommandExecutor {
 			Player player = (Player) sender;
 			player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1.0f, 1.5f);
 			player.setResourcePack(
-					"https://download.mc-packs.net/pack/552e26b7c45d46050d9c643818e1e43670bec27d.zip",
-					"552e26b7c45d46050d9c643818e1e43670bec27d");
+					"https://download.mc-packs.net/pack/bb53ed8fb1ef89d4c1bd93536dabc8a55c8d55c3.zip",
+					"bb53ed8fb1ef89d4c1bd93536dabc8a55c8d55c3");
 			player.sendMessage(Utils.lore("<green><bold>RESOURCE PACK"));
-			player.sendMessage(Utils.lore("<green>https://download.mc-packs.net/pack/552e26b7c45d46050d9c643818e1e43670bec27d.zip"));
+			player.sendMessage(Utils.lore("<green>https://download.mc-packs.net/pack/bb53ed8fb1ef89d4c1bd93536dabc8a55c8d55c3.zip"));
 			return true;
 		}
 		return false;
