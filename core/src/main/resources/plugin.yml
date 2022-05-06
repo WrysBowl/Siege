@@ -65,3 +65,6 @@ commands:
     description: Quest reward
   meraChat:
     description: Pay to teleport back to death
+  skills:
+    aliases: [ skills ]
+    description: Open the skills menu
