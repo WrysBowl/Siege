@@ -26,10 +26,11 @@ public class SkillTree {
 		roots.add(achillesHeel);
 
 		Skill poisonArrow = criticalShot.addChild(new PoisonArrow());
+		Skill flamingArrow = criticalShot.addChild(new FlamingArrow());
+
 		Skill piercingArrow = poisonArrow.addChild(new PiercingArrow());
 		Skill venomousAura = poisonArrow.addChild(new VenomousAura());
 
-		Skill flamingArrow = criticalShot.addChild(new FlamingArrow());
 		Skill serpentineArrow = flamingArrow.addChild(new SerpentineArrow());
 		Skill fireman = flamingArrow.addChild(new Fireman());
 
@@ -50,11 +51,12 @@ public class SkillTree {
 		roots.add(lunge);
 
 		Skill taunt = slash.addChild(new Taunt());
+		Skill doubleStrike = slash.addChild(new DoubleStrike());
+
 		Skill armory = taunt.addChild(new Armory());
 		Skill quakeCharge = taunt.addChild(new QuakeCharge());
 		Skill selflessDefense = taunt.addChild(new SelflessDefense());
 
-		Skill doubleStrike = slash.addChild(new DoubleStrike());
 		Skill bloodWork = doubleStrike.addChild(new BloodWork());
 		Skill parry = doubleStrike.addChild(new Parry());
 		Skill warCry = doubleStrike.addChild(new WarCry());
@@ -77,23 +79,23 @@ public class SkillTree {
 		Skill hex = new Hex();
 		roots.add(hex);
 
-		Skill frostImplosion = iceBolt.addChild(new FrostImplosion());
 		Skill iceberg = iceBolt.addChild(new Iceberg());
 		Skill iceCube = iceBolt.addChild(new IceCube());
 		Skill hailstorm = iceBolt.addChild(new Hailstorm());
-		Skill cryogenesis = iceBolt.addChild(new Cryogenesis());
+		Skill cryogenesis = iceberg.addChild(new Cryogenesis());
+		Skill frostImplosion = iceberg.addChild(new FrostImplosion());
 
 		Skill rockSpike = invigorate.addChild(new RockSpike());
 		Skill revitalize = invigorate.addChild(new Revitalize());
 		Skill soulHarvester = invigorate.addChild(new SoulHarvester());
-		Skill earthquake = invigorate.addChild(new Earthquake());
-		Skill soulGiver = invigorate.addChild(new SoulGiver());
+		Skill earthquake = rockSpike.addChild(new Earthquake());
+		Skill soulGiver = rockSpike.addChild(new SoulGiver());
 
 		Skill zombiePuppet = hex.addChild(new ZombiePuppet());
 		Skill sacrifice = hex.addChild(new Sacrifice());
 		Skill golem = hex.addChild(new Golem());
-		Skill demonTransformation = hex.addChild(new DemonTransformation());
-		Skill spectralBeam = hex.addChild(new SpectralBeam());
+		Skill demonTransformation = zombiePuppet.addChild(new DemonTransformation());
+		Skill spectralBeam = zombiePuppet.addChild(new SpectralBeam());
 
 	}
 
