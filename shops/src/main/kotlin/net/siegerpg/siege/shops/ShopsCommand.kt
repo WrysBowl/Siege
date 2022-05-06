@@ -15,6 +15,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.miscellaneous.Scoreboard
 import net.siegerpg.siege.core.miscellaneous.VaultHook
+import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
 import net.siegerpg.siege.core.miscellaneous.lore
 import org.bukkit.Bukkit
 import org.bukkit.GameMode
@@ -51,6 +52,7 @@ class ShopsCommand : BaseCommand() {
 
 		val player : Player =
 				if (target?.player == null) (sender as Player) else target.player
+		PlayerData.addCooldown(player)
 
 		if (!ShopsPlugin.instance?.shopRegistry?.contains(id)!!) return sender.sendMessage(
 				MiniMessage.get().parse("<red>Invalid shop name!")
@@ -62,6 +64,7 @@ class ShopsCommand : BaseCommand() {
 				MiniMessage.get()
 						.parse("<red>You do not have permission to open this shop!")
 		                                                                                         )
+
 
 		//This is some ugly code that I have yet to change
 		var gui = ChestGui(3, shop.name)
