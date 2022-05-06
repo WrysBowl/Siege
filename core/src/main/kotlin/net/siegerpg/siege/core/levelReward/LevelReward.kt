@@ -36,7 +36,7 @@ interface LevelReward {
 			GoldExpListener.giveGold(player, gold)
 		}
 		if (skillPoints > 0) {
-			player.sendMessage(Utils.parse("<light_blue>+ ${String.format("%,d", skillPoints)} SP"))
+			player.sendMessage(Utils.parse("<aqua>+ ${String.format("%,d", skillPoints)} SP"))
 			val currentPoints : Int = SkillData.getSkillPoints(player)
 			SkillData.setSkillPoints(player, currentPoints+skillPoints)
 		}

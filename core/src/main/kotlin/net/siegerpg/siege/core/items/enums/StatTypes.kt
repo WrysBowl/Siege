@@ -9,7 +9,7 @@ enum class StatTypes(val stylizedName : String, val color : String) {
 	LUCK("Luck", "<green>"),
 
 	MANA("Mana", "<dark_aqua>"),
-	MANA_REGEN("Mana Regen", "<light_blue>");
+	MANA_REGEN("Mana Regen", "<aqua>");
 
 	companion object {
 
