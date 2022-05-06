@@ -15,7 +15,6 @@ import net.kyori.adventure.text.minimessage.MiniMessage
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.miscellaneous.Scoreboard
 import net.siegerpg.siege.core.miscellaneous.VaultHook
-import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
 import net.siegerpg.siege.core.miscellaneous.lore
 import org.bukkit.Bukkit
 import org.bukkit.GameMode
@@ -209,7 +208,7 @@ class ShopsCommand : BaseCommand() {
 							player.inventory.removeItem(stack)
 						}
 						player.inventory.addItem(it.generate())
-						Bukkit.dispatchCommand(sender, "shops " + id + " " + player.name)
+						Bukkit.dispatchCommand(Bukkit.getServer().consoleSender, "shops " + id + " " + player.name)
 						player.playSound(
 								player.location,
 								Sound.ENTITY_VILLAGER_CELEBRATE,
@@ -250,7 +249,7 @@ class ShopsCommand : BaseCommand() {
 						}
 
 						player.inventory.addItem(it.generate())
-						Bukkit.dispatchCommand(sender, "shops " + id + " " + player.name)
+						Bukkit.dispatchCommand(Bukkit.getServer().consoleSender, "shops " + id + " " + player.name)
 						player.playSound(
 								player.location,
 								Sound.ENTITY_VILLAGER_CELEBRATE,
