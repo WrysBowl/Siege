@@ -25,17 +25,8 @@ public class SkillGUI implements CommandExecutor {
 	ItemStack archerIcon;
 	ItemStack next;
 
-	/*
-	getClassMenu(player) -> decide class
-	getArcherGUI(player, pageNum) -> fetch skill and it's children
-	getSkillPage(player, skills) -> determines which page to get
-	get3BranchPage(player, skills) -> gets the appropriate page
-	getArcherGUI(player, pageNum) -> creates buttons
-
-	back button - Use the main skill to identify if skill has any parents
-	next button(s) - Use one of the children skills to identify if there are any children
-	For both buttons create a list of skills to open up a new skill page
-	 */
+	//TODO Make the GUI less laggy
+	//TODO Finish the upgrade page for the GUI
 
 	/**
 	 * Menu
@@ -715,7 +706,7 @@ public class SkillGUI implements CommandExecutor {
 		ArrayList<Component> lore = new ArrayList<>();
 
 		lore.add(Utils.lore(" "));
-		lore.add(Utils.lore(" <gray>Cost <yellow>"+String.format("%,d", cost) + "\u26C1"));
+		lore.add(Utils.lore(" <gray>Cost <yellow>"+String.format("%,d", cost) + " \u26C1"));
 		lore.add(Utils.lore(" <gray>Cooldown <aqua>"+skill.getCooldown(level).getSeconds()));
 		lore.add(Utils.lore(" <gray>Mana <color:#72E5D3>"+skill.getManaCost(level)));
 		lore.add(Utils.lore(" "));
