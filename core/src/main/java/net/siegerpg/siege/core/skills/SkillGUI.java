@@ -50,12 +50,30 @@ public class SkillGUI implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-		if (!(sender instanceof Player player)) {
-			return false;
+		if (!(sender instanceof Player)) {
+			Player player = Bukkit.getPlayer(args[0]);
+			if (player == null) return false;
+			try {
+				String name = args[1]; //name of the skill 'skills Wrys Armory'
+				boolean parent = args[2].equals("true");
+				List<Skill> skills = getSkills(name, parent);
+
+				//this is laggy
+				getSkillPage(player, skills).show(player);
+
+			} catch (Exception x) {
+				return false;
+			}
+			return true;
 		}
-		getClassMenu(player).show(player);
+		if (args.length < 1) {
+			Player player = (Player) sender;
+			getClassMenu(player).show(player);
+		}
 		return true;
 	}
+
+
 
 
 	/**
@@ -212,6 +230,11 @@ public class SkillGUI implements CommandExecutor {
 			case 4 -> get3BranchGUI(player, skills);
 			default -> getClassMenu(player);
 		};
+
+		//check if roots are contained in skills. If so, it should go to the menu page
+		//TODO Figure out a way to go from first skill to main menu again
+		//if (SkillTree.getRoots().contains(skills.get(0)) && length > 1) skillPage = getClassMenu(player);
+
 		OutlinePane profile = new OutlinePane(8, 0, 1, 1);
 		ItemStack profileIcon = getProfileIcon(player);
 		profile.addItem(new GuiItem(profileIcon));
@@ -369,7 +392,6 @@ public class SkillGUI implements CommandExecutor {
 			return getClassMenu(player);
 		}
 
-
 		/*
 		Branch creation
 		 */
@@ -410,12 +432,15 @@ public class SkillGUI implements CommandExecutor {
 			getSkillUpgradeGUI(player, skill).show(player);
 		}));
 		int size = outlinePane.getHeight() * outlinePane.getLength();
+		Skill finalSkill = SkillTree.getSkill(i -> i.getClass().equals(skill.getClass()));
+		if (finalSkill == null) return outlinePane;
 		for (int i = 0; size > i; i++) {
 			outlinePane.addItem(new GuiItem(pane, inventoryClickEvent -> {
-				Skill parent = skill.getParent();
-				if (parent != null) {
-					getSkillPage(player, getParentSkills(parent)).show(player);
-				}
+				ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+				String cmd = "skills "+player.getName()+" "+finalSkill.getIdentifier()+" true";
+				Bukkit.getLogger().info(cmd);
+
+				Bukkit.dispatchCommand(console, cmd);
 			}));
 		}
 
@@ -425,15 +450,22 @@ public class SkillGUI implements CommandExecutor {
 	private OutlinePane branchFiller(OutlinePane outlinePane, Player player, Skill skill) {
 		//third branch creation
 		ItemStack pane = getPane(player, skill, false, false);
+
 		ItemStack glass = getGlass(player, skill);
+
 		outlinePane.addItem(new GuiItem(glass, inventoryClickEvent -> {
 			getSkillUpgradeGUI(player, skill).show(player);
 		}));
+
 		int size = outlinePane.getHeight() * outlinePane.getLength();
+		Skill finalSkill = SkillTree.getSkill(i -> i.getClass().equals(skill.getClass()));
+		if (finalSkill == null) return outlinePane;
 		for (int i = 0; size > i; i++) {
 			outlinePane.addItem(new GuiItem(pane, inventoryClickEvent -> {
 				if (!pane.getType().equals(Material.GRAY_STAINED_GLASS_PANE)) {
-					getSkillPage(player, getChildSkills(skill)).show(player);
+					ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+					String cmd = "skills "+player.getName()+" "+finalSkill.getIdentifier()+" false";
+					Bukkit.dispatchCommand(console, cmd);
 				}
 			}));
 		}
@@ -733,9 +765,9 @@ public class SkillGUI implements CommandExecutor {
 	private List<Skill> getChildSkills(Skill skill) {
 		//collect the skills
 		List<Skill> listOfSkills = new LinkedList<Skill>();
-		listOfSkills.add(skill);
 		Skill finalSkill = SkillTree.getSkill(i -> i.getClass().equals(skill.getClass()));
 		if (finalSkill != null) {
+			listOfSkills.add(finalSkill);
 			listOfSkills.addAll(finalSkill.getChildren());
 		}
 		return listOfSkills;
@@ -744,10 +776,32 @@ public class SkillGUI implements CommandExecutor {
 	private List<Skill> getParentSkills(Skill skill) {
 		//collect the skills
 		List<Skill> listOfSkills = new LinkedList<Skill>();
-		Skill finalSkill = SkillTree.getSkill(i -> i.getClass().equals(skill.getClass()));
+		Skill newSkill = SkillTree.getSkill(i -> i.getClass().equals(skill.getClass()));
+
+		if (newSkill == null) return listOfSkills;
+
+		if (newSkill.getParent() == null) return listOfSkills;
+
+		Skill finalSkill = SkillTree.getSkill(i -> i.getClass().equals(newSkill.getParent().getClass()));
 		if (finalSkill != null) {
+
 			listOfSkills.add(finalSkill);
 			listOfSkills.addAll(finalSkill.getChildren());
+		}
+		return listOfSkills;
+	}
+
+	private List<Skill> getSkills(String name, boolean parent) {
+		//collect the skills
+		List<Skill> listOfSkills = new LinkedList<Skill>();
+		Skill skill = SkillTree.getSkill(i -> i.getIdentifier().equals(name));
+
+		if (skill == null) return listOfSkills;
+
+		if (parent) {
+			listOfSkills.addAll(getParentSkills(skill));
+		} else {
+			listOfSkills.addAll(getChildSkills(skill));
 		}
 		return listOfSkills;
 	}

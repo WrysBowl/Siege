@@ -99,6 +99,10 @@ public class SkillTree {
 
 	}
 
+	public static List< Skill > getRoots() {
+		return roots;
+	}
+
 	/**
 	 * Gets a skill from a function
 	 *
