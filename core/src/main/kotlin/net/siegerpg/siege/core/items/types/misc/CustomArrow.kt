@@ -14,6 +14,7 @@ import org.bukkit.entity.Arrow
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
 import org.bukkit.entity.Projectile
+import org.bukkit.entity.TippedArrow
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.entity.ProjectileHitEvent
@@ -55,6 +56,10 @@ abstract class CustomArrow(
 
 	@Suppress("deprecated")
 	open fun onShoot(e : ProjectileHitEvent) {
+		val projectile = e.entity;
+		if (projectile is Arrow) {
+			projectile.clearCustomEffects()
+		}
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {
