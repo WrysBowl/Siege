@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.sql.SQLException;
+import java.time.*;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -139,9 +140,11 @@ public enum SkillData {
 			var result = stmt.executeQuery();
 			if (result.isBeforeFirst()) {
 				// There are no rows so we return an empty json object
-				return jsonParser
-						.parse("{}")
-						.getAsJsonObject();
+
+				JsonObject jsonObject = jsonParser.parse("{}").getAsJsonObject();
+				skillCache.put(player.getUniqueId(), jsonObject);
+
+				return jsonObject;
 			}
 			result.next();
 			String rawSkills = result.getString("skill_data");
@@ -197,10 +200,12 @@ public enum SkillData {
 
 		JsonObject data = getSkillData(player);
 		JsonElement elem = data.get(skill.getIdentifier());
+
 		return elem != null;
 	}
 
 	public static SkillClass getSkillClass(Player player) {
+
 		if (hasSkillUnlocked(player, new CriticalShot()) || hasSkillUnlocked(player, new AchillesHeel())) {
 			return SkillClass.ARCHER;
 		} else if (hasSkillUnlocked(player, new Slash()) || hasSkillUnlocked(player, new Lunge())) {
