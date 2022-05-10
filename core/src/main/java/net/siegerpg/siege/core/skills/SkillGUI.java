@@ -24,23 +24,7 @@ public class SkillGUI implements CommandExecutor {
 	ItemStack warriorIcon;
 	ItemStack archerIcon;
 	ItemStack next;
-
-	//TODO Make the GUI less laggy
-	//TODO Finish the upgrade page for the GUI
-
-	/**
-	 * Menu
-	 *         Displays all three classes IF the  player does not have one
-	 *         Displays the player's skill tree IF the player has one
-	 * Warrior/Archer/Mage GUIs
-	 *         Each page is created with its own method
-	 *         Displays skill points in top right
-	 *         - Displays level of skill, and cost of upgrade if unlocked
-	 *         Displays skill description, mana cost, and cooldown
-	 *         Displays yellow pane if skill is unlockable (end of a branch)
-	 *         Displays red pane if skill is locked
-	 *         Displays green pane if skill has been unlocked
-	 *         Tree-like structure of skill tree (this is going to be really tedious)
+	/*
 	 * Increase Level of Skill
 	 *         - Displays level of skill
 	 *         - Displays cost to upgrade
@@ -161,6 +145,11 @@ public class SkillGUI implements CommandExecutor {
 		OutlinePane iceBolt = branchFiller(new OutlinePane(4, 2, 1, 4), player, new IceBolt());
 		OutlinePane hex = branchFiller(new OutlinePane(7, 2, 1, 4), player, new Hex());
 
+		OutlinePane profile = new OutlinePane(8, 0, 1, 1);
+		ItemStack profileIcon = getProfileIcon(player);
+		profile.addItem(new GuiItem(profileIcon));
+
+		menu.addPane(profile);
 		menu.addPane(invigorate);
 		menu.addPane(iceBolt);
 		menu.addPane(hex);
@@ -189,6 +178,11 @@ public class SkillGUI implements CommandExecutor {
 		OutlinePane criticalShot = branchFiller(new OutlinePane(2, 2, 1, 4), player, new Slash());
 		OutlinePane achillesHeel = branchFiller(new OutlinePane(6, 2, 1, 4), player, new Lunge());
 
+		OutlinePane profile = new OutlinePane(8, 0, 1, 1);
+		ItemStack profileIcon = getProfileIcon(player);
+		profile.addItem(new GuiItem(profileIcon));
+
+		menu.addPane(profile);
 		menu.addPane(criticalShot);
 		menu.addPane(achillesHeel);
 
@@ -216,6 +210,11 @@ public class SkillGUI implements CommandExecutor {
 		OutlinePane criticalShot = branchFiller(new OutlinePane(2, 2, 1, 4), player, new CriticalShot());
 		OutlinePane achillesHeel = branchFiller(new OutlinePane(6, 2, 1, 4), player, new AchillesHeel());
 
+		OutlinePane profile = new OutlinePane(8, 0, 1, 1);
+		ItemStack profileIcon = getProfileIcon(player);
+		profile.addItem(new GuiItem(profileIcon));
+
+		menu.addPane(profile);
 		menu.addPane(criticalShot);
 		menu.addPane(achillesHeel);
 
@@ -231,13 +230,11 @@ public class SkillGUI implements CommandExecutor {
 			default -> getClassMenu(player);
 		};
 
-		//check if roots are contained in skills. If so, it should go to the menu page
-		//TODO Figure out a way to go from first skill to main menu again
-		//if (SkillTree.getRoots().contains(skills.get(0)) && length > 1) skillPage = getClassMenu(player);
-
 		OutlinePane profile = new OutlinePane(8, 0, 1, 1);
 		ItemStack profileIcon = getProfileIcon(player);
 		profile.addItem(new GuiItem(profileIcon));
+
+		skillPage.addPane(profile);
 
 		return skillPage;
 	}
@@ -438,8 +435,6 @@ public class SkillGUI implements CommandExecutor {
 			outlinePane.addItem(new GuiItem(pane, inventoryClickEvent -> {
 				ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
 				String cmd = "skills "+player.getName()+" "+finalSkill.getIdentifier()+" true";
-				Bukkit.getLogger().info(cmd);
-
 				Bukkit.dispatchCommand(console, cmd);
 			}));
 		}
@@ -582,7 +577,7 @@ public class SkillGUI implements CommandExecutor {
 	 */
 	private static ItemStack getProfileIcon(Player player) {
 		//Creating Next Icon
-		ItemStack icon = new ItemStack(Material.LEGACY_SKULL_ITEM);
+		ItemStack icon = Utils.createHead(player.getName());
 		SkullMeta iconMeta = (SkullMeta) icon.getItemMeta();
 		iconMeta.setOwner(player.getName());
 
@@ -612,9 +607,8 @@ public class SkillGUI implements CommandExecutor {
 	 */
 	private static ItemStack getIconNext() {
 		//Creating Next Icon
-		ItemStack icon = new ItemStack(Material.SKELETON_SKULL);
+		ItemStack icon = Utils.createHead("MHF_ArrowRight");
 		SkullMeta iconMeta = (SkullMeta) icon.getItemMeta();
-		iconMeta.setOwner("MHF_ArrowRight");
 		iconMeta.displayName(Utils.lore("<green>Next"));
 		iconMeta.lore(new ArrayList<>() {
 			{
@@ -632,9 +626,8 @@ public class SkillGUI implements CommandExecutor {
 	 */
 	private static ItemStack getIconBack() {
 		//Creating Back Icon
-		ItemStack icon = new ItemStack(Material.SKELETON_SKULL);
+		ItemStack icon = Utils.createHead("MHF_ArrowLeft");
 		SkullMeta iconMeta = (SkullMeta) icon.getItemMeta();
-		iconMeta.setOwner("MHF_ArrowLeft");
 		iconMeta.displayName(Utils.lore("<red>Back"));
 		iconMeta.lore(new ArrayList<>() {
 			{
