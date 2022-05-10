@@ -6,7 +6,7 @@ repositories {
 
 	maven { url = uri("https://nexus.mcdevs.us/repository/mcdevs/") }
 	maven { url = uri("https://repo.aikar.co/content/groups/aikar/") }
-	maven { url = uri("https://repo.codemc.org/repository/maven-public/") }
+	maven { url = uri("https://repo.codemc.io/repository/maven-public/") }
 	maven { url = uri("https://mvn.lumine.io/repository/maven-public/") }
 	maven { url = uri("https://jitpack.io") }
 	maven { url = uri("https://repo.dmulloy2.net/nexus/repository/public/") }
