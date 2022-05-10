@@ -6,7 +6,7 @@ repositories {
 
 	maven { url = uri("https://nexus.mcdevs.us/repository/mcdevs/") }
 	maven { url = uri("https://repo.aikar.co/content/groups/aikar/") }
-	maven { url = uri("https://repo.codemc.org/repository/maven-public/") }
+	maven { url = uri("https://repo.codemc.io/repository/maven-public/") }
 	maven { url = uri("https://mvn.lumine.io/repository/maven-public/") }
 	maven { url = uri("https://jitpack.io") }
 	maven { url = uri("https://repo.dmulloy2.net/nexus/repository/public/") }
@@ -28,7 +28,7 @@ dependencies {
 	compileOnly("com.github.MilkBowl:VaultAPI:1.7") // Vault API
 	implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
 	implementation("com.github.stefvanschie.inventoryframework:IF:0.10.3")
-	compileOnly("com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.0")
+	compileOnly("com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.9")
 	compileOnly("de.tr7zw:item-nbt-api-plugin:2.7.1")
 	implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
 	implementation("com.zaxxer:HikariCP:5.0.0")

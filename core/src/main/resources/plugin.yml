@@ -4,7 +4,8 @@ main: net.siegerpg.siege.core.Core
 api-version: 1.16
 description: Siege's core plugin
 prefix: SiegeCore
-depend: [ Vault, MythicMobs, NBTAPI, Kotlin, HolographicDisplays ]
+depend: [ Vault, MythicMobs, NBTAPI, Kotlin ]
+softdepend: [HolographicDisplays]
 load: STARTUP
 authors: [ Wrys, DeltaRays, Ghqst, Bagelll ]
 loadbefore: [ DiscordSRV-Build-1.22.0 ]
