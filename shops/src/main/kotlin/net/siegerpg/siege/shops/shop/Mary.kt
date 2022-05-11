@@ -22,7 +22,7 @@ class Mary : Shop() {
 					Stick() to 196
 					                            ), true
 			        ) {
-				OakRod(0).getUpdatedItem(false)
+				OakRod().getUpdatedItem(false)
 			},
 			ShopItem(
 					BoneRod(-1), 70000, hashMapOf(
@@ -30,7 +30,7 @@ class Mary : Shop() {
 					Bone() to 196
 					                             ), true
 			        ) {
-				BoneRod(0).getUpdatedItem(false)
+				BoneRod().getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
@@ -41,7 +41,7 @@ class Mary : Shop() {
 					MetalScrap() to 128
 					                               ), true
 			        ) {
-				MetalRod(0).getUpdatedItem(false)
+				MetalRod().getUpdatedItem(false)
 			},
 			ShopItem(
 					RefinedRod(-1), 220000, hashMapOf(
@@ -49,7 +49,7 @@ class Mary : Shop() {
 					RefinedMetal() to 256
 					                                 ), true
 			        ) {
-				RefinedRod(0).getUpdatedItem(false)
+				RefinedRod().getUpdatedItem(false)
 			},
 			ShopItem(
 					TitaniumRod(-1), 500000, hashMapOf(
@@ -57,7 +57,7 @@ class Mary : Shop() {
 					Titanium() to 256
 					                                  ), true
 			        ) {
-				TitaniumRod(0).getUpdatedItem(false)
+				TitaniumRod().getUpdatedItem(false)
 			}
 	                                            )
 }
