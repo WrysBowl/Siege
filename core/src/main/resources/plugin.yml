@@ -68,3 +68,6 @@ commands:
   skills:
     aliases: [ skills ]
     description: Open the skills menu
+  scrapper:
+    aliases: [ scrap ]
+    description: Opens Herbert's GUI

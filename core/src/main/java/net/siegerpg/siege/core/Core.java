@@ -138,6 +138,7 @@ public final class Core extends JavaPlugin {
 			commandList.put("questReward", new QuestRewardCommand());
 			commandList.put("meraChat", new MeraChat());
 			commandList.put("skills", new SkillGUI());
+			commandList.put("scrapper", new Scrapper());
 
 		}
 
