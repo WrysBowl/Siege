@@ -27,7 +27,7 @@ public class BanditArcher extends MobDropTable {
 				new Reward(new MetalScrap()
 						           .getUpdatedItem(false), 21.0),
 
-				new Reward(new Crossbow(100).getUpdatedItem(false), 0.05),
+				new Reward(new Crossbow(100).getUpdatedItem(false), 0.10),
 				new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.25),
 				new Reward(new ToughCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
 				new Reward(new LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),

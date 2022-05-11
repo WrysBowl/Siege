@@ -88,7 +88,7 @@ public class Ogre extends MobDropTable {
 				new Reward(new LuckyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.025),
 				new Reward(new LuckyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.025),
 
-				new Reward(new GreatSword(100).getUpdatedItem(false), 0.05),
+				new Reward(new GreatSword(100).getUpdatedItem(false), 0.10),
 				new Reward(new LuckyGreatSword(80).getUpdatedItem(false), 0.025),
 				new Reward(new ToughGreatSword(80).getUpdatedItem(false), 0.025),
 				new Reward(new StrongGreatSword(80).getUpdatedItem(false), 0.025),
@@ -96,11 +96,11 @@ public class Ogre extends MobDropTable {
 				new Reward(new HealthyGreatSword(80).getUpdatedItem(false), 0.025),
 
 				new Reward(new GreatSword(Utils.randRarity()).getUpdatedItem(false), 0.25),
-				new Reward(new LuckyGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new ToughGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new StrongGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new HealingGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new HealthyGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.05),
+				new Reward(new LuckyGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new ToughGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyGreatSword(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
 				new Reward(new NecromancerKey(0).getUpdatedItem(false), 10.0),
 				new Reward(new MobKey(0).getUpdatedItem(false), 5.0),

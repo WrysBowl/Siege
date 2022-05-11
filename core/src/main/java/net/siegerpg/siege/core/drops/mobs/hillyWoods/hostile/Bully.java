@@ -28,17 +28,17 @@ public class Bully extends MobDropTable {
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 1.0),
 				new Reward(new Bone()
-						           .getUpdatedItem(false), 0.05),
+						           .getUpdatedItem(false), 0.10),
 
 				new Reward(new LeatherHelmet(30).getUpdatedItem(false), 0.20),
 				new Reward(new LeatherChestplate(30).getUpdatedItem(false), 0.20),
 				new Reward(new LeatherLeggings(30).getUpdatedItem(false), 0.20),
 				new Reward(new LeatherBoots(30).getUpdatedItem(false), 0.20),
 
-				new Reward(new LeatherHelmet(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LeatherChestplate(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LeatherLeggings(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LeatherBoots(Utils.randRarity()).getUpdatedItem(false), 0.05),
+				new Reward(new LeatherHelmet(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LeatherChestplate(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LeatherLeggings(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LeatherBoots(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
 				new Reward(new ToughHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 				new Reward(new ToughHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false), 0.0025),
