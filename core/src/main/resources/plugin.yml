@@ -71,3 +71,6 @@ commands:
   scrapper:
     aliases: [ scrap ]
     description: Opens Herbert's GUI
+  traveler:
+    aliases: [ travel ]
+    description: Teleports the player to places around the map

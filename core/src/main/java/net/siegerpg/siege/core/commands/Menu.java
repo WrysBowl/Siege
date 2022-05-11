@@ -31,8 +31,6 @@ import java.util.ArrayList;
 public class Menu implements CommandExecutor {
 
 	private ChestGui menu;
-	private static final Location farmLocation = new Location(Bukkit.getWorld("Hilly_Woods"),188.5, 61, -122.5, -90, 0);
-	private static final Location villageLocation = new Location(Bukkit.getWorld("Hilly_Woods"),205.5, 93, 217.5, 180, 0);
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
