@@ -49,37 +49,63 @@ public class Traveler implements CommandExecutor {
 		/*
 			Warp Locations
 		 */
-		Location locOne = new Location(Bukkit.getWorld("Hilly_Woods"), 0, 0, 0, 0 ,0);
-		Location locTwo = new Location(Bukkit.getWorld("Hilly_Woods"), 0, 0, 0, 0 ,0);
-		Location locThree = new Location(Bukkit.getWorld("Hilly_Woods"), 0, 0, 0, 0 ,0);
-		Location locFour = new Location(Bukkit.getWorld("Hilly_Woods"), 0, 0, 0, 0 ,0);
-		Location locFive = new Location(Bukkit.getWorld("Hilly_Woods"), 0, 0, 0, 0 ,0);
-		Location locSix = new Location(Bukkit.getWorld("Hilly_Woods"), 0, 0, 0, 0 ,0);
-		Location locSeven = new Location(Bukkit.getWorld("Hilly_Woods"), 0, 0, 0, 0 ,0);
-		Location locEight = new Location(Bukkit.getWorld("Hilly_Woods"), 0, 0, 0, 0 ,0);
+		Location locTwo = new Location(Bukkit.getWorld("Hilly_Woods"), 206.5, 60, -125.5, 90 ,0);
+		Location locThree = new Location(Bukkit.getWorld("Hilly_Woods"), 214.5, 61, -3.5, 90 ,0);
+		Location locFour = new Location(Bukkit.getWorld("Hilly_Woods"), 192, 88, 207, -45 ,0);
+		Location locFive = new Location(Bukkit.getWorld("Hilly_Woods"), 14.5, 62, 221.5, 90 ,0);
+		Location locSix = new Location(Bukkit.getWorld("Hilly_Woods"), -203, 72, 158, -90 ,0);
+		Location locSeven = new Location(Bukkit.getWorld("Hilly_Woods"), -41.5, 117, 49.5, 0 ,0);
+		Location locEight = new Location(Bukkit.getWorld("Hilly_Woods"), -36, 100, -123, 130 ,0);
 		/*
 		  Warp Icons
 		 */
-		OutlinePane areaOne = new OutlinePane(1, 1, 1, 1);
-		OutlinePane areaTwo = new OutlinePane(3, 1, 1, 1);
-		OutlinePane areaThree = new OutlinePane(5, 1, 1, 1);
-		OutlinePane areaFour = new OutlinePane(7, 1, 1, 1);
-		OutlinePane areaFive = new OutlinePane(1, 3, 1, 1);
-		OutlinePane areaSix = new OutlinePane(3, 3, 1, 1);
-		OutlinePane areaSeven = new OutlinePane(5, 3, 1, 1);
-		OutlinePane areaEight = new OutlinePane(7, 3, 1, 1);
+		OutlinePane areaTwo = new OutlinePane(1, 1, 1, 1);
+		OutlinePane areaThree = new OutlinePane(3, 1, 1, 1);
+		OutlinePane areaFour = new OutlinePane(5, 1, 1, 1);
+		OutlinePane areaFive = new OutlinePane(7, 1, 1, 1);
+		OutlinePane areaSix = new OutlinePane(1, 3, 1, 1);
+		OutlinePane areaSeven = new OutlinePane(3, 3, 1, 1);
+		OutlinePane areaEight = new OutlinePane(5, 3, 1, 1);
 
-		areaOne.addItem(new GuiItem(Utils.createHead("MHF_Slime"), e -> player.teleport(locOne)));
-		areaTwo.addItem(new GuiItem(Utils.createHead("MHF_LavaSlime"), e -> player.teleport(locTwo)));
-		areaThree.addItem(new GuiItem(Utils.createHead("MHF_Cow"), e -> player.teleport(locThree)));
-		areaFour.addItem(new GuiItem(Utils.createHead("MHF_Enderman"), e -> player.teleport(locFour)));
-		areaFive.addItem(new GuiItem(Utils.createHead("MHF_Squid"), e -> player.teleport(locFive)));
-		areaSix.addItem(new GuiItem(Utils.createHead("MHF_WSkeleton"), e -> player.teleport(locSix)));
-		areaSeven.addItem(new GuiItem(Utils.createHead("BONG_CHUN"), e -> player.teleport(locSeven)));
-		areaEight.addItem(new GuiItem(Utils.createHead("MHF_Spider"), e -> player.teleport(locEight)));
+		int bal = (int) VaultHook.econ.getBalance(player);
+
+		areaTwo.addItem(new GuiItem(Utils.createHead("MHF_LavaSlime"), e -> {
+			if (bal < 100) return;
+			VaultHook.econ.withdrawPlayer(player, 100);
+			player.teleport(locTwo);
+		}));
+		areaThree.addItem(new GuiItem(Utils.createHead("MHF_Cow"), e -> {
+			if (bal < 150) return;
+			VaultHook.econ.withdrawPlayer(player, 150);
+			player.teleport(locThree);
+		}));
+		areaFour.addItem(new GuiItem(Utils.createHead("MHF_Enderman"), e -> {
+			if (bal < 200) return;
+			VaultHook.econ.withdrawPlayer(player, 200);
+			player.teleport(locFour);
+		}));
+		areaFive.addItem(new GuiItem(Utils.createHead("MHF_Squid"), e -> {
+			if (bal < 275) return;
+			VaultHook.econ.withdrawPlayer(player, 275);
+			player.teleport(locFive);
+		}));
+		areaSix.addItem(new GuiItem(Utils.createHead("MHF_WSkeleton"), e -> {
+			if (bal < 350) return;
+			VaultHook.econ.withdrawPlayer(player, 350);
+			player.teleport(locSix);
+		}));
+		areaSeven.addItem(new GuiItem(Utils.createHead("BONG_CHUN"), e -> {
+			if (bal < 450) return;
+			VaultHook.econ.withdrawPlayer(player, 450);
+			player.teleport(locSeven);
+		}));
+		areaEight.addItem(new GuiItem(Utils.createHead("MHF_Spider"), e -> {
+			if (bal < 550) return;
+			VaultHook.econ.withdrawPlayer(player, 550);
+			player.teleport(locEight);
+		}));
 
 
-		menu.addPane(areaOne);
 		menu.addPane(areaTwo);
 		menu.addPane(areaThree);
 		menu.addPane(areaFour);
