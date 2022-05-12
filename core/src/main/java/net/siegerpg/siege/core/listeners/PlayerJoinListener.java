@@ -112,6 +112,19 @@ public class PlayerJoinListener implements Listener {
 
 		}
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
+
+
+		float defaultSpeed = player.getWalkSpeed();
+		//ranked players get speed buff
+		if (player.hasPermission("group.hero")) {
+			player.setWalkSpeed((float) (defaultSpeed * 1.1));
+		} else if (player.hasPermission("group.gladiator")) {
+			player.setWalkSpeed((float) (defaultSpeed * 1.075));
+
+		} else if (player.hasPermission("group.warrior")) {
+			player.setWalkSpeed((float) (defaultSpeed * 1.05));
+
+		}
 	}
 
 	public void updateInventory(Player player) {
