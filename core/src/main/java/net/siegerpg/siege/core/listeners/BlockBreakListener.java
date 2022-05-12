@@ -24,8 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static javax.swing.UIManager.put;
-
 public class BlockBreakListener implements Listener {
 
 	public static List< Material > keepAir = new ArrayList<>() {
@@ -311,7 +309,7 @@ public class BlockBreakListener implements Listener {
 			}
 
 			if (goldCoinAmt > 0) {
-				goldCoinAmt = (int) Math.floor(goldCoinAmt * GlobalMultipliers.goldMultiplier);
+				goldCoinAmt = (int) Math.floor(goldCoinAmt * GlobalMultipliers.getGoldMultipliers(player));
 				if ((Math.random() * 100) <= luck) {
 					goldCoinAmt *= 2;
 				}
@@ -319,7 +317,7 @@ public class BlockBreakListener implements Listener {
 			}
 
 			if (exp > 0) {
-				exp = (int) Math.floor(exp * GlobalMultipliers.expMultiplier);
+				exp = (int) Math.floor(exp * GlobalMultipliers.getEXPMultipliers(player));
 				if ((Math.random() * 100) <= luck) {
 					exp *= 2;
 				}

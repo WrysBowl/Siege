@@ -18,7 +18,6 @@ import net.siegerpg.siege.core.drops.mobs.twilight.neutral.*;
 import net.siegerpg.siege.core.drops.mobs.twilight.passive.*;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
-import net.siegerpg.siege.core.items.enums.StatTypes;
 import net.siegerpg.siege.core.items.implemented.misc.food.GoldenCarrot;
 import net.siegerpg.siege.core.miscellaneous.GoldEXPSpawning;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;
@@ -207,7 +206,7 @@ public class DeathListener implements Listener, Runnable {
 
 		//gives EXP
 		if (exp > 0 && player != null) {
-			exp = (int) Math.floor(exp * GlobalMultipliers.expMultiplier);
+			exp = (int) Math.floor(exp * GlobalMultipliers.getEXPMultipliers(player));
 			if ((Math.random() * 100) <= luck) {
 				exp *= 2;
 			}
@@ -215,7 +214,7 @@ public class DeathListener implements Listener, Runnable {
 		} //Give exp reward
 
 		if (goldCoinAmt > 0 && player != null) {
-			goldCoinAmt = (int) Math.floor(goldCoinAmt * GlobalMultipliers.goldMultiplier);
+			goldCoinAmt = (int) Math.floor(goldCoinAmt * GlobalMultipliers.getGoldMultipliers(player));
 			if ((Math.random() * 100) <= luck) {
 				goldCoinAmt *= 2;
 			}
