@@ -424,7 +424,7 @@ public class SkillGUI implements CommandExecutor {
 	private OutlinePane mainFiller(OutlinePane outlinePane, Player player, Skill skill) {
 		//third branch creation
 		ItemStack pane = getPane(player, skill, true, false);
-		ItemStack glass = getGlass(player, skill);
+		ItemStack glass = getGlass(player, skill, SkillData.getSkillLevel(player, skill));
 		outlinePane.addItem(new GuiItem(glass, inventoryClickEvent -> {
 			getSkillUpgradeGUI(player, skill).show(player);
 		}));
@@ -446,7 +446,7 @@ public class SkillGUI implements CommandExecutor {
 		//third branch creation
 		ItemStack pane = getPane(player, skill, false, false);
 
-		ItemStack glass = getGlass(player, skill);
+		ItemStack glass = getGlass(player, skill, SkillData.getSkillLevel(player, skill));
 
 		outlinePane.addItem(new GuiItem(glass, inventoryClickEvent -> {
 			getSkillUpgradeGUI(player, skill).show(player);
@@ -488,7 +488,28 @@ public class SkillGUI implements CommandExecutor {
 
 		OutlinePane row = new OutlinePane(1, 1, 7, 4);
 
+		//item to display old skill
+		OutlinePane oldSkill = new OutlinePane(3, 2, 1, 1);
+		ItemStack oldIcon = getGlass(player, skill, SkillData.getSkillLevel(player, skill));
+		oldSkill.addItem(new GuiItem(oldIcon));
 
+		//item to display new skill
+		OutlinePane newSkill = new OutlinePane(6, 2, 1, 1);
+		ItemStack newIcon = getGlass(player, skill, SkillData.getSkillLevel(player, skill)+1);
+		newSkill.addItem(new GuiItem(newIcon));
+
+		//item to click to upgrade the skill
+		OutlinePane buy = new OutlinePane(4, 2, 1, 1);
+		ItemStack buyIcon = getGlass(player, skill, SkillData.getSkillLevel(player, skill));
+		buy.addItem(new GuiItem(buyIcon, inventoryClickEvent -> {
+			int currentPoints = SkillData.getSkillPoints(player);
+			SkillData.setSkillPoints(player, currentPoints+1);
+		}));
+
+		//item to show profile icon
+		OutlinePane profile = new OutlinePane(8, 0, 1, 1);
+		ItemStack profileIcon = getProfileIcon(player);
+		profile.addItem(new GuiItem(profileIcon));
 
 		OutlinePane lastButton = new OutlinePane(0, 5, 1, 1);
 		lastButton.addItem(new GuiItem(getIconBack(), inventoryClickEvent -> {
@@ -497,6 +518,10 @@ public class SkillGUI implements CommandExecutor {
 
 		menu.addPane(row);
 		menu.addPane(lastButton);
+		menu.addPane(profile);
+		menu.addPane(newSkill);
+		menu.addPane(oldSkill);
+		menu.addPane(buy);
 
 		return menu;
 	}
@@ -621,6 +646,26 @@ public class SkillGUI implements CommandExecutor {
 	}
 
 	/**
+	 * Gets the 'forwards' icon
+	 * @return Forwards icon
+	 */
+	private static ItemStack getIconBuy() {
+		//Creating Next Icon
+		ItemStack icon = Utils.createHead("MHF_ArrowRight");
+		SkullMeta iconMeta = (SkullMeta) icon.getItemMeta();
+		iconMeta.displayName(Utils.lore("<color:#03fc73>Upgrade"));
+		iconMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Click to upgrade"));
+				add(Utils.lore("<gray>Cost <red>- 1 <gray>point"));
+			}
+		});
+		iconMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
+		icon.setItemMeta(iconMeta);
+		return icon;
+	}
+
+	/**
 	 * Gets the 'back' icon
 	 * @return Back icon
 	 */
@@ -708,11 +753,10 @@ public class SkillGUI implements CommandExecutor {
 		 * @return itemStack
 		 */
 	@NotNull
-	private ItemStack getGlass(Player player, Skill skill) {
+	private ItemStack getGlass(Player player, Skill skill, int level) {
 
 		//Creating Icon Status
 		Color status = getSkillStatus(player, skill);
-		int level = SkillData.getSkillLevel(player, skill);
 		ItemStack icon = new ItemStack(Material.KNOWLEDGE_BOOK);
 		int cost = skill.getGoldCost(level);
 
