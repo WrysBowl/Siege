@@ -51,6 +51,7 @@ public enum SkillData {
 			var result = stmt.executeQuery();
 			if (result.isBeforeFirst()) {
 				// There are no rows so we return 0
+				skillPointCache.put(player.getUniqueId(), 0);
 				return 0;
 			}
 			result.next();
