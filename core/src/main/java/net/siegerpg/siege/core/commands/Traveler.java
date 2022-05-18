@@ -12,6 +12,8 @@ import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.*;
 import org.jetbrains.annotations.*;
 
+import java.util.*;
+
 public class Traveler implements CommandExecutor {
 
 	private ChestGui menu;
@@ -69,37 +71,37 @@ public class Traveler implements CommandExecutor {
 
 		int bal = (int) VaultHook.econ.getBalance(player);
 
-		areaTwo.addItem(new GuiItem(Utils.createHead("MHF_LavaSlime"), e -> {
+		areaTwo.addItem(new GuiItem(getIcon(100, Utils.createHead("MHF_LavaSlime"), 2), e -> {
 			if (bal < 100) return;
 			VaultHook.econ.withdrawPlayer(player, 100);
 			player.teleport(locTwo);
 		}));
-		areaThree.addItem(new GuiItem(Utils.createHead("MHF_Cow"), e -> {
+		areaThree.addItem(new GuiItem(getIcon(150, Utils.createHead("MHF_Cow"), 3), e -> {
 			if (bal < 150) return;
 			VaultHook.econ.withdrawPlayer(player, 150);
 			player.teleport(locThree);
 		}));
-		areaFour.addItem(new GuiItem(Utils.createHead("MHF_Enderman"), e -> {
+		areaFour.addItem(new GuiItem(getIcon(200, Utils.createHead("MHF_Enderman"), 4), e -> {
 			if (bal < 200) return;
 			VaultHook.econ.withdrawPlayer(player, 200);
 			player.teleport(locFour);
 		}));
-		areaFive.addItem(new GuiItem(Utils.createHead("MHF_Squid"), e -> {
+		areaFive.addItem(new GuiItem(getIcon(275, Utils.createHead("MHF_Squid"), 5), e -> {
 			if (bal < 275) return;
 			VaultHook.econ.withdrawPlayer(player, 275);
 			player.teleport(locFive);
 		}));
-		areaSix.addItem(new GuiItem(Utils.createHead("MHF_WSkeleton"), e -> {
+		areaSix.addItem(new GuiItem(getIcon(350, Utils.createHead("MHF_WSkeleton"), 6), e -> {
 			if (bal < 350) return;
 			VaultHook.econ.withdrawPlayer(player, 350);
 			player.teleport(locSix);
 		}));
-		areaSeven.addItem(new GuiItem(Utils.createHead("BONG_CHUN"), e -> {
+		areaSeven.addItem(new GuiItem(getIcon(450, Utils.createHead("BONG_CHUN"), 7), e -> {
 			if (bal < 450) return;
 			VaultHook.econ.withdrawPlayer(player, 450);
 			player.teleport(locSeven);
 		}));
-		areaEight.addItem(new GuiItem(Utils.createHead("MHF_Spider"), e -> {
+		areaEight.addItem(new GuiItem(getIcon(550, Utils.createHead("MHF_Spider"), 8), e -> {
 			if (bal < 550) return;
 			VaultHook.econ.withdrawPlayer(player, 550);
 			player.teleport(locEight);
@@ -116,6 +118,20 @@ public class Traveler implements CommandExecutor {
 
 		this.menu = menu;
 		return menu;
+	}
+
+	private static ItemStack getIcon(int bal, ItemStack icon, int area) {
+		//Creating Icon
+		ItemMeta iconMeta = icon.getItemMeta();
+		iconMeta.displayName(Utils.lore("<gold>Area "+area));
+		iconMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<yellow>Costs <gray>"+String.format("%,d", bal)+" \u26C1"));
+			}
+		});
+		iconMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
+		icon.setItemMeta(iconMeta);
+		return icon;
 	}
 
 }
