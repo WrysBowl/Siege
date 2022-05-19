@@ -2,9 +2,12 @@
 
 *Arrive to the land of Hilly Woods to aid settlers in their battles for home, and uncover the secrets of the spirits.*
 
-<p align="center">
-  <blockquote class="imgur-embed-pub" lang="en" data-id="aNIkh82"><a href="https://imgur.com/aNIkh82">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-</p> 
+<blockquote class="imgur-embed-pub" lang="en" data-id="aNIkh82">
+  <a href="https://imgur.com/aNIkh82"></a>
+</blockquote>
+<script async src="//s.imgur.com/min/embed.js" charset="utf-8">
+</script>
+
 <p align="center">
   <img src="https://cdn.discordapp.com/attachments/725220324358225960/953819351021158430/2022-03-16_3.png" width="250"/>
 </p> 
