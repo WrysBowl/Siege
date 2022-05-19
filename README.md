@@ -2,24 +2,7 @@
 
 *Arrive to the land of Hilly Woods to aid settlers in their battles for home, and uncover the secrets of the spirits.*
 
-Test Change
-Test Change 2
 
-## Beta Release Goals
-
-- [ ] Functions of all skills
-- [ ] GUI for skill unlocking and browsing
-- [ ] Area 1 quests and rewards implementation
-- [ ] Area 2 quests and rewards implementation
-- [ ] Area 3 quests and rewards implementation
-- [ ] Area 4 quests and rewards implementation
-- [ ] Area 7 quests and rewards implementation
-- [ ] Area 8 quests and rewards implementation
-- [ ] Special armor to compliment skills
-- [ ] Event boss implemented into Twilight
-- [ ] Mob spawners implemented into Twilight
-- [ ] Five more custom events
-- [ ] Rebirth reset w/rewards
 
 <p align="center">
   <a href="https://youtu.be/6ke_CKSm1dM">
