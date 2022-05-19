@@ -2,8 +2,7 @@
 
 *Arrive to the land of Hilly Woods to aid settlers in their battles for home, and uncover the secrets of the spirits.*
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/725220324358225960/940260815821471835/image0.png
-" width="250"/>
+  <img src="https://cdn.discordapp.com/attachments/725220324358225960/940260815821471835/image0.png" width="250"/>
 </p> 
 <p align="center">
   <img src="https://cdn.discordapp.com/attachments/725220324358225960/953819351021158430/2022-03-16_3.png" width="250"/>
