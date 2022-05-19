@@ -1,21 +1,21 @@
 # SiegeRPG
 
 *Arrive to the land of Hilly Woods to aid settlers in their battles for home, and uncover the secrets of the spirits.*
-https://imgur.com/a/PzSllQ1
+
 <p align="center">
-  <a href="https://imgur.com/a/PzSllQ1"></a>
+  <img src="https://imgur.com/a/PzSllQ1" width="250"/>
 </p> 
 <p align="center">
-  <a href="https://cdn.discordapp.com/attachments/725220324358225960/953819351021158430/2022-03-16_3.png"></a>
+  <img src="https://cdn.discordapp.com/attachments/725220324358225960/953819351021158430/2022-03-16_3.png" width="250"/>
 </p> 
 <p align="center">
-  <a href="https://imgur.com/a/cB2ulJH"></a>
+  <img src="https://imgur.com/a/cB2ulJH" width="250"/>
 </p> 
 <p align="center">
-  <a href="https://imgur.com/a/GPFhOGS"></a>
+  <img src="https://imgur.com/a/GPFhOGS" width="250"/>
 </p> 
 <p align="center">
-  <a href="https://imgur.com/a/Pn3RsQ7"></a>
+  <img src="https://imgur.com/a/Pn3RsQ7" width="250"/>
 </p> 
 
 <p align="center">
