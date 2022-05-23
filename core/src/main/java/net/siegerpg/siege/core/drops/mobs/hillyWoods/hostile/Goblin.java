@@ -28,7 +28,7 @@ public class Goblin extends MobDropTable {
 				new Reward(new CrackedLuckGem(0).getUpdatedItem(false), 0.10),
 				new Reward(new RawLuckGem(0).getUpdatedItem(false), 0.20),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 5.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
 				});
 	}
 

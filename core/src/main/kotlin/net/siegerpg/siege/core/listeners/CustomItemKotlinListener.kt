@@ -6,6 +6,7 @@ import de.tr7zw.nbtapi.NBTItem
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
+import net.siegerpg.siege.core.items.CustomItemUtils.getCustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils.getPlayerStat
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.types.misc.CustomArrow
@@ -327,6 +328,12 @@ class CustomItemKotlinListener : Listener {
 			}
 		}.runTaskAsynchronously(plugin())
 	}
+
+	@EventHandler
+	fun forceWepCooldown(e: PlayerSwapHandItemsEvent) {
+		e.isCancelled = true
+	}
+
 
 
 	@EventHandler

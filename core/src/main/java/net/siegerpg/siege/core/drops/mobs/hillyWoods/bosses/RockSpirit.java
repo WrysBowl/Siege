@@ -58,7 +58,7 @@ public class RockSpirit extends MobDropTable {
 				new Reward(new HealthyRockWand(50).getUpdatedItem(false), 0.025),
 
 				new Reward(new LichKey(0).getUpdatedItem(false), 10.0),
-				new Reward(new MobKey(0).getUpdatedItem(false), 3.0),
+				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
 
 				});
 	}
