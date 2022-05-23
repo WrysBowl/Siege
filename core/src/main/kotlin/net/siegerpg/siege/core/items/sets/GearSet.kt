@@ -3,6 +3,8 @@ package net.siegerpg.siege.core.items.sets
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
+import net.siegerpg.siege.core.miscellaneous.Levels
+import net.siegerpg.siege.core.miscellaneous.Levels.blockingGetExpLevel
 import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.Particle
 import org.bukkit.Sound
@@ -39,10 +41,14 @@ abstract class GearSet(
 				.plus(player.inventory.itemInMainHand)
 				.plus(player.inventory.itemInOffHand)
 
+		val lvl = blockingGetExpLevel(player) ?: Pair((1.toShort()), 0)
+
 		//list of Custom Items
 		val customItems : ArrayList<CustomItem> = arrayListOf<CustomItem>()
 		for (item in playerItems) {
-			customItems.add(CustomItemUtils.getCustomItem(item) ?: continue)
+			val newItem : CustomItem = CustomItemUtils.getCustomItem(item) ?: continue
+			if (newItem.levelRequirement!! > lvl.first) continue
+			customItems.add(newItem)
 		}
 		return customItems
 	}
