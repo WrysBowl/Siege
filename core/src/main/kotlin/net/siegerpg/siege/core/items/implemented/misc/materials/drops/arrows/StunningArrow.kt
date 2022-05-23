@@ -20,6 +20,7 @@ class StunningArrow() : CustomArrow(
 		description = listOf("Stuns your target for 5 seconds"),
 		levelRequirement = 0,
 		material = Material.TIPPED_ARROW,
+		potion = PotionType.SLOW_FALLING
                                    ) {
 
 	override fun getSellValue() : Int {

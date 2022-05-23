@@ -15,7 +15,7 @@ class LichLeggings() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 100.0, defense = 40.0, strength = 15.0, luck = -15.0),
 		leatherColor = Color.fromRGB(70, 70, 70),
-		gearSetInfo = listOf(listOf("Sneak to teleport to nearest mob and back"))
+		gearSetInfo = listOf("Sneak to teleport to nearest mob and back")
                                      ) {
 
 	constructor(quality : Int) : this() {

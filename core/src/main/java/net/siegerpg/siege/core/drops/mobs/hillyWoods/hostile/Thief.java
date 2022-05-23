@@ -37,10 +37,10 @@ public class Thief extends MobDropTable {
 				new Reward(new LeatherLeggings(30).getUpdatedItem(false), 0.75),
 				new Reward(new LeatherBoots(30).getUpdatedItem(false), 0.75),
 
-				new Reward(new LeatherHelmet(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LeatherChestplate(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LeatherLeggings(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LeatherBoots(Utils.randRarity()).getUpdatedItem(false), 0.05),
+				new Reward(new LeatherHelmet(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LeatherChestplate(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LeatherLeggings(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LeatherBoots(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
 				new Reward(new ToughHardenedLeatherHelmet(Utils.randRarity()).getUpdatedItem(false), 0.025),
 				new Reward(new ToughHardenedLeatherChestplate(Utils.randRarity()).getUpdatedItem(false), 0.025),
@@ -69,11 +69,11 @@ public class Thief extends MobDropTable {
 
 				new Reward(new Shank(50).getUpdatedItem(false), 0.50),
 				new Reward(new Shank(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new ToughShank(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LuckyShank(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new StrongShank(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new HealingShank(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new HealthyShank(Utils.randRarity()).getUpdatedItem(false), 0.05),
+				new Reward(new ToughShank(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyShank(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongShank(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingShank(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyShank(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 4.0),
 				new Reward(new FoxSpiritKey().getUpdatedItem(false), 1.0),

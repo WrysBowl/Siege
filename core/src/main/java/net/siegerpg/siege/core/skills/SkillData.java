@@ -5,6 +5,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.database.DatabaseManager;
+import net.siegerpg.siege.core.skills.archer.*;
+import net.siegerpg.siege.core.skills.mage.*;
+import net.siegerpg.siege.core.skills.warrior.*;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -12,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.sql.SQLException;
+import java.time.*;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -47,6 +51,7 @@ public enum SkillData {
 			var result = stmt.executeQuery();
 			if (result.isBeforeFirst()) {
 				// There are no rows so we return 0
+				skillPointCache.put(player.getUniqueId(), 0);
 				return 0;
 			}
 			result.next();
@@ -95,13 +100,12 @@ public enum SkillData {
 	 *
 	 * @return The level (can be null if the player doesn't have that skill)
 	 */
-	@Nullable
 	public static Integer getSkillLevel(OfflinePlayer player, Skill skill) {
 
 		JsonElement data = getSkillData(player)
 				.get(skill.getIdentifier());
 		if (data == null) {
-			return null;
+			return 0;
 		} else {
 			return data.getAsInt();
 		}
@@ -137,9 +141,11 @@ public enum SkillData {
 			var result = stmt.executeQuery();
 			if (result.isBeforeFirst()) {
 				// There are no rows so we return an empty json object
-				return jsonParser
-						.parse("{}")
-						.getAsJsonObject();
+
+				JsonObject jsonObject = jsonParser.parse("{}").getAsJsonObject();
+				skillCache.put(player.getUniqueId(), jsonObject);
+
+				return jsonObject;
 			}
 			result.next();
 			String rawSkills = result.getString("skill_data");
@@ -195,7 +201,20 @@ public enum SkillData {
 
 		JsonObject data = getSkillData(player);
 		JsonElement elem = data.get(skill.getIdentifier());
+
 		return elem != null;
+	}
+
+	public static SkillClass getSkillClass(Player player) {
+
+		if (hasSkillUnlocked(player, new CriticalShot()) || hasSkillUnlocked(player, new AchillesHeel())) {
+			return SkillClass.ARCHER;
+		} else if (hasSkillUnlocked(player, new Slash()) || hasSkillUnlocked(player, new Lunge())) {
+			return SkillClass.WARRIOR;
+		} else if (hasSkillUnlocked(player, new IceBolt()) || hasSkillUnlocked(player, new Hex()) || hasSkillUnlocked(player, new Invigorate())) {
+			return SkillClass.MAGE;
+		}
+		return null;
 	}
 
 	/**

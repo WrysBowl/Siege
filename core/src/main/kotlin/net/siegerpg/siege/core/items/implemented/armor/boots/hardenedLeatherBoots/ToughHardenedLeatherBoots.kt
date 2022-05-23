@@ -13,7 +13,7 @@ class ToughHardenedLeatherBoots() : CustomBoots(
 		levelRequirement = 24,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 30.0, strength = 2.0),
-		gearSetInfo = listOf(listOf("Deal more knock back"))
+		gearSetInfo = listOf("Deal more knock back")
                                                ) {
 
 	constructor(quality : Int) : this() {

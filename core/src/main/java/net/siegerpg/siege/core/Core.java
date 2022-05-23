@@ -27,6 +27,7 @@ import net.siegerpg.siege.core.miscellaneous.cache.ActiveMobs;
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import net.siegerpg.siege.core.parties.PartyCommand;
 import net.siegerpg.siege.core.parties.PartyConfig;
+import net.siegerpg.siege.core.skills.*;
 import net.siegerpg.siege.core.skills.warrior.Armory;
 import net.siegerpg.siege.core.webstore.WebstoreCommand;
 import net.siegerpg.siege.core.webstore.WebstoreListener;
@@ -135,7 +136,9 @@ public final class Core extends JavaPlugin {
 			commandList.put("dailyReward", new DailyRewardCommand());
 			commandList.put("questReward", new QuestRewardCommand());
 			commandList.put("meraChat", new MeraChat());
-
+			commandList.put("skills", new SkillGUI());
+			commandList.put("scrapper", new Scrapper());
+			commandList.put("traveler", new Traveler());
 
 		}
 
@@ -157,6 +160,7 @@ public final class Core extends JavaPlugin {
 				new PlayerJoinListener(),
 				new PlayerQuitListener(),
 				new StatGemListener(),
+				new SkillListener(),
 				new GemRemover(),
 				new WorldListener(),
 				new PortalEnterListener(),
@@ -185,6 +189,7 @@ public final class Core extends JavaPlugin {
 				new BoomiesSet(),
 				new LichSet(),
 				new NecromancerSet(),
+				new BroodMotherSet(),
 
 				/*
 				All Skills

@@ -14,7 +14,7 @@ class BroodMotherCloak() : CustomChestplate(
 		levelRequirement = 50,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 170.0, defense = 85.0, strength = -70.0, regeneration = 55.0),
-		gearSetInfo = listOf(listOf("Sneak to shoot a beam of energy")),
+		gearSetInfo = listOf("Sneak to shoot a beam of energy"),
 		leatherColor = Color.GREEN
                               ) {
 

@@ -36,7 +36,7 @@ class BanditCap() : CustomHelmet(
 
 	override fun onHit(e : EntityDamageEvent) {
 		val player = (e.entity as Player).player ?: return
-		val item = player.inventory.chestplate
+		val item = player.inventory.helmet
 		val cusItem = CustomItemUtils.getCustomItem(item) ?: return
 		if (cusItem.levelRequirement == null) return
 		if (cusItem.levelRequirement!! > (Levels.blockingGetExpLevel(player)?.first

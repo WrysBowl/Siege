@@ -12,74 +12,74 @@ class Amber : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//HEALTH POTIONS
 			ShopItem(HealthPotionI(-1), 1500, hashMapOf(), false) {
-				HealthPotionI(0).getUpdatedItem(false)
+				HealthPotionI().getUpdatedItem(false)
 			},
 			ShopItem(HealthPotionII(-1), 2000, hashMapOf(), false) {
-				HealthPotionII(0).getUpdatedItem(false)
+				HealthPotionII().getUpdatedItem(false)
 			},
 			ShopItem(HealthPotionIII(-1), 2500, hashMapOf(), false) {
-				HealthPotionIII(0).getUpdatedItem(false)
+				HealthPotionIII().getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			//SLIME POTION
 			ShopItem(SlimyI(-1), 1500, hashMapOf(), false) {
-				SlimyI(0).getUpdatedItem(false)
+				SlimyI().getUpdatedItem(false)
 			},
 			ShopItem(SlimyII(-1), 2000, hashMapOf(), false) {
-				SlimyII(0).getUpdatedItem(false)
+				SlimyII().getUpdatedItem(false)
 			},
 			ShopItem(SlimyIII(-1), 2500, hashMapOf(), false) {
-				SlimyIII(0).getUpdatedItem(false)
+				SlimyIII().getUpdatedItem(false)
 			},
 
 			//BURN
 			ShopItem(BurnI(-1), 1750, hashMapOf(), false) {
-				BurnI(0).getUpdatedItem(false)
+				BurnI().getUpdatedItem(false)
 			},
 			ShopItem(BurnII(-1), 2500, hashMapOf(), false) {
-				BurnII(0).getUpdatedItem(false)
+				BurnII().getUpdatedItem(false)
 			},
 			ShopItem(BurnIII(-1), 3250, hashMapOf(), false) {
-				BurnIII(0).getUpdatedItem(false)
+				BurnIII().getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			//BERSERK
 			ShopItem(BerserkI(-1), 2000, hashMapOf(), false) {
-				BerserkI(0).getUpdatedItem(false)
+				BerserkI().getUpdatedItem(false)
 			},
 			ShopItem(BerserkII(-1), 2500, hashMapOf(), false) {
-				BerserkII(0).getUpdatedItem(false)
+				BerserkII().getUpdatedItem(false)
 			},
 			ShopItem(BerserkIII(-1), 3500, hashMapOf(), false) {
-				BerserkIII(0).getUpdatedItem(false)
+				BerserkIII().getUpdatedItem(false)
 			},
 
 			//AoESlowness
 			ShopItem(AoESlownessI(-1), 1750, hashMapOf(), false) {
-				AoESlownessI(0).getUpdatedItem(false)
+				AoESlownessI().getUpdatedItem(false)
 			},
 			ShopItem(AoESlownessII(-1), 2500, hashMapOf(), false) {
-				AoESlownessII(0).getUpdatedItem(false)
+				AoESlownessII().getUpdatedItem(false)
 			},
 			ShopItem(AoESlownessIII(-1), 3250, hashMapOf(), false) {
-				AoESlownessIII(0).getUpdatedItem(false)
+				AoESlownessIII().getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			//AoEPoison
 			ShopItem(AoEPoisonI(-1), 2000, hashMapOf(), false) {
-				AoEPoisonI(0).getUpdatedItem(false)
+				AoEPoisonI().getUpdatedItem(false)
 			},
 			ShopItem(AoEPoisonII(-1), 2500, hashMapOf(), false) {
-				AoEPoisonII(0).getUpdatedItem(false)
+				AoEPoisonII().getUpdatedItem(false)
 			},
 			ShopItem(AoEPoisonIII(-1), 3500, hashMapOf(), false) {
-				AoEPoisonIII(0).getUpdatedItem(false)
+				AoEPoisonIII().getUpdatedItem(false)
 			},
 	                                            )
 }

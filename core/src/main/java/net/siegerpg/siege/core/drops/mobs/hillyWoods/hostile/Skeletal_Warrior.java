@@ -87,14 +87,14 @@ public class Skeletal_Warrior extends MobDropTable {
 				new Reward(new StrongScrapShard(Utils.randRarity()).getUpdatedItem(false), 0.10),
 				new Reward(new LuckyScrapShard(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
-				new Reward(new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.05),
+				new Reward(new SplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.10),
 				new Reward(
-						new HealingSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.05),
+						new HealingSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.10),
 				new Reward(
-						new HealthySplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new ToughSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new StrongSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.05),
+						new HealthySplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new ToughSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongSplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckySplinteredBone(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 3.0),
 				new Reward(new FoxSpiritKey().getUpdatedItem(false), 2.5),

@@ -15,7 +15,7 @@ class MagmarsTrekkers() : CustomBoots(
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 25.0, defense = 30.0, strength = 15.0, regeneration = -10.0),
 		leatherColor = Color.ORANGE,
-		gearSetInfo = listOf(listOf("Sneak to send a heatwave outwards"))
+		gearSetInfo = listOf("Sneak to send a heatwave outwards")
                                      ) {
 
 	constructor(quality : Int) : this() {

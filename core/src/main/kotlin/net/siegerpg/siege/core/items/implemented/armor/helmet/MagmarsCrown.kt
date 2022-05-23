@@ -15,7 +15,7 @@ class MagmarsCrown() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 25.0, defense = 15.0, strength = 10.0, regeneration = 20.0, luck = -10.0),
 		leatherColor = Color.ORANGE,
-		gearSetInfo = listOf(listOf("Sneak to send a heatwave outwards"))
+		gearSetInfo = listOf("Sneak to send a heatwave outwards")
                                    ) {
 
 	constructor(quality : Int) : this() {

@@ -14,7 +14,7 @@ class LichCloak() : CustomChestplate(
 		levelRequirement = 28,
 		material = Material.CHAINMAIL_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 120.0, defense = 50.0, luck = -10.0),
-		gearSetInfo = listOf(listOf("Sneak to teleport to nearest mob and back"))
+		gearSetInfo = listOf("Sneak to teleport to nearest mob and back")
                                     ) {
 
 	constructor(quality : Int) : this() {

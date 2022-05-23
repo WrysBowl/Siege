@@ -15,7 +15,7 @@ class SlimsChestplate() : CustomChestplate(
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 24.0, defense = -20.0, strength = 16.0, luck = 10.0),
 		leatherColor = Color.LIME,
-		gearSetInfo = listOf(listOf("Double jump to jump forwards"))
+		gearSetInfo = listOf("Double jump to jump forwards")
                                           ) {
 
 	constructor(quality : Int) : this() {

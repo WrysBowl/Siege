@@ -31,18 +31,12 @@ import java.util.ArrayList;
 public class Menu implements CommandExecutor {
 
 	private ChestGui menu;
-	private static final Location farmLocation = new Location(Bukkit.getWorld("Hilly_Woods"),188.5, 61, -122.5, -90, 0);
-	private static final Location villageLocation = new Location(Bukkit.getWorld("Hilly_Woods"),205.5, 93, 217.5, 180, 0);
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 		if (!(sender instanceof Player player)) {
 			return false;
 		}
-
-		//adds to cooldown
-		if (PlayerData.onCooldown(player)) return false;
-		PlayerData.addCooldown(player);
 
 		player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 0.75f, 1.0f);
 		Menu instance = new Menu();

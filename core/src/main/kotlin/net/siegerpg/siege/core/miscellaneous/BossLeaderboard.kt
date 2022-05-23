@@ -78,19 +78,19 @@ object BossLeaderboard {
 class BossLeaderboardListener : Listener {
 
 
-	val dungeonBossDropTableHashMap = mutableMapOf(
-			"Broodmother" to Broodmother(),
-			"BullSpirit" to BullSpirit(),
-			"Davy_Jones" to Davy_Jones(),
-			"FoxSpirit" to FoxSpirit(),
-			"Lich" to Lich(),
-			"MagmaSpirit" to MagmaSpirit(),
-			"Necromancer" to Necromancer(),
-			"SlimeSpirit" to SlimeSpirit()
-	                                              ) as HashMap<String, MobDropTable>
+
 
 	companion object {
-
+		val dungeonBossDropTableHashMap = mutableMapOf(
+				"Broodmother" to Broodmother(),
+				"BullSpirit" to BullSpirit(),
+				"Davy_Jones" to Davy_Jones(),
+				"FoxSpirit" to FoxSpirit(),
+				"Lich" to Lich(),
+				"MagmaSpirit" to MagmaSpirit(),
+				"Necromancer" to Necromancer(),
+				"SlimeSpirit" to SlimeSpirit()
+		                                              ) as HashMap<String, MobDropTable>
 		val currentBossFights = ArrayList<BossFight>()
 	}
 
@@ -175,7 +175,7 @@ class BossLeaderboardListener : Listener {
 				}
 				Levels.addExpShared(
 						Bukkit.getOfflinePlayer(fighter),
-						floor(tableExp.toDouble() * dropMultiplier).toInt()
+						floor(tableExp.toDouble() * GlobalMultipliers.getEXPMultipliers(player) * dropMultiplier).toInt()
 				                   )
 
 				var tableGoldCoinAmt = dropTable.getGold(true) ?: 0
@@ -183,7 +183,7 @@ class BossLeaderboardListener : Listener {
 					tableGoldCoinAmt *= 2
 				}
 				val goldCoinAmt =
-						floor(tableGoldCoinAmt.toDouble() * GlobalMultipliers.goldMultiplier * dropMultiplier).toInt()
+						floor(tableGoldCoinAmt.toDouble() * GlobalMultipliers.getGoldMultipliers(player) * dropMultiplier).toInt()
 
 				GoldExpListener.giveGold(player, goldCoinAmt)
 

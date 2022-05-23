@@ -15,7 +15,7 @@ class HealingBoneLeggings() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 16.0, defense = 20.0, regeneration = 37.0),
 		leatherColor = Color.GRAY,
-		gearSetInfo = listOf(listOf("Deal +40 more strength"))
+		gearSetInfo = listOf("Deal +40 more strength")
                                             ) {
 
 	constructor(quality : Int) : this() {

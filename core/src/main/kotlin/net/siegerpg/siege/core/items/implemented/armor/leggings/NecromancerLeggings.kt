@@ -14,7 +14,7 @@ class NecromancerLeggings() : CustomLeggings(
 	levelRequirement = 38,
 	material = Material.LEATHER_LEGGINGS,
 	baseStats = CustomItemUtils.statMap(health = 160.0, strength = 45.0, luck = -25.0),
-	gearSetInfo = listOf(listOf("Life steal and speed")),
+	gearSetInfo = listOf("Life steal and speed"),
 	leatherColor = Color.fromRGB(125, 25, 25)
                                  ) {
 

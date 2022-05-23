@@ -4,6 +4,7 @@ import net.siegerpg.siege.core.miscellaneous.Utils;
 import net.siegerpg.siege.core.webstore.categories.WebstorePackage;
 import net.siegerpg.siege.core.webstore.categories.boosters.*;
 import net.siegerpg.siege.core.webstore.categories.cosmetics.*;
+import net.siegerpg.siege.core.webstore.categories.keys.*;
 import net.siegerpg.siege.core.webstore.categories.ranks.GladiatorRank;
 import net.siegerpg.siege.core.webstore.categories.ranks.HeroRank;
 import net.siegerpg.siege.core.webstore.categories.ranks.WarriorRank;
@@ -35,6 +36,7 @@ public class WebstoreUtils {
 			put(new String[] { "booster", "EXP", "1.2" }, new EXPBooster_20());
 			put(new String[] { "booster", "EXP", "1.5" }, new EXPBooster_50());
 			put(new String[] { "booster", "EXP", "2.0" }, new EXPBooster_100());
+			put(new String[] { "key", "mob" }, new MobKeys());
 
 		}
 	};

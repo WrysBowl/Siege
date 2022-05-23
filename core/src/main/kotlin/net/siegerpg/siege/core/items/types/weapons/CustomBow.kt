@@ -5,6 +5,7 @@ import net.siegerpg.siege.core.items.enums.ItemTypes
 import net.siegerpg.siege.core.items.enums.Rarity
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.statgems.StatGem
+import net.siegerpg.siege.core.items.types.misc.CustomSkill
 import net.siegerpg.siege.core.items.types.subtypes.CustomWeapon
 import net.siegerpg.siege.core.miscellaneous.lore
 import net.siegerpg.siege.core.miscellaneous.name
@@ -12,6 +13,7 @@ import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.ItemMeta
 
 abstract class CustomBow(
 		override val name : String,
@@ -24,8 +26,9 @@ abstract class CustomBow(
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.BOW,
 		override var statGem : StatGem? = null,
+		override var skillBooks : List<CustomSkill?> = listOf(null),
 		override var addedStats : HashMap<StatTypes, Double>? = null,
-		override val gearSetInfo : List<List<String>>? = null,
+		override val gearSetInfo : List<String>? = null,
 		) : CustomWeapon {
 
 	override var rarity : Rarity = Rarity.COMMON
@@ -53,6 +56,18 @@ abstract class CustomBow(
 
 		item.itemMeta = meta
 		return item
+	}
+
+	override fun displaySkillText(meta : ItemMeta) : ItemMeta {
+		meta.lore(" ")
+		for(skill in skillBooks) {
+			if (skill == null) {
+				meta.lore("<dark_gray>\u25C7 <italic>Skill Slot")
+			} else {
+				meta.lore("<r><color:#7fd4a4>[L-Click] <color:#5c9976>${skill.name}")
+			}
+		}
+		return meta
 	}
 
 	override fun equals(other : Any?) : Boolean {

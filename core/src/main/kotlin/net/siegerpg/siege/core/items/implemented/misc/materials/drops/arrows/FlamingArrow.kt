@@ -21,6 +21,7 @@ class FlamingArrow() : CustomArrow(
 		description = listOf("Burns your target for 5 seconds"),
 		levelRequirement = 0,
 		material = Material.TIPPED_ARROW,
+		potion = PotionType.FIRE_RESISTANCE
                                   ) {
 	override fun getSellValue() : Int {
 		return 40

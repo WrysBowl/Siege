@@ -14,7 +14,7 @@ class NecromancerCloak() : CustomChestplate(
 		levelRequirement = 38,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 170.0, strength = 40.0, regeneration = -30.0	),
-		gearSetInfo = listOf(listOf("Life steal and speed")),
+		gearSetInfo = listOf("Life steal and speed"),
 		leatherColor = Color.fromRGB(125, 25, 25)
                                          ) {
 

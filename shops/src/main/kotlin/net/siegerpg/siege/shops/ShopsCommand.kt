@@ -52,6 +52,7 @@ class ShopsCommand : BaseCommand() {
 
 		val player : Player =
 				if (target?.player == null) (sender as Player) else target.player
+		PlayerData.addCooldown(player)
 
 		if (!ShopsPlugin.instance?.shopRegistry?.contains(id)!!) return sender.sendMessage(
 				MiniMessage.get().parse("<red>Invalid shop name!")
@@ -64,9 +65,6 @@ class ShopsCommand : BaseCommand() {
 						.parse("<red>You do not have permission to open this shop!")
 		                                                                                         )
 
-		//adds to cooldown
-		if (PlayerData.onCooldown(player)) return
-		PlayerData.addCooldown(player)
 
 		//This is some ugly code that I have yet to change
 		var gui = ChestGui(3, shop.name)
@@ -172,9 +170,6 @@ class ShopsCommand : BaseCommand() {
 					}
 
 					event.isLeftClick                    -> {
-						//adds to cooldown
-						if (PlayerData.onCooldown(player)) return@setAction
-						PlayerData.addCooldown(player)
 
 						if (!it.craftable) return@setAction
 						if (event.view.bottomInventory
@@ -216,7 +211,7 @@ class ShopsCommand : BaseCommand() {
 							player.inventory.removeItem(stack)
 						}
 						player.inventory.addItem(it.generate())
-						Bukkit.dispatchCommand(sender, "shops " + id + " " + player.name)
+						Bukkit.dispatchCommand(Bukkit.getServer().consoleSender, "shops " + id + " " + player.name)
 						player.playSound(
 								player.location,
 								Sound.ENTITY_VILLAGER_CELEBRATE,
@@ -227,9 +222,6 @@ class ShopsCommand : BaseCommand() {
 					}
 
 					event.isRightClick                   -> {
-						//adds to cooldown
-						if (PlayerData.onCooldown(player)) return@setAction
-						PlayerData.addCooldown(player)
 
 						if (it.buyPrice < 0) return@setAction
 						if (VaultHook.econ.getBalance(player) < it.buyPrice) {
@@ -260,7 +252,7 @@ class ShopsCommand : BaseCommand() {
 						}
 
 						player.inventory.addItem(it.generate())
-						Bukkit.dispatchCommand(sender, "shops " + id + " " + player.name)
+						Bukkit.dispatchCommand(Bukkit.getServer().consoleSender, "shops " + id + " " + player.name)
 						player.playSound(
 								player.location,
 								Sound.ENTITY_VILLAGER_CELEBRATE,

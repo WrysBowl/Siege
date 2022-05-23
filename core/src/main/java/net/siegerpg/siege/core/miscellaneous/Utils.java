@@ -315,6 +315,7 @@ public class Utils {
 				return (o1.getValue()).compareTo(o2.getValue());
 			}
 		});
+		Collections.reverse(list);
 
 		// put data from sorted list to hashmap
 		HashMap<StatTypes, Double> temp = new LinkedHashMap<StatTypes, Double>();

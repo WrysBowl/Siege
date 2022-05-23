@@ -15,7 +15,7 @@ class HealingMagmaLeggings() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 10.0, defense = 20.0, regeneration = 17.0),
 		leatherColor = Color.ORANGE,
-		gearSetInfo = listOf(listOf("Have a 30% chance to burn attackers"))
+		gearSetInfo = listOf("Have a 30% chance to burn attackers")
                                              ) {
 
 	constructor(quality : Int) : this() {

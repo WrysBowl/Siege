@@ -14,7 +14,7 @@ class BoomiesHooves() : CustomBoots(
 		levelRequirement = 24,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 15.0, defense = 60.0, strength = 25.0),
-		gearSetInfo = listOf(listOf("Sneak to charge forwards"))
+		gearSetInfo = listOf("Sneak to charge forwards")
                                    ) {
 
 	constructor(quality : Int) : this() {

@@ -28,10 +28,10 @@ public class Orc extends MobDropTable {
 				new Reward(new Bone().getUpdatedItem(false), 50.0),
 				new Reward(new Bone().getUpdatedItem(false).asQuantity(4), 1.0),
 
-				new Reward(new BoneHelmet(50).getUpdatedItem(false), 0.05),
-				new Reward(new BoneChestplate(50).getUpdatedItem(false), 0.05),
-				new Reward(new BoneLeggings(50).getUpdatedItem(false), 0.05),
-				new Reward(new BoneBoots(50).getUpdatedItem(false), 0.05),
+				new Reward(new BoneHelmet(50).getUpdatedItem(false), 0.10),
+				new Reward(new BoneChestplate(50).getUpdatedItem(false), 0.10),
+				new Reward(new BoneLeggings(50).getUpdatedItem(false), 0.10),
+				new Reward(new BoneBoots(50).getUpdatedItem(false), 0.10),
 
 				new Reward(new ToughBoneHelmet(30).getUpdatedItem(false), 0.025),
 				new Reward(new ToughBoneChestplate(30).getUpdatedItem(false), 0.025),
@@ -88,7 +88,7 @@ public class Orc extends MobDropTable {
 				new Reward(new LuckyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.01),
 				new Reward(new LuckyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.01),
 
-				new Reward(new DoubleBladedAxe(80).getUpdatedItem(false), 0.05),
+				new Reward(new DoubleBladedAxe(80).getUpdatedItem(false), 0.10),
 				new Reward(new LuckyDoubleBladedAxe(50).getUpdatedItem(false), 0.01),
 				new Reward(new ToughDoubleBladedAxe(50).getUpdatedItem(false), 0.01),
 				new Reward(new StrongDoubleBladedAxe(50).getUpdatedItem(false), 0.01),

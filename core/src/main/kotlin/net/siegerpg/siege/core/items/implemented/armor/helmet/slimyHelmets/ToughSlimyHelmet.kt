@@ -15,7 +15,7 @@ class ToughSlimyHelmet() : CustomHelmet(
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 4.0, defense = 8.0),
 		leatherColor = Color.LIME,
-		gearSetInfo = listOf(listOf("Jump high like a slime!"))
+		gearSetInfo = listOf("Jump high like a slime!")
                                        ) {
 
 	constructor(quality : Int) : this() {

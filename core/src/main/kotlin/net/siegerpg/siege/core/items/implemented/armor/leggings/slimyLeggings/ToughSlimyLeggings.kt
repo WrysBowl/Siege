@@ -15,7 +15,7 @@ class ToughSlimyLeggings() : CustomLeggings(
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 15.0),
 		leatherColor = Color.LIME,
-		gearSetInfo = listOf(listOf("Jump high like a slime!"))
+		gearSetInfo = listOf("Jump high like a slime!")
                                            ) {
 
 	constructor(quality : Int) : this() {

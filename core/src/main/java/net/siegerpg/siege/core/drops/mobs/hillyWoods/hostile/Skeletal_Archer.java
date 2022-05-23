@@ -69,12 +69,12 @@ public class Skeletal_Archer extends MobDropTable {
 				new Reward(new LuckyBoneLeggings(Utils.randRarity()).getUpdatedItem(false), 0.01),
 				new Reward(new LuckyBoneBoots(Utils.randRarity()).getUpdatedItem(false), 0.01),
 
-				new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new ToughCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new StrongCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.05),
+				new Reward(new Crossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new ToughCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
 				new Reward(new ReinforcedBow(Utils.randRarity()).getUpdatedItem(false), 0.25),
 				new Reward(new HealingReinforcedBow(Utils.randRarity()).getUpdatedItem(false), 0.25),

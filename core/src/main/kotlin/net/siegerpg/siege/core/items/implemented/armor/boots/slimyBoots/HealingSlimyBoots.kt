@@ -18,7 +18,7 @@ class HealingSlimyBoots() : CustomBoots(
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(regeneration = 3.0),
 		leatherColor = Color.LIME,
-		gearSetInfo = listOf(listOf("Jump high like a slime!"))
+		gearSetInfo = listOf("Jump high like a slime!")
                                        ) {
 
 	constructor(quality : Int) : this() {

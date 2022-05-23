@@ -78,6 +78,11 @@ interface CustomEquipment : CustomItem {
 			meta.lore(" ")
 			meta.lore("<dark_gray>\u25C7 <italic>Gem Slot")
 		}
+
+		if (this is CustomWeapon) {
+			item.itemMeta = displaySkillText(meta)
+		}
+
 		if (baseStats.size != 0) {
 			item.itemMeta = statFormat(meta, hideRarity)
 		}
@@ -118,7 +123,7 @@ interface CustomEquipment : CustomItem {
 			if (realStats[it]!! < 0.0) {
 				if (hideRarity || quality < 0)
 					meta.lore(
-							"<r><red>${stats[it]?.times(0.5)}. . . -${
+							"<r><red>${stats[it]?.times(0.5)}. . . ${
 								stats[it]?.times(
 										1.5
 								                )
@@ -169,6 +174,7 @@ interface CustomEquipment : CustomItem {
 	}
 
 	override fun getSellValue() : Int {
+		if (quality < 1) quality = 50
 		return ((levelRequirement ?: 1) * quality) / 5
 	}
 

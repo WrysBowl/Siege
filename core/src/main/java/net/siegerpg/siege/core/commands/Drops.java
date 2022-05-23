@@ -21,14 +21,12 @@ import net.siegerpg.siege.core.miscellaneous.MobStats;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import org.bukkit.command.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Array;
@@ -44,11 +42,41 @@ public class Drops implements CommandExecutor {
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 		if (!(sender instanceof Player)) {
-			return false;
+			Player player = Bukkit.getPlayer(args[1]);
+			if (player == null) return false;
+			if (!findMenu(player, args[0])) {
+				player.sendMessage(Utils.lore("<red>Invalid drop!"));
+				return false;
+			}
+			return true;
 		}
-		Player player = (Player) sender;
-		getStartMenu(player).show(player);
+		if (args.length < 1) {
+			Player player = (Player) sender;
+			getStartMenu(player).show(player);
+		}
 		return true;
+	}
+
+	private boolean findMenu(Player player, String name) {
+		try {
+			HashMap< Material, BlockDropTable > dropTable = BlockBreakListener.blockDropTableHashMap;
+			Material key = Material.getMaterial(name);
+			createDropsGUI(dropTable.get(key), 0, player).show(player);
+			return true;
+		} catch (Exception ignored) {}
+
+		try {
+			HashMap< String, MobDropTable > dropTable = DeathListener.mobDropTableHashMap;
+			createDropsGUI(dropTable.get(name), 0, player).show(player);
+			return true;
+		} catch (Exception ignored) {}
+
+		try {
+			HashMap< String, MobDropTable > dropTable = BossLeaderboardListener.Companion.getDungeonBossDropTableHashMap();
+			createDropsGUI(dropTable.get(name), 0, player).show(player);
+			return true;
+		} catch (Exception ignored) {}
+		return false;
 	}
 
 
@@ -171,9 +199,7 @@ public class Drops implements CommandExecutor {
 			lore.add(Utils.lore("<dark_gray><underlined>            "));
 			item.lore(lore);
 
-			row.addItem(new GuiItem(item, e -> {
-				createDropsGUI(dropTable, 0, player).show(player);
-			}));
+			row.addItem(new GuiItem(item));
 		}
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
@@ -225,14 +251,14 @@ public class Drops implements CommandExecutor {
 			Material key = (Material) array[i];
 
 			ItemStack item = new ItemStack(key);
-			BlockDropTable blockDropTable = dropTable.get(key);
-
 			ItemMeta iconMeta = item.getItemMeta();
 			iconMeta.displayName(Utils.lore("<green>"+item.getI18NDisplayName()));
 			item.setItemMeta(iconMeta);
 
 			row.addItem(new GuiItem(item, e -> {
-				createDropsGUI(blockDropTable, 0, player).show(player);
+				ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+				String cmd = "drops "+key.name()+" "+player.getName();
+				Bukkit.dispatchCommand(console, cmd);
 			}));
 		}
 
@@ -295,14 +321,14 @@ public class Drops implements CommandExecutor {
 				}
 
 			} catch (Exception ignored) {}
-			MobDropTable mobDropTable = dropTable.get(key);
-
 			ItemMeta iconMeta = item.getItemMeta();
 			iconMeta.displayName(Utils.lore("<green>"+key));
 			item.setItemMeta(iconMeta);
 
 			row.addItem(new GuiItem(item, e -> {
-				createDropsGUI(mobDropTable, 0, player).show(player);
+				ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+				String cmd = "drops "+key+" "+player.getName();
+				Bukkit.dispatchCommand(console, cmd);
 			}));
 		}
 
@@ -342,15 +368,9 @@ public class Drops implements CommandExecutor {
 		menu.addPane(background);
 
 		OutlinePane row = new OutlinePane(1, 1, 7, 2);
-		OutlinePane menuButton = new OutlinePane(0, 4, 1, 1);
-
-
-		menuButton.addItem(new GuiItem(getIconBack(), inventoryClickEvent -> {
-			getStartMenu(player).show(player);
-		}));
 
 		//icons
-		HashMap< String, MobDropTable > dropTable = new BossLeaderboardListener().getDungeonBossDropTableHashMap();
+		HashMap< String, MobDropTable > dropTable = BossLeaderboardListener.Companion.getDungeonBossDropTableHashMap();
 		Object[] array = dropTable.keySet().toArray();
 
 		for (int i = 0; i < dropTable.size(); i++) {
@@ -369,16 +389,23 @@ public class Drops implements CommandExecutor {
 				}
 
 			} catch (Exception ignored) {}
-			MobDropTable mobDropTable = dropTable.get(key);
 
 			ItemMeta iconMeta = item.getItemMeta();
 			iconMeta.displayName(Utils.lore("<green>"+key));
 			item.setItemMeta(iconMeta);
 
 			row.addItem(new GuiItem(item, e -> {
-				createDropsGUI(mobDropTable, 0, player).show(player);
+				ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+				String cmd = "drops "+key+" "+player.getName();
+				Bukkit.dispatchCommand(console, cmd);
 			}));
 		}
+
+		OutlinePane menuButton = new OutlinePane(0, 3, 1, 1);
+
+		menuButton.addItem(new GuiItem(getIconBack(), inventoryClickEvent -> {
+			getStartMenu(player).show(player);
+		}));
 
 		menu.addPane(menuButton);
 		menu.addPane(row);
@@ -445,9 +472,10 @@ public class Drops implements CommandExecutor {
 	}
 	private static ItemStack getIconNext() {
 		//Creating Next Icon
-		ItemStack icon = new ItemStack(Material.SPECTRAL_ARROW);
-		ItemMeta iconMeta = icon.getItemMeta();
-		iconMeta.displayName(Utils.lore("<red><bold>NEXT"));
+		ItemStack icon = new ItemStack(Material.SKELETON_SKULL);
+		SkullMeta iconMeta = (SkullMeta) icon.getItemMeta();
+		iconMeta.setOwner("MHF_ArrowRight");
+		iconMeta.displayName(Utils.lore("<green>Next"));
 		iconMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Next page"));
@@ -460,7 +488,7 @@ public class Drops implements CommandExecutor {
 		//Creating Next Icon
 		ItemStack icon = new ItemStack(Material.NETHER_STAR);
 		ItemMeta iconMeta = icon.getItemMeta();
-		iconMeta.displayName(Utils.lore("<gold><bold>MENU"));
+		iconMeta.displayName(Utils.lore("<gold>Menu"));
 		iconMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Back to menu"));

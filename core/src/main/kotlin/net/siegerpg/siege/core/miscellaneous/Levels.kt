@@ -21,6 +21,7 @@ object Levels {
 	// How long data is cached for
 	private const val cacheDuration = 10 * 60
 	private val cachedLevelExp = ConcurrentHashMap<UUID, Triple<Short, Int, Instant>>()
+	var expCalculating = HashMap<OfflinePlayer, Short>()
 
 	val levelRewards : ArrayList<LevelReward> = arrayListOf(
 			Reward1(), Reward2(), Reward3(), Reward4(), Reward5(),
@@ -69,27 +70,35 @@ object Levels {
 			if (levelRewards.size+2 < lvl) continue //ensure that the level reward is set in the array list
 
 			val reward : LevelReward = levelRewards[lvl.toInt() - 2]
-			object : BukkitRunnable() {
-				override fun run() {
-					reward.sendReward(player as Player)
-					Bukkit.getServer()
-							.broadcast(Utils.lore("<color:#ade079>${player.name} has reached level <color:#9774cc>$lvl!"))
-					player.playSound(
-							player.location,
-							Sound.BLOCK_BEACON_POWER_SELECT,
-							1.0f,
-							2.0f
-					                )
-					player.playSound(
-							player.location,
-							Sound.ENTITY_PLAYER_LEVELUP,
-							1.0f,
-							0.5f
-					                )
-				}
-			}.runTask(Core.plugin())
+			sendReward(player, lvl, reward)
 		}
 		return Pair(lvl, exp)
+	}
+
+	fun sendReward(player : OfflinePlayer, lvl : Short, reward : LevelReward) {
+		val previousLevel : Short = expCalculating[player] ?: 0
+		if (previousLevel == lvl) return //if the glitch happens trying to send rewards twice for a level
+		expCalculating[player] = lvl
+
+		object : BukkitRunnable() {
+			override fun run() {
+				reward.sendReward(player as Player)
+				Bukkit.getServer()
+						.broadcast(Utils.lore("<color:#ade079>${player.name} has reached level <color:#9774cc>$lvl!"))
+				player.playSound(
+						player.location,
+						Sound.BLOCK_BEACON_POWER_SELECT,
+						1.0f,
+						2.0f
+				                )
+				player.playSound(
+						player.location,
+						Sound.ENTITY_PLAYER_LEVELUP,
+						1.0f,
+						0.5f
+				                )
+			}
+		}.runTask(Core.plugin())
 	}
 
 	/**

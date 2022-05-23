@@ -25,10 +25,10 @@ public class Werewolf extends MobDropTable {
 				new Reward(new Bone().getUpdatedItem(false), 100.0),
 				new Reward(new Bone().getUpdatedItem(false).asQuantity(8), 10.0),
 
-				new Reward(new ChainHelmet(100).getUpdatedItem(false), 0.05),
-				new Reward(new ChainChestplate(100).getUpdatedItem(false), 0.05),
-				new Reward(new ChainLeggings(100).getUpdatedItem(false), 0.05),
-				new Reward(new ChainBoots(100).getUpdatedItem(false), 0.05),
+				new Reward(new ChainHelmet(100).getUpdatedItem(false), 0.10),
+				new Reward(new ChainChestplate(100).getUpdatedItem(false), 0.10),
+				new Reward(new ChainLeggings(100).getUpdatedItem(false), 0.10),
+				new Reward(new ChainBoots(100).getUpdatedItem(false), 0.10),
 
 				new Reward(new ChainHelmet(80).getUpdatedItem(false), 0.25),
 				new Reward(new ChainChestplate(80).getUpdatedItem(false), 0.25),
@@ -90,7 +90,7 @@ public class Werewolf extends MobDropTable {
 				new Reward(new LuckyChainLeggings(Utils.randRarity()).getUpdatedItem(false), 0.01),
 				new Reward(new LuckyChainBoots(Utils.randRarity()).getUpdatedItem(false), 0.01),
 
-				new Reward(new IronAxe(100).getUpdatedItem(false), 0.05),
+				new Reward(new IronAxe(100).getUpdatedItem(false), 0.10),
 				new Reward(new LuckyIronAxe(50).getUpdatedItem(false), 0.01),
 				new Reward(new ToughIronAxe(50).getUpdatedItem(false), 0.01),
 				new Reward(new StrongIronAxe(50).getUpdatedItem(false), 0.01),

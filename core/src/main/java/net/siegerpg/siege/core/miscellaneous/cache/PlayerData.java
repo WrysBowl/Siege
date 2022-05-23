@@ -23,10 +23,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -45,7 +42,6 @@ public class PlayerData implements Listener {
 	public static HashMap< Player, Integer > playerMana = new HashMap<>();
 	public static HashMap< Player, Location > playerDeathLocations = new HashMap<>();
 
-	public static ArrayList< Player > commandCooldown = new ArrayList<>();
 	public static HashMap< Player, Integer > playerCooldownStrikes = new HashMap<>();
 
 	//runnable to regenerate mana
@@ -57,7 +53,7 @@ public class PlayerData implements Listener {
 			public void run() {
 				playerCooldownStrikes.clear();
 			}
-		}.runTaskTimer(Core.plugin(), 40, 40);
+		}.runTaskTimer(Core.plugin(), 30, 30);
 
 		new BukkitRunnable() {
 
@@ -68,17 +64,17 @@ public class PlayerData implements Listener {
 					int maxMana = playerMana.get(player);
 					int currentMana = playerCurrentMana.get(player);
 					double manaRegen = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.MANA_REGEN);
-					int newCurrentMana = currentMana + (int)manaRegen + 1;
+					int newCurrentMana = currentMana + (int)manaRegen + 5;
 
 					if (newCurrentMana > maxMana) newCurrentMana = maxMana;
 					playerCurrentMana.put(player, newCurrentMana);
 				}
 			}
-		}.runTaskTimer(Core.plugin(), 20, 20);
+		}.runTaskTimer(Core.plugin(), 50, 50);
 	}
 
 	public static boolean onCooldown(Player player) {
-		if (commandCooldown.contains(player)) {
+		if (playerCooldownStrikes.containsKey(player)) {
 
 			int currentStrikes = 0;
 			if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
@@ -95,26 +91,34 @@ public class PlayerData implements Listener {
 	}
 
 	public static void addCooldown(Player player) {
-		commandCooldown.add(player);
+		int currentStrikes = 0;
+		if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
+		playerCooldownStrikes.put(player, currentStrikes+1);
+
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
-				commandCooldown.remove(player);
+				playerCooldownStrikes.put(player, 0);
 			}
 
 		}.runTaskLater(Core.plugin(), 20L);
+		onCooldown(player);
 	}
 	public static void addCooldown(Player player, int ticks) {
-		commandCooldown.add(player);
+		int currentStrikes = 0;
+		if (playerCooldownStrikes.containsKey(player)) currentStrikes = playerCooldownStrikes.get(player);
+		playerCooldownStrikes.put(player, currentStrikes+1);
+
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
-				commandCooldown.remove(player);
+				playerCooldownStrikes.put(player, 0);
 			}
 
 		}.runTaskLater(Core.plugin(), ticks);
+		onCooldown(player);
 	}
 
 	public static int getRegenRate(int regen) {
@@ -124,7 +128,7 @@ public class PlayerData implements Listener {
 	}
 
 	public static double getNewHealth(Double health, Double maxHealth, Double oldMaxHealth) {
-		return (health/oldMaxHealth)*maxHealth;
+		return Math.floor((health/oldMaxHealth)*maxHealth);
 	}
 	public static double getHealthMultiplier(Player player) {
 		Pair< Short, Integer > expLevel = Levels.INSTANCE.blockingGetExpLevel(player);
@@ -176,6 +180,11 @@ public class PlayerData implements Listener {
 			playerRegeneration.put(player, (double)regen);
 			playerMana.put(player, mana);
 		}, 2);
+	}
+
+	@EventHandler
+	public void onCommand(PlayerCommandPreprocessEvent e) {
+		PlayerData.addCooldown(e.getPlayer());
 	}
 
 	@EventHandler

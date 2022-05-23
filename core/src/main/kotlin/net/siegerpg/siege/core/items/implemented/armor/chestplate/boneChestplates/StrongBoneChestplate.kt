@@ -15,7 +15,7 @@ class StrongBoneChestplate() : CustomChestplate(
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 20.0, strength = 37.0),
 		leatherColor = Color.GRAY,
-		gearSetInfo = listOf(listOf("Deal +40 more strength"))
+		gearSetInfo = listOf("Deal +40 more strength")
                                                ) {
 
 	constructor(quality : Int) : this() {

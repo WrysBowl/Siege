@@ -29,10 +29,10 @@ public class FlamingGoo extends MobDropTable {
 				new Reward(new MagmaLeggings(30).getUpdatedItem(false), 0.10),
 				new Reward(new MagmaBoots(30).getUpdatedItem(false), 0.10),
 
-				new Reward(new MagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new MagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new MagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.05),
+				new Reward(new MagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new MagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new MagmaLeggings(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new MagmaBoots(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
 				new Reward(new ToughMagmaHelmet(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 				new Reward(new ToughMagmaChestplate(Utils.randRarity()).getUpdatedItem(false), 0.0025),

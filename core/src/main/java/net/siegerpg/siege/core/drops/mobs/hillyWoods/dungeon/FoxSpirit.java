@@ -2,13 +2,13 @@ package net.siegerpg.siege.core.drops.mobs.hillyWoods.dungeon;
 
 import net.siegerpg.siege.core.drops.MobDropTable;
 import net.siegerpg.siege.core.drops.Reward;
-import net.siegerpg.siege.core.items.implemented.armor.boots.ChainBoots;
+import net.siegerpg.siege.core.items.implemented.armor.boots.*;
 import net.siegerpg.siege.core.items.implemented.armor.boots.chainBoots.*;
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.ChainChestplate;
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.*;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.chainChestplates.*;
-import net.siegerpg.siege.core.items.implemented.armor.helmet.ChainHelmet;
+import net.siegerpg.siege.core.items.implemented.armor.helmet.*;
 import net.siegerpg.siege.core.items.implemented.armor.helmet.chainHelmets.*;
-import net.siegerpg.siege.core.items.implemented.armor.leggings.ChainLeggings;
+import net.siegerpg.siege.core.items.implemented.armor.leggings.*;
 import net.siegerpg.siege.core.items.implemented.armor.leggings.chainLeggings.*;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone;
@@ -128,6 +128,11 @@ public class FoxSpirit extends MobDropTable {
 				new Reward(new PolishedLuckGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 1.0),
+
+				new Reward(new FoxyHelmet().getUpdatedItem(false), 0.50),
+				new Reward(new FoxyChestplate().getUpdatedItem(false), 0.50),
+				new Reward(new FoxyLeggings().getUpdatedItem(false), 0.50),
+				new Reward(new FoxyBoots().getUpdatedItem(false), 0.50),
 
 				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(8), 100.0),
 

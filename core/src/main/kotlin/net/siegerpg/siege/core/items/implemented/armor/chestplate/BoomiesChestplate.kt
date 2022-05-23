@@ -8,13 +8,13 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class BoomiesChestplate() : CustomChestplate(
-		name = "Magmar's Chestplate",
+		name = "Boomie's Chestplate",
 		customModelData = 1,
 		description = listOf("The Bull Spirit is the third guardian"),
 		levelRequirement = 24,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 20.0, defense = 80.0, strength = 10.0, regeneration = -10.0),
-		gearSetInfo = listOf(listOf("Sneak to charge forwards"))
+		gearSetInfo = listOf("Sneak to charge forwards")
                                             ) {
 
 	constructor(quality : Int) : this() {

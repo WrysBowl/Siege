@@ -34,6 +34,7 @@ public class ChatListener implements Listener, ChatRenderer {
 
 		//make necessary checks
 		message = replaceText(message, "&k", "");
+		message = replaceText(message, "<rainbow>", "");
 		message = replaceText(message, "%", "%%");
 		if (isEmpty(message)) {
 			player.sendMessage(Utils.lore("<red>You can not send a empty message!"));

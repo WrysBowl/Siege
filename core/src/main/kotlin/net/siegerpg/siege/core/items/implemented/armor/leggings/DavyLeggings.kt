@@ -14,7 +14,7 @@ class DavyLeggings() : CustomLeggings(
 		levelRequirement = 33,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 120.0, strength = 25.0, luck = 35.0, defense = -30.0),
-		gearSetInfo = listOf(listOf("Dolphin's Grace II, Speed I, Water breathing II")),
+		gearSetInfo = listOf("Dolphin's Grace II, Speed I, Water breathing II"),
 		leatherColor = Color.fromRGB(74, 104, 150)
                                  ) {
 

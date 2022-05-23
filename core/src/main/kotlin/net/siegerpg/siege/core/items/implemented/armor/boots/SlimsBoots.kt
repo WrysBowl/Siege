@@ -15,7 +15,7 @@ class SlimsBoots() : CustomBoots(
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 8.0, strength = 10.0, luck = 12.0),
 		leatherColor = Color.LIME,
-		gearSetInfo = listOf(listOf("Double jump to jump forwards"))
+		gearSetInfo = listOf("Double jump to jump forwards")
                                 ) {
 
 	constructor(quality : Int) : this() {

@@ -26,11 +26,11 @@ public class ScrapRat extends MobDropTable {
 
 				new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.20),
 				new Reward(new PebbleShooter(100).getUpdatedItem(false), 0.10),
-				new Reward(new ToughPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new LuckyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new StrongPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new HealingPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.05),
-				new Reward(new HealthyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.05),
+				new Reward(new ToughPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
 				new Reward(new PebbleWand(Utils.randRarity()).getUpdatedItem(false), 0.20),
 				new Reward(new PebbleWand(100).getUpdatedItem(false), 0.10),
