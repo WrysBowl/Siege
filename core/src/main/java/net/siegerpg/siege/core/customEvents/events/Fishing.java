@@ -35,7 +35,7 @@ public class Fishing extends CustomEvent {
 
 	@Override
 	public boolean triggerable() {
-		return Utils.randTest(30.0);
+		return Utils.randTest(40.0);
 	}
 
 	@Override

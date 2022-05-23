@@ -24,7 +24,7 @@ public class Haste_Buff extends CustomEvent {
 
 	@Override
 	public boolean triggerable() {
-		return Utils.randTest(25.0);
+		return Utils.randTest(20.0);
 	}
 
 	@Override

@@ -31,7 +31,7 @@ public class BlockBreak extends CustomEvent {
 
 	@Override
 	public boolean triggerable() {
-		return Utils.randTest(30.0);
+		return Utils.randTest(20.0);
 	}
 
 	@Override

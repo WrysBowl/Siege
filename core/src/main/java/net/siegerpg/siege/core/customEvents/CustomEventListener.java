@@ -16,11 +16,11 @@ public class CustomEventListener implements Listener {
 			add(new Haste_Buff());
 			add(new More_Carrots());
 			add(new More_Wheat());
-
+			add(new Gold_Storm());
 		}
 	}; //fills up on start-up
 	public static CustomEvent currentlyActive = null;
-	private static final long eventWaitTimer = 1800 * 20L; //wait timer for events
+	private static final long eventWaitTimer = 1200 * 20L; //wait timer for events
 	private static boolean eventDelayed = false;
 
 	public CustomEventListener() {
