@@ -12,9 +12,9 @@ import org.bukkit.potion.PotionEffectType
 import org.bukkit.potion.PotionType
 
 class HealthPotionII() : CustomPotion(
-		name = "Health Potion I",
+		name = "Health Potion II",
 		customModelData = 820001,
-		description = listOf("Heals you by a medium amount"),
+		description = listOf("Heals you by +200 HP"),
 		levelRequirement = 0,
 		material = Material.POTION,
 		potion = PotionType.INSTANT_HEAL,

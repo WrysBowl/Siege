@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionType
 class HealthPotionI() : CustomPotion(
 		name = "Health Potion I",
 		customModelData = 810001,
-		description = listOf("Heals you by a small amount"),
+		description = listOf("Heals you by +100 HP"),
 		levelRequirement = 0,
 		material = Material.POTION,
 		potion = PotionType.INSTANT_HEAL,
