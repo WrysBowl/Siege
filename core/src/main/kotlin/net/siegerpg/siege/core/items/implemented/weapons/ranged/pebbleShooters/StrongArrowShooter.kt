@@ -18,13 +18,13 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class ToughPebbleShooter() : CustomBow(
-		name = "Tough Pebble Shooter",
+class StrongArrowShooter() : CustomBow(
+		name = "Strong Arrow Shooter",
 		customModelData = 120003,
-		description = listOf("Now comes with pebble", "shooting support!"),
+		description = listOf("Now comes with arrow", "shooting support!"),
 		levelRequirement = 10,
 		material = Material.BOW,
-		baseStats = CustomItemUtils.statMap(strength = 18.0, defense = 40.0),
+		baseStats = CustomItemUtils.statMap(strength = 27.0),
                                       ) {
 
 	constructor(quality : Int) : this() {

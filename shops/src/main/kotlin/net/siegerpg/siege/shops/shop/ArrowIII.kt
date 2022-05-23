@@ -3,18 +3,8 @@ package net.siegerpg.siege.shops.shop
 import net.siegerpg.siege.core.items.implemented.misc.materials.GRAYFILLER
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.arrows.*
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.*
-import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Bone
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Feather
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.mobs.Magma
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.FemurBone
-import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.femurBones.*
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Spade
-import net.siegerpg.siege.core.items.implemented.weapons.melee.light.spades.*
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.pebbleShooters.*
-import net.siegerpg.siege.core.items.implemented.weapons.wands.GlowingTwig
-import net.siegerpg.siege.core.items.implemented.weapons.wands.glowingTwigs.*
-import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.shops.Shop
 import net.siegerpg.siege.shops.ShopItem
 

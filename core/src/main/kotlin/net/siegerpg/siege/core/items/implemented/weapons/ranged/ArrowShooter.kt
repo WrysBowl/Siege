@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.items.implemented.weapons.ranged.pebbleShooters
+package net.siegerpg.siege.core.items.implemented.weapons.ranged
 
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.Rarity
@@ -18,14 +18,14 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class HealthyPebbleShooter() : CustomBow(
-		name = "Healthy Pebble Shooter",
+class ArrowShooter() : CustomBow(
+		name = "Arrow Shooter",
 		customModelData = 120003,
-		description = listOf("Now comes with pebble", "shooting support!"),
+		description = listOf("Now comes with arrow", "shooting support!"),
 		levelRequirement = 10,
 		material = Material.BOW,
-		baseStats = CustomItemUtils.statMap(strength = 18.0, health = 6.0),
-                                        ) {
+		baseStats = CustomItemUtils.statMap(strength = 23.0)
+                                ) {
 
 	constructor(quality : Int) : this() {
 		this.quality = quality

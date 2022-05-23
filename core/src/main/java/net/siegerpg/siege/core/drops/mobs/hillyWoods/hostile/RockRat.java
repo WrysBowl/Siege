@@ -5,9 +5,7 @@ import net.siegerpg.siege.core.drops.Reward;
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.JaggedTunic;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
-import net.siegerpg.siege.core.items.implemented.misc.statgems.toughGems.RawToughGem;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.crossbows.*;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ArrowShooter;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.pebbleShooters.*;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.PebbleWand;
 import net.siegerpg.siege.core.miscellaneous.Utils;
@@ -22,12 +20,12 @@ public class RockRat extends MobDropTable {
 				new Reward(new Pebble()
 						           .getUpdatedItem(false), 10.0),
 				new Reward(new JaggedTunic(Utils.randRarity()).getUpdatedItem(false), 1.0),
-				new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
-				new Reward(new ToughPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
-				new Reward(new LuckyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
-				new Reward(new StrongPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
-				new Reward(new HealingPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
-				new Reward(new HealthyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new ArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new ToughArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new LuckyArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new StrongArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealingArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
+				new Reward(new HealthyArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.10),
 				new Reward(new PebbleWand(Utils.randRarity()).getUpdatedItem(false), 1.0),
 
 				new Reward(new MobKey(0).getUpdatedItem(false), 0.5),

@@ -8,7 +8,7 @@ import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.FemurBone
 import net.siegerpg.siege.core.items.implemented.weapons.melee.heavy.femurBones.*
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Spade
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.spades.*
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ArrowShooter
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.pebbleShooters.*
 import net.siegerpg.siege.core.items.implemented.weapons.wands.GlowingTwig
 import net.siegerpg.siege.core.items.implemented.weapons.wands.glowingTwigs.*
@@ -79,65 +79,65 @@ class Bailey : Shop() {
 
 			//PEBBLE SHOOTERS
 			ShopItem(
-					PebbleShooter(-1), -1, hashMapOf(
+					ArrowShooter(-1), -1, hashMapOf(
 					Pebble() to 16,
 					Stick() to 32,
 					Vine() to 16
-					                                ), true
+					                               ), true
 			        ) {
-				PebbleShooter(Utils.randRarity()).getUpdatedItem(false)
+				ArrowShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(
-					LuckyPebbleShooter(-1), -1, hashMapOf(
+					LuckyArrowShooter(-1), -1, hashMapOf(
 					Pebble() to 8,
 					Stick() to 32,
 					Vine() to 16,
 					Feather() to 8
-					                                     ), true
+					                                    ), true
 			        ) {
-				LuckyPebbleShooter(Utils.randRarity()).getUpdatedItem(false)
+				LuckyArrowShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					StrongPebbleShooter(-1), -1, hashMapOf(
+					StrongArrowShooter(-1), -1, hashMapOf(
 					Pebble() to 8,
 					Stick() to 32,
 					Vine() to 16,
 					Bone() to 8
-					                                      ), true
+					                                     ), true
 			        ) {
-				StrongPebbleShooter(Utils.randRarity()).getUpdatedItem(false)
+				StrongArrowShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					ToughPebbleShooter(-1), -1, hashMapOf(
+					ToughArrowShooter(-1), -1, hashMapOf(
 					Pebble() to 16,
 					Stick() to 32,
 					Vine() to 16
-					                                     ), true
+					                                    ), true
 			        ) {
-				ToughPebbleShooter(Utils.randRarity()).getUpdatedItem(false)
+				ToughArrowShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealthyPebbleShooter(-1), -1, hashMapOf(
+					HealthyArrowShooter(-1), -1, hashMapOf(
 					Pebble() to 8,
 					Stick() to 32,
 					Vine() to 16,
 					PlantMatter() to 8
-					                                       ), true
+					                                      ), true
 			        ) {
-				HealthyPebbleShooter(Utils.randRarity()).getUpdatedItem(false)
+				HealthyArrowShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 			ShopItem(
-					HealingPebbleShooter(-1), -1, hashMapOf(
+					HealingArrowShooter(-1), -1, hashMapOf(
 					Pebble() to 8,
 					Stick() to 32,
 					Vine() to 16,
 					Wheat() to 32
-					                                       ), true
+					                                      ), true
 			        ) {
-				HealingPebbleShooter(Utils.randRarity()).getUpdatedItem(false)
+				HealingArrowShooter(Utils.randRarity()).getUpdatedItem(false)
 			},
 
 			//FEMUR BONES

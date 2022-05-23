@@ -7,7 +7,7 @@ import net.siegerpg.siege.core.items.implemented.armor.chestplate.JaggedTunic;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.hillyWoods.LichKey;
 import net.siegerpg.siege.core.items.implemented.misc.materials.drops.blocks.Pebble;
-import net.siegerpg.siege.core.items.implemented.weapons.ranged.PebbleShooter;
+import net.siegerpg.siege.core.items.implemented.weapons.ranged.ArrowShooter;
 import net.siegerpg.siege.core.items.implemented.weapons.ranged.pebbleShooters.*;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.RockWand;
 import net.siegerpg.siege.core.items.implemented.weapons.wands.rockWands.*;
@@ -29,19 +29,19 @@ public class RockSpirit extends MobDropTable {
 				new Reward(new JaggedTunic(100).getUpdatedItem(false), 0.10),
 				new Reward(new JaggedTunic(80).getUpdatedItem(false), 0.50),
 
-				new Reward(new PebbleShooter(Utils.randRarity()).getUpdatedItem(false), 4.0),
-				new Reward(new LuckyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new ToughPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new StrongPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new HealingPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new HealthyPebbleShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
-				new Reward(new PebbleShooter(100).getUpdatedItem(false), 0.10),
-				new Reward(new PebbleShooter(80).getUpdatedItem(false), 0.20),
-				new Reward(new LuckyPebbleShooter(50).getUpdatedItem(false), 0.025),
-				new Reward(new ToughPebbleShooter(50).getUpdatedItem(false), 0.025),
-				new Reward(new StrongPebbleShooter(50).getUpdatedItem(false), 0.025),
-				new Reward(new HealingPebbleShooter(50).getUpdatedItem(false), 0.025),
-				new Reward(new HealthyPebbleShooter(50).getUpdatedItem(false), 0.025),
+				new Reward(new ArrowShooter(Utils.randRarity()).getUpdatedItem(false), 4.0),
+				new Reward(new LuckyArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new ToughArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new StrongArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new HealingArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new HealthyArrowShooter(Utils.randRarity()).getUpdatedItem(false), 0.01),
+				new Reward(new ArrowShooter(100).getUpdatedItem(false), 0.10),
+				new Reward(new ArrowShooter(80).getUpdatedItem(false), 0.20),
+				new Reward(new LuckyArrowShooter(50).getUpdatedItem(false), 0.025),
+				new Reward(new ToughArrowShooter(50).getUpdatedItem(false), 0.025),
+				new Reward(new StrongArrowShooter(50).getUpdatedItem(false), 0.025),
+				new Reward(new HealingArrowShooter(50).getUpdatedItem(false), 0.025),
+				new Reward(new HealthyArrowShooter(50).getUpdatedItem(false), 0.025),
 
 				new Reward(new RockWand(Utils.randRarity()).getUpdatedItem(false), 4.0),
 				new Reward(new LuckyRockWand(Utils.randRarity()).getUpdatedItem(false), 0.01),
