@@ -47,16 +47,6 @@ class Amber : Shop() {
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
-			//BERSERK
-			ShopItem(BerserkI(-1), 2000, hashMapOf(), false) {
-				BerserkI().getUpdatedItem(false)
-			},
-			ShopItem(BerserkII(-1), 2500, hashMapOf(), false) {
-				BerserkII().getUpdatedItem(false)
-			},
-			ShopItem(BerserkIII(-1), 3500, hashMapOf(), false) {
-				BerserkIII().getUpdatedItem(false)
-			},
 
 			//AoESlowness
 			ShopItem(AoESlownessI(-1), 1750, hashMapOf(), false) {
