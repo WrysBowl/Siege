@@ -29,7 +29,7 @@ public class MeraChat implements CommandExecutor {
 		if (deathLocation == null) return false;
 		int locationCostComputation = (int) player.getLocation().distance(deathLocation)*2;
 		int bal = (int) VaultHook.econ.getBalance(player);
-		if (player.hasPermission("siege.donor")) bal = 0;
+		if (player.hasPermission("siege.donor")) locationCostComputation = 0;
 
 		if (bal < locationCostComputation) {
 			player.sendMessage(Utils.lore("<red>You are too poor to teleport here!"));
