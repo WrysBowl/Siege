@@ -57,8 +57,6 @@ commands:
     description: Displays how much time you've spent on the server
   menu:
     description: Displays the menu
-  cookieClicker:
-    description: Play cookie clicker
   dailyReward:
     description: Daily reward
   questReward:

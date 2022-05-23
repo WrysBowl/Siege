@@ -158,13 +158,6 @@ public class Menu implements CommandExecutor {
 		//Creating level and exp display w/ click for more info
 		statistics.addItem(new GuiItem(getLevelIcon(player)));
 
-		/*
-		  Player Games Icons
-		 */
-		OutlinePane games = new OutlinePane(5, 0, 3, 1);
-		//Cookie clicker game
-		games.addItem(new GuiItem(getCookieClickerIcon(), e -> player.performCommand("cookieclicker")));
-
 
 		menu.addPane(vault);
 		menu.addPane(enderChest);
@@ -173,7 +166,6 @@ public class Menu implements CommandExecutor {
 		menu.addPane(hands);
 		menu.addPane(utilities);
 		menu.addPane(statistics);
-		menu.addPane(games);
 
 		this.menu = menu;
 		return menu;
@@ -460,19 +452,5 @@ public class Menu implements CommandExecutor {
 		return levelIcon;
 	}
 
-	private static ItemStack getCookieClickerIcon() {
-		ItemStack cookieClickerIcon = new ItemStack(Material.COOKIE);
-		ItemMeta cookieClickerIconItemMeta = cookieClickerIcon.getItemMeta();
-		cookieClickerIconItemMeta.displayName(Utils.lore("<gold>Cookie Clicker"));
-		cookieClickerIconItemMeta.lore(new ArrayList<>() {
-			{
-				add(Utils.lore("<gray>Click to Play"));
-				add(Utils.lore("<gray>Cookie Clicker!"));
-			}
-		});
-
-		cookieClickerIcon.setItemMeta(cookieClickerIconItemMeta);
-		return cookieClickerIcon;
-	}
 
 }
