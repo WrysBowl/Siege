@@ -45,7 +45,7 @@ interface CustomCosmetic : CustomItem {
 	}
 
 	override fun getSellValue() : Int {
-		return 1
+		return 1 //50 * quality
 	}
 
 	override fun updateMeta(hideRarity : Boolean) : ItemStack {

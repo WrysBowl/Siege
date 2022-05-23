@@ -294,10 +294,8 @@ public class DeathListener implements Listener, Runnable {
 		VaultHook.econ.depositPlayer(player, newBal);
 		int goldLost = bal - newBal;
 
-		//give killer gold
-		if (killer != null) {
-			GoldExpListener.giveGold(killer, goldLost);
-		}
+		//drop gold
+		GoldEXPSpawning.spawnGold(goldLost, player.getLocation());
 
 		new BukkitRunnable() {
 			@Override
