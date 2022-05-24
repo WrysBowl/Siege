@@ -19,8 +19,7 @@ import net.siegerpg.siege.core.miscellaneous.BossLeaderboardListener;
 import net.siegerpg.siege.core.miscellaneous.MobHeadType;
 import net.siegerpg.siege.core.miscellaneous.MobStats;
 import net.siegerpg.siege.core.miscellaneous.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.command.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -191,6 +190,7 @@ public class Drops implements CommandExecutor {
 		for (int i = startPosition; i < endPosition; i++) {
 
 			ItemStack item = rewards[i].getItem().clone();
+			ItemStack preItem = item.clone();
 			List< Component > lore = item.lore();
 
 			lore.add(Utils.lore("<dark_gray><underlined>            "));
@@ -199,7 +199,9 @@ public class Drops implements CommandExecutor {
 			lore.add(Utils.lore("<dark_gray><underlined>            "));
 			item.lore(lore);
 
-			row.addItem(new GuiItem(item));
+			row.addItem(new GuiItem(item, inventoryClickEvent -> {
+				if (player.getGameMode().equals(GameMode.CREATIVE)) Utils.giveItem(player, preItem);
+			}));
 		}
 
 		OutlinePane nextButton = new OutlinePane(8, 5, 1, 1);
