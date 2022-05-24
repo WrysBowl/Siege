@@ -18,17 +18,17 @@ class ArrowIII : Shop() {
 			},
 			ShopItem(
 					StunningArrow(-1).asQuantity(16), 1200, hashMapOf(
-					Pebble() to 40,
-					Stick() to 16,
+					Pebble() to 16,
+					Stick() to 8,
 					Feather() to 8,
-					ShroomPowder() to 32), true
+					ShroomPowder() to 8), true
 			        ) {
 				StunningArrow().getUpdatedItem(false).asQuantity(16)
 			},
 			ShopItem(
 					SlownessArrow(-1).asQuantity(16), 400, hashMapOf(
-					Pebble() to 40,
-					Stick() to 16,
+					Pebble() to 16,
+					Stick() to 8,
 					Feather() to 8), true
 			        ) {
 				SlownessArrow().getUpdatedItem(false).asQuantity(16)
@@ -36,7 +36,7 @@ class ArrowIII : Shop() {
 			ShopItem(
 					Arrow(-1).asQuantity(16), 100, hashMapOf(
 					Pebble() to 8,
-					Stick() to 16,
+					Stick() to 8,
 					Feather() to 8), true
 			        ) {
 				Arrow().getUpdatedItem(false).asQuantity(16)
@@ -44,10 +44,10 @@ class ArrowIII : Shop() {
 			ShopItem(
 					PoisonArrow(-1).asQuantity(16), 600, hashMapOf(
 					Pebble() to 8,
-					Stick() to 16,
+					Stick() to 8,
 					Feather() to 8,
-					PlantMatter() to 32,
-					Seed() to 32,
+					PlantMatter() to 16,
+					Seed() to 16,
 					                                              ), true
 			        ) {
 				PoisonArrow().getUpdatedItem(false).asQuantity(16)
@@ -55,9 +55,9 @@ class ArrowIII : Shop() {
 			ShopItem(
 					FlamingArrow(-1).asQuantity(16), 800, hashMapOf(
 					Pebble() to 8,
-					Stick() to 16,
+					Stick() to 8,
 					Feather() to 8,
-					Magma() to 32), true
+					Magma() to 16), true
 			        ) {
 				FlamingArrow().getUpdatedItem(false).asQuantity(16)
 			},

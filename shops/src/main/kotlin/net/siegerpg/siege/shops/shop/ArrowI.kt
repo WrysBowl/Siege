@@ -24,7 +24,7 @@ class ArrowI : Shop() {
 			ShopItem(
 					Arrow(-1).asQuantity(16), 100, hashMapOf(
 					Pebble() to 8,
-					Stick() to 16,
+					Stick() to 8,
 					Feather() to 8), true
 			        ) {
 				Arrow().getUpdatedItem(false).asQuantity(16)

@@ -22,8 +22,8 @@ class ArrowII : Shop() {
 			},
 			ShopItem(
 					SlownessArrow(-1).asQuantity(16), 400, hashMapOf(
-					Pebble() to 40,
-					Stick() to 16,
+					Pebble() to 16,
+					Stick() to 8,
 					Feather() to 8), true
 			        ) {
 				SlownessArrow().getUpdatedItem(false).asQuantity(16)
@@ -31,7 +31,7 @@ class ArrowII : Shop() {
 			ShopItem(
 					Arrow(-1).asQuantity(16), 100, hashMapOf(
 					Pebble() to 8,
-					Stick() to 16,
+					Stick() to 8,
 					Feather() to 8), true
 			        ) {
 				Arrow().getUpdatedItem(false).asQuantity(16)
@@ -39,10 +39,10 @@ class ArrowII : Shop() {
 			ShopItem(
 					PoisonArrow(-1).asQuantity(16), 600, hashMapOf(
 					Pebble() to 8,
-					Stick() to 16,
+					Stick() to 8,
 					Feather() to 8,
-					PlantMatter() to 32,
-					Seed() to 32,
+					PlantMatter() to 16,
+					Seed() to 16,
 					                                              ), true
 			        ) {
 				PoisonArrow().getUpdatedItem(false).asQuantity(16)
