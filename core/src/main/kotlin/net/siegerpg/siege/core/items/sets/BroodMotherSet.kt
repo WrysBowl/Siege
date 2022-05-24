@@ -46,19 +46,19 @@ class BroodMotherSet : GearSet(
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return
 
-		//cooldown for 10 seconds
+		//cooldown for 5 seconds
 		cooldown.add(player)
 		object : BukkitRunnable() {
 			override fun run() {
 				cooldown.remove(player)
 			}
-		}.runTaskLater(Core.plugin(), 200)
+		}.runTaskLater(Core.plugin(), 100)
 
-		val targetLoc = if (player.getTargetBlock(40) == null) {
-			val block = player.getTargetBlock(40) ?: return
+		val targetLoc = if (player.getTargetBlock(60) == null) {
+			val block = player.getTargetBlock(60) ?: return
 			block.location
 		} else {
-			val block = player.getTargetBlock(40) ?: return
+			val block = player.getTargetBlock(60) ?: return
 			block.location
 		}
 
