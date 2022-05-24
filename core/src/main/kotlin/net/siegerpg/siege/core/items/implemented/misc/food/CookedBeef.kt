@@ -18,11 +18,6 @@ class CookedBeef() : CustomFood(
 		quality = 70
                                ) {
 
-	override fun speciality(player : Player) {
-		val realPotion = PotionEffect(PotionEffectType.SATURATION, 200, 2)
-		player.addPotionEffect(realPotion)
-	}
-
 
 	constructor(quality : Int) : this() {
 		this.quality = quality
