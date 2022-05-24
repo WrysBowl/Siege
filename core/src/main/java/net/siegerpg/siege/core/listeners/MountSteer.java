@@ -181,7 +181,7 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 
 			String entityName = item.getItemMeta().getDisplayName();
 			Entity entity = player.getWorld().spawnEntity(player.getLocation(), type);
-			((Ageable)entity).setAdult();
+			if (entity instanceof Ageable) ((Ageable)entity).setAdult();
 			if (entity instanceof Tameable) {
 				((Tameable) entity).setOwner(player);
 				((Tameable) entity).setTamed(true);
