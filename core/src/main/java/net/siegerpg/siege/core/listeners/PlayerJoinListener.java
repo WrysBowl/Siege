@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.items.CustomItemUtils;
 import net.siegerpg.siege.core.items.implemented.misc.food.Drumstick;
 import net.siegerpg.siege.core.items.implemented.misc.keys.cosmetic.CommonKey;
 import net.siegerpg.siege.core.items.implemented.misc.keys.crate.MobKey;
+import net.siegerpg.siege.core.items.implemented.misc.materials.drops.arrows.*;
 import net.siegerpg.siege.core.items.implemented.misc.skills.warrior.*;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenAxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
@@ -143,6 +144,7 @@ public class PlayerJoinListener implements Listener {
 		player.getInventory().addItem(new WoodenAxe(0).getUpdatedItem(false));
 		player.getInventory().addItem(new WoodenShovel(0).getUpdatedItem(false));
 		player.getInventory().addItem(new Drumstick().getUpdatedItem(false).asQuantity(10));
+		player.getInventory().addItem(new Arrow().getUpdatedItem(false).asQuantity(32));
 		player.getInventory().addItem(new MobKey(0).getUpdatedItem(false).asQuantity(3));
 		player.getInventory().addItem(new CommonKey().getUpdatedItem(false).asQuantity(1));
 
