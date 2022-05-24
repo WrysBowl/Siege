@@ -117,7 +117,7 @@ public class Fishing extends CustomEvent {
 		GoldExpListener.giveGold(winner, getTotalPoints());
 	}
 
-	public static void sendLeaderboardTopLimit(int limit) {
+	public void sendLeaderboardTopLimit(int limit) {
 
 		if (playerScores == null) {
 			Bukkit.broadcast(Utils.parse("<red>Not enough people participated in this tournament."));
@@ -141,7 +141,7 @@ public class Fishing extends CustomEvent {
 
 	}
 
-	private static int getTotalPoints() {
+	private int getTotalPoints() {
 		int totalPoints = 0;
 		for (Integer value : playerScores.values()) {
 			totalPoints+=value;
@@ -149,11 +149,11 @@ public class Fishing extends CustomEvent {
 		return totalPoints;
 	}
 
-	public static int getFishScore(Fish fish) {
+	public int getFishScore(Fish fish) {
 		return (int) ((100 * fish.winScore * fish.moveSpeed)/fish.length);
 	}
 
-	public static void sendFishingHistory(Player target) {
+	public void sendFishingHistory(Player target) {
 		int counter = 1;
 
 		target.sendMessage(Utils.parse(""));

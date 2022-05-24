@@ -66,7 +66,7 @@ public class CustomFishEvent {
 
 		//Check if fishing event is currently active
 		if (CustomEventListener.currentlyActive instanceof Fishing) {
-			int score = Fishing.getFishScore(fish);
+			int score = ((Fishing)CustomEventListener.currentlyActive).getFishScore(fish);
 			int currentScore = 0;
 
 			if (Fishing.playerScores.containsKey(player)) currentScore = Fishing.playerScores.get(player);

@@ -96,7 +96,7 @@ public class BlockBreak extends CustomEvent {
 		GoldExpListener.giveGold(winner, getTotalPoints());
 	}
 
-	public static void sendLeaderboardTopLimit(int limit) {
+	public void sendLeaderboardTopLimit(int limit) {
 		List< Map.Entry<Player, Integer> > topPlayersLimit = playerScores.entrySet().stream().sorted(
 				Map.Entry.comparingByValue(reverseOrder())).limit(limit).collect(toList());
 
@@ -114,7 +114,7 @@ public class BlockBreak extends CustomEvent {
 
 	}
 
-	private static int getTotalPoints() {
+	private int getTotalPoints() {
 		int totalPoints = 0;
 		for (Integer value : playerScores.values()) {
 			totalPoints+=value;
