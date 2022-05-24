@@ -30,7 +30,7 @@ public class MagmaSpirit extends MobDropTable {
 
 	public MagmaSpirit() {
 
-		super("MagmaSpirit", 1500, 1800, 6000, 8000, new Reward[] {
+		super("MagmaSpirit", 1500, 1800, 3000, 4000, new Reward[] {
 				new Reward(new Magma().getUpdatedItem(false), 100.0),
 				new Reward(new Magma().getUpdatedItem(false).asQuantity(8), 10.0),
 

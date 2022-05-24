@@ -36,7 +36,7 @@ public class Broodmother extends MobDropTable {
 
 	public Broodmother() {
 
-		super("Broodmother", 10000, 15000, 65000, 90000, new Reward[] {
+		super("Broodmother", 10000, 15000, 25000, 30000, new Reward[] {
 				new Reward(new Vine().getUpdatedItem(false).asQuantity(4), 100.0),
 				new Reward(new Vine().getUpdatedItem(false).asQuantity(8), 50.0),
 

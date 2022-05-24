@@ -32,7 +32,7 @@ public class FoxSpirit extends MobDropTable {
 
 	public FoxSpirit() {
 
-		super("FoxSpirit", 7500, 12500, 50000, 60000, new Reward[] {
+		super("FoxSpirit", 7500, 12500, 20000, 25000, new Reward[] {
 
 				new Reward(new Bone().getUpdatedItem(false), 60.0),
 				new Reward(new Bone().getUpdatedItem(false).asQuantity(8), 10.20),
