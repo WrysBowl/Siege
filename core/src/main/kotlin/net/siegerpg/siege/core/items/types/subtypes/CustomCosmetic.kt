@@ -81,6 +81,11 @@ interface CustomCosmetic : CustomItem {
 			}
 		}
 		meta.lore(" ")
+		meta.lore("1. Drag onto item")
+		meta.lore("   to merge")
+		meta.lore("2. Right click item")
+		meta.lore("   to unmerge")
+		meta.lore(" ")
 		meta.lore("<r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
 		meta.lore("")
 		meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> Tier" else "<r>${shownRarity.color}${shownRarity.id} Tier")
