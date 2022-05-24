@@ -40,6 +40,11 @@ public class WorldListener extends PacketListenerAbstract implements Listener, R
 			return;
 		event.setCancelled(true);
 	}
+	
+	@EventHandler
+	public void preventZombification(EntityTransformEvent e) {
+		e.setCancelled(true);
+	}
 
 	@EventHandler
 	public void onPlace(BlockPlaceEvent event) {
