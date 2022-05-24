@@ -146,7 +146,8 @@ class BossLeaderboardListener : Listener {
 						(Duration.between(bossFight.startTime, deathTime).toSeconds().toDouble())
 				    )
 		bossFight.fighters.forEach { (fighter, damageDone) ->
-			val percentageDamage : Int = ceil((damageDone * 100) / totalDamageDone ).toInt()
+			var percentageDamage : Int = ceil((damageDone * 100) / totalDamageDone).toInt()
+			if (percentageDamage > 100) percentageDamage = 100
 			hashMapData[fighter] = Pair(percentageDamage.toByte(), fightDuration.toInt())
 			val player : Player = Bukkit.getPlayer(fighter) ?: return
 
@@ -154,6 +155,7 @@ class BossLeaderboardListener : Listener {
 
 				val dropMultiplier =
 						if (percentageDamage >= 50) 1.0 else percentageDamage.toDouble() / 100 * 2
+
 				val time = Utils.secondsToHHMMSS((fightDuration.toInt()).toLong())
 
 				player.sendMessage(Utils.lore(""))
