@@ -30,8 +30,7 @@ public class Lich extends MobDropTable {
 
 	public Lich() {
 
-		super("Lich", 3000, 5500, 17500, 20000, new Reward[] {
-
+		super("Lich", 3000, 5500, 20000, 25000, new Reward[] {
 				new Reward(new Vine().getUpdatedItem(false), 100.0),
 				new Reward(new Vine().getUpdatedItem(false).asQuantity(8), 10.0),
 
