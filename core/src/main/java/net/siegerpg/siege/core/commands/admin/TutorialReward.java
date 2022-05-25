@@ -25,6 +25,7 @@ public class TutorialReward implements CommandExecutor {
 			player.sendMessage(Utils.parse("<red>You've already claimed your tutorial reward!"));
 			return false;
 		}
+		VaultHook.perms.playerAdd(null, player, "siege.tutorial.complete");
 
 		Utils.giveItem(player, new MobKey().getUpdatedItem(false).asQuantity(3));
 		Utils.giveItem(player, new CommonKey().getUpdatedItem(false));
