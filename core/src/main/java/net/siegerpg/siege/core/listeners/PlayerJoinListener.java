@@ -145,8 +145,6 @@ public class PlayerJoinListener implements Listener {
 		player.getInventory().addItem(new WoodenShovel(0).getUpdatedItem(false));
 		player.getInventory().addItem(new Drumstick().getUpdatedItem(false).asQuantity(10));
 		player.getInventory().addItem(new Arrow().getUpdatedItem(false).asQuantity(32));
-		player.getInventory().addItem(new MobKey(0).getUpdatedItem(false).asQuantity(3));
-		player.getInventory().addItem(new CommonKey().getUpdatedItem(false).asQuantity(1));
 
 		VaultHook.econ.withdrawPlayer(player, VaultHook.econ.getBalance(player));
 		VaultHook.econ.depositPlayer(player, 400.0);
