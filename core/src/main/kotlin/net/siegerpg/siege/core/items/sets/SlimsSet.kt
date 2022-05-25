@@ -45,14 +45,6 @@ class SlimsSet : GearSet(
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return
 
-		//cooldown for 5 seconds
-		cooldown.add(player)
-		object : BukkitRunnable() {
-			override fun run() {
-				cooldown.remove(player)
-			}
-		}.runTaskLater(Core.plugin(), 160)
-
 		val count = (jumpCounter[player] ?: 0) + 1
 		jumpCounter[player] = count
 		object : BukkitRunnable() {
@@ -63,6 +55,16 @@ class SlimsSet : GearSet(
 
 		//if double jump
 		if (count > 1) {
+
+			//cooldown for 5 seconds
+			cooldown.add(player)
+			object : BukkitRunnable() {
+				override fun run() {
+					cooldown.remove(player)
+				}
+			}.runTaskLater(Core.plugin(), 160)
+
+
 			jumpCounter[player] = 0
 			//pushes the player in the direction of the vector
 			player.velocity = player.location.direction.setY(0).normalize().multiply(2)
