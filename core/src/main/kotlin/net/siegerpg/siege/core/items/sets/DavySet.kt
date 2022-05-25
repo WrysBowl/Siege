@@ -1,9 +1,11 @@
 package net.siegerpg.siege.core.items.sets
 
 import net.siegerpg.siege.core.Core
+import net.siegerpg.siege.core.items.implemented.armor.boots.DavyBoots
 import net.siegerpg.siege.core.items.implemented.armor.boots.LichBoots
 import net.siegerpg.siege.core.items.implemented.armor.boots.SlimyBoots
 import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*
+import net.siegerpg.siege.core.items.implemented.armor.chestplate.DavyTunic
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.LichCloak
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.SlimyChestplate
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*
@@ -11,6 +13,7 @@ import net.siegerpg.siege.core.items.implemented.armor.helmet.DavyCap
 import net.siegerpg.siege.core.items.implemented.armor.helmet.LichHood
 import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*
+import net.siegerpg.siege.core.items.implemented.armor.leggings.DavyLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LichLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
@@ -21,9 +24,9 @@ import org.bukkit.scheduler.BukkitRunnable
 
 class DavySet : GearSet(
 		helmets = hashSetOf(DavyCap()),
-		chestplates = hashSetOf(LichCloak()),
-		leggings = hashSetOf(LichLeggings()),
-		boots = hashSetOf(LichBoots())
+		chestplates = hashSetOf(DavyTunic()),
+		leggings = hashSetOf(DavyLeggings()),
+		boots = hashSetOf(DavyBoots())
                        ) {
 
 	override fun setEffect(player : Player) : Boolean{
