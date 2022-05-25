@@ -25,8 +25,11 @@ public class SetRespawn implements CommandExecutor {
 			sender.sendMessage(Utils.parse("<red>You can't use this command"));
 			return false;
 		}
+		if (!player.isOnGround()) {
+			player.sendMessage(Utils.parse("<red>Can't save location on unstable ground! (Try on solid ground)"));
+		}
 
-		player.setBedSpawnLocation(player.getLocation(), true);
+		player.setBedSpawnLocation(player.getLocation().toBlockLocation(), true);
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<green>Respawn point has been set!"));
 		player.sendMessage("");
