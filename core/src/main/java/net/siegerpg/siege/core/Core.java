@@ -139,7 +139,8 @@ public final class Core extends JavaPlugin {
 			commandList.put("skills", new SkillGUI());
 			commandList.put("scrapper", new Scrapper());
 			commandList.put("traveler", new Traveler());
-			commandList.put("tutorial", new Traveler());
+			commandList.put("tutorial", new Tutorial());
+			commandList.put("tutorialReward", new TutorialReward());
 
 		}
 

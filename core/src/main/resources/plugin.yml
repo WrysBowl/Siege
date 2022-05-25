@@ -74,3 +74,5 @@ commands:
     description: Teleports the player to places around the map
   tutorial:
     description: Teleports the player to tutorial
+  tutorialReward:
+    description: Gives rewards for players who just finished the tutorial

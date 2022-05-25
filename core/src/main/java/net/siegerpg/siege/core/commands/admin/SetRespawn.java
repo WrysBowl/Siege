@@ -27,6 +27,7 @@ public class SetRespawn implements CommandExecutor {
 		}
 		if (!player.isOnGround()) {
 			player.sendMessage(Utils.parse("<red>Can't save location on unstable ground! (Try on solid ground)"));
+			return false;
 		}
 
 		player.setBedSpawnLocation(player.getLocation().toBlockLocation(), true);
