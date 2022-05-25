@@ -18,11 +18,6 @@ class Beef() : CustomFood(
 		quality = 50
                          ) {
 
-	override fun speciality(player : Player) {
-		val realPotion = PotionEffect(PotionEffectType.SATURATION, 200, 1)
-		player.addPotionEffect(realPotion)
-	}
-
 	constructor(quality : Int) : this() {
 		this.quality = quality
 		this.rarity = Rarity.getFromInt(quality)
