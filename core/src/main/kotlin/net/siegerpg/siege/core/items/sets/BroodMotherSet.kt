@@ -54,29 +54,51 @@ class BroodMotherSet : GearSet(
 			}
 		}.runTaskLater(Core.plugin(), 100)
 
-		val targetLoc = if (player.getTargetBlock(60) == null) {
-			val block = player.getTargetBlock(60) ?: return
-			block.location
-		} else {
-			val block = player.getTargetBlock(60) ?: return
-			block.location
-		}
+		object : BukkitRunnable() {
+			var counter : Int = 0
+			override fun run() {
+				counter++
 
-		val loc =
-				player.location.add(0.0, player.eyeHeight, 0.0) //player location
-		val fromPlayerToTarget = targetLoc.toVector().subtract(loc.toVector())
-		WandCast(
-				Core.plugin(),
-				BroodMotherWand(),
-				player,
-				fromPlayerToTarget,
-				loc,
-				CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH, BroodMotherWand().getUpdatedItem(false)),
-				targetLoc,
-				0.06
-		        ).runTaskTimer(
-				Core.plugin(),
-				1,
-				0)
+				//get locations of entities involved
+				val targetLoc = if (player.getTargetBlock(60) == null) {
+					val block = player.getTargetBlock(60) ?: return
+					block.location
+				} else {
+					val block = player.getTargetBlock(60) ?: return
+					block.location
+				}
+
+				val loc =
+						player.location.add(0.0, player.eyeHeight, 0.0) //player location
+				val fromPlayerToTarget = targetLoc.toVector().subtract(loc.toVector())
+
+				player.spawnParticle(
+						Particle.CAMPFIRE_COSY_SMOKE,
+						player.location.x,
+						player.location.y,
+						player.location.z, 10,
+						0.0, 0.0, 0.0, 0.1
+				                    )
+				player.playSound(player.location, Sound.BLOCK_LAVA_EXTINGUISH, 1.0f, 1.0f)
+
+				WandCast(
+						Core.plugin(),
+						BroodMotherWand(),
+						player,
+						fromPlayerToTarget,
+						loc,
+						CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH, BroodMotherWand().getUpdatedItem(false)),
+						targetLoc,
+						0.06
+				        ).runTaskTimer(
+						Core.plugin(),
+						1,
+						0)
+
+				if (counter > 5) {
+					this.cancel()
+				}
+			}
+		}.runTaskTimer(Core.plugin(), 0, 10)
 	}
 }
