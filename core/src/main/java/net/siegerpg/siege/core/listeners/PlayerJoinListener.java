@@ -74,29 +74,32 @@ public class PlayerJoinListener implements Listener {
 
 		//Sets level into database
 		Levels.INSTANCE.getExpLevel(player, shortIntegerPair -> {
-			try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
-				// Add the user to the db if he doesn't exist
-				if (player.getLevel() > 1 && shortIntegerPair == null) {
-					PreparedStatement userData = conn.prepareStatement(
-							"INSERT INTO userData (uuid, level, experience) VALUES (?, ?, ?)");
-					userData.setString(1, player
-							.getUniqueId()
-							.toString());
-					userData.setShort(2, (short) player.getLevel());
-					userData.setInt(3, (int) (player.getExp() * Levels.INSTANCE.calculateRequiredExperience((short) player.getLevel())));
-					userData.executeUpdate();
+			if (shortIntegerPair == null) {
+				try (Connection conn = DatabaseManager.INSTANCE.getConnection()) {
+					// Add the user to the db if he doesn't exist
+					if (player.getLevel() > 1) {
+						PreparedStatement userData = conn.prepareStatement(
+								"INSERT INTO userData (uuid, level, experience) VALUES (?, ?, ?)");
+						userData.setString(1, player
+								.getUniqueId()
+								.toString());
+						userData.setShort(2, (short) player.getLevel());
+						userData.setInt(3, (int) (player.getExp() * Levels.INSTANCE.calculateRequiredExperience((short) player.getLevel())));
+						userData.executeUpdate();
 
-				} else {
-					PreparedStatement userData = conn.prepareStatement(
-							"INSERT INTO userData (uuid) VALUES (?)");
-					userData.setString(1, player
-							.getUniqueId()
-							.toString());
-					userData.executeUpdate();
+					} else {
+						PreparedStatement userData = conn.prepareStatement(
+								"INSERT INTO userData (uuid) VALUES (?)");
+						userData.setString(1, player
+								.getUniqueId()
+								.toString());
+						userData.executeUpdate();
 
+					}
+				} catch (SQLException ignored) {
 				}
-			} catch (SQLException ignored) {
 			}
+
 			return null;
 		});
 
