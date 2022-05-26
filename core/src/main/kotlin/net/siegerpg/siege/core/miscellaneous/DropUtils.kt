@@ -49,17 +49,22 @@ class DropUtils : Listener, PacketListenerAbstract() {
 	 */
 	override fun onPacketPlaySend(evt : PacketPlaySendEvent) {
 		if (evt.packetId == PacketType.Play.Server.SPAWN_ENTITY) {
-			val wrappedPacket = WrappedPacketOutSpawnEntity(evt.nmsPacket)
-			if (wrappedPacket.entity?.type != EntityType.DROPPED_ITEM)
-				return
-			val item = wrappedPacket.entity as Item
-			val itemStack = item.itemStack
-			val seepickableby = itemStack.getNbtTag<String>("seepickableby")
-			                    ?: return
-			if (seepickableby.isEmpty()) return
-			val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
-			if (!stringUUIDs.contains(evt.player.uniqueId.toString()))
-				evt.isCancelled = true
+			try {
+				val wrappedPacket = WrappedPacketOutSpawnEntity(evt.nmsPacket)
+				if (wrappedPacket.entity?.type != EntityType.DROPPED_ITEM)
+					return
+				val item = wrappedPacket.entity as Item
+				val itemStack = item.itemStack
+				val seepickableby = itemStack.getNbtTag<String>("seepickableby")
+				                    ?: return
+				if (seepickableby.isEmpty()) return
+				val stringUUIDs = Gson().fromJson(seepickableby, Array<String>::class.java)
+				if (!stringUUIDs.contains(evt.player.uniqueId.toString()))
+					evt.isCancelled = true
+			} catch (ignored: Exception) {
+
+			}
+
 		}
 	}
 
