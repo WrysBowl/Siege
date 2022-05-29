@@ -74,9 +74,8 @@ public class IceBolt extends Skill {
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
 		if(!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
 
-		//triggerEnd(player, level) call for skill's end.
+		// Handling of the skill goes here
 		return true;
 	}
 
