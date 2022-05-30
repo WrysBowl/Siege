@@ -141,6 +141,10 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		Player player = e.getPlayer();
 		ItemStack item = e.getItem();
 
+		if(!isSpawnEgg(item)) return;
+		EntityType type = getSpawnEggType(item);
+		if (type==null) return;
+
 		//cooldown
 		if (currentCooldown.containsKey(player)) {
 			if ((System.currentTimeMillis() - currentCooldown.get(player)) >= 5000) {
@@ -152,11 +156,7 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		} else {
 			currentCooldown.put(player, System.currentTimeMillis());
 		}
-
-		if(!isSpawnEgg(item)) return;
-		EntityType type = getSpawnEggType(item);
-		if (type==null) return;
-
+		
 		//prevent player from spawning mob
 		e.setCancelled(true);
 
