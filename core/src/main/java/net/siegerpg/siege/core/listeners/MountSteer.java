@@ -141,6 +141,11 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		Player player = e.getPlayer();
 		ItemStack item = e.getItem();
 
+		//start cooldown for player
+		if (!currentCooldown.containsKey(player)) {
+			currentCooldown.put(player, System.currentTimeMillis());
+		}
+
 		if(!isSpawnEgg(item)) return;
 		EntityType type = getSpawnEggType(item);
 		if (type==null) return;
@@ -156,7 +161,7 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		}
 
 		try {
-
+			
 			if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 			if (player.isSneaking()) {
 				player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE,player.getLocation(),10);
@@ -165,14 +170,12 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 
 			//cooldown
 			if (currentCooldown.containsKey(player)) {
-
-				if ((System.currentTimeMillis() - currentCooldown.get(player)) >= 1000) {
-					currentCooldown.put(player, System.currentTimeMillis());
+				if ((System.currentTimeMillis() - currentCooldown.get(player)) >= 2000) {
+					currentCooldown.remove(player);
 				} else {
+					player.sendMessage(Utils.lore("<red>Your mount is still on cooldown!"));
 					return;
 				}
-			} else {
-				currentCooldown.put(player, System.currentTimeMillis());
 			}
 
 			String entityName = item.getItemMeta().getDisplayName();
