@@ -148,6 +148,16 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 		if(!isSpawnEgg(item)) return;
 		EntityType type = getSpawnEggType(item);
 		if (type==null) return;
+		//prevent player from spawning mob
+		e.setCancelled(true);
+
+		//if player is already on the mount
+		if (cachedMounts.containsKey(player)) {
+			Entity entity = cachedMounts.get(player);
+			entity.remove();
+			cachedMounts.remove(player);
+			return;
+		}
 
 		//cooldown
 		if (currentCooldown.containsKey(player)) {
@@ -161,15 +171,9 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 			currentCooldown.put(player, System.currentTimeMillis());
 		}
 		
-		//prevent player from spawning mob
-		e.setCancelled(true);
 
-		if (cachedMounts.containsKey(player)) {
-			Entity entity = cachedMounts.get(player);
-			entity.remove();
-			cachedMounts.remove(player);
-			return;
-		}
+
+
 
 		try {
 			
