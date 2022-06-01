@@ -6,7 +6,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class RareKey() : CustomKey(
-		name = "Rare Key",
+		name = "Cosmetic Key V",
 		customModelData = 630003,
 		description = listOf("Get a rare cosmetic"),
 		material = Material.TRIPWIRE_HOOK,

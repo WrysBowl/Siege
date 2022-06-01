@@ -6,7 +6,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class EpicKey() : CustomKey(
-		name = "Epic Key",
+		name = "Cosmetic Key VII",
 		customModelData = 630004,
 		description = listOf("Get an epic cosmetic"),
 		material = Material.TRIPWIRE_HOOK,

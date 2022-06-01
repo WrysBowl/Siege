@@ -6,7 +6,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CommonKey() : CustomKey(
-		name = "Common Key",
+		name = "Cosmetic Key I",
 		customModelData = 630001,
 		description = listOf("Get a common cosmetic"),
 		material = Material.TRIPWIRE_HOOK,

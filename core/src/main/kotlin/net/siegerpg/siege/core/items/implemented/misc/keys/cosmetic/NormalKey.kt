@@ -6,7 +6,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class NormalKey() : CustomKey(
-		name = "Normal Key",
+		name = "Cosmetic Key II",
 		customModelData = 630006,
 		description = listOf("High chance of a", "common cosmetic"),
 		material = Material.TRIPWIRE_HOOK,

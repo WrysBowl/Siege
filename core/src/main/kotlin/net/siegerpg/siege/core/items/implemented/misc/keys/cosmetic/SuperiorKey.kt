@@ -6,7 +6,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class SuperiorKey() : CustomKey(
-		name = "Superior Key",
+		name = "Cosmetic Key IV",
 		customModelData = 630007,
 		description = listOf("High chance of a", "rare cosmetic"),
 		material = Material.TRIPWIRE_HOOK,
