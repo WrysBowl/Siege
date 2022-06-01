@@ -33,6 +33,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.*
+import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
@@ -105,6 +106,24 @@ class CustomItemKotlinListener : Listener {
 			}
 		}
 
+	}
+
+	@EventHandler
+	fun updateItemEachHit(e: InventoryCloseEvent) {
+		val player = e.player
+		val item = player.inventory.itemInMainHand
+		if (item.type == Material.AIR) return
+		val customItem = getCustomItem(item) ?: return
+		player.inventory.setItemInMainHand(customItem.getUpdatedItem(false))
+	}
+
+	@EventHandler
+	fun updateItemEachHit(e: PlayerSwapHandItemsEvent) {
+		val player = e.player
+		val item = e.mainHandItem ?: return
+		if (item.type == Material.AIR) return
+		val customItem = getCustomItem(item) ?: return
+		player.inventory.setItemInMainHand(customItem.getUpdatedItem(false))
 	}
 
 	@EventHandler
