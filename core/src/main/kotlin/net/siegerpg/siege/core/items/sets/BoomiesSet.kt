@@ -27,17 +27,11 @@ class BoomiesSet : GearSet(
 		boots = hashSetOf(BoomiesHooves())
                           ) {
 
-	companion object {
-
-		val cooldown : ArrayList<Player> = arrayListOf()
-	}
-
 	@EventHandler
 	fun onSneak(e : PlayerToggleSneakEvent) {
 
 		val player : Player = e.player
 
-		if (cooldown.contains(player)) return
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return
 
@@ -65,19 +59,11 @@ class BoomiesSet : GearSet(
 				}
 
 				//player has held sneak for more than 2 seconds
-				if (counter > 2) {
+				if (counter > 1) {
 					this.cancel()
 
-					//cooldown for 10 seconds
-					cooldown.add(player)
-					object : BukkitRunnable() {
-						override fun run() {
-							cooldown.remove(player)
-						}
-					}.runTaskLater(Core.plugin(), 100)
-
 					//pushes the player in the direction of the vector
-					player.velocity = player.location.direction.setY(0).normalize().multiply(4)
+					player.velocity = player.location.direction.setY(0).normalize().multiply(6)
 
 					object : BukkitRunnable() {
 						override fun run() {
@@ -94,14 +80,14 @@ class BoomiesSet : GearSet(
 							                    )
 
 							//damages all living entities within 2 blocks
-							val dmg = CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH, player.inventory.itemInMainHand)
+							val dmg = CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH)
 
 							for (entity in player.location.getNearbyLivingEntities(3.0)) {
 								if (entity.equals(player)) continue
 								entity.damage(dmg, player)
 							}
 						}
-					}.runTaskLater(Core.plugin(), 12)
+					}.runTaskLater(Core.plugin(), 8)
 
 
 				}

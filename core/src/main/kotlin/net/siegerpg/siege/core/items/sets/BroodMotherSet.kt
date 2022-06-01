@@ -87,7 +87,7 @@ class BroodMotherSet : GearSet(
 						player,
 						fromPlayerToTarget,
 						loc,
-						CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH, BroodMotherWand().getUpdatedItem(false)),
+						CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH),
 						targetLoc,
 						0.06
 				        ).runTaskTimer(
