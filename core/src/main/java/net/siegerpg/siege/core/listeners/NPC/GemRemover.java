@@ -134,6 +134,13 @@ public class GemRemover implements Listener {
 
 	private void getGem(Player player) {
 
+		int bal = (int) VaultHook.econ.getBalance(player);
+		if (bal < getCost()) {
+			player.sendMessage(Utils.lore("<red>Sorry! You're too poor. You need "+getCost()+" gold to rmeove this gem."));
+			player.closeInventory();
+			return;
+		}
+
 		CustomEquipment equipmentItem = ((CustomEquipment)this.item);
 		try {
 			ItemStack removedItem = equipmentItem.getItem().asOne();

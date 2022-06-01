@@ -16,7 +16,11 @@ public class DropTable {
 
 		ArrayList< ItemStack > itemList = new ArrayList<>();
 		for (Reward reward : rewards) {
+
+			//calculate natural chance item drops
 			if (!Utils.randTest(reward.chance)) continue;
+
+			//determine how many times to add the item to the returned list
 			for (double i = luckChance; i >= 0; i -= 100) {
 				itemList.add(reward.item);
 				if (i <= 100 && Utils.randTest(i)) {
