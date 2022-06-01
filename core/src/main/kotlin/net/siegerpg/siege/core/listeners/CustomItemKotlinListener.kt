@@ -80,6 +80,7 @@ class CustomItemKotlinListener : Listener {
 		val player : Player = e.entity.shooter as Player
 
 		lastShotArrow[player]?.let {
+			if (it.type == Material.AIR) return
 			val item : CustomItem = CustomItemUtils.getCustomItem(it) ?: return@let
 			if (item is CustomArrow) {
 				item.onShoot(e)
