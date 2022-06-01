@@ -119,6 +119,7 @@ class CustomItemKotlinListener : Listener {
 				it.onInteract(e)
 			}
 		}
+
 	}
 
 	@EventHandler
@@ -328,12 +329,6 @@ class CustomItemKotlinListener : Listener {
 			}
 		}.runTaskAsynchronously(plugin())
 	}
-
-	@EventHandler
-	fun forceWepCooldown(e: PlayerSwapHandItemsEvent) {
-		e.isCancelled = true
-	}
-
 
 
 	@EventHandler

@@ -20,6 +20,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.event.server.PluginDisableEvent
 import org.bukkit.inventory.ItemStack
 import java.time.Duration
 import java.time.Instant
@@ -92,6 +93,15 @@ class BossLeaderboardListener : Listener {
 				"SlimeSpirit" to SlimeSpirit()
 		                                              ) as HashMap<String, MobDropTable>
 		val currentBossFights = ArrayList<BossFight>()
+	}
+
+	//clear all bosses on server restart
+	@EventHandler
+	fun bossReset(e: PluginDisableEvent) {
+		for (fight in currentBossFights) {
+			fight.entity.setDead()
+		}
+		currentBossFights.clear()
 	}
 
 
