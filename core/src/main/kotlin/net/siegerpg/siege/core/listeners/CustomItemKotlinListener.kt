@@ -119,12 +119,8 @@ class CustomItemKotlinListener : Listener {
 	}
 
 	@EventHandler
-	fun updateItemEachHit(e: PlayerSwapHandItemsEvent) {
-		val player = e.player
-		val item = e.mainHandItem ?: return
-		if (item.type == Material.AIR) return
-		val customItem = getCustomItem(item) ?: return
-		player.inventory.setItemInMainHand(customItem.getUpdatedItem(false))
+	fun cancelSwapHand(e: PlayerSwapHandItemsEvent) {
+		e.isCancelled = true
 	}
 
 	@EventHandler
