@@ -2,22 +2,14 @@ package net.siegerpg.siege.core.items.sets
 
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.implemented.armor.boots.DavyBoots
-import net.siegerpg.siege.core.items.implemented.armor.boots.LichBoots
-import net.siegerpg.siege.core.items.implemented.armor.boots.SlimyBoots
 import net.siegerpg.siege.core.items.implemented.armor.boots.slimyBoots.*
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.DavyTunic
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.LichCloak
-import net.siegerpg.siege.core.items.implemented.armor.chestplate.SlimyChestplate
 import net.siegerpg.siege.core.items.implemented.armor.chestplate.slimyChestplates.*
 import net.siegerpg.siege.core.items.implemented.armor.helmet.DavyCap
-import net.siegerpg.siege.core.items.implemented.armor.helmet.LichHood
-import net.siegerpg.siege.core.items.implemented.armor.helmet.SlimyHelmet
 import net.siegerpg.siege.core.items.implemented.armor.helmet.slimyHelmets.*
 import net.siegerpg.siege.core.items.implemented.armor.leggings.DavyLeggings
-import net.siegerpg.siege.core.items.implemented.armor.leggings.LichLeggings
-import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
-import org.bukkit.Material
+import org.bukkit.Bukkit
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -25,6 +17,7 @@ import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.scheduler.BukkitRunnable
+
 
 class DavySet : GearSet(
 		helmets = hashSetOf(DavyCap()),
@@ -38,13 +31,14 @@ class DavySet : GearSet(
 		val trident = e.entity
 		if (trident.type != EntityType.TRIDENT) return
 		val player = trident.shooter
-
 		if (player !is Player) return
 
 		val list : List<GearSet> = currentSets[player] ?: listOf()
-		if (!list.contains(this)) return
-
-		trident.addPassenger(player)
+		for (set in list) {
+			if (set is DavySet) {
+				trident.addPassenger(player)
+			}
+		}
 	}
 
 	override fun setEffect(player : Player) : Boolean{
