@@ -17,7 +17,11 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.DavyLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.LichLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
+import org.bukkit.Material
+import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
+import org.bukkit.event.EventHandler
+import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.scheduler.BukkitRunnable
@@ -28,6 +32,20 @@ class DavySet : GearSet(
 		leggings = hashSetOf(DavyLeggings()),
 		boots = hashSetOf(DavyBoots())
                        ) {
+
+	@EventHandler
+	fun onTridentThrow(e: ProjectileLaunchEvent) {
+		val trident = e.entity
+		if (trident.type != EntityType.TRIDENT) return
+		val player = trident.shooter
+
+		if (player !is Player) return
+
+		val list : List<GearSet> = currentSets[player] ?: listOf()
+		if (!list.contains(this)) return
+
+		trident.addPassenger(player)
+	}
 
 	override fun setEffect(player : Player) : Boolean{
 		if (!super.setEffect(player)) return false

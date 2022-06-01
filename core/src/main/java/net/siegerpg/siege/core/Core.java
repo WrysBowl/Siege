@@ -192,6 +192,7 @@ public final class Core extends JavaPlugin {
 				new LichSet(),
 				new NecromancerSet(),
 				new BroodMotherSet(),
+				new DavySet(),
 
 				/*
 				All Skills
