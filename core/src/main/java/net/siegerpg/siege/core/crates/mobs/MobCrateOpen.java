@@ -33,9 +33,6 @@ import java.util.Map;
 
 public class MobCrateOpen implements Listener {
 
-	public static ArrayList< Location > currentlyUsedChests = new ArrayList<>();
-
-
 	@EventHandler
 	public void onCrateOpen(PlayerInteractEvent e) {
 
@@ -65,12 +62,6 @@ public class MobCrateOpen implements Listener {
 			player.sendMessage(Utils.lore("<red>Please use a mob key!"));
 			return;
 		}
-		if (currentlyUsedChests.contains(targetedBlock.getLocation())) {
-			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f);
-			player.sendMessage(Utils.lore("<red>This crate is currently being used!"));
-			return;
-		}
-		currentlyUsedChests.add(targetedBlock.getLocation());
 
 
 		//Pick item reward to give to player
@@ -116,7 +107,6 @@ public class MobCrateOpen implements Listener {
 						public void run() {
 							if (dropTablesPicked.size() < counter) {
 								stand.remove();
-								currentlyUsedChests.remove(targetedBlock.getLocation());
 								this.cancel();
 							}
 							try {
@@ -124,7 +114,6 @@ public class MobCrateOpen implements Listener {
 								counter++;
 							} catch (Exception ignored) {
 								stand.remove();
-								currentlyUsedChests.remove(targetedBlock.getLocation());
 								this.cancel();
 							}
 							player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 1.0f, 1.0f);
