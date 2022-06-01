@@ -33,48 +33,13 @@ class SlimsSet : GearSet(
 		boots = hashSetOf(SlimsBoots())
                         ) {
 
-	companion object {
-		val cooldown : ArrayList<Player> = arrayListOf()
-		val jumpCounter : HashMap<Player, Int> = hashMapOf()
-	}
-
 	@EventHandler(priority = EventPriority.LOW)
 	fun onJump(e : PlayerJumpEvent) {
 		val player : Player = e.player
-		if (cooldown.contains(player)) return
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return
 
-		val count = (jumpCounter[player] ?: 0) + 1
-		jumpCounter[player] = count
-		object : BukkitRunnable() {
-			override fun run() {
-				jumpCounter[player] = 0
-			}
-		}.runTaskLater(Core.plugin(), 10)
-
-		//if double jump
-		if (count > 1) {
-
-			//cooldown for 5 seconds
-			cooldown.add(player)
-			object : BukkitRunnable() {
-				override fun run() {
-					cooldown.remove(player)
-				}
-			}.runTaskLater(Core.plugin(), 160)
-
-
-			jumpCounter[player] = 0
-			//pushes the player in the direction of the vector
-			player.velocity = player.location.direction.setY(0).normalize().multiply(2)
-			player.spawnParticle(
-					Particle.SMOKE_NORMAL,
-					player.location.x,
-					player.location.y,
-					player.location.z, 20,
-					0.0, 0.0, 0.0, 0.2
-			                    )
-		}
+		//pushes the player in the direction of the vector
+		player.velocity = player.location.direction.normalize().multiply(2)
 	}
 }
