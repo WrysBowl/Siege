@@ -13,8 +13,7 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Campfire;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.*;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
+import org.bukkit.event.*;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.CraftItemEvent;
@@ -39,6 +38,14 @@ public class WorldListener extends PacketListenerAbstract implements Listener, R
 				.equals(Material.FARMLAND))
 			return;
 		event.setCancelled(true);
+	}
+
+	@EventHandler( priority = EventPriority.HIGHEST )
+	public void fallDamageIncrease(EntityDamageEvent e) {
+		if(!(e.getEntity() instanceof Player player)) return;
+		if (!e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) return;
+		double initDamage = e.getDamage();
+		e.setDamage(Math.pow(initDamage,2));
 	}
 	
 	@EventHandler
