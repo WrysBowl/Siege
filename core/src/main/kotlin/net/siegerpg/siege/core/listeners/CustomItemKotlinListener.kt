@@ -237,10 +237,6 @@ class CustomItemKotlinListener : Listener {
 					}
 				} //less maxDamage = more damage (damage/maxDamage)
 			}
-			if (damage > 1.5 && maxDamage <= 1) {
-				maxDamage = damage
-				actualDamage = damage
-			}
 
 			/*
 				Check for weapon skill from player's hand
@@ -253,6 +249,12 @@ class CustomItemKotlinListener : Listener {
 
 			//for NPCs
 		    victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
+		}
+		if (attacker is Player) {
+			if (damage > 1.5 && maxDamage <= 1) {
+				maxDamage = damage
+				actualDamage = damage
+			}
 		}
 
 		/*
