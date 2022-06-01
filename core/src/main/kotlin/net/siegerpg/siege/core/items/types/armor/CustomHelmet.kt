@@ -39,6 +39,7 @@ abstract class CustomHelmet(
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
+		this.serialize()
 	}
 
 	override fun serialize() {

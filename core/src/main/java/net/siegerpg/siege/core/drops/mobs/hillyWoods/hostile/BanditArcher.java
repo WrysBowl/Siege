@@ -35,8 +35,8 @@ public class BanditArcher extends MobDropTable {
 				new Reward(new HealingCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
 				new Reward(new HealthyCrossbow(Utils.randRarity()).getUpdatedItem(false), 0.10),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
-				new Reward(new BroodmotherKey(0).getUpdatedItem(false), 0.10),
+				new Reward(new MobKey().getUpdatedItem(false), 1.0),
+				new Reward(new BroodmotherKey().getUpdatedItem(false), 0.10),
 
 				});
 	}

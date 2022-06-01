@@ -129,12 +129,14 @@ public class FoxSpirit extends MobDropTable {
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 1.0),
 
-				new Reward(new FoxyHelmet().getUpdatedItem(false), 0.50),
-				new Reward(new FoxyChestplate().getUpdatedItem(false), 0.50),
-				new Reward(new FoxyLeggings().getUpdatedItem(false), 0.50),
-				new Reward(new FoxyBoots().getUpdatedItem(false), 0.50),
+				new Reward(new FoxyHelmet(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new FoxyChestplate(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new FoxyLeggings(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new FoxyBoots(Utils.randRarity()).getUpdatedItem(false), 0.50),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(8), 100.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 10.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 10.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 10.0),
 
 				});
 	}

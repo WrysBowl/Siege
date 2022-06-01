@@ -119,13 +119,15 @@ public class SlimeSpirit extends MobDropTable {
 				new Reward(new CrackedToughGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new CrackedHealthGem(0).getUpdatedItem(false), 0.20),
 
-				new Reward(new SlimsHelmet().getUpdatedItem(false), 0.5),
-				new Reward(new SlimsChestplate().getUpdatedItem(false), 0.5),
-				new Reward(new SlimsLeggings().getUpdatedItem(false), 0.5),
-				new Reward(new SlimsBoots().getUpdatedItem(false), 0.5),
+				new Reward(new SlimsHelmet(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new SlimsChestplate(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new SlimsLeggings(Utils.randRarity()).getUpdatedItem(false), 0.5),
+				new Reward(new SlimsBoots(Utils.randRarity()).getUpdatedItem(false), 0.5),
 
-				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 100.0),
-
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 5.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 5.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 5.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 5.0),
 				});
 	}
 

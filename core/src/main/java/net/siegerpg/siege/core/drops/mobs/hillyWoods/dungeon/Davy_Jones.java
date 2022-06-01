@@ -128,12 +128,14 @@ public class Davy_Jones extends MobDropTable {
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 0.20),
 
-				new Reward(new DavyCap().getUpdatedItem(false), 0.50),
-				new Reward(new DavyTunic().getUpdatedItem(false), 0.50),
-				new Reward(new DavyLeggings().getUpdatedItem(false), 0.50),
-				new Reward(new DavyBoots().getUpdatedItem(false), 0.50),
+				new Reward(new DavyCap(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new DavyTunic(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new DavyLeggings(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new DavyBoots(Utils.randRarity()).getUpdatedItem(false), 0.50),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(6), 100.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 10.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 10.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 10.0),
 
 				});
 	}

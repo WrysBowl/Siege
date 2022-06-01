@@ -168,12 +168,14 @@ public class Broodmother extends MobDropTable {
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 0.20),
 
-				new Reward(new BroodMotherCap().getUpdatedItem(false), 0.50),
-				new Reward(new BroodMotherCloak().getUpdatedItem(false), 0.50),
-				new Reward(new BroodMotherLegs().getUpdatedItem(false), 0.50),
-				new Reward(new BroodMotherClaws().getUpdatedItem(false), 0.50),
+				new Reward(new BroodMotherCap(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new BroodMotherCloak(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new BroodMotherLegs(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new BroodMotherClaws(Utils.randRarity()).getUpdatedItem(false), 0.50),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(10), 100.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(4), 10.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(4), 10.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(4), 10.0),
 
 				});
 	}

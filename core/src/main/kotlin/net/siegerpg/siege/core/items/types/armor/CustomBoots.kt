@@ -31,6 +31,7 @@ abstract class CustomBoots(
 
 	init {
 		this.rarity = Rarity.getFromInt(this.quality)
+		this.serialize()
 	}
 
 	override fun equals(other : Any?) : Boolean {

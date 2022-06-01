@@ -118,12 +118,14 @@ public class MagmaSpirit extends MobDropTable {
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 0.20),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 0.20),
 
-				new Reward(new MagmarsCrown().getUpdatedItem(false), 0.50),
-				new Reward(new MagmarsChestplate().getUpdatedItem(false), 0.50),
-				new Reward(new MagmarsLeggings().getUpdatedItem(false), 0.50),
-				new Reward(new MagmarsTrekkers().getUpdatedItem(false), 0.50),
+				new Reward(new MagmarsCrown(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new MagmarsChestplate(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new MagmarsLeggings(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new MagmarsTrekkers(Utils.randRarity()).getUpdatedItem(false), 0.50),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(3), 100.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 7.5),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 7.5),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 7.5),
 
 				});
 	}
