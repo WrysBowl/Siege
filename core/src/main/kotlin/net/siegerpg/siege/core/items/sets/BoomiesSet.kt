@@ -74,10 +74,10 @@ class BoomiesSet : GearSet(
 						override fun run() {
 							cooldown.remove(player)
 						}
-					}.runTaskLater(Core.plugin(), 200)
+					}.runTaskLater(Core.plugin(), 100)
 
 					//pushes the player in the direction of the vector
-					player.velocity = player.location.direction.setY(0).normalize().multiply(3)
+					player.velocity = player.location.direction.setY(0).normalize().multiply(4)
 
 					object : BukkitRunnable() {
 						override fun run() {
@@ -101,7 +101,7 @@ class BoomiesSet : GearSet(
 								entity.damage(dmg, player)
 							}
 						}
-					}.runTaskLater(Core.plugin(), 8)
+					}.runTaskLater(Core.plugin(), 12)
 
 
 				}
