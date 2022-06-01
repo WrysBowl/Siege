@@ -142,12 +142,14 @@ public class Necromancer extends MobDropTable {
 				new Reward(new PolishedToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new PolishedHealthGem(0).getUpdatedItem(false), 1.0),
 
-				new Reward(new NecromancerHood().getUpdatedItem(false), 0.50),
-				new Reward(new NecromancerCloak().getUpdatedItem(false), 0.50),
-				new Reward(new NecromancerLeggings().getUpdatedItem(false), 0.50),
-				new Reward(new NecromancerFootpads().getUpdatedItem(false), 0.50),
+				new Reward(new NecromancerHood(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new NecromancerCloak(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new NecromancerLeggings(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new NecromancerFootpads(Utils.randRarity()).getUpdatedItem(false), 0.50),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(7), 100.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 7.5),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 7.5),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 7.5),
 
 				});
 	}

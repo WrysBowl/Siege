@@ -20,7 +20,7 @@ public class GoldenGoblin extends MobDropTable {
 				new Reward(new Bone()
 						           .getUpdatedItem(false), 100.0),
 				new Reward(new Twig(Utils.randRarity()).getUpdatedItem(false), 100.0),
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(2), 100.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 100.0),
 				});
 	}
 

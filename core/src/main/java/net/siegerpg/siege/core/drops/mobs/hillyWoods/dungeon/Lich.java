@@ -72,12 +72,14 @@ public class Lich extends MobDropTable {
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 1.0),
 
-				new Reward(new LichHood().getUpdatedItem(false), 0.50),
-				new Reward(new LichCloak().getUpdatedItem(false), 0.50),
-				new Reward(new LichLeggings().getUpdatedItem(false), 0.50),
-				new Reward(new LichBoots().getUpdatedItem(false), 0.50),
+				new Reward(new LichHood(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new LichCloak(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new LichLeggings(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new LichBoots(Utils.randRarity()).getUpdatedItem(false), 0.50),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(5), 100.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 7.5),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 7.5),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 7.5),
 
 				});
 	}

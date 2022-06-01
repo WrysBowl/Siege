@@ -59,7 +59,7 @@ public class Goo extends MobDropTable {
 				new Reward(new LuckySlimyLeggings(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 				new Reward(new LuckySlimyBoots(Utils.randRarity()).getUpdatedItem(false), 0.0025),
 
-				new Reward(new MobKey(0).getUpdatedItem(false), 1.0),
+				new Reward(new MobKey().getUpdatedItem(false), 1.0),
 
 				});
 	}

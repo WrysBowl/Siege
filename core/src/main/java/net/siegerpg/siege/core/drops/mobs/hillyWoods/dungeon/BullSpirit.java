@@ -128,12 +128,14 @@ public class BullSpirit extends MobDropTable {
 				new Reward(new FlawedToughGem(0).getUpdatedItem(false), 1.0),
 				new Reward(new FlawedHealthGem(0).getUpdatedItem(false), 1.0),
 
-				new Reward(new BoomiesHorns().getUpdatedItem(false), 0.50),
-				new Reward(new BoomiesChestplate().getUpdatedItem(false), 0.50),
-				new Reward(new BoomiesLeggings().getUpdatedItem(false), 0.50),
-				new Reward(new BoomiesHooves().getUpdatedItem(false), 0.50),
+				new Reward(new BoomiesHorns(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new BoomiesChestplate(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new BoomiesLeggings(Utils.randRarity()).getUpdatedItem(false), 0.50),
+				new Reward(new BoomiesHooves(Utils.randRarity()).getUpdatedItem(false), 0.50),
 
-				new Reward(new MobKey(0).getUpdatedItem(false).asQuantity(4), 100.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 5.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 5.0),
+				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 5.0),
 				});
 	}
 
