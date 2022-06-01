@@ -15,6 +15,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimsLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.SlimyLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
 import net.siegerpg.siege.core.miscellaneous.Utils
+import org.bukkit.Bukkit
 import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
@@ -39,7 +40,9 @@ class SlimsSet : GearSet(
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return
 
-		//pushes the player in the direction of the vector
-		player.velocity = player.location.direction.normalize().multiply(2)
+		//if player isn't moving (but is jumping)
+		if(Math.abs(player.velocity.x) > 0.02 || Math.abs(player.velocity.z) > 0.02) {
+			player.velocity = player.location.direction.multiply(0.5)
+		}
 	}
 }
