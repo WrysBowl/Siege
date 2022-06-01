@@ -14,6 +14,7 @@ public class DropTable {
 
 	public ArrayList< ItemStack > calculateRewards(double luckChance) {
 
+		if (luckChance < 0) luckChance = 0;
 		ArrayList< ItemStack > itemList = new ArrayList<>();
 		for (Reward reward : rewards) {
 
