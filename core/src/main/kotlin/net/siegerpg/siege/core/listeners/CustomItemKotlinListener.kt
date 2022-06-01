@@ -119,7 +119,7 @@ class CustomItemKotlinListener : Listener {
 	}
 
 	@EventHandler
-	fun cancelSwapHand(e: PlayerSwapHandItemsEvent) {
+	fun updateItemEachHit(e: PlayerSwapHandItemsEvent) {
 		e.isCancelled = true
 	}
 
@@ -200,12 +200,7 @@ class CustomItemKotlinListener : Listener {
 			return
 		}
 
-		if (attacker is Player) {
-			if (item == null) {
-				e.damage = 1.0
-				setVictimName(victim, e.damage, vicMaxHealth)
-				return
-			}
+		if (attacker is Player && item != null) {
 			val levelReq = item.levelRequirement ?: -1
 			if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
 				attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
