@@ -10,7 +10,7 @@ class ScrapyardBow() : CustomBow(
 		name = "Scrapyard Bow",
 		customModelData = 120001,
 		description = listOf("Instructions unclear . . .", "made an arrow flinger"),
-		levelRequirement = 2,
+		levelRequirement = 1,
 		material = Material.BOW,
 		baseStats = CustomItemUtils.statMap(strength = 10.0)
                                 ) {
