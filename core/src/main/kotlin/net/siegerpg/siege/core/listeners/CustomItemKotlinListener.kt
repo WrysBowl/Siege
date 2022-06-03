@@ -211,6 +211,7 @@ class CustomItemKotlinListener : Listener {
 					}
 				}
 
+				//remove player from wand list
 				if (currentlyUsingWand.contains(attacker)) {
 					currentlyUsingWand.remove(attacker)
 				} else {
@@ -225,17 +226,18 @@ class CustomItemKotlinListener : Listener {
 
 
 
+					//damage multiplication if crit || cooldowns
 					damage = playerStrength * cooldown
 					if (flag && item != null) {
 						var multiplier = 1.5
 						if (item is CustomBow) {
-							multiplier = 2.5
+							multiplier = 2.0
 						} else if (item is CustomMeleeWeapon) {
 							val attackSpeed = item.attackSpeed
 							if (attackSpeed > 1.0) { //medium+ speed
 								multiplier = 1.25
 							} else {
-								multiplier = 2.0
+								multiplier = 2.5
 							}
 						}
 						damage *= multiplier
