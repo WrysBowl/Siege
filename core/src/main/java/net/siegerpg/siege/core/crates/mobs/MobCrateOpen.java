@@ -175,7 +175,7 @@ public class MobCrateOpen implements Listener {
 		//adding items to rewards
 		try {
 			//create a copy of the class
-			for (int i = 0; i<3;i++) {
+			for (int i = 0; i<5;i++) {
 				rewardGold += dropTable.getGold(true);
 				rewardEXP += dropTable.getExp(true);
 
@@ -243,7 +243,7 @@ public class MobCrateOpen implements Listener {
 		player.sendMessage("");
 		player.sendMessage(Utils.parse("<color:#91CB56><bold><underlined>   REWARDS   <reset>"));
 		player.sendMessage("");
-		player.sendMessage(Utils.parse("<color:#91CB56><bold>"+dropTable.getMobName() + " <r><gray>x3"));
+		player.sendMessage(Utils.parse("<color:#91CB56><bold>"+dropTable.getMobName() + " <r><gray>x5"));
 		player.sendMessage(Utils.parse("  <yellow><bold>Gold <r><gray>+"+String.format("%,d",rewardGold)));
 		player.sendMessage(Utils.parse("  <light_purple><bold>EXP <r><gray>+"+String.format("%,d",rewardEXP)));
 		player.sendMessage("");

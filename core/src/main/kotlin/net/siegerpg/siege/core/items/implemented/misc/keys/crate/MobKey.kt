@@ -13,7 +13,7 @@ class MobKey() : CustomKey(
 		quality = 70
                           ) {
 	override fun getSellValue() : Int {
-		return 500
+		return 200
 	}
 	constructor(quality : Int) : this() {
 		this.quality = quality
