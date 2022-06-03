@@ -2,6 +2,7 @@ package net.siegerpg.siege.core.listeners;
 
 import com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent;
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
+import de.tr7zw.nbtapi.*;
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.items.CustomItem;
 import net.siegerpg.siege.core.items.CustomItemUtils;
@@ -44,14 +45,20 @@ public class GoldExpListener implements Listener {
 	public void goldPickUp(PlayerAttemptPickupItemEvent e) {
 
 		ItemStack item = e.getItem().getItemStack();
+		String name = item.getItemMeta().getDisplayName();
 		if (e.isCancelled()) return;
 		if (!item.getType().equals(Material.SUNFLOWER)) return;
-		if (!item.getItemMeta().getDisplayName().contains("\u26C1")) return;
+		if (!name.contains("\u26C1")) return;
 		Player player = e.getPlayer();
 		e.setCancelled(true);
 		e.getItem().remove();
-		int goldAmount = e.getItem().getItemStack().getAmount();
-		giveGold(player, goldAmount);
+		try {
+			//get the integers found in the string
+			NBTItem nbt = new NBTItem(item);
+			int goldAmount = nbt.getInteger("gold");
+
+			giveGold(player, goldAmount);
+		} catch (Exception ignored) {}
 	}
 
 	@EventHandler

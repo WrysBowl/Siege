@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.miscellaneous;
 
+import de.tr7zw.nbtapi.*;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.ExperienceOrb;
@@ -24,6 +25,12 @@ public class GoldEXPSpawning {
 	public static void spawnGold(int goldCoinAmt, Location loc) {
 
 		ItemStack goldCoins = getGoldCoin(1);
+
+		//set NBT of gold coin amount
+		NBTItem nbtItem = new NBTItem(goldCoins);
+		nbtItem.setInteger("gold", goldCoinAmt);
+		goldCoins = nbtItem.getItem();
+
 		Item gold = loc
 				.getWorld()
 				.dropItemNaturally(loc, goldCoins);
