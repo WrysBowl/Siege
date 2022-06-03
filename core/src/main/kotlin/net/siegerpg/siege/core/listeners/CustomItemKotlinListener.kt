@@ -212,7 +212,7 @@ class CustomItemKotlinListener : Listener {
 				}
 
 				if (currentlyUsingWand.contains(attacker)) {
-					CustomItemKotlinListener.currentlyUsingWand.remove(attacker)
+					currentlyUsingWand.remove(attacker)
 				} else {
 					//set the damage from the player
 					val playerStrength : Double = getPlayerStat(attacker, StatTypes.STRENGTH)

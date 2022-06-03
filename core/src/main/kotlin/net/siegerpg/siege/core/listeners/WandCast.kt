@@ -59,6 +59,7 @@ class WandCast : BukkitRunnable {
 		drawParticle(loc, customWand!!.red, customWand!!.green, customWand!!.blue)
 		loc.world.playSound(loc, Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.05f, 0.05f)
 		if (loc.distance(targetLoc) < 1) {
+			CustomItemKotlinListener.currentlyUsingWand.remove(player)
 			this.cancel()
 		}
 		for (e in loc.getNearbyLivingEntities(1.0)) {
@@ -66,11 +67,16 @@ class WandCast : BukkitRunnable {
 			if (e !is LivingEntity) continue
 			for (en in loc.getNearbyLivingEntities(damageRadius)) {
 				if (e.equals(player)) continue
-				Bukkit.getServer().sendMessage(Utils.lore("<green>Damage Wand: $dmg"))
-				CustomItemKotlinListener.currentlyUsingWand.add(player!!)
+
+				val list = CustomItemKotlinListener.currentlyUsingWand
+				if (!list.contains(player)) {
+					CustomItemKotlinListener.currentlyUsingWand.add(player!!)
+				}
+
 				en.damage(dmg, player)
 				en.world.spawnParticle(Particle.SWEEP_ATTACK, en.location, 3)
 			}
+			CustomItemKotlinListener.currentlyUsingWand.remove(player)
 			this.cancel()
 		}
 
