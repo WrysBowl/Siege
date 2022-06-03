@@ -11,6 +11,7 @@ import net.siegerpg.siege.core.items.implemented.armor.leggings.DavyLeggings
 import net.siegerpg.siege.core.items.implemented.armor.leggings.slimyLeggings.*
 import org.bukkit.Bukkit
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.LightningStrike
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.ProjectileLaunchEvent
@@ -36,7 +37,10 @@ class DavySet : GearSet(
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		for (set in list) {
 			if (set is DavySet) {
-				trident.addPassenger(player)
+				val lightning = player.getWorld().spawnEntity(trident.getLocation(), EntityType.LIGHTNING)
+				(lightning as LightningStrike).flashCount = 40
+				trident.addPassenger(lightning)
+
 			}
 		}
 	}
