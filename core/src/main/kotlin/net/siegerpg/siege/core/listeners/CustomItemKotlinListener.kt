@@ -33,6 +33,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.*
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
@@ -208,7 +209,12 @@ class CustomItemKotlinListener : Listener {
 				setVictimName(victim, e.damage, vicMaxHealth)
 				return
 			}
-			if (item is CustomBow) {
+
+			if (item is CustomWand || e.cause == DamageCause.MAGIC) {
+				maxDamage = damage
+			} else if (item is CustomSkill) {
+				maxDamage = 1.0
+			} else if (item is CustomBow) {
 
 				if (item.item.type != Material.TRIDENT) {
 					if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
@@ -220,10 +226,6 @@ class CustomItemKotlinListener : Listener {
 
 				maxDamage = 7.25
 				actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
-			} else if (item is CustomWand) {
-				maxDamage = damage
-			} else if (item is CustomSkill) {
-				maxDamage = 1.0
 			}
 			//If the item is an axe/sword and the damage cause is melee attack then set correct damage
 			if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
@@ -251,7 +253,7 @@ class CustomItemKotlinListener : Listener {
 		    victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
 		}
 		if (attacker is Player) {
-			if (damage > 1.5 && maxDamage <= 1) {
+			if (damage > 1.5 && maxDamage <= 1 || item == null) {
 				maxDamage = damage
 				actualDamage = damage
 			}
