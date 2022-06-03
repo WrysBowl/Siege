@@ -2,8 +2,10 @@ package net.siegerpg.siege.core.listeners
 
 import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
+import net.siegerpg.siege.core.miscellaneous.Utils
 import org.bukkit.*
 import org.bukkit.entity.Entity
+import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
@@ -61,10 +63,12 @@ class WandCast : BukkitRunnable {
 		}
 		for (e in loc.getNearbyLivingEntities(1.0)) {
 			if (e.equals(player)) continue
+			if (e !is LivingEntity) continue
 			for (en in loc.getNearbyLivingEntities(damageRadius)) {
 				if (e.equals(player)) continue
-				val damageEvent = EntityDamageByEntityEvent(player as Entity, en, EntityDamageEvent.DamageCause.MAGIC, dmg)
-				Bukkit.getPluginManager().callEvent(damageEvent)
+				Bukkit.getServer().sendMessage(Utils.lore("<green>Damage Wand: $dmg"))
+				CustomItemKotlinListener.currentlyUsingWand.add(player!!)
+				en.damage(dmg, player)
 				en.world.spawnParticle(Particle.SWEEP_ATTACK, en.location, 3)
 			}
 			this.cancel()

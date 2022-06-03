@@ -1,8 +1,5 @@
 package net.siegerpg.siege.core.listeners
 
-import com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent
-import de.tr7zw.nbtapi.NBTEntity
-import de.tr7zw.nbtapi.NBTItem
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
@@ -37,6 +34,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
+import org.bukkit.potion.PotionEffectType
 import org.bukkit.scheduler.BukkitRunnable
 import java.math.BigDecimal
 import kotlin.math.abs
@@ -52,6 +50,8 @@ class CustomItemKotlinListener : Listener {
 			if (initToughness < 0.0) multiplier = -1
 			return multiplier * (10.0 * sqrt(5.0 * abs(initToughness)))
 		}
+		var currentlyUsingWand : MutableList<Player> = mutableListOf()
+
 	}
 
 	var cooldownWand : MutableList<Player> = mutableListOf()
@@ -162,18 +162,26 @@ class CustomItemKotlinListener : Listener {
 		customItem.skillUse(e)
 	}
 
+
+
 	@EventHandler(priority = EventPriority.LOWEST)
 	@Suppress("unused")
 	fun onHit(e : EntityDamageEvent) {
 		if (e.isCancelled) return
 		if (e.entity !is LivingEntity) return
 		val victim = e.entity as LivingEntity
-		val damage = e.damage
-		var actualDamage = e.damage
-		var maxDamage = damage
+		if (victim.hasMetadata("NPC")) return
+
+		var damage = e.damage //changed if player is the damager
 		var attacker : Entity? = null
 		var item : CustomItem? = null
+		var isCritical : Boolean = false
 		val vicMaxHealth = victim.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
+
+
+		/*
+			Check if an entity was damaged by an entity
+		 */
 		if (e is EntityDamageByEntityEvent) {
 			attacker =
 					if (e.damager is Player) e.damager as Player
@@ -184,79 +192,74 @@ class CustomItemKotlinListener : Listener {
 				}
 			}
 			if (attacker is Player) {
-				maxDamage = attacker.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)?.value as Double
 
-				//Check for if player is using a trident to attack
+				//get the player's item
 				var itemStack : ItemStack = attacker.inventory.itemInMainHand
 				if (e.damager is Trident) {
 					itemStack = (e.damager as Trident).item
 				}
 				item = CustomItemUtils.getCustomItem(itemStack)
 
-
-			}
-		}
-		//check if player is attacking NPC
-		if (victim.hasMetadata("NPC")) {
-			return
-		}
-
-		if (attacker is Player && item != null) {
-			val levelReq = item.levelRequirement ?: -1
-			if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
-				attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
-				e.damage = 1.0
-				setVictimName(victim, e.damage, vicMaxHealth)
-				return
-			}
-
-			if (item is CustomWand || e.cause == DamageCause.MAGIC) {
-				maxDamage = damage
-			} else if (item is CustomSkill) {
-				maxDamage = 1.0
-			} else if (item is CustomBow) {
-
-				if (item.item.type != Material.TRIDENT) {
-					if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
+				//check the level requirement of the item
+				if (item != null) {
+					val levelReq = item.levelRequirement ?: -1
+					if (levelReq > (Levels.blockingGetExpLevel(attacker)?.first ?: 0)) {
+						attacker.sendActionBar(Utils.parse("<red>You're too weak to use this weapon"))
 						e.damage = 1.0
 						setVictimName(victim, e.damage, vicMaxHealth)
 						return
 					}
 				}
 
-				maxDamage = 7.25
-				actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
-			}
-			//If the item is an axe/sword and the damage cause is melee attack then set correct damage
-			if (item is CustomMeleeWeapon && e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
-				actualDamage = CustomItemUtils.getPlayerStat(attacker, StatTypes.STRENGTH)
+				if (currentlyUsingWand.contains(attacker)) {
+					CustomItemKotlinListener.currentlyUsingWand.remove(attacker)
+				} else {
+					//set the damage from the player
+					val playerStrength : Double = getPlayerStat(attacker, StatTypes.STRENGTH)
+					val cooldown : Float = attacker.attackCooldown
+					val flag =
+							attacker.getFallDistance() > 0.0f &&
+							!attacker.isOnGround() &&
+							!attacker.hasPotionEffect(PotionEffectType.BLINDNESS) &&
+							attacker.getVehicle() == null
 
-				if ((damage / maxDamage) > 1) {
-					if (item.item.type.equals(Material.WOODEN_AXE)) {
-						maxDamage = 0.65
-					} else {
-						maxDamage = 0.85
+
+
+					damage = playerStrength * cooldown
+					if (flag && item != null) {
+						var multiplier = 1.5
+						if (item is CustomBow) {
+							multiplier = 2.5
+						} else if (item is CustomMeleeWeapon) {
+							val attackSpeed = item.attackSpeed
+							if (attackSpeed > 1.0) { //medium+ speed
+								multiplier = 1.25
+							} else {
+								multiplier = 2.0
+							}
+						}
+						damage *= multiplier
+						isCritical = true
 					}
-				} //less maxDamage = more damage (damage/maxDamage)
+				}
 			}
+		}
 
-			/*
-				Check for weapon skill from player's hand
-			 */
+		if (attacker is Player && item != null) {
+			//to prevent players from melee damaging mobs with a bow
+			if (item.item.type != Material.TRIDENT && item is CustomBow) {
+				if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
+					e.damage = 1.0
+					setVictimName(victim, e.damage, vicMaxHealth)
+					return
+				}
+			}
 			item.let {
 				if (it is CustomEquipment) {
 					it.onHit(e)
 				}
 			}
-
-			//for NPCs
 		    victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
-		}
-		if (attacker is Player) {
-			if (damage > 1.5 && maxDamage <= 1 || item == null) {
-				maxDamage = damage
-				actualDamage = damage
-			}
 		}
 
 		/*
@@ -276,22 +279,17 @@ class CustomItemKotlinListener : Listener {
 			}
 		}
 
+		//apply damage multiplier
 		if (damageMulti[attacker] != null) {
-			actualDamage = damageMulti[attacker]?.times(actualDamage) ?: actualDamage
+			damage = damageMulti[attacker]?.times(damage) ?: damage
 		}
+
 		val vicDefense =
 				if (victim is Player)
-					CustomItemUtils.getPlayerStat(
-							victim,
-							StatTypes.DEFENSE
-					                             ) / (damageMulti[victim] ?: 1.0)
+					CustomItemUtils.getPlayerStat(victim, StatTypes.DEFENSE) / (damageMulti[victim] ?: 1.0)
 				else 0.0
-		val attStrengthStat =
-				if (attacker is Player && actualDamage > 0)
-					(damage / maxDamage) * actualDamage //if player spam clicks it won't deal max damage
-				else damage
 		val reducedDamage =
-				attStrengthStat * (1 - (calcReducedToughness(vicDefense) / 1000)) //custom attack damage with toughness considered
+				damage * (1 - (calcReducedToughness(vicDefense) / 1000)) //custom attack damage with toughness considered
 
 		//add luck
 		if (attacker is Player) {
@@ -300,7 +298,6 @@ class CustomItemKotlinListener : Listener {
 		}
 
 		e.damage = reducedDamage //scaled down to damage player by vanilla damage
-		val isCritical = damage > maxDamage
 		setVictimName(victim, e.damage, vicMaxHealth)
 		if (victim is Mob) DamageIndicator.showDamageIndicator(reducedDamage, victim.location, isCritical)
 	}
