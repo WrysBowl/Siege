@@ -202,28 +202,6 @@ public class WorldListener extends PacketListenerAbstract implements Listener, R
 	}
 
 	@EventHandler
-	public void spawnProt(EntityDamageByEntityEvent e) {
-
-		if (e.getDamager() instanceof Player) {
-			Player player = (Player) e.getDamager();
-			if (player
-					.getGameMode()
-					.equals(GameMode.CREATIVE)) {
-				return;
-			}
-		}
-		if (e
-				    .getEntity()
-				    .getLocation()
-				    .distance(e
-						              .getEntity()
-						              .getWorld()
-						              .getSpawnLocation()) < 3) {
-			e.setCancelled(true);
-		}
-	}
-
-	@EventHandler
 	public void preventTame(EntityTameEvent e) {
 
 		Player player = (Player) e.getOwner();
@@ -250,6 +228,12 @@ public class WorldListener extends PacketListenerAbstract implements Listener, R
 
 	@EventHandler
 	public void preventExplosion(BlockExplodeEvent e) {
+
+		e.setCancelled(true);
+	}
+
+	@EventHandler
+	public void preventTransformation(PigZapEvent e) {
 
 		e.setCancelled(true);
 	}
