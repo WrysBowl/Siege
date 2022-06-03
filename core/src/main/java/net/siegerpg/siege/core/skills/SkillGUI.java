@@ -487,22 +487,33 @@ public class SkillGUI implements CommandExecutor {
 		menu.addPane(background);
 
 		OutlinePane row = new OutlinePane(1, 1, 7, 4);
+		int level = SkillData.getSkillLevel(player, skill);
 
 		//item to display old skill
 		OutlinePane oldSkill = new OutlinePane(3, 2, 1, 1);
-		ItemStack oldIcon = getGlass(player, skill, SkillData.getSkillLevel(player, skill));
+		ItemStack oldIcon = getGlass(player, skill, level);
 		oldSkill.addItem(new GuiItem(oldIcon));
 
 		//item to display new skill
 		OutlinePane newSkill = new OutlinePane(6, 2, 1, 1);
-		ItemStack newIcon = getGlass(player, skill, SkillData.getSkillLevel(player, skill)+1);
+		ItemStack newIcon = getGlass(player, skill, level+1);
 		newSkill.addItem(new GuiItem(newIcon));
 
-		//item to click to upgrade the skill
+		/**
+		 * TO DO
+		 * If skill hasn't been unlocked, ask if player wants to unlock it for X skill points
+		 * If skill has been unlocked, display upgrade cost for next level
+		 */
+
+		//item to click to upgrade the skill (USE GOLD)
 		OutlinePane buy = new OutlinePane(4, 2, 1, 1);
-		ItemStack buyIcon = getGlass(player, skill, SkillData.getSkillLevel(player, skill));
+		ItemStack buyIcon = getGlass(player, skill, level);
 		buy.addItem(new GuiItem(buyIcon, inventoryClickEvent -> {
 			int currentPoints = SkillData.getSkillPoints(player);
+			if (currentPoints < 1) {
+				player.sendMessage(Utils.lore("<red>You don't have sufficient skill points to upgrade this skill!"));
+				return;
+			}
 			SkillData.setSkillPoints(player, currentPoints+1);
 		}));
 
