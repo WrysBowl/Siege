@@ -20,7 +20,7 @@ public class Molter extends MobDropTable {
 
 	public Molter() {
 
-		super("Molter", 26, 29, 56, 60, new Reward[] {
+		super("Molter", 26, 29, 96, 100, new Reward[] {
 				new Reward(new Magma().getUpdatedItem(false), 100.0),
 				new Reward(new Magma().getUpdatedItem(false).asQuantity(4), 10.0),
 

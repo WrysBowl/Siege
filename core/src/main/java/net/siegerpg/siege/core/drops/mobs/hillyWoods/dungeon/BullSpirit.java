@@ -32,7 +32,7 @@ public class BullSpirit extends MobDropTable {
 
 	public BullSpirit() {
 
-		super("BullSpirit", 2500, 2700, 5000, 7000, new Reward[] {
+		super("BullSpirit", 2500, 2700, 1500, 2000, new Reward[] {
 				new Reward(new Leather().getUpdatedItem(false), 100.0),
 				new Reward(new Leather().getUpdatedItem(false).asQuantity(8), 21.0),
 				new Reward(new Bone().getUpdatedItem(false), 100.0),

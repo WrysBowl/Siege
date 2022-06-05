@@ -20,7 +20,7 @@ public class Werewolf extends MobDropTable {
 
 	public Werewolf() {
 
-		super("Werewolf", 75, 79, 200, 204, new Reward[] {
+		super("Werewolf", 75, 79, 400, 404, new Reward[] {
 
 				new Reward(new Bone().getUpdatedItem(false), 100.0),
 				new Reward(new Bone().getUpdatedItem(false).asQuantity(8), 10.0),

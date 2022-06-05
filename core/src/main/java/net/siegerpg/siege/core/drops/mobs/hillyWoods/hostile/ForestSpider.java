@@ -14,7 +14,7 @@ public class ForestSpider extends MobDropTable {
 
 	public ForestSpider() {
 
-		super("ForestSpider", 27, 30, 86, 89, new Reward[] {
+		super("ForestSpider", 27, 30, 186, 189, new Reward[] {
 				new Reward(new Vine()
 						           .getUpdatedItem(false)
 						           .asQuantity(3), 100.0),

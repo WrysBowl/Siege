@@ -34,7 +34,7 @@ public class Necromancer extends MobDropTable {
 
 	public Necromancer() {
 
-		super("Necromancer", 5000, 10000, 15000, 20000, new Reward[] {
+		super("Necromancer", 5000, 10000, 7500, 10000, new Reward[] {
 
 				new Reward(new Bone().getUpdatedItem(false), 60.0),
 				new Reward(new Bone().getUpdatedItem(false).asQuantity(8), 1.5),

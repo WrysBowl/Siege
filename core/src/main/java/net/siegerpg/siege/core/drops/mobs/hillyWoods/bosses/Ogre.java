@@ -22,7 +22,7 @@ public class Ogre extends MobDropTable {
 
 	public Ogre() {
 
-		super("Ogre", 250, 300, 400, 425, new Reward[] {
+		super("Ogre", 250, 300, 500, 525, new Reward[] {
 				new Reward(new Leather().getUpdatedItem(false).asQuantity(2), 100.0),
 				new Reward(new Leather().getUpdatedItem(false).asQuantity(8), 10.0),
 				new Reward(new Bone().getUpdatedItem(false).asQuantity(2), 60.0),

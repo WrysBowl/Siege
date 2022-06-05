@@ -23,7 +23,7 @@ public class Bandit extends MobDropTable {
 
 	public Bandit() {
 
-		super("Bandit", 35, 38, 240, 240, new Reward[] {
+		super("Bandit", 35, 38, 440, 440, new Reward[] {
 				new Reward(new Leather()
 						           .getUpdatedItem(false), 50.0),
 				new Reward(new Leather()
