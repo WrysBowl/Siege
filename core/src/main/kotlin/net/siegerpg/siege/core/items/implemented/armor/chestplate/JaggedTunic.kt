@@ -10,6 +10,7 @@ import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
+import org.bukkit.entity.Mob
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
@@ -40,7 +41,7 @@ class JaggedTunic() : CustomChestplate(
 		val player = (e.entity as Player).player ?: return
 		if (e !is EntityDamageByEntityEvent) return
 		val attacker : Entity = e.damager
-		if (attacker !is LivingEntity) return
+		if (attacker !is Mob) return
 		if (attacker.equals(player)) return
 		if (this.levelRequirement == null) return
 		if (this.levelRequirement > (Levels.blockingGetExpLevel(player)?.first
