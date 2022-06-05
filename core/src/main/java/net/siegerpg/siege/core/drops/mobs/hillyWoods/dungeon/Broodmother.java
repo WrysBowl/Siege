@@ -175,7 +175,6 @@ public class Broodmother extends MobDropTable {
 
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(4), 10.0),
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(4), 10.0),
-				new Reward(new MobKey().getUpdatedItem(false).asQuantity(4), 10.0),
 
 				});
 	}

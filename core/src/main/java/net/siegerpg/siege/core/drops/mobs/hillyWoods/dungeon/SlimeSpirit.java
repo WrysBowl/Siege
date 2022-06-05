@@ -126,8 +126,6 @@ public class SlimeSpirit extends MobDropTable {
 
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 5.0),
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 5.0),
-				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 5.0),
-				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 5.0),
 				});
 	}
 

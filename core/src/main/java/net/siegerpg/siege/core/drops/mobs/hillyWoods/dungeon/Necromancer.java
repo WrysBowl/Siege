@@ -149,7 +149,6 @@ public class Necromancer extends MobDropTable {
 
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 7.5),
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 7.5),
-				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 7.5),
 
 				});
 	}

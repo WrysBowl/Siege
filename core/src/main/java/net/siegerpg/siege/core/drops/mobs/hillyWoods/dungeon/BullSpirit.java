@@ -135,7 +135,6 @@ public class BullSpirit extends MobDropTable {
 
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 5.0),
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 5.0),
-				new Reward(new MobKey().getUpdatedItem(false).asQuantity(3), 5.0),
 				});
 	}
 

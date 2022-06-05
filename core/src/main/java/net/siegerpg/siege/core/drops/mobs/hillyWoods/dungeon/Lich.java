@@ -79,7 +79,6 @@ public class Lich extends MobDropTable {
 
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 7.5),
 				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 7.5),
-				new Reward(new MobKey().getUpdatedItem(false).asQuantity(2), 7.5),
 
 				});
 	}
