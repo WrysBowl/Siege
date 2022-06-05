@@ -17,9 +17,7 @@ import org.bukkit.event.*;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.CraftItemEvent;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -47,7 +45,19 @@ public class WorldListener extends PacketListenerAbstract implements Listener, R
 		double initDamage = e.getDamage();
 		e.setDamage(Math.pow(initDamage,2));
 	}
-	
+
+	@EventHandler( priority = EventPriority.HIGHEST )
+	public void cancelOffHandFishing(PlayerInteractEvent e) {
+		Player player = e.getPlayer();
+		ItemStack item = player.getInventory().getItemInOffHand(); //get item in offhand
+		ItemStack activeItem = e.getItem(); //gets the item that is used
+		if (item != activeItem) return; //makes sure the item that is used is in the offhand
+		if (item.getType().equals(Material.FISHING_ROD)) {
+			e.setCancelled(true); //cancels use of fishing rod in offhand
+			player.sendMessage(Utils.lore("<red>Try using this in the 'right' hand. Haha no pun intended!"));
+		}
+	}
+
 	@EventHandler
 	public void preventZombification(EntityTransformEvent e) {
 		e.setCancelled(true);
