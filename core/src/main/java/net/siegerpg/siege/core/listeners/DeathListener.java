@@ -284,7 +284,7 @@ public class DeathListener implements Listener, Runnable {
 		Player killer = player.getKiller();
 		String time = Utils.secondsToHHMMSS(e.getEntity().getStatistic(Statistic.TIME_SINCE_DEATH) / 20);
 		player.sendMessage("");
-		player.sendMessage(Utils.lore("<gray>Time Since Last Death: <yellow>" + time));
+		player.sendMessage(Utils.lore("<gray>Time since last death: <yellow>(" + time + ")"));
 
 		//remove money from player's balance
 		int bal = (int) Math.round(VaultHook.econ.getBalance(player));
