@@ -234,6 +234,10 @@ public class MountSteer extends PacketListenerAbstract implements Listener {
 			if (((EntityDamageByEntityEvent) e).getDamager().equals(vehicle)) e.setCancelled(true);
 		}
 		if (!cachedMounts.containsValue(vehicle)) return;
+		if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
+			e.setCancelled(true);
+			return;
+		}
 
 		cachedMounts.values().removeIf(vehicle::equals);
 		vehicle.remove();
