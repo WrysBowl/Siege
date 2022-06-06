@@ -293,7 +293,7 @@ object CustomItemUtils {
 	}
 
 	@JvmStatic
-	fun getRarityMultiplier(quality : Int) : Double = quality / 100.0 + 0.5
+	fun getRarityMultiplier(quality : Int) : Double = Math.pow(quality / 100.0 + 0.5, 2.0)
 
 	fun serializeToItem(nbtItem : NBTItem, hashmap : HashMap<String, Any>) {
 		hashmap.forEach {
