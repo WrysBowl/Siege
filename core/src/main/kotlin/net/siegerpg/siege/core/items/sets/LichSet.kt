@@ -1,6 +1,7 @@
 package net.siegerpg.siege.core.items.sets
 
 import net.siegerpg.siege.core.Core
+import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
 import net.siegerpg.siege.core.items.enums.StatTypes
 import net.siegerpg.siege.core.items.implemented.armor.boots.LichBoots
@@ -47,13 +48,13 @@ class LichSet : GearSet(
 		val list : List<GearSet> = currentSets[player] ?: listOf()
 		if (!Utils.contains(this, list)) return
 
-		//cooldown for 10 seconds
+		//cooldown for 5 seconds
 		cooldown.add(player)
 		object : BukkitRunnable() {
 			override fun run() {
 				cooldown.remove(player)
 			}
-		}.runTaskLater(Core.plugin(), 200)
+		}.runTaskLater(Core.plugin(), 100)
 		val oldLocation : Location = player.location
 		var newLocation : Location = player.location
 
@@ -70,6 +71,11 @@ class LichSet : GearSet(
 
 		//teleports player to the new location
 		player.teleport(newLocation)
+		for(entity in newLocation.getNearbyLivingEntities(5.0)) {
+			if (entity.equals(player)) continue
+			entity.damage(CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH), player)
+			break
+		}
 
 		object : BukkitRunnable() {
 			var counter : Int = 0
