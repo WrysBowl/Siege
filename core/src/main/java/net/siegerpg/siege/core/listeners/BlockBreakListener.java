@@ -321,7 +321,7 @@ public class BlockBreakListener implements Listener {
 				if ((Math.random() * 100) <= luck) {
 					exp *= 2;
 				}
-				GoldEXPSpawning.spawnEXP(exp, loc);
+				Levels.INSTANCE.addExpShared(player, exp);
 			}
 
 			//Adds blocks to player's inventory
@@ -336,12 +336,7 @@ public class BlockBreakListener implements Listener {
 
 			//Sets block back from bedrock to original
 			if (rewardableBlocks.contains(blockType)) return;
-			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), new Runnable() {
-				public void run() {
-
-					blockState.update(true, false);
-				}
-			}, blockDropRegen);
+			Bukkit.getServer().getScheduler().runTaskLater(Core.plugin(), () -> blockState.update(true, false), blockDropRegen);
 
 			//gives block points to player
 			if (CustomEventListener.currentlyActive instanceof BlockBreak) {
