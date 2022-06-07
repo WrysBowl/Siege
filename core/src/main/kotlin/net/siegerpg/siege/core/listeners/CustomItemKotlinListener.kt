@@ -358,6 +358,18 @@ class CustomItemKotlinListener : Listener {
 		}
 	}
 
+	@EventHandler(priority = EventPriority.HIGHEST)
+	@Suppress("unused")
+	fun onAttemptEat(e : PlayerInteractEvent) {
+		if (e.player.foodLevel < 20) return
+		val food = CustomItemUtils.getCustomItem(e.item)
+		if (food != null) {
+			if (food is CustomFood) {
+				e.player.foodLevel = 19
+			}
+		}
+	}
+
 	@EventHandler
 	@Suppress("unused")
 	fun onInteract(event : PlayerInteractEvent) {
