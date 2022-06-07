@@ -43,7 +43,7 @@ public class WorldListener extends PacketListenerAbstract implements Listener, R
 		if(!(e.getEntity() instanceof Player player)) return;
 		if (!e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) return;
 		double initDamage = e.getDamage();
-		e.setDamage(Math.pow(initDamage,2));
+		e.setDamage(Math.pow(initDamage,1.5));
 	}
 
 	@EventHandler( priority = EventPriority.HIGHEST )
