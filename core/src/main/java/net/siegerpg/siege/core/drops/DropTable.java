@@ -1,5 +1,7 @@
 package net.siegerpg.siege.core.drops;
 
+import net.siegerpg.siege.core.items.*;
+import net.siegerpg.siege.core.items.types.misc.*;
 import net.siegerpg.siege.core.miscellaneous.Utils;
 import org.bukkit.inventory.ItemStack;
 
@@ -20,6 +22,12 @@ public class DropTable {
 
 			//calculate natural chance item drops
 			if (!Utils.randTest(reward.chance)) continue;
+
+			//no luck if it's a key
+			CustomItem customItem = CustomItemUtils.INSTANCE.getCustomItem(reward.item);
+			if (customItem != null) {
+				if (customItem instanceof CustomKey) continue;
+			}
 
 			//determine how many times to add the item to the returned list
 			for (double i = luckChance; i >= 0; i -= 100) {
