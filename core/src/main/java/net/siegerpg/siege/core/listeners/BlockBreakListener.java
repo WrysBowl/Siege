@@ -340,7 +340,7 @@ public class BlockBreakListener implements Listener {
 
 			//gives block points to player
 			if (CustomEventListener.currentlyActive instanceof BlockBreak) {
-				int score = (goldCoinAmt * exp) + 1;
+				int score = goldCoinAmt + 1;
 				int currentScore = 0;
 
 				if (BlockBreak.playerScores.containsKey(player)) currentScore = BlockBreak.playerScores.get(player);
