@@ -77,6 +77,6 @@ class MagmarsSet : GearSet(
 					return
 				}
 			}
-		}.runTaskTimer(Core.plugin(), 0, 10)
+		}.runTaskTimer(Core.plugin(), 0, 20)
 	}
 }

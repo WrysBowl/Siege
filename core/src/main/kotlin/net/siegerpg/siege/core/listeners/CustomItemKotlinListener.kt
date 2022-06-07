@@ -366,6 +366,7 @@ class CustomItemKotlinListener : Listener {
 		if (food != null) {
 			if (food is CustomFood) {
 				e.player.foodLevel = 19
+				e.player.saturation = 20.0f
 			}
 		}
 	}
