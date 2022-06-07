@@ -507,14 +507,36 @@ public class SkillGUI implements CommandExecutor {
 
 		//item to click to upgrade the skill (USE GOLD)
 		OutlinePane buy = new OutlinePane(4, 2, 1, 1);
-		ItemStack buyIcon = getGlass(player, skill, level);
-		buy.addItem(new GuiItem(buyIcon, inventoryClickEvent -> {
-			int currentPoints = SkillData.getSkillPoints(player);
-			if (currentPoints < 1) {
-				player.sendMessage(Utils.lore("<red>You don't have sufficient skill points to upgrade this skill!"));
-				return;
+
+		buy.addItem(new GuiItem(
+				(level == 0) ? getSkillUnlockIcon() : getSkillUpgradeIcon(skill, level),
+				inventoryClickEvent -> {
+
+
+			if (level == 0) { //if player does not have skill unlocked
+				int currentPoints = SkillData.getSkillPoints(player);
+				if (currentPoints < 1) {
+					player.sendMessage(Utils.lore("<red>You don't have sufficient skill points to unlock this skill!"));
+					return;
+				} else {
+					SkillData.setSkillPoints(player, currentPoints-1);
+					player.sendMessage(Utils.lore("<green>Successfully unlocked "+skill.name+"<green>!"));
+
+				}
+			} else if (level > 0){ //if player has skill unlocked
+				int bal = (int) Math.floor(VaultHook.econ.getBalance(player));
+				if (bal > skill.getGoldCost(level)) { //if player can afford to upgrade the skill
+
+					SkillData.setSkillLevel(player, skill, level+1);
+
+					VaultHook.econ.withdrawPlayer(player, skill.getGoldCost(level));
+
+					player.sendMessage(Utils.lore("<green>Successfully upgraded "+skill.name+"<green>!"));
+				} else {
+					player.sendMessage(Utils.lore("<red>You don't have sufficient gold to upgrade this skill!"));
+					return;
+				}
 			}
-			SkillData.setSkillPoints(player, currentPoints+1);
 		}));
 
 		//item to show profile icon
@@ -657,10 +679,30 @@ public class SkillGUI implements CommandExecutor {
 	}
 
 	/**
+	 * Gets the unlock icon
+	 * @return Forwards icon
+	 */
+	private static ItemStack getSkillUnlockIcon() {
+		//Creating Next Icon
+		ItemStack icon = Utils.createHead("MHF_ArrowRight");
+		SkullMeta iconMeta = (SkullMeta) icon.getItemMeta();
+		iconMeta.displayName(Utils.lore("<color:#03fc73>Unlock"));
+		iconMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Click to unlock"));
+				add(Utils.lore("<gray>Cost <red>- 1 <gray>point"));
+			}
+		});
+		iconMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
+		icon.setItemMeta(iconMeta);
+		return icon;
+	}
+
+	/**
 	 * Gets the 'forwards' icon
 	 * @return Forwards icon
 	 */
-	private static ItemStack getIconBuy() {
+	private static ItemStack getSkillUpgradeIcon(Skill skill, int level) {
 		//Creating Next Icon
 		ItemStack icon = Utils.createHead("MHF_ArrowRight");
 		SkullMeta iconMeta = (SkullMeta) icon.getItemMeta();
@@ -668,7 +710,7 @@ public class SkillGUI implements CommandExecutor {
 		iconMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click to upgrade"));
-				add(Utils.lore("<gray>Cost <red>- 1 <gray>point"));
+				add(Utils.lore("<gray>Cost <red>- "+skill.getGoldCost(level)+" <gray>point"));
 			}
 		});
 		iconMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
