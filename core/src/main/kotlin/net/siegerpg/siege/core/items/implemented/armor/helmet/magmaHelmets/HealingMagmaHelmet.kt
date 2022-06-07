@@ -11,7 +11,7 @@ class HealingMagmaHelmet() : CustomHelmet(
 		name = "Healing Magma Helmet",
 		customModelData = 1,
 		description = listOf("Quite the hot head"),
-		levelRequirement = 17,
+		levelRequirement = 14,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 5.0, defense = 10.0, regeneration = 16.0),
 		leatherColor = Color.ORANGE,

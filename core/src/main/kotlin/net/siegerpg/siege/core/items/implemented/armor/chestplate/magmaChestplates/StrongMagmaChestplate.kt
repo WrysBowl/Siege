@@ -11,7 +11,7 @@ class StrongMagmaChestplate() : CustomChestplate(
 		name = "Strong Magma Chestplate",
 		customModelData = 1,
 		description = listOf("This really warms my heart"),
-		levelRequirement = 17,
+		levelRequirement = 14,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 20.0, strength = 15.0),
 		leatherColor = Color.ORANGE,

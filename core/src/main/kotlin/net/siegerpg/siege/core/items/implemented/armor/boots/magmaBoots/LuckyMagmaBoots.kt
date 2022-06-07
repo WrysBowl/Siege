@@ -11,7 +11,7 @@ class LuckyMagmaBoots() : CustomBoots(
 		name = "Lucky Magma Boots",
 		customModelData = 1,
 		description = listOf("Some lit boots"),
-		levelRequirement = 17,
+		levelRequirement = 14,
 		material = Material.LEATHER_BOOTS,
 		baseStats = CustomItemUtils.statMap(health = 15.0, luck = 19.0),
 		leatherColor = Color.ORANGE,

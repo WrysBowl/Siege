@@ -11,7 +11,7 @@ class BoomiesLeggings() : CustomLeggings(
 		name = "Boomie's Leggings",
 		customModelData = 1,
 		description = listOf("The Bull Spirit is the third guardian"),
-		levelRequirement = 17,
+		levelRequirement = 14,
 		material = Material.LEATHER_LEGGINGS,
 		baseStats = CustomItemUtils.statMap(health = 40.0, defense = 70.0, luck = -10.0),
 		gearSetInfo = listOf("Sneak to charge forwards")

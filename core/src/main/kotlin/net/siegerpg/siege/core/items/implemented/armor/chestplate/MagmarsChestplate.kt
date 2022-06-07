@@ -11,7 +11,7 @@ class MagmarsChestplate() : CustomChestplate(
 		name = "Magmar's Chestplate",
 		customModelData = 1,
 		description = listOf("The Magma Spirit is the second guardian"),
-		levelRequirement = 17,
+		levelRequirement = 14,
 		material = Material.LEATHER_CHESTPLATE,
 		baseStats = CustomItemUtils.statMap(health = 35.0, defense = 25.0, strength = 15.0, luck = -15.0),
 		leatherColor = Color.ORANGE,

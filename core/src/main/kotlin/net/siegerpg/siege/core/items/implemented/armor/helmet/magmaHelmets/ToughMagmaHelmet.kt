@@ -11,7 +11,7 @@ class ToughMagmaHelmet() : CustomHelmet(
 		name = "Tough Magma Helmet",
 		customModelData = 1,
 		description = listOf("Quite the hot head"),
-		levelRequirement = 17,
+		levelRequirement = 14,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 8.0, defense = 23.0),
 		leatherColor = Color.ORANGE,

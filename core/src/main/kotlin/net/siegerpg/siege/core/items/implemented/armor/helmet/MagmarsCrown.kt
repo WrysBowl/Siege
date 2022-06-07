@@ -11,7 +11,7 @@ class MagmarsCrown() : CustomHelmet(
 		name = "Magmar's Crown",
 		customModelData = 1,
 		description = listOf("The Magma Spirit is the second guardian"),
-		levelRequirement = 17,
+		levelRequirement = 14,
 		material = Material.LEATHER_HELMET,
 		baseStats = CustomItemUtils.statMap(health = 25.0, defense = 15.0, strength = 10.0, regeneration = 20.0, luck = -10.0),
 		leatherColor = Color.ORANGE,
