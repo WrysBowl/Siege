@@ -16,12 +16,12 @@ object DamageIndicator {
 	private fun getIndicatorText(damage : Double, critical : Boolean) : Component {
 		val formatted = DecimalFormat("0.#").format(damage)
 		val coloured = when (damage) {
-			in -999999.0..0.0 -> if (critical) "<dark_green>+$formatted<dark_green>❤" else "<green>+$formatted<green>❤"
+			in -999999.0..1.0 -> if (critical) "<dark_green>+$formatted<dark_green>❤" else "<green>+$formatted<green>❤"
 			in 0.0..100.0     -> if (critical) "<red>-$formatted<dark_red>❤" else
 				"<gray>-$formatted<dark_red>❤"
 
 			in 100.0..500.0   -> if (critical) "<dark_red>-$formatted<dark_red>❤" else
-				"<dark_gray>-$formatted<dark_red>❤"
+				"<yellow>-$formatted<dark_red>❤"
 
 			in 500.0..1000.0  -> if (critical) "<gold>-$formatted<dark_red>❤" else
 				"<dark_purple>-$formatted<dark_red>❤"
