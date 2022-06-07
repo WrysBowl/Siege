@@ -34,6 +34,7 @@ abstract class CustomTool(
 	override var rarity : Rarity = Rarity.COMMON
 
 	init {
+		this.quality = 100
 		this.rarity = Rarity.getFromInt(this.quality)
 		this.serialize()
 	}
