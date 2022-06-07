@@ -19,10 +19,7 @@ class StatRewards {
 
 			val levelRewards : HashMap<StatTypes, Int> = getLevelRewards(level)
 
-			if (levelRewards.size > 0) return statMap
-
-
-			getLevelRewards(level).forEach { k, v ->
+			levelRewards.forEach { k, v ->
 				statMap.merge(k, v) { a : Int, b : Int ->
 					Integer.sum(
 							a,
