@@ -15,6 +15,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.EntityDamageEvent
 
 class MagmaSet : GearSet(
 		helmets = hashSetOf(
@@ -41,7 +42,7 @@ class MagmaSet : GearSet(
 
 	@EventHandler(priority = EventPriority.LOW)
 	fun onDamage(e : EntityDamageByEntityEvent) {
-		if (e.entity !is Player) return
+		if (e.entity !is Player) return //return if victim is not a player
 		if (e.damager !is LivingEntity) return
 		if (e.isCancelled) return
 
@@ -53,5 +54,19 @@ class MagmaSet : GearSet(
 		if (!Utils.randTest(30.0)) return
 
 		e.damager.fireTicks = 200
+	}
+
+	@EventHandler(priority = EventPriority.LOW)
+	fun onBurn(e : EntityDamageEvent) {
+		if (e.entity !is Player) return //return if victim is not a player
+		if (e.isCancelled) return
+
+		val player : Player = e.entity as Player
+		val list : List<GearSet> = currentSets[player] ?: listOf()
+		if (!Utils.contains(this, list)) return
+
+		if (e.cause.equals(EntityDamageEvent.DamageCause.FIRE_TICK)) e.isCancelled = true
+		if (e.cause.equals(EntityDamageEvent.DamageCause.FIRE)) e.isCancelled = true
+
 	}
 }
