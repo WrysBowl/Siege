@@ -61,17 +61,17 @@ class MagmarsSet : GearSet(
 			}
 		}.runTaskLater(Core.plugin(), 200)
 
-		Waves().createWaves(player.location, Particle.FLAME)
 		object : BukkitRunnable() {
 			var counter : Double = 0.0
 			val dmg : Double = CustomItemUtils.getPlayerStat(player, StatTypes.STRENGTH)
 			override fun run() {
-				counter += 0.5
+				counter += 1
 				for(entity in player.location.getNearbyLivingEntities(counter)) {
 					if (entity.equals(player)) continue
 					entity.damage(dmg/4, player)
 					entity.fireTicks = 200
 				}
+				Waves().createWaves(player.location, Particle.FLAME)
 				if (counter >= 5) {
 					this.cancel()
 					return
