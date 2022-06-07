@@ -35,7 +35,7 @@ public class SlimeSpirit extends MobDropTable {
 				new Reward(new Slime().getUpdatedItem(false).asQuantity(8), 10.0),
 
 				new Reward(new SlimeSpoofer(100).getUpdatedItem(false), 1.0),
-				new Reward(new SlimeSpoofer(80).getUpdatedItem(false), 30.0),
+				new Reward(new SlimeSpoofer(80).getUpdatedItem(false), 5.0),
 				new Reward(new SlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 1.0),
 				new Reward(new LuckySlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 0.20),
 				new Reward(new ToughSlimeSpoofer(Utils.randRarity()).getUpdatedItem(false), 0.20),
