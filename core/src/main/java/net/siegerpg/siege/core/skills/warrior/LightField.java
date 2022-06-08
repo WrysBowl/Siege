@@ -107,8 +107,9 @@ public class LightField extends Skill {
 					player.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, player.getLocation().add(v), 1);
 				}
 
-				//Damage
+				//Damage TODO: removed method
 				for (LivingEntity entity : location.getNearbyLivingEntities(5, 5, 5)) {
+
 					if (entity.equals(player)) continue;
 
 					if(entity instanceof Player ally){
@@ -131,7 +132,6 @@ public class LightField extends Skill {
 
 					}
 				}
-
 				counter++;
 			}
 		}.runTaskTimer(Core.plugin(), 20L, 20L);

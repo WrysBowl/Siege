@@ -3,6 +3,8 @@ package net.siegerpg.siege.core.skills.mage;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.entity.Player;
+import org.bukkit.event.*;
+import org.bukkit.event.entity.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
@@ -73,6 +75,11 @@ public class SoulHarvester extends Skill {
 
 		// Handling of the skill goes here
 		return true;
+	}
+
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onDamage(EntityDeathEvent e){
+		//todo
 	}
 
 	@Override
