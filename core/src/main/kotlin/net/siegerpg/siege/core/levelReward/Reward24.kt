@@ -16,7 +16,7 @@ class Reward24(
 		override val level : Short = 25,
 		override val gold : Int = 1000,
 		override val items : List<ItemStack> = listOf(
-				UncommonKey().getUpdatedItem(false).asQuantity(3)
+				UncommonKey().getUpdatedItem(false).asQuantity(2)
 		                                             ),
 		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 1

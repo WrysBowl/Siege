@@ -17,7 +17,7 @@ class Reward38(
 		override val level : Short = 39,
 		override val gold : Int = 0,
 		override val items : List<ItemStack> = listOf(
-				RareKey().getUpdatedItem(false).asQuantity(3)
+				RareKey().getUpdatedItem(false).asQuantity(2)
 		                                             ),
 		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0

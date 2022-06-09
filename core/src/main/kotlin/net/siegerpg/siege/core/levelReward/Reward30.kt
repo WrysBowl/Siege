@@ -17,7 +17,7 @@ class Reward30(
 		override val gold : Int = 1000,
 		override val items : List<ItemStack> = listOf(
 				Sugar().getUpdatedItem(false).asQuantity(20),
-				MobKey().getUpdatedItem(false).asQuantity(6)
+				MobKey().getUpdatedItem(false).asQuantity(5)
 		                                             ),
 		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0

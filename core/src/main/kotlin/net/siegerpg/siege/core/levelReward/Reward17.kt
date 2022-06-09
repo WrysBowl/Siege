@@ -15,7 +15,7 @@ class Reward17(
 		override val level : Short = 18,
 		override val gold : Int = 1000,
 		override val items : List<ItemStack> = listOf(
-				MobKey().getUpdatedItem(false).asQuantity(4)
+				MobKey().getUpdatedItem(false).asQuantity(3)
 		                                             ),
 		override val stats : HashMap<StatTypes, Int> = hashMapOf(),
 		override val skillPoints : Int = 0
