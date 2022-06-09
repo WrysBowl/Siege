@@ -2,9 +2,10 @@ package net.siegerpg.siege.core.items.types.subtypes
 
 import net.siegerpg.siege.core.items.types.misc.CustomSkill
 import net.siegerpg.siege.core.miscellaneous.lore
+import net.siegerpg.siege.core.skills.SkillClass
+import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.inventory.meta.ItemMeta
-import java.util.*
 
 
 interface CustomWeapon : CustomGear {
@@ -17,56 +18,32 @@ interface CustomWeapon : CustomGear {
 		// placeholder for optional event
 	}
 
-	var skillBooks : List<CustomSkill?>
+	var customSkill : CustomSkill?
 
-	fun canAddSkill() : Boolean{
-		var count = 0
-		for (skill in this.skillBooks) {
-			if (skill != null) {
-				count++
-			}
-		}
-		return count < this.skillBooks.size
-
+	fun hasSkill() : Boolean{
+		return this.customSkill != null
 	}
 
 	fun addSkill(skill : CustomSkill) {
-		val newSkillBooks : List<CustomSkill?> = this.skillBooks
-		newSkillBooks.toMutableList().add(skill)
 
-		this.skillBooks = newSkillBooks
+		this.customSkill = skill
 		this.serialize()
 	}
 
-	fun removeSkill(skill : CustomSkill) {
-		val newSkillBooks : List<CustomSkill?> = this.skillBooks
-		if (newSkillBooks.isNotEmpty()) newSkillBooks.toMutableList().remove(skill)
+	fun removeSkill() {
 
-		this.skillBooks = newSkillBooks
+		this.customSkill = null
 		this.serialize()
-	}
-
-	fun hasSkill() : Boolean {
-		for (skill in this.skillBooks) {
-			if (skill == null) {
-				return false
-			}
-		}
-		return true
-	}
-
-	fun hasSkill(skill : CustomSkill) : Boolean {
-		return this.skillBooks.contains(skill)
 	}
 
 	fun displaySkillText(meta : ItemMeta) : ItemMeta {
 		meta.lore(" ")
-		for(skill in skillBooks) {
-			if (skill == null) {
-				meta.lore("<dark_gray>\u25C7 <italic>Skill Slot")
-			} else {
-				meta.lore("<r><color:#7fd4a4>[R-Click] <color:#5c9976>${skill.name}")
-			}
+		if (this.customSkill == null) {
+			meta.lore("<dark_gray>\u25C7 <italic>Skill Slot")
+		} else {
+			val customSkill : CustomSkill = this.customSkill ?: return meta
+			val skillClass : SkillClass = customSkill.skill.skillClass
+			meta.lore("<r><color:#7fd4a4>${skillClass.action} <color:#5c9976>${this.customSkill?.name}")
 		}
 		return meta
 	}

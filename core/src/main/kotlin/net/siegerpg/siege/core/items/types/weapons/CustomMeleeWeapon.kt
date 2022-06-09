@@ -28,7 +28,7 @@ abstract class CustomMeleeWeapon(
 		override val baseStats : HashMap<StatTypes, Double>,
 		override val type : ItemTypes = ItemTypes.MELEEWEAPON,
 		val attackSpeed : Double,
-		override var skillBooks : List<CustomSkill?> = listOf(null),
+		override var customSkill : CustomSkill? = null,
 		override var statGem : StatGem? = null,
 		override var addedStats : HashMap<StatTypes, Double>? = null,
 		override val gearSetInfo : List<String>? = null

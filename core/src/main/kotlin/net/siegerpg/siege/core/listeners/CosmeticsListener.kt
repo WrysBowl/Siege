@@ -44,7 +44,7 @@ class CosmeticsListener : Listener {
 			player.setItemOnCursor(itemInteractedWith.unFuseCosmetic(false))
 			itemInteractedWith.updateMeta(false)
 			e.currentItem =
-					itemInteractedWith.item //change clicked item to the new cosmetic item
+					itemInteractedWith.getUpdatedItem(false) //change clicked item to the new cosmetic item
 			e.isCancelled = true
 		} else if (itemOnCursor != null && itemInteractedWith != null) { //fusing held cosmetic to clicked item
 			if (e.action != InventoryAction.SWAP_WITH_CURSOR) return
@@ -63,10 +63,10 @@ class CosmeticsListener : Listener {
 			itemInteractedWith.updateMeta(false)
 
 			e.currentItem =
-					itemInteractedWith.item //change clicked item to the new cosmetic item
+					itemInteractedWith.getUpdatedItem(false) //change clicked item to the new cosmetic item
 			e.isCancelled = true
 			player.setItemOnCursor(
-					itemOnCursor.item.asQuantity(itemOnCursor.item.amount - 1)
+					itemOnCursor.getUpdatedItem(false).asQuantity(itemOnCursor.item.amount - 1)
 			                      )
 		}
 	}
