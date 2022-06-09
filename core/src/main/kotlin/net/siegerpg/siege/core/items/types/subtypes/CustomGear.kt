@@ -147,7 +147,7 @@ interface CustomGear : CustomEquipment {
 	fun setStats() {
 		if (checkStatus()) return //if item has been checked for random stats, returns false
 		item = item.setNbtTags("addedStatus" to true) //item has had its stats rolled
-		addedStats = getRandomStats()
+		this.addedStats = getRandomStats()
 		this.serialize()
 	}
 
@@ -156,7 +156,7 @@ interface CustomGear : CustomEquipment {
 	 */
 	fun checkStatus() : Boolean {
 		try {
-			item.getNbtTag<Boolean>("addedStatus")?.let { it ->
+			this.item.getNbtTag<Boolean>("addedStatus")?.let { it ->
 				return it
 			}
 		} catch (e : Exception) {
@@ -167,15 +167,15 @@ interface CustomGear : CustomEquipment {
 
 	override fun serialize() {
 		super.serialize()
-		item = item.setNbtTags(
-				"addedStats" to if (this.addedStats != null) addedStats.toString() else null
+		this.item = this.item.setNbtTags(
+				"addedStats" to if (this.addedStats != null) this.addedStats.toString() else null
 		                      )
 	}
 
 	override fun deserialize() {
 		super.deserialize()
 		try {
-			item.getNbtTag<String>("addedStats")?.let { it ->
+			this.item.getNbtTag<String>("addedStats")?.let { it ->
 
 				//TODO Use NBTTag Compounds in place of this atrocity
 				if (it.isNotEmpty()) {
@@ -186,7 +186,7 @@ interface CustomGear : CustomEquipment {
 								.split("=")
 						StatTypes.getFromId(left)!! to right.toDouble()
 					}
-					addedStats = HashMap(map)
+					this.addedStats = HashMap(map)
 				}
 			}
 		} catch (e : Exception) {
