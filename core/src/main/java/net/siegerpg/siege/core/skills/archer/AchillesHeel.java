@@ -71,6 +71,11 @@ public class AchillesHeel extends Skill {
 		return super.trigger(player, level);
 
 		// Handling of the skill goes here
+		player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, (int) (20 *getSpeedTime(level)), 2));
+
+		triggerEnd(player, level);
+
+		return true;
 	}
 
 	@Override

@@ -22,7 +22,7 @@ public class UndeadRevival extends Skill {
 		this.description = List.of(
 				"Heals 10 HP/sec, but poison heals",
 				"an additional 10 HP/sec for every",
-				"tier you are effected by for 30 seconds"
+				"level you are effected by for 30 seconds"
 		                          );
 	}
 
@@ -42,7 +42,7 @@ public class UndeadRevival extends Skill {
 		return List.of(
 				"Heals "+getHealAmt(level, false)+" HP/sec, but poison heals",
 				"an additional "+getHealAmt(level, true)+" HP/sec for every",
-				"tier you are effected by for 30 seconds"
+				"level you are effected by for 30 seconds"
 		              );
 	}
 
@@ -79,6 +79,66 @@ public class UndeadRevival extends Skill {
 		return super.trigger(player, level);
 
 		// Handling of the skill goes here
+		new BukkitRunnable() {
+
+			int counter = 0;
+			@Override
+			public void run() {
+				//Run for 30 seconds
+				if (counter >= 30) {
+					triggerEnd(player, level);
+					this.cancel();
+				}
+
+				player.setHealth((double)e.getPlayer().getHealth() + (double)10);
+
+				Collection<PotionEffect> effects = player.getActivePotionEffects();
+       
+        		for(PotionEffect effect : effects) {
+           
+           			if(effect.getType() == PotionEffectType.POSION) {
+               
+                		Switch(effect.getAmplifier()) {
+							case 1:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)10);
+								break;
+							case 2:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)20);
+								break;
+							case 3:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)30);
+								break;
+							case 4:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)40);
+								break;
+							case 5:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)50);
+								break;
+							case 6:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)60);
+								break;
+							case 7:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)70);
+								break;
+							case 8:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)80);
+								break;
+							case 9:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)90);
+								break;
+							case 10:
+								player.setHealth((double)e.getPlayer().getHealth() + (double)100);
+								break;
+						}
+           	 		}
+        		}
+
+				counter++;
+			}
+
+		}.runTaskTimer(Core.plugin(), 0, 20);
+
+		return true;
 	}
 
 	@Override

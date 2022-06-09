@@ -77,6 +77,19 @@ public class Fireman extends Skill {
 		return super.trigger(player, level);
 
 		// Handling of the skill goes here
+		player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, (int) (20 * getDuration(level)), 3));
+
+		Location location = player.getLocation();	
+
+		for (LivingEntity entity : location.getNearbyLivingEntities(6, 6, 6)) {
+			if (!entity.equals(player)) {
+				entity.setFireTicks((int) (20 * getDuration(level)));
+			}
+		}
+
+		triggerEnd(player, level);
+
+		return true;
 	}
 
 	@Override
