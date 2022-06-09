@@ -132,6 +132,8 @@ public class UndeadRevival extends Skill {
 						}
            	 		}
         		}
+
+				counter++;
 			}
 
 		}.runTaskTimer(Core.plugin(), 0, 20);
