@@ -35,10 +35,10 @@ interface CustomWeapon : CustomGear {
 	}
 
 	fun canMerge(type : CustomSkill) : Boolean{
-		val checkedSkill : SkillClass = customSkill?.skill?.skillClass ?: return false
-		val matchSkill : SkillClass = if (type is CustomBow) {
+		val checkedSkill : SkillClass = type.skill.skillClass ?: return false
+		val matchSkill : SkillClass = if (this is CustomBow) {
 			SkillClass.ARCHER
-		} else if (type is CustomMeleeWeapon) {
+		} else if (this is CustomMeleeWeapon) {
 			SkillClass.WARRIOR
 		} else {
 			SkillClass.MAGE

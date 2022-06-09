@@ -60,7 +60,7 @@ class SkillListener : Listener {
 				player.sendMiniMessage("<red>This weapon already has a skill!")
 				return
 			}
-			if (itemInteractedWith.canMerge(itemOnCursor)) {
+			if (!itemInteractedWith.canMerge(itemOnCursor)) {
 				player.sendMiniMessage("<red>Incorrect skill book for this weapon type!")
 				return
 			}
