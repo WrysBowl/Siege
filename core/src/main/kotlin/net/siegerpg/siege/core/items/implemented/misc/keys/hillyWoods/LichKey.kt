@@ -13,7 +13,7 @@ class LichKey() : CustomKey(
 		quality = 50,
                            ) {
 	override fun getSellValue() : Int {
-		return 4000
+		return 2500
 	}
 	constructor(quality : Int) : this() {
 		this.quality = quality

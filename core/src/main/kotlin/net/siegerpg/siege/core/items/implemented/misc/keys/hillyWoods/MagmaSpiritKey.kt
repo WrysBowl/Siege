@@ -13,7 +13,7 @@ class MagmaSpiritKey() : CustomKey(
 		quality = 0,
                                   ) {
 	override fun getSellValue() : Int {
-		return 2000
+		return 1500
 	}
 	constructor(quality : Int) : this() {
 		this.quality = quality

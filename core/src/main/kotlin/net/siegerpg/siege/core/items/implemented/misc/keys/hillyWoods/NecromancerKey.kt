@@ -14,7 +14,7 @@ class NecromancerKey() : CustomKey(
 		quality = 80,
                                   ) {
 	override fun getSellValue() : Int {
-		return 8000
+		return 4000
 	}
 	constructor(quality : Int) : this() {
 		this.quality = quality

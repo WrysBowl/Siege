@@ -14,7 +14,7 @@ class FoxSpiritKey() : CustomKey(
 
                                 ) {
 	override fun getSellValue() : Int {
-		return 10000
+		return 5000
 	}
 	constructor(quality : Int) : this() {
 		this.quality = quality

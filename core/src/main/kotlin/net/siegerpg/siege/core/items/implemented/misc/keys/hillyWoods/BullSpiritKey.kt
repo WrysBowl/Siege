@@ -13,7 +13,7 @@ class BullSpiritKey() : CustomKey(
 		quality = 0,
                                  ) {
 	override fun getSellValue() : Int {
-		return 3000
+		return 2000
 	}
 	constructor(quality : Int) : this() {
 		this.quality = quality

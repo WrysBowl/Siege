@@ -13,7 +13,7 @@ class DavyJonesKey() : CustomKey(
 		quality = 50,
                                 ) {
 	override fun getSellValue() : Int {
-		return 6000
+		return 3000
 	}
 	constructor(quality : Int) : this() {
 		this.quality = quality

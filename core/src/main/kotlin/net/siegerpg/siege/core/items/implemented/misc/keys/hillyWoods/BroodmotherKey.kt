@@ -14,7 +14,7 @@ class BroodmotherKey() : CustomKey(
                                   ) {
 
 	override fun getSellValue() : Int {
-		return 15000
+		return 10000
 	}
 
 	constructor(quality : Int) : this() {
