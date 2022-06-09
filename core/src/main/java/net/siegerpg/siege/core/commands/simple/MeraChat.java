@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.commands;
+package net.siegerpg.siege.core.commands.simple;
 
 import net.siegerpg.siege.core.Core;
 import net.siegerpg.siege.core.miscellaneous.Scoreboard;

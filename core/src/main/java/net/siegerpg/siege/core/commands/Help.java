@@ -9,6 +9,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.*;
+import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.*;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +21,7 @@ public class Help implements CommandExecutor {
 
 	private ChestGui menu;
 	private Player player;
+	private int cmdPageNumber;
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -38,7 +41,7 @@ public class Help implements CommandExecutor {
 
 	private ChestGui getMenu() {
 		//Menu
-		ChestGui help = new ChestGui(6, "Help");
+		ChestGui help = new ChestGui(5, "Help");
 		help.setOnGlobalClick(event -> {
 			player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 0.5f, 0.75f);
 			event.setCancelled(true);
@@ -55,21 +58,23 @@ public class Help implements CommandExecutor {
 		help.addPane(background);
 
 		//Tutorial
-		OutlinePane tutorial = new OutlinePane(0, 0, 1, 1);
+		OutlinePane tutorial = new OutlinePane(0, 0, 1, 2);
 		tutorial.addItem(new GuiItem(getTutorialIcon(), e -> player.performCommand("menu")));
 
-		//Commands
-		OutlinePane command = new OutlinePane(0, 0, 1, 1);
-		command.addItem(new GuiItem(getCommandsIcon(), e -> player.performCommand("menu")));
+		//Commands - figure outhow to change this icon on click
+		OutlinePane command = new OutlinePane(0, 0, 3, 2);
+		command.addItem(new GuiItem(getCommandsIcon(), e -> getCommandsIcon(e.getAction())));
 
 		//Menu
-		OutlinePane navigator = new OutlinePane(0, 0, 1, 1);
+		OutlinePane navigator = new OutlinePane(0, 0, 6, 2);
 		navigator.addItem(new GuiItem(getMenuIcon(), e -> player.performCommand("menu")));
 
 		help.addPane(navigator);
 
 		return help;
 	}
+
+	//make a command icon that accepts a click action
 
 	private static ItemStack getTutorialIcon() {
 		//Creating Icon
@@ -87,6 +92,21 @@ public class Help implements CommandExecutor {
 	}
 
 	private static ItemStack getCommandsIcon() {
+		//Creating Icon
+		ItemStack icon = new ItemStack(Material.COMMAND_BLOCK);
+		ItemMeta iconMeta = icon.getItemMeta();
+		iconMeta.displayName(Utils.lore("<color:#de6a3c>Commands"));
+		iconMeta.lore(new ArrayList<>() {
+			{
+				add(Utils.lore("<gray>Click to Access"));
+			}
+		});
+		iconMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
+		icon.setItemMeta(iconMeta);
+		return icon;
+	}
+
+	private ItemStack getCommandsIcon(InventoryAction clickAction) {
 		//Creating Icon
 		ItemStack icon = new ItemStack(Material.COMMAND_BLOCK);
 		ItemMeta iconMeta = icon.getItemMeta();
