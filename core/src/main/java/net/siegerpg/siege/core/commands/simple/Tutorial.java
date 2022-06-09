@@ -1,4 +1,4 @@
-package net.siegerpg.siege.core.commands;
+package net.siegerpg.siege.core.commands.simple;
 
 import net.siegerpg.siege.core.*;
 import net.siegerpg.siege.core.miscellaneous.*;
@@ -13,8 +13,7 @@ public class Tutorial implements CommandExecutor {
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-		if (sender instanceof Player) {
-			Player player = (Player) sender;
+		if (sender instanceof Player player) {
 			player.teleport(Core.plugin().getNewSpawnLocation());
 			player.playSound(
 					player.getLocation(), Sound.ENTITY_WITHER_SHOOT, (float) 0.5, (float) 0.8);
