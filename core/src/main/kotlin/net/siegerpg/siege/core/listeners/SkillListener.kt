@@ -11,11 +11,13 @@ import net.siegerpg.siege.core.items.types.weapons.CustomMeleeWeapon
 import net.siegerpg.siege.core.items.types.weapons.CustomWand
 import net.siegerpg.siege.core.listeners.NPC.Herbert
 import net.siegerpg.siege.core.miscellaneous.Scoreboard
+import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.VaultHook
 import net.siegerpg.siege.core.miscellaneous.sendMiniMessage
 import net.siegerpg.siege.core.skills.Skill
 import net.siegerpg.siege.core.skills.SkillClass
 import net.siegerpg.siege.core.skills.SkillData
+import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -33,36 +35,36 @@ class SkillListener : Listener {
 	@Suppress("unused")
 	fun onInventoryClick(e : InventoryClickEvent) {
 		if (e.whoClicked !is Player) return
-		if (e.action != InventoryAction.SWAP_WITH_CURSOR) return
 		val player = e.whoClicked as Player
 		val itemOnCursor = getCustomItem(e.cursor) //cosmetic helmet
 		val itemInteractedWith = getCustomItem(e.currentItem) //helmet
 		if (itemOnCursor == null && itemInteractedWith != null) { //remove cosmetic from helmet
 			if (e.action != InventoryAction.PICKUP_HALF) return
-			if (itemOnCursor !is CustomSkill) return
 			if (itemInteractedWith !is CustomWeapon) return
 			if (!e.inventory.type.equals(InventoryType.CRAFTING)) return
+
+			player.setItemOnCursor(itemInteractedWith.customSkill?.getUpdatedItem(false))
 
 			//set clicked item's original values back
 			itemInteractedWith.removeSkill()
 			itemInteractedWith.updateMeta(false)
 
-			e.currentItem = itemInteractedWith.getUpdatedItem(false) //change clicked item to the new cosmetic item
+			e.currentItem = itemInteractedWith.item //change clicked item to the new cosmetic item
 			e.isCancelled = true
-			player.setItemOnCursor(itemInteractedWith.customSkill?.getUpdatedItem(false))
 
 		} else if (itemOnCursor != null && itemInteractedWith != null) { //fusing held cosmetic to clicked item
 			if (e.action != InventoryAction.SWAP_WITH_CURSOR) return
 			if (itemOnCursor !is CustomSkill) return
 			if (itemInteractedWith !is CustomWeapon) return
-			if (!itemInteractedWith.hasSkill()) {
-				player.sendMiniMessage("<red>That skill can not be merged onto this item!")
+			if (itemInteractedWith.hasSkill()) {
+				player.sendMiniMessage("<red>This weapon already has a skill!")
 				return
 			}
-			if (!SkillData.hasSkillUnlocked(player, itemOnCursor.skill)) {
-				player.sendMiniMessage("<red>You do not have this skill unlocked!")
+			if (itemInteractedWith.canMerge(itemOnCursor)) {
+				player.sendMiniMessage("<red>Incorrect skill book for this weapon type!")
 				return
 			}
+
 			/*
 			val cost = Herbert.getSellValue(e.currentItem)
 			if (VaultHook.econ.getBalance(player) < Herbert.getSellValue(e.currentItem)) {

@@ -690,7 +690,7 @@ public class SkillGUI implements CommandExecutor {
 		iconMeta.lore(new ArrayList<>() {
 			{
 				add(Utils.lore("<gray>Click to unlock"));
-				add(Utils.lore("<gray>Cost <red>- 1 <gray>point"));
+				add(Utils.lore("<gray>Cost <red>-1 <gray>point"));
 			}
 		});
 		iconMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
