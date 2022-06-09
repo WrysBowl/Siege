@@ -90,7 +90,7 @@ public class UndeadRevival extends Skill {
 					this.cancel();
 				}
 
-				player.setHealth((double)e.getPlayer().getHealth() + (double)10);
+				PlayerData.addHealth(player, 10);
 
 				Collection<PotionEffect> effects = player.getActivePotionEffects();
        
@@ -100,40 +100,38 @@ public class UndeadRevival extends Skill {
                
                 		Switch(effect.getAmplifier()) {
 							case 1:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)10);
+								PlayerData.addHealth(player, 10);
 								break;
 							case 2:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)20);
+								PlayerData.addHealth(player, 20);
 								break;
 							case 3:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)30);
+								PlayerData.addHealth(player, 30);
 								break;
 							case 4:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)40);
+								PlayerData.addHealth(player, 40);
 								break;
 							case 5:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)50);
+								PlayerData.addHealth(player, 50);
 								break;
 							case 6:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)60);
+								PlayerData.addHealth(player, 60);
 								break;
 							case 7:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)70);
+								PlayerData.addHealth(player, 70);
 								break;
 							case 8:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)80);
+								PlayerData.addHealth(player, 80);
 								break;
 							case 9:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)90);
+								PlayerData.addHealth(player, 90);
 								break;
 							case 10:
-								player.setHealth((double)e.getPlayer().getHealth() + (double)100);
+								PlayerData.addHealth(player, 100);
 								break;
 						}
            	 		}
         		}
-
-				counter++;
 			}
 
 		}.runTaskTimer(Core.plugin(), 0, 20);
