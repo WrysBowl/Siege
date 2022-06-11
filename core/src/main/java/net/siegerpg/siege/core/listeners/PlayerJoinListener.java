@@ -14,6 +14,7 @@ import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenPickaxe;
 import net.siegerpg.siege.core.items.implemented.misc.tools.WoodenShovel;
 import net.siegerpg.siege.core.items.implemented.weapons.melee.light.Twig;
 import net.siegerpg.siege.core.miscellaneous.*;
+import net.siegerpg.siege.core.skills.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -123,7 +124,8 @@ public class PlayerJoinListener implements Listener {
 			Tablist.tablistUpdate(p);
 		}
 		if (player.getName().equals("Wrys")) {
-
+			int currentPoints = SkillData.getSkillPoints(player);
+			SkillData.setSkillPoints(player, currentPoints + 1);
 		}
 		player.playSound(player.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1.0f, 1.0f);
 
