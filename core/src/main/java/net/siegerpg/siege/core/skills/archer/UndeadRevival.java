@@ -22,7 +22,7 @@ public class UndeadRevival extends Skill {
 		this.description = List.of(
 				"Heals 10 HP/sec, but poison heals",
 				"an additional 10 HP/sec for every",
-				"tier you are effected by for 30 seconds"
+				"level you are effected by for 30 seconds"
 		                          );
 	}
 
@@ -42,7 +42,7 @@ public class UndeadRevival extends Skill {
 		return List.of(
 				"Heals "+getHealAmt(level, false)+" HP/sec, but poison heals",
 				"an additional "+getHealAmt(level, true)+" HP/sec for every",
-				"tier you are effected by for 30 seconds"
+				"level you are effected by for 30 seconds"
 		              );
 	}
 
@@ -79,6 +79,66 @@ public class UndeadRevival extends Skill {
 		return super.trigger(player, level);
 
 		// Handling of the skill goes here
+		new BukkitRunnable() {
+
+			int counter = 0;
+			@Override
+			public void run() {
+				//Run for 30 seconds
+				if (counter >= 30) {
+					triggerEnd(player, level);
+					this.cancel();
+				}
+
+				PlayerData.addHealth(player, 10);
+
+				Collection<PotionEffect> effects = player.getActivePotionEffects();
+       
+        		for(PotionEffect effect : effects) {
+           
+           			if(effect.getType() == PotionEffectType.POSION) {
+               
+                		Switch(effect.getAmplifier()) {
+							case 1:
+								PlayerData.addHealth(player, 10);
+								break;
+							case 2:
+								PlayerData.addHealth(player, 20);
+								break;
+							case 3:
+								PlayerData.addHealth(player, 30);
+								break;
+							case 4:
+								PlayerData.addHealth(player, 40);
+								break;
+							case 5:
+								PlayerData.addHealth(player, 50);
+								break;
+							case 6:
+								PlayerData.addHealth(player, 60);
+								break;
+							case 7:
+								PlayerData.addHealth(player, 70);
+								break;
+							case 8:
+								PlayerData.addHealth(player, 80);
+								break;
+							case 9:
+								PlayerData.addHealth(player, 90);
+								break;
+							case 10:
+								PlayerData.addHealth(player, 100);
+								break;
+						}
+           	 		}
+        		}
+
+				counter++;
+			}
+
+		}.runTaskTimer(Core.plugin(), 0, 20);
+
+		return true;
 	}
 
 	@Override
