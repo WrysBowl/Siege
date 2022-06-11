@@ -1,12 +1,16 @@
 package net.siegerpg.siege.core.skills.archer;
 
+import net.siegerpg.siege.core.*;
+import net.siegerpg.siege.core.miscellaneous.cache.*;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.*;
+import org.bukkit.scheduler.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
-import java.util.List;
+import java.util.*;
 
 public class UndeadRevival extends Skill {
 
@@ -76,7 +80,7 @@ public class UndeadRevival extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
+		if (!super.trigger(player, level)) return false;
 
 		// Handling of the skill goes here
 		new BukkitRunnable() {
@@ -96,40 +100,9 @@ public class UndeadRevival extends Skill {
        
         		for(PotionEffect effect : effects) {
            
-           			if(effect.getType() == PotionEffectType.POSION) {
-               
-                		Switch(effect.getAmplifier()) {
-							case 1:
-								PlayerData.addHealth(player, 10);
-								break;
-							case 2:
-								PlayerData.addHealth(player, 20);
-								break;
-							case 3:
-								PlayerData.addHealth(player, 30);
-								break;
-							case 4:
-								PlayerData.addHealth(player, 40);
-								break;
-							case 5:
-								PlayerData.addHealth(player, 50);
-								break;
-							case 6:
-								PlayerData.addHealth(player, 60);
-								break;
-							case 7:
-								PlayerData.addHealth(player, 70);
-								break;
-							case 8:
-								PlayerData.addHealth(player, 80);
-								break;
-							case 9:
-								PlayerData.addHealth(player, 90);
-								break;
-							case 10:
-								PlayerData.addHealth(player, 100);
-								break;
-						}
+           			if(effect.getType() == PotionEffectType.POISON) {
+						   PlayerData.addHealth(player, 10*effect.getAmplifier());
+
            	 		}
         		}
 
