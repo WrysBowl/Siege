@@ -3,6 +3,7 @@ package net.siegerpg.siege.core.skills.archer;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
@@ -68,10 +69,11 @@ public class AchillesHeel extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
+		if (!super.trigger(player, level)) return false;
+
 
 		// Handling of the skill goes here
-		player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, (int) (20 *getSpeedTime(level)), 2));
+		player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, (int) (20 * getSpeedTime(level)), 2));
 
 		triggerEnd(player, level);
 
