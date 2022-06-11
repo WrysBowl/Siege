@@ -1,13 +1,21 @@
 package net.siegerpg.siege.core.skills.mage;
 
+import net.siegerpg.siege.core.*;
+import net.siegerpg.siege.core.items.*;
+import net.siegerpg.siege.core.items.enums.*;
 import net.siegerpg.siege.core.skills.Skill;
 import net.siegerpg.siege.core.skills.SkillClass;
-import org.bukkit.entity.Player;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import org.bukkit.potion.*;
+import org.bukkit.scheduler.*;
+import org.bukkit.util.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
 import java.util.List;
 
+//TODO TEST THIS SKILL
 public class Iceberg extends Skill {
 
 	final int initCooldown = 20 * 1000;
@@ -70,9 +78,53 @@ public class Iceberg extends Skill {
 	public boolean trigger(@NotNull Player player, int level) {
 		// First we check if the cooldown and mana are respected (we run the code common to all skills)
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
-		return super.trigger(player, level);
+		if(!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
+		Location loc = player.getEyeLocation();
+
+		Vector v = loc.getDirection().normalize().multiply(2);
+
+		double damage = CustomItemUtils.INSTANCE.getPlayerStat(player, StatTypes.STRENGTH);
+
+		//todo: work with falling blocks
+		FallingBlock fb = loc.getWorld().spawnFallingBlock(loc, Material.BLUE_ICE, (byte) 0);
+		fb.setHurtEntities(false);
+		fb.setDropItem(false);
+		fb.setVelocity(v);
+
+		new BukkitRunnable() {
+
+			int counter;
+
+			@Override
+			public void run() {
+				if(counter > 5){
+
+					triggerEnd(player, level);
+					this.cancel();
+
+				}
+
+				java.util.List< Entity > entityList = fb.getNearbyEntities(1.0, 1.0, 1.0);
+				entityList.remove(fb);
+				entityList.remove(player);
+
+				if(entityList.size() > 0){
+
+					LivingEntity le = ((LivingEntity)entityList.get(0));
+
+					le.damage(le.hasPotionEffect(PotionEffectType.SLOW) ? (damage * 2.5) : (damage * 2));
+
+					triggerEnd(player, level);
+					this.cancel();
+
+				}
+
+				counter++;
+
+			}
+		}.runTaskTimer(Core.plugin(), 1L, 1L);
+		return true;
 	}
 
 	@Override
