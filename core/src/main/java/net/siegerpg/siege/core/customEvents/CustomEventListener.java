@@ -5,7 +5,7 @@ import net.siegerpg.siege.core.customEvents.events.*;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class CustomEventListener implements Listener {
 	public static ArrayList<CustomEvent> events = new ArrayList<>() {
@@ -17,6 +17,8 @@ public class CustomEventListener implements Listener {
 			add(new More_Carrots());
 			add(new More_Wheat());
 			add(new Gold_Storm());
+			add(new Nightmare());
+
 		}
 	}; //fills up on start-up
 	public static CustomEvent currentlyActive = null;
@@ -36,6 +38,8 @@ public class CustomEventListener implements Listener {
 		if (currentlyActive != null) return; //if an event is not active then allow code to trigger a new one
 		if (eventDelayed) return;
 		//allow to be shown 4 ticks later
+
+		Collections.shuffle(events);
 
 		for (CustomEvent event : events) { //trigger all events
 			if (!event.triggerable()) continue;
