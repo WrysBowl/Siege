@@ -31,8 +31,6 @@ class Reward59(
               ) : LevelReward {
 
 	override fun extraReward(player : Player) {
-		Bukkit.getServer()
-				.broadcast(Utils.lore("<green>${player.name} has reached level $level!"))
 		player.sendMessage(Utils.lore("<green>+ 1 vault slot"))
 
 		val highestPV = Utils.getHighestPV(player)
