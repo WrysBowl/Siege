@@ -6,9 +6,9 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class CookedChicken() : CustomFood(
-		name = "Drumstick",
-		customModelData = 1,
-		description = listOf("Siege actual fried chicken"),
+		name = "Cooked Drumstick",
+		customModelData = 330002,
+		description = listOf("Siege fried chicken"),
 		levelRequirement = 0,
 		material = Material.COOKED_CHICKEN,
 		health = 60.0,
