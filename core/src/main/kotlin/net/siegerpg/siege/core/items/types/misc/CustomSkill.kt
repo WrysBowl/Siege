@@ -70,7 +70,9 @@ abstract class CustomSkill(
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore(" ")
-		meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
+		if (!hideRarity && quality > 0) {
+			meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
+		}
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
