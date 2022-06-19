@@ -17,7 +17,7 @@ public class SuperiorDropTable extends CosmeticDropTable {
 				//Uncommon
 				put(new Bee(), 20);
 				put(new DavyJonesCap(), 20);
-				//put(new GooBall(), 20);
+				put(new GooBall(), 20);
 				put(new SlimeBlock(), 20);
 				put(new StoneFace(), 20);
 				put(new WiseGuy(), 20);
@@ -29,13 +29,13 @@ public class SuperiorDropTable extends CosmeticDropTable {
 
 				//Rare
 				put(new Antlers(), 10);
-				//put(new AxeHead(), 10);
-				//put(new Axolotl(), 10);
-				//put(new BlueBetaBlob(), 10);
+				put(new AxeHead(), 10);
+				put(new Axolotl(), 10);
+				put(new BlueBetaBlob(), 10);
 				put(new Honey(), 10);
 				put(new Metroid(), 10);
 				put(new Panda(), 10);
-				//put(new Pyromancer(), 10);
+				put(new Pyromancer(), 10);
 				put(new TnT(), 10);
 				put(new Unirod(), 10);
 				put(new FoxMount(), 15);

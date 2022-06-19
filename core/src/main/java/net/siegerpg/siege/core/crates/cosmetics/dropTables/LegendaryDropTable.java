@@ -16,8 +16,6 @@ public class LegendaryDropTable extends CosmeticDropTable {
 				put(new GlowSquid(), 10);
 				put(new HexShifter(), 10);
 				put(new Rainbow(), 10);
-				put(new Bandana(), 10);
-				put(new SilverTiara(), 10);
 				put(new LilUziDiamond(), 10);
 				put(new AxolotlMount(), 15);
 				put(new BeeMount(), 15);

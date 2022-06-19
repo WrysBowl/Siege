@@ -16,13 +16,13 @@ public class SpiritDropTable extends CosmeticDropTable {
 			{
 				//Rare
 				put(new Antlers(), 20);
-				//put(new AxeHead(), 20);
-				//put(new Axolotl(), 20);
-				//put(new BlueBetaBlob(), 20);
+				put(new AxeHead(), 20);
+				put(new Axolotl(), 20);
+				put(new BlueBetaBlob(), 20);
 				put(new Honey(), 20);
 				put(new Metroid(), 20);
 				put(new Panda(), 20);
-				//put(new Pyromancer(), 20);
+				put(new Pyromancer(), 20);
 				put(new TnT(), 20);
 				put(new Unirod(), 20);
 				put(new FoxMount(), 15);

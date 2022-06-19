@@ -18,8 +18,6 @@ public class CommonDropTable extends CosmeticDropTable {
 				put(new AnonMask(), 10);
 				put(new ArrowHead(), 10);
 				put(new BunnyEars(), 10);
-				put(new Chocolate(), 10);
-				put(new DogEars(), 10);
 				put(new GrouchoGlasses(), 10);
 				put(new Halo(), 10);
 				put(new Mohawk(), 10);

@@ -14,7 +14,6 @@ public class EpicDropTable extends CosmeticDropTable {
 		dropTable = new HashMap<>() {
 			{
 				put(new CarrotOnAStick(), 10);
-				put(new Crown(), 10);
 				put(new HotHead(), 10);
 				put(new Headphones(), 10);
 				put(new SquidHead(), 10);
