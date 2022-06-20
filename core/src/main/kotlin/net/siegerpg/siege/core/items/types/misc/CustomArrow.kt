@@ -79,9 +79,7 @@ abstract class CustomArrow(
 		}
 
 		meta.lore(" ")
-		if (!hideRarity && quality > 0) {
-			meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
-		}
+		meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
 
 		if (potion != null) (meta as PotionMeta).basePotionData = PotionData(potion)
 		meta.isUnbreakable = true

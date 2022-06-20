@@ -83,9 +83,8 @@ abstract class CustomFood(
 		}
 
 		meta.lore(" ")
-		if (!hideRarity && quality > 0) {
-			meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
-		}
+		meta.lore("<r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
+
 		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)
 		item.itemMeta = meta

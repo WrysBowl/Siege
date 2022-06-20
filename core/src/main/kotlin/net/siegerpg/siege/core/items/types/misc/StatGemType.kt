@@ -69,11 +69,7 @@ abstract class StatGemType(
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore(" ")
-		if (hideRarity || quality < 0) {
-			meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement")
-		} else {
-			meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
-		}
+		meta.lore("<r><gray>Level <color:#BC74EE>$levelRequirement   <r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE)

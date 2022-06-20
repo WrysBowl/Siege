@@ -86,9 +86,7 @@ interface CustomCosmetic : CustomItem {
 		meta.lore("2. Right click item")
 		meta.lore("   to unmerge")
 		meta.lore(" ")
-		if (!hideRarity && quality > 0) {
-			meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
-		}
+		meta.lore("<r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
 		meta.lore("")
 		meta.lore(if (shownRarity == Rarity.SPECIAL) "<r><rainbow><b>${shownRarity.id}</b></rainbow> Tier" else "<r>${shownRarity.color}${shownRarity.id} Tier")
 		meta.isUnbreakable = true

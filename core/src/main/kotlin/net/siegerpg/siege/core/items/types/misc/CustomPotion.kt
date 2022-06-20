@@ -77,9 +77,6 @@ abstract class CustomPotion(
 		Utils.getTextArray(description, length).forEach {
 			meta.lore("<r><dark_gray>$it")
 		}
-		if (!hideRarity && quality > 0) {
-			meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
-		}
 
 		meta.isUnbreakable = true
 		meta.addItemFlags(

@@ -52,9 +52,8 @@ abstract class CustomKey(
 			meta.lore("<r><dark_gray>$it")
 		}
 		meta.lore(" ")
-		if (!hideRarity && quality > 0) {
-			meta.lore("<r><color:#E2DE5D>${String.format("%,d", getSellValue())} \u26C1")
-		}
+		meta.lore("<r><color:#E2DE5D>${String.format("%,d",getSellValue())} \u26C1")
+
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES)
 		item.itemMeta = meta
 		return item
