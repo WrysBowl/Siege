@@ -7,6 +7,7 @@ import net.siegerpg.siege.core.miscellaneous.*;
 import net.siegerpg.siege.core.skills.*;
 import org.bukkit.*;
 import org.bukkit.entity.*;
+import org.bukkit.event.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.projectiles.*;
 import org.bukkit.scheduler.*;
@@ -109,6 +110,7 @@ public class Combustion extends Skill {
 		return true;
 	}
 
+	@EventHandler
 	public void onArrowLand(ProjectileHitEvent e) {
 		Projectile arrow = e.getEntity();
 		if (!(arrow instanceof Arrow)) return;

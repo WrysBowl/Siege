@@ -37,9 +37,12 @@ public class ActiveSkillData {
 	 */
 	public static boolean isActive(OfflinePlayer player, Skill skill) {
 
-		return currentlyActiveSkills
-				.getOrDefault(player.getUniqueId(), new HashSet<>())
-				.contains(skill);
+		for (Skill currentSkill : currentlyActiveSkills.getOrDefault(player.getUniqueId(), new HashSet<>())) {
+			if (currentSkill.getIdentifier().equals(skill.getIdentifier())) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -67,11 +70,15 @@ public class ActiveSkillData {
 	@Nullable
 	public static void removeFromActiveSkills(OfflinePlayer player, Skill skill) {
 
-		currentlyActiveSkills
-				.computeIfAbsent(player.getUniqueId(), k -> new HashSet<>());
-		HashSet< Skill > activeSkills = currentlyActiveSkills.get(player.getUniqueId());
-		activeSkills.remove(skill);
-		currentlyActiveSkills.put(player.getUniqueId(), activeSkills);
+		for (Skill currentSkill : currentlyActiveSkills.getOrDefault(player.getUniqueId(), new HashSet<>())) {
+			if (currentSkill.getIdentifier().equals(skill.getIdentifier())) {
+				currentlyActiveSkills
+						.computeIfAbsent(player.getUniqueId(), k -> new HashSet<>());
+				HashSet< Skill > activeSkills = currentlyActiveSkills.get(player.getUniqueId());
+				activeSkills.remove(currentSkill);
+				currentlyActiveSkills.put(player.getUniqueId(), activeSkills);
+			}
+		}
 	}
 
 }
