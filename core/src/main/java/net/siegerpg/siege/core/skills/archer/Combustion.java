@@ -1,12 +1,21 @@
 package net.siegerpg.siege.core.skills.archer;
 
-import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.skills.SkillClass;
-import org.bukkit.entity.Player;
+import net.siegerpg.siege.core.*;
+import net.siegerpg.siege.core.items.*;
+import net.siegerpg.siege.core.items.enums.*;
+import net.siegerpg.siege.core.miscellaneous.*;
+import net.siegerpg.siege.core.skills.*;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import org.bukkit.event.entity.*;
+import org.bukkit.projectiles.*;
+import org.bukkit.scheduler.*;
+import org.bukkit.util.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Combustion extends Skill {
 
@@ -20,8 +29,7 @@ public class Combustion extends Skill {
 		this.skillClass = SkillClass.ARCHER;
 		this.name = "Combustion";
 		this.description = List.of(
-				"This arrow will light the ground",
-				"on fire and explode on impact.",
+				"This arrow explodes on impact.",
 				"If player has Fireman skill active",
 				"explosion damage increases by 50%"
 		                          );
@@ -41,8 +49,7 @@ public class Combustion extends Skill {
 	public List< String > getDescription(int level) {
 
 		return List.of(
-				"This arrow will light the ground",
-				"on fire and explode on impact.",
+				"This arrow explodes on impact.",
 				"If player has Fireman skill active",
 				"explosion damage increases by "+((getDamageMulti(level)-1) * 100)+"%"
 		              );
@@ -77,8 +84,81 @@ public class Combustion extends Skill {
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
 		if (!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
+		Skill skill = this;
+
+		//call triggerEnd when player's arrow lands
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+				if (!ActiveSkillData.isActive(player, skill)) {
+
+					//when skill ends, end the runnable
+					triggerEnd(player, level);
+					this.cancel();
+				} else {
+					//display flames around the player
+					player.getLocation().getWorld().spawnParticle(
+							Particle.SMALL_FLAME,
+							player.getLocation().add(0,1,0), 10, 0.75, 0.25, 0.75);
+
+				}
+			}
+		}.runTaskTimer(Core.plugin(), 40, 40);
+
 		return true;
+	}
+
+	public void onArrowLand(ProjectileHitEvent e) {
+		Projectile arrow = e.getEntity();
+		if (!(arrow instanceof Arrow)) return;
+
+		//gets the player instance
+		ProjectileSource shooter = arrow.getShooter();
+		if (!(shooter instanceof Player)) return;
+
+		//check if player has this skill active
+		if (!ActiveSkillData.isActive(((OfflinePlayer) shooter), this)) return;
+
+		//get location of arrow
+		Location loc = arrow.getLocation();
+
+		//create explosion effect
+		loc.getWorld().spawnParticle(
+				Particle.EXPLOSION_NORMAL,
+				loc.add(0,1,0), 10, 0.75, 0.25, 0.75);
+
+		//create flame particles effect
+		loc.getWorld().spawnParticle(
+				Particle.SMALL_FLAME,
+				loc.add(0,1,0), 30, 0.75, 0.25, 0.75);
+
+		//shoot fireballs at mobs within 10 blocks
+		double damage = CustomItemUtils.INSTANCE.getPlayerStat((Player) shooter, StatTypes.STRENGTH);
+		int level = SkillData.getSkillLevel((Player) shooter, this);
+
+		//check if player has fireman skill active
+		if (ActiveSkillData.isActive(((Player) shooter), new Fireman())) {
+			loc.getNearbyLivingEntities(10.0).forEach(new Consumer< LivingEntity >() {
+				@Override
+				public void accept(LivingEntity livingEntity) {
+					livingEntity.damage(damage*getDamageMulti(level), (Player) shooter);
+				}
+			});
+		} else {
+			loc.getNearbyLivingEntities(10.0).forEach(new Consumer< LivingEntity >() {
+				@Override
+				public void accept(LivingEntity livingEntity) {
+					SmallFireball fireball = (SmallFireball) loc.getWorld().spawnEntity(loc, EntityType.SMALL_FIREBALL);
+					Vector vector = Utils.getDifferentialVector(loc, livingEntity.getLocation());
+					vector.multiply(1.5);
+					fireball.setVelocity(vector);
+					livingEntity.damage(damage, (Player) shooter);
+
+				}
+			});
+		}
+
 	}
 
 	@Override

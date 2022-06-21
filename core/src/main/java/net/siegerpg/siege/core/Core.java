@@ -29,6 +29,7 @@ import net.siegerpg.siege.core.miscellaneous.cache.PlayerData;
 import net.siegerpg.siege.core.parties.PartyCommand;
 import net.siegerpg.siege.core.parties.PartyConfig;
 import net.siegerpg.siege.core.skills.*;
+import net.siegerpg.siege.core.skills.archer.*;
 import net.siegerpg.siege.core.skills.warrior.Armory;
 import net.siegerpg.siege.core.webstore.WebstoreCommand;
 import net.siegerpg.siege.core.webstore.WebstoreListener;
@@ -186,6 +187,10 @@ public final class Core extends JavaPlugin {
 				new CustomEventListener(),
 				new MobCrateOpen(),
 				new MountSteer(),
+
+				/*
+				Gear Sets
+				 */
 				new MagmaSet(),
 				new SlimsSet(),
 				new MagmarsSet(),
@@ -199,6 +204,7 @@ public final class Core extends JavaPlugin {
 				All Skills
 				 */
 				new Armory(),
+				new Combustion(),
 
 
 
