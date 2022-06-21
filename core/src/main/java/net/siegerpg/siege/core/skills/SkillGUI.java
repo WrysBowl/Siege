@@ -521,7 +521,7 @@ public class SkillGUI implements CommandExecutor {
 				} else {
 					SkillData.setSkillPoints(player, currentPoints-1);
 					player.sendMessage(Utils.lore("<green>Successfully unlocked "+skill.name+"<green>!"));
-
+					SkillData.setSkillLevel(player, skill, 1);
 				}
 			} else if (level > 0){ //if player has skill unlocked
 				int bal = (int) Math.floor(VaultHook.econ.getBalance(player));
