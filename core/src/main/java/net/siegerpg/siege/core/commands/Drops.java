@@ -255,6 +255,13 @@ public class Drops implements CommandExecutor {
 			ItemStack item = new ItemStack(key);
 			ItemMeta iconMeta = item.getItemMeta();
 			iconMeta.displayName(Utils.lore("<green>"+item.getI18NDisplayName()));
+			iconMeta.lore(new ArrayList<>() {
+				{
+					add(Utils.lore("<yellow>Respawn time: "+(int)Math.floor(dropTable.get(key).getBlockRegen()/20.0)+"s"));
+					add(Utils.lore(""));
+				}
+			});
+
 			item.setItemMeta(iconMeta);
 
 			row.addItem(new GuiItem(item, e -> {
