@@ -51,13 +51,25 @@ class CustomItemKotlinListener : Listener {
 			return multiplier * (10.0 * sqrt(5.0 * abs(initToughness)))
 		}
 		var currentlyUsingWand : MutableList<Player> = mutableListOf()
+		var cooldownWand : MutableList<Player> = mutableListOf()
+		var damageMulti : HashMap<Player, Double> = hashMapOf()
+		var lastShotArrow : HashMap<Player, ItemStack> = hashMapOf()
 
+		fun removeDamageMulti(damage : Double, player: Player) {
+			var newDamage = damageMulti[player] ?: 1.0
+			newDamage -= damage
+			setDamageMulti(newDamage, player)
+
+		}
+		fun addDamageMulti(damage : Double, player: Player) {
+			var newDamage = damageMulti[player] ?: 1.0
+			newDamage += damage
+			setDamageMulti(newDamage, player)
+		}
+		fun setDamageMulti(damage : Double, player: Player) {
+			damageMulti[player] = damage
+		}
 	}
-
-	var cooldownWand : MutableList<Player> = mutableListOf()
-	var damageMulti : HashMap<Player, Double> = hashMapOf()
-	var lastShotArrow : HashMap<Player, ItemStack> = hashMapOf()
-
 
 	@EventHandler
 	@Suppress("UNUSED_PARAMETER")

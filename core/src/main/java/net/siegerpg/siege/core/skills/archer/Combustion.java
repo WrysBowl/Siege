@@ -93,10 +93,9 @@ public class Combustion extends Skill {
 			@Override
 			public void run() {
 				if (!ActiveSkillData.isActive(player, skill)) {
-
 					//when skill ends, end the runnable
-					triggerEnd(player, level);
 					this.cancel();
+
 				} else {
 					//display flames around the player
 					player.getLocation().getWorld().spawnParticle(
@@ -144,6 +143,10 @@ public class Combustion extends Skill {
 			loc.getNearbyLivingEntities(10.0).forEach(new Consumer< LivingEntity >() {
 				@Override
 				public void accept(LivingEntity livingEntity) {
+					SmallFireball fireball = (SmallFireball) loc.getWorld().spawnEntity(loc, EntityType.SMALL_FIREBALL);
+					Vector vector = Utils.getDifferentialVector(loc, livingEntity.getLocation());
+					vector.multiply(1.5);
+					fireball.setVelocity(vector);
 					livingEntity.damage(damage*getDamageMulti(level), (Player) shooter);
 				}
 			});
@@ -160,6 +163,8 @@ public class Combustion extends Skill {
 				}
 			});
 		}
+
+		this.triggerEnd((Player) shooter, level);
 
 	}
 
