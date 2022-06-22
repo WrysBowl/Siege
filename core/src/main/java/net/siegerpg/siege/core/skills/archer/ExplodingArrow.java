@@ -109,7 +109,7 @@ public class ExplodingArrow extends Skill {
 				} else {
 					//display flames around the player
 					player.getLocation().getWorld().spawnParticle(
-							Particle.SMALL_FLAME,
+							Particle.SMOKE_NORMAL,
 							player.getLocation().add(0,1,0), 10, 0.75, 0.25, 0.75);
 
 				}
@@ -117,6 +117,27 @@ public class ExplodingArrow extends Skill {
 		}.runTaskTimer(Core.plugin(), 40, 40);
 
 		return true;
+	}
+
+	@EventHandler
+	public void onArrowShoot(EntityShootBowEvent e) {
+
+		//gets the player instance
+		Entity shooter = e.getEntity();
+		if (!(shooter instanceof Player)) return;
+
+		//check if player has this skill active
+		if (!ActiveSkillData.isActive(((OfflinePlayer) shooter), this)) return;
+
+		Entity arrow = e.getProjectile();
+		if (!(arrow instanceof Arrow)) return;
+
+		TNTPrimed tnt = (TNTPrimed) arrow.getWorld().spawnEntity(arrow.getLocation(), EntityType.PRIMED_TNT);
+		tnt.setFuseTicks(99999);
+		tnt.setSource(shooter);
+
+		e.getProjectile().addPassenger(tnt);
+
 	}
 
 	@EventHandler
