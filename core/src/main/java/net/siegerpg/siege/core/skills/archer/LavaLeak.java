@@ -1,12 +1,22 @@
 package net.siegerpg.siege.core.skills.archer;
 
-import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.skills.SkillClass;
-import org.bukkit.entity.Player;
+import net.siegerpg.siege.core.*;
+import net.siegerpg.siege.core.items.*;
+import net.siegerpg.siege.core.items.enums.*;
+import net.siegerpg.siege.core.miscellaneous.cache.*;
+import net.siegerpg.siege.core.skills.*;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import org.bukkit.event.*;
+import org.bukkit.event.entity.*;
+import org.bukkit.projectiles.*;
+import org.bukkit.scheduler.*;
+import org.bukkit.util.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class LavaLeak extends Skill {
 
@@ -92,7 +102,78 @@ public class LavaLeak extends Skill {
 		if (!super.trigger(player, level)) return false;
 
 		// Handling of the skill goes here
+
+
+
 		return true;
+	}
+
+	@EventHandler
+	public void onArrowLand(ProjectileHitEvent e) {
+		Projectile arrow = e.getEntity();
+		if (!(arrow instanceof Arrow)) return;
+
+		//gets the player instance
+		ProjectileSource shooter = arrow.getShooter();
+		if (!(shooter instanceof Player)) return;
+		Player player = ((Player) shooter).getPlayer();
+		if (player == null) return;
+
+		//check if player has this skill active
+		if (!ActiveSkillData.isActive(((OfflinePlayer) shooter), this)) return;
+
+		Skill skill = this;
+
+		//get location of arrow
+		Location loc = arrow.getLocation();
+
+		//create flame particles effect
+		loc.getWorld().spawnParticle(
+				Particle.FLAME,
+				loc.add(0,1,0), 30, 0.75, 0.25, 0.75);
+
+		int level = SkillData.getSkillLevel((Player) shooter, this);
+
+		//timer for duration
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+				skill.triggerEnd(player, level);
+			}
+		}.runTaskLater(Core.plugin(), (long) this.getDuration(level));
+
+		//create circle
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+
+
+				if (!ActiveSkillData.isActive(((OfflinePlayer) shooter), skill)) {
+					this.cancel();
+					return;
+				}
+
+				//particles
+				double increase = Math.PI / 18;
+
+				for(int j = 0; j < 36; j++){
+
+					double angle = j * increase;
+
+					Vector v = new Vector(Math.cos(angle) * bubbleSize, 0, Math.sin(angle) * bubbleSize);
+
+					player.getWorld().spawnParticle(Particle.LAVA, player.getLocation().add(v), 1);
+				}
+
+				//heal player
+				PlayerData.addHealth(player, loc.getNearbyLivingEntities(10.0).size()*5);
+
+			}
+		}.runTaskTimer(Core.plugin(), 20, 20);
+
+		this.triggerEnd((Player) shooter, level);
+
 	}
 
 	@Override
