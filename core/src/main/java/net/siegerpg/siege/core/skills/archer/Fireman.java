@@ -1,10 +1,11 @@
 package net.siegerpg.siege.core.skills.archer;
 
-import net.siegerpg.siege.core.skills.Skill;
-import net.siegerpg.siege.core.skills.SkillClass;
+import net.siegerpg.siege.core.*;
+import net.siegerpg.siege.core.skills.*;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.potion.*;
+import org.bukkit.scheduler.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
@@ -79,18 +80,41 @@ public class Fireman extends Skill {
 		if (!super.trigger(player, level)) return false;
 
 
+		//save skill instance
+		Skill skill = this;
+
 		// Handling of the skill goes here
-		player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, (int) (20 * getDuration(level)), 3));
+		player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, (int) (20 * getDuration(level)), 2));
 
 		Location location = player.getLocation();
 
-		for (LivingEntity entity : location.getNearbyLivingEntities(6, 6, 6)) {
-			if (!entity.equals(player)) {
-				entity.setFireTicks((int) (20 * getDuration(level)));
+		//call trigger end after getDuration() seconds
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				skill.triggerEnd(player, level);
 			}
-		}
 
-		triggerEnd(player, level);
+		}.runTaskLater(Core.plugin(), (long) this.getDuration(level));
+
+		//timer to constantly check for mobs
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+
+				if (!ActiveSkillData.isActive(player, skill)) {
+					this.cancel();
+				} else {
+					for (LivingEntity entity : location.getNearbyLivingEntities(6, 6, 6)) {
+						if (!entity.equals(player)) {
+							entity.setFireTicks(40);
+						}
+					}
+				}
+			}
+
+		}.runTaskTimer(Core.plugin(), 30, 30);
 
 		return true;
 	}
