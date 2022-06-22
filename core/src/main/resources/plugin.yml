@@ -76,3 +76,6 @@ commands:
     description: Teleports the player to tutorial
   tutorialReward:
     description: Gives rewards for players who just finished the tutorial
+  ad:
+    aliases: [ admsg, advert ]
+    description: Displays advertisement messages

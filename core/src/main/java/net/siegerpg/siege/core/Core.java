@@ -143,6 +143,7 @@ public final class Core extends JavaPlugin {
 			commandList.put("traveler", new Traveler());
 			commandList.put("tutorial", new Tutorial());
 			commandList.put("tutorialReward", new TutorialReward());
+			commandList.put("ad", new AdvertMessage());
 
 		}
 

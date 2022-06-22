@@ -22,7 +22,7 @@ public class PiercingArrow extends Skill {
 		this.description = List.of(
 				"The arrow will damage the enemy for",
 				"10% of their health if you and the",
-				"target are poisoned, if not, cat poison arrow"
+				"target are poisoned, if not, cast poison arrow"
 		                          );
 	}
 

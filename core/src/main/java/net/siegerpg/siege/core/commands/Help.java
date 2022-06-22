@@ -34,9 +34,9 @@ public class Help implements CommandExecutor {
 
 		player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 0.75f, 1.0f);
 		Help instance = new Help();
-		this.player = player;
-		this.menu = instance.getMenu();
-		this.menu.show(player);
+		instance.player = player;
+		instance.menu = instance.getMenu();
+		instance.menu.show(player);
 
 		return false;
 	}
@@ -60,21 +60,23 @@ public class Help implements CommandExecutor {
 		help.addPane(background);
 
 		//Tutorial
-		OutlinePane tutorial = new OutlinePane(0, 0, 1, 2);
+		OutlinePane tutorial = new OutlinePane(1, 2, 1, 1);
 		tutorial.addItem(new GuiItem(getTutorialIcon(), e -> getObjectivesMenu().show(player)));
 
 		//Commands - figure out how to change this icon on click
-		OutlinePane command = new OutlinePane(0, 0, 3, 2);
+		OutlinePane command = new OutlinePane(3, 2, 1, 1);
 		command.addItem(new GuiItem(getCommandsIcon(), e -> {
 			this.cmdPageNumber += 1;
 			this.menu.show(player);
 		}));
 
 		//Menu
-		OutlinePane navigator = new OutlinePane(0, 0, 6, 2);
+		OutlinePane navigator = new OutlinePane(6, 2, 1, 1);
 		navigator.addItem(new GuiItem(getMenuIcon(), e -> player.performCommand("menu")));
 
 		help.addPane(navigator);
+		help.addPane(command);
+		help.addPane(tutorial);
 
 		return help;
 	}
