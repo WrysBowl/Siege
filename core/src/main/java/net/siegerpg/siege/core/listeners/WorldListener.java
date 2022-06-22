@@ -16,13 +16,14 @@ import org.bukkit.entity.*;
 import org.bukkit.event.*;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
-import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 
 public class WorldListener extends PacketListenerAbstract implements Listener, Runnable {
+
 
 	@EventHandler
 	public void onTrample(PlayerInteractEvent event) {

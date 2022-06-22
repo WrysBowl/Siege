@@ -127,6 +127,8 @@ class CustomItemKotlinListener : Listener {
 		val player = e.player
 		val item = player.inventory.itemInMainHand
 		if (item.type == Material.AIR) return
+		if (item.type == Material.TRIDENT) return
+
 		val customItem = getCustomItem(item) ?: return
 		player.inventory.setItemInMainHand(customItem.getUpdatedItem(false))
 	}
