@@ -205,6 +205,8 @@ public final class Core extends JavaPlugin {
 				 */
 				new Armory(),
 				new Combustion(),
+				new CriticalShot(),
+				new ExplodingArrow(),
 
 
 

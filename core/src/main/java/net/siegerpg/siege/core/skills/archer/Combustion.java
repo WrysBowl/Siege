@@ -99,7 +99,7 @@ public class Combustion extends Skill {
 				} else {
 					//display flames around the player
 					player.getLocation().getWorld().spawnParticle(
-							Particle.SMALL_FLAME,
+							Particle.FIREWORKS_SPARK,
 							player.getLocation().add(0,1,0), 10, 0.75, 0.25, 0.75);
 
 				}
@@ -147,6 +147,7 @@ public class Combustion extends Skill {
 					Vector vector = Utils.getDifferentialVector(loc, livingEntity.getLocation());
 					vector.multiply(1.5);
 					fireball.setVelocity(vector);
+					livingEntity.setVelocity(vector);
 					livingEntity.damage(damage*getDamageMulti(level), (Player) shooter);
 				}
 			});
@@ -158,6 +159,7 @@ public class Combustion extends Skill {
 					Vector vector = Utils.getDifferentialVector(loc, livingEntity.getLocation());
 					vector.multiply(1.5);
 					fireball.setVelocity(vector);
+					livingEntity.setVelocity(vector);
 					livingEntity.damage(damage, (Player) shooter);
 
 				}
