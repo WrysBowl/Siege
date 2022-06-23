@@ -249,6 +249,7 @@ class CustomItemKotlinListener : Listener {
 					if (e.damager is Projectile) {
 						try {
 							cooldown = e.damager.getMetadata("cooldown").get(0).asFloat()
+							if (cooldown == 1.0F) isCritical = true;
 						} catch (x : Exception) {
 							throw Error(x)
 						}
