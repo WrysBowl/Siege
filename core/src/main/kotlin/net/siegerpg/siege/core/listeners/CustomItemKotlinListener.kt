@@ -1,5 +1,6 @@
 package net.siegerpg.siege.core.listeners
 
+import net.siegerpg.siege.core.Core
 import net.siegerpg.siege.core.Core.plugin
 import net.siegerpg.siege.core.items.CustomItem
 import net.siegerpg.siege.core.items.CustomItemUtils
@@ -20,7 +21,6 @@ import net.siegerpg.siege.core.miscellaneous.Levels
 import net.siegerpg.siege.core.miscellaneous.Utils
 import net.siegerpg.siege.core.miscellaneous.cache.ActiveMobs
 import net.siegerpg.siege.core.miscellaneous.cache.PlayerData
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.attribute.Attribute
@@ -30,10 +30,10 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.*
-import org.bukkit.event.entity.EntityDamageEvent.DamageCause
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
+import org.bukkit.metadata.FixedMetadataValue
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.scheduler.BukkitRunnable
 import java.math.BigDecimal
@@ -50,23 +50,26 @@ class CustomItemKotlinListener : Listener {
 			if (initToughness < 0.0) multiplier = -1
 			return multiplier * (10.0 * sqrt(5.0 * abs(initToughness)))
 		}
+
 		var currentlyUsingWand : MutableList<Player> = mutableListOf()
 		var cooldownWand : MutableList<Player> = mutableListOf()
 		var damageMulti : HashMap<Player, Double> = hashMapOf()
 		var lastShotArrow : HashMap<Player, ItemStack> = hashMapOf()
 
-		fun removeDamageMulti(damage : Double, player: Player) {
+		fun removeDamageMulti(damage : Double, player : Player) {
 			var newDamage = damageMulti[player] ?: 1.0
 			newDamage -= damage
 			setDamageMulti(newDamage, player)
 
 		}
-		fun addDamageMulti(damage : Double, player: Player) {
+
+		fun addDamageMulti(damage : Double, player : Player) {
 			var newDamage = damageMulti[player] ?: 1.0
 			newDamage += damage
 			setDamageMulti(newDamage, player)
 		}
-		fun setDamageMulti(damage : Double, player: Player) {
+
+		fun setDamageMulti(damage : Double, player : Player) {
 			damageMulti[player] = damage
 		}
 	}
@@ -123,7 +126,7 @@ class CustomItemKotlinListener : Listener {
 	}
 
 	@EventHandler
-	fun updateItemEachHit(e: InventoryCloseEvent) {
+	fun updateItemEachHit(e : InventoryCloseEvent) {
 		val player = e.player
 		val item = player.inventory.itemInMainHand
 		if (item.type == Material.AIR) return
@@ -134,7 +137,7 @@ class CustomItemKotlinListener : Listener {
 	}
 
 	@EventHandler
-	fun updateItemEachHit(e: PlayerSwapHandItemsEvent) {
+	fun updateItemEachHit(e : PlayerSwapHandItemsEvent) {
 		e.isCancelled = true
 	}
 
@@ -176,6 +179,10 @@ class CustomItemKotlinListener : Listener {
 		customItem.skillUse(e)
 	}
 
+	@EventHandler
+	fun onBowShoot(e : EntityShootBowEvent) {
+		e.projectile.setMetadata("cooldown", FixedMetadataValue(plugin(), e.force))
+	}
 
 
 	@EventHandler(priority = EventPriority.LOWEST)
@@ -230,15 +237,23 @@ class CustomItemKotlinListener : Listener {
 					currentlyUsingWand.remove(attacker)
 				} else {
 					//set the damage from the player
-					val playerStrength : Double = getPlayerStat(attacker, StatTypes.STRENGTH)
-					val cooldown : Float = attacker.attackCooldown
+					val playerStrength : Double =
+							getPlayerStat(attacker, StatTypes.STRENGTH)
+					var cooldown = attacker.attackCooldown
 					val flag =
 							attacker.getFallDistance() > 0.0f &&
 							!attacker.isOnGround() &&
 							!attacker.hasPotionEffect(PotionEffectType.BLINDNESS) &&
 							attacker.getVehicle() == null
 
+					if (e.damager is Projectile) {
+						try {
+							cooldown = e.damager.getMetadata("cooldown").get(0).asFloat()
+						} catch (x : Exception) {
+							throw Error(x)
+						}
 
+					}
 
 					//damage multiplication if crit || cooldowns
 					damage = playerStrength * cooldown
@@ -275,7 +290,7 @@ class CustomItemKotlinListener : Listener {
 					it.onHit(e)
 				}
 			}
-		    victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
+			victim.world.spawnParticle(Particle.SWEEP_ATTACK, victim.location, 1)
 		}
 
 		/*
@@ -295,6 +310,7 @@ class CustomItemKotlinListener : Listener {
 			}
 		}
 
+
 		//apply damage multiplier
 		if (damageMulti[attacker] != null) {
 			damage = damageMulti[attacker]?.times(damage) ?: damage
@@ -302,20 +318,32 @@ class CustomItemKotlinListener : Listener {
 
 		val vicDefense =
 				if (victim is Player)
-					CustomItemUtils.getPlayerStat(victim, StatTypes.DEFENSE) / (damageMulti[victim] ?: 1.0)
+					CustomItemUtils.getPlayerStat(
+							victim,
+							StatTypes.DEFENSE
+					                             ) / (damageMulti[victim] ?: 1.0)
 				else 0.0
 		val reducedDamage =
 				damage * (1 - (calcReducedToughness(vicDefense) / 1000)) //custom attack damage with toughness considered
 
 		//add luck
 		if (attacker is Player) {
-			val luck = getPlayerStat(attacker, StatTypes.LUCK, attacker.inventory.itemInMainHand)
+			val luck =
+					getPlayerStat(
+							attacker,
+							StatTypes.LUCK,
+							attacker.inventory.itemInMainHand
+					             )
 			ActiveMobs.addLuck(victim, reducedDamage, luck)
 		}
 
 		e.damage = reducedDamage //scaled down to damage player by vanilla damage
 		setVictimName(victim, e.damage, vicMaxHealth)
-		if (victim is Mob) DamageIndicator.showDamageIndicator(reducedDamage, victim.location, isCritical)
+		if (victim is Mob) DamageIndicator.showDamageIndicator(
+				reducedDamage,
+				victim.location,
+				isCritical
+		                                                      )
 	}
 
 	private fun setVictimName(
