@@ -35,14 +35,14 @@ public class Stats implements CommandExecutor {
 		}
 		((Player)sender).playSound(((Player)sender).getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1.0f, 1.5f);
 
-		BigDecimal health = BigDecimal.valueOf(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH));
-		BigDecimal strength = BigDecimal.valueOf(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH));
+		BigDecimal health = BigDecimal.valueOf(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.HEALTH)).round(new MathContext(2));
+		BigDecimal strength = BigDecimal.valueOf(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.STRENGTH)).round(new MathContext(2));
 		BigDecimal toughness =
 				BigDecimal.valueOf(
 						(CustomItemKotlinListener.Companion.calcReducedToughness(
-								CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.DEFENSE)) / 1000)*100);
-		BigDecimal luck = BigDecimal.valueOf(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK));
-		BigDecimal regeneration = BigDecimal.valueOf(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION));
+								CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.DEFENSE)) / 1000)*100).round(new MathContext(2));
+		BigDecimal luck = BigDecimal.valueOf(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.LUCK)).round(new MathContext(2));
+		BigDecimal regeneration = BigDecimal.valueOf(CustomItemUtils.INSTANCE.getPlayerStat((Player) player, StatTypes.REGENERATION)).round(new MathContext(2));
 
 		sender.sendMessage("");
 		sender.sendMessage("");
