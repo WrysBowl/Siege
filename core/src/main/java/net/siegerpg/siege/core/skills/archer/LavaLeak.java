@@ -101,8 +101,26 @@ public class LavaLeak extends Skill {
 		// If the trigger() method returns false it means that the execution was not successful (for example the cooldown wasn't finished) so we stop executing and return false
 		if (!super.trigger(player, level)) return false;
 
-		// Handling of the skill goes here
+		Skill skill = this;
 
+		// Handling of the skill goes here
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+				if (!ActiveSkillData.isActive(player, skill)) {
+					//when skill ends, end the runnable
+					this.cancel();
+
+				} else {
+					//display flames around the player
+					player.getLocation().getWorld().spawnParticle(
+							Particle.DRIP_LAVA,
+							player.getLocation().add(0,1,0), 10, 0.75, 0.25, 0.75);
+
+				}
+			}
+		}.runTaskTimer(Core.plugin(), 40, 40);
 
 
 		return true;
@@ -171,9 +189,6 @@ public class LavaLeak extends Skill {
 
 			}
 		}.runTaskTimer(Core.plugin(), 20, 20);
-
-		this.triggerEnd((Player) shooter, level);
-
 	}
 
 	@Override
