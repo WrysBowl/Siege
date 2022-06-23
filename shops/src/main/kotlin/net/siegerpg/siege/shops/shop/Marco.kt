@@ -12,94 +12,94 @@ class Marco : Shop() {
 	override var items : List<ShopItem> = listOf(
 			//WOODEN
 			ShopItem(WoodenPickaxe(100), 1000, hashMapOf(), false) {
-				WoodenPickaxe().getUpdatedItem(false)
+				WoodenPickaxe(100).getUpdatedItem(false)
 			},
 			ShopItem(WoodenShovel(100), 1000, hashMapOf(), false) {
-				WoodenShovel().getUpdatedItem(false)
+				WoodenShovel(100).getUpdatedItem(false)
 			},
 			ShopItem(WoodenAxe(100), 1000, hashMapOf(), false) {
-				WoodenAxe().getUpdatedItem(false)
+				WoodenAxe(100).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(GlowingWoodenPickaxe(100), 2000, hashMapOf(), false) {
-				GlowingWoodenPickaxe().getUpdatedItem(false)
+				GlowingWoodenPickaxe(100).getUpdatedItem(false)
 			},
 			ShopItem(GlowingWoodenShovel(100), 2000, hashMapOf(), false) {
-				GlowingWoodenShovel().getUpdatedItem(false)
+				GlowingWoodenShovel(100).getUpdatedItem(false)
 			},
 			ShopItem(GlowingWoodenAxe(100), 2000, hashMapOf(), false) {
-				GlowingWoodenAxe().getUpdatedItem(false)
+				GlowingWoodenAxe(100).getUpdatedItem(false)
 			},
 
 			//BONE
 			ShopItem(BonePickaxe(100), 4000, hashMapOf(), false) {
-				BonePickaxe().getUpdatedItem(false)
+				BonePickaxe(100).getUpdatedItem(false)
 			},
 			ShopItem(BoneShovel(100), 4000, hashMapOf(), false) {
-				BoneShovel().getUpdatedItem(false)
+				BoneShovel(100).getUpdatedItem(false)
 			},
 			ShopItem(BoneAxe(100), 4000, hashMapOf(), false) {
-				BoneAxe().getUpdatedItem(false)
+				BoneAxe(100).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(GlowingBonePickaxe(100), 8000, hashMapOf(), false) {
-				GlowingBonePickaxe().getUpdatedItem(false)
+				GlowingBonePickaxe(100).getUpdatedItem(false)
 			},
 			ShopItem(GlowingBoneShovel(100), 8000, hashMapOf(), false) {
-				GlowingBoneShovel().getUpdatedItem(false)
+				GlowingBoneShovel(100).getUpdatedItem(false)
 			},
 			ShopItem(GlowingBoneAxe(100), 8000, hashMapOf(), false) {
-				GlowingBoneAxe().getUpdatedItem(false)
+				GlowingBoneAxe(100).getUpdatedItem(false)
 			},
 
 			//STONE
 			ShopItem(StonePickaxe(100), 15000, hashMapOf(), false) {
-				StonePickaxe().getUpdatedItem(false)
+				StonePickaxe(100).getUpdatedItem(false)
 			},
 			ShopItem(StoneShovel(100), 15000, hashMapOf(), false) {
-				StoneShovel().getUpdatedItem(false)
+				StoneShovel(100).getUpdatedItem(false)
 			},
 			ShopItem(StoneAxe(100), 15000, hashMapOf(), false) {
-				StoneAxe().getUpdatedItem(false)
+				StoneAxe(100).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(GlowingStonePickaxe(100), 30000, hashMapOf(), false) {
-				GlowingStonePickaxe().getUpdatedItem(false)
+				GlowingStonePickaxe(100).getUpdatedItem(false)
 			},
 			ShopItem(GlowingStoneShovel(100), 30000, hashMapOf(), false) {
-				GlowingStoneShovel().getUpdatedItem(false)
+				GlowingStoneShovel(100).getUpdatedItem(false)
 			},
 			ShopItem(GlowingStoneAxe(100), 30000, hashMapOf(), false) {
-				GlowingStoneAxe().getUpdatedItem(false)
+				GlowingStoneAxe(100).getUpdatedItem(false)
 			},
 
 			//IRON
 			ShopItem(IronPickaxe(100), 50000, hashMapOf(), false) {
-				IronPickaxe().getUpdatedItem(false)
+				IronPickaxe(100).getUpdatedItem(false)
 			},
 			ShopItem(IronShovel(100), 50000, hashMapOf(), false) {
-				IronShovel().getUpdatedItem(false)
+				IronShovel(100).getUpdatedItem(false)
 			},
 			ShopItem(IronAxe(100), 50000, hashMapOf(), false) {
-				IronAxe().getUpdatedItem(false)
+				IronAxe(100).getUpdatedItem(false)
 			},
 			ShopItem(GRAYFILLER(-1), -1, hashMapOf(), false) {
 				GRAYFILLER(-1).getUpdatedItem(false)
 			},
 			ShopItem(GlowingIronPickaxe(100), 75000, hashMapOf(), false) {
-				GlowingIronPickaxe().getUpdatedItem(false)
+				GlowingIronPickaxe(100).getUpdatedItem(false)
 			},
 			ShopItem(GlowingIronShovel(100), 75000, hashMapOf(), false) {
-				GlowingIronShovel().getUpdatedItem(false)
+				GlowingIronShovel(100).getUpdatedItem(false)
 			},
 			ShopItem(GlowingIronAxe(100), 75000, hashMapOf(), false) {
-				GlowingIronAxe().getUpdatedItem(false)
+				GlowingIronAxe(100).getUpdatedItem(false)
 			},
 	                                            )
 }
